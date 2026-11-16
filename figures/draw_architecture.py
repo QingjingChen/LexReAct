@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Architecture figure for the LexReact pipeline (style: figstyle.py, after figures4papers).
+"""Architecture figure for the LexReAct pipeline (style: figstyle.py, after figures4papers).
    python3 draw_architecture.py  ->  figures/out/architecture_lexreact.{pdf,png,svg}
 Colour semantics: blue = our symbolic components, green = our LLM agents, red = host system (LEGO),
 grey = deterministic program, white = data. Drawn at print size (6.9 in wide, 7 pt text)."""

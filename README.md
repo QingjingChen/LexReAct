@@ -1,6 +1,6 @@
-# LexReact
+# LexReAct
 
-**LexReact** (*Legal RuleML-guided Agents for Checking and reTrieval*) is a multi-agent pipeline for Chinese
+**LexReAct** (*Legal RuleML-guided Agents for Checking and reTrieval*) is a multi-agent pipeline for Chinese
 civil-law QA. LLM agents extract, audit and verify facts and write the final answer; a **defeasible deontic reasoner
 over LegalRuleML** coordinates them and filters retrieval. The reasoner does not answer the question. Instead, it
 
@@ -19,7 +19,7 @@ Main result (LexGo questions covered by the rules; 134 held-out questions × 3 s
 | | EM (mean ± s.d. over seeds) | F1 |
 |---|---|---|
 | LEGO (host prompt) | 0.609 ± 0.019 | 0.747 |
-| + LexReact | **0.654 ± 0.026** | **0.780** |
+| + LexReAct | **0.654 ± 0.026** | **0.780** |
 
 Paired difference: +4.5 EM points, 95% bootstrap CI [−0.0, +9.0]; sign test over question × seed, p ≈ 0.03.
 See [EXPERIMENTS.md](EXPERIMENTS.md) for every experiment, its command and its caveats.
