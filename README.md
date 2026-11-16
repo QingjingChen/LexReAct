@@ -1,7 +1,8 @@
 # LexReact
 
-**LexReact** (*Legal RuleML-Aware Check and reTrieval*) is a pipeline that adds a **defeasible deontic reasoner over LegalRuleML** to an LLM-based legal QA system
-for Chinese civil law. The reasoner does not answer the question. Instead, it
+**LexReact** (*Legal RuleML-guided Agents for Checking and reTrieval*) is a multi-agent pipeline for Chinese
+civil-law QA. LLM agents extract, audit and verify facts and write the final answer; a **defeasible deontic reasoner
+over LegalRuleML** coordinates them and filters retrieval. The reasoner does not answer the question. Instead, it
 
 1. **audits** the LLM-extracted facts that its conclusions depend on;
 2. **asks** questions that can be checked against the case text: unverified exceptions, rules that miss one fact,
