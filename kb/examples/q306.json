@@ -1,0 +1,19 @@
+[
+ {
+  "id": "q306",
+  "title": "第三人丙胁迫丁为甲的借款提供保证，银行善意无过失。A「丁有权以受胁迫为由撤销保证」✓；B「债权人善意时保证合同有效、不得撤销」✗",
+  "facts": [
+   "adult(ding)",
+   "actOf(guar,ding)",
+   "coercedByThirdParty(ding,guar)",
+   "counterpartyOf(bank,guar)",
+   "inGoodFaith(bank,guar)"
+  ],
+  "expect": [
+   "revocationRight(ding,guar)",
+   "revokeAgainst(ding,bank,guar)",
+   "valid(guar)",
+   "!void(guar)"
+  ]
+ }
+]

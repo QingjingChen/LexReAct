@@ -1,0 +1,38 @@
+[
+ {
+  "id": "q530",
+  "title": "甲（第三人）欺诈乙，使乙向知情的齐某买下假文物x1；甲此前也曾被齐某欺诈买下x0。A「乙可向甲主张撤销」✗ B「乙可向齐某主张撤销」✓ C「甲不得向齐某主张撤销」✗ D「乙的撤销权自行为发生起两年不行使则消灭」✗",
+  "facts": [
+   "adult(yi)",
+   "actOf(x1,yi)",
+   "deceivedByThirdParty(yi,x1)",
+   "counterpartyKnewOrShouldKnowFraud(x1)",
+   "counterpartyOf(qi,x1)",
+   "adult(jia)",
+   "actOf(x0,jia)",
+   "deceivedByCounterparty(jia,x0)",
+   "counterpartyOf(qi,x0)"
+  ],
+  "expect": [
+   "revokeAgainst(yi,qi,x1)",
+   "!revokeAgainst(yi,jia,x1)",
+   "revocationRight(jia,x0)",
+   "revokeAgainst(jia,qi,x0)",
+   "revocationRight(yi,x1)"
+  ]
+ },
+ {
+  "id": "q530-D",
+  "title": "D 的检验：行为发生已逾两年、但知道受欺诈未满一年 → 撤销权仍在（只有“知道后一年”或“行为后五年”才消灭）",
+  "facts": [
+   "adult(yi)",
+   "actOf(x1,yi)",
+   "deceivedByThirdParty(yi,x1)",
+   "counterpartyKnewOrShouldKnowFraud(x1)",
+   "counterpartyOf(qi,x1)"
+  ],
+  "expect": [
+   "revocationRight(yi,x1)"
+  ]
+ }
+]

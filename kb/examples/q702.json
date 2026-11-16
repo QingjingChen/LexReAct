@@ -1,0 +1,29 @@
+[
+ {
+  "id": "q702",
+  "title": "甲乙约定“未经对方同意不得转让债权”；甲将对乙的货款债权（金钱债权）转给丙，乙未同意、尚未通知乙。A「丙非善意，协议无效」✗ B「未通知前对乙不生效」✓ C「乙未同意前对乙不生效」✗",
+  "facts": [
+   "claimAssigned(z,jia,bing)",
+   "agreedNonAssignable(z)",
+   "monetaryClaim(z)"
+  ],
+  "expect": [
+   "assignmentEffective(z,bing)",
+   "-bindsDebtor(z,bing)"
+  ]
+ },
+ {
+  "id": "q702-C",
+  "title": "C 的检验：通知乙后（乙仍不同意）→ 转让即对乙生效，无需乙同意",
+  "facts": [
+   "claimAssigned(z,jia,bing)",
+   "agreedNonAssignable(z)",
+   "monetaryClaim(z)",
+   "debtorNotified(z)"
+  ],
+  "expect": [
+   "assignmentEffective(z,bing)",
+   "bindsDebtor(z,bing)"
+  ]
+ }
+]

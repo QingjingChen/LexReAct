@@ -1,0 +1,33 @@
+[
+ {
+  "id": "q662",
+  "title": "同一设备：5/7抵押给乙未登记；6/7抵押给丙并登记（丙知道乙的抵押）；7/7抵押给丁并登记。问哪些说法错误。A「乙优先于丙」✗ B「丁优先于乙」✓ C「丙优先于丁」✓ D「丁的抵押权自登记时设立」✗ —— 金标 AD",
+  "facts": [
+   "movable(equip)",
+   "hasDisposalPower(jia,equip)",
+   "mortgageContract(k1,jia,yi,equip)",
+   "actOf(k1,jia)",
+   "mortgageContract(k2,jia,bing,equip)",
+   "actOf(k2,jia)",
+   "mortgageRegistered(k2)",
+   "mortgageContract(k3,jia,ding,equip)",
+   "actOf(k3,jia)",
+   "mortgageRegistered(k3)",
+   "registeredEarlier(k2,k3)",
+   "sameCollateral(k1,k2)",
+   "sameCollateral(k2,k1)",
+   "sameCollateral(k1,k3)",
+   "sameCollateral(k3,k1)",
+   "sameCollateral(k2,k3)",
+   "sameCollateral(k3,k2)"
+  ],
+  "expect": [
+   "ranksBefore(k2,k1)",
+   "!ranksBefore(k1,k2)",
+   "ranksBefore(k3,k1)",
+   "ranksBefore(k2,k3)",
+   "mortgageEstablished(k3)",
+   "mortgageEstablished(k1)"
+  ]
+ }
+]

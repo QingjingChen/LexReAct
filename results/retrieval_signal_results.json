@@ -1,0 +1,1609 @@
+{
+ "miss": [
+  {
+   "q": 320,
+   "gold": [
+    545,
+    546,
+    551
+   ],
+   "miss": [
+    545,
+    546,
+    551
+   ],
+   "S": [
+    1165,
+    1188,
+    1199,
+    1200,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "F": [
+    148,
+    179,
+    1165,
+    1254
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "actOf(x1,liang)",
+    "counterpartyOf(k1,x1)",
+    "sale(k1,jia,liang,t1)",
+    "breachingParty(jia,k2)",
+    "harmfulAct(liu,han,x2)",
+    "performingDuties(liu,x2)",
+    "grossNegligence(liu,x2)",
+    "identifiedTortfeasor(liu,x2)",
+    "damage(han,x2)",
+    "causation(x2)"
+   ],
+   "SF": [
+    148,
+    179,
+    1165,
+    1188,
+    1199,
+    1200,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 327,
+   "gold": [
+    151,
+    153
+   ],
+   "miss": [
+    153
+   ],
+   "S": [
+    147,
+    148,
+    149,
+    150,
+    152
+   ],
+   "F": [
+    147,
+    148,
+    149,
+    374
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "actOf(x1,jia)",
+    "actOf(x1,yi)",
+    "sale(k1,yi,jia,t1)",
+    "breachingParty(yi,k1)",
+    "breachFrustratesPurpose(yi,k1)",
+    "counterpartyKnewOrShouldKnowFraud(x1)",
+    "deceivedByCounterparty(jia,x1)",
+    "grosslyUnfairAtFormation(x1)"
+   ],
+   "SF": [
+    147,
+    148,
+    149,
+    150,
+    152,
+    374
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 423,
+   "gold": [
+    154
+   ],
+   "miss": [
+    154
+   ],
+   "S": [
+    143,
+    145,
+    147,
+    155,
+    395,
+    406
+   ],
+   "F": [
+    179,
+    406,
+    414,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,wang,zhang,house)",
+    "mortgageRegistered(k1)",
+    "leaseOf(l1,house)",
+    "leasedAndPossessedBeforeMortgage(l1,k1)",
+    "buyerAlreadyPossesses(li,house)",
+    "damagedBy(zhang,x1,house)",
+    "harmfulAct(wang,li,x1)",
+    "faultPresumedByLaw(x1)"
+   ],
+   "SF": [
+    143,
+    145,
+    147,
+    155,
+    179,
+    395,
+    406,
+    414,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 446,
+   "gold": [
+    1127
+   ],
+   "miss": [
+    1127
+   ],
+   "S": [
+    1142,
+    1143
+   ],
+   "F": [
+    179,
+    406,
+    1127,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [
+    1127
+   ],
+   "facts": [
+    "willOf(wd,wd)",
+    "spouseOf(zx,wd)",
+    "biologicalChild(wh,wd)",
+    "biologicalChild(nn,wd)",
+    "biologicalChild(xl,wh)",
+    "predeceased(wh,wd)",
+    "ownerManagerOrUser(wd,m1)",
+    "building(m1)",
+    "acquiredProperty(zx,m1)",
+    "sale(k1,wd,y1,m1)",
+    "transfersProperty(wd,m1,y1)",
+    "wagesOrRemuneration(t1)",
+    "inheritedOrGifted(t1)",
+    "guardianOf(wd,xl)"
+   ],
+   "SF": [
+    179,
+    406,
+    1127,
+    1142,
+    1143,
+    1165
+   ],
+   "SF_fix": [
+    1127
+   ]
+  },
+  {
+   "q": 491,
+   "gold": [
+    18,
+    19,
+    1063
+   ],
+   "miss": [
+    18,
+    19
+   ],
+   "S": [],
+   "F": [
+    18,
+    21,
+    179,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [
+    18
+   ],
+   "facts": [
+    "acquiredProperty(wang,villa1)",
+    "acquiredDuringMarriage(villa1)",
+    "adult(liu)",
+    "adult(wang)"
+   ],
+   "SF": [
+    18,
+    21,
+    179,
+    1165
+   ],
+   "SF_fix": [
+    18
+   ]
+  },
+  {
+   "q": 506,
+   "gold": [
+    148,
+    155,
+    157
+   ],
+   "miss": [
+    155
+   ],
+   "S": [
+    144,
+    145,
+    150,
+    153,
+    154,
+    155
+   ],
+   "F": [
+    150,
+    155,
+    179,
+    1165
+   ],
+   "S_fix": [
+    155
+   ],
+   "F_fix": [
+    155
+   ],
+   "facts": [
+    "deceivedByCounterparty(yi,x1)",
+    "counterpartyKnewOrShouldKnowFraud(x1)",
+    "majorMisunderstanding(yi,x1)",
+    "grosslyUnfairAtFormation(x1)",
+    "exercisesRevocation(yi,x1)",
+    "actOf(x1,jia)",
+    "sale(k1,jia,yi,b1)",
+    "damagedBy(yi,x1,b1)"
+   ],
+   "SF": [
+    144,
+    145,
+    150,
+    153,
+    154,
+    155,
+    179,
+    1165
+   ],
+   "SF_fix": [
+    155
+   ]
+  },
+  {
+   "q": 547,
+   "gold": [
+    20
+   ],
+   "miss": [
+    20
+   ],
+   "S": [
+    403,
+    406
+   ],
+   "F": [
+    145,
+    403,
+    406,
+    414
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,jia,yi,shangpu)",
+    "mortgageRegistered(k1)",
+    "leaseOf(l1,shangpu)",
+    "buyerAlreadyPossesses(bing,shangpu)",
+    "paidReasonablePrice(ding,shangpu)",
+    "thirdPartyAcquirer(ding,shangpu)",
+    "actOf(x1,bing)",
+    "counterpartyOf(bing,x1)",
+    "inGoodFaith(bing,x1)"
+   ],
+   "SF": [
+    145,
+    403,
+    406,
+    414
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 564,
+   "gold": [
+    188
+   ],
+   "miss": [
+    188
+   ],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    1165,
+    1191,
+    1199,
+    1200,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "F": [
+    20,
+    144,
+    155,
+    374
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "under8(jia)",
+    "actOf(x1,jia_parents)",
+    "buyerAlreadyPossesses(jia_parents,house1)",
+    "handedToCarrier(k1)",
+    "breachFrustratesPurpose(jia_parents,k1)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    144,
+    155,
+    374,
+    1165,
+    1191,
+    1199,
+    1200,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 569,
+   "gold": [
+    19,
+    20,
+    144,
+    145
+   ],
+   "miss": [
+    20,
+    144
+   ],
+   "S": [
+    18,
+    21,
+    22,
+    155
+   ],
+   "F": [
+    20,
+    144,
+    155,
+    374
+   ],
+   "S_fix": [],
+   "F_fix": [
+    20,
+    144
+   ],
+   "facts": [
+    "under8(xiaozhang)",
+    "actOf(x1,xiaozhang)",
+    "pureBenefit(x1)",
+    "actOf(x2,xiaozhang)",
+    "pureBenefit(x2)"
+   ],
+   "SF": [
+    18,
+    20,
+    21,
+    22,
+    144,
+    155,
+    374
+   ],
+   "SF_fix": [
+    20,
+    144
+   ]
+  },
+  {
+   "q": 572,
+   "gold": [
+    420,
+    421
+   ],
+   "miss": [
+    420
+   ],
+   "S": [
+    402,
+    403,
+    420,
+    423
+   ],
+   "F": [
+    148,
+    149,
+    414,
+    447
+   ],
+   "S_fix": [
+    420
+   ],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,bing,jia,fang)",
+    "mortgageRegistered(k1)",
+    "claimAssigned(z1,yibgongsi,dinggongsi)",
+    "debtorNotified(z1)",
+    "counterpartyOf(jiasupermarket,x1)",
+    "creditorOf(dinggongsi,jiasupermarket,z1)",
+    "seeksCessationOrRemoval(dinggongsi)"
+   ],
+   "SF": [
+    148,
+    149,
+    402,
+    403,
+    414,
+    420,
+    423,
+    447
+   ],
+   "SF_fix": [
+    420
+   ]
+  },
+  {
+   "q": 594,
+   "gold": [
+    20
+   ],
+   "miss": [
+    20
+   ],
+   "S": [],
+   "F": [
+    226,
+    403,
+    406,
+    604
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,jia,yi,house)",
+    "mortgageRegistered(k1)",
+    "sale(k2,jia,bing,house)",
+    "buyerAlreadyPossesses(bing,house)",
+    "contractProvidesOtherwise(k2)",
+    "courtHears(judicial,ding)",
+    "thirdPartyAcquirer(ding,house)",
+    "paidReasonablePrice(ding,house)"
+   ],
+   "SF": [
+    226,
+    403,
+    406,
+    604
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 610,
+   "gold": [
+    146
+   ],
+   "miss": [
+    146
+   ],
+   "S": [
+    147,
+    148,
+    149,
+    150,
+    151
+   ],
+   "F": [
+    20,
+    155,
+    179,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "minor(c1)",
+    "minor(c2)",
+    "guardianOf(wife,c1)",
+    "guardianOf(wife,c2)",
+    "actOf(x1,jia)",
+    "sale(k1,jia,yi,house)",
+    "mortgageRegistered(k1)",
+    "under8(yi)",
+    "cannotFullyDiscern(yi)",
+    "damagedBy(yi,x2,car)",
+    "fault(yi,x2)",
+    "voluntarilyPerformed(jia,yi)"
+   ],
+   "SF": [
+    20,
+    147,
+    148,
+    149,
+    150,
+    151,
+    155,
+    179,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 612,
+   "gold": [
+    402,
+    414
+   ],
+   "miss": [
+    414
+   ],
+   "S": [
+    143,
+    145,
+    147,
+    155,
+    395
+   ],
+   "F": [
+    145,
+    148,
+    179,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,jia,yi,house)",
+    "breachingParty(jia,k1)",
+    "deceivedByCounterparty(jia,x1)",
+    "counterpartyOf(yi,x1)",
+    "concealedBy(jia,x1)",
+    "harmfulAct(jia,yi,x1)",
+    "damagedBy(yi,x1,house)",
+    "damage(yi,x1)",
+    "causation(x1)",
+    "thirdPartyAcquirer(bing,house)",
+    "inGoodFaith(bing,x2)",
+    "paidReasonablePrice(bing,house)",
+    "mortgageContract(k2,jia,bing,house)",
+    "mortgageRegistered(k2)",
+    "transfersProperty(jia,house,bing)"
+   ],
+   "SF": [
+    143,
+    145,
+    147,
+    148,
+    155,
+    179,
+    395,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 652,
+   "gold": [
+    153
+   ],
+   "miss": [
+    153
+   ],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    1142
+   ],
+   "F": [
+    18,
+    20,
+    155,
+    447
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "adult(zhouyi)",
+    "adult(wuer)",
+    "adult(zhouyi_parents)",
+    "building(house1)",
+    "belongsTo(house1,zhouyi)",
+    "actOf(x1,zhouyi)",
+    "willOf(will1,zhouyi_parents)",
+    "willCoversEstate(will1,house1)",
+    "inheritedOrGifted(house1)",
+    "guardianDutyFulfilled(zhouyi_parents,zhouyi)",
+    "betweenEnterprises(medical_hospital,zhouyi)",
+    "minor(child1)",
+    "under8(child1)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    155,
+    447,
+    1142
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 686,
+   "gold": [
+    226
+   ],
+   "miss": [
+    226
+   ],
+   "S": [],
+   "F": [
+    145,
+    148,
+    226,
+    604
+   ],
+   "S_fix": [],
+   "F_fix": [
+    226
+   ],
+   "facts": [
+    "leaseOf(l1,t1)",
+    "buyerAlreadyPossesses(b,t1)",
+    "actOf(x1,jia)",
+    "counterpartyOf(yi,x1)",
+    "sale(k2,jia,bing,t1)",
+    "paidReasonablePrice(bing,t1)",
+    "inGoodFaith(bing,x2)",
+    "thirdPartyAcquirer(bing,t1)"
+   ],
+   "SF": [
+    145,
+    148,
+    226,
+    604
+   ],
+   "SF_fix": [
+    226
+   ]
+  },
+  {
+   "q": 697,
+   "gold": [
+    146
+   ],
+   "miss": [
+    146
+   ],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "F": [
+    18,
+    145,
+    146,
+    155
+   ],
+   "S_fix": [],
+   "F_fix": [
+    146
+   ],
+   "facts": [
+    "adult(jia)",
+    "adult(yi)",
+    "adult(han)",
+    "widowedInLaw(han,jia)",
+    "widowedInLaw(han,yi)",
+    "actOf(x1,han)",
+    "counterpartyOf(jia,x1)",
+    "counterpartyOf(yi,x1)",
+    "actOf(x2,han)",
+    "counterpartyOf(jia,x2)",
+    "counterpartyOf(yi,x2)",
+    "shamIntent(x2)",
+    "counterpartyKnewOrShouldKnowFraud(x2)",
+    "transfersProperty(han,house1,jia)",
+    "transfersProperty(han,house2,yi)",
+    "actOf(x3,han)",
+    "counterpartyOf(jia,x3)",
+    "abandonedOrSeriouslyAbused(jia,han)",
+    "actOf(x4,han)",
+    "counterpartyOf(jia,x4)",
+    "coercedByCounterparty(han,x4)",
+    "threeYearsSinceKnew(jia)",
+    "seller(jia,house1)",
+    "buyerAlreadyPossesses(jia,house1)",
+    "paidReasonablePrice(bing,house1)",
+    "inGoodFaith(bing,x5)",
+    "ordinaryCourseBuyer(bing,house1)",
+    "transfersProperty(jia,house1,bing)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    145,
+    146,
+    155
+   ],
+   "SF_fix": [
+    146
+   ]
+  },
+  {
+   "q": 698,
+   "gold": [
+    546,
+    547
+   ],
+   "miss": [
+    546
+   ],
+   "S": [
+    402,
+    403,
+    404,
+    420,
+    423,
+    545
+   ],
+   "F": [
+    179,
+    414,
+    447,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "creditorOf(c,b,z1)",
+    "mortgageContract(k1,m,a,b)",
+    "mortgageRegistered(k1)",
+    "claimAssigned(z1,b,c)",
+    "debtorNotified(z1)",
+    "counterpartyOf(c,x1)",
+    "actOf(x1,jia)",
+    "damagedBy(a,x1,pr1)"
+   ],
+   "SF": [
+    179,
+    402,
+    403,
+    404,
+    414,
+    420,
+    423,
+    447,
+    545,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 711,
+   "gold": [
+    586
+   ],
+   "miss": [
+    586
+   ],
+   "S": [
+    144,
+    146,
+    149,
+    150,
+    152,
+    153,
+    154,
+    155
+   ],
+   "F": [
+    149,
+    150,
+    226,
+    604
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "sale(k1,company,yi,wine)",
+    "buyerAlreadyPossesses(yi,wine)",
+    "paidReasonablePrice(yi,wine)",
+    "majorMisunderstanding(company,k1)",
+    "counterpartyOf(jia,k1)",
+    "actOf(k2,jia)",
+    "goodsPerished(k1)"
+   ],
+   "SF": [
+    144,
+    146,
+    149,
+    150,
+    152,
+    153,
+    154,
+    155,
+    226,
+    604
+   ],
+   "SF_fix": []
+  }
+ ],
+ "ctrl": [
+  {
+   "q": 575,
+   "gold": [
+    1142
+   ],
+   "miss": [],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "F": [],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "willOf(w1,jia)",
+    "willOf(w2,jia)",
+    "willOf(w3,jia)",
+    "willOf(w5,jia)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 599,
+   "gold": [
+    403,
+    404
+   ],
+   "miss": [],
+   "S": [
+    143,
+    145,
+    147,
+    155,
+    395,
+    406
+   ],
+   "F": [
+    406,
+    447,
+    456
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "sale(k1,jia,yi,t1)",
+    "mortgageContract(k2,jia,yi,t2)",
+    "transfersProperty(jia,t2,yi)",
+    "unpaid(z1)"
+   ],
+   "SF": [
+    143,
+    145,
+    147,
+    155,
+    395,
+    406,
+    447,
+    456
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 338,
+   "gold": [
+    147
+   ],
+   "miss": [],
+   "S": [
+    20,
+    21,
+    150,
+    153,
+    154,
+    155
+   ],
+   "F": [
+    150,
+    155,
+    226,
+    374
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "actOf(x1,jia)",
+    "actOf(x1,yi)",
+    "buyerAlreadyPossesses(jia,e1)",
+    "paidReasonablePrice(jia,e1)",
+    "majorMisunderstanding(yi,x1)",
+    "deceivedByCounterparty(jia,x1)"
+   ],
+   "SF": [
+    20,
+    21,
+    150,
+    153,
+    154,
+    155,
+    226,
+    374
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 503,
+   "gold": [
+    407
+   ],
+   "miss": [],
+   "S": [
+    402,
+    403,
+    420,
+    423
+   ],
+   "F": [
+    406,
+    414,
+    447,
+    456
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "creditorOf(jia,yi,z1)",
+    "mortgageContract(k1,bing,jia,house_bing)",
+    "mortgageContract(k2,ding,jia,house_ding)",
+    "mortgageRegistered(k1)",
+    "mortgageRegistered(k2)",
+    "claimAssigned(z1,jia,wu)",
+    "debtorNotified(z1)",
+    "debtMatured(z1_part1)",
+    "debtMatured(z1_part2)",
+    "performed(yi,k1_part1)",
+    "unpaid(z1_part2)"
+   ],
+   "SF": [
+    402,
+    403,
+    406,
+    414,
+    420,
+    423,
+    447,
+    456
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 678,
+   "gold": [
+    1125
+   ],
+   "miss": [],
+   "S": [
+    1127
+   ],
+   "F": [],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "abandonedOrSeriouslyAbused(jia,fu)",
+    "killedCoHeirForEstate(yi,fu)",
+    "repented(yi,fu)",
+    "forgivenByDeceased(yi,fu)",
+    "forgivenByDeceased(jia,fu)",
+    "renounced(bing,fu)"
+   ],
+   "SF": [
+    1127
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 654,
+   "gold": [
+    447
+   ],
+   "miss": [],
+   "S": [
+    449
+   ],
+   "F": [
+    179,
+    1165,
+    1188,
+    1254
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "keeperOrManager(gao,car)",
+    "harmfulAct(lu,hou,x1)",
+    "damage(hou,x1)",
+    "fault(gao,x1)",
+    "noNecessarySafetyMeasures(gao,x1)"
+   ],
+   "SF": [
+    179,
+    449,
+    1165,
+    1188,
+    1254
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 583,
+   "gold": [
+    19
+   ],
+   "miss": [],
+   "S": [
+    18,
+    21,
+    22,
+    155
+   ],
+   "F": [
+    148,
+    149,
+    179,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "minor(chen)",
+    "actOf(x1,chen)",
+    "counterpartyOf(jia,x1)",
+    "deceivedByCounterparty(chen,x1)",
+    "coercedWillSeriously(jia,x1)",
+    "breachingParty(jia,x1)",
+    "harmfulAct(jia,cheng,x1)"
+   ],
+   "SF": [
+    18,
+    21,
+    22,
+    148,
+    149,
+    155,
+    179,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 631,
+   "gold": [
+    421
+   ],
+   "miss": [],
+   "S": [
+    402,
+    403,
+    404
+   ],
+   "F": [
+    414,
+    545,
+    546,
+    547
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "maxAmountMortgage(k1)",
+    "mortgageContract(k1,yi,jia,fang1)",
+    "mortgageRegistered(k1)",
+    "agreedNonAssignable(z1)",
+    "agreedMortgageNotFollow(k2)",
+    "agreedMortgageFollows(k3)",
+    "claimAssigned(z2,jia,dongfang)",
+    "debtorOrMortgagorBankruptOrDissolved(yi)"
+   ],
+   "SF": [
+    402,
+    403,
+    404,
+    414,
+    545,
+    546,
+    547
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 577,
+   "gold": [
+    526,
+    527
+   ],
+   "miss": [],
+   "S": [],
+   "F": [
+    447,
+    456,
+    586,
+    604
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "betweenEnterprises(yi,jia)",
+    "sale(k1,jia,yi,t1)",
+    "depositAgreed(k1)",
+    "depositActuallyPaid(k1)",
+    "breachingParty(jia,k1)",
+    "breachingParty(yi,k1)",
+    "businessSeverelyDeteriorated(jia)",
+    "suspendsPerformance(yi,k1)",
+    "creditorDemandsPerformance(yi)",
+    "adequateSecurityProvided(jia,k1)",
+    "buyerTerminates(k1)",
+    "contractProvidesOtherwise(k1)",
+    "goodsPerished(k1)",
+    "forceMajeure(k1)"
+   ],
+   "SF": [
+    447,
+    456,
+    586,
+    604
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 715,
+   "gold": [
+    546
+   ],
+   "miss": [],
+   "S": [],
+   "F": [
+    148,
+    179,
+    447,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "creditorOf(jia,yi,z1)",
+    "claimAssigned(z1,jia,zhangsan)",
+    "counterpartyOf(yi,x1)",
+    "actOf(x1,jia)",
+    "obligorOf(yi,jia)",
+    "breachingParty(jia,k1)",
+    "harmfulAct(jia,yi,x2)"
+   ],
+   "SF": [
+    148,
+    179,
+    447,
+    1165
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 448,
+   "gold": [
+    1188
+   ],
+   "miss": [],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    1165,
+    1191,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "F": [
+    20,
+    179,
+    1165,
+    1191
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "minor(y)",
+    "under8(y)",
+    "guardianOf(j,y)",
+    "animalDamage(?,c,x1)",
+    "harmfulAct(y,c,x1)",
+    "damage(c,x1)",
+    "causation(x1)",
+    "guardianDutyFulfilled(j,y)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    179,
+    1165,
+    1191,
+    1201,
+    1202,
+    1245,
+    1253,
+    1254
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 492,
+   "gold": [
+    1142
+   ],
+   "miss": [],
+   "S": [
+    18,
+    19,
+    20,
+    21,
+    22
+   ],
+   "F": [
+    147,
+    148,
+    149,
+    150
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "willOf(gongm,gongw)",
+    "willByFraud(gongw)",
+    "actOf(x1,gongm)",
+    "counterpartyOf(gongw,x1)",
+    "deceivedByCounterparty(gongm,x1)",
+    "agreedToPerformAfterExpiry(gongm,gongw)",
+    "predeceased(gongw,gongm)"
+   ],
+   "SF": [
+    18,
+    19,
+    20,
+    21,
+    22,
+    147,
+    148,
+    149,
+    150
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 454,
+   "gold": [
+    406
+   ],
+   "miss": [],
+   "S": [
+    143,
+    145,
+    147,
+    155,
+    395,
+    403
+   ],
+   "F": [
+    145,
+    148,
+    149,
+    150
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,yi,bank,house)",
+    "buyerAlreadyPossesses(bank,house)",
+    "transfersProperty(yi,house,bing)",
+    "inGoodFaith(bing,k2)",
+    "counterpartyOf(bing,k2)"
+   ],
+   "SF": [
+    143,
+    145,
+    147,
+    148,
+    149,
+    150,
+    155,
+    395,
+    403
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 518,
+   "gold": [
+    423
+   ],
+   "miss": [],
+   "S": [],
+   "F": [
+    406,
+    407,
+    414,
+    421
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "mortgageContract(k1,yi,jia,tu1)",
+    "maxAmountMortgage(k1)",
+    "agreedDeterminationPeriodExpired(k1)",
+    "mortgageRegistered(k1)",
+    "paidLD(bing,k1)",
+    "debtorOrMortgagorBankruptOrDissolved(k1)"
+   ],
+   "SF": [
+    406,
+    407,
+    414,
+    421
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 419,
+   "gold": [
+    148
+   ],
+   "miss": [],
+   "S": [
+    144,
+    146,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155
+   ],
+   "F": [
+    179,
+    585,
+    1165,
+    1188
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "sale(k1,jia,zhang,fang)",
+    "breachingParty(jia,k1)",
+    "fault(jia,x1)",
+    "damagedBy(zhang,x1,fang)"
+   ],
+   "SF": [
+    144,
+    146,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    179,
+    585,
+    1165,
+    1188
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 499,
+   "gold": [
+    147
+   ],
+   "miss": [],
+   "S": [
+    144,
+    145,
+    146,
+    150,
+    152,
+    153,
+    154,
+    155
+   ],
+   "F": [
+    150,
+    226,
+    374,
+    604
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "actOf(x1,pan)",
+    "counterpartyOf(shangjia,x1)",
+    "sale(k1,shangjia,pan,yu2)",
+    "buyerAlreadyPossesses(pan,yu2)",
+    "paidReasonablePrice(pan,yu2)",
+    "breachingParty(shangjia,k1)",
+    "grosslyUnfairAtFormation(x1)"
+   ],
+   "SF": [
+    144,
+    145,
+    146,
+    150,
+    152,
+    153,
+    154,
+    155,
+    226,
+    374,
+    604
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 343,
+   "gold": [
+    148,
+    151,
+    153
+   ],
+   "miss": [],
+   "S": [
+    144,
+    145,
+    146,
+    150,
+    152,
+    154
+   ],
+   "F": [
+    145,
+    150,
+    374,
+    406
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "actOf(x1,jia)",
+    "counterpartyOf(yi,x1)",
+    "exploitedDistressOrInexperience(jia,x1)",
+    "breachingParty(yi,k1)",
+    "goodsPerished(k1)",
+    "transfersProperty(m,t1,yi)"
+   ],
+   "SF": [
+    144,
+    145,
+    146,
+    150,
+    152,
+    154,
+    374,
+    406
+   ],
+   "SF_fix": []
+  },
+  {
+   "q": 445,
+   "gold": [
+    1062
+   ],
+   "miss": [],
+   "S": [
+    147,
+    149,
+    150,
+    151,
+    152
+   ],
+   "F": [
+    18,
+    21,
+    179,
+    1165
+   ],
+   "S_fix": [],
+   "F_fix": [],
+   "facts": [
+    "adult(hu)",
+    "adult(chen)",
+    "spouseOf(hu,chen)",
+    "acquiredDuringMarriage(house1)",
+    "designatedSolelyToOneSpouse(house1)",
+    "businessOrInvestmentIncome(royalties1)"
+   ],
+   "SF": [
+    18,
+    21,
+    147,
+    149,
+    150,
+    151,
+    152,
+    179,
+    1165
+   ],
+   "SF_fix": []
+  }
+ ]
+}

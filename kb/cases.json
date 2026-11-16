@@ -1,0 +1,825 @@
+[
+ {
+  "id": "cap-1",
+  "title": "15岁的甲未经父母同意买笔记本电脑；卖方催告，父母30日未表态",
+  "facts": [
+   "minor(jia)",
+   "actOf(k1,jia)",
+   "counterpartyOf(shop,k1)",
+   "inGoodFaith(shop,k1)",
+   "demandedRatification(k1)",
+   "noAnswerWithin30Days(k1)"
+  ],
+  "expect": [
+   "limitedCapacity(jia)",
+   "ratificationRefused(k1)",
+   "ineffective(k1)",
+   "-valid(k1)",
+   "!pendingValidity(k1)"
+  ]
+ },
+ {
+  "id": "cap-2",
+  "title": "同上，但卖方尚未催告（追认前）",
+  "facts": [
+   "minor(jia)",
+   "actOf(k1,jia)",
+   "counterpartyOf(shop,k1)",
+   "inGoodFaith(shop,k1)"
+  ],
+  "expect": [
+   "pendingValidity(k1)",
+   "revokeRight(shop,k1)",
+   "!valid(k1)"
+  ]
+ },
+ {
+  "id": "cap-3",
+  "title": "17岁、以自己劳动收入为主要生活来源的乙买摩托车",
+  "facts": [
+   "minor(yi)",
+   "age16plus(yi)",
+   "ownLabourIncomeMainSource(yi)",
+   "actOf(k2,yi)"
+  ],
+  "expect": [
+   "fullCapacity(yi)",
+   "-limitedCapacity(yi)",
+   "valid(k2)",
+   "!pendingValidity(k2)"
+  ]
+ },
+ {
+  "id": "cap-4",
+  "title": "9岁但不能辨认自己行为的丙赠与他人手表",
+  "facts": [
+   "minor(bing)",
+   "cannotDiscern(bing)",
+   "actOf(k3,bing)"
+  ],
+  "expect": [
+   "noCapacity(bing)",
+   "-limitedCapacity(bing)",
+   "void(k3)",
+   "-valid(k3)",
+   "noBindingForceAbInitio(k3)"
+  ]
+ },
+ {
+  "id": "cap-5",
+  "title": "成年人通谋虚伪表示（以买卖掩盖赠与）",
+  "facts": [
+   "adult(a)",
+   "actOf(k4,a)",
+   "shamIntent(k4)",
+   "concealedBy(k5,k4)"
+  ],
+  "expect": [
+   "void(k4)",
+   "-valid(k4)",
+   "validityByApplicableLaw(k5)"
+  ]
+ },
+ {
+  "id": "rev-1",
+  "title": "受对方欺诈订约，知道欺诈已满一年仍未撤销",
+  "facts": [
+   "adult(p)",
+   "actOf(k1,p)",
+   "deceivedByCounterparty(p,k1)",
+   "oneYearSinceKnewGround(p,k1)"
+  ],
+  "expect": [
+   "revocationGround(p,k1)",
+   "-revocationRight(p,k1)",
+   "valid(k1)"
+  ]
+ },
+ {
+  "id": "rev-2",
+  "title": "受胁迫订约：知道事由已满一年，但胁迫终止才半年（适用第152条第1款第2项）",
+  "facts": [
+   "adult(p)",
+   "actOf(k1,p)",
+   "coercedByThirdParty(p,k1)",
+   "oneYearSinceKnewGround(p,k1)"
+  ],
+  "expect": [
+   "revocationRight(p,k1)"
+  ]
+ },
+ {
+  "id": "rev-3",
+  "title": "重大误解，知道后已过九十日",
+  "facts": [
+   "adult(p)",
+   "actOf(k1,p)",
+   "majorMisunderstanding(p,k1)",
+   "ninetyDaysSinceKnewGround(p,k1)"
+  ],
+  "expect": [
+   "-revocationRight(p,k1)"
+  ]
+ },
+ {
+  "id": "rev-4",
+  "title": "显失公平，及时行使撤销权；已受领对方财产",
+  "facts": [
+   "adult(p)",
+   "actOf(k1,p)",
+   "exploitedDistressOrInexperience(p,k1)",
+   "grosslyUnfairAtFormation(k1)",
+   "exercisesRevocation(p,k1)",
+   "obtainedPropertyUnder(q,k1)"
+  ],
+  "expect": [
+   "revocationRight(p,k1)",
+   "revoked(k1)",
+   "noBindingForceAbInitio(k1)",
+   "O returnOrCompensateValue(q,k1)"
+  ]
+ },
+ {
+  "id": "lim-1",
+  "title": "借款请求权：知道受损已满三年，无中断中止；届满后债务人书面同意还款",
+  "facts": [
+   "claim(c1)",
+   "obligorOf(d,c1)",
+   "threeYearsSinceKnew(c1)",
+   "agreedToPerformAfterExpiry(d,c1)",
+   "courtHears(court,c1)"
+  ],
+  "expect": [
+   "limitationExpired(c1)",
+   "-limitationDefense(d,c1)",
+   "O -applyLimitationExOfficio(court,c1)"
+  ]
+ },
+ {
+  "id": "lim-2",
+  "title": "同上但期间内债权人曾催告（中断）",
+  "facts": [
+   "claim(c1)",
+   "obligorOf(d,c1)",
+   "threeYearsSinceKnew(c1)",
+   "creditorDemandsPerformance(c1)"
+  ],
+  "expect": [
+   "limitationInterrupted(c1)",
+   "!limitationExpired(c1)",
+   "!limitationDefense(d,c1)"
+  ]
+ },
+ {
+  "id": "lim-3",
+  "title": "请求支付赡养费，已过三年",
+  "facts": [
+   "claim(c2)",
+   "obligorOf(d,c2)",
+   "threeYearsSinceKnew(c2)",
+   "supportOrMaintenancePayment(c2)"
+  ],
+  "expect": [
+   "exemptFromLimitation(c2)",
+   "!limitationExpired(c2)"
+  ]
+ },
+ {
+  "id": "lim-4",
+  "title": "时效届满，债务人未同意履行",
+  "facts": [
+   "claim(c3)",
+   "obligorOf(d,c3)",
+   "threeYearsSinceKnew(c3)"
+  ],
+  "expect": [
+   "limitationExpired(c3)",
+   "limitationDefense(d,c3)"
+  ]
+ },
+ {
+  "id": "mtg-1",
+  "title": "以房屋抵押并办理登记",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,h)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,h)",
+   "building(h)",
+   "mortgageRegistered(k1)"
+  ],
+  "expect": [
+   "mortgageObjectOk(k1)",
+   "registrationConstitutive(h)",
+   "valid(k1)",
+   "mortgageEstablished(k1)"
+  ]
+ },
+ {
+  "id": "mtg-2",
+  "title": "以房屋抵押未登记（合同有效但抵押权不设立）",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,h)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,h)",
+   "building(h)"
+  ],
+  "expect": [
+   "valid(k1)",
+   "-mortgageEstablished(k1)"
+  ]
+ },
+ {
+  "id": "mtg-3",
+  "title": "以宅基地使用权抵押",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,t)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,t)",
+   "collectiveLandUseRight(t)",
+   "movable(t)"
+  ],
+  "expect": [
+   "nonMortgageable(t)",
+   "-mortgageObjectOk(k1)",
+   "!mortgageEstablished(k1)"
+  ]
+ },
+ {
+  "id": "mtg-4",
+  "title": "以设备动产抵押未登记，后出卖给善意第三人",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,e)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,e)",
+   "movable(e)",
+   "thirdPartyAcquirer(y,e)",
+   "inGoodFaith(y,e)"
+  ],
+  "expect": [
+   "mortgageEstablished(k1)",
+   "-mortgageOpposableTo(k1,y)"
+  ]
+ },
+ {
+  "id": "mtg-5",
+  "title": "动产抵押已登记；正常经营中买受人付清价款并取得 / 另一普通受让人",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,e)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,e)",
+   "movable(e)",
+   "mortgageRegistered(k1)",
+   "thirdPartyAcquirer(y,e)",
+   "ordinaryCourseBuyer(y,e)",
+   "paidReasonablePrice(y,e)",
+   "acquiredProperty(y,e)",
+   "thirdPartyAcquirer(z,e)"
+  ],
+  "expect": [
+   "-mortgageOpposableTo(k1,y)",
+   "mortgageOpposableTo(k1,z)"
+  ]
+ },
+ {
+  "id": "mtg-6",
+  "title": "同一房屋两次抵押：k1 先登记、k2 后登记、k3 未登记",
+  "facts": [
+   "sameCollateral(k1,k2)",
+   "sameCollateral(k2,k3)",
+   "mortgageRegistered(k1)",
+   "mortgageRegistered(k2)",
+   "registeredEarlier(k1,k2)",
+   "mortgageEstablished(k3)"
+  ],
+  "expect": [
+   "ranksBefore(k1,k2)",
+   "ranksBefore(k2,k3)",
+   "!ranksBefore(k2,k1)"
+  ]
+ },
+ {
+  "id": "mtg-7",
+  "title": "最高额抵押：债务人破产后新发生的借款",
+  "facts": [
+   "maxAmountMortgage(k1)",
+   "debtorOrMortgagorBankruptOrDissolved(k1)",
+   "claimArisesInPeriod(z1,k1)",
+   "claimArisesInPeriod(z2,k1)",
+   "arisesAfterDetermination(z2,k1)"
+  ],
+  "expect": [
+   "securedClaimsDetermined(k1)",
+   "securedClaim(z1,k1)",
+   "-securedClaim(z2,k1)"
+  ]
+ },
+ {
+  "id": "mtg-8",
+  "title": "质押合同中的流质条款",
+  "facts": [
+   "pledgeContract(k1,m,b,t)",
+   "forfeitureClauseBeforeMaturity(k1)"
+  ],
+  "expect": [
+   "-forfeitureEffective(k1)",
+   "priorityPaymentOnly(k1)"
+  ]
+ },
+ {
+  "id": "mtg-9",
+  "title": "抵押期间转让抵押房屋（未约定禁止转让）",
+  "facts": [
+   "adult(m)",
+   "mortgageContract(k1,m,b,h)",
+   "actOf(k1,m)",
+   "hasDisposalPower(m,h)",
+   "building(h)",
+   "mortgageRegistered(k1)",
+   "transfersProperty(m,h,y)",
+   "thirdPartyAcquirer(y,h)"
+  ],
+  "expect": [
+   "P transferMortgagedProperty(m,h)",
+   "O notifyMortgagee(m,b,h)",
+   "mortgageOpposableTo(k1,y)",
+   "O -transferMortgageSeparately(b,k1)"
+  ]
+ },
+ {
+  "id": "lien-1",
+  "title": "修车厂留置车主的车；双方约定不得留置",
+  "facts": [
+   "creditorOf(g,o,z)",
+   "debtMatured(z)",
+   "unpaid(z)",
+   "lawfullyPossesses(g,car)",
+   "movable(car)",
+   "belongsTo(car,o)",
+   "sameLegalRelation(car,z)",
+   "lienExcludedByAgreement(car)"
+  ],
+  "expect": [
+   "-lienRight(g,car,z)"
+  ]
+ },
+ {
+  "id": "lien-2",
+  "title": "企业之间留置，非同一法律关系",
+  "facts": [
+   "creditorOf(e1,e2,z)",
+   "debtMatured(z)",
+   "unpaid(z)",
+   "lawfullyPossesses(e1,goods)",
+   "movable(goods)",
+   "belongsTo(goods,e2)",
+   "betweenEnterprises(e1,e2)"
+  ],
+  "expect": [
+   "lienRight(e1,goods,z)",
+   "priorityFromLien(e1,goods)"
+  ]
+ },
+ {
+  "id": "ease-1",
+  "title": "未登记的通行地役权；供役地转让给善意第三人",
+  "facts": [
+   "adult(a)",
+   "easementContract(k1,a,b,l)",
+   "actOf(k1,a)",
+   "easementHolder(a,k1)",
+   "acquirerOfServientLand(y,l)",
+   "inGoodFaith(y,l)"
+  ],
+  "expect": [
+   "easementEstablished(k1)",
+   "-easementOpposableTo(k1,y)",
+   "O -transferEasementSeparately(a,k1)"
+  ]
+ },
+ {
+  "id": "con-1",
+  "title": "先履行方有确切证据证明对方经营严重恶化而中止履行；对方随后提供担保",
+  "facts": [
+   "mutualDebts(k,a,b)",
+   "performsFirst(a,k)",
+   "conclusiveEvidence(a,k)",
+   "businessSeverelyDeteriorated(b)",
+   "suspendsPerformance(a,k)",
+   "adequateSecurityProvided(b,k)"
+  ],
+  "expect": [
+   "-insecurityDefense(a,k)",
+   "!liableForBreach(a,k)"
+  ]
+ },
+ {
+  "id": "con-2",
+  "title": "同上，对方在合理期限内未恢复履行能力也未提供担保",
+  "facts": [
+   "mutualDebts(k,a,b)",
+   "performsFirst(a,k)",
+   "conclusiveEvidence(a,k)",
+   "businessSeverelyDeteriorated(b)",
+   "suspendsPerformance(a,k)",
+   "noRecoveryWithinReasonableTime(b,k)"
+  ],
+  "expect": [
+   "insecurityDefense(a,k)",
+   "O notifyCounterparty(a,k)",
+   "terminationRight(a,k)",
+   "liableForBreach(b,k)",
+   "!liableForBreach(a,k)"
+  ]
+ },
+ {
+  "id": "con-2b",
+  "title": "先履行方仅凭传闻（无确切证据）中止履行",
+  "facts": [
+   "mutualDebts(k,a,b)",
+   "performsFirst(a,k)",
+   "businessSeverelyDeteriorated(b)",
+   "suspendsPerformance(a,k)"
+  ],
+  "expect": [
+   "!insecurityDefense(a,k)",
+   "liableForBreach(a,k)"
+  ]
+ },
+ {
+  "id": "con-3",
+  "title": "收受定金一方根本违约；合同同时约定违约金",
+  "facts": [
+   "depositAgreed(k)",
+   "depositActuallyPaid(k)",
+   "depositPayer(a,k)",
+   "depositReceiver(b,k)",
+   "breachFrustratesPurpose(b,k)",
+   "liquidatedDamages(k)",
+   "nonBreachingParty(a,k)"
+  ],
+  "expect": [
+   "depositContractFormed(k)",
+   "O returnDoubleDeposit(b,a,k)",
+   "chooseLDOrDeposit(a,k)",
+   "O -claimBothLDAndDeposit(a,k)"
+  ]
+ },
+ {
+  "id": "con-4",
+  "title": "约定不得转让的非金钱债权转让给善意受让人，但未通知债务人",
+  "facts": [
+   "claimAssigned(z,a,y)",
+   "agreedNonAssignable(z)",
+   "inGoodFaith(y,z)"
+  ],
+  "expect": [
+   "assignmentEffective(z,y)",
+   "-bindsDebtor(z,y)"
+  ]
+ },
+ {
+  "id": "con-5",
+  "title": "约定不得转让的非金钱债权转让给恶意受让人",
+  "facts": [
+   "claimAssigned(z,a,y)",
+   "agreedNonAssignable(z)"
+  ],
+  "expect": [
+   "!assignmentEffective(z,y)"
+  ]
+ },
+ {
+  "id": "con-6",
+  "title": "买卖：已交付后标的物意外毁损",
+  "facts": [
+   "sale(k,s,b,t)",
+   "delivered(k)"
+  ],
+  "expect": [
+   "riskOnBuyer(k)"
+  ]
+ },
+ {
+  "id": "con-7",
+  "title": "买卖：交付后发现质量不符致目的不能实现，买受人拒收",
+  "facts": [
+   "sale(k,s,b,t)",
+   "delivered(k)",
+   "qualityDefectFrustratesPurpose(k)",
+   "buyerRejectsGoods(k)"
+  ],
+  "expect": [
+   "-riskOnBuyer(k)"
+  ]
+ },
+ {
+  "id": "con-8",
+  "title": "买卖：未交付，但因买受人原因迟延交付",
+  "facts": [
+   "sale(k,s,b,t)",
+   "buyerCausedDeliveryDelay(k)"
+  ],
+  "expect": [
+   "riskOnBuyer(k)"
+  ]
+ },
+ {
+  "id": "con-9",
+  "title": "出租人将出租房屋卖给自己的儿子 / 卖给外人",
+  "facts": [
+   "leaseOf(l,h)",
+   "houseLease(l)",
+   "tenantOf(te,l)",
+   "landlordOf(o,l)",
+   "landlordSells(h,son)",
+   "saleToCloseRelative(h,son)"
+  ],
+  "expect": [
+   "!preemptionRight(te,h)",
+   "O notifyTenantBeforeSale(o,te,h)"
+  ]
+ },
+ {
+  "id": "con-10",
+  "title": "出租人将出租房屋卖给外人；承租人占有中，所有权变动",
+  "facts": [
+   "leaseOf(l,h)",
+   "houseLease(l)",
+   "tenantOf(te,l)",
+   "landlordOf(o,l)",
+   "landlordSells(h,x)",
+   "tenantPossessesUnderLease(l)",
+   "ownershipChanged(h)"
+  ],
+  "expect": [
+   "preemptionRight(te,h)",
+   "leaseBindsNewOwner(l)"
+  ]
+ },
+ {
+  "id": "mar-1",
+  "title": "丈夫婚内以个人名义借款炒股（超出日常生活需要），债权人无法举证用于共同生活",
+  "facts": [
+   "debtOf(z)",
+   "incurredDuringMarriage(z)",
+   "inOwnName(z)",
+   "exceedsDailyNeeds(z)"
+  ],
+  "expect": [
+   "-jointMaritalDebt(z)"
+  ]
+ },
+ {
+  "id": "mar-2",
+  "title": "同上，但债权人证明款项用于共同生产经营",
+  "facts": [
+   "debtOf(z)",
+   "incurredDuringMarriage(z)",
+   "inOwnName(z)",
+   "exceedsDailyNeeds(z)",
+   "creditorProvesCommonUse(z)"
+  ],
+  "expect": [
+   "jointMaritalDebt(z)"
+  ]
+ },
+ {
+  "id": "mar-3",
+  "title": "婚内受赠房屋，赠与合同确定只归妻子",
+  "facts": [
+   "acquiredDuringMarriage(h)",
+   "inheritedOrGifted(h)",
+   "designatedSolelyToOneSpouse(h)"
+  ],
+  "expect": [
+   "separateProperty(h)",
+   "-communityProperty(h)"
+  ]
+ },
+ {
+  "id": "suc-1",
+  "title": "被继承人死亡：配偶在世；儿子先于其死亡、留有孙子；父亲故意杀害被继承人；兄弟在世",
+  "facts": [
+   "estateOf(e,d)",
+   "spouseOf(w,d)",
+   "biologicalChild(c,d)",
+   "predeceased(c,d)",
+   "lineaDescendant(g,c)",
+   "biologicalParent(f,d)",
+   "killedDeceased(f,d)",
+   "siblingOf(s,d)"
+  ],
+  "expect": [
+   "byIntestacy(e)",
+   "inheritsIntestate(w,e)",
+   "inheritsBySubrogation(g,e)",
+   "disinherited(f,d)",
+   "!inheritsIntestate(f,e)",
+   "!inheritsIntestate(s,e)"
+  ]
+ },
+ {
+  "id": "suc-2",
+  "title": "17岁时所立遗嘱（多跳：年龄→限制行为能力→遗嘱无效→法定继承）",
+  "facts": [
+   "estateOf(e,d)",
+   "minor(d)",
+   "willOf(w1,d)",
+   "willCoversEstate(w1,e)",
+   "parentOf(m,d)"
+  ],
+  "expect": [
+   "limitedCapacity(d)",
+   "willVoid(w1)",
+   "!effectiveWillCovers(e)",
+   "byIntestacy(e)",
+   "inheritsIntestate(m,e)"
+  ]
+ },
+ {
+  "id": "suc-3",
+  "title": "儿子曾严重虐待父亲，后确有悔改，父亲表示宽恕",
+  "facts": [
+   "estateOf(e,d)",
+   "biologicalChild(c,d)",
+   "abandonedOrSeriouslyAbused(c,d)",
+   "repented(c,d)",
+   "forgivenByDeceased(c,d)"
+  ],
+  "expect": [
+   "-disinherited(c,d)",
+   "inheritsIntestate(c,e)"
+  ]
+ },
+ {
+  "id": "suc-4",
+  "title": "有效遗嘱 + 遗赠扶养协议",
+  "facts": [
+   "estateOf(e,d)",
+   "adult(d)",
+   "willOf(w1,d)",
+   "willCoversEstate(w1,e)",
+   "supportAgreementCovers(e)"
+  ],
+  "expect": [
+   "byAgreement(e)",
+   "!byWill(e)",
+   "!byIntestacy(e)"
+  ]
+ },
+ {
+  "id": "suc-5",
+  "title": "无第一顺序继承人；兄弟先于被继承人死亡，留有侄子",
+  "facts": [
+   "estateOf(e,d)",
+   "siblingOf(s,d)",
+   "predeceased(s,d)",
+   "biologicalChild(n,s)",
+   "grandparentOf(gp,d)"
+  ],
+  "expect": [
+   "inheritsBySubrogation(n,e)",
+   "inheritsIntestate(gp,e)"
+  ]
+ },
+ {
+  "id": "tort-1",
+  "title": "7岁儿童在幼儿园摔伤，幼儿园不能证明尽到教育管理职责（多跳：年龄→无行为能力→过错推定）",
+  "facts": [
+   "minor(v)",
+   "under8(v)",
+   "injuredAtSchool(v,kg,x)"
+  ],
+  "expect": [
+   "noCapacity(v)",
+   "liable(kg,v,x)",
+   "O compensate(kg,v,x)"
+  ]
+ },
+ {
+  "id": "tort-2",
+  "title": "同一儿童被闯入幼儿园的第三人打伤，幼儿园未尽管理职责",
+  "facts": [
+   "minor(v)",
+   "under8(v)",
+   "injuredAtSchool(v,kg,x)",
+   "injuredByOutsider(x)",
+   "outsiderTortfeasor(q,x)",
+   "schoolFailedDuty(kg,x)"
+  ],
+  "expect": [
+   "liable(q,v,x)",
+   "supplementaryLiability(kg,v,x)",
+   "-liable(kg,v,x)"
+  ]
+ },
+ {
+  "id": "tort-3",
+  "title": "12岁学生在校受伤，学校无过错（限制行为能力人适用过错责任）",
+  "facts": [
+   "minor(v)",
+   "injuredAtSchool(v,sch,x)"
+  ],
+  "expect": [
+   "limitedCapacity(v)",
+   "!liable(sch,v,x)"
+  ]
+ },
+ {
+  "id": "tort-4",
+  "title": "禁止饲养的烈性犬咬伤挑逗它的路人（被侵权人重大过失）",
+  "facts": [
+   "animalDamage(dog,v,x)",
+   "keeperOrManager(k,dog)",
+   "bannedDangerousAnimal(dog)",
+   "victimGrossNegligence(v,x)"
+  ],
+  "expect": [
+   "liable(k,v,x)",
+   "-mayExemptOrReduce(k,x)"
+  ]
+ },
+ {
+  "id": "tort-5",
+  "title": "普通家犬咬伤挑逗它的路人（被侵权人重大过失）",
+  "facts": [
+   "animalDamage(dog,v,x)",
+   "keeperOrManager(k,dog)",
+   "victimGrossNegligence(v,x)"
+  ],
+  "expect": [
+   "liable(k,v,x)",
+   "mayExemptOrReduce(k,x)"
+  ]
+ },
+ {
+  "id": "tort-6",
+  "title": "未拴绳（违反管理规定）的狗咬伤重大过失的路人",
+  "facts": [
+   "animalDamage(dog,v,x)",
+   "keeperOrManager(k,dog)",
+   "violatedRulesNoSafetyMeasures(k,dog)",
+   "victimGrossNegligence(v,x)"
+  ],
+  "expect": [
+   "liable(k,v,x)",
+   "-mayExemptOrReduce(k,x)"
+  ]
+ },
+ {
+  "id": "tort-7",
+  "title": "快递员送件途中重大过失撞伤行人",
+  "facts": [
+   "employeeOf(e,u)",
+   "performingDuties(e,x)",
+   "causesDamage(e,v,x)",
+   "harmfulAct(e,v,x)",
+   "fault(e,x)",
+   "damage(v,x)",
+   "causation(x)",
+   "grossNegligence(e,x)"
+  ],
+  "expect": [
+   "liable(u,v,x)",
+   "-liable(e,v,x)",
+   "recourse(u,e,x)"
+  ]
+ },
+ {
+  "id": "tort-8",
+  "title": "高空抛物，无法确定具体侵权人；物业未采取安全保障措施",
+  "facts": [
+   "objectThrownOrFell(x,v)",
+   "possibleBuildingUser(u1,x)",
+   "possibleBuildingUser(u2,x)",
+   "provesNotTortfeasor(u2,x)",
+   "buildingManager(pm,x)",
+   "noNecessarySafetyMeasures(pm,x)"
+  ],
+  "expect": [
+   "O payCompensationShare(u1,v,x)",
+   "!O payCompensationShare(u2,v,x)",
+   "liable(pm,v,x)"
+  ]
+ },
+ {
+  "id": "tort-9",
+  "title": "10岁儿童（有自己的财产）打伤同学",
+  "facts": [
+   "minor(w)",
+   "causesDamage(w,v,x)",
+   "guardianOf(g,w)",
+   "hasOwnProperty(w)"
+  ],
+  "expect": [
+   "liable(g,v,x)",
+   "paidFromWardsProperty(w,x)",
+   "guardianPaysShortfall(g,x)"
+  ]
+ }
+]

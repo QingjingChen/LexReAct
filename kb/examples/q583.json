@@ -1,0 +1,19 @@
+[
+ {
+  "id": "q583",
+  "title": "甲公司与15岁的陈某订立48万元采购的委托合同并授予代理权，父母明确拒绝追认。A「委托合同和代理权授予均无效」✗ D「委托合同不生效，代理权授予有效」✓",
+  "facts": [
+   "minor(chen)",
+   "actOf(contract,chen)",
+   "ratificationRefused(contract)",
+   "actOf(authorization,jiaco)"
+  ],
+  "expect": [
+   "limitedCapacity(chen)",
+   "ineffective(contract)",
+   "-valid(contract)",
+   "valid(authorization)",
+   "!void(authorization)"
+  ]
+ }
+]

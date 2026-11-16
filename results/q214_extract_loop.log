@@ -1,0 +1,54 @@
+Q214  规则模块 ['m-tort', 'm-capacity', 'm-revocable']（事实谓词 81 个）  模型 qwen3.5-35b-a3b  种子 [7, 11, 23]
+
+[seed 7｜A] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,liu)', 'damage(wangjia,x1)', 'causation(x1)', 'schoolFailedDuty(kindergarten,x1)']
+  结论：
+
+[seed 7｜B] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'harmfulAct(liu,wangjia,x1)', 'damage(wangjia,x1)', 'causation(x1)', 'schoolFailedDuty(kindergarten,x1)']  丢弃 ['damagedByThirdParty(x1)']
+  结论：
+
+[seed 7｜C] ✓校外第三人承担侵权责任  ✓教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'harmfulAct(liu,wangjia,x1)', 'damage(wangjia,x1)', 'causation(x1)', 'schoolFailedDuty(kindergarten,x1)']  丢弃 ['damagedByThirdParty(x1)']
+  第1轮核对 3 问：1. 事实 fault(liu,x1)：有过错 | 2. 事实 faultPresumedByLaw(x1)：法律规定推定过错 | 3. 事实 minor(wangjia)：未成年人
+    采纳 ['fault(liu,x1)', 'minor(wangjia)']
+  第2轮核对 8 问：1. 事实 faultPresumedByLaw(x1)：法律规定推定过错 | 2. 事实 injuredByOutsider(x1)：损害由教育机构以外的第三人造成 | 3. 事实 provesDutyFulfilled(kindergarten,x1)：教育机构能证明尽到教育、管理职责 | 4. 事实 cannotDiscern(wangjia)：不能辨认自己行为 | 5. 事实 actOf(kindergarten,wangjia)：民事法律行为（行为人） | 6. 事实 actOf(liu,wangjia)：民事法律行为（行为人） | 7. 事实 actOf(wangjia,wangjia)：民事法律行为（行为人） | 8. 事实 actOf(x1,wangjia)：民事法律行为（行为人）
+    采纳 ['injuredByOutsider(x1)']
+  结论：liable(liu,wangjia,x1；noCapacity(wangjia；non(liable(kindergarten,wangjia,x1；supplementaryLiability(kindergarten,wangjia,x1
+
+[seed 11｜A] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'harmfulAct(liu,wangjia,x1)', 'intentional(liu,x1)', 'damagedBy(wangjia,x1,ear_injury)', 'causation(x1)', 'schoolFailedDuty(kindergarten,x1)']
+  结论：
+
+[seed 11｜B] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'injuredByOutsider(x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,liu)', 'damage(wangjia,x1)', 'causation(x1)']
+  结论：
+
+[seed 11｜C] ✓校外第三人承担侵权责任  ✓教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'injuredByOutsider(x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,liu)', 'damage(wangjia,x1)', 'causation(x1)']
+  第1轮核对 3 问：1. 事实 fault(liu,x1)：有过错 | 2. 事实 faultPresumedByLaw(x1)：法律规定推定过错 | 3. 事实 minor(wangjia)：未成年人
+    采纳 ['fault(liu,x1)', 'minor(wangjia)']
+  第2轮核对 12 问：1. 事实 faultPresumedByLaw(x1)：法律规定推定过错 | 2. 事实 provesDutyFulfilled(kindergarten,x1)：教育机构能证明尽到教育、管理职责 | 3. 事实 outsiderTortfeasor(kindergarten,x1)：是造成该损害的教育机构以外的第三人 | 4. 事实 outsiderTortfeasor(liu,x1)：是造成该损害的教育机构以外的第三人 | 5. 事实 outsiderTortfeasor(wangjia,x1)：是造成该损害的教育机构以外的第三人 | 6. 事实 outsiderTortfeasor(x1,x1)：是造成该损害的教育机构以外的第三人 | 7. 事实 schoolFailedDuty(kindergarten,x1)：教育机构未尽到教育、管理职责 | 8. 事实 cannotDiscern(wangjia)：不能辨认自己行为 | 9. 事实 actOf(kindergarten,wangjia)：民事法律行为（行为人） | 10. 事实 actOf(liu,wangjia)：民事法律行为（行为人） | 11. 事实 actOf(wangjia,wangjia)：民事法律行为（行为人） | 12. 事实 actOf(x1,wangjia)：民事法律行为（行为人）
+    采纳 ['outsiderTortfeasor(liu,x1)', 'schoolFailedDuty(kindergarten,x1)']
+  结论：liable(liu,wangjia,x1；noCapacity(wangjia；non(liable(kindergarten,wangjia,x1；supplementaryLiability(kindergarten,wangjia,x1
+
+[seed 23｜A] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,ear_injury)', 'damage(wangjia,x1)', 'causation(x1)', 'schoolFailedDuty(kindergarten,x1)']
+  结论：
+
+[seed 23｜B] ✗校外第三人承担侵权责任  ✗教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'injuredByOutsider(x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,liu)', 'faultPresumedByLaw(x1)']
+  结论：
+
+[seed 23｜C] ✓校外第三人承担侵权责任  ✓教育机构承担补充责任  ✓教育机构不承担直接责任
+  抽取 ['under8(wangjia)', 'injuredAtSchool(wangjia,kindergarten,x1)', 'injuredByOutsider(x1)', 'harmfulAct(liu,wangjia,x1)', 'damagedBy(wangjia,x1,liu)', 'faultPresumedByLaw(x1)']
+  第1轮核对 1 问：1. 事实 minor(wangjia)：未成年人
+    采纳 ['minor(wangjia)']
+  第2轮核对 11 问：1. 事实 provesDutyFulfilled(kindergarten,x1)：教育机构能证明尽到教育、管理职责 | 2. 事实 outsiderTortfeasor(kindergarten,x1)：是造成该损害的教育机构以外的第三人 | 3. 事实 outsiderTortfeasor(liu,x1)：是造成该损害的教育机构以外的第三人 | 4. 事实 outsiderTortfeasor(wangjia,x1)：是造成该损害的教育机构以外的第三人 | 5. 事实 outsiderTortfeasor(x1,x1)：是造成该损害的教育机构以外的第三人 | 6. 事实 schoolFailedDuty(kindergarten,x1)：教育机构未尽到教育、管理职责 | 7. 事实 cannotDiscern(wangjia)：不能辨认自己行为 | 8. 事实 actOf(kindergarten,wangjia)：民事法律行为（行为人） | 9. 事实 actOf(liu,wangjia)：民事法律行为（行为人） | 10. 事实 actOf(wangjia,wangjia)：民事法律行为（行为人） | 11. 事实 actOf(x1,wangjia)：民事法律行为（行为人）
+    采纳 ['outsiderTortfeasor(kindergarten,x1)', 'outsiderTortfeasor(liu,x1)', 'schoolFailedDuty(kindergarten,x1)']
+  结论：liable(liu,wangjia,x1；noCapacity(wangjia；supplementaryLiability(kindergarten,wangjia,x1
+
+汇总（每格为满足的结论结构数 / 3）
+  A: [1, 1, 1]  全对 0/3
+  B: [1, 1, 1]  全对 0/3
+  C: [3, 3, 3]  全对 3/3

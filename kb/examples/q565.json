@@ -1,0 +1,30 @@
+[
+ {
+  "id": "q565",
+  "title": "四项请求权均已过三年，问哪些不适用诉讼时效。A 排除妨碍 B 所有人请求承租人返还房屋（不动产）C 返还登记的宝马车 D 抚养费 —— 金标 ABCD",
+  "facts": [
+   "claim(cA)",
+   "seeksCessationOrRemoval(cA)",
+   "threeYearsSinceKnew(cA)",
+   "claim(cB)",
+   "returnOfImmovableOrRegisteredMovable(cB)",
+   "threeYearsSinceKnew(cB)",
+   "claim(cC)",
+   "returnOfImmovableOrRegisteredMovable(cC)",
+   "threeYearsSinceKnew(cC)",
+   "claim(cD)",
+   "supportOrMaintenancePayment(cD)",
+   "threeYearsSinceKnew(cD)"
+  ],
+  "expect": [
+   "exemptFromLimitation(cA)",
+   "exemptFromLimitation(cB)",
+   "exemptFromLimitation(cC)",
+   "exemptFromLimitation(cD)",
+   "!limitationExpired(cA)",
+   "!limitationExpired(cB)",
+   "!limitationExpired(cC)",
+   "!limitationExpired(cD)"
+  ]
+ }
+]

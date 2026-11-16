@@ -1,0 +1,48 @@
+[
+ {
+  "id": "q558",
+  "title": "2015-02-02 金某受胁迫卖玉佩给孟某；胁迫于2017-03-02终止；玉佩为赝品，孟某2017-03-08/10才知道。以2017-03-10为判断时点。A✗ B✗ C「胁迫撤销权已过1年」✗ D「孟某的重大误解撤销权至2017-06-10届满」✓",
+  "facts": [
+   "adult(jin)",
+   "actOf(x,jin)",
+   "coercedByThirdParty(jin,x)",
+   "oneYearSinceKnewGround(jin,x)",
+   "counterpartyOf(meng,x)",
+   "adult(meng)",
+   "actOf(x,meng)",
+   "majorMisunderstanding(meng,x)",
+   "counterpartyOf(jin,x)"
+  ],
+  "expect": [
+   "revocationRight(jin,x)",
+   "revokeAgainst(jin,meng,x)",
+   "revocationRight(meng,x)"
+  ]
+ },
+ {
+  "id": "q558-C",
+  "title": "C 的反事实：胁迫终止已满一年（如判断时点在2018-03-02之后）→ 金某的撤销权才消灭",
+  "facts": [
+   "adult(jin)",
+   "actOf(x,jin)",
+   "coercedByThirdParty(jin,x)",
+   "oneYearSinceDuressEnded(jin,x)"
+  ],
+  "expect": [
+   "-revocationRight(jin,x)"
+  ]
+ },
+ {
+  "id": "q558-D",
+  "title": "D 的反事实：孟某知道误解已满九十日（2017-06-10之后）→ 撤销权消灭",
+  "facts": [
+   "adult(meng)",
+   "actOf(x,meng)",
+   "majorMisunderstanding(meng,x)",
+   "ninetyDaysSinceKnewGround(meng,x)"
+  ],
+  "expect": [
+   "-revocationRight(meng,x)"
+  ]
+ }
+]

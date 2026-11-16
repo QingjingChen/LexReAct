@@ -1,0 +1,1781 @@
+{
+ "miss": [
+  {
+   "q": 320,
+   "gold": [
+    545,
+    546,
+    551
+   ],
+   "miss": [
+    545,
+    546,
+    551
+   ],
+   "unverified": [
+    148,
+    179,
+    1165,
+    1254
+   ],
+   "verified": [
+    179,
+    1165,
+    1254
+   ],
+   "rules": [
+    "c-liable-obl",
+    "c1254-known-flag",
+    "c1165-1"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 14,
+     "questions": [
+      "fault(liu,x2)",
+      "faultPresumedByLaw(x2)",
+      "objectThrownOrFell(x2,han)",
+      "objectThrownOrFell(x2,jia)",
+      "objectThrownOrFell(x2,k1)",
+      "objectThrownOrFell(x2,k2)",
+      "objectThrownOrFell(x2,liang)",
+      "objectThrownOrFell(x2,liu)",
+      "objectThrownOrFell(x2,t1)",
+      "objectThrownOrFell(x2,x1)",
+      "objectThrownOrFell(x2,x2)",
+      "inGoodFaith(k1,x1)",
+      "liquidatedDamagesForDelay(k2)",
+      "paidLD(jia,k2)"
+     ],
+     "added": [
+      "fault(liu,x2)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 18,
+     "questions": [
+      "guardianOf(liu,han)",
+      "guardianOf(liu,jia)",
+      "guardianOf(liu,k1)",
+      "guardianOf(liu,k2)",
+      "guardianOf(liu,liang)",
+      "guardianOf(liu,liu)",
+      "guardianOf(liu,t1)",
+      "guardianOf(liu,x1)",
+      "guardianOf(liu,x2)",
+      "guardianDutyFulfilled(liu,han)",
+      "guardianDutyFulfilled(liu,jia)",
+      "guardianDutyFulfilled(liu,k1)",
+      "guardianDutyFulfilled(liu,k2)",
+      "guardianDutyFulfilled(liu,liang)",
+      "guardianDutyFulfilled(liu,liu)",
+      "guardianDutyFulfilled(liu,t1)",
+      "guardianDutyFulfilled(liu,x1)",
+      "guardianDutyFulfilled(liu,x2)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 327,
+   "gold": [
+    151,
+    153
+   ],
+   "miss": [
+    153
+   ],
+   "unverified": [
+    147,
+    148,
+    149,
+    374
+   ],
+   "verified": [
+    147,
+    148
+   ],
+   "rules": [
+    "c148",
+    "c-revocable-valid"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 8,
+     "questions": [
+      "deceivedByThirdParty(jia,x1)",
+      "deceivedByThirdParty(k1,x1)",
+      "deceivedByThirdParty(t1,x1)",
+      "deceivedByThirdParty(x1,x1)",
+      "deceivedByThirdParty(yi,x1)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(yi,k1)",
+      "depositPayer(yi,k1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 423,
+   "gold": [
+    154
+   ],
+   "miss": [
+    154
+   ],
+   "unverified": [
+    179,
+    406,
+    414,
+    1165
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "sameCollateral(k1,house)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,l1)",
+      "sameCollateral(k1,li)",
+      "sameCollateral(k1,wang)",
+      "sameCollateral(k1,x1)",
+      "sameCollateral(k1,zhang)",
+      "damage(li,x1)",
+      "causation(x1)",
+      "registeredEarlier(k1,k1)",
+      "defectiveProduct(house)",
+      "producer(house,house)",
+      "producer(k1,house)",
+      "producer(l1,house)",
+      "producer(li,house)",
+      "producer(wang,house)",
+      "producer(x1,house)",
+      "producer(zhang,house)",
+      "seller(house,house)",
+      "seller(k1,house)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 446,
+   "gold": [
+    1127
+   ],
+   "miss": [
+    1127
+   ],
+   "unverified": [
+    179,
+    406,
+    1127,
+    1165
+   ],
+   "verified": [
+    402,
+    1127
+   ],
+   "rules": [
+    "c1127-first",
+    "c-heir-cand",
+    "c1127-child",
+    "c402-type"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "guardianDutyFulfilled(wd,xl)",
+      "acquiredDuringMarriage(t1)",
+      "estateOf(k1,wd)",
+      "estateOf(m1,wd)",
+      "estateOf(nn,wd)",
+      "estateOf(t1,wd)",
+      "estateOf(wd,wd)",
+      "estateOf(wh,wd)",
+      "estateOf(xl,wd)",
+      "estateOf(y1,wd)",
+      "estateOf(zx,wd)",
+      "estateOf(k1,wh)",
+      "estateOf(m1,wh)",
+      "estateOf(nn,wh)",
+      "estateOf(t1,wh)",
+      "estateOf(wd,wh)",
+      "estateOf(wh,wh)",
+      "estateOf(xl,wh)",
+      "estateOf(y1,wh)",
+      "estateOf(zx,wh)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [
+    1127
+   ],
+   "ver_fix": [
+    1127
+   ]
+  },
+  {
+   "q": 491,
+   "gold": [
+    18,
+    19,
+    1063
+   ],
+   "miss": [
+    18,
+    19
+   ],
+   "unverified": [
+    18,
+    21,
+    179,
+    1165
+   ],
+   "verified": [
+    18
+   ],
+   "rules": [
+    "c18-full"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 4,
+     "questions": [
+      "cannotDiscern(wang)",
+      "cannotDiscern(liu)",
+      "cannotFullyDiscern(wang)",
+      "cannotFullyDiscern(liu)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [
+    18
+   ],
+   "ver_fix": [
+    18
+   ]
+  },
+  {
+   "q": 506,
+   "gold": [
+    148,
+    155,
+    157
+   ],
+   "miss": [
+    155
+   ],
+   "unverified": [
+    150,
+    155,
+    179,
+    1165
+   ],
+   "verified": [
+    150,
+    155
+   ],
+   "rules": [
+    "c-revoked",
+    "c-revoke-against",
+    "c155"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 16,
+     "questions": [
+      "counterpartyOf(b1,x1)",
+      "counterpartyOf(jia,x1)",
+      "counterpartyOf(k1,x1)",
+      "counterpartyOf(x1,x1)",
+      "counterpartyOf(yi,x1)",
+      "defectiveProduct(b1)",
+      "producer(b1,b1)",
+      "producer(jia,b1)",
+      "producer(k1,b1)",
+      "producer(x1,b1)",
+      "producer(yi,b1)",
+      "seller(b1,b1)",
+      "seller(jia,b1)",
+      "seller(k1,b1)",
+      "seller(x1,b1)",
+      "seller(yi,b1)"
+     ],
+     "added": [
+      "counterpartyOf(jia,x1)",
+      "counterpartyOf(yi,x1)"
+     ],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [
+    155
+   ],
+   "ver_fix": [
+    155
+   ]
+  },
+  {
+   "q": 547,
+   "gold": [
+    20
+   ],
+   "miss": [
+    20
+   ],
+   "unverified": [
+    145,
+    403,
+    406,
+    414
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "thirdPartyAcquirer(bing,shangpu)",
+      "thirdPartyAcquirer(jia,shangpu)",
+      "thirdPartyAcquirer(k1,shangpu)",
+      "thirdPartyAcquirer(l1,shangpu)",
+      "thirdPartyAcquirer(shangpu,shangpu)",
+      "thirdPartyAcquirer(x1,shangpu)",
+      "thirdPartyAcquirer(yi,shangpu)",
+      "movable(shangpu)",
+      "inGoodFaith(ding,shangpu)",
+      "sameCollateral(k1,bing)",
+      "sameCollateral(k1,ding)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,l1)",
+      "sameCollateral(k1,shangpu)",
+      "sameCollateral(k1,x1)",
+      "sameCollateral(k1,yi)",
+      "registeredEarlier(k1,k1)",
+      "transfersProperty(jia,shangpu,bing)",
+      "transfersProperty(jia,shangpu,ding)"
+     ],
+     "added": [
+      "inGoodFaith(ding,shangpu)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 7,
+     "questions": [
+      "counterpartyOf(ding,shangpu)",
+      "transfersProperty(jia,shangpu,jia)",
+      "transfersProperty(jia,shangpu,k1)",
+      "transfersProperty(jia,shangpu,l1)",
+      "transfersProperty(jia,shangpu,shangpu)",
+      "transfersProperty(jia,shangpu,x1)",
+      "transfersProperty(jia,shangpu,yi)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 564,
+   "gold": [
+    188
+   ],
+   "miss": [
+    188
+   ],
+   "unverified": [
+    20,
+    144,
+    155,
+    374
+   ],
+   "verified": [
+    20
+   ],
+   "rules": [
+    "c20"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 3,
+     "questions": [
+      "minor(jia)",
+      "depositPayer(jia_parents,k1)",
+      "carriageToBuyerDesignatedPlace(k1)"
+     ],
+     "added": [
+      "minor(jia)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 5,
+     "questions": [
+      "actOf(house1,jia)",
+      "actOf(jia,jia)",
+      "actOf(jia_parents,jia)",
+      "actOf(k1,jia)",
+      "actOf(x1,jia)"
+     ],
+     "added": [],
+     "rejected": [
+      "actOf(jia_parents,jia)"
+     ]
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 569,
+   "gold": [
+    19,
+    20,
+    144,
+    145
+   ],
+   "miss": [
+    20,
+    144
+   ],
+   "unverified": [
+    20,
+    144,
+    155,
+    374
+   ],
+   "verified": [
+    20,
+    144,
+    155
+   ],
+   "rules": [
+    "c-void-not-valid",
+    "c20",
+    "c144",
+    "c155"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 1,
+     "questions": [
+      "minor(xiaozhang)"
+     ],
+     "added": [
+      "minor(xiaozhang)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 6,
+     "questions": [
+      "obtainedPropertyUnder(x1,x1)",
+      "obtainedPropertyUnder(x2,x1)",
+      "obtainedPropertyUnder(xiaozhang,x1)",
+      "obtainedPropertyUnder(x1,x2)",
+      "obtainedPropertyUnder(x2,x2)",
+      "obtainedPropertyUnder(xiaozhang,x2)"
+     ],
+     "added": [],
+     "rejected": [
+      "obtainedPropertyUnder(xiaozhang,x1)",
+      "obtainedPropertyUnder(xiaozhang,x2)"
+     ]
+    }
+   ],
+   "unver_fix": [
+    20,
+    144
+   ],
+   "ver_fix": [
+    20,
+    144
+   ]
+  },
+  {
+   "q": 572,
+   "gold": [
+    420,
+    421
+   ],
+   "miss": [
+    420
+   ],
+   "unverified": [
+    148,
+    149,
+    414,
+    447
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "sameCollateral(k1,bing)",
+      "sameCollateral(k1,dinggongsi)",
+      "sameCollateral(k1,fang)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,jiasupermarket)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,x1)",
+      "sameCollateral(k1,yibgongsi)",
+      "sameCollateral(k1,z1)",
+      "inGoodFaith(jiasupermarket,x1)",
+      "registeredEarlier(k1,k1)",
+      "lawfullyPossesses(dinggongsi,bing)",
+      "lawfullyPossesses(dinggongsi,dinggongsi)",
+      "lawfullyPossesses(dinggongsi,fang)",
+      "lawfullyPossesses(dinggongsi,jia)",
+      "lawfullyPossesses(dinggongsi,jiasupermarket)",
+      "lawfullyPossesses(dinggongsi,k1)",
+      "lawfullyPossesses(dinggongsi,x1)",
+      "lawfullyPossesses(dinggongsi,yibgongsi)",
+      "lawfullyPossesses(dinggongsi,z1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 594,
+   "gold": [
+    20
+   ],
+   "miss": [
+    20
+   ],
+   "unverified": [
+    226,
+    403,
+    406,
+    604
+   ],
+   "verified": [
+    226,
+    604
+   ],
+   "rules": [
+    "c226-delivery",
+    "c604-after"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "thirdPartyAcquirer(bing,house)",
+      "thirdPartyAcquirer(house,house)",
+      "thirdPartyAcquirer(jia,house)",
+      "thirdPartyAcquirer(judicial,house)",
+      "thirdPartyAcquirer(k1,house)",
+      "thirdPartyAcquirer(k2,house)",
+      "thirdPartyAcquirer(yi,house)",
+      "sameCollateral(k1,bing)",
+      "sameCollateral(k1,ding)",
+      "sameCollateral(k1,house)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,judicial)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,k2)",
+      "sameCollateral(k1,yi)",
+      "goodsPerished(k2)",
+      "claim(ding)",
+      "movable(house)",
+      "inGoodFaith(ding,house)",
+      "registeredEarlier(k1,k1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 610,
+   "gold": [
+    146
+   ],
+   "miss": [
+    146
+   ],
+   "unverified": [
+    20,
+    155,
+    179,
+    1165
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "minor(yi)",
+      "under8(c1)",
+      "under8(c2)",
+      "guardianOf(c1,c1)",
+      "guardianOf(c2,c1)",
+      "guardianOf(car,c1)",
+      "guardianOf(house,c1)",
+      "guardianOf(jia,c1)",
+      "guardianOf(k1,c1)",
+      "guardianOf(x1,c1)",
+      "guardianOf(x2,c1)",
+      "guardianOf(yi,c1)",
+      "guardianOf(c1,c2)",
+      "guardianOf(c2,c2)",
+      "guardianOf(car,c2)",
+      "guardianOf(house,c2)",
+      "guardianOf(jia,c2)",
+      "guardianOf(k1,c2)",
+      "guardianOf(x1,c2)",
+      "guardianOf(x2,c2)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 612,
+   "gold": [
+    402,
+    414
+   ],
+   "miss": [
+    414
+   ],
+   "unverified": [
+    145,
+    148,
+    179,
+    1165
+   ],
+   "verified": [
+    148,
+    149,
+    150,
+    179,
+    1165
+   ],
+   "rules": [
+    "c148",
+    "c-liable-obl",
+    "c1165-1",
+    "c-revoke-against"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "fault(jia,x1)",
+      "faultPresumedByLaw(x1)",
+      "counterpartyOf(bing,x2)",
+      "inGoodFaith(yi,x1)",
+      "sameCollateral(k2,bing)",
+      "sameCollateral(k2,house)",
+      "sameCollateral(k2,jia)",
+      "sameCollateral(k2,k1)",
+      "sameCollateral(k2,k2)",
+      "sameCollateral(k2,x1)",
+      "sameCollateral(k2,x2)",
+      "sameCollateral(k2,yi)",
+      "shamIntent(x1)",
+      "registeredEarlier(k2,k2)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(jia,k1)",
+      "defectiveProduct(house)",
+      "producer(bing,house)",
+      "producer(house,house)",
+      "producer(jia,house)"
+     ],
+     "added": [
+      "fault(jia,x1)",
+      "sameCollateral(k2,bing)"
+     ],
+     "rejected": [
+      "sameCollateral(k2,house)",
+      "sameCollateral(k2,jia)",
+      "sameCollateral(k2,k1)",
+      "sameCollateral(k2,x1)",
+      "sameCollateral(k2,x2)",
+      "sameCollateral(k2,yi)"
+     ]
+    },
+    {
+     "round": 2,
+     "n_questions": 20,
+     "questions": [
+      "mortgageRegistered(bing)",
+      "registeredEarlier(k2,bing)",
+      "guardianOf(jia,bing)",
+      "guardianOf(jia,house)",
+      "guardianOf(jia,jia)",
+      "guardianOf(jia,k1)",
+      "guardianOf(jia,k2)",
+      "guardianOf(jia,x1)",
+      "guardianOf(jia,x2)",
+      "guardianOf(jia,yi)",
+      "guardianDutyFulfilled(jia,bing)",
+      "guardianDutyFulfilled(jia,house)",
+      "guardianDutyFulfilled(jia,jia)",
+      "guardianDutyFulfilled(jia,k1)",
+      "guardianDutyFulfilled(jia,k2)",
+      "guardianDutyFulfilled(jia,x1)",
+      "guardianDutyFulfilled(jia,x2)",
+      "guardianDutyFulfilled(jia,yi)",
+      "producer(k1,house)",
+      "producer(k2,house)"
+     ],
+     "added": [
+      "mortgageRegistered(bing)"
+     ],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 652,
+   "gold": [
+    153
+   ],
+   "miss": [
+    153
+   ],
+   "unverified": [
+    18,
+    20,
+    155,
+    447
+   ],
+   "verified": [
+    18,
+    20,
+    402,
+    1123,
+    1142
+   ],
+   "rules": [
+    "c20",
+    "c18-full",
+    "c-will-effective",
+    "c402-type"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "guardianOf(zhouyi_parents,zhouyi)",
+      "cannotDiscern(zhouyi_parents)",
+      "cannotDiscern(wuer)",
+      "cannotDiscern(zhouyi)",
+      "cannotFullyDiscern(zhouyi_parents)",
+      "cannotFullyDiscern(wuer)",
+      "cannotFullyDiscern(zhouyi)",
+      "actOf(child1,child1)",
+      "actOf(house1,child1)",
+      "actOf(medical_hospital,child1)",
+      "actOf(will1,child1)",
+      "actOf(wuer,child1)",
+      "actOf(x1,child1)",
+      "actOf(zhouyi,child1)",
+      "actOf(zhouyi_parents,child1)",
+      "estateOf(house1,child1)",
+      "estateOf(house1,house1)",
+      "estateOf(house1,medical_hospital)",
+      "estateOf(house1,will1)",
+      "estateOf(house1,wuer)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 686,
+   "gold": [
+    226
+   ],
+   "miss": [
+    226
+   ],
+   "unverified": [
+    145,
+    148,
+    226,
+    604
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 4,
+     "questions": [
+      "buyerAlreadyPossesses(bing,t1)",
+      "counterpartyOf(bing,x2)",
+      "inGoodFaith(yi,x1)",
+      "goodsPerished(k2)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [
+    226
+   ],
+   "ver_fix": []
+  },
+  {
+   "q": 697,
+   "gold": [
+    146
+   ],
+   "miss": [
+    146
+   ],
+   "unverified": [
+    18,
+    145,
+    146,
+    155
+   ],
+   "verified": [
+    18,
+    146,
+    147,
+    148,
+    149,
+    150,
+    155,
+    157
+   ],
+   "rules": [
+    "c18-full",
+    "c-void-not-valid",
+    "c146",
+    "c155",
+    "c-revoke-against",
+    "c157",
+    "c146-hidden",
+    "c150",
+    "c-revocable-valid"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "counterpartyOf(bing,x5)",
+      "inGoodFaith(jia,x2)",
+      "inGoodFaith(jia,x3)",
+      "inGoodFaith(yi,x2)",
+      "inGoodFaith(yi,x1)",
+      "inGoodFaith(jia,x1)",
+      "inGoodFaith(jia,x4)",
+      "obtainedPropertyUnder(bing,x2)",
+      "obtainedPropertyUnder(han,x2)",
+      "obtainedPropertyUnder(house1,x2)",
+      "obtainedPropertyUnder(house2,x2)",
+      "obtainedPropertyUnder(jia,x2)",
+      "obtainedPropertyUnder(x1,x2)",
+      "obtainedPropertyUnder(x2,x2)",
+      "obtainedPropertyUnder(x3,x2)",
+      "obtainedPropertyUnder(x4,x2)",
+      "obtainedPropertyUnder(x5,x2)",
+      "obtainedPropertyUnder(yi,x2)",
+      "cannotDiscern(jia)",
+      "cannotDiscern(han)"
+     ],
+     "added": [
+      "obtainedPropertyUnder(jia,x2)",
+      "obtainedPropertyUnder(yi,x2)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 20,
+     "questions": [
+      "cannotDiscern(yi)",
+      "cannotFullyDiscern(jia)",
+      "cannotFullyDiscern(han)",
+      "cannotFullyDiscern(yi)",
+      "concealedBy(bing,x2)",
+      "concealedBy(han,x2)",
+      "concealedBy(house1,x2)",
+      "concealedBy(house2,x2)",
+      "concealedBy(jia,x2)",
+      "concealedBy(x1,x2)",
+      "concealedBy(x2,x2)",
+      "concealedBy(x3,x2)",
+      "concealedBy(x4,x2)",
+      "concealedBy(x5,x2)",
+      "concealedBy(yi,x2)",
+      "deceivedByThirdParty(bing,x2)",
+      "deceivedByThirdParty(han,x2)",
+      "deceivedByThirdParty(house1,x2)",
+      "deceivedByThirdParty(house2,x2)",
+      "deceivedByThirdParty(jia,x2)"
+     ],
+     "added": [
+      "concealedBy(bing,x2)",
+      "concealedBy(han,x2)",
+      "concealedBy(house1,x2)",
+      "concealedBy(house2,x2)",
+      "concealedBy(jia,x2)",
+      "concealedBy(x1,x2)",
+      "concealedBy(x2,x2)",
+      "concealedBy(x3,x2)",
+      "concealedBy(x4,x2)",
+      "concealedBy(x5,x2)",
+      "concealedBy(yi,x2)"
+     ],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [
+    146
+   ],
+   "ver_fix": [
+    146
+   ]
+  },
+  {
+   "q": 698,
+   "gold": [
+    546,
+    547
+   ],
+   "miss": [
+    546
+   ],
+   "unverified": [
+    179,
+    414,
+    447,
+    1165
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "sameCollateral(k1,a)",
+      "sameCollateral(k1,b)",
+      "sameCollateral(k1,c)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,m)",
+      "sameCollateral(k1,pr1)",
+      "sameCollateral(k1,x1)",
+      "sameCollateral(k1,z1)",
+      "inGoodFaith(c,x1)",
+      "registeredEarlier(k1,k1)",
+      "defectiveProduct(pr1)",
+      "producer(a,pr1)",
+      "producer(b,pr1)",
+      "producer(c,pr1)",
+      "producer(jia,pr1)",
+      "producer(k1,pr1)",
+      "producer(m,pr1)",
+      "producer(pr1,pr1)",
+      "producer(x1,pr1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 711,
+   "gold": [
+    586
+   ],
+   "miss": [
+    586
+   ],
+   "unverified": [
+    149,
+    150,
+    226,
+    604
+   ],
+   "verified": [
+    149,
+    150,
+    226,
+    604
+   ],
+   "rules": [
+    "c-revoke-against",
+    "c226-delivery",
+    "c604-price",
+    "c604-after"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 3,
+     "questions": [
+      "ninetyDaysSinceKnewGround(company,k1)",
+      "exercisesRevocation(company,k1)",
+      "inGoodFaith(jia,k1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  }
+ ],
+ "ctrl": [
+  {
+   "q": 575,
+   "gold": [
+    1142
+   ],
+   "miss": [],
+   "unverified": [],
+   "verified": [],
+   "rules": [],
+   "log": [],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 599,
+   "gold": [
+    403,
+    404
+   ],
+   "miss": [],
+   "unverified": [
+    406,
+    447,
+    456
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 7,
+     "questions": [
+      "transfersProperty(jia,t2,jia)",
+      "transfersProperty(jia,t2,k1)",
+      "transfersProperty(jia,t2,k2)",
+      "transfersProperty(jia,t2,t1)",
+      "transfersProperty(jia,t2,t2)",
+      "transfersProperty(jia,t2,z1)",
+      "transferMayHarmMortgage(k2)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 338,
+   "gold": [
+    147
+   ],
+   "miss": [],
+   "unverified": [
+    150,
+    155,
+    226,
+    374
+   ],
+   "verified": [
+    150
+   ],
+   "rules": [
+    "c-revoke-against"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 6,
+     "questions": [
+      "counterpartyOf(e1,x1)",
+      "counterpartyOf(jia,x1)",
+      "counterpartyOf(x1,x1)",
+      "counterpartyOf(yi,x1)",
+      "exercisesRevocation(jia,x1)",
+      "exercisesRevocation(yi,x1)"
+     ],
+     "added": [
+      "counterpartyOf(yi,x1)"
+     ],
+     "rejected": [
+      "counterpartyOf(jia,x1)"
+     ]
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 503,
+   "gold": [
+    407
+   ],
+   "miss": [],
+   "unverified": [
+    406,
+    414,
+    447,
+    456
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "sameCollateral(k2,bing)",
+      "sameCollateral(k2,ding)",
+      "sameCollateral(k2,house_bing)",
+      "sameCollateral(k2,house_ding)",
+      "sameCollateral(k2,jia)",
+      "sameCollateral(k2,k1)",
+      "sameCollateral(k2,k1_part1)",
+      "sameCollateral(k2,k2)",
+      "sameCollateral(k2,wu)",
+      "sameCollateral(k2,yi)",
+      "sameCollateral(k2,z1)",
+      "sameCollateral(k2,z1_part1)",
+      "sameCollateral(k2,z1_part2)",
+      "sameCollateral(k1,bing)",
+      "sameCollateral(k1,ding)",
+      "sameCollateral(k1,house_bing)",
+      "sameCollateral(k1,house_ding)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,k1_part1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 678,
+   "gold": [
+    1125
+   ],
+   "miss": [],
+   "unverified": [],
+   "verified": [],
+   "rules": [],
+   "log": [],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 654,
+   "gold": [
+    447
+   ],
+   "miss": [],
+   "unverified": [
+    179,
+    1165,
+    1188,
+    1254
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 10,
+     "questions": [
+      "harmfulAct(gao,hou,x1)",
+      "causation(x1)",
+      "fault(lu,x1)",
+      "faultPresumedByLaw(x1)",
+      "objectThrownOrFell(x1,car)",
+      "objectThrownOrFell(x1,gao)",
+      "objectThrownOrFell(x1,hou)",
+      "objectThrownOrFell(x1,lu)",
+      "objectThrownOrFell(x1,x1)",
+      "buildingManager(gao,x1)"
+     ],
+     "added": [
+      "fault(lu,x1)"
+     ],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 583,
+   "gold": [
+    19
+   ],
+   "miss": [],
+   "unverified": [
+    148,
+    149,
+    179,
+    1165
+   ],
+   "verified": [
+    147,
+    148,
+    149,
+    150
+   ],
+   "rules": [
+    "c148",
+    "c-revoke-against",
+    "c-revocable-valid"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 2,
+     "questions": [
+      "liquidatedDamagesForDelay(x1)",
+      "paidLD(jia,x1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 631,
+   "gold": [
+    421
+   ],
+   "miss": [],
+   "unverified": [
+    414,
+    545,
+    546,
+    547
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 20,
+     "questions": [
+      "sameCollateral(k1,dongfang)",
+      "sameCollateral(k1,fang1)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,k2)",
+      "sameCollateral(k1,k3)",
+      "sameCollateral(k1,yi)",
+      "sameCollateral(k1,z1)",
+      "sameCollateral(k1,z2)",
+      "monetaryClaim(z1)",
+      "agreedNonAssignable(z2)",
+      "monetaryClaim(z2)",
+      "inGoodFaith(dongfang,z1)",
+      "inGoodFaith(fang1,z1)",
+      "inGoodFaith(jia,z1)",
+      "inGoodFaith(k1,z1)",
+      "inGoodFaith(k2,z1)",
+      "inGoodFaith(k3,z1)",
+      "inGoodFaith(yi,z1)",
+      "inGoodFaith(z1,z1)"
+     ],
+     "added": [
+      "sameCollateral(k1,fang1)",
+      "sameCollateral(k1,yi)"
+     ],
+     "rejected": [
+      "sameCollateral(k1,jia)",
+      "monetaryClaim(z1)",
+      "monetaryClaim(z2)"
+     ]
+    },
+    {
+     "round": 2,
+     "n_questions": 20,
+     "questions": [
+      "inGoodFaith(z2,z1)",
+      "inGoodFaith(dongfang,z2)",
+      "debtorNotified(z2)",
+      "accessoryRightOf(dongfang,z2)",
+      "accessoryRightOf(fang1,z2)",
+      "accessoryRightOf(jia,z2)",
+      "accessoryRightOf(k1,z2)",
+      "accessoryRightOf(k2,z2)",
+      "accessoryRightOf(k3,z2)",
+      "accessoryRightOf(yi,z2)",
+      "accessoryRightOf(z1,z2)",
+      "accessoryRightOf(z2,z2)",
+      "registeredEarlier(k1,k1)",
+      "mortgageRegistered(yi)",
+      "registeredEarlier(k1,yi)",
+      "mortgageRegistered(fang1)",
+      "registeredEarlier(k1,fang1)",
+      "thirdPartyAcquirer(dongfang,fang1)",
+      "thirdPartyAcquirer(fang1,fang1)",
+      "thirdPartyAcquirer(jia,fang1)"
+     ],
+     "added": [
+      "debtorNotified(z2)",
+      "mortgageRegistered(yi)"
+     ],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 577,
+   "gold": [
+    526,
+    527
+   ],
+   "miss": [],
+   "unverified": [
+    447,
+    456,
+    586,
+    604
+   ],
+   "verified": [
+    195,
+    586
+   ],
+   "rules": [
+    "c586",
+    "c195"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 8,
+     "questions": [
+      "qualityDefectFrustratesPurpose(k1)",
+      "buyerRejectsGoods(k1)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(yi,k1)",
+      "paidLD(jia,k1)",
+      "claim(yi)",
+      "claim(k1)",
+      "withinLastSixMonths(k1)"
+     ],
+     "added": [
+      "claim(yi)"
+     ],
+     "rejected": []
+    },
+    {
+     "round": 2,
+     "n_questions": 2,
+     "questions": [
+      "withinLastSixMonths(yi)",
+      "forceMajeure(yi)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 715,
+   "gold": [
+    546
+   ],
+   "miss": [],
+   "unverified": [
+    148,
+    179,
+    447,
+    1165
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 12,
+     "questions": [
+      "agreedToPerformAfterExpiry(yi,jia)",
+      "inGoodFaith(yi,x1)",
+      "voluntarilyPerformed(yi,jia)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(jia,k1)",
+      "lawfullyPossesses(jia,jia)",
+      "lawfullyPossesses(jia,k1)",
+      "lawfullyPossesses(jia,x1)",
+      "lawfullyPossesses(jia,x2)",
+      "lawfullyPossesses(jia,yi)",
+      "lawfullyPossesses(jia,z1)",
+      "lawfullyPossesses(jia,zhangsan)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 448,
+   "gold": [
+    1188
+   ],
+   "miss": [],
+   "unverified": [
+    20,
+    179,
+    1165,
+    1191
+   ],
+   "verified": [
+    20
+   ],
+   "rules": [
+    "c20"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 2,
+     "questions": [
+      "fault(y,x1)",
+      "faultPresumedByLaw(x1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 492,
+   "gold": [
+    1142
+   ],
+   "miss": [],
+   "unverified": [
+    147,
+    148,
+    149,
+    150
+   ],
+   "verified": [
+    147,
+    148,
+    149,
+    150
+   ],
+   "rules": [
+    "c148",
+    "c-revoke-against",
+    "c-revocable-valid"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 2,
+     "questions": [
+      "obligorOf(gongm,gongw)",
+      "inGoodFaith(gongw,x1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 454,
+   "gold": [
+    406
+   ],
+   "miss": [],
+   "unverified": [
+    145,
+    148,
+    149,
+    150
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 518,
+   "gold": [
+    423
+   ],
+   "miss": [],
+   "unverified": [
+    406,
+    407,
+    414,
+    421
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 18,
+     "questions": [
+      "sameCollateral(k1,bing)",
+      "sameCollateral(k1,jia)",
+      "sameCollateral(k1,k1)",
+      "sameCollateral(k1,tu1)",
+      "sameCollateral(k1,yi)",
+      "registeredEarlier(k1,k1)",
+      "liquidatedDamagesForDelay(k1)",
+      "breachingParty(bing,k1)",
+      "thirdPartyAcquirer(bing,tu1)",
+      "thirdPartyAcquirer(jia,tu1)",
+      "thirdPartyAcquirer(k1,tu1)",
+      "thirdPartyAcquirer(tu1,tu1)",
+      "thirdPartyAcquirer(yi,tu1)",
+      "transfersProperty(yi,tu1,bing)",
+      "transfersProperty(yi,tu1,jia)",
+      "transfersProperty(yi,tu1,k1)",
+      "transfersProperty(yi,tu1,tu1)",
+      "transfersProperty(yi,tu1,yi)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 419,
+   "gold": [
+    148
+   ],
+   "miss": [],
+   "unverified": [
+    179,
+    585,
+    1165,
+    1188
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 13,
+     "questions": [
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(jia,k1)",
+      "defectiveProduct(fang)",
+      "producer(fang,fang)",
+      "producer(jia,fang)",
+      "producer(k1,fang)",
+      "producer(x1,fang)",
+      "producer(zhang,fang)",
+      "seller(fang,fang)",
+      "seller(jia,fang)",
+      "seller(k1,fang)",
+      "seller(x1,fang)",
+      "seller(zhang,fang)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 499,
+   "gold": [
+    147
+   ],
+   "miss": [],
+   "unverified": [
+    150,
+    226,
+    374,
+    604
+   ],
+   "verified": [
+    226,
+    604
+   ],
+   "rules": [
+    "c226-delivery",
+    "c604-after"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 4,
+     "questions": [
+      "goodsPerished(k1)",
+      "inGoodFaith(shangjia,x1)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(shangjia,k1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 343,
+   "gold": [
+    148,
+    151,
+    153
+   ],
+   "miss": [],
+   "unverified": [
+    145,
+    150,
+    374,
+    406
+   ],
+   "verified": [],
+   "rules": [],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 3,
+     "questions": [
+      "inGoodFaith(yi,x1)",
+      "liquidatedDamagesForDelay(k1)",
+      "paidLD(yi,k1)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  },
+  {
+   "q": 445,
+   "gold": [
+    1062
+   ],
+   "miss": [],
+   "unverified": [
+    18,
+    21,
+    179,
+    1165
+   ],
+   "verified": [
+    18,
+    1127
+   ],
+   "rules": [
+    "c18-full",
+    "c-heir-cand",
+    "c1127-first"
+   ],
+   "log": [
+    {
+     "round": 1,
+     "n_questions": 9,
+     "questions": [
+      "cannotDiscern(chen)",
+      "cannotDiscern(hu)",
+      "cannotFullyDiscern(chen)",
+      "cannotFullyDiscern(hu)",
+      "estateOf(chen,chen)",
+      "estateOf(house1,chen)",
+      "estateOf(hu,chen)",
+      "estateOf(royalties1,chen)",
+      "killedDeceased(hu,chen)"
+     ],
+     "added": [],
+     "rejected": []
+    }
+   ],
+   "unver_fix": [],
+   "ver_fix": []
+  }
+ ]
+}

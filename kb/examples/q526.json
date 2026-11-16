@@ -1,0 +1,14 @@
+[
+ {"id": "q526-A", "title": "A. 肖特尚不具备完全的民事行为能力 —— 16岁起以演出收入为主要生活来源",
+  "facts": ["minor(xiao16)", "age16plus(xiao16)", "ownLabourIncomeMainSource(xiao16)"],
+  "expect": ["fullCapacity(xiao16)", "-limitedCapacity(xiao16)"]},
+ {"id": "q526-B", "title": "B. 受赠口琴的行为无效 —— 7岁时受赠（纯获利益）",
+  "facts": ["minor(xiao7)", "under8(xiao7)", "actOf(harmonica,xiao7)", "pureBenefit(harmonica)"],
+  "expect": ["noCapacity(xiao7)", "void(harmonica)", "-valid(harmonica)"]},
+ {"id": "q526-C", "title": "C. 钢琴受赠行为无效，因与其年龄智力不相当 —— 9岁时受赠（纯获利益）",
+  "facts": ["minor(xiao9)", "actOf(piano,xiao9)", "pureBenefit(piano)"],
+  "expect": ["limitedCapacity(xiao9)", "valid(piano)", "!void(piano)", "!pendingValidity(piano)"]},
+ {"id": "q526-D", "title": "D. 受赠小提琴的行为无效 —— 15岁时受赠（纯获利益）",
+  "facts": ["minor(xiao15)", "actOf(violin,xiao15)", "pureBenefit(violin)"],
+  "expect": ["valid(violin)", "!void(violin)"]}
+]

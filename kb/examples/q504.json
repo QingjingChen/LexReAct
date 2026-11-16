@@ -1,0 +1,31 @@
+[
+ {
+  "id": "q504",
+  "title": "甲借用乙的设备后买下，约定付清价款前乙保留所有权；付款前设备被火灾烧毁。A「已交付，风险由甲负担」✓ B「所有权未转移，风险由乙承担」✗ C「甲仍须支付价款」✓",
+  "facts": [
+   "sale(k,yi,jia,equip)",
+   "buyerAlreadyPossesses(jia,equip)",
+   "retentionOfTitle(k)",
+   "goodsPerished(k)"
+  ],
+  "expect": [
+   "delivered(k)",
+   "riskOnBuyer(k)",
+   "!-riskOnBuyer(k)",
+   "O payPrice(jia,yi,k)"
+  ]
+ },
+ {
+  "id": "q504-cf",
+  "title": "反事实：设备一直在乙处、尚未交付（其余不变）→ 风险仍由乙承担",
+  "facts": [
+   "sale(k,yi,jia,equip)",
+   "retentionOfTitle(k)",
+   "goodsPerished(k)"
+  ],
+  "expect": [
+   "-riskOnBuyer(k)",
+   "!O payPrice(jia,yi,k)"
+  ]
+ }
+]
