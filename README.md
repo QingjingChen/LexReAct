@@ -30,9 +30,9 @@ See [EXPERIMENTS.md](EXPERIMENTS.md) for every experiment, its command and its c
 src/                      all Python modules (flat; run them as scripts)
   paths.py                every file location; data and cache folders can be overridden by env vars
   civil_code.py           loads the Civil Code text (data/civil_code_20200528.txt)
-  graph_parse.py          knowledge-graph markdown -> node tree           (needs the private graph)
+  graph_parse.py          knowledge-graph markdown -> node tree           (data/civil_graph.markdown)
   formal_rules.py         hand-formalised rule layer: 10 modules, 179 rules, 47 overrides
-  graph2lrml.py           graph + rules -> two-layer LegalRuleML, XSD-checked  (needs the private graph)
+  graph2lrml.py           graph + rules -> two-layer LegalRuleML, XSD-checked  (kb/civil_graph.lrml)
   extract_rule_layer.py   two-layer LegalRuleML -> rule layer only (kb/civil_rules.lrml)
   lrml2ddl.py             LegalRuleML -> Defeasible Deontic Logic in ASP (kb/civil_rules.lp)
   run_cases.py            clingo + DDL engine; unit cases and explanations
@@ -44,6 +44,8 @@ src/                      all Python modules (flat; run them as scripts)
   eval_large.py           large evaluation runner and report
   llm_client.py           DashScope (OpenAI-compatible) client with a disk cache
 kb/
+  graph_nodes.json        node tree parsed from the civil knowledge graph
+  civil_graph.lrml        both layers: every graph node + the rule layer, XSD-valid
   civil_rules.lrml        rule layer in OASIS LegalRuleML Core 1.0 (XSD-valid)
   civil_rules.lp          the same rules compiled to ASP
   cases.json              53 unit cases (138 expected conclusions)
@@ -52,7 +54,14 @@ kb/
 engine/fetch_ddl.sh       fetches the DDL engine at a pinned revision and applies a one-line patch
 results/                  raw results of the experiments in EXPERIMENTS.md
 figures/                  figure scripts (style after figures4papers) and rendered figures in figures/out/
-data/                     Civil Code text; data/private/ holds files that are not distributed
+criminal/                 Criminal Law graph, same two-layer method (see criminal/README.md)
+  source/                 original mind map (刑法v2.1.itmz) and its markdown export
+  itmz_parse.py           mind map -> node tree (crim_nodes.json)
+  itmz2markdown.py        node tree -> source/刑法graph.markdown
+  crim_rules.py           hand-formalised rule layer: 6 modules, 93 rules, 52 overrides
+  crim2lrml.py            graph + rules -> crim_graph.lrml, XSD-checked
+  run_cases.py            30 unit cases (69 expected conclusions), reuses src/run_cases.py
+data/                     Civil Code text, civil knowledge graph; data/private/ holds files that are not distributed
 ```
 
 ## Setup
@@ -95,8 +104,10 @@ with a fixed seed and temperature 0, so a fresh run reproduces the statistics bu
 
 - `data/civil_code_20200528.txt`: the official text of the Civil Code of the PRC (2020), an official legal
   document that is not subject to copyright protection.
-- The knowledge graph, the LexGo questions and LEGO's retrieval results and prompts are **not** included; see
-  [data/README.md](data/README.md). The rule layer derived from the graph (`kb/civil_rules.lrml`) is included.
+- The expert knowledge graphs are included: Civil Law as `data/civil_graph.markdown` (two-layer LegalRuleML in
+  `kb/civil_graph.lrml`), Criminal Law as `criminal/source/刑法v2.1.itmz` with a markdown export
+  (`criminal/crim_graph.lrml`).
+- The LexGo questions and LEGO's retrieval results and prompts are **not** included; see [data/README.md](data/README.md).
 
 ## Third-party components
 

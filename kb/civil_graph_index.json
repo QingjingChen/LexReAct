@@ -1,0 +1,5339 @@
+{
+ "rules": {
+  "c20": {
+   "module": "m-capacity",
+   "node": "g0783",
+   "node_text": "二、自然人民事行为能力的分类T14/22；（18增修）",
+   "srcs": [
+    "art20"
+   ],
+   "note": "不满八周岁的未成年人为无民事行为能力人",
+   "auth": "npc"
+  },
+  "c19": {
+   "module": "m-capacity",
+   "node": "g0783",
+   "node_text": "二、自然人民事行为能力的分类T14/22；（18增修）",
+   "srcs": [
+    "art19"
+   ],
+   "note": "八周岁以上的未成年人为限制民事行为能力人",
+   "auth": "npc"
+  },
+  "c21-1": {
+   "module": "m-capacity",
+   "node": "g0783",
+   "node_text": "二、自然人民事行为能力的分类T14/22；（18增修）",
+   "srcs": [
+    "art21-1"
+   ],
+   "note": "不能辨认自己行为的成年人为无民事行为能力人",
+   "auth": "npc"
+  },
+  "c21-2": {
+   "module": "m-capacity",
+   "node": "g0783",
+   "node_text": "二、自然人民事行为能力的分类T14/22；（18增修）",
+   "srcs": [
+    "art21-2"
+   ],
+   "note": "八周岁以上的未成年人不能辨认自己行为的，为无民事行为能力人（优先于第19条）",
+   "auth": "npc"
+  },
+  "c22": {
+   "module": "m-capacity",
+   "node": "g0783",
+   "node_text": "二、自然人民事行为能力的分类T14/22；（18增修）",
+   "srcs": [
+    "art22"
+   ],
+   "note": "不能完全辨认自己行为的成年人为限制民事行为能力人",
+   "auth": "npc"
+  },
+  "c18-full": {
+   "module": "m-capacity",
+   "node": "g0784",
+   "node_text": "（一）完全民事行为能力",
+   "srcs": [
+    "art18-1"
+   ],
+   "note": "成年人为完全民事行为能力人",
+   "auth": "npc"
+  },
+  "c18-emancipated": {
+   "module": "m-capacity",
+   "node": "g0784",
+   "node_text": "（一）完全民事行为能力",
+   "srcs": [
+    "art18-2"
+   ],
+   "note": "十六周岁以上、以自己劳动收入为主要生活来源的未成年人，视为完全民事行为能力人",
+   "auth": "npc"
+  },
+  "c144": {
+   "module": "m-capacity",
+   "node": "g1532",
+   "node_text": "1.无民事行为能力人实施的民事法律行为无效。",
+   "srcs": [
+    "art144"
+   ],
+   "note": "无民事行为能力人实施的民事法律行为无效",
+   "auth": "npc"
+  },
+  "c145-pure": {
+   "module": "m-capacity",
+   "node": "g1629",
+   "node_text": "效力待定的民事法律行为，是指民事行为成立之后，是否能发生效力尚不能确定，有待享有形成权的第三人作出追认或拒绝的意思表示来使之有效或无效的法律行为。（权利不够）",
+   "srcs": [
+    "art145-1"
+   ],
+   "note": "限制民事行为能力人实施的纯获利益或与其年龄、智力相适应的行为有效",
+   "auth": "npc"
+  },
+  "c145-consent": {
+   "module": "m-capacity",
+   "node": "g1629",
+   "node_text": "效力待定的民事法律行为，是指民事行为成立之后，是否能发生效力尚不能确定，有待享有形成权的第三人作出追认或拒绝的意思表示来使之有效或无效的法律行为。（权利不够）",
+   "srcs": [
+    "art145-1"
+   ],
+   "note": "其他行为经法定代理人同意或者追认后有效",
+   "auth": "npc"
+  },
+  "c145-pending": {
+   "module": "m-capacity",
+   "node": "g1629",
+   "node_text": "效力待定的民事法律行为，是指民事行为成立之后，是否能发生效力尚不能确定，有待享有形成权的第三人作出追认或拒绝的意思表示来使之有效或无效的法律行为。（权利不够）",
+   "srcs": [
+    "art145-1"
+   ],
+   "note": "同意或追认前效力待定",
+   "auth": "npc"
+  },
+  "c145-deemed-refusal": {
+   "module": "m-capacity",
+   "node": "g1642",
+   "node_text": "④相对人催告的，法定代理人应在三十天内予以追认，期满未作表示的，视为拒绝追认。",
+   "srcs": [
+    "art145-2"
+   ],
+   "note": "法定代理人收到催告三十日内未作表示的，视为拒绝追认",
+   "auth": "npc"
+  },
+  "c145-refused": {
+   "module": "m-capacity",
+   "node": "g1629",
+   "node_text": "效力待定的民事法律行为，是指民事行为成立之后，是否能发生效力尚不能确定，有待享有形成权的第三人作出追认或拒绝的意思表示来使之有效或无效的法律行为。（权利不够）",
+   "srcs": [
+    "art145-1"
+   ],
+   "note": "拒绝追认的，确定不发生效力",
+   "auth": "doctrine"
+  },
+  "c145-revoke": {
+   "module": "m-capacity",
+   "node": "g1643",
+   "node_text": "(2)善意相对人行使撤销权，从而使效力未定的民事法律行为归于无效。",
+   "srcs": [
+    "art145-2"
+   ],
+   "note": "追认前，善意相对人有撤销的权利",
+   "auth": "npc"
+  },
+  "c-valid-default": {
+   "module": "m-capacity",
+   "node": "g1498",
+   "node_text": "实质有效要件",
+   "srcs": [
+    "art143"
+   ],
+   "note": "无无效、效力待定、确定不生效事由的，民事法律行为有效（第143条的推定）",
+   "auth": "doctrine"
+  },
+  "c-void-not-valid": {
+   "module": "m-capacity",
+   "node": "g1529",
+   "node_text": "3.无效民事行为自始当然无效，无需任何人主张。",
+   "srcs": [
+    "art155"
+   ],
+   "note": "无效行为不是有效行为",
+   "auth": "doctrine"
+  },
+  "c146": {
+   "module": "m-capacity",
+   "node": "g1534",
+   "node_text": "2.行为人与相对人以虚假的意思表示实施的民事法律行为无效。",
+   "srcs": [
+    "art146-1"
+   ],
+   "note": "以虚假的意思表示实施的民事法律行为无效",
+   "auth": "npc"
+  },
+  "c146-hidden": {
+   "module": "m-capacity",
+   "node": "g1536",
+   "node_text": "隐藏行为",
+   "srcs": [
+    "art146-2"
+   ],
+   "note": "被隐藏的行为的效力，依照有关法律规定处理（不因通谋虚伪而当然无效）",
+   "auth": "npc"
+  },
+  "c153-1": {
+   "module": "m-capacity",
+   "node": "g1541",
+   "node_text": "2.效力性强制性规定",
+   "srcs": [
+    "art153-1"
+   ],
+   "note": "违反法律、行政法规的强制性规定的无效；但该规定不导致无效的除外",
+   "auth": "npc"
+  },
+  "c153-2": {
+   "module": "m-capacity",
+   "node": "g1512",
+   "node_text": "3.不违反法律、行政法规的强制性规定，不违背公序良俗",
+   "srcs": [
+    "art153-2"
+   ],
+   "note": "违背公序良俗的无效",
+   "auth": "npc"
+  },
+  "c154": {
+   "module": "m-capacity",
+   "node": "g1544",
+   "node_text": "4.恶意串通，损害他人合法权益的民事法律行为无效。",
+   "srcs": [
+    "art154"
+   ],
+   "note": "恶意串通，损害他人合法权益的无效",
+   "auth": "npc"
+  },
+  "c155": {
+   "module": "m-capacity",
+   "node": "g1529",
+   "node_text": "3.无效民事行为自始当然无效，无需任何人主张。",
+   "srcs": [
+    "art155"
+   ],
+   "note": "无效的或者被撤销的民事法律行为自始没有法律约束力",
+   "auth": "npc"
+  },
+  "c157": {
+   "module": "m-capacity",
+   "node": "g1554",
+   "node_text": "（1）返还财产",
+   "srcs": [
+    "art157"
+   ],
+   "note": "因该行为取得的财产应当返还；不能返还的折价补偿",
+   "auth": "npc"
+  },
+  "c147": {
+   "module": "m-revocable",
+   "node": "g1574",
+   "node_text": "（一）重大误解的民事法律行为",
+   "srcs": [
+    "art147"
+   ],
+   "note": "基于重大误解实施的，行为人有权请求撤销",
+   "auth": "npc"
+  },
+  "c148": {
+   "module": "m-revocable",
+   "node": "g1583",
+   "node_text": "（二）因受欺诈实施的民事法律行为",
+   "srcs": [
+    "art148"
+   ],
+   "note": "一方欺诈的，受欺诈方有权请求撤销",
+   "auth": "npc"
+  },
+  "c149": {
+   "module": "m-revocable",
+   "node": "g1587",
+   "node_text": "(2)第三人实施欺诈行为，使一方在违背真实意思的情况下实施的民事法律行为。",
+   "srcs": [
+    "art149"
+   ],
+   "note": "第三人欺诈，对方知道或应当知道的，受欺诈方有权请求撤销",
+   "auth": "npc"
+  },
+  "c150": {
+   "module": "m-revocable",
+   "node": "g1590",
+   "node_text": "（三）因受胁迫实施的民事法律行为",
+   "srcs": [
+    "art150"
+   ],
+   "note": "一方或者第三人胁迫的，受胁迫方有权请求撤销（第三人胁迫不问相对人是否知情）",
+   "auth": "npc"
+  },
+  "c151": {
+   "module": "m-revocable",
+   "node": "g1595",
+   "node_text": "（四）显失公平的民事法律行为",
+   "srcs": [
+    "art151"
+   ],
+   "note": "利用对方危困状态、缺乏判断能力等致显失公平的，受损害方有权请求撤销",
+   "auth": "npc"
+  },
+  "c-revocation-right": {
+   "module": "m-revocable",
+   "node": "g1571",
+   "node_text": "二、可撤销的民事行为的情形（18增修，19论述）",
+   "srcs": [
+    "art147",
+    "art148",
+    "art149",
+    "art150",
+    "art151"
+   ],
+   "note": "有撤销事由的，享有撤销权（形成权，须向法院或仲裁机构请求）",
+   "auth": "doctrine"
+  },
+  "c152-1-1": {
+   "module": "m-revocable",
+   "node": "g1621",
+   "node_text": "（四）撤销权的消灭",
+   "srcs": [
+    "art152-1"
+   ],
+   "note": "自知道或应当知道撤销事由之日起一年内没有行使的，撤销权消灭",
+   "auth": "npc"
+  },
+  "c152-1-1m": {
+   "module": "m-revocable",
+   "node": "g1621",
+   "node_text": "（四）撤销权的消灭",
+   "srcs": [
+    "art152-1"
+   ],
+   "note": "重大误解的当事人自知道或应当知道撤销事由之日起九十日内没有行使的，撤销权消灭",
+   "auth": "npc"
+  },
+  "c152-1-2": {
+   "module": "m-revocable",
+   "node": "g1621",
+   "node_text": "（四）撤销权的消灭",
+   "srcs": [
+    "art152-1"
+   ],
+   "note": "受胁迫，自胁迫行为终止之日起一年内没有行使的，撤销权消灭",
+   "auth": "npc"
+  },
+  "c152-1-3": {
+   "module": "m-revocable",
+   "node": "g1621",
+   "node_text": "（四）撤销权的消灭",
+   "srcs": [
+    "art152-1"
+   ],
+   "note": "知道撤销事由后明确表示或者以自己的行为表明放弃撤销权的，撤销权消灭",
+   "auth": "npc"
+  },
+  "c152-2": {
+   "module": "m-revocable",
+   "node": "g1621",
+   "node_text": "（四）撤销权的消灭",
+   "srcs": [
+    "art152-2"
+   ],
+   "note": "自民事法律行为发生之日起五年内没有行使的，撤销权消灭（最长期间）",
+   "auth": "npc"
+  },
+  "c-revoke-against": {
+   "module": "m-revocable",
+   "node": "g1614",
+   "node_text": "撤销权的行使与消灭",
+   "srcs": [
+    "art148",
+    "art149",
+    "art150"
+   ],
+   "note": "撤销权针对的是撤销权人与相对人之间的民事法律行为，只能向该行为的相对人主张（实施欺诈、胁迫的第三人不是撤销对象）",
+   "auth": "doctrine"
+  },
+  "c-revoked": {
+   "module": "m-revocable",
+   "node": "g1614",
+   "node_text": "撤销权的行使与消灭",
+   "srcs": [
+    "art147",
+    "art155"
+   ],
+   "note": "撤销权人在除斥期间内行使撤销权的，行为被撤销",
+   "auth": "doctrine"
+  },
+  "c-revocable-valid": {
+   "module": "m-revocable",
+   "node": "g1570",
+   "node_text": "3.可撤销民事法律行为在被撤销前仍然是有效的。",
+   "srcs": [
+    "art147"
+   ],
+   "note": "可撤销的行为在被撤销前有效",
+   "auth": "doctrine"
+  },
+  "c188-run": {
+   "module": "m-limitation",
+   "node": "g1928",
+   "node_text": "四、诉讼时效期间的起算",
+   "srcs": [
+    "art188-2"
+   ],
+   "note": "自知道或应当知道权利受损害及义务人之日起满三年，诉讼时效期间届满",
+   "auth": "npc"
+  },
+  "c188-20y": {
+   "module": "m-limitation",
+   "node": "g1926",
+   "node_text": "《民法》第188条第2款的规定：“诉讼时效期间自权利人知道或者应当知道权利受到损害以及义务人之日起计算。法律另有规定的，依照其规定。但是自权利受到损害之日起超过",
+   "srcs": [
+    "art188-2"
+   ],
+   "note": "自权利受到损害之日起超过二十年的，人民法院不予保护；有特殊情况的可以延长",
+   "auth": "npc"
+  },
+  "c192-1": {
+   "module": "m-limitation",
+   "node": "g1893",
+   "node_text": "诉讼时效的效力",
+   "srcs": [
+    "art192-1"
+   ],
+   "note": "诉讼时效期间届满的，义务人可以提出不履行义务的抗辩（抗辩权发生主义）",
+   "auth": "npc"
+  },
+  "c192-2a": {
+   "module": "m-limitation",
+   "node": "g1893",
+   "node_text": "诉讼时效的效力",
+   "srcs": [
+    "art192-2"
+   ],
+   "note": "届满后义务人同意履行的，不得以诉讼时效期间届满为由抗辩",
+   "auth": "npc"
+  },
+  "c192-2b": {
+   "module": "m-limitation",
+   "node": "g1893",
+   "node_text": "诉讼时效的效力",
+   "srcs": [
+    "art192-2"
+   ],
+   "note": "届满后义务人已经自愿履行的，不得请求返还",
+   "auth": "npc"
+  },
+  "c193": {
+   "module": "m-limitation",
+   "node": "g1896",
+   "node_text": "法院不得主动适用",
+   "srcs": [
+    "art193"
+   ],
+   "note": "人民法院不得主动适用诉讼时效的规定",
+   "auth": "npc"
+  },
+  "c194": {
+   "module": "m-limitation",
+   "node": "g1933",
+   "node_text": "五、诉讼时效的中断、中止和延长",
+   "srcs": [
+    "art194-1"
+   ],
+   "note": "最后六个月内因法定障碍不能行使请求权的，诉讼时效中止",
+   "auth": "npc"
+  },
+  "c195": {
+   "module": "m-limitation",
+   "node": "g1933",
+   "node_text": "五、诉讼时效的中断、中止和延长",
+   "srcs": [
+    "art195"
+   ],
+   "note": "权利人请求履行、义务人同意履行、起诉或申请仲裁等，诉讼时效中断、重新计算",
+   "auth": "npc"
+  },
+  "c196": {
+   "module": "m-limitation",
+   "node": "g1904",
+   "node_text": "（一）支配权等不适用诉讼时效",
+   "srcs": [
+    "art196"
+   ],
+   "note": "停止侵害、排除妨碍、消除危险，不动产及登记动产物权人请求返还，抚养费赡养费扶养费等不适用诉讼时效",
+   "auth": "npc"
+  },
+  "c399": {
+   "module": "m-mortgage",
+   "node": "g3274",
+   "node_text": "（2）禁止抵押的财产：（《民法》第399条）（有价值/自由流通）",
+   "srcs": [
+    "art399"
+   ],
+   "note": "土地所有权、集体土地使用权（法律另有规定除外）、公益设施、权属争议、被查封扣押监管的财产不得抵押",
+   "auth": "npc"
+  },
+  "c395": {
+   "module": "m-mortgage",
+   "node": "g3264",
+   "node_text": "（1）可以抵押的财产，须为债务人或者第三人有权处分的财产。",
+   "srcs": [
+    "art395-1"
+   ],
+   "note": "债务人或第三人有权处分的、法律未禁止抵押的财产可以抵押",
+   "auth": "npc"
+  },
+  "c402-type": {
+   "module": "m-mortgage",
+   "node": "g3288",
+   "node_text": "（2）登记设立主义（债权形式主义）",
+   "srcs": [
+    "art402"
+   ],
+   "note": "以建筑物、建设用地使用权、海域使用权、正在建造的建筑物抵押的，应当办理抵押登记",
+   "auth": "npc"
+  },
+  "c402": {
+   "module": "m-mortgage",
+   "node": "g3288",
+   "node_text": "（2）登记设立主义（债权形式主义）",
+   "srcs": [
+    "art402"
+   ],
+   "note": "不动产抵押：抵押权自登记时设立",
+   "auth": "npc"
+  },
+  "c402-noreg": {
+   "module": "m-mortgage",
+   "node": "g3288",
+   "node_text": "（2）登记设立主义（债权形式主义）",
+   "srcs": [
+    "art402"
+   ],
+   "note": "应当登记而未登记的，抵押权不设立（抵押合同效力不受影响，第215条）",
+   "auth": "npc"
+  },
+  "c403": {
+   "module": "m-mortgage",
+   "node": "g3303",
+   "node_text": "（2）登记对抗主义",
+   "srcs": [
+    "art403"
+   ],
+   "note": "动产抵押：抵押权自抵押合同生效时设立",
+   "auth": "npc"
+  },
+  "c-oppose-default": {
+   "module": "m-mortgage",
+   "node": "g3258",
+   "node_text": "（4）最后，抵押权除具有担保物权的优先受偿性、从属性、不可分性、物上代位性等特征之外，还具有追及性。",
+   "srcs": [
+    "art403",
+    "art406-1"
+   ],
+   "note": "已设立的抵押权可以对抗取得抵押财产的第三人（追及效力）",
+   "auth": "doctrine"
+  },
+  "c403-oppose": {
+   "module": "m-mortgage",
+   "node": "g3303",
+   "node_text": "（2）登记对抗主义",
+   "srcs": [
+    "art403"
+   ],
+   "note": "动产抵押未经登记，不得对抗善意第三人",
+   "auth": "npc"
+  },
+  "c404": {
+   "module": "m-mortgage",
+   "node": "g3308",
+   "node_text": "（3）正常经营（登记对抗的例外）（《民法》第404条）",
+   "srcs": [
+    "art404"
+   ],
+   "note": "动产抵押（不论是否登记）不得对抗正常经营活动中已支付合理价款并取得抵押财产的买受人",
+   "auth": "npc"
+  },
+  "c405": {
+   "module": "m-mortgage",
+   "node": "g3358",
+   "node_text": "抵押物的转让与出租2020年修改",
+   "srcs": [
+    "art405"
+   ],
+   "note": "抵押权设立前已出租并转移占有的，原租赁关系不受抵押权影响",
+   "auth": "npc"
+  },
+  "c406-perm": {
+   "module": "m-mortgage",
+   "node": "g3358",
+   "node_text": "抵押物的转让与出租2020年修改",
+   "srcs": [
+    "art406-1"
+   ],
+   "note": "抵押期间，抵押人可以转让抵押财产；当事人另有约定的，按照其约定",
+   "auth": "npc"
+  },
+  "c406-notify": {
+   "module": "m-mortgage",
+   "node": "g3363",
+   "node_text": "（2）通知义务",
+   "srcs": [
+    "art406-2"
+   ],
+   "note": "抵押人转让抵押财产的，应当及时通知抵押权人",
+   "auth": "npc"
+  },
+  "c406-early": {
+   "module": "m-mortgage",
+   "node": "g3358",
+   "node_text": "抵押物的转让与出租2020年修改",
+   "srcs": [
+    "art406-2"
+   ],
+   "note": "能够证明转让可能损害抵押权的，可以请求以转让价款提前清偿或者提存",
+   "auth": "npc"
+  },
+  "c407-for": {
+   "module": "m-mortgage",
+   "node": "g3215",
+   "node_text": "（2）从属性。",
+   "srcs": [
+    "art407"
+   ],
+   "note": "抵押权不得与债权分离而单独转让或者作为其他债权的担保",
+   "auth": "npc"
+  },
+  "c407-follow": {
+   "module": "m-mortgage",
+   "node": "g3220",
+   "node_text": "此外，对抵押权而言，债权转让的，担保该债权的抵押权一并转让，但是法律另有规定或者当事人另有约定的除外。F19/38；",
+   "srcs": [
+    "art407"
+   ],
+   "note": "债权转让的，担保该债权的抵押权一并转让；法律另有规定或当事人另有约定的除外",
+   "auth": "npc"
+  },
+  "c414-1": {
+   "module": "m-mortgage",
+   "node": "g3561",
+   "node_text": "(1)抵押权已经登记的，按照登记的时间先后确定清偿顺序；",
+   "srcs": [
+    "art414-1"
+   ],
+   "note": "均已登记的，按登记先后确定清偿顺序",
+   "auth": "npc"
+  },
+  "c414-2": {
+   "module": "m-mortgage",
+   "node": "g3561",
+   "node_text": "(1)抵押权已经登记的，按照登记的时间先后确定清偿顺序；",
+   "srcs": [
+    "art414-1"
+   ],
+   "note": "已登记的先于未登记的受偿",
+   "auth": "npc"
+  },
+  "c414-3": {
+   "module": "m-mortgage",
+   "node": "g3561",
+   "node_text": "(1)抵押权已经登记的，按照登记的时间先后确定清偿顺序；",
+   "srcs": [
+    "art414-1"
+   ],
+   "note": "均未登记的，按债权比例清偿",
+   "auth": "npc"
+  },
+  "c415": {
+   "module": "m-mortgage",
+   "node": "g3572",
+   "node_text": "质权与抵押权竞存",
+   "srcs": [
+    "art415"
+   ],
+   "note": "同一财产既抵押又出质的，按登记、交付的时间先后确定清偿顺序",
+   "auth": "npc"
+  },
+  "c423": {
+   "module": "m-mortgage",
+   "node": "g3406",
+   "node_text": "债权确定（《民法》第423条）",
+   "srcs": [
+    "art423"
+   ],
+   "note": "约定期间届满、无约定满二年请求确定、不可能发生新债权、知道查封扣押、破产解散等，债权确定",
+   "auth": "npc"
+  },
+  "c420-in": {
+   "module": "m-mortgage",
+   "node": "g3392",
+   "node_text": "六、最高额抵押",
+   "srcs": [
+    "art420-1"
+   ],
+   "note": "一定期间内连续发生的债权，在最高债权额限度内受担保",
+   "auth": "npc"
+  },
+  "c420-pre": {
+   "module": "m-mortgage",
+   "node": "g3392",
+   "node_text": "六、最高额抵押",
+   "srcs": [
+    "art420-2"
+   ],
+   "note": "设立前已存在的债权，经当事人同意可以转入最高额抵押担保范围",
+   "auth": "npc"
+  },
+  "c423-after": {
+   "module": "m-mortgage",
+   "node": "g3406",
+   "node_text": "债权确定（《民法》第423条）",
+   "srcs": [
+    "art423"
+   ],
+   "note": "债权确定后发生的债权不再受最高额抵押担保",
+   "auth": "doctrine"
+  },
+  "c421": {
+   "module": "m-mortgage",
+   "node": "g3406",
+   "node_text": "债权确定（《民法》第423条）",
+   "srcs": [
+    "art421"
+   ],
+   "note": "最高额抵押担保的债权确定前，部分债权转让的，最高额抵押权不得转让；当事人另有约定的除外",
+   "auth": "npc"
+  },
+  "c428": {
+   "module": "m-mortgage",
+   "node": "g3434",
+   "node_text": "禁止流质",
+   "srcs": [
+    "art428"
+   ],
+   "note": "履行期届满前约定不履行时质押财产归债权人所有的，只能依法就质押财产优先受偿",
+   "auth": "npc"
+  },
+  "c401": {
+   "module": "m-mortgage",
+   "node": "g3310",
+   "node_text": "禁止流押",
+   "srcs": [
+    "art401"
+   ],
+   "note": "流押条款：只能依法就抵押财产优先受偿",
+   "auth": "npc"
+  },
+  "c447": {
+   "module": "m-lien",
+   "node": "g3511",
+   "node_text": "二、留置权的成立F15/38；T12/54；",
+   "srcs": [
+    "art447-1"
+   ],
+   "note": "债务人不履行到期债务，债权人可以留置已经合法占有的债务人的动产；动产应当与债权属于同一法律关系，企业之间留置的除外（第448条）",
+   "auth": "npc"
+  },
+  "c449": {
+   "module": "m-lien",
+   "node": "g3515",
+   "node_text": "4.符合法律规定和当事人的约定并且不违背公序良俗，同时与留置人承担的义务不相抵触。法律规定或者当事人约定不得留置的动产，不得留置。",
+   "srcs": [
+    "art449"
+   ],
+   "note": "法律规定或者当事人约定不得留置的动产，不得留置",
+   "auth": "npc"
+  },
+  "c447-priority": {
+   "module": "m-lien",
+   "node": "g3511",
+   "node_text": "二、留置权的成立F15/38；T12/54；",
+   "srcs": [
+    "art447-1"
+   ],
+   "note": "留置权人有权就该动产优先受偿",
+   "auth": "npc"
+  },
+  "c456": {
+   "module": "m-lien",
+   "node": "g3504",
+   "node_text": "第四节留置权",
+   "srcs": [
+    "art456"
+   ],
+   "note": "同一动产上已设立抵押权或者质权，该动产又被留置的，留置权人优先受偿",
+   "auth": "npc"
+  },
+  "c374": {
+   "module": "m-easement",
+   "node": "g3166",
+   "node_text": "地役权的设立",
+   "srcs": [
+    "art374"
+   ],
+   "note": "地役权自地役权合同生效时设立",
+   "auth": "npc"
+  },
+  "c374-oppose": {
+   "module": "m-easement",
+   "node": "g3166",
+   "node_text": "地役权的设立",
+   "srcs": [
+    "art374"
+   ],
+   "note": "未经登记，不得对抗善意第三人",
+   "auth": "npc"
+  },
+  "c374-oppose-def": {
+   "module": "m-easement",
+   "node": "g3166",
+   "node_text": "地役权的设立",
+   "srcs": [
+    "art374"
+   ],
+   "note": "地役权对供役地受让人有约束力（第383条）",
+   "auth": "doctrine"
+  },
+  "c380-for": {
+   "module": "m-easement",
+   "node": "g3172",
+   "node_text": "转让的从属性",
+   "srcs": [
+    "art380"
+   ],
+   "note": "地役权不得单独转让",
+   "auth": "npc"
+  },
+  "c380-follow": {
+   "module": "m-easement",
+   "node": "g3172",
+   "node_text": "转让的从属性",
+   "srcs": [
+    "art380"
+   ],
+   "note": "需役地上的用益物权转让的，地役权一并转让，但是合同另有约定的除外",
+   "auth": "npc"
+  },
+  "c381-for": {
+   "module": "m-easement",
+   "node": "g3172",
+   "node_text": "转让的从属性",
+   "srcs": [
+    "art381"
+   ],
+   "note": "地役权不得单独抵押",
+   "auth": "npc"
+  },
+  "c381-follow": {
+   "module": "m-easement",
+   "node": "g3172",
+   "node_text": "转让的从属性",
+   "srcs": [
+    "art381"
+   ],
+   "note": "需役地上的用益物权抵押的，实现抵押权时地役权一并转让",
+   "auth": "npc"
+  },
+  "c476": {
+   "module": "m-contract",
+   "node": "g3883",
+   "node_text": "要约",
+   "srcs": [
+    "art476"
+   ],
+   "note": "要约可以撤销；明示不可撤销或受要约人有理由信赖并已做合理准备的除外",
+   "auth": "npc"
+  },
+  "c525": {
+   "module": "m-contract",
+   "node": "g4305",
+   "node_text": "同时履行抗辩权",
+   "srcs": [
+    "art525"
+   ],
+   "note": "没有先后履行顺序的，一方在对方履行之前有权拒绝其履行请求",
+   "auth": "npc"
+  },
+  "c526": {
+   "module": "m-contract",
+   "node": "g4316",
+   "node_text": "先履行抗辩权（后履行一方的抗辩权）",
+   "srcs": [
+    "art526"
+   ],
+   "note": "应当先履行的一方未履行的，后履行一方有权拒绝其履行请求",
+   "auth": "npc"
+  },
+  "c527": {
+   "module": "m-contract",
+   "node": "g4326",
+   "node_text": "不安抗辩权（先履行一方的抗辩权）T14/53；",
+   "srcs": [
+    "art527-1"
+   ],
+   "note": "先履行一方有确切证据证明对方经营状况严重恶化等情形的，可以中止履行",
+   "auth": "npc"
+  },
+  "c527-2": {
+   "module": "m-contract",
+   "node": "g4336",
+   "node_text": "2．不安抗辩权的行使及效力",
+   "srcs": [
+    "art527-2"
+   ],
+   "note": "没有确切证据中止履行的，应当承担违约责任",
+   "auth": "npc"
+  },
+  "c528-notify": {
+   "module": "m-contract",
+   "node": "g4336",
+   "node_text": "2．不安抗辩权的行使及效力",
+   "srcs": [
+    "art528"
+   ],
+   "note": "依法中止履行的，应当及时通知对方",
+   "auth": "npc"
+  },
+  "c528-resume": {
+   "module": "m-contract",
+   "node": "g4336",
+   "node_text": "2．不安抗辩权的行使及效力",
+   "srcs": [
+    "art528"
+   ],
+   "note": "对方提供适当担保的，应当恢复履行",
+   "auth": "npc"
+  },
+  "c528-term": {
+   "module": "m-contract",
+   "node": "g4336",
+   "node_text": "2．不安抗辩权的行使及效力",
+   "srcs": [
+    "art528"
+   ],
+   "note": "对方在合理期限内未恢复履行能力且未提供适当担保的，可以解除合同并请求违约责任",
+   "auth": "npc"
+  },
+  "c585-reduce": {
+   "module": "m-contract",
+   "node": "g4790",
+   "node_text": "违约金数额的调整",
+   "srcs": [
+    "art585-2"
+   ],
+   "note": "约定的违约金过分高于造成的损失的，可以根据当事人的请求予以适当减少",
+   "auth": "npc"
+  },
+  "c585-increase": {
+   "module": "m-contract",
+   "node": "g4790",
+   "node_text": "违约金数额的调整",
+   "srcs": [
+    "art585-2"
+   ],
+   "note": "约定的违约金低于造成的损失的，可以根据当事人的请求予以增加",
+   "auth": "npc"
+  },
+  "c585-3": {
+   "module": "m-contract",
+   "node": "g4783",
+   "node_text": "（三）支付违约金",
+   "srcs": [
+    "art585-3"
+   ],
+   "note": "就迟延履行约定违约金的，违约方支付违约金后，还应当履行债务",
+   "auth": "npc"
+  },
+  "c586": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art586-1"
+   ],
+   "note": "定金合同自实际交付定金时成立（实践合同）",
+   "auth": "npc"
+  },
+  "c586-cap": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art586-2"
+   ],
+   "note": "定金不得超过主合同标的额的百分之二十，超过部分不产生定金的效力",
+   "auth": "npc"
+  },
+  "c587-payer": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art587"
+   ],
+   "note": "给付定金的一方根本违约的，无权请求返还定金",
+   "auth": "npc"
+  },
+  "c587-receiver": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art587"
+   ],
+   "note": "收受定金的一方根本违约的，应当双倍返还定金",
+   "auth": "npc"
+  },
+  "c588-choice": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art588-1"
+   ],
+   "note": "既约定违约金又约定定金的，对方可以选择适用违约金或者定金条款",
+   "auth": "npc"
+  },
+  "c588-nocumul": {
+   "module": "m-contract",
+   "node": "g4798",
+   "node_text": "（四）适用定金罚则",
+   "srcs": [
+    "art588-1"
+   ],
+   "note": "违约金与定金不能并用（第588条“选择适用”）",
+   "auth": "doctrine"
+  },
+  "c545": {
+   "module": "m-contract",
+   "node": "g4435",
+   "node_text": "根据我国法律规定，下列债权不得转让：",
+   "srcs": [
+    "art545-1"
+   ],
+   "note": "债权人可以将债权转让给第三人（性质、约定、法律不得转让的除外）",
+   "auth": "npc"
+  },
+  "c545-2-money": {
+   "module": "m-contract",
+   "node": "g4435",
+   "node_text": "根据我国法律规定，下列债权不得转让：",
+   "srcs": [
+    "art545-2"
+   ],
+   "note": "约定金钱债权不得转让的，不得对抗第三人",
+   "auth": "npc"
+  },
+  "c545-2-goodfaith": {
+   "module": "m-contract",
+   "node": "g4435",
+   "node_text": "根据我国法律规定，下列债权不得转让：",
+   "srcs": [
+    "art545-2"
+   ],
+   "note": "约定非金钱债权不得转让的，不得对抗善意第三人",
+   "auth": "npc"
+  },
+  "c546": {
+   "module": "m-contract",
+   "node": "g4445",
+   "node_text": "（4）债权人让与债权未通知债务人的，该转让对债务人不发生效力。21/25；",
+   "srcs": [
+    "art546-1"
+   ],
+   "note": "债权人转让债权，未通知债务人的，该转让对债务人不发生效力",
+   "auth": "npc"
+  },
+  "c546-def": {
+   "module": "m-contract",
+   "node": "g4445",
+   "node_text": "（4）债权人让与债权未通知债务人的，该转让对债务人不发生效力。21/25；",
+   "srcs": [
+    "art546-1"
+   ],
+   "note": "通知债务人后，转让对债务人发生效力",
+   "auth": "npc"
+  },
+  "c547": {
+   "module": "m-contract",
+   "node": "g4421",
+   "node_text": "二、合同的转让",
+   "srcs": [
+    "art547"
+   ],
+   "note": "受让人取得与债权有关的从权利（专属于债权人自身的除外；不因未办理转移登记或未转移占有而受影响）",
+   "auth": "npc"
+  },
+  "c551": {
+   "module": "m-contract",
+   "node": "g4477",
+   "node_text": "免责的债务承担",
+   "srcs": [
+    "art551"
+   ],
+   "note": "债务人将债务转移给第三人的，应当经债权人同意",
+   "auth": "npc"
+  },
+  "c551-ok": {
+   "module": "m-contract",
+   "node": "g4477",
+   "node_text": "免责的债务承担",
+   "srcs": [
+    "art551-1"
+   ],
+   "note": "经债权人同意的，债务转移有效",
+   "auth": "npc"
+  },
+  "c551-2": {
+   "module": "m-contract",
+   "node": "g4477",
+   "node_text": "免责的债务承担",
+   "srcs": [
+    "art551-2"
+   ],
+   "note": "催告后债权人未作表示的，视为不同意",
+   "auth": "npc"
+  },
+  "c604-before": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art604"
+   ],
+   "note": "标的物风险在交付之前由出卖人承担",
+   "auth": "npc"
+  },
+  "c604-after": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art604"
+   ],
+   "note": "交付之后由买受人承担",
+   "auth": "npc"
+  },
+  "c605": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art605"
+   ],
+   "note": "因买受人原因致使标的物未按约定期限交付的，买受人自违反约定时起承担风险",
+   "auth": "npc"
+  },
+  "c607-1": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art607-1"
+   ],
+   "note": "按约定运送至买受人指定地点并交付承运人后，风险由买受人承担",
+   "auth": "npc"
+  },
+  "c607-2": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art607-2"
+   ],
+   "note": "没有约定交付地点、需要运输的，交付给第一承运人后风险由买受人承担",
+   "auth": "npc"
+  },
+  "c608": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art608"
+   ],
+   "note": "置于交付地点，买受人违反约定没有收取的，风险自违反约定时起由买受人承担",
+   "auth": "npc"
+  },
+  "c610": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art610"
+   ],
+   "note": "因质量不符致不能实现合同目的，买受人拒收或解除合同的，风险由出卖人承担",
+   "auth": "npc"
+  },
+  "c604-agreed": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art604"
+   ],
+   "note": "当事人另有约定的除外",
+   "auth": "npc"
+  },
+  "c226-delivery": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art226",
+    "art604"
+   ],
+   "note": "买受人已经占有标的物的（如借用、租赁中买下），买卖合同生效时视为交付（简易交付），风险随之转移",
+   "auth": "doctrine"
+  },
+  "c604-price": {
+   "module": "m-contract",
+   "node": "g4936",
+   "node_text": "2.风险负担具体规则",
+   "srcs": [
+    "art604"
+   ],
+   "note": "风险由买受人承担的，标的物意外毁损灭失后，买受人仍须支付价款",
+   "auth": "doctrine"
+  },
+  "c725": {
+   "module": "m-contract",
+   "node": "g5309",
+   "node_text": "1.买卖不破租赁",
+   "srcs": [
+    "art725"
+   ],
+   "note": "承租人依约占有期间租赁物所有权变动的，不影响租赁合同的效力",
+   "auth": "npc"
+  },
+  "c726": {
+   "module": "m-contract",
+   "node": "g5332",
+   "node_text": "优先购买权",
+   "srcs": [
+    "art726-1"
+   ],
+   "note": "出租人出卖租赁房屋的，承租人享有以同等条件优先购买的权利；按份共有人行使优先购买权或出卖给近亲属的除外",
+   "auth": "npc"
+  },
+  "c726-notify": {
+   "module": "m-contract",
+   "node": "g5332",
+   "node_text": "优先购买权",
+   "srcs": [
+    "art726-1"
+   ],
+   "note": "出租人应当在出卖之前的合理期限内通知承租人",
+   "auth": "npc"
+  },
+  "c726-2": {
+   "module": "m-contract",
+   "node": "g5332",
+   "node_text": "优先购买权",
+   "srcs": [
+    "art726-2"
+   ],
+   "note": "出租人履行通知义务后，承租人在十五日内未明确表示购买的，视为放弃优先购买权",
+   "auth": "npc"
+  },
+  "c1062": {
+   "module": "m-marriage",
+   "node": "g6590",
+   "node_text": "1.夫妻共同财产制",
+   "srcs": [
+    "art1062-1"
+   ],
+   "note": "婚姻关系存续期间所得的工资、经营投资收益、知识产权收益、继承或受赠的财产等为夫妻共同财产",
+   "auth": "npc"
+  },
+  "c1063": {
+   "module": "m-marriage",
+   "node": "g6590",
+   "node_text": "1.夫妻共同财产制",
+   "srcs": [
+    "art1063"
+   ],
+   "note": "婚前财产、人身损害赔偿或补偿、遗嘱或赠与合同中确定只归一方的财产、一方专用生活用品为个人财产",
+   "auth": "npc"
+  },
+  "c1064-joint": {
+   "module": "m-marriage",
+   "node": "g6770",
+   "node_text": "（1）夫妻共同债务的判断标准",
+   "srcs": [
+    "art1064-1"
+   ],
+   "note": "共同签名或一方事后追认等共同意思表示所负的债务，属于夫妻共同债务",
+   "auth": "npc"
+  },
+  "c1064-daily": {
+   "module": "m-marriage",
+   "node": "g6770",
+   "node_text": "（1）夫妻共同债务的判断标准",
+   "srcs": [
+    "art1064-1"
+   ],
+   "note": "一方在婚姻关系存续期间以个人名义为家庭日常生活需要所负的债务，属于夫妻共同债务",
+   "auth": "npc"
+  },
+  "c1064-2": {
+   "module": "m-marriage",
+   "node": "g6770",
+   "node_text": "（1）夫妻共同债务的判断标准",
+   "srcs": [
+    "art1064-2"
+   ],
+   "note": "超出家庭日常生活需要所负的债务，不属于夫妻共同债务；但债权人能证明用于共同生活、共同生产经营或基于共同意思表示的除外",
+   "auth": "npc"
+  },
+  "c1064-2-proof": {
+   "module": "m-marriage",
+   "node": "g6770",
+   "node_text": "（1）夫妻共同债务的判断标准",
+   "srcs": [
+    "art1064-2"
+   ],
+   "note": "债权人能够证明用于夫妻共同生活、共同生产经营或基于共同意思表示的，属于共同债务",
+   "auth": "npc"
+  },
+  "c1123-agreement": {
+   "module": "m-succession",
+   "node": "g7263",
+   "node_text": "二、遗赠扶养协议21/39；",
+   "srcs": [
+    "art1123"
+   ],
+   "note": "有遗赠扶养协议的，按照协议办理（效力最优先）",
+   "auth": "npc"
+  },
+  "c1123-will": {
+   "module": "m-succession",
+   "node": "g7137",
+   "node_text": "第三节遗嘱继承和遗赠",
+   "srcs": [
+    "art1123"
+   ],
+   "note": "有遗嘱的，按照遗嘱继承或者遗赠办理",
+   "auth": "npc"
+  },
+  "c1123-intestate": {
+   "module": "m-succession",
+   "node": "g7056",
+   "node_text": "第二节法定继承",
+   "srcs": [
+    "art1123"
+   ],
+   "note": "继承开始后，按照法定继承办理",
+   "auth": "npc"
+  },
+  "c1127-child": {
+   "module": "m-succession",
+   "node": "g7068",
+   "node_text": "二、法定继承人的范围和法定继承顺序",
+   "srcs": [
+    "art1127-3"
+   ],
+   "note": "子女包括婚生子女、非婚生子女、养子女和有扶养关系的继子女",
+   "auth": "npc"
+  },
+  "c1127-parent": {
+   "module": "m-succession",
+   "node": "g7068",
+   "node_text": "二、法定继承人的范围和法定继承顺序",
+   "srcs": [
+    "art1127-4"
+   ],
+   "note": "父母包括生父母、养父母和有扶养关系的继父母",
+   "auth": "npc"
+  },
+  "c1127-first": {
+   "module": "m-succession",
+   "node": "g7077",
+   "node_text": "第一顺序：配偶、子女、父母以及对公婆、岳父母尽了主要赡养义务的丧偶儿媳和丧偶女婿。T11/49；TF17/48，28；",
+   "srcs": [
+    "art1127-1"
+   ],
+   "note": "第一顺序：配偶、子女、父母",
+   "auth": "npc"
+  },
+  "c1129": {
+   "module": "m-succession",
+   "node": "g7077",
+   "node_text": "第一顺序：配偶、子女、父母以及对公婆、岳父母尽了主要赡养义务的丧偶儿媳和丧偶女婿。T11/49；TF17/48，28；",
+   "srcs": [
+    "art1129"
+   ],
+   "note": "丧偶儿媳对公婆、丧偶女婿对岳父母尽了主要赡养义务的，作为第一顺序继承人",
+   "auth": "npc"
+  },
+  "c1127-second": {
+   "module": "m-succession",
+   "node": "g7082",
+   "node_text": "第二顺序：兄弟姐妹、祖父母、外祖父母。",
+   "srcs": [
+    "art1127-1"
+   ],
+   "note": "第二顺序：兄弟姐妹、祖父母、外祖父母",
+   "auth": "npc"
+  },
+  "c1125": {
+   "module": "m-succession",
+   "node": "g7009",
+   "node_text": "继承人有下列行为之一的，丧失继承权",
+   "srcs": [
+    "art1125-1"
+   ],
+   "note": "故意杀害被继承人、为争夺遗产杀害其他继承人、遗弃或严重虐待、伪造篡改隐匿销毁遗嘱、欺诈胁迫影响遗嘱等，丧失继承权",
+   "auth": "npc"
+  },
+  "c1125-2": {
+   "module": "m-succession",
+   "node": "g7018",
+   "node_text": "丧失继承权的例外",
+   "srcs": [
+    "art1125-2"
+   ],
+   "note": "有第三至五项行为，确有悔改表现，被继承人表示宽恕或在遗嘱中将其列为继承人的，不丧失继承权（第一、二项不可宽恕）",
+   "auth": "npc"
+  },
+  "c-heir-cand": {
+   "module": "m-succession",
+   "node": "g7068",
+   "node_text": "二、法定继承人的范围和法定继承顺序",
+   "srcs": [
+    "art1127-1"
+   ],
+   "note": "配偶、子女、父母、兄弟姐妹、祖父母、外祖父母为法定继承人",
+   "auth": "doctrine"
+  },
+  "c1127-2-first": {
+   "module": "m-succession",
+   "node": "g7077",
+   "node_text": "第一顺序：配偶、子女、父母以及对公婆、岳父母尽了主要赡养义务的丧偶儿媳和丧偶女婿。T11/49；TF17/48，28；",
+   "srcs": [
+    "art1127-2"
+   ],
+   "note": "继承开始后，由第一顺序继承人继承",
+   "auth": "npc"
+  },
+  "c1127-2-second": {
+   "module": "m-succession",
+   "node": "g7082",
+   "node_text": "第二顺序：兄弟姐妹、祖父母、外祖父母。",
+   "srcs": [
+    "art1127-2"
+   ],
+   "note": "没有第一顺序继承人继承的，由第二顺序继承人继承",
+   "auth": "npc"
+  },
+  "c1128-1": {
+   "module": "m-succession",
+   "node": "g7094",
+   "node_text": "代位继承的条件",
+   "srcs": [
+    "art1128-1"
+   ],
+   "note": "被继承人的子女先于被继承人死亡的，由子女的直系晚辈血亲代位继承",
+   "auth": "npc"
+  },
+  "c1128-2": {
+   "module": "m-succession",
+   "node": "g7094",
+   "node_text": "代位继承的条件",
+   "srcs": [
+    "art1128-2"
+   ],
+   "note": "兄弟姐妹先于被继承人死亡的，由兄弟姐妹的子女代位继承（属第二顺序）",
+   "auth": "npc"
+  },
+  "c1143-1": {
+   "module": "m-succession",
+   "node": "g7211",
+   "node_text": "遗嘱无效",
+   "srcs": [
+    "art1143-1"
+   ],
+   "note": "无民事行为能力人或者限制民事行为能力人所立的遗嘱无效",
+   "auth": "npc"
+  },
+  "c1143-2": {
+   "module": "m-succession",
+   "node": "g7211",
+   "node_text": "遗嘱无效",
+   "srcs": [
+    "art1143-2"
+   ],
+   "note": "受欺诈、胁迫所立的遗嘱无效",
+   "auth": "npc"
+  },
+  "c1143-3": {
+   "module": "m-succession",
+   "node": "g7211",
+   "node_text": "遗嘱无效",
+   "srcs": [
+    "art1143-3"
+   ],
+   "note": "伪造的遗嘱无效",
+   "auth": "npc"
+  },
+  "c1142-3": {
+   "module": "m-succession",
+   "node": "g7225",
+   "node_text": "遗嘱人立有数份遗嘱，内容相抵触的，以最后的遗嘱为准。T18/36；",
+   "srcs": [
+    "art1142-3"
+   ],
+   "note": "立有数份遗嘱，内容相抵触的，以最后的遗嘱为准",
+   "auth": "npc"
+  },
+  "c1142-2": {
+   "module": "m-succession",
+   "node": "g7218",
+   "node_text": "六、遗嘱的变更和撤回",
+   "srcs": [
+    "art1142-2"
+   ],
+   "note": "立遗嘱后实施与遗嘱内容相反的民事法律行为的，视为对遗嘱相关内容的撤回",
+   "auth": "npc"
+  },
+  "c-will-effective": {
+   "module": "m-succession",
+   "node": "g7199",
+   "node_text": "五、遗嘱的效力",
+   "srcs": [
+    "art1123",
+    "art1142-3",
+    "art1143"
+   ],
+   "note": "有效且未被撤回的遗嘱就其处分的遗产适用遗嘱继承",
+   "auth": "doctrine"
+  },
+  "c1165-1": {
+   "module": "m-tort",
+   "node": "g7375",
+   "node_text": "（一）过错责任原则",
+   "srcs": [
+    "art1165-1"
+   ],
+   "note": "行为人因过错侵害他人民事权益造成损害的，应当承担侵权责任",
+   "auth": "npc"
+  },
+  "c1165-2": {
+   "module": "m-tort",
+   "node": "g7386",
+   "node_text": "2.过错推定",
+   "srcs": [
+    "art1165-2"
+   ],
+   "note": "依法推定有过错，不能证明自己没有过错的，应当承担侵权责任",
+   "auth": "npc"
+  },
+  "c-liable-obl": {
+   "module": "m-tort",
+   "node": "g7370",
+   "node_text": "二、侵权责任的归责原则08/57；T12/58；09/43；",
+   "srcs": [
+    "art1165-1",
+    "art179"
+   ],
+   "note": "承担侵权责任的，应当向被侵权人赔偿损失",
+   "auth": "doctrine"
+  },
+  "c1188": {
+   "module": "m-tort",
+   "node": "g7575",
+   "node_text": "一、监护人责任2020年修改",
+   "srcs": [
+    "art1188-1"
+   ],
+   "note": "无民事行为能力人、限制民事行为能力人造成他人损害的，由监护人承担侵权责任（无过错责任）",
+   "auth": "npc"
+  },
+  "c1188-reduce": {
+   "module": "m-tort",
+   "node": "g7575",
+   "node_text": "一、监护人责任2020年修改",
+   "srcs": [
+    "art1188-1"
+   ],
+   "note": "监护人尽到监护职责的，可以减轻其侵权责任",
+   "auth": "npc"
+  },
+  "c1188-2": {
+   "module": "m-tort",
+   "node": "g7575",
+   "node_text": "一、监护人责任2020年修改",
+   "srcs": [
+    "art1188-2"
+   ],
+   "note": "有财产的，从本人财产中支付赔偿费用；不足部分由监护人赔偿",
+   "auth": "npc"
+  },
+  "c1191-1": {
+   "module": "m-tort",
+   "node": "g7596",
+   "node_text": "1.用人单位责任",
+   "srcs": [
+    "art1191-1"
+   ],
+   "note": "工作人员因执行工作任务造成他人损害的，由用人单位承担侵权责任（替代责任）",
+   "auth": "npc"
+  },
+  "c1191-recourse": {
+   "module": "m-tort",
+   "node": "g7596",
+   "node_text": "1.用人单位责任",
+   "srcs": [
+    "art1191-1"
+   ],
+   "note": "用人单位承担侵权责任后，可以向有故意或者重大过失的工作人员追偿",
+   "auth": "npc"
+  },
+  "c1191-2": {
+   "module": "m-tort",
+   "node": "g7605",
+   "node_text": "（三）劳务派遣致人损害责任",
+   "srcs": [
+    "art1191-2"
+   ],
+   "note": "劳务派遣期间，由接受劳务派遣的用工单位承担侵权责任",
+   "auth": "npc"
+  },
+  "c1191-2b": {
+   "module": "m-tort",
+   "node": "g7605",
+   "node_text": "（三）劳务派遣致人损害责任",
+   "srcs": [
+    "art1191-2"
+   ],
+   "note": "劳务派遣单位有过错的，承担相应的责任",
+   "auth": "npc"
+  },
+  "c1199": {
+   "module": "m-tort",
+   "node": "g7665",
+   "node_text": "七、教育机构的侵权责任",
+   "srcs": [
+    "art1199"
+   ],
+   "note": "无民事行为能力人在教育机构受到人身损害的，教育机构承担责任；能证明尽到教育、管理职责的除外（过错推定）",
+   "auth": "npc"
+  },
+  "c1200": {
+   "module": "m-tort",
+   "node": "g7665",
+   "node_text": "七、教育机构的侵权责任",
+   "srcs": [
+    "art1200"
+   ],
+   "note": "限制民事行为能力人受到人身损害，教育机构未尽到教育、管理职责的，承担责任（过错责任，受害人举证）",
+   "auth": "npc"
+  },
+  "c1201": {
+   "module": "m-tort",
+   "node": "g7675",
+   "node_text": "2.教育机构对第三人致害的侵权责任",
+   "srcs": [
+    "art1201"
+   ],
+   "note": "受到教育机构以外的第三人人身损害的，由第三人承担侵权责任",
+   "auth": "npc"
+  },
+  "c1201-supp": {
+   "module": "m-tort",
+   "node": "g7675",
+   "node_text": "2.教育机构对第三人致害的侵权责任",
+   "srcs": [
+    "art1201"
+   ],
+   "note": "教育机构未尽到管理职责的，承担相应的补充责任，承担后可以向第三人追偿",
+   "auth": "npc"
+  },
+  "c1202": {
+   "module": "m-tort",
+   "node": "g7679",
+   "node_text": "第七节产品责任2020年修改F15/33；",
+   "srcs": [
+    "art1202"
+   ],
+   "note": "因产品存在缺陷造成他人损害的，生产者应当承担侵权责任（无过错责任）",
+   "auth": "npc"
+  },
+  "c1203": {
+   "module": "m-tort",
+   "node": "g7679",
+   "node_text": "第七节产品责任2020年修改F15/33；",
+   "srcs": [
+    "art1203-1"
+   ],
+   "note": "被侵权人可以向产品的生产者请求赔偿，也可以向产品的销售者请求赔偿",
+   "auth": "npc"
+  },
+  "c1203-p": {
+   "module": "m-tort",
+   "node": "g7679",
+   "node_text": "第七节产品责任2020年修改F15/33；",
+   "srcs": [
+    "art1203-1"
+   ],
+   "note": "被侵权人可以向产品的生产者请求赔偿",
+   "auth": "npc"
+  },
+  "c1203-2a": {
+   "module": "m-tort",
+   "node": "g7679",
+   "node_text": "第七节产品责任2020年修改F15/33；",
+   "srcs": [
+    "art1203-2"
+   ],
+   "note": "产品缺陷由生产者造成的，销售者赔偿后有权向生产者追偿",
+   "auth": "npc"
+  },
+  "c1203-2b": {
+   "module": "m-tort",
+   "node": "g7679",
+   "node_text": "第七节产品责任2020年修改F15/33；",
+   "srcs": [
+    "art1203-2"
+   ],
+   "note": "因销售者的过错使产品存在缺陷的，生产者赔偿后有权向销售者追偿",
+   "auth": "npc"
+  },
+  "c1245": {
+   "module": "m-tort",
+   "node": "g7905",
+   "node_text": "饲养动物损害的一般责任",
+   "srcs": [
+    "art1245"
+   ],
+   "note": "饲养的动物造成他人损害的，动物饲养人或者管理人应当承担侵权责任（无过错责任）",
+   "auth": "npc"
+  },
+  "c1245-def": {
+   "module": "m-tort",
+   "node": "g7905",
+   "node_text": "饲养动物损害的一般责任",
+   "srcs": [
+    "art1245"
+   ],
+   "note": "能够证明损害是因被侵权人故意或者重大过失造成的，可以不承担或者减轻责任",
+   "auth": "npc"
+  },
+  "c1246": {
+   "module": "m-tort",
+   "node": "g7912",
+   "node_text": "违反管理规定，未对动物采取安全措施造成他人损害的（绝对无过错责任）",
+   "srcs": [
+    "art1246"
+   ],
+   "note": "违反管理规定未采取安全措施的，被侵权人重大过失不再减免责任",
+   "auth": "npc"
+  },
+  "c1246-reduce": {
+   "module": "m-tort",
+   "node": "g7912",
+   "node_text": "违反管理规定，未对动物采取安全措施造成他人损害的（绝对无过错责任）",
+   "srcs": [
+    "art1246"
+   ],
+   "note": "违反管理规定的，只有被侵权人故意才可以减轻责任（不能免除）",
+   "auth": "npc"
+  },
+  "c1247": {
+   "module": "m-tort",
+   "node": "g7915",
+   "node_text": "禁止饲养的危险动物损害责任。",
+   "srcs": [
+    "art1247"
+   ],
+   "note": "禁止饲养的烈性犬等危险动物造成他人损害的，应当承担侵权责任（无免责事由）",
+   "auth": "npc"
+  },
+  "c1253": {
+   "module": "m-tort",
+   "node": "g7936",
+   "node_text": "2.建筑物等脱落、坠落的致害责任。09/60；",
+   "srcs": [
+    "art1253"
+   ],
+   "note": "建筑物等及其搁置物、悬挂物脱落、坠落造成损害，所有人、管理人或者使用人不能证明自己没有过错的，应当承担侵权责任",
+   "auth": "npc"
+  },
+  "c1254-known": {
+   "module": "m-tort",
+   "node": "g7939",
+   "node_text": "三、抛掷物、坠落物致人损害的责任与补偿",
+   "srcs": [
+    "art1254-1"
+   ],
+   "note": "从建筑物中抛掷物品或坠落物品造成他人损害的，由侵权人依法承担侵权责任",
+   "auth": "npc"
+  },
+  "c1254-unknown": {
+   "module": "m-tort",
+   "node": "g7939",
+   "node_text": "三、抛掷物、坠落物致人损害的责任与补偿",
+   "srcs": [
+    "art1254-1"
+   ],
+   "note": "难以确定具体侵权人的，除能够证明自己不是侵权人的外，由可能加害的建筑物使用人给予补偿",
+   "auth": "npc"
+  },
+  "c1254-known-flag": {
+   "module": "m-tort",
+   "node": "g7939",
+   "node_text": "三、抛掷物、坠落物致人损害的责任与补偿",
+   "srcs": [
+    "art1254-1"
+   ],
+   "note": "已查明具体侵权人",
+   "auth": "doctrine"
+  },
+  "c1254-2": {
+   "module": "m-tort",
+   "node": "g7939",
+   "node_text": "三、抛掷物、坠落物致人损害的责任与补偿",
+   "srcs": [
+    "art1254-2"
+   ],
+   "note": "物业服务企业等建筑物管理人未采取必要的安全保障措施的，承担未履行安全保障义务的侵权责任",
+   "auth": "npc"
+  }
+ },
+ "taxonomy": [
+  {
+   "child": "人格权",
+   "parent": "人身权",
+   "child_node": "g0027",
+   "parent_node": "g0026"
+  },
+  {
+   "child": "身份权",
+   "parent": "人身权",
+   "child_node": "g0030",
+   "parent_node": "g0026"
+  },
+  {
+   "child": "具体人格权",
+   "parent": "人格权",
+   "child_node": "g0028",
+   "parent_node": "g0027"
+  },
+  {
+   "child": "一般人格权",
+   "parent": "人格权",
+   "child_node": "g0029",
+   "parent_node": "g0027"
+  },
+  {
+   "child": "自物权",
+   "parent": "物权",
+   "child_node": "g0034",
+   "parent_node": "g0033"
+  },
+  {
+   "child": "他物权",
+   "parent": "物权",
+   "child_node": "g0038",
+   "parent_node": "g0033"
+  },
+  {
+   "child": "用益物权",
+   "parent": "他物权",
+   "child_node": "g0039",
+   "parent_node": "g0038"
+  },
+  {
+   "child": "担保物权",
+   "parent": "他物权",
+   "child_node": "g0046",
+   "parent_node": "g0038"
+  },
+  {
+   "child": "建设用地使用权",
+   "parent": "用益物权",
+   "child_node": "g0040",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "宅基地使用权",
+   "parent": "用益物权",
+   "child_node": "g0041",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "居住权",
+   "parent": "用益物权",
+   "child_node": "g0042",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "地役权",
+   "parent": "用益物权",
+   "child_node": "g0043",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "土地承包经营权",
+   "parent": "用益物权",
+   "child_node": "g0044",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "海域使用权",
+   "parent": "用益物权",
+   "child_node": "g0045",
+   "parent_node": "g0039"
+  },
+  {
+   "child": "抵押权",
+   "parent": "担保物权",
+   "child_node": "g0047",
+   "parent_node": "g0046"
+  },
+  {
+   "child": "质权",
+   "parent": "担保物权",
+   "child_node": "g0048",
+   "parent_node": "g0046"
+  },
+  {
+   "child": "留置权",
+   "parent": "担保物权",
+   "child_node": "g0049",
+   "parent_node": "g0046"
+  },
+  {
+   "child": "商标权",
+   "parent": "知识产权",
+   "child_node": "g0052",
+   "parent_node": "g0051"
+  },
+  {
+   "child": "专利权",
+   "parent": "知识产权",
+   "child_node": "g0053",
+   "parent_node": "g0051"
+  },
+  {
+   "child": "著作权",
+   "parent": "知识产权",
+   "child_node": "g0054",
+   "parent_node": "g0051"
+  },
+  {
+   "child": "合同之债",
+   "parent": "意定之债",
+   "child_node": "g0063",
+   "parent_node": "g0062"
+  },
+  {
+   "child": "单方允诺之债",
+   "parent": "意定之债",
+   "child_node": "g0064",
+   "parent_node": "g0062"
+  },
+  {
+   "child": "平等原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0237",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "自愿原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0250",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "公平原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0265",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "合法原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0286",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "公序良俗原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0291",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "绿色原则",
+   "parent": "民法的基本原则",
+   "child_node": "g0310",
+   "parent_node": "g0221"
+  },
+  {
+   "child": "危害国家公序的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0300",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "危害家庭关系的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0301",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "射幸行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0303",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "限制营业自由的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0305",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "违反公共竞争的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0306",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "违反消费者保护的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0307",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "违反劳动者保护的行为类型",
+   "parent": "违反公序良俗行为类型",
+   "child_node": "g0308",
+   "parent_node": "g0298"
+  },
+  {
+   "child": "物权法律关系的客体",
+   "parent": "民事法律关系的客体",
+   "child_node": "g0395",
+   "parent_node": "g0394"
+  },
+  {
+   "child": "债权法律关系的客体",
+   "parent": "民事法律关系的客体",
+   "child_node": "g0399",
+   "parent_node": "g0394"
+  },
+  {
+   "child": "人身权法律关系的客体",
+   "parent": "民事法律关系的客体",
+   "child_node": "g0402",
+   "parent_node": "g0394"
+  },
+  {
+   "child": "知识产权法律关系的客体",
+   "parent": "民事法律关系的客体",
+   "child_node": "g0404",
+   "parent_node": "g0394"
+  },
+  {
+   "child": "选择之债的选择权",
+   "parent": "形成权",
+   "child_node": "g0482",
+   "parent_node": "g0480"
+  },
+  {
+   "child": "效力待定合同的追认权",
+   "parent": "形成权",
+   "child_node": "g0485",
+   "parent_node": "g0480"
+  },
+  {
+   "child": "可撤销合同的撤销权",
+   "parent": "形成诉权",
+   "child_node": "g0487",
+   "parent_node": "g0486"
+  },
+  {
+   "child": "离婚财产分割请求权",
+   "parent": "形成诉权",
+   "child_node": "g0489",
+   "parent_node": "g0486"
+  },
+  {
+   "child": "有效的民事法律行为",
+   "parent": "民事法律行为",
+   "child_node": "g0682",
+   "parent_node": "g0679"
+  },
+  {
+   "child": "效力未定的民事法律行为",
+   "parent": "民事法律行为",
+   "child_node": "g0683",
+   "parent_node": "g0679"
+  },
+  {
+   "child": "可撤销的民事法律行为",
+   "parent": "民事法律行为",
+   "child_node": "g0684",
+   "parent_node": "g0679"
+  },
+  {
+   "child": "无效的民事法律行为",
+   "parent": "民事法律行为",
+   "child_node": "g0685",
+   "parent_node": "g0679"
+  },
+  {
+   "child": "成立未生效的民事法律行为",
+   "parent": "民事法律行为",
+   "child_node": "g0686",
+   "parent_node": "g0679"
+  },
+  {
+   "child": "营利法人的权力机构",
+   "parent": "营利法人的机构",
+   "child_node": "g1079",
+   "parent_node": "g1078"
+  },
+  {
+   "child": "营利法人的执行机构",
+   "parent": "营利法人的机构",
+   "child_node": "g1086",
+   "parent_node": "g1078"
+  },
+  {
+   "child": "营利法人的监督机构",
+   "parent": "营利法人的机构",
+   "child_node": "g1095",
+   "parent_node": "g1078"
+  },
+  {
+   "child": "组织机构的变更",
+   "parent": "法人的变更",
+   "child_node": "g1236",
+   "parent_node": "g1234"
+  },
+  {
+   "child": "法人的组织性质变更",
+   "parent": "法人的变更",
+   "child_node": "g1247",
+   "parent_node": "g1234"
+  },
+  {
+   "child": "其他事项的变更",
+   "parent": "法人的变更",
+   "child_node": "g1249",
+   "parent_node": "g1234"
+  },
+  {
+   "child": "口头形式",
+   "parent": "意思表示的形式",
+   "child_node": "g1446",
+   "parent_node": "g1445"
+  },
+  {
+   "child": "书面形式",
+   "parent": "意思表示的形式",
+   "child_node": "g1449",
+   "parent_node": "g1445"
+  },
+  {
+   "child": "默示形式",
+   "parent": "意思表示的形式",
+   "child_node": "g1451",
+   "parent_node": "g1445"
+  },
+  {
+   "child": "追认的形成权",
+   "parent": "被代理人的追认权和拒绝权",
+   "child_node": "g1812",
+   "parent_node": "g1811"
+  },
+  {
+   "child": "拒绝的形成权",
+   "parent": "被代理人的追认权和拒绝权",
+   "child_node": "g1814",
+   "parent_node": "g1811"
+  },
+  {
+   "child": "委托代理的终止",
+   "parent": "代理终止",
+   "child_node": "g1861",
+   "parent_node": "g1859"
+  },
+  {
+   "child": "法定代理的终止",
+   "parent": "代理终止",
+   "child_node": "g1881",
+   "parent_node": "g1859"
+  },
+  {
+   "child": "平等保护原则",
+   "parent": "物权法的基本原则",
+   "child_node": "g2094",
+   "parent_node": "g2092"
+  },
+  {
+   "child": "物权客体特定原则",
+   "parent": "物权法的基本原则",
+   "child_node": "g2102",
+   "parent_node": "g2092"
+  },
+  {
+   "child": "物权法定原则",
+   "parent": "物权法的基本原则",
+   "child_node": "g2108",
+   "parent_node": "g2092"
+  },
+  {
+   "child": "简易交付",
+   "parent": "观念交付",
+   "child_node": "g2250",
+   "parent_node": "g2249"
+  },
+  {
+   "child": "指示交付",
+   "parent": "观念交付",
+   "child_node": "g2255",
+   "parent_node": "g2249"
+  },
+  {
+   "child": "首次登记",
+   "parent": "变动登记",
+   "child_node": "g2314",
+   "parent_node": "g2312"
+  },
+  {
+   "child": "变更登记",
+   "parent": "变动登记",
+   "child_node": "g2316",
+   "parent_node": "g2312"
+  },
+  {
+   "child": "转移登记",
+   "parent": "变动登记",
+   "child_node": "g2318",
+   "parent_node": "g2312"
+  },
+  {
+   "child": "注销登记",
+   "parent": "变动登记",
+   "child_node": "g2320",
+   "parent_node": "g2312"
+  },
+  {
+   "child": "积极权能",
+   "parent": "权能",
+   "child_node": "g2443",
+   "parent_node": "g2442"
+  },
+  {
+   "child": "消极权能",
+   "parent": "权能",
+   "child_node": "g2448",
+   "parent_node": "g2442"
+  },
+  {
+   "child": "动产与不动产的附合",
+   "parent": "附合",
+   "child_node": "g2492",
+   "parent_node": "g2490"
+  },
+  {
+   "child": "动产与动产的附合",
+   "parent": "附合",
+   "child_node": "g2494",
+   "parent_node": "g2490"
+  },
+  {
+   "child": "不动产与不动产的附合",
+   "parent": "附合",
+   "child_node": "g2509",
+   "parent_node": "g2490"
+  },
+  {
+   "child": "两种有偿回复",
+   "parent": "原则上无偿回复",
+   "child_node": "g2607",
+   "parent_node": "g2606"
+  },
+  {
+   "child": "除此之外都是无偿回复",
+   "parent": "原则上无偿回复",
+   "child_node": "g2610",
+   "parent_node": "g2606"
+  },
+  {
+   "child": "按份共有",
+   "parent": "共有",
+   "child_node": "g2757",
+   "parent_node": "g2735"
+  },
+  {
+   "child": "共同共有",
+   "parent": "共有",
+   "child_node": "g2824",
+   "parent_node": "g2735"
+  },
+  {
+   "child": "分割请求权",
+   "parent": "分割请求权和转让权",
+   "child_node": "g2775",
+   "parent_node": "g2773"
+  },
+  {
+   "child": "份额转让权",
+   "parent": "分割请求权和转让权",
+   "child_node": "g2781",
+   "parent_node": "g2773"
+  },
+  {
+   "child": "用益物权",
+   "parent": "海域使用权",
+   "child_node": "g2898",
+   "parent_node": "g2897"
+  },
+  {
+   "child": "可以设立抵押权",
+   "parent": "海域使用权",
+   "child_node": "g2899",
+   "parent_node": "g2897"
+  },
+  {
+   "child": "法定担保物权",
+   "parent": "担保物权",
+   "child_node": "g3230",
+   "parent_node": "g3229"
+  },
+  {
+   "child": "约定担保物权",
+   "parent": "担保物权",
+   "child_node": "g3231",
+   "parent_node": "g3229"
+  },
+  {
+   "child": "动产担保物权",
+   "parent": "担保物权",
+   "child_node": "g3233",
+   "parent_node": "g3232"
+  },
+  {
+   "child": "不动产担保物权",
+   "parent": "担保物权",
+   "child_node": "g3234",
+   "parent_node": "g3232"
+  },
+  {
+   "child": "权利担保物权",
+   "parent": "担保物权",
+   "child_node": "g3235",
+   "parent_node": "g3232"
+  },
+  {
+   "child": "抵押人的权利和义务",
+   "parent": "当事人的权利和义务",
+   "child_node": "g3320",
+   "parent_node": "g3319"
+  },
+  {
+   "child": "抵押权人的权利和义务",
+   "parent": "当事人的权利和义务",
+   "child_node": "g3326",
+   "parent_node": "g3319"
+  },
+  {
+   "child": "按份共同保证",
+   "parent": "共同保证",
+   "child_node": "g3589",
+   "parent_node": "g3587"
+  },
+  {
+   "child": "连带共同保证",
+   "parent": "共同保证",
+   "child_node": "g3593",
+   "parent_node": "g3587"
+  },
+  {
+   "child": "建设用地使用权",
+   "parent": "具有排他性的物权",
+   "child_node": "g3653",
+   "parent_node": "g3652"
+  },
+  {
+   "child": "所有权",
+   "parent": "具有排他性的物权",
+   "child_node": "g3654",
+   "parent_node": "g3652"
+  },
+  {
+   "child": "请求权能",
+   "parent": "债权的权能",
+   "child_node": "g3694",
+   "parent_node": "g3692"
+  },
+  {
+   "child": "保持受领权能",
+   "parent": "债权的权能",
+   "child_node": "g3696",
+   "parent_node": "g3692"
+  },
+  {
+   "child": "保全权能",
+   "parent": "债权的权能",
+   "child_node": "g3698",
+   "parent_node": "g3692"
+  },
+  {
+   "child": "处分权能",
+   "parent": "债权的权能",
+   "child_node": "g3700",
+   "parent_node": "g3692"
+  },
+  {
+   "child": "主给付义务",
+   "parent": "给付义务",
+   "child_node": "g3715",
+   "parent_node": "g3714"
+  },
+  {
+   "child": "从给付义务",
+   "parent": "给付义务",
+   "child_node": "g3718",
+   "parent_node": "g3714"
+  },
+  {
+   "child": "从属性",
+   "parent": "特性",
+   "child_node": "g3804",
+   "parent_node": "g3803"
+  },
+  {
+   "child": "补充性",
+   "parent": "特性",
+   "child_node": "g3806",
+   "parent_node": "g3803"
+  },
+  {
+   "child": "相对独立性",
+   "parent": "特性",
+   "child_node": "g3808",
+   "parent_node": "g3803"
+  },
+  {
+   "child": "明确的目的性",
+   "parent": "特性",
+   "child_node": "g3810",
+   "parent_node": "g3803"
+  },
+  {
+   "child": "免责的债务承担",
+   "parent": "债务承担",
+   "child_node": "g4477",
+   "parent_node": "g4473"
+  },
+  {
+   "child": "并存的债务承担",
+   "parent": "债务承担",
+   "child_node": "g4496",
+   "parent_node": "g4473"
+  },
+  {
+   "child": "约定解除",
+   "parent": "单方解除",
+   "child_node": "g4593",
+   "parent_node": "g4591"
+  },
+  {
+   "child": "法定解除",
+   "parent": "单方解除",
+   "child_node": "g4596",
+   "parent_node": "g4591"
+  },
+  {
+   "child": "权利瑕疵担保",
+   "parent": "瑕疵担保",
+   "child_node": "g4889",
+   "parent_node": "g4888"
+  },
+  {
+   "child": "质量瑕疵担保",
+   "parent": "瑕疵担保",
+   "child_node": "g4897",
+   "parent_node": "g4888"
+  },
+  {
+   "child": "提供真实情况的义务",
+   "parent": "借款人的主要义务",
+   "child_node": "g5143",
+   "parent_node": "g5142"
+  },
+  {
+   "child": "按期支付利息的义务",
+   "parent": "借款人的主要义务",
+   "child_node": "g5149",
+   "parent_node": "g5142"
+  },
+  {
+   "child": "按期返还借款的义务",
+   "parent": "借款人的主要义务",
+   "child_node": "g5151",
+   "parent_node": "g5142"
+  },
+  {
+   "child": "适租义务",
+   "parent": "出租人的义务",
+   "child_node": "g5287",
+   "parent_node": "g5286"
+  },
+  {
+   "child": "瑕疵担保义务",
+   "parent": "出租人的义务",
+   "child_node": "g5289",
+   "parent_node": "g5286"
+  },
+  {
+   "child": "维修义务",
+   "parent": "出租人的义务",
+   "child_node": "g5291",
+   "parent_node": "g5286"
+  },
+  {
+   "child": "合法转租",
+   "parent": "转租",
+   "child_node": "g5323",
+   "parent_node": "g5322"
+  },
+  {
+   "child": "非法转租",
+   "parent": "转租",
+   "child_node": "g5328",
+   "parent_node": "g5322"
+  },
+  {
+   "child": "交付租赁物的义务",
+   "parent": "出租人的义务",
+   "child_node": "g5372",
+   "parent_node": "g5370"
+  },
+  {
+   "child": "向出卖人付款的义务",
+   "parent": "出租人的义务",
+   "child_node": "g5374",
+   "parent_node": "g5370"
+  },
+  {
+   "child": "客运合同",
+   "parent": "运输合同",
+   "child_node": "g5553",
+   "parent_node": "g5543"
+  },
+  {
+   "child": "货运合同",
+   "parent": "运输合同",
+   "child_node": "g5575",
+   "parent_node": "g5543"
+  },
+  {
+   "child": "多式联运合同",
+   "parent": "运输合同",
+   "child_node": "g5598",
+   "parent_node": "g5543"
+  },
+  {
+   "child": "委托开发合同",
+   "parent": "技术开发合同",
+   "child_node": "g5611",
+   "parent_node": "g5609"
+  },
+  {
+   "child": "合作开发合同",
+   "parent": "技术开发合同",
+   "child_node": "g5622",
+   "parent_node": "g5609"
+  },
+  {
+   "child": "告知义务",
+   "parent": "寄存人的主要义务",
+   "child_node": "g5693",
+   "parent_node": "g5689"
+  },
+  {
+   "child": "声明义务",
+   "parent": "寄存人的主要义务",
+   "child_node": "g5696",
+   "parent_node": "g5689"
+  },
+  {
+   "child": "妥善保管仓储物的义务",
+   "parent": "保管人的主要义务",
+   "child_node": "g5717",
+   "parent_node": "g5714"
+  },
+  {
+   "child": "接受检查的义务",
+   "parent": "保管人的主要义务",
+   "child_node": "g5719",
+   "parent_node": "g5714"
+  },
+  {
+   "child": "危险通知义务",
+   "parent": "保管人的主要义务",
+   "child_node": "g5721",
+   "parent_node": "g5714"
+  },
+  {
+   "child": "返还仓储物的义务",
+   "parent": "保管人的主要义务",
+   "child_node": "g5723",
+   "parent_node": "g5714"
+  },
+  {
+   "child": "交付仓储物的义务",
+   "parent": "存货人的主要义务",
+   "child_node": "g5725",
+   "parent_node": "g5724"
+  },
+  {
+   "child": "提取仓储物的义务",
+   "parent": "存货人的主要义务",
+   "child_node": "g5729",
+   "parent_node": "g5724"
+  },
+  {
+   "child": "亲自处理委托事务",
+   "parent": "受托人的义务",
+   "child_node": "g5749",
+   "parent_node": "g5748"
+  },
+  {
+   "child": "报告的义务",
+   "parent": "受托人的义务",
+   "child_node": "g5750",
+   "parent_node": "g5748"
+  },
+  {
+   "child": "保管合同",
+   "parent": "实践性合同",
+   "child_node": "g5916",
+   "parent_node": "g5915"
+  },
+  {
+   "child": "自然人借款合同",
+   "parent": "实践性合同",
+   "child_node": "g5917",
+   "parent_node": "g5915"
+  },
+  {
+   "child": "借用合同",
+   "parent": "实践性合同",
+   "child_node": "g5918",
+   "parent_node": "g5915"
+  },
+  {
+   "child": "定金合同",
+   "parent": "实践性合同",
+   "child_node": "g5919",
+   "parent_node": "g5915"
+  },
+  {
+   "child": "合伙合同",
+   "parent": "不定期合同",
+   "child_node": "g5921",
+   "parent_node": "g5920"
+  },
+  {
+   "child": "物业服务合同",
+   "parent": "不定期合同",
+   "child_node": "g5922",
+   "parent_node": "g5920"
+  },
+  {
+   "child": "租赁合同",
+   "parent": "不定期合同",
+   "child_node": "g5923",
+   "parent_node": "g5920"
+  },
+  {
+   "child": "肖像许可使用合同",
+   "parent": "不定期合同",
+   "child_node": "g5924",
+   "parent_node": "g5920"
+  },
+  {
+   "child": "适当管理义务",
+   "parent": "管理人的义务",
+   "child_node": "g5963",
+   "parent_node": "g5962"
+  },
+  {
+   "child": "通知义务",
+   "parent": "管理人的义务",
+   "child_node": "g5966",
+   "parent_node": "g5962"
+  },
+  {
+   "child": "报告及计算义务",
+   "parent": "管理人的义务",
+   "child_node": "g5969",
+   "parent_node": "g5962"
+  },
+  {
+   "child": "没有法律上的根据",
+   "parent": "获益没有合法根据",
+   "child_node": "g6005",
+   "parent_node": "g6004"
+  },
+  {
+   "child": "没有合同上的根据",
+   "parent": "获益没有合法根据",
+   "child_node": "g6006",
+   "parent_node": "g6004"
+  },
+  {
+   "child": "人身的人格权",
+   "parent": "具体人格权",
+   "child_node": "g6110",
+   "parent_node": "g6102"
+  },
+  {
+   "child": "精神的人格权",
+   "parent": "具体人格权",
+   "child_node": "g6184",
+   "parent_node": "g6102"
+  },
+  {
+   "child": "生命权",
+   "parent": "人身的人格权",
+   "child_node": "g6111",
+   "parent_node": "g6110"
+  },
+  {
+   "child": "身体权",
+   "parent": "人身的人格权",
+   "child_node": "g6121",
+   "parent_node": "g6110"
+  },
+  {
+   "child": "健康权",
+   "parent": "人身的人格权",
+   "child_node": "g6157",
+   "parent_node": "g6110"
+  },
+  {
+   "child": "姓名权和名称权",
+   "parent": "精神的人格权",
+   "child_node": "g6185",
+   "parent_node": "g6184"
+  },
+  {
+   "child": "肖像权",
+   "parent": "精神的人格权",
+   "child_node": "g6227",
+   "parent_node": "g6184"
+  },
+  {
+   "child": "名誉权和荣誉权",
+   "parent": "精神的人格权",
+   "child_node": "g6276",
+   "parent_node": "g6184"
+  },
+  {
+   "child": "正当新闻报道不构成侵权",
+   "parent": "新闻报道侵权",
+   "child_node": "g6302",
+   "parent_node": "g6300"
+  },
+  {
+   "child": "不正当新闻报道构成侵权",
+   "parent": "新闻报道侵权",
+   "child_node": "g6303",
+   "parent_node": "g6300"
+  },
+  {
+   "child": "一方的婚前财产",
+   "parent": "夫妻个人特有财产",
+   "child_node": "g6625",
+   "parent_node": "g6624"
+  },
+  {
+   "child": "其他应当归一方的财产",
+   "parent": "夫妻个人特有财产",
+   "child_node": "g6629",
+   "parent_node": "g6624"
+  },
+  {
+   "child": "登记离婚",
+   "parent": "离婚",
+   "child_node": "g6710",
+   "parent_node": "g6697"
+  },
+  {
+   "child": "诉讼离婚",
+   "parent": "离婚",
+   "child_node": "g6724",
+   "parent_node": "g6697"
+  },
+  {
+   "child": "对军人婚姻的特殊保护",
+   "parent": "诉讼离婚的特殊保护",
+   "child_node": "g6746",
+   "parent_node": "g6745"
+  },
+  {
+   "child": "对女方的特殊保护",
+   "parent": "诉讼离婚的特殊保护",
+   "child_node": "g6748",
+   "parent_node": "g6745"
+  },
+  {
+   "child": "其他重大过错",
+   "parent": "法定过错",
+   "child_node": "g6830",
+   "parent_node": "g6825"
+  },
+  {
+   "child": "被收养人的条件",
+   "parent": "收养关系成立的实质条件",
+   "child_node": "g6850",
+   "parent_node": "g6849"
+  },
+  {
+   "child": "送养人的条件",
+   "parent": "收养关系成立的实质条件",
+   "child_node": "g6855",
+   "parent_node": "g6849"
+  },
+  {
+   "child": "收养人的条件",
+   "parent": "收养关系成立的实质条件",
+   "child_node": "g6862",
+   "parent_node": "g6849"
+  },
+  {
+   "child": "先遗嘱继承后法定继承原则",
+   "parent": "遗产分割的原则",
+   "child_node": "g7306",
+   "parent_node": "g7305"
+  },
+  {
+   "child": "保留胎儿继承份额原则",
+   "parent": "遗产分割的原则",
+   "child_node": "g7308",
+   "parent_node": "g7305"
+  },
+  {
+   "child": "物尽其用原则",
+   "parent": "遗产分割的原则",
+   "child_node": "g7316",
+   "parent_node": "g7305"
+  },
+  {
+   "child": "限定继承原则",
+   "parent": "被继承人债务清偿的原则",
+   "child_node": "g7344",
+   "parent_node": "g7343"
+  },
+  {
+   "child": "保留必留份原则",
+   "parent": "被继承人债务清偿的原则",
+   "child_node": "g7348",
+   "parent_node": "g7343"
+  },
+  {
+   "child": "连带责任原则",
+   "parent": "被继承人债务清偿的原则",
+   "child_node": "g7350",
+   "parent_node": "g7343"
+  },
+  {
+   "child": "一般过失",
+   "parent": "过失",
+   "child_node": "g7467",
+   "parent_node": "g7464"
+  },
+  {
+   "child": "重大过失",
+   "parent": "过失",
+   "child_node": "g7470",
+   "parent_node": "g7464"
+  },
+  {
+   "child": "用人单位责任",
+   "parent": "用人者责任",
+   "child_node": "g7596",
+   "parent_node": "g7594"
+  },
+  {
+   "child": "个人劳务使用人责任",
+   "parent": "用人者责任",
+   "child_node": "g7611",
+   "parent_node": "g7594"
+  },
+  {
+   "child": "共同侵权",
+   "parent": "数人侵权",
+   "child_node": "g7838",
+   "parent_node": "g7837"
+  },
+  {
+   "child": "无意思联络的数人侵权",
+   "parent": "数人侵权",
+   "child_node": "g7840",
+   "parent_node": "g7837"
+  },
+  {
+   "child": "堆放物倒塌的致害责任",
+   "parent": "物件致人损害的责任",
+   "child_node": "g7946",
+   "parent_node": "g7945"
+  },
+  {
+   "child": "妨碍通行物的致害责任",
+   "parent": "物件致人损害的责任",
+   "child_node": "g7948",
+   "parent_node": "g7945"
+  },
+  {
+   "child": "林木的致害责任",
+   "parent": "物件致人损害的责任",
+   "child_node": "g7953",
+   "parent_node": "g7945"
+  },
+  {
+   "child": "地下设施的致害责任",
+   "parent": "物件致人损害的责任",
+   "child_node": "g7955",
+   "parent_node": "g7945"
+  },
+  {
+   "child": "地面施工致人损害责任",
+   "parent": "地下设施的致害责任",
+   "child_node": "g7956",
+   "parent_node": "g7955"
+  },
+  {
+   "child": "地下设施致人损害责任",
+   "parent": "地下设施的致害责任",
+   "child_node": "g7961",
+   "parent_node": "g7955"
+  },
+  {
+   "child": "发表权",
+   "parent": "著作人身权",
+   "child_node": "g8072",
+   "parent_node": "g8071"
+  },
+  {
+   "child": "修改权",
+   "parent": "著作人身权",
+   "child_node": "g8090",
+   "parent_node": "g8071"
+  },
+  {
+   "child": "发行权",
+   "parent": "著作财产权",
+   "child_node": "g8103",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "出租权",
+   "parent": "著作财产权",
+   "child_node": "g8109",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "表演权",
+   "parent": "著作财产权",
+   "child_node": "g8127",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "放映权",
+   "parent": "著作财产权",
+   "child_node": "g8142",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "广播权",
+   "parent": "著作财产权",
+   "child_node": "g8146",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "信息网络传播权",
+   "parent": "著作财产权",
+   "child_node": "g8148",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "摄制权",
+   "parent": "著作财产权",
+   "child_node": "g8157",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "改编权",
+   "parent": "著作财产权",
+   "child_node": "g8159",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "翻译权",
+   "parent": "著作财产权",
+   "child_node": "g8163",
+   "parent_node": "g8100"
+  },
+  {
+   "child": "自己实施专利的权利",
+   "parent": "专利权人的权利",
+   "child_node": "g8255",
+   "parent_node": "g8254"
+  },
+  {
+   "child": "许可他人实施专利的权利",
+   "parent": "专利权人的权利",
+   "child_node": "g8256",
+   "parent_node": "g8254"
+  },
+  {
+   "child": "原始主体",
+   "parent": "商标权的主体",
+   "child_node": "g8269",
+   "parent_node": "g8268"
+  },
+  {
+   "child": "继受主体",
+   "parent": "商标权的主体",
+   "child_node": "g8271",
+   "parent_node": "g8268"
+  }
+ ],
+ "exception_candidates": [
+  {
+   "node": "g0013",
+   "line": 14,
+   "text": "有很多例外条件的较为复杂的制度需要整理",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0164",
+   "line": 183,
+   "text": "当然解释是指虽然法律没有明文规定，但是依据规范的目的进行衡量，某一事实比法律所规定的事实更有适用的理由时，直接将法律规定适用于该事实的法律解释方法。这种解释方法通常被称之为“举重以明轻，举轻以明重”。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0181",
+   "line": 200,
+   "text": "通常情况下，新的民事法律只适用于该法生效后所发生的民事关系，也就是说民法原则上没有溯及既往的效力。但在例外的情形下，民法也可以具有溯及力。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0188",
+   "line": 207,
+   "text": "2.对于居留在我国境内的外国人、无国籍人和经我国政府准许设立在中国境内的外国法人，原则上具有法律效力，但依法享有外交豁免权的人除外。另外，我国民法中某些专门由中国公民、法人或非法人组织享有的权利，对外国人、无国籍人和外国法人不具有法律效力。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0189",
+   "line": 208,
+   "text": "3.居住在外国的我国公民，原则上适用居住国的民法，而不适用我国民法。但是，依照我国法律以及我国与其他国家缔结的双边协定或我国参加的国际条约、认可的国际惯例，应当适用我国民法的，仍然适用我国民法。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0203",
+   "line": 224,
+   "text": "但是某些人身关系是财产关系产生的前提条件。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0220",
+   "line": 243,
+   "text": "民事法律规范不同于道德规范。在法律法规允许的范围内，民事主体可以合理谋求利益最大化，不需要遵循过高的道德标准。取得财产利益应当支付相应的对价，这一特点是市场经济条件下民事主体对于财产利益实现的基本要求。但在坚持民事主体平等、自愿的前提下，赠与、借用等民事法律关系中不适用有偿原则也是法律所允许的。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0235",
+   "line": 262,
+   "text": "民法基本原则在民事法律规范中处于指导和统帅的地位，但是通常在民事法律规范有具体规定的情况下，必须适用具体规定，不能直接适用民法基本原则。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0348",
+   "line": 383,
+   "text": "例如，姓名权的权利人是不能把姓名权转让给任何人的。当然也有例外，如营利法人的名称权就可以转让。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0385",
+   "line": 422,
+   "text": "第三，非法人组织，指不具有法人资格，但是依法能够以自己的名义从事民事活动的组织，包括个人独资企业、合伙企业、不具有法人资格的专业服务机构等。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0422",
+   "line": 459,
+   "text": "主物与从物独立存在，但是从属于一人所有05/50；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0423",
+   "line": 460,
+   "text": "②区分意义。主物转让的，从物随主物转让，但当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0429",
+   "line": 466,
+   "text": "根据我国现行法之规定，天然孳息，由所有权人取得；既有所有权人又有用益物权人的，由用益物权人取得。当事人另有约定的，按照约定。T14/48；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0622",
+   "line": 668,
+   "text": "法律另有规定的，依照其规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0646",
+   "line": 692,
+   "text": "我国《民法典》第1176条规定：“自愿参加具有一定风险的文体活动，因其他参加者的行为受到损害的，受害人不得请求其他参加者承担侵权责任;但是，其他参加者对损害的发生有故意或者重大过失的除外。”",
+   "cites": [
+    "civil-code:1176"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g0648",
+   "line": 694,
+   "text": "《民法典》第1177条规定：“合法权益受到侵害，情况紧迫且不能及时获得国家机关保护，不立即采取措施将使其合法权益受到难以弥补的损害的，受害人可以在保护自己合法权益的必要范围内采取扣留侵权人的财物等合理措施;但是，应当立即请求有关国家机关处理。受害人采取的措施不当造成他人损害的，应当承担侵权责任。",
+   "cites": [
+    "civil-code:1177"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g0718",
+   "line": 774,
+   "text": "支付彩礼，原则上不能请求权返还。但是，《婚姻法解释（二）》第10条规定了三种例外，在下列三种情况下，赠与人有权请求返还已经支付的彩礼：",
+   "cites": [
+    "婚姻法解释（二）:10"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g0734",
+   "line": 794,
+   "text": "民事权利能力是法律赋予民事主体享有民事权利和承担民事义务的一种可能性，还没有为民事主体带来实际的利益，但是它是民事主体获得民事权利的前提。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0749",
+   "line": 809,
+   "text": "根据这一规定，尚未出生的胎儿不具有民事权利能力，不是合法的民事主体，不能享受民事权利，承担民事义务。但是胎儿毕竟未来会成为民事主体，所以为了保护胎儿的利益，法律也做了特别规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0750",
+   "line": 810,
+   "text": "涉及遗产继承、接受赠与等胎儿利益的保护，胎儿视为具有民事权利能力。但是胎儿娩出时为死体的，其民事权利能力自始不存在。（视为代表一般没有，拟制）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0768",
+   "line": 828,
+   "text": "但是如果被宣告人尚未死亡，则其在被宣告死亡期间依然是合法的民事主体，其所从事的民事行为依然有效。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0788",
+   "line": 850,
+   "text": "对于年满16周岁而不满18周岁，但是以自己的劳动收入为主要生活来源的未成年人，法律将其视为完全民事行为能力人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0834",
+   "line": 902,
+   "text": "③其他愿意担任监护人的个人或者组织，但是须经未成年人住所地的居民委员会、村民委员会或者民政部门同意。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0841",
+   "line": 909,
+   "text": "④其他愿意担任监护人的个人或者组织，但是须经被监护人住所地的居民委员会、村民委员会或者民政部门同意。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0885",
+   "line": 959,
+   "text": "但是其不是监护人",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0918",
+   "line": 998,
+   "text": "(5)除外条件：对被监护人实施故意犯罪的不能恢复监护人资格",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0979",
+   "line": 1075,
+   "text": "②自然人被宣告死亡但是并未死亡的，不影响该自然人在被宣告死亡期间实施的民事法律行为的效力。（并不一定有效）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g0988",
+   "line": 1084,
+   "text": "②例外：其配偶再婚或者向婚姻登记机关书面声明不愿意恢复的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1106",
+   "line": 1219,
+   "text": "出资人滥用权利的行为，在某种意义上就是一般的侵权行为，往往也会侵害法人或者其他出资人的利益，应当承担一定的民事责任。但是出资人权利滥用的行为，应当是在其合法享有的权利基础上进行的行为，如果不是基于出资人的权利，也不构成出资人权利滥用的行为。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1133",
+   "line": 1250,
+   "text": "事业单位法人设理事会的，除法律另有规定外，理事会为其决策机构。事业单位法人的法定代表人依照法律、行政法规或者法人章程的规定产生。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1160",
+   "line": 1277,
+   "text": "但是，捐助法人依据该决定与善意相对人形成的民事法律关系不受影响。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1213",
+   "line": 1336,
+   "text": "《民法》第61条第3款：“法人章程或者法人权力机构对法定代表人代表权的限制，不得对抗善意相对人。”恶意无效",
+   "cites": [
+    "civil-code:61"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g1241",
+   "line": 1372,
+   "text": "法律后果：《民法典》第67条第2款规定：“法人分立的，其权利和义务由分立后的法人享有连带债权，承担连带债务，但债权人和债务人另有约定的除外。”",
+   "cites": [
+    "civil-code:67"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g1253",
+   "line": 1384,
+   "text": "第65条规定：“法人的实际情况与登记的事项不一致的，不得对抗善意相对人。”",
+   "cites": [
+    "civil-code:65"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g1273",
+   "line": 1406,
+   "text": "法人的董事、理事等执行机构或者决策机构的成员为清算义务人。法律、行政法规另有规定的，依照其规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1278",
+   "line": 1411,
+   "text": "清算期间法人存续，但是不得从事与清算无关的活动。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1326",
+   "line": 1470,
+   "text": "（3）合伙协议经全体合伙人签名、盖章后生效（没有例外）。修改或者补充合伙协议，应当经全体合伙人一致同意；但是，合伙协议另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1354",
+   "line": 1502,
+   "text": "除合伙协议另有约定外，合伙企业的下列事项应当经全体合伙人一致同意：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1365",
+   "line": 1515,
+   "text": "1.除法律另有规定外，合伙人为2个以上50个以下，且至少应当有一个普通合伙人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1377",
+   "line": 1529,
+   "text": "2.有限合伙人退伙的例外规定",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1387",
+   "line": 1541,
+   "text": "作为一个抽象概念，民事法律行为是从合同、婚姻、收养、遗嘱等具体行为中抽象而来的，以意思表示为构成要素，与事实行为截然不同。在描述方面有变化但是内容无变化。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1421",
+   "line": 1575,
+   "text": "区分的意义主要在于：除非法律另有规定或当事人另有约定，从行为随着主行为的成立而成立，也随着主行为的无效而无效。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1473",
+   "line": 1633,
+   "text": "（3）当事人对釆用数据电文形式的意思表示的生效时间另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1475",
+   "line": 1635,
+   "text": "无相对人的意思表示，表示完成时生效。法律另有规定的，依照其规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1538",
+   "line": 1714,
+   "text": "3.违反法律、行政法规的强制性规定的民事法律行为无效，但是该强制性规定不导致该民事法律行为无效的除外。违背公序良俗的民事法律行为无效。T20/29，19；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1635",
+   "line": 1832,
+   "text": "(2)无权代理行为，但表见代理除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1713",
+   "line": 1916,
+   "text": "自然人、法人可以通过代理人进行民事法律行为。但是，依照法律规定或者双方当事人约定，应当由本人实施的民事法律行为，不得通过代理人进行。这些行为包括：T11/46；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1724",
+   "line": 1929,
+   "text": "有时，尽管委托合同成立了，但是合同中没有明确的授权条款，代理权仍不发生。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1741",
+   "line": 1946,
+   "text": "法定代理不需要被代理人的授权（而且一般被代理人也无授权能力），但是作为第三人仍然有权要求代理人证明其代理资格。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1764",
+   "line": 1973,
+   "text": "代理人对转委托的第三人行为承担责任。转委托代理未经被代理人同意或者追认的，代理人应当对转委托的第三人的行为承担责任，但是在紧急情况下代理人为了维护被代理人的利益需要转委托第三人代理的除外。T16/29；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1791",
+   "line": 2002,
+   "text": "（2）效力：该行为通常为无效行为，但是被代理人同意或者追认的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1792",
+   "line": 2003,
+   "text": "《民法》第168条第1款规定：“代理人不得以被代理人的名义与自己实施民事法律行为，但是被代理人同意或者追认的除外。”",
+   "cites": [
+    "civil-code:168"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g1795",
+   "line": 2006,
+   "text": "（2）效力：该行为原则上无效，但是被代理的双方同意或者追认的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1796",
+   "line": 2007,
+   "text": "第168条第2款规定：“代理人不得以被代理人的名义与自己同时代理的其他人实施民事法律行为，但是披代理的双方同意或者追认的除外。”",
+   "cites": [
+    "civil-code:168"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g1832",
+   "line": 2047,
+   "text": "行为人实施的行为未被追认的，善意相对人有权（1）请求行为人履行债务或者（2）就其受到的损害请求行为人赔偿，但是赔偿的范围不得超过被代理人追认时相对人所能获得的利益。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1900",
+   "line": 2125,
+   "text": "当事人在一审期间未提出诉讼时效抗辩，在二审期间提出的，人民法院不予支持，但其基于新的证据能够证明对方当事人的请求权已过诉讼时效期间的情形除外。当事人未按照前款规定提出诉讼时效抗辩，以诉讼时效期间届满为由申请再审或者提出再审抗辩的，人民法院不予支持。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1904",
+   "line": 2129,
+   "text": "（一）支配权等不适用诉讼时效",
+   "cites": [],
+   "formalized_by": [
+    "c196"
+   ]
+  },
+  {
+   "node": "g1907",
+   "line": 2132,
+   "text": "例：当事人请求撤销合同，不是债权请求权，是形成权，不适用诉讼时效；当事人请求确认合同无效，不是债权请求权，也不适用诉讼时效；业主大会请求业主缴付公共维修基金，属于建筑物区分所有权的内容，并非债权请求权，不适用诉讼时效。按份共有人请求分割共有物，是形成权，不适用诉讼时效。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1909",
+   "line": 2134,
+   "text": "依据诉讼时效制度的立法目的，诉讼时效仅对请求权适用。另外，并非所有的请求权都适用诉讼时效。不适用诉讼时效的请求权包括：F13/16；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1913",
+   "line": 2140,
+   "text": "（4）依法不适用诉讼时效的其他请求权。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g1926",
+   "line": 2153,
+   "text": "《民法》第188条第2款的规定：“诉讼时效期间自权利人知道或者应当知道权利受到损害以及义务人之日起计算。法律另有规定的，依照其规定。但是自权利受到损害之日起超过二十年的，人民法院不予保护；有特殊情况的，人民法院可以根据权利人的申请决定延长。”",
+   "cites": [
+    "civil-code:188"
+   ],
+   "formalized_by": [
+    "c188-20y"
+   ]
+  },
+  {
+   "node": "g2048",
+   "line": 2296,
+   "text": "物权优先于债权也有例外，个别情形下法律赋予某些债权以优先于物权的效力，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2051",
+   "line": 2299,
+   "text": "物权相互之间的优先效力要解决的是能够并存且可能发生权利冲突的若干个物权之间何者优先的问题。该问题的解决规则是原则上成立在先则效力优先，但法律另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2206",
+   "line": 2464,
+   "text": "当事人之间订立有关设立、变更、转让和消灭不动产物权的合同，除法律另有规定或者当事人另有约定外，自合同成立时生效；未办理物权登记的，不影响合同的效力。（《民法》第215条）债权行为的效力与物权变动效果的区分原则的内容：",
+   "cites": [
+    "civil-code:215"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2209",
+   "line": 2467,
+   "text": "③《民法》第209条第1款规定：“不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但是法律另有规定的除外。”第2款规定：“依法属于国家所有的自然资源，所有权可以不登记。”",
+   "cites": [
+    "civil-code:209"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2211",
+   "line": 2469,
+   "text": "基于法律行为的不动产物权变动，除法律另有规定外，一律以登记作为物权变动的生效要件。T20/29，19；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2228",
+   "line": 2486,
+   "text": "（设立时，未登记亦可产生对抗效力；转让、互换时，未经登记不得对抗善意第三人。）（熟人社会）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2234",
+   "line": 2492,
+   "text": "基于法律行为的动产物权变动，除法律另有规定外，以交付作为物权设立和转让的生效要件。须符合下列要件方能发生物权变动：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2241",
+   "line": 2499,
+   "text": "2.例外规则",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2280",
+   "line": 2540,
+   "text": "(设立时，未登记亦可产生对抗效力;转让时，未经登记不得对抗善意第三人。)",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2285",
+   "line": 2545,
+   "text": "(一)一般规则基于法律行为的动产物权变动，除法律另有规定外，以交付作为物权设立和转让的生效要件。即，有权处分+合同+交付=物权变动。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2315",
+   "line": 2579,
+   "text": "不动产首次登记，是指不动产权利第一次登记。未办理不动产首次登记的，不得办理不动产其他类型登记，但法律、行政法规另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2357",
+   "line": 2625,
+   "text": "不动产登记是基于法律行为发生的不动产物权变动的公示方式，对该公示产生何种效力以及欠缺该公示产生何种法律后果，《民法典》釆取的是登记生效和登记对抗相结合的做法，其中，登记生效主义是原则，登记对抗主义是例外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2358",
+   "line": 2626,
+   "text": "根据《民法典》的有关规定，不动产物权的设立、变更、转让和消灭，经依法登记，发生效力；未经登记，不发生效力，但法律另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2365",
+   "line": 2633,
+   "text": "1.土地承包经营权互换、转让的，未经登记，不得对抗善意第三人；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2366",
+   "line": 2634,
+   "text": "2.地役权设立时，未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2516",
+   "line": 2806,
+   "text": "加工后其所有权的确定规则是：加工物的所有权原则上归原材料的所有人，如果加工后增加的价值明显超过了原材料的价值，则归加工人，但加工人具有恶意的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2550",
+   "line": 2840,
+   "text": "《民法》第319条规定：“拾得漂流物、发现埋藏物或者隐藏物的，参照拾得遗失物的有关规定。法律另有规定的，依照其规定。”",
+   "cites": [
+    "civil-code:319"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2574",
+   "line": 2870,
+   "text": "占有委托物是基于所有权的意思而占有的物，下列三种物不适用善意取得：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2581",
+   "line": 2879,
+   "text": "如毒品、武器、淫秽书刊，国家不允许私人取得所有权，自不适用善意取得。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2597",
+   "line": 2901,
+   "text": "（3）善意受让人取得动产后，该动产上的原有权利消灭，但是，善意受让人在受让时知道或者应当知道该权利的除外。（原始取得）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2602",
+   "line": 2906,
+   "text": "4.遗失物不适用善意取得（《民法》第312条）T11/60；",
+   "cites": [
+    "civil-code:312"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2603",
+   "line": 2907,
+   "text": "遗失物原则上不适用善意取得制度。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2777",
+   "line": 3099,
+   "text": "共有人约定不得分割共有的不动产或者动产，以维持共有关系的，应当按照约定，但是共有人有重大理由需要分割的，可以请求分割;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2787",
+   "line": 3109,
+   "text": "按份共有人之间转让共有份额，其他按份共有人主张优先购买的，不予支持，但按份共有人之间另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2801",
+   "line": 3125,
+   "text": "优先购买权的除外条件（《物权法解释一》第12条第2款）",
+   "cites": [
+    "物权法解释一:12"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2809",
+   "line": 3133,
+   "text": "根据《民法典》第301条规定，①处分共有的不动产或者动产以及②对共有的不动产或者动产作重大修缮、变更性质或者用途的，应当经占份额三分之二以上的按份共有人同意，但是共有人之间另有约定的除外。",
+   "cites": [
+    "civil-code:301"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2812",
+   "line": 3136,
+   "text": "因共有的不动产或者动产产生的债权债务，在对外关系上，共有人享有连带债权、承担连带债务，但是法律另有规定或者第三人知道共有人不具有连带债权债务关系的除外;F15/16；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2813",
+   "line": 3137,
+   "text": "在共有人内部关系上，除共有人另有约定外，按份共有人按照份额享有债权、承担债务。偿还债务超过自己应当承担份额的共有人，有权向其他共有人追偿。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2835",
+   "line": 3163,
+   "text": "4.被宣告无效或被撤销的婚姻，当事人同居期间所得的财产，按共同共有处理。但有证据证明为当事人一方所有的除外。（《婚姻法解释一》第15条）",
+   "cites": [
+    "婚姻法解释一:15"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g2841",
+   "line": 3169,
+   "text": "根据该条规定，共有人约定不得分割共有的不动产或者动产，以维持共有关系的，应当按照约定，但是共有人有重大理由需要分割的，可以请求分割;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2848",
+   "line": 3176,
+   "text": "处分共有财产或者对共有财产作重大修缮、变更性质或者用途的，应当经全体共同共有人同意，除非共有人之间另有约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2853",
+   "line": 3181,
+   "text": "在共有人内部关系上，除共有人另有约定外，共同共有人共同享有债权、承担债务。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2950",
+   "line": 3286,
+   "text": "土地承包经营权互换、转让的，未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2962",
+   "line": 3300,
+   "text": "土地承包经营权互换、转让的，当事人可以向登记机构申请登记；未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2966",
+   "line": 3304,
+   "text": "当事人可以向登记机构申请土地经营权登记；未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g2992",
+   "line": 3330,
+   "text": "（2）5年以上，物权，未经登记，不得对抗善意第三人。F20案例；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3007",
+   "line": 3345,
+   "text": "当事人可以向登记机构申请登记；未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3020",
+   "line": 3360,
+   "text": "原则上为国有土地，例外情形下集体土地也可以设立建设用地使用权。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3096",
+   "line": 3446,
+   "text": "(5)居住权原则上是无偿的，当事人另有约定的除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3112",
+   "line": 3462,
+   "text": "(1)按照合同的约定占有、使用他人的住宅。使用的目的应当限于自己生活居住的需要，故不得出租设立居住权的住宅，但是当事人另有约定的除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3114",
+   "line": 3464,
+   "text": "（2）设立居住权的住宅不得出租，但是当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3167",
+   "line": 3519,
+   "text": "地役权合同应当采取书面形式，地役权自地役权合同生效时设立。当事人要求登记的，可以向登记机构申请地役权登记；未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3173",
+   "line": 3525,
+   "text": "土地承包经营权、建设用地使用权等转让的，除合同另有约定外，地役权一并转让。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3220",
+   "line": 3577,
+   "text": "此外，对抵押权而言，债权转让的，担保该债权的抵押权一并转让，但是法律另有规定或者当事人另有约定的除外。F19/38；",
+   "cites": [],
+   "formalized_by": [
+    "c407-follow"
+   ]
+  },
+  {
+   "node": "g3260",
+   "line": 3621,
+   "text": "但是，以动产抵押的，不得对抗正常经营活动中已经支付合理价款并取得抵押财产的买受人。即此种情况下不得追及。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3277",
+   "line": 3638,
+   "text": "②宅基地、自留地、自留山等集体所有的土地使用权，但法律规定可以抵押的除外；（宅自留）、",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3307",
+   "line": 3668,
+   "text": "未经登记的动产抵押权，不得对抗善意第三人。（所有）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3308",
+   "line": 3669,
+   "text": "（3）正常经营（登记对抗的例外）（《民法》第404条）",
+   "cites": [
+    "civil-code:404"
+   ],
+   "formalized_by": [
+    "c404"
+   ]
+  },
+  {
+   "node": "g3309",
+   "line": 3670,
+   "text": "以动产抵押的不得对抗正常经营活动中已支付合理价款并取得抵押财产的买受人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3315",
+   "line": 3678,
+   "text": "包括主债权及利息、违约金、损害赔偿金和实现抵押权的费用。抵押合同另有约定的，从其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3318",
+   "line": 3683,
+   "text": "孳息的处理规则是债务人不履行到期债务或者发生当事人约定的实现抵押权的情形，致使抵押财产被人民法院依法扣押的，自扣押之日起，抵押权人有权收取该抵押财产的天然孳息或者法定孳息，但是抵押权人未通知应当清偿法定孳息义务人的除外。前述孳息应当先充抵收取孳息的费用。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3335",
+   "line": 3700,
+   "text": "抵押权人与抵押人可以协议变更抵押权顺位以及被担保的债权数额等内容。但是，抵押权的变更未经其他抵押权人书面同意的，不得对其他抵押权人产生不利影响。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3336",
+   "line": 3701,
+   "text": "债务人以自己的财产设定抵押，抵押权人放弃该抵押权、抵押权顺位或者变更抵押权的，其他担保人在抵押权人丧失优先受偿权益的范围内免除担保责任，但是其他担保人承诺仍然提供担保的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3361",
+   "line": 3728,
+   "text": "①抵押期间，抵押人可以转让抵押财产。当事人另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3373",
+   "line": 3740,
+   "text": "①若抵押权已经登记，则该租赁关系不得对抗已登记的抵押权。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3381",
+   "line": 3748,
+   "text": "（3）动产浮动抵押权自抵押合同生效时设立;未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3384",
+   "line": 3751,
+   "text": "①与普通动产抵押权相同，抵押权自抵押合同生效时设立；未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3386",
+   "line": 3753,
+   "text": "②设立动产浮动抵押的，不得对抗正常经营活动中已支付合理价款并取得抵押财产的买受人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3402",
+   "line": 3773,
+   "text": "①最高额抵押担保的债权确定前，部分债权转让的，最高额抵押权不得转让，但是当事人另有约定的除外。F19/38；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3439",
+   "line": 3818,
+   "text": "此外，质权人还可以放弃质权。债务人以自己的财产出质，质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任，但是其他担保人承诺仍然提供担保的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3442",
+   "line": 3823,
+   "text": "质权的担保范围包括主债权及利息、违约金、损害赔偿金、质押财产保管费用和实现质权的费用。质押合同另有约定的，按照约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3449",
+   "line": 3834,
+   "text": "第二，收取质押财产的孳息，质押合同另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3472",
+   "line": 3857,
+   "text": "保证质押财产无瑕疵，否则因此造成质权人其他财产损害的，应当承担赔偿责任。但质权人在质押财产移交时明知质押财产有瑕疵而予以接受的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3498",
+   "line": 3883,
+   "text": "(1)基金份额、股权、应收账款出质后，不得转让，但是岀质人与质权人协商同意的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3500",
+   "line": 3885,
+   "text": "(2)知识产权中的财产权出质后，出质人不得转让或者许可他人使用，但是出质人与质权人协商同意的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3513",
+   "line": 3900,
+   "text": "2.债权人对该动产的占有与其债权的发生出自同一个法律关系，但企业间留置除外。08/41好题；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3575",
+   "line": 3966,
+   "text": "《民法典》第416条规定了价款债权抵押的超级优先效力。根据该条规定，动产抵押担保的主债权是抵押物的价款，标的物交付后十日内办理抵押登记的，该抵押权人优先于抵押物买受人的其他担保物权人受偿，但是留置权人除外。",
+   "cites": [
+    "civil-code:416"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g3595",
+   "line": 3986,
+   "text": "(2)追偿。保证人承担保证责任后，除当事人另有约定外，有权在其承担保证责任的范围内向债务人追偿，享有债权人对债务人的权利，但是不得损害债权人的利益。(《民法典》第700条)",
+   "cites": [
+    "civil-code:700"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g3793",
+   "line": 4216,
+   "text": "非因合同产生的债权债务关系，适用有关该债权债务关系的法律规定；没有规定的，适用《民法典合同编・通则》的有关规定，但是根据其性质不能适用的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3837",
+   "line": 4260,
+   "text": "定金不交付，主合同不成立或不生效，但主合同已经履行或者已经履行主要部分的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3850",
+   "line": 4273,
+   "text": "此处的“不履行”指的是完全不履行。因迟延履行或者其他违约行为，致使合同目的不能实现，可以适用定金罚则，除非法律另有规定或者当事人另有约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3875",
+   "line": 4298,
+   "text": "除法律另有规定或者当事人另有约定外，当事人对合同是否成立存在争议，一般应当认定合同成立。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3905",
+   "line": 4330,
+   "text": "C.要约人与受要约人对采用数据电文形式的意思表示的生效时间另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3952",
+   "line": 4383,
+   "text": "要约没有确定承诺期限的，若要约是以对话方式作出的，除当事人另有约定外，受要约人应当即时作出承诺；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3962",
+   "line": 4395,
+   "text": "《民法》第483条规定：“承诺生效时合同成立，但是法律另有规定或者当事人另有约定的除外。”",
+   "cites": [
+    "civil-code:483"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g3978",
+   "line": 4413,
+   "text": "（1）迟发迟到：新要约，但要约人及时通知受要约人该承诺有效的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3979",
+   "line": 4414,
+   "text": "（2）期内发亦迟到：新要约，但要约人及时通知受要约人该承诺有效的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g3980",
+   "line": 4415,
+   "text": "（3）期内发本能到而不到：承诺有效，受要约人在承诺期限内发出承诺，按照通常情形能够及时到达要约人， 但是因其他原因承诺到达要约人时超过承诺期限的， 除要约人及时通知受要约人因承诺超过期限不接受该承诺外，该承诺有效。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4063",
+   "line": 4508,
+   "text": "法律、行政法规规定或者当事人约定合同应当采用书面形式订立，当事人未采用书面形式但是一方已经履行主要义务，对方接受时，该合同成立。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4067",
+   "line": 4512,
+   "text": "除当事人另有约定外，当事人一方通过互联网等信息网络发布的商品或者服务信息符合要约条件的，对方选择该商品或者服务并提交订单成功时合同成立。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4071",
+   "line": 4516,
+   "text": "（2）没有主营业地的，其住所地为合同成立的地点。当事人另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4074",
+   "line": 4519,
+   "text": "除当事人另有约定外，采用合同书形式订立合同的，最后签名、盖章或者按指印的地点为合同成立的地点。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4104",
+   "line": 4555,
+   "text": "除法律规定和当事人另有约定外，合同的权利和义务只能由当事人享有和承担，第三人不享有合同权利，也不承担合同义务。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4141",
+   "line": 4594,
+   "text": "依法成立的合同，除法律另有规定或者当事人另有约定外，自成立时生效。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4187",
+   "line": 4641,
+   "text": "以支付金钱为内容的债，除法律另有规定或者当事人另有约定外，债权人可以请求债务人以实际履行地的法定货币履行。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4193",
+   "line": 4647,
+   "text": "债务人可以随时履行，债权人也可以随时请求履行，但是应当给对方必要的准备时间。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4207",
+   "line": 4661,
+   "text": "④电子合同当事人对交付方式、交付时间另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4220",
+   "line": 4674,
+   "text": "标的确定后不得变更，但是经对方同意的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4221",
+   "line": 4675,
+   "text": "可选择的标的发生不能履行情形的，享有选择权的当事人不得选择不能履行的标的，但是该不能履行的情形是由对方造成的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4242",
+   "line": 4696,
+   "text": "（1）实际承担债务超过自己份额的连带债务人，有权就超出部分在其他连带债务人未履行的份额范围内向其追偿，并相应地享有债权人的权利，但是不得损害债权人的利益。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4273",
+   "line": 4727,
+   "text": "（2）债务人不履行债务，第三人对履行该债务具有合法利益的，第三人有权向债权人代为履行；但是，根据债务性质、按照当事人约定或者依照法律规定只能由债务人履行的除外。债权人接受第三人履行后，其对债务人的债权转让给第三人，但是债务人和第三人有约定的则依照约定处理。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4276",
+   "line": 4730,
+   "text": "债权人可以拒绝债务人提前履行债务，但是提前履行不损害债权人利益的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4280",
+   "line": 4734,
+   "text": "债权人可以拒绝债务人部分履行债务，但是部分履行不损害债权人利益的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4368",
+   "line": 4841,
+   "text": "债权人有优先受偿权，但是被其他债权人冻结的除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4441",
+   "line": 4930,
+   "text": "当事人约定非金钱债权不得转让的，不得对抗善意第三人；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4442",
+   "line": 4931,
+   "text": "当事人约定金钱债权不得转让的，不得对抗第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4456",
+   "line": 4945,
+   "text": "(2)受让人取得与债权有关的从权利，但该从权利专属于债权人自身的除外；受让人取得从权利不因该从权利未办理转移登记手续或者未转移占有而受到影响。（从属性）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4491",
+   "line": 4980,
+   "text": "（2）债务人转移债务的，新债务人应当承担与主债务有关的从债务，但是该从债务专属于原债务人自身的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4519",
+   "line": 5012,
+   "text": "（2）法人分立的，其权利和义务由分立后的法人享有连带债权，承担连带债务，但是债权人和债务人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4564",
+   "line": 5059,
+   "text": "债务人在履行主债务之外还应当支付利息和实现债权的有关费用，其给付不足以清偿全部债务的，除当事人另有约定外，应当按照下列顺序履行：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4574",
+   "line": 5069,
+   "text": "①《民法》第719条第1款规定：“承租人拖欠租金的，次承租人可以代承租人支付其欠付的租金和违约金，但是转租合同对出租人不具有法律约束力的除外。”第2款规定：“次承租人代为支付的租金和违约金，可以折抵次承租人应当向承租人支付的租金；超出其应付的租金数额的，可以向承租人追偿。”",
+   "cites": [
+    "civil-code:719"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g4605",
+   "line": 5104,
+   "text": "以持续履行的债务为内容的不定期合同，当事人可以随时解除合同，但是应当在合理期限之前通知对方。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4644",
+   "line": 5145,
+   "text": "（3）违约责任。合同因违约解除的，解除权人可以请求违约方承担违约责任，但是当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4645",
+   "line": 5146,
+   "text": "（4）主合同解除后，担保人对债务人应当承担的民事责任仍应当承担担保责任，但是担保合同另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4689",
+   "line": 5196,
+   "text": "（5）（债务人的取回权）但是，债权人①未履行对债务人的到期债务，或者债权人向提存部门②书面放弃领取提存物权利的，债务人负担提存费用后有权取回提存物。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4746",
+   "line": 5257,
+   "text": "《民法典》第590条规定：“当事人一方因不可抗力不能履行合同的，根据不可抗力的影响，部分或者全部免除责任，但是法律另有规定的除外。",
+   "cites": [
+    "civil-code:590"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g4750",
+   "line": 5261,
+   "text": "指由法律特别规定的只适用于个别合同的违约责任免责事由。如《民法》第823条第1款规定：“承运人应当对运输过程中旅客的伤亡承担损害赔偿责任；但是，伤亡是旅客自身健康原因造成的或者承运人证明伤亡是旅客故意、重大过失造成的除外。”此处的旅客自身健康原因、旅客故意或重大过失就属于特殊的法定免责事由。",
+   "cites": [
+    "civil-code:823"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g4763",
+   "line": 5276,
+   "text": "（2）有下列情形之一的除外：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4767",
+   "line": 5282,
+   "text": "（3）有前述规定的除外情形之一，致使不能实现合同目的的，人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系，但是不影响违约责任的承担。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4881",
+   "line": 5411,
+   "text": "除当事人另有约定外，标的物的从物应随同交付。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4892",
+   "line": 5422,
+   "text": "除法律另有规定外，出卖人就交付的标的物，负有保证第三人对该标的物不享有任何权利的义务。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4894",
+   "line": 5424,
+   "text": "②买受人有证据证明第三人对标的物享有权利的，可以中止支付相应的价款，但是出卖人提供适当担保的除外。（《民法》第613条）",
+   "cites": [
+    "civil-code:613"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g4926",
+   "line": 5456,
+   "text": "根据《民法典・合同编》的规定，标的物毁损、灭失的风险，在标的物交付之前由出卖人承担，交付之后由买受人承担，但是法律另有规定或者当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4929",
+   "line": 5459,
+   "text": "①对房屋的转移占有，视为房屋的交付使用，但当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4931",
+   "line": 5461,
+   "text": "③买受人接到出卖人的书面交房通知，无正当理由拒绝接收的，房屋毁损、灭失的风险自书面交房通知确定的交付使用之日起由买受人承担，但法律另有规定或者当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4948",
+   "line": 5478,
+   "text": "出卖人出卖交由承运人运输的在途标的物，除当事人另有约定的以外，毁损、灭失的风险自合同成立时起由买受人承担。T20/34；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4961",
+   "line": 5491,
+   "text": "根据《民法典・合同编》的规定，除当事人另有约定外，标的物在交付之前产生的孳息，归出卖人所有，交付之后产生的孳息，归买受人所有。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4987",
+   "line": 5519,
+   "text": "出卖人对标的物保留的所有权，未经登记，不得对抗善意第三人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4990",
+   "line": 5522,
+   "text": "当事人约定出卖人保留合同标的物的所有权，在标的物的所有权转移前，买受人有下列情形之造成出卖人损害的，除当事人另有约定外，出卖人有权取回标的物：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g4994",
+   "line": 5526,
+   "text": "取回权的例外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5024",
+   "line": 5560,
+   "text": "②无权请求使用费，有约定除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5094",
+   "line": 5634,
+   "text": "（1）赠与人在赠与财产的权利转移之前可以撤销赠与。例外：T16/60；F15/11；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5134",
+   "line": 5674,
+   "text": "（3）除自然人之间借款当事人另有约定或法律另有规定外，借款合同一般为要式合同、有偿合同、诺成合同。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5152",
+   "line": 5692,
+   "text": "借款人应当按照约定的期限返还借款。借款人未按照约定的期限返还借款的，应当按照约定或者国家有关规定支付逾期利息。借款人提前偿还借款的，除当事人另有约定的以外，应当按照实际借款的期间计算利息。借款人可以在还款期限届满之前向贷款人申请展期，贷款人同意的，可以展期。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5174",
+   "line": 5718,
+   "text": "保证合同是主债权债务合同的从合同，以主债权债务合同的成立为前提，因主债权债务合同的消灭而消灭。同时，主债权债务合同无效的，保证合同无效，但是法律另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5188",
+   "line": 5732,
+   "text": "（1）在保证合同效力的认定上需要强调的是，机关法人不得为保证人，但是经国务院批准为使用外国政府或者国际经济组织贷款进行转贷的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5193",
+   "line": 5737,
+   "text": "②主债权债务合同无效，保证合同无效，但是法律另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5203",
+   "line": 5747,
+   "text": "债权人未经保证人书面同意，允许债务人转移全部或者部分债务，保证人对未经其同意转移的债务不再承担保证责任，但是债权人和保证人另有约定的除外。F11/19；T14/31；TF18/49，29；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5215",
+   "line": 5761,
+   "text": "保证的范围包括主债权及利息、违约金、损害赔偿金和实现债权的费用。当事人另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5221",
+   "line": 5767,
+   "text": "保证人承担保证责任后，除当事人另有约定外，有权在其承担保证责任的范围内向债务人追偿，享有债权人对债务人的权利，但是不得损害债权人的利益。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5232",
+   "line": 5782,
+   "text": "但是有下列情形之一的除外：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5250",
+   "line": 5800,
+   "text": "债权人与保证人可以约定保证期间，但是约定的保证期间早于主债务履行期限或者与主债务履行期限同时届满的，视为没有约定；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5292",
+   "line": 5846,
+   "text": "对租赁物进行维修，但当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5326",
+   "line": 5884,
+   "text": "出租人知道或者应当知道承租人转租，但是在六个月内未提出异议的，视为出租人同意转租",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5327",
+   "line": 5885,
+   "text": "承租人经出租人同意将租赁物转租给第三人，转租期限超过承租人剩余租赁期限的，超过部分的约定对出租人不具有法律约束力，但是出租人与承租人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5338",
+   "line": 5896,
+   "text": "（3）优先购买权的例外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5344",
+   "line": 5904,
+   "text": "出租人未通知承租人或者有其他妨害承租人行使优先购买权情形的，承租人可以请求出租人承担损害赔偿责任。但是，出租人与第三人订立的房屋买卖合同的效力不受影响。（《民法》第728条）",
+   "cites": [
+    "civil-code:728"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g5376",
+   "line": 5938,
+   "text": "但是，承租人依赖出租人的技能确定租赁物或者出租人干预选择租赁物的，承租人可以请求减免相应租金。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5386",
+   "line": 5948,
+   "text": "（3）承租人的索赔权。承租人对出卖人行使索赔权利，不影响其履行支付租金的义务。但是，承租人依赖出租人的技能确定或者出租人干预选择租赁物的，承租人可以请求减免相应租金。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5407",
+   "line": 5969,
+   "text": "（2）约定归承租人所有。当事人约定租赁期限届满租赁物归承租人所有，承租人已经支付大部分租金，但是无力支付剩余租金，出租人因此解除合同收回租赁物的，收回的租赁物的价值超过承租人欠付的租金以及其他费用的，承租人可以请求相应返还。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5411",
+   "line": 5973,
+   "text": "出租人对租赁物享有的所有权，未经登记，不得对抗善意第三人。（《民法》第745条）",
+   "cites": [
+    "civil-code:745"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g5416",
+   "line": 5978,
+   "text": "但是，因承租人原因致使合同无效，出租人不请求返还或者返还后会显著降低租赁物效用的，租赁物的所有权归承租人，由承租人给予出租人合理补偿。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5436",
+   "line": 5998,
+   "text": "应收账款债权人与债务人虚构应收账款作为转让标的，与保理人订立保理合同的，应收账款债务人不得以应收账款不存在为由对抗保理人，但是保理人明知虚构的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5458",
+   "line": 6024,
+   "text": "在承揽合同中，除当事人另有约定外，定作人未向承揽人支付报酬或者材料费等价款的承揽人对完成的工作成果享有留置权或者有权拒绝交付。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5470",
+   "line": 6038,
+   "text": "（6）除当事人另有约定外，共同承揽人应当对定作人承担连带责任",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5501",
+   "line": 6073,
+   "text": "（1）建设工程施工合同无效，但是建设工程经验收合格的，可以参照合同关于工程价款的约定折价补偿承包人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5530",
+   "line": 6102,
+   "text": "（2）装饰装修工程的承包人，有权请求装饰装修工程价款就该装饰装修工程折价或者拍卖的价款优先受偿，但装饰装修工程的发包人不是该建筑物的所有权人的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5536",
+   "line": 6108,
+   "text": "（2）消费者交付购买商品房的全部或者大部分款项后，承包人就该商品房享有的工程价款优先受偿权不得对抗买受人；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5554",
+   "line": 6128,
+   "text": "客运合同是旅客运输合同的简称，是指承运人将旅客及其行李运送至约定地点，旅客依照约定支付票款的合同。客运合同自承运人向旅客出具客票时成立，但是当事人另有约定或者另有交易习惯的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5563",
+   "line": 6139,
+   "text": "如果主张违约，无过错责任，侵权，过错责任。违约和精神损害赔偿可以并存，但是违约和侵权不能并存。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5569",
+   "line": 6145,
+   "text": "承运人应当按照有效客票记载的时间、班次和座位号运输旅客。承运人迟延运输的，应当履行告知和提醒义务，并根据旅客的要求安排改乘其他班次或者退票；由此造成旅客损失的，承运人应当承担赔偿责任，但是不可归责于承运人的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5582",
+   "line": 6158,
+   "text": "托运人或者收货人不支付运费、保管费或者其他费用的，承运人对相应的运输货物享有留置权，但是当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5585",
+   "line": 6161,
+   "text": "在承运人将货物交付收货人之前，托运人可以要求承运人中止运输、返还货物、变更到达地或者将货物交给其他收货人，但是应当赔偿承运人因此受到的损失。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5601",
+   "line": 6179,
+   "text": "（2）多式联运经营人可以与参加多式联运的各区段承运人就多式联运合同的各区段运输约定相互之间的责任；但是，该约定不影响多式联运经营人对全程运输承担的义务。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5619",
+   "line": 6197,
+   "text": "(1)除法律另有规定或者当事人另有约定外，，按照其规定或约定；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5623",
+   "line": 6201,
+   "text": "当事人应当按照约定进行投资，包括以技术进行投资，分工参与研究开发工作，协作配合研究开发工作。合作开发完成的发明创造，申请专利的权利属于合作开发的当事人共有；当事人一方转让其共有的专利申请权的，其他各方享有以同等条件优先受让的权利。但是，当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5653",
+   "line": 6231,
+   "text": "技术咨询合同的委托人按照受托人符合约定要求的咨询报告和意见作出决策所造成的损失，由委托人承担，但是当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5664",
+   "line": 6242,
+   "text": "当事人另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5669",
+   "line": 6249,
+   "text": "寄存人到保管人处从事购物、就餐、住宿等活动，将物品存放在指定场所的，视为保管，但是当事人另有约定或者另有交易习惯的除外。（实践合同）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5680",
+   "line": 6260,
+   "text": "保管期间，因保管人保管不善造成保管物毁损、灭失的，保管人应当承担赔偿责任。但是，无偿保管人证明自己没有故意或者重大过失的，不承担赔偿责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5682",
+   "line": 6262,
+   "text": "除当事人另有约定外，保管人不得使用或者许可第三人使用保管物，也不得将保管物转交第三人保管。保管人将保管物转交第三人保管，对保管物造成损失的，应当承担赔偿责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5692",
+   "line": 6272,
+   "text": "在有偿的保管合同中，寄存人应当向保管人支付保管费。除当事人另有约定外，寄存人未按照约定支付保管费以及其他费用的，保管人对保管物享有留置权。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5730",
+   "line": 6312,
+   "text": "当事人对储存期限没有约定或者约定不明确的，存货人或者仓单持有人可以随时提取仓储物，保管人也可以随时请求存货人或者仓单持有人提取仓储物，但是应当给予必要的准备时间。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5744",
+   "line": 6326,
+   "text": "因不可归责于受托人的事由，委托合同解除或者委托事务不能完成的，委托人应当向受托人支付相应的报酬。当事人另有约定的，按照其约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5754",
+   "line": 6336,
+   "text": "委托人死亡、终止或者受托人死亡、丧失民事行为能力、终止的，委托合同终止；但是，当事人另有约定或者根据委托事务的性质不宜终止的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5810",
+   "line": 6402,
+   "text": "解聘业主有解除合同的权利。业主依照法定程序共同决定解聘物业服务人的，可以解除物业服务合同。决定解聘的，应当提前六十日书面通知物业服务人，但是合同对通知期限另有约定的除外。依据前述规定解除合同造成物业服务人损失的，除不可归责于业主的事由外，业主应当赔偿损失。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5811",
+   "line": 6403,
+   "text": "续聘物业服务期限届满后，业主没有依法作出续聘或者另聘物业服务人的决定，物业服务人继续提供物业服务的，原物业服务合同继续有效，但是服务期限为不定期。对不定期物业服务合同当事人可以随时解除，但是应当提前六十日书面通知对方。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5823",
+   "line": 6415,
+   "text": "行纪人处理委托事务支出的费用，由行纪人负担，当事人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5826",
+   "line": 6418,
+   "text": "第三人不履行义务致使委托人受到损害的，行纪人应当承担损害赔偿责任，但行纪人与委托人另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5861",
+   "line": 6457,
+   "text": "中介人未促成合同成立的，不得请求支付报酬；但是，可以按照约定请求委托人支付从事中介活动支出的必要费用。08/44",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5879",
+   "line": 6479,
+   "text": "合伙人不得因执行合伙事务而请求支付报酬，但是合伙合同另有约定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5884",
+   "line": 6484,
+   "text": "除合伙合同另有约定外，合伙人向合伙人以外的人转让其全部或者部分财产份额的，须经其他合伙人一致同意。21/28；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5886",
+   "line": 6486,
+   "text": "合伙人就合伙事务作出决定的，除合伙合同另有约定外，应当经全体合伙人一致同意。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5890",
+   "line": 6490,
+   "text": "（2）无约定，全票决。除合伙合同另有约定外，应当经全体合伙人一致同意。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5892",
+   "line": 6492,
+   "text": "3.委托执行。按照合伙合同的约定或者全体合伙人的决定，可以委托一个或者数个合伙人执行合伙事务；其他合伙人不再执行合伙事务，但是有权监督执行情况。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5901",
+   "line": 6501,
+   "text": "合伙期限届满，合伙人继续执行合伙事务，其他合伙人没有提出异议的，原合伙合同继续有效，但是合伙期限为不定期。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5903",
+   "line": 6503,
+   "text": "(1)合伙人可以随时解除不定期合伙合同，但是应当在合理期限之前通知其他合伙人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5904",
+   "line": 6504,
+   "text": "(2)合伙人死亡、丧失民事行为能力或者终止的，合伙合同终止；但是，合伙合同另有约定或者根据合伙事务的性质不宜终止的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5906",
+   "line": 6506,
+   "text": "《民法》第975条规定：“合伙人的债权人不得代位行使合伙人依照本章规定和合伙合同享有的权利，但是合伙人享有的利益分配请求权除外。”",
+   "cites": [
+    "civil-code:975"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g5946",
+   "line": 6554,
+   "text": "(3)例外。管理下列事务，一般不发生无因管理：T11/27；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5954",
+   "line": 6564,
+   "text": "不符合受益人真实意思，不成立无因管理，但是受益人的真实意思违背公序良俗的除外。例：救助跳水自杀者。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5977",
+   "line": 6591,
+   "text": "（3）管理事务不符合受益人真实意思的，管理人不享有上述权利；但是，受益人的真实意思违反法律或者违背公序良俗的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5982",
+   "line": 6596,
+   "text": "（1）管理人管理事务不属于为避免他人利益受损失而管理他人事务的情形，但是受益人享有管理利益的，受益人应当在其获得的利益范围内向管理人承担义务。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g5984",
+   "line": 6598,
+   "text": "管理人管理事务经受益人事后追认的，从管理事务开始时起，适用委托合同的有关规定，但是管理人另有意思表示的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6062",
+   "line": 6695,
+   "text": "比较特殊的是，民事主体可以将自己的姓名、名称、肖像等许可他人使用，但是依照法律规定或者根据其性质不得许可的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6066",
+   "line": 6699,
+   "text": "1.人格权请求权不适用诉讼时效",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6067",
+   "line": 6700,
+   "text": "因侵害人格权主张的停止侵害、排除妨碍、消除危险、消除影响、恢复名誉请求权，不适用诉讼时效的规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6193",
+   "line": 6832,
+   "text": "（3）自然人决定、变更姓名应当依法向有关机关办理登记手续，但是法律另有规定的除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6197",
+   "line": 6836,
+   "text": "自然人的姓氏应当随父姓或者母姓，但是有下列情形之一的，可以在父姓和母姓之外选取姓氏：2020年新增",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6208",
+   "line": 6847,
+   "text": "（4）许可他人使用姓名。民事主体可以将自己的姓名许可他人使用，但是依照法律规定或者根据其性质不得许可的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6215",
+   "line": 6856,
+   "text": "（3）法人、非法人组织决定、变更、转让名称的，应当依法向有关机关办理登记手续，但是法律另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6244",
+   "line": 6889,
+   "text": "肖像权人有权维护自己的肖像利益，对于恶意损毁、丑化、玷污、利用信息技术手段伪造其肖像或以营利为目的非法使用其肖像的行为，均有权请求其停止侵害并可要求侵害人赔偿损失。但是，他人合法的使用行为应当受到法律的保护。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6250",
+   "line": 6895,
+   "text": "未经肖像权人同意，不得制作、使用、公开肖像权人的肖像，但是法律另有规定的除外。（不再要求以营利为目的。）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6268",
+   "line": 6913,
+   "text": "当事人对肖像许可使用期限没有约定或者约定不明确的，任何一方当事人可以随时解除肖像许可使用合同，但是应当在合理期限之前通知对方。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6270",
+   "line": 6915,
+   "text": "当事人对肖像许可使用期限有明确约定，肖像权人有正当理由的，可以解除肖像许可使用合同，但是应当在合理期限之前通知对方。因解除合同造成对方损失的，除不可归责于肖像权人的事由外，应当赔偿损失。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6274",
+   "line": 6919,
+   "text": "③若刘小姐因厌恶娱乐圈生活找到生命中的另一半，宣布退出娱乐圈解除肖像许可使用合同，给该机械表制作公司造成损失。退出娱乐圈是正当理由，可以解除合同，但是可归责于刘小姐，因此刘小姐须对该公司赔偿损失。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6381",
+   "line": 7034,
+   "text": "隐私权的保护同时会限制其他民事主体的行为，《民法典》第1033条规定，除法律另有规定或者权利人明确同意外，任何组织或者个人不得实施下列行为",
+   "cites": [
+    "civil-code:1033"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g6404",
+   "line": 7057,
+   "text": "(1)征得该自然人或者其监护人同意，但是法律、行政法规另有规定的除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6408",
+   "line": 7061,
+   "text": "不承担民事责任的例外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6409",
+   "line": 7064,
+   "text": "但处理个人信息也有不承担民事责任的例外，主要包括：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6411",
+   "line": 7066,
+   "text": "(2)合理处理该自然人自行公开的或者其他已经合法公开的信息，但是该自然人明确拒绝或者处理该信息侵害其重大利益的除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6420",
+   "line": 7075,
+   "text": "信息处理者不得泄露或者纂改其收集、存储的个人信息；未经自然人同意，不得向他人非法提供其个人信息，但是经过加工无法识别特定个人且不能复原的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6445",
+   "line": 7105,
+   "text": "亲属具有固定的身份和称谓。亲属身份一经确定，除法律另有规定外，不得随意变更或解除。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6504",
+   "line": 7168,
+   "text": "尽管《民法典》规定结婚必须办理登记，但是在现实生活中，男女双方未办理结婚登记而以夫妻名义共同生活的情况仍有存在。学理上将未办理结婚登记而以夫妻名义共同生活的现象称为事实婚姻。我国现行司法解释对事实婚姻的处理原则是",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6546",
+   "line": 7210,
+   "text": "此外，人民法院审理宣告婚姻无效案件，对婚姻效力的审理不适用调解，应当依法作出判决。有关婚姻效力的判决一经作出，即发生法律效力。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6591",
+   "line": 7263,
+   "text": "夫妻共同财产制，是指在婚姻关系存续期间，夫妻双方或一方所得的财产，除法律另有规定或夫妻另有约定外，均为夫妻共同所有的制度。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6601",
+   "line": 7273,
+   "text": "（4）继承或受赠的财产，但遗嘱或赠与合同中确定只归夫或妻一方的财产除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6609",
+   "line": 7281,
+   "text": "当事人结婚后，父母为双方购置房屋出资的，该出资应当认定为对夫妻双方的赠与，但父母明确表示赠与一方的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6610",
+   "line": 7282,
+   "text": "婚后由双方父母出资购买的不动产，产权登记在一方子女名下的，该不动产可认定为双方按照各自父母的出资份额按份共有，但当事人另有约定的除外。F16/28；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6621",
+   "line": 7293,
+   "text": "夫妻一方在婚姻关系存续期间以个人名义超出家庭日常生活需要所负的债务，不属于夫妻共同债务；但是，债权人能够证明该债务用于夫妻共同生活、共同生产经营或者基于夫妻双方共同意思表示的除外 。T19/25，15；F18案例；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6631",
+   "line": 7303,
+   "text": "由一方婚前以个人财产购买，且登记在自己名下的不动产，并于婚后以夫妻共同财产还贷的，除非当事人另有约定，原则上认定房屋所有权归登记名义人个人所有。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6635",
+   "line": 7307,
+   "text": "再如当事人结婚前，父母为双方购置房屋出资的，该出资应当认定为对自己子女的个人赠与，但父母明确表示赠与双方的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6636",
+   "line": 7308,
+   "text": "需要指出的是，属于夫或妻一方的财产，无论是动产还是不动产，均不因婚姻关系的延续而转化为夫妻共同财产，除非当事人另有约定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6654",
+   "line": 7328,
+   "text": "夫妻一方因家庭日常生活需要而实施的民事法律行为，对夫妻双方发生效力，但是夫妻一方与相对人另有约定的除外。夫妻之间对一方可以实施的民事法律行为范围的限制，不得对抗善意相对人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6747",
+   "line": 7429,
+   "text": "现役军人的配偶要求离婚，应当征得军人同意，但是军人一方有重大过错的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6750",
+   "line": 7432,
+   "text": "但是，女方提出离婚或者人民法院认为确有必要受理男方离婚请求的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6764",
+   "line": 7448,
+   "text": "例外：一方以订立财产分割协议时受到欺诈、胁迫为由请求变更或者撤销财产分割协议的，应当在协议离婚后1年内起诉。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6774",
+   "line": 7458,
+   "text": "但夫妻一方能够证明债权人与债务人1明确约定为个人债务，或者能够证明2属于婚姻法第19条第3款规定情形的除外。",
+   "cites": [
+    "civil-code:19"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g6777",
+   "line": 7461,
+   "text": "通常情况下，该类债务用于夫妻共同生活或共同生产、经营活动。债权人就一方婚前所负个人债务向债务人的配偶主张权利的，人民法院不予支持。但债权人能够证明所负债务用于婚后家庭共同生活的除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6927",
+   "line": 7621,
+   "text": "收养人在被收养人成年以前，不得解除收养关系，但是收养人、送养人双方协议解除的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6939",
+   "line": 7633,
+   "text": "但是，成年养子女与生父母以及其他近亲属间的权利义务关系是否恢复，可以协商确定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g6945",
+   "line": 7639,
+   "text": "生父母要求解除收养关系的，养父母可以要求生父母适当补偿收养期间支出的抚养费；但是，因养父母虐待、遗弃养子女而解除收养关系的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7018",
+   "line": 7726,
+   "text": "丧失继承权的例外",
+   "cites": [],
+   "formalized_by": [
+    "c1125-2"
+   ]
+  },
+  {
+   "node": "g7064",
+   "line": 7776,
+   "text": "尽管遗嘱继承的效力优于法定继承，但是法定继承对遗嘱继承也存在制约作用。例如，遗嘱继承人只能是法定继承人范围以内的人，遗嘱人必须在遗嘱中为缺乏劳动能力又没有生活来源的法定继承人保留必要的遗产份额。从这个意义上说，法定继承也是对遗嘱继承的一种限制。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7067",
+   "line": 7779,
+   "text": "法律关于法定继承的规范为强制性规范，除法律另有规定外，不得排除其适用。从这个意义上说，法定继承具有强行性的特征。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7097",
+   "line": 7813,
+   "text": "代位继承是法定继承中的一种特殊现象，只适用于法定继承，不适用于遗嘱继承。如果遗嘱继承人系被继承人的子女或兄弟姐妹，且先于遗嘱人死亡，就不能发生代位继承，遗嘱中指定该继承人继承的遗产应按照法定继承处理。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7114",
+   "line": 7830,
+   "text": "被继承人的孙子女、外孙子女、曾孙子女、外曾孙子女都可以代位继承，代位继承人不受辈数的限制。但是，如果无第一顺位法定继承人时，代位继承人只能是兄弟姐妹的子女。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7118",
+   "line": 7834,
+   "text": "但是，代位继承人缺乏劳动能力又没有生活来源，或者对被继承人尽过主要赡养义务的，分配遗产时，可以多分。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7165",
+   "line": 7887,
+   "text": "设立遗嘱不适用代理制度，遗嘱必须由遗嘱人亲自设立。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7337",
+   "line": 8077,
+   "text": "代位继承只适用于法定继承，不适用于遗嘱继承；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7345",
+   "line": 8087,
+   "text": "继承人以所得遗产实际价值为限清偿被继承人依法应当缴纳的税款和债务。超过遗产实际价值部分，继承人自愿偿还的不在此限。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7349",
+   "line": 8091,
+   "text": "《民法典》第1159条规定，分割遗产，应当清偿被继承人依法应当缴纳的税款和债务；但是应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产。",
+   "cites": [
+    "civil-code:1159"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g7391",
+   "line": 8142,
+   "text": "过错责任原则适用于一般侵权行为，只有法律规定适用无过错责任原则的侵权行为，才不适用过错责任原则。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7392",
+   "line": 8143,
+   "text": "但是值得注意的是，过错推定不是普遍适用于一般侵权行为，法律对适用过错推定的侵权行为有专门的规定。所以过错推定只适用于法律规定的几种侵权行为，如堆放物倒塌滚落或者滑落造成他人损害，堆放人不能证明自己没有过错的，应当承担侵权责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7417",
+   "line": 8170,
+   "text": "但作为侵权责任的构成要件，除主观要件不需举证外，对其他三个要件被侵权人还是要证明的，仍要证明侵权行为、损害后果以及二者之间的因果关系(因果关系推定的除外)。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7481",
+   "line": 8244,
+   "text": "被侵权人死亡的，支付被侵权人医疗费、丧葬费等合理费用的人有权请求侵权人赔偿费用，但是侵权人已经支付该费用的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7561",
+   "line": 8344,
+   "text": "自愿参加具有一定风险的文体活动，因其他参加者的行为受到损害的，受害人不得请求其他参加者承担侵权责任；但是，其他参加者对损害的发生有故意或者重大过失的除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7563",
+   "line": 8346,
+   "text": "合法权益受到侵害，情况紧迫且不能及时获得国家机关保护，不立即采取措施将使其合法权益受到难以弥补的损害的，受害人可以在保护自己合法权益的必要范围内采取扣留侵权人的财物等合理措施；但是，应当立即请求有关国家机关处理。受害人采取的措施不当造成他人损害的，应当承担侵权责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7625",
+   "line": 8414,
+   "text": "但是，定作人对定作、指示或者选任有过错的，应当承担相应的责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7629",
+   "line": 8418,
+   "text": "网络用户、网络服务提供者利用网络侵害他人民事权益的，应当承担侵权责任。法律另有规定的，依照其规定",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7671",
+   "line": 8460,
+   "text": "但是，能够证明尽到教育、管理职责的，不承担侵权责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7721",
+   "line": 8514,
+   "text": "当事人之间已经以买卖或者其他方式转让并交付机动车但是未办理登记，发生交通事故造成损害，属于该机动车一方责任的，由受让人承担赔偿责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7727",
+   "line": 8520,
+   "text": "未经允许驾驶他人机动车，发生交通事故造成损害，属于该机动车一方责任的，由机动车使用人承担赔偿责任；机动车所有人、管理人对损害的发生有过错的，承担相应的赔偿责任，但是《民法典》另有规定的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7733",
+   "line": 8526,
+   "text": "非营运机动车发生交通事故造成无偿搭乘人损害，属于该机动车一方责任的，应当减轻其赔偿责任，但是机动车使用人有故意或者重大过失的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7756",
+   "line": 8549,
+   "text": "《民法》第1217条规定：“非营运机动车发生交通事故造成无偿搭乘人损害，属于该机动车一方责任的，应当减轻其赔偿责任，但是机动车使用人有故意或者重大过失的除外。”",
+   "cites": [
+    "civil-code:1217"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g7902",
+   "line": 8717,
+   "text": "饲养动物损害责任的归责原则主要是无过错责任原则，但是动物园的动物造成他人损害的，动物园的侵权责任适用过错推定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7903",
+   "line": 8718,
+   "text": "《民法典》第1248条规定，“动物园的动物造成他人损害的，动物园应当承担侵权责任；但是，能够证明尽到管理职责的，不承担侵权责任。”也就是说，除动物园的动物致人损害，侵权责任适用过错推定外，其他的饲养动物损害责任都是适用无过错责任原则。",
+   "cites": [
+    "civil-code:1248"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g7907",
+   "line": 8722,
+   "text": "但是，能够证明损害是因被侵权人故意或者重大过失造成的，可以不承担或者减轻责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g7931",
+   "line": 8748,
+   "text": "（2）责任主体：建设单位与施工单位承担连带责任，但是建设单位与施工单位能够证明不存在质量缺陷的除外。（建设单位与施工单位承担举证责任）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8022",
+   "line": 8846,
+   "text": "但是，知识产权权利人在市场竞争中也有可能滥用其独占权，在这个层面上，又需要反不正当竞争法保证知识产权人正当行使权利，防止滥用知识产权。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8045",
+   "line": 8875,
+   "text": "确认作者的标准是署名，在作品上署名的自然人，法人或者非法人组织为作者，且该作品丄存在相应权利，但有相反证明的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8110",
+   "line": 8942,
+   "text": "即有偿许可他人临时使用视听作品、计算机软件的原件或者复制件的权利，计算机软件不是出租的主要标的的除外。出租权的主体：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8114",
+   "line": 8946,
+   "text": "（2）计算机软件的著作权人，计算机软件不是出租的主要标的的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8245",
+   "line": 9079,
+   "text": "（3）疾病的诊断和治疗方法。但是药品或医疗器械可以申请专利。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8290",
+   "line": 9128,
+   "text": "首先，下列标志不得作为商标注册，但是可以作为商标使用(缺乏显著性)：（《商标法》第11条）",
+   "cites": [
+    "商标法:11"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "g8303",
+   "line": 9141,
+   "text": "例：如三剃头电动剃须刀，比二剃头的剃须刀刮胡子更干净。三剃头的外形就是为实现技术效果所需要的商品形状，不能通过注册商标对该技术加以垄断，但是发明人可以申请专利加以保护。又如折叠笔记本，不能注册为立体商标。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8311",
+   "line": 9149,
+   "text": "2.同外国的国家名称、国旗、国徽、军旗等相同或者近似的，但经该国政府同意的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8312",
+   "line": 9150,
+   "text": "3.同政府间国际组织的名称、旗帜、徽记等相同或者近似的，但经该组织同意或者不易误导公众的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8313",
+   "line": 9151,
+   "text": "4.与表明实施控制、予以保证的官方标志、检验印记相同或者近似的，但经授权的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "g8344",
+   "line": 9182,
+   "text": "商标使用许可未经备案不得对抗善意第三人；备案具有对抗效力，不影响许可合同的生效。",
+   "cites": [],
+   "formalized_by": []
+  }
+ ]
+}

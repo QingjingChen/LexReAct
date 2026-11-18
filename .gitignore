@@ -8,11 +8,8 @@ __pycache__/
 # third-party engine (fetched by engine/fetch_ddl.sh, no licence to redistribute)
 engine/ddl_engine/
 
-# private data and files derived from the knowledge graph's text
+# private data (LexGo questions, LEGO prompts, benchmark sheet)
 data/private/
-kb/civil_graph.lrml
-kb/civil_graph_index.json
-kb/graph_nodes.json
 
 # raw run logs that contain case text or model outputs
 results/pipeline_runs*.jsonl

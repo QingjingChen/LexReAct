@@ -10,13 +10,13 @@ DATA = Path(os.environ.get('LEXREACT_DATA', ROOT / 'data'))
 PRIVATE = DATA / 'private'
 
 CIVIL_CODE = DATA / 'civil_code_20200528.txt'            # official text of the Civil Code (public)
-GRAPH_MD = PRIVATE / 'civil_graph.markdown'              # expert knowledge graph (not distributed)
+GRAPH_MD = DATA / 'civil_graph.markdown'                 # expert knowledge graph (source of both layers)
 ARCHIVE = PRIVATE / 'pfc_v3_aligned.jsonl'               # LexGo questions + LEGO retrieval/prompts (not distributed)
 BENCH_XLSX_GLOB = str(PRIVATE / '整体benchmark700道*分配.xlsx')  # benchmark sheet, used only to draw control sets
 
 KB = ROOT / 'kb'
 SCHEMA = KB / 'schema' / 'lrml-compact.xsd'
-LRML_FULL = KB / 'civil_graph.lrml'                      # both layers; built from GRAPH_MD (not distributed)
+LRML_FULL = KB / 'civil_graph.lrml'                      # both layers; built from GRAPH_MD
 LRML_RULES = KB / 'civil_rules.lrml'                     # rule layer only (distributed)
 RULES_LP = KB / 'civil_rules.lp'
 CASES = KB / 'cases.json'

@@ -1,0 +1,3852 @@
+{
+ "rules": {
+  "k-age16": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#1"
+   ],
+   "note": "已满十六周岁",
+   "auth": "doctrine"
+  },
+  "k-under18": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#4"
+   ],
+   "note": "不满十八周岁",
+   "auth": "doctrine"
+  },
+  "k17-1": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#1"
+   ],
+   "note": "已满十六周岁的人犯罪，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-intentionalHomicide": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-intentionalInjury": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-rape": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-robbery": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任（转化型抢劫除外，见司法解释）",
+   "auth": "npc"
+  },
+  "k17-2-drugTrafficking": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-arson": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-explosion": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-2-poisoning": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#2"
+   ],
+   "note": "已满十四不满十六周岁，犯故意杀人、故意伤害致人重伤或死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-3": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#3"
+   ],
+   "note": "已满十二不满十四周岁，犯故意杀人、故意伤害罪，致人死亡或以特别残忍手段致人重伤造成严重残疾，情节恶劣，经最高人民检察院核准追诉的，应当负刑事责任",
+   "auth": "npc"
+  },
+  "k17-4": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17#4"
+   ],
+   "note": "对不满十八周岁的人应当从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k17-1b": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17-1"
+   ],
+   "note": "已满七十五周岁的人故意犯罪的，可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k17-1c": {
+   "module": "k-capacity",
+   "node": "t0551",
+   "node_text": "三、刑事责任年龄",
+   "srcs": [
+    "art17-1"
+   ],
+   "note": "已满七十五周岁的人过失犯罪的，应当从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k18-1": {
+   "module": "k-capacity",
+   "node": "t0588",
+   "node_text": "精神病人的刑事责任问题",
+   "srcs": [
+    "art18#1"
+   ],
+   "note": "精神病人在不能辨认或者不能控制自己行为时造成危害结果，经法定程序鉴定确认的，不负刑事责任",
+   "auth": "npc"
+  },
+  "k18-3": {
+   "module": "k-capacity",
+   "node": "t0588",
+   "node_text": "精神病人的刑事责任问题",
+   "srcs": [
+    "art18#3"
+   ],
+   "note": "尚未完全丧失辨认或者控制能力的精神病人犯罪的，应当负刑事责任，但是可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k19": {
+   "module": "k-capacity",
+   "node": "t0597",
+   "node_text": "又聋又哑的人或者盲人犯罪的刑事责任",
+   "srcs": [
+    "art19"
+   ],
+   "note": "又聋又哑的人或者盲人犯罪，可以从轻、减轻或者免除处罚",
+   "auth": "npc"
+  },
+  "k20-cond": {
+   "module": "k-justification",
+   "node": "t0875",
+   "node_text": "成立条件",
+   "srcs": [
+    "art20#1"
+   ],
+   "note": "起因（不法侵害）、时间（正在进行）、对象（不法侵害人）、主观（防卫意图）",
+   "auth": "npc"
+  },
+  "k20-1": {
+   "module": "k-justification",
+   "node": "t0871",
+   "node_text": "正当防卫",
+   "srcs": [
+    "art20#1"
+   ],
+   "note": "正当防卫，不负刑事责任",
+   "auth": "npc"
+  },
+  "k20-2": {
+   "module": "k-justification",
+   "node": "t0907",
+   "node_text": "防卫过当F15/35；T10简答；T21/57；",
+   "srcs": [
+    "art20#2"
+   ],
+   "note": "正当防卫明显超过必要限度造成重大损害的，是防卫过当",
+   "auth": "npc"
+  },
+  "k20-2b": {
+   "module": "k-justification",
+   "node": "t0907",
+   "node_text": "防卫过当F15/35；T10简答；T21/57；",
+   "srcs": [
+    "art20#2"
+   ],
+   "note": "防卫过当应当负刑事责任，但是应当减轻或者免除处罚",
+   "auth": "npc"
+  },
+  "k20-3": {
+   "module": "k-justification",
+   "node": "t0898",
+   "node_text": "特别防卫",
+   "srcs": [
+    "art20#3"
+   ],
+   "note": "对行凶、杀人、抢劫、强奸、绑架等严重危及人身安全的暴力犯罪防卫，造成伤亡的，不属于防卫过当，不负刑事责任",
+   "auth": "npc"
+  },
+  "k20-late": {
+   "module": "k-justification",
+   "node": "t0921",
+   "node_text": "防卫过当VS“事后防卫”",
+   "srcs": [
+    "art20#1"
+   ],
+   "note": "不法侵害已经结束后的“防卫”是事后防卫，不成立正当防卫",
+   "auth": "doctrine"
+  },
+  "k21-cond": {
+   "module": "k-justification",
+   "node": "t0935",
+   "node_text": "成立条件",
+   "srcs": [
+    "art21#1"
+   ],
+   "note": "正在发生的危险、不得已、损害另一合法权益；避免本人危险不适用于负有特定责任的人（第21条第3款）",
+   "auth": "npc"
+  },
+  "k21-1": {
+   "module": "k-justification",
+   "node": "t0931",
+   "node_text": "紧急避险F19/37；F14/论述；",
+   "srcs": [
+    "art21#1"
+   ],
+   "note": "紧急避险，不负刑事责任",
+   "auth": "npc"
+  },
+  "k21-2": {
+   "module": "k-justification",
+   "node": "t0953",
+   "node_text": "避险过当",
+   "srcs": [
+    "art21#2"
+   ],
+   "note": "紧急避险超过必要限度造成不应有的损害的，是避险过当",
+   "auth": "npc"
+  },
+  "k21-2b": {
+   "module": "k-justification",
+   "node": "t0953",
+   "node_text": "避险过当",
+   "srcs": [
+    "art21#2"
+   ],
+   "note": "避险过当应当负刑事责任，但是应当减轻或者免除处罚",
+   "auth": "npc"
+  },
+  "k22": {
+   "module": "k-stages",
+   "node": "t1042",
+   "node_text": "预备",
+   "srcs": [
+    "art22#1"
+   ],
+   "note": "为了犯罪，准备工具、制造条件，因意志以外原因未能着手的，是犯罪预备",
+   "auth": "npc"
+  },
+  "k22-2": {
+   "module": "k-stages",
+   "node": "t1042",
+   "node_text": "预备",
+   "srcs": [
+    "art22#2"
+   ],
+   "note": "对于预备犯，可以比照既遂犯从轻、减轻处罚或者免除处罚",
+   "auth": "npc"
+  },
+  "k23": {
+   "module": "k-stages",
+   "node": "t1067",
+   "node_text": "未遂",
+   "srcs": [
+    "art23#1"
+   ],
+   "note": "已经着手实行犯罪，由于犯罪分子意志以外的原因而未得逞的，是犯罪未遂",
+   "auth": "npc"
+  },
+  "k23-2": {
+   "module": "k-stages",
+   "node": "t1067",
+   "node_text": "未遂",
+   "srcs": [
+    "art23#2"
+   ],
+   "note": "对于未遂犯，可以比照既遂犯从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k24": {
+   "module": "k-stages",
+   "node": "t1140",
+   "node_text": "中止",
+   "srcs": [
+    "art24#1"
+   ],
+   "note": "在犯罪过程中，自动放弃犯罪或者自动有效地防止犯罪结果发生的，是犯罪中止",
+   "auth": "npc"
+  },
+  "k24-2a": {
+   "module": "k-stages",
+   "node": "t1140",
+   "node_text": "中止",
+   "srcs": [
+    "art24#2"
+   ],
+   "note": "对于中止犯，没有造成损害的，应当免除处罚",
+   "auth": "npc"
+  },
+  "k24-2b": {
+   "module": "k-stages",
+   "node": "t1140",
+   "node_text": "中止",
+   "srcs": [
+    "art24#2"
+   ],
+   "note": "对于中止犯，造成损害的，应当减轻处罚",
+   "auth": "npc"
+  },
+  "k24-noAttempt": {
+   "module": "k-stages",
+   "node": "t1183",
+   "node_text": "犯罪中止VS犯罪预备、犯罪未遂",
+   "srcs": [
+    "art24#1"
+   ],
+   "note": "自动性是犯罪中止区别于未遂、预备的标志",
+   "auth": "doctrine"
+  },
+  "k27": {
+   "module": "k-stages",
+   "node": "t1303",
+   "node_text": "从犯08/3；",
+   "srcs": [
+    "art27"
+   ],
+   "note": "在共同犯罪中起次要或者辅助作用的，是从犯，应当从轻、减轻处罚或者免除处罚",
+   "auth": "npc"
+  },
+  "k28": {
+   "module": "k-stages",
+   "node": "t1311",
+   "node_text": "胁从犯",
+   "srcs": [
+    "art28"
+   ],
+   "note": "对于被胁迫参加犯罪的，应当按照他的犯罪情节减轻处罚或者免除处罚",
+   "auth": "npc"
+  },
+  "k29-1": {
+   "module": "k-stages",
+   "node": "t1326",
+   "node_text": "教唆犯T16/57；",
+   "srcs": [
+    "art29#1"
+   ],
+   "note": "教唆不满十八周岁的人犯罪的，应当从重处罚",
+   "auth": "npc"
+  },
+  "k29-2": {
+   "module": "k-stages",
+   "node": "t1326",
+   "node_text": "教唆犯T16/57；",
+   "srcs": [
+    "art29#2"
+   ],
+   "note": "被教唆的人没有犯被教唆的罪的，对于教唆犯，可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k65": {
+   "module": "k-sentencing",
+   "node": "t2190",
+   "node_text": "累犯的概念",
+   "srcs": [
+    "art65#1"
+   ],
+   "note": "一般累犯：前罪被判有期徒刑以上，执行完毕或赦免后五年内再犯应判有期徒刑以上之罪；过失犯罪和不满十八周岁的人犯罪的除外",
+   "auth": "npc"
+  },
+  "k66": {
+   "module": "k-sentencing",
+   "node": "t2214",
+   "node_text": "特别累犯",
+   "srcs": [
+    "art66"
+   ],
+   "note": "危害国家安全、恐怖活动、黑社会性质组织犯罪的犯罪分子，在任何时候再犯上述任一类罪的，都以累犯论处",
+   "auth": "npc"
+  },
+  "k65-sent": {
+   "module": "k-sentencing",
+   "node": "t2232",
+   "node_text": "累犯的刑事责任 （《刑法》第65条第1款）",
+   "srcs": [
+    "art65#1"
+   ],
+   "note": "累犯应当从重处罚",
+   "auth": "npc"
+  },
+  "k74": {
+   "module": "k-sentencing",
+   "node": "t2242",
+   "node_text": "不适用缓刑08/23；",
+   "srcs": [
+    "art74"
+   ],
+   "note": "对于累犯和犯罪集团的首要分子，不适用缓刑",
+   "auth": "npc"
+  },
+  "k81-2": {
+   "module": "k-sentencing",
+   "node": "t2731",
+   "node_text": "限制条件",
+   "srcs": [
+    "art81#2"
+   ],
+   "note": "对累犯以及因故意杀人、强奸、抢劫、绑架、放火、爆炸、投放危险物质或有组织的暴力性犯罪被判处十年以上有期徒刑、无期徒刑的，不得假释",
+   "auth": "npc"
+  },
+  "k81-1": {
+   "module": "k-sentencing",
+   "node": "t2712",
+   "node_text": "对象条件",
+   "srcs": [
+    "art81#1"
+   ],
+   "note": "执行原判刑期二分之一以上（无期徒刑实际执行十三年以上），确有悔改表现，没有再犯罪危险的，可以假释",
+   "auth": "npc"
+  },
+  "k67-1": {
+   "module": "k-sentencing",
+   "node": "t2255",
+   "node_text": "一般自首",
+   "srcs": [
+    "art67#1"
+   ],
+   "note": "犯罪以后自动投案，如实供述自己的罪行的，是自首",
+   "auth": "npc"
+  },
+  "k67-2": {
+   "module": "k-sentencing",
+   "node": "t2300",
+   "node_text": "特别自首TF17/10，6；",
+   "srcs": [
+    "art67#2"
+   ],
+   "note": "被采取强制措施的犯罪嫌疑人、被告人和正在服刑的罪犯，如实供述司法机关还未掌握的本人其他罪行的，以自首论",
+   "auth": "npc"
+  },
+  "k67-1s": {
+   "module": "k-sentencing",
+   "node": "t2369",
+   "node_text": "（九）自首情节及其处理原则",
+   "srcs": [
+    "art67#1"
+   ],
+   "note": "对于自首的犯罪分子，可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k67-1e": {
+   "module": "k-sentencing",
+   "node": "t2369",
+   "node_text": "（九）自首情节及其处理原则",
+   "srcs": [
+    "art67#1"
+   ],
+   "note": "犯罪较轻的，可以免除处罚",
+   "auth": "npc"
+  },
+  "k67-3": {
+   "module": "k-sentencing",
+   "node": "t2344",
+   "node_text": "（七）坦白VS自首(T18/案例）T15/15；",
+   "srcs": [
+    "art67#3"
+   ],
+   "note": "不具有自首情节，但如实供述自己罪行的，是坦白",
+   "auth": "npc"
+  },
+  "k67-3s": {
+   "module": "k-sentencing",
+   "node": "t2344",
+   "node_text": "（七）坦白VS自首(T18/案例）T15/15；",
+   "srcs": [
+    "art67#3"
+   ],
+   "note": "坦白的，可以从轻处罚",
+   "auth": "npc"
+  },
+  "k67-3b": {
+   "module": "k-sentencing",
+   "node": "t2344",
+   "node_text": "（七）坦白VS自首(T18/案例）T15/15；",
+   "srcs": [
+    "art67#3"
+   ],
+   "note": "因如实供述避免特别严重后果发生的，可以减轻处罚",
+   "auth": "npc"
+  },
+  "k68": {
+   "module": "k-sentencing",
+   "node": "t2378",
+   "node_text": "三、立功",
+   "srcs": [
+    "art68"
+   ],
+   "note": "有揭发他人犯罪行为查证属实等立功表现的，可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k68-major": {
+   "module": "k-sentencing",
+   "node": "t2378",
+   "node_text": "三、立功",
+   "srcs": [
+    "art68"
+   ],
+   "note": "有重大立功表现的，可以减轻或者免除处罚",
+   "auth": "npc"
+  },
+  "k72": {
+   "module": "k-sentencing",
+   "node": "t2527",
+   "node_text": "缓刑的适用条件TF15/51，31；",
+   "srcs": [
+    "art72#1"
+   ],
+   "note": "被判处拘役、三年以下有期徒刑，同时符合情节较轻、有悔罪表现、没有再犯罪危险、对社区无重大不良影响的，可以宣告缓刑",
+   "auth": "npc"
+  },
+  "k72-must": {
+   "module": "k-sentencing",
+   "node": "t2527",
+   "node_text": "缓刑的适用条件TF15/51，31；",
+   "srcs": [
+    "art72#1"
+   ],
+   "note": "其中不满十八周岁的人、怀孕的妇女和已满七十五周岁的人，应当宣告缓刑",
+   "auth": "npc"
+  },
+  "k87-under5": {
+   "module": "k-limitation",
+   "node": "t2819",
+   "node_text": "追诉期限的规定08/14；T16/6；T18/1；",
+   "srcs": [
+    "art87"
+   ],
+   "note": "犯罪经过下列期限不再追诉：法定最高刑为不满五年有期徒刑的，经过五年",
+   "auth": "npc"
+  },
+  "k87-from5to10": {
+   "module": "k-limitation",
+   "node": "t2819",
+   "node_text": "追诉期限的规定08/14；T16/6；T18/1；",
+   "srcs": [
+    "art87"
+   ],
+   "note": "犯罪经过下列期限不再追诉：五年以上不满十年的，经过十年",
+   "auth": "npc"
+  },
+  "k87-from10": {
+   "module": "k-limitation",
+   "node": "t2819",
+   "node_text": "追诉期限的规定08/14；T16/6；T18/1；",
+   "srcs": [
+    "art87"
+   ],
+   "note": "犯罪经过下列期限不再追诉：十年以上有期徒刑的，经过十五年",
+   "auth": "npc"
+  },
+  "k87-lifeOrDeath": {
+   "module": "k-limitation",
+   "node": "t2819",
+   "node_text": "追诉期限的规定08/14；T16/6；T18/1；",
+   "srcs": [
+    "art87"
+   ],
+   "note": "犯罪经过下列期限不再追诉：无期徒刑、死刑的，经过二十年",
+   "auth": "npc"
+  },
+  "k88-1": {
+   "module": "k-limitation",
+   "node": "t2845",
+   "node_text": "时效延长的概念及其计算方法",
+   "srcs": [
+    "art88#1"
+   ],
+   "note": "立案侦查或者法院受理案件以后，逃避侦查或者审判的，不受追诉期限的限制",
+   "auth": "npc"
+  },
+  "k88-2": {
+   "module": "k-limitation",
+   "node": "t2845",
+   "node_text": "时效延长的概念及其计算方法",
+   "srcs": [
+    "art88#2"
+   ],
+   "note": "被害人在追诉期限内提出控告，应当立案而不予立案的，不受追诉期限的限制",
+   "auth": "npc"
+  },
+  "k87-noProsec": {
+   "module": "k-limitation",
+   "node": "t2819",
+   "node_text": "追诉期限的规定08/14；T16/6；T18/1；",
+   "srcs": [
+    "art87"
+   ],
+   "note": "超过追诉期限的，不再追诉",
+   "auth": "npc"
+  },
+  "k264": {
+   "module": "k-offenses",
+   "node": "t6951",
+   "node_text": "盗窃罪T14/16；",
+   "srcs": [
+    "art264"
+   ],
+   "note": "盗窃公私财物，数额较大，或者多次盗窃、入户盗窃、携带凶器盗窃、扒窃的",
+   "auth": "npc"
+  },
+  "k266": {
+   "module": "k-offenses",
+   "node": "t7065",
+   "node_text": "诈骗罪T14/17；TF15/19，9；TF17/45，25；T18/8；T20/3；",
+   "srcs": [
+    "art266"
+   ],
+   "note": "诈骗公私财物，数额较大的（虚构事实→陷入错误→基于错误处分财产）",
+   "auth": "npc"
+  },
+  "k267": {
+   "module": "k-offenses",
+   "node": "t7028",
+   "node_text": "抢夺罪",
+   "srcs": [
+    "art267#1"
+   ],
+   "note": "抢夺公私财物，数额较大的，或者多次抢夺的",
+   "auth": "npc"
+  },
+  "k263": {
+   "module": "k-offenses",
+   "node": "t6763",
+   "node_text": "抢劫罪",
+   "srcs": [
+    "art263"
+   ],
+   "note": "以暴力、胁迫或者其他方法抢劫财物的",
+   "auth": "npc"
+  },
+  "k263-agg": {
+   "module": "k-offenses",
+   "node": "t6763",
+   "node_text": "抢劫罪",
+   "srcs": [
+    "art263"
+   ],
+   "note": "入户、在公共交通工具上、抢劫银行、多次或数额巨大、致人重伤死亡、冒充军警、持枪、抢劫军用或救灾物资：十年以上、无期或死刑",
+   "auth": "npc"
+  },
+  "k267-2": {
+   "module": "k-offenses",
+   "node": "t7058",
+   "node_text": "“携带凶器抢夺”",
+   "srcs": [
+    "art267#2"
+   ],
+   "note": "携带凶器抢夺的，依照第二百六十三条（抢劫罪）定罪处罚",
+   "auth": "npc"
+  },
+  "k269": {
+   "module": "k-offenses",
+   "node": "t6869",
+   "node_text": "转化型抢劫TF19/20，10；T13/43，F14/7；",
+   "srcs": [
+    "art269"
+   ],
+   "note": "犯盗窃、诈骗、抢夺罪，为窝藏赃物、抗拒抓捕或者毁灭罪证而当场使用暴力或者以暴力相威胁的，依照抢劫罪定罪处罚",
+   "auth": "npc"
+  },
+  "k-minor-conv": {
+   "module": "k-offenses",
+   "node": "t0577",
+   "node_text": "已满14周岁不满16周岁的人盗窃、诈骗、抢夺他人财物，为窝藏赃物、抗拒抓捕或者毁灭罪证，当场使用暴力，故意伤害致人重伤或者死亡，或者故意杀人的，应当分别以故意伤",
+   "srcs": [
+    "spc-minor10"
+   ],
+   "note": "已满十四不满十六周岁的人盗窃、诈骗、抢夺后当场使用暴力，故意伤害致人重伤或者死亡的，以故意伤害罪定罪处罚，不成立（转化型）抢劫罪",
+   "auth": "spc"
+  },
+  "k270": {
+   "module": "k-offenses",
+   "node": "t7126",
+   "node_text": "侵占罪F13/6；",
+   "srcs": [
+    "art270#1"
+   ],
+   "note": "将代为保管的他人财物非法占为己有，数额较大，拒不退还的",
+   "auth": "npc"
+  },
+  "k270-2": {
+   "module": "k-offenses",
+   "node": "t7126",
+   "node_text": "侵占罪F13/6；",
+   "srcs": [
+    "art270#2"
+   ],
+   "note": "将他人的遗忘物或者埋藏物非法占为己有，数额较大，拒不交出的",
+   "auth": "npc"
+  },
+  "k270-3": {
+   "module": "k-offenses",
+   "node": "t7126",
+   "node_text": "侵占罪F13/6；",
+   "srcs": [
+    "art270#3"
+   ],
+   "note": "本条罪，告诉的才处理",
+   "auth": "npc"
+  },
+  "k274": {
+   "module": "k-offenses",
+   "node": "t7237",
+   "node_text": "敲诈勒索罪",
+   "srcs": [
+    "art274"
+   ],
+   "note": "敲诈勒索公私财物，数额较大或者多次敲诈勒索的",
+   "auth": "npc"
+  },
+  "k271": {
+   "module": "k-offenses",
+   "node": "t7175",
+   "node_text": "职务侵占罪T15/9；",
+   "srcs": [
+    "art271#1"
+   ],
+   "note": "单位工作人员利用职务便利，将本单位财物非法占为己有，数额较大的",
+   "auth": "npc"
+  },
+  "k382": {
+   "module": "k-offenses",
+   "node": "t8915",
+   "node_text": "贪污罪",
+   "srcs": [
+    "art382#1"
+   ],
+   "note": "国家工作人员利用职务上的便利，侵吞、窃取、骗取或者以其他手段非法占有公共财物的，是贪污罪",
+   "auth": "npc"
+  },
+  "k382-2": {
+   "module": "k-offenses",
+   "node": "t8915",
+   "node_text": "贪污罪",
+   "srcs": [
+    "art382#2"
+   ],
+   "note": "受国家机关、国有单位委托管理、经营国有财产的人员，利用职务便利非法占有国有财物的，以贪污论",
+   "auth": "npc"
+  },
+  "k382-3": {
+   "module": "k-offenses",
+   "node": "t8915",
+   "node_text": "贪污罪",
+   "srcs": [
+    "art382#3"
+   ],
+   "note": "与前两款所列人员勾结，伙同贪污的，以共犯论处",
+   "auth": "npc"
+  },
+  "k271-2": {
+   "module": "k-offenses",
+   "node": "t7175",
+   "node_text": "职务侵占罪T15/9；",
+   "srcs": [
+    "art271#2"
+   ],
+   "note": "国有单位中从事公务的人员有前款行为的，依照贪污罪定罪处罚",
+   "auth": "npc"
+  },
+  "k385": {
+   "module": "k-offenses",
+   "node": "t9086",
+   "node_text": "受贿罪T17、10案例，F10案例",
+   "srcs": [
+    "art385#1"
+   ],
+   "note": "国家工作人员利用职务上的便利，索取他人财物，或者非法收受他人财物、为他人谋取利益的，是受贿罪",
+   "auth": "npc"
+  },
+  "k389": {
+   "module": "k-offenses",
+   "node": "t9232",
+   "node_text": "行贿罪",
+   "srcs": [
+    "art389#1"
+   ],
+   "note": "为谋取不正当利益，给予国家工作人员以财物的，是行贿罪",
+   "auth": "npc"
+  },
+  "k389-3": {
+   "module": "k-offenses",
+   "node": "t9236",
+   "node_text": "因被勒索给予国家工作人员以财物，没有获得不正当利益的，不是行贿。",
+   "srcs": [
+    "art389#3"
+   ],
+   "note": "因被勒索给予国家工作人员以财物，没有获得不正当利益的，不是行贿",
+   "auth": "npc"
+  },
+  "k390-3": {
+   "module": "k-offenses",
+   "node": "t9232",
+   "node_text": "行贿罪",
+   "srcs": [
+    "art390#3"
+   ],
+   "note": "行贿人在被追诉前主动交待行贿行为的，可以从轻或者减轻处罚",
+   "auth": "npc"
+  },
+  "k232": {
+   "module": "k-offenses",
+   "node": "t5656",
+   "node_text": "故意杀人罪",
+   "srcs": [
+    "art232"
+   ],
+   "note": "故意杀人的",
+   "auth": "npc"
+  },
+  "k234": {
+   "module": "k-offenses",
+   "node": "t5758",
+   "node_text": "故意伤害罪",
+   "srcs": [
+    "art234#1"
+   ],
+   "note": "故意伤害他人身体的",
+   "auth": "npc"
+  },
+  "k133": {
+   "module": "k-offenses",
+   "node": "t3538",
+   "node_text": "交通肇事罪08/17；T15/16；F10/17；T20/57；F13案例；",
+   "srcs": [
+    "art133"
+   ],
+   "note": "违反交通运输管理法规，因而发生重大事故，致人重伤、死亡或者使公私财产遭受重大损失的",
+   "auth": "npc"
+  },
+  "k133-flee": {
+   "module": "k-offenses",
+   "node": "t3569",
+   "node_text": "逃逸T17/57；",
+   "srcs": [
+    "art133"
+   ],
+   "note": "交通运输肇事后逃逸：处三年以上七年以下有期徒刑",
+   "auth": "npc"
+  },
+  "k133-fleedeath": {
+   "module": "k-offenses",
+   "node": "t3574",
+   "node_text": "“因逃逸致人死亡”",
+   "srcs": [
+    "art133"
+   ],
+   "note": "因逃逸致人死亡的，处七年以上有期徒刑",
+   "auth": "npc"
+  },
+  "k133-1": {
+   "module": "k-offenses",
+   "node": "t3621",
+   "node_text": "危险驾驶罪",
+   "srcs": [
+    "art133-1#1"
+   ],
+   "note": "在道路上驾驶机动车，追逐竞驶情节恶劣、醉酒驾驶、校车或客运严重超员超速、违规运输危险化学品的",
+   "auth": "npc"
+  },
+  "k-convict": {
+   "module": "k-offenses",
+   "node": "t0281",
+   "node_text": "第三章犯罪构成T10/28；",
+   "srcs": [
+    "art3"
+   ],
+   "note": "符合构成要件且负刑事责任、未过追诉时效的，以该罪定罪（罪刑法定，第3条）",
+   "auth": "doctrine"
+  },
+  "k-conv-absorb": {
+   "module": "k-offenses",
+   "node": "t6869",
+   "node_text": "转化型抢劫TF19/20，10；T13/43，F14/7；",
+   "srcs": [
+    "art269"
+   ],
+   "note": "转化为抢劫的，以抢劫罪一罪论处，不再另定盗窃、诈骗、抢夺罪",
+   "auth": "doctrine"
+  }
+ },
+ "taxonomy": [
+  {
+   "child": "附属刑法",
+   "parent": "广义刑法",
+   "child_node": "t0016",
+   "parent_node": "t0011"
+  },
+  {
+   "child": "特别刑法",
+   "parent": "广义刑法",
+   "child_node": "t0018",
+   "parent_node": "t0011"
+  },
+  {
+   "child": "目的解释",
+   "parent": "论理解释",
+   "child_node": "t0085",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "扩大解释",
+   "parent": "论理解释",
+   "child_node": "t0090",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "缩小解释",
+   "parent": "论理解释",
+   "child_node": "t0093",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "当然解释",
+   "parent": "论理解释",
+   "child_node": "t0094",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "比较解释",
+   "parent": "论理解释",
+   "child_node": "t0097",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "历史解释",
+   "parent": "论理解释",
+   "child_node": "t0098",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "扩大解释VS类推解释",
+   "parent": "论理解释",
+   "child_node": "t0100",
+   "parent_node": "t0083"
+  },
+  {
+   "child": "所谓辨认能力",
+   "parent": "辨认和控制自己行为的能力",
+   "child_node": "t0541",
+   "parent_node": "t0540"
+  },
+  {
+   "child": "所谓控制能力",
+   "parent": "辨认和控制自己行为的能力",
+   "child_node": "t0543",
+   "parent_node": "t0540"
+  },
+  {
+   "child": "哲学根据",
+   "parent": "刑事责任的根据",
+   "child_node": "t1694",
+   "parent_node": "t1686"
+  },
+  {
+   "child": "法学根据",
+   "parent": "刑事责任的根据",
+   "child_node": "t1696",
+   "parent_node": "t1686"
+  },
+  {
+   "child": "学理分类",
+   "parent": "刑罚的种类",
+   "child_node": "t1786",
+   "parent_node": "t1785"
+  },
+  {
+   "child": "刑法中的分类",
+   "parent": "刑罚的种类",
+   "child_node": "t1792",
+   "parent_node": "t1785"
+  },
+  {
+   "child": "有期徒刑",
+   "parent": "主刑",
+   "child_node": "t1827",
+   "parent_node": "t1796"
+  },
+  {
+   "child": "无期徒刑",
+   "parent": "主刑",
+   "child_node": "t1838",
+   "parent_node": "t1796"
+  },
+  {
+   "child": "死刑",
+   "parent": "主刑",
+   "child_node": "t1847",
+   "parent_node": "t1796"
+  },
+  {
+   "child": "对象条件",
+   "parent": "减刑的条件",
+   "child_node": "t2596",
+   "parent_node": "t2594"
+  },
+  {
+   "child": "实质条件",
+   "parent": "减刑的条件",
+   "child_node": "t2602",
+   "parent_node": "t2594"
+  },
+  {
+   "child": "可以减刑的实质条件",
+   "parent": "实质条件",
+   "child_node": "t2604",
+   "parent_node": "t2602"
+  },
+  {
+   "child": "应当减刑的实质条件",
+   "parent": "实质条件",
+   "child_node": "t2622",
+   "parent_node": "t2602"
+  },
+  {
+   "child": "对象条件",
+   "parent": "假释的条件",
+   "child_node": "t2712",
+   "parent_node": "t2710"
+  },
+  {
+   "child": "实质条件",
+   "parent": "假释的条件",
+   "child_node": "t2721",
+   "parent_node": "t2710"
+  },
+  {
+   "child": "限制条件",
+   "parent": "假释的条件",
+   "child_node": "t2731",
+   "parent_node": "t2710"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "分裂国家罪",
+   "child_node": "t3033",
+   "parent_node": "t3019"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "分裂国家罪",
+   "child_node": "t3035",
+   "parent_node": "t3019"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "放火罪",
+   "child_node": "t3316",
+   "parent_node": "t3299"
+  },
+  {
+   "child": "此罪彼罪",
+   "parent": "放火罪",
+   "child_node": "t3318",
+   "parent_node": "t3299"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "爆炸罪",
+   "child_node": "t3348",
+   "parent_node": "t3335"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "爆炸罪",
+   "child_node": "t3350",
+   "parent_node": "t3335"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "投放危险物质罪",
+   "child_node": "t3371",
+   "parent_node": "t3353"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "投放危险物质罪",
+   "child_node": "t3373",
+   "parent_node": "t3353"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "破坏交通工具罪",
+   "child_node": "t3489",
+   "parent_node": "t3468"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "破坏交通工具罪",
+   "child_node": "t3493",
+   "parent_node": "t3468"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "危险驾驶罪",
+   "child_node": "t3658",
+   "parent_node": "t3621"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "危险驾驶罪",
+   "child_node": "t3661",
+   "parent_node": "t3621"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "劫持航空器罪",
+   "child_node": "t3740",
+   "parent_node": "t3712"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "劫持航空器罪",
+   "child_node": "t3742",
+   "parent_node": "t3712"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "重大责任事故罪",
+   "child_node": "t3943",
+   "parent_node": "t3925"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "重大责任事故罪",
+   "child_node": "t3955",
+   "parent_node": "t3925"
+  },
+  {
+   "child": "过失致人死亡的特别法条",
+   "parent": "特别法条",
+   "child_node": "t3967",
+   "parent_node": "t3966"
+  },
+  {
+   "child": "失火罪的特别法条",
+   "parent": "特别法条",
+   "child_node": "t3968",
+   "parent_node": "t3966"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "危险作业罪",
+   "child_node": "t4030",
+   "parent_node": "t4015"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "危险作业罪",
+   "child_node": "t4032",
+   "parent_node": "t4015"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非国家工作人员受贿罪",
+   "child_node": "t4443",
+   "parent_node": "t4419"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "非国家工作人员受贿罪",
+   "child_node": "t4449",
+   "parent_node": "t4419"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非法吸收公众存款罪",
+   "child_node": "t4570",
+   "parent_node": "t4540"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "非法吸收公众存款罪",
+   "child_node": "t4605",
+   "parent_node": "t4540"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "妨害信用卡管理罪",
+   "child_node": "t4645",
+   "parent_node": "t4621"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "妨害信用卡管理罪",
+   "child_node": "t4648",
+   "parent_node": "t4621"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "利用未公开信息交易罪",
+   "child_node": "t4761",
+   "parent_node": "t4739"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "利用未公开信息交易罪",
+   "child_node": "t4763",
+   "parent_node": "t4739"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "贷款诈骗罪",
+   "child_node": "t4955",
+   "parent_node": "t4923"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "贷款诈骗罪",
+   "child_node": "t4962",
+   "parent_node": "t4923"
+  },
+  {
+   "child": "逃税罪",
+   "parent": "危害税收征管罪",
+   "child_node": "t5089",
+   "parent_node": "t5087"
+  },
+  {
+   "child": "抗税罪",
+   "parent": "危害税收征管罪",
+   "child_node": "t5125",
+   "parent_node": "t5087"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "逃税罪",
+   "child_node": "t5108",
+   "parent_node": "t5089"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "逃税罪",
+   "child_node": "t5118",
+   "parent_node": "t5089"
+  },
+  {
+   "child": "假冒注册商标罪",
+   "parent": "侵犯知识产权罪",
+   "child_node": "t5206",
+   "parent_node": "t5204"
+  },
+  {
+   "child": "销售侵权复制品罪",
+   "parent": "侵犯知识产权罪",
+   "child_node": "t5323",
+   "parent_node": "t5204"
+  },
+  {
+   "child": "侵犯商业秘密罪",
+   "parent": "侵犯知识产权罪",
+   "child_node": "t5347",
+   "parent_node": "t5204"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "假冒注册商标罪",
+   "child_node": "t5241",
+   "parent_node": "t5206"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "假冒注册商标罪",
+   "child_node": "t5251",
+   "parent_node": "t5206"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "侵犯商业秘密罪",
+   "child_node": "t5381",
+   "parent_node": "t5347"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "侵犯商业秘密罪",
+   "child_node": "t5387",
+   "parent_node": "t5347"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "合同诈骗罪",
+   "child_node": "t5413",
+   "parent_node": "t5392"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "合同诈骗罪",
+   "child_node": "t5417",
+   "parent_node": "t5392"
+  },
+  {
+   "child": "本罪VS集资诈骗罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t5494",
+   "parent_node": "t5468"
+  },
+  {
+   "child": "本罪VS非法经营罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t5496",
+   "parent_node": "t5468"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "故意杀人罪",
+   "child_node": "t5670",
+   "parent_node": "t5656"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "故意杀人罪",
+   "child_node": "t5684",
+   "parent_node": "t5656"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "过失致人死亡罪",
+   "child_node": "t5727",
+   "parent_node": "t5713"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "过失致人死亡罪",
+   "child_node": "t5729",
+   "parent_node": "t5713"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "雇用童工从事危重劳动罪",
+   "child_node": "t5885",
+   "parent_node": "t5865"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "雇用童工从事危重劳动罪",
+   "child_node": "t5888",
+   "parent_node": "t5865"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "负有照护职责人员性侵罪",
+   "child_node": "t5999",
+   "parent_node": "t5987"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "负有照护职责人员性侵罪",
+   "child_node": "t6002",
+   "parent_node": "t5987"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非法拘禁罪",
+   "child_node": "t6108",
+   "parent_node": "t6089"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "非法拘禁罪",
+   "child_node": "t6119",
+   "parent_node": "t6089"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "绑架罪",
+   "child_node": "t6150",
+   "parent_node": "t6124"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "绑架罪",
+   "child_node": "t6153",
+   "parent_node": "t6124"
+  },
+  {
+   "child": "绑架罪VS非法拘禁罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6154",
+   "parent_node": "t6153"
+  },
+  {
+   "child": "绑架罪VS抢劫罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6175",
+   "parent_node": "t6153"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "暴力干涉婚姻自由罪",
+   "child_node": "t6416",
+   "parent_node": "t6393"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "暴力干涉婚姻自由罪",
+   "child_node": "t6420",
+   "parent_node": "t6393"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "虐待罪",
+   "child_node": "t6468",
+   "parent_node": "t6452"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "虐待罪",
+   "child_node": "t6472",
+   "parent_node": "t6452"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "遗弃罪",
+   "child_node": "t6498",
+   "parent_node": "t6483"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "遗弃罪",
+   "child_node": "t6501",
+   "parent_node": "t6483"
+  },
+  {
+   "child": "遗弃罪VS故意杀人罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6502",
+   "parent_node": "t6501"
+  },
+  {
+   "child": "遗弃罪VS虐待罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6507",
+   "parent_node": "t6501"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "侮辱罪",
+   "child_node": "t6558",
+   "parent_node": "t6541"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "侮辱罪",
+   "child_node": "t6573",
+   "parent_node": "t6541"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "诽谤罪",
+   "child_node": "t6598",
+   "parent_node": "t6584"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "诽谤罪",
+   "child_node": "t6610",
+   "parent_node": "t6584"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "抢劫罪",
+   "child_node": "t6795",
+   "parent_node": "t6763"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "抢劫罪",
+   "child_node": "t6813",
+   "parent_node": "t6763"
+  },
+  {
+   "child": "抢劫罪VS绑架罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6841",
+   "parent_node": "t6813"
+  },
+  {
+   "child": "抢劫罪VS寻衅滋事罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t6852",
+   "parent_node": "t6813"
+  },
+  {
+   "child": "诈骗罪VS新型诈骗罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7089",
+   "parent_node": "t7088"
+  },
+  {
+   "child": "诈骗罪VS虚假诉讼罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7101",
+   "parent_node": "t7088"
+  },
+  {
+   "child": "侵占罪是亲告罪",
+   "parent": "是否属于亲告罪",
+   "child_node": "t7172",
+   "parent_node": "t7171"
+  },
+  {
+   "child": "盗窃罪是公诉犯罪",
+   "parent": "是否属于亲告罪",
+   "child_node": "t7173",
+   "parent_node": "t7171"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "敲诈勒索罪",
+   "child_node": "t7263",
+   "parent_node": "t7237"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "敲诈勒索罪",
+   "child_node": "t7268",
+   "parent_node": "t7237"
+  },
+  {
+   "child": "敲诈勒索罪VS诈骗罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7286",
+   "parent_node": "t7268"
+  },
+  {
+   "child": "敲诈勒索罪VS招摇撞骗罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7294",
+   "parent_node": "t7268"
+  },
+  {
+   "child": "敲诈勒索罪VS绑架罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7305",
+   "parent_node": "t7268"
+  },
+  {
+   "child": "盗窃中携带凶器",
+   "parent": "凶器",
+   "child_node": "t7309",
+   "parent_node": "t7308"
+  },
+  {
+   "child": "盗窃中使用或者显示凶器",
+   "parent": "凶器",
+   "child_node": "t7311",
+   "parent_node": "t7308"
+  },
+  {
+   "child": "抢夺中携带凶器",
+   "parent": "凶器",
+   "child_node": "t7313",
+   "parent_node": "t7308"
+  },
+  {
+   "child": "抢夺中使用凶器",
+   "parent": "凶器",
+   "child_node": "t7315",
+   "parent_node": "t7308"
+  },
+  {
+   "child": "挪用资金罪VS职务侵占罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7437",
+   "parent_node": "t7436"
+  },
+  {
+   "child": "挪用资金罪VS挪用公款罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t7451",
+   "parent_node": "t7436"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非法获取国家秘密罪",
+   "child_node": "t7663",
+   "parent_node": "t7649"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "非法获取国家秘密罪",
+   "child_node": "t7666",
+   "parent_node": "t7649"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "高空抛物罪",
+   "child_node": "t7717",
+   "parent_node": "t7705"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "高空抛物罪",
+   "child_node": "t7721",
+   "parent_node": "t7705"
+  },
+  {
+   "child": "组织考试作弊罪",
+   "parent": "考试犯罪",
+   "child_node": "t7763",
+   "parent_node": "t7762"
+  },
+  {
+   "child": "代替考试罪",
+   "parent": "考试犯罪",
+   "child_node": "t7790",
+   "parent_node": "t7762"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "组织考试作弊罪",
+   "child_node": "t7781",
+   "parent_node": "t7763"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "组织考试作弊罪",
+   "child_node": "t7786",
+   "parent_node": "t7763"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "帮助信息网络犯罪活动罪",
+   "child_node": "t7930",
+   "parent_node": "t7909"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "帮助信息网络犯罪活动罪",
+   "child_node": "t7933",
+   "parent_node": "t7909"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "聚众斗殴罪",
+   "child_node": "t7966",
+   "parent_node": "t7936"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "聚众斗殴罪",
+   "child_node": "t7974",
+   "parent_node": "t7936"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "赌博罪",
+   "child_node": "t8032",
+   "parent_node": "t8015"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "赌博罪",
+   "child_node": "t8035",
+   "parent_node": "t8015"
+  },
+  {
+   "child": "赌博罪VS相关犯罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t8043",
+   "parent_node": "t8035"
+  },
+  {
+   "child": "开设赌场罪VS赌博罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t8054",
+   "parent_node": "t8035"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "脱逃罪",
+   "child_node": "t8272",
+   "parent_node": "t8256"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "脱逃罪",
+   "child_node": "t8277",
+   "parent_node": "t8256"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "妨害作证罪",
+   "child_node": "t8370",
+   "parent_node": "t8353"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "妨害作证罪",
+   "child_node": "t8373",
+   "parent_node": "t8353"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "扰乱法庭秩序罪",
+   "child_node": "t8409",
+   "parent_node": "t8386"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "扰乱法庭秩序罪",
+   "child_node": "t8411",
+   "parent_node": "t8386"
+  },
+  {
+   "child": "医疗事故罪",
+   "parent": "危害公共卫生类罪",
+   "child_node": "t8456",
+   "parent_node": "t8455"
+  },
+  {
+   "child": "非法行医罪",
+   "parent": "危害公共卫生类罪",
+   "child_node": "t8481",
+   "parent_node": "t8455"
+  },
+  {
+   "child": "妨害传染病防治罪",
+   "parent": "危害公共卫生类罪",
+   "child_node": "t8516",
+   "parent_node": "t8455"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "医疗事故罪",
+   "child_node": "t8470",
+   "parent_node": "t8456"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "医疗事故罪",
+   "child_node": "t8479",
+   "parent_node": "t8456"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非法行医罪",
+   "child_node": "t8501",
+   "parent_node": "t8481"
+  },
+  {
+   "child": "此罪或此罪",
+   "parent": "非法行医罪",
+   "child_node": "t8503",
+   "parent_node": "t8481"
+  },
+  {
+   "child": "非法行医罪VS医疗事故罪",
+   "parent": "此罪或此罪",
+   "child_node": "t8504",
+   "parent_node": "t8503"
+  },
+  {
+   "child": "非法行医罪VS诈骗罪",
+   "parent": "此罪或此罪",
+   "child_node": "t8514",
+   "parent_node": "t8503"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "妨害传染病防治罪",
+   "child_node": "t8537",
+   "parent_node": "t8516"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "妨害传染病防治罪",
+   "child_node": "t8541",
+   "parent_node": "t8516"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "盗伐林木罪",
+   "child_node": "t8633",
+   "parent_node": "t8618"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "盗伐林木罪",
+   "child_node": "t8641",
+   "parent_node": "t8618"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "非法持有毒品罪",
+   "child_node": "t8749",
+   "parent_node": "t8732"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "非法持有毒品罪",
+   "child_node": "t8751",
+   "parent_node": "t8732"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "组织卖淫罪",
+   "child_node": "t8773",
+   "parent_node": "t8755"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "组织卖淫罪",
+   "child_node": "t8776",
+   "parent_node": "t8755"
+  },
+  {
+   "child": "强迫卖淫罪VS组织卖淫罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t8794",
+   "parent_node": "t8793"
+  },
+  {
+   "child": "强迫卖淫罪VS强奸罪",
+   "parent": "此罪与彼罪",
+   "child_node": "t8807",
+   "parent_node": "t8793"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "传播性病罪",
+   "child_node": "t8837",
+   "parent_node": "t8818"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "传播性病罪",
+   "child_node": "t8841",
+   "parent_node": "t8818"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "侮辱国歌罪",
+   "child_node": "t8895",
+   "parent_node": "t8880"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "侮辱国歌罪",
+   "child_node": "t8898",
+   "parent_node": "t8880"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "贪污罪",
+   "child_node": "t8978",
+   "parent_node": "t8915"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "贪污罪",
+   "child_node": "t8995",
+   "parent_node": "t8915"
+  },
+  {
+   "child": "第三百八十二条",
+   "parent": "相关法条",
+   "child_node": "t8917",
+   "parent_node": "t8916"
+  },
+  {
+   "child": "第三百八十三条",
+   "parent": "相关法条",
+   "child_node": "t8921",
+   "parent_node": "t8916"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "对有影响力的人行贿罪",
+   "child_node": "t9282",
+   "parent_node": "t9265"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "对有影响力的人行贿罪",
+   "child_node": "t9284",
+   "parent_node": "t9265"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "巨额财产来源不明罪",
+   "child_node": "t9314",
+   "parent_node": "t9293"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "巨额财产来源不明罪",
+   "child_node": "t9319",
+   "parent_node": "t9293"
+  },
+  {
+   "child": "罪与非罪",
+   "parent": "私放在押人员罪",
+   "child_node": "t9609",
+   "parent_node": "t9589"
+  },
+  {
+   "child": "此罪与彼罪",
+   "parent": "私放在押人员罪",
+   "child_node": "t9612",
+   "parent_node": "t9589"
+  }
+ ],
+ "exception_candidates": [
+  {
+   "node": "t0113",
+   "text": "事后法是行为实现之后颁布的法律。但是如果事后法有利于被告人，还是可以适用的。也就是要根据“从旧兼从轻”原则,犯罪行为发生之后生效的法律，对其生效前发生的犯罪行为，只有在其处罚轻于犯罪行为发生时生效的法律的场合才能适用于该行为。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0169",
+   "text": "但是.按照中国刑法规定的最高刑为3年以下有期徒刑的.可以不予追究。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0174",
+   "text": "外国人在中国领域外对中国国家或者公民犯罪，而（1）按我国刑法规定的最低刑为3年以上有期徒刑的，可以适用我国刑法;但是（2）按照犯罪地的法律不受处罚的除外。这种规定，体现了保护原则。21/1；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0182",
+   "text": "②我国刑法缔结或参加了公约，声明保留的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0192",
+   "text": "我国刑法对外国刑事判决是消极承认的态度。消极承认,是指外国确定的刑事判决不制约本国刑罚权的实现。刑法第10条:凡在中华人民共和国领域外犯罪,依照本法应当负刑事责任的,虽然经过外国审判,仍然可以依照本法追究,但是在外国已经受过刑罚处罚的,可以免除或者减轻处罚。",
+   "cites": [
+    "criminal-law:10"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0206",
+   "text": "(2)从旧兼从轻原则。只能依据行为当时有效的法律定罪处罚但新法不认为犯罪或处刑较轻的除外。新法(行为后生效)中的“轻法”有溯及既往的效力。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0208",
+   "text": "(4)从新兼从轻原则。新法一般具有溯及既往的效力，但是旧法(行为时法)不认为犯罪或处刑较轻的仍适用旧法。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0213",
+   "text": "即对于现行刑法生效以前的未经审判或者判决尚未确定的行为，适用行为当时有效的法律。但是按照现行有效的法律不认为犯罪或处刑较轻的，适用现行有效的法律。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0225",
+   "text": "(1)对于2015年10月31日以前因利用职业便利实施犯罪或者实施违背职业要求的特定义务的犯罪的，不适用修正后《刑法》第37条之一第1款的规定。其他法律、行政法规另有规定的，从其规定。",
+   "cites": [
+    "criminal-law:37-1"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0230",
+   "text": "(6)对于2015年10月31日以前组织考试作弊，为他人组织考试作弊提供作弊器材或者其他帮助，以及非法向他人出售或者提供考试试题、答案，根据修正前刑法应当以非法获取国家秘密罪、非法生产、销售间谍专用器材罪或者故意泄露国家秘密罪等追究刑事责任的，适用修正前刑法的有关规定。但是，根据修正后《刑法》第284条之一的规定处刑较",
+   "cites": [
+    "criminal-law:284-1"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0231",
+   "text": "(7)2015年10月31日以前以捏造的事实提起民事诉讼，妨害司法秩序或者严重侵害他人合法权益，根据修正前刑法应当以伪造公司、企业、事业单位、人民团体印章罪或者妨害作证罪等追究刑事责任的，适用修正前刑法的有关规定。但是，根据修正后《刑法》第307条之一的规定处刑较轻的，适用修正后刑法的有关规定。实施第一款行为，非法占有",
+   "cites": [
+    "criminal-law:307-1"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0232",
+   "text": "(8)对于2015年10月31曰以前实施贪污、受贿行为，罪行极其严重，根据修正前刑法判处死刑缓期执行不能体现罪刑相适应原则，而根据修正后刑法判处死刑缓期执行同时决定在其死刑缓期执行二年期满依法减为无期徒刑后，终身监禁，不得减刑、假释可以罚当其罪的，适用修正后《刑法》第383条第4款的规定。根据修正前刑法判处死刑缓期执行",
+   "cites": [
+    "criminal-law:383",
+    "criminal-law:383"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0254",
+   "text": "尽管在刑法分则各条中已经规定了盗窃、抢劫等各种具体犯罪的定义(罪状或构成要件)，但是，《刑法》仍在第13条中对犯罪给出了定义:“一切危害国家主权、领土完整和安全，分裂国家、颠覆人民民主专政的政权和推翻社会主义制度，破坏社会秩序和经济秩序，侵犯国有财产或者劳动群众集体所有的财产，侵犯公民私人所有的财产，侵犯公民的人身权利",
+   "cites": [
+    "criminal-law:13"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0255",
+   "text": "“但书”的意义TF19/41，21；09/2；T14/3；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0256",
+   "text": "（1）该“但书”表明认定犯罪不仅仅需要正确“定性”，还需要合理确定危害的“程度”或“量”。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0257",
+   "text": "《刑法》第13条规定的犯罪定义既含定性要求又含定量要求，对于合理认定犯罪及处罚犯罪具有重要的意义。该犯罪定义不仅从性质上明确了犯罪具有危害性和违法性，而且还设置了定量要求，即“情节显著轻微危害不大的，不认为是犯罪”，被称为犯罪定义的“但书”。“但书”的基本理念是通过对犯罪的实质特征提出定量的要求，赋予法机关酌情排除犯罪",
+   "cites": [
+    "criminal-law:13"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0259",
+   "text": "（2）但书”是区分“违法行为”和“犯罪行为”的宏观标准。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0260",
+   "text": "“但书”也是适应我国法律结构需要产生的。我国对危害行为的惩罚体制由两个层次的法律构成:第一层次是治安管理处罚法以及工商、海关、税务等行政、经济法规中的处罚规定，违反这些规定的属于“违法行为”;第二层次才是刑法，违反刑法的属于“犯罪”。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0267",
+   "text": "因为人只有通过行为才能对外界如社会、他人发生影响，也只有通过行为才能对社会、他人造成损害;而法律也只有通过对行为的刻画、描述，才能确定什么是犯罪。这意味着:即使人的思想观念、主观素质再邪恶，只要它没有外化为行为，也不是犯罪。不能把人的道德、宗教信仰、思想观念作为犯罪。可以说，一切犯罪在道德上都是邪恶的，但是并非一切道德",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0270",
+   "text": "行为不具有社会危害性，就不能认为是犯罪。某种行为即使具有一定的社会危害性，“但是情节显著轻微危害不大的”，也不认为是犯罪。（正话反说）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0279",
+   "text": "因此，应受刑罚惩罚是犯罪的基本特征之一，但是法院可依法裁量对犯罪人不实际适用刑罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0280",
+   "text": "例如，刑法规定，对于犯罪中止没有造成损害结果的，应当免除处罚;对于犯罪情节轻微的，可以免予刑事处罚等。在这种场合，行为人虽然没有被法院实际判处刑罚，但其行为构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0300",
+   "text": "例如，张某因为李某与自己的妻子通奸，而持刀将李某砍死一案。经调查:1张某在主观上有杀害李某的故意，具备故意杀人罪的主观要件;2张某实行了杀害李某的行为，具备了故意杀人罪的客观要件;3张某侵害了他人的生命，具备了故意杀人罪的客体要件;4张某实行杀人行为时27岁、精神正常，具备承担刑事责任的主体要件。故张某的行为事实完全具",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0346",
+   "text": "《刑法》第13条在列举犯罪对刑法法益侵害的同时，还特别指出，违法行为必须是达到了“依照法律应当受刑罚处罚”的严重程度才构成犯罪。如果对利益的侵害不严重，“情节显著轻微危害不大的”，不构成犯罪。",
+   "cites": [
+    "criminal-law:13"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0353",
+   "text": "因为犯罪的客体是刑法保护的社会利益，它能反映或者揭示出某一刑法条文的目的或者宗旨，这对于正确理解、适用该条文具有指导作用。以《刑法》第245条规定的非法侵入住宅罪为例，如果该条的客体（即该条保护的社会利益）是住宅权（侵犯财产权），则侵入他人住宅即侵害了该条所保护的利益，应当构成犯罪；如果该条的客体是公民的居住安宁（人身",
+   "cites": [
+    "criminal-law:245",
+    "criminal-law:256"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0421",
+   "text": "行为人负有某种法律义务是不作为构成犯罪的前提。如果行为人虽有防止结果发生的义务，但是由于缺乏必要的能力或其他原因而不可能防止危害结果发生的，也不成立不作为犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0478",
+   "text": "（3）但是，即使存在因果关系，也不意味着对结果当然负刑事责任。因为刑事责任是主客观统一的，仅仅认定存在因果关系是不够的，还需要认定是否具备承担刑事责任的其他条件，如主观要件（有无故意、过失）以及主体资格（责任年龄、责任能力）等。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0499",
+   "text": "如甲某在深山盗伐林木，树倒砸死隐蔽在旁的守林人。认定存在因果关系，但行为人是否对该结果负刑事责任、负何种责任，则需视主观认识而定：如果行为人是故意的，则（对死亡结果）承担故意罪责（故意杀入罪），如果行为人是过失的，则承担过失罪责；如果是意外事件，则不负刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0510",
+   "text": "任何犯罪行为都是在一定的时间、地点、以一定的方式方法（工具）实施的。但是在一般情况下，刑法对犯罪的时间、地点、方法不作特别的限定，所以它们通常不是犯罪构成客观要件。（选择构成要件)",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0512",
+   "text": "1.但是，如果刑法把时间、地点、方法明文规定为某种犯罪的构成条件时，它们就成为构成该罪不可缺少的条件。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0528",
+   "text": "3.任何犯罪都必然侵害一定的社会利益，即侵害一定的客体，但是犯罪对象不一定受到犯罪的侵害。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0534",
+   "text": "在历史上，虽然有惩罚动物甚至惩罚植物、物品、自然现象的事例，但是现代社会已经抛弃这种愚昧的做法。人利用动物犯罪的，人是犯罪的主体，动物不是犯罪主体。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0536",
+   "text": "在古典刑法理论中，极端崇尚个人责任原则，反对团体责任或者集体责任。因此犯罪主体只能是自然人，不能包括法人或者单位。我国的1979年刑法典中规定的犯罪主体只有自然人，就反映了这样的观念。但是，单位犯罪特别是在经济领域中的单位犯罪现象极为严重，引起了人们的关注，在刑法的理论和制度上，逐渐承认单位犯罪的观念、确立对单位犯罪的",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0556",
+   "text": "2.已满14周岁不满16周岁的人，犯故意杀人、故意伤害致人重伤或者死亡、强奸、抢劫、贩卖毒品、放火、爆炸、投放危险物质罪的，应当负刑事责任。这是相对负刑事责任年龄阶段。处在此年龄段的人只对法律明文列举的上述几种犯罪行为负刑事责任，而对其他犯罪行为不负刑事责任。08/1；21/2；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0557",
+   "text": "已满14周岁不满16周岁的人有上述法定8种性质的“行为”就应该负刑事责任，而不管他所涉及的“罪名”是什么。对此，全国人大法工委曾给最高人民检察院答复：《刑法》第17条第2款规定的8种犯罪，是指具体犯罪行为而不是具体罪名。对于《刑法》第17条中规定的“犯故意杀人、故意伤害致人重伤或者死亡”，是指只要故意实施了杀人、伤害行",
+   "cites": [
+    "criminal-law:17",
+    "criminal-law:17"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0570",
+   "text": "1.已满14周岁不满16周岁的人偶尔与幼女发生性行为，情节轻微，未造成严重后果的，不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0571",
+   "text": "2.已满14周岁不满16周岁的人使用轻微暴力或者威胁，强行索要其他未成年人随身携带的生活、学习用品或者钱财数量不大，且未造成被害人轻微伤以上或者不敢正常到校学习、生活等危害后果的，不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0572",
+   "text": "已满16周岁不满18周岁的人具有前款规定情形的，一般也不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0574",
+   "text": "4.已满16周岁不满18周岁的人实施盗窃行为未超过3次，盗窃数额虽已达到“数额较大”标准，但案发后能如实供述全部盗窃事实并积极退赃，且具有下列情形之一的，可以认定为“情节显著轻微危害不大”，不认为是犯罪：（1）系又聋又哑的人或者盲人；（2）在共同盗窃中起次要或者辅助作用，或者被胁迫；（3）具有其他轻微情节的。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0575",
+   "text": "已满16周岁不满18周岁的人盗窃未遂或者中止的，可不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0589",
+   "text": "通常，达到刑事责任年龄的人也就具备了刑法意义上的辨认和控制自己行为的能力，或者说被法律推定为具备这种能力，即具有刑事责任能力。但是有些人由于精神或生理上的缺陷而丧失或减弱辨认或控制自己行为的能力。法律对此特殊情况作出了规定：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0590",
+   "text": "1.精神病人在不能辨认或者不能控制自己行为的时候造成危害结果，经法定程序鉴定确认的，不负刑事责任；但是应当责令他的家属或者监护人严加看管和医疗；在必要的时候，由政府强制医疗。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0593",
+   "text": "精神病人在不能辨认或者不能控制自己行为的时候造成危害结果，经法定程序鉴定确认的，不负刑事责任。08/4；0",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0594",
+   "text": "3.尚未完全丧失辨认或者控制自己行为能力的精神病人犯罪的，应当负刑事责任，但是可以从轻或者减轻处罚。05/5；0.5",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0598",
+   "text": "根据《刑法》第19条的规定，又聋又哑的人或者盲人犯罪，可以从轻、减轻或者免除处罚。他们虽属于有刑事责任能力人，但鉴于其存在生理缺陷，影响其辨认或控制能力，故减轻其责任。应注意，所谓又聋又哑的人指既聋且哑的人。",
+   "cites": [
+    "criminal-law:19"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0599",
+   "text": "刑事责任能力是指行为人实行犯罪行为时的生理和心理状态。在实践中，对于那些在犯罪时精神正常、而在犯罪后患了精神病的行为人，因为刑事责任能力以犯罪时的精神状况为准，所以他们属于有刑事责任能力人，应当对犯罪行为承担刑事责任。但是，对罪行的追诉应在行为人精神病愈后进行。反之，行为人在犯罪时精神错乱而在犯罪后恢复正常的，仍然属于",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0610",
+   "text": "作为特殊犯罪主体的身份，只是针对该犯罪的单独实行犯而言的。教唆犯与帮助犯甚至共同实行犯，则不受特殊身份的限制。如受贿罪的主体是国家工作人员，非国家工作人员伙同国家工作人员受贿的，以共犯论处。但是非国家工作人员不能单独构成受贿罪，因为他没有国家工作人员的身份，也就谈不上利用职务上的便利受贿。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0620",
+   "text": "2.主观条件：单位犯罪既可以构成故意犯罪，也可以构成过失犯罪。但是，应当为单位或者单位的大多数成员谋取不正当利益。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0623",
+   "text": "例如，单位以非法占有为目的，利用签订、履行借款合同诈骗银行或其他金融机构贷款的，由于我国《刑法》第193条没有明确规定单位可以构成贷款诈骗罪，所以，单位不构成贷款诈骗罪，但是，该情形一般符合合同诈骗罪，对单位及相关责任人员可按合同诈骗罪定罪处罚。",
+   "cites": [
+    "criminal-law:193"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0626",
+   "text": "例外：刑法分则有特别规定只实行“单罚”的，依照规定。从刑法现有的规定看，在单罚的场合一般只处罚直接负责的主管人员和其他直接责任人员。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0656",
+   "text": "例如，甲意图在次日的集体狩猎活动中伪造意外事件杀害其妻，但是，在当天擦枪时，却因为走火而致其妻毙命。该案中，甲虽早有杀妻之故意，但是此故意与走火致人死亡的行为及其结果并无同时性。因此，只能认定甲在预备过程中有犯罪故意，不能认定甲对走火致人死亡的行为及其结果具有故意。甲对其妻的死亡结果只能成立过失犯罪或者意外事件。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0657",
+   "text": "罪过心理与犯罪行为同时性原理有一个例外，就是行为人使自己陷于无责任状态的情况。例如，某甲大量饮酒致醉，在癫狂状态中将自己妻子杀害。某甲在实施杀人行为之时或许在事实上完全丧失了辨认和控制能力，没有犯罪心理。对于这样的情况，则不必要求罪过心理与犯罪行为同时。只要行为人在自陷无责任能力状态之前具有罪过心理就能认定行为人有罪过",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0668",
+   "text": "这是对犯罪故意进行否定评价的根据。故意的显著特征是明知不可为而为之，因此故意的认识内容应包括行为人知道自己的所作所为是损害社会或者他人利益的，是“坏事”，有此认识，意味着行为人知其不可为。如果行为人明知其不可为而为之，是应当受到国家的谴责和惩罚的。行为人对社会危害性的认识与对自己行为的违法性认识通常是一致的，但是，违法",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0713",
+   "text": "只有当法律条文明示该条之罪的罪过形式是过失或者包括过失，过失才可能构成犯罪，承担刑事责任。这充分显示刑法是以惩罚故意犯罪为主，以惩罚过失犯罪为例外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0730",
+   "text": "例如，司机某甲在给汽车加油时用打火机照明，结果引起火灾，造成重大财产损失。甲有意打火照明，其行为本身是谈不上过失的，但是他对自己打火照明的行为可能引起火灾的结果应当预见，事实上却未能预见，所以具有犯罪过失。可见，过失是针对行为所导致的危害结果而言的。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0772",
+   "text": "其次，我国刑法确定了主观(罪过)责任原则，坚持主客观相统一，不得主观归罪也不得客观归罪。罪过(故意或者过失)与犯罪行为必须具有同时性，但有一个例外，就是行为人使自己陷于无责任状态的情况。例如，某甲大量饮酒致醉，在癫狂状态中将自己妻子杀害。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0775",
+   "text": "无罪过事件，是指《刑法》第16条规定的情况:“行为在客观上虽然造成了损害结果，但是不是出于行为人的故意或者过失，而是由于不能抗拒或者不能预见的原因所引起的，不是犯罪。”无罪过事件可以分为意外事件和不可抗力两种情况:",
+   "cites": [
+    "criminal-law:16"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0797",
+   "text": "2.但是对某些犯罪，刑法条文明文规定特定的犯罪目的。不具备法律所规定的特定目的，就不构成该种犯罪。因此，特定的犯罪目的也是构成某些犯罪的主观要件。在这种场合，具备法律指明的特定目的是构成该罪的必要的主观要件。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0813",
+   "text": "例如，甲为骗取保险金而杀害被保险人乙。对故意杀人罪而言，其犯罪目的是乙的死亡结果；骗取保险金是动机；但是对于保险诈骗罪而言，其骗取保险金是犯罪目的。若脱离了对犯罪结果态度的判定，则难以确定犯罪的目的或动机。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0825",
+   "text": "一般认为，不知法律不是可接受的辩解，因此对“假想非罪”原则上不排除罪责，但是可以酌情减轻罪责，因为在发生假想非罪的场合，行为人毕竟不是明知不可为而为之，主观恶性较小。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0830",
+   "text": "例如，某甲复制含有色情内容的有艺术价值的文学作品，本来不构成犯罪，但他却误认为犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0838",
+   "text": "按照“法定符合说”，行为人预想事实与实际发生的事实法律性质相同的，不能阻却行为人对因错误而发生的危害结果承担故意的责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0839",
+   "text": "法律性质不同的，则阻却行为人对因错误而发生的危害结果承担故意的责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0844",
+   "text": "客体错误阻却行为人对错误的事实承担故意的罪责。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0845",
+   "text": "例如，甲窃取了乙的提包，发现提包里面还有一支手枪。甲窃取提包通常只有盗窃普通财物的故意，而事实上发生了窃取枪支的结果。因为枪支属于《刑法》第127条规定的盗窃枪支罪的对象，而财物属于《刑法》第264条盗窃罪的对象；分属不同的犯罪构成，侵犯了不同的客体即公共安全和财产权，因此甲发生的事实错误不仅仅是具体对象的错误，而且还",
+   "cites": [
+    "criminal-law:127",
+    "criminal-law:264"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0856",
+   "text": "对行为误差一般也采取法定符合说，即适用对象辨认错误的认定方法解决。假如预想打击的目标与（因行为偏差）实际打击的目标在法律规定的范围内一致，不妨害行为人对误击的目标承担故意罪责；假如在法律规定的范围内不一致，则阻却对误击的目标承担故意罪责。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0874",
+   "text": "正当防卫是有益、合法的行为，因此而给不法侵害人造成必要损害的（杀死、打伤等），虽然“形”似犯罪，而实质没有犯罪性，故依法不负刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0886",
+   "text": "防卫目的的正当性既是正当防卫成立的首要条件，也是正当防卫不负刑事责任的重要根据。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0890",
+   "text": "另外，在互殴的场合，因互殴双方都有侵害对方的意图，所以原则上都不能成立正当防卫。但是如果一方逃跑或者求饶，另一方继续实行加害行为，前者可基于防卫目的进行正当防卫。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0900",
+   "text": "《刑法》第20条第3款规定：“对正在进行行凶、杀人、抢劫、强奸、绑架以及其他严重危及人身安全的暴力犯罪，采取防卫行为，造成不法侵害人伤亡的，不属于防卫过当，不负刑事责任。”",
+   "cites": [
+    "criminal-law:20"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t0906",
+   "text": "这项规定对于区分特殊情况下的正当防卫与防卫过当非常便捷。但是应当注意，在任何情况下都不允许在时间上不当。即使是遇到严重危及人身安全的暴力犯罪，也不允许在不法侵害开始前或结束后打击不法侵害人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0913",
+   "text": "但是，防卫过当具有“防卫”性质，即具备了针对不法侵害事实防卫的基本条件，只是因为欠缺正当防卫的合理适度条件造成过分损害而构成犯罪承担刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0920",
+   "text": "它实际是法定减轻或免除处罚的情节。防卫过当应当负刑事责任，但是应当酌情减轻或者免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0934",
+   "text": "紧急避险是在紧急情况下两种合法利益发生了冲突，顾此失彼，而不得不采取了损害其中较小的利益，保全较大利益的行为。紧急避险行为造成损害的，不负刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0952",
+   "text": "7.特别例外限制。关于避免本人危险的规定，不适用于职务上、业务上负有特定责任的人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0960",
+   "text": "但是鉴于行为人是在紧急情况下、在具备避险的前提条件下造成的不适当损害，所以只有在造成较为严重的不应有损害时，才有必要认定为避险过当，追究刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0963",
+   "text": "避险过当不是独立的罪名，避险过当意味着不能排除行为人对造成的不应有损害的非法性，在追究刑事责任时应当根据具体情况确定触犯的罪名，依法减轻或免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0965",
+   "text": "紧急避险超过必要限度造成不应有损害的，应当负刑事责任，但是应当酌情减轻或者免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0970",
+   "text": "（3）责任相同：在合理限度内给某种利益造成一定的损害，都可以不负刑事责任；如果超出法定限度造成损害结果的，都应当负刑事责任，但应当减轻或免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t0986",
+   "text": "而紧急避险不适用于职务上、业务上负有特定责任的人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1058",
+   "text": "犯意表示，是指行为人以口头、文字等形式将其直接故意犯罪的意图明确表露出来，没有任何具体的犯罪准备活动。犯意表示停留在思想表露的范畴，而不是任何犯罪行为，对外界不发生现实的影响，故不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1064",
+   "text": "例如买刀、磨刀等行为本身不可能致人死亡。相对于故意杀入罪而言，这仅仅是预备行为。但是，如果行为人实行了某一分则条文规定的犯罪行为，即使仅是为实行另一犯罪做准备的，也是实行行为。例如，为杀人而制造枪支或者偷窃枪弹的，其行为本身属于非法制造枪支罪或者盗窃枪支罪的实行行为。如果行为人盗枪之后又使用该枪支杀人的，有两个实行行为",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1066",
+   "text": "《刑法》第22条第2款规定，对于预备犯，可以比照既遂犯从轻、减轻处罚或者免除处罚。",
+   "cites": [
+    "criminal-law:22"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1168",
+   "text": "自动中止犯罪的原因有：出于真诚的悔悟，基于对被害人的怜悯，受到别人的规劝，害怕受到刑罚的惩罚等。但是，不管出于何种原因，只要是犯罪分子认为自己能够把犯罪进行到底而自动停止犯罪行为，或者自动有效地防止犯罪结果发生，都认为具备自动性。认定犯罪中止应注意：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1188",
+   "text": "《刑法》第24条第2款规定，对于中止犯，没有造成损害的，应当免除处罚；造成损害的，应当减轻处罚。T13/57；",
+   "cites": [
+    "criminal-law:24"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1191",
+   "text": "（该损害造成了另一个轻罪的实害结果。但是必须评价为重罪的未遂，而非轻罪的既遂。/中止行为造成的损害另外定罪/应当免除处罚不等于不构成犯罪）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1192",
+   "text": "免除处罚，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1193",
+   "text": "是指行为人应当负刑事责任，但是可以不予刑事制裁。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1217",
+   "text": "例如甲以杀人故意、乙以伤害故意共同加害丙，甲乙二人在故意杀人罪上不成立共同犯罪。甲构成故意杀人罪，乙构成故意伤害罪。甲乙二人在故意伤害上具有共同的部分，二人在犯罪性质重合的限度(故意伤害罪)内可成立共犯，但是二人不构成故意杀人罪的共犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1220",
+   "text": "例如甲以杀人故意、乙以伤害故意共同加害丙，甲乙二人在故意杀人罪上不成立共同犯罪。甲构成故意杀人罪，乙构成故意伤害罪。甲乙二人在故意伤害上具有共同的部分，二人在犯罪性质重合的限度（故意伤害罪）内可成立共犯，但是二人不构成故意杀入罪的共犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1236",
+   "text": "质的过限：过限的行为和原来的行为性质不同。不承担责任。就算其他人知道，但是没有参与，也不算共犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1241",
+   "text": "所谓片面共犯，指对他人犯罪暗中相助的情况。因为受到暗中相助的实行犯不知情，所以不能与暗中相助者构成共犯。但是，对于暗中相助者可按照从犯/帮助犯处理。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1257",
+   "text": "但是，该原则并不表明行为人在对结果承担责任时没有区别、绝对一致，还必须采取区别对待的原则，即还必须考虑到行为人在共同犯罪中的作用大小进行处罚。另外，对于部分行为人对其他人超出共同故意实施的其他犯罪行为不承担责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1278",
+   "text": "（4）但是共同犯罪人实施了超出共同犯罪故意的其他犯罪的，只能由实施者单独负责，其他共犯对此“过限”的犯罪不承担责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1280",
+   "text": "例如，某贩毒集团共贩卖10万克海洛因，对该集团的首要分子应当按照贩卖10万克海洛因处罚；其他成员按照参与的数量处罚。再如，甲、乙共同盗窃一辆汽车，价值10万元，销赃得款4万元，各分得2万元。甲、乙均按盗窃数额10万元适用刑罚。假如乙在犯罪中只分得2000元，作用明显较小，对乙虽然应当按照犯罪金额10万元适用刑罚，但依法",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1290",
+   "text": "《刑法》第97条规定，本法所称首要分子，是指在犯罪集团或者聚众犯罪中起组织、策划、指挥作用的犯罪分子。可见，首要分子包括犯罪集团的首要分子和聚众犯罪中的首要分子。犯罪集团的首要分子都是主犯，但是聚众犯罪中的首要分子未必都是主犯。",
+   "cites": [
+    "criminal-law:97"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1294",
+   "text": "二是只有聚众者和积极参与者可构成犯罪，一般参与者不构成犯罪，如聚众斗殴罪；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1296",
+   "text": "三是只有聚众者才构成犯罪，其他参与者不构成犯罪，如聚众扰乱公共场所秩序、交通秩序罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1310",
+   "text": "根据《刑法》第27条第2款规定，对于从犯，应当从轻、减轻处罚或者免除处罚。",
+   "cites": [
+    "criminal-law:27"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1315",
+   "text": "《刑法》第28条规定，对于胁从犯，应当按照他的犯罪情节减轻处罚或者免除处罚。",
+   "cites": [
+    "criminal-law:28"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1361",
+   "text": "第一种观点认为，教唆犯从属于被教唆人，既然被教唆人成立预备犯，教唆犯也成立预备犯。按照《刑法》第22条预备犯的规定承担罪责，可以从轻、减轻或者免除处罚。",
+   "cites": [
+    "criminal-law:22"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1370",
+   "text": "部分共同犯罪人自动放弃犯罪且具备有效性的，单独成立犯罪中止，但是其中止的效力不及于其他共同犯罪人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1389",
+   "text": "例外，判决宣告后执行过程发现漏罪，也可能并罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1487",
+   "text": "例如，《刑法》第263条规定：“以暴力、胁迫或者其他方法抢劫公私财物的，处三年以上十年以下有期徒刑，并处罚金；有下列情形之一的，处十年以上有期徒刑、无期徒刑或者死刑，并处罚金或者没收财产……（五）抢劫致人重伤、死亡的……”这里，抢劫一般处3年以上10年以下有期徒刑，但是抢劫的暴力行为造成重伤、死亡结果的，处10年以上有",
+   "cites": [
+    "criminal-law:263"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t1544",
+   "text": "数罪并罚是一般规则，但是有些数罪并罚会不近情理，所以例外情况下不实行数罪并罚。主要有连续犯、牵连犯、吸收犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1557",
+   "text": "（2）在刑法的溯及力方面，根据司法解释，犯罪行为由刑法（1997年刑法）生效前连续到刑法生效后，如果新旧刑法都认为是犯罪的，即使现行刑法规定的处罚较重也适用现行刑法，但是在量刑时可以适当从宽处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1561",
+   "text": "但是，因为我国司法习惯对判决宣告前的同种数罪不论是否具有连续性均不实行数罪并罚，所以，连续犯（具有连续性之同种数罪）在解决数罪并罚问题上没有实际价值，只是在追诉时效计算上，具有一定的意义。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1575",
+   "text": "择一重罪处罚。牵连犯实际上是数行为犯数罪，但鉴于其数行为间存在上述牵连关系，数罪并罚显得过重，所以一般按择一重罪处罚的原则处理，但是刑法有特别规定的除外。如为骗取保险金而杀害被保险人、放火烧毁被保险标的，又构成故意杀人罪或放火罪的，属于法定数罪并罚的。鉴于我国学术界与实务中都对牵连犯认识不够成熟，所以，尤其应注意分则的",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1601",
+   "text": "指前一犯罪已经既遂，又实施了另一个犯罪行为，但是不处罚事后行为。不处罚的依据是，事后的行为没有侵犯新的法益或者不具有期待可能性，这种形态不同于吸收犯",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1613",
+   "text": "首先，应当承认二者的确难以区别，因为牵连犯与吸收犯，都是数行为犯数罪，都是实际的数罪处断的一罪，都是不同种数罪。况且，牵连犯是数罪但不实行数罪并罚，是因为使用了吸收的观念。吸收犯是数罪不实行数罪并罚，一行为之所以能被另一行为吸收，显然是因为二行为之间存在某种牵连关系。其次，产生这一问题的根源在于学者们使用了吸收犯和牵连",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1711",
+   "text": "（2）定罪免刑，即法院对犯罪人认定有罪作出定罪判决而免除刑罚处罚；（免除处罚）F10/7；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1712",
+   "text": "（3）消灭处理，即行为人的行为已经构成犯罪，应当负刑事责任，但由于法律规定的阻却刑事责任事由的存在，使刑事责任归于消灭。这时国家不再追究行为人的刑事责任，行为人也不再负刑事责任；（死亡/撤回亲告罪/追诉时效）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1856",
+   "text": "（2）限制死刑适用对象。犯罪的时候不满18周岁的人和审判的时候怀孕的妇女，不适用死刑。另外，审判的时候已满75周岁的人，除非以特别残忍手段致人死亡的，一般不适用死刑。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t1981",
+   "text": "（3）禁止进入中小学校区、幼儿园园区及周边地区，确因本人就学、居住等原因，经执行机关批准的除外；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2100",
+   "text": "可以减轻或者免除处罚，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2106",
+   "text": "可以从轻、减轻或者免除处罚；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2131",
+   "text": "（3）减轻处罚不能判处法定最低刑，只能在法定最低刑之下判处刑罚，否则将同从轻处罚相混淆；减轻处罚也不能减轻到免除处罚的程度，否则将同免除处罚相混淆。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2133",
+   "text": "该条第2款规定：“犯罪分子虽然不具有本法规定的减轻处罚情节，但是根据案件的特殊情况，经最高人民法院核准，也可以在法定刑以下判处刑罚。”",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2140",
+   "text": "免除处罚",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2141",
+   "text": "根据我国《刑法》第37条的规定，免除处罚，是对犯罪分子作有罪宣告，但免除其刑罚处罚。",
+   "cites": [
+    "criminal-law:37"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t2142",
+   "text": "免除处罚意味着不承担刑事责任吗?",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2143",
+   "text": "错误，免除处罚仍需承担刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2144",
+   "text": "(1)免除处罚需要满足以下条件:",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2145",
+   "text": "适用免除处罚的情节，除应当明确各种总则性和分则性免除处罚情节的具体内容外，必须把握三个基本条件：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2150",
+   "text": "(3)免除处罚不适用刑罚，但仍需作出单纯否定性法律评价即判决宣告其犯罪。所以，免除处罚仍需承担刑事责任。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2178",
+   "text": "从宽情节，是指会使犯罪人受到从宽处罚的情节，它包括从轻处罚、减轻处罚和免除处罚的情节；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2187",
+   "text": "酌定情节是在刑罚裁量过程中由法官灵活掌握、酌情适用的情节。它是法官自由裁量权的重要依据之一。但是，酌定情节的这一属性，并非表明法官可以随心所欲、不受制约地决定酌定情节的取舍和适用结果。任何法官都应当在罪责刑相适应原则和适用刑法人人平等原则的制约下，公正、合理地适用酌定情节，准确裁量刑罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2193",
+   "text": "在我国，受过刑罚处罚的大多数犯罪分子，能够改恶从善，重新做人，重返社会后成为守法公民。但是，也有少数受过刑罚处罚的犯罪分子，仍然不思悔改，在刑罚执行完毕或者赦免以后的一定时间内再次实施犯罪，从而构成累犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2204",
+   "text": "依据《刑法》第65条的“除外”规定，即“但是过失犯罪和不满十八周岁的人犯罪的除外”，构成累犯者应当是前罪和后罪发生时犯罪人均已满18周岁，如果犯罪人前罪发生时不满18周岁，后罪发生时已满18周岁的，也不宜认定为累犯。",
+   "cites": [
+    "criminal-law:65"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t2242",
+   "text": "不适用缓刑08/23；",
+   "cites": [],
+   "formalized_by": [
+    "k74"
+   ]
+  },
+  {
+   "node": "t2243",
+   "text": "不适用假释",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2292",
+   "text": "但是上述人员虽然没有自动投案，但具有以下情形之一的，应认定为自首：F10/15；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2342",
+   "text": "在刑法学界，有人以过失犯罪的犯罪事实和犯罪人容易被发现为主要理由，主张刑法所规定的自首从宽制度不适用于过失犯罪，自首对于过失犯罪没有实际意义。但是，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2355",
+   "text": "(3)自首比坦白的从宽处罚幅度要大。自首的可以免除处罚，坦白至多减轻处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2370",
+   "text": "《刑法》第67条第1款规定：“对于自首的犯罪分子，可以从轻或者减轻处罚。其中，犯罪较轻的，可以免除处罚。”",
+   "cites": [
+    "criminal-law:67"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t2374",
+   "text": "对于罪行较轻的自首的犯罪分子，不仅可以从轻处罚或者减轻处罚，而且可以免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2375",
+   "text": "根据有关司法解释，对于自首犯适用该规定，具体确定从轻、减轻还是免除处罚，应当根据犯罪轻重，并考虑自首的具体情节。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2428",
+   "text": "揭发他人犯罪行为，不适用中国刑法的。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2436",
+   "text": "犯罪分子有重大立功表现的，可以减轻或者免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2487",
+   "text": "（2）所采用的各种原则均无普遍适用效力，每一原则仅适用于特定的刑种。即依据刑法的规定，吸收原则一般只适用于死刑和无期徒刑，但是当数个刑罚中有有期徒刑和拘役，只执行有期徒刑时，也具有吸收的意思。限制加重原则只适用于有期徒刑、拘役和管制三种有期自由刑，并科原则只适用于附加刑、管制。（适用）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2501",
+   "text": "b判决宣告的数个主刑均为拘役的，应当在总和刑期以下，数刑中最高刑期以上，酌情决定执行的刑期，但是最高不能超过1年。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2502",
+   "text": "c判决宣告的数个主刑均为管制的，应当在总和刑期以下，数刑中最高刑期以上，酌情决定执行的刑期，但是最高不能超过3年。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2513",
+   "text": "(3)但是对于刑罚执行期间发现漏罪的或刑罚执行期间又犯新罪的，就算前罪与后罪是同种数罪，也应数罪并罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2540",
+   "text": "（1）拘役的缓刑考验期限为原判刑期以上一年以下，但是不能少于两个月。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2541",
+   "text": "（2）有期徒刑的缓刑考验期限为原判刑期以上五年以下，但是不能少于一年。”",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2565",
+   "text": "我国刑法中的战时缓刑，是指在战时对被判处3年以下有期徒刑没有现实危险的犯罪军人，暂缓其刑罚执行，允许其戴罪立功，确有立功表现时，可以撤销原判刑罚，不以犯罪论处的制度。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2575",
+   "text": "战时缓刑的法律后果。被宣告缓刑的犯罪军人，允许其戴罪立功，确有立功表现时，可以撤销原判刑罚，不以犯罪论处，如有《刑法》第77条规定的应予撤销缓刑的情形，则撤销缓刑并做出相应的处理。",
+   "cites": [
+    "criminal-law:77"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t2577",
+   "text": "被宣告缓刑的犯罪军人，允许其戴罪立功，确有立功表现时，可以撤销刑罚，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2601",
+   "text": "（被宣告缓刑的罪犯，一般不适用减刑。但在缓行考验期内有重大立功表现的，可以减刑，同时应依法缩减其缓行验期限。）T19/45；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2879",
+   "text": "（2）中华人民共和国成立以后，参加过保卫国家主权、安全和领土完整对外作战的，但犯贪污受贿犯罪，故意杀人、强奸、抢劫、绑架、放火、爆炸、投放危险物质或者有组织的暴力性犯罪，黑社会性质的组织犯罪，危害国家安全犯罪，恐怖活动犯罪的，有组织犯罪的主犯以及累犯除外；国恐黑暴累贪",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t2881",
+   "text": "（4）犯罪的时候不满十八周岁，被判处三年以下有期徒刑或者剩余刑期在一年以下的，但犯故意杀人、强奸等严重暴力性犯罪，恐怖活动犯罪，贩卖毒品犯罪的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3224",
+   "text": "(3)将国家情报在互联网上发布的——不构成犯罪",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3258",
+   "text": "以危险方法危害公共安全罪除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3311",
+   "text": "注意：以不作为方式实施本罪的，要求行为人本身负防止火灾发生的特定义务例如，如果林场负责消防安全的职工发现火情而故意不采取相应措施，致使火灾发生，危害公共安全的，成立放火罪;但如果是普通路人看到路旁房子着火而未拨打火警电话或者未采取其他相应措施，最终造成公私财产重大损失的，由于其不具备特定的义务，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3457",
+   "text": "一般不包括三轮车、自行车、马车等非机动车以及摩托车、拖拉机等机动车，但是如果所破坏的拖拉机是专门用作交通运输工具，且破坏行为足以危害交通运输安全，则拖拉机也可作为本罪的对象。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3480",
+   "text": "一般不包括三轮车、自行车、马车等非机动车以及摩托车、拖拉机等机动车，但是如果所破坏的拖拉机是专门用作交通运输工具，且破坏行为足以危害交通运输安全，则拖拉机也可作为本罪的对象。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3551",
+   "text": "主要是指以电车、汽车、船只等交通工具进行公路和水路交通运输，但是如果使用自行车、三轮车、人力车、畜力车、残疾人专用车等非机动车进行交通运输，发生重大事故，致人伤亡的，也可以构成本罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3566",
+   "text": "指公路、城市道路和虽然在单位管辖范围内但是允许社会机动车通行的地方，包括广场、公共停车场等用于公众通行的场所。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3580",
+   "text": "F13/37过失犯罪不成立共犯，但是根据司法解释的规定，“交通肇事后，单位主管人员、机动车辆所有人、承包人或者乘车人指使肇事人逃逸，致使被害人因得不到救助而死亡的，以交通肇事罪的共犯论处”。（本来是不作为的故意杀人）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3842",
+   "text": "注意：烟花爆竹等属于娱乐性物品，虽然属于民用爆炸物的范围，但是一般认为，非法制造，买卖、运输、邮寄、储存烟花爆竹等娱乐性物品的，不成立本罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3896",
+   "text": "对于违规制造枪支的，要求具备非法销售的法定目的。如果主观上没有非法销售的目的，即使超过限额或者不按照规定的品种制造了枪支或者制造了无号、重号、假号的枪支，也不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3897",
+   "text": "在司法实践中，对于非法销售枪支数量较少或获利不大的，不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3918",
+   "text": "在司法实践中，依法配置枪支的人员（如猎人）未及时按规定获取配备枪支（如猎枪）许可证，经指明又补领了许可证的，属于情节显著轻微、危害不大的持有、私藏枪支行为，可以进行必要的治安处罚，而不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3947",
+   "text": "如果完全或主要因技术条件或设备条件限制造成重大事故或严重后果，不以犯罪论处；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3953",
+   "text": "如果行为人在生产、作业中违反有关安全管理规定，造成重大安全隐患，但是行为人及时采取相应补救措施，消除隐患，没有造成重大伤亡事故和其他严重后果的，不以本罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t3954",
+   "text": "如果行为人在生产、作业中违反有关安全管理规定，造成了一般损害或不太严重的后果，属于一般责任事故，不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4090",
+   "text": "指除刑法另有规定的药品、食品、医用器材、涉及人身和财产安全的电器等产品，农药、兽药、化肥、种子、化妆品等产品以外的产品。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4114",
+   "text": "例如甲以正规途径从乙处购进一批电饭锅并正常销售，销售额达到20万元，后来查明，该批电饭锅是乙厂家为了获利而降低生产要求制造的一批不合格产品。在这种情况下，甲作为伪劣产品的销售者，销售数额巨大，达到了销售伪劣产品罪的客观要求，但是甲基观上并不知道该批产品是不合格产品，不具有销售伪劣产品的故意，因此不能成立本罪，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4134",
+   "text": "（1）本罪与生产、销售特定的伪劣商品罪之间是普通法条与特别法条的关系，如果生产、销售特定伪劣商品，同时符合特别法条的生产、销售特定的伪劣商品犯罪和普通法条的生产、销售伪劣产品罪的特征的，属于法条竞合的情形.法条竞合的基本处理原则是特别法条优先于普通法条，但是为了严厉打击制售伪劣产品的行为，我国刑法第一百四十九条第二款明",
+   "cites": [
+    "criminal-law:149"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t4180",
+   "text": "故意，一般出于营利的目的，但是否具有营利目的不影响本罪成立。在生产领域表现为生产者故意制造假药，在销售领域包括医疗机构表现为明知是假药而使用或销售F15/6；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4184",
+   "text": "民间以祖传秘方等名义自制药物并销售给他人，未造成人的身体健康受损或者其他严重后果的，一般不以犯罪论处；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4389",
+   "text": "成立本罪要求偷逃关税达到数额较大的程度，如果偷逃关税数额未达到较大，则是一般的走私行为，不以犯罪论处;但如果虽然数额未达到较大，却符合多次走私的，应以本罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4432",
+   "text": "例如甲送给某公司人事部门经理乙2万元人民币，拜托其将自己不符合应聘条件的儿子安排到该公司工作。乙收受钱财后不久即从该公司辞职，未将甲的儿子安排进该公司。这种情况下，虽然乙没有为甲谋取到利益，但是仍成立非国家工作人员受贿罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4444",
+   "text": "一是数额上的界限。即受贿达到数额较大的，构成非国家工作人员受贿罪;未达到数额较大的，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4445",
+   "text": "数额较大是指达到6万元以上40万元以下，未达到数额较大的，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4558",
+   "text": "(4)“社会公众“，指社会不特定对象。但是以下两种针对特定对象吸收资金的情形也应认定为向社会公众吸收资金，可成立本罪：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4586",
+   "text": "其中情节轻微的，可以免除处罚;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4609",
+   "text": "例如甲欲成立一家公司，未经批准向社会不特定的公众进行宣传，承诺只要现在投资入股，公司成立后将会给予50%的年息’甲在公司成立后第一年内履行了自己的承诺，但是第二年以后由于经营不善，公司亏损，甲明知公司即将破产，无法归还投资人本息，仍继续向不特定公众吸收资金，数额较大并且最后无力归还，在这种情形中，甲之前的行为没有非法占",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4650",
+   "text": "使用虚假的身份证明骗领信用卡的，定妨害信用卡管理罪。但是使用以虚假的身份证明骗领的信用卡，定信用卡诈骗罪。要注意两者之间的区别。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4835",
+   "text": "（7）这些情况都可以认定被告人明知系犯罪所得及其收益，但有证据证明确实不知道的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4844",
+   "text": "例如李某送给银行工作人员甲10万元人民币，请甲协助自己将一笔巨款汇往国外，甲知道李某日常吸食毒品，以为该笔巨款是李某进行毒品交易的违法所得，并顺利将其汇往境外。后来案发，李某因吸食毒品过量，在被依法审判之前死亡，且查明该笔巨款是甲参加黑社会性质的组织所积累下来的财产。在本案中，李某误将黑社会性质的组织犯罪所得当作毒品犯",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4859",
+   "text": "原本洗钱罪是事后帮助行为，即事后帮助上游犯罪人将“黑钱洗白”，上游犯罪人本人事后“自洗钱”，没有期待可能性，原本不构成洗钱罪。但是为了有效预防、惩治洗钱犯罪，《刑法修正案(十一)》修改了本罪的构成要件，将实施7类上游犯罪后的“自洗钱”明确为犯罪。当行为人实施上游犯罪行为并且有“自洗钱”行为的，应数罪并罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4865",
+   "text": "洗钱行为实际也是窝藏、包庇罪以及掩饰、隐瞒犯罪所得、犯罪所得收益罪的一种形式，但是，由于刑法已经将洗钱行为单独规定为一种犯罪，所以，洗钱行为只以洗钱罪定罪，而不再以窝藏、包庇罪或者掩饰、隐瞒犯罪所得、犯罪所得收益罪定罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4906",
+   "text": "不具有非法占有集资款的目的，可能是出于合法使用目的集资但由于某些原因未能实现对出资者承诺的回报，因而发生纠纷，不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4909",
+   "text": "未达到“集资数额较大”的程度，不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t4956",
+   "text": "成立本罪，一方面要求主观上具有非法占有的目的，如果贷款时使用了诈骗手段，但是到期能够正常还贷的，不以本罪论处；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5012",
+   "text": "成立本罪，一方面要求行为人具有非法占有的目的，因此误用他人信用卡、经他人允许使用其信用卡等行为不构成犯罪;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5013",
+   "text": "另一方面要求骗取数额达到较大程度，否则属于一般的违法行为，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5016",
+   "text": "（2）情节轻微的，可以免除处罚；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5094",
+   "text": "有第一款行为，经税务机关依法下达追缴通知后，补缴应纳税款，缴纳滞纳金，已受行政处罚的，不予追究刑事责任;但是，五年内因逃避缴纳税款受过刑事处罚或者被税务机关给予二次以上行政处罚的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5115",
+   "text": "违法阻却事由",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5116",
+   "text": "本罪的处罚阻却事由根据《刑法》第201条第4款，纳税人经税务机关依法下达追缴通知后，补缴应纳税款，缴纳滞纳金，已受行政处罚的，不予追究刑事责任;但是，5年内因逃避缴纳税款受过刑事处罚或者被税务机关给予2次以上行政处罚的除外。",
+   "cites": [
+    "criminal-law:201"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t5117",
+   "text": "提示这一规定只适用于纳税人，但不适用于扣缴义务人、抗税人、逃避追缴欠税的人。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5262",
+   "text": "(2)“未经著作权人许可”，指没有得到著作权人授权或者伪造、涂改著作人授权许可文件或者超出授权许可范围的情形;有证据证明涉案复制品系非法出版复制发行的，且出版者、复制发行者不能提供获得著作权人许可的相关证明材料的，可以认定为“未经著作权人许可”，有证据证明权利人放弃权利、涉案作品的著作权不受我国著作权法保护或者著作权保",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5385",
+   "text": "注意本罪过去是结果犯，要求给权利人造成重大损失，但是《刑法修正案(十一)》将本罪的入罪标准由“损失”修改为“情节”，本罪变为情节犯，不再要求造成重大损失。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5466",
+   "text": "(3)注意区分传销活动与商品经营直销活动中的多层次计酬情形，虽然两者都采用多层次计酬方式，但两者存在很大差异，后者是合法行为，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5600",
+   "text": "成立本罪需要达到情节严重的情形，否则是一般的扰乱市场秩序行为，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5680",
+   "text": "不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5682",
+   "text": "(4)直接故意杀人罪的既遂和间接故意杀人罪以被害人死亡为要件，但是，只有查明行为人的危害行为与被害人死亡的结果之间具有因果关系，才能断定行为人负罪责",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5712",
+   "text": "但是，如果行为人在实施了上述暴力犯罪之后，为了灭口、逃避侦查等原因杀害被害人的，按照故意杀入罪和有关的暴力犯罪进行并罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5715",
+   "text": "第二百三十三条过失致人死亡的，处三年以上七年以下有期徒刑；情节较轻的，处三年以下有期徒刑。本法另有规定的，依照规定。",
+   "cites": [
+    "criminal-law:233"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t5751",
+   "text": "(1)《刑法》第233条规定:“本法另有规定的，依照规定。”这一规定揭示了本罪与其他犯罪的法条竞合关系。其他法条是特别法条，本罪法条是一般法条，特别法优于一般法。",
+   "cites": [
+    "criminal-law:233"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t5756",
+   "text": "\"本法另有规定的，依照规定”，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5761",
+   "text": "犯前款罪，致人重伤的，处三年以下十年以上有期徒刑；致人死亡或者以特别残忍手段致人重伤造成严重残疾的，处十年以上有期徒刑、无期徒刑或者死刑。本法另有规定的，依照规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5780",
+   "text": "行为人没有造成他人重伤或者轻伤结果的故意，也没有为了实施其他犯罪而使用暴力的故意，如果殴打他人造成轻微伤害或者暂时性肉体痛苦的，不以犯罪论处。如果行为人随意殴打他人，情节恶劣的，应当以寻衅滋事罪定罪处罚。06/9；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5793",
+   "text": "《刑法》第234条规定:“本法另有规定的，依照规定。”该条款说明，即行为人在实施其他犯罪的过程中，伤害他人，如果依照其他犯罪论处，能够做到罪刑相适应的，应以其他罪名论处，不再以本罪论处。具体有下列两种情形:",
+   "cites": [
+    "criminal-law:234"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t5797",
+   "text": "区分故意伤害罪和包含故意伤害内容的其他犯罪时注意，“本法另有规定的，依照规定”：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5799",
+   "text": "但是在非法拘禁、刑讯逼供、暴力取证、虐待被监管人、聚众打砸抢、聚众斗殴等犯罪中使用暴力造成被害人伤残的，应当以故意伤害罪定罪处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5955",
+   "text": "如果一人成功了，一人失败了，由于两人人都在主观上违背了妇女的意志，客观上压制了妇女的反抗，所以两人构成强奸罪基本犯的既遂，但是构成轮奸这一加重情节的未遂，可以从轻或减轻处罚",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t5960",
+   "text": "妇女不能单独成立强奸罪，但是可为其他男子实施强奸行为实施帮助，成立本罪的共犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6071",
+   "text": "提示通过网络的猥亵行为网络环境下，以满足性刺激为目的，虽未直接与被害儿童进行身体接触，但是通过QQ、微信等网络软件，以诱骗、强迫等方法要求儿童拍摄、传送暴露身体的不雅照片、视频，行为人通过画面看到被害儿童裸体、敏感部位的，构成猥亵儿童罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6103",
+   "text": "能够自由行走的幼儿(1~6岁)是非法拘禁的对象，为了索取债务偷盗他人3岁幼儿，可成立非法拘禁罪。但是婴儿、幼儿都是绑架的对象，为了勒索财物偷盗他人婴幼儿的，均构成绑架罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6152",
+   "text": "犯本罪的，将他人置于自己的控制之下或将其控制为人质或完成偷盗婴幼儿的，即成立本罪既遂。是否勒索到财物或实现其他目的，不影响既遂的认定。如果偷盗婴幼儿的行为未能完成，或者虽然完成但是监护人、看护人没有失去对婴幼儿的监护的，属于本罪未遂。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6222",
+   "text": "成立收买被拐卖的妇女、儿童罪的共犯但是，收买人未被追究刑事责任的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6228",
+   "text": "（3）为介绍婚姻而收取相应的“媒介费”等，并没有出卖目的和拐骗、绑架、收买、贩卖、接送、中转等行为的，属于合法行为，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6251",
+   "text": "不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6336",
+   "text": "不是有意诬陷，而是错告，或者检举失实的，不适用前两款的规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6351",
+   "text": "(1)成立本罪，要求达到情节严重的程度，否则不构成犯罪",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6359",
+   "text": "诬告陷害行为必须足以引起司法机关追究活动，如果实施了诬告行为，但是司法机关根本没有立案追查，或者直接识破了诬告陷害行为，则成立本罪未遂。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6367",
+   "text": "不构成犯罪",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6379",
+   "text": "如果被欺骗不知道对方已婚，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6384",
+   "text": "特殊主体，即已经有配偶的人即已婚者，或者是虽无配偶但是明知对方有配偶而与之结婚的人",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6419",
+   "text": "（2）本罪是“亲告罪”，但是造成被害人死亡的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6455",
+   "text": "第一款罪，告诉的才处理，但被害人没有能力告诉，或者因受到强制、威吓无法告诉的除外。T15/41；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6544",
+   "text": "前款罪，告诉的才处理，但是严重危害社会秩序和国家利益的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6564",
+   "text": "可以是一人，也可以是多人，大庭广众之下进行无特定对象的谩骂，不构成犯罪。尽管行为人没有指名道姓地进行侮辱行为，但是其他人可以知道行为人所侮辱对象的，亦构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6572",
+   "text": "（3）成立本罪，要求达到情节严重的程度，否则不构成犯罪。“情节严重”，一般是指手段恶劣的，后果严重的，造成严重的社会影响或者政治影响，严重危害社会或者国家利益等。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6605",
+   "text": "(2)成立本罪，要求达到情节严重的程度，否则不构成犯罪，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6635",
+   "text": "不同亲告罪，但严重危害社会秩序和国家利益的除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6661",
+   "text": "（3）未经被收集者同意，将合法收集的公民个人信息向他人提供的，属于“提供公民个人信息”，但是经过处理无法识别特定个人且不能复原的除外。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6668",
+   "text": "(6)数量未达到第3项至第5项规定标准，但是按相应比例合计达到有关数量标准的;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6698",
+   "text": "国家工作人员滥用职权，实行打击报复，但情节显著轻微，危害不大的，一般不以犯罪论处，可予以批评教育，或者给予相应的行政纪律处分。但报复陷害，致使被害人的人身权利、民主权利或者其他权利受到严重损害的，手段恶劣的，致人精神失常或自杀的，以及造成其他严重后果的，应当以报复陷害罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6753",
+   "text": "犯罪主体一般只能是自然人，但是个别犯罪，例如拒不支付劳动报酬罪的犯罪主体也可以是单位，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6797",
+   "text": "例如甲潜入乙家抢劫，发现乙正在房间睡觉，便将其房间门锁死。但是，在甲翻找、拿取财物直至离开的整个过程乙都没有醒来。这种情形中，甲没有压制乙的反抗，不是利用被害人不能、不敢反抗的状态取得财物，而是符合入户盗窃的特征，应当以盗窃罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6799",
+   "text": "实践中，对于强要少量财物、强吃少量食物等情节显著轻微、危害不大的行为，不以犯罪论处;对于民事借贷纠纷中，强拿、强扣对方财物，以物抵债的行为，虽然手段不正当，但是因为没有非法占有他人财物的目的，不以本罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6886",
+   "text": "必须是当场实施暴力性手段。“当场”，指犯罪分子实施犯罪的现场，或者刚一离开现场就被人发觉追捕的过程。如果在盗窃、诈骗、抢夺犯罪完成以后隔了一段时间，在其他地方被发现，当对其抓捕时，犯罪分子行凶抗拒，不适用本条。其暴力行为构成犯罪的，应实行数罪并罚。持续追捕是当场的延伸。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6994",
+   "text": "注意:多次盗窃、入户盗窃、携带凶器盗窃、扒窃的，只是在判断是否成立盗窃罪时对数额没有要求，而判断是否既遂时仍需要达到相应的数额，如果因多次盗窃、入户盗窃、携带凶器盗窃、扒窃成立盗窃罪但是没有达到相应的数额，则是成立盗窃未遂",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t6995",
+   "text": "要注意区分偷拿家庭成员的财物或者近亲属的财物与在社会上盗窃作案的界限。按照最高人民法院的司法解释精神，偷拿家庭成员或者近亲属的财物获得谅解的，一般可不认为是犯罪;追究刑事责任的，应当酌情从宽。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7067",
+   "text": "第二百六十六条诈骗公私财物，数额较大的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金;数额巨大或者有其他严重情节的，处三年以上十年以下有期徒刑，并处罚金;数额特别巨大或者有其他特别严重情节的，处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产。本法另有规定的，依照规定。",
+   "cites": [
+    "criminal-law:266"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t7085",
+   "text": "(1)成立本罪，要求具有非法占有目的。正常的借贷关系不具有非法占有的目的，债务人因客观原因不能按期偿还，不能视为诈骗，但是，如果行为人以借贷为名骗取钱款，事后挥霍殆尽，又百般掩饰、敷衍，久拖不还，应视为行为人以非法占有为目的，以诈骗罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7087",
+   "text": "例如甲谎称自己家有一个祖传的神器，可以准确鉴定珠宝玉石的真伪，说服乙将其宝石项链和手链交给琳I回去帮乙做鉴定。乙其实已经识破了甲的谎言，但看到甲已经人至中年却还一贫如洗，只靠诈骗挣些小钱，觉其可怜，遂将自己的宝石项链和手镯交给了甲。对于甲的行为，虽然实施了诈骗行为，并且得到了财物，但是财物不是乙基于错误认识处分给甲的，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7119",
+   "text": "但是如果行为人既使用了诈骗手段，又实施了秘密窃取行为的，秘密窃取应当是行为的本质特征，以盗窃罪定罪处罚更为合理。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7156",
+   "text": "本罪是亲告罪;成立本罪，要求达到数额较大的程度，否则只是一般的侵占行为，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7253",
+   "text": "例如甲知道某国家机关工作人员乙非法收受了请托人一笔巨额财产，便以此相威胁，对乙说如果他不给自己10万元钱，就向有关部门举报。乙害怕事情闹大，无奈之下给了甲10万元钱。在这种情形中，甲向有关部门举报贪污受贿事件本来属于合法行为，但是甲将其作为威胁乙的把柄，则成了犯罪的非法手段，对甲应认定为敲诈勒索罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7391",
+   "text": "本罪的认定拒不支付劳动报酬，尚未造成严重后果，在刑事立案前支付劳动者的劳动报酬，并依法承担相应赔偿责任的，可以减轻或者免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7393",
+   "text": "2.如果在刑事立案前支付，并依法承担相应赔偿责任，可认定为情节显著轻微，危害不大，不认为是犯罪;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7394",
+   "text": "3.如果提起公诉前支付，并依法承担相应赔偿责任，可以减轻或者免除处罚;",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7459",
+   "text": "公司、企业或其他单位的工作人员，但国家工作人员除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7475",
+   "text": "公司、企业或其他单位的工作人员，但国家工作人员除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7483",
+   "text": "在提起公诉前将挪用的资金退还的，可以从轻或者减轻处罚。其中，犯罪较轻的，可以减轻或者免除处罚",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7584",
+   "text": "成立本罪，要求行为人主观上具有谋取非法利益的目的，如果只是为了虚荣心而故意抬高自己的身份，则不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7718",
+   "text": "1.本罪是情节犯。如果情节不严重，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7744",
+   "text": "例如甲乙同乘火车出行，两人下火车之后，甲为了给乙开玩笑，假装正经地对乙说自己在所乘火车某个座椅下面放置了一枚定时炸弹。乙信以为真，随即将此消息发布在微博上，引发了社会恐慌并被网友大量转发，有关部门立即采取紧急措施，疏散火车上的乘客并进行安全排查。在这种情形中，虽然乙客观上确实传播了虚假恐怖信息，并造成了社会秩序混乱，但",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7750",
+   "text": "如:二月底三月初，武汉临床的医护人员怀疑接触的是SARS，为了提醒别人在微信群说了这一事实，然后被公安机关训诫，这不是虚假信息。这一事实不是他们描述出来的，只不过对病毒的描述不是十分准确，但是确实很像SARS。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7752",
+   "text": "这三个罪的主观上必须是故意的，如果在网上看到消息轻信误信，然后转发，这不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7784",
+   "text": "本罪虽是行为犯，但在具体认定案件时仍须遵循《刑法第13条“但书”的规定，即情节显著轻微危害不大的，不认为是犯罪。",
+   "cites": [
+    "criminal-law:13"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t7805",
+   "text": "成立本罪，要求行为人主观上具有故意的心态，即故意找他人代替自己考试或者明知是代替他人考试依然参加的，否则不能成立本罪。在实践中，替考者往往能得到经济上的回报，但是是否谋取到利益不影响本罪的认定，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t7829",
+   "text": "本罪的主体仅限于组织者、积极参加者、领导者、其他参加者，并且要求主体在主观上明知是黑社会性质组织。因此，如果行为人因上当、受骗加入了黑社会性质组织，知道真相后立即退出的，不以犯罪论处（所有人）",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8005",
+   "text": "（事出有因）行为人因婚恋、家庭、邻里、债务等纠纷，实施殴打、辱骂、恐吓他人或损毁、占用他人财物等行为的，一般不宜以本罪论处，但是经有关部门批评、处罚之后，继续实施前述行为，破坏社会秩序的除外。TF18/20，10；",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8033",
+   "text": "不以营利为目的，带有少量财物输赢的娱乐活动，以及提供棋牌室等娱乐场所只收取正常的场所和服务费用的，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8051",
+   "text": "但是,在理论和实践中，有观点主张,对设置圈套诱骗他人参赌的案件，以诈骗罪定性，实务中法院审判也是以诈骗罪来定性的。按照国民的一般经验，十赌九骗，所以，以诈骗罪定性的观点和做法值得商榷。要注意本罪与开设赌场罪的区别。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8096",
+   "text": "具有下列情形之一的，应当认定行为人“明知”，但是有证据证明确实不知道的除外:",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8148",
+   "text": "另外，如果是证人的记忆发生偏差，或者鉴定人、翻译人员、记录人员的业务水平不高或者粗心大意导致错误的发生，由于不具有主观上的犯罪意图，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8238",
+   "text": "在实践中，行为人贪图便宜，少量购买赃物的，不认为是犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8303",
+   "text": "成立本罪，仅限于提出虚假的民事诉讼，而不能是其他诉讼类型。如果行为人捏造事实提出行政诉讼、刑事诉讼等，则不能成立本罪。另外，有本罪的犯罪行为，但是情节显著轻微，危害不大的，不成立本罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8333",
+   "text": "成立本罪的前提条件是对于法院的判决、裁定，行为人有能力履行。如果经查证，行为人确实没有可供执行的财产，或者丧失履行特定义务的能力，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8372",
+   "text": "［例如］证人的亲朋好友怕证人作证后遭报复叫证人不要作证，这种作法虽然是错误的，但是情节轻微，危害不大，不构成妨害作证罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8478",
+   "text": "因此，未违反相关诊疗规范，仅仅因为技术水平不高、缺乏经验或就诊人特殊体质等因素造成上述严重后果的，不以犯罪论处；未达到严重后果，仅对就诊人健康造成轻微损害的，也不以犯罪论处",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8502",
+   "text": "本罪是典型的集合犯，非法行医者一般具有实施不定次数的医疗活动的目的，实践中也多为多次非法行医的情况，但是非法行医造成就诊人死亡的，仅一次就成立本罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8681",
+   "text": "1在贩卖者和购买者之间牵线搭桥、传递信息，促成二者之间的买卖交易，如乙想吸毒，但是不知从何处购买，甲将毒贩的手机号码和微信号提供给乙，甲促成二者的买卖，相当于帮助贩卖者贩卖，是贩卖毒品的帮助犯、从犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8685",
+   "text": "买毒自吸不构成犯罪，帮助购买者购买而不贩卖也不构成犯罪，如果帮助代购的毒品数量很大，如代购2斤毒品构成非法持有毒品罪，托购者和代购者是非法持有毒品罪共犯。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8690",
+   "text": "故意，即行为人明知是毒品而故意走私、贩卖、运输、制造。如果不是明知，而是被别人利用或受蒙蔽而实施上述行为的，不构成犯罪",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8692",
+   "text": "走私、贩卖、运输、制造毒品罪是行为犯，只要行为人实施了上述行为之一，就构成犯罪。但是，如果确属《刑法》第13条规定的“情节显著轻微危害不大的”，不认为是犯罪。",
+   "cites": [
+    "criminal-law:13"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t8694",
+   "text": "(2)成立本罪，对毒品的数量没有要求，并且毒品的数量以实际查获的为准，不以实际纯度折算。只要实施了走私、贩卖、运输、制造的行为之一，即可成立本罪，但是情节显著轻微、危害不大的，不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8698",
+   "text": "在运输毒品过程中，具有下列情形之一，结合行为人的供述和其他证据综合审查判断，可以认定其“应当知道”，但有证据证明确属被蒙骗的除外：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8709",
+   "text": "有下列情形之一，结合行为人的供述和其他证据综合审查判断，可以认定其“应当知道”，但有证据证明确属被蒙骗的除外：",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8716",
+   "text": "将毒品实际转移给对方，不要求收到对价，即使对方已经将货款打到账上，但是还没有交给对方毒品属于未遂，必须完成毒品的流转构成既遂。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8718",
+   "text": "实际制造出毒品，如果想制造但是没有造出来是未遂。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8778",
+   "text": "《刑法》第358条第4款将为组织卖淫的人招募、运送人员或者其他协助组织他人卖淫的行为，独立规定为协助组织卖淫罪。该罪的行为与本罪之间本属于实行与帮助的共犯关系，但是刑法对于这种帮助行为单独定罪处罚，对这种行为不再以本罪论处。",
+   "cites": [
+    "criminal-law:358"
+   ],
+   "formalized_by": []
+  },
+  {
+   "node": "t8903",
+   "text": "指国家工作人员（行贿类的犯罪除外）利用职务上的便利，非法占有、使用公共财物，索取、收受贿赂或者取得其他非法利益，破坏职务廉洁性的行为。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8927",
+   "text": "犯第一款罪，在提起公诉前如实供述自己罪行、真诚悔罪、积极退赃，避免、减少损害结果的发生，有第一项规定情形的，可以从轻、减轻或者免除处罚；有第二项、第三项规定情形的，可以从轻处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8944",
+   "text": "会计本来占有物，但是做假账，或者虚构事实，为侵吞型，而非窃取型",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8981",
+   "text": "即贪污行为未被发现或者虽然发现但是没有给予任何刑事处罚或者行政纪律处分的，按照累计贪污数额处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t8988",
+   "text": "选择题可能会涉及：犯贪污罪，在提起公诉前如实供述自己罪行、真诚悔罪、积极退赃，避免、减少损害结果的发生，贪污数额较大或者有其他较重情节的，可以从轻、减轻或者免除处罚；贪污数额巨大或者有其他严重情节的，贪污数额特别巨大或者有其他特别严重情节的，贪汚数额特别巨大并使国家和人民利益遭受特别重大损失的，可以从轻处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9078",
+   "text": "指行为人主观上想还，但是因为客观原因在一审判决之前还不了的情形。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9125",
+   "text": "但是接受无条件的日常礼节馈赠，或者国家工作人员在法律、政策的允许范围之内进行与其职务无关的活动、获取合理报酬的，是合法行为，不成立本罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9138",
+   "text": "无论索贿还是收受贿赂，都必须谋取不正当利益，如果谋取正当利益，不构成犯罪。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9149",
+   "text": "区分的关键在于受贿的数额是否达到刑法规定的数额较大的标准或者虽然数额没有达到但是否属于情节较重的情形。认定受贿罪数额较大以及情节较重的标准与贪污罪相同。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9159",
+   "text": "国家工作人员以为他人谋取利益为名骗取财物，但是并没有利用职务便利为他人谋取利益的，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9256",
+   "text": "行贿人在追诉前主动交代行贿行为的，可以从轻或者减轻处罚；对侦破重大案件起关键作用的，或者有重大立功表现的，可以减轻或者免除处罚，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9270",
+   "text": "行贿人在追诉前主动交代行贿行为的，可以从轻或者减轻处罚。其中，犯罪较轻的，对侦破重大案件起关键作用的，或者有重大立功表现的，可以减轻或者免除处罚。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9307",
+   "text": "④行为人所说的财产来源因为线索不具体等原因，司法机关无法查实，但是能够排除来源合法可能性和合理性的",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9338",
+   "text": "除法律另有规定外以渎职犯罪、受贿罪实行并罚",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9339",
+   "text": "另有规定就是前面框出来的四个",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9350",
+   "text": "国家机关工作人员滥用职权或者玩忽职守，致使公共财产、国家和人民利益遭受重大损失的，处三年以下有期徒刑或者拘役；情节特别严重的，处三年以上七年以下有期徒刑。本法另有规定的，依照规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9351",
+   "text": "国家机关工作人员徇私舞弊，犯前款罪的，处五年以下有期徒刑或者拘役;情节特别严重的，处五年以上十年以下有期徒刑。本法另有规定的，依照规定。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9568",
+   "text": "成立本罪，要求致使当事人或者他人的利益遭受重大损失，否则不以犯罪论处。",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9614",
+   "text": "例如依法正在监狱服刑的罪犯甲一直在找机会逃出监狱，一日在与监狱的监管人员乙聊天过程中偶然得知两人是老乡，一阵熟识之后，乙告诉甲北边的铁栅栏有一处松动，且向南跑可以躲避摄像头的追踪。在乙的指点之下，甲顺利逃出监狱。在这种情形中，甲成立脱逃罪，乙为其指导逃跑路线，属于帮助犯，成立脱逃罪的共犯。虽然乙是监狱的监管人员，但是甲",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9630",
+   "text": "指虽然未发生重大食品安全事故，但是造成本地区、本行业、本部门工作瘫痪，严重影响国家法律法规的正常实施，社会正常秩序严重受损，社会影响极度恶劣，严重损害国家声誉等，",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9688",
+   "text": "指行政执法人员，负有侦查犯罪职责的公安机关的工作人员除外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9691",
+   "text": "行为人发现自己查处的行政违法人员的行为已构成犯罪，依据有关法律规定应当移交司法机关追究刑事责任，但是没有移交，只作行政处罚了事",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9820",
+   "text": "告诉才犯罪的例外",
+   "cites": [],
+   "formalized_by": []
+  },
+  {
+   "node": "t9828",
+   "text": "行为内容（相当于对象，但是不能写对象）",
+   "cites": [],
+   "formalized_by": []
+  }
+ ]
+}
