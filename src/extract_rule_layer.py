@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Extract the distributable rule layer from the full two-layer LegalRuleML file.
 
-kb/civil_graph.lrml (built by graph2lrml.py from the knowledge graph, not distributed) holds the graph's node texts
+graph/civil/civil_graph.lrml (built by graph2lrml.py from the knowledge graph) holds the graph's node texts
 in its structural layer. This script keeps only what the reasoner needs: every Constitutive / Prescriptive statement
 (hand-written rules and the automatically extracted is-a rules), the override statements, and the legal sources /
-associations they reference. It writes kb/civil_rules.lrml and validates it against the OASIS XSD.
+associations they reference. It writes graph/civil/civil_rules.lrml and validates it against the OASIS XSD.
 
-  python3 src/extract_rule_layer.py            # kb/civil_graph.lrml -> kb/civil_rules.lrml
+  python3 src/extract_rule_layer.py            # graph/civil/civil_graph.lrml -> graph/civil/civil_rules.lrml
 """
 import argparse
 import copy

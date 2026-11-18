@@ -23,7 +23,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from cn_numerals import cn2int  # noqa: E402
-from paths import GRAPH_MD as SRC, KB  # noqa: E402
+from paths import GRAPH_MD as SRC, GRAPH_NODES  # noqa: E402
 
 CIVIL = {'《民法》', '《民法典》', '《民法典.总则编》'}
 EXC = re.compile(r'但是|但书|除外|例外|不得对抗|不适用|不在此限|另有规定|另有约定')
@@ -155,6 +155,6 @@ def parse(path=SRC):
 
 if __name__ == '__main__':
     ns = parse()
-    (KB / 'graph_nodes.json').write_text(json.dumps(ns, ensure_ascii=False, indent=0), encoding='utf-8')
+    GRAPH_NODES.write_text(json.dumps(ns, ensure_ascii=False, indent=0), encoding='utf-8')
     print(f"节点 {len(ns)}，引用法条 {sum(len(n['cites']) for n in ns)} 处，例外信号 {sum(n['exception'] for n in ns)} 个，"
           f"概念名 {sum(bool(n['concept']) for n in ns)} 个")

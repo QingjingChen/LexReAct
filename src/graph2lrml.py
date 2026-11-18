@@ -30,7 +30,7 @@ from civil_code import articles, paragraphs, text_of  # noqa: E402
 from graph_parse import parse  # noqa: E402
 
 AKN = '/akn/cn/act/2020-05-28/civil-code/zho@/!main#art_{}'
-from paths import KB, LRML_FULL as OUT, SCHEMA  # noqa: E402
+from paths import LRML_FULL as OUT, LRML_INDEX, SCHEMA  # noqa: E402
 
 
 # ───────────────────────── 图
@@ -282,7 +282,7 @@ def build():
                                        'cites': [f"{c['law']}:{c['art']}" for c in n['cites']],
                                        'formalized_by': [r['key'] for r in rules if r['node'] == n['id']]}
                                       for n in nodes if n['exception']]}
-    (KB / 'civil_graph_index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
+    LRML_INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
     return nodes, by, rules, tax, src_keys, unresolved
 
 

@@ -13,3 +13,6 @@ data/private/
 
 # raw run logs that contain case text or model outputs
 results/pipeline_runs*.jsonl
+
+# third-party web pages cached by src/criminal/criminal_code.py --fetch
+data/criminal/raw/

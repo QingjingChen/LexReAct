@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-刑法规则层（人工形式化），写法同 ../src/formal_rules.py：
+刑法规则层（人工形式化），写法同 ../formal_rules.py：
   体 'p(..)' / '-p(..)' 强否定 / '~p(..)' 例外条件（Naf）/ ('or', [...])
   头 'p(..)' / '-p(..)' / ('OBL'|'FOR'|'PERM', 承担者, 相对方, 'q(..)')；承担者可以是常量 court（人民法院）
   源 'art17#2'（第17条第2款）、'art17-1'（第17条之一）、'art133-1#1'；'spc-minor10' 等为司法解释
-  锚 (节点编号, 关键词)：规则挂在 crim_nodes.json 的该节点下；生成时校验节点文字含关键词，防止导图改动后错位
+  锚 (节点编号, 关键词)：规则挂在 graph/criminal/graph_nodes.json 的该节点下；生成时校验节点文字含关键词，防止导图改动后错位
 
 建模约定
   人 P、犯罪事件 X、罪名 C（常量：theft fraud snatching robbery intentionalInjury intentionalHomicide ...）

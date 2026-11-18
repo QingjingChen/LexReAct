@@ -17,7 +17,7 @@
 ## 运行方式
 
 ```sh
-python src/run_cases.py kb/examples/q558.json -v     # 任一题；-v 打印推理链
+python src/run_cases.py graph/civil/examples/q558.json -v     # 任一题；-v 打印推理链
 ```
 
 ## 题例

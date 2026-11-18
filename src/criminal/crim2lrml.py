@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-刑法v2.1.itmz → crim_graph.lrml（OASIS LegalRuleML 1.0 compact），两层结构同 ../src/graph2lrml.py：
+data/criminal/criminal_graph.itmz → graph/criminal/criminal_graph.lrml（OASIS LegalRuleML 1.0 compact），两层结构同 ../graph2lrml.py：
   结构层：导图 9828 个节点 → 嵌套 lrml:Statements；导图引用的法条 → lrml:LegalSource（《刑法》原文逐字）；isA 分类规则
   规则层：crim_rules.py（人工形式化）挂在锚定节点下；OverrideStatement；Association（法源/权威/强度/施行时间）
 
@@ -15,15 +15,13 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 HERE = Path(__file__).resolve().parent
-SRC = HERE.parent / 'src'
-SCHEMA = HERE.parent / 'kb' / 'schema' / 'lrml-compact.xsd'
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(SRC))
+sys.path.insert(0, str(HERE.parent))
+from paths import CRIM_LRML_FULL as OUT, CRIM_LRML_INDEX, CRIM_NODES, SCHEMA  # noqa: E402
 import crim_rules as CR  # noqa: E402
 from criminal_code import articles, label_of, text_of  # noqa: E402
 from graph2lrml import atom, conj_xml, lit_xml, node_comment, tax_xml, taxonomy  # noqa: E402
 
-OUT = HERE / 'crim_graph.lrml'
 AKN = '/akn/cn/act/1997-03-14/criminal-law/zho@2023-12-29/!main#art_{}'
 DEON = {'OBL': 'Obligation', 'FOR': 'Prohibition', 'PERM': 'Permission', 'RIGHT': 'Right'}
 
@@ -69,7 +67,7 @@ def rule_xml(r, ind):
 
 
 def build():
-    nodes = json.loads((HERE / 'crim_nodes.json').read_text(encoding='utf-8'))
+    nodes = json.loads(CRIM_NODES.read_text(encoding='utf-8'))
     by = {n['id']: n for n in nodes}
     arts = articles()
     rules = [dict(r, module=m) for m, (_, rs) in CR.MODULES.items() for r in rs]
@@ -119,9 +117,9 @@ def build():
                                     f'《刑法》{label_of(s)}：{text_of(s)}'))
 
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
-           '<!-- 由 crim2lrml.py 从 刑法v2.1.itmz（思维导图）与 crim_rules.py 生成，请勿手改。《刑法》文本为 2023 年修正本（修正案（十二））。',
+           '<!-- 由 crim2lrml.py 从 data/criminal/criminal_graph.itmz（思维导图）与 src/criminal/crim_rules.py 生成，请勿手改。《刑法》文本为 2023 年修正本（修正案（十二）），取自 data/criminal/criminal_law_2023.txt（PDF、维基文库、6laws 三方核对，见 data/criminal/reconcile_report.md）。',
            '     结构层：导图每个节点 = 嵌套的 lrml:Statements / lrml:FactualStatement（原文在 lrml:Comment）；isA 分类为自动抽取。',
-           '     规则层：人工形式化，挂在锚定节点之下；可用 ../src/lrml2ddl.py 转为 Defeasible Deontic Logic（ASP）。 -->',
+           '     规则层：人工形式化，挂在锚定节点之下；可用 src/lrml2ddl.py 转为 Defeasible Deontic Logic（ASP）。 -->',
            '<lrml:LegalRuleML xmlns:lrml="http://docs.oasis-open.org/legalruleml/ns/v1.0/" xmlns:ruleml="http://ruleml.org/spec"'
            ' xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
            ' xmlns:lrmlv="http://docs.oasis-open.org/legalruleml/ns/v1.0/metamodel#">',
@@ -181,7 +179,7 @@ def build():
              'taxonomy': [{'child': c, 'parent': p, 'child_node': ci, 'parent_node': pi} for ci, c, pi, p in tax],
              'exception_candidates': [{'node': n['id'], 'text': n['clean'][:160], 'cites': [f"{c['law']}:{c['art']}" for c in n['cites']],
                                        'formalized_by': [r['key'] for r in rules if r['node'] == n['id']]} for n in nodes if n['exception']]}
-    (HERE / 'crim_graph_index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
+    CRIM_LRML_INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
     return nodes, rules, tax, srcs, bad_anchor
 
 
@@ -217,5 +215,5 @@ if __name__ == '__main__':
     print(f'锚点校验：{"全部通过" if not bad_anchor else bad_anchor}')
     print(f'导图引文与《刑法》2023 文本核对：一致 {ok_q} 处，不一致 {len(bad_q)} 处' + (f' → {bad_q[:10]}' if bad_q else ''))
     print('XSD 校验：' + ('通过' if xsd_ok else f'失败 {errs}'))
-    print(f'输出：{OUT.name}（{OUT.stat().st_size // 1024} KB），crim_graph_index.json')
+    print(f'输出：{OUT.name}（{OUT.stat().st_size // 1024} KB），{CRIM_LRML_INDEX.name}')
     sys.exit(0 if xsd_ok and not bad_anchor else 1)

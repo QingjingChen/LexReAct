@@ -1,14 +1,16 @@
 # 刑法导图 → LegalRuleML → Defeasible Deontic Logic
 
-把 `刑法v2.1.itmz`（iThoughts 思维导图，9828 个节点，约 31 万字）转成 **OASIS LegalRuleML 1.0**，用法与民法部分（`../src`、`../kb`）相同：两层结构，可以用 clingo 执行，并给出推理链。
+把 `data/criminal/criminal_graph.itmz`（原名 刑法v2.1.itmz，iThoughts 思维导图，9828 个节点，约 31 万字）转成 **OASIS LegalRuleML 1.0**，输出在 `graph/criminal/`，用法与民法部分（`src/`、`graph/civil/`）相同：两层结构，可以用 clingo 执行，并给出推理链。
 
 ```sh
-python3 criminal_code.py --fetch   # 取《刑法》2023 文本：两个来源逐条比对（只需一次）
-python3 itmz_parse.py              # 导图 → crim_nodes.json（默认读 source/刑法v2.1.itmz）
-python3 itmz2markdown.py          # 导图 → source/刑法graph.markdown（可读的 markdown 版本，格式同民法graph）
-python3 crim2lrml.py               # → crim_graph.lrml + crim_graph_index.json；同时做锚点校验、引文核对、XSD 校验
-python3 ../src/lrml2ddl.py --lrml crim_graph.lrml -o crim_rules.lp
-python3 run_cases.py [age-3 -v]    # 30 个案例 / 69 条预期结论；-v 打印推理链（需 clingo 和 ../engine/ddl_engine）
+python3 src/criminal/pdf2txt.py path/to/xingfa.pdf      # 刑法 PDF → data/criminal/criminal_law_pdf.txt（民法典同款格式）
+python3 src/criminal/criminal_code.py --build --fetch   # PDF + 维基文库 + 6laws 三方逐条比对 → data/criminal/criminal_law_2023.txt
+python3 src/criminal/itmz_parse.py          # 导图 → graph/criminal/graph_nodes.json
+python3 src/criminal/itmz2markdown.py       # 导图 → data/criminal/criminal_graph.markdown（格式同民法图谱）
+python3 src/criminal/crim2lrml.py           # → graph/criminal/criminal_graph.lrml + criminal_graph_index.json；锚点校验、引文核对、XSD 校验
+python3 src/extract_rule_layer.py --src graph/criminal/criminal_graph.lrml --out graph/criminal/criminal_rules.lrml
+python3 src/lrml2ddl.py --lrml graph/criminal/criminal_graph.lrml -o graph/criminal/criminal_rules.lp
+python3 src/criminal/run_cases.py [age-3 -v]   # 30 个案例 / 69 条预期结论；-v 打印推理链（需 clingo 和 engine/ddl_engine）
 ```
 
 ## 结果
@@ -42,11 +44,20 @@ python3 run_cases.py [age-3 -v]    # 30 个案例 / 69 条预期结论；-v 打�
 
 ## 《刑法》文本来源
 
-本地原本没有《刑法》原文。国家法律法规数据库的接口已改版，无法直接下载，所以用两个独立的转录本逐条比对：维基文库（自标校对度 50%）和 6laws.net。
+原文文件是 `data/criminal/criminal_law_2023.txt`，格式与民法的 `data/civil/civil_code_20200528.txt` 相同：编/章/节标题，每条以“第X条　”（或“第X条之一　”）开头，一款一行，项单独成行。`criminal_code.py` 按条/款读取它，`crim2lrml.py` 从这里逐字截取 `lrml:LegalSource` 的原文，就像民法从民法典文本截取一样。
 
-- 内容一致的有 487 条，直接采用。
-- 不一致的 18 处已逐条人工裁决，理由见 `law/reconcile_report.md`。例如维基文库第263条漏了“公私”二字，第177条把“五年”写成了“三年”。
-- 以后重新抓取时，如果出现表外的新差异，程序会停下来，要求人工裁决。
+这个文件由三个独立文本逐条比对生成：
+
+| 来源 | 说明 |
+|---|---|
+| PDF | 《中华人民共和国刑法（2024 版）》，北京市京师律师事务所整理，含修正案（十二）。`pdf2txt.py` 去掉页眉页脚、水印、编者加的【罪名】标题和抽取造成的空格/断行，PDF 自身的文字不改 |
+| 维基文库 | 「中华人民共和国刑法 (2023年)」，自标校对度 50% |
+| 6laws.net | 「中华人民共和国刑法」，含修正案（十二） |
+
+- 正文与分款分别按三方多数决定：三方一致 470 条；按多数采用 32 条；三方互不相同的 3 条（第199、308条之一、452条）人工裁决。逐条差异见 `data/criminal/reconcile_report.md`。
+- 三个来源各有错误，单独用哪一个都不可靠：PDF 第190条是 1998 年修改前的旧文本、第389条漏“济”、第334条之一漏“违”；维基文库第397条重复了一段、第263条漏“公私”；6laws 第308条之一把“报道”写成“道报”。
+- 编章节结构、修正说明和附件取自 PDF；已删去的第199条按维基文库保留“（删去）”占位。
+- 第三方网页的原始缓存（`data/criminal/raw/`）不放进仓库，`--fetch` 会重新下载。重新下载后如果出现表外的三方互不相同，程序会停下来要求人工裁决。
 
 正式发表前，建议再与官方印本或 flk.npc.gov.cn 核对一遍。
 

@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-crim_nodes.json（由 itmz_parse.py 从 刑法v2.1.itmz 解析）→ source/刑法graph.markdown
+graph/criminal/graph_nodes.json（由 itmz_parse.py 从 data/criminal/criminal_graph.itmz 解析）→ data/criminal/criminal_graph.markdown
 
-输出格式与 ../data/civil_graph.markdown 一致：
+输出格式与 data/civil/civil_graph.markdown 一致：
   深度 0–2 用 #/##/### 标题，深度 ≥3 用缩进列表（每层 4 空格）；
   节点备注（note）写成紧跟其后的引用行；iThoughts 优先级写成〔优先级 n〕。
-只是把导图换成可读的 markdown，供对照 LegalRuleML 结构层使用；crim2lrml.py 仍以 crim_nodes.json 为输入。
+只是把导图换成可读的 markdown，供对照 LegalRuleML 结构层使用；crim2lrml.py 仍以 graph_nodes.json 为输入。
 
   python3 itmz2markdown.py
 """
 import json
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SRC = HERE / 'crim_nodes.json'
-OUT = HERE / 'source' / '刑法graph.markdown'
+sys.path.insert(0, str(HERE.parent))
+from paths import CRIM_GRAPH_MD as OUT, CRIM_NODES as SRC  # noqa: E402
 
 
 def main():

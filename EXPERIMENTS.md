@@ -7,7 +7,7 @@ LEGO's top-8 retrieved articles and PFC-v3 prompts (`data/private/pfc_v3_aligned
 | ID | What | Role in the paper | Script | Result file |
 |---|---|---|---|---|
 | E1 | Knowledge-base validation | §3, encoding check | `run_cases.py`, `graph2lrml.py` | stdout |
-| E2 | Reasoning-error case studies (9 questions) | §7, case studies | `run_cases.py kb/examples/*.json` | `kb/examples/README.md` |
+| E2 | Reasoning-error case studies (9 questions) | §7, case studies | `run_cases.py graph/civil/examples/*.json` | `graph/civil/examples/README.md` |
 | E3 | Engine signals for fact extraction (Q214) | motivation / §4 | `extract_loop.py` | `results/q214_extract_loop.log` |
 | E4 | Fact-triggered retrieval signals | exploratory | `retrieval_signal.py` | `results/retrieval_signal_results.json` |
 | E5 | Verify-then-retrieve | §4.6 design choice | `verified_retrieval.py` | `results/verified_retrieval_results.json` |
@@ -20,7 +20,7 @@ LEGO's top-8 retrieved articles and PFC-v3 prompts (`data/private/pfc_v3_aligned
 ```sh
 python src/run_cases.py                      # 53 cases, 138 expected conclusions: all pass
 python src/graph2lrml.py                     # needs the private graph: rebuilds, quote check, anchor check, XSD
-python src/extract_rule_layer.py             # rule layer only; its ASP is identical to kb/civil_rules.lp
+python src/extract_rule_layer.py             # rule layer only; its ASP is identical to graph/civil/civil_rules.lp
 ```
 
 - Rule layer: 10 modules, 179 rules (55 with negation-as-failure exceptions), 47 overrides, 91 articles,
@@ -33,7 +33,7 @@ python src/extract_rule_layer.py             # rule layer only; its ASP is ident
 From questions where the gold articles were all retrieved but at least one baseline (LEGO or an IRAC prompt on the
 same retrieval) answered wrongly, 26 candidates were screened manually and 9 kept: Q526, Q558, Q662, Q504, Q530
 (both baselines wrong) and Q702, Q306, Q583, Q565 (only IRAC wrong). The engine derives the correct judgement for
-every option it covers. Details and the baselines' reasoning errors: `kb/examples/README.md`.
+every option it covers. Details and the baselines' reasoning errors: `graph/civil/examples/README.md`.
 
 ## E3 Engine signals for fact extraction (Q214)
 
