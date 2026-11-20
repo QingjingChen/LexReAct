@@ -1,0 +1,431 @@
+{
+ "art:160": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "在招股说明书、认股书、公司、企业债券募集办法等发行文件中隐瞒重要事实或者编造重大虚假内容，发行股票、公司/企业债券、存托凭证或者国务院依法认定的其他证券，数额巨大、后果严重或者有其他严重情节的，是否构成欺诈发行证券罪、如何处罚",
+     "rules": [
+      "k160-1a"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为方式：在招股说明书、认股书、公司、企业债券募集办法等发行文件中隐瞒重要事实，或者编造重大虚假内容",
+     "rules": [
+      "k160-conduct"
+     ]
+    },
+    {
+     "text": "发行对象：股票、公司、企业债券、存托凭证或者国务院依法认定的其他证券",
+     "rules": [
+      "k160-conduct"
+     ]
+    },
+    {
+     "text": "情节要件：数额巨大、后果严重或者有其他严重情节（第1款、第2款均要求）",
+     "rules": [
+      "k160-1a",
+      "k160-2a"
+     ]
+    },
+    {
+     "text": "主体：一般主体（发行人）；控股股东、实际控制人组织、指使他人实施前款行为的，亦以本罪论处",
+     "rules": [
+      "k160-1a",
+      "k160-2a"
+     ]
+    },
+    {
+     "text": "单位犯前两款罪的，单位与直接负责的主管人员、其他直接责任人员均受处罚",
+     "rules": [
+      "k160-3a",
+      "k160-3b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有在发行文件中隐瞒重要事实或编造重大虚假内容发行证券的行为，但数额未达巨大、后果不严重且无其他严重情节的，不构成欺诈发行证券罪（情节要件缺失，学理推论）",
+     "rules": [
+      "k160-nocrime"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑或者拘役，并处或者单处罚金",
+     "rules": [
+      "k160-1b"
+     ]
+    },
+    {
+     "text": "升格档：数额特别巨大、后果特别严重或者有其他特别严重情节的，处五年以上有期徒刑，并处罚金",
+     "rules": [
+      "k160-1c"
+     ]
+    },
+    {
+     "text": "控股股东、实际控制人组织、指使实施前款行为的，处五年以下有期徒刑或者拘役，并处或者单处非法募集资金金额百分之二十以上一倍以下罚金",
+     "rules": [
+      "k160-2b"
+     ]
+    },
+    {
+     "text": "控股股东、实际控制人组织、指使且数额特别巨大、后果特别严重或者有其他特别严重情节的，处五年以上有期徒刑，并处非法募集资金金额百分之二十以上一倍以下罚金",
+     "rules": [
+      "k160-2c"
+     ]
+    },
+    {
+     "text": "单位犯前两款罪的，对单位判处非法募集资金金额百分之二十以上一倍以下罚金",
+     "rules": [
+      "k160-3a"
+     ]
+    },
+    {
+     "text": "单位犯罪中，对直接负责的主管人员和其他直接责任人员依照第1款基本档处罚（五年以下有期徒刑或者拘役，并处或者单处罚金）",
+     "rules": [
+      "k160-3b"
+     ]
+    },
+    {
+     "text": "单位犯罪中，数额特别巨大、后果特别严重或者有其他特别严重情节的，对直接负责的主管人员和其他直接责任人员依照第1款升格档处罚（五年以上有期徒刑，并处罚金）",
+     "rules": [
+      "k160-3c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "控股股东、实际控制人组织、指使实施前款行为的，优先适用第2款的特别法定刑（含按非法募集资金金额比例罚金），不适用第1款的一般法定刑",
+     "rules": [
+      "k160-2b",
+      "k160-2c"
+     ]
+    },
+    {
+     "text": "数额特别巨大、后果特别严重或者有其他特别严重情节的，优先适用升格法定刑，排除基本档",
+     "rules": [
+      "k160-1c",
+      "k160-2c"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k160-conduct",
+    "srcs": [
+     "art160#1"
+    ],
+    "body": [
+     "issuanceDocument(X)",
+     {
+      "or": [
+       "concealsImportantFact(P,X)",
+       "fabricatesMajorFalseContent(P,X)"
+      ]
+     },
+     "issuesSecurities(P,X)"
+    ],
+    "heads": [
+     "fraudulentIssuanceConduct(P,X)"
+    ],
+    "note": "第1款前段行为：在招股说明书、认股书、公司/企业债券募集办法等发行文件中隐瞒重要事实或编造重大虚假内容，并发行股票、公司/企业债券、存托凭证或国务院依法认定的其他证券",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-1a",
+    "srcs": [
+     "art160#1"
+    ],
+    "body": [
+     "fraudulentIssuanceConduct(P,X)",
+     {
+      "or": [
+       "hugeAmount(X)",
+       "seriousConsequence(X)",
+       "otherSeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)"
+    ],
+    "note": "欺诈发行证券罪（第160条）的构成要件：欺诈发行行为＋数额巨大、后果严重或者有其他严重情节",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-1b",
+    "srcs": [
+     "art160#1"
+    ],
+    "body": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)",
+     "~especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "note": "基本档：处五年以下有期徒刑或者拘役（常量 under5，含拘役），并处或者单处罚金",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-1c",
+    "srcs": [
+     "art160#1"
+    ],
+    "body": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)",
+     "especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "note": "升格档：数额特别巨大、后果特别严重或者有其他特别严重情节的，处五年以上有期徒刑（自拟常量 from5），并处罚金",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-2a",
+    "srcs": [
+     "art160#2"
+    ],
+    "body": [
+     "controllingShareholderOrActualController(P)",
+     "organizesOrDirects(P,X)",
+     "fraudulentIssuanceConduct(Q,X)",
+     {
+      "or": [
+       "hugeAmount(X)",
+       "seriousConsequence(X)",
+       "otherSeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)"
+    ],
+    "note": "控股股东、实际控制人组织、指使他人实施前款行为的，以欺诈发行证券罪论处；“前款行为”按第1款罪状理解，含情节要件",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-2b",
+    "srcs": [
+     "art160#2"
+    ],
+    "body": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)",
+     "controllingShareholderOrActualController(P)",
+     "organizesOrDirects(P,X)",
+     "~especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine20to100pctRaisedFunds)"
+     }
+    ],
+    "note": "第2款基本档：处五年以下有期徒刑或者拘役，并处或者单处非法募集资金金额百分之二十以上一倍以下罚金（自拟常量 fine20to100pctRaisedFunds）",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-2c",
+    "srcs": [
+     "art160#2"
+    ],
+    "body": [
+     "constitutes(P,X,fraudulentIssuanceOfSecurities)",
+     "controllingShareholderOrActualController(P)",
+     "organizesOrDirects(P,X)",
+     "especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine20to100pctRaisedFunds)"
+     }
+    ],
+    "note": "第2款升格档：处五年以上有期徒刑，并处非法募集资金金额百分之二十以上一倍以下罚金",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-3a",
+    "srcs": [
+     "art160#3"
+    ],
+    "body": [
+     "unit(U)",
+     "committedByUnit(U,X)",
+     "constitutes(U,X,fraudulentIssuanceOfSecurities)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "sentence(U,X,fine20to100pctRaisedFunds)"
+     }
+    ],
+    "note": "单位犯前两款罪的，对单位判处非法募集资金金额百分之二十以上一倍以下罚金",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-3b",
+    "srcs": [
+     "art160#3"
+    ],
+    "body": [
+     "unit(U)",
+     "committedByUnit(U,X)",
+     "constitutes(U,X,fraudulentIssuanceOfSecurities)",
+     "directlyResponsiblePerson(P,U)",
+     "~especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "note": "单位犯罪中，对直接负责的主管人员和其他直接责任人员依照第1款基本档处罚",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-3c",
+    "srcs": [
+     "art160#3"
+    ],
+    "body": [
+     "unit(U)",
+     "committedByUnit(U,X)",
+     "constitutes(U,X,fraudulentIssuanceOfSecurities)",
+     "directlyResponsiblePerson(P,U)",
+     "especiallySeriousFraudulentIssuance(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "note": "单位犯罪中情节特别严重的，对直接负责的主管人员和其他直接责任人员依照第1款升格档处罚",
+    "auth": "npc"
+   },
+   {
+    "key": "k160-nocrime",
+    "srcs": [
+     "art160#1"
+    ],
+    "body": [
+     "fraudulentIssuanceConduct(P,X)",
+     "-hugeAmount(X)",
+     "-seriousConsequence(X)",
+     "-otherSeriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,fraudulentIssuanceOfSecurities)"
+    ],
+    "note": "学理推论：情节要件（数额巨大、后果严重、其他严重情节）均不具备时，不构成欺诈发行证券罪；法条未明文写出，故标为 doctrine",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "k160-2b",
+    "k160-1b",
+    "第2款对控股股东、实际控制人组织、指使行为设特别法定刑，属特别规定，优先于第1款一般法定刑"
+   ],
+   [
+    "k160-2c",
+    "k160-1c",
+    "同上，第2款升格档优先于第1款升格档"
+   ],
+   [
+    "k160-1c",
+    "k160-1b",
+    "数额特别巨大、后果特别严重或者有其他特别严重情节的，适用升格法定刑，排除基本档"
+   ],
+   [
+    "k160-2c",
+    "k160-2b",
+    "第2款中情节特别严重的，适用升格法定刑，排除基本档"
+   ]
+  ],
+  "predicates": {
+   "issuanceDocument": "招股说明书、认股书、公司/企业债券募集办法等发行文件",
+   "concealsImportantFact": "在发行文件中隐瞒重要事实",
+   "fabricatesMajorFalseContent": "在发行文件中编造重大虚假内容",
+   "issuesSecurities": "发行股票、公司/企业债券、存托凭证或者国务院依法认定的其他证券",
+   "fraudulentIssuanceConduct": "实施第160条第1款前段的欺诈发行行为（发行文件造假并发行证券）",
+   "hugeAmount": "数额巨大",
+   "seriousConsequence": "后果严重",
+   "otherSeriousCircumstances": "其他严重情节",
+   "especiallySeriousFraudulentIssuance": "数额特别巨大、后果特别严重或者有其他特别严重情节",
+   "controllingShareholderOrActualController": "控股股东、实际控制人",
+   "organizesOrDirects": "组织、指使他人实施欺诈发行行为",
+   "unit": "单位（单位犯罪主体）",
+   "committedByUnit": "由单位实施该犯罪行为",
+   "directlyResponsiblePerson": "单位犯罪中直接负责的主管人员和其他直接责任人员"
+  }
+ }
+}
