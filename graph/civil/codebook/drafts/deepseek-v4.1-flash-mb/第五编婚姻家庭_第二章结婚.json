@@ -1,0 +1,2222 @@
+{
+ "card:g6537": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无效或者被撤销的婚姻在身份关系、同居期间财产处理、子女以及损害赔偿上产生何种法律后果",
+     "rules": [
+      "c1054-1",
+      "c1054-2",
+      "c1054-3",
+      "c1054-4",
+      "c1054-5",
+      "c1054-6",
+      "c1054-7"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "婚姻无效或者被撤销（自始无效）",
+     "rules": [
+      "c1054-1"
+     ]
+    },
+    {
+     "text": "存在同居期间所得的财产，且当事人就财产处理协议不成",
+     "rules": [
+      "c1054-4"
+     ]
+    },
+    {
+     "text": "该无效婚姻系因重婚导致，且涉及合法婚姻当事人的财产权益",
+     "rules": [
+      "c1054-5"
+     ]
+    },
+    {
+     "text": "请求损害赔偿的一方为无过错方",
+     "rules": [
+      "c1054-7"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人已就同居期间所得财产的处理达成协议的，按协议处理，不由人民法院判决",
+     "rules": [
+      "c1054-3",
+      "c1054-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+     "rules": [
+      "c1054-1",
+      "c1054-2"
+     ]
+    },
+    {
+     "text": "同居期间所得的财产由当事人协议处理；协议不成的，由人民法院根据照顾无过错方的原则判决",
+     "rules": [
+      "c1054-3",
+      "c1054-4"
+     ]
+    },
+    {
+     "text": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+     "rules": [
+      "c1054-5"
+     ]
+    },
+    {
+     "text": "当事人所生的子女，适用本法关于父母子女的规定",
+     "rules": [
+      "c1054-6"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+     "rules": [
+      "c1054-7"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "重婚导致的无效婚姻中，财产处理不得侵害合法婚姻当事人的财产权益，优先于当事人协议处理与人民法院判决分割",
+     "rules": [
+      "c1054-5"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定无效或者被撤销婚姻的法律后果；无效与可撤销的事由分别由第1051条至第1053条规定，不在本条范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记仅记载第2款的损害赔偿责任（无过错方有权请求损害赔偿），与法条一致；第1款的身份、财产、子女后果由法条原文补充",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片 concept:0234#1 讲的是物权侵害的损害赔偿责任（第238条），与本条无关，不予采用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1054-1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "noBindingForceAbInitio(M)"
+    ],
+    "note": "无效的或者被撤销的婚姻自始没有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-2",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "partyToMarriage(P,M)"
+    ],
+    "heads": [
+     "-hasSpousalRightsAndDuties(P)"
+    ],
+    "note": "无效或者被撤销婚姻的当事人不具有夫妻的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-3",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "partyToMarriage(P,M)",
+     "propertyAcquiredDuringCohabitation(PROP,M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "handleCohabitationPropertyByAgreement(P,M,PROP)"
+     }
+    ],
+    "note": "同居期间所得的财产，由当事人协议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-4",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "propertyAcquiredDuringCohabitation(PROP,M)",
+     "noAgreementOnProperty(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "adjudicateCohabitationPropertyFavoringNoFaultParty(PROP,M)"
+     }
+    ],
+    "note": "协议不成的，由人民法院根据照顾无过错方的原则判决处理同居期间所得的财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-5",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "void(M)",
+     "causedByBigamy(M)",
+     "lawfulMarriageParty(L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": "L",
+      "content": "infringePropertyRightsOfLawfulSpouse(L,M)"
+     }
+    ],
+    "note": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益（协议处理时亦同）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-6",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "partyToMarriage(P,M)",
+     "childOf(C,P)"
+    ],
+    "heads": [
+     "applyParentChildProvisions(C)"
+    ],
+    "note": "当事人所生的子女，适用本法关于父母子女的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-7",
+    "srcs": [
+     "art1054-2"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "partyToMarriage(P,M)",
+     "noFault(P,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "claimDamagesForInvalidMarriage(P,M)"
+     }
+    ],
+    "note": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1054-5",
+    "c1054-3",
+    "重婚导致的无效婚姻中，财产处理不得侵害合法婚姻当事人的财产权益，优先于当事人协议处理"
+   ],
+   [
+    "c1054-5",
+    "c1054-4",
+    "重婚导致的无效婚姻中，财产处理不得侵害合法婚姻当事人的财产权益，优先于人民法院按照顾无过错方原则判决"
+   ]
+  ],
+  "predicates": {
+   "marriage": "是婚姻（婚姻关系）",
+   "partyToMarriage": "是婚姻当事人（当事人，婚姻）",
+   "hasSpousalRightsAndDuties": "享有夫妻权利并承担夫妻义务（当事人）",
+   "propertyAcquiredDuringCohabitation": "是同居期间所得的财产（财产，婚姻）",
+   "handleCohabitationPropertyByAgreement": "由当事人协议处理同居期间所得的财产（当事人，婚姻，财产）",
+   "noAgreementOnProperty": "当事人就同居期间所得财产的处理协议不成（婚姻）",
+   "adjudicateCohabitationPropertyFavoringNoFaultParty": "根据照顾无过错方的原则判决处理同居期间所得的财产（财产，婚姻）",
+   "causedByBigamy": "该无效婚姻系因重婚导致（婚姻）",
+   "lawfulMarriageParty": "是合法婚姻的当事人",
+   "infringePropertyRightsOfLawfulSpouse": "侵害合法婚姻当事人的财产权益（合法婚姻当事人，婚姻）",
+   "applyParentChildProvisions": "适用本法关于父母子女的规定（子女）",
+   "noFault": "无过错（当事人，婚姻）",
+   "claimDamagesForInvalidMarriage": "请求因婚姻无效或者被撤销的损害赔偿（无过错方，婚姻）"
+  }
+ },
+ "card:g6558": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因胁迫结婚，或一方婚前隐瞒重大疾病的，受损害方能否以及如何请求撤销婚姻",
+     "rules": [
+      "c1052-1",
+      "c1053-1",
+      "c1052-court"
+     ]
+    },
+    {
+     "text": "何种情形下婚姻无效",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销后，身份效力、财产处理、子女与损害赔偿如何安排",
+     "rules": [
+      "c1054-1",
+      "c1054-property",
+      "c1054-property-judgment",
+      "c1054-bigamy",
+      "c1054-children",
+      "c1054-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "结婚应当男女双方完全自愿，任何一方不得对另一方加以强迫，任何组织或者个人不得加以干涉",
+     "rules": [
+      "c1046-force",
+      "c1046-interfere"
+     ]
+    },
+    {
+     "text": "因胁迫结婚（受对方或第三人胁迫），受胁迫的一方为撤销权人",
+     "rules": [
+      "c1052-1"
+     ]
+    },
+    {
+     "text": "一方患有重大疾病，未在结婚登记前如实告知另一方的，另一方为撤销权人",
+     "rules": [
+      "c1053-1"
+     ]
+    },
+    {
+     "text": "重婚、有禁止结婚的亲属关系、未到法定婚龄",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "撤销请求须在除斥期间内提出：胁迫的，自胁迫行为终止之日起一年内；被非法限制人身自由的，自恢复人身自由之日起一年内；隐瞒重大疾病的，自知道或者应当知道撤销事由之日起一年内",
+     "rules": [
+      "c1052-2",
+      "c1052-3",
+      "c1053-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "超过一年除斥期间未提出请求的，撤销权消灭",
+     "rules": [
+      "c1052-2",
+      "c1052-3",
+      "c1053-2"
+     ]
+    },
+    {
+     "text": "被非法限制人身自由的当事人，其一年期间自恢复人身自由之日起算，不适用自胁迫行为终止之日起算的一般规则",
+     "rules": [
+      "c1052-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受胁迫的一方、被隐瞒重大疾病的一方可以向人民法院请求撤销婚姻（撤销机关限于人民法院，只有诉讼程序）",
+     "rules": [
+      "c1052-1",
+      "c1053-1",
+      "c1052-court"
+     ]
+    },
+    {
+     "text": "有重婚、禁止结婚的亲属关系、未到法定婚龄情形之一的，婚姻无效",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "婚姻经人民法院撤销后即为被撤销的婚姻",
+     "rules": [
+      "c1052-revoked"
+     ]
+    },
+    {
+     "text": "无效或者被撤销的婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+     "rules": [
+      "c1054-1",
+      "c1052-revoked"
+     ]
+    },
+    {
+     "text": "同居期间所得的财产由当事人协议处理；协议不成的，由人民法院根据照顾无过错方的原则判决",
+     "rules": [
+      "c1054-property",
+      "c1054-property-judgment"
+     ]
+    },
+    {
+     "text": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+     "rules": [
+      "c1054-bigamy"
+     ]
+    },
+    {
+     "text": "当事人所生的子女，适用本法关于父母子女的规定",
+     "rules": [
+      "c1054-children"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+     "rules": [
+      "c1054-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "除斥期间届满、撤销权消灭的规则，优先于撤销权成立的规则",
+     "rules": [
+      "c1052-2",
+      "c1052-3",
+      "c1053-2"
+     ]
+    },
+    {
+     "text": "被非法限制人身自由的期间起算规则，优先于自胁迫行为终止之日起算的一般规则",
+     "rules": [
+      "c1052-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1051条的无效事由（重婚、禁止结婚的亲属关系、未到法定婚龄）与第1052、1053条的可撤销事由不同：无效为当然无效，可撤销须由撤销权人诉请人民法院撤销",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片称“婚姻自始不发生法律效力”，法条表述为“自始没有法律约束力”；财产、子女、赔偿等后果规定在第1054条，而非撤销条款本身",
+     "rules": []
+    },
+    {
+     "text": "笔记：撤销婚姻只有诉讼程序，撤销机关是人民法院，行政机关无权撤销",
+     "rules": [
+      "c1052-court"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1046-force",
+    "srcs": [
+     "art1046-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(A,M)",
+     "partyToMarriage(B,M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "coerceIntoMarriage(A,B)"
+     }
+    ],
+    "note": "结婚应当男女双方完全自愿，禁止任何一方对另一方加以强迫",
+    "auth": "npc"
+   },
+   {
+    "key": "c1046-interfere",
+    "srcs": [
+     "art1046-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     "personOrOrg(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "X",
+      "counterparty": "S",
+      "content": "interferesWithMarriageFreedom(X,S)"
+     }
+    ],
+    "note": "禁止任何组织或者个人干涉他人婚姻自由",
+    "auth": "npc"
+   },
+   {
+    "key": "c1051-1",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "bigamous(M)",
+       "prohibitedKinship(M)",
+       "belowMarriageAge(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(M)"
+    ],
+    "note": "有重婚、禁止结婚的亲属关系、未到法定婚龄情形之一的，婚姻无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-1",
+    "srcs": [
+     "art1052-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     {
+      "or": [
+       "coercedByCounterparty(S,P)",
+       "coercedByThirdParty(S,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "requestRevokeMarriage(S,M)"
+     }
+    ],
+    "note": "因胁迫结婚的，受胁迫的一方可以向人民法院请求撤销婚姻",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-2",
+    "srcs": [
+     "art1052-2"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     "oneYearElapsedSinceCoercionEnded(M)"
+    ],
+    "heads": [
+     "-revocationRight(S,M)"
+    ],
+    "note": "请求撤销婚姻应当自胁迫行为终止之日起一年内提出，逾期撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-3",
+    "srcs": [
+     "art1052-3"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     "unlawfullyRestrictedFreedom(S,M)",
+     "oneYearElapsedSinceFreedomRestored(M)"
+    ],
+    "heads": [
+     "-revocationRight(S,M)"
+    ],
+    "note": "被非法限制人身自由的当事人，其撤销请求期间自恢复人身自由之日起一年内计算，逾期撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-court",
+    "srcs": [
+     "art1052-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "administrativeOrg(O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "revokeMarriage(O,M)"
+     }
+    ],
+    "note": "笔记：撤销婚姻只有诉讼程序，撤销机关限于人民法院，行政机关无权撤销（学理归纳，法条仅规定向人民法院请求）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1052-revoked",
+    "srcs": [
+     "art1052-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "courtRevokesMarriage(M)"
+    ],
+    "heads": [
+     "revoked(M)"
+    ],
+    "note": "婚姻经人民法院撤销后，成为被撤销的婚姻",
+    "auth": "npc"
+   },
+   {
+    "key": "c1053-1",
+    "srcs": [
+     "art1053-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     "partyToMarriage(O,M)",
+     "seriousIllness(O)",
+     "failedToDiscloseIllness(O,S)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "requestRevokeMarriage(S,M)"
+     }
+    ],
+    "note": "一方患有重大疾病，未在结婚登记前如实告知另一方的，另一方可以向人民法院请求撤销婚姻",
+    "auth": "npc"
+   },
+   {
+    "key": "c1053-2",
+    "srcs": [
+     "art1053-2"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     "knowsOrShouldKnowConcealment(S,M)",
+     "oneYearElapsedSinceKnewConcealment(M)"
+    ],
+    "heads": [
+     "-revocationRight(S,M)"
+    ],
+    "note": "隐瞒重大疾病的撤销请求应当自知道或者应当知道撤销事由之日起一年内提出，逾期撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(A,M)",
+     "partyToMarriage(B,M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "-marriageBindingForce(M)",
+     "-spousalRightsAndDuties(A,B)"
+    ],
+    "note": "无效或者被撤销的婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-property",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "cohabitationProperty(M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "disposeCohabitationPropertyByAgreement(M)"
+     }
+    ],
+    "note": "同居期间所得的财产，由当事人协议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-property-judgment",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "cohabitationProperty(M)",
+     "noPropertyAgreement(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "adjudicateCohabitationPropertyFavoringNoFault(M)"
+     }
+    ],
+    "note": "协议不成的，由人民法院根据照顾无过错方的原则判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-bigamy",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "void(M)",
+     "bigamous(M)",
+     "lawfulSpouse(L,M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": "L",
+      "content": "infringePropertyInterest(L)"
+     }
+    ],
+    "note": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-children",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(A,M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "childOf(C,A)"
+    ],
+    "heads": [
+     "applyParentChildProvisions(C)"
+    ],
+    "note": "当事人所生的子女，适用本法关于父母子女的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-2",
+    "srcs": [
+     "art1054-2"
+    ],
+    "body": [
+     "marriage(M)",
+     "partyToMarriage(S,M)",
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "noFaultParty(S,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "claimDamagesForVoidMarriage(S,M)"
+     }
+    ],
+    "note": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1052-2",
+    "c1052-1",
+    "除斥期间届满、撤销权消灭，优先于受胁迫方撤销权成立规则"
+   ],
+   [
+    "c1052-3",
+    "c1052-2",
+    "被非法限制人身自由的，期间自恢复人身自由之日起算，属特别规定"
+   ],
+   [
+    "c1052-3",
+    "c1052-1",
+    "除斥期间届满、撤销权消灭，优先于受胁迫方撤销权成立规则"
+   ],
+   [
+    "c1053-2",
+    "c1053-1",
+    "除斥期间届满、撤销权消灭，优先于受欺诈方撤销权成立规则"
+   ]
+  ],
+  "predicates": {
+   "marriage": "婚姻关系（参数：婚姻）",
+   "partyToMarriage": "是婚姻关系的当事人（当事人，婚姻）",
+   "coerceIntoMarriage": "强迫他人与自己结婚（强迫方，被强迫方）",
+   "bigamous": "重婚（一方有配偶又与他人结婚）",
+   "prohibitedKinship": "有禁止结婚的亲属关系",
+   "belowMarriageAge": "未到法定婚龄",
+   "requestRevokeMarriage": "请求人民法院撤销婚姻（当事人，婚姻）",
+   "oneYearElapsedSinceCoercionEnded": "自胁迫行为终止之日起已满一年（婚姻）",
+   "unlawfullyRestrictedFreedom": "被非法限制人身自由（当事人，婚姻）",
+   "oneYearElapsedSinceFreedomRestored": "自恢复人身自由之日起已满一年（婚姻）",
+   "administrativeOrg": "是行政机关",
+   "revokeMarriage": "撤销婚姻（机关，婚姻）",
+   "courtRevokesMarriage": "人民法院撤销婚姻（婚姻）",
+   "seriousIllness": "患有重大疾病（当事人）",
+   "failedToDiscloseIllness": "结婚登记前未如实告知重大疾病（患病方，另一方）",
+   "knowsOrShouldKnowConcealment": "知道或者应当知道对方隐瞒重大疾病（受欺诈方，婚姻）",
+   "oneYearElapsedSinceKnewConcealment": "自知道或者应当知道撤销事由之日起已满一年（婚姻）",
+   "marriageBindingForce": "婚姻具有法律约束力",
+   "spousalRightsAndDuties": "夫妻之间的权利和义务（当事人，当事人）",
+   "cohabitationProperty": "同居期间所得的财产（婚姻）",
+   "disposeCohabitationPropertyByAgreement": "协议处理同居期间所得的财产（婚姻）",
+   "noPropertyAgreement": "协议不成（同居财产处理）",
+   "adjudicateCohabitationPropertyFavoringNoFault": "根据照顾无过错方的原则判决同居财产（婚姻）",
+   "lawfulSpouse": "是合法婚姻的当事人（当事人，重婚导致的无效婚姻）",
+   "infringePropertyInterest": "侵害财产权益（当事人）",
+   "applyParentChildProvisions": "适用本法关于父母子女的规定（子女）",
+   "noFaultParty": "是无过错方（当事人，婚姻）",
+   "claimDamagesForVoidMarriage": "请求损害赔偿（无过错方，婚姻）"
+  }
+ },
+ "art:1047": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "结婚的法定年龄：男不得早于二十二周岁，女不得早于二十周岁",
+     "rules": [
+      "c1047-male-age",
+      "c1047-female-age",
+      "c1047-1",
+      "c1047-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "男已满二十二周岁，方达法定婚龄",
+     "rules": [
+      "c1047-male-age"
+     ]
+    },
+    {
+     "text": "女已满二十周岁，方达法定婚龄",
+     "rules": [
+      "c1047-female-age"
+     ]
+    },
+    {
+     "text": "男未满二十二周岁、女未满二十周岁的，属于未达法定婚龄",
+     "rules": [
+      "c1047-1",
+      "c1047-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "男未满二十二周岁的，不得结婚（禁止性规定）",
+     "rules": [
+      "c1047-1"
+     ]
+    },
+    {
+     "text": "女未满二十周岁的，不得结婚（禁止性规定）",
+     "rules": [
+      "c1047-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定婚龄本身，未达法定婚龄结婚的婚姻无效规定在第1051条，不在本条挂载范围内",
+     "rules": []
+    },
+    {
+     "text": "民族自治地方对法定婚龄的变通规定，依民族区域自治法及婚姻家庭编的相关规定处理；本条未设但书或除外规定",
+     "rules": []
+    },
+    {
+     "text": "本条为强制性规定，当事人不得以约定降低法定婚龄；法律亦未赋予法院或登记机关裁量余地",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1047-male-age",
+    "srcs": [
+     "art1047-1"
+    ],
+    "body": [
+     "male(M)",
+     "age22plus(M)"
+    ],
+    "heads": [
+     "meetsStatutoryMarriageAge(M)"
+    ],
+    "note": "男已满二十二周岁的，达到法定婚龄（结婚年龄男不得早于二十二周岁）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1047-female-age",
+    "srcs": [
+     "art1047-1"
+    ],
+    "body": [
+     "female(F)",
+     "age20plus(F)"
+    ],
+    "heads": [
+     "meetsStatutoryMarriageAge(F)"
+    ],
+    "note": "女已满二十周岁的，达到法定婚龄（结婚年龄女不得早于二十周岁）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1047-1",
+    "srcs": [
+     "art1047-1"
+    ],
+    "body": [
+     "male(M)",
+     "-age22plus(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "marry(M)"
+     }
+    ],
+    "note": "男未满二十二周岁的，不得结婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1047-2",
+    "srcs": [
+     "art1047-1"
+    ],
+    "body": [
+     "female(F)",
+     "-age20plus(F)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "marry(F)"
+     }
+    ],
+    "note": "女未满二十周岁的，不得结婚",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "male": "男性（1个参数：人）",
+   "female": "女性（1个参数：人）",
+   "age22plus": "已满二十二周岁（1个参数：人）",
+   "age20plus": "已满二十周岁（1个参数：人）",
+   "meetsStatutoryMarriageAge": "达到法定婚龄（1个参数：人）",
+   "marry": "结婚，缔结婚姻（1个参数：人）"
+  }
+ },
+ "art:1050": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "登记结婚后，女方能否成为男方家庭的成员、男方能否成为女方家庭的成员，依据什么确定",
+     "rules": [
+      "c1050-wife",
+      "c1050-husband"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "男女双方已登记结婚",
+     "rules": [
+      "c1050-wife",
+      "c1050-husband"
+     ]
+    },
+    {
+     "text": "按照男女双方的约定：约定女方成为男方家庭的成员，或约定男方成为女方家庭的成员",
+     "rules": [
+      "c1050-wife",
+      "c1050-husband"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "经双方约定，女方可以成为男方家庭的成员",
+     "rules": [
+      "c1050-wife"
+     ]
+    },
+    {
+     "text": "经双方约定，男方可以成为女方家庭的成员",
+     "rules": [
+      "c1050-husband"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是授权性规范，选择权在男女双方：结婚本身不使任何一方当然成为对方家庭的成员，须有双方约定；家庭成员身份与户籍登记亦非同一概念",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1050-wife",
+    "srcs": [
+     "art1050-1"
+    ],
+    "body": [
+     "marriageRegistered(H,W)",
+     "agreedWifeJoinsHusbandFamily(H,W)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "W",
+      "counterparty": null,
+      "content": "becomeSpouseFamilyMember(W,H)"
+     }
+    ],
+    "note": "登记结婚后，按照男女双方约定，女方可以成为男方家庭的成员",
+    "auth": "npc"
+   },
+   {
+    "key": "c1050-husband",
+    "srcs": [
+     "art1050-1"
+    ],
+    "body": [
+     "marriageRegistered(H,W)",
+     "agreedHusbandJoinsWifeFamily(H,W)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "becomeSpouseFamilyMember(H,W)"
+     }
+    ],
+    "note": "登记结婚后，按照男女双方约定，男方可以成为女方家庭的成员",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "marriageRegistered": "男女双方已登记结婚（男方，女方）",
+   "agreedWifeJoinsHusbandFamily": "男女双方约定女方成为男方家庭的成员（男方，女方）",
+   "agreedHusbandJoinsWifeFamily": "男女双方约定男方成为女方家庭的成员（男方，女方）",
+   "becomeSpouseFamilyMember": "成为配偶家庭的成员（本人，配偶）"
+  }
+ },
+ "card:g6509": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些情形导致婚姻无效",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "因胁迫结婚、一方隐瞒重大疾病的，可否请求撤销婚姻，撤销权行使期间如何计算",
+     "rules": [
+      "c1052-1",
+      "c1052-2",
+      "c1052-3",
+      "c1053-1",
+      "c1053-2"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销后的法律后果：身份效力、同居期间财产处理、子女与损害赔偿",
+     "rules": [
+      "c1054-1",
+      "c1054-2",
+      "c1054-prop1",
+      "c1054-prop2",
+      "c1054-bigamy",
+      "c1054-child",
+      "c1054-damages"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "已办理结婚登记的婚姻存在重婚、有禁止结婚的亲属关系、未到法定婚龄之一",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "因胁迫结婚，请求人为受胁迫的一方",
+     "rules": [
+      "c1052-1"
+     ]
+    },
+    {
+     "text": "一方在结婚登记前患有重大疾病且未如实告知另一方",
+     "rules": [
+      "c1053-1"
+     ]
+    },
+    {
+     "text": "同居期间取得财产，当事人已就该财产处理达成协议",
+     "rules": [
+      "c1054-prop1"
+     ]
+    },
+    {
+     "text": "同居期间取得财产，当事人未达成处理协议",
+     "rules": [
+      "c1054-prop2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未被非法限制人身自由的，自胁迫行为终止之日起已满一年，撤销权消灭",
+     "rules": [
+      "c1052-2"
+     ]
+    },
+    {
+     "text": "被非法限制人身自由的，自恢复人身自由之日起已满一年，撤销权消灭",
+     "rules": [
+      "c1052-3"
+     ]
+    },
+    {
+     "text": "自知道或者应当知道隐瞒重大疾病这一撤销事由之日起已满一年，撤销权消灭",
+     "rules": [
+      "c1053-2"
+     ]
+    },
+    {
+     "text": "起诉时法定的无效婚姻情形已经消失的，人民法院不予支持确认婚姻无效",
+     "rules": [
+      "c1051-cured"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "重婚、有禁止结婚的亲属关系或未到法定婚龄的，婚姻无效",
+     "rules": [
+      "c1051-1"
+     ]
+    },
+    {
+     "text": "受胁迫方、被隐瞒重大疾病方可以向人民法院请求撤销婚姻",
+     "rules": [
+      "c1052-1",
+      "c1053-1"
+     ]
+    },
+    {
+     "text": "无效或者被撤销的婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+     "rules": [
+      "c1054-1",
+      "c1054-2"
+     ]
+    },
+    {
+     "text": "同居期间所得的财产由当事人协议处理；协议不成的，由人民法院根据照顾无过错方的原则判决",
+     "rules": [
+      "c1054-prop1",
+      "c1054-prop2"
+     ]
+    },
+    {
+     "text": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+     "rules": [
+      "c1054-bigamy"
+     ]
+    },
+    {
+     "text": "当事人所生的子女，适用本法关于父母子女的规定",
+     "rules": [
+      "c1054-child"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+     "rules": [
+      "c1054-damages"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "重婚导致的无效婚姻，其财产处理不得侵害合法婚姻当事人的财产权益，优先于当事人协议处理与法院判决规则",
+     "rules": [
+      "c1054-bigamy"
+     ]
+    },
+    {
+     "text": "起诉时法定无效情形已消失的，排除第1051条的无效认定",
+     "rules": [
+      "c1051-cured"
+     ]
+    },
+    {
+     "text": "被非法限制人身自由的，一年期间自恢复人身自由之日起算，不适用自胁迫行为终止之日起算",
+     "rules": [
+      "c1052-3",
+      "c1052-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "因胁迫结婚、一方隐瞒重大疾病属于可撤销婚姻（第1052、1053条），并非当然无效，与第1051条的无效事由不同",
+     "rules": [
+      "c1052-1",
+      "c1053-1"
+     ]
+    },
+    {
+     "text": "LEGO卡片称婚姻无效为绝对无效、法院可依职权主动审查且不适用诉讼时效，法条未明定，仅作学理参考",
+     "rules": [
+      "c1051-exofficio"
+     ]
+    },
+    {
+     "text": "第1049条关于结婚登记程序的要求不涉及婚姻效力的实质判断，不属于本条无效事由",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1051-1",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriage(M)",
+     {
+      "or": [
+       "bigamousMarriage(M)",
+       "prohibitedKinshipMarriage(M)",
+       "belowStatutoryMarriageAge(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(M)"
+    ],
+    "note": "重婚、有禁止结婚的亲属关系、未到法定婚龄的，婚姻无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1051-cured",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "invalidityGroundDisappearedAtFiling(M)"
+    ],
+    "heads": [
+     "-void(M)"
+    ],
+    "note": "依《民法典婚姻家庭编解释（一）》，起诉时法定无效情形已经消失的，法院不予支持确认婚姻无效（司法解释，法条未明定）",
+    "auth": "spc"
+   },
+   {
+    "key": "c1051-exofficio",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "void(M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "declareMarriageVoidExOfficio(M)"
+     }
+    ],
+    "note": "学理与LEGO卡片认为婚姻无效为绝对无效，法院可依职权审查且不适用诉讼时效；法条未明定，仅供参考",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1052-1",
+    "srcs": [
+     "art1052-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "coercedIntoMarriage(A,M)",
+     "~marriageRevocationPeriodExpired(A,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requestCourtRevokeMarriage(A,M)"
+     }
+    ],
+    "note": "因胁迫结婚的，受胁迫一方可以向人民法院请求撤销婚姻，但须在法定期间内提出",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-2",
+    "srcs": [
+     "art1052-2"
+    ],
+    "body": [
+     "coercedIntoMarriage(A,M)",
+     "oneYearElapsedSinceCoercionEnded(A,M)",
+     "~illegallyRestrictedFreedom(A,M)"
+    ],
+    "heads": [
+     "marriageRevocationPeriodExpired(A,M)"
+    ],
+    "note": "撤销请求应当自胁迫行为终止之日起一年内提出，逾期撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c1052-3",
+    "srcs": [
+     "art1052-3"
+    ],
+    "body": [
+     "coercedIntoMarriage(A,M)",
+     "illegallyRestrictedFreedom(A,M)",
+     "oneYearElapsedSinceFreedomRestored(A,M)"
+    ],
+    "heads": [
+     "marriageRevocationPeriodExpired(A,M)"
+    ],
+    "note": "被非法限制人身自由的当事人，撤销请求应当自恢复人身自由之日起一年内提出",
+    "auth": "npc"
+   },
+   {
+    "key": "c1053-1",
+    "srcs": [
+     "art1053-1"
+    ],
+    "body": [
+     "marriage(M)",
+     "hasSeriousIllness(A)",
+     "failedToDiscloseIllness(A,B,M)",
+     "~marriageRevocationPeriodExpired(B,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "requestCourtRevokeMarriage(B,M)"
+     }
+    ],
+    "note": "一方患重大疾病未在结婚登记前如实告知另一方的，另一方可以向人民法院请求撤销婚姻",
+    "auth": "npc"
+   },
+   {
+    "key": "c1053-2",
+    "srcs": [
+     "art1053-2"
+    ],
+    "body": [
+     "hasSeriousIllness(A)",
+     "failedToDiscloseIllness(A,B,M)",
+     "oneYearElapsedSinceKnewRevocationGround(B,M)"
+    ],
+    "heads": [
+     "marriageRevocationPeriodExpired(B,M)"
+    ],
+    "note": "撤销请求应当自知道或者应当知道撤销事由之日起一年内提出",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "noBindingForceAbInitio(M)"
+    ],
+    "note": "无效的或者被撤销的婚姻自始没有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-2",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "marriagePartyOf(A,M)",
+     "marriagePartyOf(B,M)"
+    ],
+    "heads": [
+     "-spouseOf(A,B)"
+    ],
+    "note": "无效或者被撤销婚姻的当事人之间不具有夫妻的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-prop1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "cohabitationProperty(P,M)",
+     "agreedOnPropertyHandling(P,M)"
+    ],
+    "heads": [
+     "propertyHandledByAgreement(P,M)"
+    ],
+    "note": "同居期间所得的财产，由当事人协议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-prop2",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "cohabitationProperty(P,M)",
+     "~agreedOnPropertyHandling(P,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "judgeCohabitationPropertyPerNonFaultPrinciple(P,M)"
+     }
+    ],
+    "note": "协议不成的，由人民法院根据照顾无过错方的原则判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-bigamy",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "void(M)",
+     "bigamousMarriage(M)",
+     "lawfulSpouse(S,M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "infringeLawfulSpousePropertyRights(S,M)"
+     }
+    ],
+    "note": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-child",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "childBornTo(C,A,M)"
+    ],
+    "heads": [
+     "applyParentChildProvisions(C)"
+    ],
+    "note": "当事人所生的子女，适用本法关于父母子女的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-damages",
+    "srcs": [
+     "art1054-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(M)",
+       "revoked(M)"
+      ]
+     },
+     "nonFaultParty(N,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "claimDamagesForInvalidMarriage(N,M)"
+     }
+    ],
+    "note": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1051-cured",
+    "c1051-1",
+    "起诉时法定无效情形已经消失的，不予支持确认婚姻无效，构成对第1051条无效认定的限缩"
+   ],
+   [
+    "c1054-bigamy",
+    "c1054-prop1",
+    "重婚导致的无效婚姻，财产处理不得侵害合法婚姻当事人的财产权益，优先于当事人协议处理"
+   ],
+   [
+    "c1054-bigamy",
+    "c1054-prop2",
+    "重婚导致的无效婚姻，法院判决财产处理时同样不得侵害合法婚姻当事人的财产权益"
+   ],
+   [
+    "c1052-3",
+    "c1052-2",
+    "被非法限制人身自由的，一年期间自恢复人身自由之日起算，不适用自胁迫行为终止之日起算"
+   ]
+  ],
+  "predicates": {
+   "marriage": "经结婚登记的婚姻（1个参数：婚姻）",
+   "marriagePartyOf": "是婚姻的当事人（当事人，婚姻）",
+   "bigamousMarriage": "该婚姻属重婚（1个参数：婚姻）",
+   "prohibitedKinshipMarriage": "该婚姻存在禁止结婚的亲属关系（1个参数：婚姻）",
+   "belowStatutoryMarriageAge": "该婚姻存在未到法定婚龄的情形（1个参数：婚姻）",
+   "invalidityGroundDisappearedAtFiling": "提起诉讼时法定的无效婚姻情形已经消失（1个参数：婚姻）",
+   "coercedIntoMarriage": "因胁迫结婚（受胁迫方，婚姻）",
+   "illegallyRestrictedFreedom": "被非法限制人身自由（受胁迫方，婚姻）",
+   "oneYearElapsedSinceCoercionEnded": "自胁迫行为终止之日起已满一年（受胁迫方，婚姻）",
+   "oneYearElapsedSinceFreedomRestored": "自恢复人身自由之日起已满一年（受胁迫方，婚姻）",
+   "marriageRevocationPeriodExpired": "婚姻撤销权的行使期间已届满（撤销权人，婚姻）",
+   "hasSeriousIllness": "患有重大疾病（1个参数：患病方）",
+   "failedToDiscloseIllness": "结婚登记前未如实告知另一方其重大疾病（患病方，另一方，婚姻）",
+   "oneYearElapsedSinceKnewRevocationGround": "自知道或者应当知道撤销事由之日起已满一年（另一方，婚姻）",
+   "cohabitationProperty": "同居期间所得的财产（财产，婚姻）",
+   "agreedOnPropertyHandling": "当事人已就该财产的处理达成协议（财产，婚姻）",
+   "propertyHandledByAgreement": "该财产按当事人协议处理（财产，婚姻）",
+   "judgeCohabitationPropertyPerNonFaultPrinciple": "根据照顾无过错方的原则判决同居期间财产的处理（法院，财产）",
+   "lawfulSpouse": "是合法婚姻的当事人（合法配偶，重婚的无效婚姻）",
+   "infringeLawfulSpousePropertyRights": "侵害合法婚姻当事人的财产权益（合法配偶，重婚的无效婚姻）",
+   "childBornTo": "是无效或者被撤销婚姻当事人所生的子女（子女，当事人，婚姻）",
+   "applyParentChildProvisions": "适用本法关于父母子女的规定（1个参数：子女）",
+   "nonFaultParty": "是无过错方（当事人，婚姻）",
+   "claimDamagesForInvalidMarriage": "请求因婚姻无效或者被撤销的损害赔偿（无过错方，婚姻）",
+   "requestCourtRevokeMarriage": "请求人民法院撤销婚姻（请求人，婚姻）",
+   "declareMarriageVoidExOfficio": "依职权审查并宣告婚姻无效（1个参数：婚姻）"
+  }
+ },
+ "card:g6488": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "结婚的禁止条件与形式要件；婚姻无效的法定情形及其法律后果",
+     "rules": [
+      "c1048-1",
+      "c1049-3",
+      "c1051-1",
+      "c1051-2",
+      "c1051-3",
+      "c1054-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "直系血亲或者三代以内的旁系血亲属于禁止结婚的亲属关系，禁止结婚",
+     "rules": [
+      "c1048-kin",
+      "c1048-1"
+     ]
+    },
+    {
+     "text": "要求结婚的男女双方应当亲自到婚姻登记机关申请结婚登记；符合本法规定的，予以登记并发给结婚证",
+     "rules": [
+      "c1049-1",
+      "c1049-2"
+     ]
+    },
+    {
+     "text": "婚姻无效的三项事由：重婚；有禁止结婚的亲属关系；未到法定婚龄（以已办理结婚登记为前提）",
+     "rules": [
+      "c1051-1",
+      "c1051-2",
+      "c1051-3"
+     ]
+    },
+    {
+     "text": "申请宣告婚姻无效的主体：婚姻当事人；利害关系人（以重婚为由的为当事人近亲属及基层组织，以未到法定婚龄为由的为未达法定婚龄者的近亲属，以有禁止结婚的亲属关系为由的为当事人的近亲属）",
+     "rules": [
+      "c1051-applicant"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法定的无效情形在人民法院受理时已经消失的（如未达法定婚龄者已达婚龄），不予宣告婚姻无效",
+     "rules": [
+      "c1051-cure"
+     ]
+    },
+    {
+     "text": "1994年2月1日前已符合结婚实质要件并以夫妻名义共同生活的，按事实婚姻处理；此后未补办结婚登记的，按同居关系处理",
+     "rules": [
+      "c1049-fact",
+      "c1049-cohabit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "完成结婚登记即确立婚姻关系；未办理结婚登记的，应当补办登记",
+     "rules": [
+      "c1049-3",
+      "c1049-4"
+     ]
+    },
+    {
+     "text": "无效或者被撤销的婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+     "rules": [
+      "c1054-1"
+     ]
+    },
+    {
+     "text": "同居期间所得的财产由当事人协议处理；协议不成的，由人民法院根据照顾无过错方的原则判决",
+     "rules": [
+      "c1054-prop1",
+      "c1054-prop2"
+     ]
+    },
+    {
+     "text": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+     "rules": [
+      "c1054-3"
+     ]
+    },
+    {
+     "text": "当事人所生的子女，适用本法关于父母子女的规定",
+     "rules": [
+      "c1054-4"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+     "rules": [
+      "c1054-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无效情形在受理时已消失的，优先于第1051条第3项未到法定婚龄的无效规则",
+     "rules": [
+      "c1051-cure"
+     ]
+    },
+    {
+     "text": "婚姻无效或者被撤销的效果（自始无约束力）优先于“完成结婚登记即确立婚姻关系”",
+     "rules": [
+      "c1054-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记认为我国采宣告无效制：婚姻无效须经人民法院以诉讼程序宣告，婚姻效力的审理不适用调解、判决一经作出即生效，财产分割和子女抚养可以调解、可以上诉；此类程序性内容不写规则",
+     "rules": []
+    },
+    {
+     "text": "可撤销婚姻（第1052、1053条：受胁迫、隐瞒重大疾病）与本行的无效婚姻不同：前者基于意思表示瑕疵由撤销权人请求撤销，后者基于欠缺结婚实质要件；本行仅就“被撤销”的后果一并规定",
+     "rules": []
+    },
+    {
+     "text": "事实婚姻与同居关系以1994年2月1日为界：此前符合实质要件的按事实婚姻（婚姻关系成立）处理，此后未补办登记的按同居关系处理，不产生夫妻权利义务",
+     "rules": [
+      "c1049-fact",
+      "c1049-cohabit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1048-kin",
+    "srcs": [
+     "art1048-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "linealBloodRelative(A,B)",
+       "collateralRelativeWithin3Gen(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "prohibitedKinship(A,B)"
+    ],
+    "note": "直系血亲或者三代以内的旁系血亲，属于禁止结婚的亲属关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1048-1",
+    "srcs": [
+     "art1048-1"
+    ],
+    "body": [
+     "prohibitedKinship(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "marry(A,B)"
+     }
+    ],
+    "note": "有禁止结婚的亲属关系的，禁止结婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1049-1",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "intendsToMarry(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "applyForMarriageRegistrationInPerson(A,B)"
+     }
+    ],
+    "note": "要求结婚的男女双方应当亲自到婚姻登记机关申请结婚登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c1049-2",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "intendsToMarry(A,B)",
+     "appliedForMarriageRegistration(A,B)",
+     "marriageConditionsMet(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "marriageRegistrationAuthority",
+      "counterparty": null,
+      "content": "registerMarriage(A,B)"
+     }
+    ],
+    "note": "符合本法规定的，婚姻登记机关应当予以登记、发给结婚证",
+    "auth": "npc"
+   },
+   {
+    "key": "c1049-3",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "marriageRegistered(A,B)"
+    ],
+    "heads": [
+     "marriageEstablished(A,B)"
+    ],
+    "note": "完成结婚登记，即确立婚姻关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1049-4",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "intendsToMarry(A,B)",
+     "-marriageRegistered(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "supplementMarriageRegistration(A,B)"
+     }
+    ],
+    "note": "未办理结婚登记的，应当补办登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c1049-fact",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "cohabitedAsSpousesBefore1994(A,B)"
+    ],
+    "heads": [
+     "marriageEstablished(A,B)"
+    ],
+    "note": "司法解释：1994年2月1日前双方已符合结婚实质要件并以夫妻名义共同生活的，按事实婚姻处理",
+    "auth": "spc"
+   },
+   {
+    "key": "c1049-cohabit",
+    "srcs": [
+     "art1049-1"
+    ],
+    "body": [
+     "cohabitedAsSpouses(A,B)",
+     "-marriageRegistered(A,B)"
+    ],
+    "heads": [
+     "-marriageEstablished(A,B)",
+     "cohabitationRelationship(A,B)"
+    ],
+    "note": "司法解释：1994年2月1日后未补办结婚登记而以夫妻名义共同生活的，按同居关系处理，不成立婚姻关系",
+    "auth": "spc"
+   },
+   {
+    "key": "c1051-1",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriageRegistered(A,B)",
+     "bigamy(A,B)"
+    ],
+    "heads": [
+     "marriageVoid(A,B)"
+    ],
+    "note": "重婚的，婚姻无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1051-2",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriageRegistered(A,B)",
+     "prohibitedKinship(A,B)"
+    ],
+    "heads": [
+     "marriageVoid(A,B)"
+    ],
+    "note": "有禁止结婚的亲属关系的，婚姻无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1051-3",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriageRegistered(A,B)",
+     {
+      "or": [
+       "underStatutoryMarriageAge(A)",
+       "underStatutoryMarriageAge(B)"
+      ]
+     }
+    ],
+    "heads": [
+     "marriageVoid(A,B)"
+    ],
+    "note": "未到法定婚龄的，婚姻无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1051-cure",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriageRegistered(A,B)",
+     "groundCured(A,B)"
+    ],
+    "heads": [
+     "-marriageVoid(A,B)"
+    ],
+    "note": "司法解释：法定无效情形在人民法院受理时已经消失的（如未达婚龄者已达婚龄），不予宣告婚姻无效",
+    "auth": "spc"
+   },
+   {
+    "key": "c1051-applicant",
+    "srcs": [
+     "art1051-1"
+    ],
+    "body": [
+     "marriageVoid(A,B)",
+     {
+      "or": [
+       "spouseOf(P,A)",
+       "nearRelativeOf(P,A)",
+       "relevantOrg(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "qualifiedVoidMarriageApplicant(P,A,B)"
+    ],
+    "note": "司法解释：婚姻当事人及利害关系人（当事人近亲属、基层组织等）可申请宣告婚姻无效",
+    "auth": "spc"
+   },
+   {
+    "key": "c1054-1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "marriageVoid(A,B)",
+       "marriageRevoked(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "-marriageEstablished(A,B)",
+     "-spouseOf(A,B)",
+     "-spouseOf(B,A)"
+    ],
+    "note": "无效或者被撤销的婚姻自始没有法律约束力，当事人不具有夫妻的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-prop1",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "marriageVoid(A,B)",
+       "marriageRevoked(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "disposeCohabitationPropertyByAgreement(A,B)"
+     }
+    ],
+    "note": "同居期间所得的财产，由当事人协议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-prop2",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "marriageVoid(A,B)",
+       "marriageRevoked(A,B)"
+      ]
+     },
+     "-propertyAgreementReached(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "adjudicateCohabitationPropertyFavoringNoFault(A,B)"
+     }
+    ],
+    "note": "协议不成的，由人民法院根据照顾无过错方的原则判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-3",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     "marriageVoid(A,B)",
+     "bigamy(A,B)",
+     "lawfulSpouseOf(C,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "infringePropertyRights(C)"
+     }
+    ],
+    "note": "对重婚导致的无效婚姻的财产处理，不得侵害合法婚姻当事人的财产权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-4",
+    "srcs": [
+     "art1054-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "marriageVoid(A,B)",
+       "marriageRevoked(A,B)"
+      ]
+     },
+     {
+      "or": [
+       "childOf(C,A)",
+       "childOf(C,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyParentChildProvisions(C)"
+    ],
+    "note": "当事人所生的子女，适用本法关于父母子女的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1054-5",
+    "srcs": [
+     "art1054-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "marriageVoid(A,B)",
+       "marriageRevoked(A,B)"
+      ]
+     },
+     "noFaultInMarriage(A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimDamagesForInvalidMarriage(A,B)"
+     }
+    ],
+    "note": "婚姻无效或者被撤销的，无过错方有权请求损害赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1051-cure",
+    "c1051-3",
+    "无效情形在人民法院受理时已经消失的，不再宣告婚姻无效"
+   ],
+   [
+    "c1054-1",
+    "c1049-3",
+    "无效或者被撤销的婚姻自始没有法律约束力，优先于“完成结婚登记即确立婚姻关系”"
+   ]
+  ],
+  "predicates": {
+   "linealBloodRelative": "是直系血亲（参数1、参数2为双方）",
+   "collateralRelativeWithin3Gen": "是三代以内的旁系血亲（参数1、参数2为双方）",
+   "prohibitedKinship": "属于禁止结婚的亲属关系（直系血亲或三代以内旁系血亲）",
+   "marry": "结婚（参数1、参数2为男女双方）",
+   "intendsToMarry": "要求结婚的男女双方（有结婚意愿并申请登记）",
+   "applyForMarriageRegistrationInPerson": "亲自到婚姻登记机关申请结婚登记",
+   "appliedForMarriageRegistration": "已向婚姻登记机关提出结婚登记申请",
+   "marriageConditionsMet": "符合本法规定的结婚条件",
+   "registerMarriage": "予以结婚登记并发给结婚证",
+   "marriageRegistered": "已完成结婚登记",
+   "marriageEstablished": "婚姻关系已确立",
+   "supplementMarriageRegistration": "补办结婚登记",
+   "cohabitedAsSpousesBefore1994": "1994年2月1日前已符合结婚实质要件并以夫妻名义共同生活",
+   "cohabitedAsSpouses": "未办理结婚登记而以夫妻名义共同生活",
+   "cohabitationRelationship": "按同居关系处理",
+   "bigamy": "重婚（一方或双方有配偶而结婚）",
+   "underStatutoryMarriageAge": "未到法定婚龄（男未满22周岁或女未满20周岁）",
+   "marriageVoid": "婚姻无效",
+   "groundCured": "法定的无效婚姻情形在人民法院受理时已经消失",
+   "qualifiedVoidMarriageApplicant": "有权申请宣告该婚姻无效的主体（参数1：申请人，参数2、参数3：婚姻双方）",
+   "nearRelativeOf": "是……的近亲属（参数1：近亲属，参数2：相对人）",
+   "marriageRevoked": "婚姻已被人民法院撤销",
+   "disposeCohabitationPropertyByAgreement": "协议处理同居期间所得的财产",
+   "propertyAgreementReached": "已就同居期间财产的处理达成协议",
+   "adjudicateCohabitationPropertyFavoringNoFault": "根据照顾无过错方的原则判决同居期间财产的处理",
+   "lawfulSpouseOf": "是合法婚姻的配偶（参数1：合法配偶，参数2：重婚方）",
+   "infringePropertyRights": "侵害……的财产权益（参数：被侵害的合法婚姻当事人）",
+   "applyParentChildProvisions": "适用本法关于父母子女的规定（参数：子女）",
+   "noFaultInMarriage": "对婚姻无效或者被撤销无过错",
+   "claimDamagesForInvalidMarriage": "请求因婚姻无效或者被撤销的损害赔偿（参数1：无过错方，参数2：相对方）"
+  }
+ }
+}

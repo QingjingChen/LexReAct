@@ -1,0 +1,507 @@
+{
+ "art:377": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "地役权的期限如何确定，是否受供役地上土地承包经营权、建设用地使用权等用益物权剩余期限的限制",
+     "rules": [
+      "c377-1",
+      "c377-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "供役地上存在土地承包经营权、建设用地使用权等用益物权，且当事人已就地役权期限作出约定",
+     "rules": [
+      "c377-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：约定的地役权期限不得超过供役地上用益物权的剩余期限",
+     "rules": [
+      "c377-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "地役权期限由当事人约定",
+     "rules": [
+      "c377-1"
+     ]
+    },
+    {
+     "text": "当事人不得约定超过用益物权剩余期限的地役权期限；已约定的，期限以该用益物权的剩余期限为限",
+     "rules": [
+      "c377-2",
+      "c377-effect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "但书（不得超过用益物权剩余期限）优先于“期限由当事人约定”的一般规定",
+     "rules": [
+      "c377-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条限制的是地役权期限与供役地上用益物权剩余期限的关系；供役地由所有权人自己使用、其上并无土地承包经营权、建设用地使用权等用益物权时，不发生该限制（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c377-1",
+    "srcs": [
+     "art377-1"
+    ],
+    "body": [
+     "easementRight(E)"
+    ],
+    "heads": [
+     "easementTermDeterminedByAgreement(E)"
+    ],
+    "note": "地役权期限由当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c377-2",
+    "srcs": [
+     "art377-1"
+    ],
+    "body": [
+     "easementTermDeterminedByAgreement(E)",
+     "usufructOnServientLand(U,L)",
+     "agreedEasementTermExceedsRemaining(E,U)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "agreeEasementTermExceedingRemaining(E,U)"
+     }
+    ],
+    "note": "但书：约定的地役权期限不得超过土地承包经营权、建设用地使用权等用益物权的剩余期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c377-effect",
+    "srcs": [
+     "art377-1"
+    ],
+    "body": [
+     "agreedEasementTermExceedsRemaining(E,U)"
+    ],
+    "heads": [
+     "easementTermLimitedToRemainingTerm(E,U)"
+    ],
+    "note": "学理：超过用益物权剩余期限的部分无效，地役权期限缩短至该用益物权的剩余期限（条文未明定，属解释结论）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c377-2",
+    "c377-1",
+    "但书“不得超过用益物权剩余期限”优先于“期限由当事人约定”的一般规定"
+   ]
+  ],
+  "predicates": {
+   "easementRight": "是地役权（1个参数：地役权）",
+   "easementTermDeterminedByAgreement": "地役权期限由当事人约定（1个参数：地役权）",
+   "usufructOnServientLand": "是供役地上的用益物权，如土地承包经营权、建设用地使用权等（参数1：用益物权；参数2：供役地）",
+   "agreedEasementTermExceedsRemaining": "约定的地役权期限超过该用益物权的剩余期限（参数1：地役权；参数2：用益物权）",
+   "agreeEasementTermExceedingRemaining": "约定超过用益物权剩余期限的地役权期限（参数1：当事人；参数2：地役权；参数3：用益物权）",
+   "easementTermLimitedToRemainingTerm": "地役权期限以该用益物权的剩余期限为限（参数1：地役权；参数2：用益物权）"
+  }
+ },
+ "art:376": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "地役权人应当如何利用供役地，对供役地权利人的物权负有何种限制义务",
+     "rules": [
+      "c376-1",
+      "c376-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人是地役权人，且存在供役地及其权利人",
+     "rules": [
+      "c376-1",
+      "c376-2"
+     ]
+    },
+    {
+     "text": "地役权合同约定了利用供役地的目的和方法",
+     "rules": [
+      "c376-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "地役权人应当按照合同约定的利用目的和方法利用供役地",
+     "rules": [
+      "c376-1"
+     ]
+    },
+    {
+     "text": "地役权人利用供役地应尽量减少对供役地权利人物权的限制",
+     "rules": [
+      "c376-2"
+     ]
+    },
+    {
+     "text": "违反上述义务的，供役地权利人可请求排除妨害（学理上的物权救济，条文未明定）",
+     "rules": [
+      "c376-remedy"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本行仅挂载第376条第1款；第2款关于供役地权利人应按约定允许利用、不得妨害地役权行使的规定未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本行亦无 LEGO 卡片，故规则全部依条文原文写成，仅救济一项为学理补充",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c376-1",
+    "srcs": [
+     "art376-1"
+    ],
+    "body": [
+     "easementHolder(E,L)",
+     "servientLandOwner(O,L)",
+     "agreedUsePurposeAndMethod(K,E,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "useServientLandPerAgreedPurposeAndMethod(E,L)"
+     }
+    ],
+    "note": "地役权人应当按照地役权合同约定的利用目的和方法利用供役地",
+    "auth": "npc"
+   },
+   {
+    "key": "c376-2",
+    "srcs": [
+     "art376-1"
+    ],
+    "body": [
+     "easementHolder(E,L)",
+     "servientLandOwner(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "minimizeRestrictionOnServientLand(E,O,L)"
+     }
+    ],
+    "note": "地役权人利用供役地时应当尽量减少对供役地权利人物权的限制",
+    "auth": "npc"
+   },
+   {
+    "key": "c376-remedy",
+    "srcs": [
+     "art376-1"
+    ],
+    "body": [
+     "easementHolder(E,L)",
+     "servientLandOwner(O,L)",
+     "violatesUseRestriction(E,O,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "E",
+      "content": "claimRemovalOfObstruction(O,E,L)"
+     }
+    ],
+    "note": "学理补充：地役权人违反约定利用目的和方法、过度限制供役地权利人物权的，供役地权利人可请求排除妨害；条文本身未规定救济方式",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "servientLandOwner": "是供役地的权利人，即供役地的所有权人或用益物权人（参数1：权利人；参数2：供役地）",
+   "agreedUsePurposeAndMethod": "地役权合同约定了利用供役地的目的和方法（参数1：地役权合同；参数2：地役权人；参数3：供役地）",
+   "useServientLandPerAgreedPurposeAndMethod": "按照合同约定的利用目的和方法利用供役地（参数1：地役权人；参数2：供役地）",
+   "minimizeRestrictionOnServientLand": "尽量减少对供役地权利人物权的限制（参数1：地役权人；参数2：供役地权利人；参数3：供役地）",
+   "violatesUseRestriction": "违反按约定目的和方法利用供役地、尽量减少对供役地权利人物权限制的义务（参数1：地役权人；参数2：供役地权利人；参数3：供役地）"
+  }
+ },
+ "art:375": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "供役地权利人对地役权人负担何种义务：应当按照合同约定允许地役权人利用其不动产，并且不得妨害地役权人行使权利",
+     "rules": [
+      "c375-1",
+      "c375-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方是供役不动产的权利人（供役地权利人），另一方是就该不动产享有地役权的地役权人",
+     "rules": [
+      "c375-1",
+      "c375-2"
+     ]
+    },
+    {
+     "text": "合同约定地役权人可以利用该供役不动产（“按照合同约定”）",
+     "rules": [
+      "c375-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "供役地权利人应当允许地役权人利用其不动产",
+     "rules": [
+      "c375-1"
+     ]
+    },
+    {
+     "text": "供役地权利人不得妨害地役权人行使权利",
+     "rules": [
+      "c375-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定供役地权利人的义务；地役权人利用供役不动产的权利内容（目的、范围）由第372条及地役权合同确定，本行未挂载该条，故不另设规则",
+     "rules": []
+    },
+    {
+     "text": "本条没有“另有约定”或“除外”但书；允许利用的具体方式与范围以合同约定为准，超出约定范围的使用不属于本条允许义务的范围",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，本行也没有 LEGO 卡片，形式化仅依据法条原文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c375-1",
+    "srcs": [
+     "art375-1"
+    ],
+    "body": [
+     "servientLandRightHolder(S,L)",
+     "easementHolderOver(E,L)",
+     "agreedUseOfServientLand(K,E,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "E",
+      "content": "allowUseOfServientLand(S,E,L)"
+     }
+    ],
+    "note": "供役地权利人应当按照合同约定，允许地役权人利用其不动产",
+    "auth": "npc"
+   },
+   {
+    "key": "c375-2",
+    "srcs": [
+     "art375-1"
+    ],
+    "body": [
+     "servientLandRightHolder(S,L)",
+     "easementHolderOver(E,L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "E",
+      "content": "obstructEasementExercise(S,E,L)"
+     }
+    ],
+    "note": "供役地权利人不得妨害地役权人行使权利（不以合同另有约定为条件）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "servientLandRightHolder": "是供役不动产的权利人，即供役地权利人（参数1：权利人；参数2：供役不动产）",
+   "easementHolderOver": "是就某供役不动产享有地役权的地役权人（参数1：地役权人；参数2：供役不动产）",
+   "agreedUseOfServientLand": "合同约定地役权人可以利用该供役不动产（参数1：合同；参数2：地役权人；参数3：供役不动产）",
+   "allowUseOfServientLand": "允许地役权人利用其不动产（参数1：供役地权利人；参数2：地役权人；参数3：供役不动产）",
+   "obstructEasementExercise": "妨害地役权人行使权利（参数1：供役地权利人；参数2：地役权人；参数3：供役不动产）"
+  }
+ },
+ "art:385": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "已经登记的地役权发生变更、转让或者消灭后，应当办理何种登记、由谁办理",
+     "rules": [
+      "c385-change",
+      "c385-cancel"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该地役权已经办理登记（未经登记的地役权不适用本条）",
+     "rules": [
+      "c385-change",
+      "c385-cancel"
+     ]
+    },
+    {
+     "text": "地役权的内容发生变更，或者地役权被转让",
+     "rules": [
+      "c385-change"
+     ]
+    },
+    {
+     "text": "地役权消灭",
+     "rules": [
+      "c385-cancel"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "地役权人应当及时办理变更登记",
+     "rules": [
+      "c385-change"
+     ]
+    },
+    {
+     "text": "地役权人应当及时办理注销登记",
+     "rules": [
+      "c385-cancel"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第2款“第四分编 担保物权”只是分编标题，不含行为规范，不产生规则；本条与担保物权编无实体关联",
+     "rules": []
+    },
+    {
+     "text": "条文未明定办理登记的义务人，依体系解为地役权人（当事人）；此系解释而非条文原文",
+     "rules": [
+      "c385-change",
+      "c385-cancel"
+     ]
+    },
+    {
+     "text": "本条只规定“应当及时办理”登记，未规定未办理登记的效力；未办理变更登记不得对抗善意第三人系依第374条登记对抗主义所作的体系推论，故不另设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c385-change",
+    "srcs": [
+     "art385-1"
+    ],
+    "body": [
+     "easementRegistered(E)",
+     "easementHolder(H,E)",
+     {
+      "or": [
+       "easementChanged(E)",
+       "easementTransferred(E)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "applyForChangeRegistrationOfEasement(H,E)"
+     }
+    ],
+    "note": "已经登记的地役权变更或者转让的，应当及时办理变更登记；义务人依体系解为地役权人",
+    "auth": "npc"
+   },
+   {
+    "key": "c385-cancel",
+    "srcs": [
+     "art385-1"
+    ],
+    "body": [
+     "easementRegistered(E)",
+     "easementHolder(H,E)",
+     "easementExtinguished(E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "applyForCancellationRegistrationOfEasement(H,E)"
+     }
+    ],
+    "note": "已经登记的地役权消灭的，应当及时办理注销登记",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "easementChanged": "地役权的内容发生变更",
+   "easementTransferred": "地役权被转让",
+   "easementExtinguished": "地役权消灭",
+   "applyForChangeRegistrationOfEasement": "就变更、转让及时办理地役权的变更登记（义务人，地役权）",
+   "applyForCancellationRegistrationOfEasement": "就地役权消灭及时办理注销登记（义务人，地役权）"
+  }
+ }
+}

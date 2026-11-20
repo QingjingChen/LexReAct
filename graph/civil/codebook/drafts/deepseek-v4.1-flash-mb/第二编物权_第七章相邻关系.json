@@ -1,0 +1,871 @@
+{
+ "art:291": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "相邻权利人因通行等必须利用他人土地时，该土地的不动产权利人是否应当提供便利",
+     "rules": [
+      "c291-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方是该土地的不动产权利人（对该土地享有物权）",
+     "rules": [
+      "c291-1"
+     ]
+    },
+    {
+     "text": "另一方是相邻不动产的权利人，即相邻权利人",
+     "rules": [
+      "c291-adj",
+      "c291-1"
+     ]
+    },
+    {
+     "text": "相邻权利人因通行等需要必须利用该土地",
+     "rules": [
+      "c291-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "土地的不动产权利人应当向相邻权利人提供必要的便利",
+     "rules": [
+      "c291-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是相邻关系（第288–296条）中对不动产权利人的法定便利（容忍）义务，不以当事人约定或补偿为要件；笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c291-1",
+    "srcs": [
+     "art291-1"
+    ],
+    "body": [
+     "realRightOf(A,L)",
+     "immovable(L)",
+     "adjacentRightHolder(B,L)",
+     "mustUseLand(B,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "provideNecessaryConvenience(A,B,L)"
+     }
+    ],
+    "note": "不动产权利人对相邻权利人因通行等必须利用其土地的，应当提供必要的便利",
+    "auth": "npc"
+   },
+   {
+    "key": "c291-adj",
+    "srcs": [
+     "art291-1"
+    ],
+    "body": [
+     "realRightOf(B,L2)",
+     "adjacentImmovables(L2,L)",
+     "immovable(L)"
+    ],
+    "heads": [
+     "adjacentRightHolder(B,L)"
+    ],
+    "note": "学理：相邻权利人指相邻不动产的权利人，本条未自行定义，仅据相邻关系体系补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "adjacentRightHolder": "是相邻不动产的权利人，即相邻权利人（相邻权利人，土地）",
+   "adjacentRightHolder/2": "是相邻不动产的权利人，即相邻权利人（相邻权利人，土地）",
+   "adjacentImmovables": "两宗不动产相互毗邻（不动产，不动产）",
+   "adjacentImmovables/2": "两宗不动产相互毗邻（不动产，不动产）",
+   "mustUseLand": "因通行等需要必须利用该土地（相邻权利人，土地）",
+   "mustUseLand/2": "因通行等需要必须利用该土地（相邻权利人，土地）",
+   "provideNecessaryConvenience": "向相邻权利人提供必要的便利（不动产权利人，相邻权利人，土地）",
+   "provideNecessaryConvenience/3": "向相邻权利人提供必要的便利（不动产权利人，相邻权利人，土地）"
+  }
+ },
+ "art:290": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "相邻不动产之间用水、排水的便利义务，以及自然流水的合理分配与排放规则",
+     "rules": [
+      "c290-1",
+      "c290-2-alloc",
+      "c290-2-flow"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方为不动产权利人，另一方为该不动产的相邻权利人",
+     "rules": [
+      "c290-1"
+     ]
+    },
+    {
+     "text": "相邻权利人需要用水或者排水",
+     "rules": [
+      "c290-1"
+     ]
+    },
+    {
+     "text": "涉及自然流水的利用或者排放",
+     "rules": [
+      "c290-2-alloc",
+      "c290-2-flow"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "不动产权利人应当为相邻权利人用水、排水提供必要的便利（以“必要”为限）",
+     "rules": [
+      "c290-1"
+     ]
+    },
+    {
+     "text": "对自然流水的利用，应当在不动产的相邻权利人之间合理分配",
+     "rules": [
+      "c290-2-alloc"
+     ]
+    },
+    {
+     "text": "对自然流水的排放，应当尊重自然流向",
+     "rules": [
+      "c290-2-flow"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用本条原文或条号，未提供补充或例外；本条仅就用水、排水及自然流水作出规定，不及于通行、通风、采光等其他相邻关系事项",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c290-1",
+    "srcs": [
+     "art290-1"
+    ],
+    "body": [
+     "immovable(P)",
+     "realRightOf(A,P)",
+     "neighboringRightHolder(B,P)",
+     "needsWaterUseOrDrainage(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "provideWaterUseDrainageConvenience(A,B)"
+     }
+    ],
+    "note": "不动产权利人应当为相邻权利人用水、排水提供必要的便利",
+    "auth": "npc"
+   },
+   {
+    "key": "c290-2-alloc",
+    "srcs": [
+     "art290-2"
+    ],
+    "body": [
+     "naturalFlowingWater(W)",
+     "utilizesNaturalFlowingWater(A,W)",
+     "neighboringRightHolder(B,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "reasonablyAllocateNaturalFlowingWater(A,B,W)"
+     }
+    ],
+    "note": "对自然流水的利用，应当在不动产的相邻权利人之间合理分配",
+    "auth": "npc"
+   },
+   {
+    "key": "c290-2-flow",
+    "srcs": [
+     "art290-2"
+    ],
+    "body": [
+     "naturalFlowingWater(W)",
+     "dischargesNaturalFlowingWater(A,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "respectNaturalFlowDirection(A,W)"
+     }
+    ],
+    "note": "对自然流水的排放，应当尊重自然流向",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "neighboringRightHolder": "是不动产的相邻权利人（人，不动产）",
+   "needsWaterUseOrDrainage": "需要用水或者排水（相邻权利人）",
+   "provideWaterUseDrainageConvenience": "为相邻权利人用水、排水提供必要的便利（不动产权利人，相邻权利人）",
+   "naturalFlowingWater": "是自然流水",
+   "utilizesNaturalFlowingWater": "利用自然流水（利用人，自然流水）",
+   "reasonablyAllocateNaturalFlowingWater": "在相邻权利人之间合理分配自然流水（利用人，相邻权利人，自然流水）",
+   "dischargesNaturalFlowingWater": "排放自然流水（排放人，自然流水）",
+   "respectNaturalFlowDirection": "尊重自然流向（排放人，自然流水）"
+  }
+ },
+ "art:292": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产权利人因建造、修缮建筑物以及铺设电线、电缆、水管、暖气和燃气管线等必须利用相邻土地、建筑物时，该土地、建筑物的权利人是否应当提供便利",
+     "rules": [
+      "c292-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "请求人是不动产权利人，即对某不动产享有物权",
+     "rules": [
+      "c292-1"
+     ]
+    },
+    {
+     "text": "因建造、修缮建筑物以及铺设电线、电缆、水管、暖气和燃气管线等，必须利用相邻的土地、建筑物",
+     "rules": [
+      "c292-1"
+     ]
+    },
+    {
+     "text": "被请求人是该相邻土地、建筑物的权利人",
+     "rules": [
+      "c292-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "学理解释：便利以“必要”为限，利用请求超出必要范围的，相邻土地、建筑物的权利人有权拒绝",
+     "rules": [
+      "c292-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该土地、建筑物的权利人应当向需利用的不动产权利人提供必要的便利",
+     "rules": [
+      "c292-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未涉及本条；本条只规定“必须利用”相邻土地、建筑物时的提供便利义务，避免损害、补偿等问题由第296条等相邻关系规则处理，不在本条范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c292-1",
+    "srcs": [
+     "art292-1"
+    ],
+    "body": [
+     "realRightOf(A,M)",
+     "immovableThing(M)",
+     "mustUseAdjacentImmovable(A,L)",
+     "realRightOf(B,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "provideNecessaryConvenience(B,A,L)"
+     }
+    ],
+    "note": "不动产权利人因建造、修缮建筑物以及铺设电线、电缆、水管、暖气和燃气管线等必须利用相邻土地、建筑物的，该土地、建筑物的权利人应当提供必要的便利",
+    "auth": "npc"
+   },
+   {
+    "key": "c292-limit",
+    "srcs": [
+     "art292-1"
+    ],
+    "body": [
+     "realRightOf(B,L)",
+     "mustUseAdjacentImmovable(A,L)",
+     "exceedsNecessity(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "refuseExcessConvenience(B,A,L)"
+     }
+    ],
+    "note": "学理解释：条文只要求提供“必要的便利”，故超出必要范围的利用请求，相邻土地、建筑物的权利人有权拒绝（条文未明写，属解释性说明）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mustUseAdjacentImmovable": "因建造、修缮建筑物以及铺设电线、电缆、水管、暖气和燃气管线等（“等”为开放式列举），必须利用相邻的土地、建筑物（参数1：需利用人，即不动产权利人；参数2：被利用的相邻土地、建筑物）",
+   "provideNecessaryConvenience": "提供必要的便利（参数1：相邻土地、建筑物的权利人；参数2：需利用的不动产权利人；参数3：被利用的相邻土地、建筑物）",
+   "exceedsNecessity": "利用请求超出“必要”的范围（参数1：需利用人；参数2：相邻土地、建筑物）",
+   "refuseExcessConvenience": "拒绝超出必要范围的便利请求（参数1：相邻土地、建筑物的权利人；参数2：需利用人；参数3：相邻土地、建筑物）"
+  }
+ },
+ "art:296": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产权利人因用水、排水、通行、铺设管线等利用相邻不动产时，对相邻不动产权利人负有何种义务",
+     "rules": [
+      "c296-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人是某不动产的权利人（对该不动产享有物权）",
+     "rules": [
+      "c296-1"
+     ]
+    },
+    {
+     "text": "因用水、排水、通行、铺设管线等而利用相邻不动产",
+     "rules": [
+      "c296-1"
+     ]
+    },
+    {
+     "text": "对方是该相邻不动产的权利人",
+     "rules": [
+      "c296-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "利用人应当尽量避免对相邻的不动产权利人造成损害",
+     "rules": [
+      "c296-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定利用人“尽量避免损害”的义务，未规定相邻方的容忍义务（第288条以下）以及造成损害后的赔偿责任（侵权责任编），本行不作形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c296-1",
+    "srcs": [
+     "art296-1"
+    ],
+    "body": [
+     "realRightOf(R,P)",
+     "immovableProperty(P)",
+     "usesAdjacentImmovable(R,Q)",
+     "adjacentImmovableRightHolder(S,Q)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "S",
+      "content": "avoidCausingDamage(R,S)"
+     }
+    ],
+    "note": "不动产权利人因用水、排水、通行、铺设管线等利用相邻不动产的，应当尽量避免对相邻的不动产权利人造成损害",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usesAdjacentImmovable": "因用水、排水、通行、铺设管线等利用相邻不动产（参数1：利用人；参数2：被利用的相邻不动产）",
+   "adjacentImmovableRightHolder": "是相邻不动产的权利人（参数1：人；参数2：相邻不动产）",
+   "avoidCausingDamage": "尽量避免对相邻不动产权利人造成损害（参数1：利用人；参数2：相邻不动产权利人）"
+  }
+ },
+ "art:294": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产权利人违反国家规定弃置固体废物、排放有害物质的，是否为本条所禁止",
+     "rules": [
+      "c294-1",
+      "c294-scope"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是不动产权利人",
+     "rules": [
+      "c294-1"
+     ]
+    },
+    {
+     "text": "行为违反国家规定（未违反国家规定的排放、弃置不在本条禁止之列）",
+     "rules": [
+      "c294-1"
+     ]
+    },
+    {
+     "text": "行为表现为弃置固体废物，或者排放大气污染物、水污染物、土壤污染物、噪声、光辐射、电磁辐射等有害物质",
+     "rules": [
+      "c294-scope",
+      "c294-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "不动产权利人不得实施该弃置、排放行为（禁止性义务，不以造成实际损害为要件）",
+     "rules": [
+      "c294-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是禁止性规范，只要求“违反国家规定”，不以损害他人合法权益或造成实际损害为构成要件；与第286条业主不得任意弃置垃圾、排放污染物等的规定相比，本条主体为不动产权利人，且以违反国家规定为限",
+     "rules": [
+      "c294-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c294-1",
+    "srcs": [
+     "art294-1"
+    ],
+    "body": [
+     "immovableRightHolder(R)",
+     "violatesStateRegulations(R)",
+     "harmfulDischargeOrDumping(R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "disposeWasteOrDischargeHarmfulSubstances(R)"
+     }
+    ],
+    "note": "不动产权利人不得违反国家规定弃置固体废物、排放有害物质",
+    "auth": "npc"
+   },
+   {
+    "key": "c294-scope",
+    "srcs": [
+     "art294-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "dumpsSolidWaste(R)",
+       "dischargesAirPollutant(R)",
+       "dischargesWaterPollutant(R)",
+       "dischargesSoilPollutant(R)",
+       "emitsNoise(R)",
+       "emitsLightRadiation(R)",
+       "emitsElectromagneticRadiation(R)",
+       "dischargesOtherHarmfulSubstance(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "harmfulDischargeOrDumping(R)"
+    ],
+    "note": "本条禁止的行为类型：弃置固体废物，排放大气、水、土壤污染物、噪声、光辐射、电磁辐射等有害物质",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "immovableRightHolder": "是不动产权利人（参数1：人）",
+   "violatesStateRegulations": "违反国家规定（参数1：行为人）",
+   "harmfulDischargeOrDumping": "实施弃置固体废物或排放有害物质的行为（参数1：行为人）",
+   "dumpsSolidWaste": "弃置固体废物（参数1：行为人）",
+   "dischargesAirPollutant": "排放大气污染物（参数1：行为人）",
+   "dischargesWaterPollutant": "排放水污染物（参数1：行为人）",
+   "dischargesSoilPollutant": "排放土壤污染物（参数1：行为人）",
+   "emitsNoise": "排放噪声（参数1：行为人）",
+   "emitsLightRadiation": "排放光辐射（参数1：行为人）",
+   "emitsElectromagneticRadiation": "排放电磁辐射（参数1：行为人）",
+   "dischargesOtherHarmfulSubstance": "排放其他有害物质（参数1：行为人）",
+   "disposeWasteOrDischargeHarmfulSubstances": "弃置固体废物、排放有害物质（被禁止的行为内容，参数1：行为人）"
+  }
+ },
+ "card:g2695": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "相邻关系如何界定，处理相邻关系应遵循何种原则与依据（第288、289条）",
+     "rules": [
+      "c288-def",
+      "c289-1",
+      "c289-2"
+     ]
+    },
+    {
+     "text": "建造建筑物时，对相邻建筑物的通风、采光和日照负有何种不作为义务（第293条）",
+     "rules": [
+      "c293-1",
+      "c293-2"
+     ]
+    },
+    {
+     "text": "不动产权利人挖掘土地、建造建筑物、铺设管线、安装设备等，是否危及相邻不动产的安全（第295条）",
+     "rules": [
+      "c295-1",
+      "c295-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "相互毗邻或相近的不动产，权利主体为不动产所有人或使用人（自然人、法人、承包人、租用人等）",
+     "rules": [
+      "c288-def"
+     ]
+    },
+    {
+     "text": "法律、法规对处理相邻关系有规定；或者没有规定",
+     "rules": [
+      "c289-1",
+      "c289-2"
+     ]
+    },
+    {
+     "text": "建造建筑物，且存在相邻建筑物",
+     "rules": [
+      "c293-1",
+      "c293-2"
+     ]
+    },
+    {
+     "text": "不动产权利人实施挖掘土地、铺设管线、安装设备等行为，且存在相邻不动产",
+     "rules": [
+      "c295-1"
+     ]
+    },
+    {
+     "text": "不动产权利人建造建筑物，且存在相邻不动产",
+     "rules": [
+      "c295-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、法规对处理相邻关系已有规定的，依其规定，不得以当地习惯替代",
+     "rules": [
+      "c289-1"
+     ]
+    },
+    {
+     "text": "只有在法律、法规没有规定时，才可以按照当地习惯处理",
+     "rules": [
+      "c289-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依照法律、法规的规定处理相邻关系",
+     "rules": [
+      "c289-1"
+     ]
+    },
+    {
+     "text": "法律、法规没有规定的，可以按照当地习惯处理",
+     "rules": [
+      "c289-2"
+     ]
+    },
+    {
+     "text": "建造人不得违反国家有关工程建设标准",
+     "rules": [
+      "c293-1"
+     ]
+    },
+    {
+     "text": "建造人不得妨碍相邻建筑物的通风、采光和日照",
+     "rules": [
+      "c293-2"
+     ]
+    },
+    {
+     "text": "不动产权利人挖掘土地、铺设管线、安装设备等，不得危及相邻不动产的安全",
+     "rules": [
+      "c295-1"
+     ]
+    },
+    {
+     "text": "不动产权利人建造建筑物，不得危及相邻不动产的安全",
+     "rules": [
+      "c295-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、法规对处理相邻关系有规定的，优先于当地习惯适用",
+     "rules": [
+      "c289-1",
+      "c289-2"
+     ]
+    },
+    {
+     "text": "第288条所列有利生产、方便生活、团结互助、公平合理为处理相邻关系的指导原则，具体事项依第289条及分则规定处理",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "相邻关系是法律直接发生的权利义务关系，无需约定与登记；地役权是依合同设立的用益物权，需登记，二者不可混用",
+     "rules": []
+    },
+    {
+     "text": "建筑物区分所有权以专有部分与共有部分的划分为基础，不以物理毗邻为前提",
+     "rules": []
+    },
+    {
+     "text": "排除妨碍、消除危险、赔偿损失等救济手段规定于物权保护的一般条款，本条未作规定",
+     "rules": []
+    },
+    {
+     "text": "笔记中相邻用水、排水、通行、不可量物侵害等具体规则，本行未挂载相应法条，故未形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c288-def",
+    "srcs": [
+     "art288"
+    ],
+    "body": [
+     "realEstateRightHolder(P)",
+     "adjacentRealEstate(P,N)"
+    ],
+    "heads": [
+     "adjacentRelation(P,N)"
+    ],
+    "note": "笔记学理定义：相邻关系是相互毗邻的不动产所有人或使用人之间因行使所有权或使用权而发生的权利义务关系（法条未明文，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c289-1",
+    "srcs": [
+     "art289"
+    ],
+    "body": [
+     "adjacentRelationMatter(K)",
+     "lawHasProvision(K)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、法规对处理相邻关系有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c289-2",
+    "srcs": [
+     "art289"
+    ],
+    "body": [
+     "adjacentRelationMatter(K)",
+     "-lawHasProvision(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLocalCustom(K)"
+     }
+    ],
+    "note": "法律、法规没有规定的，可以按照当地习惯处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c293-1",
+    "srcs": [
+     "art293"
+    ],
+    "body": [
+     "constructsBuilding(P,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "violateConstructionStandards(B)"
+     }
+    ],
+    "note": "建造建筑物，不得违反国家有关工程建设标准",
+    "auth": "npc"
+   },
+   {
+    "key": "c293-2",
+    "srcs": [
+     "art293"
+    ],
+    "body": [
+     "constructsBuilding(P,B)",
+     "adjacentBuilding(B,N)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obstructVentilationLightSunlight(B,N)"
+     }
+    ],
+    "note": "建造建筑物，不得妨碍相邻建筑物的通风、采光和日照",
+    "auth": "npc"
+   },
+   {
+    "key": "c295-1",
+    "srcs": [
+     "art295"
+    ],
+    "body": [
+     "realEstateRightHolder(P)",
+     "adjacentRealEstate(P,N)",
+     {
+      "or": [
+       "excavatesLand(P)",
+       "laysPipelines(P)",
+       "installsEquipment(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "endangerAdjacentRealEstate(N)"
+     }
+    ],
+    "note": "不动产权利人挖掘土地、铺设管线以及安装设备等，不得危及相邻不动产的安全",
+    "auth": "npc"
+   },
+   {
+    "key": "c295-2",
+    "srcs": [
+     "art295"
+    ],
+    "body": [
+     "realEstateRightHolder(P)",
+     "adjacentRealEstate(P,N)",
+     "constructsBuilding(P,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "endangerAdjacentRealEstate(N)"
+     }
+    ],
+    "note": "不动产权利人建造建筑物，不得危及相邻不动产的安全",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c289-1",
+    "c289-2",
+    "法律、法规对处理相邻关系有规定时，优先适用其规定，不得以当地习惯替代"
+   ]
+  ],
+  "predicates": {
+   "adjacentRelation": "存在相邻关系（不动产权利人，相邻不动产）",
+   "adjacentRelationMatter": "相邻关系的处理事项",
+   "applyLocalCustom": "按照当地习惯处理",
+   "realEstateRightHolder": "是不动产权利人（所有人或使用人）",
+   "adjacentRealEstate": "是某不动产权利人的相邻不动产（不动产权利人，相邻不动产）",
+   "constructsBuilding": "建造建筑物（建造人，建筑物）",
+   "adjacentBuilding": "是某建筑物的相邻建筑物（建筑物，相邻建筑物）",
+   "violateConstructionStandards": "违反国家有关工程建设标准（建筑物）",
+   "obstructVentilationLightSunlight": "妨碍相邻建筑物的通风、采光和日照（建筑物，相邻建筑物）",
+   "excavatesLand": "挖掘土地",
+   "laysPipelines": "铺设管线",
+   "installsEquipment": "安装设备",
+   "endangerAdjacentRealEstate": "危及相邻不动产的安全（相邻不动产）"
+  }
+ }
+}

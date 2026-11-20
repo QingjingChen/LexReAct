@@ -1,0 +1,5594 @@
+{
+ "card:g1025": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何种组织构成法人；法人依设立目的分为营利法人与非营利法人，社会团体法人应设何种机关",
+     "rules": [
+      "c57-1",
+      "c76-1",
+      "c76-2",
+      "c87-1",
+      "c87-2",
+      "c91-1",
+      "c91-2",
+      "c91-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "组织体具有民事权利能力和民事行为能力，并依法独立享有民事权利、承担民事义务",
+     "rules": [
+      "c57-1"
+     ]
+    },
+    {
+     "text": "以取得利润并分配给股东等出资人为目的而成立",
+     "rules": [
+      "c76-1"
+     ]
+    },
+    {
+     "text": "为公益目的或者其他非营利目的成立，且不向出资人、设立人或者会员分配所取得的利润",
+     "rules": [
+      "c87-1"
+     ]
+    },
+    {
+     "text": "属于有限责任公司、股份有限公司、其他企业法人（营利法人）；或属于事业单位、社会团体、基金会、社会服务机构（非营利法人）",
+     "rules": [
+      "c76-2",
+      "c87-2"
+     ]
+    },
+    {
+     "text": "设立社会团体法人（须依法制定章程、设权力机构与执行机构）",
+     "rules": [
+      "c91-1",
+      "c91-2",
+      "c91-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合第57条要件的组织为法人，是民事主体，可以自己的名义从事民事活动",
+     "rules": [
+      "c57-1",
+      "c57-3"
+     ]
+    },
+    {
+     "text": "法人独立承担民事责任，与其成员在人格上相互分离（此为法人与非法人组织的主要区别）",
+     "rules": [
+      "c57-2"
+     ]
+    },
+    {
+     "text": "以营利并分配利润为目的的法人认定为营利法人；列举的公司、企业法人亦认定为营利法人",
+     "rules": [
+      "c76-1",
+      "c76-2"
+     ]
+    },
+    {
+     "text": "为非营利目的且不分配利润的法人认定为非营利法人；列举的事业单位、社会团体、基金会、社会服务机构亦认定为非营利法人",
+     "rules": [
+      "c87-1",
+      "c87-2"
+     ]
+    },
+    {
+     "text": "社会团体法人应当依法制定法人章程，设会员大会或者会员代表大会等权力机构，设理事会等执行机构",
+     "rules": [
+      "c91-1",
+      "c91-2",
+      "c91-3"
+     ]
+    },
+    {
+     "text": "理事长或者会长等负责人按照法人章程的规定担任法定代表人",
+     "rules": [
+      "c91-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "以取得利润并分配给股东等出资人为目的者认定为营利法人，不再认定为非营利法人（设立目的互斥，营利定性优先）",
+     "rules": [
+      "c76-1",
+      "c87-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "法人区别于非法人组织：非法人组织不具有独立的民事权利能力与独立责任能力",
+     "rules": [
+      "c57-2"
+     ]
+    },
+    {
+     "text": "法人区别于自然人：法人是组织体，自然人与法人统称为法律上的“人”",
+     "rules": [
+      "c57-3"
+     ]
+    },
+    {
+     "text": "LEGO 卡片中的社团法人与财团法人、特别法人等分类在本行挂载法条中无依据，属学理分类，不写入规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c57-1",
+    "srcs": [
+     "art57"
+    ],
+    "body": [
+     "organization(O)",
+     "legalCapacity(O)",
+     "hasCivilConductCapacity(O)",
+     "independentlyEnjoysRightsAndBearsObligations(O)"
+    ],
+    "heads": [
+     "legalPerson(O)"
+    ],
+    "note": "第57条：法人是具有民事权利能力和民事行为能力、依法独立享有民事权利和承担民事义务的组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c57-2",
+    "srcs": [
+     "art57"
+    ],
+    "body": [
+     "legalPerson(L)"
+    ],
+    "heads": [
+     "independentlyBearsCivilLiability(L)",
+     "personalitySeparateFromMembers(L)"
+    ],
+    "note": "笔记学理：法人应具备独立承担民事责任的能力，独立责任使法人与其成员人格分离，并区别于非法人组织",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c57-3",
+    "srcs": [
+     "art57"
+    ],
+    "body": [
+     "legalPerson(L)"
+    ],
+    "heads": [
+     "civilSubject(L)",
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "conductsCivilActivityInOwnName(L)"
+     }
+    ],
+    "note": "笔记学理：法人与自然人统称法律上的“人”，法人作为民事主体可以自己的名义参与民事活动",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c76-1",
+    "srcs": [
+     "art76-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "forProfitDistributionPurpose(L)"
+    ],
+    "heads": [
+     "profitLegalPerson(L)"
+    ],
+    "note": "第76条第1款：以取得利润并分配给股东等出资人为目的成立的法人，为营利法人",
+    "auth": "npc"
+   },
+   {
+    "key": "c76-2",
+    "srcs": [
+     "art76-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "limitedLiabilityCompany(L)",
+       "jointStockCompany(L)",
+       "otherEnterpriseLegalPerson(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "profitLegalPerson(L)"
+    ],
+    "note": "第76条第2款：营利法人包括有限责任公司、股份有限公司和其他企业法人等",
+    "auth": "npc"
+   },
+   {
+    "key": "c87-1",
+    "srcs": [
+     "art87-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "nonProfitPurpose(L)",
+     "noProfitDistribution(L)"
+    ],
+    "heads": [
+     "nonProfitLegalPerson(L)"
+    ],
+    "note": "第87条第1款：为公益目的或者其他非营利目的成立、不向出资人、设立人或者会员分配所取得利润的法人，为非营利法人",
+    "auth": "npc"
+   },
+   {
+    "key": "c87-2",
+    "srcs": [
+     "art87-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "publicInstitution(L)",
+       "socialGroup(L)",
+       "foundation(L)",
+       "socialServiceAgency(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "nonProfitLegalPerson(L)"
+    ],
+    "note": "第87条第2款：非营利法人包括事业单位、社会团体、基金会、社会服务机构等",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-1",
+    "srcs": [
+     "art91-1"
+    ],
+    "body": [
+     "establishingSocialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "adoptArticlesOfAssociation(S)"
+     }
+    ],
+    "note": "第91条第1款：设立社会团体法人应当依法制定法人章程",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-2",
+    "srcs": [
+     "art91-2"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "establishPowerOrgan(S)"
+     }
+    ],
+    "note": "第91条第2款：社会团体法人应当设会员大会或者会员代表大会等权力机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-3",
+    "srcs": [
+     "art91-3"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "establishExecutiveOrgan(S)"
+     }
+    ],
+    "note": "第91条第3款前段：社会团体法人应当设理事会等执行机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-4",
+    "srcs": [
+     "art91-3"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)",
+     "chairpersonOf(H,S)",
+     "articlesDesignateAsRepresentative(S,H)"
+    ],
+    "heads": [
+     "legalRepresentativeOf(H,S)"
+    ],
+    "note": "第91条第3款后段：理事长或者会长等负责人按照法人章程的规定担任法定代表人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c76-1",
+    "c87-1",
+    "以取得利润并分配给股东等出资人为目的者认定为营利法人，与“非营利目的”互斥，营利定性优先"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "是法人",
+   "hasCivilConductCapacity": "具有民事行为能力",
+   "independentlyEnjoysRightsAndBearsObligations": "依法独立享有民事权利、承担民事义务",
+   "independentlyBearsCivilLiability": "独立承担民事责任",
+   "personalitySeparateFromMembers": "与其成员在人格上相互分离",
+   "conductsCivilActivityInOwnName": "以自己的名义从事民事活动",
+   "forProfitDistributionPurpose": "以取得利润并分配给股东等出资人为目的",
+   "profitLegalPerson": "营利法人",
+   "limitedLiabilityCompany": "有限责任公司",
+   "jointStockCompany": "股份有限公司",
+   "otherEnterpriseLegalPerson": "其他企业法人",
+   "nonProfitPurpose": "为公益目的或者其他非营利目的",
+   "noProfitDistribution": "不向出资人、设立人或者会员分配所取得的利润",
+   "nonProfitLegalPerson": "非营利法人",
+   "publicInstitution": "事业单位",
+   "socialGroup": "社会团体",
+   "foundation": "基金会",
+   "socialServiceAgency": "社会服务机构",
+   "establishingSocialGroupLegalPerson": "正在设立社会团体法人",
+   "socialGroupLegalPerson": "社会团体法人",
+   "adoptArticlesOfAssociation": "依法制定法人章程",
+   "establishPowerOrgan": "设会员大会或者会员代表大会等权力机构",
+   "establishExecutiveOrgan": "设理事会等执行机构",
+   "chairpersonOf": "是理事长、会长等负责人",
+   "articlesDesignateAsRepresentative": "法人章程规定其担任法定代表人",
+   "legalRepresentativeOf": "是法人的法定代表人"
+  }
+ },
+ "card:g1117": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为非营利法人，包括哪些类型",
+     "rules": [
+      "c87-1",
+      "c87-2"
+     ]
+    },
+    {
+     "text": "事业单位法人、社会团体法人、捐助法人分别如何取得法人资格",
+     "rules": [
+      "c88-1",
+      "c88-2",
+      "c90-1",
+      "c90-2",
+      "c92-1",
+      "c92-2"
+     ]
+    },
+    {
+     "text": "三类非营利法人的章程与组织机构（决策机构、执行机构、监督机构、法定代表人）如何设置",
+     "rules": [
+      "c89-1",
+      "c89-rep",
+      "c91-1",
+      "c91-2",
+      "c91-3",
+      "c91-rep",
+      "c93-1",
+      "c93-2",
+      "c93-rep",
+      "c93-3"
+     ]
+    },
+    {
+     "text": "捐助人的查询、建议权，以及捐助法人违法或违反章程决定的撤销",
+     "rules": [
+      "c94-1a",
+      "c94-1b",
+      "c94-2",
+      "c94-revoke",
+      "c94-goodfaith"
+     ]
+    },
+    {
+     "text": "为公益目的成立的非营利法人终止时，剩余财产如何处理",
+     "rules": [
+      "c95-1",
+      "c95-2",
+      "c95-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "为公益目的或者其他非营利目的成立，且不向出资人、设立人或者会员分配所取得利润",
+     "rules": [
+      "c87-1"
+     ]
+    },
+    {
+     "text": "属于事业单位、社会团体、基金会、社会服务机构等",
+     "rules": [
+      "c87-2"
+     ]
+    },
+    {
+     "text": "事业单位：具备法人条件，为适应经济社会发展需要、提供公益服务而设立，经依法登记或者依法不需登记",
+     "rules": [
+      "c88-1",
+      "c88-2"
+     ]
+    },
+    {
+     "text": "社会团体：具备法人条件，基于会员共同意愿，为公益目的或者会员共同利益等非营利目的设立，经依法登记或者依法不需登记",
+     "rules": [
+      "c90-1",
+      "c90-2"
+     ]
+    },
+    {
+     "text": "捐助法人：具备法人条件，为公益目的以捐助财产设立，经依法登记成立",
+     "rules": [
+      "c92-1"
+     ]
+    },
+    {
+     "text": "宗教活动场所：依法设立且具备法人条件，可以申请法人登记",
+     "rules": [
+      "c92-2"
+     ]
+    },
+    {
+     "text": "捐助法人的决策机构、执行机构或者法定代表人作出决定的程序违反法律、行政法规、法人章程，或者决定内容违反法人章程",
+     "rules": [
+      "c94-2"
+     ]
+    },
+    {
+     "text": "为公益目的成立的非营利法人终止",
+     "rules": [
+      "c95-1",
+      "c95-2",
+      "c95-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，理事会不当然为事业单位法人的决策机构",
+     "rules": [
+      "c89-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规对宗教活动场所有规定的，依照其规定",
+     "rules": [
+      "c92-special"
+     ]
+    },
+    {
+     "text": "捐助法人依据被撤销的决定与善意相对人形成的民事法律关系不受影响",
+     "rules": [
+      "c94-goodfaith"
+     ]
+    },
+    {
+     "text": "依法不需要办理法人登记的，从成立之日起即具有事业单位、社会团体法人资格（无须登记）",
+     "rules": [
+      "c88-2",
+      "c90-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "经依法登记成立（或依法不需登记而自成立之日）取得事业单位法人资格、社会团体法人资格；捐助法人经依法登记取得捐助法人资格",
+     "rules": [
+      "c88-1",
+      "c88-2",
+      "c90-1",
+      "c90-2",
+      "c92-1"
+     ]
+    },
+    {
+     "text": "事业单位法人设理事会的，理事会为决策机构；法定代表人依照法律、行政法规或者法人章程的规定产生",
+     "rules": [
+      "c89-1",
+      "c89-rep"
+     ]
+    },
+    {
+     "text": "社会团体法人应当依法制定章程，设会员大会或会员代表大会等权力机构、理事会等执行机构，理事长或会长等负责人依章程担任法定代表人",
+     "rules": [
+      "c91-1",
+      "c91-2",
+      "c91-3",
+      "c91-rep"
+     ]
+    },
+    {
+     "text": "捐助法人应当依法制定章程，设理事会、民主管理组织等决策机构并设执行机构，设监事会等监督机构；理事长等负责人依章程担任法定代表人",
+     "rules": [
+      "c93-1",
+      "c93-2",
+      "c93-rep",
+      "c93-3"
+     ]
+    },
+    {
+     "text": "捐助人有权查询捐助财产的使用、管理情况并提出意见和建议，捐助法人应当及时、如实答复",
+     "rules": [
+      "c94-1a",
+      "c94-1b"
+     ]
+    },
+    {
+     "text": "捐助人等利害关系人或者主管机关可以请求人民法院撤销该决定；决定被撤销后不再有效",
+     "rules": [
+      "c94-2",
+      "c94-revoke"
+     ]
+    },
+    {
+     "text": "终止时不得向出资人、设立人或者会员分配剩余财产；剩余财产应当按照法人章程的规定或者权力机构的决议用于公益目的",
+     "rules": [
+      "c95-1",
+      "c95-2"
+     ]
+    },
+    {
+     "text": "无法按照法人章程的规定或者权力机构的决议处理的，由主管机关主持转给宗旨相同或者相近的法人，并向社会公告",
+     "rules": [
+      "c95-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“法律另有规定”优先于“理事会为事业单位法人决策机构”的一般规则",
+     "rules": [
+      "c89-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规关于宗教活动场所的特别规定优先于捐助法人一般规则",
+     "rules": [
+      "c92-special"
+     ]
+    },
+    {
+     "text": "善意相对人的交易安全保护优先于撤销决定的效果",
+     "rules": [
+      "c94-goodfaith"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "捐助法人必须经依法登记方能取得资格；事业单位、社会团体依法不需要办理法人登记的，自成立之日起即取得法人资格",
+     "rules": []
+    },
+    {
+     "text": "笔记：人民团体（全国总工会、全国妇联等）属特别类型的社会团体，依法承担一定社会管理职能且无须登记",
+     "rules": []
+    },
+    {
+     "text": "笔记：宗教活动场所（捐助法人）与宗教团体（社会团体法人）不同，前者须具备法人条件并申请登记，且受法律、行政法规特别规定约束",
+     "rules": []
+    },
+    {
+     "text": "笔记：本节非营利法人不同于以捐赠财产为基础、无成员的财团法人，也不同于不具备法人资格的非法人组织",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c87-1",
+    "srcs": [
+     "art87-1"
+    ],
+    "body": [
+     "forPublicBenefitOrOtherNonProfitPurpose(L)",
+     "-distributesProfits(L)"
+    ],
+    "heads": [
+     "nonProfitLegalPerson(L)"
+    ],
+    "note": "为公益目的或者其他非营利目的成立、不向出资人、设立人或者会员分配所取得利润的法人，为非营利法人",
+    "auth": "npc"
+   },
+   {
+    "key": "c87-2",
+    "srcs": [
+     "art87-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "publicInstitution(L)",
+       "socialGroup(L)",
+       "foundation(L)",
+       "socialServiceOrg(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "nonProfitLegalPerson(L)"
+    ],
+    "note": "非营利法人包括事业单位、社会团体、基金会、社会服务机构等",
+    "auth": "npc"
+   },
+   {
+    "key": "c88-1",
+    "srcs": [
+     "art88-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(U)",
+     "establishedForPublicService(U)",
+     "registeredAccordingToLaw(U)"
+    ],
+    "heads": [
+     "publicInstitutionLegalPerson(U)"
+    ],
+    "note": "具备法人条件、为适应经济社会发展需要提供公益服务设立的事业单位，经依法登记成立取得事业单位法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c88-2",
+    "srcs": [
+     "art88-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(U)",
+     "establishedForPublicService(U)",
+     "noRegistrationRequired(U)"
+    ],
+    "heads": [
+     "publicInstitutionLegalPerson(U)"
+    ],
+    "note": "依法不需要办理法人登记的，从成立之日起具有事业单位法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c89-1",
+    "srcs": [
+     "art89-1"
+    ],
+    "body": [
+     "publicInstitutionLegalPerson(U)",
+     "hasCouncil(U)",
+     "~lawProvidesOtherwiseOnCouncil(U)"
+    ],
+    "heads": [
+     "councilIsDecisionBody(U)"
+    ],
+    "note": "事业单位法人设理事会的，除法律另有规定外，理事会为其决策机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c89-rep",
+    "srcs": [
+     "art89-1"
+    ],
+    "body": [
+     "publicInstitutionLegalPerson(U)"
+    ],
+    "heads": [
+     "legalRepDeterminedByLawOrCharter(U)"
+    ],
+    "note": "事业单位法人的法定代表人依照法律、行政法规或者法人章程的规定产生",
+    "auth": "npc"
+   },
+   {
+    "key": "c90-1",
+    "srcs": [
+     "art90-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(S)",
+     "basedOnMembersCommonWill(S)",
+     {
+      "or": [
+       "establishedForPublicBenefit(S)",
+       "forMembersCommonInterest(S)"
+      ]
+     },
+     "registeredAccordingToLaw(S)"
+    ],
+    "heads": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "note": "具备法人条件、基于会员共同意愿、为公益目的或会员共同利益等非营利目的设立的社会团体，经依法登记成立取得社会团体法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c90-2",
+    "srcs": [
+     "art90-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(S)",
+     "basedOnMembersCommonWill(S)",
+     {
+      "or": [
+       "establishedForPublicBenefit(S)",
+       "forMembersCommonInterest(S)"
+      ]
+     },
+     "noRegistrationRequired(S)"
+    ],
+    "heads": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "note": "依法不需要办理法人登记的，从成立之日起具有社会团体法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-1",
+    "srcs": [
+     "art91-1"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "adoptCharter(S)"
+     }
+    ],
+    "note": "设立社会团体法人应当依法制定法人章程",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-2",
+    "srcs": [
+     "art91-2"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "establishPowerBody(S)"
+     }
+    ],
+    "note": "社会团体法人应当设会员大会或者会员代表大会等权力机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-3",
+    "srcs": [
+     "art91-3"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "establishExecutiveBody(S)"
+     }
+    ],
+    "note": "社会团体法人应当设理事会等执行机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c91-rep",
+    "srcs": [
+     "art91-3"
+    ],
+    "body": [
+     "socialGroupLegalPerson(S)"
+    ],
+    "heads": [
+     "legalRepDeterminedByLawOrCharter(S)"
+    ],
+    "note": "理事长或者会长等负责人按照法人章程的规定担任法定代表人",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-1",
+    "srcs": [
+     "art92-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(D)",
+     "establishedWithDonatedProperty(D)",
+     "registeredAccordingToLaw(D)"
+    ],
+    "heads": [
+     "donationLegalPerson(D)"
+    ],
+    "note": "具备法人条件、为公益目的以捐助财产设立的基金会、社会服务机构等，经依法登记成立取得捐助法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-2",
+    "srcs": [
+     "art92-2"
+    ],
+    "body": [
+     "religiousVenue(R)",
+     "meetsLegalPersonConditions(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "applyForLegalPersonRegistration(R)"
+     }
+    ],
+    "note": "依法设立的宗教活动场所具备法人条件的，可以申请法人登记，取得捐助法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-special",
+    "srcs": [
+     "art92-2"
+    ],
+    "body": [
+     "religiousVenue(R)",
+     "specialProvisionsOnReligiousVenue(R)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(R)"
+    ],
+    "note": "法律、行政法规对宗教活动场所有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c93-1",
+    "srcs": [
+     "art93-1"
+    ],
+    "body": [
+     "donationLegalPerson(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "adoptCharter(D)"
+     }
+    ],
+    "note": "设立捐助法人应当依法制定法人章程",
+    "auth": "npc"
+   },
+   {
+    "key": "c93-2",
+    "srcs": [
+     "art93-2"
+    ],
+    "body": [
+     "donationLegalPerson(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "establishDecisionAndExecutiveBodies(D)"
+     }
+    ],
+    "note": "捐助法人应当设理事会、民主管理组织等决策机构，并设执行机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c93-rep",
+    "srcs": [
+     "art93-2"
+    ],
+    "body": [
+     "donationLegalPerson(D)"
+    ],
+    "heads": [
+     "legalRepDeterminedByLawOrCharter(D)"
+    ],
+    "note": "理事长等负责人按照法人章程的规定担任法定代表人",
+    "auth": "npc"
+   },
+   {
+    "key": "c93-3",
+    "srcs": [
+     "art93-3"
+    ],
+    "body": [
+     "donationLegalPerson(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "establishSupervisoryBody(D)"
+     }
+    ],
+    "note": "捐助法人应当设监事会等监督机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c94-1a",
+    "srcs": [
+     "art94-1"
+    ],
+    "body": [
+     "donorOf(Donor,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "Donor",
+      "counterparty": "D",
+      "content": "inquireAndAdvise(Donor,D)"
+     }
+    ],
+    "note": "捐助人有权向捐助法人查询捐助财产的使用、管理情况，并提出意见和建议",
+    "auth": "npc"
+   },
+   {
+    "key": "c94-1b",
+    "srcs": [
+     "art94-1"
+    ],
+    "body": [
+     "donorOf(Donor,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "Donor",
+      "content": "replyTimelyAndTruthfully(D,Donor)"
+     }
+    ],
+    "note": "捐助法人应当对捐助人的查询、建议及时、如实答复",
+    "auth": "npc"
+   },
+   {
+    "key": "c94-2",
+    "srcs": [
+     "art94-2"
+    ],
+    "body": [
+     "donationLegalPerson(D)",
+     "decisionOf(Dec,D)",
+     {
+      "or": [
+       "procedureViolatesLawOrCharter(Dec)",
+       "contentViolatesCharter(Dec)"
+      ]
+     },
+     "interestedPartyOrAuthority(I,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "I",
+      "counterparty": "D",
+      "content": "requestCourtRevokeDecision(I,Dec)"
+     }
+    ],
+    "note": "决定程序违反法律、行政法规、法人章程，或者决定内容违反法人章程的，捐助人等利害关系人或者主管机关可以请求人民法院撤销该决定",
+    "auth": "npc"
+   },
+   {
+    "key": "c94-revoke",
+    "srcs": [
+     "art94-2"
+    ],
+    "body": [
+     "decisionRevoked(Dec)"
+    ],
+    "heads": [
+     "-valid(Dec)"
+    ],
+    "note": "决定经人民法院撤销后失去效力（条文仅规定“可以请求撤销”，失效效果为学理推论）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c94-goodfaith",
+    "srcs": [
+     "art94-2"
+    ],
+    "body": [
+     "decisionRevoked(Dec)",
+     "relationFormedUnderDecision(D,C,Dec)",
+     "goodFaithCounterparty(C)"
+    ],
+    "heads": [
+     "legalRelationUnaffected(D,C)"
+    ],
+    "note": "捐助法人依据该决定与善意相对人形成的民事法律关系不受撤销影响",
+    "auth": "npc"
+   },
+   {
+    "key": "c95-1",
+    "srcs": [
+     "art95-1"
+    ],
+    "body": [
+     "nonProfitLegalPerson(L)",
+     "establishedForPublicBenefit(L)",
+     "terminated(L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "distributeResidualAssets(L)"
+     }
+    ],
+    "note": "为公益目的成立的非营利法人终止时，不得向出资人、设立人或者会员分配剩余财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c95-2",
+    "srcs": [
+     "art95-1"
+    ],
+    "body": [
+     "nonProfitLegalPerson(L)",
+     "establishedForPublicBenefit(L)",
+     "terminated(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "useResidualAssetsForPublicBenefit(L)"
+     }
+    ],
+    "note": "剩余财产应当按照法人章程的规定或者权力机构的决议用于公益目的",
+    "auth": "npc"
+   },
+   {
+    "key": "c95-3",
+    "srcs": [
+     "art95-1"
+    ],
+    "body": [
+     "nonProfitLegalPerson(L)",
+     "establishedForPublicBenefit(L)",
+     "terminated(L)",
+     "cannotDisposePerCharterOrResolution(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "authority",
+      "counterparty": null,
+      "content": "transferResidualAssetsToSimilarPurposeLegalPerson(L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "authority",
+      "counterparty": null,
+      "content": "announceToPublic(L)"
+     }
+    ],
+    "note": "无法按照法人章程的规定或者权力机构的决议处理的，由主管机关主持转给宗旨相同或者相近的法人，并向社会公告",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c89-1",
+    "c89-1",
+    "法律另有规定时，理事会不当然为事业单位法人的决策机构（但书优先）"
+   ],
+   [
+    "c92-special",
+    "c92-2",
+    "法律、行政法规对宗教活动场所有规定的，依照其规定（特别规定优先）"
+   ],
+   [
+    "c94-goodfaith",
+    "c94-revoke",
+    "善意相对人形成的民事法律关系不受决定被撤销的影响（交易安全优先）"
+   ]
+  ],
+  "predicates": {
+   "nonProfitLegalPerson": "是非营利法人",
+   "forPublicBenefitOrOtherNonProfitPurpose": "为公益目的或者其他非营利目的成立",
+   "distributesProfits": "向出资人、设立人或者会员分配所取得的利润",
+   "publicInstitution": "是事业单位",
+   "socialGroup": "是社会团体",
+   "foundation": "是基金会",
+   "socialServiceOrg": "是社会服务机构",
+   "meetsLegalPersonConditions": "具备法人条件",
+   "establishedForPublicService": "为适应经济社会发展需要、提供公益服务而设立",
+   "registeredAccordingToLaw": "经依法登记成立",
+   "noRegistrationRequired": "依法不需要办理法人登记",
+   "publicInstitutionLegalPerson": "具有事业单位法人资格",
+   "socialGroupLegalPerson": "具有社会团体法人资格",
+   "donationLegalPerson": "具有捐助法人资格",
+   "basedOnMembersCommonWill": "基于会员共同意愿设立",
+   "establishedForPublicBenefit": "为公益目的设立",
+   "forMembersCommonInterest": "为会员共同利益等非营利目的设立",
+   "establishedWithDonatedProperty": "为公益目的以捐助财产设立",
+   "religiousVenue": "是依法设立的宗教活动场所",
+   "specialProvisionsOnReligiousVenue": "法律、行政法规对该宗教活动场所有规定",
+   "governedBySpecialProvisions": "依照法律、行政法规的特别规定处理",
+   "applyForLegalPersonRegistration": "申请法人登记",
+   "hasCouncil": "设理事会",
+   "councilIsDecisionBody": "理事会为决策机构",
+   "lawProvidesOtherwiseOnCouncil": "法律对决策机构另有规定",
+   "legalRepDeterminedByLawOrCharter": "法定代表人依照法律、行政法规或者法人章程的规定产生",
+   "adoptCharter": "依法制定法人章程",
+   "establishPowerBody": "设会员大会或者会员代表大会等权力机构",
+   "establishExecutiveBody": "设理事会等执行机构",
+   "establishDecisionAndExecutiveBodies": "设理事会、民主管理组织等决策机构并设执行机构",
+   "establishSupervisoryBody": "设监事会等监督机构",
+   "donorOf": "是捐助人（捐助人，捐助法人）",
+   "inquireAndAdvise": "查询捐助财产的使用、管理情况并提出意见和建议",
+   "replyTimelyAndTruthfully": "及时、如实答复",
+   "decisionOf": "是捐助法人作出的决定（决定，捐助法人）",
+   "procedureViolatesLawOrCharter": "决定作出的程序违反法律、行政法规或者法人章程",
+   "contentViolatesCharter": "决定内容违反法人章程",
+   "interestedPartyOrAuthority": "是捐助人等利害关系人或者主管机关（主体，捐助法人）",
+   "requestCourtRevokeDecision": "请求人民法院撤销该决定",
+   "decisionRevoked": "该决定已被人民法院撤销",
+   "relationFormedUnderDecision": "依据该决定形成民事法律关系（法人，相对人，决定）",
+   "goodFaithCounterparty": "是善意相对人",
+   "legalRelationUnaffected": "该民事法律关系不受影响（法人，相对人）",
+   "terminated": "法人已终止",
+   "distributeResidualAssets": "向出资人、设立人或者会员分配剩余财产",
+   "useResidualAssetsForPublicBenefit": "将剩余财产按照法人章程的规定或者权力机构的决议用于公益目的",
+   "cannotDisposePerCharterOrResolution": "无法按照法人章程的规定或者权力机构的决议处理剩余财产",
+   "transferResidualAssetsToSimilarPurposeLegalPerson": "主持将剩余财产转给宗旨相同或者相近的法人",
+   "announceToPublic": "向社会公告"
+  }
+ },
+ "card:g1165": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "机关法人的资格如何取得，可以从事何种民事活动",
+     "rules": [
+      "c97-1",
+      "c97-2"
+     ]
+    },
+    {
+     "text": "机关法人被撤销后，其民事权利和义务由谁享有和承担",
+     "rules": [
+      "c98-1",
+      "c98-2"
+     ]
+    },
+    {
+     "text": "城镇农村的合作经济组织、基层群众性自治组织何时取得法人资格、可从事何种活动",
+     "rules": [
+      "c100-1",
+      "c100-2",
+      "c101-1",
+      "c101-2",
+      "c101-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "有独立经费的机关，或承担行政职能的法定机构，且已成立",
+     "rules": [
+      "c97-1"
+     ]
+    },
+    {
+     "text": "机关法人被撤销，且存在继任的机关法人",
+     "rules": [
+      "c98-1"
+     ]
+    },
+    {
+     "text": "机关法人被撤销，没有继任的机关法人，由作出撤销决定的机关法人承受",
+     "rules": [
+      "c98-2"
+     ]
+    },
+    {
+     "text": "是城镇农村的合作经济组织，并依法取得法人资格",
+     "rules": [
+      "c100-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规对该合作经济组织有规定",
+     "rules": [
+      "c100-2"
+     ]
+    },
+    {
+     "text": "是居民委员会或村民委员会",
+     "rules": [
+      "c101-1"
+     ]
+    },
+    {
+     "text": "是村民委员会，且未设立村集体经济组织",
+     "rules": [
+      "c101-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规对城镇农村的合作经济组织另有规定的，依照其规定，不适用第100条第1款的一般规定",
+     "rules": [
+      "c100-2"
+     ]
+    },
+    {
+     "text": "只有在没有继任的机关法人时，才由作出撤销决定的机关法人享有和承担权利义务",
+     "rules": [
+      "c98-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自成立之日起具有机关法人资格",
+     "rules": [
+      "c97-1"
+     ]
+    },
+    {
+     "text": "可以从事为履行职能所需要的民事活动",
+     "rules": [
+      "c97-2",
+      "c101-2"
+     ]
+    },
+    {
+     "text": "法人终止，其民事权利和义务由继任的机关法人享有和承担",
+     "rules": [
+      "c98-1"
+     ]
+    },
+    {
+     "text": "没有继任机关法人的，由作出撤销决定的机关法人享有和承担其民事权利和义务",
+     "rules": [
+      "c98-2"
+     ]
+    },
+    {
+     "text": "城镇农村的合作经济组织依法取得法人资格",
+     "rules": [
+      "c100-1"
+     ]
+    },
+    {
+     "text": "居民委员会、村民委员会具有基层群众性自治组织法人资格",
+     "rules": [
+      "c101-1"
+     ]
+    },
+    {
+     "text": "未设立村集体经济组织的，村民委员会可以依法代行村集体经济组织的职能",
+     "rules": [
+      "c101-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规对城镇农村的合作经济组织另有规定的，优先于第100条第1款的一般规定适用",
+     "rules": [
+      "c100-2",
+      "c100-1"
+     ]
+    },
+    {
+     "text": "机关法人被撤销时，继任机关法人的承受优先于作出撤销决定的机关法人的承受",
+     "rules": [
+      "c98-1",
+      "c98-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把特别法人分为机关法人、农村集体经济组织法人、城镇农村的合作经济组织法人、基层群众性自治组织法人四类；本行挂载条文未含农村集体经济组织法人（第99条），故不为其设规则",
+     "rules": []
+    },
+    {
+     "text": "机关法人、基层群众性自治组织法人不属于营利法人或非营利法人；居委会、村委会不是国家行政机关或其派出机构，不具有行政职权（笔记与 LEGO 卡片，仅供参考）",
+     "rules": []
+    },
+    {
+     "text": "机关法人、基层群众性自治组织法人从事民事活动限于“为履行职能所需要”的范围，超出该范围的活动不属本条授权",
+     "rules": [
+      "c97-2",
+      "c101-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c97-1",
+    "srcs": [
+     "art97-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "hasIndependentFunds(O)",
+       "statutoryAgencyWithAdministrativeFunction(O)"
+      ]
+     },
+     "established(O)"
+    ],
+    "heads": [
+     "governmentOrganLegalPerson(O)"
+    ],
+    "note": "有独立经费的机关和承担行政职能的法定机构，从成立之日起具有机关法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c97-2",
+    "srcs": [
+     "art97-1"
+    ],
+    "body": [
+     "governmentOrganLegalPerson(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "conductsCivilActivity(O)"
+     }
+    ],
+    "note": "机关法人可以从事为履行职能所需要的民事活动（限于履行职能所需范围）",
+    "auth": "npc"
+   },
+   {
+    "key": "c98-1",
+    "srcs": [
+     "art98-1"
+    ],
+    "body": [
+     "governmentOrganLegalPerson(O)",
+     "revoked(O)",
+     "successorOrganOf(S,O)"
+    ],
+    "heads": [
+     "legalPersonTerminated(O)",
+     "succeedsCivilRightsAndObligations(S,O)"
+    ],
+    "note": "机关法人被撤销的，法人终止，其民事权利和义务由继任的机关法人享有和承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c98-2",
+    "srcs": [
+     "art98-1"
+    ],
+    "body": [
+     "governmentOrganLegalPerson(O)",
+     "revoked(O)",
+     "revocationDecidedBy(D,O)",
+     "~successorOrganExists(O)"
+    ],
+    "heads": [
+     "legalPersonTerminated(O)",
+     "succeedsCivilRightsAndObligations(D,O)"
+    ],
+    "note": "没有继任的机关法人的，由作出撤销决定的机关法人享有和承担其民事权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c100-1",
+    "srcs": [
+     "art100-1"
+    ],
+    "body": [
+     "cooperativeEconomicOrg(O)",
+     "obtainedLegalPersonStatusByLaw(O)"
+    ],
+    "heads": [
+     "cooperativeEconomicOrgLegalPerson(O)"
+    ],
+    "note": "城镇农村的合作经济组织依法取得法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c100-2",
+    "srcs": [
+     "art100-2"
+    ],
+    "body": [
+     "cooperativeEconomicOrg(O)",
+     "lawOrRegulationProvidesForCooperative(O)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(O)"
+    ],
+    "note": "法律、行政法规对城镇农村的合作经济组织有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c101-1",
+    "srcs": [
+     "art101-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "residentsCommittee(O)",
+       "villagersCommittee(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "grassrootsSelfGoverningOrgLegalPerson(O)"
+    ],
+    "note": "居民委员会、村民委员会具有基层群众性自治组织法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c101-2",
+    "srcs": [
+     "art101-1"
+    ],
+    "body": [
+     "grassrootsSelfGoverningOrgLegalPerson(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "conductsCivilActivity(O)"
+     }
+    ],
+    "note": "基层群众性自治组织法人可以从事为履行职能所需要的民事活动",
+    "auth": "npc"
+   },
+   {
+    "key": "c101-3",
+    "srcs": [
+     "art101-2"
+    ],
+    "body": [
+     "villagersCommittee(O)",
+     "villageCollectiveEconomicOrgNotEstablished(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "exerciseVillageCollectiveFunctions(O)"
+     }
+    ],
+    "note": "未设立村集体经济组织的，村民委员会可以依法代行村集体经济组织的职能",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c100-2",
+    "c100-1",
+    "法律、行政法规对城镇农村的合作经济组织另有规定的，属特别规定，优先于依法取得法人资格的一般规定"
+   ],
+   [
+    "c98-1",
+    "c98-2",
+    "有继任机关法人时，由继任机关承受权利义务，作出撤销决定的机关不再承受"
+   ]
+  ],
+  "predicates": {
+   "hasIndependentFunds": "有独立经费（机关）",
+   "statutoryAgencyWithAdministrativeFunction": "是承担行政职能的法定机构",
+   "established": "已成立（组织）",
+   "governmentOrganLegalPerson": "具有机关法人资格",
+   "successorOrganOf": "是继任的机关法人（继任机关，被撤销机关）",
+   "successorOrganExists": "存在继任的机关法人",
+   "revocationDecidedBy": "撤销决定由该机关法人作出（决定机关，被撤销机关）",
+   "legalPersonTerminated": "法人终止",
+   "succeedsCivilRightsAndObligations": "享有和承担被撤销机关法人的民事权利和义务（承受人，被撤销机关）",
+   "cooperativeEconomicOrg": "是城镇农村的合作经济组织",
+   "obtainedLegalPersonStatusByLaw": "依法取得法人资格",
+   "cooperativeEconomicOrgLegalPerson": "具有城镇农村的合作经济组织法人资格",
+   "lawOrRegulationProvidesForCooperative": "法律、行政法规对该合作经济组织有规定",
+   "governedBySpecialProvisions": "依照法律、行政法规的特别规定处理",
+   "grassrootsSelfGoverningOrgLegalPerson": "具有基层群众性自治组织法人资格",
+   "villageCollectiveEconomicOrgNotEstablished": "未设立村集体经济组织",
+   "exerciseVillageCollectiveFunctions": "代行村集体经济组织的职能"
+  }
+ },
+ "card:g1288": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人分支机构能否以自己名义从事民事活动，由此产生的民事责任由谁承担",
+     "rules": [
+      "c74-1a",
+      "c74-2a",
+      "c74-2b",
+      "c74-2c"
+     ]
+    },
+    {
+     "text": "事业单位、社会团体、基金会、社会服务机构以及宗教活动场所，何时取得（事业单位/社会团体/捐助）法人资格",
+     "rules": [
+      "c88-1",
+      "c88-2",
+      "c90-1",
+      "c90-2",
+      "c92-1",
+      "c92-2a",
+      "c92-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人依法设立分支机构；法律、行政法规规定分支机构应当登记的，依照其规定办理登记",
+     "rules": [
+      "c74-1a",
+      "c74-1b"
+     ]
+    },
+    {
+     "text": "分支机构以自己的名义从事民事活动",
+     "rules": [
+      "c74-2a",
+      "c74-2b"
+     ]
+    },
+    {
+     "text": "具备法人条件，为适应经济社会发展需要、提供公益服务设立的事业单位，经依法登记成立；依法不需要办理法人登记的，自成立时具备",
+     "rules": [
+      "c88-1",
+      "c88-2"
+     ]
+    },
+    {
+     "text": "具备法人条件，基于会员共同意愿，为公益目的或者会员共同利益等非营利目的设立的社会团体，经依法登记成立；依法不需要办理法人登记的，自成立时具备",
+     "rules": [
+      "c90-1",
+      "c90-2"
+     ]
+    },
+    {
+     "text": "具备法人条件，为公益目的以捐助财产设立的基金会、社会服务机构等，经依法登记成立",
+     "rules": [
+      "c92-1"
+     ]
+    },
+    {
+     "text": "依法设立的宗教活动场所具备法人条件，申请并完成法人登记",
+     "rules": [
+      "c92-2a",
+      "c92-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规对宗教活动场所有规定的，依照其规定，不适用第92条第2款申请登记取得捐助法人资格的一般规则",
+     "rules": [
+      "c92-2c"
+     ]
+    },
+    {
+     "text": "依法不需要办理法人登记的事业单位、社会团体，无须登记即自成立之日起具有法人资格",
+     "rules": [
+      "c88-2",
+      "c90-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "分支机构从事民事活动产生的民事责任由法人承担；也可以先以该分支机构管理的财产承担，不足以承担的，由法人承担",
+     "rules": [
+      "c74-2a",
+      "c74-2b",
+      "c74-2c"
+     ]
+    },
+    {
+     "text": "分支机构不具有法人资格，是法人的组成部分",
+     "rules": [
+      "c74-branch-not-person"
+     ]
+    },
+    {
+     "text": "经依法登记成立，取得事业单位法人资格；依法不需登记的，从成立之日起具有事业单位法人资格",
+     "rules": [
+      "c88-1",
+      "c88-2"
+     ]
+    },
+    {
+     "text": "经依法登记成立，取得社会团体法人资格；依法不需登记的，从成立之日起具有社会团体法人资格",
+     "rules": [
+      "c90-1",
+      "c90-2"
+     ]
+    },
+    {
+     "text": "经依法登记成立，取得捐助法人资格",
+     "rules": [
+      "c92-1"
+     ]
+    },
+    {
+     "text": "宗教活动场所可以申请法人登记，登记后取得捐助法人资格",
+     "rules": [
+      "c92-2a",
+      "c92-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规对宗教活动场所有特别规定的，优先于第92条第2款关于申请登记取得捐助法人资格的一般规定",
+     "rules": [
+      "c92-2c"
+     ]
+    },
+    {
+     "text": "分支机构的责任先以其管理的财产承担，不足部分由法人承担，法人的责任为最终责任",
+     "rules": [
+      "c74-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记与LEGO卡片讨论的是第五章“非法人组织”（个人独资企业、合伙企业、不具有法人资格的专业服务机构）及其法律地位，本行挂载法条为法人制度（分支机构、事业单位法人、社会团体法人、捐助法人），二者不重合；非法人组织规则不在本行形式化范围内",
+     "rules": []
+    },
+    {
+     "text": "一人有限责任公司虽仅有一个自然人股东，仍属营利法人，不是非法人组织（笔记）",
+     "rules": []
+    },
+    {
+     "text": "分支机构是法人的组成部分，不具有法人资格，与能够独立承担责任的法人不同",
+     "rules": [
+      "c74-branch-not-person"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c74-1a",
+    "srcs": [
+     "art74-1"
+    ],
+    "body": [
+     "legalPerson(F)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "establishBranch(F)"
+     }
+    ],
+    "note": "法人可以依法设立分支机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c74-1b",
+    "srcs": [
+     "art74-1"
+    ],
+    "body": [
+     "legalPerson(F)",
+     "branchRegistrationRequiredByLaw(F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "registerBranch(F)"
+     }
+    ],
+    "note": "法律、行政法规规定分支机构应当登记的，依照其规定办理登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c74-2a",
+    "srcs": [
+     "art74-2"
+    ],
+    "body": [
+     "branchOf(B,F)",
+     "actsInOwnName(B)"
+    ],
+    "heads": [
+     "branchLiabilityBorneByLegalPerson(B,F)"
+    ],
+    "note": "分支机构以自己的名义从事民事活动，产生的民事责任由法人承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c74-2b",
+    "srcs": [
+     "art74-2"
+    ],
+    "body": [
+     "branchOf(B,F)",
+     "actsInOwnName(B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "payFromBranchPropertyFirst(F,B)"
+     }
+    ],
+    "note": "也可以先以该分支机构管理的财产承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c74-2c",
+    "srcs": [
+     "art74-2"
+    ],
+    "body": [
+     "branchOf(B,F)",
+     "branchPropertyInsufficient(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "bearRemainingLiability(F,B)"
+     }
+    ],
+    "note": "分支机构管理的财产不足以承担的，由法人承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c74-branch-not-person",
+    "srcs": [
+     "art74-2"
+    ],
+    "body": [
+     "branchOf(B,F)"
+    ],
+    "heads": [
+     "-legalPerson(B)"
+    ],
+    "note": "分支机构不具有法人资格（学理归纳：其民事责任最终由法人承担，故非独立法人）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c88-1",
+    "srcs": [
+     "art88-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(U)",
+     "publicWelfareServiceUnit(U)",
+     "registeredAccordingToLaw(U)"
+    ],
+    "heads": [
+     "publicInstitutionLegalPerson(U)"
+    ],
+    "note": "具备法人条件、为公益服务设立的事业单位经依法登记成立，取得事业单位法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c88-2",
+    "srcs": [
+     "art88-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(U)",
+     "publicWelfareServiceUnit(U)",
+     "registrationNotRequiredByLaw(U)"
+    ],
+    "heads": [
+     "publicInstitutionLegalPerson(U)"
+    ],
+    "note": "依法不需要办理法人登记的，从成立之日起具有事业单位法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c90-1",
+    "srcs": [
+     "art90-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(S)",
+     "basedOnMembersCommonWill(S)",
+     "nonProfitPurpose(S)",
+     "registeredAccordingToLaw(S)"
+    ],
+    "heads": [
+     "socialOrganizationLegalPerson(S)"
+    ],
+    "note": "具备法人条件、基于会员共同意愿为非营利目的设立的社会团体经依法登记成立，取得社会团体法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c90-2",
+    "srcs": [
+     "art90-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(S)",
+     "basedOnMembersCommonWill(S)",
+     "nonProfitPurpose(S)",
+     "registrationNotRequiredByLaw(S)"
+    ],
+    "heads": [
+     "socialOrganizationLegalPerson(S)"
+    ],
+    "note": "依法不需要办理法人登记的，从成立之日起具有社会团体法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-1",
+    "srcs": [
+     "art92-1"
+    ],
+    "body": [
+     "meetsLegalPersonConditions(D)",
+     "establishedWithDonatedProperty(D)",
+     "forPublicWelfarePurpose(D)",
+     "registeredAccordingToLaw(D)"
+    ],
+    "heads": [
+     "donationLegalPerson(D)"
+    ],
+    "note": "具备法人条件、为公益目的以捐助财产设立的基金会、社会服务机构等经依法登记成立，取得捐助法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-2a",
+    "srcs": [
+     "art92-2"
+    ],
+    "body": [
+     "lawfullyEstablishedReligiousVenue(R)",
+     "meetsLegalPersonConditions(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "applyForLegalPersonRegistration(R)"
+     }
+    ],
+    "note": "依法设立的宗教活动场所具备法人条件的，可以申请法人登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-2b",
+    "srcs": [
+     "art92-2"
+    ],
+    "body": [
+     "lawfullyEstablishedReligiousVenue(R)",
+     "meetsLegalPersonConditions(R)",
+     "legalPersonRegistrationCompleted(R)"
+    ],
+    "heads": [
+     "donationLegalPerson(R)"
+    ],
+    "note": "宗教活动场所经法人登记，取得捐助法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c92-2c",
+    "srcs": [
+     "art92-2"
+    ],
+    "body": [
+     "lawfullyEstablishedReligiousVenue(R)",
+     "lawProvidesOtherwiseForReligiousVenue(R)"
+    ],
+    "heads": [
+     "applyOtherProvisions(R)"
+    ],
+    "note": "法律、行政法规对宗教活动场所有规定的，依照其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c92-2c",
+    "c92-2b",
+    "法律、行政法规对宗教活动场所有特别规定的，优先于第92条第2款申请登记取得捐助法人资格的一般规则"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "是法人（参数1：主体）",
+   "branchOf": "是法人的分支机构（参数1：分支机构，参数2：所属法人）",
+   "establishBranch": "设立分支机构（参数1：法人）",
+   "branchRegistrationRequiredByLaw": "法律、行政法规规定该法人的分支机构应当登记（参数1：法人）",
+   "registerBranch": "依法办理分支机构登记（参数1：法人）",
+   "actsInOwnName": "以自己的名义从事民事活动（参数1：分支机构）",
+   "branchLiabilityBorneByLegalPerson": "分支机构民事活动产生的民事责任由法人承担（参数1：分支机构，参数2：法人）",
+   "payFromBranchPropertyFirst": "先以分支机构管理的财产承担民事责任（参数1：法人，参数2：分支机构）",
+   "branchPropertyInsufficient": "分支机构管理的财产不足以承担民事责任（参数1：分支机构）",
+   "bearRemainingLiability": "就不足部分承担民事责任（参数1：法人，参数2：分支机构）",
+   "meetsLegalPersonConditions": "具备法人条件（参数1：组织）",
+   "publicWelfareServiceUnit": "为适应经济社会发展需要、提供公益服务设立的事业单位（参数1：组织）",
+   "registeredAccordingToLaw": "经依法登记成立（参数1：组织）",
+   "registrationNotRequiredByLaw": "依法不需要办理法人登记（参数1：组织）",
+   "publicInstitutionLegalPerson": "具有事业单位法人资格（参数1：组织）",
+   "basedOnMembersCommonWill": "基于会员共同意愿设立（参数1：社会团体）",
+   "nonProfitPurpose": "为公益目的或者会员共同利益等非营利目的（参数1：社会团体）",
+   "socialOrganizationLegalPerson": "具有社会团体法人资格（参数1：组织）",
+   "establishedWithDonatedProperty": "为公益目的以捐助财产设立（参数1：组织）",
+   "forPublicWelfarePurpose": "以公益为目的（参数1：组织）",
+   "donationLegalPerson": "具有捐助法人资格（参数1：组织）",
+   "lawfullyEstablishedReligiousVenue": "依法设立的宗教活动场所（参数1：场所）",
+   "applyForLegalPersonRegistration": "申请法人登记（参数1：宗教活动场所）",
+   "legalPersonRegistrationCompleted": "已完成法人登记（参数1：宗教活动场所）",
+   "lawProvidesOtherwiseForReligiousVenue": "法律、行政法规对宗教活动场所另有规定（参数1：宗教活动场所）",
+   "applyOtherProvisions": "依照该另有规定处理（参数1：宗教活动场所）"
+  }
+ },
+ "art:59": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人的民事权利能力和民事行为能力从何时产生、到何时消灭",
+     "rules": [
+      "c59-1",
+      "c59-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是法人",
+     "rules": [
+      "c59-1",
+      "c59-2"
+     ]
+    },
+    {
+     "text": "法人已成立",
+     "rules": [
+      "c59-1"
+     ]
+    },
+    {
+     "text": "法人已终止",
+     "rules": [
+      "c59-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "法人自成立时起具有民事权利能力和民事行为能力",
+     "rules": [
+      "c59-1"
+     ]
+    },
+    {
+     "text": "法人的民事权利能力和民事行为能力到法人终止时消灭",
+     "rules": [
+      "c59-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定法人能力存续的起止点；法人成立、终止的具体时点（如登记、清算、注销）由法人设立与终止的其他规定确定，本条不另设规则",
+     "rules": []
+    },
+    {
+     "text": "与自然人不同，法人的民事权利能力与民事行为能力同时产生、同时消灭，不存在无行为能力或限制行为能力的法人",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c59-1",
+    "srcs": [
+     "art59-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "established(L)"
+    ],
+    "heads": [
+     "legalCapacity(L)",
+     "civilConductCapacity(L)"
+    ],
+    "note": "法人的民事权利能力和民事行为能力，从法人成立时产生",
+    "auth": "npc"
+   },
+   {
+    "key": "c59-2",
+    "srcs": [
+     "art59-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "terminated(L)"
+    ],
+    "heads": [
+     "-legalCapacity(L)",
+     "-civilConductCapacity(L)"
+    ],
+    "note": "法人的民事权利能力和民事行为能力，到法人终止时消灭",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "是法人",
+   "established": "已成立",
+   "terminated": "已终止",
+   "civilConductCapacity": "具有民事行为能力（法人）"
+  }
+ },
+ "card:g1220": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人是否具有独立人格，以何种财产承担民事责任",
+     "rules": [
+      "c57-1",
+      "c60"
+     ]
+    },
+    {
+     "text": "法定代表人以法人名义行为的后果归属，以及代表权限制、法人登记不实能否对抗相对人",
+     "rules": [
+      "c61-1",
+      "c61-2",
+      "c61-3",
+      "c65"
+     ]
+    },
+    {
+     "text": "法定代表人执行职务造成他人损害时，责任由谁承担、法人能否追偿",
+     "rules": [
+      "c62-1",
+      "c62-2"
+     ]
+    },
+    {
+     "text": "法人合并、分立后权利义务如何承继",
+     "rules": [
+      "c67-1",
+      "c67-2",
+      "c67-2-exc"
+     ]
+    },
+    {
+     "text": "设立人为设立法人从事民事活动的法律后果归属，以及第三人的选择权",
+     "rules": [
+      "c75-1a",
+      "c75-1b",
+      "c75-1c",
+      "c75-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "组织依法独立享有民事权利、承担民事义务",
+     "rules": [
+      "c57-1"
+     ]
+    },
+    {
+     "text": "依照法律或者法人章程的规定代表法人从事民事活动的负责人",
+     "rules": [
+      "c61-1"
+     ]
+    },
+    {
+     "text": "法定代表人以法人名义从事民事活动",
+     "rules": [
+      "c61-2"
+     ]
+    },
+    {
+     "text": "法人章程或法人权力机构对法定代表人代表权作出限制，且相对人善意",
+     "rules": [
+      "c61-3"
+     ]
+    },
+    {
+     "text": "法定代表人因执行职务造成他人损害",
+     "rules": [
+      "c62-1"
+     ]
+    },
+    {
+     "text": "法人已承担民事责任，且法定代表人有过错",
+     "rules": [
+      "c62-2"
+     ]
+    },
+    {
+     "text": "法人存续期间登记事项发生变化",
+     "rules": [
+      "c64"
+     ]
+    },
+    {
+     "text": "法人的实际情况与登记的事项不一致，且相对人善意",
+     "rules": [
+      "c65"
+     ]
+    },
+    {
+     "text": "法人合并或者分立",
+     "rules": [
+      "c67-1",
+      "c67-2"
+     ]
+    },
+    {
+     "text": "设立人为设立法人从事民事活动；法人成立或未成立；设立人以自己名义从事活动",
+     "rules": [
+      "c75-1a",
+      "c75-1b",
+      "c75-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债权人和债务人另有约定的，分立后的法人不连带享有债权、承担债务",
+     "rules": [
+      "c67-2-exc"
+     ]
+    },
+    {
+     "text": "相对人非善意时，代表权限制、登记不实可以对抗该相对人（第61条第3款、第65条的反面）",
+     "rules": [
+      "c61-3",
+      "c65"
+     ]
+    },
+    {
+     "text": "法人未成立的，法律后果由设立人承受，不由法人承受",
+     "rules": [
+      "c75-1b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "法人以其全部财产独立承担民事责任",
+     "rules": [
+      "c60"
+     ]
+    },
+    {
+     "text": "法定代表人以法人名义从事的民事活动，法律后果由法人承受",
+     "rules": [
+      "c61-2"
+     ]
+    },
+    {
+     "text": "法定代表人执行职务造成他人损害的，由法人承担民事责任",
+     "rules": [
+      "c62-1"
+     ]
+    },
+    {
+     "text": "法人承担民事责任后，依照法律或法人章程的规定可以向有过错的法定代表人追偿",
+     "rules": [
+      "c62-2"
+     ]
+    },
+    {
+     "text": "法人应当依法向登记机关申请变更登记",
+     "rules": [
+      "c64"
+     ]
+    },
+    {
+     "text": "合并后的法人享有和承担被合并法人的权利义务；分立后的法人连带享有债权、承担连带债务",
+     "rules": [
+      "c67-1",
+      "c67-2"
+     ]
+    },
+    {
+     "text": "设立人设立法人所从事民事活动的法律后果由法人承受；法人未成立时由设立人承受，设立人为二人以上的享有连带债权、承担连带债务",
+     "rules": [
+      "c75-1a",
+      "c75-1b",
+      "c75-1c"
+     ]
+    },
+    {
+     "text": "设立人以自己名义为设立法人从事民事活动产生的民事责任，第三人有权选择请求法人或者设立人承担",
+     "rules": [
+      "c75-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "代表权限制、登记不实不得对抗善意相对人，优先于法人内部限制与登记记载",
+     "rules": [
+      "c61-3",
+      "c65"
+     ]
+    },
+    {
+     "text": "债权人和债务人另有约定的，优先于第67条第2款法定的连带债权债务",
+     "rules": [
+      "c67-2-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO卡片把“目的宗旨合法、必要财产经费、名称机构住所”等列为法人设立要件，本行挂载法条未作规定，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记强调第75条第2款的选择权为形成权：第三人可选择请求法人或设立人承担全部责任，而非按份责任",
+     "rules": [
+      "c75-2"
+     ]
+    },
+    {
+     "text": "非法人组织不能独立承担民事责任，不适用第60条；股东有限责任与法人以其全部财产承担的独立责任不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c57-1",
+    "srcs": [
+     "art57"
+    ],
+    "body": [
+     "organization(O)",
+     "independentlyEnjoysCivilRightsAndBearsObligations(O)"
+    ],
+    "heads": [
+     "legalPerson(O)"
+    ],
+    "note": "定义性条款：法人是具有民事权利能力和民事行为能力、依法独立享有民事权利和承担民事义务的组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c60",
+    "srcs": [
+     "art60"
+    ],
+    "body": [
+     "legalPerson(F)"
+    ],
+    "heads": [
+     "bearsLiabilityWithAllAssets(F)"
+    ],
+    "note": "法人以其全部财产独立承担民事责任（法人独立责任）",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-1",
+    "srcs": [
+     "art61-1"
+    ],
+    "body": [
+     "legalPerson(F)",
+     "responsiblePersonOf(R,F)",
+     "representsLegalPerson(R,F)"
+    ],
+    "heads": [
+     "legalRepresentativeOf(R,F)"
+    ],
+    "note": "依照法律或者法人章程的规定代表法人从事民事活动的负责人，为法人的法定代表人",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-2",
+    "srcs": [
+     "art61-2"
+    ],
+    "body": [
+     "legalRepresentativeOf(R,F)",
+     "actInLegalPersonName(R,A)"
+    ],
+    "heads": [
+     "legalPersonBearsConsequences(F,A)"
+    ],
+    "note": "法定代表人以法人名义从事的民事活动，其法律后果由法人承受",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-3",
+    "srcs": [
+     "art61-3"
+    ],
+    "body": [
+     "legalRepresentativeOf(R,F)",
+     "restrictionOnRepresentativePower(F,R)",
+     "counterpartyOf(C,A)",
+     "inGoodFaith(C,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "assertRestrictionAgainst(F,C)"
+     }
+    ],
+    "note": "法人章程或者法人权力机构对法定代表人代表权的限制，不得对抗善意相对人",
+    "auth": "npc"
+   },
+   {
+    "key": "c62-1",
+    "srcs": [
+     "art62-1"
+    ],
+    "body": [
+     "legalRepresentativeOf(R,F)",
+     "performingDuties(R,F)",
+     "causesDamageTo(R,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "V",
+      "content": "bearCivilLiability(F,V)"
+     }
+    ],
+    "note": "法定代表人因执行职务造成他人损害的，由法人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c62-2",
+    "srcs": [
+     "art62-2"
+    ],
+    "body": [
+     "legalRepresentativeOf(R,F)",
+     "bearCivilLiability(F,V)",
+     "atFaultInPerformingDuties(R,F)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": "R",
+      "content": "seekRecourseAgainst(F,R)"
+     }
+    ],
+    "note": "法人承担民事责任后，依照法律或者法人章程的规定，可以向有过错的法定代表人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c64",
+    "srcs": [
+     "art64"
+    ],
+    "body": [
+     "legalPerson(F)",
+     "registeredMatterChanged(F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "applyForChangeRegistration(F)"
+     }
+    ],
+    "note": "法人存续期间登记事项发生变化的，应当依法向登记机关申请变更登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c65",
+    "srcs": [
+     "art65"
+    ],
+    "body": [
+     "legalPerson(F)",
+     "actualSituationInconsistentWithRegistration(F)",
+     "counterpartyOf(C,A)",
+     "inGoodFaith(C,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "assertRegistrationAgainst(F,C)"
+     }
+    ],
+    "note": "法人的实际情况与登记的事项不一致的，不得对抗善意相对人",
+    "auth": "npc"
+   },
+   {
+    "key": "c67-1",
+    "srcs": [
+     "art67-1"
+    ],
+    "body": [
+     "legalPersonMerged(F2,F1)"
+    ],
+    "heads": [
+     "succeedsRightsAndObligations(F2,F1)"
+    ],
+    "note": "法人合并的，其权利和义务由合并后的法人享有和承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c67-2",
+    "srcs": [
+     "art67-2"
+    ],
+    "body": [
+     "legalPersonSplit(F,Fs)"
+    ],
+    "heads": [
+     "jointlySucceedRightsAndDebts(Fs,F)"
+    ],
+    "note": "法人分立的，其权利和义务由分立后的法人享有连带债权、承担连带债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c67-2-exc",
+    "srcs": [
+     "art67-2"
+    ],
+    "body": [
+     "legalPersonSplit(F,Fs)",
+     "otherwiseAgreedByCreditorAndDebtor(F)"
+    ],
+    "heads": [
+     "-jointlySucceedRightsAndDebts(Fs,F)"
+    ],
+    "note": "第67条第2款但书：债权人和债务人另有约定的，不发生法定的连带债权债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c75-1a",
+    "srcs": [
+     "art75-1"
+    ],
+    "body": [
+     "promoterOf(P,F)",
+     "actForEstablishingLegalPerson(P,A)",
+     "legalPersonEstablished(F)"
+    ],
+    "heads": [
+     "legalPersonBearsConsequences(F,A)"
+    ],
+    "note": "设立人为设立法人从事的民事活动，其法律后果由法人承受",
+    "auth": "npc"
+   },
+   {
+    "key": "c75-1b",
+    "srcs": [
+     "art75-1"
+    ],
+    "body": [
+     "promoterOf(P,F)",
+     "actForEstablishingLegalPerson(P,A)",
+     "-legalPersonEstablished(F)"
+    ],
+    "heads": [
+     "promoterBearsConsequences(P,A)"
+    ],
+    "note": "法人未成立的，设立人从事民事活动的法律后果由设立人承受",
+    "auth": "npc"
+   },
+   {
+    "key": "c75-1c",
+    "srcs": [
+     "art75-1"
+    ],
+    "body": [
+     "promoterBearsConsequences(P,A)",
+     "promotersTwoOrMore(P)"
+    ],
+    "heads": [
+     "jointRightsAndDebts(P)"
+    ],
+    "note": "设立人为二人以上的，享有连带债权、承担连带债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c75-2",
+    "srcs": [
+     "art75-2"
+    ],
+    "body": [
+     "promoterOf(P,F)",
+     "actInOwnNameForEstablishing(P,A)",
+     "thirdPartyTo(T,A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "chooseClaimAgainst(T,F,P)"
+     }
+    ],
+    "note": "设立人为设立法人以自己的名义从事民事活动产生的民事责任，第三人有权选择请求法人或者设立人承担（形成权，可请求全部责任）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c67-2-exc",
+    "c67-2",
+    "第67条第2款但书：债权人和债务人另有约定的除外，优先于法定的连带债权债务"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "法人（依法成立、独立享有民事权利并承担民事义务的组织）",
+   "independentlyEnjoysCivilRightsAndBearsObligations": "依法独立享有民事权利、承担民事义务（组织）",
+   "bearsLiabilityWithAllAssets": "以其全部财产独立承担民事责任（法人）",
+   "responsiblePersonOf": "是法人的负责人（负责人，法人）",
+   "representsLegalPerson": "依照法律或者法人章程的规定代表法人从事民事活动（负责人，法人）",
+   "legalRepresentativeOf": "是法人的法定代表人（负责人，法人）",
+   "actInLegalPersonName": "法定代表人以法人名义从事的民事活动（法定代表人，行为）",
+   "legalPersonBearsConsequences": "该民事活动的法律后果由法人承受（法人，行为）",
+   "restrictionOnRepresentativePower": "法人章程或法人权力机构对法定代表人代表权的限制（法人，法定代表人）",
+   "assertRestrictionAgainst": "向相对人主张代表权限制（法人，相对人）",
+   "causesDamageTo": "造成他人损害（行为人，受害人）",
+   "bearCivilLiability": "承担民事责任（责任承担者，受害人）",
+   "atFaultInPerformingDuties": "在执行职务中有过错（法定代表人，法人）",
+   "seekRecourseAgainst": "向有过错的法定代表人追偿（法人，法定代表人）",
+   "registeredMatterChanged": "登记事项发生变化（法人）",
+   "applyForChangeRegistration": "依法向登记机关申请变更登记（法人）",
+   "actualSituationInconsistentWithRegistration": "法人的实际情况与登记的事项不一致（法人）",
+   "assertRegistrationAgainst": "以登记事项对抗相对人（法人，相对人）",
+   "legalPersonMerged": "法人合并（合并后的法人，被合并的法人）",
+   "legalPersonSplit": "法人分立（原法人，分立后的法人）",
+   "succeedsRightsAndObligations": "承继权利和义务（承继法人，原法人）",
+   "jointlySucceedRightsAndDebts": "连带享有债权、承担连带债务（分立后的法人，原法人）",
+   "otherwiseAgreedByCreditorAndDebtor": "债权人和债务人另有约定（原法人）",
+   "promoterOf": "是设立人（设立人，法人）",
+   "actForEstablishingLegalPerson": "为设立法人从事的民事活动（设立人，行为）",
+   "legalPersonEstablished": "法人已成立",
+   "promoterBearsConsequences": "法律后果由设立人承受（设立人，行为）",
+   "promotersTwoOrMore": "设立人为二人以上（该设立人所属的设立人群体）",
+   "jointRightsAndDebts": "享有连带债权、承担连带债务（主体）",
+   "actInOwnNameForEstablishing": "为设立法人以自己的名义从事民事活动（设立人，行为）",
+   "thirdPartyTo": "是该民事活动的第三人（第三人，行为）",
+   "chooseClaimAgainst": "选择请求法人或者设立人承担民事责任（第三人，法人，设立人）"
+  }
+ },
+ "art:58": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人应当依何种要求成立，成立须具备哪些要素、遵循何种条件和程序",
+     "rules": [
+      "c58-1",
+      "c58-2",
+      "c58-3",
+      "c58-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法律、行政法规规定设立法人须经有关机关批准的",
+     "rules": [
+      "c58-4"
+     ]
+    },
+    {
+     "text": "法人成立的具体条件和程序，依照法律、行政法规的规定确定",
+     "rules": [
+      "c58-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "法人应当依法成立",
+     "rules": [
+      "c58-1"
+     ]
+    },
+    {
+     "text": "法人应当有自己的名称、组织机构、住所、财产或者经费",
+     "rules": [
+      "c58-2"
+     ]
+    },
+    {
+     "text": "须经批准的，设立法人应当依法经有关机关批准",
+     "rules": [
+      "c58-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法人成立的具体条件、程序及审批要求，优先适用法律、行政法规的特别规定（第2款后段、第3款）",
+     "rules": [
+      "c58-3",
+      "c58-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定法人成立的一般要求与引致规范，不规定登记机关、登记程序等具体规则，具体条件和程序依照法律、行政法规的规定",
+     "rules": [
+      "c58-3"
+     ]
+    },
+    {
+     "text": "本行笔记未引用原文或条号，LEGO 卡片缺失，故无学理或卡片内容可采信，全部规则以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c58-1",
+    "srcs": [
+     "art58-1"
+    ],
+    "body": [
+     "legalPerson(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "establishedAccordingToLaw(L)"
+     }
+    ],
+    "note": "法人应当依法成立，即依法律规定的条件与程序取得法人资格",
+    "auth": "npc"
+   },
+   {
+    "key": "c58-2",
+    "srcs": [
+     "art58-2"
+    ],
+    "body": [
+     "legalPerson(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "hasName(L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "hasOrganization(L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "hasDomicile(L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "hasPropertyOrFunds(L)"
+     }
+    ],
+    "note": "法人应当有自己的名称、组织机构、住所、财产或者经费（财产与经费为择一要求）",
+    "auth": "npc"
+   },
+   {
+    "key": "c58-3",
+    "srcs": [
+     "art58-2"
+    ],
+    "body": [
+     "establishingLegalPerson(L)"
+    ],
+    "heads": [
+     "establishmentPerLawsAndRegulations(L)"
+    ],
+    "note": "法人成立的具体条件和程序，依照法律、行政法规的规定（引致规范）",
+    "auth": "npc"
+   },
+   {
+    "key": "c58-4",
+    "srcs": [
+     "art58-3"
+    ],
+    "body": [
+     "establishingLegalPerson(L)",
+     "approvalRequiredByLaw(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "obtainApproval(L)"
+     }
+    ],
+    "note": "设立法人，法律、行政法规规定须经有关机关批准的，应当依法经批准",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "是法人",
+   "establishedAccordingToLaw": "依法成立（依法律规定的条件与程序取得法人资格）",
+   "hasName": "有自己的名称",
+   "hasOrganization": "有自己的组织机构",
+   "hasDomicile": "有自己的住所",
+   "hasPropertyOrFunds": "有自己的财产或者经费",
+   "establishingLegalPerson": "正在设立法人",
+   "establishmentPerLawsAndRegulations": "成立的具体条件和程序依照法律、行政法规的规定",
+   "approvalRequiredByLaw": "法律、行政法规规定设立法人须经有关机关批准",
+   "obtainApproval": "依法经有关机关批准"
+  }
+ },
+ "art:66": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人登记机关对法人登记信息负有何种公示义务",
+     "rules": [
+      "c66-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "义务主体为依法负责法人登记的登记机关",
+     "rules": [
+      "c66-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "登记机关应当依法、及时公示法人登记的有关信息",
+     "rules": [
+      "c66-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是对登记机关行政管理职责的规定，不直接产生民事主体之间的权利义务；笔记未涉及本条，故不作扩张解释",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c66-1",
+    "srcs": [
+     "art66-1"
+    ],
+    "body": [
+     "registrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "publicizeLegalPersonRegistrationInfo(A)"
+     }
+    ],
+    "note": "登记机关应当依法及时公示法人登记的有关信息",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "registrationAuthority": "是依法负责法人登记的登记机关",
+   "publicizeLegalPersonRegistrationInfo": "依法及时公示法人登记的有关信息"
+  }
+ },
+ "art:63": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人的住所以何地为准；依法需要办理法人登记的，住所应如何登记",
+     "rules": [
+      "c63-1",
+      "c63-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是法人，且其有主要办事机构所在地",
+     "rules": [
+      "c63-1"
+     ]
+    },
+    {
+     "text": "该法人依法需要办理法人登记",
+     "rules": [
+      "c63-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "法人以其主要办事机构所在地为住所",
+     "rules": [
+      "c63-1"
+     ]
+    },
+    {
+     "text": "依法需要办理法人登记的，应当将主要办事机构所在地登记为住所",
+     "rules": [
+      "c63-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记称“法人的住所具有唯一性”，条文未明文规定，属学理说明；本条只解决住所地的确定标准与登记要求",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c63-1",
+    "srcs": [
+     "art63-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "mainOfficeAt(L,P)"
+    ],
+    "heads": [
+     "domicile(L,P)"
+    ],
+    "note": "法人以其主要办事机构所在地为住所",
+    "auth": "npc"
+   },
+   {
+    "key": "c63-2",
+    "srcs": [
+     "art63-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "needsLegalPersonRegistration(L)",
+     "mainOfficeAt(L,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "registerMainOfficeAsDomicile(L,P)"
+     }
+    ],
+    "note": "依法需要办理法人登记的，应当将主要办事机构所在地登记为住所",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "是法人（参数1：主体）",
+   "mainOfficeAt": "主要办事机构所在地位于（参数1：法人，参数2：地点）",
+   "needsLegalPersonRegistration": "依法需要办理法人登记（参数1：法人）",
+   "registerMainOfficeAsDomicile": "将主要办事机构所在地登记为住所（参数1：法人，参数2：地点）"
+  }
+ },
+ "art:69": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人在何种情形下解散",
+     "rules": [
+      "c69-1",
+      "c69-2",
+      "c69-3",
+      "c69-4",
+      "c69-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人章程规定的存续期间届满，或者法人章程规定的其他解散事由出现",
+     "rules": [
+      "c69-1"
+     ]
+    },
+    {
+     "text": "法人的权力机构决议解散",
+     "rules": [
+      "c69-2"
+     ]
+    },
+    {
+     "text": "因法人合并或者分立需要解散",
+     "rules": [
+      "c69-3"
+     ]
+    },
+    {
+     "text": "法人依法被吊销营业执照、登记证书，被责令关闭或者被撤销",
+     "rules": [
+      "c69-4"
+     ]
+    },
+    {
+     "text": "法律规定的其他情形（兜底项）",
+     "rules": [
+      "c69-5"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出现上述情形之一的，法人解散",
+     "rules": [
+      "c69-1",
+      "c69-2",
+      "c69-3",
+      "c69-4",
+      "c69-5"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把解散列为法人终止的原因之一；但解散本身不等于法人终止，依第68条、第72条尚需清算并办理注销登记，法人资格才终止，本条只规定解散事由",
+     "rules": []
+    },
+    {
+     "text": "第（一）项为章程事由（含存续期间届满与其他章程解散事由两种），第（二）项为权力机构决议，第（三）项为合并、分立需要，第（四）项为被吊销证照、责令关闭或被撤销，第（五）项为法律规定的兜底情形，五项并列",
+     "rules": [
+      "c69-1",
+      "c69-2",
+      "c69-3",
+      "c69-4",
+      "c69-5"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c69-1",
+    "srcs": [
+     "art69-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     {
+      "or": [
+       "charterTermExpired(L)",
+       "otherCharterDissolutionEventOccurred(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "dissolved(L)"
+    ],
+    "note": "法人章程规定的存续期间届满，或者章程规定的其他解散事由出现的，法人解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c69-2",
+    "srcs": [
+     "art69-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "powerOrgResolvesDissolution(L)"
+    ],
+    "heads": [
+     "dissolved(L)"
+    ],
+    "note": "法人的权力机构决议解散的，法人解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c69-3",
+    "srcs": [
+     "art69-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "dissolutionNeededForMergerOrSplit(L)"
+    ],
+    "heads": [
+     "dissolved(L)"
+    ],
+    "note": "因法人合并或者分立需要解散的，法人解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c69-4",
+    "srcs": [
+     "art69-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "licenseRevokedOrOrderedClosedOrRevoked(L)"
+    ],
+    "heads": [
+     "dissolved(L)"
+    ],
+    "note": "法人依法被吊销营业执照、登记证书，被责令关闭或者被撤销的，法人解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c69-5",
+    "srcs": [
+     "art69-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "otherDissolutionProvidedByLaw(L)"
+    ],
+    "heads": [
+     "dissolved(L)"
+    ],
+    "note": "法律规定的其他情形出现时，法人解散（兜底项）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "法人（参数1：主体）",
+   "charterTermExpired": "法人章程规定的存续期间届满",
+   "otherCharterDissolutionEventOccurred": "法人章程规定的其他解散事由出现",
+   "powerOrgResolvesDissolution": "法人的权力机构决议解散",
+   "dissolutionNeededForMergerOrSplit": "因法人合并或者分立需要解散",
+   "licenseRevokedOrOrderedClosedOrRevoked": "法人依法被吊销营业执照、登记证书，被责令关闭或者被撤销",
+   "otherDissolutionProvidedByLaw": "法律规定的其他解散情形",
+   "dissolved": "法人解散"
+  }
+ },
+ "art:68": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人因何种原因、经何种程序而终止",
+     "rules": [
+      "c68-ground",
+      "c68-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在法定原因之一：法人解散、法人被宣告破产、法律规定的其他原因",
+     "rules": [
+      "c68-ground"
+     ]
+    },
+    {
+     "text": "依法完成清算，并且依法完成注销登记（“并”字表明二者须同时具备，仅有终止原因尚不导致终止）",
+     "rules": [
+      "c68-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定法人终止须经有关机关批准的，还须依照该规定办理批准",
+     "rules": [
+      "c68-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "具备法定原因并完成清算、注销登记的，法人终止（民事主体资格消灭）",
+     "rules": [
+      "c68-1"
+     ]
+    },
+    {
+     "text": "须经有关机关批准的，法人应当依照法律、行政法规的规定办理批准",
+     "rules": [
+      "c68-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第2款是引致条款：批准要求由其他法律、行政法规规定，本条不自行设定批准机关与批准条件，故只作“依照其规定办理批准”的义务，不写具体批准程序",
+     "rules": [
+      "c68-2"
+     ]
+    },
+    {
+     "text": "笔记标题标注“21增修待核对”，属笔记自身的待核对标记；本条以挂载法条原文为准，规则化不受该标记影响",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c68-ground",
+    "srcs": [
+     "art68-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     {
+      "or": [
+       "dissolved(L)",
+       "declaredBankrupt(L)",
+       "otherReasonProvidedByLaw(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "terminationGround(L)"
+    ],
+    "note": "法人终止的法定原因：法人解散、法人被宣告破产、法律规定的其他原因",
+    "auth": "npc"
+   },
+   {
+    "key": "c68-1",
+    "srcs": [
+     "art68-1"
+    ],
+    "body": [
+     "terminationGround(L)",
+     "liquidationCompleted(L)",
+     "deregistrationCompleted(L)"
+    ],
+    "heads": [
+     "terminated(L)"
+    ],
+    "note": "有法定原因之一并依法完成清算、注销登记的，法人终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c68-2",
+    "srcs": [
+     "art68-2"
+    ],
+    "body": [
+     "terminated(L)",
+     "approvalRequiredByLawsAndRegulations(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "obtainApproval(L)"
+     }
+    ],
+    "note": "引致条款：法人终止，法律、行政法规规定须经有关机关批准的，依照其规定办理批准",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "是法人",
+   "dissolved": "法人解散",
+   "declaredBankrupt": "法人被宣告破产",
+   "otherReasonProvidedByLaw": "法律规定的其他终止原因",
+   "terminationGround": "存在法人终止的法定原因",
+   "liquidationCompleted": "已依法完成清算",
+   "deregistrationCompleted": "已依法完成注销登记",
+   "terminated": "法人终止（主体资格消灭）",
+   "approvalRequiredByLawsAndRegulations": "法律、行政法规规定须经有关机关批准",
+   "obtainApproval": "依照法律、行政法规的规定办理批准"
+  }
+ },
+ "card:g1204": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法定代表人的认定标准，以及法定代表人以法人名义从事民事活动的法律后果由谁承受、代表权限制能否对抗相对人",
+     "rules": [
+      "c61-1",
+      "c61-2",
+      "c61-3"
+     ]
+    },
+    {
+     "text": "法定代表人因执行职务造成他人损害时，由谁承担民事责任，法人能否向法定代表人追偿",
+     "rules": [
+      "c62-1",
+      "c62-2"
+     ]
+    },
+    {
+     "text": "营利法人权力机构、执行机构的设置与职权，以及法定代表人如何产生",
+     "rules": [
+      "c80-1",
+      "c80-2",
+      "c81-1",
+      "c81-2",
+      "c81-3a",
+      "c81-3b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该负责人依照法律或者法人章程的规定，代表法人从事民事活动",
+     "rules": [
+      "c61-1"
+     ]
+    },
+    {
+     "text": "法定代表人以法人名义从事民事活动",
+     "rules": [
+      "c61-2"
+     ]
+    },
+    {
+     "text": "法人章程或者法人权力机构对法定代表人的代表权作了限制，而相对人为善意",
+     "rules": [
+      "c61-3"
+     ]
+    },
+    {
+     "text": "法定代表人因执行职务造成他人损害",
+     "rules": [
+      "c62-1"
+     ]
+    },
+    {
+     "text": "法人已对受害人承担民事责任，法定代表人有过错，且依照法律或者法人章程的规定可以追偿",
+     "rules": [
+      "c62-2"
+     ]
+    },
+    {
+     "text": "主体为营利法人（应当设权力机构、执行机构）",
+     "rules": [
+      "c80-1",
+      "c81-1"
+     ]
+    },
+    {
+     "text": "执行机构为董事会或者执行董事，董事长、执行董事或者经理按照法人章程的规定担任法定代表人",
+     "rules": [
+      "c81-3a"
+     ]
+    },
+    {
+     "text": "未设董事会或者执行董事，法人章程规定的主要负责人",
+     "rules": [
+      "c81-3b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "相对人非善意（恶意）的，法人可以对抗章程或者权力机构对代表权的限制，该代表行为对法人不发生效力（笔记反面解释，学理）",
+     "rules": [
+      "c61-3-mala"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依照法律或者法人章程规定代表法人从事民事活动的负责人，为法人的法定代表人",
+     "rules": [
+      "c61-1"
+     ]
+    },
+    {
+     "text": "法定代表人以法人名义从事的民事活动，其法律后果由法人承受（法人机关无独立人格，其行为即法人的行为）",
+     "rules": [
+      "c61-2"
+     ]
+    },
+    {
+     "text": "法人章程或者法人权力机构对代表权的限制，不得对抗善意相对人",
+     "rules": [
+      "c61-3"
+     ]
+    },
+    {
+     "text": "法定代表人因执行职务造成他人损害的，由法人承担民事责任",
+     "rules": [
+      "c62-1"
+     ]
+    },
+    {
+     "text": "法人承担民事责任后，依照法律或者法人章程的规定，可以向有过错的法定代表人追偿",
+     "rules": [
+      "c62-2"
+     ]
+    },
+    {
+     "text": "营利法人应当设权力机构、执行机构",
+     "rules": [
+      "c80-1",
+      "c81-1"
+     ]
+    },
+    {
+     "text": "权力机构行使修改法人章程、选举或更换执行机构与监督机构成员及章程规定的其他职权；执行机构行使召集权力机构会议、决定经营计划和投资方案、决定内部管理机构设置及章程规定的其他职权",
+     "rules": [
+      "c80-2",
+      "c81-2"
+     ]
+    },
+    {
+     "text": "董事长、执行董事或者经理按章程规定担任法定代表人；未设董事会或执行董事的，章程规定的主要负责人为执行机构和法定代表人",
+     "rules": [
+      "c81-3a",
+      "c81-3b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "章程或权力机构对代表权的限制不得对抗善意相对人，优先于法人内部权限约束；相对人恶意时不予保护（笔记）",
+     "rules": [
+      "c61-3",
+      "c61-3-mala"
+     ]
+    },
+    {
+     "text": "执行职务致害先由法人对外承担民事责任，追偿是法人与法定代表人之间的内部关系，顺序在后",
+     "rules": [
+      "c62-1",
+      "c62-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第61条第2款解决代表行为的后果归属（行为归属），第62条解决执行职务致害的侵权责任与内部追偿，二者层次不同",
+     "rules": [
+      "c61-2",
+      "c62-1"
+     ]
+    },
+    {
+     "text": "笔记：第62条删除了法定代表人的责任形式，受害人只能向法人主张，法定代表人仅对法人负内部责任",
+     "rules": [
+      "c62-1",
+      "c62-2"
+     ]
+    },
+    {
+     "text": "笔记：法定代表人是法人的机关（是人，不是法人本身），其代表权直接来自法律或法人章程的规定，无需另行授权",
+     "rules": [
+      "c61-1"
+     ]
+    },
+    {
+     "text": "LEGO 卡片把“限制已通过合理方式公示”作为否定条件，条文未作此规定，不予采纳；条文只以相对人是否善意为标准",
+     "rules": []
+    },
+    {
+     "text": "第59条（权利能力、行为能力的起止）与第60条（法人独立承担民事责任）不涉及具体代表行为的效力归属，与本条不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c61-1",
+    "srcs": [
+     "art61-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "responsiblePersonOf(P,L)",
+     "designatedByLawOrCharter(P,L)"
+    ],
+    "heads": [
+     "legalRepOf(P,L)"
+    ],
+    "note": "依照法律或者法人章程的规定，代表法人从事民事活动的负责人，为法人的法定代表人",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-2",
+    "srcs": [
+     "art61-2"
+    ],
+    "body": [
+     "legalRepOf(P,L)",
+     "actsInLegalPersonName(P,L,A)"
+    ],
+    "heads": [
+     "actOf(A,L)"
+    ],
+    "note": "法定代表人以法人名义从事的民事活动，其法律后果由法人承受，该活动视为法人的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-3",
+    "srcs": [
+     "art61-3"
+    ],
+    "body": [
+     "legalRepOf(P,L)",
+     "restrictsRepresentativePower(L,P)",
+     "counterpartyOf(C,A)",
+     "inGoodFaith(C,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": "C",
+      "content": "assertRepPowerRestriction(L,C,A)"
+     }
+    ],
+    "note": "法人章程或者法人权力机构对法定代表人代表权的限制，不得对抗善意相对人",
+    "auth": "npc"
+   },
+   {
+    "key": "c61-3-mala",
+    "srcs": [
+     "art61-3"
+    ],
+    "body": [
+     "legalRepOf(P,L)",
+     "restrictsRepresentativePower(L,P)",
+     "counterpartyOf(C,A)",
+     "-inGoodFaith(C,A)"
+    ],
+    "heads": [
+     "-actOf(A,L)"
+    ],
+    "note": "笔记反面解释（学理）：相对人恶意的，法人可以对抗代表权限制，该代表行为对法人不发生效力",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c62-1",
+    "srcs": [
+     "art62-1"
+    ],
+    "body": [
+     "legalRepOf(P,L)",
+     "actsInPerformanceOfDuties(P,L)",
+     "causesDamage(P,V,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "V",
+      "content": "bearCivilLiability(L,V,D)"
+     }
+    ],
+    "note": "法定代表人因执行职务造成他人损害的，由法人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c62-2",
+    "srcs": [
+     "art62-2"
+    ],
+    "body": [
+     "legalRepOf(P,L)",
+     "legalPersonBoreLiability(L,V)",
+     "fault(P,D)",
+     "recourseProvidedByLawOrCharter(L,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "seekRecourse(L,P)"
+     }
+    ],
+    "note": "法人承担民事责任后，依照法律或者法人章程的规定，可以向有过错的法定代表人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c80-1",
+    "srcs": [
+     "art80-1"
+    ],
+    "body": [
+     "profitLegalPerson(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "establishPowerOrgan(L)"
+     }
+    ],
+    "note": "营利法人应当设权力机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c80-2",
+    "srcs": [
+     "art80-2"
+    ],
+    "body": [
+     "profitLegalPerson(L)",
+     "powerOrganOf(P,L)"
+    ],
+    "heads": [
+     "exercisesPowerOrganPowers(P,L)"
+    ],
+    "note": "权力机构行使修改法人章程、选举或更换执行机构与监督机构成员以及章程规定的其他职权",
+    "auth": "npc"
+   },
+   {
+    "key": "c81-1",
+    "srcs": [
+     "art81-1"
+    ],
+    "body": [
+     "profitLegalPerson(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "establishExecutiveOrgan(L)"
+     }
+    ],
+    "note": "营利法人应当设执行机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c81-2",
+    "srcs": [
+     "art81-2"
+    ],
+    "body": [
+     "profitLegalPerson(L)",
+     "executiveOrganOf(P,L)"
+    ],
+    "heads": [
+     "exercisesExecutiveOrganPowers(P,L)"
+    ],
+    "note": "执行机构行使召集权力机构会议、决定经营计划和投资方案、决定内部管理机构设置以及章程规定的其他职权",
+    "auth": "npc"
+   },
+   {
+    "key": "c81-3a",
+    "srcs": [
+     "art81-3"
+    ],
+    "body": [
+     "profitLegalPerson(L)",
+     "hasBoardOrExecutiveDirector(L)",
+     "chairmanExecutiveDirectorOrManager(P)",
+     "charterDesignatesAsLegalRep(P,L)"
+    ],
+    "heads": [
+     "legalRepOf(P,L)"
+    ],
+    "note": "执行机构为董事会或者执行董事的，董事长、执行董事或者经理按照法人章程的规定担任法定代表人",
+    "auth": "npc"
+   },
+   {
+    "key": "c81-3b",
+    "srcs": [
+     "art81-3"
+    ],
+    "body": [
+     "profitLegalPerson(L)",
+     "-hasBoardOrExecutiveDirector(L)",
+     "mainResponsiblePersonUnderCharter(P,L)"
+    ],
+    "heads": [
+     "executiveOrganOf(P,L)",
+     "legalRepOf(P,L)"
+    ],
+    "note": "未设董事会或者执行董事的，法人章程规定的主要负责人为其执行机构和法定代表人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "法人",
+   "profitLegalPerson": "营利法人",
+   "responsiblePersonOf": "是法人的负责人（人，法人）",
+   "designatedByLawOrCharter": "依照法律或者法人章程的规定被确定为代表人（人，法人）",
+   "legalRepOf": "是法人的法定代表人（人，法人）",
+   "actsInLegalPersonName": "以法人名义从事民事活动（人，法人，民事活动）",
+   "restrictsRepresentativePower": "法人章程或者法人权力机构限制法定代表人的代表权（法人，法定代表人）",
+   "assertRepPowerRestriction": "主张代表权限制以对抗相对人（法人，相对人，民事活动）",
+   "actsInPerformanceOfDuties": "因执行职务而行为（法定代表人，法人）",
+   "bearCivilLiability": "承担民事责任（责任人，受害人，损害）",
+   "legalPersonBoreLiability": "法人已对受害人承担民事责任（法人，受害人）",
+   "recourseProvidedByLawOrCharter": "依照法律或者法人章程的规定可以追偿（法人，法定代表人）",
+   "seekRecourse": "向法定代表人追偿（法人，法定代表人）",
+   "powerOrganOf": "是权力机构（机构，法人）",
+   "establishPowerOrgan": "设立权力机构（法人）",
+   "exercisesPowerOrganPowers": "行使权力机构职权（机构，法人）",
+   "executiveOrganOf": "是执行机构（机构或人，法人）",
+   "establishExecutiveOrgan": "设立执行机构（法人）",
+   "exercisesExecutiveOrganPowers": "行使执行机构职权（机构，法人）",
+   "hasBoardOrExecutiveDirector": "设董事会或者执行董事（法人）",
+   "chairmanExecutiveDirectorOrManager": "是董事长、执行董事或者经理（人）",
+   "charterDesignatesAsLegalRep": "法人章程规定其担任法定代表人（人，法人）",
+   "mainResponsiblePersonUnderCharter": "是法人章程规定的主要负责人（人，法人）"
+  }
+ },
+ "art:71": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人的清算程序和清算组职权应当依照何种规范确定",
+     "rules": [
+      "c71-1",
+      "c71-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人进入清算，需要确定清算程序与清算组职权",
+     "rules": [
+      "c71-1",
+      "c71-2"
+     ]
+    },
+    {
+     "text": "有关法律对清算程序、清算组职权没有规定",
+     "rules": [
+      "c71-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有关法律对清算程序、清算组职权已有规定的，直接依照该法律，不再参照适用公司法律",
+     "rules": [
+      "c71-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "清算程序和清算组职权依照有关法律的规定",
+     "rules": [
+      "c71-1"
+     ]
+    },
+    {
+     "text": "有关法律没有规定的，参照适用公司法律的有关规定",
+     "rules": [
+      "c71-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有关法律已有规定时优先适用该法律，参照适用公司法律只具有补充、兜底地位",
+     "rules": [
+      "c71-1",
+      "c71-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是准用性（参照适用）规范，本身不创设清算程序或清算组职权的具体内容，具体规则由公司法等法律提供；笔记与 LEGO 卡片均未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c71-1",
+    "srcs": [
+     "art71-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationOf(L)"
+    ],
+    "heads": [
+     "liquidationGovernedByRelevantLaw(L)"
+    ],
+    "note": "法人的清算程序和清算组职权，依照有关法律的规定（准用性规范，指向公司法等特别法）",
+    "auth": "npc"
+   },
+   {
+    "key": "c71-2",
+    "srcs": [
+     "art71-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationOf(L)",
+     "-lawRegulatesLiquidation(L)"
+    ],
+    "heads": [
+     "applyCompanyLawByReference(L)"
+    ],
+    "note": "有关法律对清算程序、清算组职权没有规定的，参照适用公司法律的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c71-1",
+    "c71-2",
+    "有关法律已有规定时直接依照该法律，参照适用公司法律仅具补充性"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "是法人",
+   "liquidationOf": "该法人正在进行清算",
+   "lawRegulatesLiquidation": "有关法律对该法人的清算程序或清算组职权已有规定",
+   "liquidationGovernedByRelevantLaw": "清算程序和清算组职权依照有关法律的规定确定",
+   "applyCompanyLawByReference": "参照适用公司法律的有关规定"
+  }
+ },
+ "art:77": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人何时成立（成立以何者为要件）",
+     "rules": [
+      "c77-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是营利法人",
+     "rules": [
+      "c77-1"
+     ]
+    },
+    {
+     "text": "经依法登记",
+     "rules": [
+      "c77-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经依法登记的，营利法人不成立（反面推论，条文未明写）",
+     "rules": [
+      "c77-1-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "营利法人成立（取得法人资格）",
+     "rules": [
+      "c77-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本行仅挂载第77条第1款；同条第2款（依法制定章程）、第3款（营业执照签发日期为成立日期）未挂载，故本卡片只就“经依法登记成立”作形式化，成立的具体时点与章程要求不在本卡片范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可采的体系性补充；LEGO 卡片缺失，故本卡片全部以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c77-1",
+    "srcs": [
+     "art77-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "registeredAsBusiness(L)"
+    ],
+    "heads": [
+     "established(L)"
+    ],
+    "note": "营利法人经依法登记即告成立（登记为成立要件，属构成性规则）",
+    "auth": "npc"
+   },
+   {
+    "key": "c77-1-neg",
+    "srcs": [
+     "art77-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "-registeredAsBusiness(L)"
+    ],
+    "heads": [
+     "-established(L)"
+    ],
+    "note": "反面推论：营利法人未经依法登记的不成立；条文未明写，属学理对“经依法登记成立”的反面解释",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forProfitLegalPerson": "是营利法人",
+   "established": "法人成立（取得法人资格）"
+  }
+ },
+ "art:73": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人被宣告破产后，于何时终止",
+     "rules": [
+      "c73-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该主体是法人，且已被宣告破产",
+     "rules": [
+      "c73-1"
+     ]
+    },
+    {
+     "text": "依法进行破产清算，并完成法人注销登记",
+     "rules": [
+      "c73-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "法人终止（其民事主体资格消灭）",
+     "rules": [
+      "c73-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条以“完成法人注销登记”为终止时点，破产清算本身不导致终止；清算义务人组成清算组等义务规定在第73条第2款，本行未挂载该款，故不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c73-1",
+    "srcs": [
+     "art73-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "declaredBankrupt(L)",
+     "bankruptcyLiquidationCompleted(L)",
+     "deregistrationCompleted(L)"
+    ],
+    "heads": [
+     "legalPersonTerminated(L)"
+    ],
+    "note": "法人被宣告破产的，依法进行破产清算并完成法人注销登记时，法人终止",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "legalPerson": "是法人",
+   "declaredBankrupt": "已被宣告破产",
+   "bankruptcyLiquidationCompleted": "已依法进行破产清算",
+   "deregistrationCompleted": "已完成法人注销登记",
+   "legalPersonTerminated": "法人终止（民事主体资格消灭）"
+  }
+ },
+ "art:79": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "设立营利法人时，是否必须制定法人章程、由谁负担该义务",
+     "rules": [
+      "c79-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人正在设立营利法人",
+     "rules": [
+      "c79-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "设立人应当依法制定法人章程（章程的内容与形式须符合法律规定）",
+     "rules": [
+      "c79-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为强制性规范，“应当”表明制定章程是设立营利法人的必备要件，不能以成员口头约定替代",
+     "rules": [
+      "c79-1"
+     ]
+    },
+    {
+     "text": "本行仅挂载第79条第1款；第2款关于章程应载明事项的规定未挂载，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可采信的体系性补充；LEGO 卡片缺失，本条仅依原文形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c79-1",
+    "srcs": [
+     "art79-1"
+    ],
+    "body": [
+     "establishesForProfitLegalPerson(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "formulateArticlesInAccordanceWithLaw(A)"
+     }
+    ],
+    "note": "设立营利法人的，设立人应当依法制定法人章程",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "establishesForProfitLegalPerson": "设立营利法人（参数1：设立人）",
+   "formulateArticlesInAccordanceWithLaw": "依法制定法人章程（章程内容与形式符合法律规定）"
+  }
+ },
+ "art:70": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法人解散后由谁担任清算义务人、负何种清算义务，未及时清算造成损害有何后果，以及如何启动人民法院指定清算组",
+     "rules": [
+      "c70-1",
+      "c70-3",
+      "c70-4",
+      "c70-5",
+      "c70-designate"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人解散，且不属于因合并或者分立而解散",
+     "rules": [
+      "c70-3"
+     ]
+    },
+    {
+     "text": "义务人是法人的董事、理事等执行机构或者决策机构的成员",
+     "rules": [
+      "c70-1"
+     ]
+    },
+    {
+     "text": "清算义务人未及时履行清算义务，并造成他人损害",
+     "rules": [
+      "c70-4"
+     ]
+    },
+    {
+     "text": "申请人是主管机关或者利害关系人",
+     "rules": [
+      "c70-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法人因合并或者分立而解散的，不发生本条规定的组成清算组进行清算的义务",
+     "rules": [
+      "c70-3"
+     ]
+    },
+    {
+     "text": "法律、行政法规对清算义务人另有规定的，依照其规定，不适用第2款关于执行机构、决策机构成员为清算义务人的规定",
+     "rules": [
+      "c70-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "清算义务人应当及时组成清算组进行清算",
+     "rules": [
+      "c70-3"
+     ]
+    },
+    {
+     "text": "清算义务人未及时履行清算义务造成损害的，应当承担民事责任",
+     "rules": [
+      "c70-4"
+     ]
+    },
+    {
+     "text": "主管机关或者利害关系人可以申请人民法院指定有关人员组成清算组进行清算；经申请，人民法院指定有关人员组成清算组",
+     "rules": [
+      "c70-5",
+      "c70-designate"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规关于清算义务人的特别规定，优先于第2款关于执行机构、决策机构成员为清算义务人的一般规定",
+     "rules": [
+      "c70-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记只摘录了第2款（清算义务人的范围），未涉及第1款的清算义务和第3款的责任与申请指定；本条解决“谁清算、不清算怎么办”，与第69条解散事由、第71条清算程序及剩余财产分配分工不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c70-1",
+    "srcs": [
+     "art70-2"
+    ],
+    "body": [
+     "legalPerson(P)",
+     "memberOfExecutiveOrDecisionBody(M,P)"
+    ],
+    "heads": [
+     "liquidationObligor(M,P)"
+    ],
+    "note": "法人的董事、理事等执行机构或者决策机构的成员为清算义务人",
+    "auth": "npc"
+   },
+   {
+    "key": "c70-2",
+    "srcs": [
+     "art70-2"
+    ],
+    "body": [
+     "legalPerson(P)",
+     "memberOfExecutiveOrDecisionBody(M,P)",
+     "lawOrAdminRegulationProvidesOtherwise(P)"
+    ],
+    "heads": [
+     "-liquidationObligor(M,P)"
+    ],
+    "note": "法律、行政法规另有规定的，依照其规定，该执行机构、决策机构成员不为清算义务人（第2款但书）",
+    "auth": "npc"
+   },
+   {
+    "key": "c70-3",
+    "srcs": [
+     "art70-1"
+    ],
+    "body": [
+     "legalPerson(P)",
+     "dissolved(P)",
+     "~mergedOrSplit(P)",
+     "liquidationObligor(L,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "formLiquidationTeam(L,P)"
+     }
+    ],
+    "note": "法人解散的，除合并或者分立的情形外，清算义务人应当及时组成清算组进行清算",
+    "auth": "npc"
+   },
+   {
+    "key": "c70-4",
+    "srcs": [
+     "art70-3"
+    ],
+    "body": [
+     "liquidationObligor(L,P)",
+     "failsToFormLiquidationTeamTimely(L,P)",
+     "causesDamageToOthers(L,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "bearCivilLiability(L,P)"
+     }
+    ],
+    "note": "清算义务人未及时履行清算义务，造成损害的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c70-5",
+    "srcs": [
+     "art70-3"
+    ],
+    "body": [
+     "liquidationObligor(L,P)",
+     "failsToFormLiquidationTeamTimely(L,P)",
+     {
+      "or": [
+       "competentAuthority(A)",
+       "interestedParty(A,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "applyForLiquidationTeamDesignation(A,P)"
+     }
+    ],
+    "note": "清算义务人未及时履行清算义务的，主管机关或者利害关系人可以申请人民法院指定有关人员组成清算组进行清算",
+    "auth": "npc"
+   },
+   {
+    "key": "c70-designate",
+    "srcs": [
+     "art70-3"
+    ],
+    "body": [
+     "failsToFormLiquidationTeamTimely(L,P)",
+     "appliedForLiquidationTeamDesignation(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "designateLiquidationMembers(P)"
+     }
+    ],
+    "note": "依主管机关或利害关系人的申请，人民法院指定有关人员组成清算组（第3款“申请人民法院指定”的当然效果）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c70-2",
+    "c70-1",
+    "第2款后句：法律、行政法规另有规定的，依照其规定，排除执行机构、决策机构成员为清算义务人的一般规定"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "是法人（依法成立、有民事权利能力和民事行为能力、独立享有民事权利和承担民事义务的组织）",
+   "dissolved": "法人已解散（出现章程规定的或法律规定的解散事由等）",
+   "mergedOrSplit": "法人因合并或者分立而解散",
+   "memberOfExecutiveOrDecisionBody": "是法人执行机构或者决策机构的成员（董事、理事等）",
+   "liquidationObligor": "是清算义务人（人，法人）",
+   "lawOrAdminRegulationProvidesOtherwise": "法律、行政法规对清算义务人另有规定",
+   "formLiquidationTeam": "及时组成清算组进行清算（清算义务人，法人）",
+   "failsToFormLiquidationTeamTimely": "未及时履行清算义务（未及时组成清算组进行清算）",
+   "causesDamageToOthers": "造成他人损害（清算义务人，法人）",
+   "bearCivilLiability": "承担民事责任（清算义务人，法人）",
+   "competentAuthority": "是主管机关",
+   "applyForLiquidationTeamDesignation": "申请人民法院指定有关人员组成清算组（申请人，法人）",
+   "appliedForLiquidationTeamDesignation": "已向人民法院提出指定清算组的申请（申请人，法人）",
+   "designateLiquidationMembers": "指定有关人员组成清算组（法院，法人）"
+  }
+ },
+ "art:78": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "依法设立的营利法人由谁发给营业执照，以及营利法人何时成立",
+     "rules": [
+      "c78-1",
+      "c78-date"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是营利法人，且系依法设立",
+     "rules": [
+      "c78-1"
+     ]
+    },
+    {
+     "text": "营业执照已签发，并确定其签发日期",
+     "rules": [
+      "c78-date"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "登记机关应当向该营利法人发给营业执照",
+     "rules": [
+      "c78-1"
+     ]
+    },
+    {
+     "text": "营业执照的签发日期即为该营利法人的成立日期",
+     "rules": [
+      "c78-date"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决营利法人的成立时点（营业执照签发日），不涉及非营利法人、特别法人的成立，也不涉及设立中法人的责任承担；笔记与 LEGO 卡片均未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c78-1",
+    "srcs": [
+     "art78-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "lawfullyEstablished(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": "L",
+      "content": "issueBusinessLicense(registrationAuthority,L)"
+     }
+    ],
+    "note": "依法设立的营利法人，由登记机关发给营业执照",
+    "auth": "npc"
+   },
+   {
+    "key": "c78-date",
+    "srcs": [
+     "art78-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "businessLicenseIssuedOn(L,D)"
+    ],
+    "heads": [
+     "establishedOn(L,D)"
+    ],
+    "note": "营业执照签发日期为营利法人的成立日期",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forProfitLegalPerson": "是营利法人（参数1：主体）",
+   "lawfullyEstablished": "依法设立（参数1：主体）",
+   "issueBusinessLicense": "发给营业执照（参数1：登记机关，参数2：营利法人）",
+   "businessLicenseIssuedOn": "营业执照于某日签发（参数1：营利法人，参数2：日期）",
+   "establishedOn": "于该日期成立（参数1：法人，参数2：日期）"
+  }
+ },
+ "art:72": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "清算期间法人的法律地位与活动范围如何",
+     "rules": [
+      "c72-1",
+      "c72-1-for"
+     ]
+    },
+    {
+     "text": "法人清算后的剩余财产如何处理",
+     "rules": [
+      "c72-2",
+      "c72-2-law"
+     ]
+    },
+    {
+     "text": "法人于何时终止",
+     "rules": [
+      "c72-3",
+      "c72-3-noreg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人处于清算期间",
+     "rules": [
+      "c72-1",
+      "c72-1-for"
+     ]
+    },
+    {
+     "text": "清算结束，且存在清算后的剩余财产",
+     "rules": [
+      "c72-2",
+      "c72-2-law"
+     ]
+    },
+    {
+     "text": "清算结束并完成法人注销登记；依法不需要办理法人登记的，仅需清算结束",
+     "rules": [
+      "c72-3",
+      "c72-3-noreg"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对剩余财产处理另有规定的，不按章程或权力机构决议处理，而依照该规定处理",
+     "rules": [
+      "c72-2-law"
+     ]
+    },
+    {
+     "text": "依法不需要办理法人登记的法人，不以注销登记为终止要件",
+     "rules": [
+      "c72-3-noreg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "清算期间法人仍然存续",
+     "rules": [
+      "c72-1"
+     ]
+    },
+    {
+     "text": "清算期间法人不得从事与清算无关的活动",
+     "rules": [
+      "c72-1-for"
+     ]
+    },
+    {
+     "text": "剩余财产按照法人章程的规定或者法人权力机构的决议处理",
+     "rules": [
+      "c72-2"
+     ]
+    },
+    {
+     "text": "法律另有规定的，剩余财产依照该规定处理",
+     "rules": [
+      "c72-2-law"
+     ]
+    },
+    {
+     "text": "清算结束并完成注销登记时，法人终止",
+     "rules": [
+      "c72-3"
+     ]
+    },
+    {
+     "text": "依法不需要办理法人登记的，清算结束时法人终止",
+     "rules": [
+      "c72-3-noreg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对剩余财产处理另有规定的，优先于按章程或权力机构决议处理的规则",
+     "rules": [
+      "c72-2-law",
+      "c72-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记只摘录了第1款（清算期间法人存续及活动限制）与第3款（终止时点），未涉及第2款剩余财产的处理规则",
+     "rules": []
+    },
+    {
+     "text": "第3款区分两种终止时点：需登记者以“清算结束＋注销登记完成”为要件，依法不需登记者以“清算结束”为要件",
+     "rules": [
+      "c72-3",
+      "c72-3-noreg"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c72-1",
+    "srcs": [
+     "art72-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "inLiquidation(L)"
+    ],
+    "heads": [
+     "legalPersonSubsists(L)"
+    ],
+    "note": "清算期间法人仍然存续，其主体资格不因进入清算而消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c72-1-for",
+    "srcs": [
+     "art72-1"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "inLiquidation(L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "conductActivityUnrelatedToLiquidation(L)"
+     }
+    ],
+    "note": "清算期间法人不得从事与清算无关的活动",
+    "auth": "npc"
+   },
+   {
+    "key": "c72-2",
+    "srcs": [
+     "art72-2"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationCompleted(L)",
+     "hasRemainingProperty(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "handleRemainingPropertyPerCharterOrResolution(L)"
+     }
+    ],
+    "note": "法人清算后的剩余财产，按照法人章程的规定或者法人权力机构的决议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c72-2-law",
+    "srcs": [
+     "art72-2"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationCompleted(L)",
+     "hasRemainingProperty(L)",
+     "lawProvidesOtherwiseOnRemainingProperty(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "handleRemainingPropertyPerLaw(L)"
+     }
+    ],
+    "note": "法律对剩余财产处理另有规定的，依照该规定处理，不再按章程或权力机构决议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c72-3",
+    "srcs": [
+     "art72-3"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationCompleted(L)",
+     "deregistrationCompleted(L)"
+    ],
+    "heads": [
+     "legalPersonTerminated(L)"
+    ],
+    "note": "清算结束并完成法人注销登记时，法人终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c72-3-noreg",
+    "srcs": [
+     "art72-3"
+    ],
+    "body": [
+     "legalPerson(L)",
+     "liquidationCompleted(L)",
+     "registrationNotRequired(L)"
+    ],
+    "heads": [
+     "legalPersonTerminated(L)"
+    ],
+    "note": "依法不需要办理法人登记的，清算结束时法人终止，不以注销登记为要件",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c72-2-law",
+    "c72-2",
+    "第2款后段“法律另有规定的，依照其规定”，属特别规定优先"
+   ]
+  ],
+  "predicates": {
+   "legalPerson": "法人（参数1：法人）",
+   "inLiquidation": "处于清算期间（参数1：法人）",
+   "legalPersonSubsists": "法人存续，主体资格未消灭（参数1：法人）",
+   "conductActivityUnrelatedToLiquidation": "从事与清算无关的活动（参数1：法人）",
+   "liquidationCompleted": "清算结束（参数1：法人）",
+   "hasRemainingProperty": "有清算后的剩余财产（参数1：法人）",
+   "handleRemainingPropertyPerCharterOrResolution": "按照法人章程的规定或者法人权力机构的决议处理剩余财产（参数1：法人）",
+   "lawProvidesOtherwiseOnRemainingProperty": "法律对法人剩余财产的处理另有规定（参数1：法人）",
+   "handleRemainingPropertyPerLaw": "依照法律的规定处理剩余财产（参数1：法人）",
+   "deregistrationCompleted": "已完成法人注销登记（参数1：法人）",
+   "registrationNotRequired": "依法不需要办理法人登记（参数1：法人）",
+   "legalPersonTerminated": "法人终止（参数1：法人）"
+  }
+ },
+ "art:82": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人设立监事会、监事等监督机构的，该监督机构可以行使哪些职权",
+     "rules": [
+      "c82-def",
+      "c82-1",
+      "c82-2",
+      "c82-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为营利法人，且设有监事会、监事等监督机构",
+     "rules": [
+      "c82-def"
+     ]
+    },
+    {
+     "text": "行使法人章程规定的其他职权，以法人章程对此有规定为前提",
+     "rules": [
+      "c82-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "监督机构依法有权检查法人财务",
+     "rules": [
+      "c82-1"
+     ]
+    },
+    {
+     "text": "监督机构依法有权监督执行机构成员、高级管理人员执行法人职务的行为",
+     "rules": [
+      "c82-2"
+     ]
+    },
+    {
+     "text": "监督机构依法有权行使法人章程规定的其他职权",
+     "rules": [
+      "c82-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为授权性规定，只界定监督机构的职权范围，未规定行使职权的程序及违反的法律后果；未设监督机构的营利法人不发生本条职权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c82-def",
+    "srcs": [
+     "art82-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(K)",
+     {
+      "or": [
+       "supervisoryBoard(O,K)",
+       "supervisor(O,K)",
+       "otherSupervisoryOrgan(O,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "supervisoryOrgan(O,K)"
+    ],
+    "note": "营利法人所设的监事会、监事等，属于本条的监督机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c82-1",
+    "srcs": [
+     "art82-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(K)",
+     "supervisoryOrgan(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "K",
+      "content": "inspectFinances(O,K)"
+     }
+    ],
+    "note": "营利法人设监督机构的，监督机构依法有权检查法人财务",
+    "auth": "npc"
+   },
+   {
+    "key": "c82-2",
+    "srcs": [
+     "art82-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(K)",
+     "supervisoryOrgan(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "K",
+      "content": "superviseExecutiveDuty(O,K)"
+     }
+    ],
+    "note": "监督机构依法有权监督执行机构成员、高级管理人员执行法人职务的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c82-3",
+    "srcs": [
+     "art82-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(K)",
+     "supervisoryOrgan(O,K)",
+     "articlesProvideOtherPowers(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "K",
+      "content": "exerciseOtherPowers(O,K)"
+     }
+    ],
+    "note": "监督机构依法有权行使法人章程规定的其他职权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forProfitLegalPerson": "是营利法人（参数1：法人）",
+   "supervisoryBoard": "是监事会（参数1：机构，参数2：法人）",
+   "supervisor": "是监事（参数1：人，参数2：法人）",
+   "otherSupervisoryOrgan": "是其他监督机构（参数1：机构，参数2：法人）",
+   "supervisoryOrgan": "是营利法人的监督机构（参数1：机构，参数2：法人）",
+   "inspectFinances": "检查法人财务（参数1：监督机构，参数2：法人）",
+   "superviseExecutiveDuty": "监督执行机构成员、高级管理人员执行法人职务的行为（参数1：监督机构，参数2：法人）",
+   "articlesProvideOtherPowers": "法人章程规定了监督机构的其他职权（参数1：监督机构，参数2：法人）",
+   "exerciseOtherPowers": "行使法人章程规定的其他职权（参数1：监督机构，参数2：法人）"
+  }
+ },
+ "art:86": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人从事经营活动时，应当遵守哪些行为规范、承担何种社会责任",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为营利法人，且其行为属于从事经营活动",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当遵守商业道德，维护交易安全，接受政府和社会的监督，承担社会责任；这些是原则性、宣示性义务，不产生具体的可废止规则",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是原则性、宣示性规定，没有设定构成要件与具体法律后果，因此不形式化为可废止规则；营利法人的界定见第76条，具体义务与责任由公司法等特别法规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:83": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人的出资人滥用出资人权利，或者滥用法人独立地位和出资人有限责任时，对法人、其他出资人以及法人债权人分别承担何种民事责任",
+     "rules": [
+      "c83-1",
+      "c83-2",
+      "c83-3",
+      "c83-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是营利法人的出资人",
+     "rules": [
+      "c83-1",
+      "c83-2",
+      "c83-3",
+      "c83-4"
+     ]
+    },
+    {
+     "text": "滥用出资人权利，给法人或者其他出资人造成损失",
+     "rules": [
+      "c83-2"
+     ]
+    },
+    {
+     "text": "滥用法人独立地位和出资人有限责任，逃避债务，严重损害法人债权人的利益",
+     "rules": [
+      "c83-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出资人不得滥用出资人权利损害法人或者其他出资人的利益",
+     "rules": [
+      "c83-1"
+     ]
+    },
+    {
+     "text": "滥用出资人权利造成法人或者其他出资人损失的，应当依法承担民事责任",
+     "rules": [
+      "c83-2"
+     ]
+    },
+    {
+     "text": "出资人不得滥用法人独立地位和出资人有限责任损害法人债权人的利益",
+     "rules": [
+      "c83-3"
+     ]
+    },
+    {
+     "text": "滥用法人独立地位和出资人有限责任，逃避债务，严重损害法人债权人利益的，应当对法人债务承担连带责任",
+     "rules": [
+      "c83-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款与第2款保护的对象和责任形式不同：第1款保护法人及其他出资人，责任形式为依法承担民事责任；第2款保护法人债权人，须具备逃避债务且严重损害债权人利益，责任形式为对法人债务承担连带责任",
+     "rules": [
+      "c83-2",
+      "c83-4"
+     ]
+    },
+    {
+     "text": "笔记与学理将第2款称为法人人格否认（揭开公司面纱），其要件严于第1款，不能仅以出资人行为损害债权人利益为由主张连带责任",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c83-1",
+    "srcs": [
+     "art83-1"
+    ],
+    "body": [
+     "profitCorporation(K)",
+     "shareholderOf(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "K",
+      "content": "abuseShareholderRights(S,K)"
+     }
+    ],
+    "note": "营利法人的出资人不得滥用出资人权利损害法人或者其他出资人的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c83-2",
+    "srcs": [
+     "art83-1"
+    ],
+    "body": [
+     "profitCorporation(K)",
+     "shareholderOf(S,K)",
+     "abuseShareholderRights(S,K)",
+     {
+      "or": [
+       "causesLossToCorporation(S,K)",
+       "causesLossToOtherShareholder(S,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "bearCivilLiability(S,K)"
+     }
+    ],
+    "note": "滥用出资人权利造成法人或者其他出资人损失的，应当依法承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c83-3",
+    "srcs": [
+     "art83-2"
+    ],
+    "body": [
+     "profitCorporation(K)",
+     "shareholderOf(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "K",
+      "content": "abuseCorporatePersonality(S,K)"
+     }
+    ],
+    "note": "出资人不得滥用法人独立地位和出资人有限责任损害法人债权人的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c83-4",
+    "srcs": [
+     "art83-2"
+    ],
+    "body": [
+     "profitCorporation(K)",
+     "shareholderOf(S,K)",
+     "abuseCorporatePersonality(S,K)",
+     "evadesDebt(S)",
+     "seriouslyHarmsCreditors(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "bearJointLiabilityForCorporateDebt(S,K)"
+     }
+    ],
+    "note": "滥用法人独立地位和出资人有限责任，逃避债务，严重损害法人债权人利益的，应当对法人债务承担连带责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "profitCorporation": "是营利法人",
+   "shareholderOf": "是营利法人的出资人（股东）",
+   "abuseShareholderRights": "滥用出资人权利（损害法人或其他出资人利益）",
+   "causesLossToCorporation": "给法人造成损失",
+   "causesLossToOtherShareholder": "给其他出资人造成损失",
+   "bearCivilLiability": "依法承担民事责任（承担者，法人）",
+   "abuseCorporatePersonality": "滥用法人独立地位和出资人有限责任（损害法人债权人利益）",
+   "evadesDebt": "逃避债务",
+   "seriouslyHarmsCreditors": "严重损害法人债权人的利益",
+   "bearJointLiabilityForCorporateDebt": "对法人债务承担连带责任"
+  }
+ },
+ "art:96": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些法人属于特别法人（本节规定的机关法人、农村集体经济组织法人、城镇农村的合作经济组织法人、基层群众性自治组织法人）",
+     "rules": [
+      "c96-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该组织属于机关法人、农村集体经济组织法人、城镇农村的合作经济组织法人、基层群众性自治组织法人之一",
+     "rules": [
+      "c96-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该法人为特别法人，适用本节关于特别法人的规定",
+     "rules": [
+      "c96-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "特别法人与营利法人、非营利法人并列，是法人分类中的第三类；本条只作类型归属的界定，各类特别法人的具体设立与登记规则见第97条至第101条，本行未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，LEGO 卡片缺失，本条形式化仅以法条原文为准，未引入学理内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c96-1",
+    "srcs": [
+     "art96-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "governmentOrganLegalPerson(X)",
+       "ruralCollectiveEconomicOrgLegalPerson(X)",
+       "urbanRuralCooperativeEconomicOrgLegalPerson(X)",
+       "grassrootsSelfGovOrgLegalPerson(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "specialLegalPerson(X)"
+    ],
+    "note": "机关法人、农村集体经济组织法人、城镇农村的合作经济组织法人、基层群众性自治组织法人，为特别法人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "governmentOrganLegalPerson": "是机关法人",
+   "ruralCollectiveEconomicOrgLegalPerson": "是农村集体经济组织法人",
+   "urbanRuralCooperativeEconomicOrgLegalPerson": "是城镇农村的合作经济组织法人",
+   "grassrootsSelfGovOrgLegalPerson": "是基层群众性自治组织法人",
+   "specialLegalPerson": "是特别法人"
+  }
+ },
+ "art:84": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人的控股出资人、实际控制人、董事、监事、高级管理人员利用其关联关系损害法人利益的，负何种禁止性义务与赔偿责任",
+     "rules": [
+      "c84-role",
+      "c84-1",
+      "c84-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体为营利法人的控股出资人、实际控制人、董事、监事或高级管理人员",
+     "rules": [
+      "c84-role"
+     ]
+    },
+    {
+     "text": "该主体利用其与法人之间的关联关系实施行为",
+     "rules": [
+      "c84-1",
+      "c84-2"
+     ]
+    },
+    {
+     "text": "该行为造成法人损失",
+     "rules": [
+      "c84-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "上述主体不得利用其关联关系损害法人的利益（禁止性义务）",
+     "rules": [
+      "c84-1"
+     ]
+    },
+    {
+     "text": "利用关联关系造成法人损失的，应当承担赔偿责任",
+     "rules": [
+      "c84-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条位于营利法人一节，仅规制营利法人的控股出资人、实际控制人、董事、监事、高级管理人员；非营利法人、非法人组织及其成员不适用本条",
+     "rules": [
+      "c84-role"
+     ]
+    },
+    {
+     "text": "条文未设免责事由，也未规定损失计算与举证分配；“造成法人损失”是“损害法人利益”的典型表现，故不另设例外项",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，无补充例外或学理限制",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c84-role",
+    "srcs": [
+     "art84-1"
+    ],
+    "body": [
+     "profitMakingLegalPerson(K)",
+     {
+      "or": [
+       "controllingContributor(P,K)",
+       "actualController(P,K)",
+       "directorOf(P,K)",
+       "supervisorOf(P,K)",
+       "seniorManagerOf(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "relatedPartyOf(P,K)"
+    ],
+    "note": "营利法人的控股出资人、实际控制人、董事、监事、高级管理人员，均属本条规制的关联主体",
+    "auth": "npc"
+   },
+   {
+    "key": "c84-1",
+    "srcs": [
+     "art84-1"
+    ],
+    "body": [
+     "relatedPartyOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "K",
+      "content": "harmLegalPersonInterestByRelatedRelationship(P,K)"
+     }
+    ],
+    "note": "上述主体不得利用其关联关系损害法人的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c84-2",
+    "srcs": [
+     "art84-1"
+    ],
+    "body": [
+     "relatedPartyOf(P,K)",
+     "exploitsRelatedRelationship(P,K)",
+     "causesLossToLegalPerson(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "K",
+      "content": "compensateLegalPersonLoss(P,K)"
+     }
+    ],
+    "note": "利用关联关系造成法人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "profitMakingLegalPerson": "是营利法人",
+   "controllingContributor": "是营利法人的控股出资人",
+   "actualController": "是营利法人的实际控制人",
+   "directorOf": "是营利法人的董事",
+   "supervisorOf": "是营利法人的监事",
+   "seniorManagerOf": "是营利法人的高级管理人员",
+   "relatedPartyOf": "是营利法人的控股出资人、实际控制人、董事、监事或高级管理人员（本条规制的关联主体）",
+   "exploitsRelatedRelationship": "利用其与法人之间的关联关系实施行为",
+   "causesLossToLegalPerson": "造成法人损失",
+   "harmLegalPersonInterestByRelatedRelationship": "利用关联关系损害法人利益（被禁止的行为）",
+   "compensateLegalPersonLoss": "赔偿法人的损失"
+  }
+ },
+ "art:99": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "农村集体经济组织何时取得法人资格；法律、行政法规对其另有规定时如何适用",
+     "rules": [
+      "c99-1",
+      "c99-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是农村集体经济组织",
+     "rules": [
+      "c99-1",
+      "c99-2"
+     ]
+    },
+    {
+     "text": "法律、行政法规对该农村集体经济组织有规定",
+     "rules": [
+      "c99-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规对农村集体经济组织另有规定的，不适用第1款的一般规定，而依照其规定",
+     "rules": [
+      "c99-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "农村集体经济组织依法取得法人资格，成为法人（特别法人）",
+     "rules": [
+      "c99-1"
+     ]
+    },
+    {
+     "text": "有特别规定时，依照法律、行政法规的特别规定处理",
+     "rules": [
+      "c99-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规对农村集体经济组织的特别规定优先于第1款关于取得法人资格的一般规定",
+     "rules": [
+      "c99-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条与机关法人、事业单位法人、社会团体法人并列，同属特别法人；条文本身未规定登记等设立要件，该等事项由法律、行政法规规定（学理说明，笔记无相关内容）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c99-1",
+    "srcs": [
+     "art99-1"
+    ],
+    "body": [
+     "ruralCollectiveEconomicOrganization(O)"
+    ],
+    "heads": [
+     "legalPerson(O)"
+    ],
+    "note": "农村集体经济组织依法取得法人资格，成为法人（特别法人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c99-2",
+    "srcs": [
+     "art99-2"
+    ],
+    "body": [
+     "ruralCollectiveEconomicOrganization(O)",
+     "specialProvisionsOnRuralCollectiveOrg(O)"
+    ],
+    "heads": [
+     "specialProvisionsApply(O)"
+    ],
+    "note": "法律、行政法规对农村集体经济组织有规定的，依照其规定，优先于第1款的一般规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c99-2",
+    "c99-1",
+    "法律、行政法规对农村集体经济组织另有规定的，依照其规定（特别规定优先）"
+   ]
+  ],
+  "predicates": {
+   "ruralCollectiveEconomicOrganization": "农村集体经济组织（参数1：组织）",
+   "legalPerson": "是法人（取得法人资格）",
+   "specialProvisionsOnRuralCollectiveOrg": "法律、行政法规对该农村集体经济组织有规定",
+   "specialProvisionsApply": "依照法律、行政法规的特别规定处理"
+  }
+ },
+ "art:85": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人的权力机构、执行机构所作决议在召集程序、表决方式或内容上存在瑕疵时，出资人可否请求人民法院撤销；撤销后对善意相对人的影响如何",
+     "rules": [
+      "c85-ground",
+      "c85-1",
+      "c85-revoke",
+      "c85-but"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "决议由营利法人的权力机构或执行机构作出，且会议召集程序、表决方式违反法律、行政法规、法人章程，或者决议内容违反法人章程",
+     "rules": [
+      "c85-ground"
+     ]
+    },
+    {
+     "text": "请求撤销的主体是该营利法人的出资人",
+     "rules": [
+      "c85-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "营利法人依据该决议与善意相对人形成的民事法律关系不受决议撤销的影响",
+     "rules": [
+      "c85-but"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出资人有权请求人民法院撤销该决议",
+     "rules": [
+      "c85-1"
+     ]
+    },
+    {
+     "text": "人民法院撤销该决议后，决议即被撤销",
+     "rules": [
+      "c85-revoke"
+     ]
+    },
+    {
+     "text": "决议被撤销后，依据该决议与相对人形成的民事法律关系原则上失去效力（但书的反面推论）",
+     "rules": [
+      "c85-effect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "善意相对人的信赖保护优先于决议撤销的溯及效果：与善意相对人形成的民事法律关系不受影响",
+     "rules": [
+      "c85-but"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只把“决议内容违反法人章程”列为撤销事由；决议内容违反法律、行政法规的，不属于本条撤销范围，应依第153条等认定无效",
+     "rules": []
+    },
+    {
+     "text": "本条仅适用于营利法人的权力机构、执行机构决议；捐助法人决议的撤销另见第94条，非营利法人、社会团体法人的决议瑕疵另有规定",
+     "rules": []
+    },
+    {
+     "text": "决议不成立、无效与可撤销是不同救济：本条为撤销之诉，须由出资人请求人民法院撤销，而非当然无效",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c85-ground",
+    "srcs": [
+     "art85"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "resolutionByOrgan(R,L)",
+     {
+      "or": [
+       "conveningProcedureViolates(R)",
+       "votingMethodViolates(R)",
+       "resolutionContentViolatesCharter(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "resolutionRevocable(R,L)"
+    ],
+    "note": "营利法人权力机构、执行机构决议的会议召集程序、表决方式违反法律、行政法规或法人章程，或者决议内容违反法人章程的，该决议可撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c85-1",
+    "srcs": [
+     "art85"
+    ],
+    "body": [
+     "resolutionRevocable(R,L)",
+     "capitalContributorOf(C,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "requestCourtRevokeResolution(C,R)"
+     }
+    ],
+    "note": "决议可撤销的，营利法人的出资人有权请求人民法院撤销该决议",
+    "auth": "npc"
+   },
+   {
+    "key": "c85-revoke",
+    "srcs": [
+     "art85"
+    ],
+    "body": [
+     "resolutionRevocable(R,L)",
+     "courtRevokesResolution(R)"
+    ],
+    "heads": [
+     "resolutionRevoked(R)"
+    ],
+    "note": "人民法院撤销该决议的，决议即被撤销（条文“请求人民法院撤销”的当然含义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c85-effect",
+    "srcs": [
+     "art85"
+    ],
+    "body": [
+     "resolutionRevoked(R)",
+     "relationFormedUnderResolution(L,T,R)"
+    ],
+    "heads": [
+     "-validRelation(L,T,R)"
+    ],
+    "note": "决议被撤销后，营利法人依据该决议与相对人形成的民事法律关系原则上失去效力；此系但书的反面推论，属学理结论，条文未明文",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c85-but",
+    "srcs": [
+     "art85"
+    ],
+    "body": [
+     "forProfitLegalPerson(L)",
+     "relationFormedUnderResolution(L,T,R)",
+     "inGoodFaith(T,R)"
+    ],
+    "heads": [
+     "validRelation(L,T,R)"
+    ],
+    "note": "但书：营利法人依据该决议与善意相对人形成的民事法律关系不受决议撤销的影响",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c85-but",
+    "c85-effect",
+    "善意相对人的信赖利益优先，决议撤销不影响其与营利法人已形成的民事法律关系"
+   ]
+  ],
+  "predicates": {
+   "forProfitLegalPerson": "是营利法人（参数1：法人）",
+   "capitalContributorOf": "是营利法人的出资人（参数1：出资人，参数2：法人）",
+   "resolutionByOrgan": "决议由营利法人的权力机构或执行机构作出（参数1：决议，参数2：法人）",
+   "conveningProcedureViolates": "会议召集程序违反法律、行政法规或法人章程（参数1：决议）",
+   "votingMethodViolates": "表决方式违反法律、行政法规或法人章程（参数1：决议）",
+   "resolutionContentViolatesCharter": "决议内容违反法人章程（参数1：决议）",
+   "resolutionRevocable": "该决议可撤销（参数1：决议，参数2：法人）",
+   "requestCourtRevokeResolution": "请求人民法院撤销该决议（参数1：出资人，参数2：决议）",
+   "courtRevokesResolution": "人民法院撤销该决议（参数1：决议）",
+   "resolutionRevoked": "该决议已被人民法院撤销（参数1：决议）",
+   "relationFormedUnderResolution": "营利法人依据该决议与相对人形成的民事法律关系（参数1：法人，参数2：相对人，参数3：决议）",
+   "validRelation": "该民事法律关系有效、不受决议撤销影响（参数1：法人，参数2：相对人，参数3：决议）"
+  }
+ }
+}

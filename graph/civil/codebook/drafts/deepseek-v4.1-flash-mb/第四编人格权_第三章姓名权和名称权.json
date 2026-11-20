@@ -1,0 +1,704 @@
+{
+ "art:1017": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "具有一定社会知名度的笔名、艺名、网名、译名、字号、姓名和名称的简称等标识被他人使用足以造成公众混淆时，应如何保护",
+     "rules": [
+      "c1017-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该标识属于笔名、艺名、网名、译名、字号、姓名和名称的简称等（不限于本名、登记名称）",
+     "rules": [
+      "c1017-1"
+     ]
+    },
+    {
+     "text": "该标识具有一定社会知名度",
+     "rules": [
+      "c1017-1"
+     ]
+    },
+    {
+     "text": "被他人使用足以造成公众混淆",
+     "rules": [
+      "c1017-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用姓名权和名称权保护的有关规定（而非直接适用）",
+     "rules": [
+      "c1017-1"
+     ]
+    },
+    {
+     "text": "参照适用后，标识的权利人可请求使用者停止使用并依法请求相应民事责任（学理说明）",
+     "rules": [
+      "c1017-effect"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本款是“参照适用”条款，须同时具备“一定社会知名度”与“被他人使用足以造成公众混淆”两项要件，缺一不可；不具备时不能援引姓名权、名称权保护规定",
+     "rules": [
+      "c1017-1"
+     ]
+    },
+    {
+     "text": "本款保护对象是笔名、艺名、网名、译名、字号、姓名和名称的简称等标识，而非姓名、名称本身；对姓名、名称本身的保护由姓名权、名称权规定直接调整",
+     "rules": []
+    },
+    {
+     "text": "第1017条第2款（自然人姓氏的选取）未在本行挂载，不在本卡片范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1017-1",
+    "srcs": [
+     "art1017-1"
+    ],
+    "body": [
+     "pseudonymOrNameAbbreviation(N)",
+     "hasSocialFame(N)",
+     "useCausesPublicConfusion(N,U)"
+    ],
+    "heads": [
+     "applyNameRightProtectionByReference(N,U)"
+    ],
+    "note": "具有一定社会知名度、被他人使用足以造成公众混淆的笔名、艺名、网名、译名、字号、姓名和名称的简称等，参照适用姓名权和名称权保护的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1017-effect",
+    "srcs": [
+     "art1017-1"
+    ],
+    "body": [
+     "applyNameRightProtectionByReference(N,U)",
+     "ownerOfIdentifier(N,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "U",
+      "content": "demandCessationOfUse(O,N)"
+     }
+    ],
+    "note": "学理说明：参照适用姓名权、名称权保护规定后，该标识的权利人可请求使用者停止使用并依法主张相应民事责任；条文本身未明文规定具体救济方式",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "pseudonymOrNameAbbreviation": "是笔名、艺名、网名、译名、字号、姓名和名称的简称等标识（1个参数：标识）",
+   "hasSocialFame": "该标识具有一定社会知名度（1个参数：标识）",
+   "useCausesPublicConfusion": "被他人使用足以造成公众混淆（2个参数：标识，使用者）",
+   "applyNameRightProtectionByReference": "参照适用姓名权和名称权保护的有关规定（2个参数：标识，使用者）",
+   "ownerOfIdentifier": "是该标识的权利人（2个参数：标识，权利人）",
+   "demandCessationOfUse": "请求停止使用该标识（2个参数：权利人，标识）"
+  }
+ },
+ "card:g6185": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "姓名权、名称权的内容与行使界限：自然人、法人或非法人组织可否决定、使用、变更、转让、许可他人使用自己的姓名或名称",
+     "rules": [
+      "c1012-1",
+      "c1012-2",
+      "c1013-1",
+      "c1013-2",
+      "c993-1"
+     ]
+    },
+    {
+     "text": "何种行为构成对他人姓名权、名称权的侵害",
+     "rules": [
+      "c1014-1",
+      "c1014-2"
+     ]
+    },
+    {
+     "text": "自然人应当随父姓还是母姓，何时可以在父姓、母姓之外选取姓氏",
+     "rules": [
+      "c1015-1",
+      "c1015-2",
+      "c1015-3"
+     ]
+    },
+    {
+     "text": "决定、变更姓名或决定、变更、转让名称的登记义务，以及变更前实施的民事法律行为的效力",
+     "rules": [
+      "c1016-1",
+      "c1016-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为自然人（姓名权），或为法人、非法人组织（名称权）",
+     "rules": [
+      "c1012-1",
+      "c1013-1",
+      "c993-1"
+     ]
+    },
+    {
+     "text": "许可使用的对象是姓名、名称、肖像等人格标识，且依法律规定或根据其性质可以许可",
+     "rules": [
+      "c993-1"
+     ]
+    },
+    {
+     "text": "以干涉、盗用、假冒等方式指向他人的姓名权或名称权",
+     "rules": [
+      "c1014-1",
+      "c1014-2"
+     ]
+    },
+    {
+     "text": "选取其他直系长辈血亲的姓氏；因由法定扶养人以外的人扶养而选取扶养人姓氏；有不违背公序良俗的其他正当理由",
+     "rules": [
+      "c1015-2"
+     ]
+    },
+    {
+     "text": "自然人属于少数民族",
+     "rules": [
+      "c1015-3"
+     ]
+    },
+    {
+     "text": "自然人决定、变更姓名，或者法人、非法人组织决定、变更、转让名称",
+     "rules": [
+      "c1016-1"
+     ]
+    },
+    {
+     "text": "该民事法律行为在姓名、名称变更之前实施",
+     "rules": [
+      "c1016-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依照法律规定或者根据其性质不得许可的，不得许可他人使用（第993条但书）",
+     "rules": [
+      "c993-1"
+     ]
+    },
+    {
+     "text": "法律对姓名、名称的决定、变更、转让的登记另有规定的，从其规定（第1016条第1款但书）",
+     "rules": [
+      "c1016-1"
+     ]
+    },
+    {
+     "text": "自然人行使姓名权不得违背公序良俗（第1012条第1款但书）",
+     "rules": [
+      "c1012-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人享有姓名权，有权依法决定、使用、变更或者许可他人使用自己的姓名",
+     "rules": [
+      "c1012-1",
+      "c1012-2"
+     ]
+    },
+    {
+     "text": "法人、非法人组织享有名称权，有权依法决定、使用、变更、转让或者许可他人使用自己的名称",
+     "rules": [
+      "c1013-1",
+      "c1013-2"
+     ]
+    },
+    {
+     "text": "民事主体可以将自己的姓名、名称、肖像等许可他人使用",
+     "rules": [
+      "c993-1"
+     ]
+    },
+    {
+     "text": "对姓名等的许可使用，参照适用肖像许可使用的有关规定",
+     "rules": [
+      "c993-doc"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得以干涉、盗用、假冒等方式侵害他人的姓名权或者名称权",
+     "rules": [
+      "c1014-1"
+     ]
+    },
+    {
+     "text": "以干涉、盗用、假冒等方式侵害他人姓名权、名称权的，构成侵害",
+     "rules": [
+      "c1014-2"
+     ]
+    },
+    {
+     "text": "自然人应当随父姓或者母姓",
+     "rules": [
+      "c1015-1"
+     ]
+    },
+    {
+     "text": "有法定情形之一的，可以在父姓和母姓之外选取姓氏",
+     "rules": [
+      "c1015-2"
+     ]
+    },
+    {
+     "text": "少数民族自然人的姓氏可以遵从本民族的文化传统和风俗习惯",
+     "rules": [
+      "c1015-3"
+     ]
+    },
+    {
+     "text": "决定、变更姓名或决定、变更、转让名称的，应当依法向有关机关办理登记手续",
+     "rules": [
+      "c1016-1"
+     ]
+    },
+    {
+     "text": "变更姓名、名称前实施的民事法律行为对变更后的民事主体具有法律约束力",
+     "rules": [
+      "c1016-2"
+     ]
+    },
+    {
+     "text": "姓名权专属于自然人，不得转让、不得抛弃（学理）",
+     "rules": [
+      "c1012-doc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1015条第1款但书（在父姓、母姓之外选取姓氏）优先于“应当随父姓或者母姓”的一般规则",
+     "rules": [
+      "c1015-2"
+     ]
+    },
+    {
+     "text": "第1015条第2款关于少数民族自然人姓氏的规定，优先于第1款随父姓或母姓的一般规则",
+     "rules": [
+      "c1015-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1012条侧重姓名权的积极权能（决定、使用、变更、许可使用），第1014条侧重消极保护（禁止干涉、盗用、假冒）",
+     "rules": []
+    },
+    {
+     "text": "第1015条是姓氏选取的法定例外，第1016条是姓名、名称变更的登记程序及变更前行为的效力，三者层次不同",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列停止侵害、赔礼道歉、赔偿损失、精神损害赔偿等效果出自侵权责任编，本行挂载条文未作规定，故不写入规则",
+     "rules": []
+    },
+    {
+     "text": "笔记：姓名权不得转让、抛弃；名称权（尤其商业名称权）具有直接财产利益，可以转让，可转让的商业名称权还可以继承——继承部分条文未明定，未形式化",
+     "rules": [
+      "c1012-doc"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c993-1",
+    "srcs": [
+     "art993-1"
+    ],
+    "body": [
+     "civilSubject(P)",
+     "personalIdentifierOf(I,P)",
+     "~nonLicensableByLawOrNature(I)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "licenseOthersToUse(P,I)"
+     }
+    ],
+    "note": "民事主体可以将自己的姓名、名称、肖像等许可他人使用；依照法律规定或者根据其性质不得许可的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c993-doc",
+    "srcs": [
+     "art993-1"
+    ],
+    "body": [
+     "civilSubject(P)",
+     "personalIdentifierOf(I,P)",
+     "licensesUseOf(P,I)"
+    ],
+    "heads": [
+     "applyPortraitLicenseProvisions(P,I)"
+    ],
+    "note": "笔记：对姓名等的许可使用参照适用肖像许可使用的有关规定（第1023条第2款），该条未挂载，故作学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1012-1",
+    "srcs": [
+     "art1012-1"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     "nameRight(P)"
+    ],
+    "note": "自然人享有姓名权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1012-2",
+    "srcs": [
+     "art1012-1"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "decideUseAlterOrLicenseOwnName(P)"
+     }
+    ],
+    "note": "自然人有权依法决定、使用、变更或者许可他人使用自己的姓名",
+    "auth": "npc"
+   },
+   {
+    "key": "c1012-3",
+    "srcs": [
+     "art1012-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "exercisesNameRight(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "violatePublicOrder(P)"
+     }
+    ],
+    "note": "自然人行使姓名权不得违背公序良俗（第1012条第1款但书）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1012-doc",
+    "srcs": [
+     "art1012-1"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferOrAbandonNameRight(P)"
+     }
+    ],
+    "note": "笔记：姓名权专属于自然人，与人身不可分离，既不得转让也不得抛弃（学理，条文未明定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1013-1",
+    "srcs": [
+     "art1013-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalPerson(O)",
+       "unincorporatedOrg(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "tradeNameRight(O)"
+    ],
+    "note": "法人、非法人组织享有名称权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1013-2",
+    "srcs": [
+     "art1013-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalPerson(O)",
+       "unincorporatedOrg(O)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "decideUseAlterTransferOrLicenseOwnName(O)"
+     }
+    ],
+    "note": "法人、非法人组织有权依法决定、使用、变更、转让或者许可他人使用自己的名称",
+    "auth": "npc"
+   },
+   {
+    "key": "c1014-1",
+    "srcs": [
+     "art1014-1"
+    ],
+    "body": [
+     "civilSubject(A)",
+     {
+      "or": [
+       "nameRight(B)",
+       "tradeNameRight(B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "infringeNameOrNameRight(A,B)"
+     }
+    ],
+    "note": "任何组织或者个人不得以干涉、盗用、假冒等方式侵害他人的姓名权或者名称权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1014-2",
+    "srcs": [
+     "art1014-1"
+    ],
+    "body": [
+     "civilSubject(A)",
+     {
+      "or": [
+       "nameRight(B)",
+       "tradeNameRight(B)"
+      ]
+     },
+     {
+      "or": [
+       "interferesWithName(A,B)",
+       "misappropriatesName(A,B)",
+       "impersonatesName(A,B)",
+       "otherInfringesNameRight(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "infringesNameOrNameRight(A,B)"
+    ],
+    "note": "以干涉、盗用、假冒等方式侵害他人姓名权、名称权的，构成侵害（方式列举见第1014条，构成性表述为学理归纳）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1015-1",
+    "srcs": [
+     "art1015-1"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "takeFatherOrMotherSurname(P)"
+     }
+    ],
+    "note": "自然人应当随父姓或者母姓",
+    "auth": "npc"
+   },
+   {
+    "key": "c1015-2",
+    "srcs": [
+     "art1015-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     {
+      "or": [
+       "choosesOtherLinealElderSurname(P)",
+       "raisedByNonStatutorySupportPerson(P)",
+       "otherJustifiedReasonNotViolatingPublicOrder(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "chooseSurnameOutsideParents(P)"
+     }
+    ],
+    "note": "有第1015条第1款三项情形之一的，可以在父姓和母姓之外选取姓氏",
+    "auth": "npc"
+   },
+   {
+    "key": "c1015-3",
+    "srcs": [
+     "art1015-2"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "ethnicMinority(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "followEthnicCustomOnSurname(P)"
+     }
+    ],
+    "note": "少数民族自然人的姓氏可以遵从本民族的文化传统和风俗习惯",
+    "auth": "npc"
+   },
+   {
+    "key": "c1016-1",
+    "srcs": [
+     "art1016-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(P)",
+       "legalPerson(P)",
+       "unincorporatedOrg(P)"
+      ]
+     },
+     {
+      "or": [
+       "decidesOrAltersName(P)",
+       "decidesAltersOrTransfersTradeName(P)"
+      ]
+     },
+     "~lawProvidesOtherwiseOnNameRegistration(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "registerNameChangeWithAuthority(P)"
+     }
+    ],
+    "note": "决定、变更姓名或决定、变更、转让名称的，应当依法向有关机关办理登记手续，法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1016-2",
+    "srcs": [
+     "art1016-2"
+    ],
+    "body": [
+     "civilSubject(P)",
+     "changedName(P)",
+     "actOf(A,P)",
+     "actBeforeNameChange(A,P)"
+    ],
+    "heads": [
+     "bindsActor(A,P)"
+    ],
+    "note": "民事主体变更姓名、名称的，变更前实施的民事法律行为对其具有法律约束力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1015-2",
+    "c1015-1",
+    "第1015条第1款但书允许在父姓、母姓之外选取姓氏，构成随父姓或母姓义务的例外"
+   ],
+   [
+    "c1015-3",
+    "c1015-1",
+    "第1015条第2款对少数民族自然人的姓氏另有规定，优先于随父姓或母姓的一般规则"
+   ]
+  ],
+  "predicates": {
+   "unincorporatedOrg": "非法人组织",
+   "nameRight": "享有姓名权（自然人）",
+   "tradeNameRight": "享有名称权（法人、非法人组织）",
+   "personalIdentifierOf": "是某民事主体的姓名、名称、肖像等人格标识（标识，主体）",
+   "nonLicensableByLawOrNature": "依照法律规定或者根据其性质不得许可他人使用（人格标识）",
+   "licensesUseOf": "已将该人格标识许可他人使用（主体，标识）",
+   "licenseOthersToUse": "将自己的姓名、名称、肖像等人格标识许可他人使用（主体，标识）",
+   "applyPortraitLicenseProvisions": "参照适用肖像许可使用的有关规定（主体，标识）",
+   "decideUseAlterOrLicenseOwnName": "依法决定、使用、变更或者许可他人使用自己的姓名",
+   "decideUseAlterTransferOrLicenseOwnName": "依法决定、使用、变更、转让或者许可他人使用自己的名称",
+   "exercisesNameRight": "正在行使姓名权（决定、使用、变更、许可他人使用）",
+   "violatePublicOrder": "违背公序良俗",
+   "transferOrAbandonNameRight": "转让或者抛弃自己的姓名权",
+   "interferesWithName": "以干涉方式侵害他人姓名权或名称权（行为人，权利人）",
+   "misappropriatesName": "盗用他人姓名或名称（行为人，权利人）",
+   "impersonatesName": "假冒他人姓名或名称（行为人，权利人）",
+   "otherInfringesNameRight": "以其他方式侵害他人姓名权或名称权（行为人，权利人）",
+   "infringesNameOrNameRight": "侵害他人的姓名权或者名称权（行为人，权利人）",
+   "infringeNameOrNameRight": "以干涉、盗用、假冒等方式侵害他人的姓名权或者名称权（行为人，权利人）",
+   "takeFatherOrMotherSurname": "随父姓或者母姓",
+   "chooseSurnameOutsideParents": "在父姓和母姓之外选取姓氏",
+   "followEthnicCustomOnSurname": "姓氏遵从本民族的文化传统和风俗习惯",
+   "choosesOtherLinealElderSurname": "选取其他直系长辈血亲的姓氏",
+   "raisedByNonStatutorySupportPerson": "因由法定扶养人以外的人扶养而选取扶养人姓氏",
+   "otherJustifiedReasonNotViolatingPublicOrder": "有不违背公序良俗的其他正当理由",
+   "ethnicMinority": "是少数民族自然人",
+   "decidesOrAltersName": "决定或者变更自己的姓名",
+   "decidesAltersOrTransfersTradeName": "决定、变更或者转让自己的名称",
+   "lawProvidesOtherwiseOnNameRegistration": "法律对姓名、名称的决定、变更、转让的登记另有规定",
+   "registerNameChangeWithAuthority": "依法向有关机关办理姓名、名称的登记手续",
+   "changedName": "已变更姓名或者名称",
+   "actBeforeNameChange": "该民事法律行为在姓名、名称变更之前实施（行为，主体）",
+   "bindsActor": "该民事法律行为对行为人具有法律约束力（行为，主体）"
+  }
+ }
+}

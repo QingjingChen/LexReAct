@@ -1,0 +1,410 @@
+{
+ "art:451": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "留置权人对留置财产负有何种保管义务，因保管不善致留置财产毁损、灭失时承担何种责任",
+     "rules": [
+      "c451-keep",
+      "c451-liability"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是对该动产享有留置权的留置权人",
+     "rules": [
+      "c451-keep",
+      "c451-liability"
+     ]
+    },
+    {
+     "text": "因保管不善致使留置财产毁损、灭失",
+     "rules": [
+      "c451-liability"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "留置权人负有妥善保管留置财产的义务",
+     "rules": [
+      "c451-keep"
+     ]
+    },
+    {
+     "text": "因保管不善致使留置财产毁损、灭失的，留置权人应当承担赔偿责任",
+     "rules": [
+      "c451-liability"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本行仅挂载第451条第1款；留置权人怠于行使留置权时债务人可请求其行使或请求人民法院拍卖、变卖留置财产，以及留置财产变价后价款归属与不足清偿，属该条其他款项，本行未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "本条与质权人妥善保管质押财产的义务（第432条）结构相似，但客体不同：本条客体为留置财产，第432条客体为质押财产，故分别使用不同谓词，不混用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c451-keep",
+    "srcs": [
+     "art451-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "safelyKeepLienProperty(L,T)"
+     }
+    ],
+    "note": "留置权人负有妥善保管留置财产的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c451-liability",
+    "srcs": [
+     "art451-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "poorCustodyDamagesLienProperty(L,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "compensateLienPropertyLoss(L,T)"
+     }
+    ],
+    "note": "因保管不善致使留置财产毁损、灭失的，留置权人应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "safelyKeepLienProperty": "妥善保管留置财产（留置权人，留置财产）",
+   "poorCustodyDamagesLienProperty": "因保管不善致使留置财产毁损、灭失（留置权人，留置财产）",
+   "compensateLienPropertyLoss": "赔偿留置财产毁损、灭失的损失（留置权人，留置财产）"
+  }
+ },
+ "card:g3532": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "留置权人何时可以行使留置权（折价、拍卖、变卖并就价款优先受偿），以及价款超过或不足债权数额时如何处理",
+     "rules": [
+      "c453-realize",
+      "c453-price",
+      "c455-surplus",
+      "c455-shortfall"
+     ]
+    },
+    {
+     "text": "债务人在留置权人不行使留置权时如何救济",
+     "rules": [
+      "c454-request",
+      "c454-court"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "留置权人与债务人应当约定留置财产后的债务履行期限",
+     "rules": [
+      "c453-agree"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确的，除鲜活易腐等不易保管的动产外，留置权人应当给债务人六十日以上履行债务的期限",
+     "rules": [
+      "c453-60days"
+     ]
+    },
+    {
+     "text": "宽限期届满、债务人逾期未履行债务（留置权成立仅使债权人可以留置动产，尚不能优先受偿）",
+     "rules": [
+      "c453-realize"
+     ]
+    },
+    {
+     "text": "债务履行期限届满后，债务人可以请求留置权人行使留置权",
+     "rules": [
+      "c454-request"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "鲜活易腐等不易保管的动产，不受六十日以上履行期限的限制",
+     "rules": [
+      "c453-60days"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "留置权人可以与债务人协议以留置财产折价，也可以就拍卖、变卖留置财产所得的价款优先受偿",
+     "rules": [
+      "c453-realize"
+     ]
+    },
+    {
+     "text": "留置财产折价或者变卖的，应当参照市场价格",
+     "rules": [
+      "c453-price"
+     ]
+    },
+    {
+     "text": "留置权人不行使留置权的，债务人可以请求人民法院拍卖、变卖留置财产",
+     "rules": [
+      "c454-court"
+     ]
+    },
+    {
+     "text": "折价、拍卖、变卖后价款超过债权数额的部分归债务人所有",
+     "rules": [
+      "c455-surplus"
+     ]
+    },
+    {
+     "text": "价款不足清偿的部分由债务人清偿",
+     "rules": [
+      "c455-shortfall"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "留置权的实现条件优先于留置权的成立条件：须宽限期届满、债务人仍未履行，留置权人方可折价、拍卖、变卖并优先受偿",
+     "rules": [
+      "c453-realize"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第453条解决留置权的实现条件与实现方式，区别于第451条留置物保管义务、第452条孳息收取权；第454条是债务人的请求拍卖、变卖权；第455条是价款分配规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“留置权人不得擅自处分留置财产，须经法定程序”并非条文原文，条文仅规定与债务人协议折价或者依法拍卖、变卖",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c453-agree",
+    "srcs": [
+     "art453-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "D",
+      "content": "agreeLienPerformancePeriod(L,D,T)"
+     }
+    ],
+    "note": "留置权人与债务人应当约定留置财产后的债务履行期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c453-60days",
+    "srcs": [
+     "art453-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "noAgreedOrUnclearLienPeriod(L,D,T)",
+     "~perishableOrHardToKeep(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "D",
+      "content": "givePeriod60DaysOrMore(L,D,T)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，除鲜活易腐等不易保管的动产外，留置权人应当给债务人六十日以上履行债务的期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c453-realize",
+    "srcs": [
+     "art453-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "lienPerformancePeriodExpired(L,D,T)",
+     "unpaid(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "D",
+      "content": "realizeLienByValuation(L,D,T)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "D",
+      "content": "priorityPaymentFrom(L,T)"
+     }
+    ],
+    "note": "债务人逾期未履行的，留置权人可以与债务人协议以留置财产折价，也可以就拍卖、变卖所得价款优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c453-price",
+    "srcs": [
+     "art453-2"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "lienPropertyValuedOrSold(L,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "referLienPropertyToMarketPrice(L,T)"
+     }
+    ],
+    "note": "留置财产折价或者变卖的，应当参照市场价格",
+    "auth": "npc"
+   },
+   {
+    "key": "c454-request",
+    "srcs": [
+     "art454-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "debtMatured(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "L",
+      "content": "requestExerciseOfLien(D,L,T)"
+     }
+    ],
+    "note": "债务履行期限届满后，债务人可以请求留置权人行使留置权",
+    "auth": "npc"
+   },
+   {
+    "key": "c454-court",
+    "srcs": [
+     "art454-1"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "debtMatured(D)",
+     "lienHolderFailsToExercise(L,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "L",
+      "content": "requestCourtAuctionOrSellLienProperty(D,T)"
+     }
+    ],
+    "note": "留置权人不行使留置权的，债务人可以请求人民法院拍卖、变卖留置财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c455-surplus",
+    "srcs": [
+     "art455"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "lienPropertyRealized(T)",
+     "lienProceedsExceedClaim(T)"
+    ],
+    "heads": [
+     "lienSurplusBelongsTo(D,T)"
+    ],
+    "note": "留置财产折价或者拍卖、变卖后，价款超过债权数额的部分归债务人所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c455-shortfall",
+    "srcs": [
+     "art455"
+    ],
+    "body": [
+     "lienHolderOf(L,T)",
+     "debtorOf(D,T)",
+     "lienPropertyRealized(T)",
+     "lienProceedsFallShortOfClaim(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "L",
+      "content": "payLienShortfall(D,L,T)"
+     }
+    ],
+    "note": "留置财产折价或者拍卖、变卖后，不足部分由债务人清偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreeLienPerformancePeriod": "留置权人与债务人约定留置财产后的债务履行期限（留置权人，债务人，留置财产）",
+   "noAgreedOrUnclearLienPeriod": "留置权人与债务人没有约定或者约定不明确留置财产后的债务履行期限（留置权人，债务人，留置财产）",
+   "perishableOrHardToKeep": "是鲜活易腐等不易保管的动产",
+   "givePeriod60DaysOrMore": "留置权人给债务人六十日以上履行债务的期限（留置权人，债务人，留置财产）",
+   "lienPerformancePeriodExpired": "留置财产后的债务履行期限（约定期间或六十日以上宽限期）已届满（留置权人，债务人，留置财产）",
+   "realizeLienByValuation": "与债务人协议以留置财产折价（留置权人，债务人，留置财产）",
+   "lienPropertyValuedOrSold": "留置财产已折价或者变卖（留置权人，留置财产）",
+   "referLienPropertyToMarketPrice": "折价或者变卖留置财产参照市场价格（留置权人，留置财产）",
+   "requestExerciseOfLien": "请求留置权人行使留置权（债务人，留置权人，留置财产）",
+   "lienHolderFailsToExercise": "留置权人不行使留置权（留置权人，留置财产）",
+   "requestCourtAuctionOrSellLienProperty": "请求人民法院拍卖、变卖留置财产（债务人，留置财产）",
+   "lienPropertyRealized": "留置财产已折价、拍卖或者变卖",
+   "lienProceedsExceedClaim": "留置财产折价、拍卖、变卖所得价款超过债权数额",
+   "lienProceedsFallShortOfClaim": "留置财产折价、拍卖、变卖所得价款不足清偿债权数额",
+   "lienSurplusBelongsTo": "价款超过债权数额的部分归债务人所有（债务人，留置财产）",
+   "payLienShortfall": "就不足清偿的部分向留置权人清偿（债务人，留置权人，留置财产）"
+  }
+ }
+}

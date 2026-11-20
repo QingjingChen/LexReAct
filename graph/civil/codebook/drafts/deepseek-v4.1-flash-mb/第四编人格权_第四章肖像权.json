@@ -1,0 +1,750 @@
+{
+ "art:1023": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "对姓名等人格标识的许可使用、对自然人声音的保护，应当参照适用哪些规定",
+     "rules": [
+      "c1023-1",
+      "c1023-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体是民事主体的姓名、名称等人格标识，且权利人将其许可他人使用",
+     "rules": [
+      "c1023-1"
+     ]
+    },
+    {
+     "text": "客体是自然人的声音",
+     "rules": [
+      "c1023-2"
+     ]
+    },
+    {
+     "text": "（学理）声音亦属人格标识，其许可使用同属“姓名等的许可使用”",
+     "rules": [
+      "c1023-voice-license"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对姓名等的许可使用，参照适用肖像许可使用的有关规定（如第1021条有利于肖像权人的解释规则、第1022条的解除规则）",
+     "rules": [
+      "c1023-1"
+     ]
+    },
+    {
+     "text": "对自然人声音的保护，参照适用肖像权保护的有关规定（第1018条至第1022条等）",
+     "rules": [
+      "c1023-2"
+     ]
+    },
+    {
+     "text": "（学理）声音的许可使用参照适用肖像许可使用的规定",
+     "rules": [
+      "c1023-voice-license"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是“参照适用”（准用）而非直接适用：须结合肖像许可使用、肖像权保护的具体规定处理；本行未挂载第1018条至第1022条，故不展开",
+     "rules": []
+    },
+    {
+     "text": "声音参照适用的是肖像权保护的规定，而非姓名权保护的规定；第1017条对笔名、艺名等则参照适用姓名权保护的规定，二者准用对象不同",
+     "rules": [
+      "c1023-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1023-1",
+    "srcs": [
+     "art1023-1"
+    ],
+    "body": [
+     "personalIdentifierOf(I,P)",
+     "licenseOthersToUse(P,I)"
+    ],
+    "heads": [
+     "applyPortraitLicenseProvisions(P,I)"
+    ],
+    "note": "对姓名等人格标识的许可使用，参照适用肖像许可使用的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1023-2",
+    "srcs": [
+     "art1023-2"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "voiceOf(V,P)"
+    ],
+    "heads": [
+     "applyPortraitRightProtectionProvisions(V,P)"
+    ],
+    "note": "对自然人声音的保护，参照适用肖像权保护的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1023-voice-license",
+    "srcs": [
+     "art1023-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "voiceOf(V,P)",
+     "licenseOthersToUse(P,V)"
+    ],
+    "heads": [
+     "applyPortraitLicenseProvisions(P,V)"
+    ],
+    "note": "学理：声音属人格标识，其许可使用可纳入第1款“姓名等”的许可使用，参照适用肖像许可使用规定；条文未明定，故为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "voiceOf": "是自然人的声音（声音，自然人）",
+   "applyPortraitRightProtectionProvisions": "参照适用肖像权保护的有关规定（声音，自然人）"
+  }
+ },
+ "card:g8071": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人肖像权的享有与权能内容，以及“肖像”的界定（第1018条）",
+     "rules": [
+      "c1018-1",
+      "c1018-2",
+      "c1018-license",
+      "c1018-def"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体限于自然人（法人、非法人组织不享有肖像权）",
+     "rules": [
+      "c1018-1"
+     ]
+    },
+    {
+     "text": "肖像须为通过影像、雕塑、绘画等方式在一定载体上所反映的、特定自然人可以被识别的外部形象",
+     "rules": [
+      "c1018-def"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "制作、使用、公开、许可他人使用肖像均须“依法”，以违反法律规定的方式行使的，不受本条保护",
+     "rules": [
+      "c1018-2",
+      "c1018-license"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人享有肖像权",
+     "rules": [
+      "c1018-1"
+     ]
+    },
+    {
+     "text": "有权依法制作、使用、公开自己的肖像",
+     "rules": [
+      "c1018-2"
+     ]
+    },
+    {
+     "text": "有权依法许可他人使用自己的肖像（以存在可被识别的具体肖像为前提）",
+     "rules": [
+      "c1018-license"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记与LEGO卡片的内容是著作人身权（发表权、署名权、修改权、保护作品完整权）及著作权的自动产生，属著作权法领域，与本条肖像权无关，不能作为本条的规则来源；本条不涉及作品的发表、署名、修改与完整",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片中“署名权不同于姓名权”的区分针对著作权，本条不涉及；肖像权是与姓名权、名称权并列的具体人格权，其客体是可被识别的外部形象而非姓名或名称",
+     "rules": []
+    },
+    {
+     "text": "笔记中“推定许可他人行使发表权”“著作人身权不得转让”等规则均无本条依据；本条只规定肖像权的享有与权能，未规定许可使用的推定、期限与限制",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1018-1",
+    "srcs": [
+     "art1018-1"
+    ],
+    "body": [
+     "naturalPerson(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "enjoysPortraitRight(X)"
+     }
+    ],
+    "note": "自然人享有肖像权，主体限于自然人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1018-2",
+    "srcs": [
+     "art1018-1"
+    ],
+    "body": [
+     "naturalPerson(X)",
+     "~unlawfulPortraitExercise(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "makeUseOrPublicizeOwnPortrait(X)"
+     }
+    ],
+    "note": "自然人有权依法制作、使用、公开自己的肖像；“依法”表明该权能的行使受法律限制",
+    "auth": "npc"
+   },
+   {
+    "key": "c1018-license",
+    "srcs": [
+     "art1018-1"
+    ],
+    "body": [
+     "naturalPerson(X)",
+     "portraitOf(P,X)",
+     "~unlawfulPortraitExercise(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "licenseOthersToUse(X,P)"
+     }
+    ],
+    "note": "自然人有权依法许可他人使用自己的肖像，P为其肖像",
+    "auth": "npc"
+   },
+   {
+    "key": "c1018-def",
+    "srcs": [
+     "art1018-2"
+    ],
+    "body": [
+     "naturalPerson(X)",
+     "externalImage(P)",
+     "reflectedOnCarrier(P)",
+     "identifiable(P,X)"
+    ],
+    "heads": [
+     "portraitOf(P,X)"
+    ],
+    "note": "肖像是通过影像、雕塑、绘画等方式在一定载体上所反映的特定自然人可以被识别的外部形象",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "enjoysPortraitRight": "享有肖像权（自然人）",
+   "makeUseOrPublicizeOwnPortrait": "依法制作、使用、公开自己的肖像",
+   "externalImage": "是外部形象",
+   "reflectedOnCarrier": "通过影像、雕塑、绘画等方式反映在一定载体上",
+   "identifiable": "该外部形象可被识别为特定自然人（形象，自然人）",
+   "portraitOf": "是特定自然人的肖像（肖像，自然人）",
+   "unlawfulPortraitExercise": "以违反法律规定的方式行使肖像权（制作、使用、公开或许可他人使用）"
+  }
+ },
+ "card:g6245": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "肖像权的积极内容与肖像的界定",
+     "rules": [
+      "c1018-1",
+      "c1018-2"
+     ]
+    },
+    {
+     "text": "何种行为构成对肖像权的侵害（丑化污损伪造、擅自制作使用公开、肖像作品权利人擅自使用）",
+     "rules": [
+      "c1019-1a",
+      "c1019-1b",
+      "c1019-2"
+     ]
+    },
+    {
+     "text": "肖像许可使用合同的解释规则与解除条件",
+     "rules": [
+      "c1021",
+      "c1022-1",
+      "c1022-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在肖像：通过影像、雕塑、绘画等方式在一定载体上反映的特定自然人可被识别的外部形象",
+     "rules": [
+      "c1018-2"
+     ]
+    },
+    {
+     "text": "任何组织或个人以丑化、污损或者利用信息技术手段伪造等方式侵害他人肖像权",
+     "rules": [
+      "c1019-1a"
+     ]
+    },
+    {
+     "text": "未经肖像权人同意制作、使用、公开其肖像，且法律没有另行规定",
+     "rules": [
+      "c1019-1b"
+     ]
+    },
+    {
+     "text": "肖像作品权利人未经肖像权人同意，以发表、复制、发行、出租、展览等方式使用或者公开该肖像",
+     "rules": [
+      "c1019-2"
+     ]
+    },
+    {
+     "text": "合理实施：为个人学习、艺术欣赏、课堂教学或科学研究在必要范围内使用已公开肖像；为新闻报道不可避免；国家机关依法履职在必要范围内；为展示特定公共环境不可避免；为维护公共利益或肖像权人合法权益的其他行为",
+     "rules": [
+      "c1020-1"
+     ]
+    },
+    {
+     "text": "当事人对肖像许可使用合同中肖像使用条款的理解有争议",
+     "rules": [
+      "c1021"
+     ]
+    },
+    {
+     "text": "对肖像许可使用期限没有约定或者约定不明确",
+     "rules": [
+      "c1022-1"
+     ]
+    },
+    {
+     "text": "对肖像许可使用期限有明确约定，且肖像权人有正当理由",
+     "rules": [
+      "c1022-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "肖像权人已同意，或者法律对未经同意使用肖像另有规定",
+     "rules": [
+      "c1019-1b"
+     ]
+    },
+    {
+     "text": "属于第1020条规定的合理使用情形，可以不经肖像权人同意",
+     "rules": [
+      "c1020-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人享有肖像权，有权依法制作、使用、公开或者许可他人使用自己的肖像",
+     "rules": [
+      "c1018-1"
+     ]
+    },
+    {
+     "text": "任何组织或个人不得以丑化、污损、技术伪造等方式侵害他人肖像权；未经同意不得制作、使用、公开他人肖像；肖像作品权利人未经同意不得以发表、复制、发行、出租、展览等方式使用或公开肖像",
+     "rules": [
+      "c1019-1a",
+      "c1019-1b",
+      "c1019-2"
+     ]
+    },
+    {
+     "text": "合理实施第1020条所列行为的，可以不经肖像权人同意",
+     "rules": [
+      "c1020-1"
+     ]
+    },
+    {
+     "text": "对肖像使用条款的理解有争议的，应当作出有利于肖像权人的解释",
+     "rules": [
+      "c1021"
+     ]
+    },
+    {
+     "text": "未约定或约定不明许可使用期限的，任何一方可以随时解除合同",
+     "rules": [
+      "c1022-1"
+     ]
+    },
+    {
+     "text": "有明确约定期限且肖像权人有正当理由的，肖像权人可以解除合同",
+     "rules": [
+      "c1022-2"
+     ]
+    },
+    {
+     "text": "行使解除权应当在合理期限之前通知对方",
+     "rules": [
+      "c1022-notice"
+     ]
+    },
+    {
+     "text": "因解除合同造成对方损失的，除不可归责于肖像权人的事由外，应当赔偿损失",
+     "rules": [
+      "c1022-2-damages"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1020条的合理使用是第1019条第1款禁止规定的法定例外，优先适用，符合者不构成侵权",
+     "rules": [
+      "c1020-1"
+     ]
+    },
+    {
+     "text": "第1020条的合理使用同样排除第1019条第2款对肖像作品权利人的限制",
+     "rules": [
+      "c1020-1"
+     ]
+    },
+    {
+     "text": "肖像许可使用条款有争议时，作有利于肖像权人的解释，优先于一般合同解释规则",
+     "rules": [
+      "c1021"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记强调：2020年新增后，肖像权侵权不再以营利为目的为要件，擅自制作本身即构成侵害，不以公开或传播为必要",
+     "rules": []
+    },
+    {
+     "text": "第1018条是权利宣示与肖像定义，不含使用限制；使用限制在第1019条，抗辩事由在第1020条",
+     "rules": []
+    },
+    {
+     "text": "第1017条保护笔名、艺名、网名等名称性标识，与肖像（外部形象）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1018-1",
+    "srcs": [
+     "art1018-1"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "makeUsePublicizeOrLicenseOwnPortrait(P)"
+     }
+    ],
+    "note": "自然人享有肖像权，有权依法制作、使用、公开或者许可他人使用自己的肖像",
+    "auth": "npc"
+   },
+   {
+    "key": "c1018-2",
+    "srcs": [
+     "art1018-2"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "identifiableExternalAppearanceOnCarrier(P,W)"
+    ],
+    "heads": [
+     "portraitOf(P,W)"
+    ],
+    "note": "肖像是通过影像、雕塑、绘画等方式在一定载体上反映的特定自然人可被识别的外部形象",
+    "auth": "npc"
+   },
+   {
+    "key": "c1019-1a",
+    "srcs": [
+     "art1019-1"
+    ],
+    "body": [
+     "personOrOrg(A)",
+     "portraitOf(P,W)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "infringePortraitRightByVilification(A,P)"
+     }
+    ],
+    "note": "任何组织或者个人不得以丑化、污损或者利用信息技术手段伪造等方式侵害他人肖像权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1019-1b",
+    "srcs": [
+     "art1019-1"
+    ],
+    "body": [
+     "personOrOrg(A)",
+     "portraitOf(P,W)",
+     "~consentedToPortraitUse(P,A)",
+     "~lawProvidesOtherwiseOnPortraitUse(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "makeUseOrPublicizePortrait(A,P)"
+     }
+    ],
+    "note": "未经肖像权人同意不得制作、使用、公开其肖像，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1019-2",
+    "srcs": [
+     "art1019-2"
+    ],
+    "body": [
+     "portraitWorkRightHolder(R,W)",
+     "portraitOf(P,W)",
+     "~consentedToPortraitUse(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "useOrPublicizePortraitWork(R,P,W)"
+     }
+    ],
+    "note": "肖像作品权利人未经肖像权人同意，不得以发表、复制、发行、出租、展览等方式使用或者公开该肖像",
+    "auth": "npc"
+   },
+   {
+    "key": "c1020-1",
+    "srcs": [
+     "art1020-1"
+    ],
+    "body": [
+     "personOrOrg(A)",
+     "portraitOf(P,W)",
+     {
+      "or": [
+       "personalStudyArtClassOrResearchUse(A,P)",
+       "newsReportUse(A,P)",
+       "stateOrgDutyUse(A,P)",
+       "publicEnvironmentDisplayUse(A,P)",
+       "publicInterestOrHolderInterestUse(A,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "makeUseOrPublicizePortraitWithoutConsent(A,P)"
+     }
+    ],
+    "note": "合理实施第1020条第1款五项行为之一（个人学习等必要范围、新闻报道、国家机关履职必要范围、展示特定公共环境、维护公共利益或肖像权人合法权益）的，可以不经肖像权人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c1021",
+    "srcs": [
+     "art1021"
+    ],
+    "body": [
+     "portraitLicenseContract(K)",
+     "disputedClauseMeaning(K)",
+     "portraitRightHolder(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretInFavorOfPortraitHolder(K,P)"
+     }
+    ],
+    "note": "对肖像许可使用合同中肖像使用条款的理解有争议的，应当作出有利于肖像权人的解释",
+    "auth": "npc"
+   },
+   {
+    "key": "c1022-1",
+    "srcs": [
+     "art1022-1"
+    ],
+    "body": [
+     "portraitLicenseContract(K)",
+     "partyTo(A,K)",
+     "noAgreedOrUnclearLicenseTerm(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "terminatePortraitLicenseContractAtAnyTime(A,K)"
+     }
+    ],
+    "note": "对肖像许可使用期限没有约定或者约定不明确的，任何一方当事人可以随时解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c1022-notice",
+    "srcs": [
+     "art1022-1",
+     "art1022-2"
+    ],
+    "body": [
+     "exercisesTerminationRight(A,K)",
+     "counterpartyOf(B,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "notifyInAdvanceOfReasonablePeriod(A,B)"
+     }
+    ],
+    "note": "无论随时解除还是有正当理由解除，均应当在合理期限之前通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c1022-2",
+    "srcs": [
+     "art1022-2"
+    ],
+    "body": [
+     "portraitLicenseContract(K)",
+     "portraitRightHolder(P,K)",
+     "agreedLicenseTerm(K)",
+     "justifiedReason(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "terminatePortraitLicenseContract(P,K)"
+     }
+    ],
+    "note": "对肖像许可使用期限有明确约定，肖像权人有正当理由的，可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c1022-2-damages",
+    "srcs": [
+     "art1022-2"
+    ],
+    "body": [
+     "portraitRightHolder(P,K)",
+     "terminatedPortraitLicenseContract(P,K)",
+     "damage(B,K)",
+     "~notAttributableToParty(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "compensate(P,B,K)"
+     }
+    ],
+    "note": "因解除合同造成对方损失的，除不可归责于肖像权人的事由外，应当赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1020-1",
+    "c1019-1b",
+    "第1020条规定的合理使用是第1019条第1款禁止性规定的法定例外，符合者不构成侵权"
+   ],
+   [
+    "c1020-1",
+    "c1019-2",
+    "第1020条的合理使用同样排除第1019条第2款对肖像作品权利人的限制"
+   ]
+  ],
+  "predicates": {
+   "makeUsePublicizeOrLicenseOwnPortrait": "有权依法制作、使用、公开或者许可他人使用自己的肖像（自然人）",
+   "personOrOrg": "任何组织或者个人（行为人）",
+   "portraitOf": "是某特定自然人的肖像（自然人，肖像载体/形象）",
+   "identifiableExternalAppearanceOnCarrier": "通过影像、雕塑、绘画等方式在载体上反映的特定自然人可被识别的外部形象（自然人，载体）",
+   "consentedToPortraitUse": "肖像权人同意（肖像权人，行为人）",
+   "lawProvidesOtherwiseOnPortraitUse": "法律对未经肖像权人同意使用其肖像另有规定（肖像权人）",
+   "infringePortraitRightByVilification": "以丑化、污损或者利用信息技术手段伪造等方式侵害他人肖像权（行为人，肖像权人）",
+   "makeUseOrPublicizePortrait": "制作、使用、公开他人肖像（行为人，肖像权人）",
+   "portraitWorkRightHolder": "是肖像作品权利人（权利人，肖像作品）",
+   "useOrPublicizePortraitWork": "以发表、复制、发行、出租、展览等方式使用或者公开肖像作品（行为人，肖像权人，肖像作品）",
+   "personalStudyArtClassOrResearchUse": "为个人学习、艺术欣赏、课堂教学或者科学研究，在必要范围内使用肖像权人已经公开的肖像（行为人，肖像权人）",
+   "newsReportUse": "为实施新闻报道，不可避免地制作、使用、公开肖像（行为人，肖像权人）",
+   "stateOrgDutyUse": "国家机关为依法履行职责，在必要范围内制作、使用、公开肖像（行为人，肖像权人）",
+   "publicEnvironmentDisplayUse": "为展示特定公共环境，不可避免地制作、使用、公开肖像（行为人，肖像权人）",
+   "publicInterestOrHolderInterestUse": "为维护公共利益或者肖像权人合法权益，制作、使用、公开肖像的其他行为（行为人，肖像权人）",
+   "makeUseOrPublicizePortraitWithoutConsent": "可以不经肖像权人同意制作、使用、公开其肖像（行为人，肖像权人）",
+   "portraitLicenseContract": "是肖像许可使用合同（合同）",
+   "portraitRightHolder": "是肖像权人（肖像权人，合同）",
+   "partyTo": "是合同当事人（当事人，合同）",
+   "noAgreedOrUnclearLicenseTerm": "对肖像许可使用期限没有约定或者约定不明确（合同）",
+   "agreedLicenseTerm": "对肖像许可使用期限有明确约定（合同）",
+   "terminatePortraitLicenseContractAtAnyTime": "随时解除肖像许可使用合同（当事人，合同）",
+   "terminatePortraitLicenseContract": "解除肖像许可使用合同（肖像权人，合同）",
+   "terminatedPortraitLicenseContract": "肖像许可使用合同已因解除而终止（肖像权人，合同）",
+   "exercisesTerminationRight": "行使肖像许可使用合同解除权（当事人，合同）",
+   "interpretInFavorOfPortraitHolder": "作出有利于肖像权人的解释（合同，肖像权人）"
+  }
+ }
+}

@@ -1,0 +1,1020 @@
+{
+ "card:g2378": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "他人无权占有不动产或者动产时，物权人能否请求返还原物、向谁请求",
+     "rules": [
+      "c235-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "请求权人是该物的物权人（享有物权）",
+     "rules": [
+      "c235-1"
+     ]
+    },
+    {
+     "text": "被请求人是现在的无权占有人，即其占有该物没有合法权源",
+     "rules": [
+      "c235-1"
+     ]
+    },
+    {
+     "text": "标的物为不动产或者动产",
+     "rules": [
+      "c235-1"
+     ]
+    },
+    {
+     "text": "（笔记）请求权人须为具有占有权能的物权人，如所有权人、用益物权人、质权人、留置权人（有争议）等；抵押权人等不具占有权能的物权人不能主张",
+     "rules": [
+      "c235-possessory"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "原物已毁损灭失、不再存在的，不能请求返还原物（返还原物以原物存在为前提）",
+     "rules": [
+      "c235-nonexistent"
+     ]
+    },
+    {
+     "text": "第三人已依善意取得制度取得该物的，原权利人的返还原物请求权受阻断",
+     "rules": [
+      "c235-goodfaith"
+     ]
+    },
+    {
+     "text": "抵押权人不具占有权能，不能主张返还原物请求权",
+     "rules": [
+      "c235-possessory"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "权利人可以请求无权占有人返还原物；该请求权不以占有人主观有过错为要件",
+     "rules": [
+      "c235-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "笔记关于“须有占有权能”的限制优先于第235条的一般表述，抵押权人不得请求返还原物",
+     "rules": [
+      "c235-possessory"
+     ]
+    },
+    {
+     "text": "原物不存在、第三人善意取得等阻却事由优先于第235条的返还请求权",
+     "rules": [
+      "c235-nonexistent",
+      "c235-goodfaith"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第234条为物权确认请求权，解决权利归属争议，不以他人占有为前提",
+     "rules": []
+    },
+    {
+     "text": "第236条为排除妨害、消除危险请求权，针对妨害行为或潜在危险，而非占有状态本身",
+     "rules": []
+    },
+    {
+     "text": "第237条为修理、重作、更换、恢复原状、赔偿损失等请求权，针对物的毁损，而非返还占有",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称返还原物请求权不适用诉讼时效（第196条），该规则不在第235条，属另一制度，本卡片不形式化",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片0156#1 把“转让返还原物请求权”的指示交付记为第228条，实为第227条（第228条为占有改定）；该制度不属于第235条，本卡片不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c235-1",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(R,T)",
+     "possessesWithoutAuthority(P,T)",
+     "immovableOrMovable(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "claimReturnOfProperty(R,T)"
+     }
+    ],
+    "note": "无权占有不动产或者动产的，权利人可以请求返还原物",
+    "auth": "npc"
+   },
+   {
+    "key": "c235-possessory",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(R,T)",
+     "-hasPossessoryPower(R,T)"
+    ],
+    "heads": [
+     "-claimReturnOfProperty(R,T)"
+    ],
+    "note": "笔记（学理）：返还原物请求权人须为具有占有权能的物权人，抵押权人等不具占有权能者不能主张",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c235-nonexistent",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(R,T)",
+     "-propertyExists(T)"
+    ],
+    "heads": [
+     "-claimReturnOfProperty(R,T)"
+    ],
+    "note": "笔记：返还原物以原物存在为前提，原物已毁损灭失的不能请求返还原物",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c235-goodfaith",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(R,T)",
+     "acquiredByGoodFaith(A,T)"
+    ],
+    "heads": [
+     "-claimReturnOfProperty(R,T)"
+    ],
+    "note": "笔记：返还原物请求权受善意取得等制度限制，第三人已善意取得该物的，原权利人不能请求返还",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c235-possessory",
+    "c235-1",
+    "笔记：请求权人须为具有占有权能的物权人，抵押权人等不具占有权能者不能主张返还原物"
+   ],
+   [
+    "c235-nonexistent",
+    "c235-1",
+    "原物已毁损灭失的，返还原物请求权无从行使"
+   ],
+   [
+    "c235-goodfaith",
+    "c235-1",
+    "第三人已依善意取得制度取得该物的，原权利人的返还原物请求权被阻断"
+   ]
+  ],
+  "predicates": {
+   "possessesWithoutAuthority": "无权占有（占有人，物）：占有该物没有合法权源",
+   "claimReturnOfProperty": "请求返还原物（权利人，物）",
+   "hasPossessoryPower": "其物权包含占有权能（权利人，物）",
+   "propertyExists": "原物仍然存在（物）",
+   "acquiredByGoodFaith": "依善意取得制度取得该物（取得人，物）"
+  }
+ },
+ "card:g2376": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物权受到侵害或者有被侵害的危险时，权利人可主张哪些物权保护方式（排除妨害、消除危险、修理重作更换、恢复原状、损害赔偿或其他民事责任），以及这些方式能否合并适用",
+     "rules": [
+      "c236-1",
+      "c236-2",
+      "c237-1",
+      "c238-1",
+      "c238-2",
+      "c239-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "他人的行为妨害物权，或者可能妨害物权；妨害指以占有以外的方式影响物权的圆满状态，危险指尚未实际发生但有可能出现的妨害",
+     "rules": [
+      "c236-1",
+      "c236-2",
+      "c236-def-obstruction",
+      "c236-def-danger"
+     ]
+    },
+    {
+     "text": "不动产或者动产因他人行为而毁损",
+     "rules": [
+      "c237-1"
+     ]
+    },
+    {
+     "text": "侵害物权并造成权利人损害",
+     "rules": [
+      "c238-1",
+      "c238-2"
+     ]
+    },
+    {
+     "text": "请求人须为物权人：所有人可以主张，直接占有物的用益物权人也可以主张",
+     "rules": [
+      "c236-1",
+      "c236-2",
+      "c236-usufruct",
+      "c237-1",
+      "c238-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "妨害已通过其他方式完全消除、权利人明知且自愿容忍该妨害、或妨害属合法使用范围（如相邻关系）的，请求不能成立（LEGO/学理，条文未规定）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "权利人可以请求排除妨害；可能妨害物权的，可以请求消除危险",
+     "rules": [
+      "c236-1",
+      "c236-2",
+      "c236-usufruct"
+     ]
+    },
+    {
+     "text": "造成不动产或者动产毁损的，权利人可以依法请求修理、重作、更换或者恢复原状；修理、重作、更换一般适用于动产，不动产以恢复原状（如修复被污染的土地）救济",
+     "rules": [
+      "c237-1",
+      "c237-movable",
+      "c237-immovable"
+     ]
+    },
+    {
+     "text": "侵害物权造成损害的，权利人可以依法请求损害赔偿，也可以依法请求承担其他民事责任",
+     "rules": [
+      "c238-1",
+      "c238-2"
+     ]
+    },
+    {
+     "text": "本章规定的物权保护方式可以单独适用，也可以根据权利被侵害的情形合并适用",
+     "rules": [
+      "c239-1"
+     ]
+    },
+    {
+     "text": "物权受到侵害的，权利人可以通过和解、调解、仲裁、诉讼等途径解决（宣示性、程序性规定，不产生独立请求权，不设规则）",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "物权保护方式可以合并适用，主张其中一种不排除其他方式（第239条）",
+     "rules": [
+      "c239-1"
+     ]
+    },
+    {
+     "text": "学理/LEGO：能够恢复原状时，恢复原状优先于损害赔偿；恢复原状不能或显失经济时转为赔偿（条文未规定，仅供参考）",
+     "rules": [
+      "c237-1",
+      "c238-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第233条仅列举和解、调解、仲裁、诉讼等救济途径，属宣示性、程序性规定，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "第235条返还原物请求权以他人无权占有为前提；第236条不以占有为前提，重在排除妨害、消除危险",
+     "rules": []
+    },
+    {
+     "text": "第237条针对已经发生的毁损，救济方式是修理、重作、更换或恢复原状；第236条针对尚未造成毁损的妨害或危险",
+     "rules": [
+      "c237-1",
+      "c236-1"
+     ]
+    },
+    {
+     "text": "第238条以实际损害为要件，须证明损失；第236条无须损害发生，仅有妨害或危险即可主张",
+     "rules": [
+      "c238-1"
+     ]
+    },
+    {
+     "text": "物权请求权不以过错为要件，是物权支配效力的体现（学理/LEGO，条文未规定）",
+     "rules": []
+    },
+    {
+     "text": "第239条第2款“第二分编 所有权”为编章标题，无规范内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c236-1",
+    "srcs": [
+     "art236-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "obstructsRealRight(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimRemovalOfObstruction(P,A,X)"
+     }
+    ],
+    "note": "妨害物权的，权利人可以请求排除妨害",
+    "auth": "npc"
+   },
+   {
+    "key": "c236-2",
+    "srcs": [
+     "art236-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "mayObstructRealRight(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimEliminationOfDanger(P,A,X)"
+     }
+    ],
+    "note": "可能妨害物权的，权利人可以请求消除危险",
+    "auth": "npc"
+   },
+   {
+    "key": "c236-def-obstruction",
+    "srcs": [
+     "art236-1"
+    ],
+    "body": [
+     "affectsFullEnjoymentByNonPossession(A,X)"
+    ],
+    "heads": [
+     "obstructsRealRight(A,X)"
+    ],
+    "note": "笔记对“妨害”的界定：以占有以外的方式影响物权的圆满状态",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c236-def-danger",
+    "srcs": [
+     "art236-1"
+    ],
+    "body": [
+     "possibleFutureObstruction(A,X)"
+    ],
+    "heads": [
+     "mayObstructRealRight(A,X)"
+    ],
+    "note": "笔记对“危险”的界定：尚未实际发生但有可能出现的妨害",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c236-usufruct",
+    "srcs": [
+     "art236-1"
+    ],
+    "body": [
+     "usufructuaryOf(P,X)",
+     {
+      "or": [
+       "obstructsRealRight(A,X)",
+       "mayObstructRealRight(A,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimRemovalOfObstructionOrEliminationOfDanger(P,A,X)"
+     }
+    ],
+    "note": "笔记：排除妨害、消除危险的请求不仅可由所有人提出，直接占有物的用益物权人也可以提出",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c237-1",
+    "srcs": [
+     "art237-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "damagedRealRightObject(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimRepairRemakeReplaceOrRestoration(P,A,X)"
+     }
+    ],
+    "note": "造成不动产或者动产毁损的，权利人可以依法请求修理、重作、更换或者恢复原状",
+    "auth": "npc"
+   },
+   {
+    "key": "c237-movable",
+    "srcs": [
+     "art237-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "damagedRealRightObject(A,X)",
+     "movable(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimRepairRemakeReplace(P,A,X)"
+     }
+    ],
+    "note": "笔记/学理：修理、重作、更换一般适用于动产（条文未限定标的物）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c237-immovable",
+    "srcs": [
+     "art237-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "damagedRealRightObject(A,X)",
+     "immovable(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimRestoration(P,A,X)"
+     }
+    ],
+    "note": "笔记/学理：不动产以恢复原状方式救济，如对被污染的土地在可能情况下应予修复",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c238-1",
+    "srcs": [
+     "art238-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "infringesRealRight(A,X)",
+     "damage(P,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimDamagesForRealRightInfringement(P,A,X)"
+     }
+    ],
+    "note": "侵害物权造成权利人损害的，权利人可以依法请求损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c238-2",
+    "srcs": [
+     "art238-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     "infringesRealRight(A,X)",
+     "damage(P,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimOtherCivilLiability(P,A,X)"
+     }
+    ],
+    "note": "侵害物权造成损害的，权利人可以依法请求承担其他民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c239-1",
+    "srcs": [
+     "art239-1"
+    ],
+    "body": [
+     "realRightOf(P,X)",
+     {
+      "or": [
+       "obstructsRealRight(A,X)",
+       "mayObstructRealRight(A,X)",
+       "damagedRealRightObject(A,X)",
+       "infringesRealRight(A,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "combineRealRightProtectionRemedies(P,A,X)"
+     }
+    ],
+    "note": "本章规定的物权保护方式可以单独适用，也可以根据权利被侵害的情形合并适用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "obstructsRealRight": "妨害物权（行为人，物）",
+   "mayObstructRealRight": "可能妨害物权（行为人，物）",
+   "affectsFullEnjoymentByNonPossession": "以占有以外的方式影响物权的圆满状态（行为人，物）",
+   "possibleFutureObstruction": "尚未实际发生但有可能出现的妨害（行为人，物）",
+   "claimRemovalOfObstruction": "请求排除妨害（权利人，妨害人，物）",
+   "claimEliminationOfDanger": "请求消除危险（权利人，危险制造者，物）",
+   "claimRemovalOfObstructionOrEliminationOfDanger": "请求排除妨害或者消除危险（权利人，相对人，物）",
+   "damagedRealRightObject": "不动产或者动产被毁损（行为人，物）",
+   "claimRepairRemakeReplaceOrRestoration": "请求修理、重作、更换或者恢复原状（权利人，行为人，物）",
+   "claimRepairRemakeReplace": "请求修理、重作或者更换（权利人，行为人，动产）",
+   "claimRestoration": "请求恢复原状（权利人，行为人，不动产）",
+   "infringesRealRight": "侵害物权（侵害人，物）",
+   "claimDamagesForRealRightInfringement": "就侵害物权请求损害赔偿（权利人，侵害人，物）",
+   "claimOtherCivilLiability": "请求承担其他民事责任（权利人，侵害人，物）",
+   "combineRealRightProtectionRemedies": "合并适用物权保护方式（权利人，相对人，物）"
+  }
+ },
+ "card:g2371": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物权归属、内容发生争议时，利害关系人如何请求确认物权",
+     "rules": [
+      "c234-1"
+     ]
+    },
+    {
+     "text": "物权被无权占有、妨害、可能妨害、毁损或侵害时，物权人可以主张哪些保护方式",
+     "rules": [
+      "c235-1",
+      "c236-1",
+      "c236-2",
+      "c237-1",
+      "c238-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "物权归属不明，或对物权是否存在、内容发生争执",
+     "rules": [
+      "c234-1"
+     ]
+    },
+    {
+     "text": "请求确认者为利害关系人（真正的物权人）",
+     "rules": [
+      "c234-1"
+     ]
+    },
+    {
+     "text": "请求人为物权人，相对人为无权占有不动产或动产的占有人",
+     "rules": [
+      "c235-1"
+     ]
+    },
+    {
+     "text": "存在妨害物权的行为",
+     "rules": [
+      "c236-1"
+     ]
+    },
+    {
+     "text": "存在可能妨害物权的危险",
+     "rules": [
+      "c236-2"
+     ]
+    },
+    {
+     "text": "不动产或者动产被毁损",
+     "rules": [
+      "c237-1"
+     ]
+    },
+    {
+     "text": "他人侵害物权，并因此造成权利人损害",
+     "rules": [
+      "c238-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "抵押权人不具有占有权能，不能主张返还原物请求权（学理）",
+     "rules": [
+      "c235-doc-mortgagee"
+     ]
+    },
+    {
+     "text": "原物已不存在，返还原物请求权无从行使（学理）",
+     "rules": [
+      "c235-doc-noexist"
+     ]
+    },
+    {
+     "text": "第三人已善意取得标的物，原权利人的返还原物请求权受限制（学理）",
+     "rules": [
+      "c235-doc-goodfaith"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "利害关系人可以请求确认权利，包括确认所有权与确认他物权",
+     "rules": [
+      "c234-1"
+     ]
+    },
+    {
+     "text": "权利人可以请求无权占有人返还原物",
+     "rules": [
+      "c235-1"
+     ]
+    },
+    {
+     "text": "权利人可以请求排除妨害",
+     "rules": [
+      "c236-1"
+     ]
+    },
+    {
+     "text": "物权有被妨害之虞的，权利人可以请求消除危险",
+     "rules": [
+      "c236-2"
+     ]
+    },
+    {
+     "text": "权利人可以依法请求修理、重作、更换或者恢复原状",
+     "rules": [
+      "c237-1"
+     ]
+    },
+    {
+     "text": "权利人可以依法请求损害赔偿，也可以依法请求承担其他民事责任",
+     "rules": [
+      "c238-1"
+     ]
+    },
+    {
+     "text": "上述物权保护方式可以单独适用，也可以根据权利被侵害的情形合并适用",
+     "rules": [
+      "c239-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "确认物权通常是其他物权保护的前提，权利基础不明时应优先确认（学理）",
+     "rules": [
+      "c234-1"
+     ]
+    },
+    {
+     "text": "返还原物等物权请求权不适用诉讼时效，而损害赔偿请求权适用诉讼时效（学理）",
+     "rules": [
+      "c235-doc-limitation",
+      "c238-doc-limitation"
+     ]
+    },
+    {
+     "text": "抵押权人无占有权能、原物已不存在、第三人善意取得等情形，排除或限制返还原物请求权（学理）",
+     "rules": [
+      "c235-doc-mortgagee",
+      "c235-doc-noexist",
+      "c235-doc-goodfaith"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "确认物权之诉解决权利归属与内容，损害赔偿之诉补偿经济损失，二者功能不同",
+     "rules": []
+    },
+    {
+     "text": "返还原物、排除妨害、消除危险等属基于物权的请求权，与基于合同或侵权的债权请求权不同",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称修理、重作、更换仅适用于动产，法条未作此限制；恢复原状对不动产同样适用，该说法仅作参考",
+     "rules": []
+    },
+    {
+     "text": "第239条第2款“第二分编 所有权”为分编标题，非规范内容，不产生规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c234-1",
+    "srcs": [
+     "art234"
+    ],
+    "body": [
+     "disputedOwnership(O)",
+     "interestedParty(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "claimConfirmationOf(P,O)"
+     }
+    ],
+    "note": "因物权的归属、内容发生争议的，利害关系人可以请求确认权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c235-1",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "immovableOrMovable(O)",
+     "possessedByNonEntitled(Q,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimPropertyReturn(P,O)"
+     }
+    ],
+    "note": "无权占有不动产或者动产的，权利人可以请求返还原物",
+    "auth": "npc"
+   },
+   {
+    "key": "c236-1",
+    "srcs": [
+     "art236"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "obstructsRealRight(Q,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "seeksCessationOrRemoval(P)"
+     }
+    ],
+    "note": "妨害物权的，权利人可以请求排除妨害",
+    "auth": "npc"
+   },
+   {
+    "key": "c236-2",
+    "srcs": [
+     "art236"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "mayObstructRealRight(Q,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "seeksCessationOrRemoval(P)"
+     }
+    ],
+    "note": "可能妨害物权的，权利人可以请求消除危险",
+    "auth": "npc"
+   },
+   {
+    "key": "c237-1",
+    "srcs": [
+     "art237"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "damagedProperty(O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "claimRepairReplacementOrRestoration(P,O)"
+     }
+    ],
+    "note": "造成不动产或者动产毁损的，权利人可以依法请求修理、重作、更换或者恢复原状",
+    "auth": "npc"
+   },
+   {
+    "key": "c238-1",
+    "srcs": [
+     "art238"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "infringesRealRight(Q,O)",
+     "damage(P,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimDamagesOrOtherCivilLiability(P,Q)"
+     },
+     "damagesClaimOf(P,O)"
+    ],
+    "note": "侵害物权造成权利人损害的，权利人可以依法请求损害赔偿，也可以依法请求承担其他民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c239-1",
+    "srcs": [
+     "art239-1"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     {
+      "or": [
+       "claimConfirmationOf(P,O)",
+       "claimPropertyReturn(P,O)",
+       "seeksCessationOrRemoval(P)",
+       "claimRepairReplacementOrRestoration(P,O)",
+       "damagesClaimOf(P,O)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyProtectionMethodsAloneOrCombined(P)"
+     }
+    ],
+    "note": "本章规定的物权保护方式可以单独适用，也可以根据权利被侵害的情形合并适用",
+    "auth": "npc"
+   },
+   {
+    "key": "c235-doc-mortgagee",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "mortgageeOf(M,O)"
+    ],
+    "heads": [
+     "-claimPropertyReturn(M,O)"
+    ],
+    "note": "学理：抵押权人不具有占有权能，不能主张返还原物请求权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c235-doc-noexist",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "propertyNoLongerExists(O)"
+    ],
+    "heads": [
+     "-claimPropertyReturn(P,O)"
+    ],
+    "note": "学理：原物已不存在的，返还原物请求权无从行使",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c235-doc-goodfaith",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     "acquiredByGoodFaith(Q,O)"
+    ],
+    "heads": [
+     "-claimPropertyReturn(P,O)"
+    ],
+    "note": "学理：第三人已善意取得的，原权利人的返还原物请求权受限制",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c235-doc-limitation",
+    "srcs": [
+     "art235"
+    ],
+    "body": [
+     "claimPropertyReturn(P,O)"
+    ],
+    "heads": [
+     "exemptFromLimitation(P)"
+    ],
+    "note": "学理：返还原物等物权请求权不适用诉讼时效",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c238-doc-limitation",
+    "srcs": [
+     "art238"
+    ],
+    "body": [
+     "claimDamagesOrOtherCivilLiability(P,Q)"
+    ],
+    "heads": [
+     "subjectToLimitation(P)"
+    ],
+    "note": "学理：损害赔偿请求权属债权请求权，适用诉讼时效",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c235-doc-mortgagee",
+    "c235-1",
+    "抵押权人不具有占有权能，不能主张返还原物请求权（学理）"
+   ],
+   [
+    "c235-doc-noexist",
+    "c235-1",
+    "原物已不存在，返还原物请求权无从行使（学理）"
+   ],
+   [
+    "c235-doc-goodfaith",
+    "c235-1",
+    "第三人善意取得标的物，原权利人的返还原物请求权受限制（学理）"
+   ]
+  ],
+  "predicates": {
+   "claimConfirmationOf": "请求确认物权（利害关系人，标的物或权利）",
+   "possessedByNonEntitled": "无权占有（占有人，不动产或动产）",
+   "obstructsRealRight": "妨害物权（行为人，标的物）",
+   "mayObstructRealRight": "可能妨害物权（行为人，标的物）",
+   "damagedProperty": "不动产或者动产被毁损",
+   "claimRepairReplacementOrRestoration": "请求修理、重作、更换或者恢复原状（权利人，标的物）",
+   "infringesRealRight": "侵害物权（行为人，标的物）",
+   "claimDamagesOrOtherCivilLiability": "请求损害赔偿或者承担其他民事责任（权利人，行为人）",
+   "damagesClaimOf": "就标的物被侵害享有损害赔偿请求权（权利人，标的物）",
+   "applyProtectionMethodsAloneOrCombined": "单独或者合并适用物权保护方式（权利人）",
+   "mortgageeOf": "是抵押权人（抵押权人，抵押财产）",
+   "propertyNoLongerExists": "原物已不存在",
+   "acquiredByGoodFaith": "已善意取得（受让人，标的物）",
+   "subjectToLimitation": "该请求权适用诉讼时效"
+  }
+ }
+}

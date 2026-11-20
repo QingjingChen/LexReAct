@@ -1,0 +1,1225 @@
+{
+ "art:1036": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "处理个人信息时，行为人具备哪些情形可以不承担民事责任",
+     "rules": [
+      "c1036-1",
+      "c1036-2",
+      "c1036-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "在该自然人或者其监护人同意的范围内，合理实施处理行为",
+     "rules": [
+      "c1036-1"
+     ]
+    },
+    {
+     "text": "合理处理该自然人自行公开的或者其他已经合法公开的信息",
+     "rules": [
+      "c1036-2"
+     ]
+    },
+    {
+     "text": "为维护公共利益或者该自然人合法权益，合理实施的其他处理行为",
+     "rules": [
+      "c1036-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第2项免责的除外：该自然人明确拒绝处理，或者处理该信息侵害其重大利益",
+     "rules": [
+      "c1036-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "行为人对该自然人不承担民事责任",
+     "rules": [
+      "c1036-1",
+      "c1036-2",
+      "c1036-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把三项事由统称为“不承担民事责任的例外”，并特别标注第2项的两项除外（明确拒绝、侵害重大利益）；第1项、第3项没有这样的除外",
+     "rules": [
+      "c1036-2"
+     ]
+    },
+    {
+     "text": "本条是责任阻却事由，不是处理个人信息的合法性依据；处理行为本身仍须符合第1035条合法、正当、必要、诚信等原则（学理）",
+     "rules": []
+    },
+    {
+     "text": "本条只免除民事责任，不影响依法承担行政责任、刑事责任等其他法律责任（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1036-1",
+    "srcs": [
+     "art1036-1"
+    ],
+    "body": [
+     "processesPersonalInfo(A,I)",
+     "personalInformationOf(I,P)",
+     {
+      "or": [
+       "consentedBySubject(A,P)",
+       "consentedByGuardian(A,P)"
+      ]
+     },
+     "withinConsentScope(A,I)",
+     "reasonableProcessing(A,I)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(A,P)"
+    ],
+    "note": "在该自然人或者其监护人同意的范围内合理处理其个人信息的，行为人不承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1036-2",
+    "srcs": [
+     "art1036-1"
+    ],
+    "body": [
+     "processesPersonalInfo(A,I)",
+     "personalInformationOf(I,P)",
+     {
+      "or": [
+       "selfPublicized(I)",
+       "lawfullyPublicized(I)"
+      ]
+     },
+     "reasonableProcessing(A,I)",
+     "~explicitlyRefused(P,I)",
+     "~infringesMajorInterest(A,P,I)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(A,P)"
+    ],
+    "note": "合理处理该自然人自行公开或者其他已经合法公开的信息的，不承担民事责任；但该自然人明确拒绝或者处理该信息侵害其重大利益的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1036-3",
+    "srcs": [
+     "art1036-1"
+    ],
+    "body": [
+     "processesPersonalInfo(A,I)",
+     "personalInformationOf(I,P)",
+     {
+      "or": [
+       "forPublicInterestPurpose(A)",
+       "protectsSubjectInterest(A,P)"
+      ]
+     },
+     "reasonableProcessing(A,I)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(A,P)"
+    ],
+    "note": "为维护公共利益或者该自然人合法权益，合理实施的其他处理行为的，不承担民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "processesPersonalInfo": "处理个人信息（行为人，信息）",
+   "consentedBySubject": "该自然人同意处理（行为人，自然人）",
+   "consentedByGuardian": "该自然人的监护人同意处理（行为人，自然人）",
+   "withinConsentScope": "在同意范围内实施处理行为（行为人，信息）",
+   "reasonableProcessing": "合理实施处理行为（行为人，信息）",
+   "selfPublicized": "该信息由该自然人自行公开",
+   "lawfullyPublicized": "该信息已由他人合法公开",
+   "explicitlyRefused": "该自然人明确拒绝处理该信息（自然人，信息）",
+   "infringesMajorInterest": "处理该信息侵害该自然人的重大利益（行为人，自然人，信息）",
+   "protectsSubjectInterest": "为维护该自然人的合法权益（行为人，自然人）"
+  }
+ },
+ "art:1039": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关、承担行政职能的法定机构及其工作人员，对履行职责过程中知悉的自然人隐私和个人信息负有何种义务",
+     "rules": [
+      "c1039-subject",
+      "c1039-staff",
+      "c1039-1",
+      "c1039-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "义务主体之一：国家机关、承担行政职能的法定机构",
+     "rules": [
+      "c1039-subject"
+     ]
+    },
+    {
+     "text": "义务主体之二：上述机关、机构的工作人员",
+     "rules": [
+      "c1039-staff"
+     ]
+    },
+    {
+     "text": "知悉的对象是自然人的隐私或者个人信息，且系在履行职责过程中知悉",
+     "rules": [
+      "c1039-1",
+      "c1039-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对知悉的自然人隐私和个人信息应当予以保密",
+     "rules": [
+      "c1039-1"
+     ]
+    },
+    {
+     "text": "不得泄露或者向他人非法提供该隐私和个人信息",
+     "rules": [
+      "c1039-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记将本条列为“个人信息保护的内容”之下的“国家机关及其工作人员的保密义务”；本条只设保密义务与禁止泄露、非法提供的义务，未设但书例外，也未规定违反义务的法律责任，责任问题依其他法律规定处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1039-subject",
+    "srcs": [
+     "art1039-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateOrgan(S)",
+       "statutoryAgencyWithAdministrativeFunction(S)"
+      ]
+     }
+    ],
+    "heads": [
+     "confidentialityObligor(S)"
+    ],
+    "note": "保密义务主体之一：国家机关、承担行政职能的法定机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c1039-staff",
+    "srcs": [
+     "art1039-1"
+    ],
+    "body": [
+     "employeeOf(S,O)",
+     {
+      "or": [
+       "stateOrgan(O)",
+       "statutoryAgencyWithAdministrativeFunction(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "confidentialityObligor(S)"
+    ],
+    "note": "保密义务主体之二：国家机关、承担行政职能的法定机构的工作人员",
+    "auth": "npc"
+   },
+   {
+    "key": "c1039-1",
+    "srcs": [
+     "art1039-1"
+    ],
+    "body": [
+     "confidentialityObligor(S)",
+     "knowsInDuty(S,I)",
+     {
+      "or": [
+       "privacyOf(I,N)",
+       "personalInformationOf(I,N)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "N",
+      "content": "keepConfidentialInfo(S,I)"
+     }
+    ],
+    "note": "对履行职责过程中知悉的自然人隐私和个人信息，应当予以保密",
+    "auth": "npc"
+   },
+   {
+    "key": "c1039-2",
+    "srcs": [
+     "art1039-1"
+    ],
+    "body": [
+     "confidentialityObligor(S)",
+     "knowsInDuty(S,I)",
+     {
+      "or": [
+       "privacyOf(I,N)",
+       "personalInformationOf(I,N)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "N",
+      "content": "leakOrIllegallyProvideInfo(S,I)"
+     }
+    ],
+    "note": "不得泄露或者向他人非法提供知悉的自然人隐私和个人信息",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "confidentialityObligor": "是国家机关、承担行政职能的法定机构或者其工作人员（保密义务主体）",
+   "knowsInDuty": "在履行职责过程中知悉（主体，隐私或个人信息）",
+   "privacyOf": "是自然人的隐私（隐私，自然人）",
+   "keepConfidentialInfo": "对知悉的自然人隐私、个人信息予以保密（主体，隐私或个人信息）",
+   "leakOrIllegallyProvideInfo": "泄露或者向他人非法提供知悉的自然人隐私、个人信息（主体，隐私或个人信息）"
+  }
+ },
+ "art:1037": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人对其个人信息享有哪些查阅、复制、更正、删除的权利，可以向谁主张",
+     "rules": [
+      "c1037-1a",
+      "c1037-1b",
+      "c1037-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利人为自然人，义务人为其个人信息的处理者",
+     "rules": [
+      "c1037-1a",
+      "c1037-1b",
+      "c1037-2"
+     ]
+    },
+    {
+     "text": "主张更正权，须发现其个人信息有错误",
+     "rules": [
+      "c1037-1b"
+     ]
+    },
+    {
+     "text": "主张删除权，须发现信息处理者违反法律、行政法规的规定或者双方的约定处理其个人信息",
+     "rules": [
+      "c1037-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "有权依法向信息处理者查阅或者复制其个人信息",
+     "rules": [
+      "c1037-1a"
+     ]
+    },
+    {
+     "text": "有权提出异议并请求及时采取更正等必要措施",
+     "rules": [
+      "c1037-1b"
+     ]
+    },
+    {
+     "text": "有权请求信息处理者及时删除其个人信息",
+     "rules": [
+      "c1037-2"
+     ]
+    },
+    {
+     "text": "与上述权利相对应，信息处理者应当及时采取更正、删除等必要措施（学理推论，条文只写自然人的权利）",
+     "rules": [
+      "c1037-duty"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把本条分为“查阅、抄录、复制、更正”与“删除”两项内容；条文用语是“复制”而非“抄录”，且更正以“发现信息有错误”为前提、删除以“违反法律、行政法规的规定或者双方的约定处理”为前提，二者事由不同",
+     "rules": []
+    },
+    {
+     "text": "查阅、复制须“依法”进行，即依照法律、行政法规规定的条件和程序行使，规则未将其形式化为独立要件，仅在说明中提示",
+     "rules": []
+    },
+    {
+     "text": "对信用评价的异议及更正、删除，适用第1029条的特别规定；本条是个人信息保护的一般规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1037-1a",
+    "srcs": [
+     "art1037-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "infoProcessorOf(P,N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": "P",
+      "content": "inspectOrCopyPersonalInfo(N,P)"
+     }
+    ],
+    "note": "自然人可以依法向信息处理者查阅或者复制其个人信息；“依法”指依照法律、行政法规规定的条件和程序",
+    "auth": "npc"
+   },
+   {
+    "key": "c1037-1b",
+    "srcs": [
+     "art1037-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "infoProcessorOf(P,N)",
+     "infoError(N,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": "P",
+      "content": "objectAndRequestCorrection(N,P)"
+     }
+    ],
+    "note": "自然人发现其个人信息有错误的，有权提出异议并请求及时采取更正等必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1037-2",
+    "srcs": [
+     "art1037-2"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "infoProcessorOf(P,N)",
+     {
+      "or": [
+       "violatesLawOnProcessing(P,N)",
+       "violatesAgreementOnProcessing(P,N)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": "P",
+      "content": "requestTimelyDeletion(N,P)"
+     }
+    ],
+    "note": "自然人发现信息处理者违反法律、行政法规的规定或者双方的约定处理其个人信息的，有权请求及时删除",
+    "auth": "npc"
+   },
+   {
+    "key": "c1037-duty",
+    "srcs": [
+     "art1037-1",
+     "art1037-2"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "infoProcessorOf(P,N)",
+     {
+      "or": [
+       "objectAndRequestCorrection(N,P)",
+       "requestTimelyDeletion(N,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "takeCorrectionOrDeletionMeasures(P,N)"
+     }
+    ],
+    "note": "学理：条文以“请求及时采取更正等必要措施”“请求及时删除”表述，隐含信息处理者相应的作为义务，故写成义务规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "infoProcessorOf": "（2参数：信息处理者，自然人）是自然人个人信息的处理者",
+   "inspectOrCopyPersonalInfo": "（2参数：自然人，信息处理者）依法查阅或者复制其个人信息",
+   "infoError": "（2参数：自然人，信息处理者）其个人信息有错误",
+   "objectAndRequestCorrection": "（2参数：自然人，信息处理者）提出异议并请求及时采取更正等必要措施",
+   "violatesLawOnProcessing": "（2参数：信息处理者，自然人）违反法律、行政法规的规定处理其个人信息",
+   "violatesAgreementOnProcessing": "（2参数：信息处理者，自然人）违反双方的约定处理其个人信息",
+   "requestTimelyDeletion": "（2参数：自然人，信息处理者）请求及时删除其个人信息"
+  }
+ },
+ "card:g6382": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人隐私权的享有、隐私的界定，以及何种行为构成对隐私权的侵害",
+     "rules": [
+      "c1032-1",
+      "c1032-2",
+      "c1032-2i",
+      "c1032-3",
+      "c1033-1",
+      "c1033-2",
+      "c1033-3",
+      "c1033-4",
+      "c1033-5",
+      "c1033-6"
+     ]
+    },
+    {
+     "text": "个人信息的界定与保护、私密信息的法律适用顺序，以及处理个人信息的规则和信息处理者的义务",
+     "rules": [
+      "c1034-1",
+      "c1034-2",
+      "c1034-3a",
+      "c1034-3b",
+      "c1035-1",
+      "c1035-2",
+      "c1035-3",
+      "c1035-4",
+      "c1035-5",
+      "c1035-6",
+      "c1038-1",
+      "c1038-2",
+      "c1038-3",
+      "c1038-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体为自然人；义务主体为任何组织或者个人",
+     "rules": [
+      "c1032-1",
+      "c1032-3"
+     ]
+    },
+    {
+     "text": "隐私是自然人的私人生活安宁和不愿为他人知晓的私密空间、私密活动、私密信息",
+     "rules": [
+      "c1032-2",
+      "c1032-2i"
+     ]
+    },
+    {
+     "text": "第1033条列举的六类行为：以电话、短信、即时通讯工具、电子邮件、传单等方式侵扰私人生活安宁；进入、拍摄、窥视住宅、宾馆房间等私密空间；拍摄、窥视、窃听、公开私密活动；拍摄、窥视身体私密部位；处理私密信息；以其他方式侵害隐私权",
+     "rules": [
+      "c1033-1",
+      "c1033-2",
+      "c1033-3",
+      "c1033-4",
+      "c1033-5",
+      "c1033-6"
+     ]
+    },
+    {
+     "text": "个人信息是以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人的各种信息",
+     "rules": [
+      "c1034-2"
+     ]
+    },
+    {
+     "text": "处理个人信息应遵循合法、正当、必要原则，不得过度处理，并征得同意、公开处理规则、明示目的方式和范围、不违反法律行政法规和双方约定",
+     "rules": [
+      "c1035-1",
+      "c1035-2",
+      "c1035-3",
+      "c1035-4",
+      "c1035-5"
+     ]
+    },
+    {
+     "text": "处理包括个人信息的收集、存储、使用、加工、传输、提供、公开等",
+     "rules": [
+      "c1035-6"
+     ]
+    },
+    {
+     "text": "行为人为信息处理者，且涉及其收集、存储的个人信息；发生或者可能发生泄露、篡改、丢失",
+     "rules": [
+      "c1038-1",
+      "c1038-2",
+      "c1038-3",
+      "c1038-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "除法律另有规定或者权利人明确同意外，不得实施第1033条所列各项行为",
+     "rules": [
+      "c1033-1",
+      "c1033-2",
+      "c1033-3",
+      "c1033-4",
+      "c1033-5",
+      "c1033-6"
+     ]
+    },
+    {
+     "text": "处理个人信息应征得该自然人或者其监护人同意，但法律、行政法规另有规定的除外",
+     "rules": [
+      "c1035-2"
+     ]
+    },
+    {
+     "text": "未经自然人同意不得向他人非法提供其个人信息，但经过加工无法识别特定个人且不能复原的除外",
+     "rules": [
+      "c1038-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "任何组织或者个人不得以刺探、侵扰、泄露、公开等方式侵害他人的隐私权",
+     "rules": [
+      "c1032-3"
+     ]
+    },
+    {
+     "text": "实施第1033条所列行为的，构成对他人隐私权的侵害",
+     "rules": [
+      "c1033-1",
+      "c1033-2",
+      "c1033-3",
+      "c1033-4",
+      "c1033-5",
+      "c1033-6"
+     ]
+    },
+    {
+     "text": "自然人的个人信息受法律保护",
+     "rules": [
+      "c1034-1"
+     ]
+    },
+    {
+     "text": "个人信息中的私密信息适用有关隐私权的规定；隐私权规定没有规定的，适用有关个人信息保护的规定",
+     "rules": [
+      "c1034-3a",
+      "c1034-3b"
+     ]
+    },
+    {
+     "text": "处理个人信息应当遵循合法、正当、必要原则，不得过度处理，并征得同意、公开处理规则、明示目的方式和范围、不违反法律行政法规和双方约定",
+     "rules": [
+      "c1035-1",
+      "c1035-2",
+      "c1035-3",
+      "c1035-4",
+      "c1035-5"
+     ]
+    },
+    {
+     "text": "信息处理者不得泄露或者篡改其收集、存储的个人信息；未经同意不得向他人非法提供其个人信息",
+     "rules": [
+      "c1038-1",
+      "c1038-2"
+     ]
+    },
+    {
+     "text": "信息处理者应当采取技术措施和其他必要措施保障信息安全；发生或者可能发生泄露、篡改、丢失的，应当及时采取补救措施、告知自然人并向有关主管部门报告",
+     "rules": [
+      "c1038-3",
+      "c1038-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "私密信息优先适用有关隐私权的规定，隐私权规定没有规定时才适用有关个人信息保护的规定",
+     "rules": [
+      "c1034-3a",
+      "c1034-3b"
+     ]
+    },
+    {
+     "text": "第1033条是第1032条第1款禁止性规定的具体化，认定侵害隐私权的行为时优先适用具体列举",
+     "rules": [
+      "c1033-1",
+      "c1032-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1032条第2款界定隐私，第1034条第2款界定个人信息；二者交叉于私密信息，第1034条第3款确定适用顺序",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“信息已进入公共领域且非因故意扩大传播”为排除事由，法条未作规定，仅作学理参考",
+     "rules": []
+    },
+    {
+     "text": "笔记仅就第1033条第1项（侵扰私人生活安宁）展开，其余各项以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1032-1",
+    "srcs": [
+     "art1032-1"
+    ],
+    "body": [
+     "naturalPerson(N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "enjoyPrivacyRight(N)"
+     }
+    ],
+    "note": "自然人享有隐私权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1032-2",
+    "srcs": [
+     "art1032-2"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     {
+      "or": [
+       "privateLifeTranquility(N)",
+       "privateSpace(N)",
+       "privateActivity(N)"
+      ]
+     }
+    ],
+    "heads": [
+     "privacy(N)"
+    ],
+    "note": "自然人的私人生活安宁、私密空间、私密活动属于隐私",
+    "auth": "npc"
+   },
+   {
+    "key": "c1032-2i",
+    "srcs": [
+     "art1032-2"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "privateInfoOf(I,N)"
+    ],
+    "heads": [
+     "privacy(N)"
+    ],
+    "note": "自然人不愿为他人知晓的私密信息属于隐私",
+    "auth": "npc"
+   },
+   {
+    "key": "c1032-3",
+    "srcs": [
+     "art1032-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "infringePrivacy(P,N)"
+     }
+    ],
+    "note": "任何组织或者个人不得以刺探、侵扰、泄露、公开等方式侵害他人的隐私权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-1",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "disturbsTranquility(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "以电话、短信、即时通讯工具、电子邮件、传单等方式侵扰他人私人生活安宁的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-2",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "entersOrPeepsPrivateSpace(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "进入、拍摄、窥视他人住宅、宾馆房间等私密空间的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-3",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "peepsOrRecordsPrivateActivity(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "拍摄、窥视、窃听、公开他人私密活动的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-4",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "peepsPrivateBodyPart(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "拍摄、窥视他人身体私密部位的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-5",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "processesPrivateInfo(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "处理他人私密信息的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1033-6",
+    "srcs": [
+     "art1033-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personOrOrg(P)",
+     "otherPrivacyInfringement(P,N)",
+     "~lawProvidesOtherwiseOnPrivacy(P,N)",
+     "~explicitConsent(N,P)"
+    ],
+    "heads": [
+     "infringesPrivacy(P,N)"
+    ],
+    "note": "以其他方式侵害他人隐私权的，构成侵害隐私权；法律另有规定或权利人明确同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1034-1",
+    "srcs": [
+     "art1034-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "personalInformationOf(I,N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "personalInformationProtected(I,N)"
+     }
+    ],
+    "note": "自然人的个人信息受法律保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c1034-2",
+    "srcs": [
+     "art1034-2"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     "recordedInfoIdentifies(I,N)"
+    ],
+    "heads": [
+     "personalInformationOf(I,N)"
+    ],
+    "note": "个人信息是以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人的各种信息",
+    "auth": "npc"
+   },
+   {
+    "key": "c1034-3a",
+    "srcs": [
+     "art1034-3"
+    ],
+    "body": [
+     "personalInformationOf(I,N)",
+     "privateInfoOf(I,N)"
+    ],
+    "heads": [
+     "applyPrivacyProvisions(I)"
+    ],
+    "note": "个人信息中的私密信息，适用有关隐私权的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1034-3b",
+    "srcs": [
+     "art1034-3"
+    ],
+    "body": [
+     "personalInformationOf(I,N)",
+     "privateInfoOf(I,N)",
+     "noPrivacyProvisionApplies(I)"
+    ],
+    "heads": [
+     "applyPersonalInfoProvisions(I)"
+    ],
+    "note": "私密信息在隐私权规定没有规定时，适用有关个人信息保护的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-1",
+    "srcs": [
+     "art1035-1"
+    ],
+    "body": [
+     "processesPersonalInfo(P,N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "processPerLawfulNecessaryPrinciples(P,N)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "excessivelyProcess(P,N)"
+     }
+    ],
+    "note": "处理个人信息应当遵循合法、正当、必要原则，不得过度处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-2",
+    "srcs": [
+     "art1035-1"
+    ],
+    "body": [
+     "processesPersonalInfo(P,N)",
+     "~lawOrAdminRegulationProvidesOtherwiseOnConsent(N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "obtainConsent(P,N)"
+     }
+    ],
+    "note": "处理个人信息应当征得该自然人或者其监护人同意，法律、行政法规另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-3",
+    "srcs": [
+     "art1035-1"
+    ],
+    "body": [
+     "processesPersonalInfo(P,N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "discloseProcessingRules(P,N)"
+     }
+    ],
+    "note": "处理个人信息应当公开处理信息的规则",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-4",
+    "srcs": [
+     "art1035-1"
+    ],
+    "body": [
+     "processesPersonalInfo(P,N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "statePurposeScopeAndMethod(P,N)"
+     }
+    ],
+    "note": "处理个人信息应当明示处理信息的目的、方式和范围",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-5",
+    "srcs": [
+     "art1035-1"
+    ],
+    "body": [
+     "processesPersonalInfo(P,N)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "violateLawOrAgreement(P,N)"
+     }
+    ],
+    "note": "处理个人信息不得违反法律、行政法规的规定和双方的约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1035-6",
+    "srcs": [
+     "art1035-2"
+    ],
+    "body": [
+     "personalInformationOf(I,N)",
+     "processesInfo(P,I)"
+    ],
+    "heads": [
+     "processesPersonalInfo(P,N)"
+    ],
+    "note": "个人信息的处理包括收集、存储、使用、加工、传输、提供、公开等；实施上述行为者即为处理该自然人个人信息的处理者",
+    "auth": "npc"
+   },
+   {
+    "key": "c1038-1",
+    "srcs": [
+     "art1038-1"
+    ],
+    "body": [
+     "infoProcessorOf(P,N)",
+     "personalInformationOf(I,N)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "leakOrTamperInfo(P,I)"
+     }
+    ],
+    "note": "信息处理者不得泄露或者篡改其收集、存储的个人信息",
+    "auth": "npc"
+   },
+   {
+    "key": "c1038-2",
+    "srcs": [
+     "art1038-1"
+    ],
+    "body": [
+     "infoProcessorOf(P,N)",
+     "personalInformationOf(I,N)",
+     "~consentGiven(N,P)",
+     "~processedUnidentifiableAndIrreversible(I)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "illegallySellProvideDisclose(P,I)"
+     }
+    ],
+    "note": "未经自然人同意，不得向他人非法提供其个人信息，但经过加工无法识别特定个人且不能复原的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1038-3",
+    "srcs": [
+     "art1038-2"
+    ],
+    "body": [
+     "infoProcessorOf(P,N)",
+     "personalInformationOf(I,N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "takeSecurityMeasures(P,I)"
+     }
+    ],
+    "note": "信息处理者应当采取技术措施和其他必要措施，确保其收集、存储的个人信息安全，防止信息泄露、篡改、丢失",
+    "auth": "npc"
+   },
+   {
+    "key": "c1038-4",
+    "srcs": [
+     "art1038-2"
+    ],
+    "body": [
+     "infoProcessorOf(P,N)",
+     "personalInformationOf(I,N)",
+     "infoLeakedTamperedOrLost(P,I)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "N",
+      "content": "takeRemedialMeasuresAndReport(P,N)"
+     }
+    ],
+    "note": "发生或者可能发生个人信息泄露、篡改、丢失的，应当及时采取补救措施，按照规定告知自然人并向有关主管部门报告",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1034-3a",
+    "c1035-1",
+    "个人信息中的私密信息优先适用有关隐私权的规定，隐私权规定没有规定的才适用有关个人信息保护的规定（第1034条第3款）"
+   ],
+   [
+    "c1033-5",
+    "c1035-1",
+    "处理私密信息同时构成侵害隐私权的，优先适用第1033条第5项的禁止性规定，而非一般个人信息处理规则"
+   ]
+  ],
+  "predicates": {
+   "enjoyPrivacyRight": "享有隐私权（自然人）",
+   "privateLifeTranquility": "私人生活安宁（自然人）",
+   "privateSpace": "私密空间（自然人）",
+   "privateActivity": "私密活动（自然人）",
+   "privateInfoOf": "是自然人不愿为他人知晓的私密信息（信息，自然人）",
+   "privacy": "属于受法律保护的隐私（自然人）",
+   "infringePrivacy": "以刺探、侵扰、泄露、公开等方式侵害他人隐私权（行为人，权利人）",
+   "infringesPrivacy": "构成对他人隐私权的侵害（行为人，权利人）",
+   "disturbsTranquility": "以电话、短信、即时通讯工具、电子邮件、传单等方式侵扰他人私人生活安宁（行为人，权利人）",
+   "entersOrPeepsPrivateSpace": "进入、拍摄、窥视他人住宅、宾馆房间等私密空间（行为人，权利人）",
+   "peepsOrRecordsPrivateActivity": "拍摄、窥视、窃听、公开他人私密活动（行为人，权利人）",
+   "peepsPrivateBodyPart": "拍摄、窥视他人身体的私密部位（行为人，权利人）",
+   "processesPrivateInfo": "处理他人的私密信息（行为人，权利人）",
+   "otherPrivacyInfringement": "以其他方式侵害他人隐私权（行为人，权利人）",
+   "lawProvidesOtherwiseOnPrivacy": "法律对实施该行为另有规定（行为人，权利人）",
+   "explicitConsent": "权利人明确同意该行为（权利人，行为人）",
+   "personalInformationProtected": "个人信息受法律保护（信息，自然人）",
+   "recordedInfoIdentifies": "以电子或者其他方式记录、能够单独或者与其他信息结合识别特定自然人的信息（信息，自然人）",
+   "applyPrivacyProvisions": "适用有关隐私权的规定（信息）",
+   "noPrivacyProvisionApplies": "隐私权规定对该事项没有规定（信息）",
+   "applyPersonalInfoProvisions": "适用有关个人信息保护的规定（信息）",
+   "processesPersonalInfo": "处理该自然人的个人信息（处理者，自然人）",
+   "processesInfo": "对个人信息实施收集、存储、使用、加工、传输、提供、公开等处理行为（处理者，信息）",
+   "processPerLawfulNecessaryPrinciples": "遵循合法、正当、必要原则处理个人信息（处理者，自然人）",
+   "excessivelyProcess": "过度处理个人信息（处理者，自然人）",
+   "lawOrAdminRegulationProvidesOtherwiseOnConsent": "法律、行政法规对征得同意另有规定（自然人）",
+   "obtainConsent": "征得该自然人或者其监护人同意（处理者，自然人）",
+   "discloseProcessingRules": "公开处理信息的规则（处理者，自然人）",
+   "statePurposeScopeAndMethod": "明示处理信息的目的、方式和范围（处理者，自然人）",
+   "violateLawOrAgreement": "违反法律、行政法规的规定和双方的约定（处理者，自然人）",
+   "infoProcessorOf": "是处理该自然人个人信息的信息处理者（处理者，自然人）",
+   "leakOrTamperInfo": "泄露或者篡改其收集、存储的个人信息（处理者，信息）",
+   "consentGiven": "自然人已同意（自然人，处理者）",
+   "processedUnidentifiableAndIrreversible": "经过加工无法识别特定个人且不能复原（信息）",
+   "takeSecurityMeasures": "采取技术措施和其他必要措施确保其收集、存储的个人信息安全，防止信息泄露、篡改、丢失（处理者，信息）",
+   "infoLeakedTamperedOrLost": "发生或者可能发生个人信息泄露、篡改、丢失（处理者，信息）",
+   "takeRemedialMeasuresAndReport": "及时采取补救措施，按照规定告知自然人并向有关主管部门报告（处理者，自然人）"
+  }
+ }
+}

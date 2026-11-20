@@ -1,0 +1,3543 @@
+{
+ "card:g2836": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "共有物的管理、管理费用及其他负担的分担、以及共有物的分割请求权如何确定",
+     "rules": [
+      "c300-1",
+      "c300-2",
+      "c302-1",
+      "c302-2",
+      "c302-3",
+      "c303-1",
+      "c303-2",
+      "c303-3",
+      "c303-4",
+      "c303-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "共有人就共有物的管理有约定且约定明确",
+     "rules": [
+      "c300-1"
+     ]
+    },
+    {
+     "text": "共有人就共有物的管理没有约定或者约定不明确",
+     "rules": [
+      "c300-2"
+     ]
+    },
+    {
+     "text": "共有人对共有物的管理费用以及其他负担有约定且约定明确",
+     "rules": [
+      "c302-1"
+     ]
+    },
+    {
+     "text": "对费用及其他负担没有约定或者约定不明确，且为按份共有",
+     "rules": [
+      "c302-2"
+     ]
+    },
+    {
+     "text": "对费用及其他负担没有约定或者约定不明确，且为共同共有",
+     "rules": [
+      "c302-3"
+     ]
+    },
+    {
+     "text": "共有人约定不得分割共有的不动产或者动产，以维持共有关系",
+     "rules": [
+      "c303-1"
+     ]
+    },
+    {
+     "text": "没有约定不得分割或者约定不明确，按份共有人可随时请求分割；共同共有人在共有基础丧失或者有重大理由需要分割时可请求分割",
+     "rules": [
+      "c303-3",
+      "c303-4"
+     ]
+    },
+    {
+     "text": "因分割造成其他共有人损害",
+     "rules": [
+      "c303-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽约定不得分割，但共有人有重大理由需要分割的，可以请求分割",
+     "rules": [
+      "c303-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有约定的，共有人按照约定管理共有物",
+     "rules": [
+      "c300-1"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确的，各共有人都有管理的权利和义务",
+     "rules": [
+      "c300-2"
+     ]
+    },
+    {
+     "text": "有约定的，按照约定负担共有物的管理费用及其他负担",
+     "rules": [
+      "c302-1"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确的，按份共有人按照其份额负担，共同共有人共同负担",
+     "rules": [
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "约定不得分割的，共有人不得请求分割，应当按照约定维持共有关系",
+     "rules": [
+      "c303-1"
+     ]
+    },
+    {
+     "text": "有重大理由需要分割的，可以请求分割；按份共有人可随时请求分割；共同共有人在共有基础丧失或者有重大理由需要分割时可以请求分割",
+     "rules": [
+      "c303-2",
+      "c303-3",
+      "c303-4"
+     ]
+    },
+    {
+     "text": "因分割造成其他共有人损害的，应当给予赔偿",
+     "rules": [
+      "c303-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "共有人有重大理由需要分割的，其分割请求权优先于“约定不得分割”的约束",
+     "rules": [
+      "c303-2"
+     ]
+    },
+    {
+     "text": "有约定时按约定管理、按约定负担费用，优先于无约定时的法定分担规则",
+     "rules": [
+      "c300-1",
+      "c302-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：共同共有人在共有关系存续期间不享有转让权和优先购买权，但可依第303条主张特定情形下的分割请求权；第303条本身只规定分割请求权，未规定转让权、优先购买权",
+     "rules": []
+    },
+    {
+     "text": "笔记：处分共有财产或者对共有财产作重大修缮、变更性质或者用途，应当经全体共同共有人同意，但共有人之间另有约定的除外（第301条），不在本行挂载法条范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记：因共有的不动产或者动产产生的债权债务，对外共同共有人享有连带债权、承担连带债务，内部除另有约定外共同享有债权、承担债务（第307条），本行法条未涉及",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片讲的是建筑物区分所有中业主对共有部分的权利义务不可放弃，与本行第300、302、303条的一般共有规则不同，仅作参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c300-1",
+    "srcs": [
+     "art300-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "managementAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "managePerAgreement(P,K)"
+     }
+    ],
+    "note": "共有人按照约定管理共有的不动产或者动产",
+    "auth": "npc"
+   },
+   {
+    "key": "c300-2",
+    "srcs": [
+     "art300-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "~managementAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "manage(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "manage(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，各共有人都有管理的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-1",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "costAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostPerAgreement(P,K)"
+     }
+    ],
+    "note": "对共有物的管理费用以及其他负担有约定的，按照其约定负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-2",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "byShares(K)",
+     "~costAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostByShare(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人按照其份额负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-3",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "jointOwnership(K)",
+     "~costAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostJointly(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人共同负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-1",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "agreedNotToPartition(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "约定不得分割以维持共有关系的，应当按照约定，共有人不得请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-2",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "agreedNotToPartition(K)",
+     "majorReasonForPartition(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "约定不得分割的但书：共有人有重大理由需要分割的，可以请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-3",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "byShares(K)",
+     "~agreedNotToPartition(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人可以随时请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-4",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "jointOwnership(K)",
+     "~agreedNotToPartition(K)",
+     {
+      "or": [
+       "basisLost(K)",
+       "majorReasonForPartition(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人在共有的基础丧失或者有重大理由需要分割时可以请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-5",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwned(K)",
+     "coOwner(P,K)",
+     "partitionCausesDamageToOthers(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "compensateOtherCoOwners(P,K)"
+     }
+    ],
+    "note": "因分割造成其他共有人损害的，应当给予赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c303-2",
+    "c303-1",
+    "第303条但书：共有人有重大理由需要分割的，可以请求分割，排除“约定不得分割”的约束"
+   ]
+  ],
+  "predicates": {
+   "coOwned": "是共有的不动产或者动产（共有物）",
+   "coOwner": "是共有人（共有人，共有物）",
+   "managementAgreed": "共有人就共有物的管理有约定且约定明确",
+   "managePerAgreement": "按照约定管理共有物（共有人，共有物）",
+   "manage": "管理共有物（共有人，共有物）",
+   "costAgreed": "共有人对共有物的管理费用以及其他负担有约定且约定明确",
+   "bearCostPerAgreement": "按照约定负担共有物的管理费用及其他负担（共有人，共有物）",
+   "bearCostByShare": "按份共有人按照其份额负担共有物的管理费用及其他负担（共有人，共有物）",
+   "bearCostJointly": "共同共有人共同负担共有物的管理费用及其他负担（共有人，共有物）",
+   "byShares": "是按份共有（共有物）",
+   "jointOwnership": "是共同共有（共有物）",
+   "agreedNotToPartition": "共有人约定不得分割共有物以维持共有关系",
+   "majorReasonForPartition": "有重大理由需要分割（共有人，共有物）",
+   "requestPartition": "请求分割共有物（共有人，共有物）",
+   "basisLost": "共有的基础丧失（共有物）",
+   "partitionCausesDamageToOthers": "因分割造成其他共有人损害（请求分割的共有人，共有物）",
+   "compensateOtherCoOwners": "就分割造成的损害向其他共有人给予赔偿（请求分割的共有人，共有物）"
+  }
+ },
+ "card:g2864": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "共有物如何管理、如何处分与重大修缮、管理费用及其他负担如何分担、共有人何时可以请求分割及如何分割；婚姻关系存续期间夫妻一方可否请求分割共同财产；因加工、附合、混合产生之物的归属与补偿",
+     "rules": [
+      "c300-1",
+      "c300-2",
+      "c301-1",
+      "c302-1",
+      "c303-1",
+      "c304-1",
+      "c1066-1",
+      "c322-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "共有人就共有物的管理有约定的，按约定管理；没有约定或者约定不明确的，各共有人都有管理的权利和义务",
+     "rules": [
+      "c300-1",
+      "c300-2"
+     ]
+    },
+    {
+     "text": "处分共有的不动产或者动产，或者对其作重大修缮、变更性质或者用途",
+     "rules": [
+      "c301-1"
+     ]
+    },
+    {
+     "text": "经占份额三分之二以上的按份共有人同意，或者经全体共同共有人同意",
+     "rules": [
+      "c301-2"
+     ]
+    },
+    {
+     "text": "对共有物的管理费用以及其他负担有约定的按约定；没有约定或者约定不明确的，按份共有人按份额负担，共同共有人共同负担",
+     "rules": [
+      "c302-1",
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "共有人约定不得分割以维持共有关系；没有约定或者约定不明确的，按份共有人可随时请求分割，共同共有人在共有基础丧失或者有重大理由需要分割时可请求分割",
+     "rules": [
+      "c303-1",
+      "c303-3",
+      "c303-4"
+     ]
+    },
+    {
+     "text": "共有人达不成协议；共有物可以分割且不会因分割减损价值，或者难以分割、因分割会减损价值",
+     "rules": [
+      "c304-2",
+      "c304-3"
+     ]
+    },
+    {
+     "text": "婚姻关系存续期间：一方有隐藏、转移、变卖、毁损、挥霍夫妻共同财产或者伪造夫妻共同债务等严重损害夫妻共同财产利益的行为；或者一方负有法定扶养义务的人患重大疾病需要医治，另一方不同意支付相关医疗费用",
+     "rules": [
+      "c1066-1",
+      "c1066-2"
+     ]
+    },
+    {
+     "text": "因加工、附合、混合产生之物的归属有约定的按约定；没有约定或者约定不明确的，依照法律规定；法律没有规定的，按照充分发挥物的效用以及保护无过错当事人的原则确定",
+     "rules": [
+      "c322-1",
+      "c322-2",
+      "c322-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "共有人之间另有约定的，处分共有物及重大修缮、变更性质或者用途无须经三分之二以上按份共有人或者全体共同共有人同意",
+     "rules": [
+      "c301-1"
+     ]
+    },
+    {
+     "text": "约定不得分割的，不得分割；但共有人有重大理由需要分割的，可以请求分割",
+     "rules": [
+      "c303-1",
+      "c303-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有约定的按约定管理共有物；没有约定或者约定不明确的，各共有人均享有管理的权利并负担管理的义务",
+     "rules": [
+      "c300-1",
+      "c300-2"
+     ]
+    },
+    {
+     "text": "处分共有物或者作重大修缮、变更性质、用途，应当取得法定比例的共有人同意",
+     "rules": [
+      "c301-1",
+      "c301-2"
+     ]
+    },
+    {
+     "text": "管理费用及其他负担按约定负担；没有约定或者约定不明确的，按份共有人按份额负担，共同共有人共同负担",
+     "rules": [
+      "c302-1",
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "符合条件时可以请求分割共有物；因分割造成其他共有人损害的，应当给予赔偿",
+     "rules": [
+      "c303-2",
+      "c303-3",
+      "c303-4",
+      "c303-5"
+     ]
+    },
+    {
+     "text": "共有人可以协商确定分割方式；达不成协议的，可以实物分割的应当实物分割，难以分割或者会减损价值的应当对折价、拍卖、变卖所得价款分割；分割所得财产有瑕疵的，其他共有人应当分担损失",
+     "rules": [
+      "c304-1",
+      "c304-2",
+      "c304-3",
+      "c304-4"
+     ]
+    },
+    {
+     "text": "夫妻一方可以向人民法院请求分割共同财产",
+     "rules": [
+      "c1066-1",
+      "c1066-2"
+     ]
+    },
+    {
+     "text": "添附物的归属依约定、法律或者效用与保护无过错当事人原则确定；因一方过错或者因确定归属造成另一方损害的，应当给予赔偿或者补偿",
+     "rules": [
+      "c322-1",
+      "c322-2",
+      "c322-3",
+      "c322-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“有重大理由需要分割”的例外优先于“约定不得分割”的限制，此时共有人仍可请求分割",
+     "rules": [
+      "c303-2"
+     ]
+    },
+    {
+     "text": "共有人之间另有约定优先于第301条关于三分之二以上按份共有人或者全体共同共有人同意的法定要求",
+     "rules": [
+      "c301-1"
+     ]
+    },
+    {
+     "text": "第1066条是婚姻关系存续期间分割夫妻共同财产的特别规定，优先于第303条关于共同共有分割的一般规则",
+     "rules": [
+      "c1066-1",
+      "c1066-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第301条是共有物处分与重大修缮的同意规则，侧重管理权限，不是分割请求权；第304条是分割方式与瑕疵分担，属分割的执行规则",
+     "rules": []
+    },
+    {
+     "text": "第302条是共有物管理费用及其他负担的分担规则，与第303条的分割请求权不同",
+     "rules": []
+    },
+    {
+     "text": "第322条位于第二编通则的“添附”部分，材料中“第三分编 用益物权”系排版残留，不属于第322条内容",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“因分割将造成显著价值减损且无替代方案”可限制分割请求权，法条无此限制；第304条仅规定分割方式的选择，不影响分割请求权本身",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c300-1",
+    "srcs": [
+     "art300-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "managementAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "managePerAgreement(P,K)"
+     }
+    ],
+    "note": "共有人按照约定管理共有的不动产或者动产",
+    "auth": "npc"
+   },
+   {
+    "key": "c300-2",
+    "srcs": [
+     "art300-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "managementAgreedUnclear(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "manageCoOwnedProperty(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "manageCoOwnedProperty(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，各共有人都有管理的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c301-1",
+    "srcs": [
+     "art301-1"
+    ],
+    "body": [
+     "coOwnedProperty(K)",
+     {
+      "or": [
+       "disposalOfCoOwnedProperty(A,K)",
+       "majorRepairOrChangeOfNatureOrUse(A,K)"
+      ]
+     },
+     "~coOwnersAgreedOtherwise(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "obtainConsentOfCoOwners(A,K)"
+     }
+    ],
+    "note": "处分共有物或者作重大修缮、变更性质、用途，应当经法定比例的共有人同意，但共有人之间另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c301-2",
+    "srcs": [
+     "art301-1"
+    ],
+    "body": [
+     "coOwnedProperty(K)",
+     {
+      "or": [
+       "consentByTwoThirdsShareCoOwners(K)",
+       "consentByAllJointCoOwners(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "coOwnerConsentObtained(K)"
+    ],
+    "note": "同意的法定标准：占份额三分之二以上的按份共有人同意，或者全体共同共有人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-1",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "burdenAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearBurdenPerAgreement(P,K)"
+     }
+    ],
+    "note": "共有物的管理费用以及其他负担有约定的，按照约定负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-2",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "bySharesCoOwner(P,K)",
+     "burdenAgreedUnclear(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearBurdenByShare(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人按照其份额负担管理费用及其他负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-3",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "jointCoOwner(P,K)",
+     "burdenAgreedUnclear(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearBurdenJointly(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人共同负担管理费用及其他负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-1",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "agreedNotToPartition(K)",
+     "~majorReasonForPartition(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "partitionCoOwnedProperty(P,K)"
+     }
+    ],
+    "note": "约定不得分割以维持共有关系的，应当按照约定，不得分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-2",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "agreedNotToPartition(K)",
+     "majorReasonForPartition(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "虽有不得分割的约定，共有人有重大理由需要分割的，可以请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-3",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "bySharesCoOwner(P,K)",
+     "partitionAgreedUnclear(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人可以随时请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-4",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "jointCoOwner(P,K)",
+     "partitionAgreedUnclear(K)",
+     {
+      "or": [
+       "foundationLost(K)",
+       "majorReasonForPartition(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人在共有的基础丧失或者有重大理由需要分割时可以请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-5",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "partitionCausesDamageToOtherCoOwners(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "compensateOtherCoOwners(P,K)"
+     }
+    ],
+    "note": "因分割造成其他共有人损害的，应当给予赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-1",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwner(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "agreePartitionMethod(P,K)"
+     }
+    ],
+    "note": "共有人可以协商确定分割方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-2",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "partitionByAgreementFailed(K)",
+     "divisibleWithoutLoss(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "partitionInKind(K)"
+     }
+    ],
+    "note": "达不成协议，共有物可以分割且不会因分割减损价值的，应当对实物予以分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-3",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "partitionByAgreementFailed(K)",
+     "hardToDivideOrWouldReduceValue(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "partitionProceeds(K)"
+     }
+    ],
+    "note": "难以分割或者因分割会减损价值的，应当对折价或者拍卖、变卖取得的价款予以分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-4",
+    "srcs": [
+     "art304-2"
+    ],
+    "body": [
+     "coOwner(P,K)",
+     "coOwner(O,K)",
+     "partitionedPropertyDefective(O,K)",
+     "-isSelf(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "shareLoss(P,K)"
+     }
+    ],
+    "note": "共有人分割所得的不动产或者动产有瑕疵的，其他共有人应当分担损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c1066-1",
+    "srcs": [
+     "art1066-1"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "marriageSubsisting(A,B)",
+     "seriouslyHarmsMaritalCommunityProperty(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requestPartitionOfMaritalProperty(A)"
+     }
+    ],
+    "note": "婚姻关系存续期间，一方有隐藏、转移、变卖、毁损、挥霍夫妻共同财产或者伪造夫妻共同债务等严重损害夫妻共同财产利益行为的，另一方可以向人民法院请求分割共同财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1066-2",
+    "srcs": [
+     "art1066-1"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "marriageSubsisting(A,B)",
+     "owesMaintenance(A,D)",
+     "seriousIllnessNeedsTreatment(D)",
+     "otherSpouseRefusesMedicalExpenses(B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requestPartitionOfMaritalProperty(A)"
+     }
+    ],
+    "note": "婚姻关系存续期间，一方负有法定扶养义务的人患重大疾病需要医治，另一方不同意支付相关医疗费用的，可以向人民法院请求分割共同财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c322-1",
+    "srcs": [
+     "art322-1"
+    ],
+    "body": [
+     "newThingFromProcessing(X)",
+     "ownershipAgreed(X)"
+    ],
+    "heads": [
+     "ownershipDeterminedPerAgreement(X)"
+    ],
+    "note": "因加工、附合、混合产生的物的归属，有约定的按照约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c322-2",
+    "srcs": [
+     "art322-1"
+    ],
+    "body": [
+     "newThingFromProcessing(X)",
+     "ownershipAgreedUnclear(X)",
+     "lawProvidesOwnership(X)"
+    ],
+    "heads": [
+     "ownershipDeterminedPerLaw(X)"
+    ],
+    "note": "没有约定或者约定不明确的，依照法律规定确定添附物的归属",
+    "auth": "npc"
+   },
+   {
+    "key": "c322-3",
+    "srcs": [
+     "art322-1"
+    ],
+    "body": [
+     "newThingFromProcessing(X)",
+     "ownershipAgreedUnclear(X)",
+     "-lawProvidesOwnership(X)"
+    ],
+    "heads": [
+     "ownershipDeterminedByUtilityAndNoFault(X)"
+    ],
+    "note": "没有约定或者约定不明确且法律没有规定的，按照充分发挥物的效用以及保护无过错当事人的原则确定归属",
+    "auth": "npc"
+   },
+   {
+    "key": "c322-4",
+    "srcs": [
+     "art322-1"
+    ],
+    "body": [
+     "newThingFromProcessing(X)",
+     {
+      "or": [
+       "faultCausesLoss(P,X)",
+       "ownershipDeterminationCausesLoss(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "payCompensationOrReimbursement(P,X)"
+     }
+    ],
+    "note": "因一方当事人的过错或者确定物的归属造成另一方当事人损害的，应当给予赔偿或者补偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c303-2",
+    "c303-1",
+    "共有人有重大理由需要分割的，例外排除“约定不得分割”的限制，可以请求分割"
+   ],
+   [
+    "c1066-1",
+    "c303-4",
+    "第1066条是婚姻关系存续期间分割夫妻共同财产的特别规定，优先于共同共有分割的一般规则"
+   ],
+   [
+    "c1066-2",
+    "c303-4",
+    "第1066条是婚姻关系存续期间分割夫妻共同财产的特别规定，优先于共同共有分割的一般规则"
+   ]
+  ],
+  "predicates": {
+   "coOwnedProperty": "共有的不动产或者动产（共有物）",
+   "coOwner": "是共有物的共有人（参数1：共有人，参数2：共有物）",
+   "bySharesCoOwner": "是按份共有人（参数1：共有人，参数2：共有物）",
+   "jointCoOwner": "是共同共有人（参数1：共有人，参数2：共有物）",
+   "managementAgreed": "共有人就共有物的管理有约定（参数1：共有物）",
+   "managementAgreedUnclear": "共有人就共有物的管理没有约定或者约定不明确（参数1：共有物）",
+   "managePerAgreement": "按照约定管理共有物（参数1：共有人，参数2：共有物）",
+   "manageCoOwnedProperty": "对共有物享有管理的权利并负担管理的义务（参数1：共有人，参数2：共有物）",
+   "disposalOfCoOwnedProperty": "处分共有的不动产或者动产（参数1：行为人，参数2：共有物）",
+   "majorRepairOrChangeOfNatureOrUse": "对共有物作重大修缮、变更性质或者用途（参数1：行为人，参数2：共有物）",
+   "coOwnersAgreedOtherwise": "共有人之间就处分、重大修缮另有约定（参数1：共有物）",
+   "obtainConsentOfCoOwners": "应当取得法定比例的共有人同意（参数1：行为人，参数2：共有物）",
+   "consentByTwoThirdsShareCoOwners": "经占份额三分之二以上的按份共有人同意（参数1：共有物）",
+   "consentByAllJointCoOwners": "经全体共同共有人同意（参数1：共有物）",
+   "coOwnerConsentObtained": "已取得法定比例的共有人同意（参数1：共有物）",
+   "burdenAgreed": "共有人对共有物的管理费用以及其他负担有约定（参数1：共有物）",
+   "burdenAgreedUnclear": "共有人对共有物的管理费用以及其他负担没有约定或者约定不明确（参数1：共有物）",
+   "bearBurdenPerAgreement": "按照约定负担共有物的管理费用及其他负担（参数1：共有人，参数2：共有物）",
+   "bearBurdenByShare": "按照其份额负担共有物的管理费用及其他负担（参数1：按份共有人，参数2：共有物）",
+   "bearBurdenJointly": "共同负担共有物的管理费用及其他负担（参数1：共同共有人，参数2：共有物）",
+   "agreedNotToPartition": "共有人约定不得分割共有物以维持共有关系（参数1：共有物）",
+   "majorReasonForPartition": "共有人有重大理由需要分割（参数1：共有物）",
+   "partitionCoOwnedProperty": "分割共有的不动产或者动产（参数1：共有人，参数2：共有物）",
+   "requestPartition": "请求分割共有物（参数1：共有人，参数2：共有物）",
+   "partitionAgreedUnclear": "就共有物的分割没有约定或者约定不明确（参数1：共有物）",
+   "foundationLost": "共有的基础丧失（参数1：共有物）",
+   "partitionCausesDamageToOtherCoOwners": "因分割造成其他共有人损害（参数1：共有人，参数2：共有物）",
+   "compensateOtherCoOwners": "向其他共有人赔偿因分割造成的损害（参数1：共有人，参数2：共有物）",
+   "agreePartitionMethod": "协商确定共有物的分割方式（参数1：共有人，参数2：共有物）",
+   "partitionByAgreementFailed": "共有人就分割方式达不成协议（参数1：共有物）",
+   "divisibleWithoutLoss": "共有物可以分割且不会因分割减损价值（参数1：共有物）",
+   "hardToDivideOrWouldReduceValue": "共有物难以分割或者因分割会减损价值（参数1：共有物）",
+   "partitionInKind": "对实物予以分割（参数1：共有物）",
+   "partitionProceeds": "对折价或者拍卖、变卖取得的价款予以分割（参数1：共有物）",
+   "partitionedPropertyDefective": "分割所得的不动产或者动产有瑕疵（参数1：分得该财产的共有人，参数2：共有物）",
+   "shareLoss": "分担因分割所得财产瑕疵造成的损失（参数1：其他共有人，参数2：共有物）",
+   "marriageSubsisting": "婚姻关系存续期间（参数1、参数2：夫妻双方）",
+   "seriouslyHarmsMaritalCommunityProperty": "有隐藏、转移、变卖、毁损、挥霍夫妻共同财产或者伪造夫妻共同债务等严重损害夫妻共同财产利益的行为（参数1：夫妻一方）",
+   "seriousIllnessNeedsTreatment": "患重大疾病需要医治（参数1：负有法定扶养义务的相对人）",
+   "otherSpouseRefusesMedicalExpenses": "不同意支付相关医疗费用（参数1：夫妻另一方）",
+   "requestPartitionOfMaritalProperty": "向人民法院请求分割夫妻共同财产（参数1：夫妻一方）",
+   "newThingFromProcessing": "因加工、附合、混合而产生的物（参数1：该物）",
+   "ownershipAgreed": "就该物的归属有约定（参数1：添附物）",
+   "ownershipAgreedUnclear": "就该物的归属没有约定或者约定不明确（参数1：添附物）",
+   "lawProvidesOwnership": "法律对该物的归属有规定（参数1：添附物）",
+   "ownershipDeterminedPerAgreement": "该物归属按照约定确定（参数1：添附物）",
+   "ownershipDeterminedPerLaw": "该物归属依照法律规定确定（参数1：添附物）",
+   "ownershipDeterminedByUtilityAndNoFault": "该物归属按照充分发挥物的效用以及保护无过错当事人的原则确定（参数1：添附物）",
+   "faultCausesLoss": "因一方当事人的过错造成另一方当事人损害（参数1：有过错的一方，参数2：添附物）",
+   "ownershipDeterminationCausesLoss": "因确定物的归属造成另一方当事人损害（参数1：因归属确定而受损的一方，参数2：添附物）",
+   "payCompensationOrReimbursement": "给予赔偿或者补偿（参数1：赔偿或补偿义务人，参数2：添附物）"
+  }
+ },
+ "card:g2785": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "按份共有人转让其共有份额时，其他共有人能否主张优先购买权、在什么条件下主张、如何行使",
+     "rules": [
+      "c305-preempt",
+      "c306-1",
+      "c306-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "按份共有人将其份额转让给共有人以外的第三人（须为对外转让，且属转让而非继承、遗赠）",
+     "rules": [
+      "c305-preempt",
+      "c305-internal",
+      "c305-inherit"
+     ]
+    },
+    {
+     "text": "其他共有人以同等条件购买；同等条件应综合转让价格、价款履行方式及期限等因素确定",
+     "rules": [
+      "c305-preempt",
+      "c305-same-conditions"
+     ]
+    },
+    {
+     "text": "转让人已将转让条件及时通知其他共有人",
+     "rules": [
+      "c306-1"
+     ]
+    },
+    {
+     "text": "其他共有人在法定或约定期间内行使：有约定按约定；通知载明期间且不短于十五日的以该期间为准；未载明或短于十五日的为十五日；未通知的，自知道或应当知道最终确定的同等条件之日起十五日，无法确定的为份额权属转移之日起六个月",
+     "rules": [
+      "c306-2",
+      "c306-p1",
+      "c306-p2",
+      "c306-p3",
+      "c306-p4",
+      "c306-p5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "按份共有人之间对内转让份额，其他共有人无优先购买权，但共有人之间另有约定的除外",
+     "rules": [
+      "c305-internal"
+     ]
+    },
+    {
+     "text": "因继承、遗赠取得共有份额不属于转让，其他共有人无优先购买权",
+     "rules": [
+      "c305-inherit"
+     ]
+    },
+    {
+     "text": "第三人给出的条件优于共有人（非同等条件）的，共有人丧失优先购买权",
+     "rules": [
+      "c305-better"
+     ]
+    },
+    {
+     "text": "其他共有人未在法定或约定期间内行使的，优先购买权消灭",
+     "rules": [
+      "c306-lapse"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "按份共有人对共有的不动产或者动产按照其份额享有所有权",
+     "rules": [
+      "c298-1"
+     ]
+    },
+    {
+     "text": "按份共有人可以转让其享有的共有份额",
+     "rules": [
+      "c305-1"
+     ]
+    },
+    {
+     "text": "其他共有人在同等条件下享有优先购买该份额的权利",
+     "rules": [
+      "c305-preempt"
+     ]
+    },
+    {
+     "text": "转让人应当将转让条件及时通知其他共有人；其他共有人应当在合理期限内行使优先购买权",
+     "rules": [
+      "c306-1",
+      "c306-2"
+     ]
+    },
+    {
+     "text": "两个以上其他共有人主张行使优先购买权的，协商确定各自购买比例；协商不成的，按照转让时各自的共有份额比例行使",
+     "rules": [
+      "c306-3",
+      "c306-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "未在法定或约定期间内行使的规则，排除第305条的优先购买权",
+     "rules": [
+      "c306-lapse"
+     ]
+    },
+    {
+     "text": "对内转让、继承遗赠取得份额、第三人条件更优三种情形，排除其他共有人的优先购买权",
+     "rules": [
+      "c305-internal",
+      "c305-inherit",
+      "c305-better"
+     ]
+    },
+    {
+     "text": "两个以上共有人主张时，先协商比例、协商不成按转让时份额比例，是第305条优先购买权的特别行使规则",
+     "rules": [
+      "c306-3",
+      "c306-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第298条界定按份共有的权属（按份额享有所有权），第305条规定份额转让与其他共有人优先购买权，第306条规定通知义务与行使程序，三者是总—分—程序的关系",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“优先购买权为法定权利，不得通过约定排除”，与笔记不符：共有人之间对内转让时另有约定可以排除；且优先购买权在期间届满、条件非同等时即丧失",
+     "rules": []
+    },
+    {
+     "text": "第303条（分割请求权）、第304条（共有物分割方式与价值减损）针对共有物的分割，不涉及份额对外转让与优先购买",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c298-1",
+    "srcs": [
+     "art298-1"
+    ],
+    "body": [
+     "shareCoOwner(P,T)"
+    ],
+    "heads": [
+     "ownShare(P,T)"
+    ],
+    "note": "按份共有人对共有的不动产或者动产按照其份额享有所有权（份额所有权，非全面支配）",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-1",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "shareCoOwner(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferShare(P,T)"
+     }
+    ],
+    "note": "按份共有人可以转让其享有的共有不动产或者动产份额",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-preempt",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "shareCoOwner(P,T)",
+     "transfersShare(Q,R,T)",
+     "thirdPartyTransferee(R,T)",
+     "sameConditions(P,T)",
+     "~thirdPartyTermsBetter(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "preemptPurchase(P,T)"
+     }
+    ],
+    "note": "按份共有人向共有人以外的人转让份额时，其他共有人在同等条件下享有优先购买的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-same-conditions",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "samePrice(P,T)",
+     "samePaymentMethod(P,T)",
+     "samePaymentTerm(P,T)"
+    ],
+    "heads": [
+     "sameConditions(P,T)"
+    ],
+    "note": "笔记：同等条件应综合共有份额的转让价格、价款履行方式及期限等因素确定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c305-internal",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "shareCoOwner(R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "~agreedOtherwiseAmongCoOwners(T)"
+    ],
+    "heads": [
+     "-coOwnerPreemptionRight(P,T)"
+    ],
+    "note": "笔记：按份共有人之间对内转让份额，其他共有人主张优先购买的不予支持，但共有人之间另有约定的除外",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c305-inherit",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "acquiredShareByInheritanceOrGift(R,T)",
+     "shareCoOwner(P,T)"
+    ],
+    "heads": [
+     "-coOwnerPreemptionRight(P,T)"
+    ],
+    "note": "笔记：优先购买权以“转让”为前提，继承、遗赠取得份额的，其他共有人无优先购买权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c305-better",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "shareCoOwner(P,T)",
+     "transfersShare(Q,R,T)",
+     "thirdPartyTransferee(R,T)",
+     "thirdPartyTermsBetter(P,T)"
+    ],
+    "heads": [
+     "-coOwnerPreemptionRight(P,T)"
+    ],
+    "note": "笔记：第三人给出的条件优于共有人的，不属同等条件，共有人丧失优先购买权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c306-1",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Q",
+      "counterparty": "P",
+      "content": "notifyTransferTerms(Q,P,T)"
+     }
+    ],
+    "note": "按份共有人转让其份额的，应当将转让条件及时通知其他共有人",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-2",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "coOwnerPreemptionRight(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exercisePreemptionWithinPeriod(P,T)"
+     }
+    ],
+    "note": "其他共有人应当在合理期限内行使优先购买权",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-3",
+    "srcs": [
+     "art306-2"
+    ],
+    "body": [
+     "claimant(P,T)",
+     "multipleClaimants(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "negotiatePurchaseRatio(P,T)"
+     }
+    ],
+    "note": "两个以上其他共有人主张行使优先购买权的，协商确定各自的购买比例",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-4",
+    "srcs": [
+     "art306-2"
+    ],
+    "body": [
+     "claimant(P,T)",
+     "multipleClaimants(T)",
+     "negotiationFailed(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exercisePreemptionByShareRatio(P,T)"
+     }
+    ],
+    "note": "协商不成的，按照转让时各自的共有份额比例行使优先购买权",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-lapse",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "shareCoOwner(P,T)",
+     "transfersShare(Q,R,T)",
+     "thirdPartyTransferee(R,T)",
+     "sameConditions(P,T)",
+     "~exercisedWithinPeriod(P,T)"
+    ],
+    "heads": [
+     "-coOwnerPreemptionRight(P,T)"
+    ],
+    "note": "其他共有人未在法定或约定期间内行使优先购买权的，该权利消灭（期间规则见《物权法解释一》第11条）",
+    "auth": "spc"
+   },
+   {
+    "key": "c306-p1",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "agreedExercisePeriod(P,T)"
+    ],
+    "heads": [
+     "periodByAgreement(P,T)"
+    ],
+    "note": "笔记（《物权法解释一》第11条）：共有人之间对行使期间有约定的，按约定处理",
+    "auth": "spc"
+   },
+   {
+    "key": "c306-p2",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "notifiedTransferTerms(Q,P,T)",
+     "noticeStatesPeriod(Q,T)",
+     "~noticePeriodShorterThan15Days(Q,T)"
+    ],
+    "heads": [
+     "periodByNotice(P,T)"
+    ],
+    "note": "笔记（《物权法解释一》第11条）：转让人已通知且通知载明行使期间、该期间不短于十五日的，以该期间为准",
+    "auth": "spc"
+   },
+   {
+    "key": "c306-p3",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "notifiedTransferTerms(Q,P,T)",
+     {
+      "or": [
+       "~noticeStatesPeriod(Q,T)",
+       "noticePeriodShorterThan15Days(Q,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "period15DaysFromNotice(P,T)"
+    ],
+    "note": "笔记（《物权法解释一》第11条）：通知未载明行使期间，或载明期间短于通知送达之日起十五日的，为十五日",
+    "auth": "spc"
+   },
+   {
+    "key": "c306-p4",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "~notifiedTransferTerms(Q,P,T)",
+     "knowsFinalEqualTerms(P,T)"
+    ],
+    "heads": [
+     "period15DaysFromKnowledge(P,T)"
+    ],
+    "note": "笔记（《物权法解释一》第11条）：转让人未履行通知义务的，期间为其他共有人知道或应当知道最终确定的同等条件之日起十五日",
+    "auth": "spc"
+   },
+   {
+    "key": "c306-p5",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "transfersShare(Q,R,T)",
+     "otherShareCoOwner(P,Q,T)",
+     "~notifiedTransferTerms(Q,P,T)",
+     "~knowsFinalEqualTerms(P,T)"
+    ],
+    "heads": [
+     "period6MonthsFromTransfer(P,T)"
+    ],
+    "note": "笔记（《物权法解释一》第11条）：无法确定其他共有人知道或应当知道最终确定的同等条件的，期间为共有份额权属转移之日起六个月",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c306-lapse",
+    "c305-preempt",
+    "未在法定或约定期间内行使的，优先购买权消灭"
+   ],
+   [
+    "c305-internal",
+    "c305-preempt",
+    "对内转让份额，其他共有人无优先购买权（共有人之间另有约定的除外）"
+   ],
+   [
+    "c305-inherit",
+    "c305-preempt",
+    "继承、遗赠取得份额不属于转让，不适用优先购买权"
+   ],
+   [
+    "c305-better",
+    "c305-preempt",
+    "第三人给出的条件优于共有人，不属同等条件，共有人丧失优先购买权"
+   ],
+   [
+    "c306-4",
+    "c305-preempt",
+    "两个以上共有人主张时，按转让时各自的共有份额比例行使，而非各自单独优先购买全部份额"
+   ]
+  ],
+  "predicates": {
+   "shareCoOwner": "是按份共有人（参数1：共有人；参数2：共有的不动产或动产）",
+   "ownShare": "按其份额对共有的不动产或动产享有所有权（参数1：共有人；参数2：共有物）",
+   "transferShare": "转让其享有的共有份额（参数1：转让人；参数2：共有物）",
+   "transfersShare": "将其共有份额转让给他人（参数1：转让人；参数2：受让人；参数3：共有物）",
+   "thirdPartyTransferee": "是共有人以外的第三人受让人（参数1：受让人；参数2：共有物）",
+   "otherShareCoOwner": "是转让人以外的其他按份共有人（参数1：其他共有人；参数2：转让人；参数3：共有物）",
+   "sameConditions": "以同等条件购买（参数1：共有人；参数2：共有物）",
+   "samePrice": "转让价格与第三人相同（参数1：共有人；参数2：共有物）",
+   "samePaymentMethod": "价款履行方式与第三人相同（参数1：共有人；参数2：共有物）",
+   "samePaymentTerm": "价款履行期限与第三人相同（参数1：共有人；参数2：共有物）",
+   "thirdPartyTermsBetter": "第三人给出的条件优于该共有人（参数1：共有人；参数2：共有物）",
+   "coOwnerPreemptionRight": "享有按份共有人优先购买权（参数1：共有人；参数2：共有物）",
+   "preemptPurchase": "优先购买该共有份额（参数1：共有人；参数2：共有物）",
+   "notifiedTransferTerms": "已将转让条件及时通知其他共有人（参数1：转让人；参数2：共有人；参数3：共有物）",
+   "notifyTransferTerms": "通知转让条件（参数1：转让人；参数2：共有人；参数3：共有物）",
+   "noticeStatesPeriod": "通知中载明优先购买权的行使期间（参数1：转让人；参数2：共有物）",
+   "noticePeriodShorterThan15Days": "通知载明的行使期间短于通知送达之日起十五日（参数1：转让人；参数2：共有物）",
+   "agreedExercisePeriod": "共有人之间约定了优先购买权行使期间（参数1：共有人；参数2：共有物）",
+   "periodByAgreement": "行使期间按共有人之间的约定确定（参数1：共有人；参数2：共有物）",
+   "periodByNotice": "行使期间以通知载明的期间为准（参数1：共有人；参数2：共有物）",
+   "period15DaysFromNotice": "行使期间为通知送达之日起十五日（参数1：共有人；参数2：共有物）",
+   "period15DaysFromKnowledge": "行使期间为知道或应当知道最终确定的同等条件之日起十五日（参数1：共有人；参数2：共有物）",
+   "period6MonthsFromTransfer": "行使期间为共有份额权属转移之日起六个月（参数1：共有人；参数2：共有物）",
+   "knowsFinalEqualTerms": "知道或者应当知道最终确定的同等条件（参数1：共有人；参数2：共有物）",
+   "exercisedWithinPeriod": "在法定或约定期间内行使了优先购买权（参数1：共有人；参数2：共有物）",
+   "exercisePreemptionWithinPeriod": "在合理期限内行使优先购买权（参数1：共有人；参数2：共有物）",
+   "claimant": "主张行使优先购买权的其他共有人（参数1：共有人；参数2：共有物）",
+   "multipleClaimants": "两个以上其他共有人主张行使优先购买权（参数1：共有物）",
+   "negotiatePurchaseRatio": "协商确定各自的购买比例（参数1：共有人；参数2：共有物）",
+   "negotiationFailed": "协商不成（参数1：共有物）",
+   "exercisePreemptionByShareRatio": "按转让时各自的共有份额比例行使优先购买权（参数1：共有人；参数2：共有物）",
+   "agreedOtherwiseAmongCoOwners": "按份共有人之间另有约定（参数1：共有物）",
+   "acquiredShareByInheritanceOrGift": "因继承、遗赠取得共有份额（参数1：取得人；参数2：共有物）"
+  }
+ },
+ "art:297": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产或者动产能否由两个以上组织、个人共有，以及共有包括哪些类型",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为两个以上的组织、个人（不限于自然人，也不限于法人）",
+     "rules": []
+    },
+    {
+     "text": "客体为不动产或者动产",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "两个以上组织、个人可以对同一不动产或者动产形成共有关系",
+     "rules": []
+    },
+    {
+     "text": "共有包括按份共有和共同共有两种基本类型",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、定义性规定，只确立共有的可能性与类型划分，不直接产生具体的权利义务；按份共有与共同共有的内部关系、份额、处分与分割等规则分别由其后条文（第298条以下）规定，故本行不设形式化规则",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外或学理内容；LEGO 卡片缺失，无可参考概念",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g2810": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "共有人对共有的不动产或者动产没有约定为按份共有或者共同共有，或者约定不明确的，如何认定共有性质",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "共有物的管理费用以及其他负担如何在共有人之间分担",
+     "rules": [
+      "c302-1",
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "因共有的不动产或者动产产生的债权债务，在对外关系与内部关系上如何享有和承担",
+     "rules": [
+      "c307-ext-debt",
+      "c307-ext-claim",
+      "c307-int-agreed",
+      "c307-int-several",
+      "c307-int-joint"
+     ]
+    },
+    {
+     "text": "按份共有人的份额没有约定或者约定不明确时如何确定",
+     "rules": [
+      "c309-1",
+      "c309-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在共有关系：数人对共有的不动产或者动产享有所有权；共同共有的，共同享有所有权",
+     "rules": [
+      "c299-1"
+     ]
+    },
+    {
+     "text": "共有人对共有物的管理费用及其他负担有约定；没有约定或者约定不明确的，按份共有人按份额负担、共同共有人共同负担",
+     "rules": [
+      "c302-1",
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "债务或债权因共有的不动产或者动产产生，且存在该债权债务关系的第三人（债权人或债务人）",
+     "rules": [
+      "c307-ext-debt",
+      "c307-ext-claim"
+     ]
+    },
+    {
+     "text": "共有人就内部债权债务的享有、承担另有约定",
+     "rules": [
+      "c307-int-agreed"
+     ]
+    },
+    {
+     "text": "按份共有人偿还债务超过自己应当承担的份额，且存在其他共有人",
+     "rules": [
+      "c307-recourse"
+     ]
+    },
+    {
+     "text": "共有人对共有性质没有约定或者约定不明确，且共有人之间不具有家庭关系等",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "按份共有人的份额没有约定或者约定不明确，但能够确定出资额",
+     "rules": [
+      "c309-1"
+     ]
+    },
+    {
+     "text": "按份共有人的份额没有约定或者约定不明确，且不能确定出资额",
+     "rules": [
+      "c309-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定，或者第三人知道共有人不具有连带债权债务关系的，对外不发生连带债权、连带债务",
+     "rules": [
+      "c307-ext-debt",
+      "c307-ext-claim"
+     ]
+    },
+    {
+     "text": "共有人具有家庭关系等的，不适用视为按份共有的推定",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "共有人另有约定的，内部关系不按份额享有债权、承担债务，也不共同享有债权、承担债务",
+     "rules": [
+      "c307-int-several",
+      "c307-int-joint"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同共有人对共有的不动产或者动产共同享有所有权",
+     "rules": [
+      "c299-1"
+     ]
+    },
+    {
+     "text": "管理费用及其他负担：有约定的按约定；没有约定或者约定不明确的，按份共有人按份额负担，共同共有人共同负担",
+     "rules": [
+      "c302-1",
+      "c302-2",
+      "c302-3"
+     ]
+    },
+    {
+     "text": "对外关系上，共有人就共有物所生债务承担连带债务，就共有物所生债权享有连带债权",
+     "rules": [
+      "c307-ext-debt",
+      "c307-ext-claim"
+     ]
+    },
+    {
+     "text": "内部关系上，除共有人另有约定外，按份共有人按份额享有债权、承担债务，共同共有人共同享有债权、承担债务",
+     "rules": [
+      "c307-int-agreed",
+      "c307-int-several",
+      "c307-int-joint"
+     ]
+    },
+    {
+     "text": "偿还债务超过自己应当承担份额的按份共有人，有权向其他共有人追偿",
+     "rules": [
+      "c307-recourse"
+     ]
+    },
+    {
+     "text": "视为按份共有",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "份额按照出资额确定；不能确定出资额的，视为等额享有",
+     "rules": [
+      "c309-1",
+      "c309-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "共有人对管理费用及其他负担有约定的，约定优先于按份额负担或共同负担的法定分担",
+     "rules": [
+      "c302-1"
+     ]
+    },
+    {
+     "text": "共有人对内部债权债务另有约定的，约定优先于按份额或共同享有、承担的法定规则",
+     "rules": [
+      "c307-int-agreed"
+     ]
+    },
+    {
+     "text": "能够确定出资额的，按出资额确定份额优先于视为等额享有",
+     "rules": [
+      "c309-1"
+     ]
+    },
+    {
+     "text": "对外连带规则不因共有人的内部约定而改变，内部约定只在共有人之间发生效力",
+     "rules": [
+      "c307-ext-debt",
+      "c307-ext-claim"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第302条解决共有物管理费用及其他负担的内部分担，第307条解决共有物所生债权债务的对外与对内归属，二者适用对象不同",
+     "rules": []
+    },
+    {
+     "text": "第309条只适用于按份共有份额的确定；共同共有人不分份额，共同享有债权、承担债务",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片所称“第310条参照适用”“长期共同共有行为优先”并非第308条原文，第308条的例外仅为“共有人具有家庭关系等”",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c299-1",
+    "srcs": [
+     "art299-1"
+    ],
+    "body": [
+     "jointCoOwned(T)",
+     "coOwner(P,T)"
+    ],
+    "heads": [
+     "jointlyOwn(P,T)"
+    ],
+    "note": "共同共有人对共有的不动产或者动产共同享有所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-1",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "managementCostsOrOtherBurdens(T)",
+     "agreedCostSharing(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostsPerAgreement(P,T)"
+     }
+    ],
+    "note": "共有人对共有物的管理费用以及其他负担有约定的，按照其约定负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-2",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "managementCostsOrOtherBurdens(T)",
+     "severalCoOwned(T)",
+     "shareOf(P,T,S)",
+     "~agreedCostSharing(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostsPerShare(P,T,S)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人按照其份额负担管理费用及其他负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c302-3",
+    "srcs": [
+     "art302-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "managementCostsOrOtherBurdens(T)",
+     "jointCoOwned(T)",
+     "~agreedCostSharing(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCostsJointly(P,T)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人共同负担管理费用及其他负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-ext-debt",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "debtArisingFromCoOwnedProperty(D,T)",
+     "thirdPartyToDebt(X,D)",
+     "~lawProvidesOtherwiseOnJointRightsDebts(T)",
+     "~thirdPartyKnowsNoJointLiability(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "X",
+      "content": "bearJointDebt(P,D)"
+     }
+    ],
+    "note": "对外关系上，共有人就共有物所生债务对债权人承担连带债务，但法律另有规定或者第三人知道共有人不具有连带关系的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-ext-claim",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "claimArisingFromCoOwnedProperty(C,T)",
+     "thirdPartyToClaim(X,C)",
+     "~lawProvidesOtherwiseOnJointRightsDebts(T)",
+     "~thirdPartyKnowsNoJointLiability(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "X",
+      "content": "enjoyJointClaim(P,C)"
+     }
+    ],
+    "note": "对外关系上，共有人就共有物所生债权对债务人享有连带债权，但法律另有规定或者第三人知道共有人不具有连带关系的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-int-agreed",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "agreedInternalSharing(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearDebtPerAgreement(P,T)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "enjoyClaimPerAgreement(P,T)"
+     }
+    ],
+    "note": "内部关系上，共有人另有约定的，按约定享有债权、承担债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-int-several",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "severalCoOwned(T)",
+     "shareOf(P,T,S)",
+     "~agreedInternalSharing(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearDebtPerShare(P,T,S)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "enjoyClaimPerShare(P,T,S)"
+     }
+    ],
+    "note": "内部关系上，除共有人另有约定外，按份共有人按照份额享有债权、承担债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-int-joint",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "jointCoOwned(T)",
+     "~agreedInternalSharing(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearDebtJointly(P,T)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "enjoyClaimJointly(P,T)"
+     }
+    ],
+    "note": "内部关系上，除共有人另有约定外，共同共有人共同享有债权、承担债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-recourse",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "severalCoOwned(T)",
+     "paidExceedsOwnShare(P,D,T)",
+     "otherCoOwner(O,P,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "claimRecourseAgainst(P,O)"
+     }
+    ],
+    "note": "偿还债务超过自己应当承担份额的按份共有人，有权向其他共有人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c308",
+    "srcs": [
+     "art308-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "~agreedCoOwnershipType(T)",
+     "~familyRelationAmongCoOwners(T)"
+    ],
+    "heads": [
+     "severalCoOwned(T)"
+    ],
+    "note": "没有约定为按份共有或者共同共有，或者约定不明确，除共有人具有家庭关系等外，视为按份共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-1",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "severalCoOwned(T)",
+     "~agreedShare(P,T)",
+     "contributionOf(P,T,A)"
+    ],
+    "heads": [
+     "shareOf(P,T,A)"
+    ],
+    "note": "按份共有人的份额没有约定或者约定不明确的，按照出资额确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-2",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "severalCoOwned(T)",
+     "~agreedShare(P,T)",
+     "cannotDetermineContribution(T)"
+    ],
+    "heads": [
+     "deemedEqualShare(P,T)"
+    ],
+    "note": "不能确定出资额的，视为等额享有份额",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c302-1",
+    "c302-2",
+    "共有人对管理费用及其他负担有约定的，按约定负担，排除按份额负担"
+   ],
+   [
+    "c302-1",
+    "c302-3",
+    "共有人对管理费用及其他负担有约定的，按约定负担，排除共同负担"
+   ],
+   [
+    "c307-int-agreed",
+    "c307-int-several",
+    "共有人另有约定时按约定享有债权、承担债务，排除按份额的法定规则"
+   ],
+   [
+    "c307-int-agreed",
+    "c307-int-joint",
+    "共有人另有约定时按约定享有债权、承担债务，排除共同享有、承担的法定规则"
+   ],
+   [
+    "c309-1",
+    "c309-2",
+    "能够确定出资额的按出资额确定份额，不能确定出资额时才视为等额享有"
+   ]
+  ],
+  "predicates": {
+   "coOwnedProperty": "是共有人共有的不动产或者动产（1个参数：共有物）",
+   "coOwner": "是共有人（人，共有物）",
+   "jointCoOwned": "共有物为共同共有（1个参数：共有物）",
+   "severalCoOwned": "共有物为按份共有（1个参数：共有物）",
+   "jointlyOwn": "与其他共有人共同对共有物享有所有权（共有人，共有物）",
+   "managementCostsOrOtherBurdens": "是共有物的管理费用以及其他负担（1个参数：共有物）",
+   "agreedCostSharing": "对共有物管理费用及其他负担的分担有约定（共有人，共有物）",
+   "bearCostsPerAgreement": "按约定负担共有物的管理费用及其他负担（共有人，共有物）",
+   "bearCostsPerShare": "按份额负担共有物的管理费用及其他负担（共有人，共有物，份额）",
+   "bearCostsJointly": "共同负担共有物的管理费用及其他负担（共有人，共有物）",
+   "shareOf": "按份共有人对共有物享有的份额（共有人，共有物，份额）",
+   "agreedShare": "对按份共有的份额有约定（共有人，共有物）",
+   "contributionOf": "出资额（共有人，共有物，出资额）",
+   "cannotDetermineContribution": "不能确定出资额（1个参数：共有物）",
+   "deemedEqualShare": "视为等额享有份额（共有人，共有物）",
+   "debtArisingFromCoOwnedProperty": "因共有的不动产或者动产产生的债务（债务，共有物）",
+   "claimArisingFromCoOwnedProperty": "因共有的不动产或者动产产生的债权（债权，共有物）",
+   "thirdPartyToDebt": "是该债务关系的第三人，即债权人（第三人，债务）",
+   "thirdPartyToClaim": "是该债权关系的第三人，即债务人（第三人，债权）",
+   "thirdPartyKnowsNoJointLiability": "第三人知道共有人不具有连带债权债务关系（第三人，共有物）",
+   "lawProvidesOtherwiseOnJointRightsDebts": "法律对共有人的连带债权债务另有规定（1个参数：共有物）",
+   "bearJointDebt": "就共有物所生债务承担连带债务（共有人，债务）",
+   "enjoyJointClaim": "就共有物所生债权享有连带债权（共有人，债权）",
+   "agreedInternalSharing": "共有人就内部债权债务的享有、承担另有约定（1个参数：共有物）",
+   "bearDebtPerAgreement": "按约定承担共有物所生债务（共有人，共有物）",
+   "enjoyClaimPerAgreement": "按约定享有共有物所生债权（共有人，共有物）",
+   "bearDebtPerShare": "按份额承担共有物所生债务（共有人，共有物，份额）",
+   "enjoyClaimPerShare": "按份额享有共有物所生债权（共有人，共有物，份额）",
+   "bearDebtJointly": "共同承担共有物所生债务（共有人，共有物）",
+   "enjoyClaimJointly": "共同享有共有物所生债权（共有人，共有物）",
+   "paidExceedsOwnShare": "偿还债务超过自己应当承担份额（共有人，债务，共有物）",
+   "otherCoOwner": "是其他共有人（其他共有人，共有人，共有物）",
+   "agreedCoOwnershipType": "对共有物约定为按份共有或者共同共有（1个参数：共有物）",
+   "familyRelationAmongCoOwners": "共有人之间具有家庭关系等（1个参数：共有物）"
+  }
+ },
+ "card:g2783": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "按份共有人转让共有份额时，其他共有人如何行使优先购买权；共有物的处分、分割方式与份额如何确定",
+     "rules": [
+      "c305-1",
+      "c305-2",
+      "c306-1",
+      "c306-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "处分共有的不动产或者动产，或者对其作重大修缮、变更性质、用途，且共有人之间没有另有约定",
+     "rules": [
+      "c301-1",
+      "c301-2"
+     ]
+    },
+    {
+     "text": "共有人约定不得分割以维持共有关系，但共有人有重大理由需要分割",
+     "rules": [
+      "c303-1"
+     ]
+    },
+    {
+     "text": "就共有物的分割没有约定或者约定不明确",
+     "rules": [
+      "c303-3",
+      "c303-4"
+     ]
+    },
+    {
+     "text": "达不成分割协议；共有物可以分割且不会因分割减损价值，或者难以分割、会因分割减损价值",
+     "rules": [
+      "c304-2",
+      "c304-3"
+     ]
+    },
+    {
+     "text": "按份共有人转让其享有的共有份额，其他共有人符合同等条件",
+     "rules": [
+      "c305-2",
+      "c306-2"
+     ]
+    },
+    {
+     "text": "两个以上其他共有人主张行使优先购买权",
+     "rules": [
+      "c306-3",
+      "c306-4"
+     ]
+    },
+    {
+     "text": "对共有的不动产或者动产没有约定为按份共有或者共同共有，或者约定不明确",
+     "rules": [
+      "c308-1"
+     ]
+    },
+    {
+     "text": "按份共有人对共有物享有的份额没有约定或者约定不明确",
+     "rules": [
+      "c309-1",
+      "c309-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "共有人之间就处分共有物另有约定",
+     "rules": [
+      "c301-1",
+      "c301-2"
+     ]
+    },
+    {
+     "text": "共有人之间具有家庭关系等，不视为按份共有",
+     "rules": [
+      "c308-1"
+     ]
+    },
+    {
+     "text": "其他共有人未在法定或者约定的期间内主张优先购买",
+     "rules": [
+      "c305-exc1"
+     ]
+    },
+    {
+     "text": "其他共有人虽主张优先购买，但提出减少转让价款、增加转让人负担等实质性变更要求",
+     "rules": [
+      "c305-exc2"
+     ]
+    },
+    {
+     "text": "其他共有人以其优先购买权受到侵害为由，仅请求撤销共有份额转让合同或者认定该合同无效",
+     "rules": [
+      "c305-exc3"
+     ]
+    },
+    {
+     "text": "共有人之间内部转让份额，不产生其他共有人的优先购买权",
+     "rules": [
+      "c305-exc4"
+     ]
+    },
+    {
+     "text": "因继承、遗赠取得共有份额，不属于“转让”，不产生优先购买权",
+     "rules": [
+      "c305-exc5"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "按份共有物之处分等须经占份额三分之二以上的按份共有人同意，共同共有物须经全体共同共有人同意",
+     "rules": [
+      "c301-1",
+      "c301-2"
+     ]
+    },
+    {
+     "text": "有重大理由的可以请求分割；无约定或约定不明的，按份共有人可以随时请求分割，共同共有人在共有基础丧失或者有重大理由需要分割时可以请求分割",
+     "rules": [
+      "c303-1",
+      "c303-3",
+      "c303-4"
+     ]
+    },
+    {
+     "text": "约定不得分割且无重大理由的，应当按照约定不请求分割",
+     "rules": [
+      "c303-2"
+     ]
+    },
+    {
+     "text": "因分割造成其他共有人损害的，应当给予赔偿",
+     "rules": [
+      "c303-5"
+     ]
+    },
+    {
+     "text": "共有人可以协商确定分割方式；协议不成时，可以实物分割的予以实物分割，难以分割或者会减损价值的对折价、拍卖、变卖所得价款予以分割",
+     "rules": [
+      "c304-1",
+      "c304-2",
+      "c304-3"
+     ]
+    },
+    {
+     "text": "分割所得的不动产或者动产有瑕疵的，其他共有人应当分担损失",
+     "rules": [
+      "c304-4"
+     ]
+    },
+    {
+     "text": "按份共有人可以转让其享有的共有份额",
+     "rules": [
+      "c305-1"
+     ]
+    },
+    {
+     "text": "其他共有人在同等条件下享有优先购买的权利",
+     "rules": [
+      "c305-2"
+     ]
+    },
+    {
+     "text": "转让人应当将转让条件及时通知其他共有人；其他共有人应当在合理期限内行使优先购买权",
+     "rules": [
+      "c306-1",
+      "c306-2"
+     ]
+    },
+    {
+     "text": "两个以上其他共有人主张优先购买的，协商确定各自购买比例；协商不成的，按照转让时各自的共有份额比例行使",
+     "rules": [
+      "c306-3",
+      "c306-4"
+     ]
+    },
+    {
+     "text": "未约定共有类型且共有人不具有家庭关系等的，视为按份共有",
+     "rules": [
+      "c308-1"
+     ]
+    },
+    {
+     "text": "份额按照出资额确定；不能确定出资额的，视为等额享有",
+     "rules": [
+      "c309-1",
+      "c309-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "共有人有重大理由需要分割的，可以请求分割，不受不得分割约定的限制",
+     "rules": [
+      "c303-1"
+     ]
+    },
+    {
+     "text": "难以分割或者因分割会减损价值的，不适用实物分割，而应分割折价、拍卖、变卖所得价款",
+     "rules": [
+      "c304-3"
+     ]
+    },
+    {
+     "text": "优先购买权须在法定或约定期间内以同等条件行使，逾期未主张或者提出实质性变更要求的，即丧失优先购买权",
+     "rules": [
+      "c305-exc1",
+      "c305-exc2",
+      "c306-2"
+     ]
+    },
+    {
+     "text": "仅以优先购买权受侵害为由请求撤销转让合同或者认定合同无效的，不能实现优先购买",
+     "rules": [
+      "c305-exc3"
+     ]
+    },
+    {
+     "text": "共有人之间内部转让、因继承或遗赠取得份额，不产生其他共有人的优先购买权",
+     "rules": [
+      "c305-exc4",
+      "c305-exc5"
+     ]
+    },
+    {
+     "text": "视为按份共有的，不适用共同共有人全体同意的表决规则",
+     "rules": [
+      "c308-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "共同共有人不享有份额，故不适用第305条、第306条按份共有人的优先购买权；其分割须以共有基础丧失或者有重大理由为条件",
+     "rules": []
+    },
+    {
+     "text": "本条优先购买权的主体是按份共有人、客体是共有份额，与第726条承租人优先购买权（客体是租赁房屋）不同",
+     "rules": []
+    },
+    {
+     "text": "笔记与LEGO卡片所称“15日／6个月”行使期间来自《民法典物权编解释一》，本行未挂载该解释，仅作参考",
+     "rules": [
+      "c305-exc1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c301-1",
+    "srcs": [
+     "art301-1"
+    ],
+    "body": [
+     "disposeOrMajorChange(P,K)",
+     "coOwnedByShares(K)",
+     "~agreedOtherwiseAmongCoOwners(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainConsentOfTwoThirdsShares(P,K)"
+     }
+    ],
+    "note": "按份共有物之处分、重大修缮、变更性质或用途，应当经占份额三分之二以上的按份共有人同意，共有人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c301-2",
+    "srcs": [
+     "art301-1"
+    ],
+    "body": [
+     "disposeOrMajorChange(P,K)",
+     "coOwnedJointly(K)",
+     "~agreedOtherwiseAmongCoOwners(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainConsentOfAllJointCoOwners(P,K)"
+     }
+    ],
+    "note": "共同共有物之处分、重大修缮、变更性质或用途，应当经全体共同共有人同意，共有人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-1",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "agreedNotToPartition(K)",
+     "majorReasonForPartition(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "约定不得分割的，共有人有重大理由需要分割时可以请求分割（但书）",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-2",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "agreedNotToPartition(K)",
+     "-majorReasonForPartition(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "abideByNoPartitionAgreement(P,K)"
+     }
+    ],
+    "note": "约定不得分割以维持共有关系且无重大理由的，应当按照约定不请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-3",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedByShares(K)",
+     "noAgreementOrUnclearOnPartition(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，按份共有人可以随时请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-4",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedJointly(K)",
+     "noAgreementOrUnclearOnPartition(K)",
+     {
+      "or": [
+       "basisOfJointOwnershipLost(K)",
+       "majorReasonForPartition(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartition(P,K)"
+     }
+    ],
+    "note": "没有约定或者约定不明确的，共同共有人在共有的基础丧失或者有重大理由需要分割时可以请求分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c303-5",
+    "srcs": [
+     "art303-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnerOf(O,K)",
+     "partitionCausesDamage(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "compensateOtherCoOwners(P,O)"
+     }
+    ],
+    "note": "因分割造成其他共有人损害的，应当给予赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-1",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "agreeOnPartitionMethod(P,K)"
+     }
+    ],
+    "note": "共有人可以协商确定分割方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-2",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "noAgreementOnPartitionMethod(K)",
+     "partitionableWithoutLoss(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "partitionInKind(P,K)"
+     }
+    ],
+    "note": "达不成协议，共有物可以分割且不会因分割减损价值的，应当对实物予以分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-3",
+    "srcs": [
+     "art304-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "noAgreementOnPartitionMethod(K)",
+     "hardToPartitionOrLoss(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "partitionProceeds(P,K)"
+     }
+    ],
+    "note": "达不成协议，难以分割或者因分割会减损价值的，应当对折价或者拍卖、变卖取得的价款予以分割",
+    "auth": "npc"
+   },
+   {
+    "key": "c304-4",
+    "srcs": [
+     "art304-2"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnerOf(O,K)",
+     "defectivePortion(P,K)",
+     "-isSelf(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "shareLoss(O,P)"
+     }
+    ],
+    "note": "共有人分割所得的不动产或者动产有瑕疵的，其他共有人应当分担损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-1",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedByShares(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferShare(P,K)"
+     }
+    ],
+    "note": "按份共有人可以转让其享有的共有的不动产或者动产份额",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-2",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)",
+     "equalConditions(O,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "preemptivePurchaseOfShare(O,P,K)"
+     }
+    ],
+    "note": "按份共有人转让份额时，其他共有人在同等条件下享有优先购买的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-1",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyCoOwnersOfTransferTerms(P,K)"
+     }
+    ],
+    "note": "按份共有人转让份额的，应当将转让条件及时通知其他共有人",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-2",
+    "srcs": [
+     "art306-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)",
+     "equalConditions(O,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "exercisePreemptionWithinReasonableTime(O,P,K)"
+     }
+    ],
+    "note": "其他共有人应当在合理期限内行使优先购买权",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-3",
+    "srcs": [
+     "art306-2"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "multipleCoOwnersClaimPreemption(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "agreeOnPurchaseRatio(O,K)"
+     }
+    ],
+    "note": "两个以上其他共有人主张行使优先购买权的，协商确定各自的购买比例",
+    "auth": "npc"
+   },
+   {
+    "key": "c306-4",
+    "srcs": [
+     "art306-2"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "multipleCoOwnersClaimPreemption(K)",
+     "noAgreementOnPurchaseRatio(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "exercisePerShareRatio(O,K)"
+     }
+    ],
+    "note": "协商不成的，按照转让时各自的共有份额比例行使优先购买权",
+    "auth": "npc"
+   },
+   {
+    "key": "c308-1",
+    "srcs": [
+     "art308-1"
+    ],
+    "body": [
+     "noAgreementOnOwnershipType(K)",
+     "-familyRelationAmongCoOwners(K)"
+    ],
+    "heads": [
+     "coOwnedByShares(K)"
+    ],
+    "note": "没有约定为按份共有或者共同共有、约定不明确，除共有人具有家庭关系等外，视为按份共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-1",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedByShares(K)",
+     "noAgreementOnShare(K)",
+     "contributionAmountDeterminable(K)"
+    ],
+    "heads": [
+     "shareDeterminedByContribution(P,K)"
+    ],
+    "note": "份额没有约定或者约定不明确的，按照出资额确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-2",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwnerOf(P,K)",
+     "coOwnedByShares(K)",
+     "noAgreementOnShare(K)",
+     "-contributionAmountDeterminable(K)"
+    ],
+    "heads": [
+     "deemedEqualShare(P,K)"
+    ],
+    "note": "不能确定出资额的，视为等额享有份额",
+    "auth": "npc"
+   },
+   {
+    "key": "c305-exc1",
+    "srcs": [
+     "art305-1",
+     "art306-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)",
+     "failedToClaimWithinPeriod(O,P,K)"
+    ],
+    "heads": [
+     "-preemptivePurchaseOfShare(O,P,K)"
+    ],
+    "note": "《民法典物权编解释一》第12条（本行未挂载）：未在法定或约定期间内主张优先购买的，不予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c305-exc2",
+    "srcs": [
+     "art305-1",
+     "art306-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)",
+     "materialAlterationDemanded(O,P,K)"
+    ],
+    "heads": [
+     "-preemptivePurchaseOfShare(O,P,K)"
+    ],
+    "note": "《民法典物权编解释一》第12条（本行未挂载）：虽主张优先购买但提出减少价款、增加转让人负担等实质性变更要求的，视为未以同等条件主张",
+    "auth": "spc"
+   },
+   {
+    "key": "c305-exc3",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transfersShare(P,K)",
+     {
+      "or": [
+       "seeksOnlyRescissionOfShareTransferContract(O,P,K)",
+       "seeksOnlyInvalidationOfShareTransferContract(O,P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "-preemptivePurchaseOfShare(O,P,K)"
+    ],
+    "note": "《民法典物权编解释一》第12条（本行未挂载）：仅以优先购买权受侵害为由请求撤销转让合同或认定合同无效的，不予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c305-exc4",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "transferShareBetweenCoOwners(P,K)"
+    ],
+    "heads": [
+     "-preemptivePurchaseOfShare(O,P,K)"
+    ],
+    "note": "学理（笔记、LEGO卡片）：共有人之间内部转让份额不触发其他共有人的优先购买权，第305条仅规范对外转让",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c305-exc5",
+    "srcs": [
+     "art305-1"
+    ],
+    "body": [
+     "coOwnerOf(O,K)",
+     "coOwnedByShares(K)",
+     "acquiredShareByInheritanceOrGift(P,K)"
+    ],
+    "heads": [
+     "-preemptivePurchaseOfShare(O,P,K)"
+    ],
+    "note": "学理（笔记、LEGO卡片）：因继承、遗赠取得份额不属于“转让”，不产生优先购买权",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c303-1",
+    "c303-2",
+    "共有人有重大理由需要分割时，可以请求分割，不受不得分割约定的限制（第303条但书）"
+   ],
+   [
+    "c304-3",
+    "c304-2",
+    "难以分割或者因分割会减损价值的，不适用实物分割，而应分割折价、拍卖、变卖所得价款"
+   ],
+   [
+    "c305-exc1",
+    "c305-2",
+    "未在法定或约定期间内主张优先购买的，丧失优先购买权"
+   ],
+   [
+    "c305-exc2",
+    "c305-2",
+    "提出减少价款、增加转让人负担等实质性变更要求的，视为未以同等条件主张优先购买"
+   ],
+   [
+    "c305-exc3",
+    "c305-2",
+    "仅请求撤销转让合同或认定合同无效的，不能实现优先购买"
+   ],
+   [
+    "c305-exc4",
+    "c305-2",
+    "共有人之间内部转让份额不产生其他共有人的优先购买权"
+   ],
+   [
+    "c305-exc5",
+    "c305-2",
+    "因继承、遗赠取得份额不属于转让，不产生优先购买权"
+   ]
+  ],
+  "predicates": {
+   "disposeOrMajorChange": "处分共有物或对其作重大修缮、变更性质或者用途（行为人，共有物）",
+   "coOwnedByShares": "是按份共有的不动产或者动产",
+   "coOwnedJointly": "是共同共有的不动产或者动产",
+   "agreedOtherwiseAmongCoOwners": "共有人之间就处分等事项另有约定",
+   "obtainConsentOfTwoThirdsShares": "取得占份额三分之二以上按份共有人的同意（行为人，共有物）",
+   "obtainConsentOfAllJointCoOwners": "取得全体共同共有人同意（行为人，共有物）",
+   "coOwnerOf": "是共有人（共有人，共有物）",
+   "agreedNotToPartition": "共有人约定不得分割以维持共有关系",
+   "majorReasonForPartition": "有重大理由需要分割（共有人，共有物）",
+   "requestPartition": "请求分割共有物",
+   "abideByNoPartitionAgreement": "按照不得分割的约定不请求分割",
+   "noAgreementOrUnclearOnPartition": "就共有物的分割没有约定或者约定不明确",
+   "basisOfJointOwnershipLost": "共同共有的基础丧失",
+   "partitionCausesDamage": "因分割造成其他共有人损害（分割人，受损害共有人）",
+   "compensateOtherCoOwners": "赔偿其他共有人的损失",
+   "agreeOnPartitionMethod": "协商确定分割方式",
+   "noAgreementOnPartitionMethod": "达不成分割协议",
+   "partitionableWithoutLoss": "共有物可以分割且不会因分割减损价值",
+   "partitionInKind": "对实物予以分割",
+   "hardToPartitionOrLoss": "难以分割或者因分割会减损价值",
+   "partitionProceeds": "对折价或者拍卖、变卖取得的价款予以分割",
+   "defectivePortion": "分割所得的不动产或者动产有瑕疵（共有人，共有物）",
+   "shareLoss": "分担损失（其他共有人，受瑕疵影响的共有人）",
+   "transfersShare": "按份共有人对外转让其享有的共有份额（转让人，共有物）",
+   "transferShare": "可以转让其享有的共有份额",
+   "equalConditions": "其他共有人提供的购买条件与第三人同等（其他共有人，转让人，共有物）",
+   "preemptivePurchaseOfShare": "享有优先购买共有份额的权利（其他共有人，转让人，共有物）",
+   "notifyCoOwnersOfTransferTerms": "将转让条件及时通知其他共有人",
+   "exercisePreemptionWithinReasonableTime": "在合理期限内行使优先购买权",
+   "multipleCoOwnersClaimPreemption": "两个以上其他共有人主张行使优先购买权",
+   "agreeOnPurchaseRatio": "协商确定各自的购买比例",
+   "noAgreementOnPurchaseRatio": "就购买比例协商不成",
+   "exercisePerShareRatio": "按照转让时各自的共有份额比例行使优先购买权",
+   "noAgreementOnOwnershipType": "对共有物没有约定为按份共有或者共同共有，或者约定不明确",
+   "familyRelationAmongCoOwners": "共有人之间具有家庭关系等",
+   "noAgreementOnShare": "对按份共有人享有的份额没有约定或者约定不明确",
+   "contributionAmountDeterminable": "出资额可以确定",
+   "shareDeterminedByContribution": "份额按照出资额确定",
+   "deemedEqualShare": "视为等额享有份额（共有人，共有物）",
+   "failedToClaimWithinPeriod": "未在法定或者约定的期间内主张优先购买（其他共有人，转让人，共有物）",
+   "materialAlterationDemanded": "主张优先购买但提出减少转让价款、增加转让人负担等实质性变更要求",
+   "seeksOnlyRescissionOfShareTransferContract": "仅以优先购买权受侵害为由请求撤销共有份额转让合同",
+   "seeksOnlyInvalidationOfShareTransferContract": "仅以优先购买权受侵害为由请求认定共有份额转让合同无效",
+   "transferShareBetweenCoOwners": "共有人之间内部转让共有份额（转让人，共有物）",
+   "acquiredShareByInheritanceOrGift": "因继承、遗赠取得共有份额（取得人，共有物）"
+  }
+ },
+ "art:310": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "两个以上组织、个人共同享有用益物权、担保物权时，应当适用何种规则",
+     "rules": [
+      "c310-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "两个以上组织、个人共同享有同一用益物权或者同一担保物权（数人共享一个他物权）",
+     "rules": [
+      "c310-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用本章（共有）的有关规定，即准用按份共有、共同共有、共有物的管理、处分、分割等规则处理共有人之间的关系",
+     "rules": [
+      "c310-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是准用性规范：共同享有用益物权、担保物权并不因此成立所有权意义上的共有，权利本身仍为用益物权或担保物权，只是“参照”共有章规则，性质上不能相容的规则不予适用",
+     "rules": [
+      "c310-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c310-1",
+    "srcs": [
+     "art310-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "jointlyHoldsUsufruct(J,R)",
+       "jointlyHoldsSecurityInterest(J,R)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyCoOwnershipChapterByReference(J,R)"
+    ],
+    "note": "两个以上组织、个人共同享有用益物权、担保物权的，参照适用共有章（本章）的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "jointlyHoldsUsufruct": "两个以上组织、个人共同享有同一用益物权（参数1：共有人群体，参数2：该用益物权）",
+   "jointlyHoldsUsufruct/2": "两个以上组织、个人共同享有同一用益物权（参数1：共有人群体，参数2：该用益物权）",
+   "jointlyHoldsSecurityInterest": "两个以上组织、个人共同享有同一担保物权（参数1：共有人群体，参数2：该担保物权）",
+   "jointlyHoldsSecurityInterest/2": "两个以上组织、个人共同享有同一担保物权（参数1：共有人群体，参数2：该担保物权）",
+   "applyCoOwnershipChapterByReference": "参照适用物权编第八章（共有）的有关规定（参数1：共有人群体，参数2：该用益物权或担保物权）",
+   "applyCoOwnershipChapterByReference/2": "参照适用物权编第八章（共有）的有关规定（参数1：共有人群体，参数2：该用益物权或担保物权）"
+  }
+ },
+ "card:g2764": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "按份共有人对共有物享有所有权的形态；共有人未约定或约定不明共有性质时如何认定；按份共有份额如何确定",
+     "rules": [
+      "c298-1",
+      "c308",
+      "c309-agreed",
+      "c309-contribution",
+      "c309-equal"
+     ]
+    },
+    {
+     "text": "因共有物产生的债权债务，共有人对外、对内如何享有债权、承担债务，超额清偿者能否追偿",
+     "rules": [
+      "c307-out",
+      "c307-in-share",
+      "c307-in-joint",
+      "c307-recourse"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是按份共有人，客体是共有的不动产或者动产",
+     "rules": [
+      "c298-1",
+      "c307-in-share",
+      "c309-agreed",
+      "c309-contribution",
+      "c309-equal"
+     ]
+    },
+    {
+     "text": "共有人对共有物没有约定为按份共有或者共同共有，或者约定不明确",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "按份共有人对份额有明确约定；没有约定或者约定不明确",
+     "rules": [
+      "c309-agreed",
+      "c309-contribution",
+      "c309-equal"
+     ]
+    },
+    {
+     "text": "能够确定出资额；不能确定出资额",
+     "rules": [
+      "c309-contribution",
+      "c309-equal"
+     ]
+    },
+    {
+     "text": "债权债务因共有的不动产或者动产产生",
+     "rules": [
+      "c307-out",
+      "c307-in-share",
+      "c307-in-joint"
+     ]
+    },
+    {
+     "text": "按份共有人偿还债务超过自己应当承担的份额",
+     "rules": [
+      "c307-recourse"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定，或者第三人知道共有人不具有连带债权债务关系的，对外不成立连带债权债务",
+     "rules": [
+      "c307-out"
+     ]
+    },
+    {
+     "text": "共有人具有家庭关系等身份关系的，不视为按份共有",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "共有人另有约定的，内部关系不按份额或共同享有债权、承担债务",
+     "rules": [
+      "c307-in-share",
+      "c307-in-joint"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "按份共有人按照其份额对共有的不动产或者动产享有所有权",
+     "rules": [
+      "c298-1"
+     ]
+    },
+    {
+     "text": "对外关系上，共有人享有连带债权、承担连带债务",
+     "rules": [
+      "c307-out"
+     ]
+    },
+    {
+     "text": "内部关系上，按份共有人按照份额享有债权、承担债务；共同共有人共同享有债权、承担债务",
+     "rules": [
+      "c307-in-share",
+      "c307-in-joint"
+     ]
+    },
+    {
+     "text": "偿还债务超过自己应当承担份额的按份共有人，有权向其他共有人追偿",
+     "rules": [
+      "c307-recourse"
+     ]
+    },
+    {
+     "text": "视为按份共有",
+     "rules": [
+      "c308"
+     ]
+    },
+    {
+     "text": "份额有约定的按约定确定；没有约定或约定不明确的，按照出资额确定；不能确定出资额的，视为等额享有",
+     "rules": [
+      "c309-agreed",
+      "c309-contribution",
+      "c309-equal"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "共有人对份额有明确约定的，按约定确定，优先于按出资额确定及等额享有的补充规则",
+     "rules": [
+      "c309-agreed",
+      "c309-contribution",
+      "c309-equal"
+     ]
+    },
+    {
+     "text": "能够确定出资额的，按出资额确定份额，优先于等额享有的推定",
+     "rules": [
+      "c309-contribution",
+      "c309-equal"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第308条解决共有性质的推定（按份共有还是共同共有），第309条解决按份共有份额的确定，二者层次不同，不能混用",
+     "rules": []
+    },
+    {
+     "text": "第307条区分对外连带关系与内部按份/共同关系，其内部份额分担以第309条确定的份额为基础",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片把“共有人之间存在家庭关系”列为份额确定规则的消极条件，实为第308条共有性质推定的例外；第309条本身不含此限制",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片提及的第310条（参照适用）未在本行挂载，不作规则化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c298-1",
+    "srcs": [
+     "art298-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)"
+    ],
+    "heads": [
+     "ownsPerShare(P,T)"
+    ],
+    "note": "按份共有人对共有的不动产或者动产按照其份额享有所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-out",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwner(P,T)",
+     "debtFromCoOwnedProperty(T)",
+     "~lawProvidesOtherwiseOnJointDebt(T)",
+     "~thirdPartyKnowsNoJointDebt(T)"
+    ],
+    "heads": [
+     "jointRightsAndDebts(P)"
+    ],
+    "note": "对外关系上共有人享有连带债权、承担连带债务，但法律另有规定或第三人知道共有人不具有连带关系的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-in-share",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)",
+     "debtFromCoOwnedProperty(T)",
+     "~agreedOtherwiseAmongCoOwners(T)"
+    ],
+    "heads": [
+     "internalPerShare(P,T)"
+    ],
+    "note": "内部关系上，除共有人另有约定外，按份共有人按照份额享有债权、承担债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-in-joint",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwnerInCommon(P,T)",
+     "debtFromCoOwnedProperty(T)",
+     "~agreedOtherwiseAmongCoOwners(T)"
+    ],
+    "heads": [
+     "internalJoint(P,T)"
+    ],
+    "note": "内部关系上，除共有人另有约定外，共同共有人共同享有债权、承担债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c307-recourse",
+    "srcs": [
+     "art307-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)",
+     "actualPerformanceExceedsShare(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "G",
+      "content": "claimRecourseAgainst(P,G)"
+     }
+    ],
+    "note": "偿还债务超过自己应当承担份额的按份共有人，有权向其他共有人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c308",
+    "srcs": [
+     "art308-1"
+    ],
+    "body": [
+     "coOwnedProperty(T)",
+     "~agreedCoOwnershipType(T)",
+     "~familyRelationAmong(T)"
+    ],
+    "heads": [
+     "deemedCoOwnershipByShares(T)"
+    ],
+    "note": "未约定为按份共有或共同共有、或约定不明确的，除共有人具有家庭关系等外，视为按份共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-agreed",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)",
+     "agreedShare(P,T)"
+    ],
+    "heads": [
+     "shareDeterminedByAgreement(P,T)"
+    ],
+    "note": "共有人对份额有约定的按约定确定（第309条“没有约定或者约定不明确的”之反面解释，笔记亦列为第1项规则）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c309-contribution",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)",
+     "~agreedShare(P,T)",
+     "contributionDeterminable(P,T)"
+    ],
+    "heads": [
+     "shareDeterminedByContribution(P,T)"
+    ],
+    "note": "按份共有人对份额没有约定或约定不明确的，按照出资额确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c309-equal",
+    "srcs": [
+     "art309-1"
+    ],
+    "body": [
+     "coOwnerByShares(P,T)",
+     "~agreedShare(P,T)",
+     "~contributionDeterminable(P,T)"
+    ],
+    "heads": [
+     "deemedEqualShare(P,T)"
+    ],
+    "note": "不能确定出资额的，视为等额享有份额",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c309-agreed",
+    "c309-contribution",
+    "共有人对份额有明确约定的，按约定确定，不适用按出资额确定的补充规则"
+   ],
+   [
+    "c309-contribution",
+    "c309-equal",
+    "能够确定出资额的，按出资额确定份额，不适用等额享有的推定"
+   ]
+  ],
+  "predicates": {
+   "coOwner": "是共有人（共有人，共有物）",
+   "coOwnerByShares": "是按份共有人（共有人，共有物）",
+   "coOwnerInCommon": "是共同共有人（共有人，共有物）",
+   "coOwnedProperty": "是共有人共有的不动产或者动产（共有物）",
+   "ownsPerShare": "按照其份额对共有的不动产或者动产享有所有权（按份共有人，共有物）",
+   "debtFromCoOwnedProperty": "是因共有的不动产或者动产产生的债权债务（共有物）",
+   "lawProvidesOtherwiseOnJointDebt": "法律对共有产生的债权债务另有规定（共有物）",
+   "thirdPartyKnowsNoJointDebt": "第三人知道共有人不具有连带债权债务关系（共有物）",
+   "internalPerShare": "在内部关系上按照份额享有债权、承担债务（按份共有人，共有物）",
+   "internalJoint": "在内部关系上共同享有债权、承担债务（共同共有人，共有物）",
+   "agreedOtherwiseAmongCoOwners": "共有人就内部债权债务另有约定（共有物）",
+   "agreedCoOwnershipType": "共有人已明确约定为按份共有或者共同共有（共有物）",
+   "familyRelationAmong": "共有人之间具有家庭关系等身份关系（共有物）",
+   "deemedCoOwnershipByShares": "视为按份共有（共有物）",
+   "agreedShare": "共有人对份额有约定且约定明确（共有人，共有物）",
+   "shareDeterminedByAgreement": "按照约定确定份额（共有人，共有物）",
+   "contributionDeterminable": "出资额可以确定（共有人，共有物）",
+   "shareDeterminedByContribution": "按照出资额确定份额（共有人，共有物）",
+   "deemedEqualShare": "视为等额享有份额（共有人，共有物）"
+  }
+ }
+}

@@ -1,0 +1,661 @@
+{
+ "art:463": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同编的调整范围：本编调整因合同产生的民事关系（即因合同的订立、履行、变更、转让、终止等产生的民事关系）",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示合同编调整范围的条款，不含行为要件与法律效果，不产生可废止规则；笔记与 LEGO 卡片均未提供进一步内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:465": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "依法成立的合同受何种法律保护，对何人具有法律约束力",
+     "rules": [
+      "c465-1",
+      "c465-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同依法成立",
+     "rules": [
+      "c465-1",
+      "c465-2"
+     ]
+    },
+    {
+     "text": "该主体是合同当事人",
+     "rules": [
+      "c465-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定使债对第三人发生效力的，不受“仅对当事人有约束力”的限制",
+     "rules": [
+      "c465-2-exception"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依法成立的合同受法律保护",
+     "rules": [
+      "c465-1"
+     ]
+    },
+    {
+     "text": "依法成立的合同仅对当事人具有法律约束力，当事人应当依约履行",
+     "rules": [
+      "c465-2"
+     ]
+    },
+    {
+     "text": "法律另有规定的，该合同对第三人亦发生效力，第三人应当依约履行",
+     "rules": [
+      "c465-2-exception"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定使债对第三人发生效力的，优先于合同仅约束当事人的一般规则",
+     "rules": [
+      "c465-2-exception"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决依法成立的合同的保护与约束范围（对当事人、例外及于第三人），不解决合同是否成立、生效及其效力瑕疵；后者由第143条、第502条等规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本卡片全部内容以第465条原文为准，未作学理补充",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c465-1",
+    "srcs": [
+     "art465-1"
+    ],
+    "body": [
+     "contractLawfullyEstablished(K)"
+    ],
+    "heads": [
+     "contractProtectedByLaw(K)"
+    ],
+    "note": "依法成立的合同受法律保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c465-2",
+    "srcs": [
+     "art465-2"
+    ],
+    "body": [
+     "contractLawfullyEstablished(K)",
+     "partyTo(P,K)"
+    ],
+    "heads": [
+     "bindingForce(K)",
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performContract(P,K)"
+     }
+    ],
+    "note": "依法成立的合同仅对当事人具有法律约束力，当事人应当依约履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c465-2-exception",
+    "srcs": [
+     "art465-2"
+    ],
+    "body": [
+     "contractLawfullyEstablished(K)",
+     "lawProvidesThirdPartyEffect(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "performContract(T,K)"
+     }
+    ],
+    "note": "第465条第2款但书：法律另有规定使债对第三人发生效力的，该合同对第三人亦有约束力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c465-2-exception",
+    "c465-2",
+    "第465条第2款但书：法律另有规定使债对第三人发生效力时，优先于“合同仅对当事人有约束力”的一般规则"
+   ]
+  ],
+  "predicates": {
+   "contractProtectedByLaw/1": "依法成立的合同受法律保护（参数：合同）",
+   "contractProtectedByLaw": "依法成立的合同受法律保护（参数：合同）"
+  }
+ },
+ "card:g3752": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同的定义，以及婚姻、收养、监护等身份关系协议应适用何种法律",
+     "rules": [
+      "c464-1",
+      "c464-2a",
+      "c464-2b"
+     ]
+    },
+    {
+     "text": "当事人对合同条款的理解有争议时，如何确定争议条款的含义",
+     "rules": [
+      "c466-1",
+      "c466-2a",
+      "c466-2b"
+     ]
+    },
+    {
+     "text": "本法或者其他法律没有明文规定的合同（无名合同）如何适用法律",
+     "rules": [
+      "c467-1a",
+      "c467-1b",
+      "c467-1c"
+     ]
+    },
+    {
+     "text": "在境内履行的中外合资经营、中外合作经营、中外合作勘探开发自然资源合同适用何国法律",
+     "rules": [
+      "c467-2"
+     ]
+    },
+    {
+     "text": "非因合同产生的债权债务关系如何适用法律",
+     "rules": [
+      "c468-1",
+      "c468-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同是民事主体之间基于双方或多方意思表示一致、以设立、变更、终止民事法律关系为目的的协议",
+     "rules": [
+      "c464-1"
+     ]
+    },
+    {
+     "text": "协议属于婚姻、收养、监护等有关身份关系的协议",
+     "rules": [
+      "c464-2a",
+      "c464-2b"
+     ]
+    },
+    {
+     "text": "当事人对合同条款的理解有争议",
+     "rules": [
+      "c466-1"
+     ]
+    },
+    {
+     "text": "合同文本采用两种以上文字订立，并约定各文本具有同等效力",
+     "rules": [
+      "c466-2a",
+      "c466-2b"
+     ]
+    },
+    {
+     "text": "该合同在本法或者其他法律中没有明文规定的名称及规则（无名合同）",
+     "rules": [
+      "c467-1a",
+      "c467-1b",
+      "c467-1c"
+     ]
+    },
+    {
+     "text": "在中华人民共和国境内履行的中外合资经营企业合同、中外合作经营企业合同、中外合作勘探开发自然资源合同",
+     "rules": [
+      "c467-2"
+     ]
+    },
+    {
+     "text": "债权债务关系非因合同产生",
+     "rules": [
+      "c468-1",
+      "c468-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "身份关系协议，有关该身份关系的法律已有规定的，不参照适用合同编的规定",
+     "rules": [
+      "c464-2b"
+     ]
+    },
+    {
+     "text": "非因合同产生的债权债务关系，有关该债权债务关系的法律已有规定的，不适用合同编通则",
+     "rules": [
+      "c468-2"
+     ]
+    },
+    {
+     "text": "非因合同产生的债权债务关系，根据其性质不能适用合同编通则的，不适用通则",
+     "rules": [
+      "c468-2"
+     ]
+    },
+    {
+     "text": "无名合同参照适用最相类似合同的规定，不得用以规避法律对该类合同的特别规定（学理说明，法条未明文）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合定义的协议构成合同",
+     "rules": [
+      "c464-1"
+     ]
+    },
+    {
+     "text": "身份关系协议适用有关该身份关系的法律规定；没有规定的，可以根据其性质参照适用合同编的规定",
+     "rules": [
+      "c464-2a",
+      "c464-2b"
+     ]
+    },
+    {
+     "text": "应当依据第142条第1款（按所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则）确定争议条款的含义",
+     "rules": [
+      "c466-1"
+     ]
+    },
+    {
+     "text": "各文本使用的词句推定具有相同含义；词句不一致的，应当根据合同的相关条款、性质、目的以及诚信原则等予以解释",
+     "rules": [
+      "c466-2a",
+      "c466-2b"
+     ]
+    },
+    {
+     "text": "无名合同适用合同编通则的规定，并可以参照适用本编或者其他法律最相类似合同的规定",
+     "rules": [
+      "c467-1a",
+      "c467-1b"
+     ]
+    },
+    {
+     "text": "笔记：无名合同亦适用民法关于民事法律行为的规定（学理，法条未明文）",
+     "rules": [
+      "c467-1c"
+     ]
+    },
+    {
+     "text": "三类涉外合资、合作经营及合作勘探开发自然资源合同适用中华人民共和国法律",
+     "rules": [
+      "c467-2"
+     ]
+    },
+    {
+     "text": "非因合同产生的债权债务关系适用有关该债权债务关系的法律规定；没有规定的，适用合同编通则的有关规定（性质不能适用的除外）",
+     "rules": [
+      "c468-1",
+      "c468-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "身份关系协议优先适用有关身份关系的法律规定，优先于无名合同适用合同编通则及参照最相类似合同的规则",
+     "rules": [
+      "c464-2a",
+      "c467-1a"
+     ]
+    },
+    {
+     "text": "多文本合同词句不一致时，依第466条第2款结合合同条款、性质、目的及诚信原则解释，优先于第1款援引第142条第1款的一般解释规则",
+     "rules": [
+      "c466-2b",
+      "c466-1"
+     ]
+    },
+    {
+     "text": "非因合同产生的债权债务关系，有专门法律规定的优先适用该规定，合同编通则仅具补充性",
+     "rules": [
+      "c468-1",
+      "c468-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第464条界定合同并处理身份关系协议，第467条处理法律未明文规定的无名合同，第468条处理非因合同产生的债权债务关系，三者适用对象不同",
+     "rules": []
+    },
+    {
+     "text": "笔记：有名合同与无名合同以法律是否规定合同名称及规则为标准；无名合同适用民法关于民事法律行为的规定及合同法总则，并可参照最相类似的规定",
+     "rules": [
+      "c467-1a",
+      "c467-1b",
+      "c467-1c"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所称“本条优先于一般解释原则”“不得用于规避特别规定”等，法条未明文，仅作学理参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c464-1",
+    "srcs": [
+     "art464-1"
+    ],
+    "body": [
+     "bilateralOrMultilateralAgreement(K)",
+     "establishesChangesTerminatesLegalRelation(K)"
+    ],
+    "heads": [
+     "contractAgreement(K)"
+    ],
+    "note": "合同是民事主体之间基于双方或多方意思表示一致、以设立、变更、终止民事法律关系为目的的协议",
+    "auth": "npc"
+   },
+   {
+    "key": "c464-2a",
+    "srcs": [
+     "art464-2"
+    ],
+    "body": [
+     "identityRelationAgreement(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyIdentityRelationLaw(K)"
+     }
+    ],
+    "note": "婚姻、收养、监护等有关身份关系的协议，适用有关该身份关系的法律规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c464-2b",
+    "srcs": [
+     "art464-2"
+    ],
+    "body": [
+     "identityRelationAgreement(K)",
+     "-identityRelationLawProvides(K)",
+     "natureAllowsReference(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyContractBookByReference(K)"
+     }
+    ],
+    "note": "身份关系协议在身份关系法律没有规定时，可以根据其性质参照适用合同编的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c466-1",
+    "srcs": [
+     "art466-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "disputedClauseMeaning(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretPerWordsAndContext(K)"
+     }
+    ],
+    "note": "当事人对合同条款的理解有争议的，应当依据第142条第1款确定争议条款的含义",
+    "auth": "npc"
+   },
+   {
+    "key": "c466-2a",
+    "srcs": [
+     "art466-2"
+    ],
+    "body": [
+     "multipleLanguageTexts(K)",
+     "agreedEqualEffect(K)"
+    ],
+    "heads": [
+     "presumedSameMeaning(K)"
+    ],
+    "note": "合同文本采用两种以上文字订立并约定具有同等效力的，对各文本使用的词句推定具有相同含义",
+    "auth": "npc"
+   },
+   {
+    "key": "c466-2b",
+    "srcs": [
+     "art466-2"
+    ],
+    "body": [
+     "multipleLanguageTexts(K)",
+     "textsInconsistent(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretPerContractTermsPurposeGoodFaith(K)"
+     }
+    ],
+    "note": "各文本使用的词句不一致的，应当根据合同的相关条款、性质、目的以及诚信原则等予以解释",
+    "auth": "npc"
+   },
+   {
+    "key": "c467-1a",
+    "srcs": [
+     "art467-1"
+    ],
+    "body": [
+     "unnamedContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyGeneralProvisionsOfContractBook(K)"
+     }
+    ],
+    "note": "本法或者其他法律没有明文规定的合同，适用合同编通则的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c467-1b",
+    "srcs": [
+     "art467-1"
+    ],
+    "body": [
+     "unnamedContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyMostSimilarContractProvisionsByReference(K)"
+     }
+    ],
+    "note": "无名合同可以参照适用本编或者其他法律最相类似合同的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c467-1c",
+    "srcs": [
+     "art467-1"
+    ],
+    "body": [
+     "unnamedContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyCivilLegalActProvisions(K)"
+     }
+    ],
+    "note": "笔记：无名合同适用民法关于民事法律行为的规定（学理补充，法条仅规定适用合同编通则）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c467-2",
+    "srcs": [
+     "art467-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "sinoForeignEquityJointVentureContract(K)",
+       "sinoForeignCooperativeContract(K)",
+       "sinoForeignNaturalResourceExplorationContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "appliesChineseLaw(K)"
+    ],
+    "note": "在境内履行的中外合资经营企业合同、中外合作经营企业合同、中外合作勘探开发自然资源合同，适用中华人民共和国法律",
+    "auth": "npc"
+   },
+   {
+    "key": "c468-1",
+    "srcs": [
+     "art468"
+    ],
+    "body": [
+     "nonContractualDebtRelation(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLawOnThatDebtRelation(R)"
+     }
+    ],
+    "note": "非因合同产生的债权债务关系，适用有关该债权债务关系的法律规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c468-2",
+    "srcs": [
+     "art468"
+    ],
+    "body": [
+     "nonContractualDebtRelation(R)",
+     "-lawProvidesForDebtRelation(R)",
+     "~naturePreventsApplication(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyGeneralProvisionsOfContractBook(R)"
+     }
+    ],
+    "note": "非因合同产生的债权债务关系，没有专门规定的，适用合同编通则的有关规定，但根据其性质不能适用的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c464-2a",
+    "c467-1a",
+    "身份关系协议优先适用有关身份关系的法律规定，不径行按无名合同适用合同编通则"
+   ],
+   [
+    "c466-2b",
+    "c466-1",
+    "多文本合同词句不一致时，第466条第2款的特别解释规则优先于第1款援引第142条第1款的一般解释规则"
+   ],
+   [
+    "c468-1",
+    "c468-2",
+    "非因合同产生的债权债务关系有专门法律规定的优先适用该规定，合同编通则仅具补充性"
+   ]
+  ],
+  "predicates": {
+   "contractAgreement": "合同：民事主体之间设立、变更、终止民事法律关系的协议（第464条第1款）",
+   "identityRelationAgreement": "婚姻、收养、监护等有关身份关系的协议",
+   "identityRelationLawProvides": "有关该身份关系的法律已有规定",
+   "natureAllowsReference": "根据该协议的性质可以参照适用合同编的规定",
+   "applyIdentityRelationLaw": "适用有关该身份关系的法律规定",
+   "applyContractBookByReference": "参照适用合同编的规定",
+   "disputedClauseMeaning": "当事人对合同条款的理解有争议",
+   "multipleLanguageTexts": "合同文本采用两种以上文字订立",
+   "agreedEqualEffect": "约定各文本具有同等效力",
+   "presumedSameMeaning": "推定各文本使用的词句具有相同含义",
+   "textsInconsistent": "各文本使用的词句不一致",
+   "interpretPerContractTermsPurposeGoodFaith": "根据合同的相关条款、性质、目的以及诚信原则等解释争议条款",
+   "unnamedContract": "本法或者其他法律没有明文规定名称及规则的合同（无名合同）",
+   "applyGeneralProvisionsOfContractBook": "适用合同编通则的有关规定",
+   "applyMostSimilarContractProvisionsByReference": "参照适用本编或者其他法律最相类似合同的规定",
+   "applyCivilLegalActProvisions": "适用民法关于民事法律行为的规定",
+   "sinoForeignEquityJointVentureContract": "中外合资经营企业合同",
+   "sinoForeignCooperativeContract": "中外合作经营企业合同",
+   "sinoForeignNaturalResourceExplorationContract": "中外合作勘探开发自然资源合同",
+   "nonContractualDebtRelation": "非因合同产生的债权债务关系",
+   "lawProvidesForDebtRelation": "有关该债权债务关系的法律已有规定",
+   "naturePreventsApplication": "根据其性质不能适用合同编通则",
+   "applyLawOnThatDebtRelation": "适用有关该债权债务关系的法律规定"
+  }
+ }
+}

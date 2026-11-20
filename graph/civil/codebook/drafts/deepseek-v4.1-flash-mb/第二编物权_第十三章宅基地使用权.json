@@ -1,0 +1,458 @@
+{
+ "art:365": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "已经登记的宅基地使用权转让或者消灭后，应当办理何种登记、由谁办理",
+     "rules": [
+      "c365-transfer",
+      "c365-extinguish"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该宅基地使用权已经依法办理登记、记载于不动产登记簿",
+     "rules": [
+      "c365-transfer",
+      "c365-extinguish"
+     ]
+    },
+    {
+     "text": "该宅基地使用权发生转让",
+     "rules": [
+      "c365-transfer"
+     ]
+    },
+    {
+     "text": "该宅基地使用权消灭",
+     "rules": [
+      "c365-extinguish"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当及时办理变更登记",
+     "rules": [
+      "c365-transfer"
+     ]
+    },
+    {
+     "text": "应当及时办理注销登记",
+     "rules": [
+      "c365-extinguish"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定已登记宅基地使用权变动后的登记义务，不涉及宅基地使用权转让本身的效力与限制；宅基地使用权的取得、行使和转让适用土地管理法等法律和国家有关规定（第363条），未登记的宅基地使用权转让或消灭不适用本条的登记义务",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用本条原文或条号，本条按法条原文形式化；条文未写明办理登记的义务人，规则中以宅基地使用权人为义务人，属解释性处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c365-transfer",
+    "srcs": [
+     "art365-1"
+    ],
+    "body": [
+     "registeredInRegister(H)",
+     "homesteadRightHolder(P,H)",
+     "homesteadRightTransferred(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyForChangeRegistrationOfHomestead(H)"
+     }
+    ],
+    "note": "已经登记的宅基地使用权转让的，应当及时办理变更登记；条文未明确义务人，此处以宅基地使用权人为义务人",
+    "auth": "npc"
+   },
+   {
+    "key": "c365-extinguish",
+    "srcs": [
+     "art365-1"
+    ],
+    "body": [
+     "registeredInRegister(H)",
+     "homesteadRightHolder(P,H)",
+     "homesteadRightExtinguished(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyForCancellationRegistrationOfHomestead(H)"
+     }
+    ],
+    "note": "已经登记的宅基地使用权消灭的，应当及时办理注销登记；条文未明确义务人，此处以宅基地使用权人为义务人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "homesteadRightHolder": "是宅基地使用权人（权利人，宅基地使用权）",
+   "homesteadRightTransferred": "该宅基地使用权已转让（1个参数：宅基地使用权）",
+   "homesteadRightExtinguished": "该宅基地使用权已消灭（1个参数：宅基地使用权）",
+   "applyForChangeRegistrationOfHomestead": "就宅基地使用权的变动及时向登记机构申请变更登记（1个参数：宅基地使用权）",
+   "applyForCancellationRegistrationOfHomestead": "就宅基地使用权的消灭及时向登记机构申请注销登记（1个参数：宅基地使用权）"
+  }
+ },
+ "art:363": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "宅基地使用权的取得、行使和转让，应当适用何种法律规范",
+     "rules": [
+      "c363-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的是宅基地使用权，且事项涉及该权利的取得、行使或者转让",
+     "rules": [
+      "c363-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "适用土地管理的法律和国家有关规定；本条本身不另行创设宅基地使用权的具体内容与限制",
+     "rules": [
+      "c363-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "土地管理的法律和国家有关规定（特别规定）优先于民法典物权编关于用益物权的一般规定而适用",
+     "rules": [
+      "c363-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是转介（准用）条款，只指示应适用的规范，不直接规定宅基地使用权的设立、内容、期限与处分限制；具体规则见《土地管理法》等土地管理法律和国家有关规定，故本行不产生实体性规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c363-1",
+    "srcs": [
+     "art363-1"
+    ],
+    "body": [
+     "homesteadLandUseRight(H)",
+     "homesteadRightAcquisitionExerciseOrTransfer(H)"
+    ],
+    "heads": [
+     "landAdministrationLawGoverns(H)"
+    ],
+    "note": "宅基地使用权的取得、行使和转让，转介适用土地管理的法律和国家有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "homesteadLandUseRight": "宅基地使用权（1个参数：该权利）",
+   "homesteadRightAcquisitionExerciseOrTransfer": "涉及宅基地使用权的取得、行使或者转让（1个参数：宅基地使用权）",
+   "landAdministrationLawGoverns": "其取得、行使和转让适用土地管理的法律和国家有关规定（1个参数：宅基地使用权）"
+  }
+ },
+ "art:364": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "宅基地因自然灾害等原因灭失时，该宅基地上的宅基地使用权是否消灭；失去宅基地的村民能否获得重新分配的宅基地",
+     "rules": [
+      "c364-1",
+      "c364-loss",
+      "c364-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "某宅基地系村民的宅基地，且该宅基地因自然灾害等原因灭失",
+     "rules": [
+      "c364-1",
+      "c364-loss"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该宅基地上的宅基地使用权消灭",
+     "rules": [
+      "c364-1"
+     ]
+    },
+    {
+     "text": "因宅基地灭失而失去宅基地的村民，属于“失去宅基地的村民”",
+     "rules": [
+      "c364-loss"
+     ]
+    },
+    {
+     "text": "对失去宅基地的村民，应当依法重新分配宅基地",
+     "rules": [
+      "c364-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只处理宅基地使用权因标的物（宅基地）灭失而消灭以及重新分配宅基地，不涉及宅基地使用权的取得、行使和转让（第362—363条，本行未挂载）；笔记未引用本条原文或条号，故无笔记层面的例外可援用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c364-1",
+    "srcs": [
+     "art364-1"
+    ],
+    "body": [
+     "homesteadLandOf(V,L)",
+     "homesteadLandLost(L)"
+    ],
+    "heads": [
+     "-homesteadLandUseRightOf(V,L)"
+    ],
+    "note": "宅基地因自然灾害等原因灭失的，该宅基地上的宅基地使用权消灭（以“该宅基地系村民的宅基地”这一事实为前提，避免与结论同名的循环）",
+    "auth": "npc"
+   },
+   {
+    "key": "c364-loss",
+    "srcs": [
+     "art364-1"
+    ],
+    "body": [
+     "homesteadLandOf(V,L)",
+     "homesteadLandLost(L)"
+    ],
+    "heads": [
+     "lostHomesteadLand(V)"
+    ],
+    "note": "因宅基地灭失而丧失宅基地的村民，即条文所称“失去宅基地的村民”",
+    "auth": "npc"
+   },
+   {
+    "key": "c364-2",
+    "srcs": [
+     "art364-1"
+    ],
+    "body": [
+     "lostHomesteadLand(V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "villageCollective",
+      "counterparty": "V",
+      "content": "redistributeHomesteadLand(V)"
+     }
+    ],
+    "note": "对失去宅基地的村民，应当依法重新分配宅基地；条文未明示义务主体，按宅基地由集体所有理解为村集体（villageCollective），此主体归属属解释",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "homesteadLandOf": "该宅基地系该村民的宅基地（村民，宅基地）——事实层面的归属，非权利本身",
+   "homesteadLandLost": "宅基地因自然灾害等原因灭失（宅基地）",
+   "homesteadLandUseRightOf": "村民对该宅基地享有宅基地使用权（村民，宅基地）",
+   "lostHomesteadLand": "村民因宅基地灭失而失去宅基地，即“失去宅基地的村民”（村民）",
+   "redistributeHomesteadLand": "依法重新分配宅基地（失去宅基地的村民）"
+  }
+ },
+ "art:362": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "宅基地使用权人对集体所有的土地享有何种权利",
+     "rules": [
+      "c362-holder",
+      "c362-object",
+      "c362-1",
+      "c362-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为宅基地使用权人，即依法对集体所有土地享有宅基地使用权的人",
+     "rules": [
+      "c362-holder"
+     ]
+    },
+    {
+     "text": "客体为集体所有的土地",
+     "rules": [
+      "c362-object"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依法对集体所有的土地享有占有、使用的权利",
+     "rules": [
+      "c362-1"
+     ]
+    },
+    {
+     "text": "有权依法利用该土地建造住宅及其附属设施（“依法”指须符合土地管理、规划等规定）",
+     "rules": [
+      "c362-2"
+     ]
+    },
+    {
+     "text": "本条仅列举占有、使用两项权能，反面解释不含收益、处分（学理说明，非本条明文）",
+     "rules": [
+      "c362-scope"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与建设用地使用权（第344条以下）不同：宅基地使用权的客体限于集体所有的土地，用途限于建造住宅及其附属设施；宅基地不得抵押见第399条，取得方式、一户一宅及流转限制见《土地管理法》，本条均未规定",
+     "rules": []
+    },
+    {
+     "text": "与土地承包经营权不同：后者以从事农业生产为内容，宅基地使用权以建造住宅及附属设施为内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c362-holder",
+    "srcs": [
+     "art362"
+    ],
+    "body": [
+     "homesteadLandUseRight(H,L)"
+    ],
+    "heads": [
+     "homesteadLandUseRightHolder(H,L)"
+    ],
+    "note": "术语衔接：宅基地使用权人即依法对集体所有土地享有宅基地使用权的人",
+    "auth": "npc"
+   },
+   {
+    "key": "c362-object",
+    "srcs": [
+     "art362"
+    ],
+    "body": [
+     "homesteadLandUseRight(H,L)"
+    ],
+    "heads": [
+     "collectiveLand(L)"
+    ],
+    "note": "宅基地使用权的客体为集体所有的土地",
+    "auth": "npc"
+   },
+   {
+    "key": "c362-1",
+    "srcs": [
+     "art362"
+    ],
+    "body": [
+     "homesteadLandUseRightHolder(H,L)",
+     "collectiveLand(L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "possessAndUse(H,L)"
+     }
+    ],
+    "note": "宅基地使用权人依法对集体所有的土地享有占有和使用的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c362-2",
+    "srcs": [
+     "art362"
+    ],
+    "body": [
+     "homesteadLandUseRightHolder(H,L)",
+     "collectiveLand(L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "buildResidenceAndAttachments(H,L)"
+     }
+    ],
+    "note": "宅基地使用权人有权依法利用该土地建造住宅及其附属设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c362-scope",
+    "srcs": [
+     "art362"
+    ],
+    "body": [
+     "homesteadLandUseRightHolder(H,L)"
+    ],
+    "heads": [
+     "-profitOrDispose(H,L)"
+    ],
+    "note": "本条仅列举占有、使用两项权能，反面解释不含收益、处分；属学理说明，非本条明文",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "homesteadLandUseRight": "对集体所有的土地享有的宅基地使用权（参数1：权利人；参数2：土地）",
+   "homesteadLandUseRightHolder": "是宅基地使用权人，即依法对集体所有土地享有宅基地使用权的人（参数1：权利人；参数2：土地）",
+   "buildResidenceAndAttachments": "依法利用该土地建造住宅及其附属设施（参数1：宅基地使用权人；参数2：土地）",
+   "profitOrDispose": "对宅基地享有收益、处分的权能（参数1：权利人；参数2：土地）"
+  }
+ }
+}

@@ -1,0 +1,1470 @@
+{
+ "card:g4852": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "一方当事人违约同时损害对方人身权益、财产权益时，受损害方能否在违约责任与侵权责任之间选择请求权基础（违约责任与侵权责任的竞合）",
+     "rules": [
+      "c186-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方之间存在合同关系，一方为违约方，另一方为受损害的合同相对方",
+     "rules": [
+      "c186-1"
+     ]
+    },
+    {
+     "text": "该违约行为同时损害了对方的人身权益或者财产权益，即笔记所称“侵权性的违约行为”或“违约性的侵权行为”",
+     "rules": [
+      "c186-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "仅存在违约行为而未损害对方人身、财产权益，或仅存在侵权行为而无合同关系，或损害由不可抗力、第三人原因造成而非因违约引起，则不发生本条的选择权（LEGO卡片与学理，法条未明文）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "受损害方有权选择请求违约方承担违约责任或者侵权责任",
+     "rules": [
+      "c186-1"
+     ]
+    },
+    {
+     "text": "受损害方选择违约责任的，可以请求其承担违约责任",
+     "rules": [
+      "c186-breach"
+     ]
+    },
+    {
+     "text": "受损害方选择侵权责任的，可以请求其承担侵权责任",
+     "rules": [
+      "c186-tort"
+     ]
+    },
+    {
+     "text": "请求权基础一经选定不得再行变更，亦不得就同一损害重复受偿（学理与LEGO卡片，法条未明文）",
+     "rules": [
+      "c186-final"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是责任竞合的特别规定，优先于一般违约或侵权规则适用；选定违约责任后，不得再依侵权责任另行请求（c186-final 排除 c186-tort）",
+     "rules": [
+      "c186-1",
+      "c186-final"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第184条是自愿紧急救助中的免责规定，不涉及责任竞合",
+     "rules": []
+    },
+    {
+     "text": "第185条是对英雄烈士人格利益的特殊保护，属公益侵权，不适用竞合选择",
+     "rules": []
+    },
+    {
+     "text": "第187条解决民事、行政、刑事责任并存时的责任承担与优先顺序，不是违约与侵权的竞合规则",
+     "rules": []
+    },
+    {
+     "text": "第188条是诉讼时效的起算规则，与请求权基础的选择无关",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c186-1",
+    "srcs": [
+     "art186-1"
+    ],
+    "body": [
+     "partyTo(A,K)",
+     "partyTo(B,K)",
+     "breachOfContract(A,K)",
+     {
+      "or": [
+       "damagesPersonalInterest(A,B)",
+       "damagesPropertyInterest(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "chooseBreachOrTortLiability(B,A,K)"
+     }
+    ],
+    "note": "一方违约并损害对方人身权益、财产权益的，受损害方享有在违约责任与侵权责任之间选择请求的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c186-breach",
+    "srcs": [
+     "art186-1"
+    ],
+    "body": [
+     "exercisesChoice(B,A,K,breachLiability)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimLiability(B,A,K,breachLiability)"
+     }
+    ],
+    "note": "受损害方选择违约责任的，可以请求违约方承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c186-tort",
+    "srcs": [
+     "art186-1"
+    ],
+    "body": [
+     "exercisesChoice(B,A,K,tortLiability)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimLiability(B,A,K,tortLiability)"
+     }
+    ],
+    "note": "受损害方选择侵权责任的，可以请求违约方承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c186-final",
+    "srcs": [
+     "art186-1"
+    ],
+    "body": [
+     "exercisesChoice(B,A,K,breachLiability)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimLiability(B,A,K,tortLiability)"
+     }
+    ],
+    "note": "学理与LEGO卡片：请求权基础一经选定不得变更、不得就同一损害重复受偿；法条未明文，故为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c186-final",
+    "c186-tort",
+    "选定违约责任后不得再以侵权责任另行请求，避免同一损害重复受偿（学理，法条未明文）"
+   ]
+  ],
+  "predicates": {
+   "breachOfContract": "一方当事人存在违约行为（违约方，合同）",
+   "damagesPersonalInterest": "违约行为损害对方人身权益（违约方，受损害方）",
+   "damagesPropertyInterest": "违约行为损害对方财产权益（违约方，受损害方）",
+   "chooseBreachOrTortLiability": "受损害方有权选择请求承担违约责任或者侵权责任（受损害方，违约方，合同）",
+   "exercisesChoice": "受损害方已选择主张违约责任或侵权责任（受损害方，违约方，合同，责任类型）",
+   "claimLiability": "请求承担违约责任或侵权责任（受损害方，违约方，合同，责任类型）"
+  }
+ },
+ "card:g0609": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不可抗力、正当防卫、紧急避险、第三人原因、自甘风险、自助等免责（抗辩）事由的成立要件与法律后果",
+     "rules": [
+      "c180-2",
+      "c180-1",
+      "c181-1",
+      "c181-2",
+      "c182-1",
+      "c182-2",
+      "c182-3",
+      "c182-fair",
+      "c1175",
+      "c1176-1",
+      "c1176-exc",
+      "c1177-1",
+      "c1177-1b",
+      "c1177-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不可抗力：不能预见、不能避免且不能克服的客观情况",
+     "rules": [
+      "c180-2"
+     ]
+    },
+    {
+     "text": "因不可抗力不能履行民事义务",
+     "rules": [
+      "c180-1"
+     ]
+    },
+    {
+     "text": "正当防卫：为使合法权益免受正在进行的不法侵害，对不法侵害人采取合理防卫行为并造成损害",
+     "rules": [
+      "c181-1"
+     ]
+    },
+    {
+     "text": "紧急避险：为避免正在发生的危险不得已损害另一较小合法利益，造成损害；险情可因人为因素或自然原因引起",
+     "rules": [
+      "c182-1",
+      "c182-2"
+     ]
+    },
+    {
+     "text": "损害完全因第三人造成",
+     "rules": [
+      "c1175"
+     ]
+    },
+    {
+     "text": "自愿参加具有一定风险的文体活动，因其他参加者的行为受到损害",
+     "rules": [
+      "c1176-1"
+     ]
+    },
+    {
+     "text": "合法权益受到侵害，情况紧迫且不能及时获得国家机关保护，不立即采取措施将使其合法权益受到难以弥补的损害",
+     "rules": [
+      "c1177-1",
+      "c1177-1b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对不可抗力免责另有规定的，依照其规定（不发生免责效果）",
+     "rules": [
+      "c180-1"
+     ]
+    },
+    {
+     "text": "正当防卫超过必要限度，造成不应有的损害",
+     "rules": [
+      "c181-2"
+     ]
+    },
+    {
+     "text": "紧急避险采取措施不当或者超过必要限度，造成不应有的损害",
+     "rules": [
+      "c182-3"
+     ]
+    },
+    {
+     "text": "其他参加者对损害的发生有故意或者重大过失",
+     "rules": [
+      "c1176-exc"
+     ]
+    },
+    {
+     "text": "受害人采取的自助措施不当，造成他人损害",
+     "rules": [
+      "c1177-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "因不可抗力不能履行民事义务的，不承担民事责任",
+     "rules": [
+      "c180-1"
+     ]
+    },
+    {
+     "text": "因正当防卫造成损害的，不承担民事责任",
+     "rules": [
+      "c181-1"
+     ]
+    },
+    {
+     "text": "防卫过当的，正当防卫人应当承担适当的民事责任",
+     "rules": [
+      "c181-2"
+     ]
+    },
+    {
+     "text": "人为因素引起险情的，由引起险情发生的人承担民事责任；未引起险情的受益人可依公平原则适当补偿（笔记）",
+     "rules": [
+      "c182-1",
+      "c182-fair"
+     ]
+    },
+    {
+     "text": "危险由自然原因引起的，紧急避险人不承担民事责任，可以给予适当补偿",
+     "rules": [
+      "c182-2"
+     ]
+    },
+    {
+     "text": "避险过当的，紧急避险人应当承担适当的民事责任",
+     "rules": [
+      "c182-3"
+     ]
+    },
+    {
+     "text": "损害因第三人造成的，第三人应当承担侵权责任",
+     "rules": [
+      "c1175"
+     ]
+    },
+    {
+     "text": "自甘风险下受害人不得请求其他参加者承担侵权责任；其他参加者有故意或重大过失的除外",
+     "rules": [
+      "c1176-1",
+      "c1176-exc"
+     ]
+    },
+    {
+     "text": "受害人可在保护自己合法权益的必要范围内采取扣留侵权人财物等合理措施，但应当立即请求有关国家机关处理",
+     "rules": [
+      "c1177-1",
+      "c1177-1b"
+     ]
+    },
+    {
+     "text": "自助措施不当造成他人损害的，应当承担侵权责任",
+     "rules": [
+      "c1177-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "防卫过当规则优先于正当防卫完全免责的规则",
+     "rules": [
+      "c181-2"
+     ]
+    },
+    {
+     "text": "避险过当规则优先于第182条第1款、第2款的责任分配规则",
+     "rules": [
+      "c182-3"
+     ]
+    },
+    {
+     "text": "自甘风险的例外（故意或重大过失）优先于受害人不得请求的规则",
+     "rules": [
+      "c1176-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1176条第2款规定活动组织者的责任适用第1198条至第1201条，属指引性条款，本行不展开",
+     "rules": []
+    },
+    {
+     "text": "笔记将免责事由统称抗辩事由，还包括受害人过错、第三人原因等；受害人过错见其他卡片，本行不重复规定",
+     "rules": []
+    },
+    {
+     "text": "不可抗力在合同法上的效果（解除合同、情势变更、诉讼时效中止）不在本条，另见相应条文",
+     "rules": []
+    },
+    {
+     "text": "正当防卫针对不法侵害人，不发生补偿问题；紧急避险可损害第三人合法权益，自然原因引起时避险人可给予适当补偿",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c180-2",
+    "srcs": [
+     "art180-2"
+    ],
+    "body": [
+     "objectiveSituation(F)",
+     "unforeseeable(F)",
+     "unavoidable(F)",
+     "insurmountable(F)"
+    ],
+    "heads": [
+     "forceMajeure(F)"
+    ],
+    "note": "不可抗力是不能预见、不能避免且不能克服的客观情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c180-1",
+    "srcs": [
+     "art180-1"
+    ],
+    "body": [
+     "forceMajeure(F)",
+     "cannotPerformDueTo(A,O,F)",
+     "~lawProvidesOtherwiseOnLiability(O)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(A,O)"
+    ],
+    "note": "因不可抗力不能履行民事义务的，不承担民事责任；法律另有规定的依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c181-1",
+    "srcs": [
+     "art181-1"
+    ],
+    "body": [
+     "justifiableDefense(D)",
+     "causesDamageTo(D,V)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(D,V)"
+    ],
+    "note": "因正当防卫造成损害的，不承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c181-2",
+    "srcs": [
+     "art181-2"
+    ],
+    "body": [
+     "justifiableDefense(D)",
+     "exceedsNecessaryLimit(D)",
+     "causesUndueDamage(D,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "V",
+      "content": "bearAppropriateLiability(D,V)"
+     }
+    ],
+    "note": "正当防卫超过必要限度造成不应有的损害的，正当防卫人应当承担适当的民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c182-1",
+    "srcs": [
+     "art182-1"
+    ],
+    "body": [
+     "emergencyAvoidance(D)",
+     "dangerCausedByPerson(D,P)",
+     "causesDamageTo(D,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "bearsLiabilityFor(P,V)"
+     }
+    ],
+    "note": "因紧急避险造成损害，险情由人为因素引起的，由引起险情发生的人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c182-2",
+    "srcs": [
+     "art182-2"
+    ],
+    "body": [
+     "emergencyAvoidance(D)",
+     "dangerCausedByNature(D)",
+     "causesDamageTo(D,V)"
+    ],
+    "heads": [
+     "-bearsLiabilityFor(D,V)",
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "V",
+      "content": "giveAppropriateCompensation(D,V)"
+     }
+    ],
+    "note": "危险由自然原因引起的，紧急避险人不承担民事责任，可以给予适当补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c182-3",
+    "srcs": [
+     "art182-3"
+    ],
+    "body": [
+     "emergencyAvoidance(D)",
+     {
+      "or": [
+       "improperMeasure(D)",
+       "exceedsNecessaryLimit(D)"
+      ]
+     },
+     "causesUndueDamage(D,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "V",
+      "content": "bearAppropriateLiability(D,V)"
+     }
+    ],
+    "note": "紧急避险采取措施不当或者超过必要限度，造成不应有的损害的，紧急避险人应当承担适当的民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c182-fair",
+    "srcs": [
+     "art182-1"
+    ],
+    "body": [
+     "emergencyAvoidance(D)",
+     "dangerCausedByPerson(D,P)",
+     "beneficiary(B,D)",
+     "-isSelf(B,P)",
+     "causesDamageTo(D,V)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "V",
+      "content": "giveAppropriateCompensation(B,V)"
+     }
+    ],
+    "note": "笔记观点：人为因素引起险情时，未引起险情的受益人可依公平原则适当分担损失；法条未明文，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1175",
+    "srcs": [
+     "art1175"
+    ],
+    "body": [
+     "thirdPartyCausesDamage(T,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "V",
+      "content": "bearTortLiability(T,V)"
+     }
+    ],
+    "note": "损害是因第三人造成的，第三人应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1176-1",
+    "srcs": [
+     "art1176-1"
+    ],
+    "body": [
+     "voluntaryParticipationInRiskyActivity(V,A)",
+     "harmFromOtherParticipant(V,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": "P",
+      "content": "claimTortLiability(V,P)"
+     }
+    ],
+    "note": "自愿参加有一定风险的文体活动，因其他参加者行为受损的，受害人不得请求其他参加者承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1176-exc",
+    "srcs": [
+     "art1176-1"
+    ],
+    "body": [
+     "voluntaryParticipationInRiskyActivity(V,A)",
+     "harmFromOtherParticipant(V,P)",
+     {
+      "or": [
+       "intentional(P,V)",
+       "grossNegligence(P,V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "V",
+      "counterparty": "P",
+      "content": "claimTortLiability(V,P)"
+     }
+    ],
+    "note": "但书：其他参加者对损害的发生有故意或者重大过失的，受害人可以请求其承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1177-1",
+    "srcs": [
+     "art1177-1"
+    ],
+    "body": [
+     "rightsInfringed(V)",
+     "urgency(V)",
+     "cannotObtainStateProtectionInTime(V)",
+     "irreparableHarmIfNotAct(V)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "V",
+      "counterparty": null,
+      "content": "takeReasonableSelfHelpMeasures(V)"
+     }
+    ],
+    "note": "情况紧迫且不能及时获得国家机关保护，不立即采取措施将受难以弥补损害的，受害人可在必要范围内采取扣留侵权人财物等合理措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1177-1b",
+    "srcs": [
+     "art1177-1"
+    ],
+    "body": [
+     "rightsInfringed(V)",
+     "urgency(V)",
+     "cannotObtainStateProtectionInTime(V)",
+     "irreparableHarmIfNotAct(V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "V",
+      "counterparty": null,
+      "content": "requestStateAuthorityHandling(V)"
+     }
+    ],
+    "note": "但书：采取自助措施后应当立即请求有关国家机关处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1177-2",
+    "srcs": [
+     "art1177-2"
+    ],
+    "body": [
+     "selfHelpMeasureImproper(V)",
+     "causesDamageTo(V,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "V",
+      "counterparty": "W",
+      "content": "bearTortLiability(V,W)"
+     }
+    ],
+    "note": "受害人采取的自助措施不当造成他人损害的，应当承担侵权责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c181-2",
+    "c181-1",
+    "防卫超过必要限度造成不应有损害的，防卫人承担适当责任，排除完全免责"
+   ],
+   [
+    "c182-3",
+    "c182-1",
+    "避险过当的，由避险人自己承担适当责任，排除由引起险情的人承担"
+   ],
+   [
+    "c182-3",
+    "c182-2",
+    "避险过当的，避险人承担适当责任，排除自然原因下的免责与补偿规则"
+   ],
+   [
+    "c1176-exc",
+    "c1176-1",
+    "其他参加者有故意或重大过失的，受害人可以请求其承担侵权责任，排除不得请求的规则"
+   ]
+  ],
+  "predicates": {
+   "objectiveSituation": "客观情况",
+   "unforeseeable": "不能预见（客观情况）",
+   "unavoidable": "不能避免（客观情况）",
+   "insurmountable": "不能克服（客观情况）",
+   "cannotPerformDueTo": "因不可抗力不能履行民事义务（行为人，义务，不可抗力）",
+   "bearsLiabilityFor": "就某项民事义务或损害承担民事责任（承担者，义务/受害人）",
+   "lawProvidesOtherwiseOnLiability": "法律对不可抗力免责另有规定（义务）",
+   "justifiableDefense": "正当防卫",
+   "exceedsNecessaryLimit": "超过必要限度",
+   "causesUndueDamage": "造成不应有的损害（行为人，受害人）",
+   "bearAppropriateLiability": "承担适当的民事责任（行为人，受害人）",
+   "emergencyAvoidance": "紧急避险",
+   "dangerCausedByPerson": "险情由人为因素引起（避险行为，引起险情的人）",
+   "dangerCausedByNature": "险情由自然原因引起（避险行为）",
+   "improperMeasure": "采取的措施不当（避险人）",
+   "beneficiary": "是受益人（受益人，避险行为）",
+   "thirdPartyCausesDamage": "损害是因第三人造成的（第三人，受害人）",
+   "bearTortLiability": "承担侵权责任（侵权人，被侵权人）",
+   "voluntaryParticipationInRiskyActivity": "自愿参加具有一定风险的文体活动（受害人，活动）",
+   "harmFromOtherParticipant": "因其他参加者的行为受到损害（受害人，其他参加者）",
+   "rightsInfringed": "合法权益受到侵害（受害人）",
+   "urgency": "情况紧迫",
+   "cannotObtainStateProtectionInTime": "不能及时获得国家机关保护",
+   "irreparableHarmIfNotAct": "不立即采取措施将使其合法权益受到难以弥补的损害",
+   "takeReasonableSelfHelpMeasures": "在保护自己合法权益的必要范围内采取扣留侵权人财物等合理措施（受害人）",
+   "requestStateAuthorityHandling": "立即请求有关国家机关处理（受害人）",
+   "selfHelpMeasureImproper": "采取的自助措施不当（受害人）"
+  }
+ },
+ "art:176": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体履行民事义务、承担民事责任的一般依据：依照法律规定或者按照当事人约定",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、原则性规定，不单独产生可废止规则；义务与责任的具体发生依据（如违约责任、侵权责任、缔约过失责任等）由各分编规定，本条仅提供“法定或约定”这一总括依据",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g0579": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "二人以上依法承担按份责任时，各责任人之间如何分担责任",
+     "rules": [
+      "c177-1",
+      "c177-2"
+     ]
+    },
+    {
+     "text": "二人以上依法承担连带责任时，权利人如何行使请求权、责任人内部份额如何确定、超额承担后如何追偿，以及连带责任的发生依据",
+     "rules": [
+      "c178-1",
+      "c178-2a",
+      "c178-2b",
+      "c178-2c",
+      "c178-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "二人以上依法承担按份责任（第177条）或连带责任（第178条）",
+     "rules": [
+      "c177-1",
+      "c177-2",
+      "c178-1"
+     ]
+    },
+    {
+     "text": "能够确定责任大小，或者难以确定责任大小",
+     "rules": [
+      "c177-1",
+      "c177-2",
+      "c178-2a",
+      "c178-2b"
+     ]
+    },
+    {
+     "text": "连带责任须由法律规定或者当事人约定",
+     "rules": [
+      "c178-3"
+     ]
+    },
+    {
+     "text": "连带责任人实际承担的责任超过自己的责任份额",
+     "rules": [
+      "c178-2c"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "没有法律规定或者当事人约定，不成立连带责任，不适用第178条的连带规则",
+     "rules": [
+      "c178-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "按份责任中，能够确定责任大小的，各自承担相应的责任；难以确定责任大小的，平均承担责任",
+     "rules": [
+      "c177-1",
+      "c177-2"
+     ]
+    },
+    {
+     "text": "连带责任中，权利人有权请求部分或者全部连带责任人承担责任",
+     "rules": [
+      "c178-1"
+     ]
+    },
+    {
+     "text": "连带责任人的责任份额根据各自责任大小确定；难以确定责任大小的，平均承担",
+     "rules": [
+      "c178-2a",
+      "c178-2b"
+     ]
+    },
+    {
+     "text": "实际承担责任超过自己责任份额的连带责任人，有权向其他连带责任人追偿",
+     "rules": [
+      "c178-2c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "连带责任人的份额先按各自责任大小确定，难以确定时才平均承担",
+     "rules": [
+      "c178-2a",
+      "c178-2b"
+     ]
+    },
+    {
+     "text": "连带责任以法律规定或者当事人约定为前提，无此依据时不得适用第178条的连带规则",
+     "rules": [
+      "c178-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "按份责任中各责任人只就自己份额负责；连带责任中权利人可向任一责任人请求全部，责任人内部再按份额分担并相互追偿",
+     "rules": [
+      "c177-1",
+      "c178-1",
+      "c178-2c"
+     ]
+    },
+    {
+     "text": "笔记所称补充责任（主责任人财产不足时由有关的人就不足部分补充的第二顺位责任，如违反安全保障义务的相应补充、一般保证人的补充责任等）系学理分类，本行第177、178条未作规定，故不设规则，仅作说明",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“补充责任优先于一般按份责任适用”“多个补充责任人依顺序承担”“相应责任与按份责任并列”等，均无本行条文依据，不予采纳；第177条的“相应的责任”即按份责任的分担结果",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c177-1",
+    "srcs": [
+     "art177-1"
+    ],
+    "body": [
+     "severalLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareDeterminable(G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCorrespondingShare(P,G)"
+     }
+    ],
+    "note": "二人以上依法承担按份责任，能够确定责任大小的，各自承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c177-2",
+    "srcs": [
+     "art177-1"
+    ],
+    "body": [
+     "severalLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareIndeterminable(G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearEqualShare(P,G)"
+     }
+    ],
+    "note": "按份责任中难以确定责任大小的，平均承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-1",
+    "srcs": [
+     "art178-1"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "rightHolderAgainst(R,G)",
+     "memberOf(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "claimPerformanceFrom(R,P)"
+     }
+    ],
+    "note": "二人以上依法承担连带责任的，权利人有权请求部分或者全部连带责任人承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-2a",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareDeterminable(G)"
+    ],
+    "heads": [
+     "shareDeterminedByFault(P,G)"
+    ],
+    "note": "连带责任人的责任份额根据各自责任大小确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-2b",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareIndeterminable(G)"
+    ],
+    "heads": [
+     "-shareDeterminedByFault(P,G)",
+     "equalShare(P,G)"
+    ],
+    "note": "连带责任人之间难以确定责任大小的，不按责任大小确定份额，而平均承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-2c",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "actualPerformanceExceedsShare(P,G)",
+     "otherMember(Q,P,G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimRecourseAgainst(P,Q)"
+     }
+    ],
+    "note": "实际承担责任超过自己责任份额的连带责任人，有权向其他连带责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-3",
+    "srcs": [
+     "art178-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "lawProvidesJointLiability(G)",
+       "partiesAgreedJointLiability(G)"
+      ]
+     }
+    ],
+    "heads": [
+     "jointLiability(G)"
+    ],
+    "note": "连带责任由法律规定或者当事人约定，无此依据不成立连带责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c178-2b",
+    "c178-2a",
+    "责任大小难以确定时平均承担，不再按责任大小确定份额"
+   ]
+  ],
+  "predicates": {
+   "severalLiability": "二人以上依法承担按份责任（参数1：责任人群体）",
+   "jointLiability": "二人以上依法承担连带责任（参数1：责任人群体）",
+   "memberOf": "是该责任群体的成员（责任人，责任人群体）",
+   "liabilityShareDeterminable": "能够确定各责任人的责任大小（责任人群体）",
+   "liabilityShareIndeterminable": "难以确定各责任人的责任大小（责任人群体）",
+   "bearCorrespondingShare": "承担相应的责任份额（责任人，责任人群体）",
+   "bearEqualShare": "平均承担按份责任（责任人，责任人群体）",
+   "rightHolderAgainst": "是该责任的权利人（权利人，责任人群体）",
+   "claimPerformanceFrom": "请求承担民事责任（权利人，责任人）",
+   "shareDeterminedByFault": "责任份额依其责任大小确定（责任人，责任人群体）",
+   "equalShare": "平均分担内部责任份额（责任人，责任人群体）",
+   "actualPerformanceExceedsShare": "实际承担的责任超过自己的责任份额（责任人，责任人群体）",
+   "otherMember": "是除该责任人以外的其他成员（其他责任人，责任人，责任人群体）",
+   "claimRecourseAgainst": "向其他连带责任人追偿（追偿权人，其他连带责任人）",
+   "lawProvidesJointLiability": "法律规定承担连带责任（责任人群体）",
+   "partiesAgreedJointLiability": "当事人约定承担连带责任（责任人群体）"
+  }
+ },
+ "art:184": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因自愿实施紧急救助行为造成受助人损害的，救助人是否应当承担民事责任",
+     "rules": [
+      "c184-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "救助人自愿实施紧急救助行为（非受法定或约定义务驱使，且处于紧急情形）",
+     "rules": [
+      "c184-1"
+     ]
+    },
+    {
+     "text": "该救助行为造成受助人损害",
+     "rules": [
+      "c184-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "救助人对受助人不承担民事责任（免责）",
+     "rules": [
+      "c184-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是侵权责任的免责特别规定，就自愿紧急救助致受助人损害的情形，优先于一般过错责任规则适用",
+     "rules": [
+      "c184-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第181条正当防卫、第182条紧急避险不同，本条不要求救助人“无重大过失”，条文本身未设任何例外，属绝对免责（学理说明）",
+     "rules": []
+    },
+    {
+     "text": "本条仅适用于“自愿”的“紧急救助”；无因管理中的一般管理行为、非紧急情形下的救助或基于法定职责的救助，不适用本条免责",
+     "rules": []
+    },
+    {
+     "text": "本条免除的是救助人对受助人的民事责任，不涉及救助人对第三人的责任，也不影响受助人依其他规定获得救济",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c184-1",
+    "srcs": [
+     "art184"
+    ],
+    "body": [
+     "emergencyRescue(A,V,Act)",
+     "causesDamageTo(A,V)"
+    ],
+    "heads": [
+     "-liable(A,V,Act)"
+    ],
+    "note": "因自愿实施紧急救助行为造成受助人损害的，救助人不承担民事责任（“好人条款”，条文未设重大过失等例外）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "emergencyRescue": "自愿实施紧急救助行为（救助人，受助人，救助行为）"
+  }
+ },
+ "art:185": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "侵害英雄烈士等的姓名、肖像、名誉、荣誉并损害社会公共利益的，行为人是否应当承担民事责任",
+     "rules": [
+      "c185-ground",
+      "c185-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为侵害的对象是英雄烈士等的姓名、肖像、名誉、荣誉",
+     "rules": [
+      "c185-ground"
+     ]
+    },
+    {
+     "text": "该侵害同时损害社会公共利益（两项要件须并存）",
+     "rules": [
+      "c185-ground"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成上述侵害的，行为人应当承担民事责任（具体责任方式依第179条等规定确定）",
+     "rules": [
+      "c185-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是英雄烈士等人格利益保护的特别规定，就此类侵害优先于人格权编的一般保护规定适用（学理）",
+     "rules": [
+      "c185-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把本条列为“英雄烈士特别保护的民事责任”，属民事责任分类中的特别规定；本条只解决责任成立，不规定责任方式",
+     "rules": []
+    },
+    {
+     "text": "与第994条死者人格利益保护不同，本条以“损害社会公共利益”为要件，保护对象为英雄烈士等，不限于近亲属的请求权（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c185-ground",
+    "srcs": [
+     "art185"
+    ],
+    "body": [
+     "heroMartyr(H)",
+     "infringesNamePortraitReputationHonor(A,H)",
+     "harmsPublicInterest(A)"
+    ],
+    "heads": [
+     "heroMartyrInfringement(A,H)"
+    ],
+    "note": "侵害英雄烈士等的姓名、肖像、名誉、荣誉，且损害社会公共利益的，构成本条特别保护的侵害行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c185-1",
+    "srcs": [
+     "art185"
+    ],
+    "body": [
+     "heroMartyrInfringement(A,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "bearCivilLiabilityForInfringement(A)"
+     }
+    ],
+    "note": "构成该侵害的，行为人应当承担民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "heroMartyr": "是英雄烈士等受本条特别保护的主体",
+   "infringesNamePortraitReputationHonor": "侵害英雄烈士等的姓名、肖像、名誉、荣誉（行为人，英雄烈士等）",
+   "heroMartyrInfringement": "构成侵害英雄烈士等人格利益并损害社会公共利益的侵害行为（行为人，英雄烈士等）",
+   "bearCivilLiabilityForInfringement": "就侵害英雄烈士等人格利益的行为依法承担民事责任（行为人）"
+  }
+ },
+ "art:183": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因保护他人民事权益（见义勇为）使自己受到损害时，民事责任由谁承担、受益人是否以及何时应当给予适当补偿",
+     "rules": [
+      "c183-1",
+      "c183-2",
+      "c183-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人因保护他人民事权益而使自己受到损害",
+     "rules": [
+      "c183-1",
+      "c183-2",
+      "c183-3"
+     ]
+    },
+    {
+     "text": "存在造成该损害的侵权人",
+     "rules": [
+      "c183-1"
+     ]
+    },
+    {
+     "text": "存在因该保护行为而受益的人（受益人）",
+     "rules": [
+      "c183-2",
+      "c183-3"
+     ]
+    },
+    {
+     "text": "没有侵权人、侵权人逃逸或者侵权人无力承担民事责任",
+     "rules": [
+      "c183-3"
+     ]
+    },
+    {
+     "text": "受害人向受益人请求补偿",
+     "rules": [
+      "c183-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "由侵权人向受害人承担民事责任",
+     "rules": [
+      "c183-1"
+     ]
+    },
+    {
+     "text": "受益人可以给予适当补偿（授权性规定，非义务）",
+     "rules": [
+      "c183-2"
+     ]
+    },
+    {
+     "text": "没有侵权人、侵权人逃逸或者无力承担民事责任，受害人请求补偿的，受益人应当给予适当补偿",
+     "rules": [
+      "c183-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "侵权人能够承担民事责任时，责任由侵权人承担；受益人的补偿义务仅在无侵权人、侵权人逃逸或无力承担民事责任时才发生，故第2句的补偿义务规则相对于第1句的任意补偿具有补充性、优先适用",
+     "rules": [
+      "c183-1",
+      "c183-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条；本条只解决侵权人责任与受益人补偿的分配，不改变侵权责任的构成要件，也不排除受害人依无因管理（第979条）等另行主张",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c183-1",
+    "srcs": [
+     "art183-1"
+    ],
+    "body": [
+     "protectsOthersCivilRights(V)",
+     "suffersDamage(V,D)",
+     "tortfeasorOf(T,V,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "V",
+      "content": "bearCivilLiabilityToVictim(T,V)"
+     }
+    ],
+    "note": "因保护他人民事权益使自己受到损害的，由侵权人向受害人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c183-2",
+    "srcs": [
+     "art183-1"
+    ],
+    "body": [
+     "protectsOthersCivilRights(V)",
+     "suffersDamage(V,D)",
+     "beneficiaryOf(B,V,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "V",
+      "content": "giveAppropriateCompensation(B,V)"
+     }
+    ],
+    "note": "受益人可以给予适当补偿，属授权性规定，不构成一般性的补偿义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c183-3",
+    "srcs": [
+     "art183-1"
+    ],
+    "body": [
+     "protectsOthersCivilRights(V)",
+     "suffersDamage(V,D)",
+     "beneficiaryOf(B,V,D)",
+     {
+      "or": [
+       "noTortfeasor(D)",
+       "tortfeasorEscaped(D)",
+       "tortfeasorUnableToBear(D)"
+      ]
+     },
+     "victimRequestsCompensation(V,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "V",
+      "content": "giveAppropriateCompensation(B,V)"
+     }
+    ],
+    "note": "没有侵权人、侵权人逃逸或者无力承担民事责任，受害人请求补偿的，受益人应当给予适当补偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "protectsOthersCivilRights": "为保护他人民事权益（行为人）",
+   "suffersDamage": "因保护他人民事权益使自己受到损害（受害人，损害）",
+   "tortfeasorOf": "是造成该损害的侵权人（侵权人，受害人，损害）",
+   "beneficiaryOf": "因受害人的保护行为而受益的人（受益人，受害人，损害）",
+   "noTortfeasor": "没有侵权人（损害）",
+   "tortfeasorEscaped": "侵权人逃逸（损害）",
+   "tortfeasorUnableToBear": "侵权人无力承担民事责任（损害）",
+   "victimRequestsCompensation": "受害人向受益人请求补偿（受害人，受益人）",
+   "bearCivilLiabilityToVictim": "侵权人向受害人承担民事责任（侵权人，受害人）"
+  }
+ },
+ "card:g0589": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c178-3：新谓词 jointLiabilityByLaw 需要在 predicates 中给出中文释义",
+   "c178-3：新谓词 jointLiabilityByAgreement 需要在 predicates 中给出中文释义",
+   "c178-3：新谓词 jointLiability 需要在 predicates 中给出中文释义",
+   "c178-1：新谓词 jointLiability 需要在 predicates 中给出中文释义",
+   "c178-1：新谓词 claimLiabilityFrom 需要在 predicates 中给出中文释义",
+   "c178-share：新谓词 jointLiability 需要在 predicates 中给出中文释义",
+   "c178-share：新谓词 liabilityShareDeterminable 需要在 predicates 中给出中文释义",
+   "c178-share：新谓词 liabilityShareByFault 需要在 predicates 中给出中文释义",
+   "c178-average：新谓词 jointLiability 需要在 predicates 中给出中文释义",
+   "c178-average：新谓词 liabilityShareDeterminable 需要在 predicates 中给出中文释义",
+   "c178-average：新谓词 liabilityShareEqual 需要在 predicates 中给出中文释义",
+   "c178-recourse：新谓词 jointLiability 需要在 predicates 中给出中文释义",
+   "c178-recourse：新谓词 bearsMoreThanShare 需要在 predicates 中给出中文释义",
+   "c178-recourse：新谓词 otherJointObligor 需要在 predicates 中给出中文释义",
+   "c178-recourse：新谓词 recourseAgainst 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 stopInfringementForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 removeObstructionForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 eliminateDangerForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 returnPropertyForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 restoreOriginalStateForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 repairRemakeReplaceForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 continuePerformanceForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 compensateLossForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 payLiquidatedDamagesForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 eliminateEffectsRestoreReputationForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 apologizeForm 需要在 predicates 中给出中文释义",
+   "c179-forms：新谓词 statutoryLiabilityForm 需要在 predicates 中给出中文释义",
+   "c179-3：新谓词 statutoryLiabilityForm 需要在 predicates 中给出中文释义",
+   "c179-3：新谓词 applyLiabilityFormAloneOrCombined 需要在 predicates 中给出中文释义",
+   "c179-2：新谓词 lawProvidesPunitiveDamages 需要在 predicates 中给出中文释义",
+   "c179-2：新谓词 applyPunitiveDamages 需要在 predicates 中给出中文释义",
+   "c179-doctrine-breach：新谓词 claimContinuePerformanceOrLiquidatedDamages 需要在 predicates 中给出中文释义",
+   "c179-doctrine-tort：新谓词 infringesPersonalityRight 需要在 predicates 中给出中文释义",
+   "c179-doctrine-tort：新谓词 claimApologyAndEliminateEffects 需要在 predicates 中给出中文释义",
+   "c179-doctrine-tort：变量 ['A'] 没有出现在 body 的正面原子中（不安全）",
+   "c187-1：新谓词 sameAct 需要在 predicates 中给出中文释义",
+   "c187-1：新谓词 bearsAdministrativeOrCriminalLiability 需要在 predicates 中给出中文释义",
+   "c187-1：新谓词 civilLiabilityUnaffected 需要在 predicates 中给出中文释义",
+   "c187-2：新谓词 civilLiabilityUnaffected 需要在 predicates 中给出中文释义",
+   "c187-2：新谓词 assetsInsufficientToPay 需要在 predicates 中给出中文释义",
+   "c187-2：新谓词 payCivilLiabilityFirst 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"二人以上依法承担连带责任时，权利人如何行使请求权，责任人之间如何确定份额、如何追偿\",\n        \"rules\": [\"c178-3\", \"c178-1\", \"c178-share\", \"c178-average\", \"c178-recourse\"]\n      },\n      {\n        \"text\": \"承担民事责任有哪些法定方式，能否单独或合并适用，惩罚性赔偿如何处理\",\n        \"rules\": [\"c179-forms\", \"c179-3\", \"c179-2\"]\n      },\n      {\n        \"text\": \"同一行为同时引起民事责任、行政责任、刑事责任时，责任如何承担，财产不足时如何清偿\",\n        \"rules\": [\"c187-1\", \"c187-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"连带责任须由法律规定或者当事人约定（法定或约定连带）\",\n        \"rules\": [\"c178-3\"]\n      },\n      {\n        \"text\": \"责任人的责任大小可以确定；难以确定责任大小的，平均承担\",\n        \"rules\": [\"c178-share\", \"c178-average\"]\n      },\n      {\n        \"text\": \"连带责任人实际承担的责任超过自己的责任份额\",\n        \"rules\": [\"c178-recourse\"]\n      },\n      {\n        \"text\": \"所主张的责任方式属于第179条第1款列举的十一种方式之一\",\n        \"rules\": [\"c179-forms\"]\n      },\n      {\n        \"text\": \"法律对惩罚性赔偿有规定\",\n        \"rules\": [\"c179-2\"]\n      },\n      {\n        \"text\": \"民事主体因同一行为承担行政责任或刑事责任；其财产不足以支付全部责任\",\n        \"rules\": [\"c187-1\", \"c187-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"责任方式的适用范围受限制：继续履行、支付违约金等仅适用于违约责任；赔礼道歉、消除影响、恢复名誉主要适用于侵权责任，尤其人身权侵害（笔记）\",\n        \"rules\": [\"c179-doctrine-breach\", \"c179-doctrine-tort\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"权利人有权请求部分或者全部连带责任人承担责任\",\n        \"rules\": [\"c178-1\"]\n      },\n      {\n        \"text\": \"连带责任人的责任份额根据各自责任大小确定；难以确定责任大小的，平均承担责任\",\n        \"rules\": [\"c178-share\", \"c178-average\"]\n      },\n      {\n        \"text\": \"实际承担责任超过自己责任份额的连带责任人，有权向其他连带责任人追偿\",\n        \"rules\": [\"c178-recourse\"]\n      },\n      {\n        \"text\": \"第179条第1款列举的十一种责任方式可以单独适用，也可以合并适用\",\n        \"rules\": [\"c179-forms\", \"c179-3\"]\n      },\n      {\n        \"text\": \"法律规定惩罚性赔偿的，依照其规定适用\",\n        \"rules\": [\"c179-2\"]\n      },\n      {\n        \"text\": \"承担行政责任或者刑事责任不影响承担民事责任；财产不足以支付的，优先用于承担民事责任\",\n        \"rules\": [\"c187-1\", \"c187-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"法律规定惩罚性赔偿的，优先适用该特别规定，而不限于第179条第1款列举的一般责任方式\",\n        \"rules\": [\"c179-2\"]\n      },\n      {\n        \"text\": \"财产不足以支付时，民事责任优先于行政责任、刑事责任受偿\",\n        \"rules\": [\"c187-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第178条规范连带责任的对外请求、内部份额与追偿，不涉及责任方式本身；第179条规范责任方式的种类与并用\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第177条按份责任侧重责任份额的划分，与连带责任的对外连带、内部追偿不同；第180条不可抗力、第181条正当防卫属免责事由，排除责任成立，与责任方式的选择无关（LEGO 卡片提示）\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记标注：赔偿损失也可作为物权保护方式；赔礼道歉为侵权责任方式；消除影响、恢复名誉、赔礼道歉主要适用于人身权侵害\",\n        \"rules\": [\"c179-doctrine-tort\"]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c178-3\",\n      \"srcs\": [\"art178-3\"],\n      \"body\": [\n        {\n          \"or\": [\n            \"jointLiabilityByLaw(L,R)\",\n            \"jointLiabilityByAgreement(L,R)\"\n          ]\n        }\n      ],\n      \"heads\": [\"jointLiability(L,R)\"],\n      \"note\": \"连带责任由法律规定或者当事人约定，无法定或约定即不成立连带责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c178-1\",\n      \"srcs\": [\"art178-1\"],\n      \"body\": [\"jointLiability(L,R)\"],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"R\",\n          \"counterparty\": \"L\",\n          \"content\": \"claimLiabilityFrom(R,L)\"\n        }\n      ],\n      \"note\": \"二人以上依法承担连带责任的，权利人有权请求部分或者全部连带责任人承担责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c178-share\",\n      \"srcs\": [\"art178-2\"],\n      \"body\": [\"jointLiability(L,R)\", \"liabilityShareDeterminable(L,R)\"],\n      \"heads\": [\"liabilityShareByFault(L,R)\"],\n      \"note\": \"连带责任人的责任份额根据各自责任大小确定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c178-average\",\n      \"srcs\": [\"art178-2\"],\n      \"body\": [\"jointLiability(L,R)\", \"-liabilityShareDeterminable(L,R)\"],\n      \"heads\": [\"liabilityShareEqual(L,R)\"],\n      \"note\": \"难以确定责任大小的，平均承担责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c178-recourse\",\n      \"srcs\": [\"art178-2\"],\n      \"body\": [\n        \"jointLiability(L,R)\",\n        \"bearsMoreThanShare(L,R)\",\n        \"otherJointObligor(O,L,R)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"L\",\n          \"counterparty\": \"O\",\n          \"content\": \"recourseAgainst(L,O,R)\"\n        }\n      ],\n      \"note\": \"实际承担责任超过自己责任份额的连带责任人，有权向其他连带责任人追偿\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c179-forms\",\n      \"srcs\": [\"art179-1\"],\n      \"body\": [\n        {\n          \"or\": [\n            \"stopInfringementForm(F)\",\n            \"removeObstructionForm(F)\",\n            \"eliminateDangerForm(F)\",\n            \"returnPropertyForm(F)\",\n            \"restoreOriginalStateForm(F)\",\n            \"repairRemakeReplaceForm(F)\",\n            \"continuePerformanceForm(F)\",\n            \"compensateLossForm(F)\",\n            \"payLiquidatedDamagesForm(F)\",\n            \"eliminateEffectsRestoreReputationForm(F)\",\n            \"apologizeForm(F)\"\n          ]\n        }\n      ],\n      \"heads\": [\"statutoryLiabilityForm(F)\"],\n      \"note\": \"第179条第1款列举的十一种承担民事责任的方式：停止侵害、排除妨碍、消除危险、返还财产、恢复原状、修理重作更换、继续履行、赔偿损失、支付违约金、消除影响恢复名誉、赔礼道歉\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c179-3\",\n      \"srcs\": [\"art179-3\"],\n      \"body\": [\"statutoryLiabilityForm(F)\"],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"court\",\n          \"counterparty\": null,\n          \"content\": \"applyLiabilityFormAloneOrCombined(F)\"\n        }\n      ],\n      \"note\": \"本条规定的责任方式可以单独适用，也可以合并适用\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c179-2\",\n      \"srcs\": [\"art179-2\"],\n      \"body\": [\"lawProvidesPunitiveDamages(D)\"],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"court\",\n          \"counterparty\": null,\n          \"content\": \"applyPunitiveDamages(D)\"\n        }\n      ],\n      \"note\": \"法律规定惩罚性赔偿的，依照其规定适用\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c179-doctrine-breach\",\n      \"srcs\": [\"art179-1\"],\n      \"body\": [\"liableForBreach(P,V)\"],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"V\",\n          \"counterparty\": \"P\",\n          \"content\": \"claimContinuePerformanceOrLiquidatedDamages(V,P)\"\n        }\n      ],\n      \"note\": \"笔记内容：继续履行、支付违约金等责任方式只适用于违约责任，法条本身未作此限制\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c179-doctrine-tort\",\n      \"srcs\": [\"art179-1\"],\n      \"body\": [\n        {\n          \"or\": [\n            \"liable(P,V,A)\",\n            \"infringesPersonalityRight(P,V)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"V\",\n          \"counterparty\": \"P\",\n          \"content\": \"claimApologyAndEliminateEffects(V,P)\"\n        }\n      ],\n      \"note\": \"笔记内容：赔礼道歉只适用于侵权责任，消除影响、恢复名誉与赔礼道歉主要适用于人身权侵害，法条本身未作此限制\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c187-1\",\n      \"srcs\": [\"art187-1\"],\n      \"body\": [\n        \"sameAct(A,P)\",\n        \"bearsAdministrativeOrCriminalLiability(P,A)\"\n      ],\n      \"heads\": [\"civilLiabilityUnaffected(P,A)\"],\n      \"note\": \"民事主体因同一行为承担行政责任或者刑事责任的，不影响其承担民事责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c187-2\",\n      \"srcs\": [\"art187-1\"],\n      \"body\": [\n        \"civilLiabilityUnaffected(P,A)\",\n        \"assetsInsufficientToPay(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"court\",\n          \"counterparty\": null,\n          \"content\": \"payCivilLiabilityFirst(P)\"\n        }\n      ],\n      \"note\": \"民事主体的财产不足以支付的，优先用于承担民事责任\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c179-2\",\n      \"c179-forms\",\n      \"法律规定惩罚性赔偿的，依照其规定，优先于第179条第1款列举的一般责任方式\"\n    ],\n    [\n      \"c187-2\",\n      \"c187-1\",\n      \"财产不足以支付时，民事责任优先于行政责任、刑事责任受偿\"\n    ]\n  ],\n  \"predicates\": {\n    \"jointLiability/2\": \"数人依法对权利人承担连带责任（责任人，权利人）\",\n    \"jointLiabilityByLaw/2\": \"连带责任由法律规定（责任人，权利人）\",\n    \"jointLiabilityByAgreement/2\": \"连带责任由当事人约定（责任人，权利人）\",\n    \"claimLiabilityFrom/2\": \"请求连带责任人承担责任（权利人，责任人）\",\n    \"liabilityShareDeterminable/2\": \"责任人的责任大小可以确定（责任人，权利人）\",\n    \"liabilityShareByFault/2\": \"按各自责任大小确定的责任份额（责任人，权利人）\",\n    \"liabilityShareEqual/2\": \"平均承担的责任份额（责任人，权利人）\",\n    \"bearsMoreThanShare/2\": \"实际承担的责任超过自己的责任份额（责任人，权利人）\",\n    \"otherJointObligor/3\": \"是其他连带责任人（其他责任人，责任人，权利人）\",\n    \"recourseAgainst/3\": \"向其他连带责任人追偿（追偿人，被追偿人，权利人）\",\n    \"statutoryLiabilityForm/1\": \"属于第179条第1款列举的民事责任承担方式（方式）\",\n    \"stopInfringementForm/1\": \"责任方式为停止侵害\",\n    \"removeObstructionForm/1\": \"责任方式为排除妨碍\",\n    \"eliminateDangerForm/1\": \"责任方式为消除危险\",\n    \"returnPropertyForm/1\": \"责任方式为返还财产\",\n    \"restoreOriginalStateForm/1\": \"责任方式为恢复原状\",\n    \"repairRemakeReplaceForm/1\": \"责任方式为修理、重作、更换\",\n    \"continuePerformanceForm/1\": \"责任方式为继续履行\",\n    \"compensateLossForm/1\": \"责任方式为赔偿损失\",\n    \"payLiquidatedDamagesForm/1\": \"责任方式为支付违约金\",\n    \"eliminateEffectsRestoreReputationForm/1\": \"责任方式为消除影响、恢复名誉\",\n    \"apologizeForm/1\": \"责任方式为赔礼道歉\",\n    \"applyLiabilityFormAloneOrCombined/1\": \"单独适用或者合并适用该责任方式（方式）\",\n    \"lawProvidesPunitiveDamages/1\": \"法律规定了惩罚性赔偿（赔偿类型）\",\n    \"applyPunitiveDamages/1\": \"依照该规定适用惩罚性赔偿（赔偿类型）\",\n    \"claimContinuePerformanceOrLiquidatedDamages/2\": \"请求继续履行或者支付违约金（权利人，违约方）\",\n    \"infringesPersonalityRight/2\": \"侵害他人人身权（行为人，被侵权人）\",\n    \"claimApologyAndEliminateEffects/2\": \"请求赔礼道歉、消除影响、恢复名誉（被侵权人，行为人）\",\n    \"sameAct/2\": \"是同一行为（行为，主体）\",\n    \"bearsAdministrativeOrCriminalLiability/2\": \"因该行为承担行政责任或者刑事责任（主体，行为）\",\n    \"civilLiabilityUnaffected/2\": \"民事责任的承担不受影响（主体，行为）\",\n    \"assetsInsufficientToPay/1\": \"财产不足以支付全部责任（主体）\",\n    \"payCivilLiabilityFirst/1\": \"优先用于承担民事责任（主体）\"\n  }\n}"
+ }
+}

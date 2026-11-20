@@ -1,0 +1,779 @@
+{
+ "art:242": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律规定专属于国家所有的不动产和动产，任何组织或者个人能否取得其所有权",
+     "rules": [
+      "c242-1",
+      "c242-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为不动产或者动产，且依法律规定专属于国家所有",
+     "rules": [
+      "c242-1",
+      "c242-2"
+     ]
+    },
+    {
+     "text": "行为主体为任何组织或者个人（不限于民事主体中的某一类）",
+     "rules": [
+      "c242-1",
+      "c242-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "任何组织或者个人不得取得该不动产或者动产的所有权（禁止性规定）",
+     "rules": [
+      "c242-1"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不能取得该不动产或者动产的所有权，即取得所有权的效果不发生",
+     "rules": [
+      "c242-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决“专属于国家所有”的财产不能被组织或个人取得所有权的问题，与第243条的国家征收（征收后原权利人丧失权利、国家取得所有权）不同；笔记未涉及本条，故无笔记例外可援用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c242-1",
+    "srcs": [
+     "art242-1"
+    ],
+    "body": [
+     "exclusivelyStateOwned(T)",
+     "immovableOrMovable(T)",
+     {
+      "or": [
+       "organization(A)",
+       "naturalPerson(A)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "acquiresOwnership(A,T)"
+     }
+    ],
+    "note": "法律规定专属于国家所有的不动产和动产，任何组织或者个人不得取得其所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c242-2",
+    "srcs": [
+     "art242-1"
+    ],
+    "body": [
+     "exclusivelyStateOwned(T)",
+     "immovableOrMovable(T)",
+     {
+      "or": [
+       "organization(A)",
+       "naturalPerson(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "-acquiresOwnership(A,T)"
+    ],
+    "note": "“不能取得所有权”的构成性效果：组织或个人对专属于国家所有的财产取得所有权的，该取得不发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "exclusivelyStateOwned": "法律规定专属于国家所有的不动产或动产（1个参数：标的物）"
+  }
+ },
+ "art:244": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "征收集体所有的土地在权限和程序上受何种限制",
+     "rules": [
+      "c244-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "征收的对象是集体所有的土地",
+     "rules": [
+      "c244-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依照法律规定的权限和程序征收的，不属于禁止之列",
+     "rules": [
+      "c244-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "不得违反法律规定的权限和程序征收集体所有的土地",
+     "rules": [
+      "c244-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款前段（国家对耕地实行特殊保护、严格限制农用地转为建设用地、控制建设用地总量）是宣示性、原则性规定，不产生具体请求权，不写规则；征收的公益目的、法定权限与程序及补偿等要件另见第243条，本款只就权限与程序设禁止性限制",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c244-1",
+    "srcs": [
+     "art244-1"
+    ],
+    "body": [
+     "expropriationOfCollectiveLand(A,L)",
+     "~perLegalAuthorityAndProcedure(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "expropriateCollectiveLand(A,L)"
+     }
+    ],
+    "note": "禁止违反法律规定的权限和程序征收集体所有的土地；依照法定权限和程序征收的，不在禁止之列",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "expropriationOfCollectiveLand": "征收集体所有的土地（征收人，被征收的集体土地）",
+   "expropriateCollectiveLand": "实施征收集体所有土地的行为（征收人，集体土地）"
+  }
+ },
+ "art:241": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "所有权人能否在自己的不动产或者动产上设立用益物权、担保物权；用益物权人、担保物权人行使权利的界限何在",
+     "rules": [
+      "c241-1",
+      "c241-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该物为所有权人自己的不动产或者动产",
+     "rules": [
+      "c241-1"
+     ]
+    },
+    {
+     "text": "行为人是用益物权人或者担保物权人，且该物为他人所有",
+     "rules": [
+      "c241-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "所有权人有权在自己的不动产或者动产上设立用益物权和担保物权",
+     "rules": [
+      "c241-1"
+     ]
+    },
+    {
+     "text": "用益物权人、担保物权人行使权利，不得损害所有权人的权益",
+     "rules": [
+      "c241-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为所有权权能（在自己之物上设立他物权）的宣示性规定，不单独产生请求权；用益物权、担保物权的具体种类、设立方式与公示要件，依物权编各分章规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用本条原文或条号，本条的理解仅以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c241-1",
+    "srcs": [
+     "art241-1"
+    ],
+    "body": [
+     "ownerOf(A,P)",
+     "immovableOrMovable(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "establishUsufructuaryOrSecurityRight(A,P)"
+     }
+    ],
+    "note": "所有权人有权在自己的不动产或者动产上设立用益物权和担保物权",
+    "auth": "npc"
+   },
+   {
+    "key": "c241-2",
+    "srcs": [
+     "art241-1"
+    ],
+    "body": [
+     "ownerOf(A,P)",
+     {
+      "or": [
+       "usufructuaryOf(H,P)",
+       "securityInterestHolder(H,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "H",
+      "counterparty": "A",
+      "content": "exerciseRightHarmingOwner(H,A,P)"
+     }
+    ],
+    "note": "用益物权人、担保物权人行使权利，不得损害所有权人的权益",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "securityInterestHolder": "是担保物权人（担保物权人，物）",
+   "establishUsufructuaryOrSecurityRight": "在自己的不动产或者动产上设立用益物权和担保物权（所有权人，物）",
+   "exerciseRightHarmingOwner": "行使用益物权或担保物权损害所有权人的权益（他物权人，所有权人，物）"
+  }
+ },
+ "card:g2401": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "所有权人对其不动产或者动产享有哪些权能，所有权具有哪些法律特征",
+     "rules": [
+      "c240-1",
+      "c240-absolute",
+      "c240-remedy",
+      "c240-exclusive",
+      "c240-perpetual",
+      "c240-elastic"
+     ]
+    },
+    {
+     "text": "国家在何种条件下可以征收、征用组织或者个人的财产，征收人、征用人负有何种补偿、返还义务",
+     "rules": [
+      "c243-1",
+      "c243-2",
+      "c243-3",
+      "c243-3b",
+      "c243-4",
+      "c245-1",
+      "c245-2",
+      "c245-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所有权人对其自己的不动产或者动产依法享有权利",
+     "rules": [
+      "c240-1"
+     ]
+    },
+    {
+     "text": "为了公共利益的需要，且依照法律规定的权限和程序",
+     "rules": [
+      "c243-1"
+     ]
+    },
+    {
+     "text": "征收对象为集体所有的土地，或者组织、个人的房屋以及其他不动产",
+     "rules": [
+      "c243-1",
+      "c243-2",
+      "c243-3"
+     ]
+    },
+    {
+     "text": "因抢险救灾、疫情防控等紧急需要，且依照法律规定的权限和程序",
+     "rules": [
+      "c245-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "排他性：非所有人不得对他人财产享有所有权，同一物上只能存在一个所有权",
+     "rules": [
+      "c240-exclusive"
+     ]
+    },
+    {
+     "text": "恒久性：所有权不因时效而消灭，也不得预定其存续期间",
+     "rules": [
+      "c240-perpetual"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "所有权人享有占有、使用、收益和处分的权能（积极权能）",
+     "rules": [
+      "c240-1"
+     ]
+    },
+    {
+     "text": "所有权是法定限度内对物的全面支配，为绝对权，义务主体为所有人以外的一切人，负不作为义务",
+     "rules": [
+      "c240-absolute"
+     ]
+    },
+    {
+     "text": "受他人非法干预或侵害时，所有人享有返还请求权、妨害排除请求权、妨害预防请求权、恢复原状请求权等救济权（消极权能）",
+     "rules": [
+      "c240-remedy"
+     ]
+    },
+    {
+     "text": "设定他物权后所有权并不消灭，他物权消灭、负担除去后所有权恢复圆满状态",
+     "rules": [
+      "c240-elastic"
+     ]
+    },
+    {
+     "text": "征收集体所有的土地，应当依法及时足额支付土地补偿费、安置补助费以及农村村民住宅、其他地上附着物和青苗等补偿费用，并安排被征地农民的社会保障费用",
+     "rules": [
+      "c243-2"
+     ]
+    },
+    {
+     "text": "征收组织、个人的房屋以及其他不动产，应当依法给予征收补偿；征收个人住宅的，还应当保障被征收人的居住条件",
+     "rules": [
+      "c243-3",
+      "c243-3b"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得贪污、挪用、私分、截留、拖欠征收补偿费等费用",
+     "rules": [
+      "c243-4"
+     ]
+    },
+    {
+     "text": "被征用的不动产或者动产使用后应当返还被征用人；被征用或者征用后毁损、灭失的，应当给予补偿",
+     "rules": [
+      "c245-2",
+      "c245-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "基于公共利益的征收是法律对所有权的特别限制，优先于第240条所有权一般权能规则",
+     "rules": [
+      "c243-1"
+     ]
+    },
+    {
+     "text": "基于紧急需要的征用是法律对所有权的特别限制，优先于第240条所有权一般权能规则",
+     "rules": [
+      "c245-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "征收与征用：征收基于公共利益需要，发生所有权移转并须足额补偿；征用基于抢险救灾、疫情防控等紧急需要，使用后应当返还，毁损、灭失的才予补偿",
+     "rules": []
+    },
+    {
+     "text": "笔记归纳的全面性、整体性、弹力性、排他性、恒久性属学理特征，第240条仅规定占有、使用、收益、处分四项权能，故相应规则标注为 doctrine",
+     "rules": [
+      "c240-absolute",
+      "c240-exclusive",
+      "c240-perpetual",
+      "c240-elastic"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称征用造成毁损的“应予赔偿”，条文用语为“应当给予补偿”，以条文为准",
+     "rules": [
+      "c245-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c240-1",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)",
+     "immovableOrMovable(T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "possessUseProfitDispose(O,T)"
+     }
+    ],
+    "note": "所有权人对其自己的不动产或者动产，依法享有占有、使用、收益和处分的权利（“依法”表明权能受法律限制）",
+    "auth": "npc"
+   },
+   {
+    "key": "c240-absolute",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)"
+    ],
+    "heads": [
+     "absoluteOwnership(O,T)"
+    ],
+    "note": "笔记学理：所有权是法定限度内对物的全面支配，属绝对权，义务主体为所有人以外的一切人，负不作为义务",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c240-remedy",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)",
+     "unlawfullyInterferesWith(O2,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "O2",
+      "content": "claimReturnRemovalPreventionOrRestoration(O2,T)"
+     }
+    ],
+    "note": "笔记学理：所有权受非法干预或侵害时，所有人享有返还请求权、妨害排除请求权、妨害预防请求权、恢复原状请求权等救济权（消极权能）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c240-exclusive",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)",
+     "distinctPerson(O2,O)"
+    ],
+    "heads": [
+     "-ownerOf(O2,T)"
+    ],
+    "note": "笔记学理：排他性——同一物上只能有一个所有权，非所有人不得对他人财产享有所有权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c240-perpetual",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)"
+    ],
+    "heads": [
+     "-ownershipExtinguishedByLimitation(O,T)",
+     "-ownershipHasFixedTerm(O,T)"
+    ],
+    "note": "笔记学理：恒久性——所有权不因时效而消灭，也不得预定其存续期间",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c240-elastic",
+    "srcs": [
+     "art240-1"
+    ],
+    "body": [
+     "ownerOf(O,T)",
+     "otherRealRightSetOn(O,T)"
+    ],
+    "heads": [
+     "-ownershipExtinguished(O,T)"
+    ],
+    "note": "笔记学理：弹力性——为他人设定他物权后所有权并不消灭，他物权消灭后恢复圆满状态",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c243-1",
+    "srcs": [
+     "art243-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "collectiveLand(T)",
+       "houseOfOrgOrIndividual(T)",
+       "otherImmovableOfOrgOrIndividual(T)"
+      ]
+     },
+     "forPublicInterest(T)",
+     "perLegalAuthorityAndProcedure(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "expropriation(state,T)"
+     }
+    ],
+    "note": "为了公共利益的需要，依照法律规定的权限和程序，可以征收集体所有的土地和组织、个人的房屋以及其他不动产",
+    "auth": "npc"
+   },
+   {
+    "key": "c243-2",
+    "srcs": [
+     "art243-2"
+    ],
+    "body": [
+     "expropriation(state,T)",
+     "collectiveLand(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "payLandCompensationResettlementAndSocialSecurity(T)"
+     }
+    ],
+    "note": "征收集体所有的土地，应当依法及时足额支付土地补偿费、安置补助费及农村村民住宅、其他地上附着物和青苗等补偿费用，并安排被征地农民的社会保障费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c243-3",
+    "srcs": [
+     "art243-3"
+    ],
+    "body": [
+     "expropriation(state,T)",
+     {
+      "or": [
+       "houseOfOrgOrIndividual(T)",
+       "otherImmovableOfOrgOrIndividual(T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "payExpropriationCompensation(T)"
+     }
+    ],
+    "note": "征收组织、个人的房屋以及其他不动产，应当依法给予征收补偿，维护被征收人的合法权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c243-3b",
+    "srcs": [
+     "art243-3"
+    ],
+    "body": [
+     "expropriation(state,T)",
+     "personalResidence(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "ensureHousingConditions(T)"
+     }
+    ],
+    "note": "征收个人住宅的，还应当保障被征收人的居住条件",
+    "auth": "npc"
+   },
+   {
+    "key": "c243-4",
+    "srcs": [
+     "art243-4"
+    ],
+    "body": [
+     "organizationOrIndividual(P)",
+     "expropriationCompensationFee(F)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "embezzleMisappropriateDivideWithholdOrDelay(P,F)"
+     }
+    ],
+    "note": "任何组织或者个人不得贪污、挪用、私分、截留、拖欠征收补偿费等费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c245-1",
+    "srcs": [
+     "art245-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "emergencyReliefOrDisaster(T)",
+       "epidemicPrevention(T)",
+       "otherUrgentNeed(T)"
+      ]
+     },
+     "perLegalAuthorityAndProcedure(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "requisition(state,T)"
+     }
+    ],
+    "note": "因抢险救灾、疫情防控等紧急需要，依照法律规定的权限和程序，可以征用组织、个人的不动产或者动产",
+    "auth": "npc"
+   },
+   {
+    "key": "c245-2",
+    "srcs": [
+     "art245-1"
+    ],
+    "body": [
+     "requisition(state,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "returnRequisitionedProperty(T)"
+     }
+    ],
+    "note": "被征用的不动产或者动产使用后，应当返还被征用人",
+    "auth": "npc"
+   },
+   {
+    "key": "c245-3",
+    "srcs": [
+     "art245-1"
+    ],
+    "body": [
+     "requisition(state,T)",
+     {
+      "or": [
+       "damagedProperty(T)",
+       "destroyedOrLost(T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "compensateRequisitionLoss(T)"
+     }
+    ],
+    "note": "组织、个人的不动产或者动产被征用或者征用后毁损、灭失的，应当给予补偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c243-1",
+    "c240-1",
+    "征收是基于公共利益的法定特别限制，优先于所有权一般权能规则"
+   ],
+   [
+    "c245-1",
+    "c240-1",
+    "征用是基于紧急需要的法定特别限制，优先于所有权一般权能规则"
+   ]
+  ],
+  "predicates": {
+   "possessUseProfitDispose": "享有占有、使用、收益和处分的权能（权利人，不动产或动产）",
+   "claimReturnRemovalPreventionOrRestoration": "享有返还请求权、妨害排除请求权、妨害预防请求权、恢复原状请求权等救济权（权利人，行为人/物）",
+   "absoluteOwnership": "所有权具有全面支配性与绝对性（所有权人，物）",
+   "unlawfullyInterferesWith": "非法干预或侵害他人对物的支配（行为人，物）",
+   "distinctPerson": "是与前一参数不同的人（另一人，本人）",
+   "ownershipExtinguishedByLimitation": "所有权因时效而消灭（所有权人，物）",
+   "ownershipHasFixedTerm": "所有权被预定存续期间（所有权人，物）",
+   "otherRealRightSetOn": "在该物上为他人设定了他物权（所有权人，物）",
+   "ownershipExtinguished": "所有权消灭（所有权人，物）",
+   "collectiveLand": "是集体所有的土地",
+   "houseOfOrgOrIndividual": "是组织或者个人的房屋",
+   "otherImmovableOfOrgOrIndividual": "是组织或者个人的其他不动产",
+   "personalResidence": "是个人住宅",
+   "organizationOrIndividual": "是组织或者个人",
+   "expropriationCompensationFee": "是征收补偿费等费用",
+   "payLandCompensationResettlementAndSocialSecurity": "依法及时足额支付土地补偿费、安置补助费、农村村民住宅及其他地上附着物和青苗等补偿费用，并安排被征地农民的社会保障费用（征收人，被征收的土地）",
+   "payExpropriationCompensation": "依法给予征收补偿（征收人，被征收的房屋或其他不动产）",
+   "ensureHousingConditions": "保障被征收人的居住条件（征收人，被征收的个人住宅）",
+   "embezzleMisappropriateDivideWithholdOrDelay": "贪污、挪用、私分、截留、拖欠征收补偿费等费用（行为人，费用）",
+   "emergencyReliefOrDisaster": "因抢险救灾等紧急需要（对象）",
+   "epidemicPrevention": "因疫情防控等紧急需要（对象）",
+   "otherUrgentNeed": "因其他紧急需要（对象）",
+   "returnRequisitionedProperty": "使用后将征用的不动产或者动产返还被征用人（征用人，被征用的财产）",
+   "compensateRequisitionLoss": "对被征用或者征用后毁损、灭失的不动产、动产给予补偿（征用人，被征用的财产）",
+   "destroyedOrLost": "被征用的不动产或者动产灭失"
+  }
+ }
+}

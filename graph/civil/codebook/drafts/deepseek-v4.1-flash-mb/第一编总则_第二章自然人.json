@@ -1,0 +1,498 @@
+{
+ "card:g0771": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人从何时起、至何时止具有民事权利能力，以及具有权利能力的法律意义",
+     "rules": [
+      "c13-begin",
+      "c13-end",
+      "c13-content"
+     ]
+    },
+    {
+     "text": "胎儿在何种情形下视为具有民事权利能力；娩出时为死体的如何处理",
+     "rules": [
+      "c16-1",
+      "c16-but"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "自然人已出生（出生时起）",
+     "rules": [
+      "c13-begin"
+     ]
+    },
+    {
+     "text": "自然人已死亡（死亡时止）",
+     "rules": [
+      "c13-end"
+     ]
+    },
+    {
+     "text": "涉及遗产继承、接受赠与等胎儿利益保护的事项",
+     "rules": [
+      "c16-1"
+     ]
+    },
+    {
+     "text": "胎儿娩出时为死体",
+     "rules": [
+      "c16-but"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：胎儿娩出时为死体的，其民事权利能力自始不存在，视为具有权利能力的效果不发生",
+     "rules": [
+      "c16-but"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人自出生时起具有民事权利能力，依法享有民事权利、承担民事义务",
+     "rules": [
+      "c13-begin",
+      "c13-content"
+     ]
+    },
+    {
+     "text": "自然人的民事权利能力至死亡时终止",
+     "rules": [
+      "c13-end"
+     ]
+    },
+    {
+     "text": "胎儿视为具有民事权利能力（为保护其遗产继承、接受赠与等利益）",
+     "rules": [
+      "c16-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第16条但书优先于第1款：娩出时为死体的，视为具有民事权利能力的效果自始不发生",
+     "rules": [
+      "c16-but",
+      "c16-1"
+     ]
+    },
+    {
+     "text": "涉及胎儿利益保护的，优先适用第16条的特别规定，而非第13条“权利能力始于出生”的一般规定",
+     "rules": [
+      "c16-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第14条“自然人的民事权利能力一律平等”为宣示性、原则性规定，不产生可废止规则",
+     "rules": []
+    },
+    {
+     "text": "笔记（节点g0771）讲的是民事行为能力：以意思能力为基础，具有法定性，与年龄和精神状况直接相联系，非依法定条件和程序不受限制或取消；权利能力是享有权利、承担义务的资格，行为能力则是以自己的行为独立实现权利能力内容的条件，二者不可混同",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片称胎儿“视为具有部分民事权利能力”，法条用语为“视为具有民事权利能力”，并无“部分”限定；且胎儿仅在涉及遗产继承、接受赠与等利益保护事项上被如此处理，并非完整自然人",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c13-begin",
+    "srcs": [
+     "art13-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "born(P)"
+    ],
+    "heads": [
+     "legalCapacity(P)"
+    ],
+    "note": "自然人从出生时起具有民事权利能力",
+    "auth": "npc"
+   },
+   {
+    "key": "c13-end",
+    "srcs": [
+     "art13-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "dead(P)"
+    ],
+    "heads": [
+     "-legalCapacity(P)"
+    ],
+    "note": "自然人的民事权利能力至死亡时止",
+    "auth": "npc"
+   },
+   {
+    "key": "c13-content",
+    "srcs": [
+     "art13-1"
+    ],
+    "body": [
+     "legalCapacity(P)"
+    ],
+    "heads": [
+     "enjoysCivilRights(P)",
+     "bearsCivilObligations(P)"
+    ],
+    "note": "具有民事权利能力的自然人依法享有民事权利、承担民事义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c16-1",
+    "srcs": [
+     "art16-1"
+    ],
+    "body": [
+     "fetus(F)",
+     {
+      "or": [
+       "fetalInheritanceInterest(F)",
+       "fetalGiftInterest(F)",
+       "otherFetalInterest(F)"
+      ]
+     }
+    ],
+    "heads": [
+     "deemedLegalCapacity(F)"
+    ],
+    "note": "涉及遗产继承、接受赠与等胎儿利益保护的，胎儿视为具有民事权利能力",
+    "auth": "npc"
+   },
+   {
+    "key": "c16-but",
+    "srcs": [
+     "art16-1"
+    ],
+    "body": [
+     "fetus(F)",
+     "stillborn(F)"
+    ],
+    "heads": [
+     "-deemedLegalCapacity(F)"
+    ],
+    "note": "但书：胎儿娩出时为死体的，其民事权利能力自始不存在，视为具有权利能力的效果不发生",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c16-but",
+    "c16-1",
+    "第16条但书：娩出时为死体的，民事权利能力自始不存在，排除第1款“视为具有民事权利能力”的效果"
+   ],
+   [
+    "c16-1",
+    "c13-begin",
+    "胎儿利益保护属特别规定，优先于第13条“权利能力始于出生”的一般规定"
+   ]
+  ],
+  "predicates": {
+   "enjoysCivilRights": "依法享有民事权利（参数1：自然人）",
+   "bearsCivilObligations": "依法承担民事义务（参数1：自然人）"
+  }
+ },
+ "card:g0793": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "成年人与未成年人的年龄界限如何划分",
+     "rules": [
+      "c17-age18plus",
+      "c17-under18"
+     ]
+    },
+    {
+     "text": "八周岁以上的未成年人独立实施民事法律行为，其效力如何认定；何时可以不经法定代理人而独立实施",
+     "rules": [
+      "c19-1",
+      "c19-2",
+      "c19-3",
+      "c19-4",
+      "c19-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人为八周岁以上的未成年人；笔记另将不能完全辨认自己行为的成年人也归入此类",
+     "rules": [
+      "c19-1",
+      "c19-adult"
+     ]
+    },
+    {
+     "text": "行为属于纯获利益的民事法律行为，或者与其年龄、智力（精神状况）相适应",
+     "rules": [
+      "c19-3",
+      "c19-4"
+     ]
+    },
+    {
+     "text": "其他民事法律行为，须由法定代理人代理或者经其同意、追认",
+     "rules": [
+      "c19-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "纯获利益的民事法律行为、与其年龄、智力相适应的民事法律行为，可以独立实施，不受代理或同意、追认要求的限制（但书）",
+     "rules": [
+      "c19-3",
+      "c19-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "十八周岁以上的自然人为成年人；不满十八周岁的自然人为未成年人",
+     "rules": [
+      "c17-age18plus",
+      "c17-under18"
+     ]
+    },
+    {
+     "text": "八周岁以上的未成年人为限制民事行为能力人",
+     "rules": [
+      "c19-1"
+     ]
+    },
+    {
+     "text": "纯获利益或与年龄、智力相适应的行为，限制民事行为能力人可以独立实施，并有效",
+     "rules": [
+      "c19-3",
+      "c19-4"
+     ]
+    },
+    {
+     "text": "超出其年龄、智力范围且非纯获利益的行为，未经法定代理人代理或同意、追认的，效力待定，由法定代理人追认",
+     "rules": [
+      "c19-5"
+     ]
+    },
+    {
+     "text": "限制民事行为能力人所立遗嘱无效（笔记）",
+     "rules": [
+      "c19-will"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第19条但书（纯获利益、与年龄智力相适应的行为可独立实施）优先于“由法定代理人代理或经其同意、追认”的一般要求",
+     "rules": [
+      "c19-3",
+      "c19-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把“不能完全辨认自己行为的成年人”也列为限制民事行为能力人，该情形规定在第21条，本行未挂载，仅作学理补充",
+     "rules": [
+      "c19-adult"
+     ]
+    },
+    {
+     "text": "第18条完全民事行为能力人可独立实施民事法律行为、第20条不满八周岁无民事行为能力人由法定代理人代理实施，均不在本行挂载范围",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“法定代理人可撤销或拒绝追认”，法条与笔记只讲同意与追认，拒绝追认的后果是行为确定不发生效力，并未赋予法定代理人撤销权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c17-age18plus",
+    "srcs": [
+     "art17-1"
+    ],
+    "body": [
+     "naturalPerson(X)",
+     "age18plus(X)"
+    ],
+    "heads": [
+     "adult(X)"
+    ],
+    "note": "十八周岁以上的自然人为成年人",
+    "auth": "npc"
+   },
+   {
+    "key": "c17-under18",
+    "srcs": [
+     "art17-1"
+    ],
+    "body": [
+     "naturalPerson(X)",
+     "under18(X)"
+    ],
+    "heads": [
+     "minor(X)"
+    ],
+    "note": "不满十八周岁的自然人为未成年人",
+    "auth": "npc"
+   },
+   {
+    "key": "c19-1",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "minor(X)",
+     "age8plus(X)"
+    ],
+    "heads": [
+     "limitedCapacity(X)"
+    ],
+    "note": "八周岁以上的未成年人为限制民事行为能力人",
+    "auth": "npc"
+   },
+   {
+    "key": "c19-adult",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "adult(X)",
+     "cannotFullyDiscern(X)"
+    ],
+    "heads": [
+     "limitedCapacity(X)"
+    ],
+    "note": "笔记将不能完全辨认自己行为的成年人也归入限制民事行为能力人，该情形由第21条规定，本条未涉及，属学理补充",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c19-2",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "limitedCapacity(X)",
+     "actOf(X,A)"
+    ],
+    "heads": [
+     "needsRepresentationOrConsent(A)"
+    ],
+    "note": "限制民事行为能力人实施民事法律行为，须由法定代理人代理或者经其同意、追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c19-3",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "limitedCapacity(X)",
+     "actOf(X,A)",
+     {
+      "or": [
+       "pureBenefit(A)",
+       "ageAppropriate(A)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "actIndependently(A)"
+     }
+    ],
+    "note": "但书：纯获利益或与年龄、智力相适应的民事法律行为，限制民事行为能力人可以独立实施",
+    "auth": "npc"
+   },
+   {
+    "key": "c19-4",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "limitedCapacity(X)",
+     "actOf(X,A)",
+     {
+      "or": [
+       "pureBenefit(A)",
+       "ageAppropriate(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "valid(A)"
+    ],
+    "note": "法条只写“可以独立实施”，笔记据此认定纯获利益或与年龄、智力相适应的行为有效，效力评价属学理补充",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c19-5",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "limitedCapacity(X)",
+     "actOf(X,A)",
+     "-pureBenefit(A)",
+     "-ageAppropriate(A)"
+    ],
+    "heads": [
+     "pendingValidity(A)"
+    ],
+    "note": "笔记：超出其能力范围的行为，自己单独实施而未经法定代理人同意或代理的，效力待定，由法定代理人追认",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c19-will",
+    "srcs": [
+     "art19-1"
+    ],
+    "body": [
+     "limitedCapacity(X)",
+     "willOf(X,W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "笔记：限制民事行为能力人所立遗嘱无效（另见第1143条），本条未直接规定，属学理补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c19-3",
+    "c19-2",
+    "第19条但书允许纯获利益或与年龄、智力相适应的行为独立实施，优先于代理或同意、追认的一般要求"
+   ],
+   [
+    "c19-4",
+    "c19-2",
+    "适格行为直接有效，无须法定代理人代理或同意、追认"
+   ]
+  ],
+  "predicates": {
+   "age8plus": "已满八周岁"
+  }
+ }
+}

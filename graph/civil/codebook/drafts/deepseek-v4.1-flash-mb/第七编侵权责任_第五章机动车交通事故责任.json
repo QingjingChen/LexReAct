@@ -1,0 +1,955 @@
+{
+ "art:1208": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "机动车发生交通事故造成损害时，赔偿责任应当依照何种规范确定",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "机动车发生交通事故并造成损害",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依照道路交通安全法律和本法（民法典）的有关规定承担赔偿责任",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为引致性规定：赔偿责任的具体归责原则、减免事由与责任主体，优先适用道路交通安全法律及本法侵权责任编的相关规定",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条本身不设定独立的归责原则，仅指向道路交通安全法律和本法有关规定，属宣示性、引致性条款，故不单独形式化为可废止规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1213": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "机动车发生交通事故造成损害、属于该机动车一方责任时，赔偿主体与赔偿顺序如何确定（强制保险→商业保险→侵权人）",
+     "rules": [
+      "c1213-1",
+      "c1213-2",
+      "c1213-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "机动车发生交通事故造成损害，且属于该机动车一方的责任",
+     "rules": [
+      "c1213-1",
+      "c1213-2",
+      "c1213-3"
+     ]
+    },
+    {
+     "text": "存在承保该机动车强制保险的保险人",
+     "rules": [
+      "c1213-1"
+     ]
+    },
+    {
+     "text": "存在承保该机动车商业保险的保险人",
+     "rules": [
+      "c1213-2"
+     ]
+    },
+    {
+     "text": "强制保险赔偿后仍有不足",
+     "rules": [
+      "c1213-2",
+      "c1213-3"
+     ]
+    },
+    {
+     "text": "商业保险赔偿后仍然不足，或者该机动车没有投保商业保险",
+     "rules": [
+      "c1213-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "没有投保机动车商业保险的，不发生商业保险人的赔偿义务，不足部分直接由侵权人赔偿",
+     "rules": [
+      "c1213-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "先由承保机动车强制保险的保险人在强制保险责任限额范围内予以赔偿",
+     "rules": [
+      "c1213-1"
+     ]
+    },
+    {
+     "text": "不足部分，由承保机动车商业保险的保险人按照保险合同的约定予以赔偿",
+     "rules": [
+      "c1213-2"
+     ]
+    },
+    {
+     "text": "仍然不足或者没有投保机动车商业保险的，由该机动车一方的侵权人赔偿",
+     "rules": [
+      "c1213-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "强制保险人的赔偿顺位先于商业保险人（“先由……不足部分”）",
+     "rules": [
+      "c1213-1",
+      "c1213-2"
+     ]
+    },
+    {
+     "text": "商业保险人的赔偿顺位先于侵权人（“仍然不足”）",
+     "rules": [
+      "c1213-2",
+      "c1213-3"
+     ]
+    },
+    {
+     "text": "强制保险人的赔偿顺位先于侵权人",
+     "rules": [
+      "c1213-1",
+      "c1213-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定赔偿主体与赔偿顺序，不规定归责原则；机动车之间、机动车与非机动车、行人之间的责任规则见第1208条以下，笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1213-1",
+    "srcs": [
+     "art1213-1"
+    ],
+    "body": [
+     "trafficAccident(K)",
+     "vehiclePartyLiable(K)",
+     "compulsoryInsurerOf(I,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "compensateWithinCompulsoryLimit(I,K)"
+     }
+    ],
+    "note": "机动车发生交通事故造成损害、属于该机动车一方责任的，先由承保强制保险的保险人在强制保险责任限额范围内赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1213-2",
+    "srcs": [
+     "art1213-1"
+    ],
+    "body": [
+     "trafficAccident(K)",
+     "vehiclePartyLiable(K)",
+     "commercialInsurerOf(I,K)",
+     "compulsoryInsuranceInsufficient(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "compensateShortfallPerCommercialContract(I,K)"
+     }
+    ],
+    "note": "强制保险赔偿后的不足部分，由承保商业保险的保险人按照保险合同的约定赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1213-3",
+    "srcs": [
+     "art1213-1"
+    ],
+    "body": [
+     "trafficAccident(K)",
+     "vehiclePartyLiable(K)",
+     "liablePartyOfVehicle(T,K)",
+     {
+      "or": [
+       "commercialInsuranceInsufficient(K)",
+       "noCommercialInsurance(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "compensateRemainingLoss(T,K)"
+     }
+    ],
+    "note": "商业保险赔偿后仍然不足，或者没有投保商业保险的，由该机动车一方的侵权人赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "trafficAccident": "机动车发生交通事故造成损害（参数：事故情形）",
+   "vehiclePartyLiable": "属于该机动车一方的责任（参数：事故情形）",
+   "compulsoryInsurerOf": "是承保该机动车强制保险的保险人（保险人，事故情形）",
+   "commercialInsurerOf": "是承保该机动车商业保险的保险人（保险人，事故情形）",
+   "compulsoryInsuranceInsufficient": "强制保险赔偿后仍有不足（参数：事故情形）",
+   "commercialInsuranceInsufficient": "商业保险赔偿后仍然不足（参数：事故情形）",
+   "noCommercialInsurance": "该机动车没有投保商业保险（参数：事故情形）",
+   "liablePartyOfVehicle": "是该机动车一方的责任人即侵权人（责任人，事故情形）",
+   "compensateWithinCompulsoryLimit": "在强制保险责任限额范围内予以赔偿（保险人，事故情形）",
+   "compensateShortfallPerCommercialContract": "按照商业保险合同的约定赔偿不足部分（保险人，事故情形）",
+   "compensateRemainingLoss": "赔偿剩余损失（侵权人，事故情形）"
+  }
+ },
+ "card:g7708": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "机动车所有人、管理人与使用人不是同一人（租赁、借用、转让并交付未登记、挂靠经营、未经允许驾驶、盗窃抢劫抢夺等）时，交通事故损害赔偿责任由谁承担",
+     "rules": [
+      "c1209-1",
+      "c1209-2",
+      "c1210",
+      "c1211",
+      "c1212-1",
+      "c1212-2",
+      "c1214",
+      "c1215-1",
+      "c1215-2"
+     ]
+    },
+    {
+     "text": "驾驶人逃逸、机动车不明或未参加强制保险时，保险人的赔偿、道路交通事故社会救助基金的垫付及追偿",
+     "rules": [
+      "c1215-3",
+      "c1216-1",
+      "c1216-2",
+      "c1216-3"
+     ]
+    },
+    {
+     "text": "非营运机动车无偿搭乘人因交通事故受损时，使用人的赔偿责任是否减轻",
+     "rules": [
+      "c1217",
+      "c1217-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "发生交通事故造成损害，且属于该机动车一方责任",
+     "rules": [
+      "c1209-1",
+      "c1209-2",
+      "c1210",
+      "c1211",
+      "c1212-1",
+      "c1212-2",
+      "c1217"
+     ]
+    },
+    {
+     "text": "因租赁、借用等情形，机动车所有人、管理人与使用人不是同一人",
+     "rules": [
+      "c1209-1",
+      "c1209-2"
+     ]
+    },
+    {
+     "text": "已以买卖或者其他方式转让并交付机动车，但未办理登记",
+     "rules": [
+      "c1210"
+     ]
+    },
+    {
+     "text": "以挂靠形式从事道路运输经营活动",
+     "rules": [
+      "c1211"
+     ]
+    },
+    {
+     "text": "未经允许驾驶他人机动车",
+     "rules": [
+      "c1212-1",
+      "c1212-2"
+     ]
+    },
+    {
+     "text": "以买卖或者其他方式转让拼装或者已达到报废标准的机动车",
+     "rules": [
+      "c1214"
+     ]
+    },
+    {
+     "text": "机动车系盗窃、抢劫或者抢夺所得",
+     "rules": [
+      "c1215-1",
+      "c1215-2"
+     ]
+    },
+    {
+     "text": "所有人、管理人对损害的发生有过错：知道或者应当知道机动车存在缺陷且该缺陷为事故原因之一、驾驶人无驾驶资格或未取得相应驾驶资格、驾驶人依法不能驾驶机动车，以及其他应认定有过错的情形",
+     "rules": [
+      "c1209-2",
+      "c1209-fault",
+      "c1212-2"
+     ]
+    },
+    {
+     "text": "驾驶人发生交通事故后逃逸，且该机动车参加强制保险",
+     "rules": [
+      "c1216-1"
+     ]
+    },
+    {
+     "text": "机动车不明、未参加强制保险或者抢救费用超过强制保险责任限额，需要支付被侵权人人身伤亡的抢救、丧葬等费用",
+     "rules": [
+      "c1216-2"
+     ]
+    },
+    {
+     "text": "非营运机动车发生交通事故造成无偿搭乘人损害",
+     "rules": [
+      "c1217",
+      "c1217-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "机动车使用人有故意或者重大过失的，不减轻其赔偿责任",
+     "rules": [
+      "c1217-exc"
+     ]
+    },
+    {
+     "text": "未经允许驾驶他人机动车时，所有人、管理人的过错相应责任以本章另有规定为限（但书）",
+     "rules": [
+      "c1212-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "租赁、借用及未经允许驾驶情形下，由机动车使用人承担赔偿责任",
+     "rules": [
+      "c1209-1",
+      "c1212-1"
+     ]
+    },
+    {
+     "text": "所有人、管理人对损害的发生有过错的，承担相应的赔偿责任，与使用人之间为按份责任",
+     "rules": [
+      "c1209-2",
+      "c1209-several",
+      "c1212-2"
+     ]
+    },
+    {
+     "text": "转让并交付但未办理登记的，由受让人承担赔偿责任",
+     "rules": [
+      "c1210"
+     ]
+    },
+    {
+     "text": "挂靠经营的，由挂靠人和被挂靠人承担连带责任",
+     "rules": [
+      "c1211"
+     ]
+    },
+    {
+     "text": "转让拼装或者报废机动车的，由转让人和受让人承担连带责任",
+     "rules": [
+      "c1214"
+     ]
+    },
+    {
+     "text": "盗窃、抢劫、抢夺的机动车致害，由盗窃人、抢劫人或者抢夺人承担赔偿责任；其与使用人不是同一人时，二者承担连带责任",
+     "rules": [
+      "c1215-1",
+      "c1215-2"
+     ]
+    },
+    {
+     "text": "保险人在强制保险责任限额范围内垫付抢救费用的，有权向交通事故责任人追偿",
+     "rules": [
+      "c1215-3"
+     ]
+    },
+    {
+     "text": "逃逸且该车参加强制保险的，由保险人在强制保险责任限额范围内赔偿",
+     "rules": [
+      "c1216-1"
+     ]
+    },
+    {
+     "text": "机动车不明、未参加强制保险或者抢救费用超限额的，由道路交通事故社会救助基金垫付抢救、丧葬等费用",
+     "rules": [
+      "c1216-2"
+     ]
+    },
+    {
+     "text": "救助基金垫付后，其管理机构有权向交通事故责任人追偿",
+     "rules": [
+      "c1216-3"
+     ]
+    },
+    {
+     "text": "无偿搭乘人受损且属于机动车一方责任的，应当减轻使用人的赔偿责任",
+     "rules": [
+      "c1217"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1217条但书优先：使用人有故意或者重大过失的，不适用减轻赔偿责任",
+     "rules": [
+      "c1217-exc"
+     ]
+    },
+    {
+     "text": "转让拼装或者报废机动车的连带责任（第1214条）优先于第1210条受让人单独承担赔偿责任",
+     "rules": [
+      "c1214"
+     ]
+    },
+    {
+     "text": "盗窃、抢劫、抢夺机动车属特别情形，优先于第1212条未经允许驾驶的一般规则",
+     "rules": [
+      "c1215-1"
+     ]
+    },
+    {
+     "text": "无偿搭乘减轻责任是特别规定，优先于一般过错责任",
+     "rules": [
+      "c1217"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记中机动车之间、机动车与行人、非机动车之间的责任分担（过错比例分担、无过错时不超过百分之十、行人故意碰撞免责）属第1208条、第1213条内容，本行未挂载，不设规则",
+     "rules": []
+    },
+    {
+     "text": "笔记中的套牌机动车责任（同意套牌者连带、擅自套牌由套牌者承担）系司法解释规定，不在本行挂载法条内，不设规则",
+     "rules": []
+    },
+    {
+     "text": "笔记将使用人与所有人、管理人之间的关系定性为按份责任，属学理说明，见 c1209-several",
+     "rules": [
+      "c1209-several"
+     ]
+    },
+    {
+     "text": "机动车内人损害可发生违约责任与侵权责任竞合，第1217条仅解决侵权赔偿责任的减轻",
+     "rules": [
+      "c1217"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1209-1",
+    "srcs": [
+     "art1209-1"
+    ],
+    "body": [
+     "leasedOrLent(M)",
+     "ownerManagerDiffersFromUser(M)",
+     "vehicleUser(U,M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "V",
+      "content": "payCompensation(U,V)"
+     }
+    ],
+    "note": "因租赁、借用等情形所有人、管理人与使用人不是同一人时，由机动车使用人承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1209-2",
+    "srcs": [
+     "art1209-1"
+    ],
+    "body": [
+     "leasedOrLent(M)",
+     "ownerManagerDiffersFromUser(M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)",
+     {
+      "or": [
+       "vehicleOwner(O,M)",
+       "vehicleManager(O,M)"
+      ]
+     },
+     "atFaultForDamage(O,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "V",
+      "content": "payCompensation(O,V)"
+     }
+    ],
+    "note": "机动车所有人、管理人对损害的发生有过错的，承担相应的赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1209-fault",
+    "srcs": [
+     "art1209-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "knowsVehicleDefect(O,M)",
+       "knowsDriverUnqualified(O,M)",
+       "knowsDriverCannotDrive(O,M)",
+       "otherOwnerFault(O,M)"
+      ]
+     }
+    ],
+    "heads": [
+     "atFaultForDamage(O,M)"
+    ],
+    "note": "笔记所列所有人、管理人过错的认定情形（车有缺陷且为事故原因、驾驶人无资格、驾驶人依法不能驾驶、其他情形），属学理归纳",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1209-several",
+    "srcs": [
+     "art1209-1"
+    ],
+    "body": [
+     "ownerManagerDiffersFromUser(M)",
+     "vehicleUser(U,M)",
+     "atFaultForDamage(O,M)"
+    ],
+    "heads": [
+     "severalLiabilityBetween(U,O)"
+    ],
+    "note": "笔记：使用人与有过错的所有人、管理人之间为按份责任，属学理说明",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1210",
+    "srcs": [
+     "art1210-1"
+    ],
+    "body": [
+     "transferredAndDelivered(M)",
+     "registrationNotTransferred(M)",
+     "transferee(T,M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "V",
+      "content": "payCompensation(T,V)"
+     }
+    ],
+    "note": "已以买卖或者其他方式转让并交付但未办理登记的，由受让人承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1211",
+    "srcs": [
+     "art1211-1"
+    ],
+    "body": [
+     "affiliatedOperation(M)",
+     "affiliatedPerson(A,M)",
+     "affiliatedEntity(B,M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "bearJointLiability(A,B,V)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "V",
+      "content": "bearJointLiability(B,A,V)"
+     }
+    ],
+    "note": "以挂靠形式从事道路运输经营活动的，由挂靠人和被挂靠人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1212-1",
+    "srcs": [
+     "art1212-1"
+    ],
+    "body": [
+     "drivingWithoutPermission(M)",
+     "vehicleUser(U,M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "V",
+      "content": "payCompensation(U,V)"
+     }
+    ],
+    "note": "未经允许驾驶他人机动车发生事故的，由机动车使用人承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1212-2",
+    "srcs": [
+     "art1212-1"
+    ],
+    "body": [
+     "drivingWithoutPermission(M)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)",
+     {
+      "or": [
+       "vehicleOwner(O,M)",
+       "vehicleManager(O,M)"
+      ]
+     },
+     "atFaultForDamage(O,M)",
+     "~otherProvisionInThisChapter(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "V",
+      "content": "payCompensation(O,V)"
+     }
+    ],
+    "note": "所有人、管理人对损害的发生有过错的承担相应赔偿责任，但本章另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1214",
+    "srcs": [
+     "art1214-1"
+    ],
+    "body": [
+     "assembledOrScrappedVehicle(M)",
+     "transferor(T,M)",
+     "transferee(R,M)",
+     "trafficAccidentCausingDamage(M,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "V",
+      "content": "bearJointLiability(T,R,V)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "V",
+      "content": "bearJointLiability(R,T,V)"
+     }
+    ],
+    "note": "以买卖或者其他方式转让拼装或者已达报废标准的机动车，发生事故造成损害的，由转让人和受让人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1215-1",
+    "srcs": [
+     "art1215-1"
+    ],
+    "body": [
+     "stolenRobbedOrSnatchedVehicle(M)",
+     "theftRobberySnatchPerpetrator(P,M)",
+     "trafficAccidentCausingDamage(M,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "payCompensation(P,V)"
+     }
+    ],
+    "note": "盗窃、抢劫或者抢夺的机动车发生事故造成损害的，由盗窃人、抢劫人或者抢夺人承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1215-2",
+    "srcs": [
+     "art1215-1"
+    ],
+    "body": [
+     "stolenRobbedOrSnatchedVehicle(M)",
+     "theftRobberySnatchPerpetrator(P,M)",
+     "vehicleUser(U,M)",
+     "-isSelf(P,U)",
+     "trafficAccidentCausingDamage(M,V)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "bearJointLiability(P,U,V)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "V",
+      "content": "bearJointLiability(U,P,V)"
+     }
+    ],
+    "note": "盗窃人、抢劫人、抢夺人与机动车使用人不是同一人时，二者承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1215-3",
+    "srcs": [
+     "art1215-2"
+    ],
+    "body": [
+     "insurerOf(I,M)",
+     "advancedRescueCosts(I,M)",
+     "trafficAccidentResponsiblePerson(R,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "I",
+      "counterparty": "R",
+      "content": "recoverRescueCostsFrom(I,R)"
+     }
+    ],
+    "note": "保险人在强制保险责任限额范围内垫付抢救费用的，有权向交通事故责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1216-1",
+    "srcs": [
+     "art1216-1"
+    ],
+    "body": [
+     "driverEscaped(M)",
+     "compulsoryInsuranceParticipated(M)",
+     "insurerOf(I,M)",
+     "trafficAccidentCausingDamage(M,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": "V",
+      "content": "payCompensationWithinCompulsoryLimit(I,V)"
+     }
+    ],
+    "note": "驾驶人逃逸且该车参加强制保险的，由保险人在强制保险责任限额范围内赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1216-2",
+    "srcs": [
+     "art1216-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "vehicleUnidentified(M)",
+       "noCompulsoryInsurance(M)",
+       "rescueCostsExceedCompulsoryLimit(M)"
+      ]
+     },
+     "needsRescueFuneralExpenses(M,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "socialAssistanceFund",
+      "counterparty": "V",
+      "content": "advanceRescueFuneralExpenses(socialAssistanceFund,V)"
+     }
+    ],
+    "note": "机动车不明、未参加强制保险或者抢救费用超过限额，需支付抢救、丧葬等费用的，由道路交通事故社会救助基金垫付",
+    "auth": "npc"
+   },
+   {
+    "key": "c1216-3",
+    "srcs": [
+     "art1216-1"
+    ],
+    "body": [
+     "fundAdvancedExpenses(M)",
+     "trafficAccidentResponsiblePerson(R,M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "socialAssistanceFund",
+      "counterparty": "R",
+      "content": "recoverRescueCostsFrom(socialAssistanceFund,R)"
+     }
+    ],
+    "note": "救助基金垫付后，其管理机构有权向交通事故责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1217",
+    "srcs": [
+     "art1217-1"
+    ],
+    "body": [
+     "nonCommercialVehicle(M)",
+     "freeRidePassenger(P,M)",
+     "vehicleUser(U,M)",
+     "trafficAccidentCausingDamage(M,P)",
+     "liabilityOnVehicleSide(M)"
+    ],
+    "heads": [
+     "liabilityReduced(U,P)"
+    ],
+    "note": "非营运机动车致无偿搭乘人损害且属于机动车一方责任的，应当减轻使用人的赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1217-exc",
+    "srcs": [
+     "art1217-1"
+    ],
+    "body": [
+     "nonCommercialVehicle(M)",
+     "freeRidePassenger(P,M)",
+     "vehicleUser(U,M)",
+     "trafficAccidentCausingDamage(M,P)",
+     "liabilityOnVehicleSide(M)",
+     "intentionalOrGrossNegligence(U,M)"
+    ],
+    "heads": [
+     "-liabilityReduced(U,P)"
+    ],
+    "note": "第1217条但书：机动车使用人有故意或者重大过失的，不减轻赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1217-exc",
+    "c1217",
+    "第1217条但书：使用人有故意或者重大过失的，不减轻赔偿责任"
+   ],
+   [
+    "c1214",
+    "c1210",
+    "转让拼装或者报废机动车的，适用第1214条转让人与受让人连带责任，优先于第1210条受让人单独承担赔偿责任"
+   ],
+   [
+    "c1215-1",
+    "c1212-1",
+    "盗窃、抢劫、抢夺机动车属特别情形，优先于第1212条未经允许驾驶的一般规则"
+   ]
+  ],
+  "predicates": {
+   "motorVehicle": "是机动车（参数：物）",
+   "trafficAccidentCausingDamage": "机动车发生交通事故造成损害（机动车，受害人）",
+   "liabilityOnVehicleSide": "属于该机动车一方责任（机动车）",
+   "vehicleOwner": "是机动车所有人（人，机动车）",
+   "vehicleManager": "是机动车管理人（人，机动车）",
+   "vehicleUser": "是机动车使用人（人，机动车）",
+   "ownerManagerDiffersFromUser": "机动车所有人、管理人与使用人不是同一人（机动车）",
+   "leasedOrLent": "因租赁、借用等情形由他人使用机动车（机动车）",
+   "atFaultForDamage": "对损害的发生有过错（人，机动车）",
+   "knowsVehicleDefect": "知道或者应当知道机动车存在缺陷且该缺陷是交通事故发生原因之一（人，机动车）",
+   "knowsDriverUnqualified": "知道或者应当知道驾驶人无驾驶资格或者未取得相应驾驶资格（人，机动车）",
+   "knowsDriverCannotDrive": "知道或者应当知道驾驶人因饮酒、服用国家管制的精神药品或者麻醉药品、患有妨碍安全驾驶的疾病等依法不能驾驶机动车（人，机动车）",
+   "otherOwnerFault": "其他应当认定机动车所有人或者管理人有过错的情形（人，机动车）",
+   "severalLiabilityBetween": "按份承担责任（责任人，其他责任人）",
+   "transferredAndDelivered": "已以买卖或者其他方式转让并交付机动车（机动车）",
+   "registrationNotTransferred": "转让后未办理登记（机动车）",
+   "transferee": "是受让人（人，机动车）",
+   "transferor": "是转让人（人，机动车）",
+   "affiliatedOperation": "以挂靠形式从事道路运输经营活动（机动车）",
+   "affiliatedPerson": "是挂靠人（人，机动车）",
+   "affiliatedEntity": "是被挂靠人（人，机动车）",
+   "drivingWithoutPermission": "未经允许驾驶他人机动车（机动车）",
+   "otherProvisionInThisChapter": "本章（机动车交通事故责任）另有规定（机动车）",
+   "assembledOrScrappedVehicle": "是拼装或者已经达到报废标准的机动车",
+   "stolenRobbedOrSnatchedVehicle": "是盗窃、抢劫或者抢夺的机动车",
+   "theftRobberySnatchPerpetrator": "是盗窃人、抢劫人或者抢夺人（人，机动车）",
+   "insurerOf": "是该机动车的保险人（保险人，机动车）",
+   "advancedRescueCosts": "已在强制保险责任限额范围内垫付抢救费用（保险人，机动车）",
+   "trafficAccidentResponsiblePerson": "是交通事故责任人（人，机动车）",
+   "recoverRescueCostsFrom": "就垫付的抢救等费用向交通事故责任人追偿（追偿人，责任人）",
+   "driverEscaped": "机动车驾驶人发生交通事故后逃逸（机动车）",
+   "compulsoryInsuranceParticipated": "该机动车参加强制保险",
+   "noCompulsoryInsurance": "该机动车未参加强制保险",
+   "vehicleUnidentified": "机动车不明（机动车）",
+   "rescueCostsExceedCompulsoryLimit": "抢救费用超过机动车强制保险责任限额（机动车）",
+   "needsRescueFuneralExpenses": "需要支付被侵权人人身伤亡的抢救、丧葬等费用（机动车，被侵权人）",
+   "fundAdvancedExpenses": "道路交通事故社会救助基金已垫付费用（机动车）",
+   "payCompensationWithinCompulsoryLimit": "在机动车强制保险责任限额范围内赔偿（保险人，被侵权人）",
+   "advanceRescueFuneralExpenses": "垫付人身伤亡的抢救、丧葬等费用（垫付人，被侵权人）",
+   "nonCommercialVehicle": "是非营运机动车",
+   "freeRidePassenger": "是无偿搭乘人（搭乘人，机动车）",
+   "liabilityReduced": "赔偿责任被减轻（使用人，搭乘人）",
+   "intentionalOrGrossNegligence": "有故意或者重大过失（人，机动车）"
+  }
+ }
+}

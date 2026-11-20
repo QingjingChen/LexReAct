@@ -1,0 +1,831 @@
+{
+ "art:1231": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "两个以上侵权人污染环境、破坏生态的，各侵权人承担责任的大小（责任份额）如何确定",
+     "rules": [
+      "c1231-1",
+      "c1231-several"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "责任主体为两个以上侵权人",
+     "rules": [
+      "c1231-1"
+     ]
+    },
+    {
+     "text": "侵权人污染环境或者破坏生态",
+     "rules": [
+      "c1231-1"
+     ]
+    },
+    {
+     "text": "确定责任大小所依据的因素：污染物的种类、浓度、排放量；破坏生态的方式、范围、程度；行为对损害后果所起的作用等",
+     "rules": [
+      "c1231-pollutant",
+      "c1231-eco",
+      "c1231-causal"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "各侵权人按依上述因素确定的责任大小承担按份责任，而非不分份额地承担连带责任",
+     "rules": [
+      "c1231-several"
+     ]
+    },
+    {
+     "text": "人民法院根据污染物的种类、浓度、排放量确定责任大小",
+     "rules": [
+      "c1231-pollutant"
+     ]
+    },
+    {
+     "text": "人民法院根据破坏生态的方式、范围、程度确定责任大小",
+     "rules": [
+      "c1231-eco"
+     ]
+    },
+    {
+     "text": "人民法院根据各侵权人的行为对损害后果所起的作用确定责任大小",
+     "rules": [
+      "c1231-causal"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是分别侵权（无意思联络）在环境污染、生态破坏领域确定责任份额的特别规定，列举了污染物与生态破坏的具体考量因素；份额难以确定时平均承担的一般规则（第1172条）不在本条，本条不适用连带责任",
+     "rules": []
+    },
+    {
+     "text": "笔记仅复述条文并标注考点（T20/22），未增加例外或但书；本行无 LEGO 卡片可参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1231-1",
+    "srcs": [
+     "art1231-1"
+    ],
+    "body": [
+     "multipleTortfeasors(T)",
+     {
+      "or": [
+       "pollutesEnvironment(T)",
+       "destroysEcology(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "liabilityShareDeterminedByFactors(T)"
+    ],
+    "note": "两个以上侵权人污染环境、破坏生态的，承担责任的大小依本条所列因素确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1231-pollutant",
+    "srcs": [
+     "art1231-1"
+    ],
+    "body": [
+     "liabilityShareDeterminedByFactors(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineShareByPollutantFactors(T)"
+     }
+    ],
+    "note": "责任大小根据污染物的种类、浓度、排放量确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1231-eco",
+    "srcs": [
+     "art1231-1"
+    ],
+    "body": [
+     "liabilityShareDeterminedByFactors(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineShareByEcologicalDamageFactors(T)"
+     }
+    ],
+    "note": "责任大小根据破坏生态的方式、范围、程度确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1231-causal",
+    "srcs": [
+     "art1231-1"
+    ],
+    "body": [
+     "liabilityShareDeterminedByFactors(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineShareByCausalContribution(T)"
+     }
+    ],
+    "note": "责任大小根据行为对损害后果所起的作用等因素确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1231-several",
+    "srcs": [
+     "art1231-1"
+    ],
+    "body": [
+     "liabilityShareDeterminedByFactors(T)"
+    ],
+    "heads": [
+     "severalLiability(T)"
+    ],
+    "note": "学理：条文以“承担责任的大小”表述，表明各侵权人按确定的责任份额承担按份责任，不承担连带责任；条文本身未明写“按份”，故标为 doctrine",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "multipleTortfeasors": "两个以上侵权人（参数：侵权人群体）",
+   "pollutesEnvironment": "污染环境（参数：侵权人群体）",
+   "destroysEcology": "破坏生态（参数：侵权人群体）",
+   "liabilityShareDeterminedByFactors": "两个以上侵权人的责任大小依第1231条所列因素确定（参数：侵权人群体）",
+   "determineShareByPollutantFactors": "根据污染物的种类、浓度、排放量确定责任大小（参数：侵权人群体）",
+   "determineShareByEcologicalDamageFactors": "根据破坏生态的方式、范围、程度确定责任大小（参数：侵权人群体）",
+   "determineShareByCausalContribution": "根据行为对损害后果所起的作用等因素确定责任大小（参数：侵权人群体）"
+  }
+ },
+ "card:g0317": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因污染环境、破坏生态造成他人损害的，侵权人是否应当承担侵权责任，以及免责事由与因果关系的举证责任由谁承担",
+     "rules": [
+      "c1229-1",
+      "c1230-1"
+     ]
+    },
+    {
+     "text": "违反国家规定造成生态环境损害的，谁有权请求修复与赔偿，修复责任如何实现，赔偿范围包括哪些损失和费用",
+     "rules": [
+      "c1234-1",
+      "c1234-2",
+      "c1235-1",
+      "c1235-items"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "污染环境、破坏生态并因此造成他人损害",
+     "rules": [
+      "c1229-1"
+     ]
+    },
+    {
+     "text": "因污染环境、破坏生态发生纠纷",
+     "rules": [
+      "c1230-1"
+     ]
+    },
+    {
+     "text": "违反国家规定造成生态环境损害，且生态环境能够修复",
+     "rules": [
+      "c1234-1",
+      "c1234-2"
+     ]
+    },
+    {
+     "text": "请求权人为国家规定的机关或者法律规定的组织",
+     "rules": [
+      "c1234-1",
+      "c1235-1"
+     ]
+    },
+    {
+     "text": "赔偿项目限于：服务功能丧失损失、功能永久性损害损失、调查鉴定评估等费用、清除污染修复费用、防止损害发生和扩大的合理费用",
+     "rules": [
+      "c1235-items"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "行为人能证明存在法律规定的不承担责任或者减轻责任的情形，或者其行为与损害之间不存在因果关系的，不承担或者减轻责任（第1230条将该项举证责任分配给行为人）",
+     "rules": [
+      "c1230-1",
+      "c1229-exc"
+     ]
+    },
+    {
+     "text": "生态环境不能修复的，不发生第1234条的修复请求权，只能依第1235条请求赔偿（含功能永久性损害造成的损失）",
+     "rules": [
+      "c1234-1",
+      "c1235-items"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "侵权人应当承担侵权责任",
+     "rules": [
+      "c1229-1"
+     ]
+    },
+    {
+     "text": "行为人应当就法定免责、减责情形及其行为与损害之间不存在因果关系承担举证责任",
+     "rules": [
+      "c1230-1"
+     ]
+    },
+    {
+     "text": "国家规定的机关或者法律规定的组织有权请求侵权人在合理期限内承担修复责任",
+     "rules": [
+      "c1234-1"
+     ]
+    },
+    {
+     "text": "侵权人在期限内未修复的，请求权人可以自行或者委托他人修复，所需费用由侵权人负担",
+     "rules": [
+      "c1234-2"
+     ]
+    },
+    {
+     "text": "国家规定的机关或者法律规定的组织有权请求侵权人赔偿第1235条第1款列举的五项损失和费用",
+     "rules": [
+      "c1235-1",
+      "c1235-items"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1230条的举证责任倒置优先于第1229条的一般归责规则：因果关系与免责事由由行为人举证，而非由受害人举证",
+     "rules": [
+      "c1230-1"
+     ]
+    },
+    {
+     "text": "存在法律规定的免责事由时，排除第1229条的侵权责任",
+     "rules": [
+      "c1229-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记与LEGO卡片讲的是第9条绿色原则，属倡导性、原则性规定，不设具体行为义务，不能单独作为请求权基础；本条组（第1229—1235条）才是绿色原则在侵权责任编中的具体化",
+     "rules": []
+    },
+    {
+     "text": "第1234条针对“生态环境能够修复”的情形，请求承担修复责任；第1235条针对已发生的损失和费用请求赔偿，二者可并行主张，不能相互替代",
+     "rules": [
+      "c1234-1",
+      "c1235-1"
+     ]
+    },
+    {
+     "text": "LEGO卡片称绿色原则与其他原则冲突时“具有优先适用性”、可“填补漏洞”，系模型生成，法条与笔记均无此内容，不予采纳",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1229-1",
+    "srcs": [
+     "art1229-1"
+    ],
+    "body": [
+     "pollutesEnvironmentOrDestroysEcology(A)",
+     "causesDamageTo(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "bearTortLiability(A,V)"
+     }
+    ],
+    "note": "因污染环境、破坏生态造成他人损害的，侵权人应当承担侵权责任（无过错责任，不以过错为要件）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1229-exc",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "pollutesEnvironmentOrDestroysEcology(A)",
+     "causesDamageTo(A,V)",
+     "exemptionOrMitigationGroundProvidedByLaw(A)"
+    ],
+    "heads": [
+     "-bearTortLiability(A,V)"
+    ],
+    "note": "第1230条只分配举证责任，未规定免责事由本身；存在法律规定的免责事由时排除第1229条责任，属学理归纳",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1230-1",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "environmentalDispute(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "proveExemptionOrNoCausation(A,V)"
+     }
+    ],
+    "note": "因污染环境、破坏生态发生纠纷，行为人应当就法定不承担责任或减轻责任的情形及其行为与损害之间不存在因果关系承担举证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1234-1",
+    "srcs": [
+     "art1234-1"
+    ],
+    "body": [
+     "violatesStateRegulations(A)",
+     "causesEcologicalEnvironmentDamage(A,D)",
+     "ecologicalDamageRepairable(D)",
+     "qualifiedEcoDamageClaimant(O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "A",
+      "content": "claimRestorationWithinReasonablePeriod(A,D)"
+     }
+    ],
+    "note": "违反国家规定造成生态环境损害且能够修复的，国家规定的机关或者法律规定的组织有权请求侵权人在合理期限内承担修复责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1234-2",
+    "srcs": [
+     "art1234-1"
+    ],
+    "body": [
+     "violatesStateRegulations(A)",
+     "causesEcologicalEnvironmentDamage(A,D)",
+     "ecologicalDamageRepairable(D)",
+     "qualifiedEcoDamageClaimant(O)",
+     "notRestoredWithinPeriod(A,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "restoreSelfOrEntrustOthers(D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "O",
+      "content": "bearRestorationCosts(A,D)"
+     }
+    ],
+    "note": "侵权人在合理期限内未修复的，请求权人可以自行或者委托他人修复，所需费用由侵权人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c1235-1",
+    "srcs": [
+     "art1235-1"
+    ],
+    "body": [
+     "violatesStateRegulations(A)",
+     "causesEcologicalEnvironmentDamage(A,D)",
+     "qualifiedEcoDamageClaimant(O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "A",
+      "content": "claimEcoDamageCompensation(A,D)"
+     }
+    ],
+    "note": "违反国家规定造成生态环境损害的，国家规定的机关或者法律规定的组织有权请求侵权人赔偿损失和费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c1235-items",
+    "srcs": [
+     "art1235-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "lossOfServiceFunctionDuringRestoration(D)",
+       "permanentLossOfEcologicalFunction(D)",
+       "investigationAndAssessmentCosts(D)",
+       "costsOfCleanupAndRestoration(D)",
+       "reasonableCostsToPreventDamage(D)"
+      ]
+     }
+    ],
+    "heads": [
+     "compensableEcoDamageItem(D)"
+    ],
+    "note": "第1235条第1款列举的五项可赔偿损失和费用：服务功能丧失损失、功能永久性损害损失、调查鉴定评估等费用、清除污染修复费用、防止损害发生和扩大的合理费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1230-1",
+    "c1229-1",
+    "第1230条为举证责任倒置的特别规定，优先于第1229条的一般归责规则：因果关系与免责事由由行为人举证"
+   ],
+   [
+    "c1229-exc",
+    "c1229-1",
+    "存在法律规定的免责事由时，排除第1229条的侵权责任"
+   ]
+  ],
+  "predicates": {
+   "pollutesEnvironmentOrDestroysEcology": "污染环境、破坏生态（行为人）",
+   "environmentalDispute": "因污染环境、破坏生态发生纠纷（行为人，受害人）",
+   "exemptionOrMitigationGroundProvidedByLaw": "存在法律规定的不承担责任或者减轻责任的情形（行为人）",
+   "proveExemptionOrNoCausation": "就法定免责、减责情形及行为与损害之间不存在因果关系承担举证责任（行为人，受害人）",
+   "causesEcologicalEnvironmentDamage": "造成生态环境损害（行为人，生态环境损害）",
+   "ecologicalDamageRepairable": "生态环境能够修复（生态环境损害）",
+   "qualifiedEcoDamageClaimant": "是国家规定的机关或者法律规定的组织（有权就生态环境损害提出请求）",
+   "claimRestorationWithinReasonablePeriod": "请求侵权人在合理期限内承担修复责任（侵权人，生态环境损害）",
+   "notRestoredWithinPeriod": "未在合理期限内修复（侵权人，生态环境损害）",
+   "restoreSelfOrEntrustOthers": "自行或者委托他人进行修复（生态环境损害）",
+   "bearRestorationCosts": "负担修复所需费用（侵权人，生态环境损害）",
+   "claimEcoDamageCompensation": "请求赔偿生态环境损害的损失和费用（侵权人，生态环境损害）",
+   "compensableEcoDamageItem": "属于第1235条第1款列举的可赔偿损失和费用（项目）",
+   "lossOfServiceFunctionDuringRestoration": "生态环境受到损害至修复完成期间服务功能丧失导致的损失",
+   "permanentLossOfEcologicalFunction": "生态环境功能永久性损害造成的损失",
+   "investigationAndAssessmentCosts": "生态环境损害调查、鉴定评估等费用",
+   "costsOfCleanupAndRestoration": "清除污染、修复生态环境费用",
+   "reasonableCostsToPreventDamage": "防止损害的发生和扩大所支出的合理费用"
+  }
+ },
+ "card:g7791": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因污染环境、破坏生态发生纠纷时，构成要件与举证责任如何分配，以及惩罚性赔偿、第三人过错情形下的请求权与追偿权",
+     "rules": [
+      "c1230-1",
+      "c1230-2",
+      "c1230-doc-causation",
+      "c1230-doc-nofault",
+      "c1232",
+      "c1233-1",
+      "c1233-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "有污染环境、破坏生态的行为（不以行为违法或排污超标为要件，达标排放造成损害仍可构成）",
+     "rules": [
+      "c1230-doc-nofault"
+     ]
+    },
+    {
+     "text": "发生他人人身、财产损害",
+     "rules": [
+      "c1230-doc-nofault"
+     ]
+    },
+    {
+     "text": "受害人提出初步证据证明污染物或其次生污染物与损害之间具有关联性，从而启动因果关系推定",
+     "rules": [
+      "c1230-doc-causation"
+     ]
+    },
+    {
+     "text": "侵权人违反法律规定故意污染环境、破坏生态，且造成严重后果",
+     "rules": [
+      "c1232"
+     ]
+    },
+    {
+     "text": "损害是因第三人的过错污染环境、破坏生态造成的",
+     "rules": [
+      "c1233-1",
+      "c1233-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "行为人举证证明存在法律规定的不承担责任或者减轻责任的情形",
+     "rules": [
+      "c1230-1"
+     ]
+    },
+    {
+     "text": "行为人举证证明其行为与损害之间不存在因果关系（排放的污染物没有造成该损害可能、未到达损害发生地、损害于排放前已发生或其他可认定无因果关系的情形）",
+     "rules": [
+      "c1230-2",
+      "c1230-doc-nocaus",
+      "c1230-doc-causation"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "行为人就法律规定的不承担责任或者减轻责任的情形，以及其行为与损害之间不存在因果关系，承担举证责任（举证责任倒置）",
+     "rules": [
+      "c1230-1",
+      "c1230-2"
+     ]
+    },
+    {
+     "text": "因果关系经推定成立且行为人未能举证推翻的，行为人应当承担侵权责任，无须考虑其是否有过错",
+     "rules": [
+      "c1230-doc-causation",
+      "c1230-doc-nofault"
+     ]
+    },
+    {
+     "text": "违反法律规定故意污染环境、破坏生态造成严重后果的，被侵权人有权请求相应的惩罚性赔偿",
+     "rules": [
+      "c1232"
+     ]
+    },
+    {
+     "text": "因第三人过错污染环境、破坏生态的，被侵权人可以向侵权人请求赔偿，也可以向第三人请求赔偿",
+     "rules": [
+      "c1233-1"
+     ]
+    },
+    {
+     "text": "侵权人赔偿后，有权向第三人追偿",
+     "rules": [
+      "c1233-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "因果关系推定（举证责任倒置）优先于一般举证规则：受害人仅需提出初步证据，转由行为人证明因果关系不存在",
+     "rules": [
+      "c1230-doc-causation",
+      "c1230-2"
+     ]
+    },
+    {
+     "text": "惩罚性赔偿以违反法律规定、故意且造成严重后果为限，不得普遍适用于一般污染环境、破坏生态行为",
+     "rules": [
+      "c1232"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与一般侵权责任不同，本责任为危险责任（无过错责任），不以过错和违法性为要件，达标排放或不具违法性不能免责",
+     "rules": [
+      "c1230-doc-nofault"
+     ]
+    },
+    {
+     "text": "惩罚性赔偿不同于一般损害赔偿，须具备违法性、故意与严重后果三项要件",
+     "rules": [
+      "c1232"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所称“数人侵权仅在累积因果关系下成立连带责任”“生态环境修复责任及费用负担”等，第1230、1232、1233条未作规定，属其他条文或学理内容，本卡片不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1230-1",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "environmentalDispute(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "proveExemptionOrReduction(A)"
+     }
+    ],
+    "note": "因污染环境、破坏生态发生纠纷，行为人应当就法律规定的不承担责任或者减轻责任的情形承担举证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1230-2",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "environmentalDispute(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "proveNoCausation(A)"
+     }
+    ],
+    "note": "行为人应当就其行为与损害之间不存在因果关系承担举证责任（举证责任倒置）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1230-doc-causation",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "pollutesOrDestroysEcosystem(A)",
+     "environmentalDamage(A,V)",
+     "preliminaryEvidenceOfAssociation(V,A)",
+     "~noCausationProved(A,V)"
+    ],
+    "heads": [
+     "environmentalCausation(A,V)"
+    ],
+    "note": "笔记与《环境侵权责任解释》第7条：受害人提出初步证据证明关联性后推定因果关系，行为人举证证明不存在因果关系的除外",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1230-doc-nocaus",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "pollutantCannotCauseDamage(A,V)",
+       "pollutantNotReachedDamageSite(A,V)",
+       "damagePrecededEmission(A,V)",
+       "otherNoCausationCircumstance(A,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "noCausationProved(A,V)"
+    ],
+    "note": "笔记引《环境侵权责任解释》第7条：排放的污染物无造成该损害可能、未到达损害发生地、损害于排放前已发生或其他可认定无因果关系的情形，认定不存在因果关系",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1230-doc-nofault",
+    "srcs": [
+     "art1230-1"
+    ],
+    "body": [
+     "pollutesOrDestroysEcosystem(A)",
+     "environmentalDamage(A,V)",
+     "environmentalCausation(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "bearTortLiability(A,V)"
+     }
+    ],
+    "note": "笔记：本责任为危险责任（无过错责任），无须考虑过错，排污达标或行为不具违法性不能免责；第1230条仅规定举证责任，构成要件来自学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1232",
+    "srcs": [
+     "art1232-1"
+    ],
+    "body": [
+     "pollutesOrDestroysEcosystem(A)",
+     "environmentalDamage(A,V)",
+     "intentionalPollutionInViolationOfLaw(A)",
+     "seriousConsequences(A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimPunitiveDamages(V,A)"
+     }
+    ],
+    "note": "侵权人违反法律规定故意污染环境、破坏生态造成严重后果的，被侵权人有权请求相应的惩罚性赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1233-1",
+    "srcs": [
+     "art1233-1"
+    ],
+    "body": [
+     "pollutesOrDestroysEcosystem(A)",
+     "environmentalDamage(A,V)",
+     "thirdPartyCausesDamage(T,V)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimTortLiability(V,A)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "V",
+      "counterparty": "T",
+      "content": "claimTortLiability(V,T)"
+     }
+    ],
+    "note": "因第三人过错污染环境、破坏生态的，被侵权人可以向侵权人请求赔偿，也可以向第三人请求赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1233-2",
+    "srcs": [
+     "art1233-1"
+    ],
+    "body": [
+     "pollutesOrDestroysEcosystem(A)",
+     "environmentalDamage(A,V)",
+     "thirdPartyCausesDamage(T,V)",
+     "paidVictim(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "T",
+      "content": "recourse(A,T,V)"
+     }
+    ],
+    "note": "侵权人赔偿后，有权向有过错的第三人追偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "environmentalDispute": "因污染环境、破坏生态发生纠纷（1个参数：行为人）",
+   "pollutesOrDestroysEcosystem": "实施污染环境、破坏生态的行为（1个参数：行为人）",
+   "environmentalDamage": "因污染环境、破坏生态造成他人人身或财产损害（2个参数：行为人，被侵权人）",
+   "preliminaryEvidenceOfAssociation": "受害人提出初步证据证明污染物或其次生污染物与损害之间具有关联性（2个参数：受害人，行为人）",
+   "environmentalCausation": "污染环境、破坏生态行为与损害之间存在因果关系（2个参数：行为人，被侵权人）",
+   "noCausationProved": "行为人举证证明其行为与损害之间不存在因果关系（2个参数：行为人，被侵权人）",
+   "pollutantCannotCauseDamage": "排放的污染物没有造成该损害的可能（2个参数：行为人，被侵权人）",
+   "pollutantNotReachedDamageSite": "排放的可造成该损害的污染物未到达损害发生地（2个参数：行为人，被侵权人）",
+   "damagePrecededEmission": "该损害于排放污染物之前已发生（2个参数：行为人，被侵权人）",
+   "otherNoCausationCircumstance": "其他可以认定污染行为与损害之间不存在因果关系的情形（2个参数：行为人，被侵权人）",
+   "intentionalPollutionInViolationOfLaw": "违反法律规定故意污染环境、破坏生态（1个参数：行为人）",
+   "seriousConsequences": "造成严重后果（1个参数：行为人）",
+   "claimPunitiveDamages": "请求相应的惩罚性赔偿（2个参数：被侵权人，侵权人）",
+   "proveExemptionOrReduction": "就法律规定的不承担责任或者减轻责任的情形承担举证责任（1个参数：行为人）",
+   "proveNoCausation": "就其行为与损害之间不存在因果关系承担举证责任（1个参数：行为人）"
+  }
+ }
+}

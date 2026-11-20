@@ -1,0 +1,1335 @@
+{
+ "card:g5940": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无因管理是否成立：管理他人事务、有为他人谋利益的意思、无法定或约定义务、不违反受益人真实意思",
+     "rules": [
+      "c981-elements",
+      "c981-exclusion",
+      "c981-intention-exception"
+     ]
+    },
+    {
+     "text": "无因管理成立后管理人负有何种义务，以及受益人追认产生何种效果",
+     "rules": [
+      "c981-1",
+      "c981-2",
+      "c982-1",
+      "c982-2",
+      "c983-1",
+      "c983-2",
+      "c984-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管理他人事务：有关人们生活利益的一切事项，可为财产性或非财产性事项，但不包括公益事业；管理行为可为事实行为或民事法律行为",
+     "rules": [
+      "c981-elements"
+     ]
+    },
+    {
+     "text": "有为他人谋利益的意思：无须表示，只要客观上避免他人利益受损且非纯粹为自利，兼有自利动机亦不影响成立",
+     "rules": [
+      "c981-elements"
+     ]
+    },
+    {
+     "text": "管理人管理事务时没有法定义务和约定义务，以开始管理时的客观事实判断",
+     "rules": [
+      "c981-elements"
+     ]
+    },
+    {
+     "text": "管理事务不违反受益人的真实意思",
+     "rules": [
+      "c981-elements"
+     ]
+    },
+    {
+     "text": "管理人能够通知受益人",
+     "rules": [
+      "c982-1"
+     ]
+    },
+    {
+     "text": "管理的事务不需要紧急处理",
+     "rules": [
+      "c982-2"
+     ]
+    },
+    {
+     "text": "管理已经结束",
+     "rules": [
+      "c983-1"
+     ]
+    },
+    {
+     "text": "管理人因管理事务取得了财产",
+     "rules": [
+      "c983-2"
+     ]
+    },
+    {
+     "text": "受益人对管理事务予以事后追认",
+     "rules": [
+      "c984-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "管理违法或违背社会公德的行为、纯粹道义上宗教上或一般生活事务（如招待客人）、依法须由本人亲自实施或须经本人授权的事务（如放弃继承权）以及公益事业，一般不成立无因管理",
+     "rules": [
+      "c981-exclusion"
+     ]
+    },
+    {
+     "text": "管理违反受益人真实意思的，不成立无因管理；但受益人的真实意思违背公序良俗的除外（如救助跳水自杀者）",
+     "rules": [
+      "c981-elements",
+      "c981-intention-exception"
+     ]
+    },
+    {
+     "text": "中断管理对受益人不利的，无正当理由不得中断；有正当理由的除外",
+     "rules": [
+      "c981-2"
+     ]
+    },
+    {
+     "text": "管理人另有意思表示的，不适用委托合同的有关规定",
+     "rules": [
+      "c984-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "管理人管理他人事务，应当采取有利于受益人的方法",
+     "rules": [
+      "c981-1"
+     ]
+    },
+    {
+     "text": "中断管理对受益人不利的，管理人无正当理由不得中断管理",
+     "rules": [
+      "c981-2"
+     ]
+    },
+    {
+     "text": "能够通知受益人的，管理人应当及时通知受益人",
+     "rules": [
+      "c982-1"
+     ]
+    },
+    {
+     "text": "管理的事务不需要紧急处理的，管理人应当等待受益人的指示",
+     "rules": [
+      "c982-2"
+     ]
+    },
+    {
+     "text": "管理结束后，管理人应当向受益人报告管理事务的情况",
+     "rules": [
+      "c983-1"
+     ]
+    },
+    {
+     "text": "管理人应当将管理事务取得的财产及时转交给受益人",
+     "rules": [
+      "c983-2"
+     ]
+    },
+    {
+     "text": "经受益人事后追认的，从管理事务开始时起适用委托合同的有关规定",
+     "rules": [
+      "c984-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "违法、违背公德、纯粹道义或须本人亲自实施的事务及公益事业不成立无因管理，优先于构成要件规则",
+     "rules": [
+      "c981-exclusion"
+     ]
+    },
+    {
+     "text": "受益人真实意思违背公序良俗时仍成立无因管理，优先于“违反真实意思不成立”的规则",
+     "rules": [
+      "c981-intention-exception"
+     ]
+    },
+    {
+     "text": "受益人事后追认后，自管理事务开始时起适用委托合同规定，优先于无因管理规则（第981条、第982条）",
+     "rules": [
+      "c984-1",
+      "c981-1",
+      "c982-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "无因管理整体是事实行为，与基于合意的委托合同不同；事后追认可使无因管理溯及自管理开始时适用委托合同规则",
+     "rules": [
+      "c984-1"
+     ]
+    },
+    {
+     "text": "无因管理阻却违法性，与侵权行为不同；与不当得利性质不同但可能并存",
+     "rules": []
+    },
+    {
+     "text": "管理人兼有自利动机，只要客观上避免了他人利益受损，仍成立无因管理",
+     "rules": [
+      "c981-elements"
+     ]
+    },
+    {
+     "text": "管理人无报酬请求权；必要费用偿还、损失适当补偿等效果规定于第979条，本行未挂载，故不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c981-elements",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "toAvoidLossOf(M,B)",
+     "noLegalOrAgreedDuty(M,B)",
+     "~contraryToBeneficiaryTrueIntention(M,B)"
+    ],
+    "heads": [
+     "negotiorumManagement(M,B)"
+    ],
+    "note": "学理上的无因管理构成要件：管理他人事务、有为他人谋利益的意思（无须表示，兼有自利动机不影响）、无法定或约定义务、不违反受益人真实意思",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c981-intention-exception",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "toAvoidLossOf(M,B)",
+     "noLegalOrAgreedDuty(M,B)",
+     "contraryToBeneficiaryTrueIntention(M,B)",
+     "beneficiaryTrueIntentionViolatesPublicOrder(B)"
+    ],
+    "heads": [
+     "negotiorumManagement(M,B)"
+    ],
+    "note": "笔记例外：管理虽违反受益人真实意思，但该意思违背公序良俗的（如救助跳水自杀者），仍成立无因管理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c981-exclusion",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     {
+      "or": [
+       "unlawfulOrAgainstPublicMorals(M,B)",
+       "purelyMoralReligiousOrDailyAffair(M,B)",
+       "mustBeDonePersonallyOrAuthorized(M,B)",
+       "publicWelfareUndertaking(M,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "-negotiorumManagement(M,B)"
+    ],
+    "note": "笔记例外：管理违法或违背社会公德的行为、纯粹道义宗教或一般生活事务、须本人亲自实施或经授权的事务、公益事业，一般不发生无因管理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c981-1",
+    "srcs": [
+     "art981-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "adoptBeneficialMethod(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，应当采取有利于受益人的方法",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-2",
+    "srcs": [
+     "art981-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "interruptionHarmfulToBeneficiary(M,B)",
+     "~justifiedReason(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "interruptManagement(M,B)"
+     }
+    ],
+    "note": "中断管理对受益人不利的，管理人无正当理由不得中断（有正当理由的除外）",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-1",
+    "srcs": [
+     "art982-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "canNotifyBeneficiary(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "timelyNotifyBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，能够通知受益人的，应当及时通知受益人",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-2",
+    "srcs": [
+     "art982-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "-affairNeedsUrgentHandling(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "awaitBeneficiaryInstruction(M,B)"
+     }
+    ],
+    "note": "管理的事务不需要紧急处理的，管理人应当等待受益人的指示",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-1",
+    "srcs": [
+     "art983-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "managementEnded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "reportManagementSituation(M,B)"
+     }
+    ],
+    "note": "管理结束后，管理人应当向受益人报告管理事务的情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-2",
+    "srcs": [
+     "art983-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "propertyObtainedInManagement(M,B,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "transferPropertyToBeneficiary(M,B,P)"
+     }
+    ],
+    "note": "管理人管理事务取得的财产，应当及时转交给受益人",
+    "auth": "npc"
+   },
+   {
+    "key": "c984-1",
+    "srcs": [
+     "art984-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "ratifiedAfterwards(B,M)",
+     "~managerDeclaresOtherwise(M)"
+    ],
+    "heads": [
+     "applyMandateContractRulesFromStart(M,B)"
+    ],
+    "note": "管理人管理事务经受益人事后追认的，从管理事务开始时起适用委托合同的有关规定，但管理人另有意思表示的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c981-exclusion",
+    "c981-elements",
+    "违法、违背公德、纯粹道义或须本人亲自实施的事务及公益事业，一般不成立无因管理"
+   ],
+   [
+    "c981-intention-exception",
+    "c981-elements",
+    "受益人真实意思违背公序良俗时，仍成立无因管理（如救助跳水自杀者）"
+   ],
+   [
+    "c984-1",
+    "c981-1",
+    "经事后追认的，自管理事务开始时起适用委托合同规定，优先于无因管理规则"
+   ],
+   [
+    "c984-1",
+    "c982-2",
+    "经事后追认的，自管理事务开始时起适用委托合同规定，优先于无因管理规则"
+   ]
+  ],
+  "predicates": {
+   "noLegalOrAgreedDuty": "管理事务时无法定或约定义务（管理人，受益人）",
+   "beneficiaryTrueIntentionViolatesPublicOrder": "受益人的真实意思违背公序良俗（受益人）",
+   "unlawfulOrAgainstPublicMorals": "所管理的事务属于违法或违背社会公德的行为（管理人，受益人）",
+   "purelyMoralReligiousOrDailyAffair": "所管理的是纯粹道义上、宗教上或一般生活事务（管理人，受益人）",
+   "mustBeDonePersonallyOrAuthorized": "所管理的事务依法须由本人亲自实施或须经本人授权（管理人，受益人）",
+   "publicWelfareUndertaking": "所管理的是公益事业（管理人，受益人）",
+   "adoptBeneficialMethod": "采取有利于受益人的方法（管理人，受益人）",
+   "interruptManagement": "中断管理（管理人，受益人）",
+   "interruptionHarmfulToBeneficiary": "中断管理对受益人不利（管理人，受益人）",
+   "canNotifyBeneficiary": "能够通知受益人（管理人，受益人）",
+   "timelyNotifyBeneficiary": "及时通知受益人（管理人，受益人）",
+   "affairNeedsUrgentHandling": "管理的事务需要紧急处理（管理人，受益人）",
+   "awaitBeneficiaryInstruction": "等待受益人的指示（管理人，受益人）",
+   "managementEnded": "管理已结束（管理人，受益人）",
+   "reportManagementSituation": "向受益人报告管理事务的情况（管理人，受益人）",
+   "propertyObtainedInManagement": "因管理事务取得的财产（管理人，受益人，财产）",
+   "transferPropertyToBeneficiary": "将管理事务取得的财产及时转交给受益人（管理人，受益人，财产）",
+   "ratifiedAfterwards": "受益人事后追认管理事务（受益人，管理人）",
+   "managerDeclaresOtherwise": "管理人另有意思表示（管理人）",
+   "applyMandateContractRulesFromStart": "自管理事务开始时起适用委托合同的有关规定（管理人，受益人）"
+  }
+ },
+ "card:g5961": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c979-claim-compensation：新谓词 suffersLossInManagement 需要在 predicates 中给出中文释义",
+   "c979-claim-compensation：新谓词 claimAppropriateCompensation 需要在 predicates 中给出中文释义",
+   "c979-2：新谓词 beneficiaryIntentionUnlawful 需要在 predicates 中给出中文释义",
+   "c979-2：新谓词 claimAppropriateCompensation 需要在 predicates 中给出中文释义",
+   "c979-2-exc：新谓词 beneficiaryIntentionViolatesLaw 需要在 predicates 中给出中文释义",
+   "c979-2-exc：新谓词 beneficiaryIntentionViolatesPublicOrder 需要在 predicates 中给出中文释义",
+   "c979-2-exc：新谓词 beneficiaryIntentionUnlawful 需要在 predicates 中给出中文释义",
+   "c980：新谓词 bearArt979DutiesWithinBenefit 需要在 predicates 中给出中文释义",
+   "c981-1：新谓词 adoptMethodFavorableToBeneficiary 需要在 predicates 中给出中文释义",
+   "c981-2：新谓词 interruptionUnfavorableToBeneficiary 需要在 predicates 中给出中文释义",
+   "c981-2：新谓词 interruptManagement 需要在 predicates 中给出中文释义",
+   "c982-1：新谓词 canNotifyBeneficiary 需要在 predicates 中给出中文释义",
+   "c982-1：新谓词 notifyBeneficiaryInTime 需要在 predicates 中给出中文释义",
+   "c982-2：新谓词 urgentHandlingNeeded 需要在 predicates 中给出中文释义",
+   "c982-2：新谓词 awaitBeneficiaryInstruction 需要在 predicates 中给出中文释义",
+   "c983-1：新谓词 managementEnded 需要在 predicates 中给出中文释义",
+   "c983-1：新谓词 reportManagementToBeneficiary 需要在 predicates 中给出中文释义",
+   "c983-2：新谓词 propertyObtainedInManagement 需要在 predicates 中给出中文释义",
+   "c983-2：新谓词 transferPropertyToBeneficiary 需要在 predicates 中给出中文释义",
+   "c979-doctrine-noreward：新谓词 claimRemuneration 需要在 predicates 中给出中文释义",
+   "c979-doctrine-cap：新谓词 reimbursementCappedAtBenefit 需要在 predicates 中给出中文释义",
+   "c979-doctrine-directpayment：新谓词 debtIncurredInOwnNameForBenefit 需要在 predicates 中给出中文释义",
+   "c979-doctrine-directpayment：新谓词 demandDirectPaymentOfDebt 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"没有法定或者约定义务的人为他人利益管理事务时，无因管理是否成立，管理人享有哪些请求权、负担哪些义务\",\n        \"rules\": [\n          \"c979-1\",\n          \"c979-claim-expenses\",\n          \"c979-claim-compensation\",\n          \"c981-1\",\n          \"c982-1\",\n          \"c983-1\"\n        ]\n      },\n      {\n        \"text\": \"管理事务不符合受益人真实意思时，管理人的请求权是否被排除\",\n        \"rules\": [\n          \"c979-2\",\n          \"c979-2-exc\"\n        ]\n      },\n      {\n        \"text\": \"管理事务不属于无因管理但受益人享有管理利益时，受益人如何承担责任\",\n        \"rules\": [\n          \"c980\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"管理人没有法定的或者约定的义务，为避免他人利益受损失而管理他人事务\",\n        \"rules\": [\n          \"c979-1\"\n        ]\n      },\n      {\n        \"text\": \"管理人因管理事务支出了必要费用；或者因管理事务受到损失\",\n        \"rules\": [\n          \"c979-claim-expenses\",\n          \"c979-claim-compensation\"\n        ]\n      },\n      {\n        \"text\": \"管理事务不符合受益人的真实意思\",\n        \"rules\": [\n          \"c979-2\"\n        ]\n      },\n      {\n        \"text\": \"受益人的真实意思违反法律或者违背公序良俗\",\n        \"rules\": [\n          \"c979-2-exc\"\n        ]\n      },\n      {\n        \"text\": \"管理事务不属于第979条规定的情形，但受益人享有管理利益\",\n        \"rules\": [\n          \"c980\"\n        ]\n      },\n      {\n        \"text\": \"中断管理对受益人不利且无正当理由\",\n        \"rules\": [\n          \"c981-2\"\n        ]\n      },\n      {\n        \"text\": \"能够通知受益人；管理的事务不需要紧急处理\",\n        \"rules\": [\n          \"c982-1\",\n          \"c982-2\"\n        ]\n      },\n      {\n        \"text\": \"管理结束；管理人因管理事务取得财产\",\n        \"rules\": [\n          \"c983-1\",\n          \"c983-2\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"管理事务不符合受益人真实意思的，管理人不享有偿还必要费用、适当补偿的请求权\",\n        \"rules\": [\n          \"c979-2\"\n        ]\n      },\n      {\n        \"text\": \"但受益人的真实意思违反法律或者违背公序良俗的，管理人仍享有第979条第1款的权利\",\n        \"rules\": [\n          \"c979-2-exc\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"无因管理成立，管理人可以请求受益人偿还因管理事务而支出的必要费用\",\n        \"rules\": [\n          \"c979-1\",\n          \"c979-claim-expenses\"\n        ]\n      },\n      {\n        \"text\": \"管理人因管理事务受到损失的，可以请求受益人给予适当补偿\",\n        \"rules\": [\n          \"c979-claim-compensation\"\n        ]\n      },\n      {\n        \"text\": \"受益人应当在其获得的利益范围内向管理人承担第979条第1款规定的义务\",\n        \"rules\": [\n          \"c980\"\n        ]\n      },\n      {\n        \"text\": \"管理人应当采取有利于受益人的方法管理事务；中断管理对受益人不利的，无正当理由不得中断\",\n        \"rules\": [\n          \"c981-1\",\n          \"c981-2\"\n        ]\n      },\n      {\n        \"text\": \"能够通知的，管理人应当及时通知受益人；事务不需要紧急处理的，应当等待受益人的指示\",\n        \"rules\": [\n          \"c982-1\",\n          \"c982-2\"\n        ]\n      },\n      {\n        \"text\": \"管理结束后，管理人应当向受益人报告管理事务的情况，并及时转交因管理事务取得的财产（包括孳息）\",\n        \"rules\": [\n          \"c983-1\",\n          \"c983-2\"\n        ]\n      },\n      {\n        \"text\": \"管理人无报酬请求权；即使受益人未获益，管理人仍可请求偿还必要费用\",\n        \"rules\": [\n          \"c979-doctrine-noreward\",\n          \"c979-doctrine-nobenefit\"\n        ]\n      },\n      {\n        \"text\": \"管理人为受益人利益以自己名义负担债务的，有权要求受益人直接向债权人清偿\",\n        \"rules\": [\n          \"c979-doctrine-directpayment\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"管理事务不符合受益人真实意思的，排除第979条第1款的偿还必要费用请求权与适当补偿请求权\",\n        \"rules\": [\n          \"c979-2\"\n        ]\n      },\n      {\n        \"text\": \"受益人的真实意思违反法律或者违背公序良俗的，但书优先，不适用第979条第2款的排除\",\n        \"rules\": [\n          \"c979-2-exc\"\n        ]\n      },\n      {\n        \"text\": \"第980条是第979条的补充规则：不属于无因管理但受益人享有管理利益的，在获益范围内承担第979条第1款义务\",\n        \"rules\": [\n          \"c980\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"LEGO 卡片称第980条“基于不当得利”，与法条不符：第980条是法定的特别规则，直接使受益人在获益范围内承担第979条第1款义务，并非不当得利返还\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记将“必要费用”解释为管理或服务活动中直接支出的费用及受到的实际损失，并称一般以本人所受利益范围为限，属学理说明，法条未明文限定\",\n        \"rules\": [\n          \"c979-doctrine-cap\"\n        ]\n      },\n      {\n        \"text\": \"第981条至第983条是管理人的义务规范，违反可能构成债务不履行，但不影响无因管理的成立与第979条的请求权\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片把“受益人实际获得管理利益”列为无因管理的成立要件，与第979条不符：获益只是第980条的适用前提，不是第979条的成立要件\",\n        \"rules\": [\n          \"c979-doctrine-nobenefit\"\n        ]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c979-1\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"noLegalOrContractualDuty(M)\",\n        \"toAvoidLossOf(M,B)\",\n        \"managesAffairsFor(M,B)\"\n      ],\n      \"heads\": [\n        \"negotiorumManagement(M,B)\"\n      ],\n      \"note\": \"管理人没有法定或者约定义务，为避免他人利益受损失而管理他人事务的，构成无因管理\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c979-claim-expenses\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\",\n        \"expensesIncurredFor(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"claimReimbursementOfNecessaryExpenses(M,B)\"\n        }\n      ],\n      \"note\": \"管理人可以请求受益人偿还因管理事务而支出的必要费用\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c979-claim-compensation\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\",\n        \"suffersLossInManagement(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"claimAppropriateCompensation(M,B)\"\n        }\n      ],\n      \"note\": \"管理人因管理事务受到损失的，可以请求受益人给予适当补偿\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c979-2\",\n      \"srcs\": [\n        \"art979-2\"\n      ],\n      \"body\": [\n        \"contraryToBeneficiaryTrueIntention(M,B)\",\n        \"~beneficiaryIntentionUnlawful(B)\"\n      ],\n      \"heads\": [\n        \"-claimReimbursementOfNecessaryExpenses(M,B)\",\n        \"-claimAppropriateCompensation(M,B)\"\n      ],\n      \"note\": \"管理事务不符合受益人真实意思的，管理人不享有第979条第1款的请求权（但书除外）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c979-2-exc\",\n      \"srcs\": [\n        \"art979-2\"\n      ],\n      \"body\": [\n        {\n          \"or\": [\n            \"beneficiaryIntentionViolatesLaw(B)\",\n            \"beneficiaryIntentionViolatesPublicOrder(B)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        \"beneficiaryIntentionUnlawful(B)\"\n      ],\n      \"note\": \"受益人的真实意思违反法律或者违背公序良俗的，属第979条第2款但书情形，管理人的请求权不受影响\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c980\",\n      \"srcs\": [\n        \"art980-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\",\n        \"-negotiorumManagement(M,B)\",\n        \"obtainsBenefit(B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"M\",\n          \"content\": \"bearArt979DutiesWithinBenefit(B,M)\"\n        }\n      ],\n      \"note\": \"管理事务不属于无因管理情形但受益人享有管理利益的，受益人应在获得的利益范围内承担第979条第1款义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c981-1\",\n      \"srcs\": [\n        \"art981-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"adoptMethodFavorableToBeneficiary(M,B)\"\n        }\n      ],\n      \"note\": \"管理人管理他人事务，应当采取有利于受益人的方法（适当管理义务）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c981-2\",\n      \"srcs\": [\n        \"art981-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\",\n        \"interruptionUnfavorableToBeneficiary(M,B)\",\n        \"-justifiedReason(M)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"interruptManagement(M,B)\"\n        }\n      ],\n      \"note\": \"中断管理对受益人不利的，管理人无正当理由不得中断管理\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c982-1\",\n      \"srcs\": [\n        \"art982-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\",\n        \"canNotifyBeneficiary(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"notifyBeneficiaryInTime(M,B)\"\n        }\n      ],\n      \"note\": \"管理人管理他人事务，能够通知受益人的，应当及时通知受益人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c982-2\",\n      \"srcs\": [\n        \"art982-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\",\n        \"-urgentHandlingNeeded(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"awaitBeneficiaryInstruction(M,B)\"\n        }\n      ],\n      \"note\": \"管理的事务不需要紧急处理的，管理人应当等待受益人的指示\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c983-1\",\n      \"srcs\": [\n        \"art983-1\"\n      ],\n      \"body\": [\n        \"managementEnded(M,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"reportManagementToBeneficiary(M,B)\"\n        }\n      ],\n      \"note\": \"管理结束后，管理人应当向受益人报告管理事务的情况（报告义务）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c983-2\",\n      \"srcs\": [\n        \"art983-1\"\n      ],\n      \"body\": [\n        \"managesAffairsFor(M,B)\",\n        \"propertyObtainedInManagement(M,B,P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"transferPropertyToBeneficiary(M,B,P)\"\n        }\n      ],\n      \"note\": \"管理人管理事务取得的财产，应当及时转交给受益人（计算/交付义务）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c979-doctrine-noreward\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\"\n      ],\n      \"heads\": [\n        \"-claimRemuneration(M,B)\"\n      ],\n      \"note\": \"笔记学理：无因管理仅生费用偿还与损失补偿请求权，管理人无报酬请求权（法条未明文，属学理）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c979-doctrine-nobenefit\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\",\n        \"-obtainsBenefit(B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"claimReimbursementOfNecessaryExpenses(M,B)\"\n        }\n      ],\n      \"note\": \"笔记学理：即使受益人未因管理获益，管理人仍可请求偿还必要费用（法条未以获益为要件，属学理说明）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c979-doctrine-cap\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\",\n        \"obtainsBenefit(B)\"\n      ],\n      \"heads\": [\n        \"reimbursementCappedAtBenefit(M,B)\"\n      ],\n      \"note\": \"笔记学理：必要费用一般以受益人所得利益范围为限（法条未明文限定，属学理）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c979-doctrine-directpayment\",\n      \"srcs\": [\n        \"art979-1\"\n      ],\n      \"body\": [\n        \"negotiorumManagement(M,B)\",\n        \"debtIncurredInOwnNameForBenefit(M,B,D)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"M\",\n          \"counterparty\": \"B\",\n          \"content\": \"demandDirectPaymentOfDebt(M,B,D)\"\n        }\n      ],\n      \"note\": \"笔记学理：管理人为受益人利益以自己名义负担债务的，有权要求受益人直接向债权人清偿（法条未规定，属学理）\",\n      \"auth\": \"doctrine\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c979-2\",\n      \"c979-claim-expenses\",\n      \"管理事务不符合受益人真实意思的，管理人不享有第979条第1款的偿还必要费用请求权\"\n    ],\n    [\n      \"c979-2\",\n      \"c979-claim-compensation\",\n      \"管理事务不符合受益人真实意思的，管理人不享有第979条第1款的适当补偿请求权\"\n    ],\n    [\n      \"c979-2-exc\",\n      \"c979-2\",\n      \"受益人的真实意思违反法律或者违背公序良俗的，但书排除第2款对管理人权利的限制\"\n    ]\n  ],\n  \"predicates\": {\n    \"suffersLossInManagement/2\": \"管理人因管理事务受到损失（管理人，受益人）\",\n    \"claimAppropriateCompensation/2\": \"请求受益人给予适当补偿（管理人，受益人）\",\n    \"beneficiaryIntentionUnlawful/1\": \"受益人的真实意思违反法律或者违背公序良俗（受益人）\",\n    \"beneficiaryIntentionViolatesLaw/1\": \"受益人的真实意思违反法律（受益人）\",\n    \"beneficiaryIntentionViolatesPublicOrder/1\": \"受益人的真实意思违背公序良俗（受益人）\",\n    \"bearArt979DutiesWithinBenefit/2\": \"在获得的利益范围内向管理人承担第979条第1款规定的义务（受益人，管理人）\",\n    \"adoptMethodFavorableToBeneficiary/2\": \"采取有利于受益人的方法管理事务（管理人，受益人）\",\n    \"interruptionUnfavorableToBeneficiary/2\": \"中断管理对受益人不利（管理人，受益人）\",\n    \"interruptManagement/2\": \"中断对他人事务的管理（管理人，受益人）\",\n    \"canNotifyBeneficiary/2\": \"能够通知受益人（管理人，受益人）\",\n    \"notifyBeneficiaryInTime/2\": \"及时通知受益人（管理人，受益人）\",\n    \"urgentHandlingNeeded/2\": \"管理的事务需要紧急处理（管理人，受益人）\",\n    \"awaitBeneficiaryInstruction/2\": \"等待受益人的指示（管理人，受益人）\",\n    \"managementEnded/2\": \"管理已经结束（管理人，受益人）\",\n    \"reportManagementToBeneficiary/2\": \"向受益人报告管理事务的情况（管理人，受益人）\",\n    \"propertyObtainedInManagement/3\": \"因管理他人事务而取得的财产（管理人，受益人，财产）\",\n    \"transferPropertyToBeneficiary/3\": \"将因管理取得的财产及时转交给受益人（管理人，受益人，财产）\",\n    \"claimRemuneration/2\": \"请求受益人支付报酬（管理人，受益人）\",\n    \"reimbursementCappedAtBenefit/2\": \"必要费用偿还以受益人所得利益范围为限（管理人，受益人）\",\n    \"debtIncurredInOwnNameForBenefit/3\": \"为受益人利益以自己名义负担债务（管理人，受益人，债务）\",\n    \"demandDirectPaymentOfDebt/3\": \"要求受益人直接向债权人清偿该债务（管理人，受益人，债务）\"\n  }\n}"
+ },
+ "card:g3732": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "没有法定或约定义务、为避免他人利益受损失而管理他人事务的，管理人可否请求受益人偿还必要费用、补偿所受损失；管理事务不符合受益人真实意思时如何处理",
+     "rules": [
+      "c979-1",
+      "c979-loss",
+      "c979-2"
+     ]
+    },
+    {
+     "text": "管理事务不属于无因管理情形，但受益人享有管理利益的，受益人应否在获利范围内承担第979条第1款的义务",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "管理人管理事务的方法、中断管理、通知与等待指示、报告与转交财产等义务",
+     "rules": [
+      "c981-1",
+      "c981-2",
+      "c982-1",
+      "c982-2",
+      "c983-1",
+      "c983-2"
+     ]
+    },
+    {
+     "text": "受益人事后追认管理事务的法律效果",
+     "rules": [
+      "c984"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管理人没有法定的或者约定的义务，为避免他人利益受损失而管理他人事务",
+     "rules": [
+      "c979-1",
+      "c979-loss",
+      "c979-nature"
+     ]
+    },
+    {
+     "text": "管理人因管理事务支出必要费用",
+     "rules": [
+      "c979-1"
+     ]
+    },
+    {
+     "text": "管理人因管理事务受到损失",
+     "rules": [
+      "c979-loss"
+     ]
+    },
+    {
+     "text": "管理事务不符合受益人的真实意思",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "受益人的真实意思违反法律或者违背公序良俗（但书，排除上述排除）",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "管理事务不属于第979条规定的情形，但受益人享有管理利益",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "中断管理对受益人不利且无正当理由",
+     "rules": [
+      "c981-2"
+     ]
+    },
+    {
+     "text": "管理人能够通知受益人；管理的事务不需要紧急处理",
+     "rules": [
+      "c982-1",
+      "c982-2"
+     ]
+    },
+    {
+     "text": "管理结束；管理人因管理事务取得财产",
+     "rules": [
+      "c983-1",
+      "c983-2"
+     ]
+    },
+    {
+     "text": "管理事务经受益人事后追认，且管理人未另有意思表示",
+     "rules": [
+      "c984"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "管理事务不符合受益人真实意思的，管理人不享有第979条第1款规定的权利；但受益人的真实意思违反法律或者违背公序良俗的除外",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "管理人另有意思表示的，不适用委托合同的有关规定",
+     "rules": [
+      "c984"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "管理人有权请求受益人偿还因管理事务而支出的必要费用",
+     "rules": [
+      "c979-1"
+     ]
+    },
+    {
+     "text": "管理人因管理事务受到损失的，有权请求受益人给予适当补偿",
+     "rules": [
+      "c979-loss"
+     ]
+    },
+    {
+     "text": "受益人应当在其获得的利益范围内向管理人承担第979条第1款规定的偿还费用、适当补偿义务",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "管理人应当采取有利于受益人的方法管理事务；中断管理对受益人不利的，无正当理由不得中断",
+     "rules": [
+      "c981-1",
+      "c981-2"
+     ]
+    },
+    {
+     "text": "能够通知的应当及时通知受益人；事务不需要紧急处理的，应当等待受益人的指示",
+     "rules": [
+      "c982-1",
+      "c982-2"
+     ]
+    },
+    {
+     "text": "管理结束后应当向受益人报告管理事务的情况，并及时转交因管理事务取得的财产",
+     "rules": [
+      "c983-1",
+      "c983-2"
+     ]
+    },
+    {
+     "text": "经受益人事后追认的，从管理事务开始时起适用委托合同的有关规定",
+     "rules": [
+      "c984"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第979条第2款（不符合受益人真实意思）优先于第1款的请求权规则，排除管理人的请求权",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "受益人事后追认的，自管理事务开始时起适用委托合同规定，优先于无因管理规则",
+     "rules": [
+      "c984"
+     ]
+    },
+    {
+     "text": "不属于第979条情形而受益人享有管理利益的，按第980条仅在获利范围内承担义务，而非按第979条全额承担",
+     "rules": [
+      "c980"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记节点 g3732 讲的是合同作为债的发生原因；无因管理属于法定之债，不以当事人意思表示一致为要件，二者发生原因不同",
+     "rules": [
+      "c979-nature"
+     ]
+    },
+    {
+     "text": "LEGO 卡片把无因管理与不当得利合称“准合同”；不当得利规定于第985条以下，不在本行挂载范围，本行只形式化无因管理",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“管理行为属于侵权或违法活动不得请求补偿”“不得对抗善意第三人”等，第979–984条原文未规定，仅作学理参考，未写成规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c979-1",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "noLegalOrContractualDuty(M)",
+     "toAvoidLossOf(M,B)",
+     "managesAffairsFor(M,B)",
+     "expensesIncurredFor(M,B)"
+    ],
+    "heads": [
+     "qualifiesUnderArt979(M,B)",
+     "entitledToClaimAgainstBeneficiary(M,B)",
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimReimbursementOfNecessaryExpenses(M,B)"
+     }
+    ],
+    "note": "没有法定或约定义务、为避免他人利益受损失而管理他人事务并支出必要费用的，管理人有权请求受益人偿还该必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-loss",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "noLegalOrContractualDuty(M)",
+     "toAvoidLossOf(M,B)",
+     "managesAffairsFor(M,B)",
+     "suffersLossInManaging(M,B)"
+    ],
+    "heads": [
+     "entitledToClaimAgainstBeneficiary(M,B)",
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimAppropriateCompensation(M,B)"
+     }
+    ],
+    "note": "管理人因管理事务受到损失的，有权请求受益人给予适当补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-2",
+    "srcs": [
+     "art979-2"
+    ],
+    "body": [
+     "contraryToBeneficiaryTrueIntention(M,B)",
+     "~beneficiaryIntentionViolatesLaw(B)",
+     "~violatesPublicOrder(B)"
+    ],
+    "heads": [
+     "-entitledToClaimAgainstBeneficiary(M,B)"
+    ],
+    "note": "管理事务不符合受益人真实意思的，管理人不享有第979条第1款的权利；但受益人的真实意思违反法律或违背公序良俗的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-nature",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "noLegalOrContractualDuty(M)",
+     "toAvoidLossOf(M,B)"
+    ],
+    "heads": [
+     "negotiorumGestioRelation(M,B)"
+    ],
+    "note": "学理：无因管理是法定之债，因管理他人事务的事实而发生，不以当事人合意为要件，与合同之债相区别（笔记仅述合同为债的发生原因）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c980",
+    "srcs": [
+     "art980-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "benefitsFromManagement(B,M)",
+     "-qualifiesUnderArt979(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "M",
+      "content": "reimburseAndCompensateWithinBenefitScope(B,M)"
+     }
+    ],
+    "note": "管理事务不属于第979条情形但受益人享有管理利益的，受益人应当在获得的利益范围内承担第979条第1款规定的偿还费用、适当补偿义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-1",
+    "srcs": [
+     "art981-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "adoptMethodFavorableToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，应当采取有利于受益人的方法",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-2",
+    "srcs": [
+     "art981-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "interruptionUnfavorableToBeneficiary(M,B)",
+     "-justifiedReason(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "interruptManagement(M,B)"
+     }
+    ],
+    "note": "中断管理对受益人不利的，管理人无正当理由不得中断管理",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-1",
+    "srcs": [
+     "art982-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "ableToNotifyBeneficiary(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "notifyBeneficiaryInTime(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，能够通知受益人的，应当及时通知受益人",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-2",
+    "srcs": [
+     "art982-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "affairNotUrgent(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "awaitBeneficiaryInstruction(M,B)"
+     }
+    ],
+    "note": "管理的事务不需要紧急处理的，管理人应当等待受益人的指示",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-1",
+    "srcs": [
+     "art983-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "managementEnded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "reportManagementToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理结束后，管理人应当向受益人报告管理事务的情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-2",
+    "srcs": [
+     "art983-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "obtainedPropertyInManagement(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "transferObtainedPropertyToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理事务取得的财产，应当及时转交给受益人",
+    "auth": "npc"
+   },
+   {
+    "key": "c984",
+    "srcs": [
+     "art984-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "ratifiedAfterwards(B,M)",
+     "~managerDeclaresOtherwise(M)"
+    ],
+    "heads": [
+     "applyMandateContractRulesFromStart(M,B)"
+    ],
+    "note": "管理事务经受益人事后追认的，从管理事务开始时起适用委托合同的有关规定；管理人另有意思表示的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c979-2",
+    "c979-1",
+    "第979条第2款：管理事务不符合受益人真实意思的，管理人不享有第1款规定的请求权"
+   ],
+   [
+    "c979-2",
+    "c979-loss",
+    "第979条第2款：管理事务不符合受益人真实意思的，管理人不享有第1款规定的请求权（含适当补偿）"
+   ],
+   [
+    "c984",
+    "c979-1",
+    "第984条：经受益人事后追认的，自管理事务开始时起适用委托合同的有关规定，优先于无因管理规则"
+   ],
+   [
+    "c980",
+    "c979-1",
+    "第980条为第979条的补充规定：不属于第979条情形而受益人享有管理利益的，仅在获得利益范围内承担义务"
+   ]
+  ],
+  "predicates": {
+   "qualifiesUnderArt979": "属于第979条规定的情形（2个参数：管理人，受益人）",
+   "entitledToClaimAgainstBeneficiary": "享有第979条第1款规定的对受益人的请求权（2个参数：管理人，受益人）",
+   "suffersLossInManaging": "因管理事务受到损失（2个参数：管理人，受益人）",
+   "claimAppropriateCompensation": "请求受益人给予适当补偿（2个参数：管理人，受益人）",
+   "benefitsFromManagement": "受益人享有管理利益（2个参数：受益人，管理人）",
+   "reimburseAndCompensateWithinBenefitScope": "在获得的利益范围内向管理人承担第979条第1款规定的偿还必要费用、适当补偿损失的义务（2个参数：受益人，管理人）",
+   "adoptMethodFavorableToBeneficiary": "采取有利于受益人的方法管理事务（2个参数：管理人，受益人）",
+   "interruptManagement": "中断管理（2个参数：管理人，受益人）",
+   "interruptionUnfavorableToBeneficiary": "中断管理对受益人不利（2个参数：管理人，受益人）",
+   "ableToNotifyBeneficiary": "能够通知受益人（2个参数：管理人，受益人）",
+   "notifyBeneficiaryInTime": "及时通知受益人（2个参数：管理人，受益人）",
+   "affairNotUrgent": "管理的事务不需要紧急处理（2个参数：管理人，受益人）",
+   "awaitBeneficiaryInstruction": "等待受益人的指示（2个参数：管理人，受益人）",
+   "managementEnded": "管理已结束（2个参数：管理人，受益人）",
+   "reportManagementToBeneficiary": "向受益人报告管理事务的情况（2个参数：管理人，受益人）",
+   "obtainedPropertyInManagement": "因管理事务取得财产（2个参数：管理人，受益人）",
+   "transferObtainedPropertyToBeneficiary": "将管理事务取得的财产及时转交给受益人（2个参数：管理人，受益人）",
+   "ratifiedAfterwards": "受益人事后追认管理事务（2个参数：受益人，管理人）",
+   "managerDeclaresOtherwise": "管理人另有意思表示（1个参数：管理人）",
+   "applyMandateContractRulesFromStart": "自管理事务开始时起适用委托合同的有关规定（2个参数：管理人，受益人）",
+   "beneficiaryIntentionViolatesLaw": "受益人的真实意思违反法律（1个参数：受益人）",
+   "negotiorumGestioRelation": "成立无因管理关系（2个参数：管理人，受益人）"
+  }
+ },
+ "card:g3736": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无因管理的构成要件，以及管理人请求受益人偿还必要费用、给予适当补偿的权利",
+     "rules": [
+      "c979-1a",
+      "c979-1b",
+      "c979-1c"
+     ]
+    },
+    {
+     "text": "管理事务不符合受益人真实意思时，管理人是否仍享有第979条第1款规定的权利",
+     "rules": [
+      "c979-2",
+      "c979-2-exc"
+     ]
+    },
+    {
+     "text": "不构成无因管理但受益人享有管理利益时，受益人承担何种义务",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "管理人管理他人事务的方法要求，以及中断管理的限制",
+     "rules": [
+      "c981-1",
+      "c981-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管理人没有法定的或者约定的义务",
+     "rules": [
+      "c979-1a"
+     ]
+    },
+    {
+     "text": "管理目的是为避免他人利益受损失，且系管理他人事务",
+     "rules": [
+      "c979-1a"
+     ]
+    },
+    {
+     "text": "管理人因管理事务支出必要费用，或者因管理事务受到损失",
+     "rules": [
+      "c979-1b",
+      "c979-1c"
+     ]
+    },
+    {
+     "text": "管理事务不属于第979条规定的情形，但受益人享有管理利益",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "管理人正在管理他人事务",
+     "rules": [
+      "c981-1",
+      "c981-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "管理事务不符合受益人真实意思的，管理人不享有第979条第1款规定的权利",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "但受益人的真实意思违反法律或者违背公序良俗的，管理人仍享有上述权利",
+     "rules": [
+      "c979-2-exc"
+     ]
+    },
+    {
+     "text": "中断管理对受益人不利的，无正当理由不得中断",
+     "rules": [
+      "c981-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成无因管理，依法在管理人与受益人之间发生债的关系",
+     "rules": [
+      "c979-1a"
+     ]
+    },
+    {
+     "text": "管理人可以请求受益人偿还因管理事务而支出的必要费用",
+     "rules": [
+      "c979-1b"
+     ]
+    },
+    {
+     "text": "管理人因管理事务受到损失的，可以请求受益人给予适当补偿",
+     "rules": [
+      "c979-1c"
+     ]
+    },
+    {
+     "text": "受益人应当在其获得的利益范围内，向管理人承担第979条第1款规定的偿还必要费用、给予适当补偿的义务",
+     "rules": [
+      "c980"
+     ]
+    },
+    {
+     "text": "管理人应当采取有利于受益人的方法管理事务",
+     "rules": [
+      "c981-1"
+     ]
+    },
+    {
+     "text": "无正当理由不得中断管理",
+     "rules": [
+      "c981-2"
+     ]
+    },
+    {
+     "text": "管理人仅得请求必要费用与适当补偿，不享有报酬请求权（学理，当事人另有约定的除外）",
+     "rules": [
+      "c979-nofee"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第979条第2款排除第1款的必要费用偿还请求权与适当补偿请求权",
+     "rules": [
+      "c979-2"
+     ]
+    },
+    {
+     "text": "第979条第2款但书（真实意思违法或违背公序良俗）优先于该款本文，管理人仍享有第1款的权利",
+     "rules": [
+      "c979-2-exc"
+     ]
+    },
+    {
+     "text": "第980条适用于不属于第979条情形但受益人享有管理利益的场合，受益人的义务以其所得利益范围为限",
+     "rules": [
+      "c980"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与不当得利（第985条）不同：无因管理以管理行为为基础，受益人不是“得利”而是“被管理”；构成无因管理的，不再按不当得利返还处理（学理）",
+     "rules": []
+    },
+    {
+     "text": "与侵权责任不同：无因管理不以过错为要件，其功能在于使无义务的干预行为正当化（学理）",
+     "rules": []
+    },
+    {
+     "text": "与合同责任不同：无因管理无法定或约定义务，也无合意基础（学理）",
+     "rules": []
+    },
+    {
+     "text": "笔记：无因管理是债的法定发生原因之一，依法在管理人与受益人之间引起债的关系",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c979-1a",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "noLegalOrContractualDuty(M)",
+     "toAvoidLossOf(M,B)",
+     "managesAffairsFor(M,B)"
+    ],
+    "heads": [
+     "negotiorumManagement(M,B)"
+    ],
+    "note": "管理人没有法定或约定义务，为避免他人利益受损失而管理他人事务的，构成无因管理",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-1b",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "expensesIncurredFor(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimReimbursementOfNecessaryExpenses(M,B)"
+     }
+    ],
+    "note": "管理人可以请求受益人偿还因管理事务而支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-1c",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "damage(M,managementLoss)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimCompensationFrom(M,B,managementLoss)"
+     }
+    ],
+    "note": "管理人因管理事务受到损失的，可以请求受益人给予适当补偿；damage(M,managementLoss) 表示管理人因管理事务遭受损失，managementLoss 为损失这一客体",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-2",
+    "srcs": [
+     "art979-2"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "contraryToBeneficiaryTrueIntention(M,B)"
+    ],
+    "heads": [
+     "-claimReimbursementOfNecessaryExpenses(M,B)",
+     "-claimCompensationFrom(M,B,managementLoss)"
+    ],
+    "note": "管理事务不符合受益人真实意思的，管理人不享有第1款的必要费用偿还请求权与适当补偿请求权",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-2-exc",
+    "srcs": [
+     "art979-2"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "contraryToBeneficiaryTrueIntention(M,B)",
+     {
+      "or": [
+       "violatesMandatoryProvision(B)",
+       "violatesPublicOrder(B)"
+      ]
+     }
+    ],
+    "heads": [
+     "claimReimbursementOfNecessaryExpenses(M,B)",
+     "claimCompensationFrom(M,B,managementLoss)"
+    ],
+    "note": "第979条第2款但书：受益人的真实意思违反法律或者违背公序良俗的，管理人仍享有第1款的权利（以 violatesMandatoryProvision/violatesPublicOrder 表示该真实意思违法或违背公序良俗）",
+    "auth": "npc"
+   },
+   {
+    "key": "c980",
+    "srcs": [
+     "art980"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "-negotiorumManagement(M,B)",
+     "obtainedPropertyUnder(B,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "M",
+      "content": "reimburseNecessaryExpenses(B,M)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "M",
+      "content": "giveAppropriateCompensation(B,M)"
+     }
+    ],
+    "note": "管理事务不属于第979条情形但受益人享有管理利益的，受益人应在所得利益范围内向管理人承担第979条第1款规定的义务；obtainedPropertyUnder(B,M) 表示受益人因管理人的管理行为取得财产、享有管理利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-1",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "adoptMethodFavorableToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，应当采取有利于受益人的方法",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-2",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "interruptionDisadvantagesBeneficiary(M,B)",
+     "-justifiedReason(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "interruptManagement(M,B)"
+     }
+    ],
+    "note": "中断管理对受益人不利的，管理人无正当理由不得中断",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-nofee",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)"
+    ],
+    "heads": [
+     "-claimRemuneration(M,B)"
+    ],
+    "note": "学理：无因管理人仅得请求必要费用与适当补偿，不享有报酬请求权（当事人另有约定的除外），法条未明文规定",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c979-2",
+    "c979-1b",
+    "第979条第2款：管理事务不符合受益人真实意思的，管理人不享有第1款的必要费用偿还请求权"
+   ],
+   [
+    "c979-2",
+    "c979-1c",
+    "第979条第2款：管理事务不符合受益人真实意思的，管理人不享有第1款的适当补偿请求权"
+   ],
+   [
+    "c979-2-exc",
+    "c979-2",
+    "第979条第2款但书：受益人的真实意思违反法律或者违背公序良俗的除外"
+   ]
+  ],
+  "predicates": {
+   "adoptMethodFavorableToBeneficiary": "采取有利于受益人的方法管理事务（2个参数：管理人，受益人）",
+   "interruptionDisadvantagesBeneficiary": "中断管理对受益人不利（2个参数：管理人，受益人）",
+   "interruptManagement": "中断对他人事务的管理（2个参数：管理人，受益人）",
+   "claimRemuneration": "请求受益人支付管理报酬（2个参数：管理人，受益人）"
+  }
+ }
+}

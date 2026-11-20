@@ -1,0 +1,4045 @@
+{
+ "card:g4122": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同的内容由谁约定、一般包括哪些条款；当事人可否参照各类合同的示范文本订立合同",
+     "rules": [
+      "c470-2"
+     ]
+    },
+    {
+     "text": "当事人订立合同可以采取何种方式",
+     "rules": [
+      "c471"
+     ]
+    },
+    {
+     "text": "合同何时成立；法律另有规定或者当事人另有约定时如何处理",
+     "rules": [
+      "c483"
+     ]
+    },
+    {
+     "text": "格式条款如何认定；提供格式条款一方负有何种义务；未履行提示、说明义务发生何种后果",
+     "rules": [
+      "c496-1",
+      "c496-2-fair",
+      "c496-2-notice",
+      "c496-2-effect",
+      "c496-2-excl"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同的内容由当事人约定，一般包括当事人的姓名或者名称和住所、标的、数量、质量、价款或者报酬、履行期限地点和方式、违约责任、解决争议的方法（宣示性列举，不设规则）",
+     "rules": []
+    },
+    {
+     "text": "格式条款：当事人为了重复使用而预先拟定，并在订立合同时未与对方协商的条款",
+     "rules": [
+      "c496-1"
+     ]
+    },
+    {
+     "text": "该格式条款属于免除或者减轻提供方责任等与对方有重大利害关系的条款",
+     "rules": [
+      "c496-2-notice"
+     ]
+    },
+    {
+     "text": "提供格式条款一方未履行提示或者说明义务，致使对方没有注意或者理解与其有重大利害关系的条款",
+     "rules": [
+      "c496-2-effect"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "承诺生效时合同成立，但法律另有规定或者当事人另有约定的除外",
+     "rules": [
+      "c483"
+     ]
+    },
+    {
+     "text": "（笔记）特别生效要件：法律、行政法规规定应当办理批准、登记等手续才生效的，办理手续后生效；附生效条件的自条件成就时生效；附生效期限的自期限届至时生效——本行法条未作规定，属第502条及附条件、附期限的规定",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "当事人可以参照各类合同的示范文本订立合同",
+     "rules": [
+      "c470-2"
+     ]
+    },
+    {
+     "text": "当事人订立合同，可以采取要约、承诺方式或者其他方式",
+     "rules": [
+      "c471"
+     ]
+    },
+    {
+     "text": "承诺生效时合同成立",
+     "rules": [
+      "c483"
+     ]
+    },
+    {
+     "text": "提供格式条款一方应当遵循公平原则确定当事人之间的权利和义务，并采取合理方式提示对方注意免除或减轻其责任等与对方有重大利害关系的条款，按照对方的要求予以说明",
+     "rules": [
+      "c496-2-fair",
+      "c496-2-notice"
+     ]
+    },
+    {
+     "text": "未履行提示或说明义务致对方没有注意或理解的，对方可以主张该条款不成为合同的内容；一经主张，该格式条款不成为合同的内容",
+     "rules": [
+      "c496-2-effect",
+      "c496-2-excl"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第483条但书（法律另有规定、当事人另有约定）优先于“承诺生效时合同成立”的一般规则",
+     "rules": [
+      "c483"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "合同成立与合同生效不同：成立以承诺生效为标志（第483条），生效取决于笔记所列一般有效要件（缔约能力、意思表示真实、不违反强制性规定及公序良俗、形式合法）与特别生效要件；本行法条只解决成立问题",
+     "rules": []
+    },
+    {
+     "text": "格式条款无效的情形（不合理免除或减轻提供方责任、加重对方责任、限制或排除对方主要权利等）规定在第497条，本行第496条只规定提示说明义务与“不成为合同内容”的后果",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“格式条款中免除自身责任、加重对方责任、排除对方主要权利的条款无效，不得对抗相对人”属第497条内容，不能作为第496条的规则；其“特别法优先”亦非本行法条所定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c470-2",
+    "srcs": [
+     "art470-2"
+    ],
+    "body": [
+     "civilSubject(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeContractByModelText(P)"
+     }
+    ],
+    "note": "当事人可以参照各类合同的示范文本订立合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c471",
+    "srcs": [
+     "art471"
+    ],
+    "body": [
+     "civilSubject(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeContractByOfferAcceptanceOrOtherMeans(P)"
+     }
+    ],
+    "note": "当事人订立合同，可以采取要约、承诺方式或者其他方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c483",
+    "srcs": [
+     "art483"
+    ],
+    "body": [
+     "acceptanceEffective(K)",
+     "~lawProvidesOtherwiseOnFormation(K)",
+     "~partiesAgreedOtherwiseOnFormation(K)"
+    ],
+    "heads": [
+     "contractFormed(K)"
+    ],
+    "note": "承诺生效时合同成立；法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-1",
+    "srcs": [
+     "art496-1"
+    ],
+    "body": [
+     "preDraftedForRepeatedUse(K)",
+     "notNegotiatedAtConclusion(K)"
+    ],
+    "heads": [
+     "standardTerm(K)"
+    ],
+    "note": "格式条款是当事人为了重复使用而预先拟定、并在订立合同时未与对方协商的条款",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-2-fair",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "standardTerm(K)",
+     "providesStandardTerm(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "determineRightsAndObligationsPerFairnessPrinciple(P,K)"
+     }
+    ],
+    "note": "采用格式条款订立合同的，提供方应当遵循公平原则确定当事人之间的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-2-notice",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "standardTerm(K)",
+     "providesStandardTerm(P,K)",
+     "termExemptsOrReducesLiabilityOrMajorInterest(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "promptNoticeAndExplain(P,K)"
+     }
+    ],
+    "note": "提供方应当采取合理方式提示对方注意免除或减轻其责任等与对方有重大利害关系的条款，并按照对方的要求予以说明",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-2-effect",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "standardTerm(K)",
+     "providesStandardTerm(P,K)",
+     "failedToPromptOrExplain(P,K)",
+     "counterpartyDidNotNoticeOrUnderstand(Q,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Q",
+      "counterparty": "P",
+      "content": "assertTermNotPartOfContract(Q,K)"
+     }
+    ],
+    "note": "提供方未履行提示或说明义务，致使对方没有注意或者理解该条款的，对方可以主张该条款不成为合同的内容",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-2-excl",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "assertedTermNotPartOfContract(Q,K)"
+    ],
+    "heads": [
+     "-partOfContract(K)"
+    ],
+    "note": "对方主张后，该格式条款不成为合同的内容",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concludeContractByModelText": "参照各类合同的示范文本订立合同（当事人）",
+   "concludeContractByOfferAcceptanceOrOtherMeans": "以要约、承诺方式或者其他方式订立合同（当事人）",
+   "acceptanceEffective": "承诺生效",
+   "lawProvidesOtherwiseOnFormation": "法律对合同的成立另有规定",
+   "partiesAgreedOtherwiseOnFormation": "当事人对合同的成立另有约定",
+   "standardTerm": "是格式条款",
+   "preDraftedForRepeatedUse": "为了重复使用而预先拟定",
+   "notNegotiatedAtConclusion": "订立合同时未与对方协商",
+   "providesStandardTerm": "提供格式条款（提供方，格式条款）",
+   "determineRightsAndObligationsPerFairnessPrinciple": "遵循公平原则确定当事人之间的权利和义务（提供方，格式条款）",
+   "termExemptsOrReducesLiabilityOrMajorInterest": "免除或者减轻提供方责任等与对方有重大利害关系的条款",
+   "promptNoticeAndExplain": "以合理方式提示对方注意并按照对方要求予以说明（提供方，格式条款）",
+   "failedToPromptOrExplain": "未履行提示或者说明义务（提供方，格式条款）",
+   "counterpartyDidNotNoticeOrUnderstand": "对方没有注意或者理解该条款（对方，格式条款）",
+   "assertTermNotPartOfContract": "主张该格式条款不成为合同的内容（对方，格式条款）",
+   "assertedTermNotPartOfContract": "已主张该格式条款不成为合同的内容（对方，格式条款）",
+   "partOfContract": "是合同的内容"
+  }
+ },
+ "card:g3954": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承诺的内容与要约的内容不一致时，该承诺是否有效、合同能否成立",
+     "rules": [
+      "c488-material",
+      "c488-new",
+      "c489-nonmaterial",
+      "c489-1",
+      "c489-2"
+     ]
+    },
+    {
+     "text": "要约在何种情形下失效",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3",
+      "c478-4"
+     ]
+    },
+    {
+     "text": "承诺应当在何时到达要约人",
+     "rules": [
+      "c481-1",
+      "c481-2a",
+      "c481-2b",
+      "c481-late"
+     ]
+    },
+    {
+     "text": "承诺能否撤回，撤回发生何种效力",
+     "rules": [
+      "c485-1",
+      "c485-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承诺的内容应当与要约的内容一致（一致性原则，宣示性；其具体效果由第488条第2款、第489条展开）",
+     "rules": []
+    },
+    {
+     "text": "变更涉及合同标的、数量、质量、价款或者报酬、履行期限、履行地点和方式、违约责任和解决争议方法等核心要素的，为实质性变更",
+     "rules": [
+      "c488-material"
+     ]
+    },
+    {
+     "text": "变更不属于上述核心要素的，为非实质性变更",
+     "rules": [
+      "c489-nonmaterial"
+     ]
+    },
+    {
+     "text": "要约确定了承诺期限的，承诺应在该期限内到达；要约未确定承诺期限的，以对话方式作出的应即时作出承诺，以非对话方式作出的应在合理期限内到达",
+     "rules": [
+      "c481-1",
+      "c481-2a",
+      "c481-2b"
+     ]
+    },
+    {
+     "text": "要约失效的事由：要约被拒绝；要约被依法撤销；承诺期限届满受要约人未作出承诺；受要约人对要约内容作出实质性变更",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3",
+      "c478-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "要约人及时表示反对，或者要约表明承诺不得对要约内容作出任何变更的，非实质性变更的承诺不发生效力",
+     "rules": [
+      "c489-2"
+     ]
+    },
+    {
+     "text": "承诺的撤回通知在承诺到达要约人前或者与承诺同时到达的，承诺不发生效力（第485条准用第141条）",
+     "rules": [
+      "c485-2"
+     ]
+    },
+    {
+     "text": "承诺未在期限内到达的，为逾期承诺，其效力依第486条处理（本行未挂载该条，故不作结论）",
+     "rules": [
+      "c481-late"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受要约人对要约内容作出实质性变更的，为新要约，原要约失效",
+     "rules": [
+      "c488-new",
+      "c478-4"
+     ]
+    },
+    {
+     "text": "非实质性变更的承诺有效，合同的内容以承诺的内容为准",
+     "rules": [
+      "c489-1"
+     ]
+    },
+    {
+     "text": "承诺可以撤回",
+     "rules": [
+      "c485-1"
+     ]
+    },
+    {
+     "text": "要约被拒绝、被依法撤销或者承诺期限届满未作出承诺的，要约失效",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第489条但书（要约人及时反对或要约禁止变更）优先于该条前段关于承诺有效的规定",
+     "rules": [
+      "c489-2",
+      "c489-1"
+     ]
+    },
+    {
+     "text": "承诺已被有效撤回的，不发生效力，优先于第489条关于承诺有效的规定",
+     "rules": [
+      "c485-2",
+      "c489-1"
+     ]
+    },
+    {
+     "text": "变更涉及第488条列举的核心要素时按实质性变更处理，不适用第489条关于非实质性变更的规定",
+     "rules": [
+      "c488-new",
+      "c489-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第488条与第489条的分界在于变更是否涉及标的、数量、质量、价款或报酬、履行期限、履行地点和方式、违约责任、解决争议方法等核心要素：涉及者为实质性变更（新要约），不涉及者为非实质性变更（承诺有效）",
+     "rules": [
+      "c488-material",
+      "c489-1"
+     ]
+    },
+    {
+     "text": "第486条（逾期承诺）、第487条（迟延到达但非因受要约人过错）不在本行挂载范围，逾期承诺的法律效果不由本行规则确定",
+     "rules": []
+    },
+    {
+     "text": "笔记仅摘录“承诺的内容应当与要约的内容一致”这一构成要件，未涉及撤回与失效；LEGO卡片称“本条为强制性规范，不得通过约定排除其适用”，法条并无此表述，不予采纳",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c478-1",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "offerRejected(O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "要约被拒绝的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-2",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "offerRevoked(O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "要约被依法撤销的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-3",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptancePeriodExpiredWithoutAcceptance(O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "承诺期限届满，受要约人未作出承诺的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-4",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "materialAlterationOfOffer(A,O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "受要约人对要约的内容作出实质性变更的，要约失效（第488条同时规定该承诺为新要约）",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-1",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptancePeriodDetermined(O)",
+     "acceptanceOf(A,O)",
+     "acceptanceArrivesWithinPeriod(A,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(A,O)"
+    ],
+    "note": "要约确定了承诺期限的，承诺在该期限内到达要约人，即为及时承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-2a",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,P)",
+     "-acceptancePeriodDetermined(O)",
+     "dialogueForm(O)",
+     "acceptanceOf(A,O)",
+     "acceptanceMadeImmediately(A,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(A,O)"
+    ],
+    "note": "要约未确定承诺期限且以对话方式作出的，受要约人应当即时作出承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-2b",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,P)",
+     "-acceptancePeriodDetermined(O)",
+     "nonDialogueForm(O)",
+     "acceptanceOf(A,O)",
+     "acceptanceArrivesWithinReasonableTime(A,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(A,O)"
+    ],
+    "note": "要约未确定承诺期限且以非对话方式作出的，承诺应当在合理期限内到达要约人",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-late",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "-timelyAcceptance(A,O)"
+    ],
+    "heads": [
+     "lateAcceptance(A,O)"
+    ],
+    "note": "未在期限内到达的承诺为逾期承诺，其效力依第486条处理（本行未挂载该条，故仅作定性）",
+    "auth": "npc"
+   },
+   {
+    "key": "c485-1",
+    "srcs": [
+     "art485-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "withdrawAcceptance(A,O)"
+     }
+    ],
+    "note": "承诺可以撤回",
+    "auth": "npc"
+   },
+   {
+    "key": "c485-2",
+    "srcs": [
+     "art485-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "withdrawalNoticeArrivesBeforeOrSimultaneously(A,O)"
+    ],
+    "heads": [
+     "-acceptanceEffective(A,O)"
+    ],
+    "note": "承诺的撤回适用第141条：撤回通知在承诺到达要约人前或者与承诺同时到达的，承诺不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c488-material",
+    "srcs": [
+     "art488-1"
+    ],
+    "body": [
+     "altersCoreTerm(A,O)"
+    ],
+    "heads": [
+     "materialAlterationOfOffer(A,O)"
+    ],
+    "note": "对合同标的、数量、质量、价款或者报酬、履行期限、履行地点和方式、违约责任和解决争议方法等的变更，是对要约内容的实质性变更（“等”字表明非穷尽列举）",
+    "auth": "npc"
+   },
+   {
+    "key": "c488-new",
+    "srcs": [
+     "art488-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "materialAlterationOfOffer(A,O)"
+    ],
+    "heads": [
+     "newOffer(A,O)"
+    ],
+    "note": "受要约人对要约的内容作出实质性变更的，为新要约",
+    "auth": "npc"
+   },
+   {
+    "key": "c489-nonmaterial",
+    "srcs": [
+     "art489-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "-materialAlterationOfOffer(A,O)"
+    ],
+    "heads": [
+     "nonMaterialAlterationOfOffer(A,O)"
+    ],
+    "note": "承诺对要约内容的变更不属于第488条列举的实质性变更的，为非实质性变更",
+    "auth": "npc"
+   },
+   {
+    "key": "c489-1",
+    "srcs": [
+     "art489-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "nonMaterialAlterationOfOffer(A,O)",
+     "~offerorPromptlyObjects(O)",
+     "~offerProhibitsAnyChange(O)"
+    ],
+    "heads": [
+     "acceptanceEffective(A,O)",
+     "contractTermsPerAcceptance(A,O)"
+    ],
+    "note": "非实质性变更的承诺，除要约人及时表示反对或者要约表明承诺不得对要约内容作任何变更外，该承诺有效，合同的内容以承诺的内容为准",
+    "auth": "npc"
+   },
+   {
+    "key": "c489-2",
+    "srcs": [
+     "art489-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptanceOf(A,O)",
+     "nonMaterialAlterationOfOffer(A,O)",
+     {
+      "or": [
+       "offerorPromptlyObjects(O)",
+       "offerProhibitsAnyChange(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "-acceptanceEffective(A,O)"
+    ],
+    "note": "要约人及时表示反对，或者要约表明承诺不得对要约内容作出任何变更的，非实质性变更的承诺不发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c489-2",
+    "c489-1",
+    "第489条但书：要约人及时表示反对或要约表明承诺不得作任何变更时，非实质性变更的承诺不发生效力"
+   ],
+   [
+    "c485-2",
+    "c489-1",
+    "承诺已被有效撤回的，不发生效力，优先于第489条关于承诺有效的规定"
+   ],
+   [
+    "c488-new",
+    "c489-1",
+    "变更涉及第488条列举的核心要素时按实质性变更处理，不适用第489条关于非实质性变更的规定"
+   ]
+  ],
+  "predicates": {
+   "acceptanceOf": "受要约人对要约作出承诺（受要约人，要约）",
+   "acceptancePeriodDetermined": "要约确定了承诺期限（1个参数：要约）",
+   "acceptanceArrivesWithinPeriod": "承诺在要约确定的期限内到达要约人（受要约人，要约）",
+   "acceptanceMadeImmediately": "以对话方式作出的要约，受要约人即时作出承诺（受要约人，要约）",
+   "acceptanceArrivesWithinReasonableTime": "以非对话方式作出的要约，承诺在合理期限内到达要约人（受要约人，要约）",
+   "timelyAcceptance": "承诺在约定期限或法定期间内到达，属及时承诺（受要约人，要约）",
+   "lateAcceptance": "承诺未在期限内到达，属逾期承诺（受要约人，要约）",
+   "offerRejected": "要约被受要约人拒绝（1个参数：要约）",
+   "offerRevoked": "要约已被依法撤销（1个参数：要约）",
+   "acceptancePeriodExpiredWithoutAcceptance": "承诺期限届满，受要约人未作出承诺（1个参数：要约）",
+   "offerLapsed": "要约失效（1个参数：要约）",
+   "altersCoreTerm": "承诺对要约的标的、数量、质量、价款或报酬、履行期限、履行地点和方式、违约责任、解决争议方法等核心要素作出变更（受要约人，要约）",
+   "materialAlterationOfOffer": "受要约人对要约的内容作出实质性变更（受要约人，要约）",
+   "nonMaterialAlterationOfOffer": "受要约人对要约的内容作出非实质性变更（受要约人，要约）",
+   "newOffer": "受要约人作出的实质性变更承诺构成新要约（受要约人，原要约）",
+   "offerorPromptlyObjects": "要约人及时表示反对（1个参数：要约）",
+   "offerProhibitsAnyChange": "要约表明承诺不得对要约的内容作出任何变更（1个参数：要约）",
+   "acceptanceEffective": "承诺发生效力（受要约人，要约）",
+   "contractTermsPerAcceptance": "合同的内容以承诺的内容为准（受要约人，要约）",
+   "withdrawAcceptance": "撤回承诺（受要约人，要约）"
+  }
+ },
+ "card:g3949": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "要约的构成要件，以及要约与要约邀请（尤其是商业广告和宣传）的区分",
+     "rules": [
+      "c472-def",
+      "c472-1",
+      "c473-def",
+      "c473-1",
+      "c473-2"
+     ]
+    },
+    {
+     "text": "要约的撤回，以及承诺应当在何时到达要约人",
+     "rules": [
+      "c475-1",
+      "c475-2",
+      "c481-1",
+      "c481-2a",
+      "c481-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "要约是希望与他人订立合同的意思表示，其内容具体确定，并表明经受要约人承诺要约人即受该意思表示约束",
+     "rules": [
+      "c472-def",
+      "c472-1"
+     ]
+    },
+    {
+     "text": "拍卖公告、招标公告、招股说明书、债券募集办法、基金招募说明书、商业广告和宣传、寄送的价目表等，属于希望他人向自己发出要约的表示",
+     "rules": [
+      "c473-def",
+      "c473-1"
+     ]
+    },
+    {
+     "text": "商业广告和宣传的内容具体确定，且表明经受要约人承诺即受约束（符合要约条件）",
+     "rules": [
+      "c473-2"
+     ]
+    },
+    {
+     "text": "要约确定了承诺期限；未确定的，区分要约以对话方式还是非对话方式作出",
+     "rules": [
+      "c481-1",
+      "c481-2a",
+      "c481-2b"
+     ]
+    },
+    {
+     "text": "撤回通知在要约到达受要约人前或者与要约同时到达",
+     "rules": [
+      "c475-2"
+     ]
+    },
+    {
+     "text": "承诺由受要约人本人或其代理人向要约人作出，且内容与要约的内容一致",
+     "rules": [
+      "c481-acceptance"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "要约以对话方式作出且未确定承诺期限的，当事人另有约定的，从其约定，不适用即时承诺",
+     "rules": [
+      "c481-2a-exc"
+     ]
+    },
+    {
+     "text": "承诺原则上应以通知方式作出；依交易习惯或者要约的规定可以行为方式作出的除外；沉默不能视为承诺",
+     "rules": [
+      "c481-notice"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合要件的意思表示构成要约，要约人受该意思表示约束",
+     "rules": [
+      "c472-def",
+      "c472-1"
+     ]
+    },
+    {
+     "text": "所列表示为要约邀请；但商业广告和宣传的内容符合要约条件的，构成要约",
+     "rules": [
+      "c473-def",
+      "c473-1",
+      "c473-2"
+     ]
+    },
+    {
+     "text": "要约人可以撤回要约；撤回通知先于或同时到达的，要约被撤回",
+     "rules": [
+      "c475-1",
+      "c475-2"
+     ]
+    },
+    {
+     "text": "受要约人应当在要约确定的期限内使承诺到达要约人；未确定期限的，对话方式应即时承诺，非对话方式应在合理期限内到达",
+     "rules": [
+      "c481-1",
+      "c481-2a",
+      "c481-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "商业广告和宣传的内容符合要约条件的，构成要约，优先于第473条第1款将其列为要约邀请的规定",
+     "rules": [
+      "c473-2"
+     ]
+    },
+    {
+     "text": "当事人对承诺期限另有约定的，优先于对话方式要约的即时承诺规则",
+     "rules": [
+      "c481-2a-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片称“要约人不得随意撤销”，但本行挂载的第475条只规定要约的撤回；要约的撤销（第476条以下）不在本行范围",
+     "rules": []
+    },
+    {
+     "text": "笔记所列承诺要件中的“主体与对象”“内容一致”“通知方式”分别对应第479条、第480条等，本行仅挂载第481条关于承诺期限的规定，故这些内容只能写成 doctrine 规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“要约生效时间适用第137条到达主义”列为优先或例外，第472条、第473条并未规定，本行不为此写规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c472-def",
+    "srcs": [
+     "art472-1"
+    ],
+    "body": [
+     "offer(O,X)"
+    ],
+    "heads": [
+     "seeksToConcludeContract(O,X)"
+    ],
+    "note": "要约是希望与他人订立合同的意思表示（O 为要约人，X 为该意思表示）",
+    "auth": "npc"
+   },
+   {
+    "key": "c472-1",
+    "srcs": [
+     "art472-1"
+    ],
+    "body": [
+     "expressionOfIntent(O,X)",
+     "contentSpecificAndDefinite(X)",
+     "indicatesBoundByAcceptance(O,X)"
+    ],
+    "heads": [
+     "offer(O,X)"
+    ],
+    "note": "要约的构成要件：内容具体确定，且表明经受要约人承诺要约人即受该意思表示约束",
+    "auth": "npc"
+   },
+   {
+    "key": "c473-def",
+    "srcs": [
+     "art473-1"
+    ],
+    "body": [
+     "seeksOfferFromOthers(X)"
+    ],
+    "heads": [
+     "invitationToOffer(X)"
+    ],
+    "note": "要约邀请是希望他人向自己发出要约的表示",
+    "auth": "npc"
+   },
+   {
+    "key": "c473-1",
+    "srcs": [
+     "art473-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "auctionAnnouncement(X)",
+       "tenderAnnouncement(X)",
+       "prospectus(X)",
+       "commercialAdvertisement(X)",
+       "priceListSent(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "invitationToOffer(X)"
+    ],
+    "note": "拍卖公告、招标公告、招股说明书、债券募集办法、基金招募说明书、商业广告和宣传、寄送的价目表等为要约邀请（“等”字表明非穷尽列举）",
+    "auth": "npc"
+   },
+   {
+    "key": "c473-2",
+    "srcs": [
+     "art473-2"
+    ],
+    "body": [
+     "commercialAdvertisement(X)",
+     "contentSpecificAndDefinite(X)",
+     "indicatesBoundByAcceptance(O,X)"
+    ],
+    "heads": [
+     "offer(O,X)"
+    ],
+    "note": "商业广告和宣传的内容符合要约条件的，构成要约",
+    "auth": "npc"
+   },
+   {
+    "key": "c475-1",
+    "srcs": [
+     "art475"
+    ],
+    "body": [
+     "offer(O,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "withdrawExpression(O,X)"
+     }
+    ],
+    "note": "要约可以撤回；撤回适用第141条关于意思表示撤回的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c475-2",
+    "srcs": [
+     "art475"
+    ],
+    "body": [
+     "offer(O,X)",
+     "withdrawalNoticeArrivesBeforeOrSimultaneously(O,X)"
+    ],
+    "heads": [
+     "withdrawn(X)"
+    ],
+    "note": "第475条援引第141条：撤回通知在要约到达受要约人前或者与要约同时到达的，要约被撤回",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-1",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "acceptancePeriodDetermined(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "makeAcceptanceArriveWithinPeriod(E,O,X)"
+     }
+    ],
+    "note": "承诺应当在要约确定的期限内到达要约人",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-2a",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "noAcceptancePeriodDetermined(X)",
+     "dialogueForm(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "acceptImmediately(E,O,X)"
+     }
+    ],
+    "note": "要约没有确定承诺期限且以对话方式作出的，受要约人应当即时作出承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-2a-exc",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "noAcceptancePeriodDetermined(X)",
+     "dialogueForm(X)",
+     "agreedOtherwiseOnAcceptancePeriod(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "acceptWithinAgreedTime(E,O,X)"
+     }
+    ],
+    "note": "笔记（学理）：对话方式要约未确定承诺期限的，“除当事人另有约定外”应即时承诺；条文本身无此但书，故为 doctrine",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c481-2b",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "noAcceptancePeriodDetermined(X)",
+     "nonDialogueForm(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "makeAcceptanceArriveWithinReasonableTime(E,O,X)"
+     }
+    ],
+    "note": "要约没有确定承诺期限且以非对话方式作出的，承诺应当在合理期限内到达要约人",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-acceptance",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "acceptanceDirectedToOfferor(E,O,X)",
+     "acceptanceContentConsistent(E,X)"
+    ],
+    "heads": [
+     "acceptance(E,O,X)"
+    ],
+    "note": "笔记（学理）：承诺须由受要约人本人或其代理人向要约人作出，且内容与要约的内容一致；条文未规定，故为 doctrine",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c481-notice",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,X)",
+     "offereeOf(E,X)",
+     "~acceptanceByConductPermitted(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "O",
+      "content": "acceptByNotice(E,O,X)"
+     }
+    ],
+    "note": "笔记（学理）：承诺原则上应以通知方式作出，依交易习惯或要约的规定可以行为作出的除外，沉默不能视为承诺；条文未规定，故为 doctrine",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c473-2",
+    "c473-1",
+    "商业广告和宣传的内容符合要约条件的，构成要约，优先于第473条第1款将其列为要约邀请的规定"
+   ],
+   [
+    "c481-2a-exc",
+    "c481-2a",
+    "笔记：对话方式要约未确定承诺期限的，当事人另有约定的从其约定，不适用即时承诺"
+   ]
+  ],
+  "predicates": {
+   "contentSpecificAndDefinite": "内容具体确定（意思表示）",
+   "indicatesBoundByAcceptance": "表明经受要约人承诺，要约人即受该意思表示约束（要约人，意思表示）",
+   "seeksToConcludeContract": "希望与他人订立合同（要约人，要约）",
+   "invitationToOffer": "是要约邀请",
+   "seeksOfferFromOthers": "是希望他人向自己发出要约的表示",
+   "auctionAnnouncement": "是拍卖公告",
+   "tenderAnnouncement": "是招标公告",
+   "prospectus": "是招股说明书、债券募集办法、基金招募说明书等募集文件",
+   "commercialAdvertisement": "是商业广告和宣传",
+   "priceListSent": "是寄送的价目表",
+   "withdrawn": "该意思表示（要约）已被有效撤回",
+   "offereeOf": "是受要约人（受要约人，要约）",
+   "acceptancePeriodDetermined": "要约确定了承诺期限",
+   "noAcceptancePeriodDetermined": "要约没有确定承诺期限",
+   "makeAcceptanceArriveWithinPeriod": "在要约确定的期限内使承诺到达要约人（受要约人，要约人，要约）",
+   "acceptImmediately": "即时作出承诺（受要约人，要约人，要约）",
+   "makeAcceptanceArriveWithinReasonableTime": "在合理期限内使承诺到达要约人（受要约人，要约人，要约）",
+   "agreedOtherwiseOnAcceptancePeriod": "当事人对承诺期限另有约定（要约）",
+   "acceptWithinAgreedTime": "按当事人另行约定的时间作出承诺（受要约人，要约人，要约）",
+   "acceptanceDirectedToOfferor": "承诺由受要约人本人或其代理人向要约人作出（受要约人，要约人，要约）",
+   "acceptanceContentConsistent": "承诺的内容与要约的内容一致（受要约人，要约）",
+   "acceptance": "承诺（受要约人，要约人，要约）",
+   "acceptanceByConductPermitted": "依交易习惯或者要约的规定可以行为方式作出承诺（要约）",
+   "acceptByNotice": "以通知方式作出承诺（受要约人，要约人，要约）"
+  }
+ },
+ "card:g3996": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "悬赏广告的法律性质，以及完成悬赏声明所指特定行为的人能否请求悬赏人支付报酬",
+     "rules": [
+      "c499-claim",
+      "c499-nature"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "悬赏人以公开方式声明对完成特定行为的人支付报酬",
+     "rules": [
+      "c499-claim"
+     ]
+    },
+    {
+     "text": "有人实际完成了悬赏声明所指的特定行为，且该行为与声明内容一致",
+     "rules": [
+      "c499-claim"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "完成该特定行为的人享有请求悬赏人支付报酬的权利",
+     "rules": [
+      "c499-claim"
+     ]
+    },
+    {
+     "text": "笔记：悬赏广告是悬赏人对完成特定行为的人给付报酬的意思表示，在我国法上属于要约（学理定性，非法条明文）",
+     "rules": [
+      "c499-nature"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片称悬赏广告为“单方允诺之债”“无需承诺即成立”，与笔记“属于要约”的通说立场不同；本卡片以笔记为准，仅将“属于要约”作为学理规则保留",
+     "rules": [
+      "c499-nature"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称“未约定报酬数额时可参照合理标准确定”，法条与笔记均无此内容，本卡片不予采纳",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列第497条（格式条款）、第500条（缔约过失）、第501条（保密义务）与本条悬赏广告的报酬请求权无直接关联，仅作区分参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c499-claim",
+    "srcs": [
+     "art499-1"
+    ],
+    "body": [
+     "offersRewardPublicly(R,A)",
+     "completesAct(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "claimReward(P,R)"
+     }
+    ],
+    "note": "悬赏人以公开方式声明对完成特定行为的人支付报酬的，完成该行为的人可以请求其支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c499-nature",
+    "srcs": [
+     "art499-1"
+    ],
+    "body": [
+     "offersRewardPublicly(R,A)"
+    ],
+    "heads": [
+     "rewardAdIsOffer(A)"
+    ],
+    "note": "笔记：悬赏广告是悬赏人对完成特定行为的人给付报酬的意思表示，在我国法上定性为要约（学理，非法条明文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "rewardAdIsOffer": "悬赏广告构成要约（学理定性；参数为悬赏声明所指的特定行为）"
+  }
+ },
+ "card:g3988": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c470-2：新谓词 modelContractText 需要在 predicates 中给出中文释义",
+   "c470-2：新谓词 contractParty 需要在 predicates 中给出中文释义",
+   "c470-2：新谓词 referToModelText 需要在 predicates 中给出中文释义",
+   "c495-1：新谓词 subscriptionDocument 需要在 predicates 中给出中文释义",
+   "c495-1：新谓词 agreedToConcludeContractWithinTerm 需要在 predicates 中给出中文释义",
+   "c495-1：新谓词 preliminaryContract 需要在 predicates 中给出中文释义",
+   "c495-duty：新谓词 preliminaryContract 需要在 predicates 中给出中文释义",
+   "c495-duty：新谓词 agreedToConcludeContractWithinTerm 需要在 predicates 中给出中文释义",
+   "c495-duty：新谓词 concludeMainContract 需要在 predicates 中给出中文释义",
+   "c495-2：新谓词 preliminaryContract 需要在 predicates 中给出中文释义",
+   "c495-2：新谓词 failsToConcludeContract 需要在 predicates 中给出中文释义",
+   "c495-2：新谓词 claimPreliminaryContractLiability 需要在 predicates 中给出中文释义",
+   "c496-1：新谓词 draftedInAdvanceForRepeatedUse 需要在 predicates 中给出中文释义",
+   "c496-1：新谓词 notNegotiatedWithOtherParty 需要在 predicates 中给出中文释义",
+   "c496-1：新谓词 standardClause 需要在 predicates 中给出中文释义",
+   "c496-2-fair：新谓词 standardClause 需要在 predicates 中给出中文释义",
+   "c496-2-fair：新谓词 providerOfStandardClause 需要在 predicates 中给出中文释义",
+   "c496-2-fair：新谓词 followFairnessPrinciple 需要在 predicates 中给出中文释义",
+   "c496-2-notice：新谓词 standardClause 需要在 predicates 中给出中文释义",
+   "c496-2-notice：新谓词 providerOfStandardClause 需要在 predicates 中给出中文释义",
+   "c496-2-notice：新谓词 highlightAndExplain 需要在 predicates 中给出中文释义",
+   "c496-2-effect：新谓词 standardClause 需要在 predicates 中给出中文释义",
+   "c496-2-effect：新谓词 providerOfStandardClause 需要在 predicates 中给出中文释义",
+   "c496-2-effect：新谓词 failedToHighlightOrExplain 需要在 predicates 中给出中文释义",
+   "c496-2-effect：新谓词 otherPartyDidNotNoticeOrUnderstand 需要在 predicates 中给出中文释义",
+   "c496-2-effect：新谓词 assertClauseNotPartOfContract 需要在 predicates 中给出中文释义",
+   "c496-2-excl：新谓词 standardClause 需要在 predicates 中给出中文释义",
+   "c496-2-excl：新谓词 failedToHighlightOrExplain 需要在 predicates 中给出中文释义",
+   "c496-2-excl：新谓词 otherPartyDidNotNoticeOrUnderstand 需要在 predicates 中给出中文释义",
+   "c496-2-excl：新谓词 assertClauseNotPartOfContract 需要在 predicates 中给出中文释义",
+   "c496-2-excl：新谓词 partOfContract 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同内容一般包括哪些条款、能否参照示范文本；认购书、订购书、预订书等是否构成预约合同，违反预约合同订立义务的后果；格式条款如何认定，提供方负有何种义务，违反义务的后果\",\n        \"rules\": [\n          \"c470-2\",\n          \"c495-1\",\n          \"c495-2\",\n          \"c496-1\",\n          \"c496-2-notice\",\n          \"c496-2-effect\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同内容由当事人约定，一般包括当事人姓名或名称和住所、标的、数量、质量、价款或报酬、履行期限地点和方式、违约责任、解决争议的方法（示范性列举，非强制）\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"当事人约定在将来一定期限内订立合同的认购书、订购书、预订书等\",\n        \"rules\": [\n          \"c495-1\"\n        ]\n      },\n      {\n        \"text\": \"格式条款：当事人为了重复使用而预先拟定，并在订立合同时未与对方协商的条款\",\n        \"rules\": [\n          \"c496-1\"\n        ]\n      },\n      {\n        \"text\": \"提供格式条款一方未履行提示或者说明义务，致使对方没有注意或者理解与其有重大利害关系的条款\",\n        \"rules\": [\n          \"c496-2-effect\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"提供格式条款一方已以合理方式提示对方注意、并按对方要求说明重大利害关系条款，使对方注意并理解的，对方不得主张该条款不成为合同内容\",\n        \"rules\": [\n          \"c496-2-effect\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"当事人可以参照各类合同的示范文本订立合同\",\n        \"rules\": [\n          \"c470-2\"\n        ]\n      },\n      {\n        \"text\": \"约定将来一定期限内订立合同的认购书、订购书、预订书等构成预约合同\",\n        \"rules\": [\n          \"c495-1\"\n        ]\n      },\n      {\n        \"text\": \"预约合同成立后，订立本约合同是当事人应当履行的义务；本约未订立，预约合同即未履行（笔记）\",\n        \"rules\": [\n          \"c495-duty\"\n        ]\n      },\n      {\n        \"text\": \"一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任\",\n        \"rules\": [\n          \"c495-2\"\n        ]\n      },\n      {\n        \"text\": \"提供格式条款一方应当遵循公平原则确定当事人之间的权利和义务，并采取合理方式提示对方注意免除或减轻其责任等重大利害关系条款，按对方要求予以说明\",\n        \"rules\": [\n          \"c496-2-fair\",\n          \"c496-2-notice\"\n        ]\n      },\n      {\n        \"text\": \"未履行提示或说明义务致对方未注意或理解的，对方可以主张该条款不成为合同的内容\",\n        \"rules\": [\n          \"c496-2-effect\",\n          \"c496-2-excl\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"格式条款提供方未履行提示、说明义务的，相对人主张该条款不成为合同内容，构成对“合同内容由当事人约定”一般规则的例外\",\n        \"rules\": [\n          \"c496-2-excl\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"预约合同与本约合同相对：本约合同是履行预约合同而订立的合同，预约的标的是将来订立本约（笔记）\",\n        \"rules\": [\n          \"c495-1\",\n          \"c495-duty\"\n        ]\n      },\n      {\n        \"text\": \"格式条款与个别协商条款不同：须同时具备“为重复使用而预先拟定”与“订立合同时未与对方协商”两个特征\",\n        \"rules\": [\n          \"c496-1\"\n        ]\n      },\n      {\n        \"text\": \"第470条第1款为示范性列举，欠缺其中某项条款不当然影响合同成立，仅生内容解释与补充问题（学理）\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c470-2\",\n      \"srcs\": [\n        \"art470-2\"\n      ],\n      \"body\": [\n        \"modelContractText(M)\",\n        \"contractParty(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"referToModelText(P,M)\"\n        }\n      ],\n      \"note\": \"当事人可以参照各类合同的示范文本订立合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c495-1\",\n      \"srcs\": [\n        \"art495-1\"\n      ],\n      \"body\": [\n        \"subscriptionDocument(K)\",\n        \"agreedToConcludeContractWithinTerm(P,K)\"\n      ],\n      \"heads\": [\n        \"preliminaryContract(K)\"\n      ],\n      \"note\": \"约定在将来一定期限内订立合同的认购书、订购书、预订书等，构成预约合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c495-duty\",\n      \"srcs\": [\n        \"art495-1\"\n      ],\n      \"body\": [\n        \"preliminaryContract(K)\",\n        \"agreedToConcludeContractWithinTerm(P,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"concludeMainContract(P,K)\"\n        }\n      ],\n      \"note\": \"笔记：预约合同成立后，订立本约合同是当事人应当履行的义务，本约未订立则预约未履行（学理，条文未明定）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c495-2\",\n      \"srcs\": [\n        \"art495-2\"\n      ],\n      \"body\": [\n        \"preliminaryContract(K)\",\n        \"failsToConcludeContract(P,K)\",\n        \"counterpartyOf(O,P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"claimPreliminaryContractLiability(O,K)\"\n        }\n      ],\n      \"note\": \"一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c496-1\",\n      \"srcs\": [\n        \"art496-1\"\n      ],\n      \"body\": [\n        \"draftedInAdvanceForRepeatedUse(T)\",\n        \"notNegotiatedWithOtherParty(T)\"\n      ],\n      \"heads\": [\n        \"standardClause(T)\"\n      ],\n      \"note\": \"格式条款：为重复使用而预先拟定，并在订立合同时未与对方协商的条款\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c496-2-fair\",\n      \"srcs\": [\n        \"art496-2\"\n      ],\n      \"body\": [\n        \"standardClause(T)\",\n        \"providerOfStandardClause(P,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"followFairnessPrinciple(P,T)\"\n        }\n      ],\n      \"note\": \"提供格式条款一方应当遵循公平原则确定当事人之间的权利和义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c496-2-notice\",\n      \"srcs\": [\n        \"art496-2\"\n      ],\n      \"body\": [\n        \"standardClause(T)\",\n        \"providerOfStandardClause(P,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"highlightAndExplain(P,T)\"\n        }\n      ],\n      \"note\": \"提供格式条款一方应当以合理方式提示对方注意免除或减轻其责任等重大利害关系条款，并按对方要求予以说明\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c496-2-effect\",\n      \"srcs\": [\n        \"art496-2\"\n      ],\n      \"body\": [\n        \"standardClause(T)\",\n        \"providerOfStandardClause(P,T)\",\n        \"failedToHighlightOrExplain(P,T)\",\n        \"otherPartyDidNotNoticeOrUnderstand(O,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"assertClauseNotPartOfContract(O,T)\"\n        }\n      ],\n      \"note\": \"未履行提示或说明义务，致使对方没有注意或者理解重大利害关系条款的，对方可以主张该条款不成为合同的内容\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c496-2-excl\",\n      \"srcs\": [\n        \"art496-2\"\n      ],\n      \"body\": [\n        \"standardClause(T)\",\n        \"failedToHighlightOrExplain(P,T)\",\n        \"otherPartyDidNotNoticeOrUnderstand(O,T)\",\n        \"assertClauseNotPartOfContract(O,T)\"\n      ],\n      \"heads\": [\n        \"-partOfContract(T)\"\n      ],\n      \"note\": \"对方主张后，该格式条款不成为合同的内容\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [],\n  \"predicates\": {\n    \"contractParty/1\": \"是合同当事人\",\n    \"modelContractText/1\": \"是各类合同的示范文本\",\n    \"referToModelText/2\": \"参照示范文本订立合同（当事人，示范文本）\",\n    \"subscriptionDocument/1\": \"是认购书、订购书、预订书等文件\",\n    \"agreedToConcludeContractWithinTerm/2\": \"约定在将来一定期限内订立合同（当事人，认购书等文件）\",\n    \"preliminaryContract/1\": \"是预约合同\",\n    \"concludeMainContract/2\": \"订立本约合同（当事人，预约合同）\",\n    \"failsToConcludeContract/2\": \"不履行预约合同约定的订立合同义务（当事人，预约合同）\",\n    \"claimPreliminaryContractLiability/2\": \"请求承担预约合同的违约责任（对方，违约方）\",\n    \"draftedInAdvanceForRepeatedUse/1\": \"为了重复使用而预先拟定（条款）\",\n    \"notNegotiatedWithOtherParty/1\": \"订立合同时未与对方协商（条款）\",\n    \"standardClause/1\": \"是格式条款\",\n    \"providerOfStandardClause/2\": \"是提供格式条款的一方（提供方，条款）\",\n    \"followFairnessPrinciple/2\": \"遵循公平原则确定当事人之间的权利和义务（提供方，条款）\",\n    \"highlightAndExplain/2\": \"以合理方式提示对方注意重大利害关系条款并按对方要求说明（提供方，条款）\",\n    \"failedToHighlightOrExplain/2\": \"未履行提示或者说明义务（提供方，条款）\",\n    \"otherPartyDidNotNoticeOrUnderstand/2\": \"致使对方没有注意或者理解与其有重大利害关系的条款（对方，条款）\",\n    \"assertClauseNotPartOfContract/2\": \"主张该条款不成为合同的内容（对方，条款）\",\n    \"partOfContract/1\": \"该条款成为合同的内容\"\n  }\n}"
+ },
+ "card:g4050": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同成立的时间如何确定：合同书形式、法定或约定应采书面形式而未采用、要求签订确认书、网络订单四种情形",
+     "rules": [
+      "c490-1a",
+      "c490-1b",
+      "c490-2",
+      "c491-1",
+      "c491-2"
+     ]
+    },
+    {
+     "text": "合同成立的地点如何确定：承诺生效地、数据电文形式、合同书最后签名盖章按指印地",
+     "rules": [
+      "c492-1",
+      "c492-2a",
+      "c492-2b",
+      "c492-2c",
+      "c493"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "采用合同书形式订立合同，且当事人均已签名、盖章或者按指印",
+     "rules": [
+      "c490-1a"
+     ]
+    },
+    {
+     "text": "采用合同书形式订立合同，在签名、盖章或者按指印之前，一方已经履行主要义务，对方接受",
+     "rules": [
+      "c490-1b"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定或者当事人约定合同应当采用书面形式订立，当事人未采用书面形式，但一方已经履行主要义务，对方接受",
+     "rules": [
+      "c490-2"
+     ]
+    },
+    {
+     "text": "采用信件、数据电文等形式订立合同并要求签订确认书，且已签订确认书",
+     "rules": [
+      "c491-1"
+     ]
+    },
+    {
+     "text": "一方通过互联网等信息网络发布的商品或者服务信息符合要约条件，对方选择该商品或者服务并提交订单成功",
+     "rules": [
+      "c491-2"
+     ]
+    },
+    {
+     "text": "承诺生效的地点",
+     "rules": [
+      "c492-1"
+     ]
+    },
+    {
+     "text": "采用数据电文形式订立合同，收件人有主营业地；没有主营业地的，为其住所地",
+     "rules": [
+      "c492-2a",
+      "c492-2b"
+     ]
+    },
+    {
+     "text": "采用合同书形式订立合同，最后签名、盖章或者按指印的地点",
+     "rules": [
+      "c493"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第491条第2款但书：网络订单成立规则不适用于当事人另有约定的情形",
+     "rules": [
+      "c491-2"
+     ]
+    },
+    {
+     "text": "第492条第2款：当事人对数据电文形式下合同成立地点另有约定的，按照其约定",
+     "rules": [
+      "c492-2c"
+     ]
+    },
+    {
+     "text": "第493条但书：当事人对合同书形式下合同成立地点另有约定的，从其约定",
+     "rules": [
+      "c493"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备上述情形之一的，合同成立（签名盖章按指印时、履行主要义务被接受时、签订确认书时、提交订单成功时）",
+     "rules": [
+      "c490-1a",
+      "c490-1b",
+      "c490-2",
+      "c491-1",
+      "c491-2"
+     ]
+    },
+    {
+     "text": "承诺生效的地点为合同成立的地点",
+     "rules": [
+      "c492-1"
+     ]
+    },
+    {
+     "text": "数据电文形式订立合同的，收件人的主营业地为合同成立地点；没有主营业地的，其住所地为合同成立地点",
+     "rules": [
+      "c492-2a",
+      "c492-2b"
+     ]
+    },
+    {
+     "text": "当事人对数据电文形式下成立地点另有约定的，按约定确定成立地点",
+     "rules": [
+      "c492-2c"
+     ]
+    },
+    {
+     "text": "采用合同书形式的，最后签名、盖章或者按指印的地点为合同成立的地点",
+     "rules": [
+      "c493"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同书形式下以最后签名、盖章或者按指印地为成立地点，属特别规定，优先于承诺生效地的一般规则",
+     "rules": [
+      "c493"
+     ]
+    },
+    {
+     "text": "数据电文形式下以收件人主营业地（无主营业地时为住所地）为成立地点，属特别规定，优先于承诺生效地的一般规则",
+     "rules": [
+      "c492-2a",
+      "c492-2b"
+     ]
+    },
+    {
+     "text": "当事人约定的成立地点优先于法定的成立地点",
+     "rules": [
+      "c492-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：合同成立的时间原则上为承诺生效时（第483条），第490条、第491条规定的签名盖章、履行主要义务被接受、签订确认书、提交订单成功均属特别成立要件",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片把欺诈、恶意串通、第三人善意取得等列为“否定条件”，这些属于合同效力（第153条）或物权变动问题，不是本条合同成立的构成要件",
+     "rules": []
+    },
+    {
+     "text": "第492条、第493条只解决合同成立的地点（涉及管辖与地域效力），不决定合同是否成立；LEGO卡片亦指出其与第488条、第489条（意思表示一致）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c490-1a",
+    "srcs": [
+     "art490-1"
+    ],
+    "body": [
+     "contractInWritingForm(K)",
+     "allPartiesSigned(K)"
+    ],
+    "heads": [
+     "contractEstablished(K)"
+    ],
+    "note": "采用合同书形式订立合同的，自当事人均签名、盖章或者按指印时合同成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c490-1b",
+    "srcs": [
+     "art490-1"
+    ],
+    "body": [
+     "contractInWritingForm(K)",
+     "performedMainObligation(A,K)",
+     "acceptedPerformance(B,K)",
+     "-allPartiesSigned(K)"
+    ],
+    "heads": [
+     "contractEstablished(K)"
+    ],
+    "note": "合同书形式下，在签名、盖章或者按指印之前一方已履行主要义务、对方接受的，合同成立（履行补正形式瑕疵）",
+    "auth": "npc"
+   },
+   {
+    "key": "c490-2",
+    "srcs": [
+     "art490-2"
+    ],
+    "body": [
+     "requiredWritingForm(K)",
+     "-inWritingForm(K)",
+     "performedMainObligation(A,K)",
+     "acceptedPerformance(B,K)"
+    ],
+    "heads": [
+     "contractEstablished(K)"
+    ],
+    "note": "法律、行政法规规定或者当事人约定应当采用书面形式而未采用，但一方已履行主要义务、对方接受的，合同成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c491-1",
+    "srcs": [
+     "art491-1"
+    ],
+    "body": [
+     "requiresConfirmationLetter(K)",
+     "confirmationLetterSigned(K)"
+    ],
+    "heads": [
+     "contractEstablished(K)"
+    ],
+    "note": "采用信件、数据电文等形式订立合同要求签订确认书的，签订确认书时合同成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c491-2",
+    "srcs": [
+     "art491-2"
+    ],
+    "body": [
+     "onlineInfoMeetsOffer(K)",
+     "selectedAndSubmittedOrder(B,K)",
+     "~agreedOtherwiseOnFormation(K)"
+    ],
+    "heads": [
+     "contractEstablished(K)"
+    ],
+    "note": "网络发布的商品或者服务信息符合要约条件，对方选择并提交订单成功时合同成立；当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c492-1",
+    "srcs": [
+     "art492-1"
+    ],
+    "body": [
+     "acceptanceEffectiveAt(K,P)"
+    ],
+    "heads": [
+     "contractFormationPlace(K,P)"
+    ],
+    "note": "承诺生效的地点为合同成立的地点（一般规则）",
+    "auth": "npc"
+   },
+   {
+    "key": "c492-2a",
+    "srcs": [
+     "art492-2"
+    ],
+    "body": [
+     "dataMessageForm(K)",
+     "recipientOf(K,R)",
+     "mainBusinessPlace(R,P)"
+    ],
+    "heads": [
+     "contractFormationPlace(K,P)"
+    ],
+    "note": "采用数据电文形式订立合同的，收件人的主营业地为合同成立的地点",
+    "auth": "npc"
+   },
+   {
+    "key": "c492-2b",
+    "srcs": [
+     "art492-2"
+    ],
+    "body": [
+     "dataMessageForm(K)",
+     "recipientOf(K,R)",
+     "noMainBusinessPlace(R)",
+     "domicile(R,P)"
+    ],
+    "heads": [
+     "contractFormationPlace(K,P)"
+    ],
+    "note": "采用数据电文形式订立合同，收件人没有主营业地的，其住所地为合同成立的地点",
+    "auth": "npc"
+   },
+   {
+    "key": "c492-2c",
+    "srcs": [
+     "art492-2"
+    ],
+    "body": [
+     "dataMessageForm(K)",
+     "agreedFormationPlace(K,P)"
+    ],
+    "heads": [
+     "contractFormationPlace(K,P)"
+    ],
+    "note": "数据电文形式下当事人对合同成立地点另有约定的，按照其约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c493",
+    "srcs": [
+     "art493-1"
+    ],
+    "body": [
+     "contractInWritingForm(K)",
+     "lastSignedPlace(K,P)",
+     "~agreedOtherwiseOnFormationPlace(K)"
+    ],
+    "heads": [
+     "contractFormationPlace(K,P)"
+    ],
+    "note": "采用合同书形式订立合同的，最后签名、盖章或者按指印的地点为合同成立的地点；当事人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c493",
+    "c492-1",
+    "合同书形式下以最后签名、盖章或者按指印地为成立地点，属特别规定，优先于承诺生效地的一般规则"
+   ],
+   [
+    "c492-2a",
+    "c492-1",
+    "数据电文形式下以收件人主营业地为成立地点，属特别规定，优先于承诺生效地的一般规则"
+   ],
+   [
+    "c492-2b",
+    "c492-1",
+    "数据电文形式下收件人无主营业地时以住所地为成立地点，属特别规定，优先于承诺生效地的一般规则"
+   ],
+   [
+    "c492-2c",
+    "c492-2a",
+    "当事人对成立地点另有约定的，约定优先于法定"
+   ],
+   [
+    "c492-2c",
+    "c492-2b",
+    "当事人对成立地点另有约定的，约定优先于法定"
+   ]
+  ],
+  "predicates": {
+   "contractEstablished": "合同成立（1个参数：合同）",
+   "contractInWritingForm": "采用合同书形式订立合同（1个参数：合同）",
+   "allPartiesSigned": "当事人均已签名、盖章或者按指印（1个参数：合同）",
+   "performedMainObligation": "一方已经履行主要义务（当事人，合同）",
+   "acceptedPerformance": "对方接受该履行（当事人，合同）",
+   "requiredWritingForm": "法律、行政法规规定或者当事人约定合同应当采用书面形式订立（1个参数：合同）",
+   "inWritingForm": "已采用书面形式（1个参数：合同）",
+   "requiresConfirmationLetter": "当事人订立合同要求签订确认书（1个参数：合同）",
+   "confirmationLetterSigned": "已签订确认书（1个参数：合同）",
+   "onlineInfoMeetsOffer": "一方通过互联网等信息网络发布的商品或者服务信息符合要约条件（1个参数：合同）",
+   "selectedAndSubmittedOrder": "对方选择该商品或者服务并提交订单成功（当事人，合同）",
+   "agreedOtherwiseOnFormation": "当事人就合同成立另有约定（1个参数：合同）",
+   "acceptanceEffectiveAt": "承诺生效的地点（合同，地点）",
+   "contractFormationPlace": "合同成立的地点（合同，地点）",
+   "recipientOf": "是数据电文的收件人（合同，收件人）",
+   "mainBusinessPlace": "主营业地（人，地点）",
+   "noMainBusinessPlace": "没有主营业地（1个参数：人）",
+   "agreedFormationPlace": "当事人约定的合同成立地点（合同，地点）",
+   "agreedOtherwiseOnFormationPlace": "当事人对合同成立地点另有约定（1个参数：合同）",
+   "lastSignedPlace": "最后签名、盖章或者按指印的地点（合同，地点）"
+  }
+ },
+ "art:469": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人订立合同可以采用哪些形式；何谓书面形式；数据电文是否属于书面形式",
+     "rules": [
+      "c469-1",
+      "c469-2",
+      "c469-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人订立合同（形式自由，可选择书面、口头或者其他形式）",
+     "rules": [
+      "c469-1"
+     ]
+    },
+    {
+     "text": "形式为合同书、信件、电报、电传、传真等，且能够有形地表现所载内容",
+     "rules": [
+      "c469-2"
+     ]
+    },
+    {
+     "text": "以电子数据交换、电子邮件等数据电文方式作出，能够有形地表现所载内容，并可以随时调取查用",
+     "rules": [
+      "c469-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "当事人可以选择书面形式、口头形式或者其他形式订立合同",
+     "rules": [
+      "c469-1"
+     ]
+    },
+    {
+     "text": "合同书、信件、电报、电传、传真等能有形表现所载内容的形式，属于书面形式",
+     "rules": [
+      "c469-2"
+     ]
+    },
+    {
+     "text": "符合条件的数据电文视为书面形式（拟制，与书面形式发生同一效力）",
+     "rules": [
+      "c469-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记强调“有形地表现所载内容”是书面形式的核心特征；第2款列举用“等”字，未列举但能有形表现所载内容的形式亦可纳入书面形式",
+     "rules": [
+      "c469-2"
+     ]
+    },
+    {
+     "text": "第3款用“视为”而非“是”，属法律拟制：数据电文本身并非书面，只是发生与书面形式相同的效力",
+     "rules": [
+      "c469-3"
+     ]
+    },
+    {
+     "text": "本条宣示形式自由，但法律、行政法规规定或者当事人约定采用书面形式的，仍应当采用书面形式（第135条、第490条第2款），本条不排除该要求",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c469-1",
+    "srcs": [
+     "art469-1"
+    ],
+    "body": [
+     "concludingContract(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "chooseForm(P)"
+     }
+    ],
+    "note": "当事人订立合同，可以采用书面形式、口头形式或者其他形式（形式自由）",
+    "auth": "npc"
+   },
+   {
+    "key": "c469-2",
+    "srcs": [
+     "art469-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "contractDocument(F)",
+       "letter(F)",
+       "telegram(F)",
+       "telex(F)",
+       "facsimile(F)",
+       "otherTangibleForm(F)"
+      ]
+     },
+     "tangiblyExpressesContent(F)"
+    ],
+    "heads": [
+     "writtenForm(F)"
+    ],
+    "note": "书面形式是合同书、信件、电报、电传、传真等可以有形地表现所载内容的形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c469-3",
+    "srcs": [
+     "art469-3"
+    ],
+    "body": [
+     "dataMessage(F)",
+     "tangiblyExpressesContent(F)",
+     "retrievableAtAnyTime(F)"
+    ],
+    "heads": [
+     "writtenForm(F)"
+    ],
+    "note": "以电子数据交换、电子邮件等方式能够有形地表现所载内容并可随时调取查用的数据电文，视为书面形式",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concludingContract": "当事人（正在）订立合同",
+   "contractDocument": "是合同书",
+   "letter": "是信件",
+   "telegram": "是电报",
+   "telex": "是电传",
+   "facsimile": "是传真",
+   "otherTangibleForm": "是其他可以有形地表现所载内容的形式",
+   "tangiblyExpressesContent": "能够有形地表现所载内容",
+   "dataMessage": "是数据电文（电子数据交换、电子邮件等方式）",
+   "retrievableAtAnyTime": "可以随时调取查用",
+   "writtenForm": "属于书面形式"
+  }
+ },
+ "art:474": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "要约生效的时间如何确定",
+     "rules": [
+      "c474-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在要约（要约人向受要约人发出要约）",
+     "rules": [
+      "c474-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "要约生效的时间适用第137条关于意思表示生效时间的规定，本条不另行规定生效时点",
+     "rules": [
+      "c474-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是准用性规范，只指向第137条，本身不含独立的生效规则；第137条区分对话方式、非对话方式与数据电文形式，并设有“当事人另有约定”的但书，这些内容随准用一并适用",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可采的体系说明；LEGO 卡片缺失，故本卡片仅以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c474-1",
+    "srcs": [
+     "art474-1"
+    ],
+    "body": [
+     "offer(O,X)"
+    ],
+    "heads": [
+     "applyArticle137ByReference(O)"
+    ],
+    "note": "要约生效的时间适用第137条（意思表示生效时间）的规定，本条为对准用规范的转致",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "applyArticle137ByReference": "要约生效的时间适用第137条关于意思表示生效时间的规定（参数：要约人）"
+  }
+ },
+ "art:479": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为承诺：受要约人同意要约的意思表示",
+     "rules": [
+      "c479-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "作出意思表示的主体是受要约人",
+     "rules": [
+      "c479-1"
+     ]
+    },
+    {
+     "text": "意思表示的内容为同意要约",
+     "rules": [
+      "c479-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "笔记补充：承诺须由受要约人向要约人作出；未向要约人作出的，不构成承诺（法条原文未明示“向要约人”要素，属学理说明）",
+     "rules": [
+      "c479-dir"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该意思表示构成承诺（承诺是受要约人同意要约的意思表示）",
+     "rules": [
+      "c479-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条仅为承诺的定义性规定；承诺的生效时间、撤回、迟延等效果分别由第480条以下规定，本条不单独产生义务",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c479-1",
+    "srcs": [
+     "art479"
+    ],
+    "body": [
+     "offereeOf(O,K)",
+     "agreesToOffer(O,K)"
+    ],
+    "heads": [
+     "acceptance(O,K)"
+    ],
+    "note": "承诺是受要约人同意要约的意思表示（定义性规定，构成性结论）",
+    "auth": "npc"
+   },
+   {
+    "key": "c479-dir",
+    "srcs": [
+     "art479"
+    ],
+    "body": [
+     "offereeOf(O,K)",
+     "agreesToOffer(O,K)",
+     "~directedToOfferor(O,K)"
+    ],
+    "heads": [
+     "-acceptance(O,K)"
+    ],
+    "note": "笔记补充：承诺须向要约人作出，未向要约人作出的不构成承诺；法条原文未明示该要素，属学理说明",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "acceptance": "承诺：受要约人同意要约的意思表示（受要约人，要约）",
+   "offereeOf": "是受要约人（受要约人，要约）",
+   "agreesToOffer": "同意要约（受要约人，要约）",
+   "directedToOfferor": "向要约人作出（受要约人，要约）"
+  }
+ },
+ "art:480": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承诺应当以何种方式作出；在什么情况下可以行为方式作出承诺",
+     "rules": [
+      "c480-1",
+      "c480-exc",
+      "c480-perm"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在要约，且受要约人拟对该要约作出承诺",
+     "rules": [
+      "c480-1",
+      "c480-perm"
+     ]
+    },
+    {
+     "text": "根据交易习惯可以通过行为作出承诺，或者要约表明可以通过行为作出承诺",
+     "rules": [
+      "c480-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "根据交易习惯或者要约表明可以通过行为作出承诺的，不受“承诺应当以通知方式作出”的限制",
+     "rules": [
+      "c480-exc",
+      "c480-perm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受要约人应当以通知的方式作出承诺",
+     "rules": [
+      "c480-1"
+     ]
+    },
+    {
+     "text": "存在交易习惯或要约表明时，受要约人可以以行为作出承诺",
+     "rules": [
+      "c480-perm"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第480条第1款但书（交易习惯或要约表明可以行为承诺）优先于“承诺应以通知方式作出”的一般要求",
+     "rules": [
+      "c480-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定承诺的作出方式（通知或行为），承诺的生效时间（到达生效、数据电文到达等）由第484条以下规定，不在本条",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本条无笔记补充内容；LEGO 卡片缺失，故不引入学理规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c480-1",
+    "srcs": [
+     "art480-1"
+    ],
+    "body": [
+     "offerMade(O)",
+     "offereeOf(A,O)",
+     "~conductAcceptanceAllowed(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "acceptByNotice(A,O)"
+     }
+    ],
+    "note": "承诺应当以通知的方式作出；不存在交易习惯或要约表明可以行为承诺的情形时，受要约人负有以通知方式承诺的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c480-exc",
+    "srcs": [
+     "art480-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "tradeUsageAllowsConductAcceptance(O)",
+       "offerIndicatesConductAcceptance(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "conductAcceptanceAllowed(O)"
+    ],
+    "note": "第480条第1款但书：根据交易习惯或者要约表明可以通过行为作出承诺的，允许以行为承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c480-perm",
+    "srcs": [
+     "art480-1"
+    ],
+    "body": [
+     "conductAcceptanceAllowed(O)",
+     "offereeOf(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "acceptByConduct(A,O)"
+     }
+    ],
+    "note": "存在交易习惯或要约表明时，受要约人可以以行为而非通知作出承诺",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c480-exc",
+    "c480-1",
+    "第480条第1款但书：根据交易习惯或者要约表明可以通过行为作出承诺的除外，故行为承诺的允许优先于以通知方式承诺的义务"
+   ]
+  ],
+  "predicates": {
+   "offerMade": "存在一项要约（参数：要约）",
+   "offereeOf": "是受要约人（受要约人，要约）",
+   "conductAcceptanceAllowed": "可以通过行为作出承诺（要约）",
+   "tradeUsageAllowsConductAcceptance": "根据交易习惯可以通过行为作出承诺（要约）",
+   "offerIndicatesConductAcceptance": "要约表明可以通过行为作出承诺（要约）",
+   "acceptByNotice": "以通知的方式作出承诺（受要约人，要约）",
+   "acceptByConduct": "以行为作出承诺（受要约人，要约）"
+  }
+ },
+ "art:482": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "要约以信件、电报或者电话、传真、电子邮件等快速通讯方式作出时，承诺期限从哪一日起算",
+     "rules": [
+      "c482-letter",
+      "c482-telegram",
+      "c482-postmark",
+      "c482-rapid"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在要约，且要约以信件方式作出并载明了日期",
+     "rules": [
+      "c482-letter"
+     ]
+    },
+    {
+     "text": "要约以电报方式作出",
+     "rules": [
+      "c482-telegram"
+     ]
+    },
+    {
+     "text": "要约以信件方式作出，但信件未载明日期",
+     "rules": [
+      "c482-postmark"
+     ]
+    },
+    {
+     "text": "要约以电话、传真、电子邮件等快速通讯方式作出，且要约已到达受要约人",
+     "rules": [
+      "c482-rapid"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "信件未载明日期的，不按信件载明的日期起算，而自投寄该信件的邮戳日期开始计算",
+     "rules": [
+      "c482-postmark"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承诺期限自信件载明的日期开始计算",
+     "rules": [
+      "c482-letter"
+     ]
+    },
+    {
+     "text": "承诺期限自电报交发之日开始计算",
+     "rules": [
+      "c482-telegram"
+     ]
+    },
+    {
+     "text": "承诺期限自投寄该信件的邮戳日期开始计算",
+     "rules": [
+      "c482-postmark"
+     ]
+    },
+    {
+     "text": "承诺期限自要约到达受要约人时开始计算",
+     "rules": [
+      "c482-rapid"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "信件未载明日期的，按邮戳日期起算的规则排除按信件载明日期起算的规则",
+     "rules": [
+      "c482-postmark",
+      "c482-letter"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决承诺期限的起算点，不规定承诺期限的长短（第481条）与承诺的生效时点；笔记三项与法条一致，无额外例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c482-letter",
+    "srcs": [
+     "art482-1"
+    ],
+    "body": [
+     "offer(O,E)",
+     "offerByLetter(O)",
+     "letterStatesDate(O)"
+    ],
+    "heads": [
+     "acceptancePeriodStartsFrom(O,letterStatedDate)"
+    ],
+    "note": "要约以信件作出的，承诺期限自信件载明的日期（常量 letterStatedDate）开始计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c482-telegram",
+    "srcs": [
+     "art482-1"
+    ],
+    "body": [
+     "offer(O,E)",
+     "offerByTelegram(O)"
+    ],
+    "heads": [
+     "acceptancePeriodStartsFrom(O,telegramDispatchDate)"
+    ],
+    "note": "要约以电报作出的，承诺期限自电报交发之日（常量 telegramDispatchDate）开始计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c482-postmark",
+    "srcs": [
+     "art482-1"
+    ],
+    "body": [
+     "offer(O,E)",
+     "offerByLetter(O)",
+     "-letterStatesDate(O)"
+    ],
+    "heads": [
+     "acceptancePeriodStartsFrom(O,postmarkDate)"
+    ],
+    "note": "信件未载明日期的，承诺期限自投寄该信件的邮戳日期（常量 postmarkDate）开始计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c482-rapid",
+    "srcs": [
+     "art482-1"
+    ],
+    "body": [
+     "offer(O,E)",
+     "offerByRapidCommunication(O)",
+     "reachesCounterparty(O,E)"
+    ],
+    "heads": [
+     "acceptancePeriodStartsFrom(O,offerArrivalDate)"
+    ],
+    "note": "要约以电话、传真、电子邮件等快速通讯方式作出的，承诺期限自要约到达受要约人时（常量 offerArrivalDate）开始计算",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c482-postmark",
+    "c482-letter",
+    "信件未载明日期的，按邮戳日期起算，排除按信件载明日期起算"
+   ]
+  ],
+  "predicates": {
+   "offerByLetter": "要约以信件方式作出（1个参数：要约）",
+   "offerByTelegram": "要约以电报方式作出（1个参数：要约）",
+   "offerByRapidCommunication": "要约以电话、传真、电子邮件等快速通讯方式作出（1个参数：要约）",
+   "letterStatesDate": "信件载明了日期（1个参数：要约）",
+   "acceptancePeriodStartsFrom": "承诺期限自该日起算（参数1：要约；参数2：起算日，取常量 letterStatedDate／telegramDispatchDate／postmarkDate／offerArrivalDate）"
+  }
+ },
+ "card:g4075": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "认购书、订购书、预订书等是否构成预约合同，以及一方不履行预约合同约定的订立合同义务时对方的救济",
+     "rules": [
+      "c495-1",
+      "c495-2"
+     ]
+    },
+    {
+     "text": "订立合同过程中何种情形构成缔约过失、应当承担何种赔偿责任",
+     "rules": [
+      "c500-ground",
+      "c500-1",
+      "c500-elements",
+      "c500-scope"
+     ]
+    },
+    {
+     "text": "订立合同过程中知悉的商业秘密等保密信息的保密义务及违反后的赔偿责任",
+     "rules": [
+      "c501-1",
+      "c501-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定在将来一定期限内订立合同的认购书、订购书、预订书等文件",
+     "rules": [
+      "c495-1"
+     ]
+    },
+    {
+     "text": "在订立合同过程中，假借订立合同恶意进行磋商，或者故意隐瞒与订立合同有关的重要事实、提供虚假情况，或者有其他违背诚信原则的行为",
+     "rules": [
+      "c500-ground"
+     ]
+    },
+    {
+     "text": "上述行为造成对方损失",
+     "rules": [
+      "c500-1"
+     ]
+    },
+    {
+     "text": "学理四要件：违反依诚信原则产生的先合同义务、他方受有信赖利益损失、二者有因果关系、违反方有过错（故意或过失）",
+     "rules": [
+      "c500-elements"
+     ]
+    },
+    {
+     "text": "在订立合同过程中知悉对方的商业秘密或者其他应当保密的信息",
+     "rules": [
+      "c501-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "保密义务不问合同是否成立，合同未成立、无效或被撤销均不影响该义务",
+     "rules": [
+      "c501-1"
+     ]
+    },
+    {
+     "text": "合同无效或者被撤销后，有过失的一方仍应承担缔约过失责任（笔记）",
+     "rules": [
+      "c500-void"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合要件的文件构成预约合同",
+     "rules": [
+      "c495-1"
+     ]
+    },
+    {
+     "text": "一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任",
+     "rules": [
+      "c495-2"
+     ]
+    },
+    {
+     "text": "有第500条第1款情形并造成对方损失的，应当承担赔偿责任",
+     "rules": [
+      "c500-1"
+     ]
+    },
+    {
+     "text": "赔偿范围为信赖利益损失，一般包括缔约费用、准备履行合同所支出的费用、丧失与第三人另订合同的机会所造成的损失（笔记）",
+     "rules": [
+      "c500-scope"
+     ]
+    },
+    {
+     "text": "不得泄露或者不正当地使用知悉的商业秘密或其他应当保密的信息",
+     "rules": [
+      "c501-1"
+     ]
+    },
+    {
+     "text": "泄露、不正当地使用该商业秘密或信息造成对方损失的，应当承担赔偿责任",
+     "rules": [
+      "c501-2"
+     ]
+    },
+    {
+     "text": "泄露或不正当使用保密信息，属于缔约过失的类型之一（笔记列为类型之三）",
+     "rules": [
+      "c501-fault"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "预约合同已成立时，违反订立本约义务适用第495条第2款的预约违约责任，属特别规定，优先于第500条的一般缔约过失责任",
+     "rules": [
+      "c495-2",
+      "c500-1"
+     ]
+    },
+    {
+     "text": "保密信息的泄露、不正当使用有第501条的特别规定，优先于第500条第3项“其他违背诚信原则的行为”适用",
+     "rules": [
+      "c501-2",
+      "c500-1"
+     ]
+    },
+    {
+     "text": "LEGO卡片认为缔约过失责任为独立责任类型，优先于一般侵权责任适用；本行法条未作规定，仅供参考",
+     "rules": [
+      "c500-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第501条针对保密信息的泄露与不正当使用，且不问合同是否成立；第500条为一般缔约过失情形，第501条属其特别类型",
+     "rules": []
+    },
+    {
+     "text": "第495条以预约合同成立为前提，违反订立本约义务承担违约责任；第500条不以合同成立为前提，赔偿的是信赖利益损失",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片提示：第498条是格式条款解释规则、第502条是合同效力问题，均非责任承担规则，与本行规则不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c495-1",
+    "srcs": [
+     "art495-1"
+    ],
+    "body": [
+     "subscriptionDocument(K)",
+     "agreedToConcludeWithinTerm(K)"
+    ],
+    "heads": [
+     "preliminaryContract(K)"
+    ],
+    "note": "当事人约定在将来一定期限内订立合同的认购书、订购书、预订书等，构成预约合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c495-2",
+    "srcs": [
+     "art495-2"
+    ],
+    "body": [
+     "preliminaryContract(K)",
+     "partyTo(P,K)",
+     "partyTo(O,K)",
+     "failsToConcludeContract(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "claimBreachLiability(O,P,K)"
+     }
+    ],
+    "note": "一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c500-ground",
+    "srcs": [
+     "art500-1"
+    ],
+    "body": [
+     "inNegotiation(P,O)",
+     {
+      "or": [
+       "negotiatesInBadFaith(P,O)",
+       "concealsMaterialFactOrProvidesFalseInfo(P,O)",
+       "otherBreachOfGoodFaith(P,O)"
+      ]
+     }
+    ],
+    "heads": [
+     "precontractualFault(P,O)"
+    ],
+    "note": "第500条第1款三项情形：恶意磋商；故意隐瞒重要事实或提供虚假情况；其他违背诚信原则的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c500-1",
+    "srcs": [
+     "art500-1"
+    ],
+    "body": [
+     "precontractualFault(P,O)",
+     "causesLossTo(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payCompensation(P,O)"
+     }
+    ],
+    "note": "订立合同过程中有第500条第1款情形之一，造成对方损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c500-elements",
+    "srcs": [
+     "art500-1"
+    ],
+    "body": [
+     "precontractualFault(P,O)",
+     "relianceLoss(O)",
+     "causationBetween(P,O)",
+     "fault(P,O)"
+    ],
+    "heads": [
+     "precontractualLiability(P,O)"
+    ],
+    "note": "笔记的缔约过失责任四要件：违反先合同义务、信赖利益损失、因果关系、过错；法条未明列过错与因果关系，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c500-scope",
+    "srcs": [
+     "art500-1"
+    ],
+    "body": [
+     "precontractualLiability(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "compensateRelianceInterest(P,O)"
+     }
+    ],
+    "note": "笔记：赔偿范围为信赖利益损失，包括缔约费用、准备履行费用、丧失与第三人另订合同的机会损失；法条未规定范围，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c500-void",
+    "srcs": [
+     "art500-1"
+    ],
+    "body": [
+     "contractVoidOrRescinded(K)",
+     "partyTo(P,K)",
+     "partyTo(O,K)",
+     "fault(P,O)",
+     "causesLossTo(P,O)"
+    ],
+    "heads": [
+     "precontractualLiability(P,O)"
+    ],
+    "note": "笔记：合同无效或者被撤销后，有过失一方承担缔约过失责任；法条未直接规定，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c501-1",
+    "srcs": [
+     "art501-1"
+    ],
+    "body": [
+     "inNegotiation(P,O)",
+     "knowsConfidentialInfo(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "discloseOrUseConfidentialInfo(P,O)"
+     }
+    ],
+    "note": "订立合同过程中知悉对方商业秘密或其他应保密信息的，无论合同是否成立，不得泄露或者不正当地使用",
+    "auth": "npc"
+   },
+   {
+    "key": "c501-2",
+    "srcs": [
+     "art501-1"
+    ],
+    "body": [
+     "disclosesOrImproperlyUses(P,O)",
+     "causesLossTo(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payCompensation(P,O)"
+     }
+    ],
+    "note": "泄露、不正当地使用该商业秘密或信息，造成对方损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c501-fault",
+    "srcs": [
+     "art501-1"
+    ],
+    "body": [
+     "disclosesOrImproperlyUses(P,O)"
+    ],
+    "heads": [
+     "precontractualFault(P,O)"
+    ],
+    "note": "笔记将第501条的泄露、不正当使用列为缔约过失类型之三；法条本身未作此定性，属学理",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c495-2",
+    "c500-1",
+    "预约合同已成立时，违反订立本约义务适用第495条第2款的预约违约责任，属特别规定，优先于第500条一般缔约过失责任"
+   ],
+   [
+    "c501-2",
+    "c500-1",
+    "第501条对保密信息的泄露、不正当使用设有特别赔偿责任，优先于第500条第3项的一般规定"
+   ]
+  ],
+  "predicates": {
+   "subscriptionDocument": "认购书、订购书、预订书等文件（1个参数：文件）",
+   "agreedToConcludeWithinTerm": "约定在将来一定期限内订立合同（1个参数：文件）",
+   "preliminaryContract": "构成预约合同（1个参数：合同）",
+   "failsToConcludeContract": "不履行预约合同约定的订立合同义务（当事人，预约合同）",
+   "claimBreachLiability": "请求承担预约合同的违约责任（对方，违约方，预约合同）",
+   "inNegotiation": "处于订立合同过程中（当事人，对方）",
+   "negotiatesInBadFaith": "假借订立合同，恶意进行磋商（行为人，对方）",
+   "concealsMaterialFactOrProvidesFalseInfo": "故意隐瞒与订立合同有关的重要事实或者提供虚假情况（行为人，对方）",
+   "otherBreachOfGoodFaith": "有其他违背诚信原则的行为（行为人，对方）",
+   "precontractualFault": "违反依诚信原则产生的先合同义务（缔约过失行为）（行为人，对方）",
+   "causesLossTo": "造成对方损失（行为人，对方）",
+   "payCompensation": "承担赔偿责任、赔偿对方损失（赔偿义务人，受损失方）",
+   "relianceLoss": "受有信赖利益损失（受损失方）",
+   "causationBetween": "违反先合同义务与对方损失之间存在因果关系（行为人，对方）",
+   "precontractualLiability": "构成缔约过失责任（责任方，受损失方）",
+   "compensateRelianceInterest": "赔偿信赖利益损失（赔偿义务人，受损失方）",
+   "knowsConfidentialInfo": "在订立合同过程中知悉对方商业秘密或其他应当保密的信息（知悉人，对方）",
+   "disclosesOrImproperlyUses": "泄露或者不正当地使用商业秘密或其他应当保密的信息（行为人，对方）",
+   "discloseOrUseConfidentialInfo": "泄露或不正当使用保密信息（禁止行为内容）（行为人，对方）",
+   "contractVoidOrRescinded": "合同无效或者被撤销（1个参数：合同）"
+  }
+ },
+ "card:g3955": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "要约在何种情形下失效",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3",
+      "c478-4"
+     ]
+    },
+    {
+     "text": "承诺应在何时到达、能否撤回；受要约人对要约内容作出变更时，承诺是否有效、合同内容如何确定",
+     "rules": [
+      "c481-1",
+      "c481-2",
+      "c481-3",
+      "c481-duty",
+      "c485-1",
+      "c485-2",
+      "c488-1",
+      "c488-2",
+      "c488-3",
+      "c489-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "要约被拒绝；要约被依法撤销；承诺期限届满而受要约人未作出承诺；受要约人对要约的内容作出实质性变更",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3",
+      "c478-4"
+     ]
+    },
+    {
+     "text": "要约确定了承诺期限的，承诺应当在该期限内到达要约人",
+     "rules": [
+      "c481-1",
+      "c481-duty"
+     ]
+    },
+    {
+     "text": "要约没有确定承诺期限的：以对话方式作出的，应当即时作出承诺；以非对话方式作出的，承诺应当在合理期限内到达",
+     "rules": [
+      "c481-2",
+      "c481-3"
+     ]
+    },
+    {
+     "text": "变更涉及合同标的、数量、质量、价款或者报酬、履行期限、履行地点和方式、违约责任和解决争议方法等核心要素的，属于对要约内容的实质性变更",
+     "rules": [
+      "c488-3"
+     ]
+    },
+    {
+     "text": "承诺对要约的内容作出非实质性变更，且要约人未及时表示反对、要约也未表明承诺不得对要约内容作出任何变更",
+     "rules": [
+      "c489-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "要约人及时表示反对，或者要约表明承诺不得对要约的内容作出任何变更的，非实质性变更的承诺不发生“承诺有效、合同内容以承诺为准”的效果",
+     "rules": [
+      "c489-1"
+     ]
+    },
+    {
+     "text": "撤回承诺的通知在承诺到达要约人前或者与承诺同时到达的，承诺不发生效力（第485条援引第141条）",
+     "rules": [
+      "c485-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有上述情形之一的，要约失效；要约失效后受要约人再作承诺，不能使合同成立",
+     "rules": [
+      "c478-1",
+      "c478-2",
+      "c478-3",
+      "c478-4",
+      "c478-effect"
+     ]
+    },
+    {
+     "text": "承诺在约定期限内、即时或在合理期限内到达的，为适时到达的承诺",
+     "rules": [
+      "c481-1",
+      "c481-2",
+      "c481-3"
+     ]
+    },
+    {
+     "text": "承诺可以撤回",
+     "rules": [
+      "c485-1"
+     ]
+    },
+    {
+     "text": "承诺的内容应当与要约的内容一致",
+     "rules": [
+      "c488-1"
+     ]
+    },
+    {
+     "text": "受要约人对要约的内容作出实质性变更的，为新要约",
+     "rules": [
+      "c488-2"
+     ]
+    },
+    {
+     "text": "非实质性变更的承诺有效，合同的内容以承诺的内容为准",
+     "rules": [
+      "c489-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "要约已失效的，承诺不能使合同成立，优先于第489条关于非实质性变更的承诺有效的规定",
+     "rules": [
+      "c478-effect",
+      "c489-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片把“变更未获要约人及时同意”列为实质性变更的正面条件，与第488条不符：实质性变更只看变更内容是否涉及核心要素，无须考察要约人是否同意；要约人接受变更内容的，属于第489条或另行订立合同的问题",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片援引第486条、第487条作区分：本行第481条只解决承诺的到达期限，逾期承诺的效力规定在第486条，因非受要约人原因迟到的承诺规定在第487条，均不在本行挂载范围",
+     "rules": []
+    },
+    {
+     "text": "笔记把实质性变更规则与第489条非实质性变更规则并列；两者以变更是否涉及核心要素为分界，互不重叠，故不产生规则冲突",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c478-1",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "offerRejected(P,O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "要约被受要约人拒绝的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-2",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "revokeOffer(O,P)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "要约被依法撤销的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-3",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "acceptancePeriodExpired(O)",
+     "noAcceptanceMade(P,O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "承诺期限届满，受要约人未作出承诺的，要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-4",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "materialAlteration(P,O)"
+    ],
+    "heads": [
+     "offerLapsed(O)"
+    ],
+    "note": "受要约人对要约的内容作出实质性变更的，原要约失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c478-effect",
+    "srcs": [
+     "art478-1"
+    ],
+    "body": [
+     "offerLapsed(O)",
+     "acceptance(P,O)"
+    ],
+    "heads": [
+     "-acceptanceEffective(P,O)"
+    ],
+    "note": "要约失效后受要约人再作承诺的，不能使合同成立（学理推论，条文仅规定要约失效）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c481-1",
+    "srcs": [
+     "art481-1"
+    ],
+    "body": [
+     "offer(O,P)",
+     "agreedAcceptancePeriod(O)",
+     "acceptanceArrivesWithinAgreedPeriod(P,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(P,O)"
+    ],
+    "note": "要约确定了承诺期限的，承诺在该期限内到达要约人即为适时承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-2",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,P)",
+     "noAgreedAcceptancePeriod(O)",
+     "dialogueForm(O)",
+     "acceptanceMadeImmediately(P,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(P,O)"
+    ],
+    "note": "要约未确定承诺期限且以对话方式作出的，受要约人即时作出承诺即为适时承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-3",
+    "srcs": [
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,P)",
+     "noAgreedAcceptancePeriod(O)",
+     "nonDialogueForm(O)",
+     "acceptanceArrivesWithinReasonableTime(P,O)"
+    ],
+    "heads": [
+     "timelyAcceptance(P,O)"
+    ],
+    "note": "要约未确定承诺期限且以非对话方式作出的，承诺在合理期限内到达即为适时承诺",
+    "auth": "npc"
+   },
+   {
+    "key": "c481-duty",
+    "srcs": [
+     "art481-1",
+     "art481-2"
+    ],
+    "body": [
+     "offer(O,P)",
+     "offerorOf(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "makeAcceptanceArriveInTime(P,O)"
+     }
+    ],
+    "note": "承诺应当在要约确定的期限内到达要约人；未确定期限的，按对话即时、非对话合理期限确定到达时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c485-1",
+    "srcs": [
+     "art485-1"
+    ],
+    "body": [
+     "acceptance(P,O)",
+     "offerorOf(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "withdrawAcceptance(P,O)"
+     }
+    ],
+    "note": "承诺可以撤回，撤回适用第141条关于意思表示撤回的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c485-2",
+    "srcs": [
+     "art485-1"
+    ],
+    "body": [
+     "acceptance(P,O)",
+     "withdrawalNoticeArrivesBeforeOrSimultaneously(P,O)"
+    ],
+    "heads": [
+     "-acceptanceEffective(P,O)"
+    ],
+    "note": "依第485条援引的第141条，撤回承诺的通知在承诺到达要约人前或同时到达的，承诺不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c488-1",
+    "srcs": [
+     "art488-1"
+    ],
+    "body": [
+     "acceptance(P,O)",
+     "offerorOf(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "consistentWithOffer(P,O)"
+     }
+    ],
+    "note": "承诺的内容应当与要约的内容一致；不一致时按实质性变更（第488条）与非实质性变更（第489条）分别处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c488-2",
+    "srcs": [
+     "art488-1"
+    ],
+    "body": [
+     "acceptance(P,O)",
+     "materialAlteration(P,O)"
+    ],
+    "heads": [
+     "counterOffer(P,O)"
+    ],
+    "note": "受要约人对要约的内容作出实质性变更的，该承诺为新要约",
+    "auth": "npc"
+   },
+   {
+    "key": "c488-3",
+    "srcs": [
+     "art488-1"
+    ],
+    "body": [
+     "altersCoreTerm(P,O)"
+    ],
+    "heads": [
+     "materialAlteration(P,O)"
+    ],
+    "note": "变更涉及合同标的、数量、质量、价款或者报酬、履行期限、履行地点和方式、违约责任和解决争议方法等核心要素的，为实质性变更",
+    "auth": "npc"
+   },
+   {
+    "key": "c489-1",
+    "srcs": [
+     "art489-1"
+    ],
+    "body": [
+     "acceptance(P,O)",
+     "nonMaterialAlteration(P,O)",
+     "offerorOf(A,O)",
+     "~objectedInTime(A,P,O)",
+     "~offerProhibitsAlteration(O)"
+    ],
+    "heads": [
+     "acceptanceEffective(P,O)",
+     "contractTermsPerAcceptance(O,P)"
+    ],
+    "note": "非实质性变更的承诺，除要约人及时表示反对或要约表明承诺不得作任何变更外，该承诺有效，合同内容以承诺的内容为准",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c478-effect",
+    "c489-1",
+    "要约已失效的，受要约人此后的承诺不能使合同成立，排除第489条关于承诺有效的规定"
+   ]
+  ],
+  "predicates": {
+   "offerLapsed": "要约失效",
+   "offerRejected": "要约被受要约人拒绝（受要约人，要约）",
+   "acceptancePeriodExpired": "要约确定的承诺期限届满",
+   "noAcceptanceMade": "受要约人未作出承诺（受要约人，要约）",
+   "acceptance": "受要约人作出承诺（受要约人，要约）",
+   "materialAlteration": "对要约的内容作出实质性变更（受要约人，要约）",
+   "nonMaterialAlteration": "对要约的内容作出非实质性变更（受要约人，要约）",
+   "altersCoreTerm": "变更涉及合同标的、数量、质量、价款或者报酬、履行期限、履行地点和方式、违约责任和解决争议方法等核心要素（受要约人，要约）",
+   "counterOffer": "该承诺构成新要约（受要约人，原要约）",
+   "agreedAcceptancePeriod": "要约确定了承诺期限",
+   "noAgreedAcceptancePeriod": "要约没有确定承诺期限",
+   "acceptanceArrivesWithinAgreedPeriod": "承诺在要约确定的期限内到达要约人（受要约人，要约）",
+   "acceptanceMadeImmediately": "受要约人即时作出承诺（受要约人，要约）",
+   "acceptanceArrivesWithinReasonableTime": "承诺在合理期限内到达要约人（受要约人，要约）",
+   "timelyAcceptance": "承诺适时到达，符合第481条的到达期限要求（受要约人，要约）",
+   "acceptanceEffective": "承诺有效（受要约人，要约）",
+   "contractTermsPerAcceptance": "合同的内容以承诺的内容为准（要约，受要约人）",
+   "withdrawAcceptance": "撤回承诺（受要约人，要约）",
+   "objectedInTime": "要约人及时表示反对（要约人，受要约人，要约）",
+   "offerProhibitsAlteration": "要约表明承诺不得对要约的内容作出任何变更",
+   "offerorOf": "是作出要约的人，即要约人（要约人，要约）",
+   "makeAcceptanceArriveInTime": "使承诺在法定或约定期限内到达要约人（受要约人，要约）",
+   "consistentWithOffer": "承诺的内容与要约的内容一致（受要约人，要约）"
+  }
+ },
+ "art:484": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承诺何时生效：以通知方式作出的承诺与不需要通知的承诺，生效时点如何确定",
+     "rules": [
+      "c484-1",
+      "c484-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承诺以通知方式作出",
+     "rules": [
+      "c484-1"
+     ]
+    },
+    {
+     "text": "根据交易习惯或者要约的要求，承诺不需要通知",
+     "rules": [
+      "c484-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "以通知方式作出的承诺，其生效时间适用第137条（对话方式自相对人知道内容时生效，非对话方式自到达相对人时生效，数据电文另有规则）",
+     "rules": [
+      "c484-1"
+     ]
+    },
+    {
+     "text": "承诺不需要通知的，根据交易习惯或者要约的要求作出承诺的行为时生效",
+     "rules": [
+      "c484-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记只记载了第2款（承诺不需要通知时的生效时点）；第1款为指引性规定，具体生效时点依第137条判断，本条不重复规定",
+     "rules": [
+      "c484-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c484-1",
+    "srcs": [
+     "art484-1"
+    ],
+    "body": [
+     "acceptanceByNotice(A)"
+    ],
+    "heads": [
+     "acceptanceEffectiveTimeGovernedByArt137(A)"
+    ],
+    "note": "以通知方式作出的承诺，其生效时间适用第137条关于意思表示生效时间的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c484-2",
+    "srcs": [
+     "art484-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "tradeUsageNoNoticeRequired(A)",
+       "offerRequiresNoNotice(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "acceptanceEffectiveAtAct(A)"
+    ],
+    "note": "承诺不需要通知的，根据交易习惯或者要约的要求作出承诺的行为时生效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "acceptanceByNotice": "该承诺以通知方式作出",
+   "acceptanceEffectiveTimeGovernedByArt137": "该承诺的生效时间适用第137条（意思表示生效时间）的规定",
+   "tradeUsageNoNoticeRequired": "根据交易习惯，承诺不需要通知",
+   "offerRequiresNoNotice": "根据要约的要求，承诺不需要通知",
+   "acceptanceEffectiveAtAct": "该承诺自作出承诺的行为时生效"
+  }
+ },
+ "art:487": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受要约人在承诺期限内发出、按照通常情形能够及时到达，但因其他原因迟到的承诺，是否有效",
+     "rules": [
+      "c487-1",
+      "c487-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受要约人在承诺期限内发出承诺，且按照通常情形该承诺能够及时到达要约人",
+     "rules": [
+      "c487-1"
+     ]
+    },
+    {
+     "text": "因其他原因致使承诺到达要约人时超过承诺期限（即“期内发、本能到而不到”）",
+     "rules": [
+      "c487-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "要约人及时通知受要约人因承诺超过期限不接受该承诺的，该承诺不因此有效",
+     "rules": [
+      "c487-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该承诺有效",
+     "rules": [
+      "c487-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "要约人及时发出不接受通知的例外，优先于“期内发、本能到而不到”承诺有效的规则",
+     "rules": [
+      "c487-exc",
+      "c487-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：本条限于“期内发出且按通常情形能及时到达”的迟到承诺；受要约人超过承诺期限发出承诺，或在期限内发出但按通常情形不能及时到达的，属于第486条的逾期承诺，为新要约（要约人及时通知该承诺有效的除外），不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c487-1",
+    "srcs": [
+     "art487-1"
+    ],
+    "body": [
+     "offerorOf(O,K)",
+     "acceptanceSentWithinPeriod(A,K)",
+     "wouldArriveTimelyNormally(A,K)",
+     "arrivesLateForOtherReason(A,K)",
+     "~notifiesRefusalOfLateAcceptance(O,K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "受要约人在承诺期限内发出承诺，按通常情形能及时到达，因其他原因到达时超过期限的，除要约人及时通知不接受外，该承诺有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c487-exc",
+    "srcs": [
+     "art487-1"
+    ],
+    "body": [
+     "offerorOf(O,K)",
+     "notifiesRefusalOfLateAcceptance(O,K)"
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "条文但书的反面推论：要约人及时通知受要约人因承诺超过期限不接受该承诺的，该迟到承诺不生效（学理上按新要约处理）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c487-exc",
+    "c487-1",
+    "要约人及时通知不接受该迟到承诺时，排除“该承诺有效”的效果"
+   ]
+  ],
+  "predicates": {
+   "offerorOf": "是该承诺所对应要约的要约人（要约人，承诺）",
+   "acceptanceSentWithinPeriod": "受要约人在承诺期限内发出承诺（受要约人，承诺）",
+   "wouldArriveTimelyNormally": "按照通常情形该承诺能够及时到达要约人（受要约人，承诺）",
+   "arrivesLateForOtherReason": "因其他原因致使承诺到达要约人时超过承诺期限（受要约人，承诺）",
+   "notifiesRefusalOfLateAcceptance": "要约人及时通知受要约人因承诺超过期限不接受该承诺（要约人，承诺）"
+  }
+ },
+ "art:486": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受要约人逾期发出承诺，或者在承诺期限内发出但按通常情形不能及时到达要约人的，该承诺是否发生承诺效力，抑或构成新要约；要约人及时通知承诺有效的，效果如何",
+     "rules": [
+      "c486-late",
+      "c486-1",
+      "c486-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受要约人超过承诺期限发出承诺（迟发迟到）",
+     "rules": [
+      "c486-late"
+     ]
+    },
+    {
+     "text": "受要约人在承诺期限内发出承诺，但按照通常情形不能及时到达要约人（期内发亦迟到）",
+     "rules": [
+      "c486-late"
+     ]
+    },
+    {
+     "text": "要约人及时通知受要约人该承诺有效",
+     "rules": [
+      "c486-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "要约人及时通知受要约人该承诺有效的，该迟到的承诺有效，不构成新要约（但书）",
+     "rules": [
+      "c486-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承诺迟延的，为新要约，不发生承诺的效力",
+     "rules": [
+      "c486-1"
+     ]
+    },
+    {
+     "text": "要约人及时通知该承诺有效的，承诺有效，不构成新要约",
+     "rules": [
+      "c486-exc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第486条第1款但书（要约人及时通知承诺有效）优先于“迟到的承诺为新要约”的一般规则",
+     "rules": [
+      "c486-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把承诺迟延分为“迟发迟到”与“期内发亦迟到”两种，二者法律效果相同，均为新要约（除要约人及时通知承诺有效外）",
+     "rules": [
+      "c486-late"
+     ]
+    },
+    {
+     "text": "本条只规定承诺迟到的效果，不涉及承诺的撤回（第485条）与承诺的生效时间（第484条），适用时须与这些规定相区分",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c486-late",
+    "srcs": [
+     "art486-1"
+    ],
+    "body": [
+     "acceptance(A,O)",
+     {
+      "or": [
+       "beyondAcceptancePeriod(A,O)",
+       "withinAcceptancePeriod(A,O) cannotArriveInTime(A,O)"
+      ]
+     }
+    ],
+    "heads": [
+     "lateAcceptance(A,O)"
+    ],
+    "note": "承诺迟延（迟到的承诺）包括两种情形：超过承诺期限发出承诺（迟发迟到）；在承诺期限内发出但按通常情形不能及时到达要约人（期内发亦迟到）",
+    "auth": "npc"
+   },
+   {
+    "key": "c486-1",
+    "srcs": [
+     "art486-1"
+    ],
+    "body": [
+     "lateAcceptance(A,O)",
+     "~offerorNotifiedEffective(A,O)"
+    ],
+    "heads": [
+     "newOffer(A,O)",
+     "-acceptanceEffective(A,O)"
+    ],
+    "note": "迟到的承诺为新要约，不发生承诺的效力；但书（要约人及时通知该承诺有效）除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c486-exc",
+    "srcs": [
+     "art486-1"
+    ],
+    "body": [
+     "lateAcceptance(A,O)",
+     "offerorNotifiedEffective(A,O)"
+    ],
+    "heads": [
+     "acceptanceEffective(A,O)",
+     "-newOffer(A,O)"
+    ],
+    "note": "但书：要约人及时通知受要约人该承诺有效的，该迟到的承诺有效，不构成新要约",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c486-exc",
+    "c486-1",
+    "第486条第1款但书：要约人及时通知受要约人该承诺有效的，优先于“迟到的承诺为新要约”的一般规则"
+   ]
+  ],
+  "predicates": {
+   "acceptance": "承诺（参数1：承诺；参数2：其所针对的要约）",
+   "beyondAcceptancePeriod": "受要约人超过承诺期限发出承诺（承诺，要约）",
+   "withinAcceptancePeriod": "受要约人在承诺期限内发出承诺（承诺，要约）",
+   "cannotArriveInTime": "按照通常情形该承诺不能及时到达要约人（承诺，要约）",
+   "lateAcceptance": "承诺迟延，即迟到的承诺（承诺，要约）",
+   "newOffer": "该承诺为新要约（承诺，要约）",
+   "acceptanceEffective": "该承诺有效（承诺，要约）",
+   "offerorNotifiedEffective": "要约人及时通知受要约人该承诺有效（承诺，要约）"
+  }
+ },
+ "art:494": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "强制缔约：国家订货任务、指令性任务下的法定缔约义务，以及法定的要约义务与承诺义务",
+     "rules": [
+      "c494-1",
+      "c494-2",
+      "c494-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "国家根据抢险救灾、疫情防控或者其他需要下达国家订货任务、指令性任务，且双方均为与该任务有关的民事主体",
+     "rules": [
+      "c494-1"
+     ]
+    },
+    {
+     "text": "当事人依照法律、行政法规的规定负有发出要约的义务",
+     "rules": [
+      "c494-2"
+     ]
+    },
+    {
+     "text": "当事人依照法律、行政法规的规定负有作出承诺的义务，且对方提出了合理的订立合同要求",
+     "rules": [
+      "c494-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "有关民事主体之间应当依照有关法律、行政法规规定的权利和义务订立合同",
+     "rules": [
+      "c494-1"
+     ]
+    },
+    {
+     "text": "负有法定要约义务的当事人应当及时发出合理的要约",
+     "rules": [
+      "c494-2"
+     ]
+    },
+    {
+     "text": "负有法定承诺义务的当事人不得拒绝对方合理的订立合同要求",
+     "rules": [
+      "c494-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把第2、3款概括为“强制缔约”，属学理归纳；条文本身未使用该术语，且义务范围以“依照法律、行政法规的规定”为限，并非一般性的缔约强制",
+     "rules": [
+      "c494-doc"
+     ]
+    },
+    {
+     "text": "三款适用情形不同：第1款针对国家订货任务、指令性任务；第2款针对法定要约义务；第3款针对法定承诺义务，不可混用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c494-1",
+    "srcs": [
+     "art494-1"
+    ],
+    "body": [
+     "stateIssuesOrderOrMandatoryTask(T)",
+     "forEmergencyReliefEpidemicOrOtherNeed(T)",
+     "relevantCivilSubject(A,T)",
+     "relevantCivilSubject(B,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "concludeContractPerLawsAndRegs(A,B,T)"
+     }
+    ],
+    "note": "国家因抢险救灾、疫情防控或者其他需要下达国家订货任务、指令性任务的，有关民事主体之间应当依照有关法律、行政法规规定的权利和义务订立合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c494-2",
+    "srcs": [
+     "art494-2"
+    ],
+    "body": [
+     "obligatedToOfferByLaw(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "makeReasonableOfferTimely(A)"
+     }
+    ],
+    "note": "依照法律、行政法规的规定负有发出要约义务的当事人，应当及时发出合理的要约",
+    "auth": "npc"
+   },
+   {
+    "key": "c494-3",
+    "srcs": [
+     "art494-3"
+    ],
+    "body": [
+     "obligatedToAcceptByLaw(A)",
+     "reasonableContractRequest(B,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "refuseContractConclusion(A,B)"
+     }
+    ],
+    "note": "依照法律、行政法规的规定负有作出承诺义务的当事人，不得拒绝对方合理的订立合同要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c494-doc",
+    "srcs": [
+     "art494-2",
+     "art494-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "obligatedToOfferByLaw(A)",
+       "obligatedToAcceptByLaw(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "compulsoryContracting(A)"
+    ],
+    "note": "笔记将第2、3款概括为“强制缔约”，即对缔约自由的法定限制；条文未使用该术语，属学理归纳",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateIssuesOrderOrMandatoryTask": "国家下达国家订货任务、指令性任务（参数：任务）",
+   "forEmergencyReliefEpidemicOrOtherNeed": "该任务系根据抢险救灾、疫情防控或者其他需要下达（参数：任务）",
+   "relevantCivilSubject": "是与该国家订货任务、指令性任务有关的民事主体（主体，任务）",
+   "obligatedToOfferByLaw": "依照法律、行政法规的规定负有发出要约义务的当事人",
+   "obligatedToAcceptByLaw": "依照法律、行政法规的规定负有作出承诺义务的当事人",
+   "reasonableContractRequest": "提出合理的订立合同要求（要求方，被要求方）",
+   "compulsoryContracting": "受强制缔约约束，即负有法定要约或承诺义务（学理概念）",
+   "concludeContractPerLawsAndRegs": "依照有关法律、行政法规规定的权利和义务订立合同（主体，相对方，任务）",
+   "makeReasonableOfferTimely": "及时发出合理的要约（当事人）",
+   "refuseContractConclusion": "拒绝对方合理的订立合同要求（当事人，相对方）"
+  }
+ },
+ "art:498": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "对格式条款的理解发生争议时，应当依照何种顺序、按何种标准解释",
+     "rules": [
+      "c498-1",
+      "c498-2",
+      "c498-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "争议指向的是格式条款，且当事人对其理解发生争议",
+     "rules": [
+      "c498-1"
+     ]
+    },
+    {
+     "text": "该格式条款有两种以上解释",
+     "rules": [
+      "c498-2"
+     ]
+    },
+    {
+     "text": "格式条款与非格式条款不一致",
+     "rules": [
+      "c498-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当按照通常理解予以解释",
+     "rules": [
+      "c498-1"
+     ]
+    },
+    {
+     "text": "应当作出不利于提供格式条款一方的解释",
+     "rules": [
+      "c498-2"
+     ]
+    },
+    {
+     "text": "应当采用非格式条款",
+     "rules": [
+      "c498-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有两种以上解释时，不利解释优先于通常理解（笔记：解释顺序依次为通常理解、不利提供方解释、非格式条款优先）",
+     "rules": [
+      "c498-2"
+     ]
+    },
+    {
+     "text": "格式条款与非格式条款不一致时，采用非格式条款优先于按通常理解解释",
+     "rules": [
+      "c498-3"
+     ]
+    },
+    {
+     "text": "格式条款与非格式条款不一致时，采用非格式条款优先于不利提供方解释",
+     "rules": [
+      "c498-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是格式条款的特别解释规则，与第466条一般合同解释规则不同：在格式条款场合，先按通常理解解释，再适用不利解释与非格式条款优先规则",
+     "rules": []
+    },
+    {
+     "text": "本条只解决格式条款的解释问题；格式条款无效、免责条款无效等效力问题规定在第497条，不在本行范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c498-1",
+    "srcs": [
+     "art498-1"
+    ],
+    "body": [
+     "standardTerm(T)",
+     "disputedClauseMeaning(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretPerOrdinaryUnderstanding(T)"
+     }
+    ],
+    "note": "对格式条款的理解发生争议的，应当按照通常理解予以解释",
+    "auth": "npc"
+   },
+   {
+    "key": "c498-2",
+    "srcs": [
+     "art498-1"
+    ],
+    "body": [
+     "standardTerm(T)",
+     "providedBy(T,P)",
+     "disputedClauseMeaning(T)",
+     "multipleInterpretations(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretAgainstProvider(T,P)"
+     }
+    ],
+    "note": "对格式条款有两种以上解释的，应当作出不利于提供格式条款一方（P）的解释",
+    "auth": "npc"
+   },
+   {
+    "key": "c498-3",
+    "srcs": [
+     "art498-1"
+    ],
+    "body": [
+     "standardTerm(T)",
+     "nonStandardTerm(N)",
+     "inconsistentWith(T,N)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "adoptNonStandardTerm(N)"
+     }
+    ],
+    "note": "格式条款和非格式条款不一致的，应当采用非格式条款",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c498-2",
+    "c498-1",
+    "有两种以上解释时，不利提供方解释优先于通常理解解释（笔记所列解释顺序）"
+   ],
+   [
+    "c498-3",
+    "c498-1",
+    "格式条款与非格式条款不一致时，采用非格式条款优先于按通常理解解释"
+   ],
+   [
+    "c498-3",
+    "c498-2",
+    "格式条款与非格式条款不一致时，采用非格式条款优先于不利提供方解释"
+   ]
+  ],
+  "predicates": {
+   "standardTerm": "是格式条款（1个参数：条款）",
+   "nonStandardTerm": "是非格式条款（1个参数：条款）",
+   "providedBy": "该格式条款由该方提供（参数1：格式条款；参数2：提供方）",
+   "multipleInterpretations": "对格式条款有两种以上解释（1个参数：格式条款）",
+   "inconsistentWith": "格式条款与非格式条款不一致（参数1：格式条款；参数2：非格式条款）",
+   "interpretPerOrdinaryUnderstanding": "按照通常理解予以解释（1个参数：格式条款）",
+   "interpretAgainstProvider": "作出不利于提供格式条款一方的解释（参数1：格式条款；参数2：提供方）",
+   "adoptNonStandardTerm": "采用非格式条款（1个参数：非格式条款）"
+  }
+ },
+ "art:497": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "格式条款在何种情形下无效",
+     "rules": [
+      "c497-1a",
+      "c497-1b",
+      "c497-1c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "系格式条款，即一方为重复使用而预先拟定、订立合同时未与对方协商的条款",
+     "rules": [
+      "c497-1a",
+      "c497-1b",
+      "c497-1c"
+     ]
+    },
+    {
+     "text": "具有第一编第六章第三节规定的民事法律行为无效情形，或者具有第506条规定的免责条款无效情形",
+     "rules": [
+      "c497-1a"
+     ]
+    },
+    {
+     "text": "提供格式条款一方不合理地免除或者减轻其责任、加重对方责任、限制对方主要权利",
+     "rules": [
+      "c497-1b"
+     ]
+    },
+    {
+     "text": "提供格式条款一方排除对方主要权利",
+     "rules": [
+      "c497-1c"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该格式条款无效",
+     "rules": [
+      "c497-1a",
+      "c497-1b",
+      "c497-1c"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第496条第2款针对未尽提示说明义务，效果是对方可主张该格式条款不成为合同内容；第497条针对条款已订入合同后的无效，二者事由与效果不同",
+     "rules": []
+    },
+    {
+     "text": "第506条（造成对方人身损害的免责条款、因故意或者重大过失造成对方财产损失的免责条款无效）被第497条第1项援引，作为格式条款无效的事由之一",
+     "rules": [
+      "c497-1a"
+     ]
+    },
+    {
+     "text": "学理与2020年修改：'不合理地'修饰免除或者减轻其责任、加重对方责任、限制对方主要权利三项，须整体评价条款的不合理性",
+     "rules": [
+      "c497-unreasonable"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c497-1a",
+    "srcs": [
+     "art497-1"
+    ],
+    "body": [
+     "formatClause(K)",
+     {
+      "or": [
+       "hasInvalidityGroundUnderCh6S3(K)",
+       "hasInvalidityGroundUnderArt506(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "格式条款具有第一编第六章第三节或第506条规定的无效情形的，该格式条款无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c497-1b",
+    "srcs": [
+     "art497-1"
+    ],
+    "body": [
+     "formatClause(K)",
+     "providerOf(P,K)",
+     {
+      "or": [
+       "unreasonablyExemptsOrReducesLiability(P,K)",
+       "aggravatesCounterpartyLiability(P,K)",
+       "restrictsCounterpartyMainRight(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "提供格式条款一方不合理地免除或者减轻其责任、加重对方责任、限制对方主要权利的，该格式条款无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c497-1c",
+    "srcs": [
+     "art497-1"
+    ],
+    "body": [
+     "formatClause(K)",
+     "providerOf(P,K)",
+     "excludesCounterpartyMainRight(P,K)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "提供格式条款一方排除对方主要权利的，该格式条款无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c497-unreasonable",
+    "srcs": [
+     "art497-1"
+    ],
+    "body": [
+     "formatClause(K)",
+     "providerOf(P,K)",
+     {
+      "or": [
+       "unreasonablyExemptsOrReducesLiability(P,K)",
+       "aggravatesCounterpartyLiability(P,K)",
+       "restrictsCounterpartyMainRight(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "unreasonableTerm(P,K)"
+    ],
+    "note": "学理与2020年修改：'不合理地'修饰免除或减轻责任、加重对方责任、限制对方主要权利三项，须整体评价条款的不合理性（法条未明示修饰范围，故列为学理规则）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "formatClause": "是格式条款（一方为重复使用而预先拟定、订立合同时未与对方协商的条款）",
+   "providerOf": "是提供格式条款的一方（参数1：提供方；参数2：格式条款）",
+   "hasInvalidityGroundUnderCh6S3": "具有第一编第六章第三节规定的民事法律行为无效情形（无民事行为能力人实施、虚假意思表示、违反强制性规定、违背公序良俗、恶意串通等）",
+   "hasInvalidityGroundUnderArt506": "具有第506条规定的免责条款无效情形（造成对方人身损害；因故意或者重大过失造成对方财产损失）",
+   "unreasonablyExemptsOrReducesLiability": "不合理地免除或者减轻其责任（参数1：提供方；参数2：格式条款）",
+   "aggravatesCounterpartyLiability": "加重对方责任（参数1：提供方；参数2：格式条款）",
+   "restrictsCounterpartyMainRight": "限制对方主要权利（参数1：提供方；参数2：格式条款）",
+   "excludesCounterpartyMainRight": "排除对方主要权利（参数1：提供方；参数2：格式条款）",
+   "unreasonableTerm": "该格式条款具有不合理性（对免责、加重责任、限制主要权利作整体评价）"
+  }
+ }
+}

@@ -1,0 +1,941 @@
+{
+ "card:g6009": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "得利人无法律根据取得利益致他人受损失的，受损失的人能否请求返还；哪些给付虽无给付义务也不构成不当得利",
+     "rules": [
+      "c985-1",
+      "c985-2"
+     ]
+    },
+    {
+     "text": "善意得利人取得的利益已不存在时，是否仍负返还义务",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "恶意得利人（知道或应当知道无法律根据）的返还范围与赔偿责任",
+     "rules": [
+      "c987-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "得利人取得利益；受损失的人受有损失；取得利益没有法律根据；取得利益与受损失之间有因果关系",
+     "rules": [
+      "c985-1"
+     ]
+    },
+    {
+     "text": "得利人不知道且不应当知道取得的利益没有法律根据（善意）",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "取得的利益已经不存在",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "得利人知道或者应当知道取得的利益没有法律根据（恶意）",
+     "rules": [
+      "c987-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "为履行道德义务而进行的给付",
+     "rules": [
+      "c985-ex1"
+     ]
+    },
+    {
+     "text": "债务到期之前的清偿",
+     "rules": [
+      "c985-ex2"
+     ]
+    },
+    {
+     "text": "明知无给付义务而进行的债务清偿",
+     "rules": [
+      "c985-ex3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受损失的人可以请求得利人返还取得的利益",
+     "rules": [
+      "c985-2"
+     ]
+    },
+    {
+     "text": "善意得利人取得的利益已不存在的，不承担返还该利益的义务",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "恶意得利人应当返还取得的利益，并依法赔偿损失",
+     "rules": [
+      "c987-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "善意得利人利益已不存在的免责，排除第985条的返还请求权",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "第987条针对恶意得利人，优先于第985条的一般返还规则和第986条的善意免责",
+     "rules": [
+      "c987-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把三种情形表述为“不构成不当得利”，法条则表述为返还请求权的“除外”情形；本卡片在构成要件层面排除，二者效果一致",
+     "rules": [
+      "c985-1"
+     ]
+    },
+    {
+     "text": "第986条以得利人善意且利益已不存在为限免除返还义务；第987条针对恶意得利人，即使利益已不存在仍应返还并赔偿",
+     "rules": [
+      "c986-1",
+      "c987-1"
+     ]
+    },
+    {
+     "text": "LEGO卡片称“本条为一般性返还规则，优先于具体制度适用”，法条与笔记均无此意：第985条是不当得利的一般规定，第986、987条为特别规定",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片把第983–984条（无因管理）列为区别对象，该两条不在本行挂载范围，不作规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c985-1",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "obtainsBenefit(B)",
+     "suffersLoss(P)",
+     "noLegalBasis(B)",
+     "benefitCausesLoss(B,P)",
+     "~paymentForMoralDuty(B,P)",
+     "~prepaymentBeforeDue(B,P)",
+     "~paymentKnowingNoDuty(B,P)"
+    ],
+    "heads": [
+     "unjustEnrichment(B,P)"
+    ],
+    "note": "得利人无法律根据取得利益致他人受损失，构成不当得利；法条以“除外”方式排除三种无给付义务的给付，笔记明确其“不构成不当得利”，故在构成层面排除",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-2",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "unjustEnrichment(B,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "returnUnjustBenefit(B,P)"
+     }
+    ],
+    "note": "构成不当得利的，受损失的人可以请求得利人返还取得的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-ex1",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "performed(B,P)",
+     "forMoralDuty(B,P)"
+    ],
+    "heads": [
+     "paymentForMoralDuty(B,P)"
+    ],
+    "note": "为履行道德义务而进行的给付，不构成不当得利",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-ex2",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "performed(B,P)",
+     "-debtMatured(B)"
+    ],
+    "heads": [
+     "prepaymentBeforeDue(B,P)"
+    ],
+    "note": "债务到期之前的清偿，不构成不当得利",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-ex3",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "performed(B,P)",
+     "knowsNoPaymentDuty(B,P)"
+    ],
+    "heads": [
+     "paymentKnowingNoDuty(B,P)"
+    ],
+    "note": "明知无给付义务而进行的债务清偿，不构成不当得利",
+    "auth": "npc"
+   },
+   {
+    "key": "c986-1",
+    "srcs": [
+     "art986-1"
+    ],
+    "body": [
+     "unjustEnrichment(B,P)",
+     "unawareOfNoLegalBasis(B)",
+     "benefitNoLongerExists(B)"
+    ],
+    "heads": [
+     "-returnUnjustBenefit(B,P)"
+    ],
+    "note": "善意得利人取得的利益已不存在的，不承担返还该利益的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c987-1",
+    "srcs": [
+     "art987-1"
+    ],
+    "body": [
+     "unjustEnrichment(B,P)",
+     "knowsOrShouldKnowNoLegalBasis(B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "returnUnjustBenefit(B,P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "compensateLoss(B,P)"
+     }
+    ],
+    "note": "恶意得利人（知道或应当知道无法律根据）应返还取得的利益，并依法赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c986-1",
+    "c985-2",
+    "善意得利人取得的利益已不存在的，免除返还义务，排除第985条的返还请求权"
+   ],
+   [
+    "c987-1",
+    "c986-1",
+    "得利人知道或应当知道无法律根据的，即使利益已不存在仍应返还并赔偿，优先于第986条的善意免责"
+   ],
+   [
+    "c987-1",
+    "c985-2",
+    "第987条是恶意得利人的特别规定，优先于第985条的一般返还规则"
+   ]
+  ],
+  "predicates": {
+   "paymentForMoralDuty": "为履行道德义务而进行的给付（给付人，受领人）",
+   "prepaymentBeforeDue": "债务到期之前的清偿（清偿人，受领人）",
+   "paymentKnowingNoDuty": "明知无给付义务而进行的债务清偿（清偿人，受领人）",
+   "forMoralDuty": "给付系为履行道德义务（给付人，受领人）",
+   "knowsNoPaymentDuty": "明知自己没有给付义务（清偿人，受领人）",
+   "unawareOfNoLegalBasis": "不知道且不应当知道取得的利益没有法律根据（得利人）",
+   "knowsOrShouldKnowNoLegalBasis": "知道或者应当知道取得的利益没有法律根据（得利人）",
+   "benefitNoLongerExists": "取得的利益已经不存在（得利人）",
+   "compensateLoss": "依法赔偿损失（得利人，受损失的人）"
+  }
+ },
+ "card:g5985": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不当得利之债的构成要件为何",
+     "rules": [
+      "c986-elements",
+      "c986-nobasis"
+     ]
+    },
+    {
+     "text": "善意得利人取得的利益已不存在时，是否仍负返还义务",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "恶意得利人应承担何种返还与赔偿责任，利益已不存在时能否免责",
+     "rules": [
+      "c987-1",
+      "c987-extinct"
+     ]
+    },
+    {
+     "text": "得利人将利益无偿转让给第三人时，受损失的人能否请求第三人返还",
+     "rules": [
+      "c988-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方获得利益，包括财产的积极增加（如取得所有权）与消极增加（如未支出本应支出的费用）",
+     "rules": [
+      "c986-elements"
+     ]
+    },
+    {
+     "text": "另一方受有损失，包括现有财产利益的减少与应得利益（正常情形下可以得到的利益）的损失",
+     "rules": [
+      "c986-elements"
+     ]
+    },
+    {
+     "text": "受益与受损之间有因果关系，即一方受益是另一方受损的原因",
+     "rules": [
+      "c986-elements"
+     ]
+    },
+    {
+     "text": "获益没有合法根据，包括取得利益时即无法律或合同上的根据，以及取得时虽有根据但嗣后丧失",
+     "rules": [
+      "c986-elements",
+      "c986-nobasis"
+     ]
+    },
+    {
+     "text": "得利人不知道且不应当知道取得的利益没有法律根据（善意）",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "取得的利益已经不存在",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "得利人知道或者应当知道取得的利益没有法律根据（恶意）",
+     "rules": [
+      "c987-1",
+      "c987-extinct"
+     ]
+    },
+    {
+     "text": "得利人已经将取得的利益无偿转让给第三人",
+     "rules": [
+      "c988-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "善意得利人取得的利益已不存在的，不承担返还该利益的义务",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "恶意得利人不得以取得的利益已不存在为由免除返还义务",
+     "rules": [
+      "c987-extinct"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受损失的人可以请求恶意得利人返还其取得的利益并依法赔偿损失",
+     "rules": [
+      "c987-1"
+     ]
+    },
+    {
+     "text": "受损失的人可以请求无偿受让利益的第三人在相应范围内承担返还义务",
+     "rules": [
+      "c988-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "恶意得利人的返还义务优先于善意得利人的免责：第986条“利益不存在”的免责仅适用于善意得利人",
+     "rules": [
+      "c987-extinct",
+      "c986-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "不当得利与侵权行为：基于受益人行为发生的不当得利（如使用他人财产、出租他人之物）可能同时构成侵权，二者法律基础不同，可以并存",
+     "rules": []
+    },
+    {
+     "text": "不当得利与无因管理：无因管理是有法律根据的管理他人事务，不构成不当得利；与合同之债、赠与的区别亦在于有无合法根据",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“得利人为恶意时第三人不负返还义务”，第988条并未作此限制，第三人返还义务仅以得利人无偿转让为要件，范围限于相应范围",
+     "rules": [
+      "c988-1"
+     ]
+    },
+    {
+     "text": "笔记将不当得利分为因给付发生的与基于给付以外事实发生的两类（受益人行为、受损人行为、第三人行为、自然事件、法律规定），本条未作类型区分，类型仅影响构成要件的具体认定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c986-elements",
+    "srcs": [
+     "art986"
+    ],
+    "body": [
+     "obtainsBenefit(G)",
+     "suffersLoss(L)",
+     "benefitCausesLoss(G,L)",
+     "noLegalBasis(G)"
+    ],
+    "heads": [
+     "unjustEnrichment(G,L)"
+    ],
+    "note": "笔记归纳的不当得利四项构成要件：一方获益、他方受损、因果关系、无合法根据（属第985条内容，本行未挂载该条，故列为学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c986-nobasis",
+    "srcs": [
+     "art986"
+    ],
+    "body": [
+     {
+      "or": [
+       "noLegalBasisAtAcquisition(G)",
+       "legalBasisLostLater(G)"
+      ]
+     }
+    ],
+    "heads": [
+     "noLegalBasis(G)"
+    ],
+    "note": "笔记：没有合法根据包括取得利益时即无法律或合同上的根据，以及取得时虽有根据但嗣后丧失两种情形",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c986-1",
+    "srcs": [
+     "art986"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "unawareNoLegalBasis(G)",
+     "benefitNoLongerExists(G)"
+    ],
+    "heads": [
+     "-liableToReturn(G,L)"
+    ],
+    "note": "善意得利人不知道且不应当知道无法律根据，且取得的利益已不存在的，不承担返还该利益的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c987-1",
+    "srcs": [
+     "art987"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "knowsNoLegalBasis(G)"
+    ],
+    "heads": [
+     "liableToReturn(G,L)",
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "G",
+      "content": "claimReturnAndCompensation(G,L)"
+     }
+    ],
+    "note": "得利人知道或者应当知道取得的利益没有法律根据的，受损失的人可以请求其返还取得的利益并依法赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c987-extinct",
+    "srcs": [
+     "art987"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "knowsNoLegalBasis(G)",
+     "benefitNoLongerExists(G)"
+    ],
+    "heads": [
+     "liableToReturn(G,L)"
+    ],
+    "note": "恶意得利人即使取得的利益已不存在仍负返还义务，此为第986条的反面推论（笔记、学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c988-1",
+    "srcs": [
+     "art988"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "gratuitouslyTransferredBenefit(G,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "returnBenefitWithinScope(T,L)"
+     }
+    ],
+    "note": "得利人已将取得的利益无偿转让给第三人的，受损失的人可以请求第三人在相应范围内承担返还义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c987-extinct",
+    "c986-1",
+    "第986条“利益不存在”的免责仅适用于善意得利人，恶意得利人的返还义务不受该免责限制"
+   ]
+  ],
+  "predicates": {
+   "noLegalBasisAtAcquisition": "取得利益时即无法律或合同上的根据（1个参数：得利人）",
+   "legalBasisLostLater": "取得利益时虽有合法根据但嗣后丧失（1个参数：得利人）",
+   "unawareNoLegalBasis": "得利人不知道且不应当知道取得的利益没有法律根据，即善意得利人（1个参数：得利人）",
+   "knowsNoLegalBasis": "得利人知道或者应当知道取得的利益没有法律根据，即恶意得利人（1个参数：得利人）",
+   "benefitNoLongerExists": "取得的利益已经不存在（1个参数：得利人）",
+   "liableToReturn": "负有返还所得利益的义务（得利人，受损失的人）",
+   "claimReturnAndCompensation": "请求返还取得的利益并依法赔偿损失（受损失的人，得利人）",
+   "gratuitouslyTransferredBenefit": "得利人已将取得的利益无偿转让给第三人（得利人，第三人）",
+   "returnBenefitWithinScope": "在相应范围内承担返还义务（第三人，受损失的人）"
+  }
+ },
+ "card:g6022": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无法律根据取得利益致他人损失的，是否成立不当得利之债，受损失的人可否请求返还",
+     "rules": [
+      "c122-constitute",
+      "c985-1"
+     ]
+    },
+    {
+     "text": "善意、恶意得利人的返还范围，以及得利人将利益无偿转让给第三人后第三人的返还义务",
+     "rules": [
+      "c986-1",
+      "c986-scope",
+      "c987-1",
+      "c988-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "他人取得利益没有法律根据，致受损失的人受有损失，且取得利益与受损失之间有因果关系",
+     "rules": [
+      "c122-constitute"
+     ]
+    },
+    {
+     "text": "得利人不知道且不应当知道取得的利益没有法律根据（善意得利人）",
+     "rules": [
+      "c986-1",
+      "c986-scope"
+     ]
+    },
+    {
+     "text": "得利人知道或者应当知道取得的利益没有法律根据（恶意得利人）",
+     "rules": [
+      "c987-1"
+     ]
+    },
+    {
+     "text": "得利人已经将取得的利益无偿转让给第三人",
+     "rules": [
+      "c988-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "为履行道德义务进行的给付、债务到期之前的清偿、明知无给付义务而进行的债务清偿，不得请求返还",
+     "rules": [
+      "c985-exc"
+     ]
+    },
+    {
+     "text": "善意得利人取得的利益已经不存在的，不承担返还该利益的义务",
+     "rules": [
+      "c986-1"
+     ]
+    },
+    {
+     "text": "第三人返还义务以得利人因无偿让与而免除返还义务为要件；得利人为恶意受领人的，其返还义务不因利益不存在而免除，第三人无须负返还义务",
+     "rules": [
+      "c988-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受损失的人有权请求得利人返还不当利益，得利人负有返还义务",
+     "rules": [
+      "c985-1",
+      "c122-oblig"
+     ]
+    },
+    {
+     "text": "返还范围包括原物、原物所生的孳息以及利用原物取得的其他利益",
+     "rules": [
+      "c122-scope"
+     ]
+    },
+    {
+     "text": "善意得利人仅返还受返还请求时现存的利益；损失小于利益的，返还范围以损失为准",
+     "rules": [
+      "c986-scope"
+     ]
+    },
+    {
+     "text": "恶意得利人应返还取得的全部利益，利益少于损失的还须就差额赔偿损失",
+     "rules": [
+      "c987-1"
+     ]
+    },
+    {
+     "text": "受损失的人可以请求第三人在相应范围内承担返还义务",
+     "rules": [
+      "c988-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第985条但书所列三种给付排除返还请求权，优先于返还请求权的一般规定",
+     "rules": [
+      "c985-exc",
+      "c985-1"
+     ]
+    },
+    {
+     "text": "恶意得利人不适用第986条善意得利人的免责规定，返还义务不因利益不存在而免除",
+     "rules": [
+      "c987-1",
+      "c986-1"
+     ]
+    },
+    {
+     "text": "得利人为恶意受领人时，第三人的返还义务被排除，优先于第988条的一般规定",
+     "rules": [
+      "c988-limit",
+      "c988-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第985条以下为合同编准合同章对第122条总则性规定的具体化：第122条确立债的成立与请求权，第985条至第988条细化但书、善意恶意与第三人返还",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“受益人善意且无过错”列为不当得利的消极要件并不准确：善意与否只影响返还范围与免责，不影响不当得利的成立",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“不当得利请求权优先于其他债权请求权”无法律依据；与合同、侵权、无因管理竞合时依各该规定处理，不当得利不以管理意思或过错为要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c122-constitute",
+    "srcs": [
+     "art122"
+    ],
+    "body": [
+     "noLegalBasis(G)",
+     "obtainsBenefit(G)",
+     "suffersLoss(L)",
+     "benefitCausesLoss(G,L)"
+    ],
+    "heads": [
+     "unjustEnrichment(G,L)"
+    ],
+    "note": "第122条：因他人没有法律根据取得不当利益，致他人受损失的，成立不当得利之债；因果关系要件为学理补充",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-1",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "~excludedPayment(L,G)",
+     "~exemptFromReturn(G,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "G",
+      "content": "returnUnjustBenefit(G,L)"
+     }
+    ],
+    "note": "得利人没有法律根据取得不当利益的，受损失的人可以请求返还取得的利益，但第985条但书情形及第986条善意得利人免责情形除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c985-exc",
+    "srcs": [
+     "art985-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "performsMoralDutyPayment(L,G)",
+       "paidBeforeDebtDue(L,G)",
+       "paidKnowingNoDebt(L,G)"
+      ]
+     }
+    ],
+    "heads": [
+     "excludedPayment(L,G)"
+    ],
+    "note": "第985条但书：为履行道德义务的给付、债务到期之前的清偿、明知无给付义务而进行的债务清偿，不得请求返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c122-oblig",
+    "srcs": [
+     "art122"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "~excludedPayment(L,G)",
+     "~exemptFromReturn(G,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "L",
+      "content": "returnUnjustBenefit(G,L)"
+     }
+    ],
+    "note": "笔记：不当得利一经成立即形成债的关系，获得利益的一方负有返还义务（第122条仅明定受损失人的请求权，义务面为学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c122-scope",
+    "srcs": [
+     "art122"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "~excludedPayment(L,G)",
+     "~exemptFromReturn(G,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "L",
+      "content": "returnFruitsAndProfits(G,L)"
+     }
+    ],
+    "note": "笔记：应予返还的利益包括原物、原物所生的孳息以及利用原物取得的其他利益",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c986-1",
+    "srcs": [
+     "art986-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "inGoodFaith(G,L)",
+     "benefitNoLongerExists(G)"
+    ],
+    "heads": [
+     "exemptFromReturn(G,L)"
+    ],
+    "note": "得利人不知道且不应当知道取得的利益没有法律根据，取得的利益已经不存在的，不承担返还该利益的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c986-scope",
+    "srcs": [
+     "art986-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "inGoodFaith(G,L)",
+     "~exemptFromReturn(G,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "L",
+      "content": "returnExistingBenefitOnly(G,L)"
+     }
+    ],
+    "note": "笔记：善意受益人的返还义务以受返还请求时现存的利益为限；损失大于利益只返还现存利益，损失小于利益则以损失为准",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c987-1",
+    "srcs": [
+     "art987-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "knowsOrShouldKnowNoLegalBasis(G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "G",
+      "content": "returnUnjustBenefit(G,L)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "G",
+      "content": "compensateLossDifference(G,L)"
+     }
+    ],
+    "note": "恶意得利人应返还取得的全部利益，利益少于损失的还须依法就差额赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c988-1",
+    "srcs": [
+     "art988-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "transferredGratuitouslyTo(G,T,B)"
+    ],
+    "heads": [
+     "thirdPartyReturnDuty(T,L)",
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "claimReturnWithinScope(L,T)"
+     }
+    ],
+    "note": "得利人已经将取得的利益无偿转让给第三人的，受损失的人可以请求第三人在相应范围内承担返还义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c988-limit",
+    "srcs": [
+     "art988-1"
+    ],
+    "body": [
+     "unjustEnrichment(G,L)",
+     "transferredGratuitouslyTo(G,T,B)",
+     "knowsOrShouldKnowNoLegalBasis(G)"
+    ],
+    "heads": [
+     "-thirdPartyReturnDuty(T,L)"
+    ],
+    "note": "笔记：第三人返还义务以得利人因无偿让与而免除返还义务为要件；恶意得利人的返还义务不因利益不存在而免除，故第三人无须返还",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c985-exc",
+    "c985-1",
+    "第985条但书所列三种给付排除返还请求权，优先于返还请求权的一般规定"
+   ],
+   [
+    "c988-limit",
+    "c988-1",
+    "恶意得利人的返还义务不因无偿转让而免除，第三人不负返还义务（笔记）"
+   ],
+   [
+    "c987-1",
+    "c986-1",
+    "第986条以不知且不应知无法律根据为要件，恶意得利人不适用善意得利人的免责规定"
+   ]
+  ],
+  "predicates": {
+   "excludedPayment": "该给付属于第985条但书所列不得请求返还的情形（给付人，受领人）",
+   "performsMoralDutyPayment": "为履行道德义务进行的给付（给付人，受领人）",
+   "paidBeforeDebtDue": "债务到期之前的清偿（清偿人，债权人）",
+   "paidKnowingNoDebt": "明知无给付义务而进行的债务清偿（清偿人，受领人）",
+   "exemptFromReturn": "善意得利人因取得的利益已不存在而不承担返还该利益的义务（得利人，受损失的人）",
+   "benefitNoLongerExists": "取得的利益已经不存在（得利人）",
+   "knowsOrShouldKnowNoLegalBasis": "得利人知道或者应当知道取得的利益没有法律根据（恶意得利人）",
+   "returnFruitsAndProfits": "返还原物、原物所生孳息以及利用原物取得的其他利益（得利人，受损失的人）",
+   "returnExistingBenefitOnly": "以受返还请求时现存的利益为限返还（善意得利人，受损失的人）",
+   "compensateLossDifference": "就损失与利益之间的差额赔偿损失（得利人，受损失的人）",
+   "transferredGratuitouslyTo": "将取得的利益无偿转让给第三人（得利人，第三人，利益）",
+   "thirdPartyReturnDuty": "第三人在相应范围内承担返还义务（第三人，受损失的人）",
+   "claimReturnWithinScope": "在相应范围内请求返还（受损失的人，第三人）"
+  }
+ }
+}

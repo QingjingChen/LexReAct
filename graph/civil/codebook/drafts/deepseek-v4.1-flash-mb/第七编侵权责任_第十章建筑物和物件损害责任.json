@@ -1,0 +1,465 @@
+{
+ "card:g7955": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建筑物、构筑物或者其他设施倒塌、塌陷造成他人损害，由谁承担侵权责任，赔偿后能否追偿",
+     "rules": [
+      "c1252-1",
+      "c1252-2",
+      "c1252-recourse"
+     ]
+    },
+    {
+     "text": "建筑物、构筑物或者其他设施及其搁置物、悬挂物脱落、坠落致害，由谁承担侵权责任，赔偿后能否追偿",
+     "rules": [
+      "c1253-1",
+      "c1253-recourse"
+     ]
+    },
+    {
+     "text": "公共道路上堆放、倾倒、遗撒妨碍通行的物品致害，行为人与公共道路管理人如何承担责任",
+     "rules": [
+      "c1256-1",
+      "c1256-2"
+     ]
+    },
+    {
+     "text": "林木折断、倾倒或者果实坠落等致害，由谁承担侵权责任",
+     "rules": [
+      "c1257"
+     ]
+    },
+    {
+     "text": "地面施工致害与窨井等地下设施致害，由谁承担侵权责任",
+     "rules": [
+      "c1258-1",
+      "c1258-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "建筑物、构筑物或者其他设施倒塌、塌陷，并造成他人损害",
+     "rules": [
+      "c1252-1",
+      "c1252-2"
+     ]
+    },
+    {
+     "text": "责任主体为建设单位与施工单位（连带责任）；或者倒塌、塌陷系因所有人、管理人、使用人、第三人的原因",
+     "rules": [
+      "c1252-1",
+      "c1252-2"
+     ]
+    },
+    {
+     "text": "建筑物、构筑物或者其他设施及其搁置物、悬挂物发生脱落、坠落，造成他人损害，责任主体为所有人、管理人或者使用人",
+     "rules": [
+      "c1253-1"
+     ]
+    },
+    {
+     "text": "在公共道路上堆放、倾倒、遗撒妨碍通行的物品，造成他人损害",
+     "rules": [
+      "c1256-1",
+      "c1256-2"
+     ]
+    },
+    {
+     "text": "林木折断、倾倒或者果实坠落等造成他人损害，责任主体为林木的所有人或者管理人",
+     "rules": [
+      "c1257"
+     ]
+    },
+    {
+     "text": "在公共场所或者道路上挖掘、修缮安装地下设施等造成他人损害，责任主体为施工人",
+     "rules": [
+      "c1258-1"
+     ]
+    },
+    {
+     "text": "窨井等地下设施造成他人损害，责任主体为管理人",
+     "rules": [
+      "c1258-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "建设单位与施工单位能够证明不存在质量缺陷的，不承担连带责任",
+     "rules": [
+      "c1252-1"
+     ]
+    },
+    {
+     "text": "所有人、管理人或者使用人不能证明自己没有过错的，方承担侵权责任（过错推定，举证责任倒置）",
+     "rules": [
+      "c1253-1",
+      "c1257"
+     ]
+    },
+    {
+     "text": "公共道路管理人不能证明已经尽到清理、防护、警示等义务的，方承担相应的责任",
+     "rules": [
+      "c1256-2"
+     ]
+    },
+    {
+     "text": "施工人不能证明已经设置明显标志和采取安全措施的，方承担侵权责任",
+     "rules": [
+      "c1258-1"
+     ]
+    },
+    {
+     "text": "地下设施管理人不能证明尽到管理职责的，方承担侵权责任",
+     "rules": [
+      "c1258-2"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所列不可抗力、第三人故意、受害人故意或重大过失等一般免责事由，本节法条未明文规定，仅作学理参考",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "建设单位与施工单位承担连带责任",
+     "rules": [
+      "c1252-1"
+     ]
+    },
+    {
+     "text": "因所有人、管理人、使用人或者第三人的原因倒塌、塌陷的，由该人承担侵权责任",
+     "rules": [
+      "c1252-2"
+     ]
+    },
+    {
+     "text": "建设单位、施工单位（或所有人、管理人、使用人）赔偿后，有其他责任人的，有权向其他责任人追偿",
+     "rules": [
+      "c1252-recourse",
+      "c1253-recourse"
+     ]
+    },
+    {
+     "text": "所有人、管理人或者使用人承担侵权责任",
+     "rules": [
+      "c1253-1"
+     ]
+    },
+    {
+     "text": "堆放、倾倒、遗撒妨碍通行物品的行为人承担侵权责任",
+     "rules": [
+      "c1256-1"
+     ]
+    },
+    {
+     "text": "公共道路管理人承担相应的责任",
+     "rules": [
+      "c1256-2"
+     ]
+    },
+    {
+     "text": "林木的所有人或者管理人承担侵权责任",
+     "rules": [
+      "c1257"
+     ]
+    },
+    {
+     "text": "施工人承担侵权责任",
+     "rules": [
+      "c1258-1"
+     ]
+    },
+    {
+     "text": "窨井等地下设施的管理人承担侵权责任",
+     "rules": [
+      "c1258-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "倒塌、塌陷系因所有人、管理人、使用人或者第三人原因的，优先适用第1252条第2款由该人承担责任，不再适用第1款建设单位与施工单位的连带责任",
+     "rules": [
+      "c1252-2"
+     ]
+    },
+    {
+     "text": "本节各条为过错推定（第1252条第1款以质量缺陷为基础），优先于一般过错责任适用；但不排除高度危险作业等无过错责任规定的适用（LEGO 参考）",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1256条为行为人与公共道路管理人的双重责任，管理人承担“相应的责任”而非连带责任；与第1253条搁置物、悬挂物坠落（过错推定、单一责任主体）不同",
+     "rules": []
+    },
+    {
+     "text": "第1257条对象为林木等自然物，归责原则同为过错推定，责任主体为所有人或者管理人",
+     "rules": []
+    },
+    {
+     "text": "笔记：第1258条第1款地面施工致害的责任主体为施工人（施工单位），建设单位不承担责任；第2款责任主体为地下设施管理人",
+     "rules": []
+    },
+    {
+     "text": "第1252条第1款为建设单位与施工单位的连带责任（以质量缺陷为基础），与第1253条、第1257条、第1258条的过错推定责任不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1252-1",
+    "srcs": [
+     "art1252-1"
+    ],
+    "body": [
+     "collapses(B)",
+     "causesDamageTo(B,V)",
+     "constructionUnitOf(U,B)",
+     "constructionContractorOf(C,B)",
+     "~provenNoQualityDefect(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "V",
+      "content": "bearJointLiability(U,C,V)"
+     }
+    ],
+    "note": "建筑物、构筑物或者其他设施倒塌、塌陷致害的，由建设单位与施工单位承担连带责任，但能证明不存在质量缺陷的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1252-recourse",
+    "srcs": [
+     "art1252-1"
+    ],
+    "body": [
+     "bearJointLiability(U,C,V)",
+     "paidVictim(U,V)",
+     "otherResponsiblePerson(R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "U",
+      "counterparty": "R",
+      "content": "recourseAgainstOther(U,R)"
+     }
+    ],
+    "note": "建设单位、施工单位赔偿后，有其他责任人的，有权向其他责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1252-2",
+    "srcs": [
+     "art1252-2"
+    ],
+    "body": [
+     "collapses(B)",
+     "causesDamageTo(B,V)",
+     "causeOfCollapse(P,B)",
+     {
+      "or": [
+       "ownerManagerOrUser(P,B)",
+       "thirdParty(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "liable(P,V,B)"
+     }
+    ],
+    "note": "因所有人、管理人、使用人或者第三人的原因致倒塌、塌陷造成他人损害的，由该人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1253-1",
+    "srcs": [
+     "art1253-1"
+    ],
+    "body": [
+     "fallingObjectFrom(B,P,V)",
+     "ownerManagerOrUser(P,B)",
+     "~provesNoFault(P,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "liable(P,V,B)"
+     }
+    ],
+    "note": "建筑物、构筑物或者其他设施及其搁置物、悬挂物脱落、坠落致害，所有人、管理人或者使用人不能证明自己没有过错的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1253-recourse",
+    "srcs": [
+     "art1253-1"
+    ],
+    "body": [
+     "liable(P,V,B)",
+     "paidVictim(P,V)",
+     "otherResponsiblePerson(R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "recourseAgainstOther(P,R)"
+     }
+    ],
+    "note": "所有人、管理人或者使用人赔偿后，有其他责任人的，有权向其他责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1256-1",
+    "srcs": [
+     "art1256-1"
+    ],
+    "body": [
+     "placesObstructingItemOnRoad(P)",
+     "causesDamageTo(P,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "liable(P,V,obstructingItem)"
+     }
+    ],
+    "note": "在公共道路上堆放、倾倒、遗撒妨碍通行的物品造成他人损害的，由行为人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1256-2",
+    "srcs": [
+     "art1256-1"
+    ],
+    "body": [
+     "placesObstructingItemOnRoad(P)",
+     "causesDamageTo(P,V)",
+     "publicRoadManager(M)",
+     "~provesCleaningWarningDuty(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "V",
+      "content": "correspondingLiability(M,V,obstructingItem)"
+     }
+    ],
+    "note": "公共道路管理人不能证明已经尽到清理、防护、警示等义务的，应当承担相应的责任（不以查明行为人为前提）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1257",
+    "srcs": [
+     "art1257-1"
+    ],
+    "body": [
+     "treeCausesDamage(T,V)",
+     "treeOwnerOrManager(P,T)",
+     "~provesNoFault(P,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "liable(P,V,T)"
+     }
+    ],
+    "note": "林木折断、倾倒或者果实坠落等造成他人损害，林木的所有人或者管理人不能证明自己没有过错的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1258-1",
+    "srcs": [
+     "art1258-1"
+    ],
+    "body": [
+     "excavatesOrRepairsUndergroundFacility(P)",
+     "causesDamageTo(P,V)",
+     "~provesSignsAndSafetyMeasures(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "liable(P,V,undergroundWork)"
+     }
+    ],
+    "note": "在公共场所或者道路上挖掘、修缮安装地下设施等致害，施工人不能证明已经设置明显标志和采取安全措施的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1258-2",
+    "srcs": [
+     "art1258-2"
+    ],
+    "body": [
+     "undergroundFacilityCausesDamage(F,V)",
+     "undergroundFacilityManager(M,F)",
+     "~provesManagementDutyFulfilled(M,F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "V",
+      "content": "liable(M,V,F)"
+     }
+    ],
+    "note": "窨井等地下设施造成他人损害，管理人不能证明尽到管理职责的，应当承担侵权责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1252-2",
+    "c1252-1",
+    "倒塌、塌陷系因所有人、管理人、使用人或者第三人原因的，由该人承担侵权责任，不再适用建设单位与施工单位的连带责任（第1252条第2款为特别规定）"
+   ]
+  ],
+  "predicates": {
+   "collapses": "建筑物、构筑物或者其他设施倒塌、塌陷（1个参数：该建筑物、构筑物或者其他设施）",
+   "constructionUnitOf": "是建设单位（建设单位，建筑物、构筑物或者其他设施）",
+   "constructionContractorOf": "是施工单位（施工单位，建筑物、构筑物或者其他设施）",
+   "provenNoQualityDefect": "经建设单位、施工单位证明不存在质量缺陷（1个参数：建筑物、构筑物或者其他设施）",
+   "otherResponsiblePerson": "是对损害负有责任的其他责任人（1个参数：其他责任人）",
+   "recourseAgainstOther": "向其他责任人追偿（追偿权人，其他责任人）",
+   "causeOfCollapse": "倒塌、塌陷系因其原因（原因主体，建筑物、构筑物或者其他设施）",
+   "thirdParty": "是第三人（1个参数：人）",
+   "placesObstructingItemOnRoad": "在公共道路上堆放、倾倒、遗撒妨碍通行的物品（1个参数：行为人）",
+   "publicRoadManager": "是公共道路管理人（1个参数：管理人）",
+   "provesCleaningWarningDuty": "能证明已经尽到清理、防护、警示等义务（1个参数：公共道路管理人）",
+   "treeCausesDamage": "林木折断、倾倒或者果实坠落等造成他人损害（林木，受害人）",
+   "treeOwnerOrManager": "是林木的所有人或者管理人（人，林木）",
+   "excavatesOrRepairsUndergroundFacility": "在公共场所或者道路上挖掘、修缮安装地下设施等（1个参数：施工人）",
+   "provesSignsAndSafetyMeasures": "能证明已经设置明显标志和采取安全措施（1个参数：施工人）",
+   "undergroundFacilityCausesDamage": "窨井等地下设施造成他人损害（设施，受害人）",
+   "undergroundFacilityManager": "是窨井等地下设施的管理人（管理人，设施）",
+   "provesManagementDutyFulfilled": "能证明尽到管理职责（管理人，设施）"
+  }
+ }
+}

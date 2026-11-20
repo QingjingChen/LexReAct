@@ -1,0 +1,2278 @@
+{
+ "card:g0449": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些民事权利受法律保护、人身权与财产权如何界定（第109、112、113条为宣示性规定）",
+     "rules": [
+      "c109-doc",
+      "c113-doc"
+     ]
+    },
+    {
+     "text": "不当得利的构成要件，以及受损失的人对受益人享有什么请求权",
+     "rules": [
+      "c122-1",
+      "c122-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "自然人的人身自由、人格尊严受法律保护（宣示性，不设规则）",
+     "rules": []
+    },
+    {
+     "text": "自然人因婚姻家庭关系等产生的人身权利受法律保护（宣示性，不设规则）",
+     "rules": []
+    },
+    {
+     "text": "民事主体的财产权利受法律平等保护（宣示性，不设规则）",
+     "rules": []
+    },
+    {
+     "text": "不当得利：他人没有法律根据取得利益，自己受有损失，且取得利益与受损失之间有因果关系",
+     "rules": [
+      "c122-1"
+     ]
+    },
+    {
+     "text": "人身权以实现人身利益为内容、与权利人的人身密不可分；财产权以实现财产利益的自由为内容、直接体现物质利益（笔记的学理界定）",
+     "rules": [
+      "c109-doc",
+      "c113-doc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "取得利益有法律根据（合同、法律规定等）的，不构成不当得利，不发生返还义务",
+     "rules": [
+      "c122-1"
+     ]
+    },
+    {
+     "text": "形成权行使不得附条件或期限，行使后不得撤销，并受除斥期间限制（笔记，学理）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "受损失的人有权请求取得不当利益的他人返还不当利益",
+     "rules": [
+      "c122-2"
+     ]
+    },
+    {
+     "text": "人身自由、人格尊严、因婚姻家庭关系等产生的人身权利以及民事主体的财产权利受法律保护，受侵害时可请求国家机关救济（宣示性）",
+     "rules": []
+    },
+    {
+     "text": "支配权可对标的物直接支配并排除他人干涉；相对权须经特定义务人积极协助才能实现（笔记）",
+     "rules": []
+    },
+    {
+     "text": "主权利移转或消灭时，从权利随之移转、消灭（笔记）",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "禁止权利滥用优先于权利自由行使，即使形式合法亦可能被否定（LEGO/笔记）",
+     "rules": []
+    },
+    {
+     "text": "形成权适用除斥期间，不适用诉讼时效；诉讼时效经过产生永久性抗辩权（笔记）",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "抗辩权以存在有效请求权为前提（肯定请求权而对抗之）；否认权则是主张对方权利根本不存在",
+     "rules": []
+    },
+    {
+     "text": "期待权成立要件尚未全部具备，既得权成立要件已全部具备并被主体实际享有",
+     "rules": []
+    },
+    {
+     "text": "绝对权（对世权）义务人不特定、无须他人积极协助即可实现；相对权（对人权）义务人特定、须其积极作为或不作为才能实现",
+     "rules": []
+    },
+    {
+     "text": "人身权与财产权以权利客体区分；股权等不能简单归入二者，属混合型权利",
+     "rules": []
+    },
+    {
+     "text": "笔记将第109–112条归为人身权、第113–122条归为财产权；但第122条本身规定的是不当得利返还请求权，属债权（财产权），并非对权利类型的宣示",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c122-1",
+    "srcs": [
+     "art122"
+    ],
+    "body": [
+     "noLegalBasis(B)",
+     "obtainsBenefit(B)",
+     "suffersLoss(L)",
+     "benefitCausesLoss(B,L)"
+    ],
+    "heads": [
+     "unjustEnrichment(B,L)"
+    ],
+    "note": "他人没有法律根据取得利益、致他人受损失且有因果关系的，构成不当得利",
+    "auth": "npc"
+   },
+   {
+    "key": "c122-2",
+    "srcs": [
+     "art122"
+    ],
+    "body": [
+     "unjustEnrichment(B,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "returnUnjustBenefit(B,L)"
+     }
+    ],
+    "note": "受损失的人有权请求取得不当利益的他人返还不当利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c109-doc",
+    "srcs": [
+     "art109"
+    ],
+    "body": [
+     "inseparableFromPerson(R)",
+     "personalInterestContent(R)"
+    ],
+    "heads": [
+     "personalRight(R)"
+    ],
+    "note": "笔记对人身权的学理界定：以实现人身利益为内容、与权利人的人身密不可分；第109–112条为其法律依据，法条本身未作定义",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c113-doc",
+    "srcs": [
+     "art113"
+    ],
+    "body": [
+     "propertyInterestContent(R)"
+    ],
+    "heads": [
+     "propertyRight(R)"
+    ],
+    "note": "笔记对财产权的学理界定：以实现财产利益的自由为内容、直接体现物质利益；第113–122条为其法律依据，法条本身未作定义",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "noLegalBasis": "取得利益没有法律根据（受益人）",
+   "obtainsBenefit": "取得利益（受益人）",
+   "suffersLoss": "受有损失（受损失的人）",
+   "benefitCausesLoss": "取得利益与他人受损失之间有因果关系（受益人，受损失的人）",
+   "unjustEnrichment": "构成不当得利（受益人，受损失的人）",
+   "returnUnjustBenefit": "返还不当利益（受益人，受损失的人）",
+   "personalInterestContent": "以实现人身利益为内容（权利）",
+   "propertyInterestContent": "以实现财产利益的自由为内容、直接体现物质利益（权利）",
+   "personalRight": "人身权",
+   "propertyRight": "财产权"
+  }
+ },
+ "art:110": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人、法人和非法人组织分别享有哪些人格权（人格权的类型与主体范围）",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "自然人享有生命权、身体权、健康权、姓名权、肖像权、名誉权、荣誉权、隐私权、婚姻自主权等人格权",
+     "rules": []
+    },
+    {
+     "text": "法人、非法人组织享有名称权、名誉权和荣誉权",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是宣示性、权利列举性规定，没有构成要件和法律效果，因此不生成可废止规则；各项人格权的具体内容、保护方式和限制，由人格权编其他条文（如第990条以下）展开",
+     "rules": []
+    },
+    {
+     "text": "第1款与第2款的主体范围不同：自然人享有生命权、身体权、健康权、婚姻自主权等以自然人的生理和伦理属性为基础的权利，法人、非法人组织只享有名称权、名誉权和荣誉权",
+     "rules": []
+    },
+    {
+     "text": "第1款用“等权利”作开放式列举，为法律未列明的人格利益留下解释空间；这属于学理说明，条文本身没有规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g7981": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "知识产权的定义、法定客体范围与法律性质（专有性、地域性、时间性、客体无形性）",
+     "rules": [
+      "c123-1",
+      "c123-2",
+      "c123-valid"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体为民事主体（自然人、法人、非法人组织）",
+     "rules": [
+      "c123-1",
+      "c123-2"
+     ]
+    },
+    {
+     "text": "客体为作品，发明、实用新型、外观设计，商标，地理标志，商业秘密，集成电路布图设计，植物新品种，或法律规定的其他客体",
+     "rules": [
+      "c123-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "商业秘密权、地理标志权、商号权等少数知识产权没有时间限制，只要符合条件法律可长期保护，不因保护期届满而消灭",
+     "rules": [
+      "c123-d-noterm"
+     ]
+    },
+    {
+     "text": "商标权期限届满后可通过续展依法延长保护期",
+     "rules": [
+      "c123-d-renew"
+     ]
+    },
+    {
+     "text": "知识产权只在其产生的特定国家或地区领域内有效，不具有域外效力；须依国际条约、双边协议或互惠原则，按该国知识产权法在该国获得保护",
+     "rules": [
+      "c123-d-territory",
+      "c123-d-foreign"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "权利人对该客体享有专有的知识产权，可独占使用智力成果；无法律规定或未经权利人许可，任何人不得擅自使用",
+     "rules": [
+      "c123-valid",
+      "c123-excl",
+      "c123-d-excl"
+     ]
+    },
+    {
+     "text": "知识产权在法定保护期内有效，超出法定保护期后消灭，有关智力成果进入公有领域，人们可以自由使用",
+     "rules": [
+      "c123-d-term"
+     ]
+    },
+    {
+     "text": "知识产权的客体是智力成果，不具有物质形态",
+     "rules": [
+      "c123-d-intangible"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "商业秘密、地理标志、商号等无期限限制的知识产权优先于时间性规则，不因期限届满而消灭",
+     "rules": [
+      "c123-d-noterm"
+     ]
+    },
+    {
+     "text": "商标续展优先于期限届满即消灭的规则",
+     "rules": [
+      "c123-d-renew"
+     ]
+    },
+    {
+     "text": "法定保护期届满的，知识产权消灭，优先于“依法取得即存续”的规则",
+     "rules": [
+      "c123-d-term"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与物权不同：知识产权客体为无形智力成果，且有地域性与时间性；有形财产的保护原则上没有地域限制",
+     "rules": []
+    },
+    {
+     "text": "与债权不同：知识产权属绝对权、对世权、支配权，同一智力成果上不能有两项以上完全相同的知识产权并存",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列合理使用、强制许可、在先使用未注册商标的正当使用等限制，第123条未作规定，属著作权法、专利法、商标法内容，本卡片不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c123-1",
+    "srcs": [
+     "art123-1"
+    ],
+    "body": [
+     "civilSubject(S)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "enjoyIntellectualProperty(S)"
+     }
+    ],
+    "note": "民事主体依法享有知识产权（宣示性规定，与第2款的客体定义规则配合适用）",
+    "auth": "npc"
+   },
+   {
+    "key": "c123-2",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "civilSubject(S)",
+     {
+      "or": [
+       "work(X)",
+       "inventionUtilityModelDesign(X)",
+       "trademark(X)",
+       "geographicalIndication(X)",
+       "tradeSecret(X)",
+       "integratedCircuitLayoutDesign(X)",
+       "newPlantVariety(X)",
+       "otherObjectProvidedByLaw(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "ipRightEstablished(S,X)"
+    ],
+    "note": "知识产权是权利人依法就作品、发明实用新型外观设计、商标、地理标志、商业秘密、集成电路布图设计、植物新品种及法律规定的其他客体享有的专有权利（客体范围）",
+    "auth": "npc"
+   },
+   {
+    "key": "c123-valid",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "ipRightEstablished(S,X)"
+    ],
+    "heads": [
+     "intellectualProperty(S,X)"
+    ],
+    "note": "依法就法定客体取得的知识产权在保护期内有效存续（“取得”与“存续”的衔接规则，供时间性规则排除）",
+    "auth": "npc"
+   },
+   {
+    "key": "c123-excl",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "intellectualProperty(S,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "exclusivelyExploit(S,X)"
+     }
+    ],
+    "note": "知识产权为专有的权利，权利人对客体享有排他性支配（学理上属绝对权、对世权、支配权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c123-d-excl",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "intellectualProperty(S,X)",
+     "civilSubject(U)",
+     "~authorizedByLaw(U,X)",
+     "~licensedBy(S,U,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "U",
+      "counterparty": "S",
+      "content": "exploit(U,X)"
+     }
+    ],
+    "note": "笔记专有性：没有法律规定或未经权利人许可，任何人不得擅自使用权利人的智力成果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-territory",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "intellectualProperty(S,X)",
+     "obtainedIn(S,X,C)"
+    ],
+    "heads": [
+     "effectiveOnlyIn(S,X,C)"
+    ],
+    "note": "笔记地域性：一项知识产权只在其产生的特定国家或地区领域内有效，不具有域外效力",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-foreign",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "civilSubject(S)",
+     {
+      "or": [
+       "internationalTreaty(C)",
+       "bilateralAgreement(C)",
+       "reciprocity(C)"
+      ]
+     },
+     "obtainedPerLawOf(S,X,C)"
+    ],
+    "heads": [
+     "protectedIn(S,X,C)"
+    ],
+    "note": "笔记地域性：须依国际条约、双边协议或互惠原则，按该国知识产权法在该国获得知识产权保护",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-term",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "ipRightEstablished(S,X)",
+     "statutoryTermExpired(S,X)"
+    ],
+    "heads": [
+     "-intellectualProperty(S,X)",
+     "enteredPublicDomain(X)"
+    ],
+    "note": "笔记时间性：超出法定保护期后知识产权消灭，智力成果进入公有领域，人们可以自由使用",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-noterm",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "ipRightEstablished(S,X)",
+     {
+      "or": [
+       "tradeSecret(X)",
+       "geographicalIndication(X)",
+       "tradeName(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-statutoryTermExpired(S,X)"
+    ],
+    "note": "笔记时间性例外：商业秘密权、地理标志权、商号权等少数知识产权没有时间限制，符合条件可长期保护",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-renew",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "ipRightEstablished(S,X)",
+     "trademark(X)",
+     "renewedRegistration(S,X)"
+    ],
+    "heads": [
+     "-statutoryTermExpired(S,X)"
+    ],
+    "note": "笔记时间性例外：商标权的期限届满后可通过续展依法延长保护期",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c123-d-intangible",
+    "srcs": [
+     "art123-2"
+    ],
+    "body": [
+     "intellectualProperty(S,X)"
+    ],
+    "heads": [
+     "intangible(X)"
+    ],
+    "note": "笔记客体无形性：知识产权的客体是智力成果，不具有物质形态，这是知识产权与其他民事权利的重大区别",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c123-d-noterm",
+    "c123-d-term",
+    "商业秘密、地理标志、商号等不受时间限制，不因保护期届满而消灭"
+   ],
+   [
+    "c123-d-renew",
+    "c123-d-term",
+    "商标权可续展，续展后不因原保护期届满而消灭"
+   ],
+   [
+    "c123-d-term",
+    "c123-valid",
+    "法定保护期届满，知识产权消灭，不再存续"
+   ]
+  ],
+  "predicates": {
+   "ipRightEstablished": "依法就法定客体取得知识产权（主体，客体）",
+   "intellectualProperty": "享有存续中的知识产权（主体，客体）",
+   "enjoyIntellectualProperty": "依法享有知识产权（主体）",
+   "exclusivelyExploit": "独占使用智力成果（权利人，客体）",
+   "exploit": "使用（实施）智力成果（使用者，客体）",
+   "authorizedByLaw": "有法律规定可擅自使用（使用者，客体）",
+   "licensedBy": "经权利人许可（权利人，使用者，客体）",
+   "work": "作品",
+   "inventionUtilityModelDesign": "发明、实用新型或外观设计",
+   "trademark": "商标",
+   "geographicalIndication": "地理标志",
+   "tradeSecret": "商业秘密",
+   "integratedCircuitLayoutDesign": "集成电路布图设计",
+   "newPlantVariety": "植物新品种",
+   "otherObjectProvidedByLaw": "法律规定的其他知识产权客体",
+   "tradeName": "商号",
+   "obtainedIn": "在特定国家或地区依法取得（主体，客体，国家或地区）",
+   "effectiveOnlyIn": "仅在该国家或地区领域内有效（主体，客体，国家或地区）",
+   "internationalTreaty": "是国际条约",
+   "bilateralAgreement": "是双边协议",
+   "reciprocity": "适用互惠原则",
+   "obtainedPerLawOf": "按该国知识产权法在该国获得（主体，客体，国家）",
+   "protectedIn": "在该国受法律保护（主体，客体，国家）",
+   "statutoryTermExpired": "法定保护期已届满（主体，客体）",
+   "enteredPublicDomain": "智力成果进入公有领域",
+   "renewedRegistration": "已依法办理续展（主体，客体）",
+   "intangible": "不具有物质形态"
+  }
+ },
+ "card:g2092": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物权的种类和内容是否只能由法律规定，当事人能否以约定创设法律未规定的物权类型或与法定内容相悖的物权内容",
+     "rules": [
+      "c116-type",
+      "c116-content"
+     ]
+    },
+    {
+     "text": "国家、集体、私人的物权和其他权利人的物权是否受法律平等保护，组织或个人可否加以侵犯",
+     "rules": [
+      "c207-protect",
+      "c207-forbid",
+      "c207-equal"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "物权的种类和内容由法律规定（狭义的法律）",
+     "rules": []
+    },
+    {
+     "text": "当事人创设了法律未规定的物权类型，或者约定的物权内容与法定内容相悖",
+     "rules": [
+      "c116-type",
+      "c116-content"
+     ]
+    },
+    {
+     "text": "各民事主体在物权法律关系中法律地位平等，除法律有特别规定外平等适用物权编所确立的规则",
+     "rules": [
+      "c207-equal"
+     ]
+    },
+    {
+     "text": "国家、集体、私人或者其他权利人对特定物享有物权",
+     "rules": [
+      "c207-protect",
+      "c207-forbid"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律有特别规定的，不适用“平等适用物权编规则”的一般要求（笔记）",
+     "rules": []
+    },
+    {
+     "text": "约定仅部分违反内容强制、但不影响其他部分效力的，物权仍得以设立，仅违反规定的内容无效",
+     "rules": [
+      "c116-partial"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "法律没有规定的物权类型，当事人不得自由设立，即使有约定也不发生物权设定的法律效果（如不动产质权）",
+     "rules": [
+      "c116-type"
+     ]
+    },
+    {
+     "text": "约定内容违反内容强制的，该部分内容无效",
+     "rules": [
+      "c116-content"
+     ]
+    },
+    {
+     "text": "部分违反内容强制但不影响其他部分效力的，物权仍得以设立（如超出用益物权法定期限的约定无效，不影响用益物权的设立）",
+     "rules": [
+      "c116-partial"
+     ]
+    },
+    {
+     "text": "违反物权法定导致物权设定无效，不影响当事人之间合同等其他法律行为的效力",
+     "rules": [
+      "c116-separate"
+     ]
+    },
+    {
+     "text": "国家、集体、私人的物权和其他权利人的物权受法律平等保护",
+     "rules": [
+      "c207-protect"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得侵犯他人的物权",
+     "rules": [
+      "c207-forbid"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "物权法定优先于当事人的意思表示，当事人不得以约定创设法律未规定的物权类型或改变法定物权内容",
+     "rules": [
+      "c116-type",
+      "c116-content"
+     ]
+    },
+    {
+     "text": "法律有特别规定时，优先于各民事主体平等适用物权编规则的一般要求",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第116条原文只规定“种类和内容”由法律规定；笔记将“变动方式（公示方法）”也纳入物权法定，属学理扩张，公示方法另由公示公信原则及物权变动各条落实",
+     "rules": []
+    },
+    {
+     "text": "一物一权（客体特定）原则、公示公信原则与物权法定、平等保护并列于本节，但不属于第116条、第207条的范围",
+     "rules": []
+    },
+    {
+     "text": "第207条是平等保护原则的宣示性规定，是民法平等原则在物权领域的具体化；其中“不得侵犯”部分可作禁止性规范处理",
+     "rules": [
+      "c207-forbid"
+     ]
+    },
+    {
+     "text": "物权法定与意思自治的界限：违反物权法定仅使物权设定不生效力，合同行为是否有效应依合同编另行判断",
+     "rules": [
+      "c116-separate"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c116-type",
+    "srcs": [
+     "art116-1"
+    ],
+    "body": [
+     "createsRealRightType(P,T)"
+    ],
+    "heads": [
+     "-realRightEstablished(P,T)"
+    ],
+    "note": "类型强制：当事人创设法律未规定的物权类型，即使有约定也不发生物权设定的法律效果（笔记所列后果，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c116-content",
+    "srcs": [
+     "art116-1"
+    ],
+    "body": [
+     "agreedContentContraryToStatutoryContent(P,C)"
+    ],
+    "heads": [
+     "-agreedContentValid(P,C)"
+    ],
+    "note": "内容强制：当事人不得创设与法定物权内容相悖的内容，违反部分无效（笔记，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c116-partial",
+    "srcs": [
+     "art116-1"
+    ],
+    "body": [
+     "agreedContentContraryToStatutoryContent(P,C)",
+     "realRightTypeProvidedByLaw(T)",
+     "otherPartUnaffected(P)"
+    ],
+    "heads": [
+     "realRightEstablished(P,T)"
+    ],
+    "note": "约定部分违反内容强制但不影响其他部分效力的，物权仍得以设立，仅违反规定的内容无效（笔记，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c116-separate",
+    "srcs": [
+     "art116-1"
+    ],
+    "body": [
+     "createsRealRightType(P,T)"
+    ],
+    "heads": [
+     "otherLegalActUnaffected(P)"
+    ],
+    "note": "违反物权法定仅使物权设定无效，不影响当事人之间合同等其他法律行为的效力（笔记，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c207-protect",
+    "srcs": [
+     "art207-1"
+    ],
+    "body": [
+     "realRightOf(P,O)"
+    ],
+    "heads": [
+     "rightProtectedByLaw(P,O)"
+    ],
+    "note": "国家、集体、私人的物权和其他权利人的物权受法律平等保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c207-forbid",
+    "srcs": [
+     "art207-1"
+    ],
+    "body": [
+     "realRightOf(P,O)",
+     {
+      "or": [
+       "organization(X)",
+       "naturalPerson(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "X",
+      "counterparty": "P",
+      "content": "infringeRealRight(X,P,O)"
+     }
+    ],
+    "note": "任何组织或者个人不得侵犯他人的物权",
+    "auth": "npc"
+   },
+   {
+    "key": "c207-equal",
+    "srcs": [
+     "art207-1"
+    ],
+    "body": [
+     "realRightHolder(P)",
+     "realRightHolder(Q)"
+    ],
+    "heads": [
+     "equalStatus(P,Q)"
+    ],
+    "note": "平等保护原则：所有民事主体在物权法中法律地位平等，是民法平等原则在物权领域的具体化（笔记，学理）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "createsRealRightType": "创设法律未规定的物权类型（当事人，物权类型）",
+   "realRightEstablished": "发生物权设定的法律效果（当事人，物权类型）",
+   "agreedContentContraryToStatutoryContent": "约定的物权内容与法定物权内容相悖（当事人，约定内容）",
+   "agreedContentValid": "约定的物权内容有效（当事人，约定内容）",
+   "realRightTypeProvidedByLaw": "该物权类型为法律所规定",
+   "otherPartUnaffected": "其他部分的效力不受影响（当事人）",
+   "otherLegalActUnaffected": "当事人之间合同等其他法律行为的效力不受影响",
+   "realRightOf": "享有物权（权利人，物）",
+   "realRightHolder": "是物权人",
+   "infringeRealRight": "侵犯物权（行为人，权利人，物）"
+  }
+ },
+ "art:111": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人的个人信息是否受法律保护；任何组织或者个人获取、处理他人个人信息的合法边界（应当依法取得并确保安全，不得非法收集、使用、加工、传输、买卖、提供、公开）",
+     "rules": [
+      "c111-protect",
+      "c111-obtain",
+      "c111-collect",
+      "c111-sell"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "信息属于自然人的个人信息",
+     "rules": [
+      "c111-protect",
+      "c111-obtain",
+      "c111-collect",
+      "c111-sell"
+     ]
+    },
+    {
+     "text": "行为主体是任何组织或者个人（民事主体）",
+     "rules": [
+      "c111-obtain",
+      "c111-collect",
+      "c111-sell"
+     ]
+    },
+    {
+     "text": "需要获取他人个人信息",
+     "rules": [
+      "c111-obtain"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依法取得并确保信息安全的，不属于“非法”收集、使用、加工、传输、买卖、提供、公开；本条禁止的是“非法”处理行为",
+     "rules": [
+      "c111-obtain",
+      "c111-collect",
+      "c111-sell"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人的个人信息受法律保护",
+     "rules": [
+      "c111-protect"
+     ]
+    },
+    {
+     "text": "需要获取他人个人信息的，应当依法取得并确保信息安全",
+     "rules": [
+      "c111-obtain"
+     ]
+    },
+    {
+     "text": "不得非法收集、使用、加工、传输他人个人信息",
+     "rules": [
+      "c111-collect"
+     ]
+    },
+    {
+     "text": "不得非法买卖、提供或者公开他人个人信息",
+     "rules": [
+      "c111-sell"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记指出人格权编对个人信息保护作了具体规定（个人信息的定义、处理原则、免责事由等）；本条是总则编的保护性宣示与禁止性规定，具体规则适用人格权编相应条文",
+     "rules": []
+    },
+    {
+     "text": "笔记中“个人信息是以电子或者其他方式记录的能够识别特定自然人的信息”这一定义出自人格权编（第1034条第2款），本条并未定义，故不写入本条规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c111-protect",
+    "srcs": [
+     "art111-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "personalInformationOf(I,P)"
+    ],
+    "heads": [
+     "rightProtectedByLaw(I,P)"
+    ],
+    "note": "自然人的个人信息受法律保护（保护性宣示，作为本条禁止性规定的构成性基础）",
+    "auth": "npc"
+   },
+   {
+    "key": "c111-obtain",
+    "srcs": [
+     "art111-1"
+    ],
+    "body": [
+     "civilSubject(O)",
+     "needsToObtain(O,I)",
+     "personalInformationOf(I,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "obtainLawfullyAndEnsureSecurity(O,I)"
+     }
+    ],
+    "note": "任何组织或者个人需要获取他人个人信息的，应当依法取得并确保信息安全",
+    "auth": "npc"
+   },
+   {
+    "key": "c111-collect",
+    "srcs": [
+     "art111-1"
+    ],
+    "body": [
+     "civilSubject(O)",
+     "personalInformationOf(I,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "illegallyCollectUseProcessTransmit(O,I)"
+     }
+    ],
+    "note": "不得非法收集、使用、加工、传输他人个人信息",
+    "auth": "npc"
+   },
+   {
+    "key": "c111-sell",
+    "srcs": [
+     "art111-1"
+    ],
+    "body": [
+     "civilSubject(O)",
+     "personalInformationOf(I,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "illegallySellProvideDisclose(O,I)"
+     }
+    ],
+    "note": "不得非法买卖、提供或者公开他人个人信息",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "personalInformationOf": "是自然人的个人信息（信息，自然人）",
+   "needsToObtain": "需要获取他人个人信息（主体，信息）",
+   "obtainLawfullyAndEnsureSecurity": "依法取得并确保信息安全（主体，信息）",
+   "illegallyCollectUseProcessTransmit": "非法收集、使用、加工、传输他人个人信息（主体，信息）",
+   "illegallySellProvideDisclose": "非法买卖、提供或者公开他人个人信息（主体，信息）"
+  }
+ },
+ "art:115": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物的范围如何界定；权利可否作为物权的客体",
+     "rules": [
+      "c115-1",
+      "c115-2",
+      "c115-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该客体属于不动产或者动产",
+     "rules": [
+      "c115-1",
+      "c115-2"
+     ]
+    },
+    {
+     "text": "法律明确规定某项权利作为物权客体",
+     "rules": [
+      "c115-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "不动产、动产均属于物",
+     "rules": [
+      "c115-1",
+      "c115-2"
+     ]
+    },
+    {
+     "text": "该权利成为物权客体，且其作为物权客体的事项依照该法律的规定处理",
+     "rules": [
+      "c115-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对权利作为物权客体另有规定的，依照该规定处理，不再适用物限于不动产、动产的一般界定",
+     "rules": [
+      "c115-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只界定物的范围与权利作为物权客体的依据；第115条第2款关于主物、从物的规定本行未挂载，不在本卡片范围内",
+     "rules": []
+    },
+    {
+     "text": "权利作为物权客体属法律明定的例外（如权利质权、以知识产权中的财产权出质等），须有法律依据，不能由当事人约定创设",
+     "rules": [
+      "c115-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c115-1",
+    "srcs": [
+     "art115-1"
+    ],
+    "body": [
+     "immovable(X)"
+    ],
+    "heads": [
+     "thing(X)"
+    ],
+    "note": "不动产属于物，为物权的客体",
+    "auth": "npc"
+   },
+   {
+    "key": "c115-2",
+    "srcs": [
+     "art115-1"
+    ],
+    "body": [
+     "movable(X)"
+    ],
+    "heads": [
+     "thing(X)"
+    ],
+    "note": "动产属于物，为物权的客体",
+    "auth": "npc"
+   },
+   {
+    "key": "c115-3",
+    "srcs": [
+     "art115-1"
+    ],
+    "body": [
+     "lawProvidesRightAsRealRightObject(R)"
+    ],
+    "heads": [
+     "realRightObject(R)",
+     "rightAsObjectGovernedByItsProvision(R)"
+    ],
+    "note": "法律规定权利作为物权客体的，该权利即为物权客体，并依照该法律的规定处理",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c115-3",
+    "c115-1",
+    "法律规定权利作为物权客体的，依照其规定处理，属另有规定，优先于物限于不动产、动产的一般界定"
+   ]
+  ],
+  "predicates": {
+   "immovable": "不动产",
+   "thing": "物（物权客体意义上的有体物）",
+   "lawProvidesRightAsRealRightObject": "法律规定某项权利作为物权客体",
+   "realRightObject": "是物权的客体",
+   "rightAsObjectGovernedByItsProvision": "该权利作为物权客体的事项依照该法律的规定处理"
+  }
+ },
+ "art:120": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事权益受到侵害时，被侵权人可否请求侵权人承担侵权责任",
+     "rules": [
+      "c120-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被侵权人依法享有的人身、财产等民事权益受到侵权人侵害",
+     "rules": [
+      "c120-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "被侵权人取得请求侵权人承担侵权责任的请求权（本条只赋予权利，不直接设定侵权人的义务内容）",
+     "rules": [
+      "c120-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是民事责任的一般性、宣示性规定，只确立请求权主体与相对人，不规定归责原则、构成要件、免责事由与责任方式；这些由侵权责任编（如第1165条以下）具体规定",
+     "rules": []
+    },
+    {
+     "text": "本条用语为“民事权益”，既包括法定的人身权益、财产权益，也包括法律保护的其他利益，不限于明文规定的权利",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c120-1",
+    "srcs": [
+     "art120"
+    ],
+    "body": [
+     "infringe(T,R)",
+     "lawfulRightOf(V,R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "T",
+      "content": "claimTortLiability(T,V)"
+     }
+    ],
+    "note": "民事权益受到侵害的，被侵权人有权请求侵权人承担侵权责任；本条只赋予请求权，构成要件与免责事由由侵权责任编规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "claimTortLiability": "请求侵权人承担侵权责任（被侵权人，侵权人）"
+  }
+ },
+ "card:g3659": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权的概念与发生原因：何种权利构成债权，权利人得请求特定义务人为或者不为一定行为",
+     "rules": [
+      "c118-2",
+      "c118-def"
+     ]
+    },
+    {
+     "text": "依法成立的合同是否对当事人具有法律约束力，该约束力如何体现",
+     "rules": [
+      "c119-1",
+      "c119-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在特定当事人之间的民事法律关系：一方为享有权利的人（债权人），另一方为负担义务的人（债务人）",
+     "rules": [
+      "c118-def"
+     ]
+    },
+    {
+     "text": "债权因合同、侵权行为、无因管理、不当得利或者法律的其他规定而发生",
+     "rules": [
+      "c118-2"
+     ]
+    },
+    {
+     "text": "合同依法成立",
+     "rules": [
+      "c119-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债原则上仅在特定当事人之间发生效力；法律有规定时，债也可以对第三人发生效力（但书）",
+     "rules": [
+      "c118-relativity"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "民事主体依法享有债权（第118条第1款为宣示性规定，不单独设规则）",
+     "rules": []
+    },
+    {
+     "text": "权利人享有请求特定义务人为或者不为一定行为的权利，即债权；债权与债务具有特定性和对应性",
+     "rules": [
+      "c118-2"
+     ]
+    },
+    {
+     "text": "债的客体（标的）是债务人的特定行为即给付，包括以作为为内容的积极给付和以不作为为内容的消极给付",
+     "rules": [
+      "c118-object"
+     ]
+    },
+    {
+     "text": "依法成立的合同对当事人具有法律约束力",
+     "rules": [
+      "c119-1"
+     ]
+    },
+    {
+     "text": "合同当事人受合同拘束，应当依约履行",
+     "rules": [
+      "c119-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "物权是支配权、具有排他性，可直接支配特定物；债权是请求权，只能请求特定义务人为或不为一定行为，不具有排他性，同一内容的数个债权可以并存（笔记、学理）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“破产时按比例清偿”“代位权、撤销权突破债的相对性”“主给付义务与从给付义务”等，均非第118、119条的内容，属其他条文或学理问题，本卡片不形式化",
+     "rules": []
+    },
+    {
+     "text": "第119条只解决依法成立的合同的法律约束力，不规定合同成立要件（成立要件见第471条以下）；第118条第1款为宣示性条款，不单独设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c118-2",
+    "srcs": [
+     "art118-2"
+    ],
+    "body": [
+     "civilSubject(R)",
+     "obligorOf(O,R)",
+     {
+      "or": [
+       "arisesFromContract(R,O)",
+       "arisesFromTort(R,O)",
+       "arisesFromNegotiorumGestio(R,O)",
+       "arisesFromUnjustEnrichment(R,O)",
+       "arisesFromOtherLegalProvision(R,O)"
+      ]
+     }
+    ],
+    "heads": [
+     "claimRightOf(R,O)"
+    ],
+    "note": "债权是因合同、侵权行为、无因管理、不当得利以及法律的其他规定，权利人请求特定义务人为或者不为一定行为的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c118-def",
+    "srcs": [
+     "art118-2"
+    ],
+    "body": [
+     "claimRightOf(R,O)",
+     "civilSubject(R)"
+    ],
+    "heads": [
+     "debtRelation(R,O)"
+    ],
+    "note": "笔记：债是特定当事人之间可以请求为特定行为的民事法律关系，主体为债权人与债务人，内容为债权与债务",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c118-object",
+    "srcs": [
+     "art118-2"
+    ],
+    "body": [
+     "debtRelation(R,O)"
+    ],
+    "heads": [
+     "objectIsPerformance(R,O)"
+    ],
+    "note": "笔记：债的客体（标的）是债务人的特定行为即给付，包括积极给付与消极给付",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c118-relativity",
+    "srcs": [
+     "art118-2"
+    ],
+    "body": [
+     "debtRelation(R,O)",
+     "~lawProvidesThirdPartyEffect(O)"
+    ],
+    "heads": [
+     "bindsOnlyParties(R,O)"
+    ],
+    "note": "笔记：债原则上仅在特定当事人之间发生效力，法律有规定时可以对第三人发生效力（但书）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c119-1",
+    "srcs": [
+     "art119-1"
+    ],
+    "body": [
+     "contract(K)",
+     "contractLawfullyEstablished(K)"
+    ],
+    "heads": [
+     "bindingForce(K)"
+    ],
+    "note": "依法成立的合同，对当事人具有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c119-2",
+    "srcs": [
+     "art119-1"
+    ],
+    "body": [
+     "bindingForce(K)",
+     "partyTo(K,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performContract(P,K)"
+     }
+    ],
+    "note": "学理：合同的法律约束力表现为当事人受其拘束，应当依约履行（第119条未明文规定履行义务）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "claimRightOf": "权利人享有请求特定义务人为或者不为一定行为的债权（权利人，义务人）",
+   "arisesFromContract": "债权因合同发生（权利人，义务人）",
+   "arisesFromTort": "债权因侵权行为发生（权利人，义务人）",
+   "arisesFromNegotiorumGestio": "债权因无因管理发生（权利人，义务人）",
+   "arisesFromUnjustEnrichment": "债权因不当得利发生（权利人，义务人）",
+   "arisesFromOtherLegalProvision": "债权因法律的其他规定发生（权利人，义务人）",
+   "debtRelation": "债的法律关系（债权人，债务人）",
+   "objectIsPerformance": "债的客体是债务人的特定行为即给付（债权人，债务人）",
+   "bindsOnlyParties": "债仅在特定当事人之间发生效力（债权人，债务人）",
+   "lawProvidesThirdPartyEffect": "法律有规定使债对第三人发生效力（义务人）",
+   "contract": "合同",
+   "contractLawfullyEstablished": "合同依法成立",
+   "bindingForce": "具有法律约束力（合同）",
+   "partyTo": "是合同当事人（当事人，合同）",
+   "performContract": "依约履行合同（当事人，合同）"
+  }
+ },
+ "art:117": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "为了公共利益的需要，依照法律规定的权限和程序征收、征用不动产或者动产的，是否应当给予补偿、补偿应达到何种标准",
+     "rules": [
+      "c117-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "征收、征用的目的须为公共利益的需要",
+     "rules": [
+      "c117-1"
+     ]
+    },
+    {
+     "text": "须依照法律规定的权限和程序进行",
+     "rules": [
+      "c117-1"
+     ]
+    },
+    {
+     "text": "标的为不动产或者动产（征收、征用二者并列）",
+     "rules": [
+      "c117-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "征收、征用人应当给予公平、合理的补偿",
+     "rules": [
+      "c117-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "学理上征收移转标的物所有权，征用仅临时使用；本条对二者并列规定同一补偿义务，条文本身未作区分",
+     "rules": [
+      "c117-distinguish"
+     ]
+    },
+    {
+     "text": "第117条第2款对征收集体土地、单位或个人的房屋及其他不动产的补偿，以及征收个人住宅的居住保障另有规定，本行未挂载该款，故不在此形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c117-1",
+    "srcs": [
+     "art117-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "expropriation(A,X)",
+       "requisition(A,X)"
+      ]
+     },
+     "forPublicInterest(A)",
+     "perLegalAuthorityAndProcedure(A)",
+     "immovableOrMovable(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "payFairReasonableCompensation(A,X)"
+     }
+    ],
+    "note": "为了公共利益的需要，依照法律规定的权限和程序征收、征用不动产或者动产的，征收、征用人应当给予公平、合理的补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c117-distinguish",
+    "srcs": [
+     "art117-1"
+    ],
+    "body": [
+     "expropriation(A,X)"
+    ],
+    "heads": [
+     "belongsTo(X,A)"
+    ],
+    "note": "学理区分（条文未明定）：征收使标的物所有权移转于征收人，征用仅为临时使用；二者在本条中并列适用同一补偿义务",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "expropriation": "征收（征收人，被征收的不动产或动产）",
+   "requisition": "征用（征用人，被征用的不动产或动产）",
+   "forPublicInterest": "征收、征用是为了公共利益的需要",
+   "perLegalAuthorityAndProcedure": "依照法律规定的权限和程序实施征收、征用",
+   "immovableOrMovable": "是不动产或者动产",
+   "payFairReasonableCompensation": "给予公平、合理的补偿（补偿义务人，被征收、征用的不动产或动产）"
+  }
+ },
+ "art:124": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人是否依法享有继承权，其合法的私有财产可否依法继承",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为自然人；客体为自然人合法的私有财产",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "自然人依法享有继承权",
+     "rules": []
+    },
+    {
+     "text": "自然人合法的私有财产，可以依法继承",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、原则性规定，只确认继承权与私有财产可继承性，不单独产生可废止规则；继承权的取得、丧失、放弃以及遗产的范围与处理，依继承编其他条文（法定继承、遗嘱继承与遗赠、遗赠扶养协议等）确定",
+     "rules": []
+    },
+    {
+     "text": "“依法继承”表明继承的方式与顺序受法律限制，并非不受约束的自由处分；笔记未就本条作展开，无可援引的例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:125": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体是否依法享有股权和其他投资性权利",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为民事主体（自然人、法人、非法人组织）",
+     "rules": []
+    },
+    {
+     "text": "依照法律规定（“依法”）享有，即权利的种类、内容与取得方式由法律确定",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "民事主体享有股权",
+     "rules": []
+    },
+    {
+     "text": "民事主体享有股权以外的其他投资性权利（如合伙份额、基金份额、信托受益权等投资性权益）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、权利确认性规定，不设构成要件与法律效果，不能单独作为请求权基础；股权与其他投资性权利的具体取得、行使、转让与保护，依公司法、证券法、合伙企业法等特别规定处理",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的学理规则；LEGO 卡片缺失，故本行不作形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:126": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体除人格权、身份权、物权、债权、知识产权、继承权等民事权利外，是否还享有其他民事权利和利益",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该权利或利益须有“法律规定”，即由其他法律作出规定；本条自身不创设具体权利",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "民事主体享有法律规定的其他民事权利和利益，并受法律保护",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "其他法律对具体民事权利和利益另有规定的，依其规定；本条为兜底性规定，仅在无具体规定时起补充作用",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、兜底性条款，不产生具体的行为义务或权利变动效果，故不写形式化规则；适用时须结合其他法律的具体规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:129": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事权利可以依据民事法律行为、事实行为、法律规定的事件或者法律规定的其他方式取得。本条为宣示性、引致性规定，仅列举民事权利的取得原因，不单独创设取得要件与效果，具体规则由总则法律行为部分及物权、合同、继承等各编相应条文规定",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:130": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体按照自己的意愿依法行使民事权利，是否受他人干涉",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、原则性规定（意思自治/自愿原则在权利行使层面的体现），未设定构成要件与法律后果，故不形式化为可废止规则；笔记未引用原文或条号，无可补充的例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:127": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "数据、网络虚拟财产受法律保护时，应适用何种规范",
+     "rules": [
+      "c127-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保护对象为数据、网络虚拟财产，且法律对其保护已有规定",
+     "rules": [
+      "c127-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依照该法律的规定处理，即特别规定优先于民法典的一般规定适用",
+     "rules": [
+      "c127-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对数据、网络虚拟财产的保护另有规定的，优先于本法一般规定适用（引致条款）",
+     "rules": [
+      "c127-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为引致条款，本身不创设数据、网络虚拟财产的具体权利内容与保护方式，具体规则由其他法律提供",
+     "rules": []
+    },
+    {
+     "text": "本条置于民事权利章，表明数据、网络虚拟财产属民事权益客体，但其权利性质（物权、知识产权抑或新型权利）法条未定，属学理讨论",
+     "rules": []
+    },
+    {
+     "text": "法律对数据、网络虚拟财产的保护没有规定的，本条不适用，仍依总则关于民事权益保护的一般规定处理（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c127-1",
+    "srcs": [
+     "art127"
+    ],
+    "body": [
+     "dataOrNetworkVirtualProperty(O)",
+     "lawHasProtectionProvision(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyThatProtectionProvision(O)"
+     }
+    ],
+    "note": "引致条款：法律对数据、网络虚拟财产的保护有规定的，依照该规定处理，即特别规定优先",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "dataOrNetworkVirtualProperty": "是数据、网络虚拟财产（受保护对象）",
+   "lawHasProtectionProvision": "法律对该对象（数据、网络虚拟财产）的保护已有规定",
+   "applyThatProtectionProvision": "依照该法律规定处理（保护该对象）"
+  }
+ },
+ "art:121": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "没有法定或者约定义务的人为他人管理事务，能否请求受益人偿还由此支出的必要费用",
+     "rules": [
+      "c121-def",
+      "c121-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管理人没有法定的或者约定的义务；有为他人管理事务的行为；管理目的是为避免他人利益受损失",
+     "rules": [
+      "c121-def"
+     ]
+    },
+    {
+     "text": "管理人因管理该事务实际支出了必要费用",
+     "rules": [
+      "c121-1",
+      "c121-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "学理（第979条第2款，本行未挂载）：管理事务不符合受益人真实意思的，管理人的费用偿还请求权不受法律保护；但受益人的真实意思违反法律或者违背公序良俗的除外",
+     "rules": [
+      "c121-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "管理人有权请求受益人偿还由此支出的必要费用",
+     "rules": [
+      "c121-1"
+     ]
+    },
+    {
+     "text": "受益人负有偿还该必要费用的义务（管理人权利的对应该面）",
+     "rules": [
+      "c121-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "管理事务不符合受益人真实意思的，排除管理人的必要费用偿还请求权",
+     "rules": [
+      "c121-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定必要费用偿还请求权；管理人因管理事务受到损失的适当补偿请求权，以及管理人的通知、报告、移交义务，规定于第979条以下（本行未挂载）",
+     "rules": []
+    },
+    {
+     "text": "无因管理须有为他人管理事务、避免其利益受损的意思，与不当得利、侵权不同；管理不当造成受益人损失的，另按侵权或不当得利处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c121-def",
+    "srcs": [
+     "art121"
+    ],
+    "body": [
+     "noLegalOrContractualDuty(M)",
+     "managesAffairsFor(M,B)",
+     "toAvoidLossOf(M,B)"
+    ],
+    "heads": [
+     "negotiorumManagement(M,B)"
+    ],
+    "note": "无因管理的构成：没有法定或约定义务、为他人管理事务、为避免他人利益受损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c121-1",
+    "srcs": [
+     "art121"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "expensesIncurredFor(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimReimbursementOfNecessaryExpenses(M,B)"
+     }
+    ],
+    "note": "进行管理的人有权请求受益人偿还由此支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c121-2",
+    "srcs": [
+     "art121"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "expensesIncurredFor(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "M",
+      "content": "reimburseNecessaryExpenses(M,B)"
+     }
+    ],
+    "note": "管理人享有请求权的对应该面：受益人应当偿还该必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c121-exc",
+    "srcs": [
+     "art121"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "contraryToBeneficiaryTrueIntention(M,B)"
+    ],
+    "heads": [
+     "-claimReimbursementOfNecessaryExpenses(M,B)"
+    ],
+    "note": "学理例外（第979条第2款，本行未挂载）：管理事务不符合受益人真实意思的，费用偿还请求权不受保护；受益人真实意思违法或违背公序良俗的除外",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c121-exc",
+    "c121-1",
+    "管理事务不符合受益人真实意思的，管理人的必要费用偿还请求权不受法律保护（学理例外优先）"
+   ]
+  ],
+  "predicates": {
+   "noLegalOrContractualDuty": "没有法定的或者约定的义务（管理人）",
+   "noLegalOrContractualDuty/1": "没有法定的或者约定的义务（管理人）",
+   "managesAffairsFor": "为他人管理事务（管理人，受益人）",
+   "managesAffairsFor/2": "为他人管理事务（管理人，受益人）",
+   "toAvoidLossOf": "管理目的是为避免他人利益受损失（管理人，受益人）",
+   "toAvoidLossOf/2": "管理目的是为避免他人利益受损失（管理人，受益人）",
+   "negotiorumManagement": "构成无因管理（管理人，受益人）",
+   "negotiorumManagement/2": "构成无因管理（管理人，受益人）",
+   "expensesIncurredFor": "因管理他人事务而支出必要费用（管理人，受益人）",
+   "expensesIncurredFor/2": "因管理他人事务而支出必要费用（管理人，受益人）",
+   "claimReimbursementOfNecessaryExpenses": "请求偿还因管理事务支出的必要费用（管理人，受益人）",
+   "claimReimbursementOfNecessaryExpenses/2": "请求偿还因管理事务支出的必要费用（管理人，受益人）",
+   "reimburseNecessaryExpenses": "偿还因管理事务支出的必要费用（受益人，管理人）",
+   "reimburseNecessaryExpenses/2": "偿还因管理事务支出的必要费用（受益人，管理人）",
+   "contraryToBeneficiaryTrueIntention": "管理事务不符合受益人的真实意思（管理人，受益人）",
+   "contraryToBeneficiaryTrueIntention/2": "管理事务不符合受益人的真实意思（管理人，受益人）"
+  }
+ },
+ "art:131": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体行使权利时，是否应当履行法律规定的和当事人约定的义务",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "民事主体行使权利时，应当履行法律规定的和当事人约定的义务（宣示性、原则性规定，不设定具体构成要件与法律效果，故不形式化为可废止规则）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只是权利行使与义务履行相一致的原则宣示，未规定义务的具体内容、履行方式及违反后果；具体义务及其责任由合同编、侵权责任编等分编规定，本条不能单独作为请求权基础",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:128": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律对未成年人、老年人、残疾人、妇女、消费者等的民事权利保护有特别规定时，应当适用哪一规定",
+     "rules": [
+      "c128-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为未成年人、老年人、残疾人、妇女、消费者等受法律特别保护的主体",
+     "rules": [
+      "c128-1"
+     ]
+    },
+    {
+     "text": "法律对该主体的民事权利保护另有特别规定",
+     "rules": [
+      "c128-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "就该主体的民事权利保护，依照该特别规定处理，不再适用民法典的一般规定",
+     "rules": [
+      "c128-1",
+      "c128-general"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "特别规定优先于民法典关于该民事权利保护的一般规定（特别法优于一般法）",
+     "rules": [
+      "c128-1",
+      "c128-general"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为援引性条款，本身不创设新的权利义务，只解决法律适用顺序；“等”字表明受特别保护的主体不限于所列举的五类",
+     "rules": []
+    },
+    {
+     "text": "本条限于“法律”的特别规定；行政法规、地方性法规等不属于本条所称特别规定（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c128-1",
+    "srcs": [
+     "art128-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "minor(P)",
+       "elderly(P)",
+       "disabledPerson(P)",
+       "woman(P)",
+       "consumer(P)",
+       "otherProtectedSubject(P)"
+      ]
+     },
+     "specialProtectionProvisionExists(P,R)"
+    ],
+    "heads": [
+     "specialProtectionProvisionApplies(P,R)"
+    ],
+    "note": "法律对未成年人、老年人、残疾人、妇女、消费者等的民事权利保护有特别规定的，就该主体的该民事权利依照特别规定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c128-general",
+    "srcs": [
+     "art128-1"
+    ],
+    "body": [
+     "civilRightOf(P,R)"
+    ],
+    "heads": [
+     "generalProtectionProvisionApplies(P,R)"
+    ],
+    "note": "学理：无特别规定时，民事权利保护适用民法典的一般规定；本条以特别规定优先为其例外",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c128-1",
+    "c128-general",
+    "法律对未成年人、老年人、残疾人、妇女、消费者等的民事权利保护有特别规定的，优先适用该特别规定（特别法优于一般法）"
+   ]
+  ],
+  "predicates": {
+   "elderly": "老年人",
+   "disabledPerson": "残疾人",
+   "woman": "妇女",
+   "consumer": "消费者",
+   "otherProtectedSubject": "未成年人、老年人、残疾人、妇女、消费者等以外的其他受法律特别保护的主体",
+   "civilRightOf": "享有该民事权利（主体，权利）",
+   "specialProtectionProvisionExists": "法律对该主体的民事权利保护有特别规定（主体，权利）",
+   "specialProtectionProvisionApplies": "就该主体的民事权利保护，依照法律的特别规定处理（主体，权利）",
+   "generalProtectionProvisionApplies": "就该主体的民事权利保护，适用民法典的一般规定（主体，权利）"
+  }
+ },
+ "art:132": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体行使民事权利时，何种情形构成滥用权利而受法律禁止",
+     "rules": [
+      "c132-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是民事主体，且其正在行使民事权利",
+     "rules": [
+      "c132-1"
+     ]
+    },
+    {
+     "text": "行使权利损害国家利益、社会公共利益或者他人合法权益（三者之一即可）",
+     "rules": [
+      "c132-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "权利行使未损害国家利益、社会公共利益或他人合法权益的，不属于滥用权利，不受本条禁止",
+     "rules": [
+      "c132-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "禁止该民事主体以滥用民事权利的方式损害国家利益、社会公共利益或者他人合法权益",
+     "rules": [
+      "c132-1"
+     ]
+    },
+    {
+     "text": "滥用权利造成他人损害的，应当依法承担民事责任（本条未规定后果，系学理与侵权责任编的当然结论）",
+     "rules": [
+      "c132-liability"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把本条列为民事权利行使应遵循的原则之一（不得滥用权利损害国家利益、社会公共利益或他人合法权益），与第130条权利行使自由、第131条义务履行相并列",
+     "rules": []
+    },
+    {
+     "text": "本条是权利行使的内部界限（禁止权利滥用），不同于第8条、第143条的公序良俗限制：后者针对民事法律行为与民事活动的一般效力评价",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c132-1",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "civilSubject(S)",
+     "exercisesCivilRight(S)",
+     {
+      "or": [
+       "harmsStateInterest(S)",
+       "harmsPublicInterest(S)",
+       "harmsOthersRights(S)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "abuseCivilRight(S)"
+     }
+    ],
+    "note": "民事主体不得滥用民事权利损害国家利益、社会公共利益或者他人合法权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c132-liability",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "abuseCivilRight(S)",
+     "causesDamageTo(S,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "V",
+      "content": "bearCivilLiabilityForAbuse(S)"
+     }
+    ],
+    "note": "本条只设禁令未定后果；依学理及侵权责任编，滥用权利造成他人损害的应依法承担民事责任（学理补充，非本条原文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "exercisesCivilRight": "正在行使民事权利（主体）",
+   "abuseCivilRight": "滥用民事权利（主体）",
+   "harmsStateInterest": "损害国家利益（主体）",
+   "harmsPublicInterest": "损害社会公共利益（主体）",
+   "bearCivilLiabilityForAbuse": "就滥用民事权利造成的损害依法承担民事责任（主体）"
+  }
+ }
+}

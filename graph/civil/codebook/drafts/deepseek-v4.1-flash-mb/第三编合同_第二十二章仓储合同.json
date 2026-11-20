@@ -1,0 +1,586 @@
+{
+ "art:909": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "仓储合同的保管人应如何在仓单上签名或者盖章，仓单应当包括哪些事项",
+     "rules": [
+      "c909-1",
+      "c909-items",
+      "c909-insurance"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在仓储合同，保管人已填发仓单",
+     "rules": [
+      "c909-1",
+      "c909-items"
+     ]
+    },
+    {
+     "text": "仓储物已经办理保险（仓单须另记保险金额、期间及保险人名称）",
+     "rules": [
+      "c909-insurance"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "保管人应当在仓单上签名或者盖章",
+     "rules": [
+      "c909-1"
+     ]
+    },
+    {
+     "text": "仓单应当包括：存货人的姓名或者名称和住所；仓储物的品种、数量、质量、包装及其件数和标记；仓储物的损耗标准；储存场所；储存期限；仓储费；填发人、填发地和填发日期",
+     "rules": [
+      "c909-items"
+     ]
+    },
+    {
+     "text": "仓储物已经办理保险的，仓单还应当包括保险金额、期间以及保险人的名称",
+     "rules": [
+      "c909-insurance"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定仓单的签名盖章与法定记载事项；仓单作为提取仓储物的凭证、经背书并经保管人签名盖章可转让提取仓储物的权利，规定在第910条，不在本行材料范围内",
+     "rules": []
+    },
+    {
+     "text": "本行笔记未引用原文或条号，故未据笔记增设学理规则；仓单记载事项的效力（如欠缺某项记载的后果）法条未作规定，本卡片不作推定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c909-1",
+    "srcs": [
+     "art909-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "warehouseKeeper(A,K)",
+     "warehouseReceipt(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "signOrSealWarehouseReceipt(A,R)"
+     }
+    ],
+    "note": "保管人应当在仓单上签名或者盖章",
+    "auth": "npc"
+   },
+   {
+    "key": "c909-items",
+    "srcs": [
+     "art909-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "warehouseKeeper(A,K)",
+     "warehouseReceipt(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "includeRequiredItemsInWarehouseReceipt(A,R)"
+     }
+    ],
+    "note": "仓单应当包括存货人姓名或名称和住所、仓储物品种数量质量包装及件数标记、损耗标准、储存场所、储存期限、仓储费、填发人填发地和填发日期等事项",
+    "auth": "npc"
+   },
+   {
+    "key": "c909-insurance",
+    "srcs": [
+     "art909-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "warehouseKeeper(A,K)",
+     "warehouseReceipt(R,K)",
+     "goodsInsured(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "includeInsuranceParticulars(A,R)"
+     }
+    ],
+    "note": "仓储物已经办理保险的，仓单还应当包括保险金额、期间以及保险人的名称",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "warehouseReceipt": "是该仓储合同项下的仓单（参数：仓单，仓储合同）",
+   "warehouseKeeper": "是仓储合同的保管人（参数：保管人，仓储合同）",
+   "signOrSealWarehouseReceipt": "在仓单上签名或者盖章（参数：保管人，仓单）",
+   "includeRequiredItemsInWarehouseReceipt": "在仓单上记载第909条第1款所列各项事项（参数：保管人，仓单）",
+   "includeInsuranceParticulars": "在仓单上记载保险金额、期间以及保险人的名称（参数：保管人，仓单）",
+   "goodsInsured": "仓储物已经办理保险（参数：仓储合同）"
+  }
+ },
+ "art:908": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "存货人交付仓储物后，保管人是否应当出具凭证、出具何种凭证",
+     "rules": [
+      "c908-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在仓储合同，存货人已向该合同的保管人交付仓储物",
+     "rules": [
+      "c908-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "保管人应当向存货人出具仓单、入库单等凭证",
+     "rules": [
+      "c908-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条义务限于仓储合同中的保管人；一般保管合同的保管人义务由第888条以下规定，不在本行挂载范围",
+     "rules": [
+      "c908-1"
+     ]
+    },
+    {
+     "text": "笔记未引用原文或条号，本行亦无 LEGO 卡片，故仅依第908条原文形式化；仓单的记载事项、转让与凭单提取仓储物等事项规定在第909条以下，本行未挂载，不作规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c908-1",
+    "srcs": [
+     "art908"
+    ],
+    "body": [
+     "warehouseContract(K)",
+     "storerOf(D,K)",
+     "warehouseKeeperOf(W,K)",
+     "deliversStorageGoods(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "W",
+      "counterparty": "D",
+      "content": "issueStorageVoucher(W,D,K)"
+     }
+    ],
+    "note": "存货人交付仓储物的，保管人应当出具仓单、入库单等凭证",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "warehouseContract": "仓储合同：保管人储存存货人交付的仓储物、存货人支付仓储费的合同（1个参数：合同）",
+   "storerOf": "是存货人（存货人，仓储合同）",
+   "warehouseKeeperOf": "是仓储合同的保管人（保管人，仓储合同）",
+   "deliversStorageGoods": "向保管人交付仓储物（存货人，仓储合同）",
+   "issueStorageVoucher": "出具仓单、入库单等仓储凭证（保管人，存货人，仓储合同）"
+  }
+ },
+ "art:905": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "仓储合同何时成立、成立须具备何种要件",
+     "rules": [
+      "c905-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保管人与存货人就仓储事项意思表示一致（不以交付仓储物为成立要件）",
+     "rules": [
+      "c905-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "仓储合同成立",
+     "rules": [
+      "c905-1"
+     ]
+    },
+    {
+     "text": "仓储合同属于合同，可适用合同编通则的一般规定（学理）",
+     "rules": [
+      "c905-2"
+     ]
+    },
+    {
+     "text": "仓储合同为诺成合同，成立不以仓储物交付为要件（学理）",
+     "rules": [
+      "c905-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与保管合同（第890条）自保管人交付保管物时成立不同，仓储合同自保管人与存货人意思表示一致时即成立；仓储合同为有偿、不要式合同（学理）",
+     "rules": [
+      "c905-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c905-1",
+    "srcs": [
+     "art905-1"
+    ],
+    "body": [
+     "storerOf(D,K)",
+     "custodianOf(W,K)",
+     "mutualIntentionsAgreed(K)"
+    ],
+    "heads": [
+     "warehousingContract(K)"
+    ],
+    "note": "仓储合同自保管人和存货人意思表示一致时成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c905-2",
+    "srcs": [
+     "art905-1"
+    ],
+    "body": [
+     "warehousingContract(K)"
+    ],
+    "heads": [
+     "contractAgreement(K)"
+    ],
+    "note": "仓储合同属于合同，可适用合同编通则的一般规定（学理，本条仅规定成立时点）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c905-3",
+    "srcs": [
+     "art905-1"
+    ],
+    "body": [
+     "warehousingContract(K)"
+    ],
+    "heads": [
+     "-formationRequiresDelivery(K)"
+    ],
+    "note": "仓储合同为诺成合同，不以交付仓储物为成立要件（学理，由本条“意思表示一致时成立”推得，与第890条保管合同相区别）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "storerOf": "是仓储合同的存货人（存货人，合同）",
+   "warehousingContract": "仓储合同（保管人与存货人之间）",
+   "formationRequiresDelivery": "仓储合同的成立以仓储物交付为要件"
+  }
+ },
+ "art:918": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "仓储合同章对某一事项没有规定时，应适用何种规则",
+     "rules": [
+      "c918-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "系仓储合同，即保管人储存存货人交付的仓储物、存货人支付仓储费的合同",
+     "rules": [
+      "c918-1"
+     ]
+    },
+    {
+     "text": "该事项在仓储合同章（第904–918条）中没有规定",
+     "rules": [
+      "c918-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本章对该事项已有规定的，直接适用本章规定，不适用保管合同的规定",
+     "rules": [
+      "c918-chapter"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用保管合同章（第888–903条）的有关规定",
+     "rules": [
+      "c918-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "仓储合同章的特别规定优先于保管合同的一般规定，后者仅具补充适用地位",
+     "rules": [
+      "c918-chapter"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未涉及本条；学理上仓储合同为诺成、有偿的商事合同，保管合同为实践合同且以无偿为原则，第918条只是补充适用，不改变仓储合同的诺成性与有偿性",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c918-1",
+    "srcs": [
+     "art918-1"
+    ],
+    "body": [
+     "warehousingContract(K)",
+     "matterNotProvidedInWarehousingChapter(K)"
+    ],
+    "heads": [
+     "applyStorageContractProvisions(K)"
+    ],
+    "note": "仓储合同章（第904–918条）对某事项没有规定的，适用保管合同章（第888–903条）的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c918-chapter",
+    "srcs": [
+     "art918-1"
+    ],
+    "body": [
+     "warehousingContract(K)",
+     "matterProvidedInWarehousingChapter(K)"
+    ],
+    "heads": [
+     "applyWarehousingChapterProvisions(K)"
+    ],
+    "note": "反面解释：本章对该事项已有规定的，直接适用本章规定，不适用保管合同的规定（学理，条文仅以“本章没有规定的”为补充适用条件）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c918-chapter",
+    "c918-1",
+    "本章有特别规定的，优先适用本章规定，保管合同规定仅具补充性"
+   ]
+  ],
+  "predicates": {
+   "warehousingContract": "是仓储合同（保管人储存存货人交付的仓储物、存货人支付仓储费的合同）",
+   "matterNotProvidedInWarehousingChapter": "该事项在仓储合同章（第904–918条）中没有规定",
+   "matterProvidedInWarehousingChapter": "该事项在仓储合同章（第904–918条）中已有规定",
+   "applyStorageContractProvisions": "适用保管合同章（第888–903条）的有关规定（参数：仓储合同）",
+   "applyWarehousingChapterProvisions": "适用仓储合同章（第904–918条）的有关规定（参数：仓储合同）"
+  }
+ },
+ "art:910": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "仓单的凭证效力，以及提取仓储物的权利依何种方式转让",
+     "rules": [
+      "c910-1",
+      "c910-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在仓单（仓储合同项下由保管人出具的提取仓储物凭证）",
+     "rules": [
+      "c910-1",
+      "c910-2"
+     ]
+    },
+    {
+     "text": "转让方是存货人或者仓单持有人，并在仓单上背书",
+     "rules": [
+      "c910-2"
+     ]
+    },
+    {
+     "text": "该背书经保管人签名或者盖章",
+     "rules": [
+      "c910-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "仓单是提取仓储物的凭证，持有人据以向保管人提取仓储物",
+     "rules": [
+      "c910-1"
+     ]
+    },
+    {
+     "text": "存货人或仓单持有人背书并经保管人签名、盖章后，可以转让提取仓储物的权利",
+     "rules": [
+      "c910-2"
+     ]
+    },
+    {
+     "text": "受让人因此取得提取仓储物的权利（条文未明定，依背书转让的当然效果，学理）",
+     "rules": [
+      "c910-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条转让的是“提取仓储物的权利”，并非仓储物所有权本身；仓单的记载事项与保管人签章义务由仓储合同一章的其他条文规定，本条只解决凭证效力与转让方式",
+     "rules": []
+    },
+    {
+     "text": "仓单转让采“背书＋保管人签名或盖章”方式，与普通债权让与只需通知债务人不同；保管人的签章是本条转让方式的构成要件，而非单纯的对抗要件",
+     "rules": [
+      "c910-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c910-1",
+    "srcs": [
+     "art910-1"
+    ],
+    "body": [
+     "warehouseReceipt(R)"
+    ],
+    "heads": [
+     "voucherForCollectingStoredGoods(R)"
+    ],
+    "note": "仓单是提取仓储物的凭证，即仓单的凭证效力（定义性规定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c910-2",
+    "srcs": [
+     "art910-1"
+    ],
+    "body": [
+     "warehouseReceipt(R)",
+     {
+      "or": [
+       "storerOf(P,R)",
+       "holderOfReceipt(P,R)"
+      ]
+     },
+     "endorsedReceipt(P,R)",
+     "signedOrSealedByKeeper(K,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferCollectionRight(P,R)"
+     }
+    ],
+    "note": "存货人或者仓单持有人在仓单上背书并经保管人签名或者盖章的，可以转让提取仓储物的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c910-3",
+    "srcs": [
+     "art910-1"
+    ],
+    "body": [
+     "warehouseReceipt(R)",
+     "endorsedReceipt(P,R)",
+     "signedOrSealedByKeeper(K,R)",
+     "transfersCollectionRightTo(P,T,R)"
+    ],
+    "heads": [
+     "rightToCollectStoredGoods(T,R)"
+    ],
+    "note": "条文只写“可以转让”，受让人取得提取仓储物的权利系背书转让的当然效果，属学理补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "warehouseReceipt": "是仓单（仓储合同项下由保管人出具、用于提取仓储物的凭证）",
+   "storerOf": "是存货人（存货人，仓单）",
+   "holderOfReceipt": "是仓单持有人（持有人，仓单）",
+   "endorsedReceipt": "在仓单上背书（背书人，仓单）",
+   "signedOrSealedByKeeper": "保管人在仓单上签名或者盖章（保管人，仓单）",
+   "voucherForCollectingStoredGoods": "是提取仓储物的凭证（仓单）",
+   "transferCollectionRight": "转让提取仓储物的权利（转让人，仓单）",
+   "transfersCollectionRightTo": "将提取仓储物的权利转让给受让人（转让人，受让人，仓单）",
+   "rightToCollectStoredGoods": "享有提取仓储物的权利（权利人，仓单）"
+  }
+ },
+ "card:g5713": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 contract 已在词表中表示“合同”，不能重新定义为“合同（1个参数：合同）”，请换名或沿用原义",
+   "谓词 storageContract 已在词表中表示“保管合同（寄存人与保管人之间）”，不能重新定义为“是仓储合同（1个参数：合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"仓储合同的定义，以及保管人接收、验收、接受检查、危险通知等主要义务\",\n        \"rules\": [\"c904-def\", \"c907-1\", \"c911\", \"c912\"]\n      },\n      {\n        \"text\": \"储存危险物品、易变质物品时存货人的说明义务，以及违反该义务时保管人的拒收权、处置权与费用负担\",\n        \"rules\": [\"c906-1\", \"c906-2a\", \"c906-2b\", \"c906-2c\", \"c906-3\"]\n      },\n      {\n        \"text\": \"入库仓储物的验收、验收时发现不符合约定的通知义务，以及验收后发生品种、数量、质量不符合约定时的赔偿责任\",\n        \"rules\": [\"c907-1\", \"c907-2\", \"c907-3\"]\n      },\n      {\n        \"text\": \"仓储物变质、损坏时的通知义务，危及其他仓储物时的催告处置权与紧急处置权\",\n        \"rules\": [\"c912\", \"c913-1\", \"c913-2\", \"c913-3\"]\n      },\n      {\n        \"text\": \"储存期限没有约定、约定不明确或者期限届满时，仓储物的提取、加收仓储费与提存\",\n        \"rules\": [\"c914-1\", \"c914-2\", \"c914-3\", \"c915-1\", \"c915-2\", \"c915-3\", \"c916-1\", \"c916-2\"]\n      },\n      {\n        \"text\": \"储存期内因保管不善造成仓储物毁损、灭失的赔偿责任及其免责事由\",\n        \"rules\": [\"c917-1\", \"c917-exception\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"存在保管人储存存货人交付的仓储物、存货人支付仓储费的合同\",\n        \"rules\": [\"c904-def\"]\n      },\n      {\n        \"text\": \"储存易燃、易爆、有毒、有腐蚀性、有放射性等危险物品或者易变质物品\",\n        \"rules\": [\"c906-1\"]\n      },\n      {\n        \"text\": \"存货人违反说明物品性质、提供有关资料的义务\",\n        \"rules\": [\"c906-2a\", \"c906-2b\", \"c906-2c\"]\n      },\n      {\n        \"text\": \"保管人储存危险物品\",\n        \"rules\": [\"c906-3\"]\n      },\n      {\n        \"text\": \"保管人按约定验收；验收时发现入库仓储物与约定不符合；验收后发生品种、数量、质量不符合约定\",\n        \"rules\": [\"c907-1\", \"c907-2\", \"c907-3\"]\n      },\n      {\n        \"text\": \"存货人或者仓单持有人要求检查仓储物或者提取样品\",\n        \"rules\": [\"c911\"]\n      },\n      {\n        \"text\": \"保管人发现入库仓储物有变质或者其他损坏；该变质、损坏危及其他仓储物的安全和正常保管；情况紧急\",\n        \"rules\": [\"c912\", \"c913-1\", \"c913-2\", \"c913-3\"]\n      },\n      {\n        \"text\": \"当事人对储存期限没有约定或者约定不明确\",\n        \"rules\": [\"c914-1\", \"c914-2\", \"c914-3\"]\n      },\n      {\n        \"text\": \"储存期限届满；逾期提取；提前提取\",\n        \"rules\": [\"c915-1\", \"c915-2\", \"c915-3\"]\n      },\n      {\n        \"text\": \"储存期限届满不提取仓储物，经催告在合理期限内仍不提取\",\n        \"rules\": [\"c916-1\", \"c916-2\"]\n      },\n      {\n        \"text\": \"储存期内因保管不善造成仓储物毁损、灭失\",\n        \"rules\": [\"c917-1\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"因仓储物本身的自然性质、包装不符合约定或者超过有效储存期造成仓储物变质、损坏的，保管人不承担赔偿责任\",\n        \"rules\": [\"c917-exception\"]\n      },\n      {\n        \"text\": \"储存期限不明确时保管人虽可随时请求提取，但应当给予必要的准备时间\",\n        \"rules\": [\"c914-3\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"存货人应当说明危险物品、易变质物品的性质并提供有关资料；保管人储存危险物品应当具备相应的保管条件\",\n        \"rules\": [\"c906-1\", \"c906-3\"]\n      },\n      {\n        \"text\": \"存货人违反说明义务的，保管人可以拒收仓储物，也可以采取相应措施以避免损失的发生，由此产生的费用由存货人负担\",\n        \"rules\": [\"c906-2a\", \"c906-2b\", \"c906-2c\"]\n      },\n      {\n        \"text\": \"保管人应当按约定验收，发现入库仓储物与约定不符合的应当及时通知存货人；验收后发生品种、数量、质量不符合约定的，保管人应当承担赔偿责任\",\n        \"rules\": [\"c907-1\", \"c907-2\", \"c907-3\"]\n      },\n      {\n        \"text\": \"保管人应当同意存货人或者仓单持有人检查仓储物、提取样品\",\n        \"rules\": [\"c911\"]\n      },\n      {\n        \"text\": \"保管人应当及时通知存货人或者仓单持有人仓储物变质、损坏；危及其他仓储物时应当催告作出必要处置，情况紧急可自行处置并事后及时通知\",\n        \"rules\": [\"c912\", \"c913-1\", \"c913-2\", \"c913-3\"]\n      },\n      {\n        \"text\": \"储存期限没有约定或者约定不明确的，存货人或者仓单持有人可以随时提取，保管人也可以随时请求提取\",\n        \"rules\": [\"c914-1\", \"c914-2\"]\n      },\n      {\n        \"text\": \"储存期限届满，存货人或者仓单持有人应当凭仓单、入库单等提取仓储物；逾期提取的应当加收仓储费，提前提取的不减收仓储费\",\n        \"rules\": [\"c915-1\", \"c915-2\", \"c915-3\"]\n      },\n      {\n        \"text\": \"期限届满不提取的，保管人可以催告在合理期限内提取；逾期不提取的，保管人可以提存仓储物\",\n        \"rules\": [\"c916-1\", \"c916-2\"]\n      },\n      {\n        \"text\": \"储存期内因保管不善造成仓储物毁损、灭失的，保管人应当承担赔偿责任\",\n        \"rules\": [\"c917-1\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"第917条第1款后段的免责事由（自然性质、包装不符合约定、超过有效储存期）优先于同款前段的保管不善赔偿责任\",\n        \"rules\": [\"c917-exception\", \"c917-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"仓储合同与一般保管合同：仓储合同为双务、有偿、诺成合同，一般保管合同可为无偿、实践合同（笔记与LEGO卡片，法条未明文）\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第907条第3款针对验收后发生的品种、数量、质量不符合约定的赔偿责任；第917条针对储存期内保管不善致毁损、灭失的赔偿责任，事由不同\",\n        \"rules\": [\"c907-3\", \"c917-1\"]\n      },\n      {\n        \"text\": \"第906条第2款的拒收权、采取措施权针对存货人未说明危险物品性质；第913条的催告与处置权针对入库后仓储物变质、损坏危及其他仓储物\",\n        \"rules\": [\"c906-2a\", \"c906-2b\", \"c913-1\", \"c913-2\"]\n      },\n      {\n        \"text\": \"第915条凭仓单、入库单提取是期限届满时的义务；第914条的随时提取适用于期限没有约定或者约定不明确的情形\",\n        \"rules\": [\"c915-1\", \"c914-1\"]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c904-def\",\n      \"srcs\": [\"art904\"],\n      \"body\": [\"contract(K)\", \"warehouseKeeper(W,K)\", \"depositor(D,K)\", \"storedGoods(G,K)\", \"payWarehouseFee(D,W,K)\"],\n      \"heads\": [\"storageContract(K)\"],\n      \"note\": \"仓储合同是保管人储存存货人交付的仓储物、存货人支付仓储费的合同（定义性规定）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c906-1\",\n      \"srcs\": [\"art906-1\"],\n      \"body\": [\"storageContract(K)\", \"depositor(D,K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", {\"or\": [\"dangerousGoods(G)\", \"perishableGoods(G)\"]}],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"D\", \"counterparty\": \"W\", \"content\": \"stateNatureAndProvideMaterials(D,G)\"}],\n      \"note\": \"储存危险物品或者易变质物品的，存货人应当说明该物品的性质并提供有关资料\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c906-2a\",\n      \"srcs\": [\"art906-2\"],\n      \"body\": [\"storageContract(K)\", \"depositor(D,K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"violatesDisclosureDuty(D,G)\"],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": \"D\", \"content\": \"refuseStorage(W,G)\"}],\n      \"note\": \"存货人违反前款说明义务的，保管人可以拒收仓储物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c906-2b\",\n      \"srcs\": [\"art906-2\"],\n      \"body\": [\"storageContract(K)\", \"depositor(D,K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"violatesDisclosureDuty(D,G)\"],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": \"D\", \"content\": \"takeStorageMeasuresToAvoidLoss(W,G)\"}],\n      \"note\": \"存货人违反前款说明义务的，保管人也可以采取相应措施以避免损失的发生\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c906-2c\",\n      \"srcs\": [\"art906-2\"],\n      \"body\": [\"storageContract(K)\", \"depositor(D,K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"violatesDisclosureDuty(D,G)\", \"expensesIncurredFromMeasures(W,G)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"D\", \"counterparty\": \"W\", \"content\": \"bearStorageExpenses(D,W,K)\"}],\n      \"note\": \"因拒收仓储物或者采取相应措施产生的费用由存货人负担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c906-3\",\n      \"srcs\": [\"art906-3\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"dangerousGoods(G)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"hasStorageConditions(W,G)\"}],\n      \"note\": \"保管人储存易燃、易爆、有毒、有腐蚀性、有放射性等危险物品的，应当具备相应的保管条件\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c907-1\",\n      \"srcs\": [\"art907-1\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"inspectPerAgreement(W,G)\"}],\n      \"note\": \"保管人应当按照约定对入库仓储物进行验收\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c907-2\",\n      \"srcs\": [\"art907-1\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"depositor(D,K)\", \"storedGoods(G,K)\", \"inspectionRevealsNonConformity(G,K)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": \"D\", \"content\": \"notifyDepositorInTime(W,D)\"}],\n      \"note\": \"验收时发现入库仓储物与约定不符合的，保管人应当及时通知存货人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c907-3\",\n      \"srcs\": [\"art907-1\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"depositor(D,K)\", \"storedGoods(G,K)\", \"inspected(W,G)\", \"nonConformityAfterInspection(G,K)\"],\n      \"heads\": [\"liableForStorageNonConformity(W,D,G)\"],\n      \"note\": \"保管人验收后，发生仓储物的品种、数量、质量不符合约定的，应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c911\",\n      \"srcs\": [\"art911\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"requestsInspection(P,G)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": \"P\", \"content\": \"agreeToInspectOrSample(W,G)\"}],\n      \"note\": \"保管人根据存货人或者仓单持有人的要求，应当同意其检查仓储物或者提取样品\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c912\",\n      \"srcs\": [\"art912\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"deterioratedOrDamaged(G)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"notifyDepositorOrHolder(W,G)\"}],\n      \"note\": \"保管人发现入库仓储物有变质或者其他损坏的，应当及时通知存货人或者仓单持有人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c913-1\",\n      \"srcs\": [\"art913\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"deterioratedOrDamaged(G)\", \"endangersOtherGoods(G,K)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"demandDisposal(W,G)\"}],\n      \"note\": \"变质、损坏危及其他仓储物的安全和正常保管的，保管人应当催告存货人或者仓单持有人作出必要的处置\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c913-2\",\n      \"srcs\": [\"art913\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"deterioratedOrDamaged(G)\", \"endangersOtherGoods(G,K)\", \"emergencySituation(K)\"],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"takeNecessaryDisposal(W,G)\"}],\n      \"note\": \"因情况紧急，保管人可以作出必要的处置\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c913-3\",\n      \"srcs\": [\"art913\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"deterioratedOrDamaged(G)\", \"endangersOtherGoods(G,K)\", \"emergencySituation(K)\", \"takeNecessaryDisposal(W,G)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"notifyAfterDisposal(W,G)\"}],\n      \"note\": \"紧急处置后，保管人应当将该情况及时通知存货人或者仓单持有人（但书）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c914-1\",\n      \"srcs\": [\"art914\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodUnclear(K)\", \"storedGoods(G,K)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"extractStoredGoods(P,G)\"}],\n      \"note\": \"对储存期限没有约定或者约定不明确的，存货人或者仓单持有人可以随时提取仓储物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c914-2\",\n      \"srcs\": [\"art914\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodUnclear(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\"],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"requestExtraction(W,G)\"}],\n      \"note\": \"对储存期限没有约定或者约定不明确的，保管人可以随时请求存货人或者仓单持有人提取仓储物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c914-3\",\n      \"srcs\": [\"art914\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodUnclear(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"requestExtraction(W,G)\"],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"W\", \"counterparty\": null, \"content\": \"giveNecessaryPreparationTime(W,G)\"}],\n      \"note\": \"保管人随时请求提取的，应当给予必要的准备时间（但书）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c915-1\",\n      \"srcs\": [\"art915\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodExpired(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"W\", \"content\": \"extractWithDocuments(P,G)\"}],\n      \"note\": \"储存期限届满，存货人或者仓单持有人应当凭仓单、入库单等提取仓储物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c915-2\",\n      \"srcs\": [\"art915\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodExpired(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"lateExtraction(P,G)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"W\", \"content\": \"payAdditionalStorageFee(P,W,K)\"}],\n      \"note\": \"存货人或者仓单持有人逾期提取的，应当加收仓储费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c915-3\",\n      \"srcs\": [\"art915\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"earlyExtraction(P,G)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [\"storageFeeNotReduced(K)\"],\n      \"note\": \"存货人或者仓单持有人提前提取的，不减收仓储费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c916-1\",\n      \"srcs\": [\"art916\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodExpired(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"failedToExtract(P,G)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": \"P\", \"content\": \"demandExtractionWithinReasonablePeriod(W,G)\"}],\n      \"note\": \"储存期限届满不提取仓储物的，保管人可以催告其在合理期限内提取\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c916-2\",\n      \"srcs\": [\"art916\"],\n      \"body\": [\"storageContract(K)\", \"storagePeriodExpired(K)\", \"warehouseKeeper(W,K)\", \"storedGoods(G,K)\", \"failedToExtract(P,G)\", \"stillNotExtractedAfterDemand(P,G)\", {\"or\": [\"depositor(P,K)\", \"warehouseReceiptHolder(P,K)\"]}],\n      \"heads\": [{\"type\": \"PERM\", \"bearer\": \"W\", \"counterparty\": \"P\", \"content\": \"depositStoredGoods(W,G)\"}],\n      \"note\": \"经催告逾期仍不提取的，保管人可以提存仓储物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c917-1\",\n      \"srcs\": [\"art917\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"depositor(D,K)\", \"storedGoods(G,K)\", \"poorStorageCausesLoss(W,G)\"],\n      \"heads\": [\"liableForStorageDamage(W,D,G)\"],\n      \"note\": \"储存期内因保管不善造成仓储物毁损、灭失的，保管人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c917-exception\",\n      \"srcs\": [\"art917\"],\n      \"body\": [\"storageContract(K)\", \"warehouseKeeper(W,K)\", \"depositor(D,K)\", \"storedGoods(G,K)\", {\"or\": [\"lossFromInherentNature(G,K)\", \"lossFromNonConformingPackaging(G,K)\", \"lossFromExceedingStoragePeriod(G,K)\"]}],\n      \"heads\": [\"-liableForStorageDamage(W,D,G)\"],\n      \"note\": \"因仓储物本身的自然性质、包装不符合约定或者超过有效储存期造成变质、损坏的，保管人不承担赔偿责任\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c917-exception\", \"c917-1\", \"第917条第1款后段的免责事由优先于同款前段的保管不善赔偿责任\"]\n  ],\n  \"predicates\": {\n    \"contract\": \"合同（1个参数：合同）\",\n    \"storageContract\": \"是仓储合同（1个参数：合同）\",\n    \"warehouseKeeper\": \"是仓储合同的保管人（保管人，合同）\",\n    \"depositor\": \"是仓储合同的存货人（存货人，合同）\",\n    \"storedGoods\": \"是仓储合同项下的仓储物（仓储物，合同）\",\n    \"payWarehouseFee\": \"支付仓储费（存货人，保管人，合同）\",\n    \"dangerousGoods\": \"是易燃、易爆、有毒、有腐蚀性、有放射性等危险物品（1个参数：仓储物）\",\n    \"perishableGoods\": \"是易变质物品（1个参数：仓储物）\",\n    \"stateNatureAndProvideMaterials\": \"说明该物品的性质并提供有关资料（存货人，仓储物）\",\n    \"violatesDisclosureDuty\": \"违反说明物品性质、提供有关资料的义务（存货人，仓储物）\",\n    \"refuseStorage\": \"拒收仓储物（保管人，仓储物）\",\n    \"takeStorageMeasuresToAvoidLoss\": \"采取相应措施以避免损失的发生（保管人，仓储物）\",\n    \"expensesIncurredFromMeasures\": \"因拒收仓储物或者采取相应措施而产生费用（保管人，仓储物）\",\n    \"bearStorageExpenses\": \"负担因拒收仓储物或者采取相应措施产生的费用（存货人，保管人，合同）\",\n    \"hasStorageConditions\": \"具备相应的保管条件（保管人，仓储物）\",\n    \"inspectPerAgreement\": \"按照约定对入库仓储物进行验收（保管人，仓储物）\",\n    \"inspectionRevealsNonConformity\": \"验收时发现入库仓储物与约定不符合（仓储物，合同）\",\n    \"notifyDepositorInTime\": \"及时通知存货人（保管人，存货人）\",\n    \"inspected\": \"已完成验收（保管人，仓储物）\",\n    \"nonConformityAfterInspection\": \"验收后发生仓储物的品种、数量、质量不符合约定（仓储物，合同）\",\n    \"liableForStorageNonConformity\": \"就验收后发生的品种、数量、质量不符合约定承担赔偿责任（保管人，存货人，仓储物）\",\n    \"requestsInspection\": \"要求检查仓储物或者提取样品（人，仓储物）\",\n    \"warehouseReceiptHolder\": \"是仓单持有人（持有人，合同）\",\n    \"agreeToInspectOrSample\": \"同意其检查仓储物或者提取样品（保管人，仓储物）\",\n    \"deterioratedOrDamaged\": \"仓储物有变质或者其他损坏（1个参数：仓储物）\",\n    \"notifyDepositorOrHolder\": \"及时通知存货人或者仓单持有人（保管人，仓储物）\",\n    \"endangersOtherGoods\": \"危及其他仓储物的安全和正常保管（仓储物，合同）\",\n    \"demandDisposal\": \"催告存货人或者仓单持有人作出必要的处置（保管人，仓储物）\",\n    \"emergencySituation\": \"情况紧急（1个参数：合同）\",\n    \"takeNecessaryDisposal\": \"作出必要的处置（保管人，仓储物）\",\n    \"notifyAfterDisposal\": \"事后将该情况及时通知存货人或者仓单持有人（保管人，仓储物）\",\n    \"storagePeriodUnclear\": \"对储存期限没有约定或者约定不明确（1个参数：合同）\",\n    \"extractStoredGoods\": \"提取仓储物（人，仓储物）\",\n    \"requestExtraction\": \"请求提取仓储物（保管人，仓储物）\",\n    \"giveNecessaryPreparationTime\": \"给予必要的准备时间（保管人，仓储物）\",\n    \"storagePeriodExpired\": \"储存期限届满（1个参数：合同）\",\n    \"extractWithDocuments\": \"凭仓单、入库单等提取仓储物（人，仓储物）\",\n    \"lateExtraction\": \"逾期提取仓储物（人，仓储物）\",\n    \"payAdditionalStorageFee\": \"加收仓储费（提取人，保管人，合同）\",\n    \"earlyExtraction\": \"提前提取仓储物（人，仓储物）\",\n    \"storageFeeNotReduced\": \"不减收仓储费（1个参数：合同）\",\n    \"failedToExtract\": \"不提取仓储物（人，仓储物）\",\n    \"demandExtractionWithinReasonablePeriod\": \"催告其在合理期限内提取仓储物（保管人，仓储物）\",\n    \"stillNotExtractedAfterDemand\": \"经催告逾期仍不提取仓储物（人，仓储物）\",\n    \"depositStoredGoods\": \"提存仓储物（保管人，仓储物）\",\n    \"poorStorageCausesLoss\": \"因保管不善造成仓储物毁损、灭失（保管人，仓储物）\",\n    \"liableForStorageDamage\": \"就仓储物毁损、灭失承担赔偿责任（保管人，存货人，仓储物）\",\n    \"lossFromInherentNature\": \"因仓储物本身的自然性质造成变质、损坏（仓储物，合同）\",\n    \"lossFromNonConformingPackaging\": \"因包装不符合约定造成仓储物变质、损坏（仓储物，合同）\",\n    \"lossFromExceedingStoragePeriod\": \"因超过有效储存期造成仓储物变质、损坏（仓储物，合同）\"\n  }\n}"
+ }
+}

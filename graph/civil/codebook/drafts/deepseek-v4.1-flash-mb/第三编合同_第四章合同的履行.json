@@ -1,0 +1,2357 @@
+{
+ "card:g4294": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同成立后基础条件发生重大变化、继续履行对一方明显不公平的，受不利影响的当事人能否请求变更或者解除合同",
+     "rules": [
+      "c533-1",
+      "c533-renegotiate",
+      "c533-request",
+      "c533-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同成立后，合同的基础条件发生重大变化；该变化是当事人在订立合同时无法预见的；该变化不属于商业风险；继续履行合同对当事人一方明显不公平",
+     "rules": [
+      "c533-1"
+     ]
+    },
+    {
+     "text": "受不利影响的当事人与对方重新协商，且在合理期限内协商不成",
+     "rules": [
+      "c533-renegotiate",
+      "c533-request"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "变化属于当事人在订立合同时可以预见的，或者属于商业风险的，不成立情事变更（条文以否定要件表述，非独立但书）",
+     "rules": [
+      "c533-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受不利影响的当事人可以与对方重新协商",
+     "rules": [
+      "c533-renegotiate"
+     ]
+    },
+    {
+     "text": "在合理期限内协商不成的，当事人可以请求人民法院或者仲裁机构变更或者解除合同",
+     "rules": [
+      "c533-request"
+     ]
+    },
+    {
+     "text": "人民法院或者仲裁机构应当结合案件的实际情况，根据公平原则变更或者解除合同",
+     "rules": [
+      "c533-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情事变更成立且协商不成的，变更或者解除合同的请求优先于原合同履行义务（学理，条文未明定，故不设 override）",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第531条（部分履行与增加费用负担）、第532条（合同主体变更不影响履行）、第535条（代位权）不同：本条针对合同基础条件的重大变化，赋予受不利影响方重新协商与请求变更、解除的权利",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列“合同已明确约定风险承担条款”“存在欺诈、胁迫等意思表示瑕疵应适用撤销制度”等排除情形，条文未规定，属学理参考，未形式化",
+     "rules": []
+    },
+    {
+     "text": "与不可抗力（第590条）不同：不可抗力导致不能履行，情事变更导致继续履行明显不公平；此区分属学理，条文未涉及",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c533-1",
+    "srcs": [
+     "art533-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "fundamentalChangeOfBasis(K)",
+     "-foreseeableAtConclusion(K)",
+     "-commercialRisk(K)",
+     "continuedPerformanceObviouslyUnfair(K,P)"
+    ],
+    "heads": [
+     "situationChangeEstablished(K,P)"
+    ],
+    "note": "合同成立后基础条件发生订立时无法预见、不属于商业风险的重大变化，继续履行对一方明显不公平的，情事变更成立，P为受不利影响的当事人",
+    "auth": "npc"
+   },
+   {
+    "key": "c533-renegotiate",
+    "srcs": [
+     "art533-1"
+    ],
+    "body": [
+     "situationChangeEstablished(K,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "renegotiate(P,K)"
+     }
+    ],
+    "note": "受不利影响的当事人可以与对方重新协商",
+    "auth": "npc"
+   },
+   {
+    "key": "c533-request",
+    "srcs": [
+     "art533-1"
+    ],
+    "body": [
+     "situationChangeEstablished(K,P)",
+     "renegotiationFailedWithinReasonablePeriod(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "court",
+      "content": "requestModifyOrTerminate(P,K)"
+     }
+    ],
+    "note": "在合理期限内协商不成的，当事人可以请求人民法院或者仲裁机构变更或者解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c533-2",
+    "srcs": [
+     "art533-2"
+    ],
+    "body": [
+     "requestModifyOrTerminate(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "modifyOrTerminatePerFairness(K)"
+     }
+    ],
+    "note": "人民法院或者仲裁机构应当结合案件的实际情况，根据公平原则变更或者解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "fundamentalChangeOfBasis": "合同成立后，合同的基础条件发生重大变化（1个参数：合同）",
+   "foreseeableAtConclusion": "该重大变化是当事人在订立合同时可以预见的（1个参数：合同）",
+   "commercialRisk": "该重大变化属于商业风险（1个参数：合同）",
+   "continuedPerformanceObviouslyUnfair": "继续履行合同对当事人一方明显不公平（合同，受不利影响的当事人）",
+   "situationChangeEstablished": "情事变更成立，第二参数为受不利影响的当事人（合同，当事人）",
+   "renegotiate": "受不利影响的当事人与对方重新协商（当事人，合同）",
+   "renegotiationFailedWithinReasonablePeriod": "在合理期限内协商不成（1个参数：合同）",
+   "requestModifyOrTerminate": "请求人民法院或者仲裁机构变更或者解除合同（当事人，合同）",
+   "modifyOrTerminatePerFairness": "结合案件的实际情况，根据公平原则变更或者解除合同（1个参数：合同）"
+  }
+ },
+ "card:g4271": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人约定由债务人向第三人履行债务，债务人未向第三人履行或者履行不符合约定时，由谁向谁承担违约责任",
+     "rules": [
+      "c522-1"
+     ]
+    },
+    {
+     "text": "第三人何时可以直接请求债务人承担违约责任，债务人能否以其对债权人的抗辩对抗该第三人",
+     "rules": [
+      "c522-2",
+      "c522-2-defense"
+     ]
+    },
+    {
+     "text": "当事人约定由第三人向债权人履行债务，第三人不履行或者履行不符合约定时，由谁向债权人承担违约责任",
+     "rules": [
+      "c523"
+     ]
+    },
+    {
+     "text": "第三人代为履行的条件与限制，以及债权人接受履行后债权如何移转",
+     "rules": [
+      "c524-1",
+      "c524-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定由债务人向第三人履行债务",
+     "rules": [
+      "c522-1"
+     ]
+    },
+    {
+     "text": "法律规定或者当事人约定第三人可以直接请求债务人向其履行债务，且第三人未在合理期限内明确拒绝",
+     "rules": [
+      "c522-2"
+     ]
+    },
+    {
+     "text": "当事人约定由第三人向债权人履行债务",
+     "rules": [
+      "c523"
+     ]
+    },
+    {
+     "text": "债务人不履行债务，且第三人对履行该债务具有合法利益",
+     "rules": [
+      "c524-1"
+     ]
+    },
+    {
+     "text": "债权人接受第三人的履行",
+     "rules": [
+      "c524-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "根据债务性质、按照当事人约定或者依照法律规定只能由债务人履行的，第三人无权代为履行",
+     "rules": [
+      "c524-1"
+     ]
+    },
+    {
+     "text": "债务人和第三人另有约定的，债权不转让给第三人",
+     "rules": [
+      "c524-2"
+     ]
+    },
+    {
+     "text": "第三人在合理期限内明确拒绝的，不得直接请求债务人承担违约责任",
+     "rules": [
+      "c522-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债务人未向第三人履行债务或者履行债务不符合约定的，应当向债权人承担违约责任",
+     "rules": [
+      "c522-1"
+     ]
+    },
+    {
+     "text": "第三人可以请求债务人承担违约责任；债务人对债权人的抗辩，可以向第三人主张",
+     "rules": [
+      "c522-2",
+      "c522-2-defense"
+     ]
+    },
+    {
+     "text": "第三人不履行债务或者履行债务不符合约定的，债务人应当向债权人承担违约责任",
+     "rules": [
+      "c523"
+     ]
+    },
+    {
+     "text": "第三人有权向债权人代为履行",
+     "rules": [
+      "c524-1"
+     ]
+    },
+    {
+     "text": "债权人接受第三人履行后，其对债务人的债权转让给第三人",
+     "rules": [
+      "c524-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第三人依法律规定或者当事人约定取得直接请求权时，适用第522条第2款，其可直接请求债务人承担违约责任，不再限于由债权人主张",
+     "rules": [
+      "c522-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第522条第1款是债务人向第三人履行，违约责任仍由债务人向债权人承担；第523条是第三人向债权人履行，违约责任同样由债务人向债权人承担，二者履行方向相反",
+     "rules": [
+      "c522-1",
+      "c523"
+     ]
+    },
+    {
+     "text": "第524条第三人代为履行不以当事人约定为前提，以第三人对债务履行有合法利益为基础，并发生债权移转效果，与第523条约定的由第三人履行不同",
+     "rules": [
+      "c524-1",
+      "c524-2"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称“第三人直接请求权优先于债权人请求权”，法条无此表述；第522条第2款只是赋予第三人独立的直接请求权，并不排斥债权人的权利",
+     "rules": []
+    },
+    {
+     "text": "第520条、第521条关于连带债务、连带债权的内部关系规则，不涉及第三人履行",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c522-1",
+    "srcs": [
+     "art522-1"
+    ],
+    "body": [
+     "contract(K)",
+     "agreedDebtorPerformsToThirdParty(K,D,T,C)",
+     "failsToPerformToThirdParty(D,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "liableForBreach(D,C)"
+     }
+    ],
+    "note": "约定由债务人向第三人履行，债务人未向第三人履行或履行不符合约定的，应当向债权人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c522-2",
+    "srcs": [
+     "art522-2"
+    ],
+    "body": [
+     "contract(K)",
+     "lawOrAgreementGrantsDirectClaim(K,D,T,C)",
+     "failsToPerformToThirdParty(D,T,K)",
+     "~refusedWithinReasonableTime(T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "D",
+      "content": "claimBreachLiabilityFrom(T,D,K)"
+     }
+    ],
+    "note": "法律规定或当事人约定第三人可直接请求债务人履行的，第三人未在合理期限内明确拒绝且债务人未履行的，第三人可请求债务人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c522-2-defense",
+    "srcs": [
+     "art522-2"
+    ],
+    "body": [
+     "contract(K)",
+     "lawOrAgreementGrantsDirectClaim(K,D,T,C)",
+     "defenseAgainstCreditorExists(D,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "T",
+      "content": "assertDefenseAgainstThirdParty(D,T,K)"
+     }
+    ],
+    "note": "债务人对债权人的抗辩，可以向直接请求履行的第三人主张",
+    "auth": "npc"
+   },
+   {
+    "key": "c523",
+    "srcs": [
+     "art523"
+    ],
+    "body": [
+     "contract(K)",
+     "agreedThirdPartyPerformsToCreditor(K,T,C,D)",
+     "thirdPartyFailsToPerform(T,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "liableForBreach(D,C)"
+     }
+    ],
+    "note": "约定由第三人向债权人履行，第三人不履行或履行不符合约定的，债务人应当向债权人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c524-1",
+    "srcs": [
+     "art524-1"
+    ],
+    "body": [
+     "contract(K)",
+     "creditorOf(C,D,K)",
+     "failsToPerformDueDebt(D)",
+     "thirdPartyHasLegitimateInterest(T,D)",
+     "~onlyDebtorMustPerform(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "substitutePerformance(T,C,D)"
+     }
+    ],
+    "note": "债务人不履行债务且第三人对履行有合法利益的，第三人有权代为履行；但根据债务性质、约定或法律规定只能由债务人履行的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c524-2",
+    "srcs": [
+     "art524-2"
+    ],
+    "body": [
+     "creditorAcceptedThirdPartyPerformance(C,T,D)",
+     "~debtorAndThirdPartyAgreedOtherwise(D,T)"
+    ],
+    "heads": [
+     "claimTransferredTo(C,T,D)"
+    ],
+    "note": "债权人接受第三人履行后，其对债务人的债权转让给第三人；但债务人和第三人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c522-2",
+    "c522-1",
+    "第522条第2款是第三人享有直接请求权的特别规定，优先于第1款仅由债权人主张违约责任的规则"
+   ]
+  ],
+  "predicates": {
+   "agreedDebtorPerformsToThirdParty": "当事人约定由债务人向第三人履行债务（合同，债务人，第三人，债权人）",
+   "failsToPerformToThirdParty": "债务人未向第三人履行债务或者履行债务不符合约定（债务人，第三人，合同）",
+   "lawOrAgreementGrantsDirectClaim": "法律规定或者当事人约定第三人可以直接请求债务人向其履行债务（合同，债务人，第三人，债权人）",
+   "refusedWithinReasonableTime": "第三人在合理期限内明确拒绝（1个参数：第三人）",
+   "claimBreachLiabilityFrom": "请求债务人承担违约责任（第三人，债务人，合同）",
+   "defenseAgainstCreditorExists": "债务人对债权人享有抗辩（债务人，债权人，合同）",
+   "assertDefenseAgainstThirdParty": "向第三人主张债务人对债权人的抗辩（债务人，第三人，合同）",
+   "agreedThirdPartyPerformsToCreditor": "当事人约定由第三人向债权人履行债务（合同，第三人，债权人，债务人）",
+   "thirdPartyFailsToPerform": "第三人不履行债务或者履行债务不符合约定（第三人，债权人，合同）",
+   "thirdPartyHasLegitimateInterest": "第三人对履行该债务具有合法利益（第三人，债务人）",
+   "onlyDebtorMustPerform": "根据债务性质、按照当事人约定或者依照法律规定只能由债务人履行（债务人，合同）",
+   "substitutePerformance": "第三人向债权人代为履行债务人的债务（第三人，债权人，债务人）",
+   "creditorAcceptedThirdPartyPerformance": "债权人接受第三人的履行（债权人，第三人，债务人）",
+   "debtorAndThirdPartyAgreedOtherwise": "债务人和第三人另有约定（债务人，第三人）",
+   "claimTransferredTo": "债权人对债务人的债权转让给第三人（债权人，第三人，债务人）"
+  }
+ },
+ "art:515": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "选择之债中由谁享有选择权；享有选择权的当事人怠于选择时，选择权如何转移",
+     "rules": [
+      "c515-1",
+      "c515-2",
+      "c515-2-loss"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的有多项，而债务人只需履行其中一项",
+     "rules": [
+      "c515-1"
+     ]
+    },
+    {
+     "text": "享有选择权的当事人在约定期限内或者履行期限届满未作选择，经催告后在合理期限内仍未选择",
+     "rules": [
+      "c515-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定、当事人另有约定或者另有交易习惯的，不适用“债务人享有选择权”的默认规则，选择权依各该规定、约定或者交易习惯确定",
+     "rules": [
+      "c515-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债务人享有选择权（选择权人的确定顺序：先依法律、约定、交易习惯，无者归债务人）",
+     "rules": [
+      "c515-1"
+     ]
+    },
+    {
+     "text": "选择权转移至对方，对方享有选择权",
+     "rules": [
+      "c515-2"
+     ]
+    },
+    {
+     "text": "原选择权人因选择权转移而丧失选择权",
+     "rules": [
+      "c515-2-loss"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第515条第1款但书（法律另有规定、当事人另有约定、另有交易习惯）优先于“债务人享有选择权”的默认规则",
+     "rules": [
+      "c515-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记只摘录“债务人享有选择权”与“经催告后合理期限内仍未选择则选择权转移”两点，未展开但书；本条未规定选择权的行使方式（学理上为有相对人的单方意思表示，到达对方即生效），也未规定选择之债的特定，故不另设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c515-1",
+    "srcs": [
+     "art515-1"
+    ],
+    "body": [
+     "obligorOf(D,K)",
+     "counterpartyOf(D,C)",
+     "multipleSubjectMatters(K)",
+     "debtorNeedsOnlyOne(K)",
+     "~lawProvidesOtherwiseOnChoice(K)",
+     "~agreedOtherwiseOnChoice(K)",
+     "~tradeUsageOtherwiseOnChoice(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "choosePerformance(K)"
+     }
+    ],
+    "note": "标的有多项而债务人只需履行其中一项的，债务人享有选择权；法律另有规定、当事人另有约定或者另有交易习惯的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c515-2",
+    "srcs": [
+     "art515-2"
+    ],
+    "body": [
+     "hasChoiceRight(P,K)",
+     "counterpartyOf(P,O)",
+     "failedToChooseInTime(P,K)",
+     "demandedChoice(O,K)",
+     "~choseWithinReasonablePeriod(P,K)"
+    ],
+    "heads": [
+     "hasChoiceRight(O,K)",
+     "choiceRightTransferredTo(O,K)"
+    ],
+    "note": "享有选择权的当事人在约定期限内或者履行期限届满未作选择，经催告后在合理期限内仍未选择的，选择权转移至对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c515-2-loss",
+    "srcs": [
+     "art515-2"
+    ],
+    "body": [
+     "choiceRightTransferredTo(O,K)",
+     "counterpartyOf(P,O)"
+    ],
+    "heads": [
+     "-hasChoiceRight(P,K)"
+    ],
+    "note": "选择权转移至对方后，原选择权人不再享有选择权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "multipleSubjectMatters": "标的有多项（债）",
+   "debtorNeedsOnlyOne": "债务人只需履行其中一项（债）",
+   "lawProvidesOtherwiseOnChoice": "法律对选择权的归属另有规定（债）",
+   "agreedOtherwiseOnChoice": "当事人对选择权的归属另有约定（债）",
+   "tradeUsageOtherwiseOnChoice": "对选择权的归属另有交易习惯（债）",
+   "choosePerformance": "选择履行的标的（债）",
+   "hasChoiceRight": "享有选择权（当事人，债）",
+   "failedToChooseInTime": "在约定期限内或者履行期限届满未作选择（选择权人，债）",
+   "demandedChoice": "已催告选择权人作出选择（催告人，债）",
+   "choseWithinReasonablePeriod": "经催告后在合理期限内作出选择（选择权人，债）",
+   "choiceRightTransferredTo": "选择权转移至（当事人，债）"
+  }
+ },
+ "art:516": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "选择之债中，选择权应当如何行使、标的何时确定、确定后能否变更，以及可选择的标的发生不能履行时能否选择该标的",
+     "rules": [
+      "c516-1-notice",
+      "c516-1-determined",
+      "c516-1-noalter",
+      "c516-1-exception",
+      "c516-2",
+      "c516-2-exception"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在选择之债，享有选择权的当事人行使选择权",
+     "rules": [
+      "c516-1-notice",
+      "c516-1-determined"
+     ]
+    },
+    {
+     "text": "行使选择权的通知到达对方",
+     "rules": [
+      "c516-1-determined"
+     ]
+    },
+    {
+     "text": "标的已经确定",
+     "rules": [
+      "c516-1-noalter"
+     ]
+    },
+    {
+     "text": "可选择的标的发生不能履行的情形",
+     "rules": [
+      "c516-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经对方同意变更已确定的标的",
+     "rules": [
+      "c516-1-exception"
+     ]
+    },
+    {
+     "text": "该不能履行的情形是由对方造成的",
+     "rules": [
+      "c516-2-exception"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "行使选择权应当及时通知对方",
+     "rules": [
+      "c516-1-notice"
+     ]
+    },
+    {
+     "text": "通知到达对方时，标的确定",
+     "rules": [
+      "c516-1-determined"
+     ]
+    },
+    {
+     "text": "标的确定后不得变更",
+     "rules": [
+      "c516-1-noalter"
+     ]
+    },
+    {
+     "text": "享有选择权的当事人不得选择不能履行的标的",
+     "rules": [
+      "c516-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "经对方同意的，可以变更已确定的标的，优先于“标的确定后不得变更”",
+     "rules": [
+      "c516-1-exception",
+      "c516-1-noalter"
+     ]
+    },
+    {
+     "text": "不能履行系对方造成的，仍可选择该标的，优先于“不得选择不能履行的标的”",
+     "rules": [
+      "c516-2-exception",
+      "c516-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "选择权的归属（原则上属于债务人，法律另有规定、当事人另有约定或者交易习惯除外）规定在第515条，本行未挂载该条，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "笔记与法条一致，仅强调“通知到达对方时”标的确定及两项但书，未增加额外要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c516-1-notice",
+    "srcs": [
+     "art516-1"
+    ],
+    "body": [
+     "alternativeObligation(K)",
+     "choiceHolder(P,K)",
+     "exercisesChoiceRight(P,K)",
+     "otherPartyOf(Q,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "notifyCounterparty(P,Q)"
+     }
+    ],
+    "note": "当事人行使选择权应当及时通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c516-1-determined",
+    "srcs": [
+     "art516-1"
+    ],
+    "body": [
+     "alternativeObligation(K)",
+     "exercisesChoiceRight(P,K)",
+     "otherPartyOf(Q,P,K)",
+     "noticeArrives(P,Q)"
+    ],
+    "heads": [
+     "subjectDetermined(K)"
+    ],
+    "note": "通知到达对方时，标的确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c516-1-noalter",
+    "srcs": [
+     "art516-1"
+    ],
+    "body": [
+     "subjectDetermined(K)",
+     "choiceHolder(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "alterDeterminedSubject(P,K)"
+     }
+    ],
+    "note": "标的确定后不得变更",
+    "auth": "npc"
+   },
+   {
+    "key": "c516-1-exception",
+    "srcs": [
+     "art516-1"
+    ],
+    "body": [
+     "subjectDetermined(K)",
+     "choiceHolder(P,K)",
+     "otherPartyOf(Q,P,K)",
+     "counterpartyAgreesToAlter(Q,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "alterDeterminedSubject(P,K)"
+     }
+    ],
+    "note": "但书：经对方同意的除外，此时可以变更已确定的标的",
+    "auth": "npc"
+   },
+   {
+    "key": "c516-2",
+    "srcs": [
+     "art516-2"
+    ],
+    "body": [
+     "alternativeObligation(K)",
+     "choiceHolder(P,K)",
+     "alternativeSubject(S,K)",
+     "impossibleToPerform(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "chooseSubject(P,S,K)"
+     }
+    ],
+    "note": "可选择的标的发生不能履行情形的，享有选择权的当事人不得选择不能履行的标的",
+    "auth": "npc"
+   },
+   {
+    "key": "c516-2-exception",
+    "srcs": [
+     "art516-2"
+    ],
+    "body": [
+     "alternativeObligation(K)",
+     "choiceHolder(P,K)",
+     "alternativeSubject(S,K)",
+     "impossibleToPerform(S,K)",
+     "otherPartyOf(Q,P,K)",
+     "causedByCounterparty(S,Q)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "chooseSubject(P,S,K)"
+     }
+    ],
+    "note": "但书：该不能履行的情形是由对方造成的除外，此时仍可选择该标的",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c516-1-exception",
+    "c516-1-noalter",
+    "经对方同意变更已确定的标的，排除“标的确定后不得变更”的限制"
+   ],
+   [
+    "c516-2-exception",
+    "c516-2",
+    "不能履行的情形由对方造成的，排除“不得选择不能履行的标的”的限制"
+   ]
+  ],
+  "predicates": {
+   "alternativeObligation": "选择之债：债务标的为两项以上，债务人只需履行其中一项的债",
+   "choiceHolder": "享有选择权（当事人，选择之债）",
+   "exercisesChoiceRight": "行使选择权（当事人，选择之债）",
+   "otherPartyOf": "是对方当事人（对方，当事人，选择之债）",
+   "noticeArrives": "通知到达对方（通知人，对方）",
+   "subjectDetermined": "标的确定（选择之债）",
+   "alterDeterminedSubject": "变更已确定的标的（当事人，选择之债）",
+   "counterpartyAgreesToAlter": "对方同意变更已确定的标的（对方，选择之债）",
+   "alternativeSubject": "是该选择之债的可选标的（标的，选择之债）",
+   "impossibleToPerform": "该标的不能履行（标的，选择之债）",
+   "chooseSubject": "选择该标的（当事人，标的，选择之债）",
+   "causedByCounterparty": "该不能履行的情形由对方造成（标的，对方）"
+  }
+ },
+ "art:517": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人为二人以上或债务人为二人以上时，何时成立按份债权、按份债务；各债权人、债务人的份额如何确定",
+     "rules": [
+      "c517-1",
+      "c517-2",
+      "c517-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权人为二人以上，标的可分，且各债权人按照份额各自享有债权",
+     "rules": [
+      "c517-1"
+     ]
+    },
+    {
+     "text": "债务人为二人以上，标的可分，且各债务人按照份额各自负担债务",
+     "rules": [
+      "c517-2"
+     ]
+    },
+    {
+     "text": "按份债权人或者按份债务人的份额难以确定",
+     "rules": [
+      "c517-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "为按份债权，各债权人按份额各自享有债权",
+     "rules": [
+      "c517-1"
+     ]
+    },
+    {
+     "text": "为按份债务，各债务人按份额各自负担债务",
+     "rules": [
+      "c517-2"
+     ]
+    },
+    {
+     "text": "份额难以确定的，视为份额相同",
+     "rules": [
+      "c517-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只界定按份债权、按份债务并推定份额；标的不可分或者当事人未按份额享有债权、负担债务的，不成立按份债权、按份债务，连带债权债务适用第518条，不在本条范围",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条，本条规则全部直接依据法条原文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c517-1",
+    "srcs": [
+     "art517-1"
+    ],
+    "body": [
+     "creditorsTwoOrMore(K)",
+     "subjectDivisible(K)",
+     "eachCreditorEnjoysPerShare(K)"
+    ],
+    "heads": [
+     "severalClaim(K)"
+    ],
+    "note": "债权人为二人以上、标的可分、按份额各自享有债权的，为按份债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c517-2",
+    "srcs": [
+     "art517-1"
+    ],
+    "body": [
+     "debtorsTwoOrMore(D)",
+     "subjectDivisible(D)",
+     "eachDebtorBearsPerShare(D)"
+    ],
+    "heads": [
+     "severalDebt(D)"
+    ],
+    "note": "债务人为二人以上、标的可分、按份额各自负担债务的，为按份债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c517-3",
+    "srcs": [
+     "art517-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "severalClaim(K)",
+       "severalDebt(K)"
+      ]
+     },
+     "shareIndeterminable(K)"
+    ],
+    "heads": [
+     "shareDeemedEqual(K)"
+    ],
+    "note": "按份债权人或者按份债务人的份额难以确定的，视为份额相同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "creditorsTwoOrMore": "债权人为二人以上（参数：债权）",
+   "debtorsTwoOrMore": "债务人为二人以上（参数：债务）",
+   "subjectDivisible": "标的可分（参数：债权或债务）",
+   "eachCreditorEnjoysPerShare": "各债权人按照份额各自享有债权（参数：债权）",
+   "eachDebtorBearsPerShare": "各债务人按照份额各自负担债务（参数：债务）",
+   "severalClaim": "是按份债权（参数：债权）",
+   "severalDebt": "是按份债务（参数：债务）",
+   "shareIndeterminable": "按份债权人或按份债务人的份额难以确定（参数：按份债权或按份债务）",
+   "shareDeemedEqual": "视为份额相同（参数：按份债权或按份债务）"
+  }
+ },
+ "card:g4158": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c510-1：新谓词 termUnclear 需要在 predicates 中给出中文释义",
+   "c510-1：新谓词 supplementByAgreement 需要在 predicates 中给出中文释义",
+   "c510-2：新谓词 termUnclear 需要在 predicates 中给出中文释义",
+   "c510-2：新谓词 supplementaryAgreementReached 需要在 predicates 中给出中文释义",
+   "c510-2：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-quality-mandatory：新谓词 qualityRequirementUnclear 需要在 predicates 中给出中文释义",
+   "c511-quality-mandatory：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-quality-mandatory：新谓词 mandatoryNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-mandatory：新谓词 qualityRequirementDetermined 需要在 predicates 中给出中文释义",
+   "c511-quality-recommended：新谓词 qualityRequirementUnclear 需要在 predicates 中给出中文释义",
+   "c511-quality-recommended：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-quality-recommended：新谓词 mandatoryNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-recommended：新谓词 recommendedNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-recommended：新谓词 qualityRequirementDetermined 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 qualityRequirementUnclear 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 mandatoryNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 recommendedNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 industryStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-industry：新谓词 qualityRequirementDetermined 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 qualityRequirementUnclear 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 mandatoryNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 recommendedNationalStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 industryStandard 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 usualStandardOrFitsPurpose 需要在 predicates 中给出中文释义",
+   "c511-quality-usual：新谓词 qualityRequirementDetermined 需要在 predicates 中给出中文释义",
+   "c511-price-gov：新谓词 priceUnclear 需要在 predicates 中给出中文释义",
+   "c511-price-gov：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-price-gov：新谓词 governmentPricing 需要在 predicates 中给出中文释义",
+   "c511-price-gov：新谓词 priceTermDeterminedPerGovernmentPricing 需要在 predicates 中给出中文释义",
+   "c511-price-market：新谓词 priceUnclear 需要在 predicates 中给出中文释义",
+   "c511-price-market：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-price-market：新谓词 governmentPricing 需要在 predicates 中给出中文释义",
+   "c511-price-market：新谓词 priceTermDeterminedPerMarketPrice 需要在 predicates 中给出中文释义",
+   "c511-place-money：新谓词 placeUnclear 需要在 predicates 中给出中文释义",
+   "c511-place-money：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-place-money：新谓词 monetaryPayment 需要在 predicates 中给出中文释义",
+   "c511-place-money：新谓词 performancePlaceIs 需要在 predicates 中给出中文释义",
+   "c511-place-immovable：新谓词 placeUnclear 需要在 predicates 中给出中文释义",
+   "c511-place-immovable：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-place-immovable：新谓词 deliverImmovable 需要在 predicates 中给出中文释义",
+   "c511-place-immovable：新谓词 performancePlaceIs 需要在 predicates 中给出中文释义",
+   "c511-place-other：新谓词 placeUnclear 需要在 predicates 中给出中文释义",
+   "c511-place-other：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-place-other：新谓词 monetaryPayment 需要在 predicates 中给出中文释义",
+   "c511-place-other：新谓词 deliverImmovable 需要在 predicates 中给出中文释义",
+   "c511-place-other：新谓词 performancePlaceIs 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 timeUnclear 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 debtorOfContract 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 creditorOfContract 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 performAtAnyTime 需要在 predicates 中给出中文释义",
+   "c511-time：新谓词 demandPerformanceAtAnyTime 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 timeUnclear 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 debtorOfContract 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 creditorOfContract 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 giveNecessaryPreparationTime 需要在 predicates 中给出中文释义",
+   "c511-time-prep：新谓词 giveNecessaryPreparationTime 需要在 predicates 中给出中文释义",
+   "c511-manner：新谓词 mannerUnclear 需要在 predicates 中给出中文释义",
+   "c511-manner：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-manner：新谓词 mannerFavorableToPurpose 需要在 predicates 中给出中文释义",
+   "c511-cost：新谓词 costUnclear 需要在 predicates 中给出中文释义",
+   "c511-cost：新谓词 termDeterminedByRelevantTermsOrUsage 需要在 predicates 中给出中文释义",
+   "c511-cost：新谓词 bearPerformanceCost 需要在 predicates 中给出中文释义",
+   "c511-cost-creditor：新谓词 costIncreasedByCreditor 需要在 predicates 中给出中文释义",
+   "c511-cost-creditor：新谓词 creditorOfContract 需要在 predicates 中给出中文释义",
+   "c511-cost-creditor：新谓词 bearIncreasedCost 需要在 predicates 中给出中文释义",
+   "c512-goods：新谓词 electronicContract 需要在 predicates 中给出中文释义",
+   "c512-goods：新谓词 goodsDeliveredByExpress 需要在 predicates 中给出中文释义",
+   "c512-goods：新谓词 deliveryTimeIsReceiptTime 需要在 predicates 中给出中文释义",
+   "c512-service-voucher：新谓词 electronicContract 需要在 predicates 中给出中文释义",
+   "c512-service-voucher：新谓词 serviceProvision 需要在 predicates 中给出中文释义",
+   "c512-service-voucher：新谓词 voucherStatesTime 需要在 predicates 中给出中文释义",
+   "c512-service-voucher：新谓词 serviceTimeIsVoucherTime 需要在 predicates 中给出中文释义",
+   "c512-service-actual：新谓词 electronicContract 需要在 predicates 中给出中文释义",
+   "c512-service-actual：新谓词 serviceProvision 需要在 predicates 中给出中文释义",
+   "c512-service-actual：新谓词 voucherStatesTime 需要在 predicates 中给出中文释义",
+   "c512-service-actual：新谓词 voucherTimeInconsistentWithActual 需要在 predicates 中给出中文释义",
+   "c512-service-actual：新谓词 serviceTimeIsActualTime 需要在 predicates 中给出中文释义",
+   "c512-online：新谓词 electronicContract 需要在 predicates 中给出中文释义",
+   "c512-online：新谓词 onlineTransmission 需要在 predicates 中给出中文释义",
+   "c512-online：新谓词 retrievableAndIdentifiable 需要在 predicates 中给出中文释义",
+   "c512-online：新谓词 deliveryTimeIsEntryTime 需要在 predicates 中给出中文释义",
+   "c512-agreed：新谓词 electronicContract 需要在 predicates 中给出中文释义",
+   "c512-agreed：新谓词 agreedOtherwiseOnEDelivery 需要在 predicates 中给出中文释义",
+   "c512-agreed：新谓词 deliveryTimePerAgreement 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同生效后，当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，应当如何确定（合同漏洞的填补）\",\n        \"rules\": [\n          \"c510-1\",\n          \"c510-2\",\n          \"c511-quality-mandatory\",\n          \"c511-quality-recommended\",\n          \"c511-quality-industry\",\n          \"c511-quality-usual\",\n          \"c511-price-gov\",\n          \"c511-price-market\",\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\",\n          \"c511-time\",\n          \"c511-time-prep\",\n          \"c511-manner\",\n          \"c511-cost\",\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"通过互联网等信息网络订立的电子合同，其交付商品或者提供服务的时间如何确定\",\n        \"rules\": [\n          \"c512-goods\",\n          \"c512-service-voucher\",\n          \"c512-service-actual\",\n          \"c512-online\",\n          \"c512-agreed\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同已生效，且当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确\",\n        \"rules\": [\n          \"c510-1\"\n        ]\n      },\n      {\n        \"text\": \"当事人不能就上述内容达成补充协议\",\n        \"rules\": [\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"依第510条按照合同相关条款或者交易习惯仍不能确定\",\n        \"rules\": [\n          \"c511-quality-mandatory\",\n          \"c511-price-market\",\n          \"c511-place-money\",\n          \"c511-time\",\n          \"c511-manner\",\n          \"c511-cost\"\n        ]\n      },\n      {\n        \"text\": \"质量要求不明确，且依次存在强制性国家标准、推荐性国家标准、行业标准，或者均无而需按通常标准或符合合同目的的特定标准\",\n        \"rules\": [\n          \"c511-quality-mandatory\",\n          \"c511-quality-recommended\",\n          \"c511-quality-industry\",\n          \"c511-quality-usual\"\n        ]\n      },\n      {\n        \"text\": \"价款或者报酬不明确\",\n        \"rules\": [\n          \"c511-price-gov\",\n          \"c511-price-market\"\n        ]\n      },\n      {\n        \"text\": \"履行地点不明确，且标的分别为给付货币、交付不动产、其他标的\",\n        \"rules\": [\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\"\n        ]\n      },\n      {\n        \"text\": \"履行期限不明确\",\n        \"rules\": [\n          \"c511-time\",\n          \"c511-time-prep\"\n        ]\n      },\n      {\n        \"text\": \"履行方式不明确\",\n        \"rules\": [\n          \"c511-manner\"\n        ]\n      },\n      {\n        \"text\": \"履行费用的负担不明确；或者因债权人原因增加了履行费用\",\n        \"rules\": [\n          \"c511-cost\",\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同的标的为交付商品并采用快递物流方式交付\",\n        \"rules\": [\n          \"c512-goods\"\n        ]\n      },\n      {\n        \"text\": \"电子合同的标的为提供服务，且电子凭证或者实物凭证载明了时间\",\n        \"rules\": [\n          \"c512-service-voucher\"\n        ]\n      },\n      {\n        \"text\": \"电子合同标的为提供服务，但凭证未载明时间或者载明时间与实际提供服务时间不一致\",\n        \"rules\": [\n          \"c512-service-actual\"\n        ]\n      },\n      {\n        \"text\": \"电子合同的标的物采用在线传输方式交付，且已进入对方当事人指定的特定系统并能够检索识别\",\n        \"rules\": [\n          \"c512-online\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定\",\n        \"rules\": [\n          \"c512-agreed\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"依法应当执行政府定价或者政府指导价的，依照规定履行，不适用订立合同时履行地的市场价格规则\",\n        \"rules\": [\n          \"c511-price-gov\"\n        ]\n      },\n      {\n        \"text\": \"因债权人原因增加的履行费用，由债权人负担，不适用由履行义务一方负担的一般规则\",\n        \"rules\": [\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定，不适用第512条第1款、第2款的法定交付时间规则\",\n        \"rules\": [\n          \"c512-agreed\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"当事人可以就质量、价款或者报酬、履行地点等内容协议补充\",\n        \"rules\": [\n          \"c510-1\"\n        ]\n      },\n      {\n        \"text\": \"不能达成补充协议的，按照合同相关条款或者交易习惯确定该内容\",\n        \"rules\": [\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"质量要求依次按强制性国家标准、推荐性国家标准、行业标准、通常标准或者符合合同目的的特定标准确定\",\n        \"rules\": [\n          \"c511-quality-mandatory\",\n          \"c511-quality-recommended\",\n          \"c511-quality-industry\",\n          \"c511-quality-usual\"\n        ]\n      },\n      {\n        \"text\": \"价款或者报酬按照订立合同时履行地的市场价格履行；依法应当执行政府定价或者政府指导价的，依照规定履行\",\n        \"rules\": [\n          \"c511-price-gov\",\n          \"c511-price-market\"\n        ]\n      },\n      {\n        \"text\": \"履行地点：给付货币的，在接受货币一方所在地履行；交付不动产的，在不动产所在地履行；其他标的，在履行义务一方所在地履行\",\n        \"rules\": [\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\"\n        ]\n      },\n      {\n        \"text\": \"履行期限不明确的，债务人可以随时履行，债权人也可以随时请求履行\",\n        \"rules\": [\n          \"c511-time\"\n        ]\n      },\n      {\n        \"text\": \"随时履行或者随时请求履行的，应当给对方必要的准备时间\",\n        \"rules\": [\n          \"c511-time-prep\"\n        ]\n      },\n      {\n        \"text\": \"履行方式不明确的，按照有利于实现合同目的的方式履行\",\n        \"rules\": [\n          \"c511-manner\"\n        ]\n      },\n      {\n        \"text\": \"履行费用由履行义务一方负担；因债权人原因增加的履行费用，由债权人负担\",\n        \"rules\": [\n          \"c511-cost\",\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同标的为交付商品并采用快递物流方式交付的，收货人的签收时间为交付时间\",\n        \"rules\": [\n          \"c512-goods\"\n        ]\n      },\n      {\n        \"text\": \"电子合同标的为提供服务的，以凭证载明的时间为提供服务时间；凭证未载明时间或者载明时间与实际不一致的，以实际提供服务的时间为准\",\n        \"rules\": [\n          \"c512-service-voucher\",\n          \"c512-service-actual\"\n        ]\n      },\n      {\n        \"text\": \"电子合同标的物采用在线传输方式交付的，合同标的物进入对方当事人指定的特定系统且能够检索识别的时间为交付时间\",\n        \"rules\": [\n          \"c512-online\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定确定交付或者服务时间\",\n        \"rules\": [\n          \"c512-agreed\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"第510条的协议补充、按照合同相关条款或者交易习惯确定，优先于第511条的法定补充规则（第511条以“依据前条规定仍不能确定”为前提）\",\n        \"rules\": [\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"质量标准的适用有先后顺序：强制性国家标准优先于推荐性国家标准，推荐性国家标准优先于行业标准，行业标准优先于通常标准或者符合合同目的的特定标准\",\n        \"rules\": [\n          \"c511-quality-mandatory\",\n          \"c511-quality-recommended\",\n          \"c511-quality-industry\",\n          \"c511-quality-usual\"\n        ]\n      },\n      {\n        \"text\": \"政府定价或者政府指导价规则优先于订立合同时履行地市场价格规则\",\n        \"rules\": [\n          \"c511-price-gov\"\n        ]\n      },\n      {\n        \"text\": \"因债权人原因增加的履行费用由债权人负担，优先于由履行义务一方负担的一般规则\",\n        \"rules\": [\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人的约定优先于第512条第1款、第2款的法定交付时间规则\",\n        \"rules\": [\n          \"c512-agreed\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记节点（第三编第十四章第四节）只讲全面履行、诚实信用、保护生态环境等履行的一般规则，未涉及第510–512条的漏洞填补与电子合同交付时间；本卡片以法条原文为准\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO卡片把“选择之债的选择权行使与转移”列入本条，但第510、511条未规定选择之债，该内容属学理，未形式化\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO卡片称漏洞填补顺序为“协议补充→合同有关条款/性质/目的/交易习惯→合同编分则→合同编通则”，法条原文只到“合同相关条款或者交易习惯”，参照分则、通则属学理\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO卡片所称“政府定价情形下价格调整以交付时为准、逾期履行按特殊规则执行”属第513条内容，不在本行挂载法条范围内\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c510-1\",\n      \"srcs\": [\n        \"art510-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"termUnclear(K,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"parties\",\n          \"counterparty\": null,\n          \"content\": \"supplementByAgreement(K,T)\"\n        }\n      ],\n      \"note\": \"合同生效后，就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，当事人可以协议补充\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c510-2\",\n      \"srcs\": [\n        \"art510-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"termUnclear(K,T)\",\n        \"-supplementaryAgreementReached(K,T)\"\n      ],\n      \"heads\": [\n        \"termDeterminedByRelevantTermsOrUsage(K,T)\"\n      ],\n      \"note\": \"不能达成补充协议的，按照合同相关条款或者交易习惯确定该内容\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-mandatory\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"qualityRequirementUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,quality)\",\n        \"mandatoryNationalStandard(K)\"\n      ],\n      \"heads\": [\n        \"qualityRequirementDetermined(K)\"\n      ],\n      \"note\": \"质量要求不明确且有强制性国家标准的，按照强制性国家标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-recommended\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"qualityRequirementUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,quality)\",\n        \"-mandatoryNationalStandard(K)\",\n        \"recommendedNationalStandard(K)\"\n      ],\n      \"heads\": [\n        \"qualityRequirementDetermined(K)\"\n      ],\n      \"note\": \"没有强制性国家标准而有推荐性国家标准的，按照推荐性国家标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-industry\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"qualityRequirementUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,quality)\",\n        \"-mandatoryNationalStandard(K)\",\n        \"-recommendedNationalStandard(K)\",\n        \"industryStandard(K)\"\n      ],\n      \"heads\": [\n        \"qualityRequirementDetermined(K)\"\n      ],\n      \"note\": \"没有国家标准而有行业标准的，按照行业标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-usual\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"qualityRequirementUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,quality)\",\n        \"-mandatoryNationalStandard(K)\",\n        \"-recommendedNationalStandard(K)\",\n        \"-industryStandard(K)\",\n        \"usualStandardOrFitsPurpose(K)\"\n      ],\n      \"heads\": [\n        \"qualityRequirementDetermined(K)\"\n      ],\n      \"note\": \"没有国家标准、行业标准的，按照通常标准或者符合合同目的的特定标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-price-gov\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"priceUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,price)\",\n        \"governmentPricing(K)\"\n      ],\n      \"heads\": [\n        \"priceTermDeterminedPerGovernmentPricing(K)\"\n      ],\n      \"note\": \"价款或者报酬不明确且依法应当执行政府定价或者政府指导价的，依照规定履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-price-market\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"priceUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,price)\",\n        \"-governmentPricing(K)\"\n      ],\n      \"heads\": [\n        \"priceTermDeterminedPerMarketPrice(K)\"\n      ],\n      \"note\": \"价款或者报酬不明确的，按照订立合同时履行地的市场价格履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-money\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"placeUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,place)\",\n        \"monetaryPayment(K)\"\n      ],\n      \"heads\": [\n        \"performancePlaceIs(K,placeOfPayee)\"\n      ],\n      \"note\": \"履行地点不明确且给付货币的，在接受货币一方所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-immovable\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"placeUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,place)\",\n        \"deliverImmovable(K)\"\n      ],\n      \"heads\": [\n        \"performancePlaceIs(K,placeOfImmovable)\"\n      ],\n      \"note\": \"履行地点不明确且交付不动产的，在不动产所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-other\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"placeUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,place)\",\n        \"-monetaryPayment(K)\",\n        \"-deliverImmovable(K)\"\n      ],\n      \"heads\": [\n        \"performancePlaceIs(K,placeOfObligor)\"\n      ],\n      \"note\": \"履行地点不明确且标的为其他标的的，在履行义务一方所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-time\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"timeUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,time)\",\n        \"debtorOfContract(K,D)\",\n        \"creditorOfContract(K,C)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"D\",\n          \"counterparty\": \"C\",\n          \"content\": \"performAtAnyTime(K)\"\n        },\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"C\",\n          \"counterparty\": \"D\",\n          \"content\": \"demandPerformanceAtAnyTime(K)\"\n        }\n      ],\n      \"note\": \"履行期限不明确的，债务人可以随时履行，债权人也可以随时请求履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-time-prep\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"timeUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,time)\",\n        \"debtorOfContract(K,D)\",\n        \"creditorOfContract(K,C)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"D\",\n          \"counterparty\": \"C\",\n          \"content\": \"giveNecessaryPreparationTime(K)\"\n        },\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"C\",\n          \"counterparty\": \"D\",\n          \"content\": \"giveNecessaryPreparationTime(K)\"\n        }\n      ],\n      \"note\": \"随时履行或者随时请求履行的，应当给对方必要的准备时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-manner\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"mannerUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,manner)\"\n      ],\n      \"heads\": [\n        \"mannerFavorableToPurpose(K)\"\n      ],\n      \"note\": \"履行方式不明确的，按照有利于实现合同目的的方式履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-cost\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"costUnclear(K)\",\n        \"-termDeterminedByRelevantTermsOrUsage(K,cost)\",\n        \"obligorOf(K,D)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"D\",\n          \"counterparty\": null,\n          \"content\": \"bearPerformanceCost(K)\"\n        }\n      ],\n      \"note\": \"履行费用的负担不明确的，由履行义务一方负担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-cost-creditor\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"costIncreasedByCreditor(K)\",\n        \"creditorOfContract(K,C)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"C\",\n          \"counterparty\": null,\n          \"content\": \"bearIncreasedCost(K)\"\n        }\n      ],\n      \"note\": \"因债权人原因增加的履行费用，由债权人负担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-goods\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"goodsDeliveredByExpress(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimeIsReceiptTime(K)\"\n      ],\n      \"note\": \"电子合同的标的为交付商品并采用快递物流方式交付的，收货人的签收时间为交付时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-service-voucher\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"serviceProvision(K)\",\n        \"voucherStatesTime(K)\"\n      ],\n      \"heads\": [\n        \"serviceTimeIsVoucherTime(K)\"\n      ],\n      \"note\": \"电子合同的标的为提供服务的，生成的电子凭证或者实物凭证中载明的时间为提供服务时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-service-actual\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"serviceProvision(K)\",\n        {\n          \"or\": [\n            \"-voucherStatesTime(K)\",\n            \"voucherTimeInconsistentWithActual(K)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        \"serviceTimeIsActualTime(K)\"\n      ],\n      \"note\": \"凭证没有载明时间或者载明时间与实际提供服务时间不一致的，以实际提供服务的时间为准\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-online\",\n      \"srcs\": [\n        \"art512-2\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"onlineTransmission(K)\",\n        \"entersDesignatedSystem(K)\",\n        \"retrievableAndIdentifiable(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimeIsEntryTime(K)\"\n      ],\n      \"note\": \"标的物采用在线传输方式交付的，进入对方当事人指定的特定系统且能够检索识别的时间为交付时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-agreed\",\n      \"srcs\": [\n        \"art512-3\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"agreedOtherwiseOnEDelivery(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimePerAgreement(K)\"\n      ],\n      \"note\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c510-2\",\n      \"c511-quality-mandatory\",\n      \"第511条以“依据前条规定仍不能确定”为前提，第510条的确定方法优先\"\n    ],\n    [\n      \"c510-2\",\n      \"c511-price-market\",\n      \"第511条以“依据前条规定仍不能确定”为前提，第510条的确定方法优先\"\n    ],\n    [\n      \"c511-quality-mandatory\",\n      \"c511-quality-recommended\",\n      \"有强制性国家标准的，优先于推荐性国家标准\"\n    ],\n    [\n      \"c511-quality-recommended\",\n      \"c511-quality-industry\",\n      \"有推荐性国家标准的，优先于行业标准\"\n    ],\n    [\n      \"c511-quality-industry\",\n      \"c511-quality-usual\",\n      \"有行业标准的，优先于通常标准或者符合合同目的的特定标准\"\n    ],\n    [\n      \"c511-price-gov\",\n      \"c511-price-market\",\n      \"依法应当执行政府定价或者政府指导价的，依照规定履行，属特别规定\"\n    ],\n    [\n      \"c511-cost-creditor\",\n      \"c511-cost\",\n      \"因债权人原因增加的履行费用由债权人负担，属特别规定\"\n    ],\n    [\n      \"c512-agreed\",\n      \"c512-goods\",\n      \"当事人对交付方式、时间另有约定的，约定优先\"\n    ],\n    [\n      \"c512-agreed\",\n      \"c512-service-voucher\",\n      \"当事人对提供服务时间另有约定的，约定优先\"\n    ],\n    [\n      \"c512-agreed\",\n      \"c512-service-actual\",\n      \"当事人对提供服务时间另有约定的，约定优先\"\n    ],\n    [\n      \"c512-agreed\",\n      \"c512-online\",\n      \"当事人对交付方式、时间另有约定的，约定优先\"\n    ]\n  ],\n  \"predicates\": {\n    \"termUnclear/2\": \"合同就某内容项（质量、价款或者报酬、履行地点等）没有约定或者约定不明确（合同，内容项）\",\n    \"supplementByAgreement/2\": \"当事人就该内容协议补充（合同，内容项）\",\n    \"supplementaryAgreementReached/2\": \"当事人已就该内容达成补充协议（合同，内容项）\",\n    \"termDeterminedByRelevantTermsOrUsage/2\": \"按照合同相关条款或者交易习惯确定该内容（合同，内容项）\",\n    \"qualityRequirementUnclear/1\": \"质量要求不明确（合同）\",\n    \"mandatoryNationalStandard/1\": \"有强制性国家标准（合同标的）\",\n    \"recommendedNationalStandard/1\": \"有推荐性国家标准（合同标的）\",\n    \"industryStandard/1\": \"有行业标准（合同标的）\",\n    \"usualStandardOrFitsPurpose/1\": \"有通常标准或者符合合同目的的特定标准（合同标的）\",\n    \"qualityRequirementDetermined/1\": \"质量要求已依第511条第1项确定（合同）\",\n    \"priceUnclear/1\": \"价款或者报酬不明确（合同）\",\n    \"governmentPricing/1\": \"依法应当执行政府定价或者政府指导价（合同）\",\n    \"priceTermDeterminedPerGovernmentPricing/1\": \"价款或者报酬依照政府定价或者政府指导价的规定确定（合同）\",\n    \"priceTermDeterminedPerMarketPrice/1\": \"价款或者报酬按订立合同时履行地的市场价格确定（合同）\",\n    \"placeUnclear/1\": \"履行地点不明确（合同）\",\n    \"monetaryPayment/1\": \"给付货币（合同）\",\n    \"deliverImmovable/1\": \"交付不动产（合同）\",\n    \"performancePlaceIs/2\": \"履行地点为某地（合同，地点）\",\n    \"timeUnclear/1\": \"履行期限不明确（合同）\",\n    \"debtorOfContract/2\": \"是合同的债务人（合同，债务人）\",\n    \"creditorOfContract/2\": \"是合同的债权人（合同，债权人）\",\n    \"performAtAnyTime/1\": \"可以随时履行（合同）\",\n    \"demandPerformanceAtAnyTime/1\": \"可以随时请求履行（合同）\",\n    \"giveNecessaryPreparationTime/1\": \"应当给对方必要的准备时间（合同）\",\n    \"mannerUnclear/1\": \"履行方式不明确（合同）\",\n    \"mannerFavorableToPurpose/1\": \"按照有利于实现合同目的的方式履行（合同）\",\n    \"costUnclear/1\": \"履行费用的负担不明确（合同）\",\n    \"bearPerformanceCost/1\": \"负担履行费用（合同）\",\n    \"costIncreasedByCreditor/1\": \"因债权人原因增加了履行费用（合同）\",\n    \"bearIncreasedCost/1\": \"负担因债权人原因增加的履行费用（合同）\",\n    \"electronicContract/1\": \"是通过互联网等信息网络订立的电子合同（合同）\",\n    \"goodsDeliveredByExpress/1\": \"标的为交付商品并采用快递物流方式交付（电子合同）\",\n    \"deliveryTimeIsReceiptTime/1\": \"以收货人的签收时间为交付时间（电子合同）\",\n    \"serviceProvision/1\": \"标的为提供服务（电子合同）\",\n    \"voucherStatesTime/1\": \"生成的电子凭证或者实物凭证中载明了提供服务时间（电子合同）\",\n    \"voucherTimeInconsistentWithActual/1\": \"凭证载明的时间与实际提供服务的时间不一致（电子合同）\",\n    \"serviceTimeIsVoucherTime/1\": \"以凭证载明的时间为提供服务时间（电子合同）\",\n    \"serviceTimeIsActualTime/1\": \"以实际提供服务的时间为提供服务时间（电子合同）\",\n    \"onlineTransmission/1\": \"标的物采用在线传输方式交付（电子合同）\",\n    \"retrievableAndIdentifiable/1\": \"合同标的物能够检索识别（电子合同）\",\n    \"deliveryTimeIsEntryTime/1\": \"以标的物进入对方当事人指定的特定系统且能够检索识别的时间为交付时间（电子合同）\",\n    \"agreedOtherwiseOnEDelivery/1\": \"当事人对交付商品或者提供服务的方式、时间另有约定（电子合同）\",\n    \"deliveryTimePerAgreement/1\": \"按照当事人的约定确定交付商品或者提供服务的时间（电子合同）\"\n  }\n}"
+ },
+ "art:519": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "连带债务人之间的份额如何确定；实际承担债务超过自己份额的连带债务人能否追偿、向谁追偿、追偿范围如何；被追偿人不能履行其应分担份额时，其他连带债务人如何分担",
+     "rules": [
+      "c519-1",
+      "c519-2",
+      "c519-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "数人负同一连带债务，且连带债务人之间的份额难以确定",
+     "rules": [
+      "c519-1"
+     ]
+    },
+    {
+     "text": "连带债务人实际承担债务超过自己应负担的份额",
+     "rules": [
+      "c519-2"
+     ]
+    },
+    {
+     "text": "其他连带债务人尚有未履行的份额（追偿以此为限）",
+     "rules": [
+      "c519-2"
+     ]
+    },
+    {
+     "text": "被追偿的连带债务人不能履行其应分担的份额",
+     "rules": [
+      "c519-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "追偿以及相应地享有债权人的权利，不得损害债权人的利益",
+     "rules": [
+      "c519-2-limit"
+     ]
+    },
+    {
+     "text": "其他连带债务人对债权人享有的抗辩，可以向已超额清偿的追偿人主张",
+     "rules": [
+      "c519-2-defense"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "份额难以确定的，视为各连带债务人份额相同",
+     "rules": [
+      "c519-1"
+     ]
+    },
+    {
+     "text": "有权就超出自己份额的部分，在其他连带债务人未履行的份额范围内向其追偿",
+     "rules": [
+      "c519-2"
+     ]
+    },
+    {
+     "text": "追偿时相应地享有债权人的权利（债权人对其他连带债务人的权利在追偿范围内移转）",
+     "rules": [
+      "c519-2-rights"
+     ]
+    },
+    {
+     "text": "被追偿人不能履行其应分担份额的，其他连带债务人应当在相应范围内按比例分担",
+     "rules": [
+      "c519-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "追偿权及随之移转的债权人权利，不得损害债权人的利益；债权人利益优先于追偿人的追偿主张",
+     "rules": [
+      "c519-2-limit"
+     ]
+    },
+    {
+     "text": "第3款的分担规则以第2款追偿权已经行使、被追偿人不能履行其份额为前提，属于追偿不能时的补充分担",
+     "rules": [
+      "c519-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记只整理了第1款（份额推定）与第2款（追偿及抗辩），未涉及第3款被追偿人不能履行时的按比例分担",
+     "rules": []
+    },
+    {
+     "text": "本条规范连带债务人内部份额确定与追偿，与第178条连带责任的对外承担不同；追偿范围以其他连带债务人未履行的份额为限，而非全额",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c519-1",
+    "srcs": [
+     "art519-1"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "shareIndeterminable(Ds)"
+    ],
+    "heads": [
+     "equalShares(Ds)"
+    ],
+    "note": "连带债务人之间的份额难以确定的，视为份额相同",
+    "auth": "npc"
+   },
+   {
+    "key": "c519-2",
+    "srcs": [
+     "art519-2"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "jointDebtorOf(D,Ds)",
+     "actualPerformanceExceedsShare(D,Ds)",
+     "jointDebtorOf(O,Ds)",
+     "unperformedShare(O,Ds)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "D",
+      "counterparty": "O",
+      "content": "claimRecourseAgainst(D,O)"
+     }
+    ],
+    "note": "实际承担债务超过自己份额的连带债务人，有权就超出部分在其他连带债务人未履行的份额范围内向其追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c519-2-rights",
+    "srcs": [
+     "art519-2"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "jointDebtorOf(D,Ds)",
+     "actualPerformanceExceedsShare(D,Ds)"
+    ],
+    "heads": [
+     "enjoysCreditorsRights(D,C)"
+    ],
+    "note": "追偿时相应地享有债权人的权利，即债权人对其他连带债务人的权利在追偿范围内法定移转给追偿人",
+    "auth": "npc"
+   },
+   {
+    "key": "c519-2-limit",
+    "srcs": [
+     "art519-2"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "jointDebtorOf(D,Ds)",
+     "actualPerformanceExceedsShare(D,Ds)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "harmCreditorInterest(D,C)"
+     }
+    ],
+    "note": "追偿及享有债权人权利不得损害债权人的利益，为追偿权的内部限制",
+    "auth": "npc"
+   },
+   {
+    "key": "c519-2-defense",
+    "srcs": [
+     "art519-2"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "jointDebtorOf(O,Ds)",
+     "jointDebtorOf(D,Ds)",
+     "defenseAgainstCreditor(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "D",
+      "content": "assertDefenseAgainst(O,D)"
+     }
+    ],
+    "note": "其他连带债务人对债权人的抗辩，可以向已超额清偿并追偿的该债务人主张",
+    "auth": "npc"
+   },
+   {
+    "key": "c519-3",
+    "srcs": [
+     "art519-3"
+    ],
+    "body": [
+     "jointDebtorsOf(Ds,C)",
+     "jointDebtorOf(O,Ds)",
+     "actualPerformanceExceedsShare(D,Ds)",
+     "claimRecourseAgainst(D,O)",
+     "cannotPerformShare(O,Ds)",
+     "otherJointDebtorOf(P,O,Ds)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "D",
+      "content": "bearProportionally(P,D,Ds)"
+     }
+    ],
+    "note": "被追偿的连带债务人不能履行其应分担份额的，其他连带债务人应当在相应范围内按比例分担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c519-2-limit",
+    "c519-2",
+    "追偿权不得损害债权人的利益，债权人利益优先于追偿人的追偿主张"
+   ]
+  ],
+  "predicates": {
+   "jointDebtorsOf": "连带债务人群体就同一债务对债权人负连带债务（群体，债权人）",
+   "jointDebtorOf": "是该连带债务人群体中的连带债务人（债务人，群体）",
+   "shareIndeterminable": "连带债务人之间的债务份额难以确定",
+   "equalShares": "视为各连带债务人份额相同",
+   "unperformedShare": "该连带债务人应分担的份额尚未履行（连带债务人，群体）",
+   "enjoysCreditorsRights": "在追偿范围内相应地享有债权人对其他连带债务人的权利（追偿人，债权人）",
+   "harmCreditorInterest": "损害债权人的利益（追偿人，债权人）",
+   "defenseAgainstCreditor": "对债权人享有抗辩（连带债务人，债权人）",
+   "assertDefenseAgainst": "向追偿人主张其对债权人的抗辩（其他连带债务人，追偿人）",
+   "cannotPerformShare": "不能履行其应分担的份额（被追偿的连带债务人，群体）",
+   "otherJointDebtorOf": "是除被追偿人以外的其他连带债务人（其他连带债务人，被追偿人，群体）",
+   "bearProportionally": "在相应范围内按比例分担被追偿人不能履行的份额（分担人，追偿人，群体）"
+  }
+ },
+ "art:518": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人为二人以上、部分或者全部债权人均可请求债务人履行债务的，是否构成连带债权；债务人为二人以上、债权人可以请求部分或者全部债务人履行全部债务的，是否构成连带债务",
+     "rules": [
+      "c518-1a",
+      "c518-1b"
+     ]
+    },
+    {
+     "text": "连带债权、连带债务的发生依据：只能由法律规定或者当事人约定",
+     "rules": [
+      "c518-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权人为二人以上，且部分或者全部债权人均可以请求债务人履行债务",
+     "rules": [
+      "c518-1a"
+     ]
+    },
+    {
+     "text": "债务人为二人以上，且债权人可以请求部分或者全部债务人履行全部债务",
+     "rules": [
+      "c518-1b"
+     ]
+    },
+    {
+     "text": "有法律规定或者当事人约定",
+     "rules": [
+      "c518-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "既无法律规定也无当事人约定的，不得仅凭“部分或者全部债权人均可请求履行”的外观认定为连带债权",
+     "rules": [
+      "c518-2-defeat"
+     ]
+    },
+    {
+     "text": "既无法律规定也无当事人约定的，不得仅凭“可请求部分或者全部债务人履行全部债务”的外观认定为连带债务",
+     "rules": [
+      "c518-2-defeat-debt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立连带债权：部分或者全部债权人各可以请求债务人履行债务",
+     "rules": [
+      "c518-1a"
+     ]
+    },
+    {
+     "text": "成立连带债务：债权人可以请求部分或者全部债务人履行全部债务",
+     "rules": [
+      "c518-1b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“不得推定”的排除规则优先于第1款的定义规则，外观符合但无法律或约定依据的，不成立连带债权、连带债务",
+     "rules": [
+      "c518-2-defeat",
+      "c518-2-defeat-debt"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只界定连带债权、连带债务及其发生依据；连带债务人之间的内部份额（第519条）与连带债权债务的对外效力（第520条）不在本条",
+     "rules": []
+    },
+    {
+     "text": "连带债务是债务形态，与第178条的连带责任（责任形态）不同；笔记未引用原文或条号，本行仅依第518条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c518-1a",
+    "srcs": [
+     "art518-1"
+    ],
+    "body": [
+     "creditorsTwoOrMore(Cs)",
+     "anyCreditorMayDemandPerformance(Cs,D)"
+    ],
+    "heads": [
+     "jointCreditorRights(Cs)"
+    ],
+    "note": "债权人为二人以上，部分或者全部债权人均可以请求债务人履行债务的，为连带债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c518-1b",
+    "srcs": [
+     "art518-1"
+    ],
+    "body": [
+     "debtorsTwoOrMore(Ds)",
+     "creditorMayDemandFullPerformanceFromAny(R,Ds)"
+    ],
+    "heads": [
+     "jointDebts(Ds)"
+    ],
+    "note": "债务人为二人以上，债权人可以请求部分或者全部债务人履行全部债务的，为连带债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c518-2",
+    "srcs": [
+     "art518-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "lawProvidesJointRelation(Cs)",
+       "partiesAgreedJointRelation(Cs)"
+      ]
+     }
+    ],
+    "heads": [
+     "jointRightsAndDebts(Cs)"
+    ],
+    "note": "连带债权或者连带债务，由法律规定或者当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c518-2-defeat",
+    "srcs": [
+     "art518-2"
+    ],
+    "body": [
+     "creditorsTwoOrMore(Cs)",
+     "anyCreditorMayDemandPerformance(Cs,D)",
+     "~jointRightsAndDebts(Cs)"
+    ],
+    "heads": [
+     "-jointCreditorRights(Cs)"
+    ],
+    "note": "仅有“部分或者全部债权人均可请求履行”的外观而无法律规定或当事人约定的，不成立连带债权；此为学理对第2款“不得推定”的解读",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c518-2-defeat-debt",
+    "srcs": [
+     "art518-2"
+    ],
+    "body": [
+     "debtorsTwoOrMore(Ds)",
+     "creditorMayDemandFullPerformanceFromAny(R,Ds)",
+     "~jointRightsAndDebts(Ds)"
+    ],
+    "heads": [
+     "-jointDebts(Ds)"
+    ],
+    "note": "仅有“可请求部分或者全部债务人履行全部债务”的外观而无法律规定或当事人约定的，不成立连带债务；此为学理对第2款“不得推定”的解读",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c518-2-defeat",
+    "c518-1a",
+    "连带债权须有法律规定或当事人约定，不得仅凭“均可请求履行”的外观推定"
+   ],
+   [
+    "c518-2-defeat-debt",
+    "c518-1b",
+    "连带债务须有法律规定或当事人约定，不得仅凭“可请求部分或全部债务人履行全部债务”的外观推定"
+   ]
+  ],
+  "predicates": {
+   "creditorsTwoOrMore": "债权人为二人以上（参数：债权人群体）",
+   "debtorsTwoOrMore": "债务人为二人以上（参数：债务人群体）",
+   "anyCreditorMayDemandPerformance": "部分或者全部债权人均可以请求债务人履行债务（债权人群体，债务人）",
+   "creditorMayDemandFullPerformanceFromAny": "债权人可以请求部分或者全部债务人履行全部债务（债权人，债务人群体）",
+   "jointCreditorRights": "连带债权（参数：债权人群体）",
+   "jointDebts": "连带债务（参数：债务人群体）",
+   "lawProvidesJointRelation": "法律规定为连带债权或者连带债务（参数：主体群体）",
+   "partiesAgreedJointRelation": "当事人约定为连带债权或者连带债务（参数：主体群体）"
+  }
+ },
+ "art:520": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "部分连带债务人履行、抵销债务、提存标的物、被债权人免除债务、与债权人发生混同，或者债权人对部分连带债务人的给付受领迟延时，对其他连带债务人的债务发生何种效力",
+     "rules": [
+      "c520-1",
+      "c520-1-recourse",
+      "c520-2",
+      "c520-3",
+      "c520-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人与其他债务人就同一债务对债权人承担连带债务（外部连带关系）",
+     "rules": [
+      "c520-1",
+      "c520-2",
+      "c520-3",
+      "c520-4"
+     ]
+    },
+    {
+     "text": "部分连带债务人已履行、以抵销方式消灭债务或者提存标的物",
+     "rules": [
+      "c520-1",
+      "c520-1-recourse"
+     ]
+    },
+    {
+     "text": "债权人对部分连带债务人的债务予以免除",
+     "rules": [
+      "c520-2"
+     ]
+    },
+    {
+     "text": "部分连带债务人的债务与债权人的债权同归一人（混同）",
+     "rules": [
+      "c520-3"
+     ]
+    },
+    {
+     "text": "债权人对部分连带债务人的给付受领迟延",
+     "rules": [
+      "c520-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条未设但书；免除、混同的对外效力以该连带债务人内部应当承担的份额为限，超出其份额的部分对其他债务人不生效力",
+     "rules": [
+      "c520-2",
+      "c520-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "其他债务人对债权人的债务在相应范围内消灭",
+     "rules": [
+      "c520-1"
+     ]
+    },
+    {
+     "text": "履行、抵销或提存的该债务人可以依据第519条向其他债务人追偿",
+     "rules": [
+      "c520-1-recourse"
+     ]
+    },
+    {
+     "text": "在该连带债务人应当承担的份额范围内，其他债务人对债权人的债务消灭",
+     "rules": [
+      "c520-2"
+     ]
+    },
+    {
+     "text": "扣除该债务人应当承担的份额后，债权人对其他债务人的债权继续存在",
+     "rules": [
+      "c520-3"
+     ]
+    },
+    {
+     "text": "债权人的受领迟延对其他连带债务人发生效力",
+     "rules": [
+      "c520-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "免除、混同的对外效力以内部份额为限，优先于“其他债务人的债务全部消灭”或“债权全部存续”的一般理解",
+     "rules": [
+      "c520-2",
+      "c520-3"
+     ]
+    },
+    {
+     "text": "第520条第1款的追偿权以第519条关于内部份额与追偿的规定为准，本条仅作援引",
+     "rules": [
+      "c520-1-recourse"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定连带债务的外部效力（其他债务人对债权人的债务如何变动）；连带债务人之间的内部份额与追偿依第519条，本条不重复规定",
+     "rules": [
+      "c520-1-recourse"
+     ]
+    },
+    {
+     "text": "第4款仅规定受领迟延“对其他连带债务人发生效力”，未规定具体后果（如免责、风险转移），属援引性规定，须结合迟延受领的一般规则适用",
+     "rules": [
+      "c520-4"
+     ]
+    },
+    {
+     "text": "连带债权（第521条）与本条连带债务的外部效力方向相反，不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c520-1",
+    "srcs": [
+     "art520-1"
+    ],
+    "body": [
+     "coDebtors(D,O,C)",
+     {
+      "or": [
+       "performed(D,C)",
+       "offsetDebt(D,C)",
+       "depositedSubjectMatter(D,C)"
+      ]
+     }
+    ],
+    "heads": [
+     "debtExtinguishedWithinScope(O,C,D)"
+    ],
+    "note": "部分连带债务人履行、抵销债务或者提存标的物的，其他债务人对债权人的债务在相应范围内消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c520-1-recourse",
+    "srcs": [
+     "art520-1"
+    ],
+    "body": [
+     "coDebtors(D,O,C)",
+     {
+      "or": [
+       "performed(D,C)",
+       "offsetDebt(D,C)",
+       "depositedSubjectMatter(D,C)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "O",
+      "content": "claimRecourseAgainst(D,O)"
+     }
+    ],
+    "note": "履行、抵销或提存的部分连带债务人可以依据第519条向其他债务人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c520-2",
+    "srcs": [
+     "art520-2"
+    ],
+    "body": [
+     "coDebtors(D,O,C)",
+     "releasedDebt(C,D)"
+    ],
+    "heads": [
+     "debtExtinguishedWithinShare(O,C,D)"
+    ],
+    "note": "部分连带债务人的债务被债权人免除的，在该连带债务人应当承担的份额范围内，其他债务人对债权人的债务消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c520-3",
+    "srcs": [
+     "art520-3"
+    ],
+    "body": [
+     "coDebtors(D,O,C)",
+     "debtAndClaimMerged(D,C)"
+    ],
+    "heads": [
+     "claimSurvivesAgainst(C,O,D)"
+    ],
+    "note": "部分连带债务人的债务与债权人的债权同归一人的，扣除该债务人应当承担的份额后，债权人对其他债务人的债权继续存在",
+    "auth": "npc"
+   },
+   {
+    "key": "c520-4",
+    "srcs": [
+     "art520-4"
+    ],
+    "body": [
+     "coDebtors(D,O,C)",
+     "delayedAcceptanceOfPerformance(C,D)"
+    ],
+    "heads": [
+     "acceptanceDelayEffectiveAgainst(C,O)"
+    ],
+    "note": "债权人对部分连带债务人的给付受领迟延的，该受领迟延对其他连带债务人发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "coDebtors": "就同一债务对债权人承担连带债务（债务人，其他连带债务人，债权人）",
+   "offsetDebt": "以其对债权人的债权抵销该连带债务（债务人，债权人）",
+   "depositedSubjectMatter": "提存标的物（债务人，债权人）",
+   "debtExtinguishedWithinScope": "其他债务人对债权人的债务在相应范围内消灭（其他债务人，债权人，履行/抵销/提存的债务人）",
+   "releasedDebt": "债权人免除该连带债务人的债务（债权人，债务人）",
+   "debtExtinguishedWithinShare": "其他债务人对债权人的债务在该连带债务人应当承担的份额范围内消灭（其他债务人，债权人，被免除债务的债务人）",
+   "debtAndClaimMerged": "部分连带债务人的债务与债权人的债权同归一人（债务人，债权人）",
+   "claimSurvivesAgainst": "扣除该债务人应当承担的份额后，债权人对其他债务人的债权继续存在（债权人，其他债务人，混同的债务人）",
+   "delayedAcceptanceOfPerformance": "债权人对部分连带债务人的给付受领迟延（债权人，债务人）",
+   "acceptanceDelayEffectiveAgainst": "受领迟延的效果对其他连带债务人发生效力（债权人，其他连带债务人）"
+  }
+ },
+ "art:529": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人分立、合并或者变更住所而没有通知债务人，致使债务人履行债务发生困难时，债务人可以采取何种救济措施",
+     "rules": [
+      "c529-1",
+      "c529-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人与债权人之间存在债权债务关系",
+     "rules": [
+      "c529-1",
+      "c529-2"
+     ]
+    },
+    {
+     "text": "债权人分立、合并或者变更住所，且未将该情形通知债务人",
+     "rules": [
+      "c529-1",
+      "c529-2"
+     ]
+    },
+    {
+     "text": "因债权人未通知，致使债务人履行债务发生困难",
+     "rules": [
+      "c529-1",
+      "c529-2"
+     ]
+    },
+    {
+     "text": "选择提存的，须有该债务的标的物",
+     "rules": [
+      "c529-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "债务人可以中止履行",
+     "rules": [
+      "c529-1"
+     ]
+    },
+    {
+     "text": "债务人可以将标的物提存",
+     "rules": [
+      "c529-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条的中止履行以债权人自身主体变更或住所变更未通知、致履行困难为要件，与第527条以对方丧失或可能丧失履行能力为要件的不安抗辩权不同；本条亦不同于第570条一般提存事由，属债权人受领障碍的特殊情形",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c529-1",
+    "srcs": [
+     "art529-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "creditorSplitMergeOrDomicileChangeWithoutNotice(C,D)",
+     "performanceDifficultDueToNoNotice(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "suspendsPerformance(D,C)"
+     }
+    ],
+    "note": "债权人分立、合并或者变更住所没有通知债务人，致使履行债务发生困难的，债务人可以中止履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c529-2",
+    "srcs": [
+     "art529-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "creditorSplitMergeOrDomicileChangeWithoutNotice(C,D)",
+     "performanceDifficultDueToNoNotice(C,D)",
+     "subjectMatterOfDebt(T,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "depositSubjectMatter(D,T)"
+     }
+    ],
+    "note": "同一情形下，债务人也可以选择将该债务的标的物提存",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "creditorSplitMergeOrDomicileChangeWithoutNotice": "债权人分立、合并或者变更住所而没有通知债务人（债权人，债务人）",
+   "performanceDifficultDueToNoNotice": "因债权人未为上述通知，致使债务人履行债务发生困难（债权人，债务人）",
+   "subjectMatterOfDebt": "是该债务的标的物（标的物，债务人）",
+   "depositSubjectMatter": "将标的物提存（债务人，标的物）"
+  }
+ },
+ "art:521": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "连带债权人之间的份额难以确定时如何确定份额；实际受领债权的连带债权人应如何向其他连带债权人返还",
+     "rules": [
+      "c521-1",
+      "c521-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "数人享有连带债权，且相互之间的份额难以确定",
+     "rules": [
+      "c521-1"
+     ]
+    },
+    {
+     "text": "连带债权人中的一人实际受领了债权（给付）",
+     "rules": [
+      "c521-2",
+      "c521-2-equal"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "份额难以确定的，视为各连带债权人份额相同",
+     "rules": [
+      "c521-1"
+     ]
+    },
+    {
+     "text": "实际受领债权的连带债权人应当按比例向其他连带债权人返还",
+     "rules": [
+      "c521-2"
+     ]
+    },
+    {
+     "text": "份额视为相同的，受领人应按相同比例（均等）向其他连带债权人返还",
+     "rules": [
+      "c521-2-equal"
+     ]
+    },
+    {
+     "text": "连带债权参照适用本章（合同编第十四章）关于连带债务的有关规定",
+     "rules": [
+      "c521-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记只摘录了第1款（份额确定）与第2款（比例返还），未涉及第3款的参照适用条款",
+     "rules": [
+      "c521-3"
+     ]
+    },
+    {
+     "text": "本条只解决连带债权人内部份额与受领后的返还，不直接规定连带债务的履行、追偿等规则，后者经第3款参照适用",
+     "rules": [
+      "c521-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c521-1",
+    "srcs": [
+     "art521-1"
+    ],
+    "body": [
+     "jointRightsAndDebts(Cs)",
+     "creditorShareIndeterminable(Cs)"
+    ],
+    "heads": [
+     "sharesDeemedEqual(Cs)"
+    ],
+    "note": "连带债权人之间的份额难以确定的，视为份额相同",
+    "auth": "npc"
+   },
+   {
+    "key": "c521-2",
+    "srcs": [
+     "art521-2"
+    ],
+    "body": [
+     "jointRightsAndDebts(Cs)",
+     "jointCreditorOf(C,Cs)",
+     "actuallyReceivedPerformance(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "Cs",
+      "content": "returnProportionally(C,Cs)"
+     }
+    ],
+    "note": "实际受领债权的连带债权人，应当按比例向其他连带债权人返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c521-2-equal",
+    "srcs": [
+     "art521-1",
+     "art521-2"
+    ],
+    "body": [
+     "sharesDeemedEqual(Cs)",
+     "jointCreditorOf(C,Cs)",
+     "actuallyReceivedPerformance(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "Cs",
+      "content": "returnEqualShares(C,Cs)"
+     }
+    ],
+    "note": "第1款与第2款结合：份额视为相同的，受领人按相同比例（均等）向其他连带债权人返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c521-3",
+    "srcs": [
+     "art521-3"
+    ],
+    "body": [
+     "jointRightsAndDebts(Cs)"
+    ],
+    "heads": [
+     "applyJointDebtProvisionsByReference(Cs)"
+    ],
+    "note": "连带债权参照适用本章关于连带债务的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "creditorShareIndeterminable": "连带债权人之间的份额难以确定（参数：连带债权人群体）",
+   "sharesDeemedEqual": "视为各连带债权人份额相同（参数：连带债权人群体）",
+   "jointCreditorOf": "是连带债权人群体中的一员（连带债权人，连带债权人群体）",
+   "actuallyReceivedPerformance": "实际受领了债权（给付）（参数：连带债权人）",
+   "returnProportionally": "按比例向其他连带债权人返还（受领人，连带债权人群体）",
+   "returnEqualShares": "按相同份额（均等）向其他连带债权人返还（受领人，连带债权人群体）",
+   "applyJointDebtProvisionsByReference": "参照适用本章（合同编第十四章）关于连带债务的有关规定（参数：连带债权人群体）"
+  }
+ },
+ "card:g4164": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "输出无法解析为 JSON：unbalanced JSON: {\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同生效后，当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，如何补充和确定履行内容\",\n        \"rules\": [\n          \"c510-1\""
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同生效后，当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，如何补充和确定履行内容\",\n        \"rules\": [\n          \"c510-1\",\n          \"c510-2\",\n          \"c511-quality-1\",\n          \"c511-quality-2\",\n          \"c511-quality-3\",\n          \"c511-quality-4\",\n          \"c511-price\",\n          \"c511-price-gov\",\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\",\n          \"c511-period\",\n          \"c511-method\",\n          \"c511-cost\",\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同的交付时间、提供服务时间如何确定\",\n        \"rules\": [\n          \"c512-1\",\n          \"c512-2\",\n          \"c512-3\",\n          \"c512-4\",\n          \"c512-5\"\n        ]\n      },\n      {\n        \"text\": \"执行政府定价或者政府指导价的合同，遇政府价格调整时如何计价\",\n        \"rules\": [\n          \"c513-1\",\n          \"c513-2\",\n          \"c513-3\",\n          \"c513-4\",\n          \"c513-5\"\n        ]\n      },\n      {\n        \"text\": \"以支付金钱为内容的债，债权人可以请求债务人以何种货币履行\",\n        \"rules\": [\n          \"c514\"\n        ]\n      },\n      {\n        \"text\": \"债务人部分履行债务时，债权人能否拒绝，因此增加的费用由谁负担\",\n        \"rules\": [\n          \"c531-1\",\n          \"c531-1-exc\",\n          \"c531-2\"\n        ]\n      },\n      {\n        \"text\": \"买卖合同的交付地点如何确定\",\n        \"rules\": [\n          \"c603-1\",\n          \"c603-2\",\n          \"c603-3\",\n          \"c603-4\"\n        ]\n      },\n      {\n        \"text\": \"合同履行的基本义务：全面履行、诚信原则下的通知协助保密等附随义务、避免浪费资源污染环境破坏生态\",\n        \"rules\": [\n          \"c509-1\",\n          \"c509-2\",\n          \"c509-3\"\n        ]\n      },\n      {\n        \"text\": \"订立合同过程中知悉的商业秘密或者其他应当保密的信息，可否泄露或者不正当使用，造成对方损失如何赔偿\",\n        \"rules\": [\n          \"c501-1\",\n          \"c501-2\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同已生效，当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确\",\n        \"rules\": [\n          \"c510-1\",\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"不能达成补充协议，依第510条按照合同相关条款或者交易习惯仍不能确定\",\n        \"rules\": [\n          \"c510-2\",\n          \"c511-quality-1\",\n          \"c511-price\",\n          \"c511-place-money\",\n          \"c511-period\",\n          \"c511-method\",\n          \"c511-cost\"\n        ]\n      },\n      {\n        \"text\": \"质量要求不明确，且依次不存在强制性国家标准、推荐性国家标准、行业标准\",\n        \"rules\": [\n          \"c511-quality-1\",\n          \"c511-quality-2\",\n          \"c511-quality-3\",\n          \"c511-quality-4\"\n        ]\n      },\n      {\n        \"text\": \"依法应当执行政府定价或者政府指导价\",\n        \"rules\": [\n          \"c511-price-gov\",\n          \"c513-1\"\n        ]\n      },\n      {\n        \"text\": \"履行标的为给付货币、交付不动产或者其他标的\",\n        \"rules\": [\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\"\n        ]\n      },\n      {\n        \"text\": \"通过互联网等信息网络订立电子合同，标的为交付商品并采用快递物流方式交付、标的为提供服务、标的物采用在线传输方式交付\",\n        \"rules\": [\n          \"c512-1\",\n          \"c512-2\",\n          \"c512-3\",\n          \"c512-4\"\n        ]\n      },\n      {\n        \"text\": \"买卖合同没有约定交付地点或者约定不明确，依第510条仍不能确定；标的物需要运输或者不需要运输\",\n        \"rules\": [\n          \"c603-2\",\n          \"c603-3\",\n          \"c603-4\"\n        ]\n      },\n      {\n        \"text\": \"在订立合同过程中知悉对方商业秘密或者其他应当保密的信息\",\n        \"rules\": [\n          \"c501-1\",\n          \"c501-2\"\n        ]\n      },\n      {\n        \"text\": \"债务人部分履行债务\",\n        \"rules\": [\n          \"c531-1\",\n          \"c531-1-exc\",\n          \"c531-2\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"部分履行不损害债权人利益的，债权人不得拒绝\",\n        \"rules\": [\n          \"c531-1-exc\"\n        ]\n      },\n      {\n        \"text\": \"法律另有规定或者当事人另有约定的，不适用以实际履行地法定货币履行的规则\",\n        \"rules\": [\n          \"c514\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定\",\n        \"rules\": [\n          \"c512-5\"\n        ]\n      },\n      {\n        \"text\": \"保密义务不以合同成立为条件：无论合同是否成立，均不得泄露或者不正当使用\",\n        \"rules\": [\n          \"c501-1\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"当事人应当按照约定全面履行自己的义务\",\n        \"rules\": [\n          \"c509-1\"\n        ]\n      },\n      {\n        \"text\": \"当事人应当遵循诚信原则，根据合同的性质、目的和交易习惯履行通知、协助、保密等义务\",\n        \"rules\": [\n          \"c509-2\"\n        ]\n      },\n      {\n        \"text\": \"当事人在履行合同过程中应当避免浪费资源、污染环境和破坏生态\",\n        \"rules\": [\n          \"c509-3\"\n        ]\n      },\n      {\n        \"text\": \"可以协议补充；不能达成补充协议的，按照合同相关条款或者交易习惯确定\",\n        \"rules\": [\n          \"c510-1\",\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"质量要求依次按强制性国家标准、推荐性国家标准、行业标准、通常标准或者符合合同目的的特定标准履行\",\n        \"rules\": [\n          \"c511-quality-1\",\n          \"c511-quality-2\",\n          \"c511-quality-3\",\n          \"c511-quality-4\"\n        ]\n      },\n      {\n        \"text\": \"价款或者报酬按订立合同时履行地的市场价格履行；依法应当执行政府定价或者政府指导价的，依照规定履行\",\n        \"rules\": [\n          \"c511-price\",\n          \"c511-price-gov\"\n        ]\n      },\n      {\n        \"text\": \"履行地点：给付货币的在接受货币一方所在地，交付不动产的在不动产所在地，其他标的的在履行义务一方所在地\",\n        \"rules\": [\n          \"c511-place-money\",\n          \"c511-place-immovable\",\n          \"c511-place-other\"\n        ]\n      },\n      {\n        \"text\": \"履行期限不明确的，债务人可以随时履行，债权人也可以随时请求履行，但应当给对方必要的准备时间\",\n        \"rules\": [\n          \"c511-period\"\n        ]\n      },\n      {\n        \"text\": \"履行方式不明确的，按照有利于实现合同目的的方式履行\",\n        \"rules\": [\n          \"c511-method\"\n        ]\n      },\n      {\n        \"text\": \"履行费用由履行义务一方负担；因债权人原因增加的履行费用由债权人负担\",\n        \"rules\": [\n          \"c511-cost\",\n          \"c511-cost-creditor\"\n        ]\n      },\n      {\n        \"text\": \"电子合同交付时间：快递物流交付以收货人签收时间为交付时间；提供服务的以凭证载明时间为准，未载明或者与实际不一致的以实际提供服务时间为准；在线传输的以进入对方指定特定系统且能够检索识别的时间为交付时间\",\n        \"rules\": [\n          \"c512-1\",\n          \"c512-2\",\n          \"c512-3\",\n          \"c512-4\"\n        ]\n      },\n      {\n        \"text\": \"执行政府定价或者政府指导价的，交付期限内价格调整按交付时价格计价；逾期交付遇价格上涨按原价格、下降按新价格；逾期提取标的物或者逾期付款遇价格上涨按新价格、下降按原价格\",\n        \"rules\": [\n          \"c513-1\",\n          \"c513-2\",\n          \"c513-3\",\n          \"c513-4\",\n          \"c513-5\"\n        ]\n      },\n      {\n        \"text\": \"金钱之债的债权人可以请求债务人以实际履行地的法定货币履行\",\n        \"rules\": [\n          \"c514\"\n        ]\n      },\n      {\n        \"text\": \"债权人可以拒绝债务人部分履行债务；部分履行给债权人增加的费用由债务人负担\",\n        \"rules\": [\n          \"c531-1\",\n          \"c531-2\"\n        ]\n      },\n      {\n        \"text\": \"买卖合同按约定地点交付；没有约定或者约定不明确且依第510条仍不能确定的，需要运输的交付第一承运人，不需要运输的在订立合同时知道的标的物所在地或者出卖人订立合同时的营业地交付\",\n        \"rules\": [\n          \"c603-1\",\n          \"c603-2\",\n          \"c603-3\",\n          \"c603-4\"\n        ]\n      },\n      {\n        \"text\": \"知悉商业秘密或者其他应当保密信息的一方不得泄露或者不正当使用；泄露、不正当使用造成对方损失的，应当承担赔偿责任\",\n        \"rules\": [\n          \"c501-1\",\n          \"c501-2\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"依法应当执行政府定价或者政府指导价的，优先适用政府定价规定，不适用市场价格\",\n        \"rules\": [\n          \"c511-price-gov\"\n        ]\n      },\n      {\n        \"text\": \"电子合同当事人对交付方式、时间另有约定的，优先于第512条第1款、第2款的法定交付时间规则\",\n        \"rules\": [\n          \"c512-5\"\n        ]\n      },\n      {\n        \"text\": \"买卖合同交付地点有第603条特别规定的，优先于第511条第3项的一般规则\",\n        \"rules\": [\n          \"c603-2\",\n          \"c603-3\",\n          \"c603-4\"\n        ]\n      },\n      {\n        \"text\": \"质量标准的适用顺序：强制性国家标准优先于推荐性国家标准，推荐性国家标准优先于行业标准，行业标准优先于通常标准或者符合合同目的的特定标准\",\n        \"rules\": [\n          \"c511-quality-1\",\n          \"c511-quality-2\",\n          \"c511-quality-3\",\n          \"c511-quality-4\"\n        ]\n      },\n      {\n        \"text\": \"第510条的确定方法（协议补充、合同相关条款或者交易习惯）优先于第511条的法定补充规则\",\n        \"rules\": [\n          \"c510-2\"\n        ]\n      },\n      {\n        \"text\": \"部分履行不损害债权人利益的，债权人不得拒绝，构成债权人拒绝部分履行的例外\",\n        \"rules\": [\n          \"c531-1-exc\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记将第603条第2款所引条文误写为“民法第501条”，法条原文引用的是第510条；第501条规定的是订立合同过程中的保密义务\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记把电子合同交付时间（第512条）列为第511条第(7)项，但第511条并无第(7)项，第512条是独立条文\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第501条的保密义务发生在订立合同过程中，无论合同是否成立均存在；第509条第2款的保密义务是履行过程中的附随义务，二者阶段与依据不同\",\n        \"rules\": [\n          \"c501-1\",\n          \"c509-2\"\n        ]\n      },\n      {\n        \"text\": \"LEGO卡片称“诚信原则优先于一般约定”，法条并无此优先规定，仅要求当事人遵循诚信原则履行通知、协助、保密等附随义务\",\n        \"rules\": [\n          \"c509-2\"\n        ]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c501-1\",\n      \"srcs\": [\n        \"art501-1\"\n      ],\n      \"body\": [\n        \"knowsConfidentialInfo(A,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"discloseOrUseConfidentialInfo(A,B)\"\n        }\n      ],\n      \"note\": \"在订立合同过程中知悉对方商业秘密或者其他应当保密信息的，无论合同是否成立，均不得泄露或者不正当使用\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c501-2\",\n      \"srcs\": [\n        \"art501-1\"\n      ],\n      \"body\": [\n        \"knowsConfidentialInfo(A,B)\",\n        \"disclosesOrImproperlyUses(A,B)\",\n        \"suffersLoss(B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"payCompensation(A,B)\"\n        }\n      ],\n      \"note\": \"泄露、不正当地使用该商业秘密或者信息造成对方损失的，应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c509-1\",\n      \"srcs\": [\n        \"art509-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"partyTo(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"performPerAgreement(A,K)\"\n        }\n      ],\n      \"note\": \"当事人应当按照约定全面履行自己的义务（全面履行、正确履行原则）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c509-2\",\n      \"srcs\": [\n        \"art509-2\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"partyTo(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"performPerGoodFaith(A,K)\"\n        }\n      ],\n      \"note\": \"当事人应当遵循诚信原则，根据合同的性质、目的和交易习惯履行通知、协助、保密等附随义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c509-3\",\n      \"srcs\": [\n        \"art509-3\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"partyTo(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"avoidWastingResourcesAndPollution(A,K)\"\n        }\n      ],\n      \"note\": \"当事人在履行合同过程中应当避免浪费资源、污染环境和破坏生态\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c510-1\",\n      \"srcs\": [\n        \"art510-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"effective(K)\",\n        \"partyTo(A,K)\",\n        \"termUnspecified(K,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"supplementByAgreement(A,K,T)\"\n        }\n      ],\n      \"note\": \"合同生效后，就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，可以协议补充\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c510-2\",\n      \"srcs\": [\n        \"art510-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"effective(K)\",\n        \"termUnspecified(K,T)\",\n        \"noSupplementaryAgreement(K,T)\"\n      ],\n      \"heads\": [\n        \"determinedPerRelatedTermsOrUsage(K,T)\"\n      ],\n      \"note\": \"不能达成补充协议的，按照合同相关条款或者交易习惯确定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-1\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,quality)\",\n        \"mandatoryNationalStandardExists(K)\"\n      ],\n      \"heads\": [\n        \"qualityDeterminedByMandatoryNationalStandard(K)\"\n      ],\n      \"note\": \"质量要求不明确的，首先按照强制性国家标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-2\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,quality)\",\n        \"-mandatoryNationalStandardExists(K)\",\n        \"recommendedNationalStandardExists(K)\"\n      ],\n      \"heads\": [\n        \"qualityDeterminedByRecommendedNationalStandard(K)\"\n      ],\n      \"note\": \"没有强制性国家标准的，按照推荐性国家标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-3\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,quality)\",\n        \"-mandatoryNationalStandardExists(K)\",\n        \"-recommendedNationalStandardExists(K)\",\n        \"industryStandardExists(K)\"\n      ],\n      \"heads\": [\n        \"qualityDeterminedByIndustryStandard(K)\"\n      ],\n      \"note\": \"没有推荐性国家标准的，按照行业标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-quality-4\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,quality)\",\n        \"-mandatoryNationalStandardExists(K)\",\n        \"-recommendedNationalStandardExists(K)\",\n        \"-industryStandardExists(K)\"\n      ],\n      \"heads\": [\n        \"qualityDeterminedByUsualOrPurposeStandard(K)\"\n      ],\n      \"note\": \"没有国家标准、行业标准的，按照通常标准或者符合合同目的的特定标准履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-price\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,price)\",\n        \"-governmentPricingApplies(K)\"\n      ],\n      \"heads\": [\n        \"priceDeterminedByMarketPrice(K)\"\n      ],\n      \"note\": \"价款或者报酬不明确的，按照订立合同时履行地的市场价格履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-price-gov\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,price)\",\n        \"governmentPricingApplies(K)\"\n      ],\n      \"heads\": [\n        \"priceDeterminedPerGovernmentPricing(K)\"\n      ],\n      \"note\": \"依法应当执行政府定价或者政府指导价的，依照规定履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-money\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,place)\",\n        \"monetaryPerformance(K)\"\n      ],\n      \"heads\": [\n        \"placeDeterminedAtCreditorLocation(K)\"\n      ],\n      \"note\": \"履行地点不明确，给付货币的，在接受货币一方所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-immovable\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,place)\",\n        \"immovableSubjectMatter(K)\"\n      ],\n      \"heads\": [\n        \"placeDeterminedAtImmovableLocation(K)\"\n      ],\n      \"note\": \"履行地点不明确，交付不动产的，在不动产所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-place-other\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,place)\",\n        \"-monetaryPerformance(K)\",\n        \"-immovableSubjectMatter(K)\"\n      ],\n      \"heads\": [\n        \"placeDeterminedAtObligorLocation(K)\"\n      ],\n      \"note\": \"履行地点不明确，其他标的的，在履行义务一方所在地履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-period\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,period)\",\n        \"debtorUnder(D,K)\",\n        \"creditorUnder(C,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"D\",\n          \"counterparty\": \"C\",\n          \"content\": \"performAtAnyTime(D,K)\"\n        },\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"C\",\n          \"counterparty\": \"D\",\n          \"content\": \"demandPerformanceAtAnyTime(C,K)\"\n        }\n      ],\n      \"note\": \"履行期限不明确的，债务人可以随时履行，债权人也可以随时请求履行，但应当给对方必要的准备时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-method\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,method)\",\n        \"debtorUnder(D,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"D\",\n          \"counterparty\": null,\n          \"content\": \"performInFavorOfPurpose(D,K)\"\n        }\n      ],\n      \"note\": \"履行方式不明确的，按照有利于实现合同目的的方式履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-cost\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,cost)\",\n        \"debtorUnder(D,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"D\",\n          \"counterparty\": null,\n          \"content\": \"bearPerformanceCost(D,K)\"\n        }\n      ],\n      \"note\": \"履行费用的负担不明确的，由履行义务一方负担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c511-cost-creditor\",\n      \"srcs\": [\n        \"art511-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"undeterminedAfterArt510(K,cost)\",\n        \"creditorUnder(C,K)\",\n        \"increasedCostDueToCreditor(C,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"C\",\n          \"counterparty\": null,\n          \"content\": \"bearIncreasedCost(C,K)\"\n        }\n      ],\n      \"note\": \"因债权人原因增加的履行费用，由债权人负担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-1\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"subjectIsGoodsDeliveredByCourier(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimeDeterminedByReceipt(K)\"\n      ],\n      \"note\": \"电子合同标的为交付商品并采用快递物流方式交付的，收货人的签收时间为交付时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-2\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"subjectIsService(K)\",\n        \"voucherStatesTime(K)\"\n      ],\n      \"heads\": [\n        \"serviceTimeDeterminedByVoucher(K)\"\n      ],\n      \"note\": \"电子合同标的为提供服务的，生成的电子凭证或者实物凭证中载明的时间为提供服务时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-3\",\n      \"srcs\": [\n        \"art512-1\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"subjectIsService(K)\",\n        {\n          \"or\": [\n            \"voucherNoTime(K)\",\n            \"voucherTimeInconsistent(K)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        \"serviceTimeDeterminedByActualTime(K)\"\n      ],\n      \"note\": \"凭证没有载明时间或者载明时间与实际提供服务时间不一致的，以实际提供服务的时间为准\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-4\",\n      \"srcs\": [\n        \"art512-2\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"subjectDeliveredOnline(K)\",\n        \"entersDesignatedSystem(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimeDeterminedByEntryIntoSystem(K)\"\n      ],\n      \"note\": \"标的物采用在线传输方式交付的，进入对方当事人指定的特定系统且能够检索识别的时间为交付时间\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c512-5\",\n      \"srcs\": [\n        \"art512-3\"\n      ],\n      \"body\": [\n        \"electronicContract(K)\",\n        \"agreedOtherwiseOnDeliveryTime(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimePerAgreement(K)\"\n      ],\n      \"note\": \"电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c513-1\",\n      \"srcs\": [\n        \"art513-1\"\n      ],\n      \"body\": [\n        \"governmentPricingApplies(K)\",\n        \"priceAdjustedWithinDeliveryPeriod(K)\"\n      ],\n      \"heads\": [\n        \"priceCalculatedAtDeliveryTime(K)\"\n      ],\n      \"note\": \"在合同约定的交付期限内政府价格调整时，按照交付时的价格计价\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c513-2\",\n      \"srcs\": [\n        \"art513-1\"\n      ],\n      \"body\": [\n        \"governmentPricingApplies(K)\",\n        \"delayedDelivery(K)\",\n        \"priceRose(K)\"\n      ],\n      \"heads\": [\n        \"priceCalculatedAtOriginalPrice(K)\"\n      ],\n      \"note\": \"逾期交付标的物，遇价格上涨时，按照原价格执行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c513-3\",\n      \"srcs\": [\n        \"art513-1\"\n      ],\n      \"body\": [\n        \"governmentPricingApplies(K)\",\n        \"delayedDelivery(K)\",\n        \"priceFell(K)\"\n      ],\n      \"heads\": [\n        \"priceCalculatedAtNewPrice(K)\"\n      ],\n      \"note\": \"逾期交付标的物，遇价格下降时，按照新价格执行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c513-4\",\n      \"srcs\": [\n        \"art513-1\"\n      ],\n      \"body\": [\n        \"governmentPricingApplies(K)\",\n        {\n          \"or\": [\n            \"delayedTakingDelivery(K)\",\n            \"delayedPayment(K)\"\n          ]\n        },\n        \"priceRose(K)\"\n      ],\n      \"heads\": [\n        \"priceCalculatedAtNewPrice(K)\"\n      ],\n      \"note\": \"逾期提取标的物或者逾期付款，遇价格上涨时，按照新价格执行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c513-5\",\n      \"srcs\": [\n        \"art513-1\"\n      ],\n      \"body\": [\n        \"governmentPricingApplies(K)\",\n        {\n          \"or\": [\n            \"delayedTakingDelivery(K)\",\n            \"delayedPayment(K)\"\n          ]\n        },\n        \"priceFell(K)\"\n      ],\n      \"heads\": [\n        \"priceCalculatedAtOriginalPrice(K)\"\n      ],\n      \"note\": \"逾期提取标的物或者逾期付款，遇价格下降时，按照原价"
+ },
+ "art:530": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债务人提前履行债务时，债权人能否拒绝；因提前履行给债权人增加的费用由谁负担",
+     "rules": [
+      "c530-1",
+      "c530-1-exc",
+      "c530-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人提前履行债务（在履行期限届至前履行）",
+     "rules": [
+      "c530-1",
+      "c530-1-exc",
+      "c530-2"
+     ]
+    },
+    {
+     "text": "提前履行不损害债权人利益",
+     "rules": [
+      "c530-1-exc"
+     ]
+    },
+    {
+     "text": "提前履行给债权人增加了费用",
+     "rules": [
+      "c530-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "提前履行不损害债权人利益的，债权人不得拒绝（第1款“但是……的除外”）",
+     "rules": [
+      "c530-1-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债权人可以拒绝债务人提前履行债务",
+     "rules": [
+      "c530-1"
+     ]
+    },
+    {
+     "text": "债务人提前履行债务给债权人增加的费用，由债务人负担",
+     "rules": [
+      "c530-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“提前履行不损害债权人利益”的除外情形优先于第1款前段的拒绝权：此时债权人不得拒绝",
+     "rules": [
+      "c530-1-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记仅复述条文，未作扩张；本条规范“提前履行”，与第531条“部分履行”规则结构相同（均为“可以拒绝＋不损害利益的除外＋增加费用由债务人负担”），适用时须区分提前履行与部分履行",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c530-1",
+    "srcs": [
+     "art530-1"
+    ],
+    "body": [
+     "earlyPerformance(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "refuseEarlyPerformance(D,C)"
+     }
+    ],
+    "note": "债权人可以拒绝债务人提前履行债务（第1款前段）",
+    "auth": "npc"
+   },
+   {
+    "key": "c530-1-exc",
+    "srcs": [
+     "art530-1"
+    ],
+    "body": [
+     "earlyPerformance(D,C)",
+     "-harmsCreditorInterestByEarlyPerformance(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "refuseEarlyPerformance(D,C)"
+     }
+    ],
+    "note": "提前履行不损害债权人利益的，债权人不得拒绝（第1款但书的除外情形）",
+    "auth": "npc"
+   },
+   {
+    "key": "c530-2",
+    "srcs": [
+     "art530-2"
+    ],
+    "body": [
+     "earlyPerformance(D,C)",
+     "increasedCostFromEarlyPerformance(D,C,F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "bearIncreasedCost(D,C,F)"
+     }
+    ],
+    "note": "债务人提前履行债务给债权人增加的费用，由债务人负担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c530-1-exc",
+    "c530-1",
+    "提前履行不损害债权人利益的，债权人不得拒绝，排除第1款前段赋予债权人的拒绝权"
+   ]
+  ],
+  "predicates": {
+   "earlyPerformance": "债务人提前履行债务（债务人，债权人）",
+   "earlyPerformance/2": "债务人提前履行债务（债务人，债权人）",
+   "harmsCreditorInterestByEarlyPerformance": "提前履行债务损害债权人利益（债务人，债权人）",
+   "harmsCreditorInterestByEarlyPerformance/2": "提前履行债务损害债权人利益（债务人，债权人）",
+   "refuseEarlyPerformance": "拒绝债务人提前履行债务（债权人，债务人）",
+   "refuseEarlyPerformance/2": "拒绝债务人提前履行债务（债权人，债务人）",
+   "increasedCostFromEarlyPerformance": "因债务人提前履行债务给债权人增加的费用（债务人，债权人，费用）",
+   "increasedCostFromEarlyPerformance/3": "因债务人提前履行债务给债权人增加的费用（债务人，债权人，费用）",
+   "bearIncreasedCost": "负担因提前履行而增加的费用（债务人，债权人，费用）",
+   "bearIncreasedCost/3": "负担因提前履行而增加的费用（债务人，债权人，费用）"
+  }
+ },
+ "art:532": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 contractEffective 已在词表中表示“合同已生效（参数：合同）”，不能重新定义为“合同已生效（参数1：合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同生效后，当事人能否以自己姓名、名称变更或者法定代表人、负责人、承办人变动为由不履行合同义务\",\n        \"rules\": [\"c532-1\", \"c532-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同已经生效，且该主体是合同当事人\",\n        \"rules\": [\"c532-1\", \"c532-2\"]\n      },\n      {\n        \"text\": \"发生姓名、名称的变更，或者法定代表人、负责人、承办人的变动\",\n        \"rules\": [\"c532-1\", \"c532-2\"]\n      }\n    ],\n    \"exceptions\": [],\n    \"effects\": [\n      {\n        \"text\": \"当事人不得以上述身份事项的变动为由不履行合同义务\",\n        \"rules\": [\"c532-1\"]\n      },\n      {\n        \"text\": \"合同义务不因该变动而免除，当事人仍应依约履行（学理说明）\",\n        \"rules\": [\"c532-2\"]\n      }\n    ],\n    \"priority\": [],\n    \"distinguish\": [\n      {\n        \"text\": \"本条规范的是合同生效后主体身份事项变动对履行义务的影响，与合同订立阶段的要约、承诺（含承诺迟延）规则无关\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记节点标题为“承诺迟延”，其正文却抄录了第532条，二者不匹配；本条不得用于解释承诺迟延问题\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"本条禁止的是“以变动为由不履行”；当事人依约定或法定事由变更、解除合同，或者行使履行抗辩权的，不受本条限制\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c532-1\",\n      \"srcs\": [\"art532-1\"],\n      \"body\": [\n        \"contractAgreement(K)\",\n        \"contractEffective(K)\",\n        \"partyTo(A,K)\",\n        \"identityOrPersonnelChanged(A)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"refusePerformanceOnChangeGround(A,K)\"\n        }\n      ],\n      \"note\": \"合同生效后，当事人不得因姓名、名称变更或者法定代表人、负责人、承办人变动而不履行合同义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c532-2\",\n      \"srcs\": [\"art532-1\"],\n      \"body\": [\n        \"contractAgreement(K)\",\n        \"contractEffective(K)\",\n        \"partyTo(A,K)\",\n        \"identityOrPersonnelChanged(A)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"performContract(A,K)\"\n        }\n      ],\n      \"note\": \"学理说明：主体身份事项变动不影响合同效力，合同义务不因此免除，当事人仍应依约履行（法条仅明示禁止不履行，本规则为其反面推论）\",\n      \"auth\": \"doctrine\"\n    }\n  ],\n  \"overrides\": [],\n  \"predicates\": {\n    \"contractEffective\": \"合同已生效（参数1：合同）\",\n    \"identityOrPersonnelChanged\": \"姓名、名称发生变更，或者法定代表人、负责人、承办人发生变动（参数1：当事人）\",\n    \"refusePerformanceOnChangeGround\": \"以姓名、名称变更或者法定代表人、负责人、承办人变动为由不履行合同义务（参数1：当事人，参数2：合同）\"\n  }\n}"
+ },
+ "art:534": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人利用合同实施危害国家利益、社会公共利益行为的，由哪个机关、依何依据监督处理",
+     "rules": [
+      "c534-ground",
+      "c534-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在合同，且当事人利用该合同实施危害国家利益或者社会公共利益的行为",
+     "rules": [
+      "c534-ground"
+     ]
+    },
+    {
+     "text": "处理主体为市场监督管理和其他有关行政主管部门",
+     "rules": [
+      "c534-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "市场监督管理和其他有关行政主管部门依照法律、行政法规的规定负责监督处理",
+     "rules": [
+      "c534-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只配置行政监督处理职责，并不直接规定合同效力；合同是否因违背公序良俗、违反强制性规定而无效，仍依第153条等判断",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c534-ground",
+    "srcs": [
+     "art534"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     {
+      "or": [
+       "harmsStateInterest(P)",
+       "harmsPublicInterest(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "usesContractToHarmStateOrPublicInterest(P,K)"
+    ],
+    "note": "当事人利用合同实施危害国家利益或者社会公共利益的行为，构成本条规定的监督处理事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c534-1",
+    "srcs": [
+     "art534"
+    ],
+    "body": [
+     "usesContractToHarmStateOrPublicInterest(P,K)",
+     "competentAdminDepartment(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "superviseAndHandlePerLaw(D,K)"
+     }
+    ],
+    "note": "有上述行为的，市场监督管理和其他有关行政主管部门依照法律、行政法规的规定负责监督处理",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usesContractToHarmStateOrPublicInterest": "利用合同实施危害国家利益或社会公共利益的行为（当事人，合同）",
+   "competentAdminDepartment": "是市场监督管理或者其他有关行政主管部门",
+   "superviseAndHandlePerLaw": "依照法律、行政法规的规定负责监督处理（部门，合同）"
+  }
+ }
+}

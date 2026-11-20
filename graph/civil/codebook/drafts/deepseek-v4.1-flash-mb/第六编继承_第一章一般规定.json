@@ -1,0 +1,389 @@
+{
+ "art:1120": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家保护自然人的继承权（继承编的一般宣示性规定，不产生具体权利义务规则）",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、原则性条款，仅确认自然人的继承权受国家保护，未设定构成要件与法律效果，故不形式化为可废止规则；具体继承权的内容、行使与保护由继承编其他条文（法定继承、遗嘱继承、遗产处理等）规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g6962": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "继承从何时开始；被宣告死亡的人以何日为死亡日期",
+     "rules": [
+      "c1121-1",
+      "c48-judgment",
+      "c48-accident",
+      "c48-death"
+     ]
+    },
+    {
+     "text": "相互有继承关系的数人在同一事件中死亡、难以确定死亡时间时，如何推定死亡顺序",
+     "rules": [
+      "c1121-2a",
+      "c1121-2b",
+      "c1121-2c"
+     ]
+    },
+    {
+     "text": "继承开始后，由谁负责通知其他继承人和遗嘱执行人",
+     "rules": [
+      "c1150-1",
+      "c1150-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被继承人死亡（生理死亡或者被宣告死亡）",
+     "rules": [
+      "c1121-1",
+      "c48-death"
+     ]
+    },
+    {
+     "text": "被宣告死亡：有宣告死亡判决及其作出之日；因意外事件下落不明的，有意外事件发生之日",
+     "rules": [
+      "c48-judgment",
+      "c48-accident"
+     ]
+    },
+    {
+     "text": "相互有继承关系的数人在同一事件中死亡，且难以确定死亡时间；其中一人没有其他继承人，或者数人都有其他继承人而辈份不同或相同",
+     "rules": [
+      "c1121-2a",
+      "c1121-2b",
+      "c1121-2c"
+     ]
+    },
+    {
+     "text": "继承已经开始，且某继承人知道被继承人死亡",
+     "rules": [
+      "c1150-1"
+     ]
+    },
+    {
+     "text": "继承人中无人知道被继承人死亡，或者知道但不能通知；被继承人有生前所在单位，或者住所地有居民委员会、村民委员会",
+     "rules": [
+      "c1150-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因意外事件下落不明被宣告死亡的，不适用判决作出之日，而以意外事件发生之日为死亡日期",
+     "rules": [
+      "c48-accident"
+     ]
+    },
+    {
+     "text": "数人都有其他继承人时，不适用“没有其他继承人的人先死亡”的推定，改按辈份推定",
+     "rules": [
+      "c1121-2b",
+      "c1121-2c"
+     ]
+    },
+    {
+     "text": "辈份相同的，推定同时死亡，相互不发生继承",
+     "rules": [
+      "c1121-2c"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "继承自被继承人死亡时开始",
+     "rules": [
+      "c1121-1"
+     ]
+    },
+    {
+     "text": "宣告死亡判决作出之日（意外事件情形下为意外事件发生之日）视为死亡日期，并据此认定死亡",
+     "rules": [
+      "c48-judgment",
+      "c48-accident",
+      "c48-death"
+     ]
+    },
+    {
+     "text": "推定没有其他继承人的人先死亡；都有其他继承人且辈份不同的，推定长辈先死亡；辈份相同的，推定同时死亡且相互不发生继承",
+     "rules": [
+      "c1121-2a",
+      "c1121-2b",
+      "c1121-2c"
+     ]
+    },
+    {
+     "text": "知道被继承人死亡的继承人应当及时通知其他继承人和遗嘱执行人",
+     "rules": [
+      "c1150-1"
+     ]
+    },
+    {
+     "text": "无人知道死亡或者知道而不能通知的，由被继承人生前所在单位或者住所地的居民委员会、村民委员会负责通知",
+     "rules": [
+      "c1150-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "因意外事件下落不明宣告死亡的，以意外事件发生之日为死亡日期，优先于判决作出之日",
+     "rules": [
+      "c48-accident"
+     ]
+    },
+    {
+     "text": "数人都有其他继承人时，按辈份推定先死亡或同时死亡，优先于“没有其他继承人的人先死亡”的推定",
+     "rules": [
+      "c1121-2b",
+      "c1121-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "继承开始的时间（死亡时）不同于遗产分割的时间；宣告死亡被撤销后的婚姻、收养等效果由第50—52条处理，本行挂载法条不涉及",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把继承权的取得、放弃、丧失等一并列入，本行挂载法条只涉及继承开始时间与继承开始的通知，故对放弃、丧失继承权不作形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记称生理死亡以有关部门出具的死亡证明确认的时间为准、继承开始后未表示放弃即视为接受继承，二者分别出自继承编司法解释与第1124条，均非本行挂载法条明文，故不写成规则，仅作说明",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1121-1",
+    "srcs": [
+     "art1121-1"
+    ],
+    "body": [
+     "died(D)"
+    ],
+    "heads": [
+     "inheritanceOpened(D)"
+    ],
+    "note": "继承从被继承人死亡时开始（含生理死亡与宣告死亡）",
+    "auth": "npc"
+   },
+   {
+    "key": "c48-judgment",
+    "srcs": [
+     "art48-1"
+    ],
+    "body": [
+     "declaredDead(P)",
+     "judgmentDate(P,D)",
+     "~accidentMissing(P)"
+    ],
+    "heads": [
+     "deemedDeathDate(P,D)"
+    ],
+    "note": "被宣告死亡的人，人民法院宣告死亡的判决作出之日视为其死亡的日期",
+    "auth": "npc"
+   },
+   {
+    "key": "c48-accident",
+    "srcs": [
+     "art48-1"
+    ],
+    "body": [
+     "declaredDead(P)",
+     "accidentMissing(P)",
+     "accidentDate(P,D)"
+    ],
+    "heads": [
+     "deemedDeathDate(P,D)"
+    ],
+    "note": "因意外事件下落不明宣告死亡的，意外事件发生之日视为其死亡的日期",
+    "auth": "npc"
+   },
+   {
+    "key": "c48-death",
+    "srcs": [
+     "art48-1"
+    ],
+    "body": [
+     "deemedDeathDate(P,D)"
+    ],
+    "heads": [
+     "died(P)"
+    ],
+    "note": "视为死亡的日期即认定其死亡，从而引起继承开始",
+    "auth": "npc"
+   },
+   {
+    "key": "c1121-2a",
+    "srcs": [
+     "art1121-2"
+    ],
+    "body": [
+     "diedInSameEvent(P,Q)",
+     "deathTimeUndeterminable(P,Q)",
+     "noOtherHeir(P)"
+    ],
+    "heads": [
+     "presumedDiedFirst(P,Q)"
+    ],
+    "note": "相互有继承关系的数人在同一事件中死亡、难以确定死亡时间的，推定没有其他继承人的人先死亡",
+    "auth": "npc"
+   },
+   {
+    "key": "c1121-2b",
+    "srcs": [
+     "art1121-2"
+    ],
+    "body": [
+     "diedInSameEvent(P,Q)",
+     "deathTimeUndeterminable(P,Q)",
+     "hasOtherHeir(P)",
+     "hasOtherHeir(Q)",
+     "seniorGeneration(P,Q)"
+    ],
+    "heads": [
+     "presumedDiedFirst(P,Q)"
+    ],
+    "note": "都有其他继承人且辈份不同的，推定长辈先死亡",
+    "auth": "npc"
+   },
+   {
+    "key": "c1121-2c",
+    "srcs": [
+     "art1121-2"
+    ],
+    "body": [
+     "diedInSameEvent(P,Q)",
+     "deathTimeUndeterminable(P,Q)",
+     "hasOtherHeir(P)",
+     "hasOtherHeir(Q)",
+     "sameGeneration(P,Q)"
+    ],
+    "heads": [
+     "presumedDiedSimultaneously(P,Q)",
+     "mutualInheritanceExcluded(P,Q)"
+    ],
+    "note": "都有其他继承人且辈份相同的，推定同时死亡，相互不发生继承",
+    "auth": "npc"
+   },
+   {
+    "key": "c1150-1",
+    "srcs": [
+     "art1150-1"
+    ],
+    "body": [
+     "inheritanceOpened(D)",
+     "heirCandidate(H,D)",
+     "knowsDeathOf(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "notifyOtherHeirsAndExecutor(H,D)"
+     }
+    ],
+    "note": "继承开始后，知道被继承人死亡的继承人应当及时通知其他继承人和遗嘱执行人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1150-2",
+    "srcs": [
+     "art1150-1"
+    ],
+    "body": [
+     "inheritanceOpened(D)",
+     {
+      "or": [
+       "noHeirKnowsDeath(D)",
+       "heirKnowsButCannotNotify(D)"
+      ]
+     },
+     {
+      "or": [
+       "employerUnitOf(U,D)",
+       "residentsCommitteeOf(U,D)",
+       "villagersCommitteeOf(U,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "notifyOtherHeirsAndExecutor(U,D)"
+     }
+    ],
+    "note": "继承人中无人知道被继承人死亡或者知道而不能通知的，由被继承人生前所在单位或者住所地的居民委员会、村民委员会负责通知",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c48-accident",
+    "c48-judgment",
+    "因意外事件下落不明宣告死亡的，以意外事件发生之日而非判决作出之日为死亡日期，属特别规定"
+   ],
+   [
+    "c1121-2b",
+    "c1121-2a",
+    "数人都有其他继承人时，按辈份推定长辈先死亡，不再适用“没有其他继承人的人先死亡”的推定"
+   ],
+   [
+    "c1121-2c",
+    "c1121-2a",
+    "数人都有其他继承人且辈份相同时，推定同时死亡，不再适用“没有其他继承人的人先死亡”的推定"
+   ]
+  ],
+  "predicates": {
+   "inheritanceOpened": "继承开始（参数1：被继承人）",
+   "diedInSameEvent": "相互有继承关系的数人在同一事件中死亡（人，人）",
+   "deathTimeUndeterminable": "难以确定死亡时间（人，人）",
+   "noOtherHeir": "没有其他继承人（人）",
+   "hasOtherHeir": "有其他继承人（人）",
+   "seniorGeneration": "辈份不同且前者为长辈（人，人）",
+   "sameGeneration": "辈份相同（人，人）",
+   "presumedDiedFirst": "推定前者先于后者死亡（人，人）",
+   "presumedDiedSimultaneously": "推定同时死亡（人，人）",
+   "mutualInheritanceExcluded": "相互不发生继承（人，人）",
+   "knowsDeathOf": "知道被继承人死亡（继承人，被继承人）",
+   "noHeirKnowsDeath": "继承人中无人知道被继承人死亡（被继承人）",
+   "heirKnowsButCannotNotify": "继承人中有人知道被继承人死亡但不能通知（被继承人）",
+   "employerUnitOf": "是被继承人生前所在单位（单位，被继承人）",
+   "residentsCommitteeOf": "是被继承人住所地的居民委员会（组织，被继承人）",
+   "villagersCommitteeOf": "是被继承人住所地的村民委员会（组织，被继承人）",
+   "notifyOtherHeirsAndExecutor": "通知其他继承人和遗嘱执行人（通知人，被继承人）"
+  }
+ }
+}

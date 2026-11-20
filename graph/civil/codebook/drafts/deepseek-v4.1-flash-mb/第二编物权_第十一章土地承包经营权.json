@@ -1,0 +1,1571 @@
+{
+ "art:330": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "农村集体经济组织实行何种经营体制；哪些土地依法实行土地承包经营制度",
+     "rules": [
+      "c330-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "农民集体所有的耕地、林地、草地以及其他用于农业的土地，或者国家所有但由农民集体使用的上述土地",
+     "rules": [
+      "c330-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "农村集体经济组织实行家庭承包经营为基础、统分结合的双层经营体制（宣示性、原则性规定）",
+     "rules": []
+    },
+    {
+     "text": "上述农业用地依法实行土地承包经营制度",
+     "rules": [
+      "c330-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是制度性、原则性宣示，没有“应当/不得/可以”的规范表述，不直接产生请求权；土地承包经营权的设立、内容、期限、流转与保护由第331条以下规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，未提供可形式化的例外或学理补充，故不另设 doctrine 规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c330-2",
+    "srcs": [
+     "art330-2"
+    ],
+    "body": [
+     "agriculturalLand(L)",
+     {
+      "or": [
+       "collectiveLand(L)",
+       "stateOwnedUsedByCollective(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "landContractSystemApplies(L)"
+    ],
+    "note": "农民集体所有或国家所有由农民集体使用的耕地、林地、草地及其他农业用地，依法实行土地承包经营制度；本款为制度性宣示，未直接设定具体权利义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agriculturalLand": "是耕地、林地、草地以及其他用于农业的土地",
+   "landContractSystemApplies": "对该土地依法实行土地承包经营制度"
+  }
+ },
+ "art:331": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "土地承包经营权人对其承包经营的土地享有哪些权利内容",
+     "rules": [
+      "c331-1",
+      "c331-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体依法取得农村土地承包经营权，承包经营的对象为耕地、林地、草地等土地",
+     "rules": [
+      "c331-1",
+      "c331-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对其承包经营的耕地、林地、草地等享有占有、使用和收益的权利",
+     "rules": [
+      "c331-1"
+     ]
+    },
+    {
+     "text": "有权从事种植业、林业、畜牧业等农业生产",
+     "rules": [
+      "c331-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定土地承包经营权的内容（占有、使用、收益及从事农业生产的权能），未规定该权利的用益物权性质、取得方式、期限与登记对抗，这些分别见第330条、第333条、第335条等；本条无但书，故不设例外",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，LEGO 卡片缺失，本条形式化仅以法条原文为准，未引入学理内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c331-1",
+    "srcs": [
+     "art331-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(H)",
+     "landContractRightHolder(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "possessUseProfit(H,L)"
+     }
+    ],
+    "note": "土地承包经营权人依法对其承包经营的耕地、林地、草地等享有占有、使用和收益的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c331-2",
+    "srcs": [
+     "art331-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(H)",
+     "landContractRightHolder(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "engageInAgriculturalProduction(H,L)"
+     }
+    ],
+    "note": "土地承包经营权人有权在其承包经营的土地上从事种植业、林业、畜牧业等农业生产",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "landContractRightHolder/2": "是土地承包经营权人（参数1：权利人；参数2：其承包经营的耕地、林地、草地等土地）",
+   "landContractRightHolder": "是土地承包经营权人（参数1：权利人；参数2：其承包经营的耕地、林地、草地等土地）",
+   "engageInAgriculturalProduction/2": "在其承包经营的土地上从事种植业、林业、畜牧业等农业生产（参数1：土地承包经营权人；参数2：承包经营的土地）",
+   "engageInAgriculturalProduction": "在其承包经营的土地上从事种植业、林业、畜牧业等农业生产（参数1：土地承包经营权人；参数2：承包经营的土地）"
+  }
+ },
+ "art:334": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "土地承包经营权人能否将土地承包经营权互换、转让；承包地能否用于非农建设",
+     "rules": [
+      "c334-1",
+      "c334-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是土地承包经营权人（依法取得农村土地承包经营权），且针对其享有的土地承包经营权/承包地",
+     "rules": [
+      "c334-1",
+      "c334-2",
+      "c334-duty"
+     ]
+    },
+    {
+     "text": "互换、转让须“依照法律规定”进行（法律另有条件、程序的，从其规定）",
+     "rules": [
+      "c334-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经依法批准将承包地用于非农建设的，不受“不得用于非农建设”的禁止约束",
+     "rules": [
+      "c334-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "土地承包经营权人有权将土地承包经营权互换、转让",
+     "rules": [
+      "c334-1"
+     ]
+    },
+    {
+     "text": "未经依法批准，不得将承包地用于非农建设",
+     "rules": [
+      "c334-2"
+     ]
+    },
+    {
+     "text": "土地承包经营权人负有维持土地农业用途的义务（笔记概括，法条以禁止性表述体现）",
+     "rules": [
+      "c334-duty"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把“维持土地的农业用途”列为土地承包经营权人的义务；第334条第1款本身未使用“义务”表述，只规定“未经依法批准，不得将承包地用于非农建设”，故该义务以 doctrine 规则呈现",
+     "rules": [
+      "c334-duty"
+     ]
+    },
+    {
+     "text": "本条只解决互换、转让的权能与非农建设的禁止，不涉及互换、转让的登记与对抗效力（另见第335条），也不涉及承包地的调整、收回",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c334-1",
+    "srcs": [
+     "art334-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(A)",
+     "landContractRight(R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exchangeOrTransferOfLandContractRight(A,R)"
+     }
+    ],
+    "note": "土地承包经营权人依照法律规定，有权将其土地承包经营权互换、转让",
+    "auth": "npc"
+   },
+   {
+    "key": "c334-2",
+    "srcs": [
+     "art334-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(A)",
+     "landContractRight(R)",
+     "~lawfullyApprovedForNonFarmUse(A,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "useContractedLandForNonAgriculturalConstruction(A,R)"
+     }
+    ],
+    "note": "未经依法批准，土地承包经营权人不得将承包地用于非农建设（经依法批准的除外）",
+    "auth": "npc"
+   },
+   {
+    "key": "c334-duty",
+    "srcs": [
+     "art334-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(A)",
+     "landContractRight(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "maintainAgriculturalUse(A,R)"
+     }
+    ],
+    "note": "笔记将“维持土地的农业用途”概括为土地承包经营权人的义务；法条本身仅以“未经依法批准不得用于非农建设”的禁止性表述体现，故列为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "landContractRight": "是土地承包经营权（含其对应的承包地），作为互换、转让或用途限制的标的",
+   "lawfullyApprovedForNonFarmUse": "经依法批准将承包地用于非农建设（土地承包经营权人，土地承包经营权/承包地）",
+   "useContractedLandForNonAgriculturalConstruction": "将承包地用于非农建设（土地承包经营权人，土地承包经营权/承包地）",
+   "maintainAgriculturalUse": "维持土地的农业用途（土地承包经营权人，土地承包经营权/承包地）"
+  }
+ },
+ "art:332": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "土地承包经营权的承包期限如何确定；承包期限届满后，土地承包经营权人能否继续承包",
+     "rules": [
+      "c332-1a",
+      "c332-1b",
+      "c332-1c",
+      "c332-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承包地属于耕地、草地或者林地（按土地类型分别确定承包期）",
+     "rules": [
+      "c332-1a",
+      "c332-1b",
+      "c332-1c"
+     ]
+    },
+    {
+     "text": "承包期限届满，且该主体是土地承包经营权人",
+     "rules": [
+      "c332-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "继续承包须依照农村土地承包的法律规定进行，法律另有规定的从其规定",
+     "rules": [
+      "c332-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "耕地的承包期为三十年",
+     "rules": [
+      "c332-1a"
+     ]
+    },
+    {
+     "text": "草地的承包期为三十年至五十年",
+     "rules": [
+      "c332-1b"
+     ]
+    },
+    {
+     "text": "林地的承包期为三十年至七十年",
+     "rules": [
+      "c332-1c"
+     ]
+    },
+    {
+     "text": "承包期限届满，由土地承包经营权人依照农村土地承包的法律规定继续承包",
+     "rules": [
+      "c332-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记将土地承包经营权定性为“有期限的物权”；第332条第1款规定各类土地的承包期，第2款规定期限届满后由土地承包经营权人依照农村土地承包的法律规定继续承包，故期限届满并不当然导致该权利消灭",
+     "rules": [
+      "c332-2b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c332-1a",
+    "srcs": [
+     "art332-1"
+    ],
+    "body": [
+     "cultivatedLand(L)"
+    ],
+    "heads": [
+     "contractTermThirtyYears(L)"
+    ],
+    "note": "耕地的承包期为三十年",
+    "auth": "npc"
+   },
+   {
+    "key": "c332-1b",
+    "srcs": [
+     "art332-1"
+    ],
+    "body": [
+     "grassland(L)"
+    ],
+    "heads": [
+     "contractTermThirtyToFiftyYears(L)"
+    ],
+    "note": "草地的承包期为三十年至五十年",
+    "auth": "npc"
+   },
+   {
+    "key": "c332-1c",
+    "srcs": [
+     "art332-1"
+    ],
+    "body": [
+     "forestLand(L)"
+    ],
+    "heads": [
+     "contractTermThirtyToSeventyYears(L)"
+    ],
+    "note": "林地的承包期为三十年至七十年",
+    "auth": "npc"
+   },
+   {
+    "key": "c332-2",
+    "srcs": [
+     "art332-2"
+    ],
+    "body": [
+     "landContractRightHolder(H,L)",
+     "contractTermExpired(L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "continueContracting(H,L)"
+     }
+    ],
+    "note": "前款规定的承包期限届满，由土地承包经营权人依照农村土地承包的法律规定继续承包",
+    "auth": "npc"
+   },
+   {
+    "key": "c332-2b",
+    "srcs": [
+     "art332-2"
+    ],
+    "body": [
+     "landContractRightHolder(H,L)",
+     "contractTermExpired(L)"
+    ],
+    "heads": [
+     "-landContractRightExtinguished(H,L)"
+    ],
+    "note": "学理归纳：承包期限届满并不当然导致土地承包经营权消灭，权利人可依法继续承包（笔记“有期限的物权”之说明，非条文原文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "cultivatedLand": "承包地是耕地",
+   "grassland": "承包地是草地",
+   "forestLand": "承包地是林地",
+   "contractTermThirtyYears": "该土地的承包期为三十年（耕地）",
+   "contractTermThirtyToFiftyYears": "该土地的承包期为三十年至五十年（草地）",
+   "contractTermThirtyToSeventyYears": "该土地的承包期为三十年至七十年（林地）",
+   "landContractRightHolder": "是土地承包经营权人（权利人，土地）",
+   "contractTermExpired": "承包期限届满（与词表中表示附期限民事法律行为终止期限届满的 termExpired 相区别）",
+   "continueContracting": "依照农村土地承包的法律规定继续承包（土地承包经营权人，土地）",
+   "landContractRightExtinguished": "其土地承包经营权已消灭（权利人，土地）"
+  }
+ },
+ "card:g2928": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "土地承包经营权何时设立，登记在其中起什么作用",
+     "rules": [
+      "c333-1",
+      "c333-2"
+     ]
+    },
+    {
+     "text": "土地承包经营权人如何流转土地经营权；以招标、拍卖、公开协商等方式承包农村土地的，流转须具备什么条件",
+     "rules": [
+      "c339",
+      "c342"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承包方与发包方之间的土地承包经营权合同已生效（设立以合同生效为准，不以登记为准）",
+     "rules": [
+      "c333-1"
+     ]
+    },
+    {
+     "text": "家庭承包的承包人须为本集体经济组织成员（笔记、学理，法条未明定）",
+     "rules": [
+      "c333-doc-member"
+     ]
+    },
+    {
+     "text": "以招标、拍卖、公开协商等方式承包农村土地，且已依法登记取得权属证书",
+     "rules": [
+      "c342"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非本集体经济组织成员不能以家庭承包方式取得土地承包经营权",
+     "rules": [
+      "c333-doc-member"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "土地承包经营权自土地承包经营权合同生效时设立，登记只是确认，不是设立要件",
+     "rules": [
+      "c333-1"
+     ]
+    },
+    {
+     "text": "登记机构应当向土地承包经营权人发放土地承包经营权证、林权证等证书，并登记造册，确认土地承包经营权",
+     "rules": [
+      "c333-2"
+     ]
+    },
+    {
+     "text": "土地承包经营权人可以自主决定依法采取出租、入股或者其他方式向他人流转土地经营权",
+     "rules": [
+      "c339"
+     ]
+    },
+    {
+     "text": "以招标、拍卖、公开协商等方式承包农村土地，经依法登记取得权属证书的，可以依法采取出租、入股、抵押或者其他方式流转土地经营权",
+     "rules": [
+      "c342"
+     ]
+    },
+    {
+     "text": "荒地等以招标、拍卖、公开协商方式承包的，取得的是土地经营权而非土地承包经营权（笔记、学理）",
+     "rules": [
+      "c342-doc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "以招标、拍卖、公开协商方式承包荒地取得土地经营权的，其流转适用第342条的特别要求（须先依法登记取得权属证书），优先于第339条关于土地承包经营权人自主流转的一般规定",
+     "rules": [
+      "c342",
+      "c339"
+     ]
+    },
+    {
+     "text": "家庭承包以本集体成员为限的限制，优先于“合同生效即设立”的一般规则",
+     "rules": [
+      "c333-doc-member",
+      "c333-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "土地承包经营权与土地经营权：前者是依承包合同设立的用益物权，后者是可流转的经营性权利，主体、设立方式与权利内容不同",
+     "rules": []
+    },
+    {
+     "text": "家庭承包与荒地承包：前者限于本集体经济组织成员、取得土地承包经营权；后者可面向本集体以外的组织和个人、取得土地经营权",
+     "rules": [
+      "c333-doc-member",
+      "c342-doc"
+     ]
+    },
+    {
+     "text": "土地承包经营权互换、转让未经登记不得对抗善意第三人（第335条），与本条“合同生效即设立”的规则不同；该条本行未挂载",
+     "rules": []
+    },
+    {
+     "text": "转让土地承包经营权须经发包方同意、互换须向发包方备案（农村土地承包法），本行未挂载该规范",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c333-1",
+    "srcs": [
+     "art333-1"
+    ],
+    "body": [
+     "landContractRightContract(K)",
+     "contractEffective(K)",
+     "contractorOf(K,A)"
+    ],
+    "heads": [
+     "obtainedLandContractRight(A)"
+    ],
+    "note": "土地承包经营权自土地承包经营权合同生效时设立，登记不是设立要件",
+    "auth": "npc"
+   },
+   {
+    "key": "c333-2",
+    "srcs": [
+     "art333-2"
+    ],
+    "body": [
+     "obtainedLandContractRight(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": "A",
+      "content": "issueCertificate(A)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": "A",
+      "content": "recordInRegister(A)"
+     }
+    ],
+    "note": "登记机构应当向土地承包经营权人发放土地承包经营权证、林权证等证书，并登记造册，确认土地承包经营权",
+    "auth": "npc"
+   },
+   {
+    "key": "c339",
+    "srcs": [
+     "art339-1"
+    ],
+    "body": [
+     "obtainedLandContractRight(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "transferLandOperationRight(A)"
+     }
+    ],
+    "note": "土地承包经营权人可以自主决定依法采取出租、入股或者其他方式向他人流转土地经营权",
+    "auth": "npc"
+   },
+   {
+    "key": "c342",
+    "srcs": [
+     "art342-1"
+    ],
+    "body": [
+     "contractedByBiddingAuctionOrNegotiation(A)",
+     "obtainedTitleCertificateByRegistration(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "transferLandOperationRight(A)"
+     }
+    ],
+    "note": "以招标、拍卖、公开协商等方式承包农村土地，经依法登记取得权属证书的，可以依法采取出租、入股、抵押或者其他方式流转土地经营权",
+    "auth": "npc"
+   },
+   {
+    "key": "c333-doc-member",
+    "srcs": [
+     "art333-1"
+    ],
+    "body": [
+     "familyContractOperation(A)",
+     "-collectiveMember(A)"
+    ],
+    "heads": [
+     "-obtainedLandContractRight(A)"
+    ],
+    "note": "笔记、学理：家庭承包以本集体经济组织成员为限，非成员不能以家庭承包方式取得土地承包经营权；法条未明定，故为学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c342-doc",
+    "srcs": [
+     "art342-1"
+    ],
+    "body": [
+     "contractedByBiddingAuctionOrNegotiation(A)"
+    ],
+    "heads": [
+     "obtainedLandOperationRight(A)"
+    ],
+    "note": "笔记、学理：以招标、拍卖、公开协商等方式承包荒山、荒沟、荒丘、荒滩等农村土地，取得的是土地经营权而非土地承包经营权",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c342",
+    "c339",
+    "以招标、拍卖、公开协商方式承包荒地取得的是土地经营权，其流转须先依法登记取得权属证书，属特别规定，优先于第339条的一般规定"
+   ],
+   [
+    "c333-doc-member",
+    "c333-1",
+    "家庭承包以本集体经济组织成员为限，非成员不因承包合同生效而取得土地承包经营权"
+   ]
+  ],
+  "predicates": {
+   "landContractRightContract": "是土地承包经营权合同（参数：合同）",
+   "contractEffective": "合同已生效（参数：合同）",
+   "contractorOf": "是该合同的承包方（承包人）（参数：合同，承包人）",
+   "issueCertificate": "发放土地承包经营权证、林权证等证书（参数：土地承包经营权人）",
+   "recordInRegister": "登记造册（参数：土地承包经营权人）",
+   "transferLandOperationRight": "依法以出租、入股、抵押或者其他方式向他人流转土地经营权（参数：流转人）",
+   "contractedByBiddingAuctionOrNegotiation": "通过招标、拍卖、公开协商等方式承包农村土地（参数：承包人）",
+   "obtainedTitleCertificateByRegistration": "经依法登记取得权属证书（参数：承包人）",
+   "obtainedLandOperationRight": "取得土地经营权（参数：承包人）"
+  }
+ },
+ "art:336": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承包期内发包人能否调整承包地；在何种情形下可以适当调整承包的耕地、草地",
+     "rules": [
+      "c336-1",
+      "c336-2",
+      "c336-2-perm"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在土地承包合同且处于承包期内，行为人是该合同的发包人，标的为该合同项下的承包地",
+     "rules": [
+      "c336-1"
+     ]
+    },
+    {
+     "text": "因自然灾害严重毁损承包地等特殊情形，需要适当调整承包的耕地、草地",
+     "rules": [
+      "c336-2",
+      "c336-2-perm"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因自然灾害严重毁损承包地等特殊情形，需要适当调整承包的耕地、草地的，不受第1款“不得调整”的限制，但应当依照农村土地承包的法律规定办理",
+     "rules": [
+      "c336-2",
+      "c336-2-perm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承包期内，发包人不得调整承包地（禁止性义务）",
+     "rules": [
+      "c336-1"
+     ]
+    },
+    {
+     "text": "符合特殊情形的，发包人应当依照农村土地承包的法律规定办理调整事宜（具体条件与程序依该法）",
+     "rules": [
+      "c336-2"
+     ]
+    },
+    {
+     "text": "符合特殊情形并依法办理的，可以适当调整承包的耕地、草地（第2款的反面推论）",
+     "rules": [
+      "c336-2-perm"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款关于特殊情形下依农村土地承包法办理调整的规则，优先于第1款“承包期内发包人不得调整承包地”的禁止性规则",
+     "rules": [
+      "c336-2",
+      "c336-2-perm"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条限制的是发包人单方调整承包地；承包经营权人之间自愿互换、转让承包地适用第334条、第335条，发包人收回承包地适用第337条，均非本条的调整",
+     "rules": []
+    },
+    {
+     "text": "第2款只指向“农村土地承包的法律规定”的适用，本条本身不规定调整的表决、报批等具体程序",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c336-1",
+    "srcs": [
+     "art336-1"
+    ],
+    "body": [
+     "landContract(K)",
+     "withinContractPeriod(K)",
+     "issuerOfLand(A,K)",
+     "contractedLand(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "adjustContractedLand(A,L)"
+     }
+    ],
+    "note": "承包期内，发包人不得调整承包地",
+    "auth": "npc"
+   },
+   {
+    "key": "c336-2",
+    "srcs": [
+     "art336-2"
+    ],
+    "body": [
+     "landContract(K)",
+     "withinContractPeriod(K)",
+     "issuerOfLand(A,K)",
+     "contractedLand(L,K)",
+     "specialCircumstances(L)",
+     "seriouslyDamagedByNaturalDisaster(L)",
+     "cultivatedLandOrGrassland(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "handlePerRuralLandContractLaw(A,L)"
+     }
+    ],
+    "note": "因自然灾害严重毁损承包地等特殊情形，需要适当调整承包的耕地、草地的，应当依照农村土地承包的法律规定办理（具体条件与程序依该法）",
+    "auth": "npc"
+   },
+   {
+    "key": "c336-2-perm",
+    "srcs": [
+     "art336-2"
+    ],
+    "body": [
+     "landContract(K)",
+     "withinContractPeriod(K)",
+     "issuerOfLand(A,K)",
+     "contractedLand(L,K)",
+     "specialCircumstances(L)",
+     "seriouslyDamagedByNaturalDisaster(L)",
+     "cultivatedLandOrGrassland(L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "adjustContractedLand(A,L)"
+     }
+    ],
+    "note": "学理推论：第2款为第1款的但书，符合特殊情形并依农村土地承包法办理的，发包人可适当调整承包的耕地、草地",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c336-2",
+    "c336-1",
+    "因自然灾害严重毁损承包地等特殊情形，需要适当调整承包的耕地、草地的，依农村土地承包的法律规定办理，构成承包期内不得调整承包地的例外"
+   ],
+   [
+    "c336-2-perm",
+    "c336-1",
+    "特殊情形下经依法办理可适当调整承包的耕地、草地，排除第1款禁止调整的适用"
+   ]
+  ],
+  "predicates": {
+   "landContract": "是土地承包合同（承包合同）",
+   "withinContractPeriod": "处于承包期内（参数1：土地承包合同）",
+   "issuerOfLand": "是发包人（发包人，土地承包合同）",
+   "contractedLand": "是该合同项下的承包地（承包地，土地承包合同）",
+   "adjustContractedLand": "调整承包地（发包人，承包地）",
+   "seriouslyDamagedByNaturalDisaster": "因自然灾害严重毁损（参数1：承包地）",
+   "cultivatedLandOrGrassland": "是承包的耕地或草地（参数1：承包地）",
+   "handlePerRuralLandContractLaw": "依照农村土地承包的法律规定办理调整事宜（发包人，承包地）"
+  }
+ },
+ "art:340": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "土地经营权人在合同约定的期限内，对农村土地享有哪些权利",
+     "rules": [
+      "c340-possess",
+      "c340-operate",
+      "c340-proceeds"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利人为土地经营权人，标的物为农村土地，且处于合同约定的期限内",
+     "rules": [
+      "c340-possess",
+      "c340-operate",
+      "c340-proceeds"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "有权在合同约定的期限内占有该农村土地",
+     "rules": [
+      "c340-possess"
+     ]
+    },
+    {
+     "text": "有权自主开展农业生产经营",
+     "rules": [
+      "c340-operate"
+     ]
+    },
+    {
+     "text": "有权取得经营收益",
+     "rules": [
+      "c340-proceeds"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条规范的是土地经营权（以合同约定的期限为限，内容为占有、自主开展农业生产经营并取得收益），与土地承包经营权（第331条）不同，不得混用“依法取得农村土地承包经营权”这一谓词",
+     "rules": []
+    },
+    {
+     "text": "第340条第2款关于土地经营权设立与登记对抗的规定未挂载，本卡片不涉及；笔记未引用原文或条号，故无学理补充规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c340-possess",
+    "srcs": [
+     "art340-1"
+    ],
+    "body": [
+     "landManagementRightHolder(P,L)",
+     "ruralLand(L)",
+     "withinAgreedTerm(P,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "possessAndUse(P,L)"
+     }
+    ],
+    "note": "土地经营权人有权在合同约定的期限内占有农村土地",
+    "auth": "npc"
+   },
+   {
+    "key": "c340-operate",
+    "srcs": [
+     "art340-1"
+    ],
+    "body": [
+     "landManagementRightHolder(P,L)",
+     "ruralLand(L)",
+     "withinAgreedTerm(P,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "conductAgriculturalOperation(P,L)"
+     }
+    ],
+    "note": "土地经营权人有权在合同约定的期限内自主开展农业生产经营",
+    "auth": "npc"
+   },
+   {
+    "key": "c340-proceeds",
+    "srcs": [
+     "art340-1"
+    ],
+    "body": [
+     "landManagementRightHolder(P,L)",
+     "ruralLand(L)",
+     "withinAgreedTerm(P,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainProceeds(P,L)"
+     }
+    ],
+    "note": "土地经营权人有权在合同约定的期限内取得收益",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "landManagementRightHolder": "是土地经营权人（参数1：土地经营权人，参数2：农村土地）",
+   "ruralLand": "是农村土地（土地经营权的客体）",
+   "withinAgreedTerm": "在合同约定的期限内（参数1：土地经营权人，参数2：农村土地）",
+   "conductAgriculturalOperation": "自主开展农业生产经营（参数1：土地经营权人，参数2：农村土地）",
+   "obtainProceeds": "取得收益（参数1：土地经营权人，参数2：农村土地）"
+  }
+ },
+ "art:337": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承包期内，发包人能否收回承包地",
+     "rules": [
+      "c337-1",
+      "c337-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在土地承包关系，且处于承包期内；行为人是该承包关系的发包人",
+     "rules": [
+      "c337-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，依照其规定，即不适用“承包期内不得收回承包地”的禁止",
+     "rules": [
+      "c337-1",
+      "c337-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "发包人不得收回承包地",
+     "rules": [
+      "c337-1"
+     ]
+    },
+    {
+     "text": "法律另有规定时，依该规定处理，发包人可依该规定收回承包地",
+     "rules": [
+      "c337-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定优先于本条“承包期内不得收回承包地”的一般禁止",
+     "rules": [
+      "c337-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未涉及本条；本条只规范承包期内发包人收回承包地，承包方自愿交回承包地、承包地调整等属其他条文，不在本条射程内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c337-1",
+    "srcs": [
+     "art337-1"
+    ],
+    "body": [
+     "landContract(K)",
+     "withinContractTerm(K)",
+     "grantorOf(G,K)",
+     "~lawProvidesOtherwiseOnReclaimingLand(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "reclaimContractedLand(G,K)"
+     }
+    ],
+    "note": "承包期内发包人不得收回承包地；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c337-2",
+    "srcs": [
+     "art337-1"
+    ],
+    "body": [
+     "landContract(K)",
+     "grantorOf(G,K)",
+     "lawProvidesOtherwiseOnReclaimingLand(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "reclaimContractedLand(G,K)"
+     }
+    ],
+    "note": "法律对承包期内收回承包地另有规定的，依照其规定，本条的禁止被排除（“依照其规定”的形式化）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c337-2",
+    "c337-1",
+    "法律另有规定的，依照其规定，优先于承包期内不得收回承包地的一般禁止"
+   ]
+  ],
+  "predicates": {
+   "landContract": "土地承包经营权合同（承包关系）",
+   "withinContractTerm": "在承包期内",
+   "grantorOf": "是发包人（发包方）",
+   "reclaimContractedLand": "收回承包地",
+   "lawProvidesOtherwiseOnReclaimingLand": "法律对承包期内收回承包地另有规定"
+  }
+ },
+ "art:338": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承包地被征收时，土地承包经营权人能否获得补偿、由谁补偿、补偿依据为何",
+     "rules": [
+      "c338-1",
+      "c338-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被征收的是集体所有的土地，且该土地是土地承包经营权人依法承包的土地",
+     "rules": [
+      "c338-1"
+     ]
+    },
+    {
+     "text": "请求补偿的主体是依法取得农村土地承包经营权的土地承包经营权人",
+     "rules": [
+      "c338-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条未设但书或除外情形；承包地被征收即触发补偿请求权",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "土地承包经营权人有权获得相应补偿（对征收人的补偿请求权）",
+     "rules": [
+      "c338-1"
+     ]
+    },
+    {
+     "text": "补偿的内容与标准依第243条：征收人应依法及时足额支付土地补偿费、安置补助费、农村村民住宅及其他地上附着物和青苗等补偿费用，并安排被征地农民的社会保障费用",
+     "rules": [
+      "c338-2"
+     ]
+    },
+    {
+     "text": "土地承包经营权人作为用益物权人享有独立的补偿请求权，不以集体土地所有权人已获补偿或已分配为前提（学理，参照第327条）",
+     "rules": [
+      "c338-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是第243条征收补偿规则在“承包地被征收”情形下的具体适用，就土地承包经营权人的补偿请求权优先于一般征收补偿规则适用",
+     "rules": [
+      "c338-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未涉及本条；本条与第327条不同：第327条是用益物权人补偿请求权的一般规定，本条专门针对土地承包经营权人的承包地被征收",
+     "rules": [
+      "c338-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c338-1",
+    "srcs": [
+     "art338"
+    ],
+    "body": [
+     "obtainedLandContractRight(H)",
+     "expropriationOfCollectiveLand(G,L)",
+     "contractedLandOf(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": "G",
+      "content": "claimExpropriationCompensation(H,L)"
+     }
+    ],
+    "note": "承包地被征收的，土地承包经营权人有权获得相应补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c338-2",
+    "srcs": [
+     "art338"
+    ],
+    "body": [
+     "obtainedLandContractRight(H)",
+     "expropriationOfCollectiveLand(G,L)",
+     "contractedLandOf(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "H",
+      "content": "payLandCompensationResettlementAndSocialSecurity(G)"
+     }
+    ],
+    "note": "补偿依第243条：征收人应依法及时足额支付土地补偿费、安置补助费、住宅及其他地上附着物和青苗等补偿费用，并安排被征地农民的社会保障费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c338-3",
+    "srcs": [
+     "art338"
+    ],
+    "body": [
+     "obtainedLandContractRight(H)",
+     "expropriationOfCollectiveLand(G,L)",
+     "contractedLandOf(H,L)"
+    ],
+    "heads": [
+     "independentCompensationClaim(H,L)"
+    ],
+    "note": "学理（参照第327条）：土地承包经营权人作为用益物权人享有独立的补偿请求权，不以集体已获补偿或已分配为前提；本条原文未明写",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "contractedLandOf": "是土地承包经营权人依法承包的土地（土地承包经营权人，承包地）",
+   "claimExpropriationCompensation": "请求获得征收补偿（土地承包经营权人，被征收的承包地）"
+  }
+ },
+ "art:343": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家所有的农用地实行承包经营的，应适用何种规则",
+     "rules": [
+      "c343-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体是国家所有的农用地（耕地、林地、草地、养殖水面等），且该农用地实行承包经营",
+     "rules": [
+      "c343-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用本编（物权编）的有关规定，即参照适用第十一章土地承包经营权关于承包经营权设立、登记、流转与保护等规定",
+     "rules": [
+      "c343-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为参照适用（准用）条款：国有农用地承包经营优先按本编土地承包经营权的规定处理，而非直接适用集体土地所有权及家庭承包的一般规则",
+     "rules": [
+      "c343-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是“参照适用”而非“直接适用”，本编中与农村集体经济组织成员身份、家庭承包主体资格相联系的规则，须调整后适用",
+     "rules": []
+    },
+    {
+     "text": "本条位于物权编第十一章（土地承包经营权）之末，属该章的兜底准用条款；笔记与 LEGO 卡片均无相关内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c343-1",
+    "srcs": [
+     "art343"
+    ],
+    "body": [
+     "stateOwnedAgriculturalLand(L)",
+     "contractedOperation(L)"
+    ],
+    "heads": [
+     "applyLandContractChapterByReference(L)"
+    ],
+    "note": "国家所有的农用地实行承包经营的，参照适用本编关于土地承包经营权的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOwnedAgriculturalLand": "（1个参数）是国家所有的农用地，如耕地、林地、草地、养殖水面等",
+   "contractedOperation": "（1个参数）该农用地实行承包经营",
+   "applyLandContractChapterByReference": "（1个参数）参照适用本编（物权编）关于土地承包经营权的有关规定（参数1：国家所有的农用地）"
+  }
+ },
+ "art:341": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "流转期限为五年以上的土地经营权何时设立、当事人能否申请登记、未经登记能否对抗善意第三人",
+     "rules": [
+      "c341-1",
+      "c341-2",
+      "c341-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在以流转方式取得的土地经营权，流转期限为五年以上，且流转合同已生效",
+     "rules": [
+      "c341-1"
+     ]
+    },
+    {
+     "text": "申请登记的主体是该土地经营权的权利人（当事人）",
+     "rules": [
+      "c341-2"
+     ]
+    },
+    {
+     "text": "主张不得对抗的对象须为善意第三人，且该土地经营权未经登记",
+     "rules": [
+      "c341-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经登记：该土地经营权不得对抗善意第三人（对世效力受限制）",
+     "rules": [
+      "c341-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "流转期限五年以上的土地经营权自流转合同生效时设立，登记不是设立要件",
+     "rules": [
+      "c341-1"
+     ]
+    },
+    {
+     "text": "当事人可以向登记机构申请土地经营权登记（可以登记，而非应当登记）",
+     "rules": [
+      "c341-2"
+     ]
+    },
+    {
+     "text": "未经登记，不得对抗善意第三人",
+     "rules": [
+      "c341-3"
+     ]
+    },
+    {
+     "text": "已登记的土地经营权可以对抗善意第三人（学理上的反面解释）",
+     "rules": [
+      "c341-reg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "登记对抗：未登记时，善意第三人取得的权利优先于未登记的土地经营权",
+     "rules": [
+      "c341-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规范流转期限五年以上的土地经营权；不满五年的流转不适用本款的设立规则（笔记、学理）",
+     "rules": []
+    },
+    {
+     "text": "登记在本条只是对抗要件而非设立要件，与不动产物权登记生效主义（第209条）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c341-1",
+    "srcs": [
+     "art341-1"
+    ],
+    "body": [
+     "landManagementRight(K)",
+     "transferTermFiveYearsOrMore(K)",
+     "transferContractEffective(K)"
+    ],
+    "heads": [
+     "landManagementRightEstablished(K)"
+    ],
+    "note": "流转期限为五年以上的土地经营权，自流转合同生效时设立，登记不是设立要件",
+    "auth": "npc"
+   },
+   {
+    "key": "c341-2",
+    "srcs": [
+     "art341-1"
+    ],
+    "body": [
+     "landManagementRight(K)",
+     "landManagementRightHolder(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyLandManagementRightRegistration(P,K)"
+     }
+    ],
+    "note": "当事人可以向登记机构申请土地经营权登记，属授权性规定，登记并非强制",
+    "auth": "npc"
+   },
+   {
+    "key": "c341-3",
+    "srcs": [
+     "art341-1"
+    ],
+    "body": [
+     "landManagementRightEstablished(K)",
+     "landManagementRightHolder(P,K)",
+     "bonaFideThirdParty(T)",
+     "-landManagementRightRegistered(K)"
+    ],
+    "heads": [
+     "-landManagementRightOpposableTo(P,T)"
+    ],
+    "note": "土地经营权未经登记的，不得对抗善意第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c341-reg",
+    "srcs": [
+     "art341-1"
+    ],
+    "body": [
+     "landManagementRightEstablished(K)",
+     "landManagementRightHolder(P,K)",
+     "landManagementRightRegistered(K)",
+     "bonaFideThirdParty(T)"
+    ],
+    "heads": [
+     "landManagementRightOpposableTo(P,T)"
+    ],
+    "note": "学理上的反面解释：已登记的土地经营权可以对抗善意第三人；条文只明定未登记的消极后果",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "landManagementRight": "土地经营权（以出租、入股等方式流转取得的权利）",
+   "landManagementRight/1": "土地经营权（以出租、入股等方式流转取得的权利）",
+   "transferTermFiveYearsOrMore": "流转期限为五年以上（土地经营权/流转合同）",
+   "transferTermFiveYearsOrMore/1": "流转期限为五年以上（土地经营权/流转合同）",
+   "transferContractEffective": "流转合同已生效",
+   "transferContractEffective/1": "流转合同已生效",
+   "landManagementRightEstablished": "土地经营权已设立",
+   "landManagementRightEstablished/1": "土地经营权已设立",
+   "landManagementRightHolder": "是土地经营权的权利人（当事人，土地经营权）",
+   "landManagementRightHolder/2": "是土地经营权的权利人（当事人，土地经营权）",
+   "landManagementRightRegistered": "土地经营权已经登记（记载于不动产登记簿）",
+   "landManagementRightRegistered/1": "土地经营权已经登记（记载于不动产登记簿）",
+   "applyLandManagementRightRegistration": "向登记机构申请土地经营权登记（当事人，土地经营权）",
+   "applyLandManagementRightRegistration/2": "向登记机构申请土地经营权登记（当事人，土地经营权）",
+   "landManagementRightOpposableTo": "土地经营权可以对抗（权利人，第三人）",
+   "landManagementRightOpposableTo/2": "土地经营权可以对抗（权利人，第三人）"
+  }
+ }
+}

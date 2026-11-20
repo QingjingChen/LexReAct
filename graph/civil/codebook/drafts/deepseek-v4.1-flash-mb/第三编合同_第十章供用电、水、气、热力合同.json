@@ -1,0 +1,267 @@
+{
+ "art:649": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "供用电合同一般应当具备哪些内容条款",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "供用电合同的内容一般包括：供电的方式、质量、时间，用电容量、地址、性质，计量方式，电价、电费的结算方式，供用电设施的维护责任等条款",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条为示范性、提示性列举，当事人可以另行约定其他条款，也可以不采用上述全部条款；缺少其中某项条款并不当然影响合同成立",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "本条不产生独立的权利义务效果，仅描述供用电合同的典型条款构成，供当事人订立合同和解释合同内容时参考",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条使用“一般包括”，属于说明性规范，不是强制性条款清单，故不形式化为可废止规则；具体权利义务仍依合同约定及合同编通则、买卖合同章的规定确定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:655": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "用电人负有何种用电义务；未按照国家有关规定和当事人的约定用电，造成供电人损失的，是否应当承担赔偿责任",
+     "rules": [
+      "c655-1",
+      "c655-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在供用电合同，行为人是该合同的用电人，相对方是该合同的供电人",
+     "rules": [
+      "c655-1",
+      "c655-2"
+     ]
+    },
+    {
+     "text": "用电人违反国家有关安全、节约、计划用电的规定，或者违反当事人关于用电的约定（二者择一即可）",
+     "rules": [
+      "c655-violate"
+     ]
+    },
+    {
+     "text": "该违反用电要求的行为造成供电人损失",
+     "rules": [
+      "c655-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条未设免责事由，条文未规定不可抗力等抗辩，故不作例外规则",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "用电人应当按照国家有关规定和当事人的约定安全、节约和计划用电",
+     "rules": [
+      "c655-1"
+     ]
+    },
+    {
+     "text": "用电人未按国家有关规定和当事人的约定用电，造成供电人损失的，应当向供电人承担赔偿责任",
+     "rules": [
+      "c655-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条未规定与其他条款的优先关系，不作优先性声明",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定用电人的用电义务与赔偿责任；供电人的安全供电、中断供电通知、抢修等义务在第651条至第654条，本行未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记与LEGO卡片均未涉及本条，规则完全依据法条原文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c655-1",
+    "srcs": [
+     "art655-1"
+    ],
+    "body": [
+     "powerSupplyContract(K)",
+     "electricityUserOf(U,K)",
+     "powerSupplierOf(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "S",
+      "content": "useElectricitySafelyEconomicallyPerPlan(U,K)"
+     }
+    ],
+    "note": "用电人应当按照国家有关规定和当事人的约定安全、节约和计划用电",
+    "auth": "npc"
+   },
+   {
+    "key": "c655-violate",
+    "srcs": [
+     "art655-1"
+    ],
+    "body": [
+     "electricityUserOf(U,K)",
+     {
+      "or": [
+       "violatesStateElectricityRules(U)",
+       "violatesAgreedElectricityUse(U,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "failsToUseElectricityPerRules(U,K)"
+    ],
+    "note": "违反国家有关用电的规定或者违反当事人关于用电的约定，即属未按照国家有关规定和当事人的约定用电（二者择一即可）",
+    "auth": "npc"
+   },
+   {
+    "key": "c655-2",
+    "srcs": [
+     "art655-1"
+    ],
+    "body": [
+     "electricityUserOf(U,K)",
+     "powerSupplierOf(S,K)",
+     "failsToUseElectricityPerRules(U,K)",
+     "causesLossToSupplier(U,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "S",
+      "content": "payCompensation(U,S)"
+     }
+    ],
+    "note": "用电人未按照国家有关规定和当事人的约定用电，造成供电人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "powerSupplyContract": "供用电合同（1个参数：合同）",
+   "electricityUserOf": "是供用电合同的用电人（2个参数：用电人，合同）",
+   "powerSupplierOf": "是供用电合同的供电人（2个参数：供电人，合同）",
+   "useElectricitySafelyEconomicallyPerPlan": "按照国家有关规定和当事人的约定安全、节约和计划用电（2个参数：用电人，合同）",
+   "violatesStateElectricityRules": "违反国家有关安全、节约、计划用电的规定（1个参数：用电人）",
+   "violatesAgreedElectricityUse": "违反当事人关于用电的约定（2个参数：用电人，合同）",
+   "failsToUseElectricityPerRules": "未按照国家有关规定和当事人的约定用电（2个参数：用电人，合同）",
+   "causesLossToSupplier": "造成供电人损失（2个参数：用电人，供电人）"
+  }
+ },
+ "card:g5041": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c648-def：新谓词 supplyElectricity 需要在 predicates 中给出中文释义",
+   "c648-def：新谓词 payElectricityFee 需要在 predicates 中给出中文释义",
+   "c648-def：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c648-2：新谓词 publicElectricitySupplier 需要在 predicates 中给出中文释义",
+   "c650-1：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c650-1：新谓词 agreedPerformancePlace 需要在 predicates 中给出中文释义",
+   "c650-1：新谓词 performancePlace 需要在 predicates 中给出中文释义",
+   "c650-2：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c650-2：新谓词 noAgreedOrUnclearPerformancePlace 需要在 predicates 中给出中文释义",
+   "c650-2：新谓词 propertyBoundaryPoint 需要在 predicates 中给出中文释义",
+   "c650-2：新谓词 performancePlace 需要在 predicates 中给出中文释义",
+   "c651-1：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c651-1：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c651-1：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c651-1：新谓词 supplySafelyPerStandards 需要在 predicates 中给出中文释义",
+   "c651-2：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c651-2：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c651-2：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c651-2：新谓词 failsToSupplySafely 需要在 predicates 中给出中文释义",
+   "c651-2：新谓词 causesLoss 需要在 predicates 中给出中文释义",
+   "c652-1：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c652-1：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c652-1：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c652-1：新谓词 needsToInterruptSupply 需要在 predicates 中给出中文释义",
+   "c652-1：新谓词 notifyUserInAdvance 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 needsToInterruptSupply 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 failsToNotifyInAdvance 需要在 predicates 中给出中文释义",
+   "c652-2：新谓词 causesLoss 需要在 predicates 中给出中文释义",
+   "c653-1：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c653-1：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c653-1：新谓词 powerOutageDueToNaturalDisaster 需要在 predicates 中给出中文释义",
+   "c653-1：新谓词 promptlyRepair 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 powerOutageDueToNaturalDisaster 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 failsToRepairPromptly 需要在 predicates 中给出中文释义",
+   "c653-2：新谓词 causesLoss 需要在 predicates 中给出中文释义",
+   "c654-1：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c654-1：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c654-1：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c654-1：新谓词 payElectricityFeeTimely 需要在 predicates 中给出中文释义",
+   "c654-2：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c654-2：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c654-2：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c654-2：新谓词 overdueElectricityFee 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 overdueElectricityFee 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 demandedPayment 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 stillNotPaidWithinReasonablePeriod 需要在 predicates 中给出中文释义",
+   "c654-3：新谓词 suspendSupplyPerProcedure 需要在 predicates 中给出中文释义",
+   "c654-4：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c654-4：新谓词 electricitySupplier 需要在 predicates 中给出中文释义",
+   "c654-4：新谓词 electricityUser 需要在 predicates 中给出中文释义",
+   "c654-4：新谓词 suspendSupplyPerProcedure 需要在 predicates 中给出中文释义",
+   "c654-4：新谓词 notifyUserInAdvanceOfSuspension 需要在 predicates 中给出中文释义",
+   "c656：新谓词 supplyWaterGasHeatContract 需要在 predicates 中给出中文释义",
+   "c656：新谓词 applySupplyElectricityProvisionsByReference 需要在 predicates 中给出中文释义",
+   "c648-doc：新谓词 supplyUseElectricityContract 需要在 predicates 中给出中文释义",
+   "c648-doc：新谓词 applySaleOwnershipTransferRulesByReference 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"供用电合同如何界定，履行地点如何确定，供电人与用电人各负何种义务、违反义务如何承担责任\",\n        \"rules\": [\n          \"c648-def\",\n          \"c650-1\",\n          \"c650-2\",\n          \"c651-1\",\n          \"c651-2\",\n          \"c652-1\",\n          \"c652-2\",\n          \"c653-1\",\n          \"c653-2\",\n          \"c654-1\",\n          \"c654-2\",\n          \"c654-3\",\n          \"c654-4\"\n        ]\n      },\n      {\n        \"text\": \"向社会公众供电的供电人是否负有强制缔约义务，能否拒绝用电人的订约要求\",\n        \"rules\": [\n          \"c648-2\"\n        ]\n      },\n      {\n        \"text\": \"供用水、供用气、供用热力合同适用何种规则\",\n        \"rules\": [\n          \"c656\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"供电人向社会公众供电，用电人提出合理的订立合同要求\",\n        \"rules\": [\n          \"c648-2\"\n        ]\n      },\n      {\n        \"text\": \"当事人约定了供用电合同的履行地点\",\n        \"rules\": [\n          \"c650-1\"\n        ]\n      },\n      {\n        \"text\": \"当事人对履行地点没有约定或者约定不明确，且存在供电设施的产权分界处\",\n        \"rules\": [\n          \"c650-2\"\n        ]\n      },\n      {\n        \"text\": \"供电人因供电设施计划检修、临时检修、依法限电或者用电人违法用电等原因需要中断供电\",\n        \"rules\": [\n          \"c652-1\",\n          \"c652-2\"\n        ]\n      },\n      {\n        \"text\": \"因自然灾害等原因断电\",\n        \"rules\": [\n          \"c653-1\",\n          \"c653-2\"\n        ]\n      },\n      {\n        \"text\": \"用电人逾期不支付电费；经催告后在合理期限内仍不支付电费和违约金\",\n        \"rules\": [\n          \"c654-2\",\n          \"c654-3\"\n        ]\n      },\n      {\n        \"text\": \"供电人依据前款规定中止供电\",\n        \"rules\": [\n          \"c654-4\"\n        ]\n      },\n      {\n        \"text\": \"合同标的为水、气、热力的供用\",\n        \"rules\": [\n          \"c656\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"用电人提出的订约要求须为通常、合理的要求；明显不合理或超出正常需求范围的，不属于强制缔约保护范围\",\n        \"rules\": [\n          \"c648-2\"\n        ]\n      },\n      {\n        \"text\": \"供电人已按国家有关规定事先通知用电人，或断电后已及时抢修的，不构成义务违反，不承担赔偿责任\",\n        \"rules\": [\n          \"c652-1\",\n          \"c652-2\",\n          \"c653-1\",\n          \"c653-2\"\n        ]\n      },\n      {\n        \"text\": \"用电人未逾期不付电费，或虽逾期但未经催告、催告后合理期限内已支付的，供电人不得中止供电\",\n        \"rules\": [\n          \"c654-3\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"供电人应当按照国家规定的供电质量标准和约定安全供电；未按标准供电造成用电人损失的，应当承担赔偿责任\",\n        \"rules\": [\n          \"c651-1\",\n          \"c651-2\"\n        ]\n      },\n      {\n        \"text\": \"需要中断供电的，供电人应当事先通知用电人；未事先通知即中断供电造成损失的，应当承担赔偿责任\",\n        \"rules\": [\n          \"c652-1\",\n          \"c652-2\"\n        ]\n      },\n      {\n        \"text\": \"因自然灾害等原因断电的，供电人应当及时抢修；未及时抢修造成损失的，应当承担赔偿责任\",\n        \"rules\": [\n          \"c653-1\",\n          \"c653-2\"\n        ]\n      },\n      {\n        \"text\": \"用电人应当及时支付电费；逾期不付的应按约定支付违约金；经催告仍不支付电费和违约金的，供电人可以按国家规定的程序中止供电，并应当事先通知用电人\",\n        \"rules\": [\n          \"c654-1\",\n          \"c654-2\",\n          \"c654-3\",\n          \"c654-4\"\n        ]\n      },\n      {\n        \"text\": \"履行地点按当事人约定；没有约定或者约定不明确的，以供电设施的产权分界处为履行地点\",\n        \"rules\": [\n          \"c650-1\",\n          \"c650-2\"\n        ]\n      },\n      {\n        \"text\": \"向社会公众供电的供电人不得拒绝用电人合理的订立合同要求（强制缔约）\",\n        \"rules\": [\n          \"c648-2\"\n        ]\n      },\n      {\n        \"text\": \"供用水、供用气、供用热力合同参照适用供用电合同的有关规定\",\n        \"rules\": [\n          \"c656\"\n        ]\n      },\n      {\n        \"text\": \"供用电合同在性质上属特殊买卖合同，买卖合同关于财产所有权移转的规定可参照适用\",\n        \"rules\": [\n          \"c648-doc\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"履行地点以当事人约定优先；无约定或约定不明确时才适用供电设施产权分界处的法定默认规则\",\n        \"rules\": [\n          \"c650-1\",\n          \"c650-2\"\n        ]\n      },\n      {\n        \"text\": \"强制缔约义务优先于一般合同自由，供电人不得以格式条款或专营地位排除，仅得以请求不合理为由拒绝\",\n        \"rules\": [\n          \"c648-2\"\n        ]\n      },\n      {\n        \"text\": \"供电人依欠费中止供电的权利，须受国家规定程序及事先通知义务的限制\",\n        \"rules\": [\n          \"c654-3\",\n          \"c654-4\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"供用电合同与一般买卖合同：虽属特殊买卖合同、可参照所有权移转规定，但具有主体特定、垄断经营、继续性履行和公益性的特征，并受强制缔约约束\",\n        \"rules\": [\n          \"c648-doc\"\n        ]\n      },\n      {\n        \"text\": \"供用水、供用气、供用热力合同是“参照适用”供用电合同规定，而非直接适用\",\n        \"rules\": [\n          \"c656\"\n        ]\n      },\n      {\n        \"text\": \"笔记所列用电人“保持安全、节约和计划用电”义务及停限电时的配合协助义务，规定于第655条，本行未挂载该条，故不形式化\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称“当事人明确约定履行地点即不适用产权分界处规则”与第650条一致；但其“产权分界处不存在或无法确定”的例外并非法条所定，法条仅以“没有约定或者约定不明确”为默认规则的适用条件\",\n        \"rules\": [\n          \"c650-2\"\n        ]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c648-def\",\n      \"srcs\": [\n        \"art648-1\"\n      ],\n      \"body\": [\n        \"supplyElectricity(K,S,U)\",\n        \"payElectricityFee(K,U,S)\"\n      ],\n      \"heads\": [\n        \"supplyUseElectricityContract(K)\"\n      ],\n      \"note\": \"供用电合同是供电人向用电人供电、用电人支付电费的合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c648-2\",\n      \"srcs\": [\n        \"art648-2\"\n      ],\n      \"body\": [\n        \"publicElectricitySupplier(S)\",\n        \"reasonableContractRequest(U,S)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"refuseContractConclusion(S,U)\"\n        }\n      ],\n      \"note\": \"向社会公众供电的供电人不得拒绝用电人合理的订立合同要求（强制缔约义务）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c650-1\",\n      \"srcs\": [\n        \"art650-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"agreedPerformancePlace(K,P)\"\n      ],\n      \"heads\": [\n        \"performancePlace(K,P)\"\n      ],\n      \"note\": \"供用电合同的履行地点按照当事人约定确定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c650-2\",\n      \"srcs\": [\n        \"art650-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"noAgreedOrUnclearPerformancePlace(K)\",\n        \"propertyBoundaryPoint(K,P)\"\n      ],\n      \"heads\": [\n        \"performancePlace(K,P)\"\n      ],\n      \"note\": \"没有约定或者约定不明确的，以供电设施的产权分界处为履行地点\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c651-1\",\n      \"srcs\": [\n        \"art651-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"supplySafelyPerStandards(K,S)\"\n        }\n      ],\n      \"note\": \"供电人应当按照国家规定的供电质量标准和约定安全供电\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c651-2\",\n      \"srcs\": [\n        \"art651-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\",\n        \"failsToSupplySafely(K,S)\",\n        \"causesLoss(K,S,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"payCompensation(S,U)\"\n        }\n      ],\n      \"note\": \"未按国家规定的供电质量标准和约定安全供电造成用电人损失的，供电人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c652-1\",\n      \"srcs\": [\n        \"art652-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\",\n        \"needsToInterruptSupply(K,S)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"notifyUserInAdvance(K,U)\"\n        }\n      ],\n      \"note\": \"因计划检修、临时检修、依法限电或用电人违法用电等需要中断供电的，供电人应当按国家有关规定事先通知用电人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c652-2\",\n      \"srcs\": [\n        \"art652-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\",\n        \"needsToInterruptSupply(K,S)\",\n        \"failsToNotifyInAdvance(K,U)\",\n        \"causesLoss(K,S,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"payCompensation(S,U)\"\n        }\n      ],\n      \"note\": \"未事先通知用电人即中断供电造成用电人损失的，供电人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c653-1\",\n      \"srcs\": [\n        \"art653-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"powerOutageDueToNaturalDisaster(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": null,\n          \"content\": \"promptlyRepair(K,S)\"\n        }\n      ],\n      \"note\": \"因自然灾害等原因断电的，供电人应当按照国家有关规定及时抢修\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c653-2\",\n      \"srcs\": [\n        \"art653-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\",\n        \"powerOutageDueToNaturalDisaster(K)\",\n        \"failsToRepairPromptly(K,S)\",\n        \"causesLoss(K,S,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"payCompensation(S,U)\"\n        }\n      ],\n      \"note\": \"未及时抢修造成用电人损失的，供电人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c654-1\",\n      \"srcs\": [\n        \"art654-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"U\",\n          \"counterparty\": \"S\",\n          \"content\": \"payElectricityFeeTimely(K,U)\"\n        }\n      ],\n      \"note\": \"用电人应当按照国家有关规定和当事人的约定及时支付电费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c654-2\",\n      \"srcs\": [\n        \"art654-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricityUser(K,U)\",\n        \"electricitySupplier(K,S)\",\n        \"overdueElectricityFee(K,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"U\",\n          \"counterparty\": \"S\",\n          \"content\": \"payLiquidatedDamages(U,S,K)\"\n        }\n      ],\n      \"note\": \"用电人逾期不支付电费的，应当按照约定支付违约金\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c654-3\",\n      \"srcs\": [\n        \"art654-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricityUser(K,U)\",\n        \"electricitySupplier(K,S)\",\n        \"overdueElectricityFee(K,U)\",\n        \"demandedPayment(K,U)\",\n        \"stillNotPaidWithinReasonablePeriod(K,U)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"suspendSupplyPerProcedure(K,S)\"\n        }\n      ],\n      \"note\": \"经催告用电人在合理期限内仍不支付电费和违约金的，供电人可以按照国家规定的程序中止供电\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c654-4\",\n      \"srcs\": [\n        \"art654-2\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\",\n        \"electricitySupplier(K,S)\",\n        \"electricityUser(K,U)\",\n        \"suspendSupplyPerProcedure(K,S)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"U\",\n          \"content\": \"notifyUserInAdvanceOfSuspension(K,U)\"\n        }\n      ],\n      \"note\": \"供电人依据前款规定中止供电的，应当事先通知用电人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c656\",\n      \"srcs\": [\n        \"art656\"\n      ],\n      \"body\": [\n        \"supplyWaterGasHeatContract(K)\"\n      ],\n      \"heads\": [\n        \"applySupplyElectricityProvisionsByReference(K)\"\n      ],\n      \"note\": \"供用水、供用气、供用热力合同参照适用供用电合同的有关规定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c648-doc\",\n      \"srcs\": [\n        \"art648-1\"\n      ],\n      \"body\": [\n        \"supplyUseElectricityContract(K)\"\n      ],\n      \"heads\": [\n        \"applySaleOwnershipTransferRulesByReference(K)\"\n      ],\n      \"note\": \"学理与笔记：供用电、水、气、热力合同在传统民法上属特殊买卖合同，买卖合同关于财产所有权移转的规定可参照适用；法条未明文规定，故为学理规则\",\n      \"auth\": \"doctrine\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c650-1\",\n      \"c650-2\",\n      \"履行地点以当事人约定优先，无约定或约定不明确时才适用供电设施产权分界处的法定默认规则\"\n    ]\n  ],\n  \"predicates\": {\n    \"supplyElectricity/3\": \"供电人向用电人供电（合同，供电人，用电人）\",\n    \"payElectricityFee/3\": \"用电人向供电人支付电费（合同，用电人，供电人）\",\n    \"supplyUseElectricityContract/1\": \"是供用电合同（合同）\",\n    \"publicElectricitySupplier/1\": \"是向社会公众供电的供电人\",\n    \"electricitySupplier/2\": \"是供电人（合同，供电人）\",\n    \"electricityUser/2\": \"是用电人（合同，用电人）\",\n    \"agreedPerformancePlace/2\": \"当事人约定了履行地点（合同，地点）\",\n    \"noAgreedOrUnclearPerformancePlace/1\": \"当事人对履行地点没有约定或者约定不明确（合同）\",\n    \"propertyBoundaryPoint/2\": \"是供电设施的产权分界处（合同，地点）\",\n    \"performancePlace/2\": \"履行地点为（合同，地点）\",\n    \"supplySafelyPerStandards/2\": \"按照国家规定的供电质量标准和约定安全供电（合同，供电人）\",\n    \"failsToSupplySafely/2\": \"未按照国家规定的供电质量标准和约定安全供电（合同，供电人）\",\n    \"causesLoss/3\": \"造成损失（合同，行为人，受损失方）\",\n    \"needsToInterruptSupply/2\": \"因供电设施计划检修、临时检修、依法限电或用电人违法用电等原因需要中断供电（合同，供电人）\",\n    \"notifyUserInAdvance/2\": \"按照国家有关规定事先通知用电人（合同，用电人）\",\n    \"failsToNotifyInAdvance/2\": \"未事先通知用电人（合同，用电人）\",\n    \"powerOutageDueToNaturalDisaster/1\": \"因自然灾害等原因断电（合同）\",\n    \"promptlyRepair/2\": \"按照国家有关规定及时抢修（合同，供电人）\",\n    \"failsToRepairPromptly/2\": \"未及时抢修（合同，供电人）\",\n    \"payElectricityFeeTimely/2\": \"按照国家有关规定和当事人约定及时支付电费（合同，用电人）\",\n    \"overdueElectricityFee/2\": \"逾期不支付电费（合同，用电人）\",\n    \"demandedPayment/2\": \"已催告用电人支付电费和违约金（合同，用电人）\",\n    \"stillNotPaidWithinReasonablePeriod/2\": \"经催告后在合理期限内仍不支付电费和违约金（合同，用电人）\",\n    \"suspendSupplyPerProcedure/2\": \"按照国家规定的程序中止供电（合同，供电人）\",\n    \"notifyUserInAdvanceOfSuspension/2\": \"中止供电前事先通知用电人（合同，用电人）\",\n    \"supplyWaterGasHeatContract/1\": \"是供用水、供用气或供用热力合同（合同）\",\n    \"applySupplyElectricityProvisionsByReference/1\": \"参照适用供用电合同的有关规定（合同）\",\n    \"applySaleOwnershipTransferRulesByReference/1\": \"参照适用买卖合同关于财产所有权移转的规定（合同）\"\n  }\n}"
+ }
+}

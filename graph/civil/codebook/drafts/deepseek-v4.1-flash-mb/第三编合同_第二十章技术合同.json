@@ -1,0 +1,2688 @@
+{
+ "art:844": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "订立技术合同时应当遵循何种价值导向（是否有利于知识产权保护、科学技术进步，以及科技成果的研发、转化、应用和推广）",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为原则性、宣示性规定，未设定具体的权利义务或法律后果，故不形式化为可废止规则；违反该导向本身不直接导致技术合同无效，合同效力仍依第850条等具体规定判断",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:846": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术合同的价款、报酬或者使用费的支付方式如何确定，可以采取哪些方式",
+     "rules": [
+      "c846-1",
+      "c846-method"
+     ]
+    },
+    {
+     "text": "约定提成支付时，提成的计算基础和提成比例如何确定",
+     "rules": [
+      "c846-2",
+      "c846-2b"
+     ]
+    },
+    {
+     "text": "约定提成支付时，当事人能否约定查阅有关会计账目的办法",
+     "rules": [
+      "c846-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在技术合同，且双方均为合同当事人",
+     "rules": [
+      "c846-1",
+      "c846-3"
+     ]
+    },
+    {
+     "text": "当事人约定采取提成支付方式",
+     "rules": [
+      "c846-2",
+      "c846-2b",
+      "c846-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "价款、报酬或者使用费的支付方式由当事人约定，可以采取一次总算、一次总付，一次总算、分期支付，提成支付，或者提成支付附加预付入门费的方式",
+     "rules": [
+      "c846-1",
+      "c846-method"
+     ]
+    },
+    {
+     "text": "提成支付可以按照产品价格、实施专利和使用技术秘密后新增的产值、利润或者产品销售额的一定比例提成，也可以按照约定的其他方式计算",
+     "rules": [
+      "c846-2"
+     ]
+    },
+    {
+     "text": "提成支付的比例可以采取固定比例、逐年递增比例或者逐年递减比例",
+     "rules": [
+      "c846-2b"
+     ]
+    },
+    {
+     "text": "约定提成支付的，当事人可以约定查阅有关会计账目的办法",
+     "rules": [
+      "c846-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为任意性规范，支付方式、提成办法均由当事人约定；约定不明时的补充确定规则在第510条、第511条，不在本条范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本条规则全部依据法条原文；LEGO 卡片本行无，未作参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c846-1",
+    "srcs": [
+     "art846-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "partyToContract(A,K)",
+     "partyToContract(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "agreePaymentMethod(A,B,K)"
+     }
+    ],
+    "note": "技术合同价款、报酬或者使用费的支付方式由当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c846-method",
+    "srcs": [
+     "art846-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     {
+      "or": [
+       "lumpSumPayment(M)",
+       "lumpSumInstallmentPayment(M)",
+       "royaltyPayment(M)",
+       "royaltyPlusAdvancePayment(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "permittedPaymentMethod(M)"
+    ],
+    "note": "法定可选的支付方式：一次总算一次总付、一次总算分期支付、提成支付、提成支付附加预付入门费",
+    "auth": "npc"
+   },
+   {
+    "key": "c846-2",
+    "srcs": [
+     "art846-2"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "agreedRoyaltyPayment(K)",
+     {
+      "or": [
+       "royaltyByProductPrice(B)",
+       "royaltyByNewOutputValue(B)",
+       "royaltyByProfit(B)",
+       "royaltyBySalesRevenue(B)",
+       "royaltyByOtherAgreedMethod(B)"
+      ]
+     }
+    ],
+    "heads": [
+     "permittedRoyaltyBasis(B)"
+    ],
+    "note": "提成支付可按产品价格、实施专利和使用技术秘密后新增的产值、利润、产品销售额的一定比例提成，也可按约定的其他方式计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c846-2b",
+    "srcs": [
+     "art846-2"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "agreedRoyaltyPayment(K)",
+     {
+      "or": [
+       "fixedRate(R)",
+       "increasingRate(R)",
+       "decreasingRate(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "permittedRoyaltyRate(R)"
+    ],
+    "note": "提成支付的比例可以采取固定比例、逐年递增比例或者逐年递减比例",
+    "auth": "npc"
+   },
+   {
+    "key": "c846-3",
+    "srcs": [
+     "art846-3"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "agreedRoyaltyPayment(K)",
+     "partyToContract(A,K)",
+     "partyToContract(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "agreeInspectAccountingBooks(A,B,K)"
+     }
+    ],
+    "note": "约定提成支付的，当事人可以约定查阅有关会计账目的办法",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technologyContract": "是技术合同（1个参数：合同）",
+   "agreePaymentMethod": "约定技术合同价款、报酬或者使用费的支付方式（当事人，对方，合同）",
+   "permittedPaymentMethod": "属于法定的技术合同价款、报酬或使用费支付方式（1个参数：支付方式）",
+   "lumpSumPayment": "一次总算、一次总付（1个参数：支付方式）",
+   "lumpSumInstallmentPayment": "一次总算、分期支付（1个参数：支付方式）",
+   "royaltyPayment": "提成支付（1个参数：支付方式）",
+   "royaltyPlusAdvancePayment": "提成支付附加预付入门费（1个参数：支付方式）",
+   "agreedRoyaltyPayment": "当事人约定采取提成支付（1个参数：合同）",
+   "permittedRoyaltyBasis": "属于法定的提成计算基础（1个参数：计算基础）",
+   "royaltyByProductPrice": "按产品价格的一定比例提成（1个参数：计算基础）",
+   "royaltyByNewOutputValue": "按实施专利、使用技术秘密后新增的产值的一定比例提成（1个参数：计算基础）",
+   "royaltyByProfit": "按利润的一定比例提成（1个参数：计算基础）",
+   "royaltyBySalesRevenue": "按产品销售额的一定比例提成（1个参数：计算基础）",
+   "royaltyByOtherAgreedMethod": "按当事人约定的其他方式计算提成（1个参数：计算基础）",
+   "permittedRoyaltyRate": "属于法定的提成比例形式（1个参数：提成比例）",
+   "fixedRate": "固定比例（1个参数：提成比例）",
+   "increasingRate": "逐年递增比例（1个参数：提成比例）",
+   "decreasingRate": "逐年递减比例（1个参数：提成比例）",
+   "agreeInspectAccountingBooks": "约定查阅有关会计账目的办法（当事人，对方，合同）"
+  }
+ },
+ "art:856": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合作开发合同的当事人违反约定，造成研究开发工作停滞、延误或者失败的，是否应当承担违约责任",
+     "rules": [
+      "c856-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在合作开发合同，行为人系该合同的当事人",
+     "rules": [
+      "c856-1"
+     ]
+    },
+    {
+     "text": "该当事人不履行合同义务或者履行合同义务不符合约定（违反约定）",
+     "rules": [
+      "c856-1"
+     ]
+    },
+    {
+     "text": "该违反约定的行为造成研究开发工作停滞、延误或者失败（三者之一即可）",
+     "rules": [
+      "c856-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "违反约定的当事人应当承担违约责任",
+     "rules": [
+      "c856-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是合作开发合同（技术开发合同）中违约责任的特别规定，相对于第577条违约责任的一般规定属于特别规定；因本行未挂载第577条，故不设 override",
+     "rules": []
+    },
+    {
+     "text": "本条以“违反约定并造成研究开发工作停滞、延误或者失败”为要件，与仅需违约的一般违约责任不同，须具备违约与研究工作受阻之间的因果联系",
+     "rules": [
+      "c856-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c856-1",
+    "srcs": [
+     "art856-1"
+    ],
+    "body": [
+     "cooperativeDevelopmentContract(K)",
+     "contractParty(P,K)",
+     "nonPerformanceOrNonconforming(P,K)",
+     {
+      "or": [
+       "rdWorkStagnated(P,K)",
+       "rdWorkDelayed(P,K)",
+       "rdWorkFailed(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "liableForBreach(P,K)"
+     }
+    ],
+    "note": "合作开发合同的当事人违反约定造成研究开发工作停滞、延误或者失败的，应当承担违约责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "cooperativeDevelopmentContract": "合作开发合同（1个参数：合同）：当事人共同投资、分工参与研究开发工作的技术开发合同",
+   "rdWorkStagnated": "造成研究开发工作停滞（2个参数：当事人，合同）",
+   "rdWorkDelayed": "造成研究开发工作延误（2个参数：当事人，合同）",
+   "rdWorkFailed": "造成研究开发工作失败（2个参数：当事人，合同）"
+  }
+ },
+ "card:g5618": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托开发完成的发明创造，申请专利的权利归谁；研究开发人取得专利权后委托人能否实施该专利；研究开发人转让专利申请权时委托人有无优先受让权",
+     "rules": [
+      "c859-1",
+      "c859-exploit",
+      "c859-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托开发合同，争议的发明创造系该委托开发所完成，研究开发人与委托人分别为合同当事人",
+     "rules": [
+      "c859-1",
+      "c859-exploit",
+      "c859-2"
+     ]
+    },
+    {
+     "text": "法律对该发明创造申请专利的权利没有另有规定，当事人也没有另有约定（默认归属的前提）",
+     "rules": [
+      "c859-1"
+     ]
+    },
+    {
+     "text": "研究开发人已取得专利权（主张委托人实施权的前提）",
+     "rules": [
+      "c859-exploit"
+     ]
+    },
+    {
+     "text": "研究开发人正在转让专利申请权（主张委托人优先受让权的前提）",
+     "rules": [
+      "c859-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，从其规定或约定，不适用“申请专利的权利属于研究开发人”的默认规则",
+     "rules": [
+      "c859-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "申请专利的权利属于研究开发人",
+     "rules": [
+      "c859-1"
+     ]
+    },
+    {
+     "text": "研究开发人取得专利权的，委托人可以依法实施该专利",
+     "rules": [
+      "c859-exploit"
+     ]
+    },
+    {
+     "text": "研究开发人转让专利申请权的，委托人享有以同等条件优先受让的权利",
+     "rules": [
+      "c859-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定、当事人另有约定优先于“申请专利的权利属于研究开发人”的默认归属规则",
+     "rules": [
+      "c859-1"
+     ]
+    },
+    {
+     "text": "委托人的优先受让权限制研究开发人将专利申请权转让给第三人的自由，须先以同等条件向委托人让与",
+     "rules": [
+      "c859-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片讲的是“委托事务成果归属”（受托人应将处理委托事务取得的财产转交委托人），属委托合同的一般规则；本条是技术开发合同的特别规定，只解决申请专利的权利、委托人实施权与优先受让权，不产生概括的财产转交义务",
+     "rules": []
+    },
+    {
+     "text": "本条限于委托开发；合作开发完成的发明创造（第860条）、委托开发或合作开发完成的技术秘密成果（第861条）适用各自规则",
+     "rules": []
+    },
+    {
+     "text": "笔记强调“除法律另有规定或者当事人另有约定外，按照其规定或约定”，即法定或约定优先，无规定或约定时才落入默认归属",
+     "rules": [
+      "c859-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c859-1",
+    "srcs": [
+     "art859-1"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "~lawProvidesOtherwiseOnPatentApplicationRight(I)",
+     "~agreedOtherwiseOnPatentApplicationRight(K)"
+    ],
+    "heads": [
+     "rightToApplyPatent(R,I)"
+    ],
+    "note": "委托开发完成的发明创造，除法律另有规定或者当事人另有约定外，申请专利的权利属于研究开发人",
+    "auth": "npc"
+   },
+   {
+    "key": "c859-exploit",
+    "srcs": [
+     "art859-1"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "client(C,K)",
+     "obtainedPatent(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "exploitPatent(C,I)"
+     }
+    ],
+    "note": "研究开发人取得专利权的，委托人可以依法实施该专利",
+    "auth": "npc"
+   },
+   {
+    "key": "c859-2",
+    "srcs": [
+     "art859-2"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "client(C,K)",
+     "transfersPatentApplicationRight(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "R",
+      "content": "preemptiveTransferOnSameConditions(C,I)"
+     }
+    ],
+    "note": "研究开发人转让专利申请权的，委托人享有以同等条件优先受让的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commissionedDevelopment": "是委托开发合同（技术开发合同中的委托开发）",
+   "commissionedDevelopment/1": "是委托开发合同（技术开发合同中的委托开发）",
+   "inventionCreated": "是委托开发完成的发明创造（合同，发明创造）",
+   "inventionCreated/2": "是委托开发完成的发明创造（合同，发明创造）",
+   "researcherDeveloper": "是研究开发人（当事人，合同）",
+   "researcherDeveloper/2": "是研究开发人（当事人，合同）",
+   "client": "是委托人（当事人，合同）",
+   "client/2": "是委托人（当事人，合同）",
+   "rightToApplyPatent": "享有申请专利的权利（主体，发明创造）",
+   "rightToApplyPatent/2": "享有申请专利的权利（主体，发明创造）",
+   "lawProvidesOtherwiseOnPatentApplicationRight": "法律对申请专利的权利另有规定（发明创造）",
+   "lawProvidesOtherwiseOnPatentApplicationRight/1": "法律对申请专利的权利另有规定（发明创造）",
+   "agreedOtherwiseOnPatentApplicationRight": "当事人对申请专利的权利另有约定（合同）",
+   "agreedOtherwiseOnPatentApplicationRight/1": "当事人对申请专利的权利另有约定（合同）",
+   "obtainedPatent": "取得专利权（研究开发人，发明创造）",
+   "obtainedPatent/2": "取得专利权（研究开发人，发明创造）",
+   "exploitPatent": "依法实施该专利（委托人，发明创造）",
+   "exploitPatent/2": "依法实施该专利（委托人，发明创造）",
+   "transfersPatentApplicationRight": "转让专利申请权（研究开发人，发明创造）",
+   "transfersPatentApplicationRight/2": "转让专利申请权（研究开发人，发明创造）",
+   "preemptiveTransferOnSameConditions": "享有以同等条件优先受让专利申请权的权利（委托人，发明创造）",
+   "preemptiveTransferOnSameConditions/2": "享有以同等条件优先受让专利申请权的权利（委托人，发明创造）"
+  }
+ },
+ "art:864": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术转让合同、技术许可合同能否约定实施专利或者使用技术秘密的范围，以及能否以约定限制技术竞争和技术发展",
+     "rules": [
+      "c864-1-perm",
+      "c864-1-proh"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同属于技术转让合同或者技术许可合同",
+     "rules": [
+      "c864-1-perm",
+      "c864-1-proh"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：约定不得限制技术竞争和技术发展，即使属于实施专利、使用技术秘密范围的约定，也不得含此内容",
+     "rules": [
+      "c864-1-proh"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "当事人可以约定实施专利或者使用技术秘密的范围",
+     "rules": [
+      "c864-1-perm"
+     ]
+    },
+    {
+     "text": "当事人不得以约定限制技术竞争和技术发展",
+     "rules": [
+      "c864-1-proh"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "禁止限制技术竞争和技术发展的但书，优先于允许约定实施专利、使用技术秘密范围的规则",
+     "rules": [
+      "c864-1-proh"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只设“可以约定范围”的授权与“不得限制技术竞争和技术发展”的禁止；约定构成非法垄断技术、妨碍技术进步的，其无效后果由第850条规定，本行未挂载该条，故不在此形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c864-1-perm",
+    "srcs": [
+     "art864-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologyTransferContract(K)",
+       "technologyLicenseContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "agreeOnScopeOfExploitingPatentOrUsingTechnicalSecret(K)"
+     }
+    ],
+    "note": "技术转让合同和技术许可合同的当事人可以约定实施专利或者使用技术秘密的范围",
+    "auth": "npc"
+   },
+   {
+    "key": "c864-1-proh",
+    "srcs": [
+     "art864-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologyTransferContract(K)",
+       "technologyLicenseContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "restrictTechnologicalCompetitionOrDevelopment(K)"
+     }
+    ],
+    "note": "但书：技术转让合同、技术许可合同不得限制技术竞争和技术发展",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c864-1-proh",
+    "c864-1-perm",
+    "但书的禁止性规定优先：约定实施范围不得达到限制技术竞争和技术发展的程度"
+   ]
+  ],
+  "predicates": {
+   "technologyTransferContract": "是技术转让合同（1个参数：合同）",
+   "technologyLicenseContract": "是技术许可合同（1个参数：合同）",
+   "agreeOnScopeOfExploitingPatentOrUsingTechnicalSecret": "约定实施专利或者使用技术秘密的范围（1个参数：合同）",
+   "restrictTechnologicalCompetitionOrDevelopment": "限制技术竞争和技术发展（1个参数：合同）"
+  }
+ },
+ "art:858": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术开发合同履行过程中因出现无法克服的技术困难，致使研究开发失败或者部分失败时，该风险由谁负担；一方发现该情形时的通知、减损义务以及违反该义务的责任",
+     "rules": [
+      "c858-1",
+      "c858-2",
+      "c858-3",
+      "c858-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "技术开发合同履行过程中出现无法克服的技术困难，致使研究开发失败或者部分失败",
+     "rules": [
+      "c858-1",
+      "c858-2"
+     ]
+    },
+    {
+     "text": "当事人对风险负担有约定",
+     "rules": [
+      "c858-1"
+     ]
+    },
+    {
+     "text": "对风险负担没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c858-2"
+     ]
+    },
+    {
+     "text": "一方发现可能致使研究开发失败或者部分失败的情形",
+     "rules": [
+      "c858-3",
+      "c858-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "风险负担有约定，或者虽无约定、约定不明确但依第510条能够确定的，不适用合理分担",
+     "rules": [
+      "c858-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该风险按当事人的约定负担",
+     "rules": [
+      "c858-1"
+     ]
+    },
+    {
+     "text": "风险由当事人合理分担",
+     "rules": [
+      "c858-2"
+     ]
+    },
+    {
+     "text": "发现方应当及时通知另一方，并采取适当措施减少损失",
+     "rules": [
+      "c858-3"
+     ]
+    },
+    {
+     "text": "没有及时通知并采取适当措施，致使损失扩大的，应当就扩大的损失承担责任",
+     "rules": [
+      "c858-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "风险负担有约定的，按约定处理，优先于由当事人合理分担",
+     "rules": [
+      "c858-1",
+      "c858-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未对本条作补充；第2款的通知、减损义务与第1款的风险分担相互独立，违反第2款只就扩大的损失负责，不改变风险分担的结论",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c858-1",
+    "srcs": [
+     "art858-1"
+    ],
+    "body": [
+     "techDevelopmentContract(K)",
+     "insurmountableTechnicalDifficulty(K)",
+     "rdFailedOrPartiallyFailed(K)",
+     "riskAgreedByParties(K)"
+    ],
+    "heads": [
+     "riskBornePerAgreement(K)"
+    ],
+    "note": "技术开发合同履行中因无法克服的技术困难致研究开发失败或部分失败的，风险由当事人约定负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c858-2",
+    "srcs": [
+     "art858-1"
+    ],
+    "body": [
+     "techDevelopmentContract(K)",
+     "insurmountableTechnicalDifficulty(K)",
+     "rdFailedOrPartiallyFailed(K)",
+     "noAgreedOrUnclearRiskBearing(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "riskSharedReasonably(K)"
+    ],
+    "note": "对风险负担没有约定或者约定不明确，且依据第510条仍不能确定的，风险由当事人合理分担",
+    "auth": "npc"
+   },
+   {
+    "key": "c858-3",
+    "srcs": [
+     "art858-2"
+    ],
+    "body": [
+     "techDevelopmentContract(K)",
+     "discoversPossibleFailure(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyCounterparty(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "takeMeasuresToReduceLoss(P,K)"
+     }
+    ],
+    "note": "一方发现可能致使研究开发失败或者部分失败的情形时，应当及时通知另一方并采取适当措施减少损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c858-4",
+    "srcs": [
+     "art858-2"
+    ],
+    "body": [
+     "techDevelopmentContract(K)",
+     "discoversPossibleFailure(P,K)",
+     "-notifyCounterparty(P,K)",
+     "-takeMeasuresToReduceLoss(P,K)",
+     "lossExpanded(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearLiabilityForExpandedLoss(P,K)"
+     }
+    ],
+    "note": "没有及时通知并采取适当措施，致使损失扩大的，应当就扩大的损失承担责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c858-1",
+    "c858-2",
+    "风险负担有约定的按约定处理，约定优先于合理分担"
+   ]
+  ],
+  "predicates": {
+   "techDevelopmentContract": "是技术开发合同（参数：合同）",
+   "insurmountableTechnicalDifficulty": "履行中出现无法克服的技术困难（参数：合同）",
+   "rdFailedOrPartiallyFailed": "致使研究开发失败或者部分失败（参数：合同）",
+   "riskAgreedByParties": "当事人对技术风险负担有约定（参数：合同）",
+   "noAgreedOrUnclearRiskBearing": "当事人对技术风险负担没有约定或者约定不明确（参数：合同）",
+   "riskBornePerAgreement": "该风险按当事人的约定负担（参数：合同）",
+   "riskSharedReasonably": "该风险由当事人合理分担（参数：合同）",
+   "discoversPossibleFailure": "一方发现可能致使研究开发失败或者部分失败的情形（参数1：发现方；参数2：合同）",
+   "takeMeasuresToReduceLoss": "采取适当措施减少损失（参数1：当事人；参数2：合同）",
+   "bearLiabilityForExpandedLoss": "就扩大的损失承担责任（参数1：当事人；参数2：合同）"
+  }
+ },
+ "art:865": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "专利实施许可合同的有效期间如何确定；专利权有效期限届满或者专利权被宣告无效后，专利权人能否再就该专利订立专利实施许可合同",
+     "rules": [
+      "c865-1",
+      "c865-2",
+      "c865-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在专利实施许可合同，且该合同所许可实施的专利仍在专利权存续期限内",
+     "rules": [
+      "c865-1"
+     ]
+    },
+    {
+     "text": "该专利权的有效期限已经届满，或者该专利权已被宣告无效",
+     "rules": [
+      "c865-2",
+      "c865-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "专利实施许可合同仅在该专利权的存续期限内有效；专利权有效期限届满或者被宣告无效后，合同不再有效",
+     "rules": [
+      "c865-1",
+      "c865-2"
+     ]
+    },
+    {
+     "text": "专利权有效期限届满或者专利权被宣告无效的，专利权人不得就该专利与他人订立专利实施许可合同",
+     "rules": [
+      "c865-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，本行规则完全依据第865条第1款原文；本行无 LEGO 卡片可供参照，故未采纳任何卡片结论",
+     "rules": []
+    },
+    {
+     "text": "本条限制的是许可合同的效力期间与“再订立”行为，并非否定专利权存续期间内已订立许可合同的效力，故“有效”与“不得订立”分列两条规则",
+     "rules": [
+      "c865-1",
+      "c865-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c865-1",
+    "srcs": [
+     "art865-1"
+    ],
+    "body": [
+     "patentLicenseContract(K)",
+     "licensedPatent(K,P)",
+     "withinPatentTerm(P)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "专利实施许可合同仅在该专利权的存续期限内有效，故许可专利仍在存续期限内的，合同有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c865-2",
+    "srcs": [
+     "art865-1"
+    ],
+    "body": [
+     "patentLicenseContract(K)",
+     "licensedPatent(K,P)",
+     {
+      "or": [
+       "patentTermExpired(P)",
+       "patentDeclaredInvalid(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "由“仅在存续期限内有效”反推：专利权有效期限届满或者被宣告无效后，许可合同不再有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c865-3",
+    "srcs": [
+     "art865-1"
+    ],
+    "body": [
+     "patenteeOf(A,P)",
+     {
+      "or": [
+       "patentTermExpired(P)",
+       "patentDeclaredInvalid(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "concludePatentLicense(A,P)"
+     }
+    ],
+    "note": "专利权有效期限届满或者专利权被宣告无效的，专利权人不得就该专利与他人订立专利实施许可合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "patentLicenseContract": "专利实施许可合同（1个参数：合同）",
+   "licensedPatent": "是该专利实施许可合同所许可实施的专利（合同，专利）",
+   "withinPatentTerm": "该专利仍在专利权存续期限内（专利）",
+   "patentTermExpired": "专利权有效期限届满（专利）",
+   "patentDeclaredInvalid": "专利权被宣告无效（专利）",
+   "patenteeOf": "是该专利的专利权人（主体，专利）",
+   "concludePatentLicense": "就该专利与他人订立专利实施许可合同（专利权人，专利）"
+  }
+ },
+ "art:868": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术秘密转让合同的让与人、技术秘密使用许可合同的许可人负有哪些义务；保密义务是否限制许可人申请专利",
+     "rules": [
+      "c868-party",
+      "c868-1",
+      "c868-conf",
+      "c868-patent"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "是技术秘密转让合同的让与人，或者是技术秘密使用许可合同的许可人",
+     "rules": [
+      "c868-party"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，保密义务可以限制许可人申请专利（第2款但书）",
+     "rules": [
+      "c868-patent"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当按照约定提供技术资料、进行技术指导，保证技术的实用性、可靠性",
+     "rules": [
+      "c868-1"
+     ]
+    },
+    {
+     "text": "应当承担保密义务",
+     "rules": [
+      "c868-conf"
+     ]
+    },
+    {
+     "text": "保密义务不限制许可人申请专利",
+     "rules": [
+      "c868-patent"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规范技术秘密转让合同与技术秘密使用许可合同；专利权转让、专利申请权转让、专利实施许可适用本章其他规定",
+     "rules": []
+    },
+    {
+     "text": "第2款的主体仅为许可人，让与人不在其列",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用本条原文或条号，本条规则全部依第868条原文形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c868-party",
+    "srcs": [
+     "art868-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "technicalSecretTransferContract(K) transferorOf(A,K)",
+       "technicalSecretLicenseContract(K) licensorOf(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "technicalSecretProvider(A,K)"
+    ],
+    "note": "技术秘密转让合同的让与人和技术秘密使用许可合同的许可人，为本条义务主体",
+    "auth": "npc"
+   },
+   {
+    "key": "c868-1",
+    "srcs": [
+     "art868-1"
+    ],
+    "body": [
+     "technicalSecretProvider(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "provideTechnicalMaterials(A,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "provideTechnicalGuidance(A,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "guaranteePracticabilityAndReliability(A,K)"
+     }
+    ],
+    "note": "让与人、许可人应当按照约定提供技术资料、进行技术指导，保证技术的实用性、可靠性",
+    "auth": "npc"
+   },
+   {
+    "key": "c868-conf",
+    "srcs": [
+     "art868-1"
+    ],
+    "body": [
+     "technicalSecretProvider(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "keepConfidential(A,K)"
+     }
+    ],
+    "note": "让与人、许可人应当承担保密义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c868-patent",
+    "srcs": [
+     "art868-2"
+    ],
+    "body": [
+     "technicalSecretLicenseContract(K)",
+     "licensorOf(A,K)",
+     "~agreedOtherwiseOnPatentApplication(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "applyForPatent(A)"
+     }
+    ],
+    "note": "前款保密义务不限制许可人申请专利，但当事人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technicalSecretTransferContract": "技术秘密转让合同（1个参数：合同）",
+   "technicalSecretLicenseContract": "技术秘密使用许可合同（1个参数：合同）",
+   "transferorOf": "是技术秘密转让合同的让与人（当事人，合同）",
+   "licensorOf": "是技术秘密使用许可合同的许可人（当事人，合同）",
+   "technicalSecretProvider": "是技术秘密转让合同的让与人或技术秘密使用许可合同的许可人（当事人，合同）",
+   "provideTechnicalMaterials": "按照约定提供技术资料（当事人，合同）",
+   "provideTechnicalGuidance": "按照约定进行技术指导（当事人，合同）",
+   "guaranteePracticabilityAndReliability": "保证技术的实用性、可靠性（当事人，合同）",
+   "applyForPatent": "申请专利（许可人）",
+   "agreedOtherwiseOnPatentApplication": "当事人对许可人申请专利另有约定（1个参数：合同）"
+  }
+ },
+ "art:869": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术秘密转让合同的受让人、技术秘密使用许可合同的被许可人，对让与人/许可人负有哪些合同义务",
+     "rules": [
+      "c869-1",
+      "c869-fee-transfer",
+      "c869-fee-license"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人是技术秘密转让合同的受让人，或者是技术秘密使用许可合同的被许可人",
+     "rules": [
+      "c869-1",
+      "c869-fee-transfer",
+      "c869-fee-license"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当按照约定使用技术，并承担保密义务",
+     "rules": [
+      "c869-1"
+     ]
+    },
+    {
+     "text": "技术秘密转让合同的受让人应当按照约定支付转让费",
+     "rules": [
+      "c869-fee-transfer"
+     ]
+    },
+    {
+     "text": "技术秘密使用许可合同的被许可人应当按照约定支付使用费",
+     "rules": [
+      "c869-fee-license"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只挂载第1款；第2款关于受让人、被许可人不得许可他人使用、不得披露技术秘密的规定未挂载，不在本卡片范围",
+     "rules": []
+    },
+    {
+     "text": "本条义务主体限于技术秘密转让合同的受让人与技术秘密使用许可合同的被许可人，不及于让与人、许可人一侧的保密义务（另见第868条，未挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c869-1",
+    "srcs": [
+     "art869-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologySecretTransferContract(K) transfereeOf(P,K)",
+       "technologySecretLicenseContract(K) licenseeOf(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "useTechnologyPerAgreement(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "keepConfidential(P,K)"
+     }
+    ],
+    "note": "技术秘密转让合同的受让人、技术秘密使用许可合同的被许可人，应当按照约定使用技术并承担保密义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c869-fee-transfer",
+    "srcs": [
+     "art869-1"
+    ],
+    "body": [
+     "technologySecretTransferContract(K)",
+     "transfereeOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "payTransferFee(P,K)"
+     }
+    ],
+    "note": "技术秘密转让合同的受让人应当按照约定支付转让费",
+    "auth": "npc"
+   },
+   {
+    "key": "c869-fee-license",
+    "srcs": [
+     "art869-1"
+    ],
+    "body": [
+     "technologySecretLicenseContract(K)",
+     "licenseeOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "payUseFee(P,K)"
+     }
+    ],
+    "note": "技术秘密使用许可合同的被许可人应当按照约定支付使用费",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technologySecretTransferContract": "是技术秘密转让合同（参数：合同）",
+   "technologySecretLicenseContract": "是技术秘密使用许可合同（参数：合同）",
+   "transfereeOf": "是技术秘密转让合同的受让人（受让人，合同）",
+   "licenseeOf": "是技术秘密使用许可合同的被许可人（被许可人，合同）",
+   "useTechnologyPerAgreement": "按照约定使用技术（受让人/被许可人，合同）",
+   "payTransferFee": "按照约定支付技术秘密转让费（受让人，合同）",
+   "payUseFee": "按照约定支付技术秘密使用费（被许可人，合同）"
+  }
+ },
+ "art:871": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术转让合同的受让人、技术许可合同的被许可人，对让与人、许可人提供的技术中尚未公开的秘密部分，负有何种保密义务",
+     "rules": [
+      "c871-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "义务主体是技术转让合同的受让人，或者技术许可合同的被许可人",
+     "rules": [
+      "c871-1"
+     ]
+    },
+    {
+     "text": "保密对象是让与人、许可人依合同提供的技术中尚未公开的秘密部分",
+     "rules": [
+      "c871-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "受让人、被许可人应当按照约定的范围和期限，对该尚未公开的秘密部分承担保密义务；保密的范围与期限以当事人约定为准",
+     "rules": [
+      "c871-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规范技术转让合同、技术许可合同履行中的保密义务，与第501条订立合同过程中知悉商业秘密的保密义务不同；笔记未涉及本条，无补充例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c871-1",
+    "srcs": [
+     "art871-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "transfereeOf(A,K) technologyTransferContract(K)",
+       "licenseeOf(A,K) technologyLicenseContract(K)"
+      ]
+     },
+     "transferorOrLicensorOf(T,K)",
+     "providedSecretTechnology(T,K)",
+     "undisclosedSecretPart(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "T",
+      "content": "keepConfidentialWithinAgreedScopeAndTerm(A,S,K)"
+     }
+    ],
+    "note": "技术转让合同的受让人、技术许可合同的被许可人，应当按照约定的范围和期限，对让与人、许可人提供的技术中尚未公开的秘密部分承担保密义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technologyTransferContract": "技术转让合同（参数：合同）",
+   "technologyLicenseContract": "技术许可合同（参数：合同）",
+   "transfereeOf": "是技术转让合同的受让人（受让人，合同）",
+   "licenseeOf": "是技术许可合同的被许可人（被许可人，合同）",
+   "transferorOrLicensorOf": "是技术转让合同的让与人或技术许可合同的许可人（让与人/许可人，合同）",
+   "providedSecretTechnology": "让与人、许可人依合同向受让人、被许可人提供的技术（技术，合同）",
+   "undisclosedSecretPart": "是该技术中尚未公开的秘密部分（部分，技术）",
+   "keepConfidentialWithinAgreedScopeAndTerm": "按照约定的范围和期限对该技术秘密部分承担保密义务（义务人，秘密部分，合同）"
+  }
+ },
+ "art:872": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术许可合同的许可人未按约定许可技术、超越约定范围实施专利或使用技术秘密、擅自许可第三人实施、违反约定保密义务时，承担何种责任",
+     "rules": [
+      "c872-1",
+      "c872-2",
+      "c872-3",
+      "c872-4"
+     ]
+    },
+    {
+     "text": "技术转让合同的让与人承担违约责任，是否参照适用许可人违约责任的规定",
+     "rules": [
+      "c872-2ref"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "许可人未按照约定许可技术",
+     "rules": [
+      "c872-1"
+     ]
+    },
+    {
+     "text": "许可人实施专利或者使用技术秘密超越约定的范围",
+     "rules": [
+      "c872-2"
+     ]
+    },
+    {
+     "text": "许可人违反约定擅自许可第三人实施该项专利或者使用该项技术秘密",
+     "rules": [
+      "c872-3"
+     ]
+    },
+    {
+     "text": "许可人违反约定的保密义务",
+     "rules": [
+      "c872-4"
+     ]
+    },
+    {
+     "text": "技术转让合同的让与人承担违约责任",
+     "rules": [
+      "c872-2ref"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "许可人应当返还部分或者全部使用费，并应当承担违约责任",
+     "rules": [
+      "c872-1"
+     ]
+    },
+    {
+     "text": "超越约定范围实施专利或使用技术秘密、擅自许可第三人实施的，应当停止违约行为，并承担违约责任",
+     "rules": [
+      "c872-2",
+      "c872-3"
+     ]
+    },
+    {
+     "text": "违反约定保密义务的，应当承担违约责任",
+     "rules": [
+      "c872-4"
+     ]
+    },
+    {
+     "text": "让与人承担违约责任的，参照适用第1款关于许可人违约责任的规定",
+     "rules": [
+      "c872-2ref"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款规范技术许可合同的许可人；第2款规范技术转让合同的让与人，其违约责任是“参照适用”第1款，而非直接适用，故让与人并不当然负担“返还使用费”的义务",
+     "rules": [
+      "c872-2ref"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c872-1",
+    "srcs": [
+     "art872-1"
+    ],
+    "body": [
+     "licensorOf(L,K)",
+     "licenseeOf(P,K)",
+     "failsToLicenseTechnologyAsAgreed(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "returnPartOrAllRoyalty(L,P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "许可人未按照约定许可技术的，应当返还部分或者全部使用费，并承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c872-2",
+    "srcs": [
+     "art872-1"
+    ],
+    "body": [
+     "licensorOf(L,K)",
+     "implementsBeyondAgreedScope(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "stopBreaching(L,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "实施专利或者使用技术秘密超越约定范围的，应当停止违约行为并承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c872-3",
+    "srcs": [
+     "art872-1"
+    ],
+    "body": [
+     "licensorOf(L,K)",
+     "licensesThirdPartyInBreach(L,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "stopBreaching(L,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "违反约定擅自许可第三人实施该项专利或者使用该项技术秘密的，应当停止违约行为并承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c872-4",
+    "srcs": [
+     "art872-1"
+    ],
+    "body": [
+     "licensorOf(L,K)",
+     "violatesAgreedConfidentiality(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "许可人违反约定的保密义务的，应当承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c872-2ref",
+    "srcs": [
+     "art872-2"
+    ],
+    "body": [
+     "transferorOf(T,K)"
+    ],
+    "heads": [
+     "applyPrecedingParagraphByReference(T,K)"
+    ],
+    "note": "技术转让合同的让与人承担违约责任的，参照适用第1款关于许可人违约责任的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "licensorOf": "是技术许可合同的许可人（许可人，合同）",
+   "licenseeOf": "是技术许可合同的被许可人（被许可人，合同）",
+   "transferorOf": "是技术转让合同的让与人（让与人，合同）",
+   "failsToLicenseTechnologyAsAgreed": "未按照约定许可技术（许可人，合同）",
+   "implementsBeyondAgreedScope": "实施专利或者使用技术秘密超越约定的范围（许可人，合同）",
+   "licensesThirdPartyInBreach": "违反约定擅自许可第三人实施该项专利或者使用该项技术秘密（许可人，第三人，合同）",
+   "violatesAgreedConfidentiality": "违反约定的保密义务（许可人，合同）",
+   "returnPartOrAllRoyalty": "返还部分或者全部使用费（许可人，被许可人，合同）",
+   "stopBreaching": "停止违约行为（行为人，合同）",
+   "applyPrecedingParagraphByReference": "参照适用前款规定（让与人，合同）"
+  }
+ },
+ "art:873": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术许可合同的被许可人、技术转让合同的受让人违约时，应当承担何种责任（补交使用费、支付违约金、停止实施、交还技术资料、承担违约责任）",
+     "rules": [
+      "c873-1",
+      "c873-1b",
+      "c873-2",
+      "c873-3",
+      "c873-4",
+      "c873-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被许可人未按照约定支付使用费",
+     "rules": [
+      "c873-1",
+      "c873-1b"
+     ]
+    },
+    {
+     "text": "被许可人不补交使用费或者不支付违约金（经要求仍不履行金钱义务）",
+     "rules": [
+      "c873-2"
+     ]
+    },
+    {
+     "text": "实施专利或者使用技术秘密超越约定的范围，或者未经许可人同意擅自许可第三人实施该专利或者使用该技术秘密",
+     "rules": [
+      "c873-3"
+     ]
+    },
+    {
+     "text": "违反约定的保密义务",
+     "rules": [
+      "c873-4"
+     ]
+    },
+    {
+     "text": "技术转让合同的受让人承担违约责任",
+     "rules": [
+      "c873-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "支付违约金的义务以当事人约定违约金为限；未约定违约金的，不发生该项义务（“按照约定支付违约金”）",
+     "rules": [
+      "c873-1b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "被许可人应当补交使用费",
+     "rules": [
+      "c873-1"
+     ]
+    },
+    {
+     "text": "被许可人应当按照约定支付违约金",
+     "rules": [
+      "c873-1b"
+     ]
+    },
+    {
+     "text": "不补交使用费或者不支付违约金的，应当停止实施专利或者使用技术秘密，交还技术资料，承担违约责任",
+     "rules": [
+      "c873-2"
+     ]
+    },
+    {
+     "text": "超越约定范围实施或者擅自许可第三人实施的，应当停止违约行为，承担违约责任",
+     "rules": [
+      "c873-3"
+     ]
+    },
+    {
+     "text": "违反约定保密义务的，应当承担违约责任",
+     "rules": [
+      "c873-4"
+     ]
+    },
+    {
+     "text": "受让人承担违约责任的，参照适用第1款关于被许可人责任的规定",
+     "rules": [
+      "c873-5"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条规范被许可人、受让人的违约责任；许可人、让与人的违约责任由第872条规定，本行未挂载该条，故不写入规则",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本卡片全部规则均以第873条原文为准，未引入学理内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c873-1",
+    "srcs": [
+     "art873-1"
+    ],
+    "body": [
+     "licenseeOf(L,K)",
+     "licensorOf(P,K)",
+     "failsToPayRoyaltyPerAgreement(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "payRoyalty(L,K)"
+     }
+    ],
+    "note": "被许可人未按照约定支付使用费的，应当补交使用费",
+    "auth": "npc"
+   },
+   {
+    "key": "c873-1b",
+    "srcs": [
+     "art873-1"
+    ],
+    "body": [
+     "licenseeOf(L,K)",
+     "licensorOf(P,K)",
+     "failsToPayRoyaltyPerAgreement(L,K)",
+     "liquidatedDamages(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "payLiquidatedDamages(L,P,K)"
+     }
+    ],
+    "note": "被许可人未按照约定支付使用费的，并应按照约定支付违约金；违约金以合同约定为限",
+    "auth": "npc"
+   },
+   {
+    "key": "c873-2",
+    "srcs": [
+     "art873-1"
+    ],
+    "body": [
+     "licenseeOf(L,K)",
+     "licensorOf(P,K)",
+     "failsToPayRoyaltyOrLiquidatedDamages(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "ceaseExploiting(L,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "returnTechnicalData(L,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "不补交使用费或者不支付违约金的，应当停止实施专利或者使用技术秘密、交还技术资料并承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c873-3",
+    "srcs": [
+     "art873-1"
+    ],
+    "body": [
+     "licenseeOf(L,K)",
+     "licensorOf(P,K)",
+     {
+      "or": [
+       "exploitsBeyondAgreedScope(L,K)",
+       "sublicensesWithoutConsent(L,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "ceaseBreach(L,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "超越约定范围实施，或者未经许可人同意擅自许可第三人实施的，应当停止违约行为并承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c873-4",
+    "srcs": [
+     "art873-1"
+    ],
+    "body": [
+     "licenseeOf(L,K)",
+     "licensorOf(P,K)",
+     "violatesConfidentialityDuty(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "liableForBreach(L,K)"
+     }
+    ],
+    "note": "违反约定的保密义务的，应当承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c873-5",
+    "srcs": [
+     "art873-2"
+    ],
+    "body": [
+     "assigneeOf(A,K)",
+     "liableForBreach(A,K)"
+    ],
+    "heads": [
+     "applyArt873Para1ByReference(A,K)"
+    ],
+    "note": "技术转让合同的受让人承担违约责任的，参照适用第1款关于被许可人违约责任的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "licenseeOf": "是技术许可合同的被许可人（被许可人，合同）",
+   "licensorOf": "是技术许可合同的许可人（许可人，合同）",
+   "assigneeOf": "是技术转让合同的受让人（受让人，合同）",
+   "failsToPayRoyaltyPerAgreement": "未按照约定支付使用费（被许可人，合同）",
+   "failsToPayRoyaltyOrLiquidatedDamages": "不补交使用费或者不支付违约金（被许可人，合同）",
+   "exploitsBeyondAgreedScope": "实施专利或者使用技术秘密超越约定的范围（被许可人，合同）",
+   "sublicensesWithoutConsent": "未经许可人同意擅自许可第三人实施该专利或者使用该技术秘密（被许可人，合同）",
+   "violatesConfidentialityDuty": "违反约定的保密义务（被许可人，合同）",
+   "payRoyalty": "补交使用费（被许可人，合同）",
+   "ceaseExploiting": "停止实施专利或者使用技术秘密（被许可人，合同）",
+   "returnTechnicalData": "交还技术资料（被许可人，合同）",
+   "ceaseBreach": "停止违约行为（被许可人，合同）",
+   "applyArt873Para1ByReference": "参照适用第873条第1款关于被许可人违约责任的规定（受让人，合同）"
+  }
+ },
+ "art:874": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受让人或者被许可人按照约定实施专利、使用技术秘密而侵害他人合法权益的，该责任由谁承担",
+     "rules": [
+      "c874-1",
+      "c874-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人是技术转让合同的受让人或者技术许可合同的被许可人，相对方为让与人或者许可人",
+     "rules": [
+      "c874-1"
+     ]
+    },
+    {
+     "text": "受让人、被许可人系按照约定实施专利或者使用技术秘密",
+     "rules": [
+      "c874-1"
+     ]
+    },
+    {
+     "text": "该实施专利、使用技术秘密的行为侵害了他人合法权益",
+     "rules": [
+      "c874-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的除外：约定由受让人、被许可人自行承担或者作其他安排的，不适用本条法定的责任分配",
+     "rules": [
+      "c874-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "由让与人或者许可人承担该侵害他人合法权益的责任（对外的法定责任分配）",
+     "rules": [
+      "c874-1",
+      "c874-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人另有约定的，优先于本条由让与人、许可人承担责任的法定分配",
+     "rules": [
+      "c874-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决对第三人的外部责任由谁承担，未规定让与人、许可人承担责任后能否向受让人、被许可人追偿；追偿问题属学理讨论",
+     "rules": []
+    },
+    {
+     "text": "本条以“按照约定实施专利、使用技术秘密”为前提，超出约定范围实施的，不适用本条的法定责任分配",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c874-1",
+    "srcs": [
+     "art874-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "transfereeOf(T,P)",
+       "licenseeOf(T,P)"
+      ]
+     },
+     {
+      "or": [
+       "implementsPatentPerAgreement(T)",
+       "usesTechnicalSecretPerAgreement(T)"
+      ]
+     },
+     "harmsOthersRights(T)"
+    ],
+    "heads": [
+     "liabilityOnTransferor(P,T)"
+    ],
+    "note": "受让人或者被许可人按照约定实施专利、使用技术秘密侵害他人合法权益的，责任由让与人或者许可人承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c874-2",
+    "srcs": [
+     "art874-1"
+    ],
+    "body": [
+     "liabilityOnTransferor(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "T",
+      "content": "bearsLegalLiability(P,T)"
+     }
+    ],
+    "note": "责任分配确定后，让与人或者许可人应当就该侵害他人合法权益的行为承担法律责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c874-exc",
+    "srcs": [
+     "art874-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "transfereeOf(T,P)",
+       "licenseeOf(T,P)"
+      ]
+     },
+     "agreedOtherwiseOnInfringementLiability(T,P)"
+    ],
+    "heads": [
+     "-liabilityOnTransferor(P,T)"
+    ],
+    "note": "但书：当事人另有约定的，排除由让与人或者许可人承担责任的法定分配",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c874-exc",
+    "c874-1",
+    "第874条第1款但书“当事人另有约定的除外”，约定优先于法定的对外责任分配"
+   ]
+  ],
+  "predicates": {
+   "transfereeOf": "是技术转让合同的受让人（受让人，让与人）",
+   "licenseeOf": "是技术许可合同的被许可人（被许可人，许可人）",
+   "implementsPatentPerAgreement": "按照约定实施专利（受让人或被许可人）",
+   "usesTechnicalSecretPerAgreement": "按照约定使用技术秘密（受让人或被许可人）",
+   "agreedOtherwiseOnInfringementLiability": "当事人就实施专利、使用技术秘密侵害他人合法权益的责任承担另有约定（受让人或被许可人，让与人或许可人）",
+   "liabilityOnTransferor": "侵害他人合法权益的责任由让与人或者许可人承担（让与人或许可人，受让人或被许可人）"
+  }
+ },
+ "art:877": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术进出口合同、专利合同或专利申请合同，在法律、行政法规另有规定时，应适用何种规定",
+     "rules": [
+      "c877-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同属于技术进出口合同，或者属于专利合同、专利申请合同",
+     "rules": [
+      "c877-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规对该类合同另有规定",
+     "rules": [
+      "c877-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依照法律、行政法规的特别规定处理，而不适用技术合同章的一般规定",
+     "rules": [
+      "c877-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规关于技术进出口合同、专利、专利申请合同的特别规定，优先于本章（技术合同）的一般规定",
+     "rules": [
+      "c877-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是转致（指引）条款，本身不创设权利义务，只指示适用特别规定；笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c877-1",
+    "srcs": [
+     "art877-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     {
+      "or": [
+       "technologyImportExportContract(K)",
+       "patentContract(K)",
+       "patentApplicationContract(K)"
+      ]
+     },
+     "specialProvisionsOnTechnologyContract(K)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、行政法规对技术进出口合同或者专利、专利申请合同另有规定的，依照其规定处理（转致条款）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technologyImportExportContract": "是技术进出口合同",
+   "patentContract": "是专利合同",
+   "patentApplicationContract": "是专利申请合同",
+   "specialProvisionsOnTechnologyContract": "法律、行政法规对技术进出口合同或者专利、专利申请合同另有规定"
+  }
+ },
+ "art:876": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "集成电路布图设计专有权、植物新品种权、计算机软件著作权等其他知识产权的转让和许可，应适用何种规则",
+     "rules": [
+      "c876-scope",
+      "c876-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体为集成电路布图设计专有权、植物新品种权、计算机软件著作权等（技术秘密以外的）其他知识产权",
+     "rules": [
+      "c876-scope"
+     ]
+    },
+    {
+     "text": "所涉行为是该知识产权的转让或者许可",
+     "rules": [
+      "c876-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用技术合同章第三节（技术转让合同和技术许可合同，第862条至第877条）的有关规定",
+     "rules": [
+      "c876-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "技术秘密的转让和许可直接适用本节规定（第862条以下），无须“参照适用”；本条处理的是技术秘密以外的其他知识产权客体",
+     "rules": []
+    },
+    {
+     "text": "集成电路布图设计、植物新品种、计算机软件另有《集成电路布图设计保护条例》《植物新品种保护条例》《计算机软件保护条例》等特别规定的，从其规定；本条仅为参照适用的衔接条款（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c876-scope",
+    "srcs": [
+     "art876-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "integratedCircuitLayoutDesign(IP)",
+       "newPlantVariety(IP)",
+       "computerSoftwareCopyright(IP)",
+       "otherObjectProvidedByLaw(IP)"
+      ]
+     }
+    ],
+    "heads": [
+     "otherIPObject(IP)"
+    ],
+    "note": "集成电路布图设计专有权、植物新品种权、计算机软件著作权等其他知识产权，属于本条的适用客体",
+    "auth": "npc"
+   },
+   {
+    "key": "c876-1",
+    "srcs": [
+     "art876-1"
+    ],
+    "body": [
+     "otherIPObject(IP)",
+     {
+      "or": [
+       "transferOfIP(IP)",
+       "licenseOfIP(IP)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyTechnologyTransferLicenseSectionByReference(IP)"
+    ],
+    "note": "上述其他知识产权的转让和许可，参照适用技术合同章第三节关于技术转让合同和技术许可合同的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "computerSoftwareCopyright": "是计算机软件著作权（第876条所称知识产权客体）",
+   "otherIPObject": "是集成电路布图设计专有权、植物新品种权、计算机软件著作权等其他知识产权（第876条所称客体）",
+   "transferOfIP": "该知识产权被转让",
+   "licenseOfIP": "该知识产权被许可他人使用",
+   "applyTechnologyTransferLicenseSectionByReference": "参照适用技术合同章第三节（技术转让合同和技术许可合同，第862–877条）的有关规定"
+  }
+ },
+ "art:875": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "实施专利、使用技术秘密的合同中，一方在合同履行中作出的后续改进技术成果，其他各方能否分享、依何规则确定分享办法",
+     "rules": [
+      "c875-1",
+      "c875-agreed",
+      "c875-510",
+      "c875-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在实施专利、使用技术秘密的技术合同，且一方当事人作出后续改进的技术成果",
+     "rules": [
+      "c875-1",
+      "c875-2"
+     ]
+    },
+    {
+     "text": "当事人对后续改进技术成果的分享办法没有约定或者约定不明确",
+     "rules": [
+      "c875-510",
+      "c875-2"
+     ]
+    },
+    {
+     "text": "依据第510条的规定（协议补充、合同相关条款或交易习惯）仍不能确定分享办法",
+     "rules": [
+      "c875-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合同已就后续改进技术成果的分享办法作出约定的，分享办法依约定确定，不适用“其他各方无权分享”的默认规则",
+     "rules": [
+      "c875-agreed"
+     ]
+    },
+    {
+     "text": "虽无约定或约定不明确，但依第510条可以确定分享办法的，也不适用“其他各方无权分享”的默认规则",
+     "rules": [
+      "c875-510",
+      "c875-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "当事人可以按照互利的原则，在合同中约定实施专利、使用技术秘密后续改进技术成果的分享办法",
+     "rules": [
+      "c875-1"
+     ]
+    },
+    {
+     "text": "已约定分享办法的，该分享办法依当事人的约定确定",
+     "rules": [
+      "c875-agreed"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确的，依照第510条的规定补充确定分享办法",
+     "rules": [
+      "c875-510"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，一方后续改进的技术成果，其他各方无权分享",
+     "rules": [
+      "c875-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定优先：有约定时依约定；无约定或约定不明确时先依第510条补充确定；仍不能确定的，才适用“其他各方无权分享”的默认规则",
+     "rules": [
+      "c875-agreed",
+      "c875-510",
+      "c875-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决后续改进技术成果的“分享”问题，不影响改进方自己实施该成果的地位；“按照互利的原则”为原则性表述，不单独设规则。笔记未引用原文，无其他补充",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c875-1",
+    "srcs": [
+     "art875-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "partyToTechnologyContract(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "agreeSharingMethod(P,K)"
+     }
+    ],
+    "note": "当事人可以按照互利的原则，在合同中约定实施专利、使用技术秘密后续改进技术成果的分享办法",
+    "auth": "npc"
+   },
+   {
+    "key": "c875-agreed",
+    "srcs": [
+     "art875-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "agreedSharingMethod(K)"
+    ],
+    "heads": [
+     "sharingDeterminedByAgreement(K)"
+    ],
+    "note": "已就后续改进技术成果的分享办法作出约定的，分享办法依约定确定，不适用默认规则",
+    "auth": "npc"
+   },
+   {
+    "key": "c875-510",
+    "srcs": [
+     "art875-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "noAgreedOrUnclearSharingMethod(K)"
+    ],
+    "heads": [
+     "applyArt510(K)"
+    ],
+    "note": "对分享办法没有约定或者约定不明确的，依照第510条的规定（协议补充、合同相关条款或交易习惯）补充确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c875-2",
+    "srcs": [
+     "art875-1"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "subsequentImprovement(R,K)",
+     "improvementBy(P,R)",
+     "otherParty(O,P,K)",
+     "noAgreedOrUnclearSharingMethod(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "-rightToShare(O,R)"
+    ],
+    "note": "没有约定或者约定不明确，且依第510条仍不能确定的，一方后续改进的技术成果，其他各方无权分享",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c875-agreed",
+    "c875-2",
+    "已约定分享办法的，依约定处理，不适用“其他各方无权分享”的默认规则"
+   ],
+   [
+    "c875-510",
+    "c875-2",
+    "无约定或约定不明确时应先依第510条补充确定，仍不能确定才适用默认规则"
+   ]
+  ],
+  "predicates": {
+   "technologyContract": "实施专利、使用技术秘密的技术合同（参数：合同）",
+   "partyToTechnologyContract": "是该技术合同的当事人（参数1：主体；参数2：合同）",
+   "subsequentImprovement": "是实施专利、使用技术秘密的后续改进技术成果（参数1：技术成果；参数2：合同）",
+   "improvementBy": "该后续改进技术成果由一方当事人作出（参数1：改进方；参数2：技术成果）",
+   "otherParty": "是合同的其他当事人（参数1：其他当事人；参数2：改进方；参数3：合同）",
+   "agreeSharingMethod": "约定后续改进技术成果的分享办法（参数1：当事人；参数2：合同）",
+   "agreedSharingMethod": "已就后续改进技术成果的分享办法作出约定（参数：合同）",
+   "noAgreedOrUnclearSharingMethod": "对后续改进技术成果的分享办法没有约定或者约定不明确（参数：合同）",
+   "applyArt510": "依照第510条的规定补充确定分享办法（参数：合同）",
+   "sharingDeterminedByAgreement": "分享办法依当事人的约定确定（参数：合同）",
+   "rightToShare": "有权分享该技术成果（参数1：主体；参数2：技术成果）"
+  }
+ },
+ "art:887": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术中介合同、技术培训合同在《民法典》合同编技术合同章未作专门规定时，其法律适用如何确定",
+     "rules": [
+      "c887-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "争议合同属于技术中介合同或者技术培训合同",
+     "rules": [
+      "c887-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规对该类合同另有规定",
+     "rules": [
+      "c887-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依照法律、行政法规的特别规定处理，即适用该特别规定而非本章的一般规定",
+     "rules": [
+      "c887-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规关于技术中介合同、技术培训合同的特别规定，优先于本章（技术合同章）的一般规定适用",
+     "rules": [
+      "c887-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是转致（援引）条款，本身不创设实体权利义务，只解决法律适用顺序；技术中介合同、技术培训合同在本章中并无专节规定，故须借助其他法律、行政法规的特别规定补充",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c887-1",
+    "srcs": [
+     "art887-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "technicalIntermediaryContract(K)",
+       "technicalTrainingContract(K)"
+      ]
+     },
+     "lawOrAdminRegulationProvidesOtherwiseOnTechContract(K)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、行政法规对技术中介合同、技术培训合同另有规定的，依照该特别规定处理（转致条款，特别规定优先于本章一般规定）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technicalIntermediaryContract": "是技术中介合同（当事人一方为另一方与第三人订立技术合同进行联系、介绍等中介服务的合同）",
+   "technicalTrainingContract": "是技术培训合同（当事人一方对另一方指定的学员进行特定技术培训的合同）",
+   "lawOrAdminRegulationProvidesOtherwiseOnTechContract": "法律、行政法规对该技术中介合同或技术培训合同另有规定（参数：合同）"
+  }
+ },
+ "art:884": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术服务合同的委托人不履行合同义务、履行不符合约定或者不接受、逾期接受工作成果时，已付报酬能否追回、未付报酬是否应当支付；受托人未按约定完成服务工作时承担何种违约责任",
+     "rules": [
+      "c884-nonrecover",
+      "c884-pay",
+      "c884-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在技术服务合同，一方为委托人，另一方为受托人",
+     "rules": [
+      "c884-nonrecover",
+      "c884-pay",
+      "c884-2"
+     ]
+    },
+    {
+     "text": "委托人不履行合同义务或者履行合同义务不符合约定，影响工作进度和质量；或者不接受、逾期接受工作成果",
+     "rules": [
+      "c884-nonrecover",
+      "c884-pay"
+     ]
+    },
+    {
+     "text": "受托人未按照约定完成服务工作",
+     "rules": [
+      "c884-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "委托人已支付的报酬不得追回",
+     "rules": [
+      "c884-nonrecover"
+     ]
+    },
+    {
+     "text": "未支付的报酬，委托人应当支付",
+     "rules": [
+      "c884-pay"
+     ]
+    },
+    {
+     "text": "受托人应当承担免收报酬等违约责任",
+     "rules": [
+      "c884-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规范技术服务合同；技术咨询合同适用第881条、第882条，不适用本条",
+     "rules": []
+    },
+    {
+     "text": "“已付报酬不得追回、未付报酬应当支付”是委托人违约时对受托人的救济，与合同解除后的返还请求权不同，本条并未赋予解除权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c884-nonrecover",
+    "srcs": [
+     "art884-1"
+    ],
+    "body": [
+     "technicalServiceContract(K)",
+     "technicalServiceClient(C,K)",
+     "technicalServiceProvider(T,K)",
+     {
+      "or": [
+       "nonPerformanceOrNonconforming(C,K) affectsProgressAndQuality(C,K)",
+       "refusesOrDelaysAcceptance(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "recoverPaidRemuneration(C,K)"
+     }
+    ],
+    "note": "技术服务合同的委托人不履行合同义务或履行不符合约定影响工作进度和质量，或者不接受、逾期接受工作成果的，已支付的报酬不得追回",
+    "auth": "npc"
+   },
+   {
+    "key": "c884-pay",
+    "srcs": [
+     "art884-1"
+    ],
+    "body": [
+     "technicalServiceContract(K)",
+     "technicalServiceClient(C,K)",
+     "technicalServiceProvider(T,K)",
+     {
+      "or": [
+       "nonPerformanceOrNonconforming(C,K) affectsProgressAndQuality(C,K)",
+       "refusesOrDelaysAcceptance(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "payUnpaidRemuneration(C,K)"
+     }
+    ],
+    "note": "同一情形下，未支付的报酬委托人应当支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c884-2",
+    "srcs": [
+     "art884-2"
+    ],
+    "body": [
+     "technicalServiceContract(K)",
+     "technicalServiceProvider(T,K)",
+     "technicalServiceClient(C,K)",
+     "failsToCompleteServiceAsAgreed(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "bearBreachLiabilityByWaivingRemuneration(T,K)"
+     }
+    ],
+    "note": "技术服务合同的受托人未按照约定完成服务工作的，应当承担免收报酬等违约责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "technicalServiceContract": "技术服务合同（参数：合同）",
+   "technicalServiceClient": "是技术服务合同的委托人（参数1：委托人，参数2：合同）",
+   "technicalServiceProvider": "是技术服务合同的受托人（参数1：受托人，参数2：合同）",
+   "affectsProgressAndQuality": "影响工作进度和质量（参数1：委托人，参数2：合同）",
+   "refusesOrDelaysAcceptance": "不接受或者逾期接受工作成果（参数1：委托人，参数2：合同）",
+   "recoverPaidRemuneration": "追回已支付的报酬（参数1：委托人，参数2：合同）",
+   "payUnpaidRemuneration": "支付未支付的报酬（参数1：委托人，参数2：合同）",
+   "failsToCompleteServiceAsAgreed": "未按照约定完成服务工作（参数1：受托人，参数2：合同）",
+   "bearBreachLiabilityByWaivingRemuneration": "承担免收报酬等违约责任（参数1：受托人，参数2：合同）"
+  }
+ },
+ "card:g5605": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "输出无法解析为 JSON：unbalanced JSON: {\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"技术合同的定义与类型：当事人就技术开发、转让、许可、咨询或者服务订立的确立相互之间权利和义务的合同\",\n        \"rules\": [\"c843-1\"]\n      },\n  "
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"技术合同的定义与类型：当事人就技术开发、转让、许可、咨询或者服务订立的确立相互之间权利和义务的合同\",\n        \"rules\": [\"c843-1\"]\n      },\n      {\n        \"text\": \"技术合同的内容、技术文档作为合同组成部分的条件，以及涉及专利时的注明义务\",\n        \"rules\": [\"c845-2\", \"c845-3\"]\n      },\n      {\n        \"text\": \"职务技术成果与非职务技术成果的使用权、转让权归属，以及完成人的署名、荣誉与优先受让权利\",\n        \"rules\": [\"c847-2\", \"c847-1a\", \"c847-1b\", \"c848\", \"c849\"]\n      },\n      {\n        \"text\": \"非法垄断技术或者侵害他人技术成果的技术合同的效力\",\n        \"rules\": [\"c850\"]\n      },\n      {\n        \"text\": \"技术开发合同的类型、书面形式、双方义务、违约责任与法定解除\",\n        \"rules\": [\"c851-1\", \"c851-2a\", \"c851-2b\", \"c851-3\", \"c851-4\", \"c852\", \"c853\", \"c854\", \"c855\", \"c857\"]\n      },\n      {\n        \"text\": \"技术开发成果的专利申请权归属、优先受让、放弃申请权与不同意申请的处理，以及技术秘密成果的使用转让\",\n        \"rules\": [\"c859-1\", \"c859-1b\", \"c859-2\", \"c860-1a\", \"c860-1b\", \"c860-2a\", \"c860-2b\", \"c860-3\", \"c861-1\", \"c861-2\"]\n      },\n      {\n        \"text\": \"技术转让合同与技术许可合同的概念、类型、书面形式、双方义务与权利瑕疵担保\",\n        \"rules\": [\"c862-1\", \"c862-2\", \"c862-3\", \"c863-1\", \"c863-2\", \"c863-3\", \"c866\", \"c867\", \"c870\"]\n      },\n      {\n        \"text\": \"技术咨询合同与技术咨询、技术服务合同的义务、违约责任、损失承担、新技术成果归属与费用负担\",\n        \"rules\": [\"c878-1\", \"c878-2\", \"c879\", \"c880\", \"c881-1\", \"c881-2\", \"c881-3\", \"c882\", \"c883\", \"c885-1\", \"c885-2\", \"c885-3\", \"c886\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同以技术开发、技术转让、技术许可、技术咨询或者技术服务为内容\",\n        \"rules\": [\"c843-1\"]\n      },\n      {\n        \"text\": \"职务技术成果：执行法人或者非法人组织的工作任务，或者主要是利用其物质技术条件所完成\",\n        \"rules\": [\"c847-2\"]\n      },\n      {\n        \"text\": \"技术开发合同以尚待研究开发的新技术、新产品、新工艺、新品种、新材料及其系统为标的；包括委托开发合同与合作开发合同\",\n        \"rules\": [\"c851-1\", \"c851-2a\", \"c851-2b\"]\n      },\n      {\n        \"text\": \"技术转让合同以现有特定的专利、专利申请、技术秘密的相关权利让与他人为内容；技术许可合同以许可他人实施、使用为内容\",\n        \"rules\": [\"c862-1\", \"c862-2\", \"c863-1\", \"c863-2\"]\n      },\n      {\n        \"text\": \"技术咨询合同是一方以技术知识为对方就特定技术项目提供可行性论证、技术预测、专题技术调查、分析评价报告等；技术服务合同是一方以技术知识为对方解决特定技术问题\",\n        \"rules\": [\"c878-1\", \"c878-2\"]\n      },\n      {\n        \"text\": \"技术秘密成果的使用权、转让权及收益分配办法没有约定或者约定不明确，且依第510条仍不能确定，并且没有相同技术方案被授予专利权\",\n        \"rules\": [\"c861-1\"]\n      },\n      {\n        \"text\": \"技术咨询合同、技术服务合同对受托人正常开展工作所需费用的负担没有约定或者约定不明确\",\n        \"rules\": [\"c886\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"技术文档须经当事人约定，才成为合同的组成部分\",\n        \"rules\": [\"c845-2\"]\n      },\n      {\n        \"text\": \"法律另有规定或者当事人另有约定的，委托开发完成的发明创造申请专利的权利不归研究开发人\",\n        \"rules\": [\"c859-1\"]\n      },\n      {\n        \"text\": \"当事人另有约定的，合作开发完成的发明创造专利申请权共有及其他各方优先受让的规则不适用\",\n        \"rules\": [\"c860-1a\", \"c860-1b\"]\n      },\n      {\n        \"text\": \"合作开发一方声明放弃共有的专利申请权的，除当事人另有约定外，可以由另一方单独申请或者由其他各方共同申请\",\n        \"rules\": [\"c860-2a\"]\n      },\n      {\n        \"text\": \"委托人按照受托人符合约定要求的咨询报告和意见作出决策所造成的损失由委托人承担，但当事人另有约定的除外\",\n        \"rules\": [\"c881-3\"]\n      },\n      {\n        \"text\": \"技术咨询、技术服务合同履行中产生的新技术成果，当事人另有约定的，按照其约定确定归属\",\n        \"rules\": [\"c885-3\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"职务技术成果的使用权、转让权属于法人或者非法人组织的，该单位可以就该项职务技术成果订立技术合同；其订立技术合同转让该成果时，完成人享有以同等条件优先受让的权利\",\n        \"rules\": [\"c847-1a\", \"c847-1b\"]\n      },\n      {\n        \"text\": \"非职务技术成果的使用权、转让权属于完成技术成果的个人，该个人可以就该项非职务技术成果订立技术合同\",\n        \"rules\": [\"c848\"]\n      },\n      {\n        \"text\": \"完成技术成果的个人享有在技术成果文件上写明自己是完成者的权利和取得荣誉证书、奖励的权利\",\n        \"rules\": [\"c849\"]\n      },\n      {\n        \"text\": \"非法垄断技术或者侵害他人技术成果的技术合同无效\",\n        \"rules\": [\"c850\"]\n      },\n      {\n        \"text\": \"技术开发合同应当采用书面形式；就具有实用价值的科技成果实施转化订立的合同，参照适用技术开发合同的规定\",\n        \"rules\": [\"c851-3\", \"c851-4\"]\n      },\n      {\n        \"text\": \"委托开发合同的委托人应当支付研究开发经费和报酬、提供技术资料、提出研究开发要求、完成协作事项、接受研究开发成果；研究开发人应当制定实施研究开发计划、合理使用经费、按期完成并交付成果、提供技术资料与技术指导、帮助委托人掌握成果\",\n        \"rules\": [\"c852\", \"c853\"]\n      },\n      {\n        \"text\": \"委托开发合同当事人违反约定造成研究开发工作停滞、延误或者失败的，应当承担违约责任\",\n        \"rules\": [\"c854\"]\n      },\n      {\n        \"text\": \"合作开发合同的当事人应当按照约定进行投资（包括以技术投资）、分工参与研究开发工作、协作配合\",\n        \"rules\": [\"c855\"]\n      },\n      {\n        \"text\": \"作为技术开发合同标的的技术已经由他人公开，致使合同履行没有意义的，当事人可以解除合同\",\n        \"rules\": [\"c857\"]\n      },\n      {\n        \"text\": \"委托开发完成的发明创造，申请专利的权利属于研究开发人；研究开发人取得专利权的，委托人可以依法实施该专利；研究开发人转让专利申请权的，委托人享有以同等条件优先受让的权利\",\n        \"rules\": [\"c859-1\", \"c859-1b\", \"c859-2\"]\n      },\n      {\n        \"text\": \"合作开发完成的发明创造，申请专利的权利由合作开发当事人共有；一方转让其共有的专利申请权的，其他各方享有以同等条件优先受让的权利；一方放弃专利申请权的，申请人取得专利权后放弃方可以免费实施；一方不同意申请专利的，另一方或者其他各方不得申请专利\",\n        \"rules\": [\"c860-1a\", \"c860-1b\", \"c860-2a\", \"c860-2b\", \"c860-3\"]\n      },\n      {\n        \"text\": \"技术秘密成果的使用权、转让权以及收益的分配办法由当事人约定；不能确定时，在没有相同技术方案被授予专利权前，当事人均有使用和转让的权利\",\n        \"rules\": [\"c861-1\"]\n      },\n      {\n        \"text\": \"技术转让合同和技术许可合同应当采用书面形式；其中关于提供实施技术的专用设备、原材料或者提供有关技术咨询、技术服务的约定，属于合同的组成部分\",\n        \"rules\": [\"c862-3\", \"c863-3\"]\n      },\n      {\n        \"text\": \"专利实施许可合同的许可人应当按约定许可被许可人实施专利、交付有关技术资料并提供必要的技术指导；被许可人应当按约定实施专利、不得许可约定以外的第三人实施该专利，并按约定支付使用费\",\n        \"rules\": [\"c866\", \"c867\"]\n      },\n      {\n        \"text\": \"技术转让合同的让与人和技术许可合同的许可人应当保证自己是所提供的技术的合法拥有者，并保证技术完整、无误、有效，能够达到约定的目标\",\n        \"rules\": [\"c870\"]\n      },\n      {\n        \"text\": \"技术咨询合同的委托人应当阐明咨询问题、提供技术背景材料及有关资料、接受工作成果并支付报酬；受托人应当按约定期限完成咨询报告或者解答问题，且报告应达到约定要求\",\n        \"rules\": [\"c879\", \"c880\"]\n      },\n      {\n        \"text\": \"技术咨询合同的委托人未按约定提供必要资料影响工作进度和质量，或者不接受、逾期接受工作成果的，已支付的报酬不得追回，未支付的报酬应当支付\",\n        \"rules\": [\"c881-1\"]\n      },\n      {\n        \"text\": \"技术咨询合同的受托人未按期提出咨询报告或者报告不符合约定的，应当承担减收或者免收报酬等违约责任\",\n        \"rules\": [\"c881-2\"]\n      },\n      {\n        \"text\": \"技术服务合同的委托人应当提供工作条件、完成配合事项、接受工作成果并支付报酬；受托人应当完成服务项目、解决技术问题、保证工作质量并传授解决技术问题的知识\",\n        \"rules\": [\"c882\", \"c883\"]\n      },\n      {\n        \"text\": \"技术咨询、技术服务合同履行中，受托人利用委托人提供的技术资料和工作条件完成的新的技术成果属于受托人；委托人利用受托人的工作成果完成的新的技术成果属于委托人\",\n        \"rules\": [\"c885-1\", \"c885-2\"]\n      },\n      {\n        \"text\": \"技术咨询合同和技术服务合同对受托人正常开展工作所需费用的负担没有约定或者约定不明确的，由受托人负担\",\n        \"rules\": [\"c886\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"当事人对新技术成果归属另有约定的，其约定优先于受托人取得、委托人取得的默认归属规则\",\n        \"rules\": [\"c885-3\"]\n      },\n      {\n        \"text\": \"委托开发的研究开发人在向委托人交付研究开发成果之前不得将成果转让给第三人，此项限制优先于当事人均有使用和转让的权利\",\n        \"rules\": [\"c861-2\"]\n      },\n      {\n        \"text\": \"非法垄断技术或者侵害他人技术成果的技术合同无效，该效力性规定优先于技术合同的一般规则\",\n        \"rules\": [\"c850\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"技术服务合同不包括承揽合同和建设工程合同，后者分别适用承揽合同、建设工程合同的规定\",\n        \"rules\": [\"c878-"
+ }
+}

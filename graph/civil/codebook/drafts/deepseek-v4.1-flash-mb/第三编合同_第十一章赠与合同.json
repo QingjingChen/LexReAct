@@ -1,0 +1,1340 @@
+{
+ "art:665": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "撤销权人撤销赠与后，能否请求受赠人返还赠与的财产",
+     "rules": [
+      "c665-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在赠与合同，且请求人是该赠与的撤销权人",
+     "rules": [
+      "c665-1"
+     ]
+    },
+    {
+     "text": "撤销权人已行使撤销权（撤销赠与）",
+     "rules": [
+      "c665-1"
+     ]
+    },
+    {
+     "text": "请求的相对人是受赠人，返还标的为赠与的财产",
+     "rules": [
+      "c665-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "撤销权人可以向受赠人请求返还赠与的财产（返还请求权的行使对象与范围以所受赠的财产为限）",
+     "rules": [
+      "c665-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定撤销赠与后的返还后果；撤销事由（第663条）与撤销权人范围（第664条，含赠与人的继承人、法定代理人）不在本条，本行不作形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记仅复述本条，未增加例外；本条为“可以”的授权性规定，非强制返还义务",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c665-1",
+    "srcs": [
+     "art665-1"
+    ],
+    "body": [
+     "giftContract(K)",
+     "doneeOf(D,K)",
+     "revocationRight(R,K)",
+     "exercisesRevocation(R,K)",
+     "giftedProperty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "demandReturnOfGift(R,D,P)"
+     }
+    ],
+    "note": "撤销权人撤销赠与的，可以向受赠人请求返还赠与的财产",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "giftContract": "是赠与合同（1个参数：合同）",
+   "doneeOf": "是受赠人（受赠人，赠与合同）",
+   "giftedProperty": "是赠与的财产（财产，赠与合同）",
+   "demandReturnOfGift": "请求返还赠与的财产（撤销权人，受赠人，财产）"
+  }
+ },
+ "card:g5080": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "赠与人不交付赠与财产时，受赠人能否请求交付；应当交付的赠与财产毁损、灭失时赠与人是否承担赔偿责任",
+     "rules": [
+      "c660-1",
+      "c660-2"
+     ]
+    },
+    {
+     "text": "赠与能否附义务，附义务赠与中受赠人负有何种义务",
+     "rules": [
+      "c661-1",
+      "c661-2"
+     ]
+    },
+    {
+     "text": "赠与财产有瑕疵时，赠与人是否承担瑕疵责任；附义务赠与与故意不告知瑕疵、保证无瑕疵的情形如何处理",
+     "rules": [
+      "c662-1a",
+      "c662-1b",
+      "c662-2"
+     ]
+    },
+    {
+     "text": "赠与人在何种情形下享有法定撤销权，撤销权应在多长时间内行使",
+     "rules": [
+      "c663-ground",
+      "c663-1",
+      "c663-period"
+     ]
+    },
+    {
+     "text": "因受赠人违法行为致赠与人死亡或丧失民事行为能力时，由谁撤销赠与、期限多长",
+     "rules": [
+      "c664-ground",
+      "c664-heir",
+      "c664-agent",
+      "c664-period"
+     ]
+    },
+    {
+     "text": "赠与人经济状况显著恶化、严重影响生产经营或家庭生活时，能否不再履行赠与义务",
+     "rules": [
+      "c666"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "赠与合同经过公证，或者属于依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同",
+     "rules": [
+      "c660-1",
+      "c660-2"
+     ]
+    },
+    {
+     "text": "赠与附有义务（受赠人应按约定履行该义务）",
+     "rules": [
+      "c661-2",
+      "c662-1b"
+     ]
+    },
+    {
+     "text": "赠与的财产有瑕疵",
+     "rules": [
+      "c662-1a",
+      "c662-1b"
+     ]
+    },
+    {
+     "text": "赠与人故意不告知瑕疵或者保证无瑕疵，且造成受赠人损失",
+     "rules": [
+      "c662-2"
+     ]
+    },
+    {
+     "text": "受赠人严重侵害赠与人或其近亲属的合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+     "rules": [
+      "c663-ground"
+     ]
+    },
+    {
+     "text": "因受赠人的违法行为致使赠与人死亡或者丧失民事行为能力",
+     "rules": [
+      "c664-ground"
+     ]
+    },
+    {
+     "text": "赠与人的经济状况显著恶化，严重影响其生产经营或者家庭生活",
+     "rules": [
+      "c666"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "一般赠与中赠与的财产有瑕疵的，赠与人不承担瑕疵责任（附义务赠与在附义务限度内为例外）",
+     "rules": [
+      "c662-1a"
+     ]
+    },
+    {
+     "text": "赠与人的撤销权自知道或者应当知道撤销事由之日起一年内不行使即消灭",
+     "rules": [
+      "c663-period"
+     ]
+    },
+    {
+     "text": "赠与人的继承人或者法定代理人的撤销权自知道或者应当知道撤销事由之日起六个月内不行使即消灭",
+     "rules": [
+      "c664-period"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受赠人可以请求交付赠与财产",
+     "rules": [
+      "c660-1"
+     ]
+    },
+    {
+     "text": "应当交付的赠与财产因赠与人故意或者重大过失毁损、灭失的，赠与人应当承担赔偿责任",
+     "rules": [
+      "c660-2"
+     ]
+    },
+    {
+     "text": "赠与可以附义务；赠与附义务的，受赠人应当按照约定履行义务",
+     "rules": [
+      "c661-1",
+      "c661-2"
+     ]
+    },
+    {
+     "text": "附义务的赠与中，赠与人在附义务的限度内承担与出卖人相同的瑕疵责任",
+     "rules": [
+      "c662-1b"
+     ]
+    },
+    {
+     "text": "赠与人故意不告知瑕疵或者保证无瑕疵，造成受赠人损失的，应当承担赔偿责任",
+     "rules": [
+      "c662-2"
+     ]
+    },
+    {
+     "text": "有法定撤销事由的，赠与人可以撤销赠与",
+     "rules": [
+      "c663-1"
+     ]
+    },
+    {
+     "text": "因受赠人违法行为致赠与人死亡或丧失民事行为能力的，赠与人的继承人或者法定代理人可以撤销赠与",
+     "rules": [
+      "c664-heir",
+      "c664-agent"
+     ]
+    },
+    {
+     "text": "赠与人经济状况显著恶化、严重影响生产经营或家庭生活的，可以不再履行赠与义务",
+     "rules": [
+      "c666"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "附义务赠与的瑕疵担保责任优先于“赠与财产有瑕疵赠与人不承担责任”的一般规则",
+     "rules": [
+      "c662-1b",
+      "c662-1a"
+     ]
+    },
+    {
+     "text": "撤销权须在法定期间内行使，期间届满撤销权消灭，故期间规则排除撤销权行使规则",
+     "rules": [
+      "c663-period",
+      "c663-1",
+      "c664-period",
+      "c664-heir",
+      "c664-agent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "任意撤销权（第658条）与法定撤销权（第663、664条）不同；本行未挂载第658、659、665条，故任意撤销、赠与财产登记、按比例撤销均不形式化",
+     "rules": []
+    },
+    {
+     "text": "附义务赠与不改变赠与的无偿性，受赠人的义务不是对待给付，故不整体适用买卖的瑕疵担保规则，仅在附义务的限度内承担与出卖人相同的责任",
+     "rules": [
+      "c662-1b"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所称“赠与财产权利已转移后丧失任意撤销权”“已交付动产不得请求返还”属第658条内容，本行法条未规定，不予采纳",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c660-1",
+    "srcs": [
+     "art660-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     {
+      "or": [
+       "notarizedGift(K)",
+       "nonRevocablePublicWelfareGift(K)"
+      ]
+     },
+     "notDeliveredGiftProperty(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "requestDelivery(R,K)"
+     }
+    ],
+    "note": "经过公证的赠与合同或者依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同，赠与人不交付赠与财产的，受赠人可以请求交付",
+    "auth": "npc"
+   },
+   {
+    "key": "c660-2",
+    "srcs": [
+     "art660-2"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     {
+      "or": [
+       "notarizedGift(K)",
+       "nonRevocablePublicWelfareGift(K)"
+      ]
+     },
+     "giftPropertyDestroyedByIntentOrGrossNegligence(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "compensate(D,R,K)"
+     }
+    ],
+    "note": "依前款规定应当交付的赠与财产因赠与人故意或者重大过失毁损、灭失的，赠与人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c661-1",
+    "srcs": [
+     "art661-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "attachObligationToGift(D,K)"
+     }
+    ],
+    "note": "赠与可以附义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c661-2",
+    "srcs": [
+     "art661-2"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     "giftWithObligation(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "performAgreedObligation(R,K)"
+     }
+    ],
+    "note": "赠与附义务的，受赠人应当按照约定履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c662-1a",
+    "srcs": [
+     "art662-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     "giftPropertyDefective(K)"
+    ],
+    "heads": [
+     "-giftDefectLiability(D,K)"
+    ],
+    "note": "赠与的财产有瑕疵的，赠与人不承担瑕疵责任（一般规则）",
+    "auth": "npc"
+   },
+   {
+    "key": "c662-1b",
+    "srcs": [
+     "art662-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     "giftWithObligation(K)",
+     "giftPropertyDefective(K)"
+    ],
+    "heads": [
+     "giftDefectLiabilityWithinObligation(D,K)"
+    ],
+    "note": "附义务的赠与，赠与的财产有瑕疵的，赠与人在附义务的限度内承担与出卖人相同的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c662-2",
+    "srcs": [
+     "art662-2"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     {
+      "or": [
+       "donorConcealsDefect(D,R)",
+       "donorWarrantsNoDefect(D,R)"
+      ]
+     },
+     "doneeSuffersLoss(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "compensate(D,R,K)"
+     }
+    ],
+    "note": "赠与人故意不告知瑕疵或者保证无瑕疵，造成受赠人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-ground",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     {
+      "or": [
+       "seriouslyInfringesDonorOrCloseRelative(R,D)",
+       "failsSupportDutyToDonor(R,D)",
+       "failsAgreedObligation(R,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "giftRevocationGround(R,D,K)"
+    ],
+    "note": "赠与人的法定撤销事由：受赠人严重侵害赠与人或其近亲属合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-1",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftRevocationGround(R,D,K)",
+     "~revocationPeriodExpired(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "revokeGift(D,K)"
+     }
+    ],
+    "note": "有法定撤销事由的，赠与人可以撤销赠与；但撤销权须在知道或应当知道撤销事由之日起一年内行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-period",
+    "srcs": [
+     "art663-2"
+    ],
+    "body": [
+     "giftRevocationGround(R,D,K)",
+     "oneYearElapsedSinceKnewGround(D)"
+    ],
+    "heads": [
+     "revocationPeriodExpired(D)"
+    ],
+    "note": "赠与人的撤销权自知道或者应当知道撤销事由之日起一年内不行使的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c664-ground",
+    "srcs": [
+     "art664-1"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     {
+      "or": [
+       "doneeUnlawfulActCausesDonorDeath(R,D)",
+       "doneeUnlawfulActCausesDonorIncapacity(R,D)"
+      ]
+     }
+    ],
+    "heads": [
+     "successorRevocationGround(R,D,K)"
+    ],
+    "note": "因受赠人的违法行为致使赠与人死亡或者丧失民事行为能力的，构成继承人、法定代理人的撤销事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c664-heir",
+    "srcs": [
+     "art664-1"
+    ],
+    "body": [
+     "successorRevocationGround(R,D,K)",
+     "heirOf(H,D)",
+     "~successorRevocationPeriodExpired(H)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": "R",
+      "content": "revokeGift(H,K)"
+     }
+    ],
+    "note": "赠与人的继承人可以撤销赠与，但须在知道或应当知道撤销事由之日起六个月内行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c664-agent",
+    "srcs": [
+     "art664-1"
+    ],
+    "body": [
+     "successorRevocationGround(R,D,K)",
+     "legalRepresentative(A,D)",
+     "~successorRevocationPeriodExpired(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "R",
+      "content": "revokeGift(A,K)"
+     }
+    ],
+    "note": "赠与人的法定代理人可以撤销赠与，但须在知道或应当知道撤销事由之日起六个月内行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c664-period",
+    "srcs": [
+     "art664-2"
+    ],
+    "body": [
+     "successorRevocationGround(R,D,K)",
+     {
+      "or": [
+       "heirOf(H,D)",
+       "legalRepresentative(H,D)"
+      ]
+     },
+     "sixMonthsElapsedSinceKnewGround(H)"
+    ],
+    "heads": [
+     "successorRevocationPeriodExpired(H)"
+    ],
+    "note": "赠与人的继承人或者法定代理人的撤销权自知道或者应当知道撤销事由之日起六个月内不行使的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c666",
+    "srcs": [
+     "art666"
+    ],
+    "body": [
+     "giftContract(D,R,K)",
+     "donorFinancialDeterioration(D)",
+     "seriouslyAffectsBusinessOrFamily(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "mayCeaseGiftPerformance(D,K)"
+     }
+    ],
+    "note": "赠与人的经济状况显著恶化，严重影响其生产经营或者家庭生活的，可以不再履行赠与义务（穷困抗辩）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c662-1b",
+    "c662-1a",
+    "附义务赠与的瑕疵担保责任是第662条第1款后段对前段“赠与人不承担责任”一般规则的特别规定"
+   ],
+   [
+    "c663-period",
+    "c663-1",
+    "撤销权须自知道或应当知道撤销事由之日起一年内行使，期间届满撤销权消灭"
+   ],
+   [
+    "c664-period",
+    "c664-heir",
+    "继承人的撤销权须自知道或应当知道撤销事由之日起六个月内行使，期间届满撤销权消灭"
+   ],
+   [
+    "c664-period",
+    "c664-agent",
+    "法定代理人的撤销权须自知道或应当知道撤销事由之日起六个月内行使，期间届满撤销权消灭"
+   ]
+  ],
+  "predicates": {
+   "giftContract": "赠与合同（赠与人，受赠人，合同）",
+   "notarizedGift": "经过公证的赠与合同（合同）",
+   "nonRevocablePublicWelfareGift": "依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同（合同）",
+   "notDeliveredGiftProperty": "赠与人未交付赠与财产（赠与人，合同）",
+   "requestDelivery": "请求交付赠与财产（受赠人，合同）",
+   "giftPropertyDestroyedByIntentOrGrossNegligence": "应当交付的赠与财产因赠与人故意或者重大过失毁损、灭失（赠与人，合同）",
+   "giftWithObligation": "附义务的赠与（合同）",
+   "attachObligationToGift": "为赠与附加义务（赠与人，合同）",
+   "performAgreedObligation": "按照约定履行赠与所附义务（受赠人，合同）",
+   "giftPropertyDefective": "赠与的财产有瑕疵（合同）",
+   "giftDefectLiability": "赠与人对赠与财产的瑕疵承担责任（赠与人，合同）",
+   "giftDefectLiabilityWithinObligation": "在附义务的限度内承担与出卖人相同的瑕疵责任（赠与人，合同）",
+   "donorConcealsDefect": "赠与人故意不告知赠与财产的瑕疵（赠与人，受赠人）",
+   "donorWarrantsNoDefect": "赠与人保证赠与财产无瑕疵（赠与人，受赠人）",
+   "doneeSuffersLoss": "受赠人受有损失（受赠人）",
+   "seriouslyInfringesDonorOrCloseRelative": "受赠人严重侵害赠与人或者赠与人近亲属的合法权益（受赠人，赠与人）",
+   "failsSupportDutyToDonor": "受赠人对赠与人有扶养义务而不履行（受赠人，赠与人）",
+   "failsAgreedObligation": "受赠人不履行赠与合同约定的义务（受赠人，合同）",
+   "giftRevocationGround": "赠与人的法定撤销事由（受赠人，赠与人，合同）",
+   "revokeGift": "撤销赠与（撤销权人，合同）",
+   "revocationPeriodExpired": "赠与人的撤销权因一年期间届满而消灭（赠与人）",
+   "oneYearElapsedSinceKnewGround": "自知道或者应当知道撤销事由之日起已满一年（赠与人）",
+   "doneeUnlawfulActCausesDonorDeath": "因受赠人的违法行为致使赠与人死亡（受赠人，赠与人）",
+   "doneeUnlawfulActCausesDonorIncapacity": "因受赠人的违法行为致使赠与人丧失民事行为能力（受赠人，赠与人）",
+   "successorRevocationGround": "赠与人的继承人或者法定代理人的撤销事由（受赠人，赠与人，合同）",
+   "heirOf": "是赠与人的继承人（继承人，被继承人）",
+   "successorRevocationPeriodExpired": "继承人或者法定代理人的撤销权因六个月期间届满而消灭（撤销权人）",
+   "sixMonthsElapsedSinceKnewGround": "自知道或者应当知道撤销事由之日起已满六个月（撤销权人）",
+   "donorFinancialDeterioration": "赠与人的经济状况显著恶化（赠与人）",
+   "seriouslyAffectsBusinessOrFamily": "严重影响其生产经营或者家庭生活（赠与人）",
+   "mayCeaseGiftPerformance": "可以不再履行赠与义务（赠与人，合同）"
+  }
+ },
+ "card:g5068": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "赠与合同如何认定；赠与财产依法需要办理登记等手续时如何处理；受赠人何种情形下赠与人可以撤销赠与",
+     "rules": [
+      "c657-1",
+      "c659-1",
+      "c663-ground"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "赠与人将自己的财产无偿给予受赠人，受赠人表示接受赠与，双方意思表示一致",
+     "rules": [
+      "c657-1"
+     ]
+    },
+    {
+     "text": "赠与的财产依法需要办理登记或者其他手续",
+     "rules": [
+      "c659-1"
+     ]
+    },
+    {
+     "text": "受赠人严重侵害赠与人或者赠与人近亲属的合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+     "rules": [
+      "c663-ground"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "赠与人的撤销权自知道或者应当知道撤销事由之日起一年内行使；一年期间届满，撤销权消灭",
+     "rules": [
+      "c663-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "赠与合同成立，双方分别为赠与人和受赠人；赠与合同为单务、无偿、诺成、不要式合同",
+     "rules": [
+      "c657-1",
+      "c657-nature"
+     ]
+    },
+    {
+     "text": "赠与的财产依法需要办理登记或者其他手续的，应当办理有关手续",
+     "rules": [
+      "c659-1"
+     ]
+    },
+    {
+     "text": "受赠人有法定情形之一的，赠与人取得撤销赠与的权利，可以撤销赠与",
+     "rules": [
+      "c663-right",
+      "c663-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "一年期间届满撤销权消灭，优先于“受赠人有法定撤销事由时赠与人享有撤销权”的规则",
+     "rules": [
+      "c663-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：赠与可以附义务，受赠人应当按照约定履行义务，但该义务不是赠与的对待给付义务，故不改变赠与合同的单务性、无偿性（第661条，本行未挂载）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称第658条任意撤销权及经公证、具有救灾扶贫助残等公益道德义务性质的赠与不得任意撤销，属第658条内容，不在本行材料范围",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“财产转移前未撤销”列为成立要件，与第657条不符：赠与合同为诺成合同，赠与财产的交付不是成立要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c657-1",
+    "srcs": [
+     "art657-1"
+    ],
+    "body": [
+     "givesPropertyGratuitously(D,E,K)",
+     "acceptsGift(E,K)"
+    ],
+    "heads": [
+     "giftContract(K)",
+     "giftDonorOf(D,K)",
+     "giftDoneeOf(E,K)"
+    ],
+    "note": "赠与人将自己的财产无偿给予受赠人、受赠人表示接受赠与的，成立赠与合同，双方分别为赠与人和受赠人",
+    "auth": "npc"
+   },
+   {
+    "key": "c657-nature",
+    "srcs": [
+     "art657-1"
+    ],
+    "body": [
+     "giftContract(K)"
+    ],
+    "heads": [
+     "unilateralContract(K)",
+     "gratuitousContract(K)",
+     "consensualContract(K)",
+     "informalContract(K)"
+    ],
+    "note": "笔记：赠与合同为单务、无偿、诺成、不要式合同；附义务不改变单务性，赠与财产的交付不是成立要件",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c659-1",
+    "srcs": [
+     "art659-1"
+    ],
+    "body": [
+     "giftContract(K)",
+     "giftDonorOf(D,K)",
+     "giftDoneeOf(E,K)",
+     "giftProperty(K,P)",
+     "needsRegistrationOrFormalities(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "E",
+      "content": "handleFormalities(D,P)"
+     }
+    ],
+    "note": "赠与的财产依法需要办理登记或者其他手续的，应当办理有关手续；条文未明定义务人，依学理为赠与人",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-ground",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftContract(K)",
+     "giftDonorOf(D,K)",
+     "giftDoneeOf(E,K)",
+     {
+      "or": [
+       "seriouslyInfringesDonorOrRelative(E,D)",
+       "failsSupportObligationTo(E,D)",
+       "failsToPerformGiftCondition(E,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "giftRevocationGround(D,E,K)"
+    ],
+    "note": "法定撤销事由：严重侵害赠与人或其近亲属合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-right",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftRevocationGround(D,E,K)"
+    ],
+    "heads": [
+     "giftRevocationRight(D,E,K)"
+    ],
+    "note": "受赠人有法定情形之一的，赠与人取得撤销赠与的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-1",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftRevocationRight(D,E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "E",
+      "content": "revokeGift(D,E,K)"
+     }
+    ],
+    "note": "受赠人有法定情形之一的，赠与人可以撤销赠与",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-2",
+    "srcs": [
+     "art663-2"
+    ],
+    "body": [
+     "giftRevocationGround(D,E,K)",
+     "oneYearSinceKnewGround(D,E)"
+    ],
+    "heads": [
+     "-giftRevocationRight(D,E,K)"
+    ],
+    "note": "赠与人的撤销权自知道或者应当知道撤销事由之日起一年内行使，一年期间届满撤销权消灭（除斥期间，学理）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c663-2",
+    "c663-right",
+    "一年期间届满，撤销权消灭，不再享有撤销赠与的权利"
+   ]
+  ],
+  "predicates": {
+   "giftContract": "赠与合同：赠与人将自己的财产无偿给予受赠人、受赠人表示接受赠与的合同（1个参数：合同）",
+   "giftDonorOf": "是赠与合同的赠与人（赠与人，合同）",
+   "giftDoneeOf": "是赠与合同的受赠人（受赠人，合同）",
+   "givesPropertyGratuitously": "将自己的财产无偿给予受赠人（赠与人，受赠人，合同）",
+   "acceptsGift": "表示接受赠与（受赠人，合同）",
+   "unilateralContract": "单务合同（1个参数：合同）",
+   "gratuitousContract": "无偿合同（1个参数：合同）",
+   "consensualContract": "诺成合同（1个参数：合同）",
+   "informalContract": "不要式合同（1个参数：合同）",
+   "giftProperty": "赠与的财产（合同，财产）",
+   "needsRegistrationOrFormalities": "依法需要办理登记或者其他手续（财产）",
+   "handleFormalities": "办理有关登记或者其他手续（赠与人，财产）",
+   "giftRevocationGround": "赠与的法定撤销事由（赠与人，受赠人，合同）",
+   "seriouslyInfringesDonorOrRelative": "严重侵害赠与人或者赠与人近亲属的合法权益（受赠人，赠与人）",
+   "failsSupportObligationTo": "对赠与人有扶养义务而不履行（受赠人，赠与人）",
+   "failsToPerformGiftCondition": "不履行赠与合同约定的义务（受赠人，合同）",
+   "giftRevocationRight": "赠与人的撤销权（赠与人，受赠人，合同）",
+   "revokeGift": "撤销赠与（赠与人，受赠人，合同）"
+  }
+ },
+ "card:g5092": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "赠与人在赠与财产的权利转移之前，可否任意撤销赠与；哪些赠与不适用任意撤销权",
+     "rules": [
+      "c658-1",
+      "c658-2",
+      "c658-2b"
+     ]
+    },
+    {
+     "text": "经公证或依法不得撤销的公益、道德义务性质赠与，受赠人可否请求交付；赠与财产毁损、灭失时赠与人是否赔偿",
+     "rules": [
+      "c660-1",
+      "c660-2"
+     ]
+    },
+    {
+     "text": "受赠人具备何种情形时赠与人可以法定撤销赠与，撤销权应在何期间内行使",
+     "rules": [
+      "c663-ground",
+      "c663-1",
+      "c663-2",
+      "c663-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "赠与合同成立，且赠与财产的权利尚未转移",
+     "rules": [
+      "c658-1"
+     ]
+    },
+    {
+     "text": "赠与合同经过公证，或者具有救灾、扶贫、助残等公益、道德义务性质且依法不得撤销",
+     "rules": [
+      "c658-2",
+      "c658-publicPromise"
+     ]
+    },
+    {
+     "text": "受赠人严重侵害赠与人或者赠与人近亲属的合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+     "rules": [
+      "c663-ground"
+     ]
+    },
+    {
+     "text": "赠与人知道或者应当知道撤销事由，且自知道或者应当知道之日起未满一年",
+     "rules": [
+      "c663-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经过公证的赠与合同，以及依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同，不适用第658条第1款的任意撤销权",
+     "rules": [
+      "c658-2",
+      "c658-2b"
+     ]
+    },
+    {
+     "text": "赠与财产的权利已经转移的，赠与人不得任意撤销",
+     "rules": [
+      "c658-1"
+     ]
+    },
+    {
+     "text": "自知道或者应当知道撤销事由之日起满一年，法定撤销权消灭",
+     "rules": [
+      "c663-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "赠与人可以撤销赠与（任意撤销权）",
+     "rules": [
+      "c658-1"
+     ]
+    },
+    {
+     "text": "任意撤销后赠与合同消灭，赠与人不再负担赠与义务；但撤销前已部分交付的动产，赠与人不得请求返还",
+     "rules": [
+      "c658-after",
+      "c658-noReturn"
+     ]
+    },
+    {
+     "text": "经公证或依法不得撤销的公益、道德义务性质赠与，赠与人不交付赠与财产的，受赠人可以请求交付",
+     "rules": [
+      "c660-1"
+     ]
+    },
+    {
+     "text": "依第660条第1款应当交付的赠与财产，因赠与人故意或者重大过失致使毁损、灭失的，赠与人应当承担赔偿责任",
+     "rules": [
+      "c660-2"
+     ]
+    },
+    {
+     "text": "受赠人有法定情形的，赠与人享有法定撤销权，并应在知道或者应当知道撤销事由之日起一年内行使",
+     "rules": [
+      "c663-1",
+      "c663-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第658条第2款的例外优先于第1款的任意撤销权：公证赠与、依法不得撤销的公益或道德义务性质赠与不得任意撤销",
+     "rules": [
+      "c658-2b"
+     ]
+    },
+    {
+     "text": "第658条第2款仅排除第1款的任意撤销权，不影响第663条的法定撤销权",
+     "rules": [
+      "c663-1"
+     ]
+    },
+    {
+     "text": "一年期间届满的，优先于第663条第1款产生的撤销权，撤销权消灭",
+     "rules": [
+      "c663-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第660条与第658条分工不同：第658条解决能否任意撤销，第660条解决不得撤销的赠与中受赠人的交付请求权及赠与人的赔偿责任；第657条为赠与合同定义，第659条为办理登记等手续，均不在本条规则内",
+     "rules": []
+    },
+    {
+     "text": "笔记补充：依《慈善法》第41条，捐赠人通过广播、电视、报刊、互联网等媒体公开承诺捐赠，或捐赠财产用于扶贫济困、扶老救孤恤病助残优抚、救助突发事件损害等慈善活动并签订书面捐赠协议的，属于依法不得撤销的公益赠与，不得主张任意撤销权",
+     "rules": [
+      "c658-publicPromise"
+     ]
+    },
+    {
+     "text": "LEGO 卡片把“赠与财产权利已转移”列为消极条件，与第658条第1款“权利转移之前”的表述一致，本卡片以“权利尚未转移”为任意撤销权的成立条件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c658-1",
+    "srcs": [
+     "art658-1"
+    ],
+    "body": [
+     "giftContract(K)",
+     "giftDonor(A,K)",
+     "-giftPropertyRightsTransferred(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "arbitraryRevocationOfGift(A,K)"
+     }
+    ],
+    "note": "赠与人在赠与财产的权利转移之前可以撤销赠与（任意撤销权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c658-2",
+    "srcs": [
+     "art658-2"
+    ],
+    "body": [
+     "giftContract(K)",
+     {
+      "or": [
+       "notarizedGift(K)",
+       "publicWelfareOrMoralGift(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "notarizedOrPublicWelfareGift(K)"
+    ],
+    "note": "经公证的赠与合同，或者依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c658-2b",
+    "srcs": [
+     "art658-2"
+    ],
+    "body": [
+     "notarizedOrPublicWelfareGift(K)",
+     "giftDonor(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "arbitraryRevocationOfGift(A,K)"
+     }
+    ],
+    "note": "公证赠与、依法不得撤销的公益或道德义务性质赠与，不适用第1款，赠与人不得任意撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c658-publicPromise",
+    "srcs": [
+     "art658-2"
+    ],
+    "body": [
+     "giftContract(K)",
+     "publicPromiseOfDonation(A,K)"
+    ],
+    "heads": [
+     "publicWelfareOrMoralGift(K)"
+    ],
+    "note": "笔记：依《慈善法》第41条，通过媒体公开承诺捐赠等情形属于依法不得撤销的公益赠与（学理与特别法补充，非本条文义）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c658-after",
+    "srcs": [
+     "art658-1"
+    ],
+    "body": [
+     "arbitraryRevocationOfGift(A,K)"
+    ],
+    "heads": [
+     "-giftObligation(A,K)"
+    ],
+    "note": "笔记：任意撤销后赠与合同自始或仅向将来消灭，赠与人不再负担赠与义务（学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c658-noReturn",
+    "srcs": [
+     "art658-1"
+    ],
+    "body": [
+     "arbitraryRevocationOfGift(A,K)",
+     "deliveredGiftPropertyBeforeRevocation(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "claimReturnOfDeliveredGift(A,K)"
+     }
+    ],
+    "note": "笔记：任意撤销之前已经部分交付的动产，赠与人不得请求返还（学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c660-1",
+    "srcs": [
+     "art660-1"
+    ],
+    "body": [
+     "notarizedOrPublicWelfareGift(K)",
+     "giftDonor(A,K)",
+     "giftDonee(B,K)",
+     "failsToDeliverGift(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "requestDeliveryOfGift(B,A,K)"
+     }
+    ],
+    "note": "公证赠与或依法不得撤销的公益、道德义务性质赠与，赠与人不交付赠与财产的，受赠人可以请求交付",
+    "auth": "npc"
+   },
+   {
+    "key": "c660-2",
+    "srcs": [
+     "art660-2"
+    ],
+    "body": [
+     "notarizedOrPublicWelfareGift(K)",
+     "giftDonor(A,K)",
+     "giftDonee(B,K)",
+     "giftPropertyLostByDonorFault(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "compensateGiftPropertyLoss(A,B,K)"
+     }
+    ],
+    "note": "依第660条第1款应当交付的赠与财产，因赠与人故意或者重大过失致使毁损、灭失的，赠与人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-ground",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "giftContract(K)",
+     "giftDonor(A,K)",
+     "giftDonee(B,K)",
+     {
+      "or": [
+       "seriouslyHarmsDonorOrCloseRelative(B,A)",
+       "failsMaintenanceDutyToDonor(B,A)",
+       "failsAgreedObligationUnderGift(B,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryRevocationGround(B,A,K)"
+    ],
+    "note": "法定撤销事由：严重侵害赠与人或其近亲属合法权益；对赠与人有扶养义务而不履行；不履行赠与合同约定的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-1",
+    "srcs": [
+     "art663-1"
+    ],
+    "body": [
+     "statutoryRevocationGround(B,A,K)",
+     "giftContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "statutoryRevocationRight(A,K)"
+     }
+    ],
+    "note": "受赠人有法定情形之一的，赠与人可以撤销赠与（法定撤销权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-2",
+    "srcs": [
+     "art663-2"
+    ],
+    "body": [
+     "statutoryRevocationRight(A,K)",
+     "knowsOrShouldKnowRevocationGround(A,K)",
+     "-oneYearSinceKnewGround(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exerciseStatutoryRevocation(A,K)"
+     }
+    ],
+    "note": "赠与人的撤销权，自知道或者应当知道撤销事由之日起一年内行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c663-3",
+    "srcs": [
+     "art663-2"
+    ],
+    "body": [
+     "statutoryRevocationGround(B,A,K)",
+     "oneYearSinceKnewGround(A,K)"
+    ],
+    "heads": [
+     "-statutoryRevocationRight(A,K)"
+    ],
+    "note": "笔记：一年为除斥期间，期间届满法定撤销权消灭（学理，条文仅规定行使期间）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c658-2b",
+    "c658-1",
+    "第658条第2款：经公证或依法不得撤销的公益、道德义务性质赠与，不适用第1款的任意撤销权"
+   ],
+   [
+    "c663-1",
+    "c658-2b",
+    "第658条第2款仅排除第1款的任意撤销权，不影响第663条的法定撤销权"
+   ],
+   [
+    "c663-3",
+    "c663-1",
+    "第663条第2款：撤销权须自知道或者应当知道撤销事由之日起一年内行使，逾期消灭"
+   ]
+  ],
+  "predicates": {
+   "giftContract": "赠与合同（1个参数：合同）",
+   "giftDonor": "是赠与合同的赠与人（赠与人，合同）",
+   "giftDonee": "是赠与合同的受赠人（受赠人，合同）",
+   "giftPropertyRightsTransferred": "赠与财产的权利已转移（1个参数：合同）",
+   "notarizedGift": "赠与合同经过公证（1个参数：合同）",
+   "publicWelfareOrMoralGift": "依法不得撤销的具有救灾、扶贫、助残等公益、道德义务性质的赠与合同（1个参数：合同）",
+   "notarizedOrPublicWelfareGift": "属于经公证或依法不得撤销的公益、道德义务性质赠与合同（1个参数：合同）",
+   "publicPromiseOfDonation": "通过广播、电视、报刊、互联网等媒体公开承诺捐赠（赠与人，合同）",
+   "arbitraryRevocationOfGift": "任意撤销赠与（赠与人，合同）",
+   "statutoryRevocationRight": "享有法定撤销权（赠与人，合同）",
+   "exerciseStatutoryRevocation": "行使法定撤销权（赠与人，合同）",
+   "statutoryRevocationGround": "存在第663条第1款规定的法定撤销事由（受赠人，赠与人，合同）",
+   "seriouslyHarmsDonorOrCloseRelative": "严重侵害赠与人或者赠与人近亲属的合法权益（受赠人，赠与人）",
+   "failsMaintenanceDutyToDonor": "对赠与人有扶养义务而不履行（受赠人，赠与人）",
+   "failsAgreedObligationUnderGift": "不履行赠与合同约定的义务（受赠人，合同）",
+   "knowsOrShouldKnowRevocationGround": "知道或者应当知道撤销事由（赠与人，合同）",
+   "failsToDeliverGift": "不交付赠与财产（赠与人，合同）",
+   "requestDeliveryOfGift": "请求交付赠与财产（受赠人，赠与人，合同）",
+   "giftPropertyLostByDonorFault": "因赠与人故意或者重大过失致使赠与财产毁损、灭失（赠与人，合同）",
+   "compensateGiftPropertyLoss": "承担赠与财产毁损、灭失的赔偿责任（赠与人，受赠人，合同）",
+   "giftObligation": "负担交付赠与财产的义务（赠与人，合同）",
+   "deliveredGiftPropertyBeforeRevocation": "任意撤销之前已部分交付赠与财产（赠与人，合同）",
+   "claimReturnOfDeliveredGift": "请求返还已交付的赠与财产（赠与人，合同）"
+  }
+ }
+}

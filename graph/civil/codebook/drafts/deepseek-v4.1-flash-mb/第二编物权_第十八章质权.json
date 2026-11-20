@@ -1,0 +1,2116 @@
+{
+ "card:g3473": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些财产权利可以作为权利质权的客体（可出质权利的范围）",
+     "rules": [
+      "c440-1"
+     ]
+    },
+    {
+     "text": "权利质权如何设立：交付权利凭证还是办理出质登记",
+     "rules": [
+      "c441-1",
+      "c441-2",
+      "c443-1",
+      "c444-1"
+     ]
+    },
+    {
+     "text": "出质后出质人的处分权受何种限制，所得价款如何处理",
+     "rules": [
+      "c443-2",
+      "c443-3",
+      "c444-2",
+      "c444-3"
+     ]
+    },
+    {
+     "text": "证券化权利的兑现日期或提货日期先于主债权到期时，质权人如何实现质权",
+     "rules": [
+      "c442-1"
+     ]
+    },
+    {
+     "text": "权利质权与本章第一节一般抵押权规定的关系",
+     "rules": [
+      "c446-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出质权利须为债务人或者第三人有权处分的、第440条列举的财产权利：汇票、本票、支票；债券、存款单；仓单、提单；可以转让的基金份额、股权；可以转让的注册商标专用权、专利权、著作权等知识产权中的财产权；现有的以及将有的应收账款；法律、行政法规规定可以出质的其他财产权利",
+     "rules": [
+      "c440-1"
+     ]
+    },
+    {
+     "text": "以汇票、本票、支票、债券、存款单、仓单、提单出质，且该权利有权利凭证的，须将权利凭证交付质权人",
+     "rules": [
+      "c441-1"
+     ]
+    },
+    {
+     "text": "以汇票、本票、支票、债券、存款单、仓单、提单出质，但没有权利凭证的，须办理出质登记",
+     "rules": [
+      "c441-2"
+     ]
+    },
+    {
+     "text": "以基金份额、股权出质的，须办理出质登记",
+     "rules": [
+      "c443-1"
+     ]
+    },
+    {
+     "text": "以注册商标专用权、专利权、著作权等知识产权中的财产权出质的，须办理出质登记",
+     "rules": [
+      "c444-1"
+     ]
+    },
+    {
+     "text": "汇票、本票、支票、债券、存款单、仓单、提单的兑现日期或者提货日期先于主债权到期",
+     "rules": [
+      "c442-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对第441条所列权利质权的设立另有规定的，依照其规定，不适用交付权利凭证或登记设立的一般规则",
+     "rules": [
+      "c441-3"
+     ]
+    },
+    {
+     "text": "基金份额、股权出质后，出质人与质权人协商同意的，可以转让",
+     "rules": [
+      "c443-2"
+     ]
+    },
+    {
+     "text": "知识产权中的财产权出质后，出质人与质权人协商同意的，可以转让或者许可他人使用",
+     "rules": [
+      "c444-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合条件的权利可以出质，出质人有权以该权利设立质权",
+     "rules": [
+      "c440-1"
+     ]
+    },
+    {
+     "text": "以汇票、本票、支票、债券、存款单、仓单、提单出质的，质权自权利凭证交付质权人时设立；没有权利凭证的，质权自办理出质登记时设立",
+     "rules": [
+      "c441-1",
+      "c441-2"
+     ]
+    },
+    {
+     "text": "以基金份额、股权出质的，质权自办理出质登记时设立",
+     "rules": [
+      "c443-1"
+     ]
+    },
+    {
+     "text": "以知识产权中的财产权出质的，质权自办理出质登记时设立",
+     "rules": [
+      "c444-1"
+     ]
+    },
+    {
+     "text": "基金份额、股权出质后不得转让；知识产权中的财产权出质后不得转让或者许可他人使用",
+     "rules": [
+      "c443-2",
+      "c444-2"
+     ]
+    },
+    {
+     "text": "出质人转让基金份额、股权，或者转让、许可他人使用出质的知识产权财产权所得的价款，应当向质权人提前清偿债务或者提存",
+     "rules": [
+      "c443-3",
+      "c444-3"
+     ]
+    },
+    {
+     "text": "质权人可以兑现或者提货，并与出质人协议将兑现的价款或者提取的货物提前清偿债务或者提存",
+     "rules": [
+      "c442-1"
+     ]
+    },
+    {
+     "text": "权利质权除适用本节规定外，适用本章第一节（一般抵押权）的有关规定",
+     "rules": [
+      "c446-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对第441条所列权利质权的设立另有规定的，优先于交付权利凭证设立、登记设立的规则适用",
+     "rules": [
+      "c441-3"
+     ]
+    },
+    {
+     "text": "权利质权先适用本节（第三节质权）的特别规定，本节未规定的才适用本章第一节一般抵押权的规定",
+     "rules": [
+      "c446-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把应收账款出质也列为“登记设立”，其依据是第445条（本行未挂载）；本行挂载的第443条、第444条只规定基金份额、股权和知识产权财产权的登记设立，第440条仅解决应收账款的可出质性",
+     "rules": []
+    },
+    {
+     "text": "笔记所称“质押合同书面成立、成立生效”属第427条内容，本行未挂载，故不形式化；本卡片只处理质权的设立方式",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片把第441条称为第440条的“后续适用规则”、把第442条称为“权利行使规则”；本卡片将第441条作为质权设立规则，将第442条作为权利质权的特殊实现方式",
+     "rules": []
+    },
+    {
+     "text": "第440条对基金份额、股权及知识产权财产权均以“可以转让的”为限，人身专属性、依法不得转让的权利不在可出质范围",
+     "rules": [
+      "c440-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c440-1",
+    "srcs": [
+     "art440-1"
+    ],
+    "body": [
+     "hasDisposalPower(P,R)",
+     {
+      "or": [
+       "documentaryRight(R)",
+       "transferableFundShareOrEquity(R)",
+       "transferableIPPropertyRight(R)",
+       "existingOrFutureReceivable(R)",
+       "otherPledgeablePropertyRightByLaw(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "pledgeableRight(R)",
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "createPledge(P,R)"
+     }
+    ],
+    "note": "债务人或者第三人有权处分的第440条列举的财产权利可以出质",
+    "auth": "npc"
+   },
+   {
+    "key": "c441-1",
+    "srcs": [
+     "art441-1"
+    ],
+    "body": [
+     "pledgeAgreed(P,E,R)",
+     "documentaryRight(R)",
+     "hasRightCertificate(R)",
+     "certificateDeliveredToPledgee(R,E)"
+    ],
+    "heads": [
+     "pledgeRightEstablished(E,R)"
+    ],
+    "note": "以汇票、本票、支票、债券、存款单、仓单、提单出质且有权利凭证的，质权自权利凭证交付质权人时设立",
+    "auth": "npc"
+   },
+   {
+    "key": "c441-2",
+    "srcs": [
+     "art441-1"
+    ],
+    "body": [
+     "pledgeAgreed(P,E,R)",
+     "documentaryRight(R)",
+     "-hasRightCertificate(R)",
+     "pledgeRegistrationCompleted(R,E)"
+    ],
+    "heads": [
+     "pledgeRightEstablished(E,R)"
+    ],
+    "note": "以汇票、本票、支票、债券、存款单、仓单、提单出质但没有权利凭证的，质权自办理出质登记时设立",
+    "auth": "npc"
+   },
+   {
+    "key": "c441-3",
+    "srcs": [
+     "art441-1"
+    ],
+    "body": [
+     "pledgeAgreed(P,E,R)",
+     "documentaryRight(R)",
+     "lawProvidesOtherwiseOnPledgeCreation(R)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(R)"
+    ],
+    "note": "法律对第441条所列权利质权的设立另有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c442-1",
+    "srcs": [
+     "art442-1"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)",
+     "pledgorOf(P,R)",
+     "documentaryRight(R)",
+     "maturityOrDeliveryDateBeforePrincipalClaim(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "cashOrTakeDelivery(E,R)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "agreeEarlyPaymentOrDeposit(E,P,R)"
+     }
+    ],
+    "note": "兑现日期或者提货日期先于主债权到期的，质权人可以兑现或者提货，并与出质人协议将兑现价款或提取货物提前清偿债务或者提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c443-1",
+    "srcs": [
+     "art443-1"
+    ],
+    "body": [
+     "pledgeAgreed(P,E,R)",
+     "transferableFundShareOrEquity(R)",
+     "pledgeRegistrationCompleted(R,E)"
+    ],
+    "heads": [
+     "pledgeRightEstablished(E,R)"
+    ],
+    "note": "以基金份额、股权出质的，质权自办理出质登记时设立",
+    "auth": "npc"
+   },
+   {
+    "key": "c443-2",
+    "srcs": [
+     "art443-2"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)",
+     "pledgorOf(P,R)",
+     "transferableFundShareOrEquity(R)",
+     "~pledgorAndPledgeeAgree(P,E,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "transferPledgedRight(P,R)"
+     }
+    ],
+    "note": "基金份额、股权出质后不得转让，但出质人与质权人协商同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c443-3",
+    "srcs": [
+     "art443-2"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)",
+     "pledgorOf(P,R)",
+     "transferableFundShareOrEquity(R)",
+     "transferredPledgedRight(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "payDebtEarlyOrDepositProceeds(P,E,R)"
+     }
+    ],
+    "note": "出质人转让基金份额、股权所得的价款，应当向质权人提前清偿债务或者提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c444-1",
+    "srcs": [
+     "art444-1"
+    ],
+    "body": [
+     "pledgeAgreed(P,E,R)",
+     "transferableIPPropertyRight(R)",
+     "pledgeRegistrationCompleted(R,E)"
+    ],
+    "heads": [
+     "pledgeRightEstablished(E,R)"
+    ],
+    "note": "以注册商标专用权、专利权、著作权等知识产权中的财产权出质的，质权自办理出质登记时设立",
+    "auth": "npc"
+   },
+   {
+    "key": "c444-2",
+    "srcs": [
+     "art444-2"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)",
+     "pledgorOf(P,R)",
+     "transferableIPPropertyRight(R)",
+     "~pledgorAndPledgeeAgree(P,E,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "transferOrLicensePledgedIP(P,R)"
+     }
+    ],
+    "note": "知识产权中的财产权出质后，出质人不得转让或者许可他人使用，但出质人与质权人协商同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c444-3",
+    "srcs": [
+     "art444-2"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)",
+     "pledgorOf(P,R)",
+     "transferableIPPropertyRight(R)",
+     "transferredOrLicensedPledgedIP(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "payDebtEarlyOrDepositProceeds(P,E,R)"
+     }
+    ],
+    "note": "出质人转让或者许可他人使用出质的知识产权财产权所得的价款，应当向质权人提前清偿债务或者提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c446-1",
+    "srcs": [
+     "art446-1"
+    ],
+    "body": [
+     "pledgeRightEstablished(E,R)"
+    ],
+    "heads": [
+     "applyGeneralMortgageProvisions(R)"
+    ],
+    "note": "权利质权除适用本节规定外，适用本章第一节（一般抵押权）的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c441-3",
+    "c441-1",
+    "法律对第441条所列权利质权的设立另有规定的，优先适用其规定，不再适用权利凭证交付设立"
+   ],
+   [
+    "c441-3",
+    "c441-2",
+    "法律对第441条所列权利质权的设立另有规定的，优先适用其规定，不再适用出质登记设立"
+   ]
+  ],
+  "predicates": {
+   "documentaryRight": "是汇票、本票、支票、债券、存款单、仓单、提单等以权利凭证表彰的权利（1个参数：出质权利）",
+   "transferableFundShareOrEquity": "是可以转让的基金份额、股权（1个参数：出质权利）",
+   "transferableIPPropertyRight": "是可以转让的注册商标专用权、专利权、著作权等知识产权中的财产权（1个参数：出质权利）",
+   "existingOrFutureReceivable": "是现有的或者将有的应收账款（1个参数：出质权利）",
+   "otherPledgeablePropertyRightByLaw": "是法律、行政法规规定可以出质的其他财产权利（1个参数：出质权利）",
+   "pledgeableRight": "是可以出质的财产权利，即权利质权客体适格（1个参数：出质权利）",
+   "createPledge": "以该权利出质（2个参数：出质人，出质权利）",
+   "pledgeAgreed": "出质人与质权人约定以该权利出质（3个参数：出质人，质权人，出质权利）",
+   "hasRightCertificate": "该权利有权利凭证（1个参数：出质权利）",
+   "certificateDeliveredToPledgee": "权利凭证已交付质权人（2个参数：出质权利，质权人）",
+   "pledgeRegistrationCompleted": "已办理出质登记（2个参数：出质权利，质权人）",
+   "pledgeRightEstablished": "权利质权已设立（2个参数：质权人，出质权利）",
+   "lawProvidesOtherwiseOnPledgeCreation": "法律对该权利质权的设立另有规定（1个参数：出质权利）",
+   "pledgorOf": "是出质人（2个参数：出质人，出质权利）",
+   "pledgorAndPledgeeAgree": "出质人与质权人协商同意（3个参数：出质人，质权人，出质权利）",
+   "transferPledgedRight": "转让已出质的基金份额、股权（2个参数：出质人，出质权利）",
+   "transferOrLicensePledgedIP": "转让或者许可他人使用已出质的知识产权中的财产权（2个参数：出质人，出质权利）",
+   "transferredPledgedRight": "已转让出质的基金份额、股权（2个参数：出质人，出质权利）",
+   "transferredOrLicensedPledgedIP": "已转让或者许可他人使用出质的知识产权中的财产权（2个参数：出质人，出质权利）",
+   "payDebtEarlyOrDepositProceeds": "将转让或者许可使用所得价款向质权人提前清偿债务或者提存（3个参数：出质人，质权人，出质权利）",
+   "maturityOrDeliveryDateBeforePrincipalClaim": "兑现日期或者提货日期先于主债权到期（1个参数：出质权利）",
+   "cashOrTakeDelivery": "兑现或者提货（2个参数：质权人，出质权利）",
+   "agreeEarlyPaymentOrDeposit": "与出质人协议将兑现的价款或者提取的货物提前清偿债务或者提存（3个参数：质权人，出质人，出质权利）",
+   "applyGeneralMortgageProvisions": "适用本章第一节（一般抵押权）的有关规定（1个参数：权利质权）"
+  }
+ },
+ "card:g3426": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "动产质权如何设立（书面质押合同＋交付），质权人享有哪些权利（优先受偿、收取孳息）",
+     "rules": [
+      "c425-1",
+      "c427-1",
+      "c429",
+      "c430-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出质人（债务人或者第三人）为担保债务的履行，将其动产出质给债权人占有",
+     "rules": [
+      "c425-1",
+      "c425-2"
+     ]
+    },
+    {
+     "text": "当事人采用书面形式订立质押合同；质押合同为诺成性合同，须符合合同的成立要件与生效要件，法律、行政法规禁止转让的动产不得出质",
+     "rules": [
+      "c427-1",
+      "c427-valid"
+     ]
+    },
+    {
+     "text": "出质人交付质押财产：包括现实交付、简易交付、指示交付，不包括占有改定（须使债权人控制质物）",
+     "rules": [
+      "c429",
+      "c429-delivery",
+      "c429-no-possessory-substitute"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合同另有约定的，质权人不得收取质押财产的孳息",
+     "rules": [
+      "c430-1"
+     ]
+    },
+    {
+     "text": "质押合同无效的，即使交付也不设立质权",
+     "rules": [
+      "c429-valid"
+     ]
+    },
+    {
+     "text": "以占有改定方式“交付”的，不构成质权设立所需的交付",
+     "rules": [
+      "c429-no-possessory-substitute"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债务人不履行到期债务或者发生当事人约定的实现质权的情形，债权人有权就该动产优先受偿",
+     "rules": [
+      "c425-1"
+     ]
+    },
+    {
+     "text": "出质人为债务人或第三人，债权人为质权人，交付的动产为质押财产",
+     "rules": [
+      "c425-2"
+     ]
+    },
+    {
+     "text": "质权自出质人交付质押财产时设立",
+     "rules": [
+      "c429"
+     ]
+    },
+    {
+     "text": "质权人有权收取质押财产的孳息",
+     "rules": [
+      "c430-1"
+     ]
+    },
+    {
+     "text": "收取的孳息应当先充抵收取孳息的费用",
+     "rules": [
+      "c430-2"
+     ]
+    },
+    {
+     "text": "出质人未按合同约定移交质押财产的，应当承担违约责任",
+     "rules": [
+      "c427-consensual"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "交付是质权设立的生效要件；合同生效、采用书面形式或合同名称均不等于质权设立",
+     "rules": [
+      "c429",
+      "c427-1"
+     ]
+    },
+    {
+     "text": "质押合同无效时，交付不产生质权设立的效果（c429-valid 优先于 c429）",
+     "rules": [
+      "c429-valid",
+      "c429"
+     ]
+    },
+    {
+     "text": "占有改定不属于交付，即使约定由出质人继续占有，也不成立质权设立所需的交付（c429-no-possessory-substitute 优先于 c429-delivery）",
+     "rules": [
+      "c429-no-possessory-substitute",
+      "c429-delivery"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第427条第2款“质押合同一般包括下列条款”为示范性条款，不产生独立义务，未形式化",
+     "rules": []
+    },
+    {
+     "text": "第428条流质条款效力限制、第430条孳息收取权属质权的内容，均非质权设立要件",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片称“交付是唯一生效要件、合同名为抵押而实际交付亦可成立质权”，属参考性学理表述，法条未规定，未形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c425-1",
+    "srcs": [
+     "art425-1"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "pledgeRealizationEventOccurred(R,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "priorityPaymentFrom(R,T)"
+     }
+    ],
+    "note": "为担保债务履行，债务人或第三人将动产出质给债权人占有，债务人不履行到期债务或发生约定实现质权情形的，债权人有权就该动产优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c425-2",
+    "srcs": [
+     "art425-2"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)"
+    ],
+    "heads": [
+     "pledgorOf(P,T)",
+     "pledgeeOf(R,T)",
+     "pledgedProperty(T)"
+    ],
+    "note": "出质人为提供动产的债务人或第三人，债权人为质权人，交付的动产为质押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c427-1",
+    "srcs": [
+     "art427-1"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "concludePledgeContractInWriting(P,R,T,D)"
+     }
+    ],
+    "note": "设立质权，当事人应当采用书面形式订立质押合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c427-valid",
+    "srcs": [
+     "art427-1"
+    ],
+    "body": [
+     "pledgeContract(P,R,T,D)",
+     "~nonAssignableByLaw(T)"
+    ],
+    "heads": [
+     "pledgeContractValid(P,R,T,D)"
+    ],
+    "note": "笔记：质押合同须符合成立要件与生效要件；法律、行政法规禁止转让的动产不得出质，故质押合同有效以出质动产非禁止转让者为限",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c427-consensual",
+    "srcs": [
+     "art427-1"
+    ],
+    "body": [
+     "pledgeContract(P,R,T,D)",
+     "-deliveredToPledgee(P,R,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "liableForBreach(P,R)"
+     }
+    ],
+    "note": "笔记：质押合同为诺成性合同，出质人未按约定移交质押财产的，应当承担违约责任",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c429",
+    "srcs": [
+     "art429-1"
+    ],
+    "body": [
+     "pledgeContract(P,R,T,D)",
+     "deliveredToPledgee(P,R,T)"
+    ],
+    "heads": [
+     "pledgeRightEstablished(R,T)"
+    ],
+    "note": "质权自出质人交付质押财产时设立（交付要件主义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c429-valid",
+    "srcs": [
+     "art429-1"
+    ],
+    "body": [
+     "pledgeContract(P,R,T,D)",
+     "-pledgeContractValid(P,R,T,D)"
+    ],
+    "heads": [
+     "-pledgeRightEstablished(R,T)"
+    ],
+    "note": "笔记：质押合同无效的，即使已交付也不设立质权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c429-delivery",
+    "srcs": [
+     "art429-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "actualDelivery(P,R,T)",
+       "simpleDelivery(P,R,T)",
+       "instructionDelivery(P,R,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "deliveredToPledgee(P,R,T)"
+    ],
+    "note": "笔记：第429条的交付包括现实交付、简易交付、指示交付",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c429-no-possessory-substitute",
+    "srcs": [
+     "art429-1"
+    ],
+    "body": [
+     "pledgeContract(P,R,T,D)",
+     "agreedTransferorRetainsPossession(P,T)"
+    ],
+    "heads": [
+     "-deliveredToPledgee(P,R,T)"
+    ],
+    "note": "笔记：占有改定不属于交付，因质权要求债权人实际控制质物",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c430-1",
+    "srcs": [
+     "art430-1"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "pledgeRightEstablished(R,T)",
+     "~contractProvidesOtherwise(T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "collectPledgeFruits(R,T)"
+     }
+    ],
+    "note": "质权人有权收取质押财产的孳息，但合同另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c430-2",
+    "srcs": [
+     "art430-2"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "collectedPledgeFruits(R,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "offsetCollectionCostFirst(R,T)"
+     }
+    ],
+    "note": "质权人收取的孳息应当先充抵收取孳息的费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c429-valid",
+    "c429",
+    "质押合同无效的，交付不产生质权设立的效果"
+   ],
+   [
+    "c429-no-possessory-substitute",
+    "c429-delivery",
+    "占有改定不属于交付，不能成立质权设立所需的交付"
+   ]
+  ],
+  "predicates": {
+   "pledgeOf": "出质人（债务人或第三人）为担保债务人D的债务，将动产T出质给债权人R占有（出质人，质权人，质押财产，债务人）",
+   "pledgorOf": "是出质人（出质人，质押财产）",
+   "pledgeeOf": "是质权人（质权人，质押财产）",
+   "pledgedProperty": "是质押财产，即交付的动产",
+   "deliveredToPledgee": "出质人向质权人交付质押财产（出质人，质权人，质押财产）",
+   "actualDelivery": "现实交付（出质人，质权人，动产）",
+   "simpleDelivery": "简易交付（出质人，质权人，动产）",
+   "instructionDelivery": "指示交付（出质人，质权人，动产）",
+   "pledgeRightEstablished": "质权已设立（质权人，质押财产）",
+   "concludePledgeContractInWriting": "采用书面形式订立质押合同（出质人，质权人，质押财产，债务人）",
+   "pledgeContractValid": "质押合同有效（出质人，质权人，质押财产，债务人）",
+   "collectPledgeFruits": "收取质押财产的孳息（质权人，质押财产）",
+   "collectedPledgeFruits": "已收取质押财产的孳息（质权人，质押财产）",
+   "pledgeRealizationEventOccurred": "发生当事人约定的实现质权的情形（质权人，质押财产）"
+  }
+ },
+ "art:431": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "质权存续期间，质权人未经出质人同意擅自使用、处分质押财产，造成出质人损害的，是否应当承担赔偿责任",
+     "rules": [
+      "c431-unauth",
+      "c431-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "质权存续期间，质权人对质押财产实施使用、处分行为",
+     "rules": [
+      "c431-unauth"
+     ]
+    },
+    {
+     "text": "该使用、处分未经出质人同意（即“擅自”）",
+     "rules": [
+      "c431-unauth"
+     ]
+    },
+    {
+     "text": "该行为造成出质人损害",
+     "rules": [
+      "c431-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经出质人同意的使用、处分不属于“擅自”，不产生本款赔偿责任",
+     "rules": [
+      "c431-unauth"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "质权人应当向出质人承担赔偿责任",
+     "rules": [
+      "c431-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本款针对质权人擅自使用、处分质押财产致出质人损害；质权人因保管不善致质押财产毁损、灭失的赔偿责任另由第432条规定，不在本行挂载范围",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，本卡片仅依第431条第1款原文形式化，未引入学理要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c431-unauth",
+    "srcs": [
+     "art431-1"
+    ],
+    "body": [
+     "pledgeeOf(P,K)",
+     "usesOrDisposesPledgedProperty(P,K)",
+     "-consentedByPledgor(P,K)"
+    ],
+    "heads": [
+     "unauthorizedUseOrDisposal(P,K)"
+    ],
+    "note": "“擅自”即未经出质人同意而使用、处分质押财产，系条文原文的构成要件",
+    "auth": "npc"
+   },
+   {
+    "key": "c431-1",
+    "srcs": [
+     "art431-1"
+    ],
+    "body": [
+     "pledgeeOf(P,K)",
+     "pledgeRightSubsisting(K)",
+     "unauthorizedUseOrDisposal(P,K)",
+     "pledgorOf(G,K)",
+     "causesDamageTo(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "G",
+      "content": "compensatePledgorLoss(P,G)"
+     }
+    ],
+    "note": "质权存续期间，质权人未经出质人同意擅自使用、处分质押财产，造成出质人损害的，应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "pledgeeOf": "是质权人（质权人，质押财产）",
+   "pledgorOf": "是出质人（出质人，质押财产）",
+   "pledgeRightSubsisting": "质权处于存续期间（质押财产）",
+   "usesOrDisposesPledgedProperty": "对质押财产实施使用、处分行为（质权人，质押财产）",
+   "consentedByPledgor": "经出质人同意（质权人，质押财产）",
+   "unauthorizedUseOrDisposal": "未经出质人同意擅自使用、处分质押财产（质权人，质押财产）",
+   "compensatePledgorLoss": "赔偿出质人因质权人擅自使用、处分质押财产所受的损害（质权人，出质人）"
+  }
+ },
+ "art:426": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律、行政法规禁止转让的动产，能否用于出质",
+     "rules": [
+      "c426-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出质标的为动产",
+     "rules": [
+      "c426-1"
+     ]
+    },
+    {
+     "text": "该动产被法律、行政法规禁止转让（禁止流通物）",
+     "rules": [
+      "c426-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条无但书；法律、行政法规未禁止转让的动产不受本条限制，可依法出质",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "出质人不得以该动产出质（禁止性规定，当事人不得以约定排除）",
+     "rules": [
+      "c426-1"
+     ]
+    },
+    {
+     "text": "学理：违反本条出质的，质权不设立（法条未明定后果，属学理）",
+     "rules": [
+      "c426-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为禁止性规定，优先于允许以动产出质的一般规定（如第440条），亦优先于当事人关于出质的约定",
+     "rules": [
+      "c426-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规范“出质”，不涉及抵押；禁止转让的动产能否抵押应依第395条、第399条判断，规范依据不同",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，LEGO 卡片亦无；违反本条的后果（质权不设立）法条未明定，故相应规则 auth 为 doctrine",
+     "rules": [
+      "c426-doctrine"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c426-1",
+    "srcs": [
+     "art426-1"
+    ],
+    "body": [
+     "movable(M)",
+     "transferProhibitedByLawOrAdminRegulation(M)",
+     "pledgor(P,M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "pledge(P,M)"
+     }
+    ],
+    "note": "法律、行政法规禁止转让的动产，出质人不得以之出质",
+    "auth": "npc"
+   },
+   {
+    "key": "c426-doctrine",
+    "srcs": [
+     "art426-1"
+    ],
+    "body": [
+     "pledgeContract(K,P,R,M)",
+     "movable(M)",
+     "transferProhibitedByLawOrAdminRegulation(M)"
+    ],
+    "heads": [
+     "-pledgeEstablished(K)"
+    ],
+    "note": "学理通说：以法律、行政法规禁止转让的动产出质，质权不设立；法条未明定违反后果，故为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "transferProhibitedByLawOrAdminRegulation": "（1个参数：动产）该动产被法律、行政法规禁止转让，即禁止流通物",
+   "pledgor": "（2个参数：出质人，动产）是出质人，即以该动产为他人设定质权的人",
+   "pledge": "（2个参数：出质人，动产）以该动产出质（设定质权）",
+   "pledgeEstablished": "（1个参数：质押合同或质权）质权已设立"
+  }
+ },
+ "art:439": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出质人与质权人能否以协议方式设立最高额质权，以及最高额质权应适用哪些规定",
+     "rules": [
+      "c439-1",
+      "c439-1b",
+      "c439-2",
+      "c439-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为出质人与质权人，且双方就设立最高额质权达成协议",
+     "rules": [
+      "c439-1",
+      "c439-1b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本节（第十八章第二节 权利质权）对最高额质权已有规定的，优先适用本节规定，不再参照适用最高额抵押权的规定",
+     "rules": [
+      "c439-2",
+      "c439-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出质人与质权人可以协议设立最高额质权",
+     "rules": [
+      "c439-1"
+     ]
+    },
+    {
+     "text": "协议设立的，最高额质权成立（构成性结论）",
+     "rules": [
+      "c439-1b"
+     ]
+    },
+    {
+     "text": "最高额质权适用本节（权利质权）的有关规定",
+     "rules": [
+      "c439-2"
+     ]
+    },
+    {
+     "text": "本节无规定的事项，参照适用本编第十七章第二节关于最高额抵押权的规定",
+     "rules": [
+      "c439-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本节关于权利质权的规定优先于参照适用的最高额抵押权规定",
+     "rules": [
+      "c439-2",
+      "c439-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "最高额质权规定于第十八章第二节（权利质权），以权利为客体；最高额抵押权规定于第十七章第二节，对最高额质权仅处于参照适用的补充地位，二者不可混同",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条，本条规则全部依据法条原文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c439-1",
+    "srcs": [
+     "art439-1"
+    ],
+    "body": [
+     "pledgor(P)",
+     "pledgee(Q)",
+     "agreedToEstablishMaxAmountPledge(P,Q)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "establishMaxAmountPledge(P,Q)"
+     }
+    ],
+    "note": "出质人与质权人可以协议设立最高额质权",
+    "auth": "npc"
+   },
+   {
+    "key": "c439-1b",
+    "srcs": [
+     "art439-1"
+    ],
+    "body": [
+     "agreedToEstablishMaxAmountPledge(P,Q)"
+    ],
+    "heads": [
+     "maxAmountPledgeEstablished(P,Q)"
+    ],
+    "note": "双方协议设立最高额质权的，最高额质权成立（构成性结论）",
+    "auth": "npc"
+   },
+   {
+    "key": "c439-2",
+    "srcs": [
+     "art439-2"
+    ],
+    "body": [
+     "maxAmountPledgeEstablished(P,Q)"
+    ],
+    "heads": [
+     "applyPledgeSectionProvisions(P,Q)"
+    ],
+    "note": "最高额质权适用本节（第十八章第二节 权利质权）的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c439-3",
+    "srcs": [
+     "art439-2"
+    ],
+    "body": [
+     "maxAmountPledgeEstablished(P,Q)"
+    ],
+    "heads": [
+     "applyMaxAmountMortgageProvisionsByReference(P,Q)"
+    ],
+    "note": "除适用本节规定外，最高额质权参照适用本编第十七章第二节关于最高额抵押权的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c439-2",
+    "c439-3",
+    "条文为“除适用本节有关规定外，参照适用……”，本节（权利质权）规定优先，最高额抵押权规定仅作补充参照"
+   ]
+  ],
+  "predicates": {
+   "pledgor": "是出质人（1个参数：出质人）",
+   "pledgee": "是质权人（1个参数：质权人）",
+   "agreedToEstablishMaxAmountPledge": "出质人与质权人协议设立最高额质权（参数1：出质人；参数2：质权人）",
+   "establishMaxAmountPledge": "设立最高额质权（参数1：出质人；参数2：质权人）",
+   "maxAmountPledgeEstablished": "最高额质权已设立（参数1：出质人；参数2：质权人）",
+   "applyPledgeSectionProvisions": "适用本节（第十八章第二节 权利质权）的有关规定（参数1：出质人；参数2：质权人）",
+   "applyMaxAmountMortgageProvisionsByReference": "参照适用本编第十七章第二节关于最高额抵押权的有关规定（参数1：出质人；参数2：质权人）"
+  }
+ },
+ "card:g3440": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "质权人保管质押财产的义务与赔偿责任，以及质权人的行为可能致质押财产毁损、灭失时出质人的救济",
+     "rules": [
+      "c432-1a",
+      "c432-1b",
+      "c432-2a",
+      "c432-2b"
+     ]
+    },
+    {
+     "text": "因不可归责于质权人的事由致质押财产可能毁损或价值明显减少时，质权人的保全权（请求提供担保、拍卖变卖并提前清偿或提存）",
+     "rules": [
+      "c433-1",
+      "c433-2"
+     ]
+    },
+    {
+     "text": "质权的放弃及其对债务人以外其他担保人担保责任的影响",
+     "rules": [
+      "c435-1",
+      "c435-2"
+     ]
+    },
+    {
+     "text": "质权的实现、质押财产的返还与折价、变卖的价格标准",
+     "rules": [
+      "c436-1",
+      "c436-2a",
+      "c436-2b",
+      "c436-3"
+     ]
+    },
+    {
+     "text": "出质人请求及时行使质权、请求人民法院拍卖变卖，以及质权人怠于行使的赔偿责任",
+     "rules": [
+      "c437-1",
+      "c437-2",
+      "c437-3"
+     ]
+    },
+    {
+     "text": "汇票、本票、支票、债券、存款单、仓单、提单质权的兑现或提货",
+     "rules": [
+      "c442-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "设立质权，当事人应当采用书面形式订立质押合同",
+     "rules": [
+      "c427-1"
+     ]
+    },
+    {
+     "text": "质权人的行为可能使质押财产毁损、灭失",
+     "rules": [
+      "c432-2a",
+      "c432-2b"
+     ]
+    },
+    {
+     "text": "因不可归责于质权人的事由可能使质押财产毁损或者价值明显减少，足以危害质权人的权利",
+     "rules": [
+      "c433-1",
+      "c433-2"
+     ]
+    },
+    {
+     "text": "债务人以自己的财产出质，质权人放弃该质权",
+     "rules": [
+      "c435-2"
+     ]
+    },
+    {
+     "text": "债务人履行债务，或者出质人提前清偿所担保的债权",
+     "rules": [
+      "c436-1"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务，或者发生当事人约定的实现质权的情形",
+     "rules": [
+      "c436-2a",
+      "c436-2b"
+     ]
+    },
+    {
+     "text": "债务履行期限届满后，质权人不行使质权",
+     "rules": [
+      "c437-1",
+      "c437-2"
+     ]
+    },
+    {
+     "text": "出质人已请求质权人及时行使质权，质权人怠于行使权利造成出质人损害",
+     "rules": [
+      "c437-3"
+     ]
+    },
+    {
+     "text": "质押财产为汇票、本票、支票、债券、存款单、仓单、提单，且其兑现日期或者提货日期先于主债权到期",
+     "rules": [
+      "c442-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "其他担保人承诺仍然提供担保的，即使债务人以自己的财产出质且质权人放弃质权，其他担保人也不在丧失优先受偿权益的范围内免除担保责任",
+     "rules": [
+      "c435-2"
+     ]
+    },
+    {
+     "text": "出质人不提供相应担保的，质权人才可以拍卖、变卖质押财产（请求提供担保为先行程序）",
+     "rules": [
+      "c433-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "质权人负有妥善保管质押财产的义务；因保管不善致使质押财产毁损、灭失的，应当承担赔偿责任",
+     "rules": [
+      "c432-1a",
+      "c432-1b"
+     ]
+    },
+    {
+     "text": "出质人可以请求质权人将质押财产提存，或者请求提前清偿债务并返还质押财产",
+     "rules": [
+      "c432-2a",
+      "c432-2b"
+     ]
+    },
+    {
+     "text": "质权人有权请求出质人提供相应的担保；出质人不提供的，质权人可以拍卖、变卖质押财产，并与出质人协议将所得价款提前清偿债务或者提存",
+     "rules": [
+      "c433-1",
+      "c433-2"
+     ]
+    },
+    {
+     "text": "质权人可以放弃质权；债务人以自己的财产出质而质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任",
+     "rules": [
+      "c435-1",
+      "c435-2"
+     ]
+    },
+    {
+     "text": "债务人履行债务或者出质人提前清偿所担保债权的，质权人应当返还质押财产",
+     "rules": [
+      "c436-1"
+     ]
+    },
+    {
+     "text": "质权人可以与出质人协议以质押财产折价，也可以就拍卖、变卖质押财产所得的价款优先受偿",
+     "rules": [
+      "c436-2a",
+      "c436-2b"
+     ]
+    },
+    {
+     "text": "质押财产折价或者变卖的，应当参照市场价格",
+     "rules": [
+      "c436-3"
+     ]
+    },
+    {
+     "text": "出质人可以请求质权人在债务履行期限届满后及时行使质权；质权人不行使的，出质人可以请求人民法院拍卖、变卖质押财产",
+     "rules": [
+      "c437-1",
+      "c437-2"
+     ]
+    },
+    {
+     "text": "因质权人怠于行使权利造成出质人损害的，由质权人承担赔偿责任",
+     "rules": [
+      "c437-3"
+     ]
+    },
+    {
+     "text": "质权人可以兑现或者提货，并与出质人协议将兑现的价款或者提取的货物提前清偿债务或者提存",
+     "rules": [
+      "c442-1"
+     ]
+    },
+    {
+     "text": "（学理）未经出质人同意，质权人不得擅自使用、出租、处分质押财产，违者应当赔偿因此给出质人造成的损害",
+     "rules": [
+      "c432-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "质权人放弃质权的一般效果（第435条第1句）受第2句限制：债务人以自己财产出质时，其他担保人在丧失优先受偿权益范围内免责，仅在承诺继续担保时例外",
+     "rules": [
+      "c435-2"
+     ]
+    },
+    {
+     "text": "第442条关于证券化权利质权兑现、提货并提前清偿或提存的规定，是第436条第2款一般实现质权规则的特别规定，优先适用",
+     "rules": [
+      "c442-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第427条第2款列举质押合同“一般包括”的条款，属示范性条款，不产生独立义务，未形式化为规则",
+     "rules": []
+    },
+    {
+     "text": "笔记把“未经出质人同意不得擅自使用、出租、处分质押财产”列为质权人义务，第432条只规定妥善保管义务，该义务属学理，本行以 doctrine 规则形式化",
+     "rules": [
+      "c432-doctrine"
+     ]
+    },
+    {
+     "text": "笔记中质权的担保范围（主债权及利息、违约金、损害赔偿金、保管费用、实现质权费用）与质权效力及于从物、孳息、代位物，分别属第389条、第430条等规定，不在本行挂载法条内，未形式化",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称质权合同为诺成合同、交付为质权设立要件，属第429条内容；本行仅就第427条书面形式要求形式化",
+     "rules": []
+    },
+    {
+     "text": "出质人为债务人以外的第三人时对债务人的追偿权，属学理与第392条体系，本行挂载法条未规定，未形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c427-1",
+    "srcs": [
+     "art427-1"
+    ],
+    "body": [
+     "intendsToCreatePledge(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludePledgeContractInWriting(P)"
+     }
+    ],
+    "note": "设立质权，当事人应当采用书面形式订立质押合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c432-1a",
+    "srcs": [
+     "art432-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "safelyKeep(R,K)"
+     }
+    ],
+    "note": "质权人负有妥善保管质押财产的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c432-1b",
+    "srcs": [
+     "art432-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "poorCustodyCausesLoss(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "compensate(R,P,K)"
+     }
+    ],
+    "note": "因保管不善致使质押财产毁损、灭失的，质权人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c432-2a",
+    "srcs": [
+     "art432-2"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "actMayCauseLoss(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "depositPledgedProperty(P,R,K)"
+     }
+    ],
+    "note": "质权人的行为可能使质押财产毁损、灭失的，出质人可以请求将质押财产提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c432-2b",
+    "srcs": [
+     "art432-2"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "actMayCauseLoss(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "demandEarlyPerformanceAndReturn(P,R,K)"
+     }
+    ],
+    "note": "质权人的行为可能使质押财产毁损、灭失的，出质人可以请求提前清偿债务并返还质押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c432-doctrine",
+    "srcs": [
+     "art432-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "usesRentOrDisposesWithoutConsent(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "useRentOrDisposePledgedProperty(R,P,K)"
+     }
+    ],
+    "note": "学理与笔记：未经出质人同意，质权人不得擅自使用、出租、处分质押财产，违者赔偿出质人损害；第432条原文未规定，故为 doctrine",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c433-1",
+    "srcs": [
+     "art433-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "notAttributableToPledgee(R,K)",
+     "mayDamageOrReduceValue(R,K)",
+     "endangersPledgeeRight(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "demandSecurity(R,P,K)"
+     }
+    ],
+    "note": "因不可归责于质权人的事由可能使质押财产毁损或价值明显减少，足以危害质权人权利的，质权人有权请求出质人提供相应的担保",
+    "auth": "npc"
+   },
+   {
+    "key": "c433-2",
+    "srcs": [
+     "art433-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "notAttributableToPledgee(R,K)",
+     "mayDamageOrReduceValue(R,K)",
+     "endangersPledgeeRight(R,K)",
+     "pledgorFailsToProvideSecurity(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "auctionSellPledgedPropertyAndApplyProceeds(R,P,K)"
+     }
+    ],
+    "note": "出质人不提供担保的，质权人可以拍卖、变卖质押财产，并与出质人协议将所得价款提前清偿债务或者提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c435-1",
+    "srcs": [
+     "art435-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "waivePledge(R,K)"
+     }
+    ],
+    "note": "质权人可以放弃质权",
+    "auth": "npc"
+   },
+   {
+    "key": "c435-2",
+    "srcs": [
+     "art435-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "debtorProvidedPledge(D,K)",
+     "waivedPledge(R,K)",
+     "thirdPartySecurityProvider(O)",
+     "~promisedToStillProvideSecurity(O,D)"
+    ],
+    "heads": [
+     "releasedFromSecurityLiability(O,D)"
+    ],
+    "note": "债务人以自己的财产出质而质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任，但承诺仍然提供担保的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c436-1",
+    "srcs": [
+     "art436-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "debtorOf(D,K)",
+     {
+      "or": [
+       "debtPerformed(D)",
+       "earlyPaidSecuredClaim(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "returnPledgedProperty(R,P,K)"
+     }
+    ],
+    "note": "债务人履行债务或者出质人提前清偿所担保债权的，质权人应当返还质押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c436-2a",
+    "srcs": [
+     "art436-2"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "debtorOf(D,K)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(R,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "realizePledgeByAgreement(R,P,K)"
+     }
+    ],
+    "note": "债务人不履行到期债务或者发生约定实现质权情形的，质权人可以与出质人协议以质押财产折价",
+    "auth": "npc"
+   },
+   {
+    "key": "c436-2b",
+    "srcs": [
+     "art436-2"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "debtorOf(D,K)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(R,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "priorityPaymentFrom(R,K)"
+     }
+    ],
+    "note": "债务人不履行到期债务或者发生约定实现质权情形的，质权人可就拍卖、变卖质押财产所得价款优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c436-3",
+    "srcs": [
+     "art436-3"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "pledgeRealizedByValuationOrSale(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "referToMarketPrice(R,K)"
+     }
+    ],
+    "note": "质押财产折价或者变卖的，应当参照市场价格",
+    "auth": "npc"
+   },
+   {
+    "key": "c437-1",
+    "srcs": [
+     "art437-1"
+    ],
+    "body": [
+     "pledgorOf(P,K)",
+     "pledgeRightHolder(R,K)",
+     "debtMatured(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "R",
+      "content": "demandTimelyExercise(P,R,K)"
+     }
+    ],
+    "note": "出质人可以请求质权人在债务履行期限届满后及时行使质权",
+    "auth": "npc"
+   },
+   {
+    "key": "c437-2",
+    "srcs": [
+     "art437-1"
+    ],
+    "body": [
+     "pledgorOf(P,K)",
+     "pledgeRightHolder(R,K)",
+     "debtMatured(D)",
+     "pledgeeFailsToExercise(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestCourtAuctionOrSellPledgedProperty(P,K)"
+     }
+    ],
+    "note": "质权人不行使质权的，出质人可以请求人民法院拍卖、变卖质押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c437-3",
+    "srcs": [
+     "art437-2"
+    ],
+    "body": [
+     "pledgorOf(P,K)",
+     "pledgeRightHolder(R,K)",
+     "demandedTimelyExercise(P,R,K)",
+     "pledgeeSlackCausesLoss(R,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "compensate(R,P,K)"
+     }
+    ],
+    "note": "出质人请求及时行使质权，因质权人怠于行使权利造成出质人损害的，由质权人承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c442-1",
+    "srcs": [
+     "art442-1"
+    ],
+    "body": [
+     "pledgeRightHolder(R,K)",
+     "pledgorOf(P,K)",
+     "negotiableInstrumentPledged(K)",
+     "maturityBeforeClaim(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "collectOrTakeDeliveryAndApplyProceeds(R,P,K)"
+     }
+    ],
+    "note": "汇票、本票、支票、债券、存款单、仓单、提单的兑现或提货日期先于主债权到期的，质权人可以兑现或提货，并与出质人协议将价款或货物提前清偿债务或者提存",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c442-1",
+    "c436-2b",
+    "第442条是证券化权利质权兑现、提货并提前清偿或提存的特别规定，优先于第436条第2款一般实现质权的规则"
+   ]
+  ],
+  "predicates": {
+   "intendsToCreatePledge": "拟设立质权（当事人）",
+   "concludePledgeContractInWriting": "采用书面形式订立质押合同（当事人）",
+   "pledgeRightHolder": "是质权人（质权人，质押财产）",
+   "pledgorOf": "是出质人（出质人，质押财产）",
+   "safelyKeep": "妥善保管质押财产（质权人，质押财产）",
+   "poorCustodyCausesLoss": "因保管不善致使质押财产毁损、灭失（质权人，质押财产）",
+   "actMayCauseLoss": "质权人的行为可能使质押财产毁损、灭失（质权人，质押财产）",
+   "depositPledgedProperty": "请求将质押财产提存（出质人，质权人，质押财产）",
+   "demandEarlyPerformanceAndReturn": "请求提前清偿债务并返还质押财产（出质人，质权人，质押财产）",
+   "usesRentOrDisposesWithoutConsent": "未经出质人同意擅自使用、出租、处分质押财产（质权人，质押财产）",
+   "useRentOrDisposePledgedProperty": "擅自使用、出租、处分质押财产（质权人，出质人，质押财产）",
+   "notAttributableToPledgee": "不可归责于质权人（质权人，质押财产）",
+   "mayDamageOrReduceValue": "可能使质押财产毁损或者价值明显减少（质权人，质押财产）",
+   "endangersPledgeeRight": "足以危害质权人的权利（质权人，质押财产）",
+   "demandSecurity": "请求出质人提供相应的担保（质权人，出质人，质押财产）",
+   "pledgorFailsToProvideSecurity": "出质人不提供相应担保（出质人，质押财产）",
+   "auctionSellPledgedPropertyAndApplyProceeds": "拍卖、变卖质押财产并与出质人协议将所得价款提前清偿债务或者提存（质权人，出质人，质押财产）",
+   "waivePledge": "放弃质权（质权人，质押财产）",
+   "debtorProvidedPledge": "债务人以自己的财产出质（债务人，质押财产）",
+   "waivedPledge": "质权人已放弃该质权（质权人，质押财产）",
+   "debtPerformed": "债务人已履行债务（债务人）",
+   "earlyPaidSecuredClaim": "出质人提前清偿所担保的债权（出质人）",
+   "returnPledgedProperty": "返还质押财产（质权人，出质人，质押财产）",
+   "realizePledgeByAgreement": "与出质人协议以质押财产折价（质权人，出质人，质押财产）",
+   "pledgeRealizedByValuationOrSale": "质押财产已折价或者变卖（质押财产）",
+   "demandTimelyExercise": "请求质权人及时行使质权（出质人，质权人，质押财产）",
+   "pledgeeFailsToExercise": "质权人不行使质权（质权人，质押财产）",
+   "requestCourtAuctionOrSellPledgedProperty": "请求人民法院拍卖、变卖质押财产（出质人，质押财产）",
+   "demandedTimelyExercise": "出质人已请求质权人及时行使质权（出质人，质权人，质押财产）",
+   "pledgeeSlackCausesLoss": "因质权人怠于行使权利造成出质人损害（质权人，出质人，质押财产）",
+   "negotiableInstrumentPledged": "质押财产为汇票、本票、支票、债券、存款单、仓单、提单（质押财产）",
+   "maturityBeforeClaim": "兑现日期或者提货日期先于主债权到期（质押财产）",
+   "collectOrTakeDeliveryAndApplyProceeds": "兑现或者提货并与出质人协议将价款或货物提前清偿债务或者提存（质权人，出质人，质押财产）"
+  }
+ },
+ "card:g3436": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 debtorOf 已在词表中表示“是就该担保财产负担被担保债务的债务人（参数1：债务人；参数2：担保财产）”，不能重新定义为“是质押所担保债务的债务人（债务人，质押财产）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"质权人对质押财产的保管义务与赔偿责任，以及质押财产面临毁损、灭失或价值明显减少风险时出质人与质权人各自的救济手段\",\n        \"rules\": [\"c432-1a\", \"c432-1b\", \"c432-2-escrow\", \"c432-2-return\", \"c433-1\", \"c433-2\"]\n      },\n      {\n        \"text\": \"质权人在质权存续期间未经出质人同意转质，造成质押财产毁损、灭失时的赔偿责任\",\n        \"rules\": [\"c434\"]\n      },\n      {\n        \"text\": \"质权人放弃质权，以及债务人以自己财产出质时放弃质权对其他担保人的影响\",\n        \"rules\": [\"c435-1\", \"c435-2\", \"c435-exc\"]\n      },\n      {\n        \"text\": \"质权的实现、质押财产的返还，以及变价款超过或不足债权数额时的归属与清偿\",\n        \"rules\": [\"c436-1\", \"c436-2\", \"c436-3\", \"c438-1\", \"c438-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"存在质权人、出质人与质押财产（质权人占有质押财产）\",\n        \"rules\": [\"c432-1a\", \"c432-1b\", \"c432-2-escrow\", \"c432-2-return\", \"c433-1\", \"c433-2\", \"c435-1\", \"c436-1\", \"c436-2\", \"c436-3\", \"c438-1\"]\n      },\n      {\n        \"text\": \"因保管不善致使质押财产毁损、灭失\",\n        \"rules\": [\"c432-1b\"]\n      },\n      {\n        \"text\": \"质权人的行为可能使质押财产毁损、灭失\",\n        \"rules\": [\"c432-2-escrow\", \"c432-2-return\"]\n      },\n      {\n        \"text\": \"因不可归责于质权人的事由可能使质押财产毁损或者价值明显减少，足以危害质权人的权利\",\n        \"rules\": [\"c433-1\", \"c433-2\"]\n      },\n      {\n        \"text\": \"出质人不提供相应的担保\",\n        \"rules\": [\"c433-2\"]\n      },\n      {\n        \"text\": \"质权存续期间未经出质人同意转质，并造成质押财产毁损、灭失\",\n        \"rules\": [\"c434\"]\n      },\n      {\n        \"text\": \"债务人以自己的财产出质，质权人放弃该质权，且另有其他担保人为该债务提供担保\",\n        \"rules\": [\"c435-2\"]\n      },\n      {\n        \"text\": \"债务人履行债务，或者出质人提前清偿所担保的债权\",\n        \"rules\": [\"c436-1\"]\n      },\n      {\n        \"text\": \"债务人不履行到期债务，或者发生当事人约定的实现质权的情形\",\n        \"rules\": [\"c436-2\"]\n      },\n      {\n        \"text\": \"质押财产被折价或者变卖\",\n        \"rules\": [\"c436-3\"]\n      },\n      {\n        \"text\": \"质押财产折价或者拍卖、变卖后的价款超过债权数额，或者不足清偿债权数额\",\n        \"rules\": [\"c438-1\", \"c438-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"其他担保人承诺仍然提供担保的，不免除其担保责任（第435条但书）\",\n        \"rules\": [\"c435-exc\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"质权人负有妥善保管质押财产的义务；因保管不善致使质押财产毁损、灭失的，应当承担赔偿责任\",\n        \"rules\": [\"c432-1a\", \"c432-1b\"]\n      },\n      {\n        \"text\": \"出质人可以请求质权人将质押财产提存，或者请求提前清偿债务并返还质押财产\",\n        \"rules\": [\"c432-2-escrow\", \"c432-2-return\"]\n      },\n      {\n        \"text\": \"质权人有权请求出质人提供相应的担保；出质人不提供的，质权人可以拍卖、变卖质押财产，并与出质人协议将所得价款提前清偿债务或者提存\",\n        \"rules\": [\"c433-1\", \"c433-2\"]\n      },\n      {\n        \"text\": \"擅自转质造成质押财产毁损、灭失的，质权人应当承担赔偿责任\",\n        \"rules\": [\"c434\"]\n      },\n      {\n        \"text\": \"质权人可以放弃质权；债务人以自己的财产出质而质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任\",\n        \"rules\": [\"c435-1\", \"c435-2\"]\n      },\n      {\n        \"text\": \"债务人履行债务或者出质人提前清偿所担保债权的，质权人应当返还质押财产\",\n        \"rules\": [\"c436-1\"]\n      },\n      {\n        \"text\": \"质权人可以与出质人协议以质押财产折价，也可以就拍卖、变卖质押财产所得的价款优先受偿\",\n        \"rules\": [\"c436-2\"]\n      },\n      {\n        \"text\": \"质押财产折价或者变卖的，应当参照市场价格\",\n        \"rules\": [\"c436-3\"]\n      },\n      {\n        \"text\": \"价款超过债权数额的部分归出质人所有，不足部分由债务人清偿\",\n        \"rules\": [\"c438-1\", \"c438-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"其他担保人承诺仍然提供担保的，优先于第435条的免责效果，不免除其担保责任\",\n        \"rules\": [\"c435-exc\", \"c435-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第432条第2款是出质人在质权人行为可能致质押财产毁损、灭失时的救济（请求提存或提前清偿并返还）；第433条是不可归责于质权人的事由致质押财产有毁损或价值明显减少风险时质权人的权利；第434条是擅自转质的赔偿责任，三者适用前提不同\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称“质权放弃不影响主债权本身效力”，法条未明文，属学理说明，未形式化\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记体系中的出质人请求质权人及时行使质权（第437条）不在本行挂载法条范围内\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c432-1a\",\n      \"srcs\": [\"art432-1\"],\n      \"body\": [\"pledgee(P,T)\", \"pledgedProperty(T)\", \"pledgor(G,T)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"G\", \"content\": \"keepPledgedPropertySafely(P,T)\"}\n      ],\n      \"note\": \"质权人负有妥善保管质押财产的义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c432-1b\",\n      \"srcs\": [\"art432-1\"],\n      \"body\": [\"pledgee(P,T)\", \"poorCustodyCausesDamageOrLoss(P,T)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"compensatePledgedPropertyLoss(P,T)\"}\n      ],\n      \"note\": \"因保管不善致使质押财产毁损、灭失的，质权人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c432-2-escrow\",\n      \"srcs\": [\"art432-2\"],\n      \"body\": [\"pledgee(P,T)\", \"pledgor(G,T)\", \"actMayCauseDamageOrLoss(P,T)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"G\", \"counterparty\": \"P\", \"content\": \"requestEscrowOfPledgedProperty(G,P,T)\"}\n      ],\n      \"note\": \"质权人的行为可能使质押财产毁损、灭失的，出质人可以请求将质押财产提存\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c432-2-return\",\n      \"srcs\": [\"art432-2\"],\n      \"body\": [\"pledgee(P,T)\", \"pledgor(G,T)\", \"actMayCauseDamageOrLoss(P,T)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"G\", \"counterparty\": \"P\", \"content\": \"requestEarlySatisfactionAndReturn(G,P,T)\"}\n      ],\n      \"note\": \"出质人也可以请求提前清偿债务并返还质押财产（与提存请求二者择一）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c433-1\",\n      \"srcs\": [\"art433-1\"],\n      \"body\": [\n        \"pledgee(P,T)\",\n        \"pledgor(G,T)\",\n        \"causeNotAttributableToPledgee(P,T)\",\n        \"mayDamageOrReduceValue(T)\",\n        \"sufficientToHarmPledgeeRights(P,T)\"\n      ],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"P\", \"counterparty\": \"G\", \"content\": \"demandAdequateSecurity(P,G,T)\"}\n      ],\n      \"note\": \"因不可归责于质权人的事由可能使质押财产毁损或价值明显减少，足以危害质权人权利的，质权人有权请求出质人提供相应的担保\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c433-2\",\n      \"srcs\": [\"art433-1\"],\n      \"body\": [\n        \"pledgee(P,T)\",\n        \"pledgor(G,T)\",\n        \"causeNotAttributableToPledgee(P,T)\",\n        \"mayDamageOrReduceValue(T)\",\n        \"sufficientToHarmPledgeeRights(P,T)\",\n        \"pledgorFailedToProvideSecurity(G,T)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": \"G\", \"content\": \"auctionOrSellAndAgreeEarlySatisfactionOrEscrow(P,G,T)\"}\n      ],\n      \"note\": \"出质人不提供担保的，质权人可以拍卖、变卖质押财产，并与出质人协议将价款提前清偿债务或者提存\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c434\",\n      \"srcs\": [\"art434-1\"],\n      \"body\": [\"pledgee(P,T)\", \"subPledgeWithoutConsent(P,T)\", \"causesDamageOrLoss(P,T)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"compensatePledgedPropertyLoss(P,T)\"}\n      ],\n      \"note\": \"质权存续期间未经出质人同意转质，造成质押财产毁损、灭失的，质权人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c435-1\",\n      \"srcs\": [\"art435-1\"],\n      \"body\": [\"pledgee(P,T)\", \"pledgedProperty(T)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"waivePledge(P,T)\"}\n      ],\n      \"note\": \"质权人可以放弃质权\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c435-2\",\n      \"srcs\": [\"art435-1\"],\n      \"body\": [\n        \"pledgee(P,T)\",\n        \"debtorProvidedPropertySecurity(P)\",\n        \"waivesPledge(P,T)\",\n        \"thirdPartySecurityFor(S,D,Debt)\"\n      ],\n      \"heads\": [\"releasedFromSecurityLiability(S,Debt)\"],\n      \"note\": \"债务人以自己的财产出质，质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c435-exc\",\n      \"srcs\": [\"art435-1\"],\n      \"body\": [\"thirdPartySecurityFor(S,D,Debt)\", \"promisedToStillProvideSecurity(S,Debt)\"],\n      \"heads\": [\"-releasedFromSecurityLiability(S,Debt)\"],\n      \"note\": \"第435条但书：其他担保人承诺仍然提供担保的，不免除其担保责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c436-1\",\n      \"srcs\": [\"art436-1\"],\n      \"body\": [\n        \"pledgee(P,T)\",\n        \"pledgor(G,T)\",\n        \"debtorOf(D,T)\",\n        {\"or\": [\"performedDebt(D)\", \"paidBeforeDebtDue(G,P)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"G\", \"content\": \"returnPledgedProperty(P,T)\"}\n      ],\n      \"note\": \"债务人履行债务或者出质人提前清偿所担保债权的，质权人应当返还质押财产\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c436-2\",\n      \"srcs\": [\"art436-2\"],\n      \"body\": [\n        \"pledgee(P,T)\",\n        \"pledgor(G,T)\",\n        \"debtorOf(D,T)\",\n        {\"or\": [\"failsToPerformDueDebt(D)\", \"agreedPledgeRealizationEventOccurred(P)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": \"G\", \"content\": \"realizePledgeByAgreementOrPriority(P,G,T)\"}\n      ],\n      \"note\": \"债务人不履行到期债务或者发生当事人约定的实现质权情形的，质权人可以与出质人协议折价，也可以就拍卖、变卖所得价款优先受偿\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c436-3\",\n      \"srcs\": [\"art436-3\"],\n      \"body\": [\"pledgee(P,T)\", \"convertOrSellPledgedProperty(P,T)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"referToMarketPriceOnPledge(P,T)\"}\n      ],\n      \"note\": \"质押财产折价或者变卖的，应当参照市场价格\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c438-1\",\n      \"srcs\": [\"art438-1\"],\n      \"body\": [\"pledgee(P,T)\", \"pledgor(G,T)\", \"pledgeProceedsExceedClaim(T)\"],\n      \"heads\": [\"pledgeSurplusBelongsTo(G,T)\"],\n      \"note\": \"质押财产折价或者拍卖、变卖后，价款超过债权数额的部分归出质人所有\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c438-2\",\n      \"srcs\": [\"art438-1\"],\n      \"body\": [\"pledgee(P,T)\", \"debtorOf(D,T)\", \"pledgeProceedsFallShortOfClaim(T)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"D\", \"counterparty\": \"P\", \"content\": \"payDeficiency(D,P)\"}\n      ],\n      \"note\": \"价款不足清偿债权数额的部分，由债务人清偿\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c435-exc\", \"c435-2\", \"第435条但书：其他担保人承诺仍然提供担保的，不发生免除担保责任的效果\"]\n  ],\n  \"predicates\": {\n    \"pledgee\": \"是质押财产的质权人（质权人，质押财产）\",\n    \"pledgedProperty\": \"是质押财产\",\n    \"pledgor\": \"是出质人（出质人，质押财产）\",\n    \"keepPledgedPropertySafely\": \"妥善保管质押财产（质权人，质押财产）\",\n    \"poorCustodyCausesDamageOrLoss\": \"因保管不善致使质押财产毁损、灭失（质权人，质押财产）\",\n    \"compensatePledgedPropertyLoss\": \"赔偿质押财产毁损、灭失的损失（质权人，质押财产）\",\n    \"actMayCauseDamageOrLoss\": \"质权人的行为可能使质押财产毁损、灭失（质权人，质押财产）\",\n    \"requestEscrowOfPledgedProperty\": \"请求将质押财产提存（出质人，质权人，质押财产）\",\n    \"requestEarlySatisfactionAndReturn\": \"请求提前清偿债务并返还质押财产（出质人，质权人，质押财产）\",\n    \"causeNotAttributableToPledgee\": \"该事由不可归责于质权人（质权人，质押财产）\",\n    \"mayDamageOrReduceValue\": \"可能使质押财产毁损或者价值明显减少（质押财产）\",\n    \"sufficientToHarmPledgeeRights\": \"足以危害质权人的权利（质权人，质押财产）\",\n    \"demandAdequateSecurity\": \"请求提供相应的担保（质权人，出质人，质押财产）\",\n    \"pledgorFailedToProvideSecurity\": \"出质人不提供相应的担保（出质人，质押财产）\",\n    \"auctionOrSellAndAgreeEarlySatisfactionOrEscrow\": \"拍卖、变卖质押财产，并与出质人协议将价款提前清偿债务或者提存（质权人，出质人，质押财产）\",\n    \"subPledgeWithoutConsent\": \"在质权存续期间未经出质人同意转质（质权人，质押财产）\",\n    \"causesDamageOrLoss\": \"造成质押财产毁损、灭失（质权人，质押财产）\",\n    \"waivePledge\": \"放弃质权（质权人，质押财产）\",\n    \"waivesPledge\": \"已放弃质权（质权人，质押财产）\",\n    \"debtorOf\": \"是质押所担保债务的债务人（债务人，质押财产）\",\n    \"performedDebt\": \"已履行所担保的债务（债务人）\",\n    \"agreedPledgeRealizationEventOccurred\": \"发生当事人约定的实现质权的情形（质权人）\",\n    \"returnPledgedProperty\": \"返还质押财产（质权人，质押财产）\",\n    \"realizePledgeByAgreementOrPriority\": \"与出质人协议以质押财产折价，或者就拍卖、变卖所得价款优先受偿（质权人，出质人，质押财产）\",\n    \"convertOrSellPledgedProperty\": \"以质押财产折价或者变卖（质权人，质押财产）\",\n    \"referToMarketPriceOnPledge\": \"折价或者变卖质押财产参照市场价格（质权人，质押财产）\",\n    \"pledgeProceedsExceedClaim\": \"质押财产变价款超过债权数额（质押财产）\",\n    \"pledgeProceedsFallShortOfClaim\": \"质押财产变价款不足清偿债权数额（质押财产）\",\n    \"pledgeSurplusBelongsTo\": \"变价款超过债权数额的部分归出质人所有（出质人，质押财产）\",\n    \"payDeficiency\": \"就不足清偿的部分予以清偿（债务人，质权人）\"\n  }\n}"
+ },
+ "art:445": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "以应收账款出质的，质权何时设立；应收账款出质后能否转让，转让所得价款应如何处理",
+     "rules": [
+      "c445-1",
+      "c445-2-prohibit",
+      "c445-2-proceeds"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "以应收账款出质，并已办理出质登记",
+     "rules": [
+      "c445-1"
+     ]
+    },
+    {
+     "text": "应收账款已出质，出质人转让该应收账款并取得价款",
+     "rules": [
+      "c445-2-prohibit",
+      "c445-2-proceeds"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "出质人与质权人协商同意转让的，出质人可以转让出质应收账款（但书）",
+     "rules": [
+      "c445-2-consent"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应收账款质权自办理出质登记时设立；未办理出质登记的，质权不设立（登记生效主义）",
+     "rules": [
+      "c445-1",
+      "c445-1-noreg"
+     ]
+    },
+    {
+     "text": "未经出质人与质权人协商同意，出质人不得转让出质应收账款",
+     "rules": [
+      "c445-2-prohibit"
+     ]
+    },
+    {
+     "text": "出质人转让应收账款所得的价款，应当向质权人提前清偿债务或者提存",
+     "rules": [
+      "c445-2-proceeds"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "协商同意转让的但书优先于“不得转让”的禁止性规定",
+     "rules": [
+      "c445-2-consent",
+      "c445-2-prohibit"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记将应收账款质押归入“登记生效主义”：质权自办理出质登记时设立，与动产质权自出质人交付质押财产时设立不同",
+     "rules": []
+    },
+    {
+     "text": "本条只规定应收账款质权的设立与出质后转让，权利质权可出质范围及一般规则见第440条、第441条，本条不重复规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c445-1",
+    "srcs": [
+     "art445-1"
+    ],
+    "body": [
+     "receivablesPledged(P,E,R)",
+     "pledgeRegistered(R)"
+    ],
+    "heads": [
+     "pledgeEstablished(R)"
+    ],
+    "note": "以应收账款出质的，质权自办理出质登记时设立（登记生效主义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c445-1-noreg",
+    "srcs": [
+     "art445-1"
+    ],
+    "body": [
+     "receivablesPledged(P,E,R)",
+     "-pledgeRegistered(R)"
+    ],
+    "heads": [
+     "-pledgeEstablished(R)"
+    ],
+    "note": "反面解释：未办理出质登记的，应收账款质权不设立（笔记所称登记生效主义），属学理说明",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c445-2-prohibit",
+    "srcs": [
+     "art445-2"
+    ],
+    "body": [
+     "receivablesPledged(P,E,R)",
+     "~agreedToTransferPledgedReceivables(P,E,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "transferPledgedReceivables(P,E,R)"
+     }
+    ],
+    "note": "应收账款出质后不得转让，但出质人与质权人协商同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c445-2-consent",
+    "srcs": [
+     "art445-2"
+    ],
+    "body": [
+     "receivablesPledged(P,E,R)",
+     "agreedToTransferPledgedReceivables(P,E,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "transferPledgedReceivables(P,E,R)"
+     }
+    ],
+    "note": "但书：出质人与质权人协商同意的，出质人可以转让出质应收账款",
+    "auth": "npc"
+   },
+   {
+    "key": "c445-2-proceeds",
+    "srcs": [
+     "art445-2"
+    ],
+    "body": [
+     "receivablesPledged(P,E,R)",
+     "proceedsObtained(P,R,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "earlyRepayOrDeposit(P,E,M)"
+     }
+    ],
+    "note": "出质人转让应收账款所得的价款，应当向质权人提前清偿债务或者提存",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c445-2-consent",
+    "c445-2-prohibit",
+    "但书：出质人与质权人协商同意的除外，同意转让时排除“不得转让”的禁止"
+   ]
+  ],
+  "predicates": {
+   "receivablesPledged": "以应收账款出质（出质人，质权人，应收账款）",
+   "pledgeRegistered": "应收账款出质已办理出质登记（应收账款）",
+   "pledgeEstablished": "质权已设立（应收账款）",
+   "agreedToTransferPledgedReceivables": "出质人与质权人协商同意转让出质应收账款（出质人，质权人，应收账款）",
+   "transferPledgedReceivables": "转让出质应收账款（出质人，质权人，应收账款）",
+   "proceedsObtained": "出质人转让出质应收账款并取得价款（出质人，应收账款，价款）",
+   "earlyRepayOrDeposit": "向质权人提前清偿债务或者提存（出质人，质权人，所得价款）"
+  }
+ }
+}

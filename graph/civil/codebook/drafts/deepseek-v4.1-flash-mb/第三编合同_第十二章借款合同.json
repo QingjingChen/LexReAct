@@ -1,0 +1,1444 @@
+{
+ "art:669": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "订立借款合同时，借款人是否负有按贷款人要求提供与借款有关的业务活动和财务状况真实情况的义务",
+     "rules": [
+      "c669-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方已订立借款合同，一方为借款人、另一方为贷款人",
+     "rules": [
+      "c669-1"
+     ]
+    },
+    {
+     "text": "贷款人提出要求（贷款人未提出要求的，不发生该项提供义务）",
+     "rules": [
+      "c669-1"
+     ]
+    },
+    {
+     "text": "提供的内容限于与借款有关的业务活动和财务状况，且须真实",
+     "rules": [
+      "c669-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "借款人应当向贷款人提供与借款有关的业务活动和财务状况的真实情况",
+     "rules": [
+      "c669-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记将本条定位为借款人的主要义务之一，即“提供真实情况的义务”；本条义务以贷款人提出要求为触发条件，并非无条件的信息披露义务",
+     "rules": []
+    },
+    {
+     "text": "第669条第2款（借款人未按约定用途使用借款时贷款人可停止发放、提前收回借款或解除合同）未挂载，不在本卡范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c669-1",
+    "srcs": [
+     "art669-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "lenderRequestsInfo(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "provideTrueInformationOnBusinessAndFinance(B,K)"
+     }
+    ],
+    "note": "订立借款合同的，借款人应当按照贷款人的要求，提供与借款有关的业务活动和财务状况的真实情况",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "loanContract": "借款合同（参数：合同）",
+   "borrowerOf": "是借款合同的借款人（借款人，合同）",
+   "lenderOf": "是借款合同的贷款人（贷款人，合同）",
+   "lenderRequestsInfo": "贷款人要求借款人提供与借款有关的业务活动和财务状况情况（贷款人，合同）",
+   "provideTrueInformationOnBusinessAndFinance": "提供与借款有关的业务活动和财务状况的真实情况（借款人，合同）"
+  }
+ },
+ "art:671": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款合同中，贷款人未按照约定的日期、数额提供借款，或者借款人未按照约定的日期、数额收取借款的，各自承担何种责任",
+     "rules": [
+      "c671-1",
+      "c671-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在借款合同，贷款人未按照约定的日期、数额提供借款，并因此造成借款人损失",
+     "rules": [
+      "c671-1"
+     ]
+    },
+    {
+     "text": "借款人未按照约定的日期、数额收取借款（受领迟延）",
+     "rules": [
+      "c671-2"
+     ]
+    },
+    {
+     "text": "贷款人负有按期、足额提供借款的义务（笔记列为贷款人的主要义务之一）",
+     "rules": [
+      "c671-duty"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "贷款人未按约定日期、数额提供借款造成借款人损失的，应当赔偿损失",
+     "rules": [
+      "c671-1"
+     ]
+    },
+    {
+     "text": "借款人未按约定日期、数额收取借款的，仍应当按照约定的日期、数额支付利息",
+     "rules": [
+      "c671-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记只讲贷款人“按期、足额提供贷款的义务”及违反后的赔偿责任；第2款针对借款人受领迟延，规定按约定日期、数额支付利息，不以借款人受有损失为要件",
+     "rules": [
+      "c671-2"
+     ]
+    },
+    {
+     "text": "第1款以“造成借款人损失”为要件，属违约损害赔偿；未造成损失时不能依本条请求赔偿",
+     "rules": [
+      "c671-1"
+     ]
+    },
+    {
+     "text": "第2款隐含借款人有按约受领借款的义务，条文本身只规定迟延受领的付息后果，受领义务本身属学理说明",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c671-1",
+    "srcs": [
+     "art671-1"
+    ],
+    "body": [
+     "loanContract(K,L,B)",
+     "failedToProvideLoanOnTimeAndAmount(L,B,K)",
+     "lossCausedByBreach(B,L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "payCompensation(L,B)"
+     }
+    ],
+    "note": "贷款人未按照约定的日期、数额提供借款，造成借款人损失的，应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c671-2",
+    "srcs": [
+     "art671-2"
+    ],
+    "body": [
+     "loanContract(K,L,B)",
+     "failedToCollectLoanOnTimeAndAmount(B,L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterestPerAgreedDateAndAmount(B,L,K)"
+     }
+    ],
+    "note": "借款人未按照约定的日期、数额收取借款的，应当按照约定的日期、数额支付利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c671-duty",
+    "srcs": [
+     "art671-1"
+    ],
+    "body": [
+     "loanContract(K,L,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "provideLoanPerAgreedDateAndAmount(L,B,K)"
+     }
+    ],
+    "note": "笔记将“按期、足额提供贷款”列为贷款人的主要义务；条文本身只规定违反该义务的赔偿责任，本规则据笔记补充主义务，属学理说明",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "loanContract": "是借款合同（合同，贷款人，借款人）",
+   "failedToProvideLoanOnTimeAndAmount": "未按照约定的日期、数额提供借款（贷款人，借款人，合同）",
+   "failedToCollectLoanOnTimeAndAmount": "未按照约定的日期、数额收取借款（借款人，贷款人，合同）",
+   "payInterestPerAgreedDateAndAmount": "按照约定的日期、数额支付利息（借款人，贷款人，合同）",
+   "provideLoanPerAgreedDateAndAmount": "按照约定的日期、数额提供借款（贷款人，借款人，合同）"
+  }
+ },
+ "card:g5151": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款期限没有约定或者约定不明确，且依第510条仍不能确定时，借款人何时返还借款、贷款人可否催告返还",
+     "rules": [
+      "c675-1",
+      "c675-2"
+     ]
+    },
+    {
+     "text": "利息支付期限没有约定或者约定不明确，且依第510条仍不能确定时，利息应在何时支付",
+     "rules": [
+      "c674-2",
+      "c674-3",
+      "c674-4"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款的，利息如何计算",
+     "rules": [
+      "c677"
+     ]
+    },
+    {
+     "text": "借款人能否申请展期，展期的条件是什么",
+     "rules": [
+      "c678-1",
+      "c678-2"
+     ]
+    },
+    {
+     "text": "贷款人的检查监督权与借款人提供财务会计资料的义务",
+     "rules": [
+      "c672-1",
+      "c672-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在借款合同关系，一方为贷款人、一方为借款人",
+     "rules": [
+      "c672-1",
+      "c672-2",
+      "c674-1",
+      "c675-1",
+      "c675-2",
+      "c677",
+      "c678-1",
+      "c678-2"
+     ]
+    },
+    {
+     "text": "当事人约定贷款人可以检查、监督借款的使用情况；约定借款人定期提供财务会计报表或者其他资料",
+     "rules": [
+      "c672-1",
+      "c672-2"
+     ]
+    },
+    {
+     "text": "当事人约定了支付利息的期限",
+     "rules": [
+      "c674-1"
+     ]
+    },
+    {
+     "text": "对支付利息的期限没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c674-2",
+      "c674-3",
+      "c674-4"
+     ]
+    },
+    {
+     "text": "借款期间不满一年；借款期间一年以上；剩余期间不满一年",
+     "rules": [
+      "c674-2",
+      "c674-3",
+      "c674-4"
+     ]
+    },
+    {
+     "text": "对借款期限没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c675-1",
+      "c675-2"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款",
+     "rules": [
+      "c677"
+     ]
+    },
+    {
+     "text": "借款人在还款期限届满前向贷款人申请展期，且贷款人同意",
+     "rules": [
+      "c678-1",
+      "c678-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对提前返还借款的利息计算另有约定的，不按实际借款的期间计算利息",
+     "rules": [
+      "c677"
+     ]
+    },
+    {
+     "text": "依第510条可以通过补充协议、合同相关条款或者交易习惯确定期限的，不适用第674条、第675条的法定补充规则",
+     "rules": [
+      "c674-2",
+      "c674-3",
+      "c674-4",
+      "c675-1",
+      "c675-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "贷款人可以按照约定检查、监督借款的使用情况",
+     "rules": [
+      "c672-1"
+     ]
+    },
+    {
+     "text": "借款人应当按照约定向贷款人定期提供有关财务会计报表或者其他资料",
+     "rules": [
+      "c672-2"
+     ]
+    },
+    {
+     "text": "借款人应当按照约定的期限支付利息",
+     "rules": [
+      "c674-1"
+     ]
+    },
+    {
+     "text": "借款期间不满一年的，应当在返还借款时一并支付利息",
+     "rules": [
+      "c674-2"
+     ]
+    },
+    {
+     "text": "借款期间一年以上的，应当在每届满一年时支付利息；剩余期间不满一年的，应当在返还借款时一并支付",
+     "rules": [
+      "c674-3",
+      "c674-4"
+     ]
+    },
+    {
+     "text": "借款人可以随时返还借款；贷款人可以催告借款人在合理期限内返还",
+     "rules": [
+      "c675-1",
+      "c675-2"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款的，应当按照实际借款的期间计算利息",
+     "rules": [
+      "c677"
+     ]
+    },
+    {
+     "text": "借款人可以在还款期限届满前向贷款人申请展期；贷款人同意的，可以展期",
+     "rules": [
+      "c678-1",
+      "c678-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人对提前还款的利息计算另有约定的，优先于第677条按实际借款期间计算利息的法定规则",
+     "rules": [
+      "c677"
+     ]
+    },
+    {
+     "text": "依第510条可以确定期限的（补充协议、合同相关条款、交易习惯），优先适用该确定结果，不适用第674条、第675条的法定补充规则",
+     "rules": [
+      "c674-2",
+      "c674-3",
+      "c674-4",
+      "c675-1",
+      "c675-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第674条规范的是利息支付期限，第675条规范的是借款本金返还期限，二者适用对象不同，不可混用",
+     "rules": []
+    },
+    {
+     "text": "借款人未按约定期限返还借款应支付逾期利息，该规则规定在第676条，本行未挂载该条，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "第677条针对的是提前返还（期限已定而提前履行）的利息计算，与第675条期限不明时随时返还的自由不同",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“借款人已实际取得借款并使用”列为条件，法条并未规定，故不采；卡片所称交易习惯优先，已由第510条的补充规则条件吸收",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c672-1",
+    "srcs": [
+     "art672-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     "agreedInspectionRight(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "inspectAndSuperviseUse(L,K)"
+     }
+    ],
+    "note": "贷款人按照约定可以检查、监督借款的使用情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c672-2",
+    "srcs": [
+     "art672-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "agreedPeriodicReport(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "provideFinancialStatements(B,K)"
+     }
+    ],
+    "note": "借款人应当按照约定向贷款人定期提供有关财务会计报表或者其他资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c674-1",
+    "srcs": [
+     "art674-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "agreedInterestPaymentPeriod(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterest(B,K)"
+     }
+    ],
+    "note": "借款人应当按照约定的期限支付利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c674-2",
+    "srcs": [
+     "art674-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "interestPaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)",
+     "loanPeriodLessThanOneYear(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterestAtRepayment(B,K)"
+     }
+    ],
+    "note": "利息支付期限未约定或约定不明且依第510条仍不能确定，借款期间不满一年的，应当在返还借款时一并支付利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c674-3",
+    "srcs": [
+     "art674-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "interestPaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)",
+     "loanPeriodOneYearOrMore(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterestAtEachYearEnd(B,K)"
+     }
+    ],
+    "note": "利息支付期限未约定或约定不明且依第510条仍不能确定，借款期间一年以上的，应当在每届满一年时支付利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c674-4",
+    "srcs": [
+     "art674-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "interestPaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)",
+     "loanPeriodOneYearOrMore(K)",
+     "remainingPeriodLessThanOneYear(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterestAtRepayment(B,K)"
+     }
+    ],
+    "note": "借款期间一年以上而剩余期间不满一年的，该剩余期间的利息应当在返还借款时一并支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c675-1",
+    "srcs": [
+     "art675-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "repaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "repayAtAnyTime(B,K)"
+     }
+    ],
+    "note": "借款期限未约定或约定不明且依第510条仍不能确定的，借款人可以随时返还借款",
+    "auth": "npc"
+   },
+   {
+    "key": "c675-2",
+    "srcs": [
+     "art675-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     "repaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "demandRepaymentWithinReasonablePeriod(L,K)"
+     }
+    ],
+    "note": "借款期限未约定或约定不明且依第510条仍不能确定的，贷款人可以催告借款人在合理期限内返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c677",
+    "srcs": [
+     "art677-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "repayEarly(B,K)",
+     "~agreedOtherwiseOnEarlyRepayment(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "interestPerActualPeriod(B,K)"
+     }
+    ],
+    "note": "借款人提前返还借款的，除当事人另有约定外，应当按照实际借款的期间计算利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c678-1",
+    "srcs": [
+     "art678-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "applyForExtension(B,K)"
+     }
+    ],
+    "note": "借款人可以在还款期限届满前向贷款人申请展期",
+    "auth": "npc"
+   },
+   {
+    "key": "c678-2",
+    "srcs": [
+     "art678-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "applyForExtension(B,K)",
+     "lenderConsentsToExtension(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "extendLoanTerm(B,K)"
+     }
+    ],
+    "note": "贷款人同意展期的，可以展期",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "loanContract": "借款合同",
+   "lenderOf": "是贷款人（贷款人，借款合同）",
+   "borrowerOf": "是借款人（借款人，借款合同）",
+   "agreedInspectionRight": "约定贷款人可以检查、监督借款的使用情况（贷款人，合同）",
+   "inspectAndSuperviseUse": "检查、监督借款的使用情况（贷款人，合同）",
+   "agreedPeriodicReport": "约定借款人定期提供财务会计报表或者其他资料（借款人，合同）",
+   "provideFinancialStatements": "向贷款人定期提供有关财务会计报表或者其他资料（借款人，合同）",
+   "agreedInterestPaymentPeriod": "约定了支付利息的期限（合同）",
+   "interestPaymentPeriodUnclear": "对支付利息的期限没有约定或者约定不明确（合同）",
+   "loanPeriodLessThanOneYear": "借款期间不满一年（合同）",
+   "loanPeriodOneYearOrMore": "借款期间一年以上（合同）",
+   "remainingPeriodLessThanOneYear": "剩余期间不满一年（合同）",
+   "payInterest": "支付利息（借款人，合同）",
+   "payInterestAtRepayment": "在返还借款时一并支付利息（借款人，合同）",
+   "payInterestAtEachYearEnd": "在每届满一年时支付利息（借款人，合同）",
+   "repaymentPeriodUnclear": "对借款期限没有约定或者约定不明确（合同）",
+   "repayAtAnyTime": "随时返还借款（借款人，合同）",
+   "demandRepaymentWithinReasonablePeriod": "催告借款人在合理期限内返还借款（贷款人，合同）",
+   "repayEarly": "提前返还借款（借款人，合同）",
+   "interestPerActualPeriod": "按照实际借款的期间计算利息（借款人，合同）",
+   "agreedOtherwiseOnEarlyRepayment": "当事人对提前返还借款的利息计算另有约定（合同）",
+   "applyForExtension": "在还款期限届满前向贷款人申请展期（借款人，合同）",
+   "lenderConsentsToExtension": "贷款人同意展期（合同）",
+   "extendLoanTerm": "展期（借款人，合同）"
+  }
+ },
+ "art:673": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款人未按照约定的借款用途使用借款时，贷款人可以采取何种救济措施",
+     "rules": [
+      "c673-ground",
+      "c673-stop",
+      "c673-recall",
+      "c673-terminate"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在借款合同关系，一方为贷款人、另一方为借款人",
+     "rules": [
+      "c673-stop",
+      "c673-recall",
+      "c673-terminate"
+     ]
+    },
+    {
+     "text": "合同约定了借款用途，借款人将借款用于该约定用途以外的用途，即未按照约定的借款用途使用借款",
+     "rules": [
+      "c673-ground"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "贷款人可以停止发放借款（针对尚未发放的部分）",
+     "rules": [
+      "c673-stop"
+     ]
+    },
+    {
+     "text": "贷款人可以提前收回借款",
+     "rules": [
+      "c673-recall"
+     ]
+    },
+    {
+     "text": "贷款人可以解除合同",
+     "rules": [
+      "c673-terminate"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定贷款人一方的救济手段（停止发放、提前收回、解除合同），未规定借款人改变借款用途的损害赔偿责任，该责任须另依违约责任的一般规定处理；笔记与 LEGO 卡片均未涉及本条，无补充或例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c673-ground",
+    "srcs": [
+     "art673-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "agreedLoanPurpose(K,P)",
+     "usesLoanForOtherPurpose(B,K,P)"
+    ],
+    "heads": [
+     "failsToUseLoanPerAgreedPurpose(B,K)"
+    ],
+    "note": "合同约定了借款用途而借款人将借款用于该用途之外，构成“未按照约定的借款用途使用借款”",
+    "auth": "npc"
+   },
+   {
+    "key": "c673-stop",
+    "srcs": [
+     "art673-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     "failsToUseLoanPerAgreedPurpose(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "stopDisbursingLoan(L,K)"
+     }
+    ],
+    "note": "借款人未按约定用途使用借款的，贷款人可以停止发放借款",
+    "auth": "npc"
+   },
+   {
+    "key": "c673-recall",
+    "srcs": [
+     "art673-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     "failsToUseLoanPerAgreedPurpose(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "recallLoanEarly(L,K)"
+     }
+    ],
+    "note": "借款人未按约定用途使用借款的，贷款人可以提前收回借款",
+    "auth": "npc"
+   },
+   {
+    "key": "c673-terminate",
+    "srcs": [
+     "art673-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     "failsToUseLoanPerAgreedPurpose(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "B",
+      "content": "terminate(L,K)"
+     }
+    ],
+    "note": "借款人未按约定用途使用借款的，贷款人可以解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "loanContract": "借款合同（1个参数：合同）",
+   "lenderOf": "是贷款人（参数1：贷款人；参数2：合同）",
+   "borrowerOf": "是借款人（参数1：借款人；参数2：合同）",
+   "agreedLoanPurpose": "合同约定的借款用途（参数1：合同；参数2：用途）",
+   "usesLoanForOtherPurpose": "将借款用于约定用途以外的用途（参数1：借款人；参数2：合同；参数3：约定用途）",
+   "failsToUseLoanPerAgreedPurpose": "未按照约定的借款用途使用借款（参数1：借款人；参数2：合同）",
+   "stopDisbursingLoan": "停止发放借款（参数1：贷款人；参数2：合同）",
+   "recallLoanEarly": "提前收回借款（参数1：贷款人；参数2：合同）"
+  }
+ },
+ "card:g5149": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 contractParty 已在词表中表示“是合同的当事人（当事人，合同）”，不能重新定义为“是借款合同的当事人（当事人，合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"借款合同的界定，以及借款人到期返还借款并支付利息的义务\",\n        \"rules\": [\"c667-1\", \"c667-oblig\"]\n      },\n      {\n        \"text\": \"借款合同是否应当采用书面形式，以及合同一般包括的内容\",\n        \"rules\": [\"c668-1\"]\n      },\n      {\n        \"text\": \"利息预先在本金中扣除的，如何处理\",\n        \"rules\": [\"c670-for\", \"c670-1\"]\n      },\n      {\n        \"text\": \"利息支付期限有约定、没有约定或者约定不明确时，借款人应如何支付利息\",\n        \"rules\": [\"c674-1\", \"c674-2a\", \"c674-2b\", \"c674-2c\"]\n      },\n      {\n        \"text\": \"借款利率的合法性，以及未约定利息、约定不明确时利息如何确定\",\n        \"rules\": [\"c680-1\", \"c680-1b\", \"c680-2\", \"c680-3\", \"c680-3b\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"存在贷款人向借款人提供借款、借款人到期返还借款并支付利息的合同\",\n        \"rules\": [\"c667-1\"]\n      },\n      {\n        \"text\": \"借款合同已成立，行为人为合同当事人\",\n        \"rules\": [\"c668-1\", \"c667-oblig\"]\n      },\n      {\n        \"text\": \"利息已预先在本金中扣除\",\n        \"rules\": [\"c670-for\", \"c670-1\"]\n      },\n      {\n        \"text\": \"对支付利息的期限有约定\",\n        \"rules\": [\"c674-1\"]\n      },\n      {\n        \"text\": \"对支付利息的期限没有约定或者约定不明确，且依据第510条的规定仍不能确定；借款期间不满一年，或者一年以上，或者一年以上且剩余期间不满一年\",\n        \"rules\": [\"c674-2a\", \"c674-2b\", \"c674-2c\"]\n      },\n      {\n        \"text\": \"借款合同对支付利息没有约定\",\n        \"rules\": [\"c680-2\"]\n      },\n      {\n        \"text\": \"借款合同对支付利息约定不明确，且当事人不能达成补充协议\",\n        \"rules\": [\"c680-3\", \"c680-3b\"]\n      },\n      {\n        \"text\": \"约定的利率违反国家有关规定（高利放贷）\",\n        \"rules\": [\"c680-1\", \"c680-1b\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"自然人之间借款对合同形式另有约定的，可以不采用书面形式\",\n        \"rules\": [\"c668-1\"]\n      },\n      {\n        \"text\": \"自然人之间借款，对支付利息约定不明确且不能达成补充协议的，视为没有利息\",\n        \"rules\": [\"c680-3b\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"借款人应当按照约定的期限返还借款并支付利息\",\n        \"rules\": [\"c667-oblig\"]\n      },\n      {\n        \"text\": \"借款合同应当采用书面形式（自然人之间另有约定的除外）\",\n        \"rules\": [\"c668-1\"]\n      },\n      {\n        \"text\": \"贷款人不得将利息预先在本金中扣除；已扣除的，借款人按照实际借款数额返还借款并计算利息\",\n        \"rules\": [\"c670-for\", \"c670-1\"]\n      },\n      {\n        \"text\": \"借款人按照约定的期限支付利息\",\n        \"rules\": [\"c674-1\"]\n      },\n      {\n        \"text\": \"利息支付期限不能确定的：借款期间不满一年的，在返还借款时一并支付；一年以上的，在每届满一年时支付；剩余期间不满一年的，在返还借款时一并支付\",\n        \"rules\": [\"c674-2a\", \"c674-2b\", \"c674-2c\"]\n      },\n      {\n        \"text\": \"禁止高利放贷，借款的利率不得违反国家有关规定；违反国家有关规定的利率约定无效\",\n        \"rules\": [\"c680-1\", \"c680-1b\"]\n      },\n      {\n        \"text\": \"借款合同对支付利息没有约定的，视为没有利息\",\n        \"rules\": [\"c680-2\"]\n      },\n      {\n        \"text\": \"对支付利息约定不明确且不能达成补充协议的，按照当地或者当事人的交易方式、交易习惯、市场利率等因素确定利息\",\n        \"rules\": [\"c680-3\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"自然人之间借款对利息约定不明确的，视为没有利息，该特别规则优先于按交易方式、交易习惯、市场利率确定利息的一般规则\",\n        \"rules\": [\"c680-3b\", \"c680-3\"]\n      },\n      {\n        \"text\": \"国家关于利率的强制性规定优先于合同约定，依交易方式、交易习惯、市场利率确定利息时亦不得违反\",\n        \"rules\": [\"c680-1b\", \"c680-3\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第668条第2款关于借款合同内容（借款种类、币种、用途、数额、利率、期限和还款方式等）的规定为示范性条款，不产生强制效力，不设规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第680条第2款“对支付利息没有约定”与第3款“对支付利息约定不明确”是两种不同情形，分别适用视为没有利息与依交易方式、交易习惯、市场利率确定利息的规则\",\n        \"rules\": [\"c680-2\", \"c680-3\"]\n      },\n      {\n        \"text\": \"笔记仅涉及借款人按期支付利息的义务与利率规则；第679条（自然人之间借款合同的成立）、第678条（借款展期）不在本条范围内\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c667-1\",\n      \"srcs\": [\"art667-1\"],\n      \"body\": [\"lenderOf(A,K)\", \"borrowerOf(B,K)\"],\n      \"heads\": [\"loanContract(K)\"],\n      \"note\": \"借款合同是借款人向贷款人借款、到期返还借款并支付利息的合同（定义性规则）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c667-oblig\",\n      \"srcs\": [\"art667-1\"],\n      \"body\": [\"loanContract(K)\", \"lenderOf(A,K)\", \"borrowerOf(B,K)\"],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"repayLoanAndPayInterest(B,K)\"\n        }\n      ],\n      \"note\": \"借款人到期应当返还借款并支付利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c668-1\",\n      \"srcs\": [\"art668-1\"],\n      \"body\": [\"loanContract(K)\", \"contractParty(P,K)\", \"~naturalPersonsAgreedOtherwise(K)\"],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"concludeInWriting(P,K)\"\n        }\n      ],\n      \"note\": \"借款合同应当采用书面形式，但自然人之间借款另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c670-for\",\n      \"srcs\": [\"art670-1\"],\n      \"body\": [\"loanContract(K)\", \"lenderOf(A,K)\", \"borrowerOf(B,K)\"],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"deductInterestFromPrincipalInAdvance(A,K)\"\n        }\n      ],\n      \"note\": \"借款的利息不得预先在本金中扣除\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c670-1\",\n      \"srcs\": [\"art670-1\"],\n      \"body\": [\"loanContract(K)\", \"lenderOf(A,K)\", \"borrowerOf(B,K)\", \"interestDeductedInAdvance(K)\"],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"returnActualAmountAndCalculateInterest(B,K)\"\n        }\n      ],\n      \"note\": \"利息预先在本金中扣除的，应当按照实际借款数额返还借款并计算利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c674-1\",\n      \"srcs\": [\"art674-1\"],\n      \"body\": [\"loanContract(K)\", \"lenderOf(A,K)\", \"borrowerOf(B,K)\", \"interestPaymentTermAgreed(K,T)\"],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payInterestWithinAgreedTerm(B,K,T)\"\n        }\n      ],\n      \"note\": \"借款人应当按照约定的期限支付利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c674-2a\",\n      \"srcs\": [\"art674-1\"],\n      \"body\": [\n        \"loanContract(K)\",\n        \"lenderOf(A,K)\",\n        \"borrowerOf(B,K)\",\n        \"interestPaymentTermUnclear(K)\",\n        \"~determinablePerArt510(K)\",\n        \"loanPeriodLessThanOneYear(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payInterestWithRepayment(B,K)\"\n        }\n      ],\n      \"note\": \"支付利息期限未约定或约定不明确且依第510条仍不能确定，借款期间不满一年的，应当在返还借款时一并支付\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c674-2b\",\n      \"srcs\": [\"art674-1\"],\n      \"body\": [\n        \"loanContract(K)\",\n        \"lenderOf(A,K)\",\n        \"borrowerOf(B,K)\",\n        \"interestPaymentTermUnclear(K)\",\n        \"~determinablePerArt510(K)\",\n        \"loanPeriodOneYearOrMore(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payInterestAtEachAnniversary(B,K)\"\n        }\n      ],\n      \"note\": \"支付利息期限不能确定，借款期间一年以上的，应当在每届满一年时支付利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c674-2c\",\n      \"srcs\": [\"art674-1\"],\n      \"body\": [\n        \"loanContract(K)\",\n        \"lenderOf(A,K)\",\n        \"borrowerOf(B,K)\",\n        \"interestPaymentTermUnclear(K)\",\n        \"~determinablePerArt510(K)\",\n        \"loanPeriodOneYearOrMore(K)\",\n        \"remainingPeriodLessThanOneYear(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payInterestWithRepaymentForRemainingPeriod(B,K)\"\n        }\n      ],\n      \"note\": \"借款期间一年以上而剩余期间不满一年的，剩余利息应当在返还借款时一并支付\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c680-1\",\n      \"srcs\": [\"art680-1\"],\n      \"body\": [\"loanContract(K)\", \"lenderOf(A,K)\", \"borrowerOf(B,K)\"],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"chargeUsuriousInterest(A,K)\"\n        }\n      ],\n      \"note\": \"禁止高利放贷，借款的利率不得违反国家有关规定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c680-1b\",\n      \"srcs\": [\"art680-1\"],\n      \"body\": [\"loanContract(K)\", \"usuriousInterestAgreed(K)\"],\n      \"heads\": [\"interestTermVoid(K)\"],\n      \"note\": \"约定利率违反国家有关规定的，该利率约定无效；法条仅规定禁止高利放贷，无效后果系学理与LEGO卡片归纳\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c680-2\",\n      \"srcs\": [\"art680-2\"],\n      \"body\": [\"loanContract(K)\", \"~agreedInterest(K)\"],\n      \"heads\": [\"noInterest(K)\"],\n      \"note\": \"借款合同对支付利息没有约定的，视为没有利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c680-3\",\n      \"srcs\": [\"art680-3\"],\n      \"body\": [\n        \"loanContract(K)\",\n        \"interestAgreedUnclear(K)\",\n        \"~supplementaryAgreementReached(K)\",\n        \"~betweenNaturalPersons(K)\"\n      ],\n      \"heads\": [\"interestDeterminedByUsageMarketRate(K)\"],\n      \"note\": \"对支付利息约定不明确且不能达成补充协议的，按照当地或者当事人的交易方式、交易习惯、市场利率等因素确定利息\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c680-3b\",\n      \"srcs\": [\"art680-3\"],\n      \"body\": [\n        \"loanContract(K)\",\n        \"interestAgreedUnclear(K)\",\n        \"~supplementaryAgreementReached(K)\",\n        \"betweenNaturalPersons(K)\"\n      ],\n      \"heads\": [\"noInterest(K)\"],\n      \"note\": \"自然人之间借款，对支付利息约定不明确且不能达成补充协议的，视为没有利息\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c680-3b\",\n      \"c680-3\",\n      \"自然人之间借款对利息约定不明确的，视为没有利息，属特别规则，优先于按交易方式、交易习惯、市场利率确定利息的一般规则\"\n    ],\n    [\n      \"c680-1b\",\n      \"c680-3\",\n      \"国家关于利率的强制性规定优先于合同约定，依交易方式、交易习惯、市场利率确定利息时亦不得违反，违反的利率约定无效\"\n    ]\n  ],\n  \"predicates\": {\n    \"loanContract\": \"借款合同（借款人向贷款人借款、到期返还借款并支付利息的合同）\",\n    \"lenderOf\": \"是借款合同的贷款人（贷款人，合同）\",\n    \"borrowerOf\": \"是借款合同的借款人（借款人，合同）\",\n    \"contractParty\": \"是借款合同的当事人（当事人，合同）\",\n    \"naturalPersonsAgreedOtherwise\": \"自然人之间借款对合同形式另有约定（合同）\",\n    \"repayLoanAndPayInterest\": \"到期返还借款并支付利息（借款人，合同）\",\n    \"concludeInWriting\": \"采用书面形式订立合同（当事人，合同）\",\n    \"deductInterestFromPrincipalInAdvance\": \"预先在本金中扣除利息（贷款人，合同）\",\n    \"interestDeductedInAdvance\": \"利息已预先在本金中扣除（合同）\",\n    \"returnActualAmountAndCalculateInterest\": \"按照实际借款数额返还借款并计算利息（借款人，合同）\",\n    \"interestPaymentTermAgreed\": \"约定了支付利息的期限（合同，期限）\",\n    \"interestPaymentTermUnclear\": \"对支付利息的期限没有约定或者约定不明确（合同）\",\n    \"loanPeriodLessThanOneYear\": \"借款期间不满一年（合同）\",\n    \"loanPeriodOneYearOrMore\": \"借款期间一年以上（合同）\",\n    \"remainingPeriodLessThanOneYear\": \"剩余期间不满一年（合同）\",\n    \"payInterestWithinAgreedTerm\": \"在约定的期限内支付利息（借款人，合同，期限）\",\n    \"payInterestWithRepayment\": \"在返还借款时一并支付利息（借款人，合同）\",\n    \"payInterestAtEachAnniversary\": \"在每届满一年时支付利息（借款人，合同）\",\n    \"payInterestWithRepaymentForRemainingPeriod\": \"剩余期间不满一年的，在返还借款时一并支付利息（借款人，合同）\",\n    \"chargeUsuriousInterest\": \"高利放贷、收取违反国家有关规定的利率（贷款人，合同）\",\n    \"usuriousInterestAgreed\": \"约定的利率违反国家有关规定（合同）\",\n    \"interestTermVoid\": \"借款合同中的利率约定无效（合同）\",\n    \"agreedInterest\": \"借款合同约定了支付利息（合同）\",\n    \"noInterest\": \"视为没有利息（合同）\",\n    \"interestAgreedUnclear\": \"对支付利息约定不明确（合同）\",\n    \"supplementaryAgreementReached\": \"当事人就利息达成补充协议（合同）\",\n    \"betweenNaturalPersons\": \"自然人之间的借款（合同）\",\n    \"interestDeterminedByUsageMarketRate\": \"按照当地或者当事人的交易方式、交易习惯、市场利率等因素确定利息（合同）\"\n  }\n}"
+ },
+ "card:g5155": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款合同是否必须采用书面形式；自然人之间的借款合同何时成立",
+     "rules": [
+      "c668-1",
+      "c668-exc",
+      "c679-1"
+     ]
+    },
+    {
+     "text": "借款利息如何确定：没有约定、约定不明确、自然人之间借款的区别处理",
+     "rules": [
+      "c680-2",
+      "c680-3",
+      "c680-3-natural"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款时，利息按何期间计算",
+     "rules": [
+      "c677-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在借款合同（借款种类、币种、用途、数额、利率、期限、还款方式等为提示性内容，非成立要件）",
+     "rules": [
+      "c668-1"
+     ]
+    },
+    {
+     "text": "自然人之间的借款合同：双方当事人均为自然人",
+     "rules": [
+      "c679-1"
+     ]
+    },
+    {
+     "text": "贷款人已实际提供借款：现金交付借款人收到、资金到达借款人账户、借款人取得票据权利、借款人取得特定账户实际支配权，或以其他约定方式提供并履行完成",
+     "rules": [
+      "c679-provide"
+     ]
+    },
+    {
+     "text": "借款合同对支付利息没有约定",
+     "rules": [
+      "c680-2"
+     ]
+    },
+    {
+     "text": "借款合同对支付利息约定不明确，且当事人不能达成补充协议",
+     "rules": [
+      "c680-3",
+      "c680-3-natural"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款",
+     "rules": [
+      "c677-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "自然人之间借款对合同形式另有约定的，不要求采用书面形式（第668条第1款但书）",
+     "rules": [
+      "c668-exc"
+     ]
+    },
+    {
+     "text": "当事人对提前返还借款的利息计算另有约定的，从其约定（第677条第1款“除当事人另有约定外”）",
+     "rules": [
+      "c677-1"
+     ]
+    },
+    {
+     "text": "自然人之间借款对利息约定不明确的，视为没有利息，不按交易方式、交易习惯、市场利率确定",
+     "rules": [
+      "c680-3-natural"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "借款合同当事人应当采用书面形式订立合同（自然人之间借款另有约定的除外）",
+     "rules": [
+      "c668-1"
+     ]
+    },
+    {
+     "text": "自然人之间的借款合同为实践性合同，自贷款人提供借款时成立；未实际提供借款的，合同不成立",
+     "rules": [
+      "c679-1",
+      "c679-provide"
+     ]
+    },
+    {
+     "text": "禁止高利放贷，贷款人不得从事高利放贷，约定的借款利率不得违反国家有关规定",
+     "rules": [
+      "c680-1a",
+      "c680-1b"
+     ]
+    },
+    {
+     "text": "对支付利息没有约定的，视为没有利息（无偿借款）",
+     "rules": [
+      "c680-2"
+     ]
+    },
+    {
+     "text": "对支付利息约定不明确且不能达成补充协议的，按照当地或者当事人的交易方式、交易习惯、市场利率等因素确定利息",
+     "rules": [
+      "c680-3"
+     ]
+    },
+    {
+     "text": "借款人提前返还借款的，应当按照实际借款的期间计算利息",
+     "rules": [
+      "c677-1"
+     ]
+    },
+    {
+     "text": "（学理）违反国家有关利率规定的利息部分不受保护",
+     "rules": [
+      "c680-usury"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "自然人之间借款另有约定形式的，排除第668条第1款的书面形式要求",
+     "rules": [
+      "c668-exc"
+     ]
+    },
+    {
+     "text": "自然人之间借款利息约定不明的，视为没有利息，优先于按交易方式、交易习惯、市场利率确定利息的一般规则",
+     "rules": [
+      "c680-3-natural"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第668条第2款关于借款合同内容（种类、币种、用途、数额、利率、期限、还款方式）的规定为提示性条款，不属于效力性规范，欠缺不影响合同成立",
+     "rules": []
+    },
+    {
+     "text": "第680条第2款针对“没有约定”利息，第3款针对“约定不明确”，二者适用前提不同，不可混用",
+     "rules": [
+      "c680-2",
+      "c680-3"
+     ]
+    },
+    {
+     "text": "自然人之间的借款合同为实践性、不要式合同；金融机构借款合同为诺成合同，不以实际提供借款为成立要件，不适用第679条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c668-1",
+    "srcs": [
+     "art668-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "~naturalPersonLoanOtherwiseAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "inWritingForm(K)"
+     }
+    ],
+    "note": "借款合同应当采用书面形式，但自然人之间借款另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c668-exc",
+    "srcs": [
+     "art668-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "naturalPersonLoan(K)",
+     "agreedOtherwiseOnWritingForm(K)"
+    ],
+    "heads": [
+     "naturalPersonLoanOtherwiseAgreed(K)"
+    ],
+    "note": "第668条第1款但书：自然人之间借款对形式另有约定的，不要求书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c677-1",
+    "srcs": [
+     "art677-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "prepaysLoan(B,K)",
+     "~agreedOtherwiseOnPrepaymentInterest(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterestForActualPeriod(B,L,K)"
+     }
+    ],
+    "note": "借款人提前返还借款的，除当事人另有约定外，按实际借款的期间计算利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c679-1",
+    "srcs": [
+     "art679"
+    ],
+    "body": [
+     "naturalPersonLoan(K)",
+     "lenderOf(L,K)",
+     "loanProvided(L,K)"
+    ],
+    "heads": [
+     "loanContractFormed(K)"
+    ],
+    "note": "自然人之间的借款合同为实践性合同，自贷款人提供借款时成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c679-provide",
+    "srcs": [
+     "art679"
+    ],
+    "body": [
+     "lenderOf(L,K)",
+     "borrowerOf(B,K)",
+     {
+      "or": [
+       "cashDeliveredToBorrower(L,B,K)",
+       "fundsArriveBorrowerAccount(L,B,K)",
+       "borrowerAcquiresInstrumentRight(L,B,K)",
+       "borrowerObtainsAccountControl(L,B,K)",
+       "otherAgreedProvisionCompleted(L,B,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "loanProvided(L,K)"
+    ],
+    "note": "笔记列举的“提供借款”情形：现金交付、资金到账、取得票据权利、取得账户支配权、其他约定方式履行完成",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c680-1a",
+    "srcs": [
+     "art680-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "engageInUsuriousLending(L,K)"
+     }
+    ],
+    "note": "禁止高利放贷",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-1b",
+    "srcs": [
+     "art680-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "setInterestRateViolatingStateRules(L,K)"
+     }
+    ],
+    "note": "借款的利率不得违反国家有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-2",
+    "srcs": [
+     "art680-2"
+    ],
+    "body": [
+     "loanContract(K)",
+     "noAgreementOnInterest(K)"
+    ],
+    "heads": [
+     "interestFree(K)"
+    ],
+    "note": "借款合同对支付利息没有约定的，视为没有利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-3",
+    "srcs": [
+     "art680-3"
+    ],
+    "body": [
+     "loanContract(K)",
+     "interestAgreementUnclear(K)",
+     "noSupplementaryAgreementReached(K)",
+     "~naturalPersonLoan(K)"
+    ],
+    "heads": [
+     "interestDeterminedByUsageOrMarketRate(K)"
+    ],
+    "note": "利息约定不明确且不能达成补充协议的，按当地或当事人的交易方式、交易习惯、市场利率等因素确定利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-3-natural",
+    "srcs": [
+     "art680-3"
+    ],
+    "body": [
+     "naturalPersonLoan(K)",
+     "interestAgreementUnclear(K)",
+     "noSupplementaryAgreementReached(K)"
+    ],
+    "heads": [
+     "interestFree(K)"
+    ],
+    "note": "自然人之间借款利息约定不明确的，视为没有利息（第680条第3款后段）",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-usury",
+    "srcs": [
+     "art680-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)",
+     "setInterestRateViolatingStateRules(L,K)"
+    ],
+    "heads": [
+     "usuriousInterestNotProtected(K)"
+    ],
+    "note": "学理与LEGO卡片：违反国家有关利率规定的利息部分不受保护；法条本身仅设禁止性规定，未明定无效后果",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c668-exc",
+    "c668-1",
+    "第668条第1款但书：自然人之间借款另有约定的，不要求书面形式"
+   ],
+   [
+    "c680-3-natural",
+    "c680-3",
+    "第680条第3款后段：自然人之间借款约定不明的，视为没有利息，排除按交易方式、交易习惯、市场利率确定利息"
+   ]
+  ],
+  "predicates": {
+   "loanContract": "借款合同",
+   "naturalPersonLoan": "自然人之间的借款合同（双方当事人均为自然人）",
+   "agreedOtherwiseOnWritingForm": "当事人约定借款合同不采用书面形式（对形式另有约定）",
+   "naturalPersonLoanOtherwiseAgreed": "自然人之间借款对合同形式另有约定，不要求书面形式",
+   "borrowerOf": "是借款合同的借款人",
+   "lenderOf": "是借款合同的贷款人",
+   "prepaysLoan": "提前返还借款（借款人，合同）",
+   "agreedOtherwiseOnPrepaymentInterest": "当事人对提前返还借款的利息计算另有约定",
+   "payInterestForActualPeriod": "按实际借款的期间计算并支付利息（借款人，贷款人，合同）",
+   "loanProvided": "贷款人已实际提供借款（贷款人，合同）",
+   "cashDeliveredToBorrower": "以现金支付且借款人已收到借款（贷款人，借款人，合同）",
+   "fundsArriveBorrowerAccount": "以银行转账、网上电子汇款或网络贷款平台等方式支付且资金到达借款人账户（贷款人，借款人，合同）",
+   "borrowerAcquiresInstrumentRight": "以票据交付且借款人依法取得票据权利（贷款人，借款人，合同）",
+   "borrowerObtainsAccountControl": "出借人将特定资金账户支配权授权给借款人且借款人取得实际支配权（贷款人，借款人，合同）",
+   "otherAgreedProvisionCompleted": "以与借款人约定的其他方式提供借款并实际履行完成（贷款人，借款人，合同）",
+   "loanContractFormed": "借款合同已成立（自然人之间借款自贷款人提供借款时成立）",
+   "engageInUsuriousLending": "从事高利放贷（贷款人，合同）",
+   "setInterestRateViolatingStateRules": "约定的借款利率违反国家有关规定（贷款人，合同）",
+   "noAgreementOnInterest": "借款合同对支付利息没有约定",
+   "interestFree": "视为没有利息（无偿借款）",
+   "interestAgreementUnclear": "借款合同对支付利息约定不明确",
+   "noSupplementaryAgreementReached": "当事人不能就利息达成补充协议",
+   "interestDeterminedByUsageOrMarketRate": "按当地或当事人的交易方式、交易习惯、市场利率等因素确定利息",
+   "usuriousInterestNotProtected": "违反国家利率规定的利息部分不受保护"
+  }
+ },
+ "art:676": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款人未按照约定的期限返还借款的，应否支付逾期利息、按什么标准支付",
+     "rules": [
+      "c676-1",
+      "c676-agreed",
+      "c676-state"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在借款合同，借款人未按照约定的期限返还借款",
+     "rules": [
+      "c676-1"
+     ]
+    },
+    {
+     "text": "当事人对逾期利息有约定，或者国家有关规定对逾期利息有规定",
+     "rules": [
+      "c676-agreed",
+      "c676-state"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "借款人应当向贷款人支付逾期利息",
+     "rules": [
+      "c676-1"
+     ]
+    },
+    {
+     "text": "逾期利息的标准：有约定的按约定确定；无约定或约定不明的，按国家有关规定确定",
+     "rules": [
+      "c676-agreed",
+      "c676-state"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "条文将“按照约定”列在“国家有关规定”之前，有约定时按约定确定逾期利息，优先于国家有关规定",
+     "rules": [
+      "c676-agreed",
+      "c676-state"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规范逾期利息（借款期限届满后未返还借款的利息）；借款期限内的利息支付、返还期限等分别由第674条、第675条规定，不在本行挂载范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c676-1",
+    "srcs": [
+     "art676-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "failsToRepayLoanOnTime(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payOverdueInterest(B,K)"
+     }
+    ],
+    "note": "借款人未按照约定的期限返还借款的，应当支付逾期利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c676-agreed",
+    "srcs": [
+     "art676-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "failsToRepayLoanOnTime(B,K)",
+     "agreedOverdueInterest(K)"
+    ],
+    "heads": [
+     "overdueInterestStandard(B,K)"
+    ],
+    "note": "当事人对逾期利息有约定的，逾期利息按照约定确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c676-state",
+    "srcs": [
+     "art676-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "failsToRepayLoanOnTime(B,K)",
+     "stateProvisionsOnOverdueInterest(K)"
+    ],
+    "heads": [
+     "overdueInterestStandard(B,K)"
+    ],
+    "note": "无约定或者约定不明时，逾期利息按照国家有关规定确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c676-agreed",
+    "c676-state",
+    "条文将“按照约定”列在“国家有关规定”之前，有约定时按约定确定逾期利息"
+   ]
+  ],
+  "predicates": {
+   "loanContract": "借款合同（参数：合同）",
+   "borrowerOf": "是借款合同的借款人（借款人，合同）",
+   "lenderOf": "是借款合同的贷款人（贷款人，合同）",
+   "failsToRepayLoanOnTime": "借款人未按照约定的期限返还借款（借款人，合同）",
+   "payOverdueInterest": "支付逾期利息（借款人，合同）",
+   "agreedOverdueInterest": "当事人对逾期利息有约定（合同）",
+   "stateProvisionsOnOverdueInterest": "国家有关规定对逾期利息有规定（合同）",
+   "overdueInterestStandard": "逾期利息的标准已确定（借款人，合同）"
+  }
+ }
+}

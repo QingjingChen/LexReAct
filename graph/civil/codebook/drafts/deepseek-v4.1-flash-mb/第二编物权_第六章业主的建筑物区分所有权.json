@@ -1,0 +1,1705 @@
+{
+ "art:280": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "业主大会或者业主委员会作出的决定，对业主是否具有法律约束力；业主在何种条件下可以请求人民法院撤销该决定",
+     "rules": [
+      "c280-1",
+      "c280-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "决定由业主大会或者业主委员会作出",
+     "rules": [
+      "c280-1",
+      "c280-2"
+     ]
+    },
+    {
+     "text": "该决定侵害了业主的合法权益，且请求人为受侵害的业主",
+     "rules": [
+      "c280-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "业主大会或者业主委员会的决定，对业主具有法律约束力",
+     "rules": [
+      "c280-1"
+     ]
+    },
+    {
+     "text": "受侵害的业主可以请求人民法院撤销该决定",
+     "rules": [
+      "c280-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定决定的约束力与业主的撤销请求权，未规定决定作出的议事方式、表决程序要求，也未规定撤销后的法律后果；笔记未涉及本条，不得由本条推出程序瑕疵当然导致决定可撤销",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c280-1",
+    "srcs": [
+     "art280-1"
+    ],
+    "body": [
+     "ownersOrgDecision(D,G)",
+     {
+      "or": [
+       "ownersAssembly(G)",
+       "ownersCommittee(G)"
+      ]
+     },
+     "owner(O)"
+    ],
+    "heads": [
+     "bindsOwner(D,O)"
+    ],
+    "note": "业主大会或者业主委员会作出的决定，对业主具有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c280-2",
+    "srcs": [
+     "art280-2"
+    ],
+    "body": [
+     "ownersOrgDecision(D,G)",
+     {
+      "or": [
+       "ownersAssembly(G)",
+       "ownersCommittee(G)"
+      ]
+     },
+     "owner(O)",
+     "infringesOwnerRights(D,O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "requestCourtRevokeDecision(O,D)"
+     }
+    ],
+    "note": "业主大会或者业主委员会作出的决定侵害业主合法权益的，受侵害的业主可以请求人民法院予以撤销",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "ownersAssembly": "是业主大会（1个参数：组织）",
+   "ownersCommittee": "是业主委员会（1个参数：组织）",
+   "ownersOrgDecision": "是业主大会或者业主委员会作出的决定（2个参数：决定，作出者）",
+   "owner": "是（该物业管理区域内的）业主（1个参数：人）",
+   "infringesOwnerRights": "该决定侵害业主的合法权益（2个参数：决定，业主）",
+   "bindsOwner": "该决定对业主具有法律约束力（2个参数：决定，业主）"
+  }
+ },
+ "art:273": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "业主对建筑物专有部分以外的共有部分享有哪些权利、承担哪些义务；放弃权利能否免除义务；转让住宅、经营性用房时共有和共同管理权利是否随之移转",
+     "rules": [
+      "c273-1",
+      "c273-2",
+      "c273-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是建筑物专有部分的业主，客体是该专有部分以外的共有部分",
+     "rules": [
+      "c273-1",
+      "c273-2"
+     ]
+    },
+    {
+     "text": "业主转让建筑物内的住宅、经营性用房（共有部分为该建筑物专有部分以外的部分）",
+     "rules": [
+      "c273-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "业主对共有部分享有权利，同时承担义务，权利义务不可分离",
+     "rules": [
+      "c273-1"
+     ]
+    },
+    {
+     "text": "业主不得以放弃权利为由不履行对共有部分的义务",
+     "rules": [
+      "c273-2"
+     ]
+    },
+    {
+     "text": "转让住宅、经营性用房的，其对共有部分享有的共有和共同管理的权利一并转让，受让人相应取得该权利",
+     "rules": [
+      "c273-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，本条按法条原文形式化；第1款确立共有部分权利义务的不可分性，第2款是从权利随专有部分转让而移转的特别规定，与债权转让中从权利一并移转（第547条）机理相似但适用对象不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c273-1",
+    "srcs": [
+     "art273-1"
+    ],
+    "body": [
+     "ownerOfExclusivePart(O,B)",
+     "commonPartOf(C,B)"
+    ],
+    "heads": [
+     "enjoysRightInCommonPart(O,C)",
+     "bearsObligationForCommonPart(O,C)"
+    ],
+    "note": "业主对专有部分以外的共有部分，享有权利、承担义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c273-2",
+    "srcs": [
+     "art273-1"
+    ],
+    "body": [
+     "ownerOfExclusivePart(O,B)",
+     "commonPartOf(C,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "refuseObligationByWaivingRights(O,C)"
+     }
+    ],
+    "note": "业主不得以放弃权利为由不履行对共有部分的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c273-3",
+    "srcs": [
+     "art273-2"
+    ],
+    "body": [
+     "ownerOfExclusivePart(O,B)",
+     "commonPartOf(C,B)",
+     "transfersUnit(O,U,T)"
+    ],
+    "heads": [
+     "coOwnershipRightTransferredWithUnit(O,T,C)",
+     "enjoysRightInCommonPart(T,C)"
+    ],
+    "note": "业主转让建筑物内的住宅、经营性用房，其对共有部分享有的共有和共同管理的权利一并转让给受让人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "ownerOfExclusivePart": "是建筑物专有部分的业主（业主，建筑物）",
+   "commonPartOf": "是建筑物专有部分以外的共有部分（共有部分，建筑物）",
+   "enjoysRightInCommonPart": "对共有部分享有权利（业主，共有部分）",
+   "bearsObligationForCommonPart": "对共有部分承担义务（业主，共有部分）",
+   "refuseObligationByWaivingRights": "以放弃权利为由不履行对共有部分的义务（业主，共有部分）",
+   "transfersUnit": "转让建筑物内的住宅、经营性用房（业主，房屋，受让人）",
+   "coOwnershipRightTransferredWithUnit": "对共有部分的共有和共同管理权利随专有部分一并转让（出让人，受让人，共有部分）"
+  }
+ },
+ "art:277": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "业主能否设立业主大会、选举业主委员会；其成立的具体条件和程序如何确定；地方人民政府有关部门、居民委员会负有何种义务",
+     "rules": [
+      "c277-1",
+      "c277-2",
+      "c277-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为业主（建筑物区分所有权人）",
+     "rules": [
+      "c277-1"
+     ]
+    },
+    {
+     "text": "涉及业主大会或业主委员会的成立",
+     "rules": [
+      "c277-2",
+      "c277-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "业主可以设立业主大会，选举业主委员会",
+     "rules": [
+      "c277-1"
+     ]
+    },
+    {
+     "text": "业主大会、业主委员会成立的具体条件和程序，依照法律、法规的规定（引致规范，本条不另行规定）",
+     "rules": [
+      "c277-2"
+     ]
+    },
+    {
+     "text": "地方人民政府有关部门、居民委员会应当对设立业主大会和选举业主委员会给予指导和协助",
+     "rules": [
+      "c277-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定业主大会、业主委员会的设立与选举及外部指导协助义务；业主共同决定事项的表决程序、业主委员会的具体职权等由其他条文规定，不在本行材料范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条；LEGO 卡片缺失，故仅依法条原文形式化，未引入学理内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c277-1",
+    "srcs": [
+     "art277-1"
+    ],
+    "body": [
+     "buildingOwner(O,B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "establishOwnersAssembly(O,B)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "electOwnersCommittee(O,B)"
+     }
+    ],
+    "note": "业主可以设立业主大会，选举业主委员会",
+    "auth": "npc"
+   },
+   {
+    "key": "c277-2",
+    "srcs": [
+     "art277-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "ownersAssemblyOf(A,B)",
+       "ownersCommitteeOf(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "establishmentPerLawsAndRegulations(A)"
+    ],
+    "note": "业主大会、业主委员会成立的具体条件和程序，依照法律、法规的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c277-3",
+    "srcs": [
+     "art277-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "ownersAssemblyOf(A,B)",
+       "ownersCommitteeOf(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "localGovernmentDept",
+      "counterparty": "A",
+      "content": "giveGuidanceAndAssistance(localGovernmentDept,A,B)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "residentsCommittee",
+      "counterparty": "A",
+      "content": "giveGuidanceAndAssistance(residentsCommittee,A,B)"
+     }
+    ],
+    "note": "地方人民政府有关部门、居民委员会应当对设立业主大会和选举业主委员会给予指导和协助",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "buildingOwner": "是业主（建筑物区分所有权人）（业主，建筑物）",
+   "ownersAssemblyOf": "是业主大会（业主大会，建筑物）",
+   "ownersCommitteeOf": "是业主委员会（业主委员会，建筑物）",
+   "establishOwnersAssembly": "设立业主大会（业主，建筑物）",
+   "electOwnersCommittee": "选举业主委员会（业主，建筑物）",
+   "giveGuidanceAndAssistance": "对设立业主大会和选举业主委员会给予指导和协助（指导协助主体，业主大会或业主委员会，建筑物）"
+  }
+ },
+ "art:284": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "业主对建筑物及其附属设施可以采取何种管理方式；对建设单位聘请的物业服务企业或者其他管理人，业主能否更换",
+     "rules": [
+      "c284-1a",
+      "c284-1b",
+      "c284-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是业主（建筑物区分所有权人），客体是建筑物及其附属设施",
+     "rules": [
+      "c284-1a",
+      "c284-1b",
+      "c284-2"
+     ]
+    },
+    {
+     "text": "受托管理的主体是物业服务企业或者其他管理人",
+     "rules": [
+      "c284-1b"
+     ]
+    },
+    {
+     "text": "该物业服务企业或者其他管理人系由建设单位聘请",
+     "rules": [
+      "c284-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "业主可以自行管理建筑物及其附属设施",
+     "rules": [
+      "c284-1a"
+     ]
+    },
+    {
+     "text": "业主可以委托物业服务企业或者其他管理人管理",
+     "rules": [
+      "c284-1b"
+     ]
+    },
+    {
+     "text": "对建设单位聘请的物业服务企业或者其他管理人，业主有权依法更换",
+     "rules": [
+      "c284-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只是宣示业主的管理方式选择权与更换权；“依法更换”的具体程序（选聘、解聘物业服务企业属业主共同决定事项，须经第278条规定的表决比例）不在本条，本行未挂载该条，故不写成规则",
+     "rules": []
+    },
+    {
+     "text": "第2款的更换权针对建设单位聘请的管理人（前期物业管理）；业主自行选聘的管理人，依物业服务合同与业主共同决定规则处理，不适用本款",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c284-1a",
+    "srcs": [
+     "art284-1"
+    ],
+    "body": [
+     "condominiumOwner(O,B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "selfManage(O,B)"
+     }
+    ],
+    "note": "业主可以自行管理建筑物及其附属设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c284-1b",
+    "srcs": [
+     "art284-1"
+    ],
+    "body": [
+     "condominiumOwner(O,B)",
+     {
+      "or": [
+       "propertyServiceEnterprise(M)",
+       "otherManager(M)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "entrustManagement(O,M,B)"
+     }
+    ],
+    "note": "业主也可以委托物业服务企业或者其他管理人管理建筑物及其附属设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c284-2",
+    "srcs": [
+     "art284-2"
+    ],
+    "body": [
+     "condominiumOwner(O,B)",
+     "hiredByDeveloper(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "replaceManager(O,M)"
+     }
+    ],
+    "note": "对建设单位聘请的物业服务企业或者其他管理人，业主有权依法更换",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "condominiumOwner": "是业主，即建筑物及其附属设施的区分所有权人（业主，建筑物及其附属设施）",
+   "selfManage": "自行管理建筑物及其附属设施（业主，建筑物及其附属设施）",
+   "entrustManagement": "委托物业服务企业或者其他管理人管理建筑物及其附属设施（业主，管理人，建筑物及其附属设施）",
+   "propertyServiceEnterprise": "是物业服务企业",
+   "otherManager": "是物业服务企业以外的其他管理人",
+   "hiredByDeveloper": "由建设单位聘请（管理人，建筑物及其附属设施）",
+   "replaceManager": "更换管理人（业主，管理人）"
+  }
+ },
+ "art:285": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物业服务企业或者其他管理人（物业服务人）对业主负有哪些管理、受监督与答复义务，对政府依法实施的应急等措施负有何种配合义务",
+     "rules": [
+      "c285-1",
+      "c285-supervise",
+      "c285-reply",
+      "c285-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为物业服务企业或者其他管理人，且系根据业主的委托从事管理",
+     "rules": [
+      "c285-1",
+      "c285-supervise"
+     ]
+    },
+    {
+     "text": "业主就物业服务情况提出询问",
+     "rules": [
+      "c285-reply"
+     ]
+    },
+    {
+     "text": "政府依法实施应急处置措施和其他管理措施",
+     "rules": [
+      "c285-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "依照本法第三编有关物业服务合同的规定，管理建筑区划内的建筑物及其附属设施",
+     "rules": [
+      "c285-1"
+     ]
+    },
+    {
+     "text": "接受业主的监督",
+     "rules": [
+      "c285-supervise"
+     ]
+    },
+    {
+     "text": "及时答复业主对物业服务情况提出的询问",
+     "rules": [
+      "c285-reply"
+     ]
+    },
+    {
+     "text": "执行政府依法实施的应急处置措施和其他管理措施，并积极配合开展相关工作",
+     "rules": [
+      "c285-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条位于第二编第六章（业主的建筑物区分所有权），规范的是物业服务人对业主、对政府的义务；物业服务合同的实体规则在第三编第二十四章，本条仅作指引适用",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外；LEGO 卡片本行缺失，故全部规则以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c285-1",
+    "srcs": [
+     "art285-1"
+    ],
+    "body": [
+     "propertyServiceProvider(P)",
+     "entrustedByOwner(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "manageBuildingAreaFacilitiesPerServiceContract(P)"
+     }
+    ],
+    "note": "物业服务企业或者其他管理人根据业主的委托，依照第三编物业服务合同的规定管理建筑区划内的建筑物及其附属设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c285-supervise",
+    "srcs": [
+     "art285-1"
+    ],
+    "body": [
+     "propertyServiceProvider(P)",
+     "entrustedByOwner(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "acceptSupervision(P,O)"
+     }
+    ],
+    "note": "物业服务人应当接受业主的监督（相应地业主享有监督权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c285-reply",
+    "srcs": [
+     "art285-1"
+    ],
+    "body": [
+     "propertyServiceProvider(P)",
+     "ownerInquiryOnService(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "replyTimelyAndTruthfully(P,O)"
+     }
+    ],
+    "note": "对业主就物业服务情况提出的询问，物业服务人应当及时答复",
+    "auth": "npc"
+   },
+   {
+    "key": "c285-2",
+    "srcs": [
+     "art285-2"
+    ],
+    "body": [
+     "propertyServiceProvider(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "executeGovernmentEmergencyAndOtherMeasures(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "activelyCooperateWithRelatedWork(P)"
+     }
+    ],
+    "note": "物业服务人应当执行政府依法实施的应急处置措施和其他管理措施，并积极配合开展相关工作",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "propertyServiceProvider": "是物业服务企业或者其他管理人（物业服务人）",
+   "entrustedByOwner": "根据业主的委托（物业服务人，业主）",
+   "ownerInquiryOnService": "业主就物业服务情况提出询问（业主，物业服务人）",
+   "acceptSupervision": "接受业主的监督（物业服务人，业主）",
+   "manageBuildingAreaFacilitiesPerServiceContract": "依照第三编物业服务合同的规定管理建筑区划内的建筑物及其附属设施（物业服务人）",
+   "executeGovernmentEmergencyAndOtherMeasures": "执行政府依法实施的应急处置措施和其他管理措施（物业服务人）",
+   "activelyCooperateWithRelatedWork": "积极配合开展相关工作（物业服务人）"
+  }
+ },
+ "card:g2638": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建筑物区分所有权的构成：专有部分所有权、共有权与共同管理权如何界定，专有权行使的边界何在",
+     "rules": [
+      "c271-1",
+      "c271-2",
+      "c271-exclusive",
+      "c271-owner",
+      "c272-1",
+      "c272-2"
+     ]
+    },
+    {
+     "text": "共有部分的范围与车位、车库的归属",
+     "rules": [
+      "c274-road",
+      "c274-green",
+      "c274-other",
+      "c275-1",
+      "c275-2",
+      "c276-1"
+     ]
+    },
+    {
+     "text": "业主共同决定的事项范围与表决规则",
+     "rules": [
+      "c278-1",
+      "c278-2a",
+      "c278-2d",
+      "c278-2b",
+      "c278-2c"
+     ]
+    },
+    {
+     "text": "住宅改变为经营性用房的条件",
+     "rules": [
+      "c279-1",
+      "c279-2",
+      "c279-interested"
+     ]
+    },
+    {
+     "text": "维修资金的归属与使用、共有部分收入归属、费用分摊与收益分配",
+     "rules": [
+      "c281-1",
+      "c281-1b",
+      "c281-1c",
+      "c281-2",
+      "c282",
+      "c283-1",
+      "c283-2"
+     ]
+    },
+    {
+     "text": "业主的义务、业主大会或业主委员会的救济权以及业主个人的民事责任请求权",
+     "rules": [
+      "c286-1a",
+      "c286-1b",
+      "c286-2",
+      "c286-3a",
+      "c286-3b",
+      "c287"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "业主身份：依法登记取得专有部分所有权的人，以及基于商品房买卖合同已合法占有专有部分但尚未办理所有权登记的人（笔记口径）",
+     "rules": [
+      "c271-owner"
+     ]
+    },
+    {
+     "text": "专有部分须构造上可明确区分、利用上可排他独立使用，并能登记为特定业主所有权的客体（笔记口径）",
+     "rules": [
+      "c271-exclusive"
+     ]
+    },
+    {
+     "text": "共有部分：建筑区划内的道路（非城镇公共道路）、绿地（非城镇公共绿地且非明示属于个人）、其他公共场所、公用设施、物业服务用房；占用业主共有道路或其他场地用于停放汽车的车位",
+     "rules": [
+      "c274-road",
+      "c274-green",
+      "c274-other",
+      "c275-2"
+     ]
+    },
+    {
+     "text": "建筑区划内规划用于停放汽车的车位、车库，其归属由当事人通过出售、附赠或者出租等方式约定",
+     "rules": [
+      "c275-1"
+     ]
+    },
+    {
+     "text": "业主共同决定的事项限于第278条第1款列举的九类事项",
+     "rules": [
+      "c278-1"
+     ]
+    },
+    {
+     "text": "业主共同决定事项，须由专有部分面积占比三分之二以上且人数占比三分之二以上的业主参与表决",
+     "rules": [
+      "c278-2a"
+     ]
+    },
+    {
+     "text": "筹集维修资金、改建重建、改变共有部分用途或利用共有部分从事经营活动，属须双四分之三同意的重大事项",
+     "rules": [
+      "c278-2d"
+     ]
+    },
+    {
+     "text": "将住宅改变为经营性用房，须经有利害关系的业主一致同意；本栋内其他业主即为有利害关系，本栋之外的业主须证明房屋价值、生活质量受到或可能受到不利影响（笔记口径）",
+     "rules": [
+      "c279-2",
+      "c279-interested"
+     ]
+    },
+    {
+     "text": "维修资金用于共有部分的维修、更新和改造，须经业主共同决定",
+     "rules": [
+      "c281-1b"
+     ]
+    },
+    {
+     "text": "利用共有部分产生的收入，须扣除合理成本",
+     "rules": [
+      "c282"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "建筑区划内的道路属于城镇公共道路的，不属于业主共有",
+     "rules": [
+      "c274-road"
+     ]
+    },
+    {
+     "text": "建筑区划内的绿地属于城镇公共绿地或者明示属于个人的，不属于业主共有",
+     "rules": [
+      "c274-green"
+     ]
+    },
+    {
+     "text": "违反法律、法规以及管理规约的，业主不得将住宅改变为经营性用房",
+     "rules": [
+      "c279-1"
+     ]
+    },
+    {
+     "text": "费用分摊、收益分配等事项有明确约定的，按约定处理，不按专有部分面积比例确定",
+     "rules": [
+      "c283-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "业主对建筑物内的住宅、经营性用房等专有部分享有所有权，并享有占有、使用、收益和处分的权利",
+     "rules": [
+      "c271-1",
+      "c272-1"
+     ]
+    },
+    {
+     "text": "业主对专有部分以外的共有部分享有共有和共同管理的权利",
+     "rules": [
+      "c271-2"
+     ]
+    },
+    {
+     "text": "业主行使专有部分权利不得危及建筑物的安全，不得损害其他业主的合法权益",
+     "rules": [
+      "c272-2"
+     ]
+    },
+    {
+     "text": "规划用于停放汽车的车位、车库的归属依约定确定，并应当首先满足业主的需要",
+     "rules": [
+      "c275-1",
+      "c276-1"
+     ]
+    },
+    {
+     "text": "重大事项经参与表决面积四分之三以上且人数四分之三以上同意、其他事项经参与表决面积过半数且人数过半数同意的，业主共同决定成立",
+     "rules": [
+      "c278-2b",
+      "c278-2c"
+     ]
+    },
+    {
+     "text": "维修资金属于业主共有，经共同决定可用于共有部分的维修、更新和改造，其筹集、使用情况应当定期公布",
+     "rules": [
+      "c281-1",
+      "c281-1b",
+      "c281-1c"
+     ]
+    },
+    {
+     "text": "紧急情况下需要维修建筑物及其附属设施的，业主大会或者业主委员会可以依法申请使用维修资金",
+     "rules": [
+      "c281-2"
+     ]
+    },
+    {
+     "text": "建设单位、物业服务企业或者其他管理人等利用共有部分产生的收入，扣除合理成本后属于业主共有",
+     "rules": [
+      "c282"
+     ]
+    },
+    {
+     "text": "费用分摊、收益分配有约定的按约定；没有约定或者约定不明确的，按业主专有部分面积所占比例确定",
+     "rules": [
+      "c283-1",
+      "c283-2"
+     ]
+    },
+    {
+     "text": "业主应当遵守法律、法规以及管理规约，相关行为应当符合节约资源、保护生态环境的要求；对物业服务企业或者其他管理人执行政府依法实施的应急处置措施和其他管理措施，应当依法予以配合",
+     "rules": [
+      "c286-1a",
+      "c286-1b"
+     ]
+    },
+    {
+     "text": "业主大会或者业主委员会对任意弃置垃圾、排放污染物或者噪声、违反规定饲养动物、违章搭建、侵占通道、拒付物业费等损害他人合法权益的行为，有权请求行为人停止侵害、排除妨碍、消除危险、恢复原状、赔偿损失",
+     "rules": [
+      "c286-2"
+     ]
+    },
+    {
+     "text": "业主或者其他行为人拒不履行相关义务的，有关当事人可以向有关行政主管部门报告或者投诉，有关行政主管部门应当依法处理",
+     "rules": [
+      "c286-3a",
+      "c286-3b"
+     ]
+    },
+    {
+     "text": "业主对建设单位、物业服务企业或者其他管理人以及其他业主侵害自己合法权益的行为，有权请求其承担民事责任",
+     "rules": [
+      "c287"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "筹集维修资金、改建重建、改变共有部分用途或利用共有部分经营等重大事项适用双四分之三规则，优先于一般事项的双过半规则",
+     "rules": [
+      "c278-2b",
+      "c278-2c"
+     ]
+    },
+    {
+     "text": "占用业主共有道路或者其他场地用于停放汽车的车位法定属于业主共有，不适用当事人约定归属的规则",
+     "rules": [
+      "c275-2",
+      "c275-1"
+     ]
+    },
+    {
+     "text": "费用分摊、收益分配有明确约定的，按约定处理，排除按专有部分面积比例确定的规则",
+     "rules": [
+      "c283-1",
+      "c283-2"
+     ]
+    },
+    {
+     "text": "紧急情况下业主大会或者业主委员会可依法申请使用维修资金，不受“经业主共同决定”这一前置条件的限制",
+     "rules": [
+      "c281-2",
+      "c281-1b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记中“不得以放弃权利不履行义务”（第273条）与业主大会、业主委员会决定侵害业主合法权益可请求人民法院撤销（第280条）不在本行挂载法条内，未予形式化",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“改变共有部分用途或从事经营需经有利害关系业主一致同意”，与条文不符：第279条的一致同意仅针对住宅改变为经营性用房；改变共有部分用途属第278条第1款第八项，适用双四分之三规则",
+     "rules": [
+      "c278-2d",
+      "c279-2"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称专有部分转让、继承或抵押时共有权与管理权一并转移、专有权具有主导性，条文未作规定，属学理表述",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c271-1",
+    "srcs": [
+     "art271-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "exclusivePart(U)"
+    ],
+    "heads": [
+     "own(O,U)"
+    ],
+    "note": "业主对建筑物内的住宅、经营性用房等专有部分享有所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c271-2",
+    "srcs": [
+     "art271-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "commonPart(C)"
+    ],
+    "heads": [
+     "coOwn(O,C)",
+     "jointManagementRight(O,C)"
+    ],
+    "note": "业主对专有部分以外的共有部分享有共有和共同管理的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c271-exclusive",
+    "srcs": [
+     "art271-1"
+    ],
+    "body": [
+     "structurallyIndependent(U)",
+     "functionallyIndependent(U)",
+     "registrableAsOwnership(U)"
+    ],
+    "heads": [
+     "exclusivePart(U)"
+    ],
+    "note": "笔记口径：专有部分须构造上可明确区分、利用上可排他独立使用、并能登记为特定业主所有权的客体",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c271-owner",
+    "srcs": [
+     "art271-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "registeredAsOwner(O,U)",
+       "lawfullyPossessesUnderSale(O,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "unitOwner(O,U)"
+    ],
+    "note": "笔记口径：依法登记取得专有部分所有权的人，以及基于商品房买卖合同已合法占有专有部分但尚未登记的人，均可认定为业主",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c272-1",
+    "srcs": [
+     "art272-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "exclusivePart(U)"
+    ],
+    "heads": [
+     "possessUseProfitDispose(O,U)"
+    ],
+    "note": "业主对其建筑物专有部分享有占有、使用、收益和处分的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c272-2",
+    "srcs": [
+     "art272-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "exclusivePart(U)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "endangerBuildingSafety(O)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "harmsOthersRights(O)"
+     }
+    ],
+    "note": "业主行使专有部分权利不得危及建筑物的安全，不得损害其他业主的合法权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c274-road",
+    "srcs": [
+     "art274-1"
+    ],
+    "body": [
+     "roadInZone(R)",
+     "~urbanPublicRoad(R)"
+    ],
+    "heads": [
+     "coOwnedByOwners(R)"
+    ],
+    "note": "建筑区划内的道路属于业主共有，但属于城镇公共道路的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c274-green",
+    "srcs": [
+     "art274-1"
+    ],
+    "body": [
+     "greenSpaceInZone(G)",
+     "~urbanPublicGreenSpace(G)",
+     "~expresslyIndividual(G)"
+    ],
+    "heads": [
+     "coOwnedByOwners(G)"
+    ],
+    "note": "建筑区划内的绿地属于业主共有，但属于城镇公共绿地或者明示属于个人的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c274-other",
+    "srcs": [
+     "art274-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "otherPublicSiteOrFacility(F)",
+       "propertyServiceRoom(F)"
+      ]
+     }
+    ],
+    "heads": [
+     "coOwnedByOwners(F)"
+    ],
+    "note": "建筑区划内的其他公共场所、公用设施和物业服务用房属于业主共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c275-1",
+    "srcs": [
+     "art275-1"
+    ],
+    "body": [
+     "plannedParkingSpace(P)"
+    ],
+    "heads": [
+     "attributionByAgreement(P)"
+    ],
+    "note": "规划用于停放汽车的车位、车库的归属，由当事人通过出售、附赠或者出租等方式约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c275-2",
+    "srcs": [
+     "art275-2"
+    ],
+    "body": [
+     "parkingSpaceOnCommonRoad(P)"
+    ],
+    "heads": [
+     "coOwnedByOwners(P)"
+    ],
+    "note": "占用业主共有的道路或者其他场地用于停放汽车的车位，属于业主共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c276-1",
+    "srcs": [
+     "art276-1"
+    ],
+    "body": [
+     "plannedParkingSpace(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "developer",
+      "counterparty": null,
+      "content": "satisfyOwnersNeedsFirst(P)"
+     }
+    ],
+    "note": "建筑区划内规划用于停放汽车的车位、车库应当首先满足业主的需要",
+    "auth": "npc"
+   },
+   {
+    "key": "c278-1",
+    "srcs": [
+     "art278-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "rulesOfProcedureMatter(M)",
+       "managementCovenantMatter(M)",
+       "electCommitteeMatter(M)",
+       "hirePropertyServiceMatter(M)",
+       "useMaintenanceFundMatter(M)",
+       "raiseMaintenanceFundMatter(M)",
+       "rebuildMatter(M)",
+       "changeCommonPartUseMatter(M)",
+       "otherMajorCommonMatter(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "matterForJointDecision(M)"
+    ],
+    "note": "第278条第1款列举的九类事项由业主共同决定",
+    "auth": "npc"
+   },
+   {
+    "key": "c278-2a",
+    "srcs": [
+     "art278-2"
+    ],
+    "body": [
+     "matterForJointDecision(M)"
+    ],
+    "heads": [
+     "requiresTwoThirdsParticipation(M)"
+    ],
+    "note": "业主共同决定事项，应当由专有部分面积占比三分之二以上且人数占比三分之二以上的业主参与表决",
+    "auth": "npc"
+   },
+   {
+    "key": "c278-2d",
+    "srcs": [
+     "art278-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "raiseMaintenanceFundMatter(M)",
+       "rebuildMatter(M)",
+       "changeCommonPartUseMatter(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "matterRequiringThreeQuarters(M)"
+    ],
+    "note": "筹集维修资金、改建重建、改变共有部分用途或利用共有部分经营，属须双四分之三同意的重大事项",
+    "auth": "npc"
+   },
+   {
+    "key": "c278-2b",
+    "srcs": [
+     "art278-2"
+    ],
+    "body": [
+     "matterRequiringThreeQuarters(M)",
+     "participationThresholdMet(M)",
+     "threeQuartersConsent(M)"
+    ],
+    "heads": [
+     "jointDecisionMade(M)"
+    ],
+    "note": "第六项至第八项事项，经参与表决专有部分面积四分之三以上且参与表决人数四分之三以上同意的，共同决定成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c278-2c",
+    "srcs": [
+     "art278-2"
+    ],
+    "body": [
+     "matterForJointDecision(M)",
+     "-matterRequiringThreeQuarters(M)",
+     "participationThresholdMet(M)",
+     "majorityConsent(M)"
+    ],
+    "heads": [
+     "jointDecisionMade(M)"
+    ],
+    "note": "其他事项，经参与表决专有部分面积过半数且参与表决人数过半数同意的，共同决定成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c279-1",
+    "srcs": [
+     "art279-1"
+    ],
+    "body": [
+     "unitOwner(O,H)",
+     "residential(H)",
+     "violatesLawRegulationOrCovenant(O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "changeResidentialToBusiness(O,H)"
+     }
+    ],
+    "note": "业主不得违反法律、法规以及管理规约，将住宅改变为经营性用房",
+    "auth": "npc"
+   },
+   {
+    "key": "c279-2",
+    "srcs": [
+     "art279-1"
+    ],
+    "body": [
+     "unitOwner(O,H)",
+     "residential(H)",
+     "changeResidentialToBusiness(O,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "obtainInterestedOwnerConsent(O,H)"
+     }
+    ],
+    "note": "将住宅改变为经营性用房的，除遵守法律、法规以及管理规约外，应当经有利害关系的业主一致同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c279-interested",
+    "srcs": [
+     "art279-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "inSameBuilding(O2,O)",
+       "provesAdverseImpact(O2,O)"
+      ]
+     }
+    ],
+    "heads": [
+     "interestedOwner(O2,O)"
+    ],
+    "note": "笔记口径：本栋建筑物内的其他业主为有利害关系；本栋之外的业主须证明房屋价值、生活质量受到或可能受到不利影响",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c281-1",
+    "srcs": [
+     "art281-1"
+    ],
+    "body": [
+     "maintenanceFund(F)"
+    ],
+    "heads": [
+     "coOwnedByOwners(F)"
+    ],
+    "note": "建筑物及其附属设施的维修资金属于业主共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c281-1b",
+    "srcs": [
+     "art281-1"
+    ],
+    "body": [
+     "maintenanceFund(F)",
+     "jointDecisionMade(M)",
+     "useMaintenanceFundMatter(M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "owners",
+      "counterparty": null,
+      "content": "useMaintenanceFundForRepair(F)"
+     }
+    ],
+    "note": "经业主共同决定，维修资金可以用于电梯、屋顶、外墙、无障碍设施等共有部分的维修、更新和改造",
+    "auth": "npc"
+   },
+   {
+    "key": "c281-1c",
+    "srcs": [
+     "art281-1"
+    ],
+    "body": [
+     "maintenanceFund(F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "ownersAssemblyOrCommittee",
+      "counterparty": null,
+      "content": "publishFundInfo(F)"
+     }
+    ],
+    "note": "建筑物及其附属设施维修资金的筹集、使用情况应当定期公布",
+    "auth": "npc"
+   },
+   {
+    "key": "c281-2",
+    "srcs": [
+     "art281-2"
+    ],
+    "body": [
+     "emergencyRepairNeeded(B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "ownersAssemblyOrCommittee",
+      "counterparty": null,
+      "content": "applyToUseMaintenanceFund(B)"
+     }
+    ],
+    "note": "紧急情况下需要维修建筑物及其附属设施的，业主大会或者业主委员会可以依法申请使用维修资金",
+    "auth": "npc"
+   },
+   {
+    "key": "c282",
+    "srcs": [
+     "art282-1"
+    ],
+    "body": [
+     "commonPartIncome(I)"
+    ],
+    "heads": [
+     "coOwnedByOwners(I)"
+    ],
+    "note": "建设单位、物业服务企业或者其他管理人等利用业主共有部分产生的收入，在扣除合理成本之后属于业主共有",
+    "auth": "npc"
+   },
+   {
+    "key": "c283-1",
+    "srcs": [
+     "art283-1"
+    ],
+    "body": [
+     "costSharingOrIncomeDistribution(M)",
+     "agreedOnCostSharing(M)"
+    ],
+    "heads": [
+     "costSharingPerAgreement(M)"
+    ],
+    "note": "费用分摊、收益分配等事项有约定的，按照约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c283-2",
+    "srcs": [
+     "art283-1"
+    ],
+    "body": [
+     "costSharingOrIncomeDistribution(M)",
+     "~agreedOnCostSharing(M)"
+    ],
+    "heads": [
+     "costSharingByExclusiveAreaShare(M)"
+    ],
+    "note": "没有约定或者约定不明确的，按照业主专有部分面积所占比例确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c286-1a",
+    "srcs": [
+     "art286-1"
+    ],
+    "body": [
+     "unitOwner(O,U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "complyWithLawAndCovenant(O)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "conserveResourcesAndProtectEnvironment(O)"
+     }
+    ],
+    "note": "业主应当遵守法律、法规以及管理规约，相关行为应当符合节约资源、保护生态环境的要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c286-1b",
+    "srcs": [
+     "art286-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "executesGovernmentEmergencyMeasures(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "cooperateWithEmergencyMeasures(O)"
+     }
+    ],
+    "note": "对于物业服务企业或者其他管理人执行政府依法实施的应急处置措施和其他管理措施，业主应当依法予以配合",
+    "auth": "npc"
+   },
+   {
+    "key": "c286-2",
+    "srcs": [
+     "art286-2"
+    ],
+    "body": [
+     "ownersOrg(A)",
+     "harmfulActByOwner(B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimCessationRemovalRestorationAndDamages(B)"
+     }
+    ],
+    "note": "业主大会或者业主委员会对任意弃置垃圾、排放污染物或者噪声、违反规定饲养动物、违章搭建、侵占通道、拒付物业费等损害他人合法权益的行为，有权依照法律、法规以及管理规约请求行为人停止侵害、排除妨碍、消除危险、恢复原状、赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c286-3a",
+    "srcs": [
+     "art286-3"
+    ],
+    "body": [
+     "refusesToPerformDuty(B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "concernedParty",
+      "counterparty": null,
+      "content": "reportOrComplain(B)"
+     }
+    ],
+    "note": "业主或者其他行为人拒不履行相关义务的，有关当事人可以向有关行政主管部门报告或者投诉",
+    "auth": "npc"
+   },
+   {
+    "key": "c286-3b",
+    "srcs": [
+     "art286-3"
+    ],
+    "body": [
+     "refusesToPerformDuty(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "administrativeDept",
+      "counterparty": null,
+      "content": "handlePerLaw(B)"
+     }
+    ],
+    "note": "有关行政主管部门应当依法处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c287",
+    "srcs": [
+     "art287-1"
+    ],
+    "body": [
+     "unitOwner(O,U)",
+     "infringesOwnerRights(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "A",
+      "content": "claimPerformanceFrom(O,A)"
+     }
+    ],
+    "note": "业主对建设单位、物业服务企业或者其他管理人以及其他业主侵害自己合法权益的行为，有权请求其承担民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c275-2",
+    "c275-1",
+    "占用业主共有道路或者其他场地用于停放汽车的车位法定属于业主共有，不适用当事人约定归属的规则"
+   ],
+   [
+    "c278-2b",
+    "c278-2c",
+    "筹集维修资金、改建重建、改变共有部分用途或利用共有部分经营等重大事项适用双四分之三规则，优先于一般事项的双过半规则"
+   ],
+   [
+    "c283-1",
+    "c283-2",
+    "费用分摊、收益分配有明确约定的按约定处理，排除按专有部分面积比例确定的规则"
+   ],
+   [
+    "c281-2",
+    "c281-1b",
+    "紧急情况下业主大会或者业主委员会可依法申请使用维修资金，不受“经业主共同决定”这一前置条件的限制"
+   ]
+  ],
+  "predicates": {
+   "unitOwner": "是业主，即对建筑物专有部分享有所有权的区分所有权人（业主，专有部分）",
+   "exclusivePart": "是专有部分（构造上、利用上可独立并登记为特定业主所有的建筑物部分）",
+   "commonPart": "是专有部分以外的共有部分",
+   "coOwn": "对共有部分享有共有权（业主，共有部分）",
+   "jointManagementRight": "对共有部分享有共同管理的权利（业主，共有部分）",
+   "structurallyIndependent": "构造上可明确区分（物理上的独立性）",
+   "functionallyIndependent": "利用上可排他独立使用（功能上的独立性）",
+   "registrableAsOwnership": "能够登记成为特定业主所有权的客体",
+   "registeredAsOwner": "依法登记取得专有部分所有权（业主，专有部分）",
+   "lawfullyPossessesUnderSale": "基于商品房买卖合同已合法占有专有部分但尚未办理所有权登记（占有人，专有部分）",
+   "endangerBuildingSafety": "危及建筑物的安全（业主）",
+   "roadInZone": "是建筑区划内的道路",
+   "urbanPublicRoad": "是城镇公共道路",
+   "greenSpaceInZone": "是建筑区划内的绿地",
+   "urbanPublicGreenSpace": "是城镇公共绿地",
+   "expresslyIndividual": "明示属于个人",
+   "otherPublicSiteOrFacility": "是建筑区划内的其他公共场所、公用设施",
+   "propertyServiceRoom": "是物业服务用房",
+   "coOwnedByOwners": "属于业主共有",
+   "plannedParkingSpace": "是建筑区划内规划用于停放汽车的车位、车库",
+   "attributionByAgreement": "归属由当事人通过出售、附赠或者出租等方式约定",
+   "parkingSpaceOnCommonRoad": "是占用业主共有的道路或者其他场地用于停放汽车的车位",
+   "satisfyOwnersNeedsFirst": "首先满足业主的需要（车位、车库）",
+   "rulesOfProcedureMatter": "是制定和修改业主大会议事规则的事项",
+   "managementCovenantMatter": "是制定和修改管理规约的事项",
+   "electCommitteeMatter": "是选举业主委员会或者更换业主委员会成员的事项",
+   "hirePropertyServiceMatter": "是选聘和解聘物业服务企业或者其他管理人的事项",
+   "useMaintenanceFundMatter": "是使用建筑物及其附属设施维修资金的事项",
+   "raiseMaintenanceFundMatter": "是筹集建筑物及其附属设施维修资金的事项",
+   "rebuildMatter": "是改建、重建建筑物及其附属设施的事项",
+   "changeCommonPartUseMatter": "是改变共有部分用途或者利用共有部分从事经营活动的事项",
+   "otherMajorCommonMatter": "是有关共有和共同管理权利的其他重大事项",
+   "matterForJointDecision": "是应当由业主共同决定的事项",
+   "requiresTwoThirdsParticipation": "须由专有部分面积占比三分之二以上且人数占比三分之二以上的业主参与表决",
+   "matterRequiringThreeQuarters": "是须经双四分之三同意的重大事项",
+   "participationThresholdMet": "参与表决的业主达到专有部分面积占比三分之二以上且人数占比三分之二以上的门槛",
+   "threeQuartersConsent": "经参与表决专有部分面积四分之三以上且参与表决人数四分之三以上的业主同意",
+   "majorityConsent": "经参与表决专有部分面积过半数且参与表决人数过半数的业主同意",
+   "jointDecisionMade": "业主共同决定成立",
+   "residential": "是住宅",
+   "violatesLawRegulationOrCovenant": "违反法律、法规以及管理规约（业主）",
+   "changeResidentialToBusiness": "将住宅改变为经营性用房（业主，房屋）",
+   "obtainInterestedOwnerConsent": "取得有利害关系的业主一致同意（业主，房屋）",
+   "interestedOwner": "是有利害关系的业主（其他业主，改变用途的业主）",
+   "inSameBuilding": "与本栋建筑物内的业主同属一栋（其他业主，业主）",
+   "provesAdverseImpact": "证明其房屋价值、生活质量受到或者可能受到不利影响（其他业主，业主）",
+   "maintenanceFund": "是建筑物及其附属设施的维修资金",
+   "useMaintenanceFundForRepair": "将维修资金用于共有部分的维修、更新和改造",
+   "publishFundInfo": "定期公布维修资金的筹集、使用情况",
+   "emergencyRepairNeeded": "紧急情况下需要维修建筑物及其附属设施",
+   "applyToUseMaintenanceFund": "依法申请使用建筑物及其附属设施的维修资金",
+   "commonPartIncome": "是利用业主共有部分产生的收入",
+   "costSharingOrIncomeDistribution": "是费用分摊、收益分配等事项",
+   "agreedOnCostSharing": "就该事项有约定且约定明确",
+   "costSharingPerAgreement": "按照约定确定费用分摊、收益分配",
+   "costSharingByExclusiveAreaShare": "按照业主专有部分面积所占比例确定费用分摊、收益分配",
+   "complyWithLawAndCovenant": "遵守法律、法规以及管理规约",
+   "conserveResourcesAndProtectEnvironment": "行为符合节约资源、保护生态环境的要求",
+   "cooperateWithEmergencyMeasures": "配合执行政府依法实施的应急处置措施和其他管理措施",
+   "executesGovernmentEmergencyMeasures": "执行政府依法实施的应急处置措施和其他管理措施（物业服务企业或者其他管理人）",
+   "harmfulActByOwner": "任意弃置垃圾、排放污染物或者噪声、违反规定饲养动物、违章搭建、侵占通道、拒付物业费等损害他人合法权益的行为",
+   "claimCessationRemovalRestorationAndDamages": "请求停止侵害、排除妨碍、消除危险、恢复原状、赔偿损失",
+   "refusesToPerformDuty": "拒不履行相关义务（业主或者其他行为人）",
+   "reportOrComplain": "向有关行政主管部门报告或者投诉",
+   "handlePerLaw": "依法处理",
+   "infringesOwnerRights": "侵害业主的合法权益（行为人，业主）",
+   "ownersOrg": "是业主大会或者业主委员会"
+  }
+ }
+}

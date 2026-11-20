@@ -1,0 +1,682 @@
+{
+ "art:325": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家是否实行自然资源有偿使用制度，以及法律另有规定时如何处理",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "使用自然资源原则上应当有偿（本条为原则性宣示，具体条件由单行法规定）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的除外（但书）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "国家实行自然资源有偿使用制度；本条为宣示性、原则性条款，不直接产生具体权利义务，故不形式化为可废止规则",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条与自然资源具体权属、使用权的取得与登记等规则不同：后者由物权编相关条文及土地管理法、矿产资源法、水法等单行法规定，本条仅确立有偿使用的基本原则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:326": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "用益物权人行使权利应受何种限制，所有权人负有何种不作为义务",
+     "rules": [
+      "c326-1",
+      "c326-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为用益物权人（对他人之物享有用益物权）",
+     "rules": [
+      "c326-1"
+     ]
+    },
+    {
+     "text": "主体为标的物的所有权人，相对方为同一物上的用益物权人",
+     "rules": [
+      "c326-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "用益物权人行使权利，应当遵守法律有关保护和合理开发利用资源、保护生态环境的规定",
+     "rules": [
+      "c326-1"
+     ]
+    },
+    {
+     "text": "所有权人不得干涉用益物权人行使权利",
+     "rules": [
+      "c326-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条与第9条“绿色原则”不同：第9条是对一切民事主体从事民事活动的一般原则性要求，本条则是针对用益物权人行使权利的具体法定义务，可直接作为义务依据",
+     "rules": []
+    },
+    {
+     "text": "本行仅挂载第326条第1款；第2款关于用益物权因征收、征用致消灭时用益物权人可获得相应补偿的规定未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外或学理内容，故本卡片全部规则均以法条原文为据",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c326-1",
+    "srcs": [
+     "art326-1"
+    ],
+    "body": [
+     "usufructuaryOf(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "complyWithResourceAndEcoProvisions(U)"
+     }
+    ],
+    "note": "用益物权人行使权利，应当遵守法律有关保护和合理开发利用资源、保护生态环境的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c326-2",
+    "srcs": [
+     "art326-1"
+    ],
+    "body": [
+     "usufructuaryOf(U,X)",
+     "ownerOf(O,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "U",
+      "content": "interfereWithUsufructuaryExercise(O,U,X)"
+     }
+    ],
+    "note": "所有权人不得干涉用益物权人行使权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "complyWithResourceAndEcoProvisions": "遵守法律有关保护和合理开发利用资源、保护生态环境的规定（用益物权人）",
+   "interfereWithUsufructuaryExercise": "干涉用益物权人行使权利（干涉人，用益物权人，物）"
+  }
+ },
+ "art:324": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "组织、个人对哪些自然资源可以占有、使用和收益，依据为何",
+     "rules": [
+      "c324-1",
+      "c324-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体限于自然资源，且属于国家所有、国家所有由集体使用、或者法律规定属于集体所有三种情形之一",
+     "rules": [
+      "c324-1"
+     ]
+    },
+    {
+     "text": "主体为组织或者个人（不限于国家、集体）",
+     "rules": [
+      "c324-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "组织、个人依法可以对该自然资源占有、使用和收益（本条未赋予处分权能）",
+     "rules": [
+      "c324-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只列举占有、使用、收益三项权能，不含“处分”；处分权能以及建设用地使用权、土地承包经营权、海域使用权等具体用益物权的设立与内容，由物权编分则及其他法律另行规定",
+     "rules": []
+    },
+    {
+     "text": "“依法”表明占有、使用、收益须符合法律规定的条件与程序（如依法取得用益物权、取得行政许可），本条本身不创设具体的取得方式",
+     "rules": []
+    },
+    {
+     "text": "第324条第2款关于耕地、林地、草地等实行土地承包经营的规定未挂载，本卡片不予形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c324-1",
+    "srcs": [
+     "art324-1"
+    ],
+    "body": [
+     "naturalResource(R)",
+     {
+      "or": [
+       "stateOwned(R)",
+       "stateOwnedUsedByCollective(R)",
+       "lawProvidesCollectiveOwnership(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "naturalResourceOpenToUse(R)"
+    ],
+    "note": "可被组织、个人占有使用收益的自然资源范围：国家所有、国家所有由集体使用、法律规定属于集体所有的自然资源",
+    "auth": "npc"
+   },
+   {
+    "key": "c324-2",
+    "srcs": [
+     "art324-1"
+    ],
+    "body": [
+     "naturalResourceOpenToUse(R)",
+     "organizationOrIndividual(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "possessUseProfit(P,R)"
+     }
+    ],
+    "note": "组织、个人依法可以占有、使用和收益该自然资源（不含处分权能）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOwnedUsedByCollective": "是国家所有但由集体使用的自然资源（1个参数：自然资源）",
+   "naturalResourceOpenToUse": "属于第324条第1款规定可由组织、个人占有使用收益的自然资源（1个参数：自然资源）",
+   "possessUseProfit": "依法对自然资源享有占有、使用和收益的权能（参数1：权利人，参数2：自然资源）"
+  }
+ },
+ "art:327": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产或者动产被征收、征用，致使用益物权消灭或者影响用益物权行使时，用益物权人能否获得补偿、依何标准由谁补偿",
+     "rules": [
+      "c327-1",
+      "c327-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为不动产或者动产，且被征收或者被征用",
+     "rules": [
+      "c327-1",
+      "c327-2"
+     ]
+    },
+    {
+     "text": "该不动产或者动产上存在用益物权，主张者为用益物权人",
+     "rules": [
+      "c327-1",
+      "c327-2"
+     ]
+    },
+    {
+     "text": "征收、征用致使用益物权消灭，或者影响用益物权的行使",
+     "rules": [
+      "c327-1",
+      "c327-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条未设但书或除外规定；征收、征用须为公共利益需要并依法定权限和程序进行（第243条、第245条），非依法征收、征用不适用本条",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "用益物权人有权获得相应补偿",
+     "rules": [
+      "c327-1"
+     ]
+    },
+    {
+     "text": "补偿的内容与标准依第243条（征收补偿）和第245条（征用补偿及返还）确定，由征收人、征用人向用益物权人支付",
+     "rules": [
+      "c327-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是引致条款而非重复规定：所有权人依第243条、第245条获补偿，用益物权人依本条获得“相应”补偿，二者请求权基础不同",
+     "rules": []
+    },
+    {
+     "text": "学理：用益物权人的补偿请求权为独立请求权，不以所有权人已获补偿或已分配补偿为前提",
+     "rules": [
+      "c327-indep"
+     ]
+    },
+    {
+     "text": "担保物权（抵押权、质权）因征收、征用而消灭的，适用第390条物上代位规则，不属于本条调整范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c327-1",
+    "srcs": [
+     "art327-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "expropriation(E,T)",
+       "requisition(E,T)"
+      ]
+     },
+     "usufructuaryOf(U,T)",
+     "usufructLostOrImpaired(U,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "U",
+      "counterparty": "E",
+      "content": "payFairReasonableCompensation(E,T)"
+     }
+    ],
+    "note": "因不动产或者动产被征收、征用致使用益物权消灭或者影响其行使的，用益物权人有权获得相应补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c327-2",
+    "srcs": [
+     "art327-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "expropriation(E,T)",
+       "requisition(E,T)"
+      ]
+     },
+     "usufructuaryOf(U,T)",
+     "usufructLostOrImpaired(U,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "U",
+      "content": "payFairReasonableCompensation(E,T)"
+     }
+    ],
+    "note": "补偿的内容与标准依第243条、第245条确定，由征收人、征用人向用益物权人支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c327-indep",
+    "srcs": [
+     "art327-1"
+    ],
+    "body": [
+     "usufructuaryOf(U,T)",
+     {
+      "or": [
+       "expropriation(E,T)",
+       "requisition(E,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "independentCompensationClaim(U,T)"
+    ],
+    "note": "学理：用益物权人的补偿请求权为独立请求权，不以所有权人受补偿为前提（条文未明定，属解释论）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usufructLostOrImpaired": "用益物权因征收、征用而消灭，或者其行使受到影响（用益物权人，被征收、征用的不动产或动产）",
+   "usufructLostOrImpaired/2": "用益物权因征收、征用而消灭，或者其行使受到影响（用益物权人，被征收、征用的不动产或动产）",
+   "independentCompensationClaim": "享有独立的补偿请求权（用益物权人，被征收、征用的不动产或动产）",
+   "independentCompensationClaim/2": "享有独立的补偿请求权（用益物权人，被征收、征用的不动产或动产）"
+  }
+ },
+ "card:g2882": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "用益物权人对他人所有的不动产或者动产享有哪些权能，客体范围如何",
+     "rules": [
+      "c323-1"
+     ]
+    },
+    {
+     "text": "哪些财产可以抵押，抵押人能否将所列财产一并抵押",
+     "rules": [
+      "c395-eligible",
+      "c395-perm",
+      "c395-together"
+     ]
+    },
+    {
+     "text": "依法取得的海域使用权、探矿权、采矿权、取水权及使用水域、滩涂从事养殖、捕捞的权利是否受法律保护",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "用益物权的客体是他人所有的不动产或者动产（包括动产和不动产，主要是不动产）",
+     "rules": [
+      "c323-1"
+     ]
+    },
+    {
+     "text": "抵押人（债务人或者第三人）对抵押财产有处分权",
+     "rules": [
+      "c395-eligible",
+      "c395-perm"
+     ]
+    },
+    {
+     "text": "抵押财产属于第395条第1款所列七类之一：建筑物和其他土地附着物；建设用地使用权；海域使用权；生产设备、原材料、半成品、产品；正在建造的建筑物、船舶、航空器；交通运输工具；法律、行政法规未禁止抵押的其他财产",
+     "rules": [
+      "c395-eligible"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规禁止抵押的财产，不属于第（七）项“未禁止抵押的其他财产”，不能据此抵押",
+     "rules": [
+      "c395-eligible"
+     ]
+    },
+    {
+     "text": "笔记：海域使用权、探矿权、采矿权、取水权、养殖权、捕捞权等为准物权（特许物权、特别法上的物权），其设立与内容依特别法，不适用用益物权的一般规则",
+     "rules": [
+      "c329-doctrine"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "用益物权人依法对他人所有的不动产或者动产享有占有、使用的权能，并享有收益的权能",
+     "rules": [
+      "c323-1"
+     ]
+    },
+    {
+     "text": "属于所列七类且抵押人有处分权的财产，可以抵押",
+     "rules": [
+      "c395-perm"
+     ]
+    },
+    {
+     "text": "抵押人可以将第395条第1款所列财产一并抵押",
+     "rules": [
+      "c395-together"
+     ]
+    },
+    {
+     "text": "依法取得的海域使用权受法律保护；依法取得的探矿权、采矿权、取水权和使用水域、滩涂从事养殖、捕捞的权利受法律保护（宣示性规定，具体权能由特别法规定）",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "准物权（特别法上的物权）的设立与内容依特别法处理，优先于第323条用益物权的一般规定",
+     "rules": [
+      "c329-doctrine"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把海域使用权、探矿权、采矿权、取水权、养殖权、捕捞权列为“宣示性规定（准物权/特许物权/特别法上的物权）”；第328、329条本身不含具体权能，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "用益物权属于他物权、限制物权，以占有为前提，以使用收益为内容，支配他人所有物的使用价值，不具有从属性与物上代位性；担保物权以交换价值和优先受偿为目的，不以占有为必要",
+     "rules": [
+      "c323-doctrine"
+     ]
+    },
+    {
+     "text": "用益物权为限制物权，不含处分权能，客体为他人所有物，区别于所有权",
+     "rules": [
+      "c323-doctrine"
+     ]
+    },
+    {
+     "text": "海域使用权既是用益物权（准物权），又可依第395条第（三）项设立抵押权，体现其特殊性",
+     "rules": [
+      "c395-eligible"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c323-1",
+    "srcs": [
+     "art323-1"
+    ],
+    "body": [
+     "usufructuaryOf(U,T)",
+     "immovableOrMovable(T)",
+     "-own(U,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "possessUse(U,T)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "enjoysProfit(U,T)"
+     }
+    ],
+    "note": "用益物权人对他人（即自己并非所有权人）所有的不动产或者动产，依法享有占有、使用和收益的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c323-doctrine",
+    "srcs": [
+     "art323-1"
+    ],
+    "body": [
+     "usufructuaryOf(U,T)"
+    ],
+    "heads": [
+     "limitedRealRight(U,T)"
+    ],
+    "note": "笔记：用益物权属于他物权、限制物权，以占有为前提，以使用收益为内容，支配他人所有物的使用价值（学理归纳，非条文明文）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c395-eligible",
+    "srcs": [
+     "art395-1"
+    ],
+    "body": [
+     "hasDisposalPower(M,P)",
+     {
+      "or": [
+       "building(P)",
+       "otherLandAttachment(P)",
+       "constructionLandUseRight(P)",
+       "seaAreaUseRight(P)",
+       "productionEquipmentMaterialsProducts(P)",
+       "buildingUnderConstruction(P)",
+       "underConstructionVesselOrAircraft(P)",
+       "meansOfTransport(P)",
+       "notProhibitedFromMortgage(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "mortgageObjectOk(P)"
+    ],
+    "note": "债务人或者第三人有权处分的七类财产为可以抵押的适格财产；法律、行政法规禁止抵押的财产不属于第（七）项",
+    "auth": "npc"
+   },
+   {
+    "key": "c395-perm",
+    "srcs": [
+     "art395-1"
+    ],
+    "body": [
+     "mortgageObjectOk(P)",
+     "hasDisposalPower(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "mortgage(M,P)"
+     }
+    ],
+    "note": "抵押人对适格财产有处分权的，可以就该财产设定抵押",
+    "auth": "npc"
+   },
+   {
+    "key": "c395-together",
+    "srcs": [
+     "art395-2"
+    ],
+    "body": [
+     "mortgageObjectOk(P1)",
+     "mortgageObjectOk(P2)",
+     "hasDisposalPower(M,P1)",
+     "hasDisposalPower(M,P2)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "mortgageTogether(M,P1,P2)"
+     }
+    ],
+    "note": "抵押人可以将第395条第1款所列财产一并抵押",
+    "auth": "npc"
+   },
+   {
+    "key": "c329-doctrine",
+    "srcs": [
+     "art328-1",
+     "art329-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "seaAreaUseRight(R)",
+       "explorationRight(R)",
+       "miningRight(R)",
+       "waterIntakeRight(R)",
+       "aquacultureOrFishingRight(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "governedBySpecialProvisions(R)"
+    ],
+    "note": "笔记：海域使用权、探矿权、采矿权、取水权、养殖权、捕捞权等为准物权（特许物权、特别法上的物权），其设立与内容依特别法处理（学理归纳，第328、329条仅为宣示性规定）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c329-doctrine",
+    "c323-1",
+    "准物权（特别法上的物权）的设立与内容依特别法，优先于用益物权的一般规定"
+   ]
+  ],
+  "predicates": {
+   "limitedRealRight": "该用益物权属于他物权、限制物权（用益物权人，物）",
+   "meansOfTransport": "是交通运输工具",
+   "explorationRight": "是探矿权",
+   "miningRight": "是采矿权",
+   "waterIntakeRight": "是取水权",
+   "aquacultureOrFishingRight": "是使用水域、滩涂从事养殖、捕捞的权利"
+  }
+ }
+}

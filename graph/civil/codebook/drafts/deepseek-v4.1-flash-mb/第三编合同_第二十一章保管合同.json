@@ -1,0 +1,589 @@
+{
+ "art:903": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "寄存人未按照约定支付保管费或者其他费用时，保管人能否对保管物主张留置权",
+     "rules": [
+      "c903-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在保管合同，保管人保管寄存人交付的保管物",
+     "rules": [
+      "c903-1"
+     ]
+    },
+    {
+     "text": "寄存人未按照约定支付保管费或者其他费用",
+     "rules": [
+      "c903-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定（如约定不得留置）的，保管人不享有留置权",
+     "rules": [
+      "c903-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "保管人对保管物享有留置权，可留置该物以担保保管费及其他费用的清偿",
+     "rules": [
+      "c903-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决保管合同中留置权的成立；留置权的一般要件（合法占有债务人的动产、留置财产与债权属于同一法律关系等）由留置权一般规定解决，本行未挂载该条文，故不在此形式化",
+     "rules": []
+    },
+    {
+     "text": "本条以“未按照约定支付”为前提，故须先有关于保管费或其他费用的约定；对保管费没有约定或约定不明确的，应依第889条、第510条处理，本行未挂载该条文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c903-1",
+    "srcs": [
+     "art903-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "depositedProperty(P,K)",
+     "failsToPayStorageFeeOrOtherExpenses(D,K)",
+     "~lienExcludedByAgreement(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "lienRight(B,P,D)"
+     }
+    ],
+    "note": "寄存人未按照约定支付保管费或者其他费用的，保管人对保管物享有留置权；当事人另有约定（约定不得留置）的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "storageContract": "是保管合同（参数：合同）",
+   "depositorOf": "是寄存人（参数：寄存人，保管合同）",
+   "depositaryOf": "是保管人（参数：保管人，保管合同）",
+   "depositedProperty": "是保管物（参数：保管物，保管合同）",
+   "failsToPayStorageFeeOrOtherExpenses": "未按照约定支付保管费或者其他费用（参数：寄存人，保管合同）"
+  }
+ },
+ "art:889": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "保管合同中的保管费如何确定，寄存人是否应当向保管人支付保管费",
+     "rules": [
+      "c889-1",
+      "c889-2",
+      "c889-2b",
+      "c889-510"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在保管合同，且当事人对保管费有约定",
+     "rules": [
+      "c889-1"
+     ]
+    },
+    {
+     "text": "当事人对保管费没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c889-2"
+     ]
+    },
+    {
+     "text": "当事人对保管费没有约定或者约定不明确，但依据第510条的规定能够确定",
+     "rules": [
+      "c889-510"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依第510条能够确定保管费的，不适用“视为无偿保管”的推定",
+     "rules": [
+      "c889-510"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "寄存人应当按照约定向保管人支付保管费",
+     "rules": [
+      "c889-1"
+     ]
+    },
+    {
+     "text": "视为无偿保管，寄存人不负支付保管费的义务",
+     "rules": [
+      "c889-2",
+      "c889-2b"
+     ]
+    },
+    {
+     "text": "依第510条确定保管费数额的，寄存人仍应支付该保管费",
+     "rules": [
+      "c889-510"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款以“依第510条仍不能确定”为条件，故能依第510条确定保管费时，优先适用有偿规则，不适用无偿保管的推定",
+     "rules": [
+      "c889-510",
+      "c889-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决保管费的有偿性与寄存人的付费义务，不涉及保管人的保管义务、保管凭证的交付等（另见第888条、第890条等）",
+     "rules": []
+    },
+    {
+     "text": "本条中的“保管合同”不同于“定金合同”（depositContractFormed），后者适用第586条以下，勿混淆",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c889-1",
+    "srcs": [
+     "art889-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "agreedStorageFee(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "B",
+      "content": "payStorageFee(D,B,K)"
+     }
+    ],
+    "note": "寄存人应当按照约定向保管人支付保管费",
+    "auth": "npc"
+   },
+   {
+    "key": "c889-2",
+    "srcs": [
+     "art889-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "noAgreedOrUnclearStorageFee(K)",
+     "~determinablePerArt510(K)"
+    ],
+    "heads": [
+     "gratuitousStorage(K)"
+    ],
+    "note": "对保管费没有约定或者约定不明确，依据第510条仍不能确定的，视为无偿保管",
+    "auth": "npc"
+   },
+   {
+    "key": "c889-2b",
+    "srcs": [
+     "art889-2"
+    ],
+    "body": [
+     "gratuitousStorage(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)"
+    ],
+    "heads": [
+     "-payStorageFee(D,B,K)"
+    ],
+    "note": "视为无偿保管的，寄存人不负支付保管费的义务（第2款“视为无偿保管”的当然含义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c889-510",
+    "srcs": [
+     "art889-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "noAgreedOrUnclearStorageFee(K)",
+     "determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "B",
+      "content": "payStorageFee(D,B,K)"
+     }
+    ],
+    "note": "第2款的反面解释（学理）：依第510条能够确定保管费的，不视为无偿保管，寄存人仍应支付该保管费",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "storageContract": "保管合同（寄存人与保管人之间）",
+   "depositorOf": "是寄存人（寄存人，保管合同）",
+   "depositaryOf": "是保管人（保管人，保管合同）",
+   "agreedStorageFee": "当事人对保管费有约定（参数：保管合同）",
+   "noAgreedOrUnclearStorageFee": "当事人对保管费没有约定或者约定不明确（参数：保管合同）",
+   "payStorageFee": "支付保管费（寄存人，保管人，保管合同）",
+   "gratuitousStorage": "视为无偿保管（参数：保管合同）"
+  }
+ },
+ "art:902": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "有偿保管合同中，寄存人应当在什么时间向保管人支付保管费",
+     "rules": [
+      "c902-1",
+      "c902-510",
+      "c902-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在有偿的保管合同（寄存人与保管人之间）",
+     "rules": [
+      "c902-1",
+      "c902-510",
+      "c902-2"
+     ]
+    },
+    {
+     "text": "当事人约定了支付保管费的期限",
+     "rules": [
+      "c902-1"
+     ]
+    },
+    {
+     "text": "对支付期限没有约定或者约定不明确",
+     "rules": [
+      "c902-510",
+      "c902-2"
+     ]
+    },
+    {
+     "text": "依据第510条的规定仍不能确定支付期限",
+     "rules": [
+      "c902-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "寄存人应当按照约定的期限向保管人支付保管费",
+     "rules": [
+      "c902-1"
+     ]
+    },
+    {
+     "text": "未约定或约定不明确但依第510条可以确定的，按该方式确定的期限支付保管费",
+     "rules": [
+      "c902-510"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，寄存人应当在领取保管物的同时支付保管费",
+     "rules": [
+      "c902-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人约定了支付期限的，依其约定，不适用第2款关于补充确定期限及领取时支付的规定",
+     "rules": [
+      "c902-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条仅适用于有偿的保管合同；无偿保管合同中寄存人不负支付保管费的义务，故不适用本条",
+     "rules": []
+    },
+    {
+     "text": "本条只解决保管费的支付期限，保管费的数额、有无及其确定方法不在本条范围（依第510条等规定处理）",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，无补充或例外可援用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c902-1",
+    "srcs": [
+     "art902-1"
+    ],
+    "body": [
+     "custodyContract(K)",
+     "onerousCustodyContract(K)",
+     "depositorOf(D,K)",
+     "custodianOf(C,K)",
+     "storageFeePaymentPeriodAgreed(K,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "payStorageFee(D,C,K)"
+     }
+    ],
+    "note": "有偿的保管合同，寄存人应当按照约定的期限向保管人支付保管费",
+    "auth": "npc"
+   },
+   {
+    "key": "c902-510",
+    "srcs": [
+     "art902-2"
+    ],
+    "body": [
+     "custodyContract(K)",
+     "onerousCustodyContract(K)",
+     "depositorOf(D,K)",
+     "custodianOf(C,K)",
+     "storageFeePaymentPeriodUnclear(K)",
+     "determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "payStorageFee(D,C,K)"
+     }
+    ],
+    "note": "支付期限没有约定或者约定不明确，但依据第510条的规定可以确定的，寄存人按该方式确定的期限支付保管费（第2款对第510条的援引）",
+    "auth": "npc"
+   },
+   {
+    "key": "c902-2",
+    "srcs": [
+     "art902-2"
+    ],
+    "body": [
+     "custodyContract(K)",
+     "onerousCustodyContract(K)",
+     "depositorOf(D,K)",
+     "custodianOf(C,K)",
+     "storageFeePaymentPeriodUnclear(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "payStorageFeeOnCollection(D,C,K)"
+     }
+    ],
+    "note": "支付期限没有约定或者约定不明确，且依据第510条仍不能确定的，寄存人应当在领取保管物的同时支付保管费",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c902-1",
+    "c902-2",
+    "当事人约定了支付期限的，依约定履行，不适用第2款关于补充确定期限及领取时支付的规定"
+   ],
+   [
+    "c902-1",
+    "c902-510",
+    "当事人约定了支付期限的，依约定履行，无须再依第510条补充确定"
+   ]
+  ],
+  "predicates": {
+   "custodyContract": "是保管合同",
+   "onerousCustodyContract": "是有偿的保管合同",
+   "depositorOf": "是寄存人（寄存人，合同）",
+   "custodianOf": "是保管人（保管人，合同）",
+   "storageFeePaymentPeriodAgreed": "当事人约定了支付保管费的期限（合同，期限）",
+   "storageFeePaymentPeriodUnclear": "对支付保管费的期限没有约定或者约定不明确（合同）",
+   "payStorageFee": "按照约定或者依第510条确定的期限向保管人支付保管费（寄存人，保管人，合同）",
+   "payStorageFeeOnCollection": "在领取保管物的同时向保管人支付保管费（寄存人，保管人，合同）"
+  }
+ },
+ "card:g5674": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c888-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c888-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c888-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c888-1：新谓词 safekeepAndReturnThing 需要在 predicates 中给出中文释义",
+   "c888-2：新谓词 shoppingDiningLodgingAt 需要在 predicates 中给出中文释义",
+   "c888-2：新谓词 storedGoodsAtDesignatedPlace 需要在 predicates 中给出中文释义",
+   "c888-2：新谓词 agreedOtherwiseOrTradeUsage 需要在 predicates 中给出中文释义",
+   "c888-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c890-1：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c890-1：新谓词 custodyContractFormed 需要在 predicates 中给出中文释义",
+   "c891-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c891-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c891-1：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c891-1：新谓词 tradeUsageOtherwiseOnVoucher 需要在 predicates 中给出中文释义",
+   "c891-1：新谓词 issueCustodyVoucher 需要在 predicates 中给出中文释义",
+   "c892-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c892-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c892-1：新谓词 safekeepThing 需要在 predicates 中给出中文释义",
+   "c892-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c892-2：新谓词 agreeCustodyPlaceOrMethod 需要在 predicates 中给出中文释义",
+   "c892-3：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c892-3：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c892-3：新谓词 emergency 需要在 predicates 中给出中文释义",
+   "c892-3：新谓词 forDepositorsInterest 需要在 predicates 中给出中文释义",
+   "c892-3：新谓词 changeCustodyPlaceOrMethod 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 thingDefective 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 specialMeasuresNeededByNature 需要在 predicates 中给出中文释义",
+   "c893-1：新谓词 informCustodian 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 failedToInform 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 thingDamaged 需要在 predicates 中给出中文释义",
+   "c893-2：新谓词 liableForCustodyDamage 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 failedToInform 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 custodianSufferedLoss 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 knewOrShouldKnowAndFailedToRemedy 需要在 predicates 中给出中文释义",
+   "c893-3：新谓词 compensateCustodianLoss 需要在 predicates 中给出中文释义",
+   "c894-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c894-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c894-1：新谓词 agreedOtherwiseOnSubCustody 需要在 predicates 中给出中文释义",
+   "c894-1：新谓词 transferCustodyToThirdParty 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 transferredCustodyToThirdParty 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 thingDamaged 需要在 predicates 中给出中文释义",
+   "c894-2：新谓词 compensateCustodyLoss 需要在 predicates 中给出中文释义",
+   "c895-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c895-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c895-1：新谓词 agreedOtherwiseOnUse 需要在 predicates 中给出中文释义",
+   "c895-1：新谓词 useOrLicenseCustodyThing 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 thirdPartyClaimsThing 需要在 predicates 中给出中文释义",
+   "c896-1：新谓词 returnThingToDepositor 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 thirdPartySuedCustodian 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 thirdPartyAppliedToSeizeThing 需要在 predicates 中给出中文释义",
+   "c896-2：新谓词 notifyDepositor 需要在 predicates 中给出中文释义",
+   "c897-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c897-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c897-1：新谓词 poorCustodyDamagesThing 需要在 predicates 中给出中文释义",
+   "c897-1：新谓词 liableForCustodyDamage 需要在 predicates 中给出中文释义",
+   "c897-1：新谓词 compensateCustodyLoss 需要在 predicates 中给出中文释义",
+   "c897-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c897-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c897-2：新谓词 gratuitousCustody 需要在 predicates 中给出中文释义",
+   "c897-2：新谓词 provesNoIntentOrGrossNegligence 需要在 predicates 中给出中文释义",
+   "c897-2：新谓词 liableForCustodyDamage 需要在 predicates 中给出中文释义",
+   "c898-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c898-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c898-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c898-1：新谓词 valuableDeposited 需要在 predicates 中给出中文释义",
+   "c898-1：新谓词 declareValuable 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 valuableDeposited 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 declaredValuable 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 thingDamaged 需要在 predicates 中给出中文释义",
+   "c898-2：新谓词 compensateAsOrdinaryItem 需要在 predicates 中给出中文释义",
+   "c899-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c899-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c899-1：新谓词 retrieveThingAnytime 需要在 predicates 中给出中文释义",
+   "c899-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c899-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c899-2：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c899-2：新谓词 noAgreedCustodyPeriod 需要在 predicates 中给出中文释义",
+   "c899-2：新谓词 requestRetrieval 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 agreedCustodyPeriod 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 specialReason 需要在 predicates 中给出中文释义",
+   "c899-3：新谓词 requestEarlyRetrieval 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 custodyThingOf 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 custodyPeriodExpired 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 depositorRetrievesEarly 需要在 predicates 中给出中文释义",
+   "c900-1：新谓词 returnOriginalAndFruits 需要在 predicates 中给出中文释义",
+   "c901-1：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c901-1：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c901-1：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c901-1：新谓词 moneyCustody 需要在 predicates 中给出中文释义",
+   "c901-1：新谓词 returnSameKindQuantityMoney 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 custodyContract 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 custodianOf 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 depositorOf 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 fungibleCustody 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 agreedReturnSameKindQualityQuantity 需要在 predicates 中给出中文释义",
+   "c901-2：新谓词 returnSameKindQualityQuantityItem 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"保管合同的界定与成立：保管人保管寄存人交付的保管物并返还该物；合同自保管物交付时成立（实践性），当事人另有约定的除外；寄存人到保管人处购物、就餐、住宿并将物品存放在指定场所的，视为保管\",\n        \"rules\": [\"c888-1\", \"c888-2\", \"c890-1\"]\n      },\n      {\n        \"text\": \"保管人的义务与责任：出具保管凭证、妥善保管、不得擅自改变保管场所或方法、亲自保管、不得擅自使用、第三人主张权利时的返还与通知、保管不善的赔偿责任及无偿保管人的免责\",\n        \"rules\": [\"c891-1\", \"c892-1\", \"c892-2\", \"c892-3\", \"c894-1\", \"c894-2\", \"c895-1\", \"c896-1\", \"c896-2\", \"c897-1\", \"c897-2\"]\n      },\n      {\n        \"text\": \"寄存人的告知义务与贵重物品声明义务及其违反后果\",\n        \"rules\": [\"c893-1\", \"c893-2\", \"c893-3\", \"c898-1\", \"c898-2\"]\n      },\n      {\n        \"text\": \"保管物的领取与返还：寄存人可随时领取；无期限保管合同中保管人可随时请求领取；期限届满或提前领取时返还原物及孳息；货币及可替代物的返还方式\",\n        \"rules\": [\"c899-1\", \"c899-2\", \"c899-3\", \"c900-1\", \"c901-1\", \"c901-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"寄存人向保管人交付保管物，且当事人未对合同成立另有约定\",\n        \"rules\": [\"c890-1\"]\n      },\n      {\n        \"text\": \"寄存人到保管人处从事购物、就餐、住宿等活动，并将物品存放在指定场所\",\n        \"rules\": [\"c888-2\"]\n      },\n      {\n        \"text\": \"保管物有瑕疵，或者根据保管物的性质需要采取特殊保管措施\",\n        \"rules\": [\"c893-1\"]\n      },\n      {\n        \"text\": \"寄存人寄存货币、有价证券或者其他贵重物品\",\n        \"rules\": [\"c898-1\"]\n      },\n      {\n        \"text\": \"第三人对保管物主张权利，或者第三人对保管人提起诉讼、对保管物申请扣押\",\n        \"rules\": [\"c896-1\", \"c896-2\"]\n      },\n      {\n        \"text\": \"保管期内因保管人保管不善造成保管物毁损、灭失\",\n        \"rules\": [\"c897-1\"]\n      },\n      {\n        \"text\": \"当事人对保管期限没有约定或者约定不明确\",\n        \"rules\": [\"c899-2\"]\n      },\n      {\n        \"text\": \"当事人约定保管期限\",\n        \"rules\": [\"c899-3\"]\n      },\n      {\n        \"text\": \"保管期限届满，或者寄存人提前领取保管物\",\n        \"rules\": [\"c900-1\"]\n      },\n      {\n        \"text\": \"保管物为货币，或者为其他可替代物且约定返还相同种类、品质、数量的物品\",\n        \"rules\": [\"c901-1\", \"c901-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"当事人另有约定或者另有交易习惯的，不视为保管\",\n        \"rules\": [\"c888-2\"]\n      },\n      {\n        \"text\": \"当事人对合同成立另有约定的，不按交付时成立\",\n        \"rules\": [\"c890-1\"]\n      },\n      {\n        \"text\": \"另有交易习惯的，保管人无须出具保管凭证\",\n        \"rules\": [\"c891-1\"]\n      },\n      {\n        \"text\": \"紧急情况或者为维护寄存人利益的，保管人可以改变保管场所或者方法\",\n        \"rules\": [\"c892-3\"]\n      },\n      {\n        \"text\": \"寄存人未告知致保管物受损的，保管人不承担赔偿责任；但保管人知道或者应当知道且未采取补救措施的，寄存人仍应赔偿保管人的损失\",\n        \"rules\": [\"c893-2\", \"c893-3\"]\n      },\n      {\n        \"text\": \"当事人另有约定的，保管人可以将保管物转交第三人保管，也可以使用或者许可第三人使用保管物\",\n        \"rules\": [\"c894-1\", \"c895-1\"]\n      },\n      {\n        \"text\": \"依法对保管物采取保全或者执行措施的，保管人不负向寄存人返还的义务\",\n        \"rules\": [\"c896-1\"]\n      },\n      {\n        \"text\": \"无偿保管人证明自己没有故意或者重大过失的，不承担赔偿责任\",\n        \"rules\": [\"c897-2\"]\n      },\n      {\n        \"text\": \"寄存人未声明贵重物品的，该物品毁损、灭失后保管人可以按照一般物品予以赔偿\",\n        \"rules\": [\"c898-2\"]\n      },\n      {\n        \"text\": \"约定保管期限的，保管人无特别事由不得请求寄存人提前领取保管物\",\n        \"rules\": [\"c899-3\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"保管人负有保管保管物并返还该物的义务\",\n        \"rules\": [\"c888-1\"]\n      },\n      {\n        \"text\": \"保管合同成立（交付时成立；在经营场所存放物品的视为保管）\",\n        \"rules\": [\"c890-1\", \"c888-2\"]\n      },\n      {\n        \"text\": \"保管人应当出具保管凭证\",\n        \"rules\": [\"c891-1\"]\n      },\n      {\n        \"text\": \"保管人应当妥善保管保管物；当事人可以约定保管场所或者方法\",\n        \"rules\": [\"c892-1\", \"c892-2\"]\n      },\n      {\n        \"text\": \"寄存人应当将保管物瑕疵或者特殊保管需要告知保管人\",\n        \"rules\": [\"c893-1\"]\n      },\n      {\n        \"text\": \"保管人不得擅自将保管物转交第三人保管、不得使用或者许可第三人使用保管物；违反转交造成损失的应当承担赔偿责任\",\n        \"rules\": [\"c894-1\", \"c894-2\", \"c895-1\"]\n      },\n      {\n        \"text\": \"第三人主张权利时保管人应向寄存人返还保管物；第三人起诉或者申请扣押时应及时通知寄存人\",\n        \"rules\": [\"c896-1\", \"c896-2\"]\n      },\n      {\n        \"text\": \"保管不善致保管物毁损、灭失的，保管人应当承担赔偿责任\",\n        \"rules\": [\"c897-1\"]\n      },\n      {\n        \"text\": \"寄存人应当声明贵重物品并由保管人验收或封存；未声明的按一般物品赔偿\",\n        \"rules\": [\"c898-1\", \"c898-2\"]\n      },\n      {\n        \"text\": \"寄存人可以随时领取保管物；无期限保管合同中保管人可以随时请求寄存人领取\",\n        \"rules\": [\"c899-1\", \"c899-2\"]\n      },\n      {\n        \"text\": \"保管人应当将原物及其孳息归还寄存人\",\n        \"rules\": [\"c900-1\"]\n      },\n      {\n        \"text\": \"保管货币或者可替代物的，可以返还相同种类、数量（品质）的货币或者物品\",\n        \"rules\": [\"c901-1\", \"c901-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"无偿保管人证明无故意或者重大过失的免责，优先于保管不善的赔偿责任\",\n        \"rules\": [\"c897-2\"]\n      },\n      {\n        \"text\": \"寄存人未告知致保管物受损的，保管人不负赔偿责任，优先于一般保管不善责任\",\n        \"rules\": [\"c893-2\"]\n      },\n      {\n        \"text\": \"寄存人未声明贵重物品的按一般物品赔偿，优先于按实际价值赔偿\",\n        \"rules\": [\"c898-2\"]\n      },\n      {\n        \"text\": \"当事人另有约定优先于不得转交第三人保管、不得使用保管物的禁止性规定\",\n        \"rules\": [\"c894-1\", \"c895-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记中寄存人负担必要费用、支付保管费以及保管人对保管物享有留置权的规则，规定于第889条、第903条，本行未挂载，故不列入\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"仓储合同为有偿、诺成、形式要求更高的商事合同，保管合同多为无偿、实践性、不要式；委托合同以处理事务为标的，租赁合同以转移使用收益为目的，均不同于保管合同\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称“保管人应优先通知寄存人、不得擅自返还”，与第896条第1款不符：第三人主张权利时，除依法采取保全或者执行措施外，保管人仍应向寄存人返还；通知义务另由第2款规定\",\n        \"rules\": [\"c896-1\", \"c896-2\"]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c888-1\",\n      \"srcs\": [\"art888-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"depositorOf(B,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"safekeepAndReturnThing(A,B,K)\"}\n      ],\n      \"note\": \"保管合同是保管人保管寄存人交付的保管物并返还该物的合同，故保管人负保管与返还义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c888-2\",\n      \"srcs\": [\"art888-2\"],\n      \"body\": [\n        \"shoppingDiningLodgingAt(B,A)\",\n        \"storedGoodsAtDesignatedPlace(B,A,K)\",\n        \"~agreedOtherwiseOrTradeUsage(K)\"\n      ],\n      \"heads\": [\"custodyContract(K)\"],\n      \"note\": \"寄存人到保管人处购物、就餐、住宿并将物品存放在指定场所的，视为保管；当事人另有约定或者另有交易习惯的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c890-1\",\n      \"srcs\": [\"art890-1\"],\n      \"body\": [\"custodyThingOf(T,K)\", \"delivered(T)\", \"~partiesAgreedOtherwiseOnFormation(K)\"],\n      \"heads\": [\"custodyContractFormed(K)\"],\n      \"note\": \"保管合同自保管物交付时成立（实践性），当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c891-1\",\n      \"srcs\": [\"art891-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"custodyThingOf(T,K)\",\n        \"delivered(T)\",\n        \"~tradeUsageOtherwiseOnVoucher(K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"issueCustodyVoucher(A,K)\"}\n      ],\n      \"note\": \"寄存人交付保管物的，除另有交易习惯外，保管人应当出具保管凭证\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c892-1\",\n      \"srcs\": [\"art892-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"safekeepThing(A,K)\"}\n      ],\n      \"note\": \"保管人应当妥善保管保管物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c892-2\",\n      \"srcs\": [\"art892-2\"],\n      \"body\": [\"custodyContract(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"parties\", \"counterparty\": null, \"content\": \"agreeCustodyPlaceOrMethod(K)\"}\n      ],\n      \"note\": \"当事人可以约定保管场所或者方法\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c892-3\",\n      \"srcs\": [\"art892-2\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"-emergency(K)\", \"-forDepositorsInterest(A,K)\"],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"changeCustodyPlaceOrMethod(A,K)\"}\n      ],\n      \"note\": \"除紧急情况或者为维护寄存人利益外，保管人不得擅自改变保管场所或者方法\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c893-1\",\n      \"srcs\": [\"art893-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"depositorOf(B,K)\",\n        \"custodianOf(A,K)\",\n        \"custodyThingOf(T,K)\",\n        {\"or\": [\"thingDefective(T,K)\", \"specialMeasuresNeededByNature(T,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"A\", \"content\": \"informCustodian(B,A,T,K)\"}\n      ],\n      \"note\": \"保管物有瑕疵或者依其性质需采取特殊保管措施的，寄存人应当将有关情况告知保管人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c893-2\",\n      \"srcs\": [\"art893-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"depositorOf(B,K)\",\n        \"custodianOf(A,K)\",\n        \"custodyThingOf(T,K)\",\n        \"failedToInform(B,A,T,K)\",\n        \"thingDamaged(T,K)\"\n      ],\n      \"heads\": [\"-liableForCustodyDamage(A,K)\"],\n      \"note\": \"寄存人未告知致保管物受损失的，保管人不承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c893-3\",\n      \"srcs\": [\"art893-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"depositorOf(B,K)\",\n        \"custodianOf(A,K)\",\n        \"failedToInform(B,A,T,K)\",\n        \"custodianSufferedLoss(A,K)\",\n        \"-knewOrShouldKnowAndFailedToRemedy(A,T,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"A\", \"content\": \"compensateCustodianLoss(B,A,K)\"}\n      ],\n      \"note\": \"保管人因此受损失的，除保管人知道或者应当知道且未采取补救措施外，寄存人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c894-1\",\n      \"srcs\": [\"art894-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"~agreedOtherwiseOnSubCustody(K)\"],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"transferCustodyToThirdParty(A,K)\"}\n      ],\n      \"note\": \"保管人不得将保管物转交第三人保管，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c894-2\",\n      \"srcs\": [\"art894-2\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"custodyThingOf(T,K)\",\n        \"transferredCustodyToThirdParty(A,K)\",\n        \"thingDamaged(T,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"compensateCustodyLoss(A,K)\"}\n      ],\n      \"note\": \"违反规定将保管物转交第三人保管造成保管物损失的，保管人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c895-1\",\n      \"srcs\": [\"art895-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"~agreedOtherwiseOnUse(K)\"],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"useOrLicenseCustodyThing(A,K)\"}\n      ],\n      \"note\": \"保管人不得使用或者许可第三人使用保管物，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c896-1\",\n      \"srcs\": [\"art896-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"custodyThingOf(T,K)\",\n        \"thirdPartyClaimsThing(C,T,K)\",\n        \"-seizedOrSupervised(T)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"returnThingToDepositor(A,B,T,K)\"}\n      ],\n      \"note\": \"第三人对保管物主张权利的，除依法对保管物采取保全或者执行措施外，保管人应当向寄存人返还保管物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c896-2\",\n      \"srcs\": [\"art896-2\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"custodyThingOf(T,K)\",\n        {\"or\": [\"thirdPartySuedCustodian(C,A,K)\", \"thirdPartyAppliedToSeizeThing(C,T,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"notifyDepositor(A,B,K)\"}\n      ],\n      \"note\": \"第三人对保管人提起诉讼或者对保管物申请扣押的，保管人应当及时通知寄存人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c897-1\",\n      \"srcs\": [\"art897-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"poorCustodyDamagesThing(A,T,K)\"],\n      \"heads\": [\n        \"liableForCustodyDamage(A,K)\",\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"compensateCustodyLoss(A,K)\"}\n      ],\n      \"note\": \"保管期内因保管人保管不善造成保管物毁损、灭失的，保管人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c897-2\",\n      \"srcs\": [\"art897-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"gratuitousCustody(K)\",\n        \"provesNoIntentOrGrossNegligence(A,K)\"\n      ],\n      \"heads\": [\"-liableForCustodyDamage(A,K)\"],\n      \"note\": \"无偿保管人证明自己没有故意或者重大过失的，不承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c898-1\",\n      \"srcs\": [\"art898-1\"],\n      \"body\": [\"custodyContract(K)\", \"depositorOf(B,K)\", \"custodianOf(A,K)\", \"valuableDeposited(T,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"A\", \"content\": \"declareValuable(B,A,T,K)\"}\n      ],\n      \"note\": \"寄存货币、有价证券或者其他贵重物品的，寄存人应当向保管人声明，由保管人验收或者封存\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c898-2\",\n      \"srcs\": [\"art898-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"valuableDeposited(T,K)\",\n        \"-declaredValuable(B,A,T,K)\",\n        \"thingDamaged(T,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"compensateAsOrdinaryItem(A,K)\"}\n      ],\n      \"note\": \"寄存人未声明的，该物品毁损、灭失后，保管人可以按照一般物品予以赔偿\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c899-1\",\n      \"srcs\": [\"art899-1\"],\n      \"body\": [\"custodyContract(K)\", \"depositorOf(B,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"B\", \"counterparty\": null, \"content\": \"retrieveThingAnytime(B,K)\"}\n      ],\n      \"note\": \"寄存人可以随时领取保管物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c899-2\",\n      \"srcs\": [\"art899-2\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"depositorOf(B,K)\", \"noAgreedCustodyPeriod(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"requestRetrieval(A,B,K)\"}\n      ],\n      \"note\": \"当事人对保管期限没有约定或者约定不明确的，保管人可以随时请求寄存人领取保管物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c899-3\",\n      \"srcs\": [\"art899-2\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"agreedCustodyPeriod(K)\",\n        \"-specialReason(A,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"requestEarlyRetrieval(A,B,K)\"}\n      ],\n      \"note\": \"约定保管期限的，保管人无特别事由不得请求寄存人提前领取保管物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c900-1\",\n      \"srcs\": [\"art900-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"custodyThingOf(T,K)\",\n        {\"or\": [\"custodyPeriodExpired(K)\", \"depositorRetrievesEarly(B,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"returnOriginalAndFruits(A,B,T,K)\"}\n      ],\n      \"note\": \"保管期限届满或者寄存人提前领取保管物的，保管人应当将原物及其孳息归还寄存人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c901-1\",\n      \"srcs\": [\"art901-1\"],\n      \"body\": [\"custodyContract(K)\", \"custodianOf(A,K)\", \"depositorOf(B,K)\", \"moneyCustody(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"returnSameKindQuantityMoney(A,B,K)\"}\n      ],\n      \"note\": \"保管人保管货币的，可以返还相同种类、数量的货币\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c901-2\",\n      \"srcs\": [\"art901-1\"],\n      \"body\": [\n        \"custodyContract(K)\",\n        \"custodianOf(A,K)\",\n        \"depositorOf(B,K)\",\n        \"fungibleCustody(K)\",\n        \"agreedReturnSameKindQualityQuantity(K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"B\", \"content\": \"returnSameKindQualityQuantityItem(A,B,K)\"}\n      ],\n      \"note\": \"保管其他可替代物的，可以按照约定返还相同种类、品质、数量的物品\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c897-2\", \"c897-1\", \"无偿保管人证明自己没有故意或者重大过失的，不承担赔偿责任，优先于保管不善的一般赔偿责任\"],\n    [\"c893-2\", \"c897-1\", \"寄存人未告知保管物瑕疵或者特殊保管需要致保管物受损的，保管人不承担赔偿责任\"],\n    [\"c898-2\", \"c897-1\", \"寄存人未声明贵重物品的，保管人按一般物品赔偿，优先于按实际价值赔偿\"],\n    [\"c894-1\", \"c892-1\", \"当事人另有约定时保管人可转交第三人保管，构成亲自保管义务的例外\"],\n    [\"c895-1\", \"c892-1\", \"当事人另有约定时保管人可使用或者许可第三人使用保管物，构成妥善保管义务的例外\"]\n  ],\n  \"predicates\": {\n    \"custodyContract/1\": \"是保管合同\",\n    \"custodianOf/2\": \"是保管人（保管人，合同）\",\n    \"depositorOf/2\": \"是寄存人（寄存人，合同）\",\n    \"custodyThingOf/2\": \"是保管物（物，合同）\",\n    \"custodyContractFormed/1\": \"保管合同成立\",\n    \"shoppingDiningLodgingAt/2\": \"在保管人处从事购物、就餐、住宿等活动（寄存人，保管人）\",\n    \"storedGoodsAtDesignatedPlace/3\": \"将物品存放在保管人指定的场所（寄存人，保管人，合同）\",\n    \"agreedOtherwiseOrTradeUsage/1\": \"当事人另有约定或者另有交易习惯（合同）\",\n    \"tradeUsageOtherwiseOnVoucher/1\": \"另有交易习惯，无须出具保管凭证（合同）\",\n    \"issueCustodyVoucher/2\": \"出具保管凭证（保管人，合同）\",\n    \"safekeepAndReturnThing/3\": \"保管并返还保管物（保管人，寄存人，合同）\",\n    \"safekeepThing/2\": \"妥善保管保管物（保管人，合同）\",\n    \"agreeCustodyPlaceOrMethod/1\": \"约定保管场所或者方法（合同）\",\n    \"emergency/1\": \"存在紧急情况（合同）\",\n    \"forDepositorsInterest/2\": \"为维护寄存人利益（保管人，合同）\",\n    \"changeCustodyPlaceOrMethod/2\": \"改变保管场所或者方法（保管人，合同）\",\n    \"thingDefective/2\": \"保管物有瑕疵（物，合同）\",\n    \"specialMeasuresNeededByNature/2\": \"根据保管物的性质需要采取特殊保管措施（物，合同）\",\n    \"informCustodian/4\": \"将有关情况告知保管人（寄存人，保管人，物，合同）\",\n    \"failedToInform/4\": \"未将有关情况告知保管人（寄存人，保管人，物，合同）\",\n    \"thingDamaged/2\": \"保管物毁损、灭失（物，合同）\",\n    \"liableForCustodyDamage/2\": \"承担保管物毁损、灭失的赔偿责任（保管人，合同）\",\n    \"custodianSufferedLoss/2\": \"保管人因寄存人未告知而受损失（保管人，合同）\",\n    \"knewOrShouldKnowAndFailedToRemedy/3\": \"保管人知道或者应当知道且未采取补救措施（保管人，物，合同）\",\n    \"compensateCustodianLoss/3\": \"赔偿保管人的损失（寄存人，保管人，合同）\",\n    \"agreedOtherwiseOnSubCustody/1\": \"当事人约定可以将保管物转交第三人保管（合同）\",\n    \"transferCustodyToThirdParty/2\": \"将保管物转交第三人保管（保管人，合同）\",\n    \"transferredCustodyToThirdParty/2\": \"已将保管物转交第三人保管（保管人，合同）\",\n    \"compensateCustodyLoss/2\": \"赔偿保管物的损失（保管人，合同）\",\n    \"agreedOtherwiseOnUse/1\": \"当事人约定可以使用或者许可第三人使用保管物（合同）\",\n    \"useOrLicenseCustodyThing/2\": \"使用或者许可第三人使用保管物（保管人，合同）\",\n    \"thirdPartyClaimsThing/3\": \"第三人对保管物主张权利（第三人，物，合同）\",\n    \"returnThingToDepositor/4\": \"向寄存人返还保管物（保管人，寄存人，物，合同）\",\n    \"thirdPartySuedCustodian/3\": \"第三人对保管人提起诉讼（第三人，保管人，合同）\",\n    \"thirdPartyAppliedToSeizeThing/3\": \"第三人对保管物申请扣押（第三人，物，合同）\",\n    \"notifyDepositor/3\": \"及时通知寄存人（保管人，寄存人，合同）\",\n    \"poorCustodyDamagesThing/3\": \"因保管不善造成保管物毁损、灭失（保管人，物，合同）\",\n    \"gratuitousCustody/1\": \"是无偿保管（合同）\",\n    \"provesNoIntentOrGrossNegligence/2\": \"证明自己没有故意或者重大过失（保管人，合同）\",\n    \"valuableDeposited/2\": \"寄存的是货币、有价证券或者其他贵重物品（物，合同）\",\n    \"declareValuable/4\": \"向保管人声明贵重物品（寄存人，保管人，物，合同）\",\n    \"declaredValuable/4\": \"已向保管人声明贵重物品（寄存人，保管人，物，合同）\",\n    \"compensateAsOrdinaryItem/2\": \"按照一般物品予以赔偿（保管人，合同）\",\n    \"retrieveThingAnytime/2\": \"随时领取保管物（寄存人，合同）\",\n    \"noAgreedCustodyPeriod/1\": \"对保管期限没有约定或者约定不明确（合同）\",\n    \"requestRetrieval/3\": \"请求寄存人领取保管物（保管人，寄存人，合同）\",\n    \"agreedCustodyPeriod/1\": \"约定了保管期限（合同）\",\n    \"specialReason/2\": \"有特别事由（保管人，合同）\",\n    \"requestEarlyRetrieval/3\": \"请求寄存人提前领取保管物（保管人，寄存人，合同）\",\n    \"returnOriginalAndFruits/4\": \"将原物及其孳息归还寄存人（保管人，寄存人，物，合同）\",\n    \"custodyPeriodExpired/1\": \"保管期限届满（合同）\",\n    \"depositorRetrievesEarly/2\": \"寄存人提前领取保管物（寄存人，合同）\",\n    \"moneyCustody/1\": \"保管的是货币（合同）\",\n    \"returnSameKindQuantityMoney/3\": \"返还相同种类、数量的货币（保管人，寄存人，合同）\",\n    \"fungibleCustody/1\": \"保管的是其他可替代物（合同）\",\n    \"agreedReturnSameKindQualityQuantity/1\": \"约定返还相同种类、品质、数量的物品（合同）\",\n    \"returnSameKindQualityQuantityItem/3\": \"返还相同种类、品质、数量的物品（保管人，寄存人，合同）\"\n  }\n}"
+ }
+}

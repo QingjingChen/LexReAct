@@ -1,0 +1,1479 @@
+{
+ "art:413": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "抵押财产折价、拍卖或者变卖后，价款超过债权数额的部分归谁所有，不足部分由谁清偿",
+     "rules": [
+      "c413-1",
+      "c413-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "抵押财产已折价、拍卖或者变卖（已变价）",
+     "rules": [
+      "c413-1",
+      "c413-2"
+     ]
+    },
+    {
+     "text": "变价款超过债权数额，或者不足清偿债权数额",
+     "rules": [
+      "c413-1",
+      "c413-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "价款超过债权数额的部分归抵押人所有",
+     "rules": [
+      "c413-1"
+     ]
+    },
+    {
+     "text": "不足部分由债务人清偿",
+     "rules": [
+      "c413-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "抵押人可以是债务人以外的第三人：剩余价款归该抵押人，而不足部分仍由债务人（而非抵押人）清偿，故两条规则的义务主体不同",
+     "rules": [
+      "c413-1",
+      "c413-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c413-1",
+    "srcs": [
+     "art413-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     {
+      "or": [
+       "collateralAppraised(P)",
+       "collateralAuctioned(P)",
+       "collateralSold(P)"
+      ]
+     },
+     "proceedsExceedClaim(P)"
+    ],
+    "heads": [
+     "surplusProceedsBelongTo(M,P)"
+    ],
+    "note": "抵押财产折价、拍卖或者变卖后，其价款超过债权数额的部分归抵押人所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c413-2",
+    "srcs": [
+     "art413-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     {
+      "or": [
+       "collateralAppraised(P)",
+       "collateralAuctioned(P)",
+       "collateralSold(P)"
+      ]
+     },
+     "proceedsFallShortOfClaim(P)",
+     "debtorOf(D,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "payShortfall(D,P)"
+     }
+    ],
+    "note": "抵押财产变价款不足清偿债权数额的，不足部分由债务人（而非抵押人）清偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "collateralAppraised": "抵押财产已折价（以抵押财产折价方式实现抵押权）（参数：抵押财产）",
+   "collateralAuctioned": "抵押财产已被拍卖（参数：抵押财产）",
+   "collateralSold": "抵押财产已被变卖（参数：抵押财产）",
+   "proceedsExceedClaim": "变价款超过债权数额（参数：抵押财产）",
+   "proceedsFallShortOfClaim": "变价款不足清偿债权数额（参数：抵押财产）",
+   "surplusProceedsBelongTo": "变价款超过债权数额的部分归抵押人所有（抵押人，抵押财产）",
+   "payShortfall": "清偿不足部分（债务人，抵押财产）"
+  }
+ },
+ "art:409": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "抵押权人可否放弃抵押权或抵押权顺位，抵押权人与抵押人可否协议变更抵押权顺位、被担保债权数额等内容，该变更对其他抵押权人产生何种效力",
+     "rules": [
+      "c409-1a",
+      "c409-1b",
+      "c409-1c",
+      "c409-1d"
+     ]
+    },
+    {
+     "text": "债务人以自己的财产设定抵押时，抵押权人放弃抵押权、抵押权顺位或者变更抵押权，对其他担保人的担保责任有何影响",
+     "rules": [
+      "c409-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "抵押权人对该抵押财产享有抵押权",
+     "rules": [
+      "c409-1a",
+      "c409-1b",
+      "c409-1c"
+     ]
+    },
+    {
+     "text": "抵押权人与抵押人协议变更抵押权顺位、被担保的债权数额等内容",
+     "rules": [
+      "c409-1c"
+     ]
+    },
+    {
+     "text": "该变更未经其他抵押权人书面同意",
+     "rules": [
+      "c409-1d"
+     ]
+    },
+    {
+     "text": "债务人以自己的财产设定抵押，且其他担保人为该债务提供担保",
+     "rules": [
+      "c409-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "其他担保人承诺仍然提供担保的，不免除其担保责任",
+     "rules": [
+      "c409-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "抵押权人可以放弃抵押权",
+     "rules": [
+      "c409-1a"
+     ]
+    },
+    {
+     "text": "抵押权人可以放弃抵押权的顺位",
+     "rules": [
+      "c409-1b"
+     ]
+    },
+    {
+     "text": "抵押权人与抵押人可以协议变更抵押权顺位以及被担保的债权数额等内容",
+     "rules": [
+      "c409-1c"
+     ]
+    },
+    {
+     "text": "未经其他抵押权人书面同意的变更，不得对其他抵押权人产生不利影响",
+     "rules": [
+      "c409-1d"
+     ]
+    },
+    {
+     "text": "其他担保人在抵押权人丧失优先受偿权益的范围内免除担保责任",
+     "rules": [
+      "c409-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款但书优先：其他担保人承诺仍然提供担保的，不发生免除担保责任的效果",
+     "rules": [
+      "c409-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "放弃抵押权使抵押权本身消灭，放弃顺位仅丧失优先次序而抵押权仍存在；条文将二者并列，法律效果不同（学理）",
+     "rules": []
+    },
+    {
+     "text": "第2款仅适用于债务人以自己的财产设定抵押的情形；第三人提供物的担保时，抵押权人放弃该担保对其他担保人的影响，应依第392条、第435条等规定处理（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c409-1a",
+    "srcs": [
+     "art409-1"
+    ],
+    "body": [
+     "mortgageeOf(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "waiveMortgage(M,P)"
+     }
+    ],
+    "note": "抵押权人可以放弃抵押权",
+    "auth": "npc"
+   },
+   {
+    "key": "c409-1b",
+    "srcs": [
+     "art409-1"
+    ],
+    "body": [
+     "mortgageeOf(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "waivePriorityRank(M,P)"
+     }
+    ],
+    "note": "抵押权人可以放弃抵押权的顺位",
+    "auth": "npc"
+   },
+   {
+    "key": "c409-1c",
+    "srcs": [
+     "art409-1"
+    ],
+    "body": [
+     "mortgageeOf(M,P)",
+     "mortgage(D,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": "D",
+      "content": "changeMortgageRankOrAmount(M,D,P)"
+     }
+    ],
+    "note": "抵押权人与抵押人可以协议变更抵押权顺位以及被担保的债权数额等内容",
+    "auth": "npc"
+   },
+   {
+    "key": "c409-1d",
+    "srcs": [
+     "art409-1"
+    ],
+    "body": [
+     "changeMortgageRankOrAmount(M,D,P)",
+     "otherMortgagee(O,P)",
+     "-writtenConsentByOtherMortgagee(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "O",
+      "content": "causeAdverseEffectTo(O,P)"
+     }
+    ],
+    "note": "抵押权的变更未经其他抵押权人书面同意的，不得对其他抵押权人产生不利影响",
+    "auth": "npc"
+   },
+   {
+    "key": "c409-2",
+    "srcs": [
+     "art409-2"
+    ],
+    "body": [
+     "mortgage(D,P)",
+     "debtorOf(D,P)",
+     "mortgageeOf(M,P)",
+     {
+      "or": [
+       "waiveMortgage(M,P)",
+       "waivePriorityRank(M,P)",
+       "changeMortgageRankOrAmount(M,D,P)"
+      ]
+     },
+     "thirdPartySecurityFor(G,D,Debt)",
+     "~promisedToStillProvideSecurity(G,Debt)"
+    ],
+    "heads": [
+     "releasedFromSecurityLiability(G,Debt)"
+    ],
+    "note": "债务人以自己的财产设定抵押，抵押权人放弃该抵押权、抵押权顺位或者变更抵押权的，其他担保人在抵押权人丧失优先受偿权益的范围内免除担保责任；其他担保人承诺仍然提供担保的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "waiveMortgage": "抵押权人放弃抵押权（抵押权人，抵押财产）",
+   "waivePriorityRank": "抵押权人放弃抵押权的顺位（抵押权人，抵押财产）",
+   "changeMortgageRankOrAmount": "抵押权人与抵押人协议变更抵押权顺位、被担保债权数额等内容（抵押权人，抵押人，抵押财产）",
+   "otherMortgagee": "是同一抵押财产上的其他抵押权人（其他抵押权人，抵押财产）",
+   "writtenConsentByOtherMortgagee": "其他抵押权人已书面同意该变更（其他抵押权人，抵押财产）",
+   "causeAdverseEffectTo": "对该其他抵押权人的抵押权产生不利影响（其他抵押权人，抵押财产）",
+   "promisedToStillProvideSecurity": "承诺仍然提供担保（其他担保人，债务）",
+   "releasedFromSecurityLiability": "在抵押权人丧失优先受偿权益的范围内免除担保责任（其他担保人，债务）"
+  }
+ },
+ "art:394": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "抵押权如何设立；抵押人、抵押权人、抵押财产如何界定；债权人何时有权就抵押财产优先受偿",
+     "rules": [
+      "c394-1",
+      "c394-2",
+      "c394-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "为担保债务的履行，债务人或者第三人不转移财产的占有，将该财产抵押给债权人",
+     "rules": [
+      "c394-1"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务，或者发生当事人约定的实现抵押权的情形",
+     "rules": [
+      "c394-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该债务人或者第三人为抵押人，债权人为抵押权人",
+     "rules": [
+      "c394-1"
+     ]
+    },
+    {
+     "text": "提供担保的财产为抵押财产",
+     "rules": [
+      "c394-3"
+     ]
+    },
+    {
+     "text": "债权人有权就该抵押财产优先受偿",
+     "rules": [
+      "c394-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "抵押以不转移财产占有为特征，区别于须转移占有的质权、留置权；本条只规定抵押权的设立方式与优先受偿权，抵押登记、抵押权顺位与清偿顺序等由其他条款规定",
+     "rules": [
+      "c394-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c394-1",
+    "srcs": [
+     "art394-1",
+     "art394-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "doesNotTransferPossession(M,P)",
+     "debtRelation(C,D)",
+     {
+      "or": [
+       "isSelf(M,D)",
+       "thirdPartyProvidesSecurity(M,D,C)"
+      ]
+     }
+    ],
+    "heads": [
+     "mortgagor(M,P)",
+     "mortgageeOf(C,P)"
+    ],
+    "note": "为担保债务履行，债务人或者第三人不转移财产占有而将该财产抵押给债权人的，该债务人或者第三人为抵押人，债权人为抵押权人",
+    "auth": "npc"
+   },
+   {
+    "key": "c394-2",
+    "srcs": [
+     "art394-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(C,P)",
+     "debtorOf(D,P)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(C,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "M",
+      "content": "priorityPaymentFrom(C,P)"
+     }
+    ],
+    "note": "债务人不履行到期债务或者发生当事人约定的实现抵押权的情形，债权人有权就该抵押财产优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c394-3",
+    "srcs": [
+     "art394-2"
+    ],
+    "body": [
+     "mortgage(M,P)"
+    ],
+    "heads": [
+     "mortgagedProperty(P)"
+    ],
+    "note": "提供担保的财产为抵押财产",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "doesNotTransferPossession": "不转移财产的占有（抵押人，抵押财产）",
+   "mortgagor": "是抵押人（抵押人，抵押财产）",
+   "mortgagedProperty": "是抵押财产，即提供担保的财产"
+  }
+ },
+ "art:416": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "动产价款抵押权（购买价款抵押权）在何种条件下优先于抵押物买受人的其他担保物权人受偿，留置权人是否除外",
+     "rules": [
+      "c416-pm",
+      "c416-1",
+      "c416-lien"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "抵押物为动产，且抵押担保的主债权是抵押物的价款（价款抵押权）",
+     "rules": [
+      "c416-pm"
+     ]
+    },
+    {
+     "text": "标的物交付后十日内办理抵押登记",
+     "rules": [
+      "c416-1"
+     ]
+    },
+    {
+     "text": "存在抵押物买受人的其他担保物权人（留置权人除外）",
+     "rules": [
+      "c416-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "留置权人除外：留置权人优先于价款抵押权人受偿",
+     "rules": [
+      "c416-lien"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该价款抵押权人优先于抵押物买受人的其他担保物权人受偿",
+     "rules": [
+      "c416-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "价款抵押权优先于买受人的其他担保物权人，不以登记先后为准，只需在标的物交付后十日内登记",
+     "rules": [
+      "c416-1"
+     ]
+    },
+    {
+     "text": "留置权优先于价款抵押权（第416条但书）",
+     "rules": [
+      "c416-lien"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记称之为“购买价款抵押权（超级优先权）”；条文限于动产抵押、主债权为抵押物价款、交付后十日内登记三项要件，缺一即回归一般顺位规则",
+     "rules": [
+      "c416-pm",
+      "c416-1"
+     ]
+    },
+    {
+     "text": "本行仅挂载第416条，未挂载第456条留置权优先规则；但书本身已排除留置权人，故无需另引条文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c416-pm",
+    "srcs": [
+     "art416"
+    ],
+    "body": [
+     "movable(M)",
+     "mortgageEstablished(S)",
+     "mortgageeOf(S,M)",
+     "securedClaimIsPriceOf(S,M)"
+    ],
+    "heads": [
+     "purchasePriceMortgage(S,M)"
+    ],
+    "note": "动产抵押担保的主债权是抵押物的价款的，构成价款抵押权（购买价款抵押权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c416-1",
+    "srcs": [
+     "art416"
+    ],
+    "body": [
+     "purchasePriceMortgage(S,M)",
+     "registeredWithin10DaysOfDelivery(S,M)",
+     "otherSecurityInterestHolderOf(O,M)",
+     "~lienHolderOf(O,M)"
+    ],
+    "heads": [
+     "ranksBefore(S,O)"
+    ],
+    "note": "价款抵押权在标的物交付后十日内办理抵押登记的，优先于抵押物买受人的其他担保物权人受偿，但留置权人除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c416-lien",
+    "srcs": [
+     "art416"
+    ],
+    "body": [
+     "lienHolderOf(L,M)",
+     "purchasePriceMortgage(S,M)"
+    ],
+    "heads": [
+     "ranksBefore(L,S)"
+    ],
+    "note": "第416条但书：留置权人除外，故留置权人优先于价款抵押权人受偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "securedClaimIsPriceOf": "抵押担保的主债权是抵押物的价款（参数1：抵押权，参数2：抵押物）",
+   "purchasePriceMortgage": "是价款抵押权，即所担保主债权为抵押物价款的动产抵押权（参数1：抵押权，参数2：抵押物）",
+   "registeredWithin10DaysOfDelivery": "标的物交付后十日内办理了抵押登记（参数1：抵押权，参数2：标的物）",
+   "otherSecurityInterestHolderOf": "是抵押物买受人的其他担保物权人（参数1：其他担保物权人，参数2：抵押物）",
+   "lienHolderOf": "是该动产上的留置权人（参数1：留置权人，参数2：动产）"
+  }
+ },
+ "art:418": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "以集体所有土地的使用权依法抵押，实现抵押权后，能否改变土地所有权的性质和土地用途",
+     "rules": [
+      "c418-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "抵押的标的是集体所有土地的使用权，且该抵押依法设立",
+     "rules": [
+      "c418-lawful",
+      "c418-1"
+     ]
+    },
+    {
+     "text": "抵押权已经实现（如拍卖、变卖抵押的土地使用权并受偿）",
+     "rules": [
+      "c418-1"
+     ]
+    },
+    {
+     "text": "未经法定程序（未依法办理征收、用途变更审批等手续）",
+     "rules": [
+      "c418-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经法定程序（如依法征收、依法办理土地用途变更审批）的，不受该禁止约束",
+     "rules": [
+      "c418-perm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "不得改变土地所有权的性质（集体所有不得因此变为国家所有或其他性质）",
+     "rules": [
+      "c418-1"
+     ]
+    },
+    {
+     "text": "不得改变土地用途（如不得擅自将农用地改为建设用地）",
+     "rules": [
+      "c418-1"
+     ]
+    },
+    {
+     "text": "经法定程序的，可以依法改变土地所有权的性质和土地用途",
+     "rules": [
+      "c418-perm"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是抵押权实现后对集体所有土地使用权的特别限制，就土地所有权性质与用途的变动优先于抵押财产处分的一般规则适用",
+     "rules": [
+      "c418-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记仅复述条文，未增设例外；本条限制的是实现抵押权之后的土地所有权性质与土地用途，而非抵押本身是否有效或抵押权实现方式",
+     "rules": []
+    },
+    {
+     "text": "与规范“集体所有土地使用权能否抵押”的规则不同，本条以抵押权已依法设立并实现为前提，规范实现后的用途与所有权性质",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c418-lawful",
+    "srcs": [
+     "art418"
+    ],
+    "body": [
+     "collectiveLandUseRight(R)",
+     "mortgageEstablished(R)",
+     "lawPermitsMortgage(R)"
+    ],
+    "heads": [
+     "lawfullyMortgaged(R)"
+    ],
+    "note": "“依法抵押”指集体所有土地的使用权依法律规定可以抵押并已设立抵押权；该拆解属学理解释",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c418-1",
+    "srcs": [
+     "art418"
+    ],
+    "body": [
+     "collectiveLandUseRight(R)",
+     "lawfullyMortgaged(R)",
+     "realizesMortgage(P,R)",
+     "-statutoryProcedureCompleted(R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "changeLandOwnershipNature(P,R)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "changeLandUsePurposeOfCollectiveLand(P,R)"
+     }
+    ],
+    "note": "以集体所有土地的使用权依法抵押，实现抵押权后，未经法定程序，不得改变土地所有权的性质和土地用途",
+    "auth": "npc"
+   },
+   {
+    "key": "c418-perm",
+    "srcs": [
+     "art418"
+    ],
+    "body": [
+     "collectiveLandUseRight(R)",
+     "lawfullyMortgaged(R)",
+     "realizesMortgage(P,R)",
+     "statutoryProcedureCompleted(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "changeLandOwnershipNature(P,R)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "changeLandUsePurposeOfCollectiveLand(P,R)"
+     }
+    ],
+    "note": "由“未经法定程序不得改变”反面推出的允许：经法定程序（如依法征收、办理用途变更审批）后可以改变；条文未明示，属学理推论",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lawfullyMortgaged": "集体所有土地的使用权已依法抵押（抵押权已依法设立）",
+   "realizesMortgage": "实现抵押权（实现人，集体所有土地使用权）",
+   "statutoryProcedureCompleted": "已履行法定程序（如依法征收、办理土地用途变更审批等）",
+   "changeLandOwnershipNature": "改变土地所有权的性质（行为人，集体所有土地使用权）",
+   "changeLandUsePurposeOfCollectiveLand": "改变集体所有土地的用途（行为人，集体所有土地使用权）"
+  }
+ },
+ "card:g3329": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "抵押期间抵押人能否转让抵押财产、抵押权是否受影响，以及转让后抵押人、抵押权人、债务人各负何种义务",
+     "rules": [
+      "c406-1",
+      "c406-agreed",
+      "c406-effect",
+      "c406-2-notice",
+      "c406-2-early",
+      "c406-2-excess",
+      "c406-2-shortfall"
+     ]
+    },
+    {
+     "text": "抵押财产价值有减少之虞或已经减少时，抵押权人享有哪些保全请求权",
+     "rules": [
+      "c408-1-stop",
+      "c408-1-restore",
+      "c408-1-early"
+     ]
+    },
+    {
+     "text": "抵押权实现的条件与方式；未就实现方式达成协议时如何处理；折价、变卖的价格标准；损害其他债权人的协议能否撤销",
+     "rules": [
+      "c410-1",
+      "c410-1-revoke",
+      "c410-2",
+      "c410-3"
+     ]
+    },
+    {
+     "text": "最高额抵押的抵押财产（被担保债权）于何时确定",
+     "rules": [
+      "c411"
+     ]
+    },
+    {
+     "text": "抵押权人能否收取抵押财产的孳息，孳息如何充抵",
+     "rules": [
+      "c412-1",
+      "c412-1-legal",
+      "c412-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "抵押财产已设定抵押，抵押权人享有抵押权",
+     "rules": [
+      "c406-1",
+      "c406-effect",
+      "c406-2-notice",
+      "c408-1-stop",
+      "c408-1-restore",
+      "c410-1",
+      "c412-1"
+     ]
+    },
+    {
+     "text": "当事人另有约定（如约定不得转让抵押财产）",
+     "rules": [
+      "c406-agreed"
+     ]
+    },
+    {
+     "text": "抵押人的行为足以使抵押财产价值减少",
+     "rules": [
+      "c408-1-stop"
+     ]
+    },
+    {
+     "text": "抵押财产的价值已经减少",
+     "rules": [
+      "c408-1-restore",
+      "c408-1-early"
+     ]
+    },
+    {
+     "text": "抵押人既不恢复抵押财产的价值，也不提供相应担保",
+     "rules": [
+      "c408-1-early"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务，或者发生当事人约定的实现抵押权的情形",
+     "rules": [
+      "c410-1",
+      "c410-2",
+      "c412-1",
+      "c412-1-legal"
+     ]
+    },
+    {
+     "text": "抵押权人与抵押人未就抵押权实现方式达成协议",
+     "rules": [
+      "c410-2"
+     ]
+    },
+    {
+     "text": "抵押财产被人民法院依法扣押",
+     "rules": [
+      "c412-1",
+      "c412-1-legal"
+     ]
+    },
+    {
+     "text": "抵押权人已通知应当清偿法定孳息的义务人",
+     "rules": [
+      "c412-1-legal"
+     ]
+    },
+    {
+     "text": "依第396条设定最高额抵押，且出现法定确定事由之一",
+     "rules": [
+      "c411"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，按照其约定，可排除抵押人转让抵押财产",
+     "rules": [
+      "c406-agreed"
+     ]
+    },
+    {
+     "text": "抵押权人未通知应当清偿法定孳息的义务人的，不得收取该法定孳息（天然孳息不受此限）",
+     "rules": [
+      "c412-1-legal"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "抵押人可以转让抵押财产；抵押财产转让的，抵押权不受影响，抵押权人仍可对取得抵押财产的第三人主张抵押权",
+     "rules": [
+      "c406-1",
+      "c406-effect"
+     ]
+    },
+    {
+     "text": "抵押人转让抵押财产的，应当及时通知抵押权人",
+     "rules": [
+      "c406-2-notice"
+     ]
+    },
+    {
+     "text": "抵押权人能证明转让可能损害抵押权的，可以请求抵押人将转让所得价款提前清偿债务或者提存",
+     "rules": [
+      "c406-2-early"
+     ]
+    },
+    {
+     "text": "转让价款超过债权数额的部分归抵押人所有，不足部分由债务人清偿",
+     "rules": [
+      "c406-2-excess",
+      "c406-2-shortfall"
+     ]
+    },
+    {
+     "text": "抵押权人有权请求抵押人停止其行为；价值已减少的，有权请求恢复抵押财产的价值或者提供与减少价值相应的担保",
+     "rules": [
+      "c408-1-stop",
+      "c408-1-restore"
+     ]
+    },
+    {
+     "text": "抵押人不恢复价值也不提供担保的，抵押权人有权请求债务人提前清偿债务",
+     "rules": [
+      "c408-1-early"
+     ]
+    },
+    {
+     "text": "抵押权人可以与抵押人协议以抵押财产折价或者以拍卖、变卖所得价款优先受偿；协议损害其他债权人利益的，其他债权人可以请求人民法院撤销该协议",
+     "rules": [
+      "c410-1",
+      "c410-1-revoke"
+     ]
+    },
+    {
+     "text": "未就实现方式达成协议的，抵押权人可以请求人民法院拍卖、变卖抵押财产",
+     "rules": [
+      "c410-2"
+     ]
+    },
+    {
+     "text": "抵押财产折价或者变卖的，应当参照市场价格",
+     "rules": [
+      "c410-3"
+     ]
+    },
+    {
+     "text": "最高额抵押的抵押财产自法定情形之一发生时确定",
+     "rules": [
+      "c411"
+     ]
+    },
+    {
+     "text": "自扣押之日起抵押权人有权收取抵押财产的天然孳息；已通知法定孳息清偿义务人的，有权收取法定孳息",
+     "rules": [
+      "c412-1",
+      "c412-1-legal"
+     ]
+    },
+    {
+     "text": "收取的孳息应当先充抵收取孳息的费用",
+     "rules": [
+      "c412-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于抵押财产不得转让的约定，优先于第406条第1款“抵押人可以转让抵押财产”的任意性规定",
+     "rules": [
+      "c406-agreed",
+      "c406-1"
+     ]
+    },
+    {
+     "text": "第408条的保全请求权是抵押权实现前的预防性救济，先于第410条的实现程序适用（学理归纳）",
+     "rules": [
+      "c408-1-stop",
+      "c408-1-restore",
+      "c408-1-early"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第406条规范抵押财产转让的效力与价款控制，不涉及价值减损的救济；第408条针对抵押人减损抵押财产价值的行为，属事前保全",
+     "rules": []
+    },
+    {
+     "text": "第410条是债务到期后（或约定情形发生时）抵押权实现方式的规定，与第408条的事前保全、第412条的孳息收取相区别",
+     "rules": []
+    },
+    {
+     "text": "第411条仅适用于依第396条设定的最高额抵押，普通抵押的担保范围自始确定，无须“确定”程序",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c406-1",
+    "srcs": [
+     "art406-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "~agreedNoTransfer(M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": "E",
+      "content": "transferMortgagedProperty(M,P)"
+     }
+    ],
+    "note": "抵押期间，除当事人另有约定外，抵押人可以转让抵押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-agreed",
+    "srcs": [
+     "art406-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "agreedNoTransfer(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "E",
+      "content": "transferMortgagedProperty(M,P)"
+     }
+    ],
+    "note": "当事人另有约定（如约定不得转让）的，按照其约定，抵押人不得转让抵押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-effect",
+    "srcs": [
+     "art406-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "transferMortgagedProperty(M,P)",
+     "thirdPartyAcquirer(T,P)"
+    ],
+    "heads": [
+     "mortgageOpposableTo(E,T)"
+    ],
+    "note": "抵押财产转让的，抵押权不受影响，抵押权人仍可对取得抵押财产的第三人主张抵押权",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-2-notice",
+    "srcs": [
+     "art406-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "transferMortgagedProperty(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "E",
+      "content": "notifyMortgagee(M,E,P)"
+     }
+    ],
+    "note": "抵押人转让抵押财产的，应当及时通知抵押权人",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-2-early",
+    "srcs": [
+     "art406-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "transferMortgagedProperty(M,P)",
+     "transferMayHarmMortgage(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "M",
+      "content": "demandEarlyPaymentOrEscrow(E,M,P)"
+     }
+    ],
+    "note": "抵押权人能证明抵押财产转让可能损害抵押权的，可以请求抵押人将转让所得价款提前清偿债务或者提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-2-excess",
+    "srcs": [
+     "art406-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "transferMortgagedProperty(M,P)"
+    ],
+    "heads": [
+     "excessProceedsBelongTo(M)"
+    ],
+    "note": "转让的价款超过债权数额的部分归抵押人所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c406-2-shortfall",
+    "srcs": [
+     "art406-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "transferMortgagedProperty(M,P)",
+     "debtOf(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "E",
+      "content": "payShortfall(D,E)"
+     }
+    ],
+    "note": "转让价款不足清偿的部分，由债务人清偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c408-1-stop",
+    "srcs": [
+     "art408-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "actSufficientToReduceValue(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "M",
+      "content": "demandStopAct(E,M)"
+     }
+    ],
+    "note": "抵押人的行为足以使抵押财产价值减少的，抵押权人有权请求其停止该行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c408-1-restore",
+    "srcs": [
+     "art408-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "mortgagedPropertyValueReduced(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "M",
+      "content": "demandRestoreValueOrSecurity(E,M,P)"
+     }
+    ],
+    "note": "抵押财产价值减少的，抵押权人有权请求恢复抵押财产的价值，或者提供与减少价值相应的担保",
+    "auth": "npc"
+   },
+   {
+    "key": "c408-1-early",
+    "srcs": [
+     "art408-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "mortgagedPropertyValueReduced(P)",
+     "mortgagorRefusesRestoreAndSecurity(M,P)",
+     "debtOf(D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "D",
+      "content": "demandDebtorEarlyPerformance(E,D)"
+     }
+    ],
+    "note": "抵押人既不恢复抵押财产的价值也不提供担保的，抵押权人有权请求债务人提前清偿债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c410-1",
+    "srcs": [
+     "art410-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "debtOf(D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(E,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "M",
+      "content": "realizeMortgageByAgreement(E,M,P)"
+     }
+    ],
+    "note": "债务人不履行到期债务或者发生约定的实现抵押权情形时，抵押权人可以与抵押人协议以抵押财产折价或者以拍卖、变卖所得价款优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c410-1-revoke",
+    "srcs": [
+     "art410-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "realizeMortgageByAgreement(E,M,P)",
+     "realizationAgreementDamagesOtherCreditors(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requestCourtRevokeRealizationAgreement(A)"
+     }
+    ],
+    "note": "折价、拍卖、变卖抵押财产的协议损害其他债权人利益的，其他债权人可以请求人民法院撤销该协议",
+    "auth": "npc"
+   },
+   {
+    "key": "c410-2",
+    "srcs": [
+     "art410-2"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "debtOf(D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(E,P)"
+      ]
+     },
+     "noAgreementOnRealizationMethod(E,M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "requestCourtAuctionOrSell(E,P)"
+     }
+    ],
+    "note": "抵押权人与抵押人未就抵押权实现方式达成协议的，抵押权人可以请求人民法院拍卖、变卖抵押财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c410-3",
+    "srcs": [
+     "art410-3"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "realizeMortgageByAgreement(E,M,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "M",
+      "content": "referToMarketPrice(E,P)"
+     }
+    ],
+    "note": "抵押财产折价或者变卖的，应当参照市场价格",
+    "auth": "npc"
+   },
+   {
+    "key": "c411",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "maxAmountMortgage(M)",
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "debtOf(D)",
+     {
+      "or": [
+       "debtMatured(D) unpaid(D)",
+       "debtorOrMortgagorBankruptOrDissolved(M)",
+       "agreedRealizationEventOccurred(E,P)",
+       "otherSeriousAffectingRealization(D)"
+      ]
+     }
+    ],
+    "heads": [
+     "securedClaimsDetermined(M)"
+    ],
+    "note": "依第396条设定最高额抵押的，抵押财产自债务履行期限届满债权未实现、抵押人被宣告破产或解散、约定的实现抵押权情形发生、严重影响债权实现的其他情形之一发生时确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c412-1",
+    "srcs": [
+     "art412-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "debtOf(D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(E,P)"
+      ]
+     },
+     "seizedOrSupervised(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "collectNaturalFruits(E,P)"
+     }
+    ],
+    "note": "因债务人不履行到期债务或发生约定情形致抵押财产被人民法院依法扣押的，自扣押之日起抵押权人有权收取该抵押财产的天然孳息",
+    "auth": "npc"
+   },
+   {
+    "key": "c412-1-legal",
+    "srcs": [
+     "art412-1"
+    ],
+    "body": [
+     "mortgage(M,P)",
+     "mortgageeOf(E,P)",
+     "debtOf(D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(E,P)"
+      ]
+     },
+     "seizedOrSupervised(P)",
+     "notifiedFructusObligor(E)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "collectLegalFruits(E,P)"
+     }
+    ],
+    "note": "法定孳息以抵押权人已通知应当清偿法定孳息的义务人为条件；未通知的，不得收取（但书）",
+    "auth": "npc"
+   },
+   {
+    "key": "c412-2",
+    "srcs": [
+     "art412-2"
+    ],
+    "body": [
+     "mortgageeOf(E,P)",
+     {
+      "or": [
+       "collectNaturalFruits(E,P)",
+       "collectLegalFruits(E,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "offsetCollectionCostFirst(E,P)"
+     }
+    ],
+    "note": "抵押权人收取的孳息应当先充抵收取孳息的费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c406-agreed",
+    "c406-1",
+    "当事人另有约定优先于第406条第1款关于抵押人可以转让抵押财产的任意性规定"
+   ]
+  ],
+  "predicates": {
+   "excessProceedsBelongTo": "转让抵押财产所得价款超过债权数额的部分归抵押人所有（抵押人）",
+   "payShortfall": "清偿转让价款不足清偿的部分（债务人，抵押权人）",
+   "actSufficientToReduceValue": "抵押人的行为足以使抵押财产价值减少（抵押人，抵押财产）",
+   "demandStopAct": "请求抵押人停止足以使抵押财产价值减少的行为（抵押权人，抵押人）",
+   "mortgagedPropertyValueReduced": "抵押财产的价值已经减少（抵押财产）",
+   "demandRestoreValueOrSecurity": "请求恢复抵押财产的价值或者提供与减少价值相应的担保（抵押权人，抵押人，抵押财产）",
+   "mortgagorRefusesRestoreAndSecurity": "抵押人既不恢复抵押财产的价值也不提供相应担保（抵押人，抵押财产）",
+   "demandDebtorEarlyPerformance": "请求债务人提前清偿债务（抵押权人，债务人）",
+   "realizeMortgageByAgreement": "与抵押人协议以抵押财产折价或者以拍卖、变卖所得价款优先受偿（抵押权人，抵押人，抵押财产）",
+   "realizationAgreementDamagesOtherCreditors": "折价、拍卖、变卖抵押财产的协议损害其他债权人利益（其他债权人）",
+   "requestCourtRevokeRealizationAgreement": "请求人民法院撤销该实现抵押权的协议（其他债权人）",
+   "noAgreementOnRealizationMethod": "抵押权人与抵押人未就抵押权实现方式达成协议（抵押权人，抵押人）",
+   "requestCourtAuctionOrSell": "请求人民法院拍卖、变卖抵押财产（抵押权人，抵押财产）",
+   "referToMarketPrice": "折价或者变卖抵押财产参照市场价格（抵押权人，抵押财产）",
+   "otherSeriousAffectingRealization": "严重影响债权实现的其他情形（债务人）",
+   "collectNaturalFruits": "收取抵押财产的天然孳息（抵押权人，抵押财产）",
+   "collectLegalFruits": "收取抵押财产的法定孳息（抵押权人，抵押财产）",
+   "notifiedFructusObligor": "已通知应当清偿法定孳息的义务人（抵押权人）",
+   "offsetCollectionCostFirst": "收取的孳息先充抵收取孳息的费用（抵押权人，抵押财产）"
+  }
+ }
+}

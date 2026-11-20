@@ -1,0 +1,2452 @@
+{
+ "art:919": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托合同的概念：委托人和受托人约定，由受托人处理委托人事务的合同",
+     "rules": [
+      "c919-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托人与受托人之间的合同（双方的约定）",
+     "rules": [
+      "c919-1"
+     ]
+    },
+    {
+     "text": "约定的内容是：由受托人处理委托人的事务",
+     "rules": [
+      "c919-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该合同在性质上属于委托合同，即对合同作出定性，进而适用委托合同章的规定",
+     "rules": [
+      "c919-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是定义性条款，只界定委托合同的概念，不直接设定权利义务；受托人应当按照指示处理事务、转委托、报酬与费用等具体规则，见第920条以下",
+     "rules": []
+    },
+    {
+     "text": "笔记与法条原文一致，没有增加要件；委托合同为诺成、不要式、双务合同等特征属于学理归纳，法条未明定，因此不另设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c919-1",
+    "srcs": [
+     "art919-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "client(A,K)",
+     "entrustee(B,K)",
+     "handlesAffairsOf(B,A,K)"
+    ],
+    "heads": [
+     "mandateContract(K)"
+    ],
+    "note": "委托合同是委托人和受托人约定，由受托人处理委托人事务的合同（定义性条款，仅作定性）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mandateContract": "委托合同：委托人和受托人约定，由受托人处理委托人事务的合同",
+   "entrustee": "是受托人（参数1：受托人；参数2：合同）",
+   "handlesAffairsOf": "处理委托人的事务（参数1：受托人；参数2：委托人；参数3：合同）"
+  }
+ },
+ "art:920": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托人委托受托人处理事务的范围如何确定：特别委托与概括委托的区分",
+     "rules": [
+      "c920-special",
+      "c920-general"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，行为人系该合同的委托人",
+     "rules": [
+      "c920-special",
+      "c920-general"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "概括委托的范围及于委托人的一切事务，但性质上或者依法律规定不得委托他人处理的事务除外（学理）",
+     "rules": [
+      "c920-scope-general"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "委托人可以特别委托受托人处理一项或者数项事务，受托人处理事务的范围限于所指定的特定事务",
+     "rules": [
+      "c920-special",
+      "c920-scope-special"
+     ]
+    },
+    {
+     "text": "委托人也可以概括委托受托人处理一切事务，受托人处理事务的范围及于委托人的一切事务",
+     "rules": [
+      "c920-general",
+      "c920-scope-general"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为授权性规范，只确定委托事务的范围；受托人亲自处理义务与转委托、报告义务、报酬等分别适用第922条至第928条等规定，本条不涉及",
+     "rules": []
+    },
+    {
+     "text": "特别委托与概括委托只是委托权限范围的不同，均不以书面为要件，与委托代理的授权形式（第165条）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c920-special",
+    "srcs": [
+     "art920-1"
+    ],
+    "body": [
+     "client(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "speciallyEntrust(P,K)"
+     }
+    ],
+    "note": "委托人可以特别委托受托人处理一项或者数项事务",
+    "auth": "npc"
+   },
+   {
+    "key": "c920-general",
+    "srcs": [
+     "art920-1"
+    ],
+    "body": [
+     "client(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "generallyEntrust(P,K)"
+     }
+    ],
+    "note": "委托人也可以概括委托受托人处理一切事务",
+    "auth": "npc"
+   },
+   {
+    "key": "c920-scope-special",
+    "srcs": [
+     "art920-1"
+    ],
+    "body": [
+     "speciallyEntrust(P,K)",
+     "specifiedAffair(P,T,K)"
+    ],
+    "heads": [
+     "withinEntrustScope(P,T,K)"
+    ],
+    "note": "学理：特别委托的，受托人处理事务的范围限于所指定的一项或数项事务",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c920-scope-general",
+    "srcs": [
+     "art920-1"
+    ],
+    "body": [
+     "generallyEntrust(P,K)",
+     "affairOf(P,T)",
+     "~nonDelegableAffair(T)"
+    ],
+    "heads": [
+     "withinEntrustScope(P,T,K)"
+    ],
+    "note": "学理：概括委托的，受托人处理事务的范围及于委托人的一切事务，但性质上或依法律规定不得委托他人处理的事务除外",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "speciallyEntrust": "委托人特别委托受托人处理一项或者数项事务（参数1：委托人；参数2：委托合同）",
+   "generallyEntrust": "委托人概括委托受托人处理一切事务（参数1：委托人；参数2：委托合同）",
+   "specifiedAffair": "属于特别委托所指定的一项或数项事务（参数1：委托人；参数2：事务；参数3：委托合同）",
+   "affairOf": "属于委托人的事务（参数1：委托人；参数2：事务）",
+   "nonDelegableAffair": "性质上或者依法律规定不得委托他人处理的事务（参数：事务）",
+   "withinEntrustScope": "在委托事务范围之内（参数1：委托人；参数2：事务；参数3：委托合同）"
+  }
+ },
+ "card:g5784": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托合同的委托人或受托人可否随时解除合同（任意解除权）；因解除造成对方损失的，解除方应否赔偿、赔偿范围如何（无偿委托与有偿委托分别处理）",
+     "rules": [
+      "c933-1",
+      "c933-1b",
+      "c933-2",
+      "c933-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，解除方是委托人或者受托人（合同当事人）",
+     "rules": [
+      "c933-1",
+      "c933-1b"
+     ]
+    },
+    {
+     "text": "因解除合同造成对方损失",
+     "rules": [
+      "c933-2",
+      "c933-3"
+     ]
+    },
+    {
+     "text": "无偿委托合同，且解除时间不当",
+     "rules": [
+      "c933-2"
+     ]
+    },
+    {
+     "text": "有偿委托合同",
+     "rules": [
+      "c933-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "损失系不可归责于解除方的事由所致（“除不可归责于该当事人的事由外”），解除方不承担赔偿责任",
+     "rules": [
+      "c933-2",
+      "c933-3"
+     ]
+    },
+    {
+     "text": "当事人另有约定排除任意解除权的，不适用任意解除权（学理与 LEGO 卡片观点，条文未规定，存在争议）",
+     "rules": [
+      "c933-excl"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "委托人或者受托人享有随时解除委托合同的权利，可以单方解除",
+     "rules": [
+      "c933-1",
+      "c933-1b"
+     ]
+    },
+    {
+     "text": "无偿委托合同的解除方应当赔偿对方因解除时间不当造成的直接损失",
+     "rules": [
+      "c933-2"
+     ]
+    },
+    {
+     "text": "有偿委托合同的解除方应当赔偿对方的直接损失和合同履行后可以获得的利益",
+     "rules": [
+      "c933-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人另有约定排除任意解除权的，该约定优先于第933条第1款的任意解除权规则",
+     "rules": [
+      "c933-excl"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第563条一般法定解除不同：本条不以违约、不可抗力等为要件，委托人和受托人双方均可随时解除，属“任意解除权”",
+     "rules": []
+    },
+    {
+     "text": "与第934条委托合同因委托人死亡、终止、受托人丧失民事行为能力等当然终止不同，本条是依当事人单方意思表示解除",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“解除通知到达对方时合同关系终止”并非本条内容，解除的生效时点应依第565条判断",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称间接代理中委托人介入权、第三人选择权（第925、926条）与本条任意解除权性质不同，不能作为本条的限制条件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c933-1",
+    "srcs": [
+     "art933-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     {
+      "or": [
+       "client(P,K)",
+       "entrustee(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "arbitraryTerminationRight(P,K)"
+    ],
+    "note": "委托合同的委托人或受托人享有随时解除合同的权利（任意解除权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c933-1b",
+    "srcs": [
+     "art933-1"
+    ],
+    "body": [
+     "arbitraryTerminationRight(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "terminate(P,K)"
+     }
+    ],
+    "note": "享有任意解除权的当事人可以随时解除委托合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c933-2",
+    "srcs": [
+     "art933-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "gratuitousEntrustment(K)",
+     "terminate(P,K)",
+     "untimelyTermination(P,K)",
+     "causesLossTo(P,Q)",
+     "~notAttributableToParty(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "compensateDirectLossFromUntimelyTermination(P,Q,K)"
+     }
+    ],
+    "note": "无偿委托合同的解除方，除损失不可归责于其外，应当赔偿对方因解除时间不当造成的直接损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c933-3",
+    "srcs": [
+     "art933-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "paidEntrustment(K)",
+     "terminate(P,K)",
+     "causesLossTo(P,Q)",
+     "~notAttributableToParty(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "compensateDirectLossAndExpectedBenefit(P,Q,K)"
+     }
+    ],
+    "note": "有偿委托合同的解除方，除损失不可归责于其外，应当赔偿对方的直接损失和合同履行后可以获得的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c933-excl",
+    "srcs": [
+     "art933-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "agreedExcludeArbitraryTermination(K)",
+     "partyToContract(P,K)"
+    ],
+    "heads": [
+     "-arbitraryTerminationRight(P,K)"
+    ],
+    "note": "学理与 LEGO 卡片认为当事人可约定排除任意解除权；第933条未作规定，该观点存在争议，故列为 doctrine 规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c933-excl",
+    "c933-1",
+    "当事人另有约定排除任意解除权的，依约定优先，不再适用第933条第1款的任意解除权"
+   ]
+  ],
+  "predicates": {
+   "entrustmentContract": "是委托合同（1个参数：合同）",
+   "gratuitousEntrustment": "是无偿委托合同（1个参数：合同）",
+   "paidEntrustment": "是有偿委托合同（1个参数：合同）",
+   "entrustee": "是受托人（参数1：当事人；参数2：合同）",
+   "arbitraryTerminationRight": "享有随时解除委托合同的权利（参数1：当事人；参数2：合同）",
+   "notAttributableToParty": "损失系不可归责于该当事人的事由所致（1个参数：解除方）",
+   "untimelyTermination": "解除时间不当（参数1：解除方；参数2：合同）",
+   "compensateDirectLossFromUntimelyTermination": "赔偿因解除时间不当造成的直接损失（参数1：解除方；参数2：对方；参数3：合同）",
+   "compensateDirectLossAndExpectedBenefit": "赔偿对方的直接损失和合同履行后可以获得的利益（参数1：解除方；参数2：对方；参数3：合同）",
+   "agreedExcludeArbitraryTermination": "当事人约定排除任意解除权（1个参数：合同）"
+  }
+ },
+ "art:921": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托合同中，处理委托事务的费用由谁预付；受托人垫付必要费用后，委托人应如何偿还",
+     "rules": [
+      "c921-1",
+      "c921-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，一方为委托人，另一方为受托人",
+     "rules": [
+      "c921-1",
+      "c921-2"
+     ]
+    },
+    {
+     "text": "受托人为处理委托事务垫付了必要费用",
+     "rules": [
+      "c921-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "委托人应当预付处理委托事务的费用",
+     "rules": [
+      "c921-1"
+     ]
+    },
+    {
+     "text": "委托人应当偿还受托人垫付的必要费用，并就该费用支付利息",
+     "rules": [
+      "c921-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本行仅挂载第921条第1款；该条其余款项（如受托人处理委托事务受到损失时的赔偿规则）未挂载，不在本卡片范围",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本卡片全部内容以第921条第1款原文为准，未引入学理上“受托人无垫付义务”等推论",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c921-1",
+    "srcs": [
+     "art921-1"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "client(P,K)",
+     "mandateeOf(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "prepayExpenses(P,K)"
+     }
+    ],
+    "note": "委托人应当预付处理委托事务的费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c921-2",
+    "srcs": [
+     "art921-1"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "client(P,K)",
+     "mandateeOf(A,K)",
+     "advancedNecessaryExpenses(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "reimburseAdvancedExpenses(P,A,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "payInterestOnAdvancedExpenses(P,A,K)"
+     }
+    ],
+    "note": "受托人为处理委托事务垫付必要费用的，委托人应当偿还该费用并支付利息",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mandateContract": "是委托合同（委托人与受托人约定，由受托人处理委托人事务的合同）",
+   "mandateeOf": "是受托人（受托人，合同）",
+   "prepayExpenses": "预付处理委托事务的费用（委托人，合同）",
+   "advancedNecessaryExpenses": "为处理委托事务垫付必要费用（受托人，合同）",
+   "reimburseAdvancedExpenses": "偿还受托人垫付的必要费用（委托人，受托人，合同）",
+   "payInterestOnAdvancedExpenses": "就受托人垫付的必要费用支付利息（委托人，受托人，合同）"
+  }
+ },
+ "card:g5741": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人完成委托事务，或者委托合同解除、委托事务不能完成时，委托人是否应当支付报酬、支付多少",
+     "rules": [
+      "c928-1",
+      "c928-2"
+     ]
+    },
+    {
+     "text": "受托人造成委托人损失时，委托人可否请求赔偿；有偿与无偿委托的归责标准有何不同；受托人超越权限致损如何赔偿",
+     "rules": [
+      "c929-1a",
+      "c929-1b",
+      "c929-2"
+     ]
+    },
+    {
+     "text": "受托人处理委托事务时因不可归责于自己的事由受损，或者因委托人另行委托第三人而受损，可否向委托人请求赔偿",
+     "rules": [
+      "c930",
+      "c931"
+     ]
+    },
+    {
+     "text": "委托人死亡、被宣告破产或解散致委托合同终止时，受托人是否应当继续处理委托事务",
+     "rules": [
+      "c935"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同关系，受托人已完成委托事务，且当事人约定支付报酬",
+     "rules": [
+      "c928-1"
+     ]
+    },
+    {
+     "text": "因不可归责于受托人的事由，委托合同解除或者委托事务不能完成",
+     "rules": [
+      "c928-2"
+     ]
+    },
+    {
+     "text": "有偿的委托合同，因受托人的过错造成委托人损失",
+     "rules": [
+      "c929-1a"
+     ]
+    },
+    {
+     "text": "无偿的委托合同，因受托人的故意或者重大过失造成委托人损失",
+     "rules": [
+      "c929-1b"
+     ]
+    },
+    {
+     "text": "受托人超越权限造成委托人损失",
+     "rules": [
+      "c929-2"
+     ]
+    },
+    {
+     "text": "受托人处理委托事务时，因不可归责于自己的事由受到损失",
+     "rules": [
+      "c930"
+     ]
+    },
+    {
+     "text": "委托人经受托人同意，在受托人之外委托第三人处理委托事务，因此造成受托人损失",
+     "rules": [
+      "c931"
+     ]
+    },
+    {
+     "text": "委托人死亡或者被宣告破产、解散，致使委托合同终止将损害委托人利益",
+     "rules": [
+      "c935"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对委托合同解除或者委托事务不能完成时的报酬另有约定的，按照其约定",
+     "rules": [
+      "c928-2"
+     ]
+    },
+    {
+     "text": "无偿委托中受托人仅因故意或者重大过失负责，仅有一般过失的不承担赔偿责任",
+     "rules": [
+      "c929-1b"
+     ]
+    },
+    {
+     "text": "委托人的继承人、遗产管理人或者清算人已经承受委托事务的，受托人不再负继续处理的义务",
+     "rules": [
+      "c935"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "委托人应当按照约定向受托人支付报酬",
+     "rules": [
+      "c928-1"
+     ]
+    },
+    {
+     "text": "委托人应当向受托人支付相应的报酬",
+     "rules": [
+      "c928-2"
+     ]
+    },
+    {
+     "text": "委托人可以请求受托人赔偿损失（有偿委托以过错为要件，无偿委托以故意或重大过失为要件）",
+     "rules": [
+      "c929-1a",
+      "c929-1b"
+     ]
+    },
+    {
+     "text": "受托人超越权限造成委托人损失的，应当赔偿损失",
+     "rules": [
+      "c929-2"
+     ]
+    },
+    {
+     "text": "受托人可以向委托人请求赔偿损失",
+     "rules": [
+      "c930",
+      "c931"
+     ]
+    },
+    {
+     "text": "在继承人、遗产管理人或者清算人承受委托事务之前，受托人应当继续处理委托事务",
+     "rules": [
+      "c935"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "受托人超越权限的赔偿责任不以受托人有过错为要件，属特别规定，优先于第929条第1款的一般过错责任适用",
+     "rules": [
+      "c929-2"
+     ]
+    },
+    {
+     "text": "无偿委托中“故意或者重大过失”标准是特别归责规则，排除对一般过失的赔偿请求",
+     "rules": [
+      "c929-1b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第930条是受托人受损后向委托人索赔，与第929条委托人向受托人索赔的方向相反，不可混用",
+     "rules": [
+      "c930"
+     ]
+    },
+    {
+     "text": "第931条的责任基础是委托人另行委托第三人（经受托人同意），与第929条受托人自身过错或越权致损不同",
+     "rules": [
+      "c931"
+     ]
+    },
+    {
+     "text": "笔记另列委托人“清偿受托人处理委托事务产生的债务”的义务，本行挂载法条未设专条（属费用偿还问题，见第921条），故不写规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c928-1",
+    "srcs": [
+     "art928-1"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "completedEntrustedAffairs(E,K)",
+     "agreedRemuneration(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "payUnpaidRemuneration(P,K)"
+     }
+    ],
+    "note": "受托人完成委托事务的，委托人应当按照约定向其支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c928-2",
+    "srcs": [
+     "art928-2"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "notAttributableToMandatary(E,K)",
+     {
+      "or": [
+       "mandateTerminated(K)",
+       "entrustedAffairsCannotBeCompleted(E,K)"
+      ]
+     },
+     "~agreedOtherwiseOnRemuneration(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "payCorrespondingRemuneration(P,E,K)"
+     }
+    ],
+    "note": "因不可归责于受托人的事由致委托合同解除或委托事务不能完成的，委托人应当支付相应报酬；当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c929-1a",
+    "srcs": [
+     "art929-1"
+    ],
+    "body": [
+     "onerousMandate(K)",
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "fault(E,K)",
+     "causesLossToMandator(E,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "claimCompensationForMandateLoss(P,E,K)"
+     }
+    ],
+    "note": "有偿的委托合同，因受托人的过错造成委托人损失的，委托人可以请求赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c929-1b",
+    "srcs": [
+     "art929-1"
+    ],
+    "body": [
+     "gratuitousMandate(K)",
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     {
+      "or": [
+       "intentional(E,K)",
+       "grossNegligence(E,K)"
+      ]
+     },
+     "causesLossToMandator(E,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "claimCompensationForMandateLoss(P,E,K)"
+     }
+    ],
+    "note": "无偿的委托合同，仅因受托人的故意或者重大过失造成委托人损失的，委托人可以请求赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c929-2",
+    "srcs": [
+     "art929-2"
+    ],
+    "body": [
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "exceedsMandateAuthority(E,K)",
+     "causesLossToMandator(E,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "compensateMandatorLoss(E,P,K)"
+     }
+    ],
+    "note": "受托人超越权限造成委托人损失的，应当赔偿损失（不以过错为要件）",
+    "auth": "npc"
+   },
+   {
+    "key": "c930",
+    "srcs": [
+     "art930-1"
+    ],
+    "body": [
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "suffersLossNotAttributable(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "claimCompensationFromPrincipal(E,P,K)"
+     }
+    ],
+    "note": "受托人处理委托事务时因不可归责于自己的事由受到损失的，可以向委托人请求赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c931",
+    "srcs": [
+     "art931-1"
+    ],
+    "body": [
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     "entrustThirdPartyWithConsent(P,E,K)",
+     "lossCausedByAdditionalEntrustment(E,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "claimCompensationForAdditionalEntrustment(E,P,K)"
+     }
+    ],
+    "note": "委托人经受托人同意在受托人之外委托第三人处理委托事务，因此造成受托人损失的，受托人可以向委托人请求赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c935",
+    "srcs": [
+     "art935-1"
+    ],
+    "body": [
+     "principalOf(P,K)",
+     "mandataryOf(E,K)",
+     {
+      "or": [
+       "dead(P)",
+       "principalBankruptOrDissolved(P)"
+      ]
+     },
+     "terminationWouldHarmPrincipal(K)",
+     "~successorTookOverAffairs(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "continueHandlingEntrustedAffairs(E,K)"
+     }
+    ],
+    "note": "因委托人死亡或被宣告破产、解散致委托合同终止将损害委托人利益的，在继承人、遗产管理人或者清算人承受委托事务之前，受托人应当继续处理委托事务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c929-2",
+    "c929-1a",
+    "受托人超越权限的赔偿责任不以过错为要件，属特别规定，优先于第929条第1款的一般过错责任（LEGO 卡片与学理亦持此说）"
+   ]
+  ],
+  "predicates": {
+   "mandateContract": "是委托合同（1个参数：合同）",
+   "principalOf": "是委托合同的委托人（委托人，合同）",
+   "mandataryOf": "是委托合同的受托人（受托人，合同）",
+   "onerousMandate": "是有偿的委托合同（1个参数：合同）",
+   "gratuitousMandate": "是无偿的委托合同（1个参数：合同）",
+   "completedEntrustedAffairs": "受托人已完成委托事务（受托人，合同）",
+   "agreedRemuneration": "当事人约定委托人向受托人支付报酬（1个参数：合同）",
+   "notAttributableToMandatary": "该事由不可归责于受托人（受托人，合同）",
+   "mandateTerminated": "委托合同已解除（1个参数：合同）",
+   "entrustedAffairsCannotBeCompleted": "委托事务不能完成（受托人，合同）",
+   "agreedOtherwiseOnRemuneration": "当事人对报酬支付另有约定（1个参数：合同）",
+   "payCorrespondingRemuneration": "支付相应的报酬（委托人，受托人，合同）",
+   "causesLossToMandator": "造成委托人损失（受托人，委托人）",
+   "claimCompensationForMandateLoss": "请求赔偿因处理委托事务造成的损失（委托人，受托人，合同）",
+   "exceedsMandateAuthority": "受托人超越权限处理委托事务（受托人，合同）",
+   "compensateMandatorLoss": "赔偿委托人损失（受托人，委托人，合同）",
+   "suffersLossNotAttributable": "处理委托事务时因不可归责于自己的事由受到损失（受托人，合同）",
+   "claimCompensationFromPrincipal": "向委托人请求赔偿损失（受托人，委托人，合同）",
+   "entrustThirdPartyWithConsent": "委托人经受托人同意在受托人之外委托第三人处理委托事务（委托人，受托人，合同）",
+   "lossCausedByAdditionalEntrustment": "因另行委托第三人造成受托人损失（受托人，委托人，合同）",
+   "claimCompensationForAdditionalEntrustment": "就另行委托第三人造成的损失请求委托人赔偿（受托人，委托人，合同）",
+   "principalBankruptOrDissolved": "委托人被宣告破产或者解散（1个参数：委托人）",
+   "terminationWouldHarmPrincipal": "委托合同终止将损害委托人利益（1个参数：合同）",
+   "successorTookOverAffairs": "委托人的继承人、遗产管理人或者清算人已承受委托事务（1个参数：合同）",
+   "continueHandlingEntrustedAffairs": "继续处理委托事务（受托人，合同）"
+  }
+ },
+ "card:g5774": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人以自己的名义与第三人订立合同、第三人不知道代理关系时，受托人对委托人的披露义务与委托人的介入权（第1款）",
+     "rules": [
+      "c926-1a",
+      "c926-1b"
+     ]
+    },
+    {
+     "text": "受托人因委托人的原因对第三人不履行义务时，受托人对第三人的披露义务与第三人的选择权及其行使限制（第2款）",
+     "rules": [
+      "c926-2a",
+      "c926-2b",
+      "c926-2c",
+      "c926-2d"
+     ]
+    },
+    {
+     "text": "委托人行使介入权或第三人选定委托人作为相对人后，各方可以主张的抗辩（第3款）",
+     "rules": [
+      "c926-3a",
+      "c926-3b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受托人以自己的名义与第三人订立合同，且第三人不知道受托人与委托人之间存在代理关系（间接代理的前提）",
+     "rules": [
+      "c926-1a",
+      "c926-1b",
+      "c926-2b",
+      "c926-2d"
+     ]
+    },
+    {
+     "text": "受托人因第三人的原因对委托人不履行义务",
+     "rules": [
+      "c926-1a",
+      "c926-1b"
+     ]
+    },
+    {
+     "text": "受托人因委托人的原因对第三人不履行义务",
+     "rules": [
+      "c926-2a",
+      "c926-2b"
+     ]
+    },
+    {
+     "text": "受托人已向委托人披露第三人（委托人介入权的前提）",
+     "rules": [
+      "c926-1b"
+     ]
+    },
+    {
+     "text": "受托人已向第三人披露委托人（第三人选择权的前提）",
+     "rules": [
+      "c926-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第三人与受托人订立合同时如果知道该委托人就不会订立合同的，委托人的介入权被排除",
+     "rules": [
+      "c926-1b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受托人应当向委托人披露第三人",
+     "rules": [
+      "c926-1a"
+     ]
+    },
+    {
+     "text": "委托人因此可以行使受托人对第三人的权利（介入权）",
+     "rules": [
+      "c926-1b"
+     ]
+    },
+    {
+     "text": "受托人应当向第三人披露委托人",
+     "rules": [
+      "c926-2a"
+     ]
+    },
+    {
+     "text": "第三人可以选择受托人或者委托人作为相对人主张其权利",
+     "rules": [
+      "c926-2b"
+     ]
+    },
+    {
+     "text": "第三人不得变更选定的相对人；也不得同时选择受托人和委托人为共同相对人",
+     "rules": [
+      "c926-2c",
+      "c926-2d"
+     ]
+    },
+    {
+     "text": "委托人行使受托人对第三人的权利时，第三人可以向委托人主张其对受托人的抗辩",
+     "rules": [
+      "c926-3a"
+     ]
+    },
+    {
+     "text": "第三人选定委托人作为其相对人的，委托人可以向第三人主张其对受托人的抗辩以及受托人对第三人的抗辩",
+     "rules": [
+      "c926-3b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第三人一旦选定相对人，选择权即行使完毕，禁止变更优先于选择权，不得再次选择",
+     "rules": [
+      "c926-2c",
+      "c926-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为间接代理（隐名代理）：第三人订立合同时不知道代理关系；若第三人知道，则适用第925条，合同直接约束委托人和第三人，不发生披露与选择问题",
+     "rules": []
+    },
+    {
+     "text": "第1款的介入权与第2款的选择权是两条不同路径：前者由委托人行使受托人对第三人的权利，后者由第三人选择相对人，分别对应“因第三人原因”与“因委托人原因”两种不履行",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片讲的是善意取得中第三人的善意要件，与本条间接代理中第三人的选择权无关，不得套用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c926-1a",
+    "srcs": [
+     "art926-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "unawareOfAgencyRelation(T,K2)",
+     "causedByThirdParty(A,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "disclosesThirdPartyToEntrustor(A,T)"
+     }
+    ],
+    "note": "受托人以自己名义与第三人订约、第三人不知代理关系，且因第三人原因对委托人不履行义务的，受托人应当向委托人披露第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-1b",
+    "srcs": [
+     "art926-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "unawareOfAgencyRelation(T,K2)",
+     "causedByThirdParty(A,T,K)",
+     "disclosesThirdPartyToEntrustor(A,T)",
+     "~wouldNotHaveContractedIfKnewEntrustor(T,K2)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "T",
+      "content": "exerciseEntrusteesRightAgainstThirdParty(P,A,T)"
+     }
+    ],
+    "note": "受托人披露第三人后，委托人可以行使受托人对第三人的权利（介入权）；但第三人订立合同时知道该委托人就不会订立合同的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-2a",
+    "srcs": [
+     "art926-2"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "causedByThirdParty(A,P,K2)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "T",
+      "content": "disclosesEntrustorToThirdParty(A,P)"
+     }
+    ],
+    "note": "受托人因委托人的原因对第三人不履行义务的，应当向第三人披露委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-2b",
+    "srcs": [
+     "art926-2"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "unawareOfAgencyRelation(T,K2)",
+     "causedByThirdParty(A,P,K2)",
+     "disclosesEntrustorToThirdParty(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "chooseEntrusteeOrEntrustorAsCounterparty(T,A,P)"
+     }
+    ],
+    "note": "受托人披露委托人后，第三人可以选择受托人或者委托人作为相对人主张其权利；第2款未明写“第三人不知代理关系”，该条件系第926条间接代理的整体前提，笔记亦列为构成条件",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-2c",
+    "srcs": [
+     "art926-2"
+    ],
+    "body": [
+     "chosenCounterparty(T,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "changeChosenCounterparty(T)"
+     }
+    ],
+    "note": "第三人选定相对人后，不得变更选定的相对人",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-2d",
+    "srcs": [
+     "art926-2"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "unawareOfAgencyRelation(T,K2)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "chooseBothEntrusteeAndEntrustorAsCounterparties(T)"
+     }
+    ],
+    "note": "笔记内容：第三人只能选择一方作为相对人，不得同时选择受托人和委托人为共同相对人；法条原文未明写，故为学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c926-3a",
+    "srcs": [
+     "art926-3"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "exerciseEntrusteesRightAgainstThirdParty(P,A,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "assertDefenseAgainstEntrustor(T,P)"
+     }
+    ],
+    "note": "委托人行使受托人对第三人的权利的，第三人可以向委托人主张其对受托人的抗辩",
+    "auth": "npc"
+   },
+   {
+    "key": "c926-3b",
+    "srcs": [
+     "art926-3"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "contractsWithThirdPartyInOwnName(A,T,K2)",
+     "chosenCounterparty(T,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "T",
+      "content": "assertDefensesAgainstThirdParty(P,T)"
+     }
+    ],
+    "note": "第三人选定委托人作为相对人的，委托人可以向第三人主张其对受托人的抗辩以及受托人对第三人的抗辩（双重抗辩）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c926-2c",
+    "c926-2b",
+    "第三人选定相对人后选择权已行使完毕，禁止变更优先于再次选择"
+   ]
+  ],
+  "predicates": {
+   "entrustmentContract": "委托合同（委托人，受托人，合同）",
+   "contractsWithThirdPartyInOwnName": "受托人以自己的名义与第三人订立合同（受托人，第三人，与第三人订立的合同）",
+   "unawareOfAgencyRelation": "第三人不知道受托人与委托人之间存在代理关系（第三人，合同）",
+   "wouldNotHaveContractedIfKnewEntrustor": "第三人知道该委托人就不会订立合同（第三人，合同）",
+   "disclosesThirdPartyToEntrustor": "受托人向委托人披露第三人（受托人，第三人）",
+   "disclosesEntrustorToThirdParty": "受托人向第三人披露委托人（受托人，委托人）",
+   "exerciseEntrusteesRightAgainstThirdParty": "委托人行使受托人对第三人的权利，即介入权（委托人，受托人，第三人）",
+   "chooseEntrusteeOrEntrustorAsCounterparty": "第三人选择受托人或者委托人作为相对人主张其权利（第三人，受托人，委托人）",
+   "chosenCounterparty": "第三人选定的相对人（第三人，相对人）",
+   "changeChosenCounterparty": "变更选定的相对人（第三人）",
+   "chooseBothEntrusteeAndEntrustorAsCounterparties": "同时选择受托人和委托人为共同相对人（第三人）",
+   "assertDefenseAgainstEntrustor": "第三人向委托人主张其对受托人的抗辩（第三人，委托人）",
+   "assertDefensesAgainstThirdParty": "委托人向第三人主张其对受托人的抗辩以及受托人对第三人的抗辩（委托人，第三人）"
+  }
+ },
+ "art:923": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人能否转委托；转委托经委托人同意或追认、以及未经同意或追认时，受托人的责任范围与委托人的指示权如何分配",
+     "rules": [
+      "c923-1",
+      "c923-2",
+      "c923-3",
+      "c923-4",
+      "c923-5",
+      "c923-emergency"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，受托人处理委托事务",
+     "rules": [
+      "c923-1"
+     ]
+    },
+    {
+     "text": "转委托经委托人同意或者追认",
+     "rules": [
+      "c923-2",
+      "c923-3",
+      "c923-4"
+     ]
+    },
+    {
+     "text": "转委托未经委托人同意或者追认",
+     "rules": [
+      "c923-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "在紧急情况下，受托人为了维护委托人的利益需要转委托第三人的，即使未经同意或追认，也不承担转委托第三人的行为责任",
+     "rules": [
+      "c923-emergency"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受托人应当亲自处理委托事务",
+     "rules": [
+      "c923-1"
+     ]
+    },
+    {
+     "text": "经委托人同意（或追认）的，受托人可以转委托",
+     "rules": [
+      "c923-2"
+     ]
+    },
+    {
+     "text": "转委托经同意或追认的，委托人可以就委托事务直接指示转委托的第三人",
+     "rules": [
+      "c923-3"
+     ]
+    },
+    {
+     "text": "转委托经同意或追认的，受托人仅就第三人的选任及其对第三人的指示承担责任",
+     "rules": [
+      "c923-4"
+     ]
+    },
+    {
+     "text": "转委托未经同意或追认的，受托人应当对转委托的第三人的行为承担责任",
+     "rules": [
+      "c923-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "紧急情况下为维护委托人利益需要转委托的但书，优先于未经同意转委托的责任规则",
+     "rules": [
+      "c923-emergency"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，本行无 LEGO 卡片，故全部内容以第923条第1款原文为准；本条只规范转委托的同意与受托人责任分配，未规定转委托后第三人与委托人之间的合同效力问题",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c923-1",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "personallyHandleEntrustedAffair(A,K)"
+     }
+    ],
+    "note": "受托人应当亲自处理委托事务",
+    "auth": "npc"
+   },
+   {
+    "key": "c923-2",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "subDelegationConsented(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "subDelegateEntrustedAffair(A,K)"
+     }
+    ],
+    "note": "经委托人同意（含事后追认）的，受托人可以转委托",
+    "auth": "npc"
+   },
+   {
+    "key": "c923-3",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "subDelegationConsented(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "instructSubAgentDirectly(P)"
+     }
+    ],
+    "note": "转委托经同意或者追认的，委托人可以就委托事务直接指示转委托的第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c923-4",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "subDelegationConsented(A,P)"
+    ],
+    "heads": [
+     "bearLiabilityForSelectionAndInstruction(A)"
+    ],
+    "note": "转委托经同意或者追认的，受托人仅就第三人的选任及其对第三人的指示承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c923-5",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "subDelegationNotConsented(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearLiabilityForSubAgentActs(A)"
+     }
+    ],
+    "note": "转委托未经同意或者追认的，受托人应当对转委托的第三人的行为承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c923-emergency",
+    "srcs": [
+     "art923-1"
+    ],
+    "body": [
+     "entrustmentContract(P,A,K)",
+     "subDelegationNotConsented(A,P)",
+     "emergencyForPrincipalsInterest(A,P)"
+    ],
+    "heads": [
+     "-bearLiabilityForSubAgentActs(A)"
+    ],
+    "note": "但书：紧急情况下受托人为了维护委托人的利益需要转委托第三人的，不承担转委托第三人的行为责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c923-emergency",
+    "c923-5",
+    "第923条第1款但书：紧急情况下为维护委托人利益需要转委托的，排除受托人对第三人行为的责任"
+   ]
+  ],
+  "predicates": {
+   "entrustmentContract": "委托合同（委托人，受托人，合同）",
+   "personallyHandleEntrustedAffair": "亲自处理委托事务（受托人，合同）",
+   "subDelegateEntrustedAffair": "将委托事务转委托给第三人（受托人，合同）"
+  }
+ },
+ "art:925": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人以自己的名义与第三人订立的合同，在何种条件下直接约束委托人和第三人",
+     "rules": [
+      "c925-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受托人以自己的名义、在委托人的授权范围内与第三人订立合同",
+     "rules": [
+      "c925-1"
+     ]
+    },
+    {
+     "text": "第三人在订立合同时知道受托人与委托人之间的代理关系",
+     "rules": [
+      "c925-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有确切证据证明该合同只约束受托人和第三人的，不直接约束委托人和第三人",
+     "rules": [
+      "c925-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该合同直接约束委托人和第三人（委托人与第三人之间直接享有权利、承担义务）",
+     "rules": [
+      "c925-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条属于受托人以自己名义订约的间接代理情形，与第162条直接代理中法律行为直接对被代理人发生效力不同：须第三人订约时知道代理关系，效果才直接归属于委托人；第三人不知情的，不适用本条（另见第926条，本行未挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c925-1",
+    "srcs": [
+     "art925-1"
+    ],
+    "body": [
+     "concludesInOwnNameWithinAuthority(A,P,T,K)",
+     "thirdPartyKnewAgencyAtConclusion(T,A,P)",
+     "~conclusiveEvidenceOnlyBindsAgentAndThirdParty(A,T,K)"
+    ],
+    "heads": [
+     "bindsPrincipalAndThirdParty(K,P,T)"
+    ],
+    "note": "受托人以自己名义在授权范围内与第三人订立合同，第三人订约时知道受托人与委托人之间代理关系的，该合同直接约束委托人和第三人；有确切证据证明合同只约束受托人和第三人的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concludesInOwnNameWithinAuthority": "受托人以自己的名义、在委托人的授权范围内与第三人订立合同（受托人，委托人，第三人，合同）",
+   "thirdPartyKnewAgencyAtConclusion": "第三人在订立合同时知道受托人与委托人之间的代理关系（第三人，受托人，委托人）",
+   "conclusiveEvidenceOnlyBindsAgentAndThirdParty": "有确切证据证明该合同只约束受托人和第三人（受托人，第三人，合同）",
+   "bindsPrincipalAndThirdParty": "该合同直接约束委托人和第三人（合同，委托人，第三人）"
+  }
+ },
+ "art:922": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人应如何按委托人指示处理委托事务；变更指示是否须经委托人同意；情况紧急且难以联系委托人时应如何处理、事后负何义务",
+     "rules": [
+      "c922-1",
+      "c922-2",
+      "c922-3",
+      "c922-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，T 为受托人，P 为委托人",
+     "rules": [
+      "c922-1",
+      "c922-2",
+      "c922-3",
+      "c922-4"
+     ]
+    },
+    {
+     "text": "受托人需要变更委托人的指示",
+     "rules": [
+      "c922-2",
+      "c922-3"
+     ]
+    },
+    {
+     "text": "情况紧急，且受托人难以与委托人取得联系",
+     "rules": [
+      "c922-3",
+      "c922-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因情况紧急、难以和委托人取得联系的，受托人无须先经委托人同意即可变更指示、妥善处理委托事务",
+     "rules": [
+      "c922-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受托人应当按照委托人的指示处理委托事务",
+     "rules": [
+      "c922-1"
+     ]
+    },
+    {
+     "text": "需要变更委托人指示的，受托人应当经委托人同意",
+     "rules": [
+      "c922-2"
+     ]
+    },
+    {
+     "text": "紧急且难以联系委托人时，受托人应当妥善处理委托事务",
+     "rules": [
+      "c922-3"
+     ]
+    },
+    {
+     "text": "紧急处理后，受托人应当事后将该情况及时报告委托人",
+     "rules": [
+      "c922-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "紧急情况下妥善处理委托事务的规则，优先于“变更指示须经委托人同意”的规则",
+     "rules": [
+      "c922-3",
+      "c922-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，无可区分内容；本条仅规定受托人依指示处理事务、变更指示的同意及紧急处理与事后报告义务，不涉及转委托（第923条）与报告义务的一般规定（第924条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c922-1",
+    "srcs": [
+     "art922-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "trusteeOf(T,K)",
+     "principalOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "handleAffairsPerInstruction(T,K)"
+     }
+    ],
+    "note": "受托人应当按照委托人的指示处理委托事务",
+    "auth": "npc"
+   },
+   {
+    "key": "c922-2",
+    "srcs": [
+     "art922-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "trusteeOf(T,K)",
+     "principalOf(P,K)",
+     "needsToChangeInstruction(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "obtainConsentForChangingInstruction(T,K)"
+     }
+    ],
+    "note": "需要变更委托人指示的，受托人应当经委托人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c922-3",
+    "srcs": [
+     "art922-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "trusteeOf(T,K)",
+     "principalOf(P,K)",
+     "needsToChangeInstruction(T,K)",
+     "urgency(K)",
+     "cannotContactPrincipalTimely(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "properlyHandleEntrustedAffairs(T,K)"
+     }
+    ],
+    "note": "因情况紧急、难以和委托人取得联系的，受托人应当妥善处理委托事务（无须先经同意）",
+    "auth": "npc"
+   },
+   {
+    "key": "c922-4",
+    "srcs": [
+     "art922-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "trusteeOf(T,K)",
+     "principalOf(P,K)",
+     "urgency(K)",
+     "cannotContactPrincipalTimely(P)",
+     "handledEntrustedAffairsWithoutConsent(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "reportSituationInTime(T,K)"
+     }
+    ],
+    "note": "紧急情况下未及取得同意的，受托人事后应当将该情况及时报告委托人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c922-3",
+    "c922-2",
+    "情况紧急且难以与委托人取得联系时，受托人可先行妥善处理委托事务，无须先经委托人同意"
+   ]
+  ],
+  "predicates": {
+   "entrustmentContract": "是委托合同（参数：合同）",
+   "trusteeOf": "是受托人（受托人，合同）",
+   "principalOf": "是委托人（委托人，合同）",
+   "handleAffairsPerInstruction": "按照委托人的指示处理委托事务（受托人，合同）",
+   "needsToChangeInstruction": "需要变更委托人的指示（受托人，合同）",
+   "obtainConsentForChangingInstruction": "就变更委托人指示取得委托人同意（受托人，合同）",
+   "properlyHandleEntrustedAffairs": "妥善处理委托事务（受托人，合同）",
+   "handledEntrustedAffairsWithoutConsent": "因情况紧急未及经委托人同意而处理了委托事务（受托人，合同）",
+   "reportSituationInTime": "事后将该情况及时报告委托人（受托人，合同）"
+  }
+ },
+ "art:924": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人应当在何时、就何种事项向委托人报告委托事务的处理情况与结果",
+     "rules": [
+      "c924-1",
+      "c924-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，行为人是该合同的受托人，相对方为委托人",
+     "rules": [
+      "c924-1",
+      "c924-2"
+     ]
+    },
+    {
+     "text": "委托人要求受托人报告委托事务的处理情况",
+     "rules": [
+      "c924-1"
+     ]
+    },
+    {
+     "text": "委托合同已终止",
+     "rules": [
+      "c924-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条未设但书或除外规定；报告义务不因委托事务是否有偿、是否处理完毕而免除",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "受托人应当按照委托人的要求，报告委托事务的处理情况",
+     "rules": [
+      "c924-1"
+     ]
+    },
+    {
+     "text": "委托合同终止时，受托人应当向委托人报告委托事务的结果",
+     "rules": [
+      "c924-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同终止时的结果报告义务为独立的法定义务，不以委托人另行提出要求为前提",
+     "rules": [
+      "c924-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "处理情况报告以“委托人要求”为前提，属被动性义务；结果报告于合同终止时当然发生，不以要求为前提",
+     "rules": [
+      "c924-1",
+      "c924-2"
+     ]
+    },
+    {
+     "text": "本条只规定报告义务，与第922条（依指示处理事务）、第923条（亲自处理事务）并列，同属受托人的履职义务；笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c924-1",
+    "srcs": [
+     "art924"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "trusteeOf(T,K)",
+     "client(P,K)",
+     "requestsReport(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "reportHandling(T,K)"
+     }
+    ],
+    "note": "受托人应当按照委托人的要求，报告委托事务的处理情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c924-2",
+    "srcs": [
+     "art924"
+    ],
+    "body": [
+     "mandateContract(K)",
+     "trusteeOf(T,K)",
+     "client(P,K)",
+     "contractTerminated(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "reportResults(T,K)"
+     }
+    ],
+    "note": "委托合同终止时，受托人应当报告委托事务的结果",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mandateContract": "是委托合同（参数：合同）",
+   "trusteeOf": "是委托合同的受托人（受托人，合同）",
+   "requestsReport": "委托人要求受托人报告委托事务的处理情况（委托人，合同）",
+   "reportHandling": "向委托人报告委托事务的处理情况（受托人，合同）",
+   "reportResults": "委托合同终止时向委托人报告委托事务的结果（受托人，合同）"
+  }
+ },
+ "art:927": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "受托人处理委托事务取得的财产，是否应当转交委托人、由谁向谁转交",
+     "rules": [
+      "c927-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受托人基于委托合同处理委托事务，并因此取得了财产（金钱、物品等）",
+     "rules": [
+      "c927-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "受托人应当将处理委托事务取得的财产转交给委托人",
+     "rules": [
+      "c927-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条仅挂载第1款（财产转交义务）；第2款关于受托人因不可归责于自己的事由受到损失时请求赔偿的规定未挂载，不在本卡范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c927-1",
+    "srcs": [
+     "art927-1"
+    ],
+    "body": [
+     "agent(A,K)",
+     "client(P,K)",
+     "propertyObtainedInHandling(A,K,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "handOverToPrincipal(A,P,T)"
+     }
+    ],
+    "note": "受托人处理委托事务取得的财产，应当转交给委托人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agent": "是委托合同的受托人（受托人，合同）",
+   "propertyObtainedInHandling": "因处理委托事务而取得的财产（受托人，合同，财产）",
+   "handOverToPrincipal": "将财产转交给委托人（受托人，委托人，财产）"
+  }
+ },
+ "art:934": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托人或者受托人死亡、终止，受托人丧失民事行为能力时，委托合同是否终止",
+     "rules": [
+      "c934-1",
+      "c934-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "委托人死亡或者终止（法人、非法人组织解散、被撤销、破产等）",
+     "rules": [
+      "c934-1"
+     ]
+    },
+    {
+     "text": "受托人死亡、丧失民事行为能力或者终止",
+     "rules": [
+      "c934-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，不因上述事由终止",
+     "rules": [
+      "c934-1",
+      "c934-2"
+     ]
+    },
+    {
+     "text": "根据委托事务的性质不宜终止的，不因上述事由终止",
+     "rules": [
+      "c934-1",
+      "c934-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "委托合同终止（合同权利义务终止）",
+     "rules": [
+      "c934-1",
+      "c934-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记与法条一致，未作增补；本条只规定终止事由与但书，终止后受托人继续处理事务、继承人/清算人义务等规定在第935条以下，本行未挂载，故不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c934-1",
+    "srcs": [
+     "art934-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "client(P,K)",
+     {
+      "or": [
+       "dead(P)",
+       "entityTerminated(P)"
+      ]
+     },
+     "~contractProvidesOtherwise(K)",
+     "~natureMakesTerminationInappropriate(K)"
+    ],
+    "heads": [
+     "contractTerminated(K)"
+    ],
+    "note": "委托人死亡或者终止的，委托合同终止；当事人另有约定或者根据委托事务的性质不宜终止的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c934-2",
+    "srcs": [
+     "art934-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "entrustee(A,K)",
+     {
+      "or": [
+       "dead(A)",
+       "agentLosesCapacity(A)",
+       "entityTerminated(A)"
+      ]
+     },
+     "~contractProvidesOtherwise(K)",
+     "~natureMakesTerminationInappropriate(K)"
+    ],
+    "heads": [
+     "contractTerminated(K)"
+    ],
+    "note": "受托人死亡、丧失民事行为能力或者终止的，委托合同终止；当事人另有约定或者根据委托事务的性质不宜终止的除外（受托人即委托合同中的代理人，故沿用 agentLosesCapacity）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "entrustee": "是受托人（当事人，合同）",
+   "entityTerminated": "法人或者非法人组织终止（解散、被撤销、破产等）",
+   "natureMakesTerminationInappropriate": "根据委托事务的性质不宜终止"
+  }
+ },
+ "art:936": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因受托人死亡、丧失民事行为能力或者被宣告破产、解散，致使委托合同终止的，受托人的继承人、遗产管理人、法定代理人或者清算人负有何种义务",
+     "rules": [
+      "c936-ground",
+      "c936-notice",
+      "c936-measures"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受托人死亡、丧失民事行为能力或者被宣告破产、解散，致使委托合同终止",
+     "rules": [
+      "c936-ground"
+     ]
+    },
+    {
+     "text": "义务主体为受托人的继承人、遗产管理人、法定代理人或者清算人",
+     "rules": [
+      "c936-notice",
+      "c936-measures"
+     ]
+    },
+    {
+     "text": "因委托合同终止将损害委托人利益",
+     "rules": [
+      "c936-measures"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "委托人已作出善后处理的，不再负“在委托人作出善后处理之前采取必要措施”的义务",
+     "rules": [
+      "c936-measures"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "受托人的继承人、遗产管理人、法定代理人或者清算人应当及时通知委托人",
+     "rules": [
+      "c936-notice"
+     ]
+    },
+    {
+     "text": "在委托人作出善后处理之前，上述主体应当采取必要措施",
+     "rules": [
+      "c936-measures"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记仅复述条文，未作扩展；本条针对受托人一方（死亡、丧失民事行为能力、被宣告破产、解散）的终止事由，义务人为受托人的继承人、遗产管理人、法定代理人或清算人，与委托人一方终止事由下由受托人本人继续处理委托事务的情形不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c936-ground",
+    "srcs": [
+     "art936-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "trustee(T,K)",
+     {
+      "or": [
+       "trusteeDied(T)",
+       "trusteeLosesCapacity(T)",
+       "trusteeBankruptOrDissolved(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "entrustmentTerminated(K)"
+    ],
+    "note": "因受托人死亡、丧失民事行为能力或者被宣告破产、解散，致使委托合同终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c936-notice",
+    "srcs": [
+     "art936-1"
+    ],
+    "body": [
+     "entrustmentTerminated(K)",
+     "entrustingParty(P,K)",
+     "successorOrManagerOf(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "notifyEntrustingParty(S,P)"
+     }
+    ],
+    "note": "委托合同因此终止的，受托人的继承人、遗产管理人、法定代理人或者清算人应当及时通知委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c936-measures",
+    "srcs": [
+     "art936-1"
+    ],
+    "body": [
+     "entrustmentTerminated(K)",
+     "entrustingParty(P,K)",
+     "successorOrManagerOf(S,T)",
+     "terminationHarmsEntrustingParty(K,P)",
+     "~entrustingPartyHandledAftermath(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "takeNecessaryMeasures(S,K)"
+     }
+    ],
+    "note": "因委托合同终止将损害委托人利益的，在委托人作出善后处理之前，上述主体应当采取必要措施",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "entrustmentContract": "是委托合同（参数：合同）",
+   "trustee": "是受托人（受托人，委托合同）",
+   "entrustingParty": "是委托人（委托人，委托合同）",
+   "trusteeDied": "受托人死亡",
+   "trusteeLosesCapacity": "受托人丧失民事行为能力",
+   "trusteeBankruptOrDissolved": "受托人被宣告破产、解散",
+   "entrustmentTerminated": "委托合同因受托人死亡、丧失民事行为能力或者被宣告破产、解散而终止（参数：委托合同）",
+   "successorOrManagerOf": "是受托人的继承人、遗产管理人、法定代理人或者清算人（义务人，受托人）",
+   "notifyEntrustingParty": "及时通知委托人（义务人，委托人）",
+   "terminationHarmsEntrustingParty": "委托合同终止将损害委托人利益（委托合同，委托人）",
+   "entrustingPartyHandledAftermath": "委托人已作出善后处理（委托人）",
+   "takeNecessaryMeasures": "采取必要措施（义务人，委托合同）"
+  }
+ },
+ "art:932": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "两个以上受托人共同处理委托事务时，对委托人如何承担责任",
+     "rules": [
+      "c932-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在委托合同，且两个以上受托人共同处理同一委托事务",
+     "rules": [
+      "c932-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "受托人未共同处理事务、各自独立处理自己受托事务的，不承担连带责任（学理）",
+     "rules": [
+      "c932-sep"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同处理委托事务的各受托人对委托人承担连带责任",
+     "rules": [
+      "c932-1"
+     ]
+    },
+    {
+     "text": "连带责任下，委托人有权请求一个或数个受托人承担全部责任（学理，参照第178条）",
+     "rules": [
+      "c932-joint"
+     ]
+    },
+    {
+     "text": "实际承担超出自己份额的受托人，有权向其他受托人追偿（学理，参照第178条）",
+     "rules": [
+      "c932-recourse"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "未共同处理事务的，排除共同受托人之间的连带责任",
+     "rules": [
+      "c932-sep"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规范委托合同中两个以上受托人对委托人的连带责任；共同承揽人对定作人的连带责任（第786条）、共同行纪等由相应条文规范，不在本条范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c932-1",
+    "srcs": [
+     "art932-1"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "entrusteeOf(A,K)",
+     "coEntrustee(A,B,K)",
+     "client(P,K)"
+    ],
+    "heads": [
+     "jointlyLiableTo(A,P)"
+    ],
+    "note": "两个以上的受托人共同处理委托事务的，对委托人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c932-joint",
+    "srcs": [
+     "art932"
+    ],
+    "body": [
+     "jointlyLiableTo(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimPerformanceFrom(P,A)"
+     }
+    ],
+    "note": "学理（参照第178条）：连带责任下委托人有权请求一个或数个受托人承担全部责任，本条原文未展开",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c932-recourse",
+    "srcs": [
+     "art932"
+    ],
+    "body": [
+     "jointlyLiableTo(A,P)",
+     "coEntrustee(A,B,K)",
+     "performed(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimRecourseAgainst(A,B)"
+     }
+    ],
+    "note": "学理（参照第178条）：实际承担超过自己份额的受托人有权向其他受托人追偿，本条原文未规定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c932-sep",
+    "srcs": [
+     "art932"
+    ],
+    "body": [
+     "entrustmentContract(K)",
+     "entrusteeOf(A,K)",
+     "client(P,K)",
+     "handlesSeparately(A,K)"
+    ],
+    "heads": [
+     "-jointlyLiableTo(A,P)"
+    ],
+    "note": "学理：本条以“共同处理委托事务”为前提，受托人各自独立处理的，不承担连带责任，仅就自己处理的事务负责",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c932-sep",
+    "c932-1",
+    "未共同处理事务的，不适用共同受托人的连带责任"
+   ]
+  ],
+  "predicates": {
+   "entrustmentContract": "委托合同（1个参数：合同）",
+   "entrusteeOf": "是委托合同的受托人（受托人，合同）",
+   "coEntrustee": "与其他受托人共同处理同一委托事务（受托人，其他受托人，合同）",
+   "jointlyLiableTo": "对委托人承担连带责任（受托人，委托人）",
+   "handlesSeparately": "独立处理自己受托的事务，未与其他受托人共同处理（受托人）"
+  }
+ }
+}

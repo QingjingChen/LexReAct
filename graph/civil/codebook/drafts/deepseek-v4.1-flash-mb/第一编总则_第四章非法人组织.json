@@ -1,0 +1,744 @@
+{
+ "art:107": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "非法人组织解散后，是否应当进行清算、由谁承担清算义务",
+     "rules": [
+      "c107-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是非法人组织，且该组织已解散（出现章程规定的或法律规定的解散事由等）",
+     "rules": [
+      "c107-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该非法人组织应当依法进行清算",
+     "rules": [
+      "c107-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定“应当依法进行清算”，未规定清算义务人、清算组组成、剩余财产分配等；这些内容在第107条第2款（参照适用法人清算的有关规定）中，本行未挂载该款，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外或学理规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c107-1",
+    "srcs": [
+     "art107-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "unincorporatedOrgDissolved(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "conductLiquidation(O)"
+     }
+    ],
+    "note": "非法人组织解散的，应当依法进行清算；法条未另行指明清算义务人，故以该非法人组织本身为义务承担者",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unincorporatedOrgDissolved": "非法人组织解散（出现章程规定的或法律规定的解散事由等）",
+   "conductLiquidation": "依法进行清算"
+  }
+ },
+ "art:105": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "非法人组织如何确定代表人代表该组织从事民事活动",
+     "rules": [
+      "c105-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为非法人组织",
+     "rules": [
+      "c105-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "非法人组织可以确定一人或者数人代表该组织从事民事活动",
+     "rules": [
+      "c105-1"
+     ]
+    },
+    {
+     "text": "被确定的一人或数人取得代表该组织从事民事活动的地位",
+     "rules": [
+      "c105-rep"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与法人不同：法人必须依法定代表人（第61条），而非法人组织的代表并非必设，且法条明定“可以确定一人或者数人”，即允许数人共同代表；本条为授权性规范，未确定代表人的不影响组织本身存续",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c105-1",
+    "srcs": [
+     "art105-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "determineRepresentative(O)"
+     }
+    ],
+    "note": "非法人组织可以确定一人或者数人代表该组织从事民事活动（授权性规范，非必设）",
+    "auth": "npc"
+   },
+   {
+    "key": "c105-rep",
+    "srcs": [
+     "art105-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "determinedRepresentative(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "conductsCivilActivityFor(P,O)"
+     }
+    ],
+    "note": "由第1款“代表该组织从事民事活动”推得：被确定的一人或数人可代表该组织从事民事活动；法条未直接规定代表人的权限范围，属学理阐释",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "determineRepresentative": "确定一人或者数人代表该组织从事民事活动（参数1：非法人组织）",
+   "determinedRepresentative": "被该组织确定为其代表人（参数1：人，参数2：非法人组织）",
+   "conductsCivilActivityFor": "代表该组织从事民事活动（参数1：代表人，参数2：非法人组织）"
+  }
+ },
+ "art:108": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "非法人组织应适用哪些规定；本章（非法人组织）未规定的事项如何处理",
+     "rules": [
+      "c108-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是非法人组织",
+     "rules": [
+      "c108-1"
+     ]
+    },
+    {
+     "text": "待处理的事项在本章（非法人组织）中没有规定",
+     "rules": [
+      "c108-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本章已有规定的事项，直接适用本章规定，不再参照适用第三章第一节",
+     "rules": [
+      "c108-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "参照适用本编第三章第一节关于法人的一般规定",
+     "rules": [
+      "c108-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本章（非法人组织）的规定优先适用；第三章第一节法人的一般规定仅在参照适用范围内起补充作用",
+     "rules": [
+      "c108-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是准用性规范：非法人组织不具有法人资格，只是就本章未规定的事项“参照”适用法人一般规定，并非直接适用，且不得与非法人组织的性质相抵触",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c108-1",
+    "srcs": [
+     "art108-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "matterNotProvidedInThisChapter(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLegalPersonGeneralRulesByReference(O)"
+     }
+    ],
+    "note": "非法人组织除适用本章规定外，对本章未规定的事项参照适用本编第三章第一节（法人的一般规定）的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "matterNotProvidedInThisChapter": "该事项在非法人组织章（本章）中没有规定",
+   "applyLegalPersonGeneralRulesByReference": "参照适用本编第三章第一节关于法人的一般规定（参数1：非法人组织）"
+  }
+ },
+ "card:g1290": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为非法人组织；其财产不足以清偿债务时，出资人、设立人承担何种责任",
+     "rules": [
+      "c102-def",
+      "c102-list",
+      "c104-unlimited"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不具有法人资格，但能够依法以自己的名义从事民事活动的组织",
+     "rules": [
+      "c102-def"
+     ]
+    },
+    {
+     "text": "个人独资企业、合伙企业、不具有法人资格的专业服务机构等",
+     "rules": [
+      "c102-list"
+     ]
+    },
+    {
+     "text": "非法人组织的财产不足以清偿债务，且行为人为其出资人或者设立人",
+     "rules": [
+      "c104-unlimited"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对出资人、设立人的责任另有规定的，依照该规定，不适用无限责任的一般规则",
+     "rules": [
+      "c104-other"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该组织属于非法人组织（不具有法人资格，但可以自己的名义从事民事活动）",
+     "rules": [
+      "c102-def",
+      "c102-list"
+     ]
+    },
+    {
+     "text": "非法人组织的财产不足以清偿债务的，其出资人或者设立人承担无限责任",
+     "rules": [
+      "c104-unlimited"
+     ]
+    },
+    {
+     "text": "法律另有规定的，出资人、设立人按该特别规定承担责任",
+     "rules": [
+      "c104-other"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定（特别规定）优先于第104条第1款关于出资人、设立人承担无限责任的一般规则",
+     "rules": [
+      "c104-other"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：非法人组织具有“相应的”而非一般意义上的民事权利能力和民事行为能力，可以对外签订合同、起诉应诉（与法人不同）",
+     "rules": []
+    },
+    {
+     "text": "笔记：非法人组织不能完全独立地承担民事责任，其债务最终由出资人、设立人承担；第104条以“财产不足以清偿债务时出资人、设立人承担无限责任”体现这一点，与法人以其全部财产独立承担民事责任不同",
+     "rules": [
+      "c102-doc",
+      "c104-unlimited"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所称“非法人组织不得对抗善意第三人”“破产清算中由设立人承担连带责任”等，法条未作此表述，仅作参考，不写入规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c102-def",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "organization(O)",
+     "-legalPerson(O)",
+     "conductsCivilActivityInOwnName(O)"
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "不具有法人资格、但能够依法以自己的名义从事民事活动的组织，是非法人组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-list",
+    "srcs": [
+     "art102-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "soleProprietorship(O)",
+       "partnership(O)",
+       "professionalServiceOrgWithoutLegalPerson(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "非法人组织包括个人独资企业、合伙企业、不具有法人资格的专业服务机构等",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-doc",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)"
+    ],
+    "heads": [
+     "-independentlyBearsCivilLiability(O)"
+    ],
+    "note": "学理（笔记）：非法人组织不能完全独立地承担民事责任，与法人以其全部财产独立承担民事责任不同；法条本身未直接表述",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c104-unlimited",
+    "srcs": [
+     "art104-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "assetsInsufficientToPayDebts(O)",
+     "contributorOrFounderOf(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "bearUnlimitedLiability(P,O)"
+     }
+    ],
+    "note": "非法人组织的财产不足以清偿债务的，其出资人或者设立人承担无限责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c104-other",
+    "srcs": [
+     "art104-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "contributorOrFounderOf(P,O)",
+     "lawProvidesOtherwiseOnUnlimitedLiability(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "bearLiabilityPerSpecialProvision(P,O)"
+     }
+    ],
+    "note": "法律对出资人、设立人责任另有规定的，依照其规定，排除无限责任的一般规则",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c104-other",
+    "c104-unlimited",
+    "第104条第1款后段“法律另有规定的，依照其规定”，特别规定优先于无限责任的一般规则"
+   ]
+  ],
+  "predicates": {
+   "assetsInsufficientToPayDebts": "（非法人组织的）财产不足以清偿债务",
+   "contributorOrFounderOf": "是非法人组织的出资人或者设立人（人，组织）",
+   "lawProvidesOtherwiseOnUnlimitedLiability": "法律对非法人组织出资人、设立人的责任另有规定（组织）",
+   "bearUnlimitedLiability": "承担无限责任（出资人/设立人，非法人组织）",
+   "bearLiabilityPerSpecialProvision": "依照法律的特别规定承担责任（出资人/设立人，非法人组织）"
+  }
+ },
+ "card:g1289": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何种组织属于非法人组织（认定标准与典型类型）；非法人组织的登记、批准与解散事由",
+     "rules": [
+      "c102-def",
+      "c102-types",
+      "c103-1",
+      "c103-2",
+      "c106-1a",
+      "c106-1b",
+      "c106-1c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不具有法人资格，但能够依法以自己的名义从事民事活动的组织，为非法人组织",
+     "rules": [
+      "c102-def"
+     ]
+    },
+    {
+     "text": "个人独资企业、合伙企业、不具有法人资格的专业服务机构等，属于非法人组织（“等”字表明不限于所列三类）",
+     "rules": [
+      "c102-types"
+     ]
+    },
+    {
+     "text": "解散事由之一：章程规定的存续期间届满，或者章程规定的其他解散事由出现",
+     "rules": [
+      "c106-1a"
+     ]
+    },
+    {
+     "text": "解散事由之二：出资人或者设立人决定解散",
+     "rules": [
+      "c106-1b"
+     ]
+    },
+    {
+     "text": "解散事由之三：法律规定的其他情形",
+     "rules": [
+      "c106-1c"
+     ]
+    },
+    {
+     "text": "设立非法人组织，法律、行政法规规定须经有关机关批准的，依照其规定",
+     "rules": [
+      "c103-2"
+     ]
+    },
+    {
+     "text": "笔记所列学理成立条件：依法成立；有自己的名称、组织机构和场所；有自己能支配的财产或者经费；设有代表人或者管理人；依法进行登记",
+     "rules": [
+      "c102-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "特别法（如《合伙企业法》）对特定类型非法人组织另有规定的，优先适用特别法，不适用本节一般规定",
+     "rules": [
+      "c102-special"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "非法人组织应当依照法律的规定登记",
+     "rules": [
+      "c103-1"
+     ]
+    },
+    {
+     "text": "设立须经批准的，应当依照法律、行政法规的规定办理批准",
+     "rules": [
+      "c103-2"
+     ]
+    },
+    {
+     "text": "出现法定解散事由的，非法人组织解散",
+     "rules": [
+      "c106-1a",
+      "c106-1b",
+      "c106-1c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "特别法对特定类型非法人组织的设立、登记另有规定的，优先于本节关于非法人组织登记的一般规定",
+     "rules": [
+      "c102-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与法人不同：法人具有法人资格并独立承担民事责任；非法人组织不具有法人资格。其出资人、设立人承担无限责任规定于第104条，本行未挂载，故不写入规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“解散后剩余财产按约定或法律规定分配”属第107条清算规则，不在本行材料范围；卡片所称“内部约定不能对抗善意第三人”亦无本行法条依据，均不采为规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c102-def",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "organization(O)",
+     "-legalPerson(O)",
+     "conductsCivilActivityInOwnName(O)"
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "非法人组织是不具有法人资格、但能够依法以自己的名义从事民事活动的组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-types",
+    "srcs": [
+     "art102-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "soleProprietorship(O)",
+       "partnership(O)",
+       "professionalServiceOrgWithoutLegalPerson(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "非法人组织包括个人独资企业、合伙企业、不具有法人资格的专业服务机构等，列举非穷尽",
+    "auth": "npc"
+   },
+   {
+    "key": "c103-1",
+    "srcs": [
+     "art103-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "registerPerLaw(O)"
+     }
+    ],
+    "note": "非法人组织应当依照法律的规定登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c103-2",
+    "srcs": [
+     "art103-2"
+    ],
+    "body": [
+     "establishingUnincorporatedOrg(O)",
+     "approvalRequiredByLawsAndRegulations(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "obtainApproval(O)"
+     }
+    ],
+    "note": "设立非法人组织，法律、行政法规规定须经有关机关批准的，应当依照其规定办理批准",
+    "auth": "npc"
+   },
+   {
+    "key": "c106-1a",
+    "srcs": [
+     "art106-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     {
+      "or": [
+       "charterTermExpired(O)",
+       "otherCharterDissolutionEventOccurred(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "dissolved(O)"
+    ],
+    "note": "章程规定的存续期间届满或者章程规定的其他解散事由出现的，非法人组织解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c106-1b",
+    "srcs": [
+     "art106-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "contributorsDecideDissolution(O)"
+    ],
+    "heads": [
+     "dissolved(O)"
+    ],
+    "note": "出资人或者设立人决定解散的，非法人组织解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c106-1c",
+    "srcs": [
+     "art106-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "otherDissolutionProvidedByLaw(O)"
+    ],
+    "heads": [
+     "dissolved(O)"
+    ],
+    "note": "有法律规定的其他情形的，非法人组织解散",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-cond",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "organization(O)",
+     "hasNameAndPremises(O)",
+     "hasOrganization(O)",
+     "hasOwnProperty(O)",
+     "hasRepresentativeOrManager(O)",
+     "registeredAsBusiness(O)"
+    ],
+    "heads": [
+     "establishedUnincorporatedOrg(O)"
+    ],
+    "note": "笔记所列学理成立条件（依法成立、有名称组织机构和场所、有可支配财产或经费、设有代表人或者管理人、依法登记），法条未逐项规定，属学理总结",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c102-special",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "unincorporatedOrganization(O)",
+     "specialLawRegulatesType(O)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(O)"
+    ],
+    "note": "LEGO 卡片与学理认为合伙企业等特别法另有规定时优先适用特别法，法条未明文，属解释性学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c102-special",
+    "c103-1",
+    "特别法对特定类型非法人组织的设立与登记另有规定的，优先于本节一般登记义务"
+   ]
+  ],
+  "predicates": {
+   "registerPerLaw": "依照法律规定办理登记（非法人组织）",
+   "establishingUnincorporatedOrg": "正在设立非法人组织",
+   "contributorsDecideDissolution": "出资人或者设立人决定解散",
+   "hasNameAndPremises": "有自己的名称和场所",
+   "hasRepresentativeOrManager": "设有代表人或者管理人",
+   "establishedUnincorporatedOrg": "非法人组织已依法成立（学理成立条件齐备）",
+   "specialLawRegulatesType": "特别法对该类型非法人组织另有规定"
+  }
+ }
+}

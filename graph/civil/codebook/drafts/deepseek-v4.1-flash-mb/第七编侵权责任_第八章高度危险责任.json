@@ -1,0 +1,456 @@
+{
+ "art:1244": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承担高度危险责任时，法律规定的赔偿限额是否适用；行为人故意或者重大过失时如何处理",
+     "rules": [
+      "c1244-1",
+      "c1244-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人承担高度危险责任，且法律对该责任规定了赔偿限额",
+     "rules": [
+      "c1244-1"
+     ]
+    },
+    {
+     "text": "行为人对损害有故意或者重大过失",
+     "rules": [
+      "c1244-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "行为人有故意或者重大过失的，不适用法律规定的赔偿限额（但书）",
+     "rules": [
+      "c1244-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "赔偿数额依照法律规定的限额确定，即限额赔偿",
+     "rules": [
+      "c1244-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "故意或者重大过失的但书优先于限额赔偿的一般规定，排除限额的适用",
+     "rules": [
+      "c1244-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决赔偿限额的适用问题，高度危险责任的构成要件、免责与减责事由规定在第1236条以下，本条不另行规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条；学理上“法律规定”指狭义法律，行政法规、地方性法规、行业标准设定的限额不能直接作为本条依据（学理，非条文原文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1244-1",
+    "srcs": [
+     "art1244-1"
+    ],
+    "body": [
+     "bearsHighRiskLiability(A)",
+     "lawProvidesCompensationLimit(A)",
+     "~hasIntentOrGrossNegligence(A)"
+    ],
+    "heads": [
+     "compensationLimitApplies(A)"
+    ],
+    "note": "承担高度危险责任且法律规定了赔偿限额的，赔偿依照该限额规定，但行为人有故意或者重大过失的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1244-exc",
+    "srcs": [
+     "art1244-1"
+    ],
+    "body": [
+     "bearsHighRiskLiability(A)",
+     "lawProvidesCompensationLimit(A)",
+     "hasIntentOrGrossNegligence(A)"
+    ],
+    "heads": [
+     "-compensationLimitApplies(A)"
+    ],
+    "note": "但书：行为人有故意或者重大过失的，不适用法律规定的赔偿限额",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1244-exc",
+    "c1244-1",
+    "第1244条第1款但书：行为人有故意或者重大过失的，排除赔偿限额的适用"
+   ]
+  ],
+  "predicates": {
+   "bearsHighRiskLiability": "承担高度危险责任（参数：行为人）",
+   "lawProvidesCompensationLimit": "法律对该高度危险责任情形规定了赔偿限额（参数：行为人）",
+   "compensationLimitApplies": "适用法律规定的赔偿限额（参数：行为人）",
+   "hasIntentOrGrossNegligence": "行为人对损害有故意或者重大过失（参数：行为人）"
+  }
+ },
+ "art:1236": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "从事高度危险作业造成他人损害的，作业人是否应当承担侵权责任，其归责原则为何",
+     "rules": [
+      "c1236-1",
+      "c1236-nofault"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人从事高度危险作业（高空、高压、地下挖掘、使用高速轨道运输工具等对周围人身、财产有高度危险的活动）",
+     "rules": [
+      "c1236-1"
+     ]
+    },
+    {
+     "text": "该高度危险作业造成他人损害",
+     "rules": [
+      "c1236-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条为一般条款，本身未设免责事由；受害人故意、不可抗力等法定免责事由由第1237条以下关于具体高度危险作业的规定，以及总则编关于不承担责任或减轻责任情形的规定确定，本行未挂载这些条文",
+     "rules": [
+      "c1236-exempt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "作业人应当对被侵权人承担侵权责任",
+     "rules": [
+      "c1236-1"
+     ]
+    },
+    {
+     "text": "该责任为无过错责任：不以作业人有过错为要件，被侵权人无须证明作业人有过错（学理归纳，条文未出现“过错”字样）",
+     "rules": [
+      "c1236-nofault"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "存在法律规定的免责事由时，不发生高度危险责任，优先于本条的责任成立规则（学理；具体免责事由见第1237条以下）",
+     "rules": [
+      "c1236-exempt"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是高度危险责任的一般条款；对民用核设施、民用航空器、高度危险物、高空高压地下挖掘、高速轨道运输工具等具体情形另有特别规定，应优先适用特别规定，本行未挂载这些条文",
+     "rules": []
+    },
+    {
+     "text": "与第1240条等具体条文不同，本条既未列举免责事由，也未规定被侵权人重大过失可以减轻责任；这些内容不能由本条一般条款直接推出",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1236-1",
+    "srcs": [
+     "art1236-1"
+    ],
+    "body": [
+     "highlyDangerousOperation(A)",
+     "causesDamageTo(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "bearTortLiability(A,V)"
+     }
+    ],
+    "note": "从事高度危险作业造成他人损害的，作业人应当承担侵权责任（高度危险责任的一般条款）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1236-nofault",
+    "srcs": [
+     "art1236-1"
+    ],
+    "body": [
+     "highlyDangerousOperation(A)",
+     "causesDamageTo(A,V)"
+    ],
+    "heads": [
+     "strictLiability(A,V)"
+    ],
+    "note": "学理归纳：本条不以过错为要件，属无过错（严格）责任；条文本身未出现“过错”表述",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1236-exempt",
+    "srcs": [
+     "art1236-1"
+    ],
+    "body": [
+     "highlyDangerousOperation(A)",
+     "causesDamageTo(A,V)",
+     "statutoryExemption(A,V)"
+    ],
+    "heads": [
+     "-bearTortLiability(A,V)"
+    ],
+    "note": "学理归纳：存在法律规定的免责事由（如受害人故意、不可抗力等，具体见第1237条以下）时，作业人不承担侵权责任；本条原文未设但书",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1236-exempt",
+    "c1236-1",
+    "存在法律规定的免责事由时，不发生高度危险责任（学理）"
+   ]
+  ],
+  "predicates": {
+   "highlyDangerousOperation": "从事高度危险作业（高空、高压、地下挖掘、使用高速轨道运输工具等对周围人身、财产具有高度危险的活动）",
+   "strictLiability": "承担无过错（严格）责任，不以行为人有过错为要件（行为人，被侵权人）",
+   "statutoryExemption": "存在法律规定的免责事由（行为人，被侵权人）"
+  }
+ },
+ "card:g7397": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "占有或者使用高度危险物造成他人损害的，占有人或者使用人是否应当承担侵权责任；何种情形下不承担责任或者可以减轻责任",
+     "rules": [
+      "c1239-1",
+      "c1239-2",
+      "c1239-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "占有或者使用易燃、易爆、剧毒、高放射性、强腐蚀性、高致病性等高度危险物",
+     "rules": [
+      "c1239-1"
+     ]
+    },
+    {
+     "text": "该高度危险物造成他人损害（占有、使用行为与损害之间有因果关系）",
+     "rules": [
+      "c1239-1"
+     ]
+    },
+    {
+     "text": "本条属无过错责任：不以占有人、使用人的过错为要件，被侵权人无须证明其过错",
+     "rules": [
+      "c1239-nofault"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "占有人或者使用人能够证明损害是因受害人故意或者不可抗力造成的，不承担责任",
+     "rules": [
+      "c1239-2"
+     ]
+    },
+    {
+     "text": "被侵权人对损害的发生有重大过失的，可以减轻占有人或者使用人的责任",
+     "rules": [
+      "c1239-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "占有人或者使用人应当承担侵权责任",
+     "rules": [
+      "c1239-1"
+     ]
+    },
+    {
+     "text": "被侵权人无须就占有人、使用人的过错举证；占有人、使用人也不得以证明自己没有过错而主张免责",
+     "rules": [
+      "c1239-nofault",
+      "c1239-nofault-defense"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "受害人故意、不可抗力两项免责事由优先于本条前段的承担责任规则",
+     "rules": [
+      "c1239-2"
+     ]
+    },
+    {
+     "text": "本条是高度危险物致害的无过错责任特别规定，优先于第1165条过错责任一般条款适用",
+     "rules": [
+      "c1239-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把“高度危险作业致人损害”列为无过错责任原则的适用范围之一；本条规范的是高度危险物（占有、使用），与第1236条高度危险作业、第1237条民用核设施等分属不同条文，不可混用",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片 concept:0205 讲的是第1165条过错责任原则（以过错为要件、受害人须证明过错），与本条无过错责任相反，不能作为本条构成要件的依据",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1239-1",
+    "srcs": [
+     "art1239-1"
+    ],
+    "body": [
+     "possessesOrUsesHighlyDangerousThing(P,T)",
+     "harmCausedByHighlyDangerousThing(P,T,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "bearTortLiability(P,V)"
+     }
+    ],
+    "note": "占有或者使用高度危险物造成他人损害的，占有人或者使用人应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1239-2",
+    "srcs": [
+     "art1239-1"
+    ],
+    "body": [
+     "possessesOrUsesHighlyDangerousThing(P,T)",
+     "harmCausedByHighlyDangerousThing(P,T,V)",
+     {
+      "or": [
+       "victimIntent(V,P)",
+       "causedByForceMajeure(P,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "-bearTortLiability(P,V)"
+    ],
+    "note": "占有人或者使用人能够证明损害是因受害人故意或者不可抗力造成的，不承担责任（举证责任在占有人、使用人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1239-3",
+    "srcs": [
+     "art1239-1"
+    ],
+    "body": [
+     "possessesOrUsesHighlyDangerousThing(P,T)",
+     "harmCausedByHighlyDangerousThing(P,T,V)",
+     "victimGrossNegligence(V,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "reduceLiability(P,V)"
+     }
+    ],
+    "note": "被侵权人对损害的发生有重大过失的，可以减轻占有人或者使用人的责任（仅为减责，非免责）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1239-nofault",
+    "srcs": [
+     "art1239-1"
+    ],
+    "body": [
+     "possessesOrUsesHighlyDangerousThing(P,T)",
+     "harmCausedByHighlyDangerousThing(P,T,V)"
+    ],
+    "heads": [
+     "-faultRequired(P,V)"
+    ],
+    "note": "学理（笔记）：本条属无过错责任，不以占有人、使用人的过错为要件，被侵权人无须就过错举证；但行为、损害及因果关系仍须证明",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1239-nofault-defense",
+    "srcs": [
+     "art1239-1"
+    ],
+    "body": [
+     "possessesOrUsesHighlyDangerousThing(P,T)",
+     "harmCausedByHighlyDangerousThing(P,T,V)",
+     "provesNoFault(P,V)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "exemptOnNoFault(P,V)"
+     }
+    ],
+    "note": "学理（笔记）：无过错责任下，占有人、使用人不得以证明自己没有过错为由主张免责",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1239-2",
+    "c1239-1",
+    "受害人故意或者不可抗力致害的免责事由优先于高度危险物致害的承担责任规则"
+   ]
+  ],
+  "predicates": {
+   "possessesOrUsesHighlyDangerousThing": "占有或者使用易燃、易爆、剧毒、高放射性、强腐蚀性、高致病性等高度危险物（占有人或使用人，高度危险物）",
+   "harmCausedByHighlyDangerousThing": "高度危险物造成他人损害（占有人或使用人，高度危险物，被侵权人）",
+   "causedByForceMajeure": "损害是因不可抗力造成的（占有人或使用人，被侵权人）",
+   "faultRequired": "以行为人的过错作为侵权责任的构成要件（行为人，被侵权人）",
+   "exemptOnNoFault": "以证明自己没有过错为由主张免除侵权责任（占有人或使用人，被侵权人）",
+   "reduceLiability": "减轻侵权责任（占有人或使用人，被侵权人）"
+  }
+ }
+}

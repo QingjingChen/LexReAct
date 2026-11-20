@@ -1,0 +1,764 @@
+{
+ "art:370": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "居住权因何种事由消灭，消灭后应当办理何种登记",
+     "rules": [
+      "c370-1",
+      "c370-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "居住权期限届满，或者居住权人死亡",
+     "rules": [
+      "c370-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "居住权消灭（用益物权归于消灭）",
+     "rules": [
+      "c370-1"
+     ]
+    },
+    {
+     "text": "居住权消灭的，应当及时办理注销登记",
+     "rules": [
+      "c370-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只列明“期限届满”与“居住权人死亡”两项消灭事由；居住权不得转让、继承（第369条），故不发生因转让、继承而消灭的问题",
+     "rules": []
+    },
+    {
+     "text": "注销登记是居住权消灭后登记法上的义务，与居住权因期限届满或死亡而当然消灭的实体效果相区分：登记并非居住权消灭的要件",
+     "rules": [
+      "c370-1",
+      "c370-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c370-1",
+    "srcs": [
+     "art370-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "residenceRightTermExpired(R)",
+       "residenceRightHolderDied(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "residenceRightExtinguished(R)"
+    ],
+    "note": "居住权期限届满或者居住权人死亡的，居住权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c370-2",
+    "srcs": [
+     "art370-1"
+    ],
+    "body": [
+     "residenceRightExtinguished(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "applyForCancellationRegistrationOfResidenceRight(R)"
+     }
+    ],
+    "note": "居住权消灭的，应当及时办理注销登记；条文未明定办理主体，此处以居住权人为义务人，属学理理解",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "residenceRightTermExpired": "居住权期限届满（1个参数：居住权）",
+   "residenceRightHolderDied": "居住权人死亡（1个参数：居住权）",
+   "residenceRightExtinguished": "居住权消灭（1个参数：居住权）",
+   "applyForCancellationRegistrationOfResidenceRight": "就居住权的消灭及时办理注销登记（1个参数：居住权）"
+  }
+ },
+ "art:369": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "居住权人能否将居住权转让、继承？设立居住权的住宅能否出租？",
+     "rules": [
+      "c369-transfer",
+      "c369-inherit",
+      "c369-lease"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "某人对特定住宅享有居住权（居住权已设立）",
+     "rules": [
+      "c369-transfer",
+      "c369-inherit",
+      "c369-lease",
+      "c369-lease-exc"
+     ]
+    },
+    {
+     "text": "主张继承者是居住权人的继承人",
+     "rules": [
+      "c369-inherit"
+     ]
+    },
+    {
+     "text": "当事人就设立居住权的住宅出租另有约定",
+     "rules": [
+      "c369-lease-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "“设立居住权的住宅不得出租”的禁止，因当事人另有约定而被排除；转让、继承的禁止无此例外",
+     "rules": [
+      "c369-lease-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "居住权人不得转让其居住权",
+     "rules": [
+      "c369-transfer"
+     ]
+    },
+    {
+     "text": "居住权人的继承人不得继承该居住权",
+     "rules": [
+      "c369-inherit"
+     ]
+    },
+    {
+     "text": "居住权人不得将设立居住权的住宅出租",
+     "rules": [
+      "c369-lease"
+     ]
+    },
+    {
+     "text": "当事人另有约定时，居住权人可以出租该住宅",
+     "rules": [
+      "c369-lease-exc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人另有约定出租的例外，优先于“设立居住权的住宅不得出租”的禁止性规定",
+     "rules": [
+      "c369-lease-exc",
+      "c369-lease"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记与法条一致：转让、继承为无例外的绝对禁止；出租的禁止附有“当事人另有约定的除外”的但书",
+     "rules": []
+    },
+    {
+     "text": "本条只规定居住权内容的禁止性限制；居住权的设立方式、登记与消灭等由其他条文规定，不在本条处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c369-transfer",
+    "srcs": [
+     "art369-1"
+    ],
+    "body": [
+     "residenceRightOf(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferResidenceRight(P,H)"
+     }
+    ],
+    "note": "居住权具有人身专属性，居住权人不得将其转让（无但书，绝对禁止）",
+    "auth": "npc"
+   },
+   {
+    "key": "c369-inherit",
+    "srcs": [
+     "art369-1"
+    ],
+    "body": [
+     "residenceRightOf(P,H)",
+     "heirCandidate(X,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "inheritResidenceRight(X,H)"
+     }
+    ],
+    "note": "居住权不得继承，居住权人的继承人不得继承该居住权（无但书）",
+    "auth": "npc"
+   },
+   {
+    "key": "c369-lease",
+    "srcs": [
+     "art369-1"
+    ],
+    "body": [
+     "residenceRightOf(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "leaseResidence(P,H)"
+     }
+    ],
+    "note": "设立居住权的住宅不得出租，居住权人负有不出租的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c369-lease-exc",
+    "srcs": [
+     "art369-1"
+    ],
+    "body": [
+     "residenceRightOf(P,H)",
+     "agreedOtherwiseOnLease(H)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "leaseResidence(P,H)"
+     }
+    ],
+    "note": "但书：当事人另有约定时，居住权人可以出租设立居住权的住宅",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c369-lease-exc",
+    "c369-lease",
+    "当事人就出租另有约定时，排除“设立居住权的住宅不得出租”的禁止"
+   ]
+  ],
+  "predicates": {
+   "residenceRightOf": "对特定住宅享有居住权（居住权人，住宅）",
+   "transferResidenceRight": "转让居住权（居住权人，住宅）",
+   "inheritResidenceRight": "继承居住权（继承人，住宅）",
+   "leaseResidence": "将住宅出租（居住权人，住宅）",
+   "agreedOtherwiseOnLease": "当事人就设立居住权的住宅出租另有约定（住宅）"
+  }
+ },
+ "art:371": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "以遗嘱方式设立居住权的，应参照适用哪些规定",
+     "rules": [
+      "c371-will",
+      "c371-ref"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "遗嘱为某人设立居住权，即以遗嘱方式设立居住权",
+     "rules": [
+      "c371-will"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用居住权章（第366–370条）的有关规定：居住权的设立、登记、无偿性（当事人另有约定的除外）、不得转让和继承、期限届满或居住权人死亡时消灭等，均依本章处理",
+     "rules": [
+      "c371-ref"
+     ]
+    },
+    {
+     "text": "参照第368条，以遗嘱方式设立居住权的，应向登记机构申请居住权登记（学理上对登记是否为遗嘱设立居住权的生效要件存在争议）",
+     "rules": [
+      "c371-reg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "遗嘱设立居住权优先参照适用居住权章的规定；本章没有规定的，才适用物权编的一般规定",
+     "rules": [
+      "c371-ref"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "遗嘱设立居住权不同于遗嘱继承或遗赠：后者使继承人、受遗赠人取得所有权，前者只设立居住权这一用益物权；本条是参照适用条款，本身不直接产生物权变动效果，须结合本章规定处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c371-will",
+    "srcs": [
+     "art371"
+    ],
+    "body": [
+     "willEstablishesResidenceRight(D,H)"
+    ],
+    "heads": [
+     "residenceRightEstablishedByWill(H)"
+    ],
+    "note": "遗嘱为某人设立居住权的，属于以遗嘱方式设立居住权的情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c371-ref",
+    "srcs": [
+     "art371"
+    ],
+    "body": [
+     "residenceRightEstablishedByWill(H)"
+    ],
+    "heads": [
+     "applyResidenceRightChapterByReference(H)"
+    ],
+    "note": "以遗嘱方式设立居住权的，参照适用居住权章（第366–370条）的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c371-reg",
+    "srcs": [
+     "art371"
+    ],
+    "body": [
+     "residenceRightEstablishedByWill(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "applyForResidenceRightRegistration(H)"
+     }
+    ],
+    "note": "学理与实务多认为参照第368条，遗嘱设立居住权亦应申请居住权登记；但登记是否为生效要件存在争议（有观点依第230条主张自继承开始时设立），本条未明文规定，故列为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "residenceRightEstablishedByWill": "以遗嘱方式设立居住权（参数：居住权人）",
+   "applyResidenceRightChapterByReference": "参照适用居住权章（第366–370条）的有关规定（参数：以遗嘱方式设立的居住权人）",
+   "applyForResidenceRightRegistration": "向登记机构申请居住权登记（参数：居住权人）"
+  }
+ },
+ "card:g3099": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "居住权如何设立：是否须书面合同、是否须登记、是否有偿，以及遗嘱设立的特殊规则",
+     "rules": [
+      "c367-1",
+      "c368-registration",
+      "c368-established"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人设立居住权，应当采用书面形式订立居住权合同",
+     "rules": [
+      "c367-1"
+     ]
+    },
+    {
+     "text": "居住权合同一般包括：当事人的姓名或者名称和住所、住宅的位置、居住的条件和要求、居住权期限、解决争议的方法（示范性条款，非强制）",
+     "rules": []
+    },
+    {
+     "text": "设立居住权的，应当向登记机构申请居住权登记",
+     "rules": [
+      "c368-registration"
+     ]
+    },
+    {
+     "text": "当事人另有约定，居住权为有偿设立",
+     "rules": [
+      "c368-paid"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "居住权无偿设立，但当事人另有约定的除外",
+     "rules": [
+      "c368-gratuitous",
+      "c368-paid"
+     ]
+    },
+    {
+     "text": "笔记：以遗嘱方式设立居住权的，无须登记即可设立，但未经登记不能对抗善意第三人",
+     "rules": [
+      "c368-will",
+      "c368-will-opposability"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "居住权自登记时设立（登记设立主义），具有物权效力",
+     "rules": [
+      "c368-established"
+     ]
+    },
+    {
+     "text": "未办理登记的，居住权不设立（登记设立主义的反面推论）",
+     "rules": [
+      "c368-not-established"
+     ]
+    },
+    {
+     "text": "居住权原则上无偿设立",
+     "rules": [
+      "c368-gratuitous"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于有偿设立的约定优先于“居住权无偿设立”的一般规定",
+     "rules": [
+      "c368-paid"
+     ]
+    },
+    {
+     "text": "遗嘱方式设立居住权无须登记，排除登记设立主义的一般规则",
+     "rules": [
+      "c368-will"
+     ]
+    },
+    {
+     "text": "未经登记的遗嘱设立居住权不得对抗善意第三人",
+     "rules": [
+      "c368-will-opposability"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片：居住权为用益物权，须登记设立、原则上无偿、具身份专属性；租赁权为债权，无须登记、有偿、期限不超过二十年且可转租（学理，非本行法条内容）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列“居住权不得转让、继承”及居住权消灭事由，分别规定于第369条、第370条，不在本行挂载法条范围内，故不设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c367-1",
+    "srcs": [
+     "art367-1"
+    ],
+    "body": [
+     "establishResidenceRight(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeResidenceRightContractInWriting(P,H)"
+     }
+    ],
+    "note": "设立居住权，当事人应当采用书面形式订立居住权合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c368-gratuitous",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "establishResidenceRight(P,H)",
+     "~agreedPaidResidenceRight(H)"
+    ],
+    "heads": [
+     "residenceRightGratuitous(H)"
+    ],
+    "note": "居住权无偿设立，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c368-paid",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "establishResidenceRight(P,H)",
+     "agreedPaidResidenceRight(H)"
+    ],
+    "heads": [
+     "-residenceRightGratuitous(H)"
+    ],
+    "note": "当事人另有约定的，居住权可以有偿设立，排除无偿设立的一般规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c368-registration",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "establishResidenceRight(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "registrationApplication(P,H)"
+     }
+    ],
+    "note": "设立居住权的，应当向登记机构申请居住权登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c368-established",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "residenceRightRegistered(H)"
+    ],
+    "heads": [
+     "residenceRightEstablished(H)"
+    ],
+    "note": "居住权自登记时设立，采登记设立主义",
+    "auth": "npc"
+   },
+   {
+    "key": "c368-not-established",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "establishResidenceRight(P,H)",
+     "-residenceRightRegistered(H)"
+    ],
+    "heads": [
+     "-residenceRightEstablished(H)"
+    ],
+    "note": "由“居住权自登记时设立”反面推论：未办理登记的，居住权不设立（学理推论，法条未明文）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c368-will",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "willEstablishesResidenceRight(D,H)"
+    ],
+    "heads": [
+     "residenceRightEstablished(H)"
+    ],
+    "note": "笔记：以遗嘱方式设立居住权的，无须登记即设立（学理，法条未明定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c368-will-opposability",
+    "srcs": [
+     "art368-1"
+    ],
+    "body": [
+     "willEstablishesResidenceRight(D,H)",
+     "-residenceRightRegistered(H)",
+     "inGoodFaith(T,H)"
+    ],
+    "heads": [
+     "-residenceRightOpposableTo(H,T)"
+    ],
+    "note": "笔记：未经登记的遗嘱设立居住权不能对抗善意第三人（学理，法条未明定）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c368-paid",
+    "c368-gratuitous",
+    "当事人另有约定（有偿设立）优先于居住权无偿设立的一般规定"
+   ],
+   [
+    "c368-will",
+    "c368-not-established",
+    "遗嘱方式设立居住权无须登记即设立，不适用登记设立主义"
+   ]
+  ],
+  "predicates": {
+   "establishResidenceRight": "当事人设立居住权（当事人，住宅）",
+   "concludeResidenceRightContractInWriting": "采用书面形式订立居住权合同（当事人，住宅）",
+   "agreedPaidResidenceRight": "当事人约定居住权为有偿（住宅）",
+   "residenceRightGratuitous": "居住权无偿设立（住宅）",
+   "residenceRightRegistered": "居住权已办理登记（住宅）",
+   "residenceRightOpposableTo": "居住权可以对抗（住宅，第三人）"
+  }
+ },
+ "art:366": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "居住权人依合同对他人住宅享有何种权利，其内容与目的是什么",
+     "rules": [
+      "c366-1",
+      "c366-right"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "依居住权合同的约定，由该人对该住宅享有居住权",
+     "rules": [
+      "c366-1"
+     ]
+    },
+    {
+     "text": "客体是他人的住宅，即该住宅由他人（所有权人）所有",
+     "rules": [
+      "c366-1"
+     ]
+    },
+    {
+     "text": "以满足生活居住的需要为目的",
+     "rules": [
+      "c366-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该人为居住权人，对他人住宅享有用益物权",
+     "rules": [
+      "c366-1"
+     ]
+    },
+    {
+     "text": "居住权人有权按照合同约定对该住宅占有、使用",
+     "rules": [
+      "c366-right"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定居住权的内容（占有、使用的用益物权）与目的（满足生活居住需要），未涉及设立方式；居住权须以书面合同设立并登记（第367、368条），原则上无偿设立且不得转让、继承（第369条）",
+     "rules": []
+    },
+    {
+     "text": "居住权的客体限于他人的住宅，权能仅为占有、使用，不含收益、处分；此点区别于建设用地使用权、土地承包经营权等可收益的用益物权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c366-1",
+    "srcs": [
+     "art366-1"
+    ],
+    "body": [
+     "contractGrantsResidence(K,R,H)",
+     "own(O,H)",
+     "forLivingNeeds(R)"
+    ],
+    "heads": [
+     "usufructuaryOf(R,H)"
+    ],
+    "note": "依合同约定对他人（O）所有的住宅享有居住权，并以满足生活居住需要为目的的，该人为该住宅的用益物权人即居住权人",
+    "auth": "npc"
+   },
+   {
+    "key": "c366-right",
+    "srcs": [
+     "art366-1"
+    ],
+    "body": [
+     "usufructuaryOf(R,H)",
+     "contractGrantsResidence(K,R,H)",
+     "own(O,H)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "O",
+      "content": "possessUse(R,H)"
+     }
+    ],
+    "note": "居住权人有权按照合同约定，对他人住宅享有占有、使用的权能",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "contractGrantsResidence": "合同约定由某人对某住宅享有居住权（3个参数：合同，居住权人，住宅）",
+   "forLivingNeeds": "以满足生活居住的需要为目的（1个参数：居住权人）"
+  }
+ }
+}

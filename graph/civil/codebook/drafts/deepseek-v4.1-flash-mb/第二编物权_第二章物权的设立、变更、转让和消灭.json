@@ -1,0 +1,3240 @@
+{
+ "card:g2259": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "动产物权设立、转让而未为现实交付时，受让人何时取得物权：权利人已占有动产的简易交付，与出让人继续占有的占有改定",
+     "rules": [
+      "c226-1",
+      "c228-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第226条：动产物权设立和转让前，权利人（受让人）已经占有该动产",
+     "rules": [
+      "c226-1"
+     ]
+    },
+    {
+     "text": "第228条：动产物权转让时，当事人又约定由出让人继续占有该动产（占有改定）",
+     "rules": [
+      "c228-1",
+      "c228-def"
+     ]
+    },
+    {
+     "text": "占有改定由两个合意构成：转让动产物权的合意，以及借用、租赁等使出让人继续占有该动产的合意",
+     "rules": [
+      "c228-def"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第226条：物权自该民事法律行为生效时发生效力，受让人取得该动产上的物权",
+     "rules": [
+      "c226-1"
+     ]
+    },
+    {
+     "text": "第228条：物权自当事人关于由出让人继续占有的约定生效时发生效力，受让人取得物权而由出让人继续占有",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第228条是占有改定的特别规则，就物权变动时点优先于以现实交付为要件的一般规则适用",
+     "rules": [
+      "c228-1"
+     ]
+    },
+    {
+     "text": "第226条与第228条适用于互斥的事实情形：受让人此前已占有该动产，或者出让人依约定继续占有该动产",
+     "rules": [
+      "c226-1",
+      "c228-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第226条（简易交付）与第228条（占有改定）的区别：前者受让人此前已占有，物权自民事法律行为生效时变动；后者出让人继续占有，物权自继续占有的约定生效时变动",
+     "rules": [
+      "c226-1",
+      "c228-1"
+     ]
+    },
+    {
+     "text": "笔记：占有改定中出让人于约定期限届满时再按约定将该动产交还受让人占有，故受让人取得的是间接占有",
+     "rules": [
+      "c228-def"
+     ]
+    },
+    {
+     "text": "第227条指示交付（让与返还请求权）、第229条因法律文书或征收决定等发生的物权变动，不适用本条规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“不得对抗善意第三人”“恶意串通可撤销或无效”并非第226、228条的内容，属第154条、第311条的问题，本行不作规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c226-1",
+    "srcs": [
+     "art226-1"
+    ],
+    "body": [
+     "movableRealRightAct(K,R,T)",
+     "movable(T)",
+     "rightHolderPossessesBefore(R,T)",
+     "takesEffect(K)"
+    ],
+    "heads": [
+     "realRightOf(R,T)"
+    ],
+    "note": "简易交付：动产物权设立和转让前权利人已经占有该动产的，物权自民事法律行为生效时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c228-def",
+    "srcs": [
+     "art228-1"
+    ],
+    "body": [
+     "movableRealRightAct(K,R,T)",
+     "agreedTransferorRetainsPossession(A,T)"
+    ],
+    "heads": [
+     "possessionByAgreement(R,T)"
+    ],
+    "note": "占有改定的学理定义：转让合意＋出让人继续占有的合意，出让人于约定期限届满时再交还动产（条文未明文，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c228-1",
+    "srcs": [
+     "art228-1"
+    ],
+    "body": [
+     "possessionByAgreement(R,T)",
+     "agreedTransferorRetainsPossession(A,T)",
+     "takesEffect(A)"
+    ],
+    "heads": [
+     "realRightOf(R,T)"
+    ],
+    "note": "占有改定：动产物权转让时当事人又约定由出让人继续占有的，物权自该约定生效时发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "movableRealRightAct": "设立或转让动产物权的民事法律行为（行为，受让人，动产）",
+   "rightHolderPossessesBefore": "在该民事法律行为生效前，权利人（受让人）已经占有该动产（权利人，动产）",
+   "agreedTransferorRetainsPossession": "当事人约定由出让人继续占有该动产（约定，动产）",
+   "possessionByAgreement": "占有改定（受让人，动产）"
+  }
+ },
+ "card:g2196": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人订立设立、变更、转让、消灭不动产物权的合同，未办理物权登记时，合同是否生效、是否有效",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产权属证书与不动产登记簿记载不一致时，以何者为准",
+     "rules": [
+      "c217-1",
+      "c217-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间订立了以设立、变更、转让或消灭不动产物权为内容的合同，且该合同已成立",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "就该合同尚未办理不动产物权登记",
+     "rules": [
+      "c215-2"
+     ]
+    },
+    {
+     "text": "存在针对该不动产的不动产权属证书，且由权利人持有",
+     "rules": [
+      "c217-1"
+     ]
+    },
+    {
+     "text": "权属证书记载的事项与不动产登记簿的记载不一致",
+     "rules": [
+      "c217-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定，或者当事人另有约定（如约定以办理登记为合同生效条件）的，合同不自成立时生效",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "有证据证明不动产登记簿确有错误的，不以登记簿为准",
+     "rules": [
+      "c217-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "合同自成立时生效，产生债权效力",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "未办理物权登记不影响合同本身的效力，权利人仍可请求协助办理登记、承担违约责任",
+     "rules": [
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产权属证书是权利人享有该不动产物权的证明",
+     "rules": [
+      "c217-1"
+     ]
+    },
+    {
+     "text": "记载不一致时，以不动产登记簿为准，权属证书的证明力被排除",
+     "rules": [
+      "c217-2"
+     ]
+    },
+    {
+     "text": "权属证书记载的事项应当与不动产登记簿一致",
+     "rules": [
+      "c217-consistency"
+     ]
+    },
+    {
+     "text": "债权合同不成立、无效或被撤销的，不能发生物权变动的效果（学理上区分原则的第三层含义）",
+     "rules": [
+      "c215-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "记载不一致时，不动产登记簿优先于权属证书，排除权属证书的证明力",
+     "rules": [
+      "c217-2",
+      "c217-1"
+     ]
+    },
+    {
+     "text": "法律另有规定或当事人另有约定，优先于“合同自成立时生效”的一般规则",
+     "rules": [
+      "c215-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第214条规范不动产物权变动的生效要件（自记载于登记簿时发生效力）；第215条规范的是合同效力，二者共同构成区分原则",
+     "rules": []
+    },
+    {
+     "text": "第216条以登记簿为物权归属和内容的根据，侧重公示效力；第217条解决权属证书与登记簿不一致时的证明力问题",
+     "rules": []
+    },
+    {
+     "text": "笔记：地役权等部分物权在合同生效时即设立，不以登记为生效要件，属区分原则的例外，不在本条射程内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c215-1",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "realRightChangeContract(K)",
+     "contractFormed(K)",
+     "~lawProvidesOtherwiseOnTakingEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "设立、变更、转让、消灭不动产物权的合同，除法律另有规定或者当事人另有约定外，自合同成立时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-2",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "realRightChangeContract(K)",
+     "-realRightRegistered(K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "未办理物权登记不影响合同效力，登记只是合同的履行行为（区分原则）",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-doctrine",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "realRightChangeContract(K)",
+     "partyTo(P,K)",
+     "realRightTypeProvidedByLaw(T)",
+     "-valid(K)"
+    ],
+    "heads": [
+     "-realRightEstablished(P,T)"
+    ],
+    "note": "笔记/学理：债权合同不成立、无效或被撤销的，也不可能发生物权变动效果；条文未明写，故为学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c217-1",
+    "srcs": [
+     "art217-1"
+    ],
+    "body": [
+     "realRightCertificateOf(C,R)",
+     "certificateHolder(P,C)",
+     "immovableProperty(R)"
+    ],
+    "heads": [
+     "provesRealRight(C,P,R)"
+    ],
+    "note": "不动产权属证书是权利人享有该不动产物权的证明",
+    "auth": "npc"
+   },
+   {
+    "key": "c217-consistency",
+    "srcs": [
+     "art217-1"
+    ],
+    "body": [
+     "realRightCertificateOf(C,R)",
+     "immovableProperty(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": null,
+      "content": "keepCertificateConsistentWithRegister(C,R)"
+     }
+    ],
+    "note": "权属证书记载的事项应当与不动产登记簿一致；条文未点明义务主体，依文义推定为登记机构",
+    "auth": "npc"
+   },
+   {
+    "key": "c217-2",
+    "srcs": [
+     "art217-1"
+    ],
+    "body": [
+     "certificateInconsistentWithRegister(C,R)",
+     "certificateHolder(P,C)",
+     "~evidenceRegisterErroneous(R)"
+    ],
+    "heads": [
+     "registerPrevails(C,R)",
+     "-provesRealRight(C,P,R)"
+    ],
+    "note": "记载不一致的，除有证据证明不动产登记簿确有错误外，以不动产登记簿为准，权属证书的证明力被排除",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c217-2",
+    "c217-1",
+    "记载不一致时以不动产登记簿为准，权属证书的证明力被排除"
+   ]
+  ],
+  "predicates": {
+   "realRightChangeContract": "以设立、变更、转让或消灭不动产物权为内容的合同（1个参数：合同）",
+   "contractFormed": "合同已成立（1个参数：合同）",
+   "realRightRegistered": "已就该合同办理不动产物权登记（1个参数：合同）",
+   "immovableProperty": "是不动产（1个参数：物）",
+   "realRightCertificateOf": "是不动产权属证书（参数1：证书；参数2：不动产）",
+   "certificateHolder": "是不动产权属证书的持有人（参数1：人；参数2：证书）",
+   "provesRealRight": "证明权利人享有该不动产物权（参数1：证书；参数2：权利人；参数3：不动产）",
+   "certificateInconsistentWithRegister": "权属证书记载的事项与不动产登记簿记载不一致（参数1：证书；参数2：不动产）",
+   "evidenceRegisterErroneous": "有证据证明不动产登记簿确有错误（1个参数：不动产）",
+   "registerPrevails": "以不动产登记簿的记载为准（参数1：证书；参数2：不动产）",
+   "keepCertificateConsistentWithRegister": "权属证书记载的事项应当与不动产登记簿保持一致（参数1：证书；参数2：不动产）"
+  }
+ },
+ "card:g2143": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产物权的设立、变更、转让和消灭，何时发生效力（登记生效主义及其法定例外）",
+     "rules": [
+      "c209-1",
+      "c209-2",
+      "c209-exc",
+      "c209-3"
+     ]
+    },
+    {
+     "text": "不动产登记由何机构办理、国家是否实行统一登记制度",
+     "rules": []
+    },
+    {
+     "text": "登记机构不得实施哪些行为",
+     "rules": [
+      "c213-1",
+      "c213-2",
+      "c213-3"
+     ]
+    },
+    {
+     "text": "设立、变更、转让、消灭不动产物权的合同何时生效，未办物权登记是否影响合同效力",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "因法律文书、征收决定、事实行为等非法律行为引起的物权变动何时发生效力",
+     "rules": [
+      "c229",
+      "c231",
+      "c209-cause"
+     ]
+    },
+    {
+     "text": "依本节规定取得的不动产物权再行处分时，未经登记是否发生物权效力",
+     "rules": [
+      "c232"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不动产物权的设立、变更、转让或者消灭（基于法律行为）",
+     "rules": [
+      "c209-1",
+      "c209-2"
+     ]
+    },
+    {
+     "text": "已依法办理不动产登记",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "未办理不动产登记",
+     "rules": [
+      "c209-2",
+      "c215-2",
+      "c232"
+     ]
+    },
+    {
+     "text": "法律对该物权变动的生效另有规定（不登记亦发生效力）",
+     "rules": [
+      "c209-exc"
+     ]
+    },
+    {
+     "text": "依法属于国家所有的自然资源",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "人民法院、仲裁机构的法律文书或者人民政府的征收决定等导致物权变动",
+     "rules": [
+      "c229"
+     ]
+    },
+    {
+     "text": "因合法建造、拆除房屋等事实行为设立或者消灭物权",
+     "rules": [
+      "c231"
+     ]
+    },
+    {
+     "text": "处分依照本节规定享有的不动产物权，且依照法律规定需要办理登记",
+     "rules": [
+      "c232"
+     ]
+    },
+    {
+     "text": "有关设立、变更、转让、消灭不动产物权的合同已经成立",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "存在能够引起物权变动的法律事实：法律行为、事件、事实行为、公法上的原因",
+     "rules": [
+      "c209-cause"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，未经登记亦发生效力（第209条第1款但书）",
+     "rules": [
+      "c209-exc"
+     ]
+    },
+    {
+     "text": "依法属于国家所有的自然资源，所有权可以不登记",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "法律另有规定或者当事人另有约定的，合同不自成立时生效",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "未办理物权登记不影响合同效力",
+     "rules": [
+      "c215-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "经依法登记，不动产物权变动发生效力",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "未经登记，不动产物权变动不发生效力",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "登记机构不得要求对不动产进行评估",
+     "rules": [
+      "c213-1"
+     ]
+    },
+    {
+     "text": "登记机构不得以年检等名义进行重复登记",
+     "rules": [
+      "c213-2"
+     ]
+    },
+    {
+     "text": "登记机构不得实施超出登记职责范围的其他行为",
+     "rules": [
+      "c213-3"
+     ]
+    },
+    {
+     "text": "物权变动合同自合同成立时生效",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "未办理物权登记不导致合同无效",
+     "rules": [
+      "c215-2"
+     ]
+    },
+    {
+     "text": "因法律文书、征收决定导致物权变动的，自法律文书或者征收决定等生效时发生效力",
+     "rules": [
+      "c229"
+     ]
+    },
+    {
+     "text": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，自事实行为成就时发生效力",
+     "rules": [
+      "c231"
+     ]
+    },
+    {
+     "text": "处分依本节规定取得的不动产物权，未经登记不发生物权效力",
+     "rules": [
+      "c232"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定（不登记亦生效）优先于第209条第1款的登记生效规则",
+     "rules": [
+      "c209-exc"
+     ]
+    },
+    {
+     "text": "国家所有自然资源所有权可不登记，优先于一般登记要求",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "因法律文书、征收决定发生的物权变动优先于第209条第1款的登记生效要件",
+     "rules": [
+      "c229"
+     ]
+    },
+    {
+     "text": "因事实行为发生的物权变动优先于第209条第1款的登记生效要件",
+     "rules": [
+      "c231"
+     ]
+    },
+    {
+     "text": "依第229条、第231条取得的不动产物权，处分时仍须依第232条登记，否则不发生物权效力",
+     "rules": [
+      "c232"
+     ]
+    },
+    {
+     "text": "第215条区分原则：登记仅影响物权变动效力，不影响合同效力",
+     "rules": [
+      "c215-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：物权变动的原因包括法律行为、事件、事实行为、公法上的原因，登记或交付并非唯一原因；法律行为有效不必然发生物权变动，法律行为无效也不必然不发生物权变动",
+     "rules": [
+      "c209-cause",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "LEGO 卡片（参考）：给付判决须经执行完成交付或登记才发生物权变动，形成判决自生效时即发生变动，确认判决仅确认既存权利状态；违章建筑不因事实行为取得所有权",
+     "rules": []
+    },
+    {
+     "text": "第210条为登记机构管辖与统一登记制度的制度性、程序性规定，本身不产生物权变动效果",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称我国采折中主义、不承认物权行为无因性，属学理概括，法条未明文规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c209-1",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableRealRightChange(C)",
+     "realRightRegistered(C)"
+    ],
+    "heads": [
+     "realRightChangeEffective(C)"
+    ],
+    "note": "不动产物权的设立、变更、转让和消灭，经依法登记，发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-2",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableRealRightChange(C)",
+     "-realRightRegistered(C)",
+     "~lawProvidesOtherwiseOnRegistration(C)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(C)"
+    ],
+    "note": "未经登记，不动产物权变动不发生效力，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-exc",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableRealRightChange(C)",
+     "lawProvidesOtherwiseOnRegistration(C)"
+    ],
+    "heads": [
+     "realRightChangeEffective(C)"
+    ],
+    "note": "第209条第1款但书：法律另有规定的，未经登记亦发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-3",
+    "srcs": [
+     "art209-2"
+    ],
+    "body": [
+     "stateOwnedNaturalResource(R)"
+    ],
+    "heads": [
+     "-ownershipRegistrationRequired(R)"
+    ],
+    "note": "依法属于国家所有的自然资源，所有权可以不登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-1",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "demandAppraisalOfImmovable(A)"
+     }
+    ],
+    "note": "登记机构不得要求对不动产进行评估",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-2",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "repeatRegistrationInNameOfAnnualReview(A)"
+     }
+    ],
+    "note": "登记机构不得以年检等名义进行重复登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-3",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "actBeyondRegistrationDuty(A)"
+     }
+    ],
+    "note": "登记机构不得实施超出登记职责范围的其他行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-1",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "contractOnImmovableRealRight(K)",
+     "actEstablished(K)",
+     "~lawProvidesOtherwiseOnEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "设立、变更、转让、消灭不动产物权的合同，除法律另有规定或者当事人另有约定外，自合同成立时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-2",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "contractOnImmovableRealRight(K)",
+     "-realRightRegistered(K)"
+    ],
+    "heads": [
+     "-ineffective(K)"
+    ],
+    "note": "未办理物权登记的，不影响合同效力（合同并不因此确定不发生效力）",
+    "auth": "npc"
+   },
+   {
+    "key": "c229",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "courtOrArbitralLegalDocument(D)",
+       "expropriationDecision(D)"
+      ]
+     },
+     "causesRealRightChange(D)"
+    ],
+    "heads": [
+     "realRightChangeEffectiveFromDocument(D)"
+    ],
+    "note": "因人民法院、仲裁机构的法律文书或者人民政府的征收决定等导致物权变动的，自法律文书或者征收决定等生效时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c231",
+    "srcs": [
+     "art231-1"
+    ],
+    "body": [
+     "factualActCausesRealRightChange(F)"
+    ],
+    "heads": [
+     "realRightChangeEffectiveFromFact(F)"
+    ],
+    "note": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，自事实行为成就时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c232",
+    "srcs": [
+     "art232-1"
+    ],
+    "body": [
+     "disposesRealRightUnderThisSection(P,R)",
+     "registrationRequiredByLaw(R)",
+     "-realRightRegistered(R)"
+    ],
+    "heads": [
+     "-realRightEffectOccurs(P,R)"
+    ],
+    "note": "处分依照本节规定享有的不动产物权，依法需要办理登记而未经登记的，不发生物权效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-cause",
+    "srcs": [
+     "art209-1",
+     "art229-1",
+     "art231-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalAct(F)",
+       "event(F)",
+       "factualAct(F)",
+       "publicLawCause(F)"
+      ]
+     }
+    ],
+    "heads": [
+     "realRightChangeCause(F)"
+    ],
+    "note": "笔记学理归纳：能够引起物权变动的法律事实（原因）包括法律行为、事件、事实行为和公法上的原因，登记或交付并非物权变动的唯一原因",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c209-exc",
+    "c209-2",
+    "第209条第1款但书：法律另有规定的除外"
+   ],
+   [
+    "c209-3",
+    "c209-2",
+    "第209条第2款：依法属于国家所有的自然资源，所有权可以不登记"
+   ],
+   [
+    "c229",
+    "c209-2",
+    "第229条为特别规定：因法律文书、征收决定导致的物权变动自其生效时发生效力，不以登记为要件"
+   ],
+   [
+    "c231",
+    "c209-2",
+    "第231条为特别规定：因事实行为设立或消灭物权自事实行为成就时发生效力，不以登记为要件"
+   ],
+   [
+    "c232",
+    "c229",
+    "依第229条取得的不动产物权，处分时依第232条仍须登记，否则不发生物权效力"
+   ],
+   [
+    "c232",
+    "c231",
+    "依第231条取得的不动产物权，处分时依第232条仍须登记，否则不发生物权效力"
+   ],
+   [
+    "c215-2",
+    "c209-2",
+    "第215条区分原则：未办登记仅不发生物权效力，不影响合同效力"
+   ]
+  ],
+  "predicates": {
+   "immovableRealRightChange": "不动产物权的设立、变更、转让或者消灭（1个参数：该物权变动）",
+   "realRightRegistered": "该不动产物权变动已依法办理登记（1个参数：物权变动）",
+   "realRightChangeEffective": "该物权变动发生效力（1个参数：物权变动）",
+   "lawProvidesOtherwiseOnRegistration": "法律对该不动产物权变动的生效另有规定（不登记亦发生效力）（1个参数：物权变动）",
+   "stateOwnedNaturalResource": "依法属于国家所有的自然资源（1个参数：自然资源）",
+   "ownershipRegistrationRequired": "该自然资源的所有权须办理登记（1个参数：自然资源）",
+   "immovableRegistrationAuthority": "是不动产登记机构（1个参数：机构）",
+   "demandAppraisalOfImmovable": "要求对不动产进行评估（1个参数：登记机构）",
+   "repeatRegistrationInNameOfAnnualReview": "以年检等名义进行重复登记（1个参数：登记机构）",
+   "actBeyondRegistrationDuty": "实施超出登记职责范围的其他行为（1个参数：登记机构）",
+   "contractOnImmovableRealRight": "就设立、变更、转让或者消灭不动产物权订立的合同（1个参数：合同）",
+   "courtOrArbitralLegalDocument": "人民法院、仲裁机构作出的法律文书（1个参数：法律文书）",
+   "expropriationDecision": "人民政府的征收决定（1个参数：征收决定）",
+   "causesRealRightChange": "导致物权设立、变更、转让或者消灭（1个参数：法律文书、征收决定等）",
+   "realRightChangeEffectiveFromDocument": "物权变动自该法律文书或者征收决定等生效时发生效力（1个参数：法律文书或征收决定）",
+   "factualActCausesRealRightChange": "因合法建造、拆除房屋等事实行为设立或者消灭物权（1个参数：事实行为）",
+   "realRightChangeEffectiveFromFact": "物权变动自该事实行为成就时发生效力（1个参数：事实行为）",
+   "disposesRealRightUnderThisSection": "处分依照本节（第229–232条）规定享有的不动产物权（参数1：处分人，参数2：该不动产物权）",
+   "registrationRequiredByLaw": "依照法律规定该不动产物权的处分需要办理登记（1个参数：不动产物权）",
+   "realRightEffectOccurs": "发生物权效力（参数1：处分人，参数2：不动产物权）",
+   "legalAct": "是法律行为（1个参数：法律事实）",
+   "event": "是事件（1个参数：法律事实）",
+   "factualAct": "是事实行为（1个参数：法律事实）",
+   "publicLawCause": "是公法上的原因（1个参数：法律事实）",
+   "realRightChangeCause": "是能够引起物权变动的法律事实（物权变动的原因）（1个参数：法律事实）"
+  }
+ },
+ "card:g2206": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产物权变动是否以登记为生效要件；未办理物权登记对设立、变更、转让、消灭不动产物权的合同效力有何影响（区分原则）",
+     "rules": [
+      "c208-reg",
+      "c209-effective",
+      "c209-noeffect",
+      "c215-1",
+      "c215-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "涉及不动产物权的设立、变更、转让或者消灭",
+     "rules": [
+      "c208-reg",
+      "c209-effective",
+      "c209-noeffect"
+     ]
+    },
+    {
+     "text": "涉及动产物权的设立或者转让",
+     "rules": [
+      "c208-del"
+     ]
+    },
+    {
+     "text": "该不动产物权变动已依法办理登记",
+     "rules": [
+      "c209-effective"
+     ]
+    },
+    {
+     "text": "该不动产物权变动未办理登记",
+     "rules": [
+      "c209-noeffect",
+      "c215-2",
+      "c232"
+     ]
+    },
+    {
+     "text": "当事人之间已订立设立、变更、转让或者消灭不动产物权的合同，且合同已成立",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "处分依照本节规定享有的不动产物权，且依照法律规定需要办理登记",
+     "rules": [
+      "c232"
+     ]
+    },
+    {
+     "text": "不动产位于某地，该地设有不动产登记机构",
+     "rules": [
+      "c210-1"
+     ]
+    },
+    {
+     "text": "行为主体是不动产登记机构",
+     "rules": [
+      "c213-1",
+      "c213-2",
+      "c213-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对不动产物权变动的登记效力另有规定的，未经登记仍可发生效力（第209条第1款但书）",
+     "rules": [
+      "c209-noeffect"
+     ]
+    },
+    {
+     "text": "依法属于国家所有的自然资源，所有权可以不登记，构成第209条第1款但书的“法律另有规定”",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "法律另有规定或者当事人另有约定合同生效时间或效力的，从其规定或者约定",
+     "rules": [
+      "c215-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "不动产物权的设立、变更、转让和消灭，应当依照法律规定登记",
+     "rules": [
+      "c208-reg"
+     ]
+    },
+    {
+     "text": "动产物权的设立和转让，应当依照法律规定交付",
+     "rules": [
+      "c208-del"
+     ]
+    },
+    {
+     "text": "不动产物权变动经依法登记，发生效力",
+     "rules": [
+      "c209-effective"
+     ]
+    },
+    {
+     "text": "不动产物权变动未经登记不发生效力（法律另有规定的除外）",
+     "rules": [
+      "c209-noeffect"
+     ]
+    },
+    {
+     "text": "不动产物权合同自合同成立时生效；未办理物权登记不影响合同效力（区分原则）",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产登记由不动产所在地的登记机构办理",
+     "rules": [
+      "c210-1"
+     ]
+    },
+    {
+     "text": "登记机构不得要求对不动产进行评估，不得以年检等名义重复登记，不得实施超出登记职责范围的其他行为",
+     "rules": [
+      "c213-1",
+      "c213-2",
+      "c213-3"
+     ]
+    },
+    {
+     "text": "处分依法需要登记的不动产物权，未经登记不发生物权效力",
+     "rules": [
+      "c232"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第209条第2款关于国家所有自然资源所有权可以不登记的规定，优先于第1款的登记生效要件",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "区分原则：债权合同的效力独立于物权变动效果，未登记不影响合同效力",
+     "rules": [
+      "c215-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第210条第2款关于国家实行不动产统一登记制度、统一登记范围与办法由法律、行政法规规定，属制度性、程序性规定，不产生具体行为规范",
+     "rules": []
+    },
+    {
+     "text": "第213条是对登记机构的禁止性规范，与第208、209条对当事人的登记、交付要求指向不同主体",
+     "rules": [
+      "c213-1"
+     ]
+    },
+    {
+     "text": "LEGO卡片所称法院判决、继承等非基于法律行为的物权变动不以登记为生效要件，本行法条未作规定，属学理内容，未形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c208-reg",
+    "srcs": [
+     "art208-1"
+    ],
+    "body": [
+     "immovableChange(A,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "registerImmovableChange(A,R)"
+     }
+    ],
+    "note": "不动产物权的设立、变更、转让和消灭，应当依照法律规定登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c208-del",
+    "srcs": [
+     "art208-1"
+    ],
+    "body": [
+     "movableCreationOrTransfer(A,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "deliverMovable(A,M)"
+     }
+    ],
+    "note": "动产物权的设立和转让，应当依照法律规定交付",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-effective",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableChange(A,R)",
+     "immovableChangeRegistered(A,R)"
+    ],
+    "heads": [
+     "immovableChangeEffective(A,R)"
+    ],
+    "note": "不动产物权变动经依法登记，发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-noeffect",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableChange(A,R)",
+     "-immovableChangeRegistered(A,R)",
+     "~lawProvidesOtherwiseOnRegistration(R)"
+    ],
+    "heads": [
+     "-immovableChangeEffective(A,R)"
+    ],
+    "note": "不动产物权变动未经登记不发生效力，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-2",
+    "srcs": [
+     "art209-2"
+    ],
+    "body": [
+     "stateOwnedNaturalResource(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "omitRegistrationOfOwnership(R)"
+     },
+     "lawProvidesOtherwiseOnRegistration(R)"
+    ],
+    "note": "依法属于国家所有的自然资源，所有权可以不登记，构成第209条第1款但书的“法律另有规定”",
+    "auth": "npc"
+   },
+   {
+    "key": "c210-1",
+    "srcs": [
+     "art210-1"
+    ],
+    "body": [
+     "immovableLocatedIn(R,L)",
+     "registrationAuthorityAt(A,L)"
+    ],
+    "heads": [
+     "handlesRegistration(A,R)"
+    ],
+    "note": "不动产登记由不动产所在地的登记机构办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-1",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requireAppraisalOfImmovable(A)"
+     }
+    ],
+    "note": "登记机构不得要求对不动产进行评估",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-2",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "repeatRegistrationInNameOfAnnualReview(A)"
+     }
+    ],
+    "note": "登记机构不得以年检等名义进行重复登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-3",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "actBeyondRegistrationDuty(A)"
+     }
+    ],
+    "note": "登记机构不得实施超出登记职责范围的其他行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-1",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "immovableRealRightContract(K)",
+     "contractFormed(K)",
+     "~lawProvidesOtherwiseOnEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "设立、变更、转让和消灭不动产物权的合同，除法律另有规定或者当事人另有约定外，自合同成立时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-2",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "immovableRealRightContract(K)",
+     "contractFormed(K)",
+     "-realRightChangeRegistered(K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "未办理物权登记的，不影响合同效力（区分原则）",
+    "auth": "npc"
+   },
+   {
+    "key": "c232",
+    "srcs": [
+     "art232-1"
+    ],
+    "body": [
+     "disposesImmovableRight(A,R)",
+     "registrationRequiredByLaw(R)",
+     "-immovableChangeRegistered(A,R)"
+    ],
+    "heads": [
+     "-immovableChangeEffective(A,R)"
+    ],
+    "note": "处分依照本节规定享有的不动产物权，依法需要办理登记而未经登记的，不发生物权效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c209-2",
+    "c209-noeffect",
+    "第209条第2款是国家所有自然资源所有权可不登记的特别规定，构成第1款“法律另有规定的除外”，排除未登记不发生效力的后果"
+   ]
+  ],
+  "predicates": {
+   "immovableChange": "不动产物权的设立、变更、转让或消灭（当事人，不动产）",
+   "immovableChange/2": "不动产物权的设立、变更、转让或消灭（当事人，不动产）",
+   "registerImmovableChange": "依法办理不动产物权变动的登记（当事人，不动产）",
+   "registerImmovableChange/2": "依法办理不动产物权变动的登记（当事人，不动产）",
+   "movableCreationOrTransfer": "动产物权的设立或转让（当事人，动产）",
+   "movableCreationOrTransfer/2": "动产物权的设立或转让（当事人，动产）",
+   "deliverMovable": "依法交付动产（当事人，动产）",
+   "deliverMovable/2": "依法交付动产（当事人，动产）",
+   "immovableChangeRegistered": "该不动产物权变动已依法办理登记（当事人，不动产）",
+   "immovableChangeRegistered/2": "该不动产物权变动已依法办理登记（当事人，不动产）",
+   "immovableChangeEffective": "该不动产物权变动发生效力（当事人，不动产）",
+   "immovableChangeEffective/2": "该不动产物权变动发生效力（当事人，不动产）",
+   "lawProvidesOtherwiseOnRegistration": "法律对不动产物权变动的登记效力另有规定（不动产）",
+   "lawProvidesOtherwiseOnRegistration/1": "法律对不动产物权变动的登记效力另有规定（不动产）",
+   "stateOwnedNaturalResource": "是依法属于国家所有的自然资源",
+   "stateOwnedNaturalResource/1": "是依法属于国家所有的自然资源",
+   "omitRegistrationOfOwnership": "可以不办理该自然资源所有权的登记（国家，自然资源）",
+   "omitRegistrationOfOwnership/1": "可以不办理该自然资源所有权的登记（国家，自然资源）",
+   "immovableLocatedIn": "不动产位于（不动产，地点）",
+   "immovableLocatedIn/2": "不动产位于（不动产，地点）",
+   "registrationAuthorityAt": "是该地的不动产登记机构（机构，地点）",
+   "registrationAuthorityAt/2": "是该地的不动产登记机构（机构，地点）",
+   "handlesRegistration": "办理该不动产的登记（机构，不动产）",
+   "handlesRegistration/2": "办理该不动产的登记（机构，不动产）",
+   "immovableRegistrationAuthority": "是不动产登记机构",
+   "immovableRegistrationAuthority/1": "是不动产登记机构",
+   "requireAppraisalOfImmovable": "要求对不动产进行评估（登记机构）",
+   "requireAppraisalOfImmovable/1": "要求对不动产进行评估（登记机构）",
+   "repeatRegistrationInNameOfAnnualReview": "以年检等名义进行重复登记（登记机构）",
+   "repeatRegistrationInNameOfAnnualReview/1": "以年检等名义进行重复登记（登记机构）",
+   "actBeyondRegistrationDuty": "实施超出登记职责范围的其他行为（登记机构）",
+   "actBeyondRegistrationDuty/1": "实施超出登记职责范围的其他行为（登记机构）",
+   "immovableRealRightContract": "是设立、变更、转让或消灭不动产物权的合同",
+   "immovableRealRightContract/1": "是设立、变更、转让或消灭不动产物权的合同",
+   "contractFormed": "合同已成立",
+   "contractFormed/1": "合同已成立",
+   "realRightChangeRegistered": "该合同所涉不动产物权变动已办理登记（合同）",
+   "realRightChangeRegistered/1": "该合同所涉不动产物权变动已办理登记（合同）",
+   "disposesImmovableRight": "处分依照本节规定享有的不动产物权（处分人，不动产）",
+   "disposesImmovableRight/2": "处分依照本节规定享有的不动产物权（处分人，不动产）",
+   "registrationRequiredByLaw": "依照法律规定需要办理登记（不动产）",
+   "registrationRequiredByLaw/1": "依照法律规定需要办理登记（不动产）"
+  }
+ },
+ "card:g2255": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "动产物权设立或转让前该动产由第三人占有的，负有交付义务的人能否以转让返还原物请求权代替交付（指示交付），物权何时发生变动",
+     "rules": [
+      "c227-1",
+      "c227-time"
+     ]
+    },
+    {
+     "text": "动产物权转让时当事人约定由出让人继续占有该动产的（占有改定），物权何时发生效力",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "动产物权设立或转让前，标的动产由第三人占有",
+     "rules": [
+      "c227-1"
+     ]
+    },
+    {
+     "text": "负有交付义务的人与受让人就转让“请求第三人返还原物的权利”达成合意，以此代替交付",
+     "rules": [
+      "c227-1"
+     ]
+    },
+    {
+     "text": "动产物权转让时，当事人又约定由出让人继续占有该动产",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第三人未占有该动产的，不发生指示交付（第227条以第三人占有为前提，应依实际交付或第226条简易交付处理）",
+     "rules": [
+      "c227-1"
+     ]
+    },
+    {
+     "text": "当事人未约定由出让人继续占有，或该约定未生效的，不发生占有改定的效力",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "以转让返还原物请求权代替交付，交付视为完成；受让人取得对第三人的返还原物请求权，可请求其向自己交付该动产",
+     "rules": [
+      "c227-1",
+      "c227-claim"
+     ]
+    },
+    {
+     "text": "指示交付下，物权自转让人与受让人关于转让返还原物请求权的协议生效时发生变动",
+     "rules": [
+      "c227-time"
+     ]
+    },
+    {
+     "text": "占有改定下，物权自“由出让人继续占有”的约定生效时发生效力",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "指示交付与占有改定均为观念交付，与第226条简易交付、现实交付并列，彼此无优先适用关系，符合各自构成即分别发生效力",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第226条简易交付：动产物权设立或转让前受让人已占有该动产的，物权自民事法律行为生效时发生效力；本条（第227条）则是第三人占有，由出让人让与返还请求权",
+     "rules": []
+    },
+    {
+     "text": "第228条占有改定：物权转让后仍由出让人占有，物权自该约定生效时发生效力；与指示交付的区别在于占有归属（第三人占有 vs 出让人占有）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称指示交付“优先于传统交付方式适用”，法条并无此优先关系，指示交付只是交付的替代方式；第225条特殊动产登记对抗问题不属交付替代，与本条无关",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c227-1",
+    "srcs": [
+     "art227-1"
+    ],
+    "body": [
+     "movable(T)",
+     "thirdPartyPossesses(O,T)",
+     "owesDelivery(D,T)",
+     "transfersReturnClaim(D,R,T)"
+    ],
+    "heads": [
+     "deliveryCompleted(D,R,T)"
+    ],
+    "note": "动产物权设立、转让前第三人占有该动产的，负有交付义务的人可以转让请求第三人返还原物的权利代替交付（指示交付）",
+    "auth": "npc"
+   },
+   {
+    "key": "c227-time",
+    "srcs": [
+     "art227-1"
+    ],
+    "body": [
+     "deliveryCompleted(D,R,T)",
+     "returnClaimTransferAgreementEffective(D,R,T)"
+    ],
+    "heads": [
+     "realRightChangeEffective(D,R,T)"
+    ],
+    "note": "笔记：以指示交付完成交付的，自转让人与受让人关于转让返还原物请求权的协议生效时发生物权变动（法条未明定时间点，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c227-claim",
+    "srcs": [
+     "art227-1"
+    ],
+    "body": [
+     "transfersReturnClaim(D,R,T)"
+    ],
+    "heads": [
+     "returnClaimAgainst(R,T)"
+    ],
+    "note": "返还请求权让与后，受让人取得对第三人的返还原物请求权，可请求其向自己交付该动产（法条隐含，LEGO 卡片与笔记归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c228-1",
+    "srcs": [
+     "art228-1"
+    ],
+    "body": [
+     "movable(T)",
+     "transfersMovableRealRight(D,R,T)",
+     "agreedTransferorRetainsPossession(D,T)",
+     "retentionAgreementEffective(D,T)"
+    ],
+    "heads": [
+     "realRightChangeEffective(D,R,T)"
+    ],
+    "note": "动产物权转让时，当事人又约定由出让人继续占有该动产的，物权自该约定生效时发生效力（占有改定）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "thirdPartyPossesses": "第三人占有该动产（第三人，动产）",
+   "owesDelivery": "负有交付该动产的义务（交付义务人，动产）",
+   "transfersReturnClaim": "转让请求第三人返还原物的权利（出让人，受让人，动产）",
+   "deliveryCompleted": "交付已完成（出让人，受让人，动产）",
+   "returnClaimTransferAgreementEffective": "转让返还原物请求权的协议生效（出让人，受让人，动产）",
+   "realRightChangeEffective": "动产物权的设立或转让发生效力（出让人，受让人，动产）",
+   "returnClaimAgainst": "享有请求返还原物的权利（权利人，动产）",
+   "transfersMovableRealRight": "转让动产物权（出让人，受让人，动产）",
+   "agreedTransferorRetainsPossession": "约定由出让人继续占有该动产（出让人，动产）",
+   "retentionAgreementEffective": "由出让人继续占有的约定生效（出让人，动产）"
+  }
+ },
+ "card:g2305": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c212-1：新谓词 registrationApplication 需要在 predicates 中给出中文释义",
+   "c212-1：新谓词 verifyOwnershipCertificatesAndMaterials 需要在 predicates 中给出中文释义",
+   "c212-2：新谓词 registrationApplication 需要在 predicates 中给出中文释义",
+   "c212-2：新谓词 inquireApplicantOnRegistrationMatters 需要在 predicates 中给出中文释义",
+   "c212-3：新谓词 registrationApplication 需要在 predicates 中给出中文释义",
+   "c212-3：新谓词 registerTruthfullyAndTimely 需要在 predicates 中给出中文释义",
+   "c212-4：新谓词 registrationApplication 需要在 predicates 中给出中文释义",
+   "c212-4：新谓词 otherDutyProvidedByLawsAndRegulations 需要在 predicates 中给出中文释义",
+   "c212-4：新谓词 performOtherDutiesProvidedByLawsAndRegulations 需要在 predicates 中给出中文释义",
+   "c212-supp：新谓词 registrationApplication 需要在 predicates 中给出中文释义",
+   "c212-supp：新谓词 situationNeedsFurtherProof 需要在 predicates 中给出中文释义",
+   "c212-supp：新谓词 requireSupplementaryMaterials 需要在 predicates 中给出中文释义",
+   "c212-supp：新谓词 conductOnSiteInspection 需要在 predicates 中给出中文释义",
+   "c218-1：新谓词 applyToInspectAndCopyRegistrationData 需要在 predicates 中给出中文释义",
+   "c218-2：新谓词 appliedToInspectOrCopy 需要在 predicates 中给出中文释义",
+   "c218-2：新谓词 provideRegistrationData 需要在 predicates 中给出中文释义",
+   "c219-1：新谓词 obtainedRegistrationData 需要在 predicates 中给出中文释义",
+   "c219-1：新谓词 publicizeOrIllegallyUseRegistrationData 需要在 predicates 中给出中文释义",
+   "c220-1：新谓词 believesRegistrationErroneous 需要在 predicates 中给出中文释义",
+   "c220-1：新谓词 applyForCorrectionRegistration 需要在 predicates 中给出中文释义",
+   "c220-2：新谓词 correctionApplied 需要在 predicates 中给出中文释义",
+   "c220-2：新谓词 recordedRightHolder 需要在 predicates 中给出中文释义",
+   "c220-2：新谓词 agreesInWritingToCorrection 需要在 predicates 中给出中文释义",
+   "c220-2：新谓词 evidenceProvesRegistrationErroneous 需要在 predicates 中给出中文释义",
+   "c220-2：新谓词 correctRegistration 需要在 predicates 中给出中文释义",
+   "c220-3：新谓词 correctionApplied 需要在 predicates 中给出中文释义",
+   "c220-3：新谓词 recordedRightHolder 需要在 predicates 中给出中文释义",
+   "c220-3：新谓词 refusesCorrection 需要在 predicates 中给出中文释义",
+   "c220-3：新谓词 applyForObjectionRegistration 需要在 predicates 中给出中文释义",
+   "c220-4：新谓词 objectionRegistered 需要在 predicates 中给出中文释义",
+   "c220-4：新谓词 noSuitWithin15DaysOfObjection 需要在 predicates 中给出中文释义",
+   "c220-4：新谓词 objectionRegistrationEffective 需要在 predicates 中给出中文释义",
+   "c220-5：新谓词 objectionRegistrationImproper 需要在 predicates 中给出中文释义",
+   "c220-5：新谓词 recordedRightHolder 需要在 predicates 中给出中文释义",
+   "c220-doc：新谓词 objectionRegistered 需要在 predicates 中给出中文释义",
+   "c220-doc：新谓词 acquiresImmovable 需要在 predicates 中给出中文释义",
+   "c221-1：新谓词 signedAgreementOnImmovable 需要在 predicates 中给出中文释义",
+   "c221-1：新谓词 toSecureFutureRealRight 需要在 predicates 中给出中文释义",
+   "c221-1：新谓词 agreedToAdvanceNoticeRegistration 需要在 predicates 中给出中文释义",
+   "c221-1：新谓词 applyForAdvanceNoticeRegistration 需要在 predicates 中给出中文释义",
+   "c221-2：新谓词 advanceNoticeRegistered 需要在 predicates 中给出中文释义",
+   "c221-2：新谓词 disposesImmovable 需要在 predicates 中给出中文释义",
+   "c221-2：新谓词 consentedByAdvanceNoticeHolder 需要在 predicates 中给出中文释义",
+   "c221-2：新谓词 realRightEffectOfDisposal 需要在 predicates 中给出中文释义",
+   "c221-3：新谓词 advanceNoticeRegistered 需要在 predicates 中给出中文释义",
+   "c221-3：新谓词 claimExtinguished 需要在 predicates 中给出中文释义",
+   "c221-3：新谓词 noRegistrationAppliedWithin90Days 需要在 predicates 中给出中文释义",
+   "c221-3：新谓词 advanceNoticeRegistrationEffective 需要在 predicates 中给出中文释义",
+   "c222-1：新谓词 providesFalseMaterials 需要在 predicates 中给出中文释义",
+   "c222-2：新谓词 registrationError 需要在 predicates 中给出中文释义",
+   "c222-2：新谓词 damagedByRegistrationError 需要在 predicates 中给出中文释义",
+   "c222-3：新谓词 registrationAuthorityCompensated 需要在 predicates 中给出中文释义",
+   "c222-3：新谓词 causedRegistrationError 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"不动产登记机构应当履行哪些法定职责；申请登记的不动产情况需要进一步证明时如何处理\",\n        \"rules\": [\"c212-1\", \"c212-2\", \"c212-3\", \"c212-4\", \"c212-supp\"]\n      },\n      {\n        \"text\": \"权利人、利害关系人能否查询、复制不动产登记资料，登记机构负有何种提供义务，利害关系人负有何种保密义务\",\n        \"rules\": [\"c218-1\", \"c218-2\", \"c219-1\"]\n      },\n      {\n        \"text\": \"更正登记的申请条件与登记机构的更正义务；异议登记的申请条件、失效事由及异议登记不当的赔偿责任\",\n        \"rules\": [\"c220-1\", \"c220-2\", \"c220-3\", \"c220-4\", \"c220-5\", \"c220-doc\"]\n      },\n      {\n        \"text\": \"预告登记的申请条件、对处分的限制效力及预告登记的失效事由\",\n        \"rules\": [\"c221-1\", \"c221-2\", \"c221-3\"]\n      },\n      {\n        \"text\": \"提供虚假材料申请登记与因登记错误致人损害的责任承担，以及登记机构赔偿后的追偿\",\n        \"rules\": [\"c222-1\", \"c222-2\", \"c222-3\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"申请人已就某不动产向登记机构提出登记申请\",\n        \"rules\": [\"c212-1\", \"c212-2\", \"c212-3\", \"c212-4\", \"c212-supp\"]\n      },\n      {\n        \"text\": \"申请登记的不动产的有关情况需要进一步证明\",\n        \"rules\": [\"c212-supp\"]\n      },\n      {\n        \"text\": \"申请人为不动产的权利人或利害关系人\",\n        \"rules\": [\"c218-1\", \"c218-2\", \"c220-1\"]\n      },\n      {\n        \"text\": \"权利人、利害关系人认为不动产登记簿记载的事项错误并申请更正登记\",\n        \"rules\": [\"c220-1\", \"c220-2\"]\n      },\n      {\n        \"text\": \"登记簿记载的权利人书面同意更正，或有证据证明登记确有错误\",\n        \"rules\": [\"c220-2\"]\n      },\n      {\n        \"text\": \"登记簿记载的权利人不同意更正，利害关系人申请异议登记\",\n        \"rules\": [\"c220-3\"]\n      },\n      {\n        \"text\": \"当事人签订买卖房屋的协议或其他不动产物权的协议，为保障将来实现物权，并按照约定申请\",\n        \"rules\": [\"c221-1\"]\n      },\n      {\n        \"text\": \"已办理预告登记，他人未经预告登记权利人同意处分该不动产\",\n        \"rules\": [\"c221-2\"]\n      },\n      {\n        \"text\": \"债权消灭，或自能够进行不动产登记之日起九十日内未申请登记\",\n        \"rules\": [\"c221-3\"]\n      },\n      {\n        \"text\": \"当事人提供虚假材料申请登记并造成他人损害\",\n        \"rules\": [\"c222-1\"]\n      },\n      {\n        \"text\": \"因登记错误造成他人损害\",\n        \"rules\": [\"c222-2\"]\n      },\n      {\n        \"text\": \"登记机构已赔偿，且存在造成登记错误的人\",\n        \"rules\": [\"c222-3\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"未经预告登记的权利人同意处分该不动产的，不发生物权效力（对不动产物权变动登记生效的例外）\",\n        \"rules\": [\"c221-2\"]\n      },\n      {\n        \"text\": \"申请人自异议登记之日起十五日内不提起诉讼的，异议登记失效\",\n        \"rules\": [\"c220-4\"]\n      },\n      {\n        \"text\": \"债权消灭或自能够进行不动产登记之日起九十日内未申请登记的，预告登记失效\",\n        \"rules\": [\"c221-3\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"登记机构应当查验权属证明和其他必要材料、就有关登记事项询问申请人、如实及时登记有关事项，并履行法律、行政法规规定的其他职责\",\n        \"rules\": [\"c212-1\", \"c212-2\", \"c212-3\", \"c212-4\"]\n      },\n      {\n        \"text\": \"登记机构可以要求申请人补充材料，必要时可以实地查看\",\n        \"rules\": [\"c212-supp\"]\n      },\n      {\n        \"text\": \"权利人或利害关系人可以申请查询、复制不动产登记资料，登记机构应当提供\",\n        \"rules\": [\"c218-1\", \"c218-2\"]\n      },\n      {\n        \"text\": \"利害关系人不得公开、非法使用权利人的不动产登记资料\",\n        \"rules\": [\"c219-1\"]\n      },\n      {\n        \"text\": \"权利人或利害关系人可以申请更正登记；记载的权利人书面同意或有证据证明登记确有错误的，登记机构应当予以更正\",\n        \"rules\": [\"c220-1\", \"c220-2\"]\n      },\n      {\n        \"text\": \"记载的权利人不同意更正的，利害关系人可以申请异议登记；异议登记不当造成权利人损害的，权利人可以请求申请人赔偿\",\n        \"rules\": [\"c220-3\", \"c220-5\"]\n      },\n      {\n        \"text\": \"异议登记使登记簿记载的权利失去正确性推定效力，排除善意取得的适用（学理，非本条明文）\",\n        \"rules\": [\"c220-doc\"]\n      },\n      {\n        \"text\": \"当事人可以申请预告登记；预告登记后未经预告登记权利人同意处分该不动产的，不发生物权效力\",\n        \"rules\": [\"c221-1\", \"c221-2\"]\n      },\n      {\n        \"text\": \"提供虚假材料申请登记造成他人损害的，应当承担赔偿责任\",\n        \"rules\": [\"c222-1\"]\n      },\n      {\n        \"text\": \"因登记错误造成他人损害的，登记机构应当承担赔偿责任；赔偿后可以向造成登记错误的人追偿\",\n        \"rules\": [\"c222-2\", \"c222-3\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"预告登记后未经预告登记权利人同意的处分不发生物权效力，优先于一般的不动产物权变动登记生效规则\",\n        \"rules\": [\"c221-2\"]\n      },\n      {\n        \"text\": \"登记机构先对外承担赔偿责任，再向造成登记错误的人追偿，实现内部责任分担\",\n        \"rules\": [\"c222-2\", \"c222-3\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记中的首次登记、变更登记、转移登记、注销登记，以及“未办理首次登记不得办理其他类型登记”，出自《不动产登记暂行条例》，本条未规定\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"不动产登记簿与权属证书记载不一致时以登记簿为准（第217条），不在本条范围内\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"异议登记期间登记机构应书面告知申请人有关事项、申请人可自担风险继续办理，属《不动产登记暂行条例》及司法解释内容，本条未规定\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片所列“土地承包经营权互换、转让或地役权设立未经登记不得对抗善意第三人”属登记对抗主义（第335、374条），与本条的登记生效主义不同\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第212条是登记机构职责的程序性规定，本身不直接产生物权变动效果\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c212-1\",\n      \"srcs\": [\"art212-1\"],\n      \"body\": [\"registrationApplication(A,R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"A\", \"content\": \"verifyOwnershipCertificatesAndMaterials(A,R)\"}\n      ],\n      \"note\": \"登记机构应当查验申请人提供的权属证明和其他必要材料\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c212-2\",\n      \"srcs\": [\"art212-1\"],\n      \"body\": [\"registrationApplication(A,R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"A\", \"content\": \"inquireApplicantOnRegistrationMatters(A,R)\"}\n      ],\n      \"note\": \"登记机构应当就有关登记事项询问申请人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c212-3\",\n      \"srcs\": [\"art212-1\"],\n      \"body\": [\"registrationApplication(A,R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": null, \"content\": \"registerTruthfullyAndTimely(R)\"}\n      ],\n      \"note\": \"登记机构应当如实、及时登记有关事项\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c212-4\",\n      \"srcs\": [\"art212-1\"],\n      \"body\": [\"registrationApplication(A,R)\", \"otherDutyProvidedByLawsAndRegulations(R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": null, \"content\": \"performOtherDutiesProvidedByLawsAndRegulations(R)\"}\n      ],\n      \"note\": \"登记机构还应当履行法律、行政法规规定的其他职责\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c212-supp\",\n      \"srcs\": [\"art212-2\"],\n      \"body\": [\"registrationApplication(A,R)\", \"situationNeedsFurtherProof(R)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"A\", \"content\": \"requireSupplementaryMaterials(A,R)\"},\n        {\"type\": \"PERM\", \"bearer\": \"registrationAuthority\", \"counterparty\": null, \"content\": \"conductOnSiteInspection(R)\"}\n      ],\n      \"note\": \"申请登记的不动产情况需进一步证明的，登记机构可以要求补充材料，必要时可以实地查看\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c218-1\",\n      \"srcs\": [\"art218-1\"],\n      \"body\": [{\"or\": [\"rightHolderOf(P,R)\", \"interestedParty(P,R)\"]}],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": \"registrationAuthority\", \"content\": \"applyToInspectAndCopyRegistrationData(P,R)\"}\n      ],\n      \"note\": \"权利人、利害关系人可以申请查询、复制不动产登记资料\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c218-2\",\n      \"srcs\": [\"art218-1\"],\n      \"body\": [{\"or\": [\"rightHolderOf(P,R)\", \"interestedParty(P,R)\"]}, \"appliedToInspectOrCopy(P,R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"P\", \"content\": \"provideRegistrationData(P,R)\"}\n      ],\n      \"note\": \"权利人、利害关系人申请查询、复制的，登记机构应当提供\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c219-1\",\n      \"srcs\": [\"art219-1\"],\n      \"body\": [\"interestedParty(P,R)\", \"obtainedRegistrationData(P,R)\"],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"publicizeOrIllegallyUseRegistrationData(P,R)\"}\n      ],\n      \"note\": \"利害关系人不得公开、非法使用权利人的不动产登记资料\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-1\",\n      \"srcs\": [\"art220-1\"],\n      \"body\": [{\"or\": [\"rightHolderOf(P,R)\", \"interestedParty(P,R)\"]}, \"believesRegistrationErroneous(P,R)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": \"registrationAuthority\", \"content\": \"applyForCorrectionRegistration(P,R)\"}\n      ],\n      \"note\": \"权利人、利害关系人认为登记簿记载事项错误的，可以申请更正登记\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-2\",\n      \"srcs\": [\"art220-1\"],\n      \"body\": [\n        \"correctionApplied(P,R)\",\n        \"recordedRightHolder(H,R)\",\n        {\"or\": [\"agreesInWritingToCorrection(H,R)\", \"evidenceProvesRegistrationErroneous(R)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": null, \"content\": \"correctRegistration(R)\"}\n      ],\n      \"note\": \"登记簿记载的权利人书面同意更正或有证据证明登记确有错误的，登记机构应当予以更正\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-3\",\n      \"srcs\": [\"art220-2\"],\n      \"body\": [\"interestedParty(P,R)\", \"correctionApplied(P,R)\", \"recordedRightHolder(H,R)\", \"refusesCorrection(H,R)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": \"registrationAuthority\", \"content\": \"applyForObjectionRegistration(P,R)\"}\n      ],\n      \"note\": \"登记簿记载的权利人不同意更正的，利害关系人可以申请异议登记\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-4\",\n      \"srcs\": [\"art220-2\"],\n      \"body\": [\"objectionRegistered(P,R)\", \"noSuitWithin15DaysOfObjection(P,R)\"],\n      \"heads\": [\"-objectionRegistrationEffective(P,R)\"],\n      \"note\": \"登记机构予以异议登记后，申请人自异议登记之日起十五日内不起诉的，异议登记失效\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-5\",\n      \"srcs\": [\"art220-2\"],\n      \"body\": [\"objectionRegistrationImproper(P,R)\", \"recordedRightHolder(H,R)\", \"causesDamageTo(P,H)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"H\", \"counterparty\": \"P\", \"content\": \"claimCompensationFrom(H,P,R)\"}\n      ],\n      \"note\": \"异议登记不当造成权利人损害的，权利人可以请求申请人损害赔偿\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c220-doc\",\n      \"srcs\": [\"art220-2\"],\n      \"body\": [\"objectionRegistered(P,R)\", \"acquiresImmovable(T,R)\"],\n      \"heads\": [\"-inGoodFaith(T,R)\"],\n      \"note\": \"笔记/学理：异议登记使登记簿记载的权利失去正确性推定效力，排除善意取得适用；本条未明文规定，故为学理规则\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c221-1\",\n      \"srcs\": [\"art221-1\"],\n      \"body\": [\"signedAgreementOnImmovable(A,R)\", \"toSecureFutureRealRight(A)\", \"agreedToAdvanceNoticeRegistration(A,R)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"registrationAuthority\", \"content\": \"applyForAdvanceNoticeRegistration(A,R)\"}\n      ],\n      \"note\": \"签订买卖房屋协议或其他不动产物权协议，为保障将来实现物权，按照约定可以向登记机构申请预告登记\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c221-2\",\n      \"srcs\": [\"art221-1\"],\n      \"body\": [\"advanceNoticeRegistered(P,R)\", \"disposesImmovable(D,R)\", \"~consentedByAdvanceNoticeHolder(D,P)\"],\n      \"heads\": [\"-realRightEffectOfDisposal(D,R)\"],\n      \"note\": \"预告登记后，未经预告登记的权利人同意处分该不动产的，不发生物权效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c221-3\",\n      \"srcs\": [\"art221-2\"],\n      \"body\": [\n        \"advanceNoticeRegistered(P,R)\",\n        {\"or\": [\"claimExtinguished(P,R)\", \"noRegistrationAppliedWithin90Days(P,R)\"]}\n      ],\n      \"heads\": [\"-advanceNoticeRegistrationEffective(P,R)\"],\n      \"note\": \"预告登记后，债权消灭或自能够进行不动产登记之日起九十日内未申请登记的，预告登记失效\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c222-1\",\n      \"srcs\": [\"art222-1\"],\n      \"body\": [\"providesFalseMaterials(A,R)\", \"causesDamageTo(A,V)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"V\", \"content\": \"compensate(A,V,R)\"}\n      ],\n      \"note\": \"当事人提供虚假材料申请登记，造成他人损害的，应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c222-2\",\n      \"srcs\": [\"art222-2\"],\n      \"body\": [\"registrationError(R)\", \"damagedByRegistrationError(V,R)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"V\", \"content\": \"compensate(registrationAuthority,V,R)\"}\n      ],\n      \"note\": \"因登记错误造成他人损害的，登记机构应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c222-3\",\n      \"srcs\": [\"art222-2\"],\n      \"body\": [\"registrationAuthorityCompensated(R)\", \"causedRegistrationError(A,R)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"registrationAuthority\", \"counterparty\": \"A\", \"content\": \"recourse(registrationAuthority,A,R)\"}\n      ],\n      \"note\": \"登记机构赔偿后，可以向造成登记错误的人追偿\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [],\n  \"predicates\": {\n    \"registrationApplication/2\": \"申请人已就某不动产向登记机构提出登记申请（申请人，不动产）\",\n    \"verifyOwnershipCertificatesAndMaterials/2\": \"查验申请人提供的权属证明和其他必要材料（申请人，不动产）\",\n    \"inquireApplicantOnRegistrationMatters/2\": \"就有关登记事项询问申请人（申请人，不动产）\",\n    \"registerTruthfullyAndTimely/1\": \"如实、及时登记有关事项（不动产）\",\n    \"otherDutyProvidedByLawsAndRegulations/1\": \"存在法律、行政法规规定的其他登记职责（不动产）\",\n    \"performOtherDutiesProvidedByLawsAndRegulations/1\": \"履行法律、行政法规规定的其他职责（不动产）\",\n    \"situationNeedsFurtherProof/1\": \"申请登记的不动产的有关情况需要进一步证明（不动产）\",\n    \"requireSupplementaryMaterials/2\": \"要求申请人补充材料（申请人，不动产）\",\n    \"conductOnSiteInspection/1\": \"进行实地查看（不动产）\",\n    \"rightHolderOf/2\": \"是不动产登记资料所涉不动产的权利人（主体，不动产）\",\n    \"applyToInspectAndCopyRegistrationData/2\": \"申请查询、复制不动产登记资料（申请人，不动产）\",\n    \"appliedToInspectOrCopy/2\": \"已申请查询或复制不动产登记资料（申请人，不动产）\",\n    \"provideRegistrationData/2\": \"提供不动产登记资料（登记机构，申请人）\",\n    \"obtainedRegistrationData/2\": \"已取得权利人的不动产登记资料（利害关系人，不动产）\",\n    \"publicizeOrIllegallyUseRegistrationData/2\": \"公开或非法使用不动产登记资料（利害关系人，不动产）\",\n    \"believesRegistrationErroneous/2\": \"认为不动产登记簿记载的事项错误（主体，不动产）\",\n    \"applyForCorrectionRegistration/2\": \"申请更正登记（申请人，不动产）\",\n    \"correctionApplied/2\": \"已申请更正登记（申请人，不动产）\",\n    \"recordedRightHolder/2\": \"是不动产登记簿记载的权利人（主体，不动产）\",\n    \"agreesInWritingToCorrection/2\": \"书面同意更正登记（登记簿记载的权利人，不动产）\",\n    \"evidenceProvesRegistrationErroneous/1\": \"有证据证明登记确有错误（不动产）\",\n    \"correctRegistration/1\": \"予以更正登记（不动产）\",\n    \"refusesCorrection/2\": \"不同意更正登记（登记簿记载的权利人，不动产）\",\n    \"applyForObjectionRegistration/2\": \"申请异议登记（利害关系人，不动产）\",\n    \"objectionRegistered/2\": \"登记机构已予以异议登记（申请人，不动产）\",\n    \"noSuitWithin15DaysOfObjection/2\": \"自异议登记之日起十五日内未提起诉讼（申请人，不动产）\",\n    \"objectionRegistrationEffective/2\": \"异议登记有效存续（申请人，不动产）\",\n    \"objectionRegistrationImproper/2\": \"异议登记不当（申请人，不动产）\",\n    \"acquiresImmovable/2\": \"取得该不动产（受让人，不动产）\",\n    \"signedAgreementOnImmovable/2\": \"签订买卖房屋的协议或其他不动产物权的协议（当事人，不动产）\",\n    \"toSecureFutureRealRight/1\": \"为保障将来实现物权（当事人）\",\n    \"agreedToAdvanceNoticeRegistration/2\": \"按照约定申请预告登记（当事人，不动产）\",\n    \"applyForAdvanceNoticeRegistration/2\": \"向登记机构申请预告登记（当事人，不动产）\",\n    \"advanceNoticeRegistered/2\": \"已办理预告登记（预告登记权利人，不动产）\",\n    \"disposesImmovable/2\": \"处分该不动产（处分人，不动产）\",\n    \"consentedByAdvanceNoticeHolder/2\": \"经预告登记的权利人同意（处分人，预告登记权利人）\",\n    \"realRightEffectOfDisposal/2\": \"处分发生物权效力（处分人，不动产）\",\n    \"claimExtinguished/2\": \"预告登记所担保的债权消灭（预告登记权利人，不动产）\",\n    \"noRegistrationAppliedWithin90Days/2\": \"自能够进行不动产登记之日起九十日内未申请登记（预告登记权利人，不动产）\",\n    \"advanceNoticeRegistrationEffective/2\": \"预告登记有效存续（预告登记权利人，不动产）\",\n    \"providesFalseMaterials/2\": \"提供虚假材料申请登记（申请人，不动产）\",\n    \"registrationError/1\": \"发生登记错误（不动产）\",\n    \"damagedByRegistrationError/2\": \"因登记错误受到损害（受害人，不动产）\",\n    \"registrationAuthorityCompensated/1\": \"登记机构已承担赔偿责任（不动产）\",\n    \"causedRegistrationError/2\": \"造成登记错误（行为人，不动产）\"\n  }\n}"
+ },
+ "card:g2232": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产物权变动是否以登记为生效要件；动产物权变动是否以交付为生效要件；特殊动产未登记能否对抗善意第三人；观念交付（简易交付、占有改定）何时发生物权变动效力",
+     "rules": [
+      "c209-1",
+      "c209-2",
+      "c224-1",
+      "c225-1",
+      "c226-1",
+      "c228-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不动产的设立、变更、转让、消灭已依法办理登记",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "标的物为依法属于国家所有的自然资源",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "动产的设立、转让已完成交付（移转占有并有交付合意）",
+     "rules": [
+      "c224-1",
+      "c224-4"
+     ]
+    },
+    {
+     "text": "笔记归纳的动产物权变动要件：须有处分权、须债权行为有效、须完成交付",
+     "rules": [
+      "c224-3"
+     ]
+    },
+    {
+     "text": "标的物为船舶、航空器、机动车等特殊动产，物权变动未登记，且存在善意第三人",
+     "rules": [
+      "c225-1"
+     ]
+    },
+    {
+     "text": "物权设立、转让前权利人已经占有该动产（简易交付）",
+     "rules": [
+      "c226-1"
+     ]
+    },
+    {
+     "text": "动产转让时当事人又约定由出让人继续占有该动产（占有改定）",
+     "rules": [
+      "c228-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对不动产物权变动的登记要件另有规定的，未经登记仍可发生效力",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "依法属于国家所有的自然资源，所有权可以不登记",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "法律对动产物权变动的生效另有规定的，未交付仍可发生效力",
+     "rules": [
+      "c224-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "经依法登记，不动产物权的设立、变更、转让、消灭发生效力",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "未经登记且无法律另有规定，不动产物权变动不发生效力",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "已交付的，动产物权设立、转让发生效力",
+     "rules": [
+      "c224-1"
+     ]
+    },
+    {
+     "text": "未交付且无法律另有规定，动产物权变动不发生效力",
+     "rules": [
+      "c224-2"
+     ]
+    },
+    {
+     "text": "特殊动产的物权变动未经登记，不得对抗善意第三人",
+     "rules": [
+      "c225-1"
+     ]
+    },
+    {
+     "text": "特殊动产交付时即发生物权变动，登记仅为对抗要件（笔记归纳）",
+     "rules": [
+      "c225-effect"
+     ]
+    },
+    {
+     "text": "简易交付：物权自民事法律行为生效时发生效力",
+     "rules": [
+      "c226-1"
+     ]
+    },
+    {
+     "text": "占有改定：物权自该约定生效时发生效力",
+     "rules": [
+      "c228-1"
+     ]
+    },
+    {
+     "text": "登记机构不得要求对不动产进行评估、不得以年检等名义重复登记、不得实施超出登记职责范围的其他行为",
+     "rules": [
+      "c213-1",
+      "c213-2",
+      "c213-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第209条第2款（国家所有的自然资源所有权可不登记）优先于第1款“未经登记不发生效力”",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "简易交付、占有改定优先于第224条“未交付不发生效力”",
+     "rules": [
+      "c226-1",
+      "c228-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第210条是不动产统一登记的制度性、程序性规定（登记机构、登记范围与办法由法律、行政法规规定），不直接产生物权变动效果，不另设规则",
+     "rules": []
+    },
+    {
+     "text": "动产抵押权、动产浮动抵押权自抵押合同生效时设立、登记仅为对抗要件（第403条），属笔记所称“例外规则”，但不在本行挂载法条范围内，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "第225条对特殊动产仍以交付为生效要件、以登记为对抗要件，与第224条一般动产规则一致，不构成第224条的例外",
+     "rules": [
+      "c225-effect"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称“善意第三人可取得物权、原权利人无法追回”，属善意取得（第311条）问题；第225条仅解决未登记物权变动的对抗效力，不解决权利归属",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c209-1",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableProperty(X)",
+     "realRightChange(X,R)",
+     "registeredChange(X,R)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "不动产物权的设立、变更、转让和消灭，经依法登记发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-2",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "immovableProperty(X)",
+     "realRightChange(X,R)",
+     "-registeredChange(X,R)",
+     "~lawProvidesOtherwiseOnRegistration(X)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(X,R)"
+    ],
+    "note": "未经登记不发生效力，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-3",
+    "srcs": [
+     "art209-2"
+    ],
+    "body": [
+     "naturalResource(X)",
+     "stateOwned(X)",
+     "realRightChange(X,ownership)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,ownership)"
+    ],
+    "note": "依法属于国家所有的自然资源，所有权可以不登记，即登记非其所有权变动的生效要件",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-1",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "requireAppraisal(A)"
+     }
+    ],
+    "note": "登记机构不得要求对不动产进行评估",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-2",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "repeatRegistration(A)"
+     }
+    ],
+    "note": "登记机构不得以年检等名义进行重复登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c213-3",
+    "srcs": [
+     "art213-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exceedRegistrationDuty(A)"
+     }
+    ],
+    "note": "登记机构不得实施超出登记职责范围的其他行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c224-1",
+    "srcs": [
+     "art224-1"
+    ],
+    "body": [
+     "movable(X)",
+     "realRightChange(X,R)",
+     "delivered(X)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "动产物权的设立和转让，自交付时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c224-2",
+    "srcs": [
+     "art224-1"
+    ],
+    "body": [
+     "movable(X)",
+     "realRightChange(X,R)",
+     "-delivered(X)",
+     "~lawProvidesOtherwiseOnDelivery(X)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(X,R)"
+    ],
+    "note": "未交付的，动产物权变动不发生效力，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c224-3",
+    "srcs": [
+     "art224-1"
+    ],
+    "body": [
+     "movable(X)",
+     "realRightChange(X,R)",
+     "delivered(X)",
+     "hasDisposalPower(A,X)",
+     "valid(K)",
+     "actOf(K,A)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "笔记归纳的动产物权变动三要件：有处分权、债权行为有效、完成交付（学理，条文未明文）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c224-4",
+    "srcs": [
+     "art224-1"
+    ],
+    "body": [
+     "movable(X)",
+     "possessionTransferred(X)",
+     "deliveryConsensus(K)"
+    ],
+    "heads": [
+     "delivered(X)"
+    ],
+    "note": "笔记：交付须同时具备移转占有与交付合意（学理，条文未明文）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c225-1",
+    "srcs": [
+     "art225-1"
+    ],
+    "body": [
+     "specialMovable(X)",
+     "realRightChange(X,R)",
+     "-registeredChange(X,R)",
+     "bonaFideThirdParty(T)"
+    ],
+    "heads": [
+     "-opposableTo(X,T)"
+    ],
+    "note": "船舶、航空器、机动车等物权的设立、变更、转让和消灭，未经登记不得对抗善意第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c225-effect",
+    "srcs": [
+     "art225-1"
+    ],
+    "body": [
+     "specialMovable(X)",
+     "realRightChange(X,R)",
+     "delivered(X)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "笔记：特殊动产交付时即发生物权变动，登记仅为对抗要件（由第225条反面推得，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c226-1",
+    "srcs": [
+     "art226-1"
+    ],
+    "body": [
+     "movable(X)",
+     "realRightChange(X,R)",
+     "possessedBeforeChange(A,X)",
+     "takesEffect(K)",
+     "actOf(K,A)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "简易交付：动产物权设立和转让前权利人已占有该动产的，物权自民事法律行为生效时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c228-1",
+    "srcs": [
+     "art228-1"
+    ],
+    "body": [
+     "movable(X)",
+     "realRightChange(X,R)",
+     "agreedTransferorContinuesPossession(K2,X)",
+     "takesEffect(K2)"
+    ],
+    "heads": [
+     "realRightChangeEffective(X,R)"
+    ],
+    "note": "占有改定：动产物权转让时约定由出让人继续占有该动产的，物权自该约定生效时发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c209-3",
+    "c209-2",
+    "第209条第2款：依法属于国家所有的自然资源所有权可以不登记，属第1款但书的具体情形"
+   ],
+   [
+    "c226-1",
+    "c224-2",
+    "简易交付无须现实交付，物权自民事法律行为生效时即发生效力"
+   ],
+   [
+    "c228-1",
+    "c224-2",
+    "占有改定由出让人继续占有，物权自该约定生效时即发生效力"
+   ]
+  ],
+  "predicates": {
+   "immovableProperty": "是不动产（标的物）",
+   "realRightChange": "发生物权的设立、变更、转让或消灭（标的物，物权类型）",
+   "registeredChange": "该物权变动已依法办理登记（标的物，物权类型）",
+   "realRightChangeEffective": "物权变动发生效力（标的物，物权类型）",
+   "lawProvidesOtherwiseOnRegistration": "法律对该不动产物权变动的登记要件另有规定（标的物）",
+   "lawProvidesOtherwiseOnDelivery": "法律对动产物权变动的生效另有规定（标的物）",
+   "naturalResource": "是自然资源",
+   "stateOwned": "依法属于国家所有",
+   "immovableRegistrationAuthority": "是不动产登记机构",
+   "requireAppraisal": "要求对不动产进行评估（登记机构）",
+   "repeatRegistration": "以年检等名义进行重复登记（登记机构）",
+   "exceedRegistrationDuty": "实施超出登记职责范围的其他行为（登记机构）",
+   "specialMovable": "是船舶、航空器、机动车等特殊动产",
+   "bonaFideThirdParty": "是善意第三人",
+   "opposableTo": "该物权变动可以对抗（标的物，第三人）",
+   "possessedBeforeChange": "物权变动前已占有该动产（权利人，标的物）",
+   "agreedTransferorContinuesPossession": "约定由出让人继续占有该动产（约定，标的物）",
+   "possessionTransferred": "已移转占有（标的物）",
+   "deliveryConsensus": "当事人有交付的合意（合意）"
+  }
+ },
+ "card:g2356": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产物权的设立、变更、转让和消灭，何时发生效力；未经登记产生何种后果",
+     "rules": [
+      "c209-1",
+      "c209-2",
+      "c209-3",
+      "c214-1"
+     ]
+    },
+    {
+     "text": "未办理物权登记是否影响不动产物权变动合同的效力",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产登记簿的效力与登记机构的法定职责",
+     "rules": [
+      "c216-1",
+      "c212-duty",
+      "c212-supplement"
+     ]
+    },
+    {
+     "text": "土地承包经营权互换、转让的登记效力",
+     "rules": [
+      "c335-1",
+      "c335-2",
+      "c335-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "发生不动产物权的设立、变更、转让或消灭，且已依法登记",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "未依法登记，且法律未另有规定",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "标的物是依法属于国家所有的自然资源",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "依照法律规定该物权变动应当登记，且已记载于不动产登记簿",
+     "rules": [
+      "c214-1"
+     ]
+    },
+    {
+     "text": "当事人之间订立有关设立、变更、转让、消灭不动产物权的合同",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产登记簿记载某不动产归属于某权利人",
+     "rules": [
+      "c216-1"
+     ]
+    },
+    {
+     "text": "申请人向登记机构提出登记申请；申请登记的不动产有关情况需要进一步证明",
+     "rules": [
+      "c212-duty",
+      "c212-supplement"
+     ]
+    },
+    {
+     "text": "土地承包经营权发生互换、转让",
+     "rules": [
+      "c335-1",
+      "c335-2",
+      "c335-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定不以登记为生效要件的除外，如依法属于国家所有的自然资源，所有权可以不登记",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "法律另有规定或者当事人另有约定的，不动产物权变动合同不当然自成立时生效",
+     "rules": [
+      "c215-1"
+     ]
+    },
+    {
+     "text": "土地承包经营权互换、转让未经登记的，不得对抗善意第三人",
+     "rules": [
+      "c335-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "经依法登记，不动产物权变动发生效力",
+     "rules": [
+      "c209-1"
+     ]
+    },
+    {
+     "text": "未经登记，不发生物权变动效力",
+     "rules": [
+      "c209-2"
+     ]
+    },
+    {
+     "text": "依法属于国家所有的自然资源，所有权可以不登记",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "依照法律规定应当登记的不动产物权变动，自记载于不动产登记簿时发生效力",
+     "rules": [
+      "c214-1"
+     ]
+    },
+    {
+     "text": "不动产物权变动合同自成立时生效；未办理物权登记不影响合同效力",
+     "rules": [
+      "c215-1",
+      "c215-2"
+     ]
+    },
+    {
+     "text": "不动产登记簿是物权归属和内容的根据",
+     "rules": [
+      "c216-1"
+     ]
+    },
+    {
+     "text": "登记机构应当查验权属证明等材料、询问申请人、如实及时登记；必要时可以要求补充材料、实地查看",
+     "rules": [
+      "c212-duty",
+      "c212-supplement"
+     ]
+    },
+    {
+     "text": "土地承包经营权互换、转让的当事人可以向登记机构申请登记；未经登记不得对抗善意第三人",
+     "rules": [
+      "c335-1",
+      "c335-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第209条第2款关于国家所有自然资源所有权的规定属于“法律另有规定”，优先于登记生效规则",
+     "rules": [
+      "c209-3"
+     ]
+    },
+    {
+     "text": "第214条关于“自记载于不动产登记簿时发生效力”的规定，是登记生效的具体时点，优先适用于第209条第1款",
+     "rules": [
+      "c214-1"
+     ]
+    },
+    {
+     "text": "第215条区分合同效力与物权变动效力：未办理登记不影响合同效力，不得以未登记否定合同效力",
+     "rules": [
+      "c215-2"
+     ]
+    },
+    {
+     "text": "第335条对土地承包经营权互换、转让采登记对抗主义，属特别规定，优先于第209条的登记生效规则",
+     "rules": [
+      "c335-2",
+      "c335-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第210条只规定登记由不动产所在地登记机构办理、国家实行统一登记制度（范围、机构、办法由法律、行政法规规定），属组织性、程序性规定，不决定物权变动效力",
+     "rules": []
+    },
+    {
+     "text": "第216条第2款规定不动产登记簿由登记机构管理，属管理性规定，不产生物权效力",
+     "rules": []
+    },
+    {
+     "text": "笔记：登记生效主义为原则、登记对抗主义为例外；登记生效情形包括买卖、赠与、互易等不动产所有权变动，建设用地使用权出让与转让，居住权设立，不动产抵押权设立；登记对抗情形包括土地承包经营权互换、转让与地役权设立（地役权见第374条，不在本行）",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片称登记具有“公示公信效力、对抗第三人”，法条本身只规定登记生效与登记簿为归属根据，公信力（善意取得）另见第311条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c209-1",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "realRightChangeIn(P,O)",
+     "registeredInRegister(O)"
+    ],
+    "heads": [
+     "realRightChangeEffective(P,O)"
+    ],
+    "note": "不动产物权的设立、变更、转让和消灭，经依法登记，发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-2",
+    "srcs": [
+     "art209-1"
+    ],
+    "body": [
+     "realRightChangeIn(P,O)",
+     "-registeredInRegister(O)",
+     "~lawProvidesOtherwiseOnRegistration(O)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(P,O)"
+    ],
+    "note": "未经登记不发生效力，但法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c209-3",
+    "srcs": [
+     "art209-2"
+    ],
+    "body": [
+     "naturalResourceOwnedByState(R)"
+    ],
+    "heads": [
+     "lawProvidesOtherwiseOnRegistration(R)",
+     {
+      "type": "PERM",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "omitRegistrationOfOwnership(R)"
+     }
+    ],
+    "note": "依法属于国家所有的自然资源，所有权可以不登记，属“法律另有规定”的除外情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c214-1",
+    "srcs": [
+     "art214-1"
+    ],
+    "body": [
+     "realRightChangeIn(P,O)",
+     "registrationRequiredByLaw(O)",
+     "recordedInRegister(O,P)"
+    ],
+    "heads": [
+     "realRightChangeEffectiveOnRecord(P,O)"
+    ],
+    "note": "依照法律规定应当登记的不动产物权变动，自记载于不动产登记簿时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-1",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "contractOnImmovableRealRight(K,O)",
+     "~lawProvidesOtherwiseOnEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "有关不动产物权变动的合同，除法律另有规定或当事人另有约定外，自合同成立时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c215-2",
+    "srcs": [
+     "art215-1"
+    ],
+    "body": [
+     "contractOnImmovableRealRight(K,O)",
+     "-registeredInRegister(O)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "未办理物权登记的，不影响合同效力（合同效力与物权变动效力分离）",
+    "auth": "npc"
+   },
+   {
+    "key": "c216-1",
+    "srcs": [
+     "art216-1"
+    ],
+    "body": [
+     "recordedInRegister(O,P)"
+    ],
+    "heads": [
+     "presumedOwner(P,O)"
+    ],
+    "note": "不动产登记簿是物权归属和内容的根据，登记记载的权利人推定为该不动产的物权人",
+    "auth": "npc"
+   },
+   {
+    "key": "c212-duty",
+    "srcs": [
+     "art212-1"
+    ],
+    "body": [
+     "registrationApplication(A,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": "A",
+      "content": "performRegistrationDuties(A,O)"
+     }
+    ],
+    "note": "登记机构应当查验权属证明和其他必要材料、询问申请人、如实及时登记并履行其他法定职责",
+    "auth": "npc"
+   },
+   {
+    "key": "c212-supplement",
+    "srcs": [
+     "art212-2"
+    ],
+    "body": [
+     "registrationApplication(A,O)",
+     "needsFurtherProof(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "registrationAuthority",
+      "counterparty": "A",
+      "content": "requireSupplementaryMaterialsOrInspect(A,O)"
+     }
+    ],
+    "note": "申请登记的不动产有关情况需要进一步证明的，登记机构可以要求补充材料，必要时实地查看",
+    "auth": "npc"
+   },
+   {
+    "key": "c335-1",
+    "srcs": [
+     "art335-1"
+    ],
+    "body": [
+     "exchangeOrTransferOfLandContractRight(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyForRegistration(P)"
+     }
+    ],
+    "note": "土地承包经营权互换、转让的，当事人可以向登记机构申请登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c335-2",
+    "srcs": [
+     "art335-1"
+    ],
+    "body": [
+     "exchangeOrTransferOfLandContractRight(P,R)",
+     "-registeredInRegister(R)"
+    ],
+    "heads": [
+     "-opposableToBonaFideThirdParty(P,R)"
+    ],
+    "note": "土地承包经营权互换、转让未经登记的，不得对抗善意第三人（登记对抗主义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c335-3",
+    "srcs": [
+     "art335-1"
+    ],
+    "body": [
+     "exchangeOrTransferOfLandContractRight(P,R)"
+    ],
+    "heads": [
+     "realRightChangeEffective(P,R)"
+    ],
+    "note": "笔记：土地承包经营权互换、转让采登记对抗主义，未经登记不影响物权变动在当事人之间的效力，仅不得对抗善意第三人",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c209-3",
+    "c209-2",
+    "第209条第2款关于国家所有自然资源所有权的规定属于“法律另有规定”，排除未登记不生效规则"
+   ],
+   [
+    "c214-1",
+    "c209-1",
+    "第214条就应当登记的不动产物权变动的生效时点作出特别规定，优先适用"
+   ],
+   [
+    "c215-2",
+    "c209-2",
+    "物权登记与否不影响合同效力，第215条排除以未办理登记否定合同效力的做法"
+   ],
+   [
+    "c335-3",
+    "c209-2",
+    "第335条对土地承包经营权互换、转让采登记对抗主义，未经登记物权变动在当事人间仍生效力，不适用登记生效规则"
+   ],
+   [
+    "c335-2",
+    "c209-2",
+    "第335条为特别规定，未经登记仅生不得对抗善意第三人的后果，而非物权变动不生效力"
+   ]
+  ],
+  "predicates": {
+   "realRightChangeIn": "就不动产发生的物权设立、变更、转让或消灭（当事人，不动产）",
+   "registeredInRegister": "该不动产物权（含土地承包经营权）已依法办理登记、记载于不动产登记簿（标的物）",
+   "realRightChangeEffective": "该不动产物权变动发生效力（当事人，不动产）",
+   "lawProvidesOtherwiseOnRegistration": "法律对不动产物权变动不以登记为生效要件另有规定（不动产）",
+   "naturalResourceOwnedByState": "是依法属于国家所有的自然资源",
+   "omitRegistrationOfOwnership": "可以不办理所有权登记（自然资源）",
+   "registrationRequiredByLaw": "依照法律规定该不动产物权变动应当登记（不动产）",
+   "recordedInRegister": "不动产登记簿记载该不动产归属于该权利人（不动产，权利人）",
+   "realRightChangeEffectiveOnRecord": "该不动产物权变动自记载于不动产登记簿时发生效力（当事人，不动产）",
+   "contractOnImmovableRealRight": "是关于不动产物权设立、变更、转让或消灭的合同（合同，不动产）",
+   "presumedOwner": "推定为该不动产的物权人（权利人，不动产）",
+   "registrationApplication": "向登记机构提出不动产登记申请（申请人，不动产）",
+   "performRegistrationDuties": "履行查验权属证明材料、询问申请人、如实及时登记等法定职责（登记机构，申请人）",
+   "needsFurtherProof": "申请登记的不动产的有关情况需要进一步证明（不动产）",
+   "requireSupplementaryMaterialsOrInspect": "要求申请人补充材料，必要时实地查看（登记机构，申请人）",
+   "exchangeOrTransferOfLandContractRight": "土地承包经营权发生互换或转让（当事人，土地承包经营权）",
+   "applyForRegistration": "向登记机构申请登记（当事人）",
+   "opposableToBonaFideThirdParty": "可以对抗善意第三人（当事人，土地承包经营权）"
+  }
+ },
+ "art:211": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人申请不动产登记时，应当提供哪些材料、由谁提供",
+     "rules": [
+      "c211-1",
+      "c211-materials"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人（申请人）就某一登记事项向登记机构申请登记",
+     "rules": [
+      "c211-1"
+     ]
+    },
+    {
+     "text": "必要材料包括权属证明以及不动产界址、面积等，其具体种类随登记事项不同而不同",
+     "rules": [
+      "c211-materials"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "申请登记的当事人应当根据不同登记事项提供权属证明和不动产界址、面积等必要材料",
+     "rules": [
+      "c211-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定申请人的材料提供义务，未规定登记机构的审查、登记职责；材料的具体范围依不同登记事项确定，本条不作穷尽列举",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c211-1",
+    "srcs": [
+     "art211-1"
+    ],
+    "body": [
+     "appliesForRegistration(P)",
+     "registrationItem(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "provideNecessaryMaterials(P,T)"
+     }
+    ],
+    "note": "当事人申请登记，应当根据不同登记事项提供权属证明和不动产界址、面积等必要材料",
+    "auth": "npc"
+   },
+   {
+    "key": "c211-materials",
+    "srcs": [
+     "art211-1"
+    ],
+    "body": [
+     "appliesForRegistration(P)"
+    ],
+    "heads": [
+     "necessaryMaterial(P,ownershipCertificate)",
+     "necessaryMaterial(P,boundaryAndArea)"
+    ],
+    "note": "权属证明与不动产界址、面积等属于本条所称必要材料，具体种类依登记事项确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "appliesForRegistration": "当事人（申请人）向登记机构申请（不动产）登记",
+   "registrationItem": "申请办理的登记事项（如所有权登记、抵押权登记等）",
+   "provideNecessaryMaterials": "提供权属证明和不动产界址、面积等必要材料（申请人，登记事项）",
+   "necessaryMaterial": "属于申请登记应当提供的必要材料（申请人，材料种类）"
+  }
+ },
+ "art:223": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产登记费应当按什么方式收取，可否按不动产面积、体积或者价款比例计收",
+     "rules": [
+      "c223-1",
+      "c223-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "登记机构收取不动产登记费",
+     "rules": [
+      "c223-1",
+      "c223-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "不动产登记费按件收取（每件登记收取固定费用，不随标的物大小、价值浮动）",
+     "rules": [
+      "c223-1"
+     ]
+    },
+    {
+     "text": "不得按照不动产的面积、体积或者价款的比例收取登记费",
+     "rules": [
+      "c223-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“按件收取”的收费方式排除任何按面积、体积或者价款比例计收的做法",
+     "rules": [
+      "c223-1",
+      "c223-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规范登记费的收取方式，属收费管理性规定，不涉及登记的设立效力、登记程序或登记错误的赔偿责任；笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c223-1",
+    "srcs": [
+     "art223-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)",
+     "immovableRegistrationFee(F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "chargePerItem(A,F)"
+     }
+    ],
+    "note": "不动产登记费按件收取，即每件登记收取固定费用，不因标的物面积、体积或价款不同而变动",
+    "auth": "npc"
+   },
+   {
+    "key": "c223-2",
+    "srcs": [
+     "art223-1"
+    ],
+    "body": [
+     "immovableRegistrationAuthority(A)",
+     "immovableRegistrationFee(F)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "chargeByAreaVolumeOrPriceRatio(A,F)"
+     }
+    ],
+    "note": "禁止按照不动产的面积、体积或者价款的比例收取登记费",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "immovableRegistrationAuthority": "负责办理不动产登记并收取登记费的登记机构",
+   "immovableRegistrationFee": "不动产登记费",
+   "chargePerItem": "按件收取登记费（登记机构，登记费）",
+   "chargeByAreaVolumeOrPriceRatio": "按照不动产的面积、体积或者价款的比例收取登记费（登记机构，登记费）"
+  }
+ },
+ "card:g2171": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因继承（含遗赠）取得物权的，物权变动自何时发生效力",
+     "rules": [
+      "c230-1"
+     ]
+    },
+    {
+     "text": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，物权变动自何时发生效力",
+     "rules": [
+      "c231-1",
+      "c231-build",
+      "c231-demolish"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "继承开始（被继承人死亡），且继承人、受遗赠人依照继承编取得其财产",
+     "rules": [
+      "c230-1"
+     ]
+    },
+    {
+     "text": "存在合法建造房屋、拆除房屋或者其他设立、消灭物权的事实行为",
+     "rules": [
+      "c231-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "继承人放弃继承（或丧失继承权）的，不发生因继承取得物权的效果",
+     "rules": [
+      "c230-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "继承人或受遗赠人自继承开始时即取得物权，无须登记或交付，即发生物权变动效力",
+     "rules": [
+      "c230-1"
+     ]
+    },
+    {
+     "text": "以遗嘱设立居住权的，与继承同理，自继承开始时发生效力",
+     "rules": [
+      "c230-residence"
+     ]
+    },
+    {
+     "text": "合法建造房屋的，自建造完成（事实行为成就）时设立房屋所有权，不以登记为生效要件",
+     "rules": [
+      "c231-build"
+     ]
+    },
+    {
+     "text": "拆除房屋的，自拆除完成（事实行为成就）时该房屋上的物权消灭",
+     "rules": [
+      "c231-demolish"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "放弃继承的例外优先于因继承取得物权的一般规则",
+     "rules": [
+      "c230-exc"
+     ]
+    },
+    {
+     "text": "第230条、第231条属非基于法律行为的物权变动，其生效时点规则优先于以登记、交付为生效要件的公示规则；但取得人再处分该物权时，仍须依第232条先办理登记",
+     "rules": [
+      "c230-1",
+      "c231-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第229条：依法律文书或人民政府征收决定取得物权，自文书、决定生效时发生效力；本条则以继承开始之时为准",
+     "rules": []
+    },
+    {
+     "text": "第231条以事实行为成就之时为准，与第230条的继承开始之时并列，同属非基于法律行为的物权变动，均不以登记为生效要件",
+     "rules": []
+    },
+    {
+     "text": "第232条解决的是处分依本节规定享有的不动产物权须经登记才发生物权效力的问题，与本条解决取得时点不同，二者不冲突",
+     "rules": []
+    },
+    {
+     "text": "笔记：继承包括遗赠，只要被继承人死亡即发生物权变动，不问受遗赠人何时表示接受，也不问法定继承还是遗嘱继承；居住权亦可依合同设立（第367条），经登记设立，与遗嘱设立居住权的路径不同",
+     "rules": [
+      "c230-residence"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所列“继承权存在争议或已被撤销”等否定情形，法条未作规定，仅作参考，未形式化为规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c230-1",
+    "srcs": [
+     "art230"
+    ],
+    "body": [
+     "inheritanceOpened(D)",
+     "acquiredUnderSuccession(P,D)"
+    ],
+    "heads": [
+     "acquiresRealRight(P,D)",
+     "effectiveFromInheritanceOpening(P,D)"
+    ],
+    "note": "因继承（含遗赠）取得物权的，继承人或受遗赠人自继承开始时取得物权，不以登记或交付为生效要件",
+    "auth": "npc"
+   },
+   {
+    "key": "c230-exc",
+    "srcs": [
+     "art230"
+    ],
+    "body": [
+     "inheritanceOpened(D)",
+     "renounced(P,D)"
+    ],
+    "heads": [
+     "-acquiresRealRight(P,D)"
+    ],
+    "note": "学理与继承编（第1124条）：继承人放弃继承的，不取得遗产上的物权；丧失继承权同理。法条未明文，故作学说规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c230-residence",
+    "srcs": [
+     "art230"
+    ],
+    "body": [
+     "inheritanceOpened(D)",
+     "willEstablishesResidenceRight(D,P)"
+    ],
+    "heads": [
+     "residenceRightEstablished(P)"
+    ],
+    "note": "笔记：以遗嘱设立居住权的，与继承同理，自继承开始时发生效力；居住权亦可依合同设立（第367条），法条未明文，故作学说规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c231-1",
+    "srcs": [
+     "art231"
+    ],
+    "body": [
+     "lawfulFactualAct(A)",
+     {
+      "or": [
+       "buildsHouse(A)",
+       "demolishesHouse(A)",
+       "otherFactualAct(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "realRightChangeEffectiveAtFactualActCompletion(A)"
+    ],
+    "note": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，自事实行为成就时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c231-build",
+    "srcs": [
+     "art231"
+    ],
+    "body": [
+     "lawfulFactualAct(A)",
+     "buildsHouse(A)"
+    ],
+    "heads": [
+     "realRightEstablishedByFactualAct(A)"
+    ],
+    "note": "合法建造房屋的，自建造完成（事实行为成就）时设立房屋所有权，无须登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c231-demolish",
+    "srcs": [
+     "art231"
+    ],
+    "body": [
+     "lawfulFactualAct(A)",
+     "demolishesHouse(A)"
+    ],
+    "heads": [
+     "realRightExtinguishedByFactualAct(A)"
+    ],
+    "note": "拆除房屋的，自拆除完成（事实行为成就）时该房屋上的物权消灭",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c230-exc",
+    "c230-1",
+    "继承人放弃继承的，不发生因继承取得物权的效果"
+   ]
+  ],
+  "predicates": {
+   "acquiresRealRight": "取得物权（取得人，被继承人）",
+   "effectiveFromInheritanceOpening": "该物权变动自继承开始时发生效力（取得人，被继承人）",
+   "willEstablishesResidenceRight": "遗嘱为某人设立居住权（被继承人，居住权人）",
+   "residenceRightEstablished": "居住权设立",
+   "lawfulFactualAct": "是合法的事实行为（如合法建造、拆除房屋）",
+   "buildsHouse": "建造房屋（事实行为）",
+   "demolishesHouse": "拆除房屋（事实行为）",
+   "otherFactualAct": "其他设立或者消灭物权的事实行为",
+   "realRightChangeEffectiveAtFactualActCompletion": "该物权变动自事实行为成就时发生效力（事实行为）",
+   "realRightEstablishedByFactualAct": "因该事实行为设立物权",
+   "realRightExtinguishedByFactualAct": "因该事实行为消灭物权"
+  }
+ },
+ "card:g2149": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "非基于法律行为的物权变动何时发生效力：因人民法院、仲裁机构的法律文书或人民政府的征收决定，以及因合法建造、拆除房屋等事实行为",
+     "rules": [
+      "c229-1",
+      "c231-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在人民法院、仲裁机构的法律文书或者人民政府的征收决定等，且该文书或决定已发生法律效力",
+     "rules": [
+      "c229-1"
+     ]
+    },
+    {
+     "text": "该法律文书或征收决定导致物权设立、变更、转让或者消灭",
+     "rules": [
+      "c229-1"
+     ]
+    },
+    {
+     "text": "存在合法建造、拆除房屋等事实行为，且该事实行为导致物权设立或者消灭",
+     "rules": [
+      "c231-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "给付判决不直接引起物权变动：须权利人持生效文书办理登记（不动产）或完成交付（动产）后才发生物权变动",
+     "rules": [
+      "c229-performance"
+     ]
+    },
+    {
+     "text": "确认判决不直接引起物权变动：其仅确认既有物权归属，真正的物权人自事实发生之时即已享有物权，而非自判决生效时取得",
+     "rules": [
+      "c229-confirm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "因法律文书或者征收决定等导致物权设立、变更、转让或者消灭的，自法律文书或者征收决定等生效时发生效力",
+     "rules": [
+      "c229-1"
+     ]
+    },
+    {
+     "text": "行使形成诉权产生的形成判决、裁决、调解书（离婚财产分割、共有物分割、撤销合同、债权人撤销权、执行程序中的拍卖成交裁定书与以物抵债裁定书等）直接引起物权变动，无须登记或交付",
+     "rules": [
+      "c229-forming"
+     ]
+    },
+    {
+     "text": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，自事实行为成就时发生效力",
+     "rules": [
+      "c231-1"
+     ]
+    },
+    {
+     "text": "非基于法律行为的物权变动，不动产无须登记、动产无须交付即发生效力（登记、交付不是生效要件）",
+     "rules": [
+      "c229-no-reg",
+      "c231-no-reg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "给付判决、确认判决不适用第229条，优先于该条关于“自法律文书生效时发生效力”的一般规定",
+     "rules": [
+      "c229-performance",
+      "c229-confirm"
+     ]
+    },
+    {
+     "text": "第229条、第231条优先于基于法律行为须经登记或交付才发生物权变动的一般规则",
+     "rules": [
+      "c229-1",
+      "c231-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第227条指示交付、第228条占有改定属于基于法律行为的动产交付替代方式；第230条继承取得物权自继承开始时生效；本条强调法律文书或征收决定生效、事实行为成就，均不以登记或交付为要件",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“仅存在调解书或和解协议而无强制执行力”列为负面条件，与通说不符：形成诉权产生的生效调解书亦可直接引起物权变动；卡片把“当事人未实际履行判决内容”列为负面条件亦不当，形成判决的物权变动不待履行",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c229-1",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "courtOrArbitralDocument(D)",
+       "expropriationDecision(D)"
+      ]
+     },
+     "documentEffective(D)",
+     "causesRealRightChange(D,P,R)"
+    ],
+    "heads": [
+     "realRightChangeEffective(D,P,R)"
+    ],
+    "note": "因人民法院、仲裁机构的法律文书或者人民政府的征收决定等导致物权设立、变更、转让或者消灭的，自法律文书或者征收决定等生效时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c229-forming",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     "formingJudgment(D)",
+     "documentEffective(D)",
+     "causesRealRightChange(D,P,R)"
+    ],
+    "heads": [
+     "realRightChangeEffective(D,P,R)"
+    ],
+    "note": "通说：第229条的法律文书限于行使形成诉权产生的形成判决、裁决、调解书（离婚财产分割、共有物分割、撤销合同、债权人撤销权、拍卖成交裁定、以物抵债裁定等），直接引起物权变动，无须登记或交付",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c229-performance",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     "performanceJudgment(D)",
+     "documentEffective(D)",
+     "ordersTransferOf(D,P,R)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(D,P,R)"
+    ],
+    "note": "通说：给付判决基于债权请求权，须经登记或交付（执行）才发生物权变动，判决生效本身不引起物权变动",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c229-confirm",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     "confirmatoryJudgment(D)",
+     "documentEffective(D)",
+     "confirmsOwnershipOf(D,P,R)"
+    ],
+    "heads": [
+     "-realRightChangeEffective(D,P,R)"
+    ],
+    "note": "通说：确认判决仅确认既有物权归属，物权溯及事实发生之时，而非自判决生效时发生变动",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c229-no-reg",
+    "srcs": [
+     "art229-1"
+    ],
+    "body": [
+     "realRightChangeEffective(D,P,R)"
+    ],
+    "heads": [
+     "-registrationRequiredForEffect(P,R)"
+    ],
+    "note": "通说：因法律文书、征收决定发生的物权变动，不动产无须登记、动产无须交付即发生效力",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c231-1",
+    "srcs": [
+     "art231-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "lawfulConstruction(F)",
+       "demolitionOfHouse(F)",
+       "otherFactAct(F)"
+      ]
+     },
+     "causesRealRightChangeByFactAct(F,P,R)"
+    ],
+    "heads": [
+     "realRightChangeEffectiveAtAchievement(F,P,R)"
+    ],
+    "note": "因合法建造、拆除房屋等事实行为设立或者消灭物权的，自事实行为成就时发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c231-no-reg",
+    "srcs": [
+     "art231-1"
+    ],
+    "body": [
+     "realRightChangeEffectiveAtAchievement(F,P,R)"
+    ],
+    "heads": [
+     "-registrationRequiredForEffect(P,R)"
+    ],
+    "note": "通说：因事实行为发生的物权变动，自事实行为成就时即生效力，不以登记或交付为要件",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c229-performance",
+    "c229-1",
+    "通说：第229条的法律文书限于形成判决，给付判决须经登记或交付才发生物权变动"
+   ],
+   [
+    "c229-confirm",
+    "c229-1",
+    "确认判决仅确认既有物权归属，物权溯及事实发生之时，不适用第229条的生效时点"
+   ]
+  ],
+  "predicates": {
+   "courtOrArbitralDocument": "（1个参数）是人民法院或者仲裁机构作出的法律文书",
+   "expropriationDecision": "（1个参数）是人民政府的征收决定",
+   "documentEffective": "（1个参数）法律文书、征收决定等已发生法律效力",
+   "causesRealRightChange": "（3个参数：文书或决定，权利人，物权）导致物权设立、变更、转让或者消灭",
+   "realRightChangeEffective": "（3个参数：文书或决定，权利人，物权）物权变动自法律文书或征收决定生效时发生效力",
+   "formingJudgment": "（1个参数）是行使形成诉权产生的形成判决、裁决或调解书",
+   "performanceJudgment": "（1个参数）是给付判决",
+   "confirmatoryJudgment": "（1个参数）是确认判决",
+   "ordersTransferOf": "（3个参数：判决，权利人，物权）判令移转某物权",
+   "confirmsOwnershipOf": "（3个参数：判决，权利人，物权）确认某物权归属",
+   "registrationRequiredForEffect": "（2个参数：权利人，物权）须经登记或交付才发生物权变动效力",
+   "lawfulConstruction": "（1个参数）是合法建造房屋",
+   "demolitionOfHouse": "（1个参数）是拆除房屋",
+   "otherFactAct": "（1个参数）是其他事实行为",
+   "causesRealRightChangeByFactAct": "（3个参数：事实行为，权利人，物权）事实行为导致物权设立或者消灭",
+   "realRightChangeEffectiveAtAchievement": "（3个参数：事实行为，权利人，物权）物权变动自事实行为成就时发生效力"
+  }
+ }
+}

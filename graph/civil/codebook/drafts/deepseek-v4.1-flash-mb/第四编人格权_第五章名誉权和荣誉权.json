@@ -1,0 +1,849 @@
+{
+ "art:1031": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事主体享有荣誉权的内容；非法剥夺荣誉称号、诋毁贬损荣誉，以及荣誉称号应当记载而未记载或记载错误时，权利人可主张何种救济",
+     "rules": [
+      "c1031-1",
+      "c1031-2a",
+      "c1031-2b",
+      "c1031-3",
+      "c1031-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体为民事主体（自然人、法人、非法人组织）",
+     "rules": [
+      "c1031-1",
+      "c1031-2b",
+      "c1031-3",
+      "c1031-4"
+     ]
+    },
+    {
+     "text": "行为人为任何组织或者个人，行为对象是他人已获得的荣誉称号或他人的荣誉",
+     "rules": [
+      "c1031-2a",
+      "c1031-2b"
+     ]
+    },
+    {
+     "text": "荣誉称号应当记载而没有记载",
+     "rules": [
+      "c1031-3"
+     ]
+    },
+    {
+     "text": "荣誉称号记载错误",
+     "rules": [
+      "c1031-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "禁止的是“非法”剥夺；依法定程序撤销、取消荣誉称号等有合法依据的剥夺，不属于本条禁止的范围",
+     "rules": [
+      "c1031-2a"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "民事主体享有荣誉权",
+     "rules": [
+      "c1031-1"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得非法剥夺他人的荣誉称号",
+     "rules": [
+      "c1031-2a"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得诋毁、贬损他人的荣誉",
+     "rules": [
+      "c1031-2b"
+     ]
+    },
+    {
+     "text": "荣誉称号应当记载而没有记载的，民事主体可以请求记载",
+     "rules": [
+      "c1031-3"
+     ]
+    },
+    {
+     "text": "荣誉称号记载错误的，民事主体可以请求更正",
+     "rules": [
+      "c1031-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把“获得的荣誉称号记载错误”列为荣誉权的侵权类型之一；第1031条第2款对此规定的是请求记载、请求更正的救济，而非损害赔偿",
+     "rules": [
+      "c1031-3",
+      "c1031-4"
+     ]
+    },
+    {
+     "text": "荣誉权以特定荣誉称号为基础，与保护一般社会评价的名誉权不同；本条只规定荣誉权，名誉权见第1024条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1031-1",
+    "srcs": [
+     "art1031-1"
+    ],
+    "body": [
+     "civilSubject(S)"
+    ],
+    "heads": [
+     "civilRightOf(S,honorRight)"
+    ],
+    "note": "民事主体享有荣誉权（荣誉权为具体人格权）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1031-2a",
+    "srcs": [
+     "art1031-1"
+    ],
+    "body": [
+     "personOrOrg(O)",
+     "honoraryTitleOf(T,S)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "S",
+      "content": "illegallyDepriveHonoraryTitle(O,S,T)"
+     }
+    ],
+    "note": "任何组织或者个人不得非法剥夺他人已获得的荣誉称号",
+    "auth": "npc"
+   },
+   {
+    "key": "c1031-2b",
+    "srcs": [
+     "art1031-1"
+    ],
+    "body": [
+     "personOrOrg(O)",
+     "civilSubject(S)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "S",
+      "content": "disparageOrDemeanHonor(O,S)"
+     }
+    ],
+    "note": "任何组织或者个人不得诋毁、贬损他人的荣誉",
+    "auth": "npc"
+   },
+   {
+    "key": "c1031-3",
+    "srcs": [
+     "art1031-2"
+    ],
+    "body": [
+     "civilSubject(S)",
+     "honoraryTitleOf(T,S)",
+     "shouldBeRecorded(T)",
+     "-recorded(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "requestRecording(S,T)"
+     }
+    ],
+    "note": "获得的荣誉称号应当记载而没有记载的，民事主体可以请求记载",
+    "auth": "npc"
+   },
+   {
+    "key": "c1031-4",
+    "srcs": [
+     "art1031-2"
+    ],
+    "body": [
+     "civilSubject(S)",
+     "honoraryTitleOf(T,S)",
+     "recordedIncorrectly(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "requestCorrection(S,T)"
+     }
+    ],
+    "note": "获得的荣誉称号记载错误的，民事主体可以请求更正",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "honoraryTitleOf": "该荣誉称号是某民事主体所获得的（2个参数：荣誉称号，主体）",
+   "illegallyDepriveHonoraryTitle": "非法剥夺他人荣誉称号（3个参数：行为人，主体，荣誉称号）",
+   "disparageOrDemeanHonor": "诋毁、贬损他人的荣誉（2个参数：行为人，主体）",
+   "shouldBeRecorded": "该荣誉称号依法应当予以记载（1个参数：荣誉称号）",
+   "recorded": "该荣誉称号已被记载（1个参数：荣誉称号）",
+   "recordedIncorrectly": "该荣誉称号的记载有错误（1个参数：荣誉称号）",
+   "requestRecording": "请求记载荣誉称号（2个参数：主体，荣誉称号）",
+   "requestCorrection": "请求更正荣誉称号的记载（2个参数：主体，荣誉称号）"
+  }
+ },
+ "card:g6277": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "名誉权的保护范围，以及以侮辱、诽谤等方式侵害名誉权的认定",
+     "rules": [
+      "c1024-1",
+      "c1024-infringe"
+     ]
+    },
+    {
+     "text": "为公共利益实施新闻报道、舆论监督而影响他人名誉时，何时免责、何时仍须担责",
+     "rules": [
+      "c1025-1",
+      "c1025-ex1",
+      "c1025-ex2",
+      "c1025-ex3"
+     ]
+    },
+    {
+     "text": "文学、艺术作品侵害名誉权的认定与免责",
+     "rules": [
+      "c1027-1",
+      "c1027-2"
+     ]
+    },
+    {
+     "text": "媒体报道失实、信用评价不当的救济",
+     "rules": [
+      "c1028-1",
+      "c1029-1",
+      "c1029-2",
+      "c1029-3",
+      "c1029-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "名誉是对民事主体（自然人、法人及非法人组织）的品德、声望、才能、信用等的社会评价；名誉权的主体为所有民事主体（定义性、宣示性内容）",
+     "rules": []
+    },
+    {
+     "text": "行为人以侮辱（口头、书面或暴力方式贬损人格）或诽谤（捏造并散布虚假事实）的方式实施侵害，并致受害人社会评价降低",
+     "rules": [
+      "c1024-infringe"
+     ]
+    },
+    {
+     "text": "行为人为公共利益实施新闻报道、舆论监督等行为，且影响他人名誉",
+     "rules": [
+      "c1025-1"
+     ]
+    },
+    {
+     "text": "但书情形之一：捏造、歪曲事实；对他人提供的严重失实内容未尽到合理核实义务；使用侮辱性言辞等贬损他人名誉",
+     "rules": [
+      "c1025-ex1",
+      "c1025-ex2",
+      "c1025-ex3"
+     ]
+    },
+    {
+     "text": "认定是否尽到合理核实义务，应当考虑内容来源的可信度、对明显可能引发争议的内容是否必要调查、内容的时限性、内容与公序良俗的关联性、受害人名誉受贬损的可能性、核实能力和核实成本；行为人应就其尽到合理核实义务承担举证责任（举证责任为笔记观点）",
+     "rules": [
+      "c1026-1",
+      "c1026-burden"
+     ]
+    },
+    {
+     "text": "文学、艺术作品以真人真事或者特定人为描述对象，含有侮辱、诽谤内容，侵害他人名誉权",
+     "rules": [
+      "c1027-1"
+     ]
+    },
+    {
+     "text": "文学、艺术作品不以特定人为描述对象，仅其中的情节与该特定人的情况相似",
+     "rules": [
+      "c1027-2"
+     ]
+    },
+    {
+     "text": "民事主体有证据证明报刊、网络等媒体报道的内容失实，侵害其名誉权",
+     "rules": [
+      "c1028-1"
+     ]
+    },
+    {
+     "text": "民事主体发现自己的信用评价不当",
+     "rules": [
+      "c1029-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "新闻报道、舆论监督行为有第1025条但书三项情形之一的，不适用免责，仍应承担民事责任",
+     "rules": [
+      "c1025-ex1",
+      "c1025-ex2",
+      "c1025-ex3"
+     ]
+    },
+    {
+     "text": "文学、艺术作品不以特定人为描述对象、仅情节相似的，不承担民事责任",
+     "rules": [
+      "c1027-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "任何组织或者个人不得以侮辱、诽谤等方式侵害他人的名誉权",
+     "rules": [
+      "c1024-1"
+     ]
+    },
+    {
+     "text": "侵害他人名誉权的，行为人应当向受害人承担民事责任（停止侵害、消除影响、恢复名誉、赔礼道歉等，责任方式见侵权责任编及笔记）",
+     "rules": [
+      "c1024-liability"
+     ]
+    },
+    {
+     "text": "为公共利益实施新闻报道、舆论监督等行为影响他人名誉的，不承担民事责任",
+     "rules": [
+      "c1025-1"
+     ]
+    },
+    {
+     "text": "文学作品侵害名誉权的，受害人有权依法请求该行为人承担民事责任",
+     "rules": [
+      "c1027-1"
+     ]
+    },
+    {
+     "text": "有权请求该媒体及时采取更正或者删除等必要措施；媒体不及时采取措施的，有权请求人民法院责令该媒体在一定期限内履行（后者为笔记观点）",
+     "rules": [
+      "c1028-1",
+      "c1028-2"
+     ]
+    },
+    {
+     "text": "民事主体可以依法查询自己的信用评价；发现信用评价不当的，有权提出异议并请求采取更正、删除等必要措施",
+     "rules": [
+      "c1029-1",
+      "c1029-2"
+     ]
+    },
+    {
+     "text": "信用评价人应当及时核查，经核查属实的，应当及时采取必要措施",
+     "rules": [
+      "c1029-3",
+      "c1029-4"
+     ]
+    },
+    {
+     "text": "民事主体与征信机构等信用信息处理者之间的关系，适用本编有关个人信息保护的规定和其他法律、行政法规的有关规定",
+     "rules": [
+      "c1030-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1025条但书三项优先于新闻报道、舆论监督的免责规则",
+     "rules": [
+      "c1025-ex1",
+      "c1025-ex2",
+      "c1025-ex3"
+     ]
+    },
+    {
+     "text": "第1025条是新闻报道、舆论监督的特别规定，优先于第1024条一般侵权规则",
+     "rules": [
+      "c1025-1"
+     ]
+    },
+    {
+     "text": "第1027条第2款（不以特定人为描述对象）优先于第1款的侵权规则",
+     "rules": [
+      "c1027-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记将名誉权内容分为名誉保有权、名誉维护权、名誉利益支配权，并称名誉权不得抛弃、转让和继承；此为学理，法条未规定",
+     "rules": []
+    },
+    {
+     "text": "第1025条的免责仅适用于为公共利益实施新闻报道、舆论监督等行为，不适用于纯粹私益的言论；第1027条针对文学、艺术作品，与新闻报道不同",
+     "rules": [
+      "c1025-1",
+      "c1027-1"
+     ]
+    },
+    {
+     "text": "LEGO 卡片把第1027条称为“网络侵权”，有误：该条规范的是文学、艺术作品侵害名誉权；网络侵权的一般规则在侵权责任编",
+     "rules": []
+    },
+    {
+     "text": "第1030条为转介条款，不另行创设名誉权规则，仅指向个人信息保护规定及其他法律、行政法规",
+     "rules": [
+      "c1030-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1024-1",
+    "srcs": [
+     "art1024-1"
+    ],
+    "body": [
+     "personOrOrg(O)",
+     {
+      "or": [
+       "naturalPerson(P)",
+       "organization(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "infringesReputation(O,P)"
+     }
+    ],
+    "note": "任何组织或者个人不得以侮辱、诽谤等方式侵害他人的名誉权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1024-infringe",
+    "srcs": [
+     "art1024-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "insults(O,P)",
+       "defames(O,P)"
+      ]
+     },
+     "lowersSocialEvaluation(O,P)"
+    ],
+    "heads": [
+     "infringesReputation(O,P)"
+    ],
+    "note": "侵权构成：实施侮辱或诽谤行为，并造成受害人社会评价降低（构成要件来自笔记，法条仅列举“侮辱、诽谤等方式”）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1024-liability",
+    "srcs": [
+     "art1024-1"
+    ],
+    "body": [
+     "infringesReputation(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "bearCivilLiabilityToVictim(O,P)"
+     }
+    ],
+    "note": "侵害名誉权的，行为人应当承担民事责任；具体责任方式（停止侵害、消除影响、恢复名誉、赔礼道歉等）见侵权责任编及笔记",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1025-1",
+    "srcs": [
+     "art1025-1"
+    ],
+    "body": [
+     "forPublicInterestPurpose(O)",
+     {
+      "or": [
+       "newsReport(O)",
+       "publicOpinionSupervision(O)"
+      ]
+     },
+     "affectsReputation(O,P)"
+    ],
+    "heads": [
+     "-bearCivilLiabilityToVictim(O,P)"
+    ],
+    "note": "为公共利益实施新闻报道、舆论监督等行为影响他人名誉的，不承担民事责任（但书情形由例外规则排除）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1025-ex1",
+    "srcs": [
+     "art1025-1"
+    ],
+    "body": [
+     "fabricatesOrDistortsFacts(O)",
+     "affectsReputation(O,P)"
+    ],
+    "heads": [
+     "bearCivilLiabilityToVictim(O,P)"
+    ],
+    "note": "第1025条但书第（一）项：捏造、歪曲事实的，不适用免责",
+    "auth": "npc"
+   },
+   {
+    "key": "c1025-ex2",
+    "srcs": [
+     "art1025-1"
+    ],
+    "body": [
+     "failsReasonableVerification(O,P)"
+    ],
+    "heads": [
+     "bearCivilLiabilityToVictim(O,P)"
+    ],
+    "note": "第1025条但书第（二）项：对他人提供的严重失实内容未尽到合理核实义务的，不适用免责",
+    "auth": "npc"
+   },
+   {
+    "key": "c1025-ex3",
+    "srcs": [
+     "art1025-1"
+    ],
+    "body": [
+     "usesInsultingLanguage(O,P)"
+    ],
+    "heads": [
+     "bearCivilLiabilityToVictim(O,P)"
+    ],
+    "note": "第1025条但书第（三）项：使用侮辱性言辞等贬损他人名誉的，不适用免责",
+    "auth": "npc"
+   },
+   {
+    "key": "c1026-1",
+    "srcs": [
+     "art1026-1"
+    ],
+    "body": [
+     "assessingReasonableVerification(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "considerVerificationFactors(O,P)"
+     }
+    ],
+    "note": "认定是否尽到合理核实义务，应当考虑内容来源可信度、是否必要调查、内容时限性、与公序良俗的关联性、名誉受贬损可能性、核实能力与成本六项因素",
+    "auth": "npc"
+   },
+   {
+    "key": "c1026-burden",
+    "srcs": [
+     "art1026-1"
+    ],
+    "body": [
+     "claimsReasonableVerification(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "proveReasonableVerification(O,P)"
+     }
+    ],
+    "note": "行为人应就其尽到合理核实义务承担举证责任；此为笔记观点，第1026条仅规定认定因素，未明定举证责任",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1027-1",
+    "srcs": [
+     "art1027-1"
+    ],
+    "body": [
+     "literaryWork(W)",
+     "depictsRealPersonOrSpecificPerson(W,P)",
+     {
+      "or": [
+       "insults(W,P)",
+       "defames(W,P)"
+      ]
+     },
+     "infringesReputation(W,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "W",
+      "content": "claimDamagesOrOtherCivilLiability(P,W)"
+     }
+    ],
+    "note": "文学、艺术作品以真人真事或者特定人为描述对象，含侮辱、诽谤内容侵害名誉权的，受害人有权依法请求行为人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1027-2",
+    "srcs": [
+     "art1027-2"
+    ],
+    "body": [
+     "literaryWork(W)",
+     "-depictsSpecificPerson(W,P)",
+     "plotSimilarTo(W,P)"
+    ],
+    "heads": [
+     "-bearCivilLiabilityToVictim(W,P)"
+    ],
+    "note": "文学、艺术作品不以特定人为描述对象，仅情节与该特定人情况相似的，不承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1028-1",
+    "srcs": [
+     "art1028-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(P)",
+       "organization(P)"
+      ]
+     },
+     "mediaReport(M)",
+     "contentFalse(M)",
+     "provesFalsity(P,M)",
+     "infringesReputation(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "M",
+      "content": "claimCorrectOrDelete(P,M)"
+     }
+    ],
+    "note": "有证据证明报刊、网络等媒体报道内容失实并侵害其名誉权的，有权请求该媒体及时采取更正或者删除等必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1028-2",
+    "srcs": [
+     "art1028-1"
+    ],
+    "body": [
+     "claimCorrectOrDelete(P,M)",
+     "mediaFailsToTakeMeasures(M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "court",
+      "content": "requestCourtOrderMedia(P,M)"
+     }
+    ],
+    "note": "媒体不及时采取措施的，受害人有权请求人民法院责令该媒体在一定期限内履行；此为笔记观点，法条未明定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1029-1",
+    "srcs": [
+     "art1029-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(P)",
+       "organization(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "queryOwnCreditEvaluation(P)"
+     }
+    ],
+    "note": "民事主体可以依法查询自己的信用评价",
+    "auth": "npc"
+   },
+   {
+    "key": "c1029-2",
+    "srcs": [
+     "art1029-1"
+    ],
+    "body": [
+     "improperCreditEvaluation(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "objectToCreditEvaluation(P)"
+     }
+    ],
+    "note": "发现信用评价不当的，有权提出异议并请求采取更正、删除等必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1029-3",
+    "srcs": [
+     "art1029-1"
+    ],
+    "body": [
+     "creditEvaluator(E)",
+     "improperCreditEvaluation(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "verifyCreditEvaluation(E,P)"
+     }
+    ],
+    "note": "信用评价人应当及时核查",
+    "auth": "npc"
+   },
+   {
+    "key": "c1029-4",
+    "srcs": [
+     "art1029-1"
+    ],
+    "body": [
+     "creditEvaluator(E)",
+     "verifiedAsTrue(E,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "P",
+      "content": "takeCorrectionOrDeletionMeasures(E,P)"
+     }
+    ],
+    "note": "经核查属实的，信用评价人应当及时采取必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1030-1",
+    "srcs": [
+     "art1030-1"
+    ],
+    "body": [
+     "creditInfoRelation(P,E)"
+    ],
+    "heads": [
+     "applyPersonalInfoProtectionProvisions(P,E)"
+    ],
+    "note": "民事主体与征信机构等信用信息处理者之间的关系，适用本编有关个人信息保护的规定和其他法律、行政法规的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1025-ex1",
+    "c1025-1",
+    "第1025条但书第（一）项：捏造、歪曲事实的，不适用新闻报道、舆论监督的免责"
+   ],
+   [
+    "c1025-ex2",
+    "c1025-1",
+    "第1025条但书第（二）项：对他人提供的严重失实内容未尽合理核实义务的，不适用免责"
+   ],
+   [
+    "c1025-ex3",
+    "c1025-1",
+    "第1025条但书第（三）项：使用侮辱性言辞等贬损他人名誉的，不适用免责"
+   ],
+   [
+    "c1025-1",
+    "c1024-liability",
+    "第1025条是新闻报道、舆论监督的特别规定，优先于第1024条一般侵权规则"
+   ],
+   [
+    "c1027-2",
+    "c1027-1",
+    "第1027条第2款：不以特定人为描述对象、仅情节相似的，不承担民事责任"
+   ]
+  ],
+  "predicates": {
+   "insults": "（2参数：行为人，受害人）以口头、书面或暴力方式侮辱他人，公然贬损其人格",
+   "defames": "（2参数：行为人，受害人）捏造并散布虚假事实诽谤他人，破坏其名誉",
+   "lowersSocialEvaluation": "（2参数：行为人，受害人）致他人社会评价降低",
+   "infringesReputation": "（2参数：行为人，受害人）以侮辱、诽谤等方式侵害他人名誉权",
+   "forPublicInterestPurpose": "（1参数：行为人）为公共利益的目的实施行为（区别于征收、征用中的公共利益要件）",
+   "newsReport": "（1参数：行为人）实施新闻报道",
+   "publicOpinionSupervision": "（1参数：行为人）实施舆论监督",
+   "affectsReputation": "（2参数：行为人，受害人）影响他人名誉",
+   "fabricatesOrDistortsFacts": "（1参数：行为人）捏造、歪曲事实",
+   "failsReasonableVerification": "（2参数：行为人，受害人）对他人提供的严重失实内容未尽到合理核实义务",
+   "usesInsultingLanguage": "（2参数：行为人，受害人）使用侮辱性言辞等贬损他人名誉",
+   "assessingReasonableVerification": "（2参数：行为人，受害人）认定行为人是否尽到合理核实义务",
+   "considerVerificationFactors": "（2参数：裁判者，行为人）考虑合理核实义务的六项认定因素",
+   "claimsReasonableVerification": "（2参数：行为人，受害人）主张自己已尽到合理核实义务",
+   "proveReasonableVerification": "（2参数：行为人，受害人）就尽到合理核实义务承担举证责任",
+   "literaryWork": "（1参数：作品）是文学、艺术作品",
+   "depictsRealPersonOrSpecificPerson": "（2参数：作品，主体）以真人真事或者特定人为描述对象",
+   "depictsSpecificPerson": "（2参数：作品，主体）以特定人为描述对象",
+   "plotSimilarTo": "（2参数：作品，主体）作品情节与该特定人的情况相似",
+   "mediaReport": "（1参数：媒体）是报刊、网络等媒体的报道",
+   "contentFalse": "（1参数：媒体）报道内容失实",
+   "provesFalsity": "（2参数：主体，媒体）有证据证明媒体报道内容失实",
+   "claimCorrectOrDelete": "（2参数：权利人，媒体）请求及时采取更正、删除等必要措施",
+   "mediaFailsToTakeMeasures": "（1参数：媒体）媒体未及时采取更正、删除等必要措施",
+   "requestCourtOrderMedia": "（2参数：权利人，媒体）请求人民法院责令媒体在一定期限内履行",
+   "queryOwnCreditEvaluation": "（1参数：主体）依法查询自己的信用评价",
+   "improperCreditEvaluation": "（1参数：主体）信用评价不当",
+   "objectToCreditEvaluation": "（1参数：主体）对信用评价提出异议并请求采取更正、删除等必要措施",
+   "creditEvaluator": "（1参数：主体）是信用评价人",
+   "verifyCreditEvaluation": "（2参数：评价人，主体）及时核查信用评价异议",
+   "verifiedAsTrue": "（2参数：评价人，主体）经核查异议属实",
+   "takeCorrectionOrDeletionMeasures": "（2参数：评价人，主体）及时采取更正、删除等必要措施",
+   "creditInfoRelation": "（2参数：主体，处理者）民事主体与征信机构等信用信息处理者之间的关系",
+   "applyPersonalInfoProtectionProvisions": "（2参数：主体，处理者）适用本编有关个人信息保护的规定和其他法律、行政法规的有关规定"
+  }
+ }
+}

@@ -1,0 +1,4149 @@
+{
+ "card:g4957": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同的概念与要素：出卖人转移标的物所有权于买受人，买受人支付价款",
+     "rules": [
+      "c595-1"
+     ]
+    },
+    {
+     "text": "出卖人未取得处分权致标的物所有权不能转移时，买受人如何救济",
+     "rules": [
+      "c597-noPower",
+      "c597-1"
+     ]
+    },
+    {
+     "text": "标的物为法律、行政法规禁止或者限制转让的，如何适用法律",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "标的物毁损、灭失的风险由买受人承担，是否影响其请求出卖人承担违约责任",
+     "rules": [
+      "c611-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同关系，出卖人未取得标的物的处分权，且因此致标的物所有权不能转移于买受人",
+     "rules": [
+      "c597-noPower"
+     ]
+    },
+    {
+     "text": "标的物属于法律、行政法规禁止转让或者限制转让的财产",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "标的物毁损、灭失的风险已由买受人承担，且出卖人履行债务不符合约定",
+     "rules": [
+      "c611-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规对禁止或者限制转让的标的物另有规定的，依照其规定，不适用第597条第1款的一般救济",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "出卖人已取得处分权或者标的物所有权能够转移的，不发生第597条第1款的解除与违约责任问题",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "买卖合同成立：出卖人负担转移标的物所有权义务，买受人负担支付价款义务",
+     "rules": [
+      "c595-1"
+     ]
+    },
+    {
+     "text": "买受人享有解除权，并有权请求出卖人承担违约责任",
+     "rules": [
+      "c597-1"
+     ]
+    },
+    {
+     "text": "禁止或者限制转让的标的物，依照法律、行政法规的特别规定处理",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "风险由买受人承担，不影响其因出卖人履行不符合约定而请求承担违约责任的权利",
+     "rules": [
+      "c611-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第597条第2款关于禁止、限制转让标的物的特别规定，优先于第1款无权处分的一般救济规则",
+     "rules": [
+      "c597-2",
+      "c597-1"
+     ]
+    },
+    {
+     "text": "出卖人欠缺处分权不影响买卖合同本身的效力（学理），优先于一般合同无效规则",
+     "rules": [
+      "c597-valid"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第595条仅界定买卖合同的概念与要素，不含救济内容；救济规定在第597条，风险负担与违约责任的关系规定在第611条",
+     "rules": []
+    },
+    {
+     "text": "第597条不同于第311条善意取得：前者解决买受人的解除权与出卖人的违约责任，后者解决标的物所有权归属",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称本条不适用第598条交付义务、优先于一般合同无效规则；第598条不在本行挂载法条，仅作参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c595-1",
+    "srcs": [
+     "art595-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "sellerOf(S,K)",
+     "buyerOf(B,K)",
+     "subjectMatterOf(T,K)",
+     "acquiresOwnership(B,T)",
+     "payPrice(B,S,T)"
+    ],
+    "heads": [
+     "sale(K,S,B,T)"
+    ],
+    "note": "买卖合同的定义：出卖人转移标的物所有权于买受人、买受人支付价款（参数依次为合同、出卖人、买受人、标的物）",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-noPower",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "-hasDisposalPower(S,T)"
+    ],
+    "heads": [
+     "ownershipCannotTransfer(S,B,T)"
+    ],
+    "note": "出卖人未取得处分权，致标的物所有权不能转移于买受人",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-1",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "ownershipCannotTransfer(S,B,T)"
+    ],
+    "heads": [
+     "terminationRight(B,K)",
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "requestBreachLiability(B,S,K)"
+     }
+    ],
+    "note": "因出卖人未取得处分权致所有权不能转移的，买受人享有解除权，并有权请求出卖人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-valid",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "-hasDisposalPower(S,T)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "出卖人欠缺处分权不影响买卖合同本身的效力（学理与LEGO卡片，法条未明定；第597条第1款以合同有效为前提）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c597-2",
+    "srcs": [
+     "art597-2"
+    ],
+    "body": [
+     "subjectMatterOf(T,K)",
+     {
+      "or": [
+       "transferProhibitedByLawOrAdminRegulation(T)",
+       "transferRestrictedByLawOrAdminRegulation(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、行政法规禁止或者限制转让的标的物，依照其规定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c611-1",
+    "srcs": [
+     "art611-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "riskOnBuyer(K)",
+     "nonConformingPerformance(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "requestBreachLiability(B,S,K)"
+     }
+    ],
+    "note": "风险由买受人承担，不影响其因出卖人履行债务不符合约定而请求承担违约责任的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c597-2",
+    "c597-1",
+    "禁止或者限制转让的标的物应依法律、行政法规的特别规定处理，优先于第597条第1款无权处分的一般救济规则"
+   ]
+  ],
+  "predicates": {
+   "sellerOf": "是买卖合同的出卖人（出卖人，合同）",
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "ownershipCannotTransfer": "因出卖人未取得处分权致使标的物所有权不能转移（出卖人，买受人，标的物）",
+   "transferRestrictedByLawOrAdminRegulation": "标的物被法律、行政法规限制转让",
+   "requestBreachLiability": "请求出卖人承担违约责任（买受人，出卖人，合同）"
+  }
+ },
+ "art:596": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同的内容一般包括哪些条款",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在买卖合同关系，需要确定合同的具体内容",
+     "rules": []
+    },
+    {
+     "text": "常见条款包括：标的物的名称、数量、质量、价款、履行期限、履行地点和方式、包装方式、检验标准和方法、结算方式、合同使用的文字及其效力等",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条为示范性、提示性规定，当事人可以按照交易习惯和实际需要增减条款；缺少其中某项条款并不当然影响买卖合同的成立（学理）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "上述条款一般构成买卖合同的内容，可以作为确定当事人权利义务、解释合同的依据",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为一般性提示规定；当事人另有约定，或者法律、行政法规对特定买卖（如商品房买卖、拍卖）另有规定的，从其规定",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条与第470条（合同一般条款）、第595条（买卖合同的定义）分工不同：本条只列举买卖合同的常见条款，不创设权利义务，也不产生“应当”或“不得”的规范效果，因此不形式化为可废止规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:600": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖具有知识产权的标的物时，该标的物上的知识产权归谁享有",
+     "rules": [
+      "c600-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同，且所出卖的标的物上承载有知识产权（如附有著作权的作品、附有商标权的商品）",
+     "rules": [
+      "c600-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对该标的物上的知识产权归属另有规定的，从其规定",
+     "rules": [
+      "c600-1"
+     ]
+    },
+    {
+     "text": "当事人对该标的物上的知识产权归属另有约定的，从其约定",
+     "rules": [
+      "c600-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该标的物上的知识产权不属于买受人（标的物所有权移转不当然及于其上的知识产权）",
+     "rules": [
+      "c600-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决标的物上知识产权的归属，不解决标的物本身所有权的移转；标的物所有权的移转仍依买卖合同章的一般规定判断",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，无补充例外；LEGO 卡片本行无",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c600-1",
+    "srcs": [
+     "art600-1"
+    ],
+    "body": [
+     "sale(K,X,S,B)",
+     "hasIntellectualProperty(X)",
+     "ipOf(IP,X)",
+     "~lawProvidesOtherwiseOnIP(X)",
+     "~agreedOtherwiseOnIP(K)"
+    ],
+    "heads": [
+     "-belongsTo(IP,B)"
+    ],
+    "note": "出卖具有知识产权的标的物的，除法律另有规定或者当事人另有约定外，该标的物的知识产权不属于买受人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "hasIntellectualProperty": "标的物上承载有受知识产权法保护的知识产权（标的物）",
+   "ipOf": "是该标的物上的知识产权（知识产权，标的物）",
+   "lawProvidesOtherwiseOnIP": "法律对标的物上的知识产权归属另有规定（标的物）",
+   "agreedOtherwiseOnIP": "当事人对标的物上的知识产权归属另有约定（合同）"
+  }
+ },
+ "card:g4878": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同的效力内容：出卖人负担转移标的物所有权的义务，买受人负担支付价款的义务",
+     "rules": [
+      "c595-1"
+     ]
+    },
+    {
+     "text": "出卖人未取得处分权致标的物所有权不能转移时，买受人如何救济；禁止或限制转让的标的物如何处理",
+     "rules": [
+      "c597-1",
+      "c597-valid",
+      "c597-2"
+     ]
+    },
+    {
+     "text": "出卖人的权利瑕疵担保义务、其免除情形，以及买受人的中止付款权",
+     "rules": [
+      "c613-base",
+      "c613-1",
+      "c614-1"
+     ]
+    },
+    {
+     "text": "出卖人的质量瑕疵担保义务、买受人的救济，以及约定减免瑕疵责任的效力",
+     "rules": [
+      "c615-1",
+      "c615-2",
+      "c615-remedy",
+      "c615-remedy2",
+      "c618-agree",
+      "c618-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "买卖合同成立，出卖人、买受人与标的物确定",
+     "rules": [
+      "c595-1"
+     ]
+    },
+    {
+     "text": "出卖人未取得标的物处分权，且因此致标的物所有权不能转移",
+     "rules": [
+      "c597-1",
+      "c597-valid"
+     ]
+    },
+    {
+     "text": "标的物为法律、行政法规禁止或者限制转让的标的物",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "第三人对买卖的标的物享有权利",
+     "rules": [
+      "c613-base",
+      "c613-1",
+      "c614-1"
+     ]
+    },
+    {
+     "text": "买受人订立合同时知道或者应当知道第三人对标的物享有权利",
+     "rules": [
+      "c613-1"
+     ]
+    },
+    {
+     "text": "买受人有确切证据证明第三人对标的物享有权利",
+     "rules": [
+      "c614-1"
+     ]
+    },
+    {
+     "text": "合同约定了标的物质量要求；或者出卖人提供了有关标的物质量说明",
+     "rules": [
+      "c615-1",
+      "c615-2"
+     ]
+    },
+    {
+     "text": "交付的标的物不符合质量要求",
+     "rules": [
+      "c615-remedy",
+      "c615-remedy2"
+     ]
+    },
+    {
+     "text": "当事人约定减轻或者免除出卖人对标的物瑕疵承担的责任",
+     "rules": [
+      "c618-agree",
+      "c618-1"
+     ]
+    },
+    {
+     "text": "出卖人因故意或者重大过失不告知买受人标的物瑕疵",
+     "rules": [
+      "c618-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "买受人订立合同时知道或者应当知道第三人对标的物享有权利的，出卖人不承担权利瑕疵担保义务",
+     "rules": [
+      "c613-1"
+     ]
+    },
+    {
+     "text": "出卖人提供适当担保的，买受人不得中止支付相应的价款",
+     "rules": [
+      "c614-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规禁止或者限制转让的标的物，依照其规定处理",
+     "rules": [
+      "c597-2"
+     ]
+    },
+    {
+     "text": "出卖人因故意或者重大过失不告知瑕疵的，无权主张约定的减轻或者免除责任",
+     "rules": [
+      "c618-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出卖人应当向买受人转移标的物所有权，买受人应当支付价款",
+     "rules": [
+      "c595-1"
+     ]
+    },
+    {
+     "text": "买受人可以解除合同并请求出卖人承担违约责任",
+     "rules": [
+      "c597-1"
+     ]
+    },
+    {
+     "text": "出卖人未取得处分权不导致买卖合同无效",
+     "rules": [
+      "c597-valid"
+     ]
+    },
+    {
+     "text": "出卖人就交付的标的物负有保证第三人不享有权利的权利瑕疵担保义务",
+     "rules": [
+      "c613-base"
+     ]
+    },
+    {
+     "text": "买受人可以中止支付相应的价款",
+     "rules": [
+      "c614-1"
+     ]
+    },
+    {
+     "text": "出卖人应当按照约定的质量要求交付标的物；提供质量说明的，交付的标的物应当符合该说明的质量要求",
+     "rules": [
+      "c615-1",
+      "c615-2"
+     ]
+    },
+    {
+     "text": "标的物不符合质量要求的，买受人可以请求承担违约责任，包括减少价款、修理、更换、恢复原状、赔偿损失",
+     "rules": [
+      "c615-remedy"
+     ]
+    },
+    {
+     "text": "因标的物瑕疵致使不能实现合同目的的，买受人可以拒绝接受标的物或者解除合同",
+     "rules": [
+      "c615-remedy2"
+     ]
+    },
+    {
+     "text": "约定减轻或者免除出卖人对标的物瑕疵的责任，原则上发生减免效力",
+     "rules": [
+      "c618-agree"
+     ]
+    },
+    {
+     "text": "出卖人故意或者重大过失不告知瑕疵的，不得主张减轻或者免除责任",
+     "rules": [
+      "c618-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "买受人明知或者应知权利瑕疵的规则，优先于出卖人权利瑕疵担保义务的一般规则",
+     "rules": [
+      "c613-1",
+      "c613-base"
+     ]
+    },
+    {
+     "text": "关于禁止或者限制转让标的物的特别规定，优先于无权处分的一般救济规则",
+     "rules": [
+      "c597-2",
+      "c597-1"
+     ]
+    },
+    {
+     "text": "出卖人故意或者重大过失不告知瑕疵时，不得主张约定减免，该规则优先于约定减免的效力规则",
+     "rules": [
+      "c618-1",
+      "c618-agree"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把“买受人有证据证明第三人对标的物享有权利可以中止支付相应价款”标注为第613条，实为第614条；第613条规定的是买受人明知或者应知权利瑕疵时出卖人免责",
+     "rules": []
+    },
+    {
+     "text": "第595条规定买卖合同的定义与所有权转移义务，第597条规定无权处分致所有权不能转移时的解除与违约责任；无权处分不影响合同效力系学理与LEGO卡片观点，法条未明文",
+     "rules": [
+      "c595-1",
+      "c597-1",
+      "c597-valid"
+     ]
+    },
+    {
+     "text": "第615条规定质量瑕疵担保义务本身，第618条规定约定减免该责任的效力及其限制，二者为义务与责任限制的关系",
+     "rules": [
+      "c615-1",
+      "c618-agree",
+      "c618-1"
+     ]
+    },
+    {
+     "text": "权利瑕疵担保（第三人对标的物享有权利）与质量瑕疵担保（标的物欠缺约定或法定品质）是两种不同的瑕疵担保，救济路径不同",
+     "rules": [
+      "c613-base",
+      "c615-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c595-1",
+    "srcs": [
+     "art595-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "transferOwnership(A,B,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "payPrice(B,A,K)"
+     }
+    ],
+    "note": "买卖合同是出卖人转移标的物所有权于买受人、买受人支付价款的合同，双方各负给付义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-1",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "-hasDisposalPower(A,T)",
+     "ownershipCannotTransfer(A,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimsTermination(B,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimBreachLiabilityFromSeller(B,A,K)"
+     }
+    ],
+    "note": "因出卖人未取得处分权致标的物所有权不能转移的，买受人可以解除合同并请求出卖人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-valid",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "subjectMatter(T,K)",
+     "-hasDisposalPower(A,T)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "出卖人无处分权不导致买卖合同无效（第597条的反面推论，学理与LEGO卡片观点，法条未明文）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c597-2",
+    "srcs": [
+     "art597-2"
+    ],
+    "body": [
+     "saleContract(K)",
+     "subjectMatter(T,K)",
+     "prohibitedOrRestrictedTransfer(T)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、行政法规禁止或者限制转让的标的物，依照其规定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c613-base",
+    "srcs": [
+     "art613-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)"
+    ],
+    "heads": [
+     "rightDefectWarranty(A,T)"
+    ],
+    "note": "出卖人就交付的标的物负有保证第三人不享有权利的权利瑕疵担保义务（第612条内容，本行未挂载，依笔记与第613条反面推知）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c613-1",
+    "srcs": [
+     "art613-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "thirdPartyRightIn(C,T)",
+     "knowsOrShouldKnowThirdPartyRight(B,T)"
+    ],
+    "heads": [
+     "-rightDefectWarranty(A,T)"
+    ],
+    "note": "买受人订立合同时知道或者应当知道第三人对标的物享有权利的，出卖人不承担权利瑕疵担保义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c614-1",
+    "srcs": [
+     "art614-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "thirdPartyRightIn(C,T)",
+     "hasConclusiveEvidenceOfThirdPartyRight(B,T)",
+     "~adequateSecurityProvided(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "suspendPaymentOfCorrespondingPrice(B,A,K)"
+     }
+    ],
+    "note": "买受人有确切证据证明第三人对标的物享有权利的，可以中止支付相应的价款，但出卖人提供适当担保的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c615-1",
+    "srcs": [
+     "art615-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "agreedQualityRequirement(K,Q)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "deliverConformingToAgreedQuality(A,T,K)"
+     }
+    ],
+    "note": "出卖人应当按照约定的质量要求交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c615-2",
+    "srcs": [
+     "art615-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "providesQualityDescription(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "deliverConformingToDescription(A,T)"
+     }
+    ],
+    "note": "出卖人提供有关标的物质量说明的，交付的标的物应当符合该说明的质量要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c615-remedy",
+    "srcs": [
+     "art615-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "qualityNonConforming(A,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimBreachLiabilityFromSeller(B,A,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimPriceReduction(B,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimRepairReplacementOrRestoration(B,T)"
+     }
+    ],
+    "note": "交付的标的物不符合质量要求的，买受人可以请求减少价款、修理、更换、恢复原状并主张损害赔偿（笔记与第582条，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c615-remedy2",
+    "srcs": [
+     "art615-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "qualityNonConforming(A,T,K)",
+     "qualityDefectFrustratesPurpose(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "rejectGoodsOrTerminate(B,K)"
+     }
+    ],
+    "note": "因标的物瑕疵致使不能实现合同目的的，买受人可以拒绝接受标的物或者解除合同（笔记与第610条，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c618-agree",
+    "srcs": [
+     "art618-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "agreedReduceOrExemptDefectLiability(K)"
+    ],
+    "heads": [
+     "-defectLiability(A,T)"
+    ],
+    "note": "当事人约定减轻或者免除出卖人对标的物瑕疵承担的责任，原则上发生减免效力（第618条的反面推论，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c618-1",
+    "srcs": [
+     "art618-1"
+    ],
+    "body": [
+     "saleContract(K)",
+     "sellerOf(A,K)",
+     "buyerOf(B,K)",
+     "subjectMatter(T,K)",
+     "agreedReduceOrExemptDefectLiability(K)",
+     {
+      "or": [
+       "intentionallyConcealsDefect(A,B,T)",
+       "grosslyNegligentlyConcealsDefect(A,B,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimReductionOrExemptionOfDefectLiability(A,K)"
+     }
+    ],
+    "note": "约定减免瑕疵责任，但出卖人因故意或者重大过失不告知买受人标的物瑕疵的，出卖人无权主张减轻或者免除责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c613-1",
+    "c613-base",
+    "买受人订立合同时知道或者应当知道第三人对标的物享有权利的，出卖人不承担权利瑕疵担保义务"
+   ],
+   [
+    "c618-1",
+    "c618-agree",
+    "出卖人因故意或者重大过失不告知标的物瑕疵的，无权主张约定的减轻或者免除责任"
+   ],
+   [
+    "c597-2",
+    "c597-1",
+    "法律、行政法规对禁止或者限制转让的标的物另有规定的，依照其规定，优先于无权处分的一般救济规则"
+   ]
+  ],
+  "predicates": {
+   "saleContract": "是买卖合同（合同）",
+   "sellerOf": "是买卖合同的出卖人（出卖人，合同）",
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "subjectMatter": "是买卖合同的标的物（标的物，合同）",
+   "transferOwnership": "转移标的物所有权（出卖人，买受人，合同）",
+   "ownershipCannotTransfer": "因出卖人未取得处分权致使标的物所有权不能转移（出卖人，买受人，标的物）",
+   "claimBreachLiabilityFromSeller": "请求出卖人承担违约责任（买受人，出卖人，合同）",
+   "prohibitedOrRestrictedTransfer": "标的物为法律、行政法规禁止或者限制转让的标的物（标的物）",
+   "rightDefectWarranty": "负有保证第三人对标的物不享有权利的权利瑕疵担保义务（出卖人，标的物）",
+   "thirdPartyRightIn": "第三人对标的物享有权利（第三人，标的物）",
+   "knowsOrShouldKnowThirdPartyRight": "订立合同时知道或者应当知道第三人对标的物享有权利（买受人，标的物）",
+   "hasConclusiveEvidenceOfThirdPartyRight": "有确切证据证明第三人对标的物享有权利（买受人，标的物）",
+   "suspendPaymentOfCorrespondingPrice": "中止支付相应的价款（买受人，出卖人，合同）",
+   "agreedQualityRequirement": "合同约定的标的物质量要求（合同，质量要求）",
+   "deliverConformingToAgreedQuality": "按约定的质量要求交付标的物（出卖人，标的物，合同）",
+   "providesQualityDescription": "提供有关标的物质量说明（出卖人，标的物）",
+   "deliverConformingToDescription": "交付的标的物符合质量说明的质量要求（出卖人，标的物）",
+   "qualityNonConforming": "交付的标的物不符合质量要求（出卖人，标的物，合同）",
+   "claimPriceReduction": "请求减少价款（买受人，合同）",
+   "rejectGoodsOrTerminate": "拒绝接受标的物或者解除合同（买受人，合同）",
+   "agreedReduceOrExemptDefectLiability": "当事人约定减轻或者免除出卖人对标的物瑕疵承担的责任（合同）",
+   "defectLiability": "对标的物瑕疵承担责任（出卖人，标的物）",
+   "intentionallyConcealsDefect": "因故意不告知买受人标的物瑕疵（出卖人，买受人，标的物）",
+   "grosslyNegligentlyConcealsDefect": "因重大过失不告知买受人标的物瑕疵（出卖人，买受人，标的物）",
+   "claimReductionOrExemptionOfDefectLiability": "主张减轻或者免除对标的物瑕疵的责任（出卖人，合同）"
+  }
+ },
+ "card:g4882": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 terminateContract 已在词表中表示“终止合同权利义务关系（参数：合同）”，不能重新定义为“解除合同（合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"出卖人未取得处分权致标的物所有权不能转移时，买受人如何救济\",\n        \"rules\": [\"c597-ground\", \"c597-1\"]\n      },\n      {\n        \"text\": \"出卖人交付标的物、交付单证资料并转移标的物所有权的义务范围\",\n        \"rules\": [\"c598-1\", \"c598-2\", \"c599\"]\n      },\n      {\n        \"text\": \"标的物为法律、行政法规禁止或者限制转让之物时如何处理\",\n        \"rules\": [\"c597-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"存在买卖合同，出卖人未取得对标的物的处分权，致使标的物所有权不能转移\",\n        \"rules\": [\"c597-ground\"]\n      },\n      {\n        \"text\": \"出卖人负有向买受人交付标的物或者交付提取标的物的单证、并转移标的物所有权的义务\",\n        \"rules\": [\"c598-1\", \"c598-2\"]\n      },\n      {\n        \"text\": \"按照约定或者交易习惯，出卖人应当交付提取标的物单证以外的有关单证和资料\",\n        \"rules\": [\"c599\"]\n      },\n      {\n        \"text\": \"标的物属于法律、行政法规禁止或者限制转让之物\",\n        \"rules\": [\"c597-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"法律、行政法规禁止或者限制转让的标的物，依照其规定处理，不适用第597条第1款的一般救济规则\",\n        \"rules\": [\"c597-2\"]\n      },\n      {\n        \"text\": \"出卖人按照约定未交付有关标的物的单证和资料的，不影响标的物毁损、灭失风险的转移\",\n        \"rules\": [\"c609\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"买受人可以解除合同，并请求出卖人承担违约责任\",\n        \"rules\": [\"c597-1\"]\n      },\n      {\n        \"text\": \"出卖人应当向买受人交付标的物或者交付提取标的物的单证\",\n        \"rules\": [\"c598-1\"]\n      },\n      {\n        \"text\": \"出卖人应当向买受人转移标的物所有权\",\n        \"rules\": [\"c598-2\"]\n      },\n      {\n        \"text\": \"出卖人应当按照约定或者交易习惯交付提取标的物单证以外的有关单证和资料\",\n        \"rules\": [\"c599\"]\n      },\n      {\n        \"text\": \"标的物已交付的，风险由买受人承担，且不因单证、资料未交付而受影响\",\n        \"rules\": [\"c609\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"关于禁止或者限制转让标的物的特别规定，优先于第597条第1款的一般买卖救济规则\",\n        \"rules\": [\"c597-2\"]\n      },\n      {\n        \"text\": \"单证、资料未交付不影响风险转移，优先于以未交付单证为由主张风险未转移\",\n        \"rules\": [\"c609\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记：所有权转移依物权编处理，不动产以登记、动产以交付为要件；第598条只设定出卖人的义务，本身不直接发生物权变动\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称“未办理登记但已交付占有可能产生事实上的所有权变动”，与不动产物权登记生效主义不符，不予采纳\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片所列第600条（知识产权标的物）不在本行挂载法条范围内，不写规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第597条第2款为引致条款，禁止或者限制转让的具体规则依法律、行政法规确定\",\n        \"rules\": [\"c597-2\"]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c597-ground\",\n      \"srcs\": [\"art597-1\"],\n      \"body\": [\n        \"sale(S,B,T,K)\",\n        \"-hasDisposalPower(S,T)\"\n      ],\n      \"heads\": [\n        \"ownershipNotTransferableForLackOfDisposalPower(S,B,T)\"\n      ],\n      \"note\": \"因出卖人未取得处分权，致使标的物所有权不能转移\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c597-1\",\n      \"srcs\": [\"art597-1\"],\n      \"body\": [\n        \"sale(S,B,T,K)\",\n        \"ownershipNotTransferableForLackOfDisposalPower(S,B,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"S\",\n          \"content\": \"terminateContract(K)\"\n        },\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"S\",\n          \"content\": \"claimBreachLiabilityFrom(B,S,K)\"\n        }\n      ],\n      \"note\": \"因出卖人未取得处分权致标的物所有权不能转移的，买受人可以解除合同并请求出卖人承担违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c597-2\",\n      \"srcs\": [\"art597-2\"],\n      \"body\": [\n        \"subjectMatterOf(T,K)\",\n        {\n          \"or\": [\n            \"transferProhibitedByLawOrAdminRegulation(T)\",\n            \"transferRestrictedByLawOrAdminRegulation(T)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        \"governedBySpecialProvisions(T)\"\n      ],\n      \"note\": \"法律、行政法规禁止或者限制转让的标的物，依照其规定处理（引致条款）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c598-1\",\n      \"srcs\": [\"art598\"],\n      \"body\": [\n        \"sale(S,B,T,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"B\",\n          \"content\": \"deliverSubjectMatterOrDocuments(S,B,T)\"\n        }\n      ],\n      \"note\": \"出卖人应当履行向买受人交付标的物或者交付提取标的物的单证的义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c598-2\",\n      \"srcs\": [\"art598\"],\n      \"body\": [\n        \"sale(S,B,T,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"B\",\n          \"content\": \"transferOwnership(S,B,T)\"\n        }\n      ],\n      \"note\": \"出卖人应当履行向买受人转移标的物所有权的义务；所有权转移的具体要件依物权编（不动产登记、动产交付）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c599\",\n      \"srcs\": [\"art599\"],\n      \"body\": [\n        \"sale(S,B,T,K)\",\n        {\n          \"or\": [\n            \"agreedOn(K,D)\",\n            \"tradeUsageRequiresDeliveryOf(D,K)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"S\",\n          \"counterparty\": \"B\",\n          \"content\": \"deliverOtherDocumentsAndMaterials(S,B,D)\"\n        }\n      ],\n      \"note\": \"出卖人应当按照约定或者交易习惯，交付提取标的物单证以外的有关单证和资料\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c609\",\n      \"srcs\": [\"art609\"],\n      \"body\": [\n        \"sale(S,B,T,K)\",\n        \"delivered(T)\",\n        \"agreedOn(K,D)\",\n        \"-deliveredDocuments(S,B,D)\"\n      ],\n      \"heads\": [\n        \"riskOnBuyer(B)\"\n      ],\n      \"note\": \"出卖人按照约定未交付有关标的物的单证和资料的，不影响标的物毁损、灭失风险的转移；风险自交付时起由买受人承担（与第604条结合）\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c597-2\",\n      \"c597-1\",\n      \"法律、行政法规对禁止或者限制转让的标的物另有规定的，依照其规定，优先于第597条第1款的一般救济规则\"\n    ]\n  ],\n  \"predicates\": {\n    \"ownershipNotTransferableForLackOfDisposalPower\": \"因出卖人未取得处分权，致使标的物所有权不能转移（出卖人，买受人，标的物）\",\n    \"terminateContract\": \"解除合同（合同）\",\n    \"deliverSubjectMatterOrDocuments\": \"向买受人交付标的物或者交付提取标的物的单证（出卖人，买受人，标的物）\",\n    \"transferOwnership\": \"向买受人转移标的物所有权（出卖人，买受人，标的物）\",\n    \"deliverOtherDocumentsAndMaterials\": \"交付提取标的物单证以外的有关单证和资料（出卖人，买受人，单证资料）\",\n    \"agreedOn\": \"当事人就某事项已作约定（合同，事项）\",\n    \"tradeUsageRequiresDeliveryOf\": \"依交易习惯应当交付（单证资料，合同）\",\n    \"deliveredDocuments\": \"已交付有关单证和资料（出卖人，买受人，单证资料）\",\n    \"transferRestrictedByLawOrAdminRegulation\": \"法律、行政法规限制转让的标的物（标的物）\"\n  }\n}"
+ },
+ "art:601": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人应当在什么时间交付标的物；约定交付期限的，出卖人可以在什么时间交付",
+     "rules": [
+      "c601-1",
+      "c601-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人依合同负有交付标的物的义务，且合同约定了交付的时间",
+     "rules": [
+      "c601-1"
+     ]
+    },
+    {
+     "text": "合同约定的是一段交付期限（期间），而非某一具体时点",
+     "rules": [
+      "c601-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出卖人应当按照约定的时间交付标的物",
+     "rules": [
+      "c601-1"
+     ]
+    },
+    {
+     "text": "约定交付期限的，出卖人可以在该交付期限内的任何时间交付，均属适当履行",
+     "rules": [
+      "c601-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决交付的时间问题；交付地点依第603条、标的物毁损灭失风险依第604条以下判断，笔记未就本条作特别说明",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c601-1",
+    "srcs": [
+     "art601-1"
+    ],
+    "body": [
+     "seller(S,K)",
+     "contractAgreement(K)",
+     "agreedDeliveryTime(K,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "deliverAtAgreedTime(S,K,T)"
+     }
+    ],
+    "note": "出卖人应当按照约定的时间交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c601-2",
+    "srcs": [
+     "art601-1"
+    ],
+    "body": [
+     "seller(S,K)",
+     "contractAgreement(K)",
+     "agreedDeliveryPeriod(K,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "deliverWithinPeriod(S,K,P)"
+     }
+    ],
+    "note": "约定交付期限的，出卖人可以在该交付期限内的任何时间交付",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreedDeliveryTime": "约定的交付时间（合同，时间）",
+   "agreedDeliveryPeriod": "约定的交付期限，即一段时间（合同，期间）",
+   "deliverAtAgreedTime": "按约定的时间交付标的物（出卖人，合同，时间）",
+   "deliverWithinPeriod": "在约定的交付期限内的任何时间交付标的物（出卖人，合同，期间）"
+  }
+ },
+ "art:616": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同中当事人对标的物的质量要求没有约定或者约定不明确，且依据第510条仍不能确定时，应当依何种标准确定质量要求",
+     "rules": [
+      "c616-1",
+      "c616-content"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人对标的物的质量要求没有约定或者约定不明确",
+     "rules": [
+      "c616-1"
+     ]
+    },
+    {
+     "text": "依据第510条的规定（先协议补充，再按合同相关条款或者交易习惯）仍不能确定",
+     "rules": [
+      "c616-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依第510条能够确定的，直接依第510条确定质量要求，不适用本条的指引",
+     "rules": [
+      "c616-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用第511条第1项，即质量要求不明确的，按照强制性国家标准履行；没有强制性国家标准的，按照推荐性国家标准履行；没有推荐性国家标准的，按照行业标准履行；没有国家标准、行业标准的，按照通常标准或者符合合同目的的特定标准履行",
+     "rules": [
+      "c616-1",
+      "c616-content"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "确定顺序：先由当事人约定；约定不明时依第510条补充确定；仍不能确定的，才适用第511条第1项，故第510条的补充确定优先于第511条第1项的适用",
+     "rules": [
+      "c616-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是买卖合同章的引用性（准用性）规范，只指向第511条第1项，不指向第511条其他各项；第510条是补充合同漏洞的一般规则，本条以“依第510条仍不能确定”为适用前提",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，本行亦无 LEGO 卡片，形式化仅依据法条原文；第511条第1项的具体内容不在本行挂载法条之内，故相应规则标为学理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c616-1",
+    "srcs": [
+     "art616"
+    ],
+    "body": [
+     "contract(K)",
+     "noAgreedOrUnclearQualityRequirement(K)",
+     "~determinablePerArt510(K)"
+    ],
+    "heads": [
+     "applyArt511Item1(K)"
+    ],
+    "note": "当事人对标的物的质量要求没有约定或者约定不明确，依据第510条仍不能确定的，适用第511条第1项",
+    "auth": "npc"
+   },
+   {
+    "key": "c616-content",
+    "srcs": [
+     "art616"
+    ],
+    "body": [
+     "applyArt511Item1(K)"
+    ],
+    "heads": [
+     "qualityRequirementDeterminedPerArt511Item1(K)"
+    ],
+    "note": "第511条第1项的内容：依次按强制性国家标准、推荐性国家标准、行业标准、通常标准或者符合合同目的的特定标准确定质量要求；该内容不在本行挂载法条内，故标为学理",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "noAgreedOrUnclearQualityRequirement": "当事人对标的物的质量要求没有约定或者约定不明确（参数：合同）",
+   "applyArt511Item1": "适用第511条第1项关于质量要求不明确时的履行标准（参数：合同）",
+   "qualityRequirementDeterminedPerArt511Item1": "标的物质量要求依第511条第1项确定（参数：合同）"
+  }
+ },
+ "art:612": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人对其交付的标的物，是否负有保证第三人对该标的物不享有任何权利的义务（权利瑕疵担保义务）",
+     "rules": [
+      "c612-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人依买卖合同向买受人交付了标的物",
+     "rules": [
+      "c612-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的除外：法律对出卖人的该项义务另有规定时，不适用本条的权利瑕疵担保义务",
+     "rules": [
+      "c612-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出卖人对买受人负有保证第三人对该交付的标的物不享有任何权利的义务",
+     "rules": [
+      "c612-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定的，优先于本条关于出卖人权利瑕疵担保义务的一般规定（但书）",
+     "rules": [
+      "c612-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定出卖人的权利瑕疵担保义务本身，未规定违反该义务的救济方式；笔记未引用原文或条号，无可据以区分的特别内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c612-1",
+    "srcs": [
+     "art612-1"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "buyerOf(B,K)",
+     "subjectMatterOf(T,K)",
+     "delivered(T)",
+     "~lawProvidesOtherwiseOnWarrantyAgainstThirdPartyRight(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "warrantNoThirdPartyRight(S,T)"
+     }
+    ],
+    "note": "出卖人就其依买卖合同交付的标的物，负有保证第三人对该标的物不享有任何权利的义务，但法律另有规定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sellerOf": "sellerOf/2：是买卖合同的出卖人（出卖人，合同）",
+   "buyerOf": "buyerOf/2：是买卖合同的买受人（买受人，合同）",
+   "warrantNoThirdPartyRight": "warrantNoThirdPartyRight/2：保证第三人对该标的物不享有任何权利（出卖人，标的物）",
+   "lawProvidesOtherwiseOnWarrantyAgainstThirdPartyRight": "lawProvidesOtherwiseOnWarrantyAgainstThirdPartyRight/1：法律对出卖人保证第三人对标的物不享有任何权利的义务另有规定（标的物）"
+  }
+ },
+ "art:617": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人交付的标的物不符合质量要求时，买受人可否请求承担违约责任、依据哪些条文请求",
+     "rules": [
+      "c617-1",
+      "c617-ref"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在买卖合同，出卖人已交付标的物",
+     "rules": [
+      "c617-1"
+     ]
+    },
+    {
+     "text": "交付的标的物不符合质量要求",
+     "rules": [
+      "c617-1",
+      "c617-ref"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "买受人可以依据第582条至第584条请求出卖人承担违约责任",
+     "rules": [
+      "c617-1"
+     ]
+    },
+    {
+     "text": "具体救济方式（修理、重作、更换、退货、减少价款或报酬、赔偿损失等）依第582条至第584条确定，本条为指引性规定，不独立创设救济方式",
+     "rules": [
+      "c617-ref"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "质量不符合要求的违约救济以第582条至第584条为规范依据，本条仅作指引，不另行规定独立的救济内容",
+     "rules": [
+      "c617-ref"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，本行亦无 LEGO 卡片，无可区分内容；本条与第610条（质量不符合要求致不能实现合同目的时的拒绝接受、解除合同）功能不同，本条解决的是违约救济依据的指引问题",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c617-1",
+    "srcs": [
+     "art617"
+    ],
+    "body": [
+     "sale(S,B,T,K)",
+     "delivered(T)",
+     "qualityNonConforming(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "claimBreachLiabilityUnder582to584(B,S,K)"
+     }
+    ],
+    "note": "出卖人交付的标的物不符合质量要求的，买受人可以依据第582条至第584条请求承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c617-ref",
+    "srcs": [
+     "art617"
+    ],
+    "body": [
+     "sale(S,B,T,K)",
+     "qualityNonConforming(T)"
+    ],
+    "heads": [
+     "remediesGovernedByArts582to584(K)"
+    ],
+    "note": "质量不符合要求的违约救济方式（修理、重作、更换、退货、减价、赔偿损失等）依第582条至第584条确定，本条为指引性规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "qualityNonConforming": "出卖人交付的标的物不符合质量要求（参数：标的物）",
+   "claimBreachLiabilityUnder582to584": "买受人依据第582条至第584条请求出卖人承担违约责任（买受人，出卖人，合同）",
+   "remediesGovernedByArts582to584": "违约救济方式依照第582条至第584条确定（参数：合同）"
+  }
+ },
+ "art:619": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人交付标的物时应当按照何种包装方式包装；对包装方式没有约定或者约定不明确时如何确定",
+     "rules": [
+      "c619-1",
+      "c619-510",
+      "c619-2",
+      "c619-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同，且当事人就标的物的包装方式有约定",
+     "rules": [
+      "c619-1"
+     ]
+    },
+    {
+     "text": "对包装方式没有约定或者约定不明确，但依据第510条（协商补充、按照合同相关条款或者交易习惯）仍可以确定",
+     "rules": [
+      "c619-510"
+     ]
+    },
+    {
+     "text": "对包装方式没有约定或者约定不明确，且依据第510条仍不能确定，该标的物有通用的包装方式",
+     "rules": [
+      "c619-2"
+     ]
+    },
+    {
+     "text": "对包装方式没有约定或者约定不明确，依据第510条仍不能确定，且没有通用包装方式",
+     "rules": [
+      "c619-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出卖人应当按照约定的包装方式交付标的物",
+     "rules": [
+      "c619-1"
+     ]
+    },
+    {
+     "text": "依第510条可以确定的，出卖人按该条确定的方式包装并交付",
+     "rules": [
+      "c619-510"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，出卖人应当按照通用的方式包装",
+     "rules": [
+      "c619-2"
+     ]
+    },
+    {
+     "text": "没有通用方式的，出卖人应当采取足以保护标的物且有利于节约资源、保护生态环境的包装方式",
+     "rules": [
+      "c619-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有约定的包装方式的，优先适用约定，不再适用第510条及通用方式、保护性包装的补充规则",
+     "rules": [
+      "c619-1"
+     ]
+    },
+    {
+     "text": "依第510条可以确定的，优先于通用方式包装规则",
+     "rules": [
+      "c619-510"
+     ]
+    },
+    {
+     "text": "有通用方式的，优先适用通用方式，无须再采取足以保护标的物的特别包装方式",
+     "rules": [
+      "c619-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未涉及本条；本条是买卖合同出卖人交付义务中包装方式的具体化，与第510条的合同补充确定规则相衔接，属递进的补充顺序而非并列可选",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c619-1",
+    "srcs": [
+     "art619-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "agreedPackagingMethod(K,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverInAgreedPackaging(S,K,T,M)"
+     }
+    ],
+    "note": "出卖人应当按照约定的包装方式交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c619-510",
+    "srcs": [
+     "art619-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedOrUnclearPackaging(K)",
+     "determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverPerArt510DeterminedPackaging(S,K,T)"
+     }
+    ],
+    "note": "对包装方式没有约定或者约定不明确，但依据第510条仍可以确定的，按第510条确定的方式包装（条文“仍不能确定”的反面解释）",
+    "auth": "npc"
+   },
+   {
+    "key": "c619-2",
+    "srcs": [
+     "art619-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedOrUnclearPackaging(K)",
+     "-determinablePerArt510(K)",
+     "hasGeneralPackagingMethod(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "packageInGeneralManner(S,T)"
+     }
+    ],
+    "note": "对包装方式没有约定或者约定不明确，依第510条仍不能确定的，应当按照通用的方式包装",
+    "auth": "npc"
+   },
+   {
+    "key": "c619-3",
+    "srcs": [
+     "art619-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedOrUnclearPackaging(K)",
+     "-determinablePerArt510(K)",
+     "-hasGeneralPackagingMethod(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "packageToProtectSubjectMatter(S,T)"
+     }
+    ],
+    "note": "没有通用方式的，应当采取足以保护标的物且有利于节约资源、保护生态环境的包装方式",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c619-1",
+    "c619-510",
+    "当事人约定了包装方式的，约定优先，不再依第510条补充确定"
+   ],
+   [
+    "c619-510",
+    "c619-2",
+    "依第510条可以确定的，优先于通用方式包装规则"
+   ],
+   [
+    "c619-2",
+    "c619-3",
+    "有通用方式的，优先适用通用方式，无须再采取足以保护标的物的特别包装方式"
+   ]
+  ],
+  "predicates": {
+   "agreedPackagingMethod": "当事人就标的物的包装方式有约定（合同，包装方式）",
+   "noAgreedOrUnclearPackaging": "对包装方式没有约定或者约定不明确（合同）",
+   "hasGeneralPackagingMethod": "该标的物存在通用的包装方式（标的物）",
+   "deliverInAgreedPackaging": "按约定的包装方式交付标的物（出卖人，合同，标的物，包装方式）",
+   "deliverPerArt510DeterminedPackaging": "按第510条确定的方式包装并交付标的物（出卖人，合同，标的物）",
+   "packageInGeneralManner": "按通用的方式包装标的物（出卖人，标的物）",
+   "packageToProtectSubjectMatter": "采取足以保护标的物且有利于节约资源、保护生态环境的包装方式（出卖人，标的物）"
+  }
+ },
+ "art:620": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买受人收到标的物后，应当在什么期限内检验标的物",
+     "rules": [
+      "c620-1",
+      "c620-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "买受人收到标的物",
+     "rules": [
+      "c620-1",
+      "c620-2"
+     ]
+    },
+    {
+     "text": "当事人约定了检验期限",
+     "rules": [
+      "c620-1"
+     ]
+    },
+    {
+     "text": "当事人没有约定检验期限",
+     "rules": [
+      "c620-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "没有约定检验期限的，不发生“在约定期限内检验”的义务，而应改为及时检验",
+     "rules": [
+      "c620-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "买受人应当在约定的检验期限内检验标的物",
+     "rules": [
+      "c620-1"
+     ]
+    },
+    {
+     "text": "没有约定检验期限的，买受人应当及时检验标的物",
+     "rules": [
+      "c620-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把“及时检验标的物”列为买受人的合同义务；第620条第1款只规定检验的时间要求，未规定违反检验义务的后果（异议通知期间、视为符合约定等后果规定在第621条以下）",
+     "rules": []
+    },
+    {
+     "text": "笔记标题中“出卖人依照买受人的指示向第三人交付标的物”涉及检验标准冲突问题，不属于本款规范内容，本卡片不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c620-1",
+    "srcs": [
+     "art620-1"
+    ],
+    "body": [
+     "buyerOf(B,K)",
+     "receivedSubjectMatter(B,K)",
+     "agreedInspectionPeriod(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "inspectWithinPeriod(B,K)"
+     }
+    ],
+    "note": "买受人收到标的物时，应当在约定的检验期限内检验标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c620-2",
+    "srcs": [
+     "art620-1"
+    ],
+    "body": [
+     "buyerOf(B,K)",
+     "receivedSubjectMatter(B,K)",
+     "-agreedInspectionPeriod(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "inspectTimely(B,K)"
+     }
+    ],
+    "note": "没有约定检验期限的，买受人应当及时检验标的物",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "receivedSubjectMatter": "收到标的物（买受人，合同）",
+   "agreedInspectionPeriod": "当事人约定了检验期限（买受人，合同）",
+   "inspectWithinPeriod": "在约定的检验期限内检验标的物（买受人，合同）",
+   "inspectTimely": "及时检验标的物（买受人，合同）"
+  }
+ },
+ "art:623": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人未约定检验期限时，买受人签收载明标的物数量、型号、规格的送货单、确认单等，是否推定其已对数量和外观瑕疵进行检验",
+     "rules": [
+      "c623-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人对标的物的检验期限未作约定",
+     "rules": [
+      "c623-1"
+     ]
+    },
+    {
+     "text": "买受人签收的送货单、确认单等载明标的物数量、型号、规格",
+     "rules": [
+      "c623-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有相关证据足以推翻该推定的，不推定买受人已检验",
+     "rules": [
+      "c623-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "推定买受人已经对标的物的数量和外观瑕疵进行检验",
+     "rules": [
+      "c623-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "该推定仅及于数量瑕疵和外观瑕疵，不及于隐蔽瑕疵、内在质量瑕疵；后者仍依质量检验的相关规定处理",
+     "rules": [
+      "c623-1"
+     ]
+    },
+    {
+     "text": "本条为可反驳的推定，而非不可推翻的拟制；买受人可以相反证据推翻",
+     "rules": [
+      "c623-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c623-1",
+    "srcs": [
+     "art623-1"
+    ],
+    "body": [
+     "noAgreedInspectionPeriod(K)",
+     "signedReceiptStating(B,K)",
+     "~rebuttedBySufficientEvidence(B,K)"
+    ],
+    "heads": [
+     "presumedInspected(B,K)"
+    ],
+    "note": "未约定检验期限，买受人签收载明数量、型号、规格的送货单、确认单等的，推定其已对数量和外观瑕疵进行检验；有相关证据足以推翻的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "noAgreedInspectionPeriod": "当事人对标的物的检验期限未作约定（参数：合同）",
+   "signedReceiptStating": "买受人签收的送货单、确认单等载明标的物数量、型号、规格（买受人，合同）",
+   "presumedInspected": "推定买受人已经对标的物的数量和外观瑕疵进行检验（买受人，合同）",
+   "rebuttedBySufficientEvidence": "有相关证据足以推翻上述推定（买受人，合同）"
+  }
+ },
+ "art:622": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人约定的检验期限过短，或者约定的检验期限、质量保证期短于法律、行政法规规定的期限时，检验期限应当如何认定",
+     "rules": [
+      "c622-1",
+      "c622-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定的检验期限过短，根据标的物的性质和交易习惯，买受人在该检验期限内难以完成全面检验",
+     "rules": [
+      "c622-1"
+     ]
+    },
+    {
+     "text": "约定的检验期限或者质量保证期短于法律、行政法规规定的期限",
+     "rules": [
+      "c622-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该约定期间仅视为买受人对标的物外观瑕疵提出异议的期限，不构成对隐蔽瑕疵提出异议的完整检验期限",
+     "rules": [
+      "c622-1"
+     ]
+    },
+    {
+     "text": "以法律、行政法规规定的期限为准，即法定期间取代约定的检验期限或质量保证期",
+     "rules": [
+      "c622-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法定期间是约定期间的最低标准：约定检验期限或质量保证期短于法律、行政法规规定期限的，法定期间优先于当事人的约定",
+     "rules": [
+      "c622-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款与第2款的适用条件不同：前者针对“期限过短致难以完成全面检验”，后者针对“短于法定期间”；两者可以并存，即过短的约定期间既只及于外观瑕疵，又不得低于法定期间",
+     "rules": [
+      "c622-1",
+      "c622-2"
+     ]
+    },
+    {
+     "text": "本条只解决检验期限、质量保证期的认定，不涉及第621条关于检验期间内通知瑕疵的义务及两年期间的规定；本行笔记未引用原文或条号，无可采的补充内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c622-1",
+    "srcs": [
+     "art622-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "agreedInspectionPeriod(K,P)",
+     "inspectionPeriodTooShortForFullInspection(K,P)"
+    ],
+    "heads": [
+     "appearanceDefectObjectionPeriod(K,P)"
+    ],
+    "note": "约定的检验期限过短，依标的物性质和交易习惯买受人难以完成全面检验的，该期限仅视为对标的物外观瑕疵提出异议的期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c622-2",
+    "srcs": [
+     "art622-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     {
+      "or": [
+       "agreedInspectionPeriod(K,P)",
+       "agreedQualityGuaranteePeriod(K,P)"
+      ]
+     },
+     "shorterThanStatutoryPeriod(K,P)"
+    ],
+    "heads": [
+     "statutoryPeriodPrevails(K,P)"
+    ],
+    "note": "约定的检验期限或质量保证期短于法律、行政法规规定期限的，以法定期间为准（该“应当”指向期间认定，非当事人义务，故写成构成性结论）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c622-2",
+    "c622-1",
+    "法定期间为约定期间的最低标准：约定检验期限短于法律、行政法规规定期限的，以法定期间为准，排除该过短约定期间作为完整检验期限的效力"
+   ]
+  ],
+  "predicates": {
+   "agreedInspectionPeriod": "当事人约定的检验期限（合同，期限）",
+   "inspectionPeriodTooShortForFullInspection": "约定的检验期限过短，根据标的物的性质和交易习惯，买受人在该期限内难以完成全面检验（合同，期限）",
+   "appearanceDefectObjectionPeriod": "该期限仅视为买受人对标的物外观瑕疵提出异议的期限（合同，期限）",
+   "agreedQualityGuaranteePeriod": "当事人约定的质量保证期（合同，期间）",
+   "shorterThanStatutoryPeriod": "约定的检验期限或质量保证期短于法律、行政法规规定的期限（合同，约定期间）",
+   "statutoryPeriodPrevails": "以法律、行政法规规定的期限为准（合同，约定期间）"
+  }
+ },
+ "art:624": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人依照买受人的指示向第三人交付标的物时，出卖人和买受人约定的检验标准与买受人和第三人约定的检验标准不一致的，应以何者为准",
+     "rules": [
+      "c624-ground",
+      "c624-1",
+      "c624-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人依照买受人的指示向第三人交付标的物（向第三人履行）",
+     "rules": [
+      "c624-ground"
+     ]
+    },
+    {
+     "text": "出卖人和买受人约定的检验标准与买受人和第三人约定的检验标准不一致",
+     "rules": [
+      "c624-ground"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "以出卖人和买受人约定的检验标准为准",
+     "rules": [
+      "c624-1"
+     ]
+    },
+    {
+     "text": "买受人与第三人约定的检验标准不能作为认定标的物是否符合约定的依据",
+     "rules": [
+      "c624-2"
+     ]
+    },
+    {
+     "text": "买受人应当按照该检验标准检验标的物（笔记将本条置于“买受人的合同义务—及时检验标的物”项下，属学理归纳）",
+     "rules": [
+      "c624-inspect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "出卖人与买受人约定的检验标准优先于买受人与第三人约定的检验标准",
+     "rules": [
+      "c624-1",
+      "c624-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条仅适用于出卖人依买受人指示向第三人交付标的物的情形；普通买卖中标的物的质量要求与检验标准依当事人约定及第615条、第616条等确定",
+     "rules": []
+    },
+    {
+     "text": "笔记把本条列在“买受人的合同义务—及时检验标的物”之下，说明该标准是判断标的物是否符合约定、买受人检验是否合格的依据，而非独立的检验程序规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c624-ground",
+    "srcs": [
+     "art624-1"
+    ],
+    "body": [
+     "deliversToThirdPartyPerInstruction(S,B,T,K)",
+     "inspectionStandardAgreedBetween(S,B,K)",
+     "inspectionStandardAgreedBetween(B,T,K)",
+     "inspectionStandardsInconsistent(K)"
+    ],
+    "heads": [
+     "inconsistentInspectionStandardCase(S,B,T,K)"
+    ],
+    "note": "出卖人依买受人指示向第三人交付标的物，且出卖人与买受人的检验标准同买受人与第三人的检验标准不一致",
+    "auth": "npc"
+   },
+   {
+    "key": "c624-1",
+    "srcs": [
+     "art624-1"
+    ],
+    "body": [
+     "inconsistentInspectionStandardCase(S,B,T,K)"
+    ],
+    "heads": [
+     "controllingInspectionStandard(S,B,K)"
+    ],
+    "note": "两个检验标准不一致时，以出卖人和买受人约定的检验标准为准",
+    "auth": "npc"
+   },
+   {
+    "key": "c624-2",
+    "srcs": [
+     "art624-1"
+    ],
+    "body": [
+     "inconsistentInspectionStandardCase(S,B,T,K)"
+    ],
+    "heads": [
+     "-controllingInspectionStandard(B,T,K)"
+    ],
+    "note": "买受人与第三人约定的检验标准不能作为认定标的物是否符合约定的依据",
+    "auth": "npc"
+   },
+   {
+    "key": "c624-inspect",
+    "srcs": [
+     "art624-1"
+    ],
+    "body": [
+     "controllingInspectionStandard(S,B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "inspectPerControllingStandard(B,S,K)"
+     }
+    ],
+    "note": "笔记将本条置于买受人及时检验义务项下，故买受人应按该标准检验标的物；条文本身只规定以何标准为准，此为学理归纳",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deliversToThirdPartyPerInstruction": "出卖人依照买受人的指示向第三人交付标的物（出卖人，买受人，第三人，合同）",
+   "inspectionStandardAgreedBetween": "双方约定的检验标准（一方，另一方，合同）",
+   "inspectionStandardsInconsistent": "出卖人与买受人约定的检验标准与买受人和第三人约定的检验标准不一致（合同）",
+   "inconsistentInspectionStandardCase": "存在检验标准不一致的向第三人交付情形（出卖人，买受人，第三人，合同）",
+   "controllingInspectionStandard": "以该双方约定的检验标准为准（一方，另一方，合同）",
+   "inspectPerControllingStandard": "按该检验标准检验标的物（买受人，出卖人，合同）"
+  }
+ },
+ "art:625": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "标的物在有效使用年限届满后应予回收的，由谁负担回收义务、义务内容为何",
+     "rules": [
+      "c625-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物在有效使用年限届满后应予回收，其依据是法律、行政法规的规定或者当事人的约定",
+     "rules": [
+      "c625-ground"
+     ]
+    },
+    {
+     "text": "义务主体为标的物的出卖人",
+     "rules": [
+      "c625-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出卖人负有对标的物予以回收的义务，可以自行回收，也可以委托第三人回收",
+     "rules": [
+      "c625-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条回收义务以法律、行政法规规定或者当事人约定“应予回收”为前提，并非一切出卖人的普遍义务；与第558条后合同义务中的旧物回收义务（词表 recycleOldItems）不是同一规则",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外或学理内容；本行只就第625条第1款形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c625-ground",
+    "srcs": [
+     "art625"
+    ],
+    "body": [
+     {
+      "or": [
+       "lawOrAdminRegulationRequiresRecycling(T)",
+       "agreedRecycling(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "recyclableAfterUsefulLife(T)"
+    ],
+    "note": "标的物在有效使用年限届满后应予回收，其依据为法律、行政法规的规定或者当事人的约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c625-1",
+    "srcs": [
+     "art625"
+    ],
+    "body": [
+     "sellerOf(S,T)",
+     "recyclableAfterUsefulLife(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "recycleSubjectMatter(S,T)"
+     }
+    ],
+    "note": "标的物应予回收的，出卖人负有自行或者委托第三人对标的物予以回收的义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sellerOf": "是标的物的出卖人（出卖人，标的物）",
+   "lawOrAdminRegulationRequiresRecycling": "依照法律、行政法规的规定，标的物在有效使用年限届满后应予回收",
+   "agreedRecycling": "按照当事人的约定，标的物在有效使用年限届满后应予回收",
+   "recyclableAfterUsefulLife": "标的物在有效使用年限届满后应予回收",
+   "recycleSubjectMatter": "对标的物予以回收（出卖人自行回收或者委托第三人回收）"
+  }
+ },
+ "card:g4971": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c621-1：新谓词 notifyNonConformity 需要在 predicates 中给出中文释义",
+   "c621-2：新谓词 notifyNonConformity 需要在 predicates 中给出中文释义",
+   "c634-1a：新谓词 requestFullPrice 需要在 predicates 中给出中文释义",
+   "c634-1b：谓词 terminateContract 已有用法为 1 个参数，这里用了 3 个",
+   "c634-2：新谓词 requestUseFee 需要在 predicates 中给出中文释义",
+   "c634-3：新谓词 requestReturnOfExcess 需要在 predicates 中给出中文释义",
+   "c635-1：新谓词 sealSample 需要在 predicates 中给出中文释义",
+   "c635-1b：新谓词 explainSampleQuality 需要在 predicates 中给出中文释义",
+   "c635-2：新谓词 deliverConformingToSample 需要在 predicates 中给出中文释义",
+   "c636：新谓词 deliverMeetingUsualStandardOfSameKind 需要在 predicates 中给出中文释义",
+   "c638-1a：新谓词 purchaseGoods 需要在 predicates 中给出中文释义",
+   "c638-1a：新谓词 refusePurchase 需要在 predicates 中给出中文释义",
+   "c641-1：新谓词 agreeRetentionOfTitle 需要在 predicates 中给出中文释义",
+   "c642-1：新谓词 recoverGoods 需要在 predicates 中给出中文释义",
+   "c642-2：新谓词 negotiateRecovery 需要在 predicates 中给出中文释义",
+   "c642-3：谓词 negotiationFailed 已有用法为 1 个参数，这里用了 2 个",
+   "c642-3：新谓词 referToSecurityRealizationProcedure 需要在 predicates 中给出中文释义",
+   "c643-1：新谓词 requestRedemption 需要在 predicates 中给出中文释义",
+   "c643-2：新谓词 sellToThirdPartyAtReasonablePrice 需要在 predicates 中给出中文释义",
+   "c643-3：新谓词 returnSurplusToBuyer 需要在 predicates 中给出中文释义",
+   "c643-4：谓词 payShortfall 已有用法为 2 个参数，这里用了 3 个",
+   "谓词 negotiationFailed 已在词表中表示“协商不成（参数1：共有物）”，不能重新定义为“出卖人与买受人协商取回标的物不成（出卖人，买受人）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"标的物数量或质量不符合约定时，买受人的检验通知义务、通知期间及“视为符合约定”的效果（第621条）\",\n        \"rules\": [\"c621-1\", \"c621-1b\", \"c621-2\", \"c621-2b\", \"c621-2y\", \"c621-warranty\", \"c621-3\"]\n      },\n      {\n        \"text\": \"分期付款买卖中买受人未付到期价款达五分之一时出卖人的救济（第634条）\",\n        \"rules\": [\"c634-1a\", \"c634-1b\", \"c634-2\", \"c634-3\"]\n      },\n      {\n        \"text\": \"凭样品买卖的样品封存、质量标准，以及样品有隐蔽瑕疵时的处理（第635、636条）\",\n        \"rules\": [\"c635-1\", \"c635-1b\", \"c635-2\", \"c636\"]\n      },\n      {\n        \"text\": \"试用买卖中买受人购买意思表示的认定（第638条）\",\n        \"rules\": [\"c638-1a\", \"c638-1b\", \"c638-2\"]\n      },\n      {\n        \"text\": \"所有权保留的效力、出卖人取回权及其限制、买受人回赎权与未回赎的后果（第641–643条）\",\n        \"rules\": [\"c641-1\", \"c641-1b\", \"c641-2\", \"c641-2b\", \"c642-1\", \"c642-75\", \"c642-third\", \"c642-2\", \"c642-3\", \"c643-1\", \"c643-2\", \"c643-3\", \"c643-4\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"当事人约定检验期限的，买受人应当在检验期限内通知；没有约定检验期限的，应当在发现或者应当发现不符合约定的合理期限内通知出卖人\",\n        \"rules\": [\"c621-1\", \"c621-2\"]\n      },\n      {\n        \"text\": \"分期付款买卖中，买受人未支付到期价款的数额达到全部价款的五分之一，且经催告后在合理期限内仍未支付\",\n        \"rules\": [\"c634-1a\", \"c634-1b\"]\n      },\n      {\n        \"text\": \"凭样品买卖的当事人应当封存样品，并可以对样品质量予以说明\",\n        \"rules\": [\"c635-1\", \"c635-1b\"]\n      },\n      {\n        \"text\": \"凭样品买卖的买受人不知道样品有隐蔽瑕疵\",\n        \"rules\": [\"c636\"]\n      },\n      {\n        \"text\": \"试用期限届满，买受人对是否购买未作表示；或者试用期内已支付部分价款、对标的物实施出卖、出租、设立担保物权等行为\",\n        \"rules\": [\"c638-1b\", \"c638-2\"]\n      },\n      {\n        \"text\": \"约定出卖人保留标的物所有权且所有权尚未转移；买受人未按约支付价款经催告后合理期限内仍未支付、未完成特定条件，或将标的物出卖、出质或作其他不当处分，并造成出卖人损害\",\n        \"rules\": [\"c641-1\", \"c642-1\"]\n      },\n      {\n        \"text\": \"出卖人取回标的物后，买受人在双方约定或者出卖人指定的合理回赎期限内消除取回的事由\",\n        \"rules\": [\"c643-1\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"对标的物有质量保证期的，适用质量保证期，不适用自收到标的物之日起二年的通知期间\",\n        \"rules\": [\"c621-warranty\", \"c621-2y\"]\n      },\n      {\n        \"text\": \"出卖人知道或者应当知道提供的标的物不符合约定的，买受人不受前两款通知时间的限制\",\n        \"rules\": [\"c621-3\"]\n      },\n      {\n        \"text\": \"取回权以“除当事人另有约定外”为限，当事人另有约定的从其约定\",\n        \"rules\": [\"c642-1\"]\n      },\n      {\n        \"text\": \"买受人已支付标的物总价款的百分之七十五以上，或者第三人已善意取得标的物所有权或其他物权的，出卖人不得主张取回（司法解释、笔记）\",\n        \"rules\": [\"c642-75\", \"c642-third\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"买受人怠于通知、在合理期限内未通知或者自收到标的物之日起二年内未通知的，视为标的物的数量或者质量符合约定\",\n        \"rules\": [\"c621-1b\", \"c621-2b\", \"c621-2y\"]\n      },\n      {\n        \"text\": \"出卖人可以请求买受人支付全部价款，或者解除合同；解除合同的，可以请求买受人支付标的物的使用费\",\n        \"rules\": [\"c634-1a\", \"c634-1b\", \"c634-2\"]\n      },\n      {\n        \"text\": \"出卖人解除合同并扣留已受领价金，扣留金额超过标的物使用费及标的物受损赔偿额的，买受人有权请求返还超过部分（司法解释）\",\n        \"rules\": [\"c634-3\"]\n      },\n      {\n        \"text\": \"出卖人交付的标的物应当与样品及其说明的质量相同；样品有隐蔽瑕疵而买受人不知的，交付的标的物仍应当符合同种物的通常标准\",\n        \"rules\": [\"c635-2\", \"c636\"]\n      },\n      {\n        \"text\": \"试用期内买受人可以购买也可以拒绝购买；期限届满未作表示，或者试用期内支付部分价款、处分标的物的，视为购买（同意购买）\",\n        \"rules\": [\"c638-1a\", \"c638-1b\", \"c638-2\"]\n      },\n      {\n        \"text\": \"可以约定买受人未履行支付价款或其他义务时标的物所有权属于出卖人；该保留的所有权未经登记不得对抗善意第三人，已登记则可以对抗\",\n        \"rules\": [\"c641-1\", \"c641-1b\", \"c641-2\", \"c641-2b\"]\n      },\n      {\n        \"text\": \"出卖人有权取回标的物；可以与买受人协商取回，协商不成的可以参照适用担保物权的实现程序\",\n        \"rules\": [\"c642-1\", \"c642-2\", \"c642-3\"]\n      },\n      {\n        \"text\": \"买受人可以请求回赎标的物；未回赎的，出卖人可以合理价格将标的物出卖给第三人，所得价款扣除未付价款及必要费用后有剩余的应当返还买受人，不足部分由买受人清偿\",\n        \"rules\": [\"c643-1\", \"c643-2\", \"c643-3\", \"c643-4\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"质量保证期优先于第621条第2款自收到标的物之日起二年的通知期间\",\n        \"rules\": [\"c621-warranty\", \"c621-2y\"]\n      },\n      {\n        \"text\": \"出卖人知道或者应当知道标的物不符合约定时，通知期间的限制不发生“视为符合约定”的效果\",\n        \"rules\": [\"c621-3\"]\n      },\n      {\n        \"text\": \"样品有隐蔽瑕疵且买受人不知情时，同种物的通常标准优先于“与样品相同”的标准\",\n        \"rules\": [\"c636\", \"c635-2\"]\n      },\n      {\n        \"text\": \"买受人已付总价款百分之七十五以上或者第三人已善意取得时，取回权被排除\",\n        \"rules\": [\"c642-75\", \"c642-third\", \"c642-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记：分期付款买卖须将总价款在一定期间内至少分三次支付，可适用于动产与不动产；而所有权保留只能适用于动产（不动产须登记）\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记：分期付款买卖中当事人可以约定所有权和风险承担的转移时间，没有约定的为标的物交付之日；法条未规定，属学理补充\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称第634条为特别规则、优先于一般合同解除权，并称与第642条取回权并行；该优先关系法条未明定，仅供参考\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第632条（单物质量瑕疵致合同目的不能实现）、第633条（分批交付的解除）与本行的分期付款、凭样品、试用买卖规则适用对象不同\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c621-1\",\n      \"srcs\": [\"art621-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"agreedInspectionPeriod(K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"notifyNonConformity(B,S,K)\"}\n      ],\n      \"note\": \"约定检验期限的，买受人应当在检验期限内将数量或质量不符合约定的情形通知出卖人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-1b\",\n      \"srcs\": [\"art621-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"agreedInspectionPeriod(K)\", \"buyerFailsToNotifyWithinInspectionPeriod(B,K)\"],\n      \"heads\": [\"deemedConforming(K)\"],\n      \"note\": \"买受人怠于通知的，视为标的物的数量或者质量符合约定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-2\",\n      \"srcs\": [\"art621-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"-agreedInspectionPeriod(K)\", \"buyerDiscoversOrShouldDiscoverNonConformity(B,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"notifyNonConformity(B,S,K)\"}\n      ],\n      \"note\": \"没有约定检验期限的，买受人应当在发现或者应当发现不符合约定的合理期限内通知出卖人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-2b\",\n      \"srcs\": [\"art621-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"-agreedInspectionPeriod(K)\", \"buyerFailsToNotifyWithinReasonablePeriod(B,K)\"],\n      \"heads\": [\"deemedConforming(K)\"],\n      \"note\": \"没有约定检验期限，买受人在合理期限内未通知的，视为符合约定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-2y\",\n      \"srcs\": [\"art621-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"-agreedInspectionPeriod(K)\", \"buyerFailsToNotifyWithinTwoYearsOfReceipt(B,K)\", \"~hasQualityWarrantyPeriod(K)\"],\n      \"heads\": [\"deemedConforming(K)\"],\n      \"note\": \"没有约定检验期限，买受人自收到标的物之日起二年内未通知的，视为符合约定；有质量保证期的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-warranty\",\n      \"srcs\": [\"art621-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"hasQualityWarrantyPeriod(K)\"],\n      \"heads\": [\"warrantyPeriodApplies(K)\", \"-twoYearNoticePeriodApplies(K)\"],\n      \"note\": \"对标的物有质量保证期的，适用质量保证期，不适用该二年的规定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c621-3\",\n      \"srcs\": [\"art621-3\"],\n      \"body\": [\"sale(K,S,B,O)\", \"sellerKnowsOrShouldKnowNonConformity(S,K)\"],\n      \"heads\": [\"-deemedConforming(K)\"],\n      \"note\": \"出卖人知道或者应当知道提供的标的物不符合约定的，买受人不受前两款通知时间的限制，不发生视为符合约定的效果\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c634-1a\",\n      \"srcs\": [\"art634-1\"],\n      \"body\": [\"installmentSale(K)\", \"sale(K,S,B,O)\", \"unpaidDuePriceReachesOneFifth(B,K)\", \"demandedPayment(S,K)\", \"stillNotPerformedAfterDemand(B,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"requestFullPrice(S,B,K)\"}\n      ],\n      \"note\": \"分期付款买受人未付到期价款达全部价款五分之一，经催告后合理期限内仍未支付的，出卖人可以请求支付全部价款\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c634-1b\",\n      \"srcs\": [\"art634-1\"],\n      \"body\": [\"installmentSale(K)\", \"sale(K,S,B,O)\", \"unpaidDuePriceReachesOneFifth(B,K)\", \"demandedPayment(S,K)\", \"stillNotPerformedAfterDemand(B,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"terminateContract(S,B,K)\"}\n      ],\n      \"note\": \"同一条件下，出卖人也可以解除合同（与请求支付全部价款二者择一）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c634-2\",\n      \"srcs\": [\"art634-2\"],\n      \"body\": [\"installmentSale(K)\", \"sale(K,S,B,O)\", \"sellerTerminates(S,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"requestUseFee(S,B,K)\"}\n      ],\n      \"note\": \"出卖人解除合同的，可以向买受人请求支付该标的物的使用费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c634-3\",\n      \"srcs\": [\"art634-2\"],\n      \"body\": [\"installmentSale(K)\", \"sale(K,S,B,O)\", \"sellerTerminates(S,K)\", \"sellerRetainsReceivedPrice(S,K)\", \"retentionExceedsUseFeeAndDamage(S,K)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"requestReturnOfExcess(B,S,K)\"}\n      ],\n      \"note\": \"笔记所引最高法规定：解除时扣留已受领价金超过标的物使用费及受损赔偿额的，买受人有权请求返还超过部分\",\n      \"auth\": \"spc\"\n    },\n    {\n      \"key\": \"c635-1\",\n      \"srcs\": [\"art635-1\"],\n      \"body\": [\"saleBySample(K)\", \"concernedParty(P,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"sealSample(P,K)\"}\n      ],\n      \"note\": \"凭样品买卖的当事人应当封存样品\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c635-1b\",\n      \"srcs\": [\"art635-1\"],\n      \"body\": [\"saleBySample(K)\", \"concernedParty(P,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"explainSampleQuality(P,K)\"}\n      ],\n      \"note\": \"当事人可以对样品质量予以说明\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c635-2\",\n      \"srcs\": [\"art635-1\"],\n      \"body\": [\"saleBySample(K)\", \"sale(K,S,B,O)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"deliverConformingToSample(S,B,K)\"}\n      ],\n      \"note\": \"出卖人交付的标的物应当与样品及其说明的质量相同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c636\",\n      \"srcs\": [\"art636-1\"],\n      \"body\": [\"saleBySample(K)\", \"sale(K,S,B,O)\", \"buyerUnawareOfHiddenDefectInSample(B,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"deliverMeetingUsualStandardOfSameKind(S,B,K)\"}\n      ],\n      \"note\": \"买受人不知道样品有隐蔽瑕疵的，即使交付的标的物与样品相同，质量仍应当符合同种物的通常标准\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c638-1a\",\n      \"srcs\": [\"art638-1\"],\n      \"body\": [\"trialSale(K)\", \"sale(K,S,B,O)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"purchaseGoods(B,K)\"},\n        {\"type\": \"PERM\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"refusePurchase(B,K)\"}\n      ],\n      \"note\": \"试用买卖的买受人在试用期内可以购买标的物，也可以拒绝购买\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c638-1b\",\n      \"srcs\": [\"art638-1\"],\n      \"body\": [\"trialSale(K)\", \"sale(K,S,B,O)\", \"trialPeriodExpired(K)\", \"buyerSilentOnPurchase(B,K)\"],\n      \"heads\": [\"deemedPurchase(B,K)\"],\n      \"note\": \"试用期限届满，买受人对是否购买未作表示的，视为购买\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c638-2\",\n      \"srcs\": [\"art638-2\"],\n      \"body\": [\"trialSale(K)\", \"sale(K,S,B,O)\", {\"or\": [\"paidPartOfPriceDuringTrial(B,K)\", \"disposedOfGoodsDuringTrial(B,K)\"]}],\n      \"heads\": [\"deemedPurchase(B,K)\"],\n      \"note\": \"试用期内已支付部分价款，或对标的物实施出卖、出租、设立担保物权等行为的，视为同意购买\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c641-1\",\n      \"srcs\": [\"art641-1\"],\n      \"body\": [\"sale(K,S,B,O)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"agreeRetentionOfTitle(S,B,K)\"}\n      ],\n      \"note\": \"当事人可以在买卖合同中约定买受人未履行支付价款或者其他义务时，标的物的所有权属于出卖人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c641-1b\",\n      \"srcs\": [\"art641-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"buyerFailsToPayOrOtherObligation(B,K)\"],\n      \"heads\": [\"belongsTo(O,S)\"],\n      \"note\": \"有上述约定且买受人未履行支付价款或其他义务的，标的物所有权属于出卖人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c641-2\",\n      \"srcs\": [\"art641-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"-retentionRegistered(K)\"],\n      \"heads\": [\"-retainedOwnershipOpposableToBonaFideThirdParty(S,O)\"],\n      \"note\": \"出卖人保留的所有权未经登记，不得对抗善意第三人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c641-2b\",\n      \"srcs\": [\"art641-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"retentionRegistered(K)\"],\n      \"heads\": [\"retainedOwnershipOpposableToBonaFideThirdParty(S,O)\"],\n      \"note\": \"由“未经登记不得对抗”反面推论：已登记的保留所有权可以对抗善意第三人（学理）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c642-1\",\n      \"srcs\": [\"art642-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"-ownershipTransferred(O,B)\", {\"or\": [\"buyerFailsToPayAfterDemand(B,K)\", \"buyerFailsToCompleteCondition(B,K)\", \"buyerDisposesOfGoodsImproperly(B,K)\"]}, \"causesDamageToSeller(B,S)\", \"~otherwiseAgreed(K)\"],\n      \"heads\": [\n        \"recoveryRight(S,B,O)\",\n        {\"type\": \"RIGHT\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"recoverGoods(S,B,O)\"}\n      ],\n      \"note\": \"约定保留所有权且所有权转移前，买受人有未付价款经催告仍不付、未完成特定条件、不当处分标的物情形之一并造成出卖人损害的，除当事人另有约定外，出卖人有权取回标的物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c642-75\",\n      \"srcs\": [\"art642-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"buyerPaid75Percent(B,K)\"],\n      \"heads\": [\"-recoveryRight(S,B,O)\"],\n      \"note\": \"笔记所引最高法规定：买受人已支付标的物总价款百分之七十五以上的，出卖人不得主张取回标的物\",\n      \"auth\": \"spc\"\n    },\n    {\n      \"key\": \"c642-third\",\n      \"srcs\": [\"art642-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"thirdPartyBonaFideAcquired(O,T)\"],\n      \"heads\": [\"-recoveryRight(S,B,O)\"],\n      \"note\": \"笔记所引最高法规定：第三人已善意取得标的物所有权或其他物权的，出卖人不得主张取回\",\n      \"auth\": \"spc\"\n    },\n    {\n      \"key\": \"c642-2\",\n      \"srcs\": [\"art642-2\"],\n      \"body\": [\"recoveryRight(S,B,O)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"negotiateRecovery(S,B,O)\"}\n      ],\n      \"note\": \"出卖人可以与买受人协商取回标的物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c642-3\",\n      \"srcs\": [\"art642-2\"],\n      \"body\": [\"recoveryRight(S,B,O)\", \"negotiationFailed(S,B)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"referToSecurityRealizationProcedure(S,B,O)\"}\n      ],\n      \"note\": \"协商不成的，可以参照适用担保物权的实现程序\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c643-1\",\n      \"srcs\": [\"art643-1\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"recoveryRight(S,B,O)\", \"eliminatedRecoveryGround(B,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"requestRedemption(B,S,K)\"}\n      ],\n      \"note\": \"出卖人取回标的物后，买受人在双方约定或者出卖人指定的合理回赎期限内消除取回事由的，可以请求回赎标的物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c643-2\",\n      \"srcs\": [\"art643-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"recoveryRight(S,B,O)\", \"redemptionPeriodExpired(B,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"sellToThirdPartyAtReasonablePrice(S,B,K)\"}\n      ],\n      \"note\": \"买受人在回赎期限内没有回赎的，出卖人可以以合理价格将标的物出卖给第三人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c643-3\",\n      \"srcs\": [\"art643-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"recoveryRight(S,B,O)\", \"redemptionPeriodExpired(B,K)\", \"surplusAfterDeduction(S,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"S\", \"counterparty\": \"B\", \"content\": \"returnSurplusToBuyer(S,B,K)\"}\n      ],\n      \"note\": \"出卖所得价款扣除买受人未支付的价款以及必要费用后仍有剩余的，应当返还买受人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c643-4\",\n      \"srcs\": [\"art643-2\"],\n      \"body\": [\"sale(K,S,B,O)\", \"retentionOfTitleAgreed(K)\", \"recoveryRight(S,B,O)\", \"redemptionPeriodExpired(B,K)\", \"shortfallAfterDeduction(S,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"B\", \"counterparty\": \"S\", \"content\": \"payShortfall(B,S,K)\"}\n      ],\n      \"note\": \"出卖所得价款不足的，不足部分由买受人清偿\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c621-warranty\", \"c621-2y\", \"有质量保证期的，适用质量保证期，不适用自收到标的物之日起二年的通知期间\"],\n    [\"c621-3\", \"c621-1b\", \"出卖人知道或者应当知道标的物不符合约定的，买受人不受约定检验期限通知的限制\"],\n    [\"c621-3\", \"c621-2b\", \"出卖人知道或者应当知道标的物不符合约定的，买受人不受合理期限通知的限制\"],\n    [\"c621-3\", \"c621-2y\", \"出卖人知道或者应当知道标的物不符合约定的，买受人不受二年通知期间的限制\"],\n    [\"c636\", \"c635-2\", \"样品有隐蔽瑕疵且买受人不知情时，同种物的通常标准优先于“与样品相同”的标准\"],\n    [\"c642-75\", \"c642-1\", \"买受人已支付总价款百分之七十五以上，出卖人不得取回标的物\"],\n    [\"c642-third\", \"c642-1\", \"第三人已善意取得标的物所有权或其他物权，出卖人不得取回标的物\"]\n  ],\n  \"predicates\": {\n    \"agreedInspectionPeriod\": \"当事人约定检验期限（合同）\",\n    \"buyerFailsToNotifyWithinInspectionPeriod\": \"买受人怠于在检验期限内通知不符合约定（买受人，合同）\",\n    \"deemedConforming\": \"视为标的物的数量或者质量符合约定（合同）\",\n    \"buyerDiscoversOrShouldDiscoverNonConformity\": \"买受人发现或者应当发现标的物数量或质量不符合约定（买受人，合同）\",\n    \"buyerFailsToNotifyWithinReasonablePeriod\": \"买受人在合理期限内未通知不符合约定（买受人，合同）\",\n    \"buyerFailsToNotifyWithinTwoYearsOfReceipt\": \"买受人自收到标的物之日起二年内未通知不符合约定（买受人，合同）\",\n    \"hasQualityWarrantyPeriod\": \"标的物有质量保证期（合同）\",\n    \"warrantyPeriodApplies\": \"适用质量保证期（合同）\",\n    \"twoYearNoticePeriodApplies\": \"适用自收到标的物之日起二年的通知期间（合同）\",\n    \"sellerKnowsOrShouldKnowNonConformity\": \"出卖人知道或者应当知道提供的标的物不符合约定（出卖人，合同）\",\n    \"installmentSale\": \"分期付款买卖（合同）\",\n    \"unpaidDuePriceReachesOneFifth\": \"未支付到期价款的数额达到全部价款的五分之一（买受人，合同）\",\n    \"demandedPayment\": \"出卖人已催告买受人支付到期价款（出卖人，合同）\",\n    \"sellerTerminates\": \"出卖人解除合同（出卖人，合同）\",\n    \"sellerRetainsReceivedPrice\": \"出卖人解除合同时扣留已受领价金（出卖人，合同）\",\n    \"retentionExceedsUseFeeAndDamage\": \"扣留金额超过标的物使用费以及标的物受损赔偿额（出卖人，合同）\",\n    \"saleBySample\": \"凭样品买卖（合同）\",\n    \"buyerUnawareOfHiddenDefectInSample\": \"买受人不知道样品有隐蔽瑕疵（买受人，合同）\",\n    \"trialSale\": \"试用买卖（合同）\",\n    \"trialPeriodExpired\": \"试用期限届满（合同）\",\n    \"buyerSilentOnPurchase\": \"买受人对是否购买标的物未作表示（买受人，合同）\",\n    \"deemedPurchase\": \"视为购买（同意购买）（买受人，合同）\",\n    \"paidPartOfPriceDuringTrial\": \"试用期内已支付部分价款（买受人，合同）\",\n    \"disposedOfGoodsDuringTrial\": \"试用期内对标的物实施出卖、出租、设立担保物权等行为（买受人，合同）\",\n    \"retentionOfTitleAgreed\": \"约定出卖人保留标的物所有权（合同）\",\n    \"buyerFailsToPayOrOtherObligation\": \"买受人未履行支付价款或者其他义务（买受人，合同）\",\n    \"retentionRegistered\": \"出卖人保留的所有权已登记（合同）\",\n    \"retainedOwnershipOpposableToBonaFideThirdParty\": \"保留的所有权可以对抗善意第三人（出卖人，标的物）\",\n    \"ownershipTransferred\": \"标的物所有权已转移（标的物，买受人）\",\n    \"buyerFailsToPayAfterDemand\": \"未按照约定支付价款，经催告后在合理期限内仍未支付（买受人，合同）\",\n    \"buyerFailsToCompleteCondition\": \"未按照约定完成特定条件（买受人，合同）\",\n    \"buyerDisposesOfGoodsImproperly\": \"将标的物出卖、出质或者作出其他不当处分（买受人，合同）\",\n    \"causesDamageToSeller\": \"造成出卖人损害（买受人，出卖人）\",\n    \"otherwiseAgreed\": \"当事人另有约定（合同）\",\n    \"recoveryRight\": \"出卖人享有取回标的物的权利（出卖人，买受人，标的物）\",\n    \"buyerPaid75Percent\": \"买受人已支付标的物总价款的百分之七十五以上（买受人，合同）\",\n    \"thirdPartyBonaFideAcquired\": \"第三人已善意取得标的物所有权或者其他物权（标的物，第三人）\",\n    \"negotiationFailed\": \"出卖人与买受人协商取回标的物不成（出卖人，买受人）\",\n    \"eliminatedRecoveryGround\": \"买受人消除了出卖人取回标的物的事由（买受人，合同）\",\n    \"redemptionPeriodExpired\": \"买受人在回赎期限内没有回赎标的物（买受人，合同）\",\n    \"surplusAfterDeduction\": \"出卖所得价款扣除未支付价款及必要费用后仍有剩余（出卖人，合同）\",\n    \"shortfallAfterDeduction\": \"出卖所得价款扣除未支付价款及必要费用后不足（出卖人，合同）\"\n  }\n}"
+ },
+ "art:602": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c602-1：新谓词 noAgreedDeliveryTime 需要在 predicates 中给出中文释义",
+   "c602-1：新谓词 applyArt510And511Item4ByReference 需要在 predicates 中给出中文释义",
+   "c602-2：新谓词 applyArt510And511Item4ByReference 需要在 predicates 中给出中文释义",
+   "c602-2：新谓词 deliveryTimeDeterminedBySupplementaryMeans 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"当事人没有约定标的物的交付期限或者约定不明确时，交付期限如何确定\",\n        \"rules\": [\n          \"c602-1\",\n          \"c602-2\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"存在合同关系，且当事人就标的物的交付期限没有约定或者约定不明确\",\n        \"rules\": [\n          \"c602-1\"\n        ]\n      }\n    ],\n    \"exceptions\": [],\n    \"effects\": [\n      {\n        \"text\": \"适用第510条、第511条第4项的规定，即先由当事人协议补充，不能达成补充协议的，按照合同相关条款或者交易习惯确定；仍不能确定的，依第511条第4项确定交付期限\",\n        \"rules\": [\n          \"c602-1\",\n          \"c602-2\"\n        ]\n      }\n    ],\n    \"priority\": [],\n    \"distinguish\": [\n      {\n        \"text\": \"本条是参照适用（援引）条款，本身不直接规定交付期限的内容；当事人已明确约定交付期限的，不适用本条\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第511条第4项的具体内容（债务人可以随时履行、债权人可以随时请求履行，但应当给对方必要的准备时间）不在本行挂载范围，仅作学理说明\",\n        \"rules\": [\n          \"c602-2\"\n        ]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c602-1\",\n      \"srcs\": [\n        \"art602-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"noAgreedDeliveryTime(K)\"\n      ],\n      \"heads\": [\n        \"applyArt510And511Item4ByReference(K)\"\n      ],\n      \"note\": \"当事人没有约定标的物的交付期限或者约定不明确的，适用第510条、第511条第4项的规定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c602-2\",\n      \"srcs\": [\n        \"art602-1\"\n      ],\n      \"body\": [\n        \"applyArt510And511Item4ByReference(K)\"\n      ],\n      \"heads\": [\n        \"deliveryTimeDeterminedBySupplementaryMeans(K)\"\n      ],\n      \"note\": \"援引的效果：交付期限先依第510条协议补充、按合同相关条款或交易习惯确定，仍不能确定时依第511条第4项确定（第511条内容本行未挂载，属学理说明）\",\n      \"auth\": \"doctrine\"\n    }\n  ],\n  \"overrides\": [],\n  \"predicates\": {\n    \"noAgreedDeliveryTime/1\": \"当事人没有约定标的物的交付期限或者约定不明确（参数：合同）\",\n    \"applyArt510And511Item4ByReference/1\": \"适用第510条、第511条第4项的规定（参数：合同）\",\n    \"deliveryTimeDeterminedBySupplementaryMeans/1\": \"交付期限依第510条补充确定，仍不能确定时依第511条第4项确定（参数：合同）\"\n  }\n}"
+ },
+ "art:626": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同中买受人支付价款的数额与支付方式如何确定",
+     "rules": [
+      "c626-1",
+      "c626-2",
+      "c626-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同关系",
+     "rules": [
+      "c626-1",
+      "c626-2",
+      "c626-3"
+     ]
+    },
+    {
+     "text": "当事人对价款的数额和支付方式有约定且约定明确",
+     "rules": [
+      "c626-1"
+     ]
+    },
+    {
+     "text": "对价款的数额和支付方式没有约定或者约定不明确",
+     "rules": [
+      "c626-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "买受人应当按照约定的数额和支付方式支付价款",
+     "rules": [
+      "c626-1"
+     ]
+    },
+    {
+     "text": "对价款数额和支付方式没有约定或者约定不明确的，适用第510条以及第511条第2项（价款按订立合同时履行地的市场价格，依法应执行政府定价或政府指导价的按规定）、第5项（履行方式按有利于实现合同目的的方式）的规定予以确定",
+     "rules": [
+      "c626-2"
+     ]
+    },
+    {
+     "text": "经上述补充规则确定数额和支付方式后，买受人仍应按该确定的数额和方式支付价款",
+     "rules": [
+      "c626-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定优先：当事人对价款数额和支付方式有明确约定的，按约定履行，不适用第510条、第511条第2项和第5项的补充确定规则",
+     "rules": [
+      "c626-1",
+      "c626-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决价款“数额”与“支付方式”；价款支付地点见第627条、支付时间见第628条，不在本条范围",
+     "rules": []
+    },
+    {
+     "text": "第510条、第511条第2项和第5项在本条中仅起补充确定作用，不改变买受人依约支付价款的主给付义务",
+     "rules": [
+      "c626-2",
+      "c626-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c626-1",
+    "srcs": [
+     "art626-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "agreedPriceAmountAndMethod(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,S,K)"
+     }
+    ],
+    "note": "买受人应当按照约定的数额和支付方式支付价款（sale(K,S,B,T)中S为出卖人、B为买受人、T为标的物）",
+    "auth": "npc"
+   },
+   {
+    "key": "c626-2",
+    "srcs": [
+     "art626-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreementOrUnclearOnPriceAmountOrMethod(K)"
+    ],
+    "heads": [
+     "determinablePerArt510(K)",
+     "applyArt511Item2And5ByReference(K)"
+    ],
+    "note": "对价款数额和支付方式没有约定或者约定不明确的，适用第510条、第511条第2项和第5项确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c626-3",
+    "srcs": [
+     "art626-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,S,K)"
+     }
+    ],
+    "note": "经第510条、第511条第2项和第5项补充确定数额与支付方式后，买受人应按该确定的数额和方式支付价款（本条两句合并读出的结论）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c626-1",
+    "c626-2",
+    "当事人对价款数额和支付方式有明确约定的，约定优先，不适用第510条、第511条第2项和第5项的补充确定规则"
+   ]
+  ],
+  "predicates": {
+   "agreedPriceAmountAndMethod": "当事人对价款的数额和支付方式有约定且约定明确（1个参数：合同）",
+   "noAgreementOrUnclearOnPriceAmountOrMethod": "对价款的数额和支付方式没有约定或者约定不明确（1个参数：合同）",
+   "applyArt511Item2And5ByReference": "适用第511条第2项（价款按订立合同时履行地市场价格，依法执行政府定价或政府指导价的按规定）和第5项（履行方式按有利于实现合同目的的方式）（1个参数：合同）"
+  }
+ },
+ "art:629": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人多交标的物时，买受人能否接收或者拒绝接收多交部分，以及接收或拒绝后各自负担何种义务",
+     "rules": [
+      "c629-1",
+      "c629-accept",
+      "c629-reject"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人多交标的物（超出约定数量的部分）",
+     "rules": [
+      "c629-1"
+     ]
+    },
+    {
+     "text": "买受人接收多交部分",
+     "rules": [
+      "c629-accept"
+     ]
+    },
+    {
+     "text": "买受人拒绝接收多交部分",
+     "rules": [
+      "c629-reject"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "买受人可以接收，也可以拒绝接收多交的部分（二者择一）",
+     "rules": [
+      "c629-1"
+     ]
+    },
+    {
+     "text": "买受人接收多交部分的，应当按照约定的价格支付价款",
+     "rules": [
+      "c629-accept"
+     ]
+    },
+    {
+     "text": "买受人拒绝接收多交部分的，应当及时通知出卖人",
+     "rules": [
+      "c629-reject"
+     ]
+    },
+    {
+     "text": "（笔记观点）买受人拒收后，出卖人有暂时保管并应急处置标的物的义务",
+     "rules": [
+      "c629-custody"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记把“出卖人暂时保管并应急处置标的物的义务”系于第629条，但法条原文并无此内容，只能作为学理/司法解释层面的规则处理",
+     "rules": [
+      "c629-custody"
+     ]
+    },
+    {
+     "text": "本条只处理标的物数量多交；标的物质量不符合约定时的拒收、保管与风险负担由第610条、第608条等另行规范",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c629-1",
+    "srcs": [
+     "art629-1"
+    ],
+    "body": [
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "excessSubjectMatterDelivered(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "acceptExcessPart(B,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "rejectExcessPart(B,K)"
+     }
+    ],
+    "note": "出卖人多交标的物的，买受人可以接收或者拒绝接收多交的部分",
+    "auth": "npc"
+   },
+   {
+    "key": "c629-accept",
+    "srcs": [
+     "art629-1"
+    ],
+    "body": [
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "acceptedExcessPart(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payAgreedPriceForExcessPart(B,K)"
+     }
+    ],
+    "note": "买受人接收多交部分的，按照约定的价格支付价款",
+    "auth": "npc"
+   },
+   {
+    "key": "c629-reject",
+    "srcs": [
+     "art629-1"
+    ],
+    "body": [
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "rejectedExcessPart(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "timelyNotifySellerOfRejection(B,K)"
+     }
+    ],
+    "note": "买受人拒绝接收多交部分的，应当及时通知出卖人",
+    "auth": "npc"
+   },
+   {
+    "key": "c629-custody",
+    "srcs": [
+     "art629-1"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "rejectedExcessPart(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "temporarilyKeepAndDisposeExcessPart(S,K)"
+     }
+    ],
+    "note": "笔记称出卖人负有暂时保管并应急处置标的物的义务；第629条原文未规定，属学理/司法解释层面，故标为 doctrine",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "sellerOf": "是买卖合同的出卖人（出卖人，合同）",
+   "excessSubjectMatterDelivered": "出卖人多交付了标的物，即交付数量超出约定（出卖人，合同）",
+   "acceptExcessPart": "接收多交的部分（买受人，合同）",
+   "rejectExcessPart": "拒绝接收多交的部分（买受人，合同）",
+   "acceptedExcessPart": "已接收多交的部分（买受人，合同）",
+   "rejectedExcessPart": "已拒绝接收多交的部分（买受人，合同）",
+   "payAgreedPriceForExcessPart": "按照约定的价格支付多交部分的价款（买受人，合同）",
+   "timelyNotifySellerOfRejection": "及时通知出卖人其拒绝接收多交部分（买受人，合同）",
+   "temporarilyKeepAndDisposeExcessPart": "对多交的标的物暂时保管并作应急处置（出卖人，合同）"
+  }
+ },
+ "art:628": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买受人支付价款的时间如何确定：有约定时按约定；对支付时间没有约定或者约定不明确时，先依第510条补充确定，仍不能确定的，在收到标的物或者提取标的物单证的同时支付",
+     "rules": [
+      "c628-1",
+      "c628-2",
+      "c628-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同，一方为买受人、另一方为出卖人",
+     "rules": [
+      "c628-1",
+      "c628-2",
+      "c628-3"
+     ]
+    },
+    {
+     "text": "合同约定了支付价款的时间",
+     "rules": [
+      "c628-1"
+     ]
+    },
+    {
+     "text": "对支付价款的时间没有约定或者约定不明确",
+     "rules": [
+      "c628-2",
+      "c628-3"
+     ]
+    },
+    {
+     "text": "依据第510条的规定仍可以确定支付时间",
+     "rules": [
+      "c628-2"
+     ]
+    },
+    {
+     "text": "依据第510条的规定仍不能确定支付时间，且买受人已收到标的物或者提取标的物的单证",
+     "rules": [
+      "c628-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依据第510条仍能确定支付时间的，不适用“收到标的物或者提取标的物单证的同时支付”的补充规则",
+     "rules": [
+      "c628-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "买受人应当按照约定的时间向出卖人支付价款",
+     "rules": [
+      "c628-1"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确但可依第510条确定的，买受人按依第510条确定的时间支付价款",
+     "rules": [
+      "c628-2"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，买受人应当在收到标的物或者提取标的物单证的同时支付价款",
+     "rules": [
+      "c628-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人约定的支付时间优先于第510条的补充确定规则和同时支付的补充规则",
+     "rules": [
+      "c628-1"
+     ]
+    },
+    {
+     "text": "依第510条可以确定支付时间的，优先于“收到标的物或者提取标的物单证的同时支付”的规则",
+     "rules": [
+      "c628-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决支付价款的“时间”；价款数额、支付地点等未约定的，依第510条、第511条处理。笔记未引用原文或条号，无补充内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c628-1",
+    "srcs": [
+     "art628-1"
+    ],
+    "body": [
+     "contract(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "agreedPaymentTime(K,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,S,K)"
+     }
+    ],
+    "note": "买受人应当按照约定的时间支付价款（约定时间由 T 表示）",
+    "auth": "npc"
+   },
+   {
+    "key": "c628-2",
+    "srcs": [
+     "art628-1"
+    ],
+    "body": [
+     "contract(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "paymentTimeNotAgreedOrUnclear(K)",
+     "determinablePerArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,S,K)"
+     }
+    ],
+    "note": "对支付时间没有约定或者约定不明确，依据第510条仍可以确定的，按依第510条确定的时间支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c628-3",
+    "srcs": [
+     "art628-1"
+    ],
+    "body": [
+     "contract(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "paymentTimeNotAgreedOrUnclear(K)",
+     "-determinablePerArt510(K)",
+     "receivedSubjectMatterOrDocuments(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,S,K)"
+     }
+    ],
+    "note": "对支付时间没有约定或者约定不明确，依第510条仍不能确定的，买受人应当在收到标的物或者提取标的物单证的同时支付价款",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "sellerOf": "是买卖合同的出卖人（出卖人，合同）",
+   "agreedPaymentTime": "合同约定了支付价款的时间（合同，时间）",
+   "paymentTimeNotAgreedOrUnclear": "对支付价款的时间没有约定或者约定不明确（合同）",
+   "receivedSubjectMatterOrDocuments": "买受人已收到标的物或者提取标的物的单证（买受人，合同）"
+  }
+ },
+ "art:627": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买受人支付价款的地点如何确定：约定优先；无约定或约定不明确时依第510条补充确定；仍不能确定的适用法定地点；但约定以交付标的物或提取标的物单证为付款条件的，在交付地支付",
+     "rules": [
+      "c627-1",
+      "c627-2",
+      "c627-but"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定了支付价款的地点",
+     "rules": [
+      "c627-1"
+     ]
+    },
+    {
+     "text": "对支付地点没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c627-2"
+     ]
+    },
+    {
+     "text": "约定支付价款以交付标的物或者交付提取标的物单证为条件",
+     "rules": [
+      "c627-but"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "约定支付价款以交付标的物或者交付提取标的物单证为条件的，不适用“出卖人营业地”的默认规则，而在交付标的物或者交付提取标的物单证的所在地支付",
+     "rules": [
+      "c627-but"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "买受人应当在约定的地点支付价款",
+     "rules": [
+      "c627-1"
+     ]
+    },
+    {
+     "text": "无约定或约定不明确且依第510条仍不能确定的，买受人应当在出卖人的营业地支付价款",
+     "rules": [
+      "c627-2"
+     ]
+    },
+    {
+     "text": "以交付标的物或者交付提取标的物单证为付款条件的，买受人应当在交付标的物或者交付提取标的物单证的所在地支付价款",
+     "rules": [
+      "c627-but"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "以交付为付款条件时的“交付地支付”规则，优先于“出卖人营业地支付”的法定默认规则",
+     "rules": [
+      "c627-but",
+      "c627-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决支付价款的地点；价款数额、支付时间等未约定事项依第510条、第511条处理，不在本条射程内",
+     "rules": []
+    },
+    {
+     "text": "约定地点与法定地点是“约定优先—补充解释—法定兜底”的递进关系：依第510条可以确定地点时，即不适用法定地点规则",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，无补充或限缩内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c627-1",
+    "srcs": [
+     "art627-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "agreedPaymentPlace(K,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,K,L)"
+     }
+    ],
+    "note": "买受人应当按照约定的地点支付价款（约定地点优先）",
+    "auth": "npc"
+   },
+   {
+    "key": "c627-2",
+    "srcs": [
+     "art627-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "noAgreedOrUnclearPaymentPlace(K)",
+     "-determinablePerArt510(K)",
+     "businessPlaceOf(S,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,K,L)"
+     }
+    ],
+    "note": "对支付地点没有约定或者约定不明确，依第510条仍不能确定的，买受人应当在出卖人的营业地支付价款",
+    "auth": "npc"
+   },
+   {
+    "key": "c627-but",
+    "srcs": [
+     "art627-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "buyerOf(B,K)",
+     "sellerOf(S,K)",
+     "paymentConditionedOnDelivery(K)",
+     "deliveryPlace(K,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payPrice(B,K,L)"
+     }
+    ],
+    "note": "但书：约定支付价款以交付标的物或者交付提取标的物单证为条件的，在交付标的物或者交付提取标的物单证的所在地支付",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c627-but",
+    "c627-2",
+    "约定以交付标的物或者交付提取标的物单证为付款条件的，在交付地支付，优先于出卖人营业地的法定默认地点"
+   ]
+  ],
+  "predicates": {
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "sellerOf": "是买卖合同的出卖人（出卖人，合同）",
+   "agreedPaymentPlace": "当事人约定了支付价款的地点（合同，地点）",
+   "noAgreedOrUnclearPaymentPlace": "对支付价款的地点没有约定或者约定不明确（合同）",
+   "businessPlaceOf": "是出卖人的营业地（出卖人，地点）",
+   "paymentConditionedOnDelivery": "约定支付价款以交付标的物或者交付提取标的物单证为条件（合同）",
+   "deliveryPlace": "交付标的物或者交付提取标的物单证的所在地（合同，地点）"
+  }
+ },
+ "art:630": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同的标的物所生孳息，在交付前后分别归谁所有；当事人另有约定时如何处理",
+     "rules": [
+      "c630-1",
+      "c630-2",
+      "c630-agree"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该物是买卖合同的标的物，孳息由该标的物产生",
+     "rules": [
+      "c630-1",
+      "c630-2",
+      "c630-agree"
+     ]
+    },
+    {
+     "text": "孳息产生于标的物交付之前，或者产生于交付之后",
+     "rules": [
+      "c630-1",
+      "c630-2"
+     ]
+    },
+    {
+     "text": "当事人就孳息归属另有约定，且约定指明归属主体",
+     "rules": [
+      "c630-agree"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的除外：有约定时，不适用交付前归出卖人、交付后归买受人的法定归属",
+     "rules": [
+      "c630-1",
+      "c630-2",
+      "c630-agree"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "交付之前产生的孳息，归出卖人所有",
+     "rules": [
+      "c630-1"
+     ]
+    },
+    {
+     "text": "交付之后产生的孳息，归买受人所有",
+     "rules": [
+      "c630-2"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，孳息归约定的权利人所有",
+     "rules": [
+      "c630-agree"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于孳息归属的约定，优先于交付前归出卖人、交付后归买受人的法定归属规则",
+     "rules": [
+      "c630-agree"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条以“交付”而非所有权移转或合同成立作为孳息归属的分界点；且属任意性规范，可由当事人约定排除（学理说明，条文本身未规定交付与所有权移转不一致时的处理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c630-1",
+    "srcs": [
+     "art630-1"
+    ],
+    "body": [
+     "subjectMatterOf(T,K)",
+     "seller(S,K)",
+     "fruitsOf(T,F)",
+     "producedBeforeDelivery(F)",
+     "~agreedOtherwiseOnFruit(K)"
+    ],
+    "heads": [
+     "belongsTo(S,F)"
+    ],
+    "note": "标的物在交付之前产生的孳息归出卖人所有，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c630-2",
+    "srcs": [
+     "art630-1"
+    ],
+    "body": [
+     "subjectMatterOf(T,K)",
+     "buyer(B,K)",
+     "fruitsOf(T,F)",
+     "producedAfterDelivery(F)",
+     "~agreedOtherwiseOnFruit(K)"
+    ],
+    "heads": [
+     "belongsTo(B,F)"
+    ],
+    "note": "标的物在交付之后产生的孳息归买受人所有，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c630-agree",
+    "srcs": [
+     "art630-1"
+    ],
+    "body": [
+     "subjectMatterOf(T,K)",
+     "fruitsOf(T,F)",
+     "agreedOtherwiseOnFruit(K)",
+     "agreedFruitOwner(K,P)"
+    ],
+    "heads": [
+     "belongsTo(P,F)"
+    ],
+    "note": "但书：当事人另有约定的，孳息按约定归约定的权利人所有",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c630-agree",
+    "c630-1",
+    "当事人另有约定优先于交付前孳息归出卖人的法定归属规则"
+   ],
+   [
+    "c630-agree",
+    "c630-2",
+    "当事人另有约定优先于交付后孳息归买受人的法定归属规则"
+   ]
+  ],
+  "predicates": {
+   "buyer": "是买卖合同的买受人（参数1：买受人；参数2：合同）",
+   "fruitsOf": "是该标的物所生的孳息（参数1：标的物；参数2：孳息）",
+   "producedBeforeDelivery": "该孳息产生于标的物交付之前",
+   "producedAfterDelivery": "该孳息产生于标的物交付之后",
+   "agreedFruitOwner": "当事人约定孳息归其所有（参数1：合同；参数2：约定的权利人）"
+  }
+ },
+ "art:631": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同中，因标的物的主物或从物不符合约定而解除合同时，解除的效力是否及于另一物",
+     "rules": [
+      "c631-1",
+      "c631-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物存在主物与从物的关系，且主物是合同的标的物",
+     "rules": [
+      "c631-1",
+      "c631-2"
+     ]
+    },
+    {
+     "text": "主物不符合约定",
+     "rules": [
+      "c631-1"
+     ]
+    },
+    {
+     "text": "从物不符合约定",
+     "rules": [
+      "c631-2"
+     ]
+    },
+    {
+     "text": "当事人已解除合同",
+     "rules": [
+      "c631-1",
+      "c631-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因从物不符合约定而解除的，解除的效力不及于主物（对“效力及于全部标的物”的限制）",
+     "rules": [
+      "c631-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "因主物不符合约定而解除合同的，解除合同的效力及于从物",
+     "rules": [
+      "c631-1"
+     ]
+    },
+    {
+     "text": "因从物不符合约定被解除的，解除的效力不及于主物",
+     "rules": [
+      "c631-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记指出买卖合同可基于合同解除的一般规则而解除；本条不另设解除事由，只解决解除效力在主物与从物之间的范围问题",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c631-1",
+    "srcs": [
+     "art631-1"
+    ],
+    "body": [
+     "accessoryOf(A,M)",
+     "subjectMatterOf(M,K)",
+     "mainThingNonConforming(M,K)",
+     "terminate(P,K)"
+    ],
+    "heads": [
+     "terminationEffectExtendsTo(A,K)"
+    ],
+    "note": "因标的物的主物不符合约定而解除合同的，解除合同的效力及于从物",
+    "auth": "npc"
+   },
+   {
+    "key": "c631-2",
+    "srcs": [
+     "art631-1"
+    ],
+    "body": [
+     "accessoryOf(A,M)",
+     "subjectMatterOf(M,K)",
+     "accessoryThingNonConforming(A,K)",
+     "terminate(P,K)"
+    ],
+    "heads": [
+     "-terminationEffectExtendsTo(M,K)"
+    ],
+    "note": "因标的物的从物不符合约定被解除的，解除的效力不及于主物",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mainThingNonConforming": "主物不符合约定（参数1：主物，参数2：合同）",
+   "accessoryThingNonConforming": "从物不符合约定（参数1：从物，参数2：合同）",
+   "terminationEffectExtendsTo": "解除合同的效力及于该物（参数1：物，参数2：合同）"
+  }
+ },
+ "art:632": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "标的物为数物，其中一物不符合约定时，买受人解除权的范围：是仅就该物解除，还是可以就数物解除合同",
+     "rules": [
+      "c632-1",
+      "c632-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在买卖合同，标的物为数物，且其中一物不符合约定",
+     "rules": [
+      "c632-1",
+      "c632-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "该物与他物分离使标的物的价值显受损害的，买受人不得仅就该物解除，而可以就数物解除合同",
+     "rules": [
+      "c632-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "买受人可以就该不符合约定的物解除合同（部分解除）",
+     "rules": [
+      "c632-1"
+     ]
+    },
+    {
+     "text": "分离使标的物价值显受损害时，买受人可以就数物解除合同（全部解除）",
+     "rules": [
+      "c632-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "但书情形（分离使标的物价值显受损害）优先于仅就该物解除的规则，排除部分解除而允许就数物解除",
+     "rules": [
+      "c632-2",
+      "c632-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记将但书情形下的权利主体写作“当事人”，法条原文为“买受人”，应以法条为准",
+     "rules": []
+    },
+    {
+     "text": "本条是合同解除一般规则（第563条等）在数物买卖中的特别适用，仅解决解除范围问题，不另设解除事由",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c632-1",
+    "srcs": [
+     "art632-1"
+    ],
+    "body": [
+     "contract(K)",
+     "buyerOf(B,K)",
+     "severalThings(K)",
+     "subjectMatterOf(T,K)",
+     "thingNonConforming(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "terminateAsToThing(B,T)"
+     }
+    ],
+    "note": "标的物为数物，其中一物不符合约定的，买受人可以就该物解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c632-2",
+    "srcs": [
+     "art632-1"
+    ],
+    "body": [
+     "contract(K)",
+     "buyerOf(B,K)",
+     "severalThings(K)",
+     "subjectMatterOf(T,K)",
+     "thingNonConforming(T,K)",
+     "separationHarmsValue(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "terminateAsToAllThings(B,K)"
+     }
+    ],
+    "note": "但书：该物与他物分离使标的物的价值显受损害的，买受人可以就数物解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c632-2",
+    "c632-1",
+    "该物与他物分离使标的物价值显受损害时，排除仅就该物解除，改按就数物解除处理"
+   ]
+  ],
+  "predicates": {
+   "buyerOf": "是买卖合同的买受人（买受人，合同）",
+   "buyerOf/2": "是买卖合同的买受人（买受人，合同）",
+   "severalThings": "标的物为数物（合同）",
+   "severalThings/1": "标的物为数物（合同）",
+   "thingNonConforming": "数物中的一物不符合约定（物，合同）",
+   "thingNonConforming/2": "数物中的一物不符合约定（物，合同）",
+   "separationHarmsValue": "该物与他物分离使标的物的价值显受损害（物，合同）",
+   "separationHarmsValue/2": "该物与他物分离使标的物的价值显受损害（物，合同）",
+   "terminateAsToThing": "就该物解除合同（买受人，物）",
+   "terminateAsToThing/2": "就该物解除合同（买受人，物）",
+   "terminateAsToAllThings": "就数物解除合同（买受人，合同）",
+   "terminateAsToAllThings/2": "就数物解除合同（买受人，合同）"
+  }
+ },
+ "art:633": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出卖人分批交付标的物时，买受人可就哪些批次的标的物解除合同",
+     "rules": [
+      "c633-1",
+      "c633-2",
+      "c633-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人分批交付标的物，对其中一批标的物不交付或者交付不符合约定",
+     "rules": [
+      "c633-1",
+      "c633-2"
+     ]
+    },
+    {
+     "text": "致使该批标的物不能实现合同目的",
+     "rules": [
+      "c633-1"
+     ]
+    },
+    {
+     "text": "致使之后其他各批标的物的交付不能实现合同目的",
+     "rules": [
+      "c633-2"
+     ]
+    },
+    {
+     "text": "买受人已就其中一批标的物解除，且该批标的物与其他各批标的物相互依存",
+     "rules": [
+      "c633-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "买受人可以就该批标的物解除合同",
+     "rules": [
+      "c633-1"
+     ]
+    },
+    {
+     "text": "买受人可以就该批以及之后其他各批标的物解除合同",
+     "rules": [
+      "c633-2"
+     ]
+    },
+    {
+     "text": "买受人可以就已经交付和未交付的各批标的物解除合同",
+     "rules": [
+      "c633-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "各批标的物相互依存时，第3款作为特别规定允许就全部各批解除，优先于第1款、第2款关于解除范围的限制",
+     "rules": [
+      "c633-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款以“该批”标的物不能实现合同目的为要件，解除范围限于该批；第2款以“之后其他各批”的交付不能实现合同目的为要件，解除范围扩及该批与之后各批",
+     "rules": [
+      "c633-1",
+      "c633-2"
+     ]
+    },
+    {
+     "text": "第3款不以不能实现合同目的为要件，而以该批与其他各批相互依存为要件，解除范围及于已交付和未交付的全部各批",
+     "rules": [
+      "c633-3"
+     ]
+    },
+    {
+     "text": "笔记将“之后其他各批”表述为“今后其他各批”，与法条同义；本条是合同解除一般规则在分批交付买卖中的具体化，不另设一般解除事由",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c633-1",
+    "srcs": [
+     "art633-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "installmentDelivery(K)",
+     "batchOf(B,K)",
+     "sellerOf(S,K)",
+     "buyerOf(Buyer,K)",
+     "batchNonPerformance(S,B,K)",
+     "batchFrustratesPurpose(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Buyer",
+      "counterparty": "S",
+      "content": "terminateBatch(B,K)"
+     }
+    ],
+    "note": "出卖人对其中一批不交付或交付不符合约定，致该批不能实现合同目的的，买受人可以就该批标的物解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c633-2",
+    "srcs": [
+     "art633-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "installmentDelivery(K)",
+     "batchOf(B,K)",
+     "sellerOf(S,K)",
+     "buyerOf(Buyer,K)",
+     "batchNonPerformance(S,B,K)",
+     "laterBatchesFrustratesPurpose(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Buyer",
+      "counterparty": "S",
+      "content": "terminateBatchAndLaterBatches(B,K)"
+     }
+    ],
+    "note": "不交付或交付不符合约定致之后其他各批的交付不能实现合同目的的，买受人可以就该批以及之后其他各批解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c633-3",
+    "srcs": [
+     "art633-3"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "installmentDelivery(K)",
+     "batchOf(B,K)",
+     "buyerOf(Buyer,K)",
+     "terminatedBatch(B,K)",
+     "interdependent(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Buyer",
+      "counterparty": null,
+      "content": "terminateAllBatches(K)"
+     }
+    ],
+    "note": "买受人已就其中一批解除，且该批与其他各批相互依存的，可以就已经交付和未交付的各批标的物解除",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c633-3",
+    "c633-1",
+    "各批标的物相互依存时，第3款作为特别规定允许就全部各批解除，不受第1款仅就该批解除的范围限制"
+   ],
+   [
+    "c633-3",
+    "c633-2",
+    "各批标的物相互依存时，第3款作为特别规定允许就全部各批解除，不受第2款仅就该批及之后各批解除的范围限制"
+   ]
+  ],
+  "predicates": {
+   "installmentDelivery": "出卖人分批交付标的物（合同）",
+   "batchOf": "是该合同项下的一批标的物（批次，合同）",
+   "sellerOf": "是出卖人（出卖人，合同）",
+   "buyerOf": "是买受人（买受人，合同）",
+   "batchNonPerformance": "出卖人对其中一批标的物不交付或者交付不符合约定（出卖人，批次，合同）",
+   "batchFrustratesPurpose": "致使该批标的物不能实现合同目的（批次，合同）",
+   "laterBatchesFrustratesPurpose": "致使之后其他各批标的物的交付不能实现合同目的（批次，合同）",
+   "terminateBatch": "就该批标的物解除合同（批次，合同）",
+   "terminateBatchAndLaterBatches": "就该批以及之后其他各批标的物解除合同（批次，合同）",
+   "terminatedBatch": "买受人已就该批标的物解除合同（批次，合同）",
+   "interdependent": "该批标的物与其他各批标的物相互依存（批次，合同）",
+   "terminateAllBatches": "就已经交付和未交付的各批标的物解除合同（合同）"
+  }
+ },
+ "art:639": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "试用买卖的当事人对标的物使用费没有约定或者约定不明确的，出卖人能否请求买受人支付使用费",
+     "rules": [
+      "c639-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "属于试用买卖，出卖人与买受人分别为合同双方",
+     "rules": [
+      "c639-1",
+      "c639-agreed"
+     ]
+    },
+    {
+     "text": "当事人对标的物使用费没有约定或者约定不明确",
+     "rules": [
+      "c639-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对标的物使用费有约定的，出卖人可以请求买受人支付（笔记：“有约定除外”；法条未明文赋予该请求权，属反面解释）",
+     "rules": [
+      "c639-agreed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出卖人无权请求买受人支付标的物使用费（即不得请求）",
+     "rules": [
+      "c639-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人对使用费有约定时，优先按约定处理，排除第639条第1款“无权请求”规则的适用",
+     "rules": [
+      "c639-agreed"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把本条列在“买受人拒绝认可”项下，但条文本身只解决使用费负担问题，不涉及试用期届满视为购买、标的物返还等效果，故不作规则化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c639-1",
+    "srcs": [
+     "art639-1"
+    ],
+    "body": [
+     "trialSale(K)",
+     "sellerOf(S,K)",
+     "buyerOf(B,K)",
+     "noAgreedOrUnclearUseFee(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "requestUseFee(S,B,K)"
+     }
+    ],
+    "note": "试用买卖当事人对标的物使用费没有约定或者约定不明确的，出卖人无权请求买受人支付；无权请求即不得请求，故形式化为禁止",
+    "auth": "npc"
+   },
+   {
+    "key": "c639-agreed",
+    "srcs": [
+     "art639-1"
+    ],
+    "body": [
+     "trialSale(K)",
+     "sellerOf(S,K)",
+     "buyerOf(B,K)",
+     "useFeeAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "requestUseFee(S,B,K)"
+     }
+    ],
+    "note": "当事人对标的物使用费有约定的，出卖人可以请求支付；此为对第639条第1款的反面解释，笔记称“有约定除外”，法条未明文规定，故列为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c639-agreed",
+    "c639-1",
+    "当事人对标的物使用费有约定的，按约定处理，不适用第639条第1款出卖人无权请求的规则（笔记：有约定除外）"
+   ]
+  ],
+  "predicates": {
+   "trialSale": "是试用买卖（合同）",
+   "sellerOf": "是该买卖合同的出卖人（出卖人，合同）",
+   "buyerOf": "是该买卖合同的买受人（买受人，合同）",
+   "noAgreedOrUnclearUseFee": "当事人对标的物使用费没有约定或者约定不明确（合同）",
+   "useFeeAgreed": "当事人对标的物使用费有约定（合同）",
+   "requestUseFee": "请求支付标的物使用费（出卖人，买受人，合同）"
+  }
+ },
+ "art:645": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "拍卖的当事人的权利和义务以及拍卖程序等事项，应当适用何种规范",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在拍卖法律关系（拍卖当事人之间就拍卖标的进行拍卖）",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "拍卖当事人的权利和义务以及拍卖程序等，依照有关法律、行政法规的规定确定，本条不另行设定权利义务",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "有关法律、行政法规关于拍卖当事人权利义务及拍卖程序的规定，优先于本法合同编的一般规定适用",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为援引性（转介）条款，本身不含实体权利义务内容，故不形式化为可废止规则；具体规则见《拍卖法》等法律、行政法规",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的体系说明；LEGO 卡片缺失，故本行不作学理推定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:637": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c637-1：新谓词 trialSale 需要在 predicates 中给出中文释义",
+   "c637-1：新谓词 agreeTrialPeriod 需要在 predicates 中给出中文释义",
+   "c637-agreed：新谓词 trialSale 需要在 predicates 中给出中文释义",
+   "c637-agreed：新谓词 agreeTrialPeriod 需要在 predicates 中给出中文释义",
+   "c637-agreed：新谓词 trialPeriodApplies 需要在 predicates 中给出中文释义",
+   "c637-2：新谓词 trialSale 需要在 predicates 中给出中文释义",
+   "c637-2：新谓词 sellerOf 需要在 predicates 中给出中文释义",
+   "c637-2：新谓词 noAgreedTrialPeriod 需要在 predicates 中给出中文释义",
+   "c637-2：新谓词 determineTrialPeriod 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"试用买卖的试用期限如何确定：先由当事人约定；没有约定或者约定不明确，依据第510条仍不能确定的，由出卖人确定\",\n        \"rules\": [\"c637-1\", \"c637-agreed\", \"c637-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"属于试用买卖，且行为人系该试用买卖合同的当事人\",\n        \"rules\": [\"c637-1\"]\n      },\n      {\n        \"text\": \"当事人已就标的物的试用期限达成约定\",\n        \"rules\": [\"c637-agreed\"]\n      },\n      {\n        \"text\": \"对试用期限没有约定或者约定不明确，且依据第510条的规定仍不能确定；出卖人系该试用买卖合同的出卖人\",\n        \"rules\": [\"c637-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"当事人已约定试用期限的，按约定确定，不由出卖人确定\",\n        \"rules\": [\"c637-agreed\"]\n      },\n      {\n        \"text\": \"虽无约定或者约定不明确，但依据第510条可以确定的，也不由出卖人确定\",\n        \"rules\": [\"c637-2\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"试用买卖的当事人可以约定标的物的试用期限\",\n        \"rules\": [\"c637-1\"]\n      },\n      {\n        \"text\": \"有约定的，试用期限按当事人的约定确定\",\n        \"rules\": [\"c637-agreed\"]\n      },\n      {\n        \"text\": \"没有约定或者约定不明确且依第510条仍不能确定的，由出卖人确定试用期限\",\n        \"rules\": [\"c637-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"当事人约定优先于出卖人确定：有约定时排除出卖人确定试用期限\",\n        \"rules\": [\"c637-agreed\", \"c637-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记把试用期间分为“①按照约定”与“②出卖人确定”两种，与第637条第1款一致；本款只解决试用期限的确定，不涉及试用买卖的其他规则（如试用期内买受人的认可、视为购买、风险负担等），该部分未挂载，不在本卡片范围\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c637-1\",\n      \"srcs\": [\"art637-1\"],\n      \"body\": [\"trialSale(K)\", \"partyToContract(P,K)\"],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"agreeTrialPeriod(P,K)\"\n        }\n      ],\n      \"note\": \"试用买卖的当事人可以约定标的物的试用期限\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c637-agreed\",\n      \"srcs\": [\"art637-1\"],\n      \"body\": [\"trialSale(K)\", \"agreeTrialPeriod(P,K)\"],\n      \"heads\": [\"trialPeriodApplies(K)\"],\n      \"note\": \"当事人约定了试用期限的，试用期限按约定确定（笔记“①按照约定”）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c637-2\",\n      \"srcs\": [\"art637-1\"],\n      \"body\": [\n        \"trialSale(K)\",\n        \"sellerOf(S,K)\",\n        \"noAgreedTrialPeriod(K)\",\n        \"~determinablePerArt510(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"S\",\n          \"counterparty\": null,\n          \"content\": \"determineTrialPeriod(S,K)\"\n        }\n      ],\n      \"note\": \"对试用期限没有约定或者约定不明确，依据第510条仍不能确定的，由出卖人确定（笔记“②出卖人确定”）\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c637-agreed\", \"c637-2\", \"当事人已约定试用期限的，按约定确定，排除出卖人确定\"]\n  ],\n  \"predicates\": {\n    \"trialSale/1\": \"是试用买卖（合同）\",\n    \"agreeTrialPeriod/2\": \"约定标的物的试用期限（当事人，试用买卖）\",\n    \"noAgreedTrialPeriod/1\": \"对试用期限没有约定或者约定不明确（试用买卖）\",\n    \"determineTrialPeriod/2\": \"确定标的物的试用期限（出卖人，试用买卖）\",\n    \"sellerOf/2\": \"是买卖合同的出卖人（出卖人，合同）\",\n    \"trialPeriodApplies/1\": \"试用期限已确定（按约定或由出卖人确定）（试用买卖）\"\n  }\n}"
+ },
+ "art:644": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "招标投标买卖的当事人权利义务以及招标投标程序等，应适用何种规范",
+     "rules": [
+      "c644-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该买卖是通过招标投标方式进行的买卖（招标投标买卖）",
+     "rules": [
+      "c644-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "当事人的权利和义务以及招标投标程序等，依照有关法律、行政法规的规定处理，即适用《招标投标法》等特别规定，而非仅适用本法买卖合同的一般规定",
+     "rules": [
+      "c644-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为援引性（转介）规定，本身不直接创设具体权利义务，具体内容取决于有关法律、行政法规的特别规定",
+     "rules": []
+    },
+    {
+     "text": "本行仅挂载第644条第1款，规范招标投标买卖；以拍卖方式订立的买卖由第2款规范，本行未挂载，故不作规则化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c644-1",
+    "srcs": [
+     "art644-1"
+    ],
+    "body": [
+     "tenderSale(K)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "招标投标买卖的当事人权利义务及招标投标程序等，依照有关法律、行政法规的规定处理",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "tenderSale": "招标投标买卖，即以招标投标方式订立的买卖合同（参数：合同）"
+  }
+ },
+ "art:646": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同以外的其他有偿合同，法律有规定时如何适用法律，无规定时能否参照适用买卖合同的规定",
+     "rules": [
+      "c646-1",
+      "c646-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用对象是买卖合同以外的其他有偿合同",
+     "rules": [
+      "c646-1",
+      "c646-2"
+     ]
+    },
+    {
+     "text": "法律对该其他有偿合同已有规定",
+     "rules": [
+      "c646-1"
+     ]
+    },
+    {
+     "text": "法律对该其他有偿合同没有规定",
+     "rules": [
+      "c646-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对该有偿合同已有规定的，不参照适用买卖合同的规定（该情形由“依照其规定”处理）",
+     "rules": [
+      "c646-1"
+     ]
+    },
+    {
+     "text": "参照适用买卖合同规定，以该规定与该有偿合同的性质不相抵触为限（学理）",
+     "rules": [
+      "c646-doctrine"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "法律有规定的，依照该规定处理",
+     "rules": [
+      "c646-1"
+     ]
+    },
+    {
+     "text": "法律没有规定的，参照适用买卖合同的有关规定",
+     "rules": [
+      "c646-2"
+     ]
+    },
+    {
+     "text": "参照适用时，将与该有偿合同性质不相抵触的买卖合同规定适用于该合同",
+     "rules": [
+      "c646-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对其他有偿合同的特别规定优先于参照适用买卖合同的规定",
+     "rules": [
+      "c646-1",
+      "c646-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条针对的是法律已有规定的其他有偿合同，参照对象是买卖合同；与第467条无名合同“参照适用最相类似合同的规定”不同。笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c646-1",
+    "srcs": [
+     "art646-1"
+    ],
+    "body": [
+     "otherOnerousContract(K)",
+     "lawHasProvisionOnOnerousContract(K)"
+    ],
+    "heads": [
+     "applyProvisionsOnOnerousContract(K)"
+    ],
+    "note": "法律对买卖合同以外的其他有偿合同有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c646-2",
+    "srcs": [
+     "art646-1"
+    ],
+    "body": [
+     "otherOnerousContract(K)",
+     "-lawHasProvisionOnOnerousContract(K)"
+    ],
+    "heads": [
+     "applySaleContractProvisionsByReference(K)"
+    ],
+    "note": "法律没有规定的，参照适用买卖合同的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c646-doctrine",
+    "srcs": [
+     "art646-1"
+    ],
+    "body": [
+     "applySaleContractProvisionsByReference(K)",
+     "saleProvision(P)",
+     "consistentWithNature(P,K)"
+    ],
+    "heads": [
+     "applyProvisionToContract(P,K)"
+    ],
+    "note": "学理：参照适用买卖合同规定，以该规定与该有偿合同的性质不相抵触为限（条文未明定）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c646-1",
+    "c646-2",
+    "法律对该其他有偿合同已有规定的，优先适用该规定，不再参照适用买卖合同的规定"
+   ]
+  ],
+  "predicates": {
+   "otherOnerousContract": "是买卖合同以外的其他有偿合同",
+   "lawHasProvisionOnOnerousContract": "法律对该有偿合同已有规定",
+   "applyProvisionsOnOnerousContract": "依照法律关于该有偿合同的规定处理",
+   "applySaleContractProvisionsByReference": "参照适用买卖合同的有关规定",
+   "saleProvision": "是买卖合同的规定",
+   "consistentWithNature": "该规定与该合同的性质不相抵触（规定，合同）",
+   "applyProvisionToContract": "将该规定适用于该合同（规定，合同）"
+  }
+ },
+ "art:647": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人约定易货交易（互易）并转移标的物所有权的，应参照适用何种规则",
+     "rules": [
+      "c647-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定易货交易（互易），即以物换物、双方互为给付",
+     "rules": [
+      "c647-1",
+      "c647-contract"
+     ]
+    },
+    {
+     "text": "该交易转移标的物的所有权（而非仅交换使用）",
+     "rules": [
+      "c647-1"
+     ]
+    },
+    {
+     "text": "（学理）互易中一方需向对方补足价金",
+     "rules": [
+      "c647-price"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "参照适用买卖合同的规定，包括标的物交付与所有权转移、风险负担、质量瑕疵担保、价款支付等规则",
+     "rules": [
+      "c647-1"
+     ]
+    },
+    {
+     "text": "（学理）需补足价金的互易，就该价金部分参照适用买卖合同中关于价款的规定",
+     "rules": [
+      "c647-price"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "互易双方均以物为给付、无价金，故只能“参照适用”买卖合同规定，而非直接适用；须结合互易的双务、有偿性质作调整",
+     "rules": []
+    },
+    {
+     "text": "仅交换标的物使用而不转移所有权的，不属本条参照适用的范围",
+     "rules": []
+    },
+    {
+     "text": "本条特别指明参照买卖合同；与其他有偿合同依第646条参照最相类似合同的情形不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c647-1",
+    "srcs": [
+     "art647"
+    ],
+    "body": [
+     "barterAgreed(K)",
+     "transfersOwnershipOfSubjectMatter(K)"
+    ],
+    "heads": [
+     "applySaleContractProvisionsByReference(K)"
+    ],
+    "note": "当事人约定易货交易并转移标的物所有权的，参照适用买卖合同的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c647-contract",
+    "srcs": [
+     "art647"
+    ],
+    "body": [
+     "barterAgreed(K)"
+    ],
+    "heads": [
+     "contractAgreement(K)"
+    ],
+    "note": "易货交易（互易）属合同，为双务、有偿合同；条文以“当事人约定易货交易”为前提，未作定义，此点系学理说明",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c647-price",
+    "srcs": [
+     "art647"
+    ],
+    "body": [
+     "barterAgreed(K)",
+     "priceDifferenceAgreed(K)"
+    ],
+    "heads": [
+     "applySalePriceProvisionsByReference(K)"
+    ],
+    "note": "一方需补足价金的互易，就该价金部分参照适用买卖合同中关于价款的规定；条文未明定，系学理与审判实务的当然解释",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "barterAgreed": "当事人约定易货交易（互易），即以物换物（参数：合同）",
+   "transfersOwnershipOfSubjectMatter": "该交易转移标的物的所有权（参数：合同）",
+   "applySaleContractProvisionsByReference": "参照适用买卖合同（第595条至第647条）的有关规定（参数：易货交易合同）",
+   "priceDifferenceAgreed": "约定互易一方需向对方补足价金（差价）（参数：合同）",
+   "applySalePriceProvisionsByReference": "参照适用买卖合同中关于价款的规定（参数：合同）"
+  }
+ },
+ "art:640": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "试用买卖中，标的物在试用期内毁损、灭失的风险由谁承担",
+     "rules": [
+      "c640-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在试用买卖，标的物为该试用买卖合同的标的物，且标的物处于试用期内",
+     "rules": [
+      "c640-1"
+     ]
+    },
+    {
+     "text": "标的物在试用期内毁损、灭失",
+     "rules": [
+      "c640-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该风险由出卖人承担，即不由买受人承担",
+     "rules": [
+      "c640-1"
+     ]
+    },
+    {
+     "text": "学理说明：试用买卖在试用期内合同尚未生效，故风险不因交付而转移",
+     "rules": [
+      "c640-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "试用买卖的风险负担属特别规定，优先于买卖合同风险随交付转移的一般规则（第604条）",
+     "rules": [
+      "c640-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记以“合同并没有生效”解释本条：试用期内合同未生效，风险不发生转移，与一般买卖交付即转移风险不同",
+     "rules": [
+      "c640-doctrine"
+     ]
+    },
+    {
+     "text": "本条只解决试用期内的风险负担；试用期届满后买受人表示购买或未作表示的，风险负担不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c640-1",
+    "srcs": [
+     "art640-1"
+    ],
+    "body": [
+     "trialSale(K)",
+     "subjectMatterOf(T,K)",
+     "withinTrialPeriod(K)",
+     "goodsPerished(T)"
+    ],
+    "heads": [
+     "riskOnSeller(T)",
+     "-riskOnBuyer(T)"
+    ],
+    "note": "试用买卖中，标的物在试用期内毁损、灭失的风险由出卖人承担，即不由买受人承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c640-doctrine",
+    "srcs": [
+     "art640-1"
+    ],
+    "body": [
+     "trialSale(K)",
+     "withinTrialPeriod(K)"
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "笔记的学理说明：试用买卖在试用期内合同尚未生效，故风险不因交付而转移（条文未明定，仅为解释理由）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "trialSale": "是试用买卖（合同）",
+   "withinTrialPeriod": "处于试用期内（参数：试用买卖）",
+   "riskOnSeller": "标的物毁损、灭失的风险由出卖人承担（参数：标的物）"
+  }
+ }
+}

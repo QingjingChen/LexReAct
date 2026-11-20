@@ -1,0 +1,2011 @@
+{
+ "art:344": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权人对国家所有的土地享有哪些权能、可以作何种利用",
+     "rules": [
+      "c344-1",
+      "c344-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利人为建设用地使用权人，且标的土地依法属于国家所有",
+     "rules": [
+      "c344-1",
+      "c344-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "建设用地使用权人依法对国家所有的土地享有占有、使用和收益的权利",
+     "rules": [
+      "c344-1"
+     ]
+    },
+    {
+     "text": "建设用地使用权人有权利用该土地建造建筑物、构筑物及其附属设施",
+     "rules": [
+      "c344-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只列举占有、使用、收益三项权能，未含对土地的处分权能；建设用地使用权作为用益物权本身可以转让、抵押等，属学理与物权编其他条文的内容，本条未作规定",
+     "rules": []
+    },
+    {
+     "text": "本条仅规范以国家所有的土地为客体的建设用地使用权；集体所有的土地须先依法征收为国有，或依土地承包经营等制度处理，不直接适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c344-1",
+    "srcs": [
+     "art344-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(L,T)",
+     "stateOwned(T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "possessUseProfit(L,T)"
+     }
+    ],
+    "note": "建设用地使用权人依法对国家所有的土地享有占有、使用和收益的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c344-2",
+    "srcs": [
+     "art344-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(L,T)",
+     "stateOwned(T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "buildOnLand(L,T)"
+     }
+    ],
+    "note": "建设用地使用权人有权利用该土地建造建筑物、构筑物及其附属设施",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "constructionLandUseRightHolder": "是建设用地使用权人（参数1：权利人；参数2：国家所有的土地）",
+   "buildOnLand": "利用该土地建造建筑物、构筑物及其附属设施（参数1：建设用地使用权人；参数2：土地）"
+  }
+ },
+ "art:345": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权能否在同一土地的地表、地上或者地下分层分别设立",
+     "rules": [
+      "c345-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在建设用地使用权及作为其客体的土地，且该权利由特定权利人享有",
+     "rules": [
+      "c345-1"
+     ]
+    },
+    {
+     "text": "所涉空间层次为土地的地表、地上或者地下之一",
+     "rules": [
+      "c345-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "权利人可以在土地的地表、地上或者地下分别设立建设用地使用权",
+     "rules": [
+      "c345-1"
+     ]
+    },
+    {
+     "text": "同一土地不同层次分别设立的建设用地使用权各以本层空间为客体，互不排斥，可以并存（学理说明）",
+     "rules": [
+      "c345-coexist"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只确立分层设立建设用地使用权的可能性；分层设立的空间范围界限、出让与登记程序等由其他条款（如第348条、第349条）及不动产登记规则解决，本条不涉及。笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c345-1",
+    "srcs": [
+     "art345-1"
+    ],
+    "body": [
+     "constructionLandUseRight(K)",
+     "landParcel(L)",
+     "holderOfConstructionLandUseRight(H,K)",
+     {
+      "or": [
+       "surfaceLayer(S)",
+       "aboveGroundLayer(S)",
+       "undergroundLayer(S)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "establishInLayer(K,L,S)"
+     }
+    ],
+    "note": "建设用地使用权可以在土地的地表、地上或者地下分别设立",
+    "auth": "npc"
+   },
+   {
+    "key": "c345-coexist",
+    "srcs": [
+     "art345-1"
+    ],
+    "body": [
+     "establishedInLayer(K1,L,S1)",
+     "establishedInLayer(K2,L,S2)",
+     "differentLayer(S1,S2)"
+    ],
+    "heads": [
+     "coexist(K1,K2)"
+    ],
+    "note": "学理说明：分层设立的建设用地使用权各以本层空间为客体，互不排斥，可以并存（条文仅规定“分别设立”，并存效果为解释结论）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "landParcel": "土地（作为建设用地使用权客体的宗地）",
+   "holderOfConstructionLandUseRight": "是建设用地使用权的权利人（人，建设用地使用权）",
+   "surfaceLayer": "土地的地表层次",
+   "aboveGroundLayer": "土地的地上层次",
+   "undergroundLayer": "土地的地下层次",
+   "establishInLayer": "在特定土地层次设立建设用地使用权（建设用地使用权，土地，空间层次）",
+   "establishedInLayer": "建设用地使用权已设立于特定土地层次（建设用地使用权，土地，空间层次）",
+   "differentLayer": "两个空间层次不相同",
+   "coexist": "两项建设用地使用权可以并存于同一土地的不同层次"
+  }
+ },
+ "art:348": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "以招标、拍卖、协议等出让方式设立建设用地使用权的，是否必须采用书面形式订立出让合同；出让合同一般包括哪些条款",
+     "rules": [
+      "c348-1",
+      "c348-form"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "通过招标、拍卖、协议等出让方式设立建设用地使用权（“等”为开放式列举，凡以出让方式设立者均属之）",
+     "rules": [
+      "c348-1"
+     ]
+    },
+    {
+     "text": "该当事人是此出让交易的当事人（出让人或受让人）",
+     "rules": [
+      "c348-1"
+     ]
+    },
+    {
+     "text": "出让合同属法定要式合同，法律要求采用书面形式",
+     "rules": [
+      "c348-form"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "当事人应当采用书面形式订立建设用地使用权出让合同",
+     "rules": [
+      "c348-1"
+     ]
+    },
+    {
+     "text": "出让合同一般包括：当事人名称和住所；土地界址、面积等；建筑物、构筑物及其附属设施占用的空间；土地用途、规划条件；建设用地使用权期限；出让金等费用及其支付方式；解决争议的方法（示范性列举，非强制）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第2款用“一般包括”而非“应当包括”，属示范性、提示性条款，缺少其中某项条款不当然影响出让合同的成立或效力；书面形式的要求由第1款规定",
+     "rules": []
+    },
+    {
+     "text": "第1款的书面形式要求与合同成立规则的关系：未采用书面形式但一方已履行主要义务、对方接受的，依第490条第2款合同仍可成立；本条只解决“应当采用书面形式”的义务，不解决形式欠缺的后果",
+     "rules": []
+    },
+    {
+     "text": "本条仅规范出让方式设立建设用地使用权的合同形式与通常条款，不涉及划拨方式，也不涉及建设用地使用权的登记设立（登记生效规定在物权编其他条文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c348-1",
+    "srcs": [
+     "art348-1"
+    ],
+    "body": [
+     "grantByBiddingAuctionOrAgreement(G)",
+     "partyToGrant(G,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeGrantContractInWriting(P,G)"
+     }
+    ],
+    "note": "通过招标、拍卖、协议等出让方式设立建设用地使用权的，当事人应当采用书面形式订立建设用地使用权出让合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c348-form",
+    "srcs": [
+     "art348-1"
+    ],
+    "body": [
+     "grantByBiddingAuctionOrAgreement(G)"
+    ],
+    "heads": [
+     "lawRequiresSpecificForm(G)"
+    ],
+    "note": "出让方式设立建设用地使用权的合同为法定要式合同，法律要求采用书面形式（由第1款“应当采用书面形式”导出）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "grantByBiddingAuctionOrAgreement": "以招标、拍卖、协议等出让方式设立建设用地使用权（参数：出让交易）",
+   "partyToGrant": "是该建设用地使用权出让交易的当事人（参数1：出让交易；参数2：当事人）",
+   "concludeGrantContractInWriting": "采用书面形式订立建设用地使用权出让合同（参数1：当事人；参数2：出让交易）"
+  }
+ },
+ "card:g3072": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权人应如何利用土地；改变土地用途须经何种程序",
+     "rules": [
+      "c350-reasonable",
+      "c350-nochange",
+      "c350-approval",
+      "c350-perm"
+     ]
+    },
+    {
+     "text": "建设用地使用权人在其享有建设用地使用权的土地上建造的建筑物、构筑物及其附属设施归谁所有",
+     "rules": [
+      "c352-1"
+     ]
+    },
+    {
+     "text": "建设用地使用权人可否处分建设用地使用权（转让、互换、出资、赠与、抵押）",
+     "rules": [
+      "c353-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为建设用地使用权人（对特定土地享有建设用地使用权）",
+     "rules": [
+      "c350-reasonable",
+      "c350-nochange",
+      "c352-1",
+      "c353-1"
+     ]
+    },
+    {
+     "text": "需要改变土地用途",
+     "rules": [
+      "c350-approval",
+      "c350-perm"
+     ]
+    },
+    {
+     "text": "建筑物、构筑物及其附属设施由建设用地使用权人在其享有建设用地使用权的土地上建造",
+     "rules": [
+      "c352-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有相反证据证明的，建造的建筑物、构筑物及其附属设施不归建设用地使用权人所有",
+     "rules": [
+      "c352-1"
+     ]
+    },
+    {
+     "text": "法律对建设用地使用权的转让、互换、出资、赠与、抵押另有规定的，从其规定",
+     "rules": [
+      "c353-1"
+     ]
+    },
+    {
+     "text": "改变土地用途已依法经有关行政主管部门批准的，可以改变用途，不受“不得改变土地用途”的限制",
+     "rules": [
+      "c350-perm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当合理利用土地，不得改变土地用途",
+     "rules": [
+      "c350-reasonable",
+      "c350-nochange"
+     ]
+    },
+    {
+     "text": "需要改变土地用途的，应当依法经有关行政主管部门批准",
+     "rules": [
+      "c350-approval"
+     ]
+    },
+    {
+     "text": "建造的建筑物、构筑物及其附属设施的所有权属于建设用地使用权人",
+     "rules": [
+      "c352-1"
+     ]
+    },
+    {
+     "text": "有权将建设用地使用权转让、互换、出资、赠与或者抵押",
+     "rules": [
+      "c353-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "经依法批准改变土地用途的，优先于第350条前段“不得改变土地用途”的禁止",
+     "rules": [
+      "c350-perm",
+      "c350-nochange"
+     ]
+    },
+    {
+     "text": "法律对建设用地使用权的处分另有规定的，优先适用该特别规定，排除第353条的权利规则",
+     "rules": [
+      "c353-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记与LEGO卡片讨论的是宅基地使用权（第四节，第362条以下），与本行法条的建设用地使用权不同：宅基地使用权无偿、无期限、不得抵押、不得单独转让，须与合法建造的住房一并转让；建设用地使用权则有偿、有期限，并可依法转让、互换、出资、赠与或抵押，故卡片中“不得抵押、不得单独转让”的结论不能套用于建设用地使用权",
+     "rules": []
+    },
+    {
+     "text": "第352条但书“有相反证据证明的除外”仅推翻建造物归属的推定，不影响建设用地使用权本身的效力",
+     "rules": [
+      "c352-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c350-reasonable",
+    "srcs": [
+     "art350-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "reasonablyUseLand(H,L)"
+     }
+    ],
+    "note": "建设用地使用权人应当合理利用土地",
+    "auth": "npc"
+   },
+   {
+    "key": "c350-nochange",
+    "srcs": [
+     "art350-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "changeLandUsePurpose(H,L)"
+     }
+    ],
+    "note": "建设用地使用权人不得改变土地用途",
+    "auth": "npc"
+   },
+   {
+    "key": "c350-approval",
+    "srcs": [
+     "art350-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)",
+     "needsChangeLandUsePurpose(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "obtainApprovalForPurposeChange(H,L)"
+     }
+    ],
+    "note": "需要改变土地用途的，应当依法经有关行政主管部门批准",
+    "auth": "npc"
+   },
+   {
+    "key": "c350-perm",
+    "srcs": [
+     "art350-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)",
+     "needsChangeLandUsePurpose(H,L)",
+     "purposeChangeApproved(H,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "changeLandUsePurpose(H,L)"
+     }
+    ],
+    "note": "已依法经有关行政主管部门批准的，可以改变土地用途，构成前段禁止的法定例外",
+    "auth": "npc"
+   },
+   {
+    "key": "c352-1",
+    "srcs": [
+     "art352-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)",
+     "constructsOnLand(H,B,L)",
+     "~contraryEvidenceProved(B,H)"
+    ],
+    "heads": [
+     "own(H,B)"
+    ],
+    "note": "建设用地使用权人建造的建筑物、构筑物及其附属设施的所有权属于该权利人，但有相反证据证明的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c353-1",
+    "srcs": [
+     "art353-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(H,L)",
+     "~lawProvidesOtherwiseOnDisposal(L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "disposeConstructionLandUseRight(H,L)"
+     }
+    ],
+    "note": "建设用地使用权人有权将建设用地使用权转让、互换、出资、赠与或者抵押，但法律另有规定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c350-perm",
+    "c350-nochange",
+    "经依法批准改变土地用途的，属于第350条前段“不得改变土地用途”的法定例外，优先适用"
+   ]
+  ],
+  "predicates": {
+   "constructionLandUseRightHolder": "是建设用地使用权人（权利人，土地）",
+   "reasonablyUseLand": "合理利用土地（权利人，土地）",
+   "changeLandUsePurpose": "改变土地用途（权利人，土地）",
+   "needsChangeLandUsePurpose": "需要改变土地用途（权利人，土地）",
+   "obtainApprovalForPurposeChange": "就改变土地用途依法经有关行政主管部门批准（权利人，土地）",
+   "purposeChangeApproved": "改变土地用途已依法经有关行政主管部门批准（权利人，土地）",
+   "constructsOnLand": "在土地上建造建筑物、构筑物及其附属设施（建造人，标的物，土地）",
+   "contraryEvidenceProved": "有相反证据证明该建造物不属于建造人（标的物，建造人）",
+   "lawProvidesOtherwiseOnDisposal": "法律对建设用地使用权的转让、互换、出资、赠与、抵押另有规定（土地）",
+   "disposeConstructionLandUseRight": "将建设用地使用权转让、互换、出资、赠与或者抵押（权利人，土地）"
+  }
+ },
+ "art:346": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c346-1：新谓词 establishConstructionLandUseRight 需要在 predicates 中给出中文释义",
+   "c346-2：新谓词 establishConstructionLandUseRight 需要在 predicates 中给出中文释义",
+   "c346-2：新谓词 complyWithLandUseProvisions 需要在 predicates 中给出中文释义",
+   "c346-3：新谓词 establishConstructionLandUseRight 需要在 predicates 中给出中文释义",
+   "c346-3：新谓词 harmEstablishedUsufruct 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n \"nl\": {\n  \"issue\": [\n   {\n    \"text\": \"设立建设用地使用权应当符合哪些法定要求（节约资源、保护生态环境；遵守法律、行政法规关于土地用途的规定；不得损害已经设立的用益物权）\",\n    \"rules\": [\n     \"c346-1\",\n     \"c346-2\",\n     \"c346-3\"\n    ]\n   }\n  ],\n  \"conditions\": [\n   {\n    \"text\": \"行为人正在设立建设用地使用权（设立人，宗地）\",\n    \"rules\": [\n     \"c346-1\",\n     \"c346-2\",\n     \"c346-3\"\n    ]\n   }\n  ],\n  \"exceptions\": [],\n  \"effects\": [\n   {\n    \"text\": \"设立建设用地使用权应当符合节约资源、保护生态环境的要求\",\n    \"rules\": [\n     \"c346-1\"\n    ]\n   },\n   {\n    \"text\": \"设立建设用地使用权应当遵守法律、行政法规关于土地用途的规定\",\n    \"rules\": [\n     \"c346-2\"\n    ]\n   },\n   {\n    \"text\": \"设立建设用地使用权不得损害已经设立的用益物权\",\n    \"rules\": [\n     \"c346-3\"\n    ]\n   }\n  ],\n  \"priority\": [],\n  \"distinguish\": [\n   {\n    \"text\": \"本条只规定设立阶段的义务，未规定违反义务的后果（是否影响设立效力），故不写效力性规则\",\n    \"rules\": []\n   },\n   {\n    \"text\": \"本条义务主体是“设立建设用地使用权”的行为人；词表 complyWithResourceAndEcoProvisions 指第326条用益物权人行使权利时遵守资源、生态规定，主体与阶段不同，故另设 complyWithLandUseProvisions、harmEstablishedUsufruct 等新谓词\",\n    \"rules\": []\n   },\n   {\n    \"text\": \"第346条第2款（出让或划拨等方式）未挂载，本卡片不涉及；笔记未引用原文或条号，无可采内容\",\n    \"rules\": []\n   }\n  ]\n },\n \"rules\": [\n  {\n   \"key\": \"c346-1\",\n   \"srcs\": [\n    \"art346-1\"\n   ],\n   \"body\": [\n    \"establishConstructionLandUseRight(A,L)\"\n   ],\n   \"heads\": [\n    {\n     \"type\": \"OBL\",\n     \"bearer\": \"A\",\n     \"counterparty\": null,\n     \"content\": \"conserveResourcesAndProtectEnvironment(A)\"\n    }\n   ],\n   \"note\": \"设立建设用地使用权，应当符合节约资源、保护生态环境的要求\",\n   \"auth\": \"npc\"\n  },\n  {\n   \"key\": \"c346-2\",\n   \"srcs\": [\n    \"art346-1\"\n   ],\n   \"body\": [\n    \"establishConstructionLandUseRight(A,L)\"\n   ],\n   \"heads\": [\n    {\n     \"type\": \"OBL\",\n     \"bearer\": \"A\",\n     \"counterparty\": null,\n     \"content\": \"complyWithLandUseProvisions(A)\"\n    }\n   ],\n   \"note\": \"设立建设用地使用权，应当遵守法律、行政法规关于土地用途的规定\",\n   \"auth\": \"npc\"\n  },\n  {\n   \"key\": \"c346-3\",\n   \"srcs\": [\n    \"art346-1\"\n   ],\n   \"body\": [\n    \"establishConstructionLandUseRight(A,L)\"\n   ],\n   \"heads\": [\n    {\n     \"type\": \"FOR\",\n     \"bearer\": \"A\",\n     \"counterparty\": null,\n     \"content\": \"harmEstablishedUsufruct(A)\"\n    }\n   ],\n   \"note\": \"设立建设用地使用权，不得损害已经设立的用益物权\",\n   \"auth\": \"npc\"\n  }\n ],\n \"overrides\": [],\n \"predicates\": {\n  \"establishConstructionLandUseRight/2\": \"设立建设用地使用权（参数1：设立人，参数2：宗地/建设用地）\",\n  \"complyWithLandUseProvisions/1\": \"遵守法律、行政法规关于土地用途的规定（参数1：设立建设用地使用权的行为人）\",\n  \"harmEstablishedUsufruct/1\": \"损害已经设立的用益物权（参数1：设立建设用地使用权的行为人）\"\n }\n}"
+ },
+ "art:351": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权人是否负有支付出让金等费用的义务，以及该义务的履行依据",
+     "rules": [
+      "c351-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "义务人是建设用地使用权人",
+     "rules": [
+      "c351-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当依照法律规定以及合同约定支付出让金等费用",
+     "rules": [
+      "c351-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，本行仅依第351条第1款；条文只规定支付义务本身，未规定欠缴的后果（如解除合同、收回土地），故不设相应规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c351-1",
+    "srcs": [
+     "art351-1"
+    ],
+    "body": [
+     "constructionLandUseRightHolder(P,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "payGrantFeeEtc(P,L)"
+     }
+    ],
+    "note": "建设用地使用权人应当依照法律规定以及合同约定支付出让金等费用；支付的标准与方式依法律和合同确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "constructionLandUseRightHolder": "是建设用地使用权人（参数1：人，参数2：建设用地/建设用地使用权）",
+   "payGrantFeeEtc": "支付出让金等费用（参数1：建设用地使用权人，参数2：建设用地/建设用地使用权）"
+  }
+ },
+ "art:355": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权因转让、互换、出资或者赠与而发生变动的，是否应当办理变更登记、由谁申请",
+     "rules": [
+      "c355-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的为建设用地使用权，且该权利被转让、互换、出资或者赠与（四种处分方式之一）",
+     "rules": [
+      "c355-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "当事人应当向登记机构申请变更登记",
+     "rules": [
+      "c355-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只设定“申请变更登记”的义务，未规定登记的效力；建设用地使用权的设立以登记为准（第349条），转让等变动登记的效力另依相关规定判断",
+     "rules": []
+    },
+    {
+     "text": "本条与土地承包经营权互换、转让（第335条）及土地经营权流转（第341条）的登记规则不同，后者适用各该条，不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c355-1",
+    "srcs": [
+     "art355-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "disposesLandUseRight(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyForChangeRegistrationOf(R)"
+     }
+    ],
+    "note": "建设用地使用权转让、互换、出资或者赠与的，当事人应当向登记机构申请变更登记",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "disposesLandUseRight": "将建设用地使用权转让、互换、出资或者赠与（当事人，建设用地使用权）",
+   "applyForChangeRegistrationOf": "就建设用地使用权的变动向登记机构申请变更登记（建设用地使用权）"
+  }
+ },
+ "art:354": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权转让、互换、出资、赠与或者抵押时，是否必须采用书面形式订立合同；当事人约定的使用期限受何限制",
+     "rules": [
+      "c354-1",
+      "c354-term",
+      "c354-term-limit"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人以转让、互换、出资、赠与或者抵押的方式处分建设用地使用权",
+     "rules": [
+      "c354-1",
+      "c354-term"
+     ]
+    },
+    {
+     "text": "当事人约定的使用期限超过建设用地使用权的剩余期限",
+     "rules": [
+      "c354-term-limit"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：使用期限虽由当事人约定，但不得超过建设用地使用权的剩余期限",
+     "rules": [
+      "c354-term-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "当事人应当采用书面形式订立相应的合同（转让、互换、出资、赠与、抵押合同）",
+     "rules": [
+      "c354-1"
+     ]
+    },
+    {
+     "text": "使用期限由当事人约定",
+     "rules": [
+      "c354-term"
+     ]
+    },
+    {
+     "text": "不得约定超过建设用地使用权剩余期限的使用期限",
+     "rules": [
+      "c354-term-limit"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "剩余期限的限制（但书）优先于“使用期限由当事人约定”的任意性规定，超过部分不受允许",
+     "rules": [
+      "c354-term-limit",
+      "c354-term"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只要求采用书面形式，未规定形式欠缺的后果；未采用书面形式但一方已履行主要义务、对方接受的，合同仍可成立（第490条第2款），该内容不在本条",
+     "rules": []
+    },
+    {
+     "text": "本条规范的是建设用地使用权的转让、互换、出资、赠与、抵押等处分合同，不涉及建设用地使用权出让合同（第348条）的内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c354-1",
+    "srcs": [
+     "art354"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "disposeConstructionLandUseRight(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeContractInWriting(P,R)"
+     }
+    ],
+    "note": "建设用地使用权转让、互换、出资、赠与或者抵押的，当事人应当采用书面形式订立相应的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c354-term",
+    "srcs": [
+     "art354"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "disposeConstructionLandUseRight(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "agreeUseTerm(P,R)"
+     }
+    ],
+    "note": "使用期限由当事人约定（任意性规定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c354-term-limit",
+    "srcs": [
+     "art354"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "useTermExceedsRemaining(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "agreeUseTermExceedingRemaining(P,R)"
+     }
+    ],
+    "note": "但书：约定的使用期限不得超过建设用地使用权的剩余期限",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c354-term-limit",
+    "c354-term",
+    "但书对任意性规定的限制：使用期限虽由当事人约定，但不得超过建设用地使用权的剩余期限"
+   ]
+  ],
+  "predicates": {
+   "disposeConstructionLandUseRight": "以转让、互换、出资、赠与或者抵押方式处分建设用地使用权（当事人，建设用地使用权）",
+   "concludeContractInWriting": "采用书面形式订立相应的合同（当事人，建设用地使用权）",
+   "agreeUseTerm": "约定建设用地使用权的使用期限（当事人，建设用地使用权）",
+   "useTermExceedsRemaining": "约定的使用期限超过建设用地使用权的剩余期限（当事人，建设用地使用权）",
+   "agreeUseTermExceedingRemaining": "约定超过建设用地使用权剩余期限的使用期限（当事人，建设用地使用权）"
+  }
+ },
+ "art:356": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权转让、互换、出资或者赠与的，附着于该土地上的建筑物、构筑物及其附属设施是否应当一并处分",
+     "rules": [
+      "c356-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在建设用地使用权，且权利人将其转让、互换、出资或者赠与（四种处分方式之一）",
+     "rules": [
+      "c356-1"
+     ]
+    },
+    {
+     "text": "该土地上存在建筑物、构筑物或者附属设施，并附着于该建设用地使用权所涉土地",
+     "rules": [
+      "c356-object",
+      "c356-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "附着于该土地上的建筑物、构筑物及其附属设施应当与建设用地使用权一并处分（“房随地走”）",
+     "rules": [
+      "c356-1"
+     ]
+    },
+    {
+     "text": "建设用地使用权人享有处分权，处分的对象是建设用地使用权而非土地本身",
+     "rules": [
+      "c356-doctrine"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记强调：此处所说的处分不是对土地本身的处分，而是对建设用地使用权的处分，土地所有权归属不因之改变",
+     "rules": [
+      "c356-doctrine"
+     ]
+    },
+    {
+     "text": "第357条规定建筑物、构筑物及其附属设施转让、互换、出资或者赠与的建设用地使用权一并处分（反向的“地随房走”），本行未挂载该条，故不在此形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c356-object",
+    "srcs": [
+     "art356-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "building(B)",
+       "structure(B)",
+       "ancillaryFacility(B)"
+      ]
+     }
+    ],
+    "heads": [
+     "attachedStructure(B)"
+    ],
+    "note": "本条所称一并处分的对象为土地上的建筑物、构筑物及其附属设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c356-1",
+    "srcs": [
+     "art356-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     {
+      "or": [
+       "transfersLandUseRight(A,R)",
+       "exchangesLandUseRight(A,R)",
+       "contributesLandUseRight(A,R)",
+       "giftsLandUseRight(A,R)"
+      ]
+     },
+     "attachedStructure(B)",
+     "attachedToLand(B,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "disposeAttachedTogether(A,B,R)"
+     }
+    ],
+    "note": "建设用地使用权转让、互换、出资或者赠与的，附着于该土地上的建筑物、构筑物及其附属设施应当一并处分",
+    "auth": "npc"
+   },
+   {
+    "key": "c356-doctrine",
+    "srcs": [
+     "art356-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "landUseRightHolder(A,R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "disposeLandUseRight(A,R)"
+     }
+    ],
+    "note": "笔记（学理）：建设用地使用权人享有处分权，处分的客体是建设用地使用权而非土地本身，故本条不导致土地所有权变动",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "structure": "是构筑物",
+   "ancillaryFacility": "是附属设施",
+   "attachedStructure": "是土地上的建筑物、构筑物或者附属设施（本条一并处分的对象）",
+   "attachedToLand": "附着于该建设用地使用权所涉土地上（附着物，建设用地使用权）",
+   "transfersLandUseRight": "转让建设用地使用权（处分人，建设用地使用权）",
+   "exchangesLandUseRight": "互换建设用地使用权（处分人，建设用地使用权）",
+   "contributesLandUseRight": "以建设用地使用权出资（出资人，建设用地使用权）",
+   "giftsLandUseRight": "赠与建设用地使用权（赠与人，建设用地使用权）",
+   "disposeAttachedTogether": "将附着物与建设用地使用权一并处分（处分人，附着物，建设用地使用权）",
+   "landUseRightHolder": "是建设用地使用权的权利人（权利人，建设用地使用权）",
+   "disposeLandUseRight": "处分建设用地使用权（权利人，建设用地使用权）"
+  }
+ },
+ "art:357": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建筑物、构筑物及其附属设施被转让、互换、出资或者赠与时，其占用范围内的建设用地使用权是否一并处分",
+     "rules": [
+      "c357-forms",
+      "c357-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "处分的标的物是建筑物、构筑物及其附属设施",
+     "rules": [
+      "c357-1"
+     ]
+    },
+    {
+     "text": "处分方式限于转让、互换、出资或者赠与",
+     "rules": [
+      "c357-forms"
+     ]
+    },
+    {
+     "text": "该建筑物、构筑物及其附属设施占用范围内存在建设用地使用权",
+     "rules": [
+      "c357-1",
+      "c357-effect"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条无但书，未设“当事人另有约定”或“法律另有规定”的除外情形",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "处分人应当将占用范围内的建设用地使用权一并处分（地随房走）",
+     "rules": [
+      "c357-1"
+     ]
+    },
+    {
+     "text": "建设用地使用权随建筑物、构筑物及其附属设施的处分而一并被处分，不因当事人约定而分离",
+     "rules": [
+      "c357-effect"
+     ]
+    },
+    {
+     "text": "此处“处分”的对象是建设用地使用权这一权利，而非土地本身",
+     "rules": [
+      "c357-doctrine"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是“地随房走”，与第356条“房随地走”（建设用地使用权转让时地上建筑物、构筑物及其附属设施一并处分）互为对应；第356条不在本行挂载范围，故不写规则",
+     "rules": []
+    },
+    {
+     "text": "笔记强调：此处所说的处分不是指对土地本身的处分，而是对建设用地使用权的处分，属学理说明",
+     "rules": [
+      "c357-doctrine"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c357-forms",
+    "srcs": [
+     "art357-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "transfersBuilding(A,B)",
+       "exchangesBuilding(A,B)",
+       "contributesBuilding(A,B)",
+       "giftsBuilding(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "disposesBuilding(A,B)"
+    ],
+    "note": "转让、互换、出资或者赠与，均属本条规定的对建筑物、构筑物及其附属设施的处分方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c357-1",
+    "srcs": [
+     "art357-1"
+    ],
+    "body": [
+     "buildingStructureOrAttachment(B)",
+     "occupiesLand(B,L)",
+     "constructionLandUseRight(L)",
+     "disposesBuilding(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "disposeLandUseRightTogether(A,L)"
+     }
+    ],
+    "note": "建筑物、构筑物及其附属设施转让、互换、出资或者赠与的，该建筑物、构筑物及其附属设施占用范围内的建设用地使用权一并处分",
+    "auth": "npc"
+   },
+   {
+    "key": "c357-effect",
+    "srcs": [
+     "art357-1"
+    ],
+    "body": [
+     "buildingStructureOrAttachment(B)",
+     "occupiesLand(B,L)",
+     "constructionLandUseRight(L)",
+     "disposesBuilding(A,B)"
+    ],
+    "heads": [
+     "disposedTogetherWith(A,L)"
+    ],
+    "note": "构成性结论：占用范围内的建设用地使用权随建筑物、构筑物及其附属设施的处分而一并被处分（地随房走）",
+    "auth": "npc"
+   },
+   {
+    "key": "c357-doctrine",
+    "srcs": [
+     "art357-1"
+    ],
+    "body": [
+     "disposeLandUseRightTogether(A,L)"
+    ],
+    "heads": [
+     "-disposesLandItself(A,L)"
+    ],
+    "note": "笔记指出：此处所说的处分不是对土地本身的处分，而是对建设用地使用权的处分（学理说明，法条未明文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "buildingStructureOrAttachment": "是建筑物、构筑物及其附属设施（1个参数：标的物）",
+   "occupiesLand": "占用范围内的土地（参数1：建筑物、构筑物及其附属设施；参数2：其占用范围内的土地）",
+   "transfersBuilding": "转让建筑物、构筑物及其附属设施（处分人，标的物）",
+   "exchangesBuilding": "以建筑物、构筑物及其附属设施互换（处分人，标的物）",
+   "contributesBuilding": "以建筑物、构筑物及其附属设施出资（处分人，标的物）",
+   "giftsBuilding": "赠与建筑物、构筑物及其附属设施（处分人，标的物）",
+   "disposesBuilding": "对建筑物、构筑物及其附属设施作出转让、互换、出资或者赠与的处分（处分人，标的物）",
+   "disposeLandUseRightTogether": "将占用范围内的建设用地使用权一并处分（处分人，建设用地使用权）",
+   "disposedTogetherWith": "建设用地使用权随建筑物、构筑物及其附属设施一并被处分（处分人，建设用地使用权）",
+   "disposesLandItself": "对土地本身作出处分（处分人，土地）"
+  }
+ },
+ "art:361": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "集体所有的土地作为建设用地时，应当依照何种法律规则办理",
+     "rules": [
+      "c361-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的土地属于集体所有，且被作为建设用地使用",
+     "rules": [
+      "c361-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该事项应当依照土地管理的法律规定办理，即援引土地管理法律，而非直接适用物权编关于建设用地使用权的一般规定",
+     "rules": [
+      "c361-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为援引条款：集体土地作建设用地时，土地管理法律的特别规定优先于物权编建设用地使用权的一般规定",
+     "rules": [
+      "c361-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决法律适用（援引土地管理法），不改变集体土地的所有权归属，也不等同于国有建设用地使用权的出让、设立规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c361-1",
+    "srcs": [
+     "art361-1"
+    ],
+    "body": [
+     "collectiveLand(L)",
+     "usedAsConstructionLand(L)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(L)"
+    ],
+    "note": "集体所有的土地作为建设用地的，应当依照土地管理的法律规定办理（援引条款，指向土地管理法）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usedAsConstructionLand": "该集体所有的土地被作为建设用地使用"
+  }
+ },
+ "art:360": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权消灭后，出让人与登记机构各负何种义务",
+     "rules": [
+      "c360-1",
+      "c360-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "建设用地使用权已消灭",
+     "rules": [
+      "c360-1",
+      "c360-2"
+     ]
+    },
+    {
+     "text": "义务主体分别为出让人（办理注销登记）与登记机构（收回权属证书）",
+     "rules": [
+      "c360-1",
+      "c360-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出让人应当及时办理注销登记",
+     "rules": [
+      "c360-1"
+     ]
+    },
+    {
+     "text": "登记机构应当收回权属证书",
+     "rules": [
+      "c360-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条不规定建设用地使用权消灭的原因（如期限届满、提前收回、土地灭失等），只规定消灭后的注销登记与收回证书义务；消灭原因由其他条款规定",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条，规则完全依第360条原文写出",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c360-1",
+    "srcs": [
+     "art360-1"
+    ],
+    "body": [
+     "constructionLandUseRightExtinguished(R)",
+     "grantorOfLandUseRight(G,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "applyForCancellationRegistration(G,R)"
+     }
+    ],
+    "note": "建设用地使用权消灭的，出让人应当及时办理注销登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c360-2",
+    "srcs": [
+     "art360-1"
+    ],
+    "body": [
+     "constructionLandUseRightExtinguished(R)",
+     "immovableRegistrationAuthority(A)",
+     "certificateOfLandUseRight(C,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "reclaimCertificate(A,C)"
+     }
+    ],
+    "note": "建设用地使用权消灭的，登记机构应当收回该建设用地使用权的权属证书",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "constructionLandUseRightExtinguished": "建设用地使用权已消灭（1个参数：建设用地使用权）",
+   "grantorOfLandUseRight": "是建设用地使用权的出让人（出让人，建设用地使用权）",
+   "applyForCancellationRegistration": "办理注销登记（出让人，建设用地使用权）",
+   "certificateOfLandUseRight": "是该建设用地使用权的权属证书（证书，建设用地使用权）",
+   "reclaimCertificate": "收回权属证书（登记机构，证书）"
+  }
+ },
+ "art:358": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权期限届满前，因公共利益需要提前收回该土地的，出让人应当如何补偿、是否应当退还出让金",
+     "rules": [
+      "c358-1",
+      "c358-refund",
+      "c358-243"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在建设用地使用权，且尚在该建设用地使用权期限届满之前",
+     "rules": [
+      "c358-1",
+      "c358-refund"
+     ]
+    },
+    {
+     "text": "因公共利益需要提前收回该土地",
+     "rules": [
+      "c358-1",
+      "c358-refund",
+      "c358-243"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出让人应当依据第243条的规定，对该土地上的房屋以及其他不动产给予补偿",
+     "rules": [
+      "c358-1",
+      "c358-243"
+     ]
+    },
+    {
+     "text": "出让人应当退还相应的出让金",
+     "rules": [
+      "c358-refund"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规范“期限届满前因公共利益需要提前收回”的情形；期限届满后收回，或者非因公共利益需要而收回的，不适用本条",
+     "rules": []
+    },
+    {
+     "text": "第243条是征收补偿的一般规定，本条是建设用地使用权被提前收回时的特别规定，补偿的具体标准依第243条确定（本条并非征收，而是提前收回土地）",
+     "rules": [
+      "c358-243"
+     ]
+    },
+    {
+     "text": "本条未明示义务主体，依体系解释为提前收回土地的出让人（国家），故以常量 grantor 表示",
+     "rules": [
+      "c358-1",
+      "c358-refund"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c358-1",
+    "srcs": [
+     "art358-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "beforeTermExpiry(R)",
+     "reclaimForPublicInterest(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "grantor",
+      "counterparty": null,
+      "content": "compensateBuildingsAndOtherImmovables(grantor,R)"
+     }
+    ],
+    "note": "建设用地使用权期限届满前因公共利益需要提前收回该土地的，出让人（本条未明示义务主体，依体系解释为出让人，以常量 grantor 表示）应当对该土地上的房屋以及其他不动产给予补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c358-refund",
+    "srcs": [
+     "art358-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "beforeTermExpiry(R)",
+     "reclaimForPublicInterest(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "grantor",
+      "counterparty": null,
+      "content": "refundLandGrantFee(grantor,R)"
+     }
+    ],
+    "note": "提前收回土地的，出让人还应当退还相应的出让金",
+    "auth": "npc"
+   },
+   {
+    "key": "c358-243",
+    "srcs": [
+     "art358-1"
+    ],
+    "body": [
+     "constructionLandUseRight(R)",
+     "reclaimForPublicInterest(R)"
+    ],
+    "heads": [
+     "compensationGovernedByArt243(R)"
+    ],
+    "note": "补偿应当依据第243条（征收补偿：公平、合理补偿，保障居住条件，补偿搬迁、临时安置及停产停业损失等）的规定确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "beforeTermExpiry": "在建设用地使用权期限届满之前（参数：建设用地使用权）",
+   "reclaimForPublicInterest": "因公共利益需要提前收回该土地（参数：建设用地使用权）",
+   "compensateBuildingsAndOtherImmovables": "对该土地上的房屋以及其他不动产给予补偿（参数1：补偿义务人；参数2：建设用地使用权）",
+   "refundLandGrantFee": "退还相应的出让金（参数1：出让人；参数2：建设用地使用权）",
+   "compensationGovernedByArt243": "补偿依照第243条征收补偿的规定确定（参数：建设用地使用权）"
+  }
+ },
+ "card:g3022": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设用地使用权可以采取哪些方式设立；哪些情形必须采取招标、拍卖等公开竞价方式出让；划拨方式的地位如何",
+     "rules": [
+      "c347-1",
+      "c347-2"
+     ]
+    },
+    {
+     "text": "集体土地上能否设立建设用地使用权，其用途范围、批准要求与处分限制如何",
+     "rules": [
+      "c347-collective-purpose",
+      "c347-collective-approval",
+      "c347-collective-alienation"
+     ]
+    },
+    {
+     "text": "建设用地使用权何时设立，登记申请与权属证书如何办理",
+     "rules": [
+      "c349-1",
+      "c349-2",
+      "c349-noreg",
+      "c349-3"
+     ]
+    },
+    {
+     "text": "建设用地使用权期限届满后如何续期，该土地上的房屋及其他不动产归谁",
+     "rules": [
+      "c359-1",
+      "c359-2a",
+      "c359-2b",
+      "c347-term-extinguished"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "工业、商业、旅游、娱乐和商品住宅等经营性用地，或者同一土地有两个以上意向用地者",
+     "rules": [
+      "c347-2"
+     ]
+    },
+    {
+     "text": "客体为集体土地，且用于兴办乡镇企业、乡（镇）村公共设施和公益事业",
+     "rules": [
+      "c347-collective-purpose"
+     ]
+    },
+    {
+     "text": "设立建设用地使用权（应当向登记机构申请建设用地使用权登记）",
+     "rules": [
+      "c349-1"
+     ]
+    },
+    {
+     "text": "该建设用地使用权已依法办理登记、记载于不动产登记簿",
+     "rules": [
+      "c349-2"
+     ]
+    },
+    {
+     "text": "住宅建设用地使用权期限届满",
+     "rules": [
+      "c359-1"
+     ]
+    },
+    {
+     "text": "非住宅建设用地使用权期限届满，且该土地上有房屋及其他不动产",
+     "rules": [
+      "c359-2a",
+      "c359-2b"
+     ]
+    },
+    {
+     "text": "对该土地上房屋及其他不动产的归属有约定；或者没有约定、约定不明确",
+     "rules": [
+      "c359-2a",
+      "c359-2b"
+     ]
+    },
+    {
+     "text": "以出让方式取得建设用地使用权，期限届满且未申请续展或者续展未获批准",
+     "rules": [
+      "c347-term-extinguished"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "严格限制以划拨方式设立建设用地使用权（第347条第3款，政策宣示，不另设规则）",
+     "rules": []
+    },
+    {
+     "text": "未办理登记的，建设用地使用权不设立",
+     "rules": [
+      "c349-noreg"
+     ]
+    },
+    {
+     "text": "续期费用的缴纳或者减免，依照法律、行政法规的规定办理（第359条第1款后段，转致条款）",
+     "rules": []
+    },
+    {
+     "text": "非住宅建设用地使用权期限届满后的续期，依照法律规定办理（第359条第2款前段，转致条款）",
+     "rules": []
+    },
+    {
+     "text": "以划拨方式取得的建设用地使用权只能由权利人自己使用，不得转让、出租、抵押、继承（笔记）",
+     "rules": [
+      "c347-allocation-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "设立建设用地使用权，可以采取出让或者划拨等方式",
+     "rules": [
+      "c347-1"
+     ]
+    },
+    {
+     "text": "应当采取招标、拍卖等公开竞价的方式出让",
+     "rules": [
+      "c347-2"
+     ]
+    },
+    {
+     "text": "集体土地上的建设用地使用权须报请有关政府部门批准，且不得转让、出租或者抵押",
+     "rules": [
+      "c347-collective-approval",
+      "c347-collective-alienation"
+     ]
+    },
+    {
+     "text": "应当向登记机构申请建设用地使用权登记；建设用地使用权自登记时设立；登记机构应当向建设用地使用权人发放权属证书",
+     "rules": [
+      "c349-1",
+      "c349-2",
+      "c349-3"
+     ]
+    },
+    {
+     "text": "住宅建设用地使用权自动续期",
+     "rules": [
+      "c359-1"
+     ]
+    },
+    {
+     "text": "非住宅用地上的房屋及其他不动产，有约定的按照约定；没有约定或者约定不明确的，依照法律、行政法规的规定办理",
+     "rules": [
+      "c359-2a",
+      "c359-2b"
+     ]
+    },
+    {
+     "text": "出让取得的建设用地使用权期限届满未申请续展或者续展未获批准的，使用权消灭",
+     "rules": [
+      "c347-term-extinguished"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "住宅建设用地使用权期限届满自动续期，优先于“出让土地使用权期限届满未申请续展或续展未获批准即消灭”的一般规则",
+     "rules": [
+      "c359-1",
+      "c347-term-extinguished"
+     ]
+    },
+    {
+     "text": "集体土地上建设用地使用权的禁止处分规定，优先于建设用地使用权可依法转让、出租、抵押的一般规则",
+     "rules": [
+      "c347-collective-alienation"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把取得方式分为出让、转让与行政划拨；第347条只把出让、划拨等列为设立方式，转让是从土地使用权人处取得，并非设立",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“行政划拨方式优先于一般民事交易方式”，与第347条第3款“严格限制以划拨方式设立”相反，不予采纳",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“地上建筑物随建设用地使用权一并处分”，本行第347、349、359条未规定（属第356、357条内容），不写入规则",
+     "rules": []
+    },
+    {
+     "text": "集体土地上建设用地使用权的用途范围、批准要求与禁止处分限制来自笔记（《土地管理法》），第347条未规定，故列为 doctrine 规则",
+     "rules": [
+      "c347-collective-purpose",
+      "c347-collective-approval",
+      "c347-collective-alienation"
+     ]
+    },
+    {
+     "text": "划拨取得的建设用地使用权不得转让、出租、抵押、继承，亦来自笔记，第347条第3款仅规定“严格限制以划拨方式设立”",
+     "rules": [
+      "c347-allocation-limit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c347-1",
+    "srcs": [
+     "art347-1"
+    ],
+    "body": [
+     "land(L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "establishConstructionLandUseRightByGrantOrAllocation(L)"
+     }
+    ],
+    "note": "设立建设用地使用权，可以采取出让或者划拨等方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c347-2",
+    "srcs": [
+     "art347-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "commercialLand(L)",
+       "twoOrMoreIntendedUsers(L)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "grantByPublicBidding(L)"
+     }
+    ],
+    "note": "工业、商业、旅游、娱乐和商品住宅等经营性用地，以及同一土地有两个以上意向用地者的，应当采取招标、拍卖等公开竞价的方式出让",
+    "auth": "npc"
+   },
+   {
+    "key": "c347-collective-purpose",
+    "srcs": [
+     "art347-1"
+    ],
+    "body": [
+     "collectiveOwnedLand(L)",
+     "constructionLandUseRightOn(A,L)"
+    ],
+    "heads": [
+     "limitedToVillageEnterpriseAndPublicWelfare(A,L)"
+    ],
+    "note": "笔记：以集体土地为客体的建设用地使用权限于兴办乡镇企业、乡（镇）村公共设施和公益事业（《土地管理法》），第347条未规定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c347-collective-approval",
+    "srcs": [
+     "art347-1"
+    ],
+    "body": [
+     "collectiveOwnedLand(L)",
+     "constructionLandUseRightOn(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "obtainGovernmentApproval(A,L)"
+     }
+    ],
+    "note": "笔记：在集体土地上设立建设用地使用权，必须报请有关政府部门批准",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c347-collective-alienation",
+    "srcs": [
+     "art347-1"
+    ],
+    "body": [
+     "collectiveOwnedLand(L)",
+     "constructionLandUseRightOn(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "transferLeaseOrMortgage(A,L)"
+     }
+    ],
+    "note": "笔记：以集体土地为客体的建设用地使用权不得转让、出租或者抵押",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c347-allocation-limit",
+    "srcs": [
+     "art347-3"
+    ],
+    "body": [
+     "allocatedLandUseRight(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "transferLeaseMortgageOrInherit(A,L)"
+     }
+    ],
+    "note": "笔记：以划拨方式取得的建设用地使用权只能由权利人自己使用，不得转让、出租、抵押、继承；第347条第3款仅规定“严格限制以划拨方式设立”",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c347-term-extinguished",
+    "srcs": [
+     "art347-1"
+    ],
+    "body": [
+     "grantedLandUseRight(A,L)",
+     "landUseRightTermExpired(L)",
+     "-renewalAppliedOrApproved(A,L)"
+    ],
+    "heads": [
+     "-constructionLandUseRightOn(A,L)"
+    ],
+    "note": "笔记：出让取得的建设用地使用权有存续期限，期限届满未申请续展或者续展未获批准的，使用权消灭",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c349-1",
+    "srcs": [
+     "art349"
+    ],
+    "body": [
+     "establishingConstructionLandUseRight(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "registrationApplication(A,L)"
+     }
+    ],
+    "note": "设立建设用地使用权的，应当向登记机构申请建设用地使用权登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c349-2",
+    "srcs": [
+     "art349"
+    ],
+    "body": [
+     "registeredInRegister(L)"
+    ],
+    "heads": [
+     "constructionLandUseRightEstablished(L)"
+    ],
+    "note": "建设用地使用权自登记时设立（登记生效）",
+    "auth": "npc"
+   },
+   {
+    "key": "c349-noreg",
+    "srcs": [
+     "art349"
+    ],
+    "body": [
+     "establishingConstructionLandUseRight(A,L)",
+     "-registeredInRegister(L)"
+    ],
+    "heads": [
+     "-constructionLandUseRightEstablished(L)"
+    ],
+    "note": "未办理登记的，建设用地使用权不设立（由“自登记时设立”反推）",
+    "auth": "npc"
+   },
+   {
+    "key": "c349-3",
+    "srcs": [
+     "art349"
+    ],
+    "body": [
+     "constructionLandUseRightEstablished(L)",
+     "constructionLandUseRightOn(A,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registrationAuthority",
+      "counterparty": "A",
+      "content": "issueLandUseRightCertificate(A)"
+     }
+    ],
+    "note": "登记机构应当向建设用地使用权人发放权属证书",
+    "auth": "npc"
+   },
+   {
+    "key": "c359-1",
+    "srcs": [
+     "art359-1"
+    ],
+    "body": [
+     "residentialLandUseRight(L)",
+     "landUseRightTermExpired(L)"
+    ],
+    "heads": [
+     "automaticallyRenewed(L)"
+    ],
+    "note": "住宅建设用地使用权期限届满的，自动续期",
+    "auth": "npc"
+   },
+   {
+    "key": "c359-2a",
+    "srcs": [
+     "art359-2"
+    ],
+    "body": [
+     "nonResidentialLandUseRight(L)",
+     "landUseRightTermExpired(L)",
+     "buildingOnLand(B,L)",
+     "ownershipAgreed(B)"
+    ],
+    "heads": [
+     "ownershipOfBuildingDeterminedPerAgreement(B)"
+    ],
+    "note": "非住宅建设用地使用权期限届满，该土地上房屋及其他不动产的归属有约定的，按照约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c359-2b",
+    "srcs": [
+     "art359-2"
+    ],
+    "body": [
+     "nonResidentialLandUseRight(L)",
+     "landUseRightTermExpired(L)",
+     "buildingOnLand(B,L)",
+     "ownershipAgreedUnclear(B)"
+    ],
+    "heads": [
+     "ownershipDeterminedPerLaw(B)"
+    ],
+    "note": "没有约定或者约定不明确的，该土地上房屋及其他不动产的归属依照法律、行政法规的规定办理",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c359-1",
+    "c347-term-extinguished",
+    "住宅建设用地使用权期限届满自动续期，排除“出让土地使用权期限届满未续展即消灭”的一般规则"
+   ]
+  ],
+  "predicates": {
+   "land": "土地，即建设用地使用权的客体（1个参数）",
+   "establishConstructionLandUseRightByGrantOrAllocation": "以出让或者划拨等方式设立建设用地使用权（1个参数：土地）",
+   "commercialLand": "工业、商业、旅游、娱乐和商品住宅等经营性用地（1个参数：土地）",
+   "twoOrMoreIntendedUsers": "同一土地有两个以上意向用地者（1个参数：土地）",
+   "grantByPublicBidding": "以招标、拍卖等公开竞价的方式出让建设用地使用权（1个参数：土地）",
+   "collectiveOwnedLand": "是集体所有的土地（1个参数：土地）",
+   "constructionLandUseRightOn": "在特定土地上享有建设用地使用权（权利人，土地）",
+   "limitedToVillageEnterpriseAndPublicWelfare": "限于兴办乡镇企业、乡（镇）村公共设施和公益事业（权利人，土地）",
+   "obtainGovernmentApproval": "报请有关政府部门批准（权利人，土地）",
+   "transferLeaseOrMortgage": "转让、出租或者抵押（权利人，集体土地上的建设用地使用权）",
+   "allocatedLandUseRight": "以划拨方式取得的建设用地使用权（权利人，土地）",
+   "transferLeaseMortgageOrInherit": "转让、出租、抵押或者继承（权利人，划拨取得的建设用地使用权）",
+   "grantedLandUseRight": "以出让方式取得的建设用地使用权（权利人，土地）",
+   "landUseRightTermExpired": "该土地上的建设用地使用权期限届满（1个参数：土地）",
+   "renewalAppliedOrApproved": "已申请续展或者续展已获批准（权利人，土地）",
+   "establishingConstructionLandUseRight": "设立建设用地使用权（设立人/受让人，土地）",
+   "constructionLandUseRightEstablished": "建设用地使用权已设立（自登记时，1个参数：土地）",
+   "issueLandUseRightCertificate": "向建设用地使用权人发放权属证书（1个参数：权利人）",
+   "residentialLandUseRight": "该土地上的建设用地使用权为住宅建设用地使用权（1个参数：土地）",
+   "nonResidentialLandUseRight": "该土地上的建设用地使用权为非住宅建设用地使用权（1个参数：土地）",
+   "automaticallyRenewed": "该土地上的住宅建设用地使用权自动续期（1个参数：土地）",
+   "buildingOnLand": "房屋及其他不动产位于该土地上（房屋等，土地）",
+   "ownershipOfBuildingDeterminedPerAgreement": "该土地上的房屋及其他不动产的归属按照约定确定（1个参数：房屋等）"
+  }
+ }
+}

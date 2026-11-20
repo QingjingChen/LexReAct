@@ -1,0 +1,3178 @@
+{
+ "card:g1394": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事法律行为依一方、双方或多方意思表示而成立的方式，以及法人、非法人组织决议行为的成立",
+     "rules": [
+      "c134-1-single",
+      "c134-1-bilateral",
+      "c134-1-multilateral",
+      "c134-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "仅有一方当事人的意思表示（如遗赠）",
+     "rules": [
+      "c134-1-single"
+     ]
+    },
+    {
+     "text": "双方当事人的意思表示一致（如合同、结婚、收养）",
+     "rules": [
+      "c134-1-bilateral"
+     ]
+    },
+    {
+     "text": "多个行为人的意思表示达成一致（如合伙协议、设立公司）",
+     "rules": [
+      "c134-1-multilateral"
+     ]
+    },
+    {
+     "text": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议",
+     "rules": [
+      "c134-2"
+     ]
+    },
+    {
+     "text": "决议一般经多数人意思表示一致即可成立，无须全体一致（笔记）",
+     "rules": [
+      "c134-d-majority"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "决议行为不要求全体当事人意思表示一致，多数决即可，构成对双方、多方行为须全体一致要求的例外（笔记）",
+     "rules": [
+      "c134-d-majority"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "单方行为成立",
+     "rules": [
+      "c134-1-single"
+     ]
+    },
+    {
+     "text": "双方行为、多方行为成立",
+     "rules": [
+      "c134-1-bilateral",
+      "c134-1-multilateral"
+     ]
+    },
+    {
+     "text": "决议行为成立",
+     "rules": [
+      "c134-2",
+      "c134-d-majority"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "决议行为依多数决与法定、章定程序成立，优先于双方、多方行为须全体一致的一般要求（笔记）",
+     "rules": [
+      "c134-d-majority",
+      "c134-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：双方、多方行为须所有当事人意思表示一致且无须特定程序；决议行为一般只需多数人意思表示一致，并须依法律或章程规定的议事方式和表决程序，且原则上仅适用于法人、非法人组织内部的决议事项",
+     "rules": [
+      "c134-2",
+      "c134-d-majority"
+     ]
+    },
+    {
+     "text": "笔记：身份行为（如离婚、收养）往往有特别规定，不能简单适用总则编关于民事法律行为效力的一般规定",
+     "rules": []
+    },
+    {
+     "text": "笔记：负担行为（如买卖、租赁合同）产生请求权，处分行为（如抛弃所有权、债务免除、债权转让）直接使既存权利发生、变更或消灭；一个交易常同时包含二者",
+     "rules": []
+    },
+    {
+     "text": "笔记：有因行为原因不存在则行为无效；无因行为（如票据行为、债权转让）原因不存在或有瑕疵不影响行为效力",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c134-1-single",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     "actOf(P,K)",
+     "singlePartyIntent(K)"
+    ],
+    "heads": [
+     "unilateralAct(K)",
+     "actEstablished(K)"
+    ],
+    "note": "民事法律行为仅基于一方当事人的意思表示而成立的，为单方行为（如遗赠），该行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-1-bilateral",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     "actOf(P,K)",
+     "twoPartyIntentAgreed(K)"
+    ],
+    "heads": [
+     "bilateralAct(K)",
+     "actEstablished(K)"
+    ],
+    "note": "基于双方当事人意思表示一致而成立的，为双方行为（如合同、结婚、收养），该行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-1-multilateral",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     "actOf(P,K)",
+     "multiPartyIntentAgreed(K)"
+    ],
+    "heads": [
+     "multilateralAct(K)",
+     "actEstablished(K)"
+    ],
+    "note": "基于多个行为人意思表示达成一致而成立的，为多方行为（如合伙协议、设立公司），该行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-2",
+    "srcs": [
+     "art134-2"
+    ],
+    "body": [
+     "resolutionByLegalPersonOrOrg(K,O)",
+     "deliberationAndVotingPerLawOrCharter(K,O)"
+    ],
+    "heads": [
+     "resolutionAct(K)",
+     "actEstablished(K)"
+    ],
+    "note": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议的，该决议行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-d-majority",
+    "srcs": [
+     "art134-2"
+    ],
+    "body": [
+     "resolutionAct(K)",
+     "majorityMembersAgreed(K)"
+    ],
+    "heads": [
+     "actEstablished(K)"
+    ],
+    "note": "笔记：决议行为一般不需要所有当事人意思表示一致，多数人意思表示一致即可成立；法条未明文规定多数决，属学理对第134条第2款的补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c134-d-majority",
+    "c134-1-multilateral",
+    "决议行为依多数决成立，不要求全体当事人意思表示一致（笔记对决议行为与多方行为的区分）"
+   ]
+  ],
+  "predicates": {
+   "actEstablished": "民事法律行为（含决议行为）成立",
+   "singlePartyIntent": "仅有一方当事人的意思表示（民事法律行为）",
+   "twoPartyIntentAgreed": "双方当事人的意思表示一致",
+   "multiPartyIntentAgreed": "多个行为人的意思表示达成一致",
+   "unilateralAct": "单方行为",
+   "bilateralAct": "双方行为",
+   "multilateralAct": "多方行为",
+   "resolutionAct": "决议行为",
+   "resolutionByLegalPersonOrOrg": "法人、非法人组织作出决议（决议，法人或非法人组织）",
+   "deliberationAndVotingPerLawOrCharter": "依照法律或者章程规定的议事方式和表决程序（决议，法人或非法人组织）",
+   "majorityMembersAgreed": "多数成员的意思表示一致"
+  }
+ },
+ "card:g0386": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为民事法律行为，民事法律行为有效须具备哪些条件",
+     "rules": [
+      "c133-1",
+      "c143-1"
+     ]
+    },
+    {
+     "text": "民事法律行为无效、被撤销或者确定不发生效力后，取得的财产如何返还、损失如何赔偿",
+     "rules": [
+      "c157-1",
+      "c157-2",
+      "c157-3",
+      "c157-4",
+      "c157-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "民事主体通过意思表示设立、变更、终止民事法律关系",
+     "rules": [
+      "c133-1"
+     ]
+    },
+    {
+     "text": "行为人具有相应的民事行为能力",
+     "rules": [
+      "c143-1"
+     ]
+    },
+    {
+     "text": "意思表示真实",
+     "rules": [
+      "c143-1"
+     ]
+    },
+    {
+     "text": "不违反法律、行政法规的强制性规定，不违背公序良俗",
+     "rules": [
+      "c143-1"
+     ]
+    },
+    {
+     "text": "行为人因该行为取得了财产",
+     "rules": [
+      "c157-1",
+      "c157-2"
+     ]
+    },
+    {
+     "text": "一方有过错，或者各方都有过错",
+     "rules": [
+      "c157-3",
+      "c157-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不能返还或者没有必要返还的，不返还财产，改为折价补偿",
+     "rules": [
+      "c157-2"
+     ]
+    },
+    {
+     "text": "法律对无效、被撤销或者确定不发生效力后的后果另有规定的，依照其规定",
+     "rules": [
+      "c157-5"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备三项条件的民事法律行为有效",
+     "rules": [
+      "c143-1"
+     ]
+    },
+    {
+     "text": "行为人应当返还因该行为取得的财产",
+     "rules": [
+      "c157-1"
+     ]
+    },
+    {
+     "text": "不能返还或者没有必要返还的，应当折价补偿",
+     "rules": [
+      "c157-2"
+     ]
+    },
+    {
+     "text": "有过错的一方应当赔偿对方由此所受到的损失",
+     "rules": [
+      "c157-3"
+     ]
+    },
+    {
+     "text": "各方都有过错的，应当各自承担相应的责任",
+     "rules": [
+      "c157-4"
+     ]
+    },
+    {
+     "text": "民事法律关系的内容是主体享有的民事权利和承担的义务，一方享有权利必有另一方负担相应义务",
+     "rules": [
+      "c133-content"
+     ]
+    },
+    {
+     "text": "同一民事法律关系中的权利与义务同时产生、变更和消灭",
+     "rules": [
+      "c133-sync"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定时，特别规定优先于第157条第1款的返还、折价补偿与赔偿规则",
+     "rules": [
+      "c157-5"
+     ]
+    },
+    {
+     "text": "不能返还或者没有必要返还时，折价补偿替代返还财产",
+     "rules": [
+      "c157-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记讲的是民事法律关系的内容（民事权利与民事义务），第133条讲的是民事法律行为（以意思表示设立、变更、终止民事法律关系），二者观察角度不同",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“符合法律事实类型”“不得对抗善意第三人”等列为要件，法条未作此规定，本卡不采",
+     "rules": []
+    },
+    {
+     "text": "无效、可撤销的具体事由（第144条至第154条）不在本行挂载范围，本卡只写第143条的有效条件与第157条的后果",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c133-1",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "civilSubject(A)",
+     "expressionOfIntent(A,K)",
+     "affectsCivilRelation(K)"
+    ],
+    "heads": [
+     "actOf(A,K)"
+    ],
+    "note": "民事法律行为是民事主体通过意思表示设立、变更、终止民事法律关系的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c133-content",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "civilLegalRelation(R,A,B)"
+    ],
+    "heads": [
+     "hasCivilRight(A,R)",
+     "bearsCivilObligation(B,R)"
+    ],
+    "note": "笔记：民事法律关系的内容即主体享有的民事权利与承担的义务，一方享有权利必有另一方负担相应义务（学理，法条未直接规定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c133-sync",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "hasCivilRight(A,R)",
+     "bearsCivilObligation(B,R)"
+    ],
+    "heads": [
+     "rightAndObligationAriseAndEndTogether(R)"
+    ],
+    "note": "笔记：同一民事法律关系中的权利与义务同时产生、变更和消灭（学理，法条未直接规定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c143-1",
+    "srcs": [
+     "art143-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "hasCorrespondingCapacity(A,K)",
+     "trueIntent(A,K)",
+     "-violatesMandatoryProvision(K)",
+     "-violatesPublicOrder(K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "行为人具有相应民事行为能力、意思表示真实、不违反强制性规定且不违背公序良俗的，民事法律行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c157-1",
+    "srcs": [
+     "art157-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(K)",
+       "revoked(K)",
+       "ineffective(K)"
+      ]
+     },
+     "obtainedPropertyUnder(A,K)",
+     "counterpartyOf(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "returnProperty(A,K)"
+     }
+    ],
+    "note": "民事法律行为无效、被撤销或者确定不发生效力后，行为人因该行为取得的财产应当返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c157-2",
+    "srcs": [
+     "art157-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(K)",
+       "revoked(K)",
+       "ineffective(K)"
+      ]
+     },
+     "obtainedPropertyUnder(A,K)",
+     "counterpartyOf(B,K)",
+     {
+      "or": [
+       "cannotReturn(A,K)",
+       "noNeedToReturn(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "compensateByValuation(A,K)"
+     }
+    ],
+    "note": "不能返还或者没有必要返还的，应当折价补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c157-3",
+    "srcs": [
+     "art157-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(K)",
+       "revoked(K)",
+       "ineffective(K)"
+      ]
+     },
+     "fault(A,K)",
+     "damage(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "compensate(A,B,K)"
+     }
+    ],
+    "note": "有过错的一方应当赔偿对方由此所受到的损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c157-4",
+    "srcs": [
+     "art157-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "void(K)",
+       "revoked(K)",
+       "ineffective(K)"
+      ]
+     },
+     "fault(A,K)",
+     "fault(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "bearCorrespondingLiability(A,B,K)"
+     }
+    ],
+    "note": "各方都有过错的，应当各自承担相应的责任（规则对双方对称适用）",
+    "auth": "npc"
+   },
+   {
+    "key": "c157-5",
+    "srcs": [
+     "art157-1"
+    ],
+    "body": [
+     "lawProvidesOtherwise(K)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律对无效、被撤销或者确定不发生效力后的后果另有规定的，依照其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c157-5",
+    "c157-1",
+    "第157条第1款末句明定“法律另有规定的，依照其规定”，特别规定优先于返还财产的一般规则"
+   ],
+   [
+    "c157-5",
+    "c157-2",
+    "同上，特别规定优先于折价补偿规则"
+   ],
+   [
+    "c157-5",
+    "c157-3",
+    "同上，特别规定优先于赔偿损失规则"
+   ],
+   [
+    "c157-2",
+    "c157-1",
+    "不能返还或者没有必要返还的，以折价补偿替代返还财产"
+   ]
+  ],
+  "predicates": {
+   "expressionOfIntent": "作出意思表示（行为人，行为）",
+   "affectsCivilRelation": "该行为旨在设立、变更、终止民事法律关系（行为）",
+   "hasCorrespondingCapacity": "行为人具有相应的民事行为能力（行为人，行为）",
+   "trueIntent": "意思表示真实（行为人，行为）",
+   "returnProperty": "返还因该行为取得的财产（行为人，行为）",
+   "noNeedToReturn": "没有必要返还（行为人，行为）",
+   "compensateByValuation": "折价补偿（行为人，行为）",
+   "bearCorrespondingLiability": "各自承担相应的责任（行为人，相对人，行为）",
+   "civilLegalRelation": "民事法律关系（关系，主体，主体）",
+   "hasCivilRight": "享有民事权利（主体，关系）",
+   "bearsCivilObligation": "承担民事义务（主体，关系）",
+   "rightAndObligationAriseAndEndTogether": "权利与义务同时产生、变更、消灭（关系）"
+  }
+ },
+ "card:g1385": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事法律行为如何界定：是否以意思表示为基本要素、以设立、变更、终止民事法律关系为目的",
+     "rules": [
+      "c133-1",
+      "c133-notlawful"
+     ]
+    },
+    {
+     "text": "民事法律行为如何成立：双方或多方意思表示一致、单方意思表示，以及法人、非法人组织的决议行为",
+     "rules": [
+      "c134-1",
+      "c134-2"
+     ]
+    },
+    {
+     "text": "民事法律行为的形式：形式自由与法定或约定特定形式的要求",
+     "rules": [
+      "c135-1",
+      "c135-2"
+     ]
+    },
+    {
+     "text": "意思表示如何解释：有相对人与无相对人的意思表示适用不同的解释方法",
+     "rules": [
+      "c142-1",
+      "c142-2"
+     ]
+    },
+    {
+     "text": "民事法律行为有效的条件",
+     "rules": [
+      "c143-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "民事主体通过意思表示实施，且以设立、变更、终止民事法律关系为目的",
+     "rules": [
+      "c133-1"
+     ]
+    },
+    {
+     "text": "基于双方或者多方的意思表示一致，或者基于单方的意思表示",
+     "rules": [
+      "c134-1"
+     ]
+    },
+    {
+     "text": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议",
+     "rules": [
+      "c134-2"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定或者当事人约定采用特定形式",
+     "rules": [
+      "c135-2"
+     ]
+    },
+    {
+     "text": "行为人具有相应的民事行为能力；意思表示真实；不违反法律、行政法规的强制性规定，不违背公序良俗",
+     "rules": [
+      "c143-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "民事法律行为不以“合法”为成立前提，内容违法仍可成立，只是可能无效或被撤销（笔记、学理，法条未明定）",
+     "rules": [
+      "c133-notlawful"
+     ]
+    },
+    {
+     "text": "无相对人的意思表示的解释，不能完全拘泥于所使用的词句，而应探求行为人的真实意思",
+     "rules": [
+      "c142-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立后设立、变更、终止民事法律关系，产生行为人预期的法律后果",
+     "rules": [
+      "c133-1",
+      "c134-1"
+     ]
+    },
+    {
+     "text": "具备第143条所列条件的，民事法律行为有效",
+     "rules": [
+      "c143-1"
+     ]
+    },
+    {
+     "text": "行为人可以采用书面形式、口头形式或者其他形式",
+     "rules": [
+      "c135-1"
+     ]
+    },
+    {
+     "text": "有法定或约定特定形式要求的，应当采用特定形式",
+     "rules": [
+      "c135-2"
+     ]
+    },
+    {
+     "text": "有相对人的意思表示，按照所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则确定其含义",
+     "rules": [
+      "c142-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无相对人的意思表示的解释优先适用第142条第2款，排除第1款按词句解释的方法",
+     "rules": [
+      "c142-2"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定或者当事人约定采用特定形式时，排除形式自由",
+     "rules": [
+      "c135-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "事实行为（如拾得遗失物、无因管理）不以意思表示为要素，不属于民事法律行为",
+     "rules": []
+    },
+    {
+     "text": "侵权行为虽引起赔偿义务，但非以设立、变更、终止民事法律关系为目的，不属于民事法律行为",
+     "rules": []
+    },
+    {
+     "text": "意思表示不等于民事法律行为：有的行为除意思表示一致外还须交付实物才成立，意思表示只是其构成要素",
+     "rules": []
+    },
+    {
+     "text": "邀请朋友看电影、去饭馆吃饭等生活性行为不产生民事权利义务关系，不是民事法律行为",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称第133条优先于第134、135条适用；法条原文并无此优先规定，第133条为定义性条款，与第134、135条是定义与成立方式、形式要求的关系",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c133-1",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "civilSubject(A)",
+     "declarationOfIntention(A,P)",
+     "aimsAtLegalRelationChange(A,P)"
+    ],
+    "heads": [
+     "actOf(P,A)"
+    ],
+    "note": "定义性条款：民事法律行为是民事主体通过意思表示设立、变更、终止民事法律关系的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c133-notlawful",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "actOf(P,A)"
+    ],
+    "heads": [
+     "notRequiresLawfulness(P)"
+    ],
+    "note": "笔记与学理：民事法律行为不再以“合法”为前提，也并非当然有效；法条原文未明定，故列为学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c134-1",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "mutualIntentionsAgreed(P)",
+       "unilateralIntention(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "actEstablished(P)"
+    ],
+    "note": "民事法律行为可以基于双方或多方意思表示一致成立，也可以基于单方意思表示成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-2",
+    "srcs": [
+     "art134-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalPersonEntity(L)",
+       "unincorporatedOrganization(L)"
+      ]
+     },
+     "resolutionAct(R,L)",
+     "madePerDeliberationAndVotingProcedure(L,R)"
+    ],
+    "heads": [
+     "actEstablished(R)"
+    ],
+    "note": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议的，该决议行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c135-1",
+    "srcs": [
+     "art135"
+    ],
+    "body": [
+     "actOf(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "chooseForm(P)"
+     }
+    ],
+    "note": "民事法律行为可以采用书面形式、口头形式或者其他形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c135-2",
+    "srcs": [
+     "art135"
+    ],
+    "body": [
+     "actOf(P,A)",
+     {
+      "or": [
+       "lawRequiresSpecificForm(P)",
+       "partiesAgreedSpecificForm(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "adoptSpecificForm(P)"
+     }
+    ],
+    "note": "法律、行政法规规定或者当事人约定采用特定形式的，应当采用特定形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c142-1",
+    "srcs": [
+     "art142-1"
+    ],
+    "body": [
+     "declarationWithCounterparty(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "interpretPerWordsAndContext(D)"
+     }
+    ],
+    "note": "有相对人的意思表示，按照所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则确定其含义",
+    "auth": "npc"
+   },
+   {
+    "key": "c142-2",
+    "srcs": [
+     "art142-2"
+    ],
+    "body": [
+     "declarationWithoutCounterparty(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineActualIntention(D)"
+     }
+    ],
+    "note": "无相对人的意思表示，不能完全拘泥于词句，应结合相关条款、性质、目的、习惯及诚信原则确定行为人的真实意思",
+    "auth": "npc"
+   },
+   {
+    "key": "c143-1",
+    "srcs": [
+     "art143-1"
+    ],
+    "body": [
+     "actOf(P,A)",
+     "hasCorrespondingCapacity(A,P)",
+     "intentionTrue(A,P)",
+     "-violatesMandatoryProvision(P)",
+     "-violatesPublicOrder(P)"
+    ],
+    "heads": [
+     "valid(P)"
+    ],
+    "note": "具备相应民事行为能力、意思表示真实、不违反强制性规定且不违背公序良俗的，民事法律行为有效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c142-2",
+    "c142-1",
+    "无相对人的意思表示不适用按词句解释的方法，应探求行为人的真实意思"
+   ],
+   [
+    "c135-2",
+    "c135-1",
+    "有法律、行政法规规定或当事人约定的特定形式要求时，排除形式自由"
+   ]
+  ],
+  "predicates": {
+   "legalPersonEntity": "是法人（营利法人、非营利法人、特别法人等取得法人资格的组织）",
+   "declarationOfIntention": "作出意思表示（行为人，行为）",
+   "aimsAtLegalRelationChange": "以设立、变更、终止民事法律关系为目的（行为人，行为）",
+   "notRequiresLawfulness": "不以合法性为成立要件",
+   "mutualIntentionsAgreed": "双方或多方意思表示一致",
+   "unilateralIntention": "单方意思表示",
+   "actEstablished": "民事法律行为成立",
+   "resolutionAct": "决议行为（决议，法人或非法人组织）",
+   "madePerDeliberationAndVotingProcedure": "依照法律或者章程规定的议事方式和表决程序作出（组织，决议）",
+   "chooseForm": "可以选择书面、口头或者其他形式",
+   "lawRequiresSpecificForm": "法律、行政法规规定采用特定形式",
+   "partiesAgreedSpecificForm": "当事人约定采用特定形式",
+   "adoptSpecificForm": "采用特定形式",
+   "declarationWithCounterparty": "有相对人的意思表示",
+   "declarationWithoutCounterparty": "无相对人的意思表示",
+   "interpretPerWordsAndContext": "按照所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则确定含义",
+   "determineActualIntention": "不拘泥于词句，结合相关条款、性质、目的、习惯及诚信原则确定行为人的真实意思",
+   "hasCorrespondingCapacity": "具有相应的民事行为能力（行为人，行为）",
+   "intentionTrue": "意思表示真实（行为人，行为）"
+  }
+ },
+ "card:g1464": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "意思表示何时生效：对话方式、非对话方式、数据电文形式、无相对人的意思表示、公告方式",
+     "rules": [
+      "c137-1",
+      "c137-2a",
+      "c137-2b",
+      "c137-2c",
+      "c137-2d",
+      "c138",
+      "c138-law",
+      "c139"
+     ]
+    },
+    {
+     "text": "意思表示可以何种方式作出，沉默何时可以视为意思表示",
+     "rules": [
+      "c140-1",
+      "c140-2",
+      "c140-2-neg"
+     ]
+    },
+    {
+     "text": "意思表示如何撤回，撤回发生何种效力",
+     "rules": [
+      "c141-1",
+      "c141-2"
+     ]
+    },
+    {
+     "text": "有相对人与无相对人的意思表示应如何解释",
+     "rules": [
+      "c142-1",
+      "c142-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "以对话方式作出，相对人知道其内容",
+     "rules": [
+      "c137-1"
+     ]
+    },
+    {
+     "text": "以非对话方式作出，到达相对人",
+     "rules": [
+      "c137-2a"
+     ]
+    },
+    {
+     "text": "采用数据电文形式，相对人指定特定系统接收，数据电文进入该特定系统",
+     "rules": [
+      "c137-2b"
+     ]
+    },
+    {
+     "text": "采用数据电文形式，未指定特定系统，相对人知道或者应当知道数据电文进入其系统",
+     "rules": [
+      "c137-2c"
+     ]
+    },
+    {
+     "text": "无相对人的意思表示，表示完成",
+     "rules": [
+      "c138"
+     ]
+    },
+    {
+     "text": "以公告方式作出，公告发布",
+     "rules": [
+      "c139"
+     ]
+    },
+    {
+     "text": "沉默，且有法律规定、当事人约定或者符合当事人之间的交易习惯",
+     "rules": [
+      "c140-2"
+     ]
+    },
+    {
+     "text": "撤回意思表示的通知在意思表示到达相对人前或者与意思表示同时到达",
+     "rules": [
+      "c141-2"
+     ]
+    },
+    {
+     "text": "有相对人的意思表示需要确定其含义；无相对人的意思表示需要确定行为人的真实意思",
+     "rules": [
+      "c142-1",
+      "c142-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对采用数据电文形式的意思表示的生效时间另有约定的，按照其约定",
+     "rules": [
+      "c137-2d"
+     ]
+    },
+    {
+     "text": "法律对无相对人意思表示的生效另有规定的，依照其规定",
+     "rules": [
+      "c138-law"
+     ]
+    },
+    {
+     "text": "没有法律规定、当事人约定，也不符合交易习惯的，沉默不视为意思表示",
+     "rules": [
+      "c140-2-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "意思表示生效：对话方式采了解主义；非对话方式采到达主义；数据电文按进入指定系统或相对人知道、应当知道进入其系统；无相对人的自表示完成时；公告方式自公告发布时",
+     "rules": [
+      "c137-1",
+      "c137-2a",
+      "c137-2b",
+      "c137-2c",
+      "c138",
+      "c139"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，数据电文形式的意思表示按约定的时间生效",
+     "rules": [
+      "c137-2d"
+     ]
+    },
+    {
+     "text": "行为人可以明示或者默示作出意思表示",
+     "rules": [
+      "c140-1"
+     ]
+    },
+    {
+     "text": "具备法定、约定或交易习惯情形的沉默视为意思表示",
+     "rules": [
+      "c140-2"
+     ]
+    },
+    {
+     "text": "行为人可以撤回意思表示；撤回通知先于或者同时到达的，该意思表示不发生效力",
+     "rules": [
+      "c141-1",
+      "c141-2"
+     ]
+    },
+    {
+     "text": "解释有相对人的意思表示，应按所使用的词句并结合相关条款、行为的性质和目的、习惯以及诚信原则确定含义；解释无相对人的意思表示，不能完全拘泥于词句，而应探求行为人的真实意思",
+     "rules": [
+      "c142-1",
+      "c142-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于数据电文生效时间的约定，优先于第137条第2款的到达主义与了解主义规则",
+     "rules": [
+      "c137-2d"
+     ]
+    },
+    {
+     "text": "数据电文形式的特别规定优先于非对话方式“到达相对人时生效”的一般规定",
+     "rules": [
+      "c137-2b",
+      "c137-2c"
+     ]
+    },
+    {
+     "text": "法律另有规定优先于“无相对人的意思表示自表示完成时生效”",
+     "rules": [
+      "c138-law"
+     ]
+    },
+    {
+     "text": "撤回通知先于或者与意思表示同时到达的，该意思表示不生效，优先于到达生效规则",
+     "rules": [
+      "c141-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "撤回针对尚未生效的意思表示，撤销针对已经生效的意思表示；第141条只规定撤回，不规定撤销",
+     "rules": []
+    },
+    {
+     "text": "笔记：数据电文现在仅指电子数据交换、电子邮件，不包括传真（学理说明，法条未作规定）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“口头形式不适用于价额较大或需长期履行的法律行为”，法条与笔记均无此限制，不予采纳",
+     "rules": []
+    },
+    {
+     "text": "无相对人的意思表示如遗嘱、捐助行为、抛弃，自表示完成时即生效，无需相对人知晓",
+     "rules": [
+      "c138"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c137-1",
+    "srcs": [
+     "art137-1"
+    ],
+    "body": [
+     "expressionWithCounterparty(E)",
+     "counterpartyOf(C,E)",
+     "dialogueForm(E)",
+     "knowsContent(C,E)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "以对话方式作出的意思表示，相对人知道其内容时生效（了解主义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c137-2a",
+    "srcs": [
+     "art137-2"
+    ],
+    "body": [
+     "expressionWithCounterparty(E)",
+     "counterpartyOf(C,E)",
+     "nonDialogueForm(E)",
+     "reachesCounterparty(E,C)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "以非对话方式作出的意思表示，到达相对人时生效（到达主义）",
+    "auth": "npc"
+   },
+   {
+    "key": "c137-2b",
+    "srcs": [
+     "art137-2"
+    ],
+    "body": [
+     "expressionWithCounterparty(E)",
+     "counterpartyOf(C,E)",
+     "dataMessageForm(E)",
+     "designatedSystem(C,E)",
+     "entersDesignatedSystem(E)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "数据电文形式的意思表示，相对人指定特定系统接收的，该数据电文进入该特定系统时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c137-2c",
+    "srcs": [
+     "art137-2"
+    ],
+    "body": [
+     "expressionWithCounterparty(E)",
+     "counterpartyOf(C,E)",
+     "dataMessageForm(E)",
+     "-designatedSystem(C,E)",
+     "knowsOrShouldKnowEnteredSystem(C,E)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "未指定特定系统的，相对人知道或者应当知道该数据电文进入其系统时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c137-2d",
+    "srcs": [
+     "art137-2"
+    ],
+    "body": [
+     "expressionWithCounterparty(E)",
+     "dataMessageForm(E)",
+     "agreedOtherwiseOnDataMessageTime(E)"
+    ],
+    "heads": [
+     "takesEffectPerAgreement(E)"
+    ],
+    "note": "当事人对采用数据电文形式的意思表示的生效时间另有约定的，按照其约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c138",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "noCounterparty(E)",
+     "expressionCompleted(E)",
+     "~lawProvidesOtherwiseOnEffect(E)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "无相对人的意思表示，表示完成时生效；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c138-law",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "noCounterparty(E)",
+     "lawProvidesOtherwiseOnEffect(E)"
+    ],
+    "heads": [
+     "takesEffectPerLaw(E)"
+    ],
+    "note": "法律对无相对人意思表示的生效另有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c139",
+    "srcs": [
+     "art139"
+    ],
+    "body": [
+     "byPublicAnnouncement(E)",
+     "announcementMadePublic(E)"
+    ],
+    "heads": [
+     "takesEffect(E)"
+    ],
+    "note": "以公告方式作出的意思表示，公告发布时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c140-1",
+    "srcs": [
+     "art140-1"
+    ],
+    "body": [
+     "actor(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "makeExpression(P)"
+     }
+    ],
+    "note": "行为人可以明示或者默示作出意思表示",
+    "auth": "npc"
+   },
+   {
+    "key": "c140-2",
+    "srcs": [
+     "art140-2"
+    ],
+    "body": [
+     "silence(S)",
+     {
+      "or": [
+       "lawProvidesSilenceAsExpression(S)",
+       "partiesAgreedSilenceAsExpression(S)",
+       "tradeUsageTreatsSilenceAsExpression(S)"
+      ]
+     }
+    ],
+    "heads": [
+     "deemedExpression(S)"
+    ],
+    "note": "沉默只有在有法律规定、当事人约定或者符合当事人之间交易习惯时，才可以视为意思表示",
+    "auth": "npc"
+   },
+   {
+    "key": "c140-2-neg",
+    "srcs": [
+     "art140-2"
+    ],
+    "body": [
+     "silence(S)",
+     "-lawProvidesSilenceAsExpression(S)",
+     "-partiesAgreedSilenceAsExpression(S)",
+     "-tradeUsageTreatsSilenceAsExpression(S)"
+    ],
+    "heads": [
+     "-deemedExpression(S)"
+    ],
+    "note": "不具备法律规定、当事人约定或交易习惯情形的，沉默不视为意思表示",
+    "auth": "npc"
+   },
+   {
+    "key": "c141-1",
+    "srcs": [
+     "art141"
+    ],
+    "body": [
+     "actor(P)",
+     "madeExpression(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "withdrawExpression(P,E)"
+     }
+    ],
+    "note": "行为人可以撤回意思表示",
+    "auth": "npc"
+   },
+   {
+    "key": "c141-2",
+    "srcs": [
+     "art141"
+    ],
+    "body": [
+     "withdrawExpression(P,E)",
+     "withdrawalNoticeArrivesBeforeOrSimultaneously(P,E)"
+    ],
+    "heads": [
+     "-takesEffect(E)"
+    ],
+    "note": "撤回意思表示的通知在意思表示到达相对人前或者与意思表示同时到达的，该意思表示不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c142-1",
+    "srcs": [
+     "art142-1"
+    ],
+    "body": [
+     "interpreter(I)",
+     "expressionWithCounterparty(E)",
+     "interpretationNeeded(E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "interpretPerWordsAndContext(I,E)"
+     }
+    ],
+    "note": "有相对人的意思表示的解释，应当按照所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则确定其含义",
+    "auth": "npc"
+   },
+   {
+    "key": "c142-2",
+    "srcs": [
+     "art142-2"
+    ],
+    "body": [
+     "interpreter(I)",
+     "noCounterparty(E)",
+     "interpretationNeeded(E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "interpretTrueIntention(I,E)"
+     }
+    ],
+    "note": "无相对人的意思表示的解释，不能完全拘泥于所使用的词句，而应结合相关条款、行为的性质和目的、习惯以及诚信原则确定行为人的真实意思",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c137-2d",
+    "c137-2b",
+    "当事人对数据电文意思表示的生效时间另有约定的，从其约定"
+   ],
+   [
+    "c137-2d",
+    "c137-2c",
+    "当事人对数据电文意思表示的生效时间另有约定的，从其约定"
+   ],
+   [
+    "c137-2b",
+    "c137-2a",
+    "数据电文形式的意思表示适用第137条第2款后段的特别规定，优先于非对话方式到达生效的一般规定"
+   ],
+   [
+    "c137-2c",
+    "c137-2a",
+    "数据电文形式的意思表示适用第137条第2款后段的特别规定，优先于非对话方式到达生效的一般规定"
+   ],
+   [
+    "c138-law",
+    "c138",
+    "法律对无相对人意思表示的生效另有规定的，依照其规定"
+   ],
+   [
+    "c141-2",
+    "c137-2a",
+    "撤回通知先于或者与意思表示同时到达的，该意思表示不生效，优先于到达生效规则"
+   ]
+  ],
+  "predicates": {
+   "actor": "实施民事法律行为的行为人",
+   "expressionWithCounterparty": "有相对人的意思表示",
+   "noCounterparty": "无相对人的意思表示",
+   "dialogueForm": "以对话方式作出意思表示",
+   "nonDialogueForm": "以非对话方式作出意思表示",
+   "dataMessageForm": "采用数据电文形式作出意思表示",
+   "designatedSystem": "相对人指定特定系统接收数据电文（相对人，意思表示）",
+   "entersDesignatedSystem": "数据电文进入相对人指定的特定系统",
+   "knowsOrShouldKnowEnteredSystem": "相对人知道或者应当知道数据电文进入其系统（相对人，意思表示）",
+   "knowsContent": "相对人知道意思表示的内容（相对人，意思表示）",
+   "reachesCounterparty": "意思表示到达相对人（意思表示，相对人）",
+   "expressionCompleted": "意思表示已经完成（表示完成）",
+   "byPublicAnnouncement": "以公告方式作出意思表示",
+   "announcementMadePublic": "公告已经发布（意思表示以公告方式作出时）",
+   "takesEffect": "意思表示生效",
+   "takesEffectPerAgreement": "按照当事人约定的时间生效",
+   "takesEffectPerLaw": "依照法律的特别规定生效",
+   "agreedOtherwiseOnDataMessageTime": "当事人对采用数据电文形式的意思表示的生效时间另有约定",
+   "lawProvidesOtherwiseOnEffect": "法律对该意思表示的生效时间另有规定",
+   "madeExpression": "作出意思表示（行为人，意思表示）",
+   "withdrawExpression": "撤回意思表示（行为人，意思表示）",
+   "withdrawalNoticeArrivesBeforeOrSimultaneously": "撤回通知在意思表示到达相对人前或者与意思表示同时到达（行为人，意思表示）",
+   "silence": "沉默",
+   "lawProvidesSilenceAsExpression": "法律规定沉默可以视为意思表示",
+   "partiesAgreedSilenceAsExpression": "当事人约定沉默可以视为意思表示",
+   "tradeUsageTreatsSilenceAsExpression": "符合当事人之间的交易习惯，沉默可以视为意思表示",
+   "deemedExpression": "沉默视为意思表示",
+   "makeExpression": "作出意思表示（明示或者默示）",
+   "interpreter": "解释意思表示的主体（法院、仲裁机构或者当事人）",
+   "interpretationNeeded": "需要确定意思表示的含义",
+   "interpretPerWordsAndContext": "按照所使用的词句并结合相关条款、行为的性质和目的、习惯以及诚信原则确定意思表示的含义（解释者，意思表示）",
+   "interpretTrueIntention": "不拘泥于所使用的词句，结合相关条款、行为的性质和目的、习惯以及诚信原则确定行为人的真实意思（解释者，意思表示）"
+  }
+ },
+ "card:g1564": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "撤销权在何种情形下消灭：除斥期间届满（一般一年、重大误解九十日、受胁迫自胁迫终止起一年、最长五年）与放弃撤销权",
+     "rules": [
+      "c152-1a",
+      "c152-1a-mm",
+      "c152-1b",
+      "c152-1c",
+      "c152-5y"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般情形：当事人自知道或者应当知道撤销事由之日起一年内没有行使撤销权",
+     "rules": [
+      "c152-1a"
+     ]
+    },
+    {
+     "text": "重大误解：当事人自知道或者应当知道撤销事由之日起九十日内没有行使撤销权",
+     "rules": [
+      "c152-1a-mm"
+     ]
+    },
+    {
+     "text": "受胁迫：当事人自胁迫行为终止之日起一年内没有行使撤销权",
+     "rules": [
+      "c152-1b"
+     ]
+    },
+    {
+     "text": "当事人知道撤销事由后明确表示或者以自己的行为表明放弃撤销权",
+     "rules": [
+      "c152-1c"
+     ]
+    },
+    {
+     "text": "最长期间：当事人自民事法律行为发生之日起五年内没有行使撤销权（不问是否知道撤销事由）",
+     "rules": [
+      "c152-5y"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "重大误解的当事人适用九十日期间，不适用一年的一般期间",
+     "rules": [
+      "c152-1a-mm"
+     ]
+    },
+    {
+     "text": "撤销权为形成权，须由撤销权人主动行使，人民法院或仲裁机构不得主动撤销（学理）",
+     "rules": [
+      "c152-doc-exercise"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "上述期间届满或放弃撤销权的，撤销权消灭",
+     "rules": [
+      "c152-1a",
+      "c152-1a-mm",
+      "c152-1b",
+      "c152-1c",
+      "c152-5y"
+     ]
+    },
+    {
+     "text": "撤销权消灭后，当事人不得再行使撤销权，可撤销的民事法律行为确定有效",
+     "rules": [
+      "c152-effect"
+     ]
+    },
+    {
+     "text": "撤销权行使前，可撤销的民事法律行为仍然有效（学理）",
+     "rules": [
+      "c152-doc-valid"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "重大误解的九十日期间为特别规定，优先于一年的一般期间",
+     "rules": [
+      "c152-1a-mm"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与无效的民事法律行为不同：无效为绝对无效，无须主张即不发生效力；可撤销须由撤销权人主张，并受本条除斥期间限制",
+     "rules": []
+    },
+    {
+     "text": "与合同解除不同：解除基于履行障碍，撤销基于意思表示不真实",
+     "rules": []
+    },
+    {
+     "text": "撤销权消灭后行为确定有效；撤销权行使后行为自始没有法律约束力，后者规定于第155条，非本条内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c152-1a",
+    "srcs": [
+     "art152-1"
+    ],
+    "body": [
+     "revocationRight(P,A)",
+     "oneYearSinceKnewGround(P,A)",
+     "-exercisesRevocation(P,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "note": "当事人自知道或者应当知道撤销事由之日起一年内没有行使撤销权的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c152-1a-mm",
+    "srcs": [
+     "art152-1"
+    ],
+    "body": [
+     "revocationRight(P,A)",
+     "majorMisunderstanding(P,A)",
+     "ninetyDaysSinceKnewGround(P,A)",
+     "-exercisesRevocation(P,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "note": "重大误解的当事人自知道或者应当知道撤销事由之日起九十日内没有行使撤销权的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c152-1b",
+    "srcs": [
+     "art152-1"
+    ],
+    "body": [
+     "revocationRight(P,A)",
+     {
+      "or": [
+       "coercedByCounterparty(P,A)",
+       "coercedByThirdParty(P,A)"
+      ]
+     },
+     "oneYearSinceDuressEnded(P,A)",
+     "-exercisesRevocation(P,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "note": "受胁迫的当事人自胁迫行为终止之日起一年内没有行使撤销权的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c152-1c",
+    "srcs": [
+     "art152-1"
+    ],
+    "body": [
+     "revocationRight(P,A)",
+     "waivedRevocation(P,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "note": "当事人知道撤销事由后明确表示或者以自己的行为表明放弃撤销权的，撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c152-5y",
+    "srcs": [
+     "art152-2"
+    ],
+    "body": [
+     "revocationRight(P,A)",
+     "fiveYearsSinceAct(A)",
+     "-exercisesRevocation(P,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "note": "当事人自民事法律行为发生之日起五年内没有行使撤销权的，撤销权消灭（最长期间，不问是否知道撤销事由）",
+    "auth": "npc"
+   },
+   {
+    "key": "c152-effect",
+    "srcs": [
+     "art152-1"
+    ],
+    "body": [
+     "revocationRightExtinguished(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exercisesRevocation(P,A)"
+     }
+    ],
+    "note": "撤销权消灭的当然效果：当事人不得再行使撤销权，行为确定有效（学理说明，条文仅表述为“撤销权消灭”）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c152-doc-valid",
+    "srcs": [
+     "art152"
+    ],
+    "body": [
+     "revocationGround(P,A)",
+     "-revoked(A)"
+    ],
+    "heads": [
+     "valid(A)"
+    ],
+    "note": "学理（笔记）：可撤销的民事法律行为在撤销权人行使撤销权前仍然有效，本条各项期间届满即使其确定有效",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c152-doc-exercise",
+    "srcs": [
+     "art152"
+    ],
+    "body": [
+     "revocationRight(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeExOfficio(A)"
+     }
+    ],
+    "note": "学理（笔记）：撤销权为形成权，须由撤销权人主动行使，人民法院或仲裁机构不得主动撤销",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c152-1a-mm",
+    "c152-1a",
+    "重大误解的撤销权期间为九十日，属特别规定，优先于一年的一般期间"
+   ]
+  ],
+  "predicates": {
+   "revocationRightExtinguished": "撤销权消灭（撤销权人，民事法律行为）",
+   "revokeExOfficio": "人民法院或仲裁机构主动撤销民事法律行为"
+  }
+ },
+ "card:g0679": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事法律行为如何界定，依何种意思表示成立（含法人、非法人组织的决议行为）",
+     "rules": [
+      "c133",
+      "c134-1",
+      "c134-2"
+     ]
+    },
+    {
+     "text": "民事法律行为何时生效，行为人能否擅自变更或解除",
+     "rules": [
+      "c136-1",
+      "c136-2"
+     ]
+    },
+    {
+     "text": "民事法律行为能否附期限，附生效期限、附终止期限的效力如何",
+     "rules": [
+      "c160-1",
+      "c160-effective",
+      "c160-expire",
+      "c160-pending"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "民事主体通过意思表示设立、变更、终止民事法律关系",
+     "rules": [
+      "c133"
+     ]
+    },
+    {
+     "text": "双方或多方意思表示一致，或者仅有单方意思表示",
+     "rules": [
+      "c134-1"
+     ]
+    },
+    {
+     "text": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议",
+     "rules": [
+      "c134-2"
+     ]
+    },
+    {
+     "text": "民事法律行为已经成立",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "附生效期限且期限届至；附终止期限且期限届满",
+     "rules": [
+      "c160-effective",
+      "c160-expire"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定生效时间的，不适用“自成立时生效”",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "非依法律规定或者未经对方同意，不得变更或解除",
+     "rules": [
+      "c136-2"
+     ]
+    },
+    {
+     "text": "根据其性质不得附期限的民事法律行为，不得附期限",
+     "rules": [
+      "c160-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "民事法律行为自成立时生效",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "行为人不得擅自变更或者解除民事法律行为",
+     "rules": [
+      "c136-2"
+     ]
+    },
+    {
+     "text": "民事法律行为可以附期限",
+     "rules": [
+      "c160-1"
+     ]
+    },
+    {
+     "text": "附生效期限的，自期限届至时生效；附终止期限的，自期限届满时失效",
+     "rules": [
+      "c160-effective",
+      "c160-expire"
+     ]
+    },
+    {
+     "text": "附条件、附期限以及未经批准的合同属于“成立未生效的民事法律行为”",
+     "rules": [
+      "c160-pending"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第160条关于附期限生效、失效的规定属于“法律另有规定”，优先于第136条第1款“自成立时生效”",
+     "rules": [
+      "c160-effective",
+      "c160-expire",
+      "c136-1"
+     ]
+    },
+    {
+     "text": "法律另有规定、当事人另有约定优先于“自成立时生效”的一般规则",
+     "rules": [
+      "c136-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把民事法律行为分为有效、效力未定、可撤销、无效、成立未生效五类；本条只解决成立与生效时间，效力瑕疵分别由第144条以下等规定处理",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片称“违反该规定的行为不产生法律效力”，法条原文仅规定“不得擅自变更或者解除”，未规定无效后果，故不作无效结论",
+     "rules": []
+    },
+    {
+     "text": "第134条解决成立要件，第136条解决生效时间，第137、138条解决意思表示生效时间，三者层次不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c133",
+    "srcs": [
+     "art133"
+    ],
+    "body": [
+     "civilSubject(A)",
+     "declarationOfIntent(A,K)",
+     "establishesChangesTerminatesLegalRelation(K)"
+    ],
+    "heads": [
+     "actOf(A,K)"
+    ],
+    "note": "民事法律行为是民事主体通过意思表示设立、变更、终止民事法律关系的行为（定义性条款）",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-1",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "mutualAgreement(K)",
+       "unilateralExpression(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "formed(K)"
+    ],
+    "note": "民事法律行为可基于双方或多方意思表示一致成立，也可基于单方意思表示成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-2",
+    "srcs": [
+     "art134-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalPerson(O)",
+       "unincorporatedOrganization(O)"
+      ]
+     },
+     "resolutionMadePerProcedure(O,R)"
+    ],
+    "heads": [
+     "resolutionFormed(R)"
+    ],
+    "note": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议的，该决议行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c136-1",
+    "srcs": [
+     "art136-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "formed(K)",
+     "~lawProvidesOtherwiseOnEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "effective(K)"
+    ],
+    "note": "民事法律行为自成立时生效，但法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c136-2",
+    "srcs": [
+     "art136-2"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "~lawPermitsAlteration(A,K)",
+     "~counterpartyConsents(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "unilaterallyAlterOrTerminate(A,K)"
+     }
+    ],
+    "note": "行为人非依法律规定或者未经对方同意，不得擅自变更或者解除民事法律行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-1",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "~natureProhibitsTerm(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "attachTerm(A,K)"
+     }
+    ],
+    "note": "民事法律行为可以附期限，但根据其性质不得附期限的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-effective",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "attachedEffectiveTerm(K)",
+     "termArrived(K)"
+    ],
+    "heads": [
+     "effective(K)"
+    ],
+    "note": "附生效期限的民事法律行为，自期限届至时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-expire",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "attachedTerminationTerm(K)",
+     "termExpired(K)"
+    ],
+    "heads": [
+     "-effective(K)"
+    ],
+    "note": "附终止期限的民事法律行为，自期限届满时失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-pending",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     {
+      "or": [
+       "attachedEffectiveTerm(K)",
+       "attachedCondition(K)",
+       "approvalRequiredForEffect(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "formedButNotEffective(K)"
+    ],
+    "note": "笔记将附条件、附期限及未经批准的合同列为“成立未生效的民事法律行为”；本条只规定附期限，附条件见第158条、批准见第502条，属学理归纳",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c160-effective",
+    "c136-1",
+    "附生效期限属“法律另有规定”，自期限届至时生效，优先于自成立时生效"
+   ],
+   [
+    "c160-expire",
+    "c136-1",
+    "附终止期限的，自期限届满时失效，优先于自成立时生效"
+   ]
+  ],
+  "predicates": {
+   "declarationOfIntent/2": "作出意思表示（行为人，行为）",
+   "declarationOfIntent": "作出意思表示（行为人，行为）",
+   "establishesChangesTerminatesLegalRelation/1": "通过意思表示设立、变更、终止民事法律关系（行为）",
+   "establishesChangesTerminatesLegalRelation": "通过意思表示设立、变更、终止民事法律关系（行为）",
+   "mutualAgreement/1": "双方或多方意思表示一致（行为）",
+   "mutualAgreement": "双方或多方意思表示一致（行为）",
+   "unilateralExpression/1": "单方意思表示（行为）",
+   "unilateralExpression": "单方意思表示（行为）",
+   "formed/1": "民事法律行为已成立",
+   "formed": "民事法律行为已成立",
+   "resolutionMadePerProcedure/2": "依照法律或者章程规定的议事方式和表决程序作出决议（组织，决议）",
+   "resolutionMadePerProcedure": "依照法律或者章程规定的议事方式和表决程序作出决议（组织，决议）",
+   "resolutionFormed/1": "决议行为成立",
+   "resolutionFormed": "决议行为成立",
+   "lawProvidesOtherwiseOnEffect/1": "法律对民事法律行为的生效另有规定",
+   "lawProvidesOtherwiseOnEffect": "法律对民事法律行为的生效另有规定",
+   "partiesAgreedOtherwiseOnEffect/1": "当事人对民事法律行为的生效另有约定",
+   "partiesAgreedOtherwiseOnEffect": "当事人对民事法律行为的生效另有约定",
+   "effective/1": "民事法律行为生效（发生法律效力）",
+   "effective": "民事法律行为生效（发生法律效力）",
+   "lawPermitsAlteration/2": "依法律规定可以变更或解除（行为人，行为）",
+   "lawPermitsAlteration": "依法律规定可以变更或解除（行为人，行为）",
+   "counterpartyConsents/1": "对方同意变更或解除",
+   "counterpartyConsents": "对方同意变更或解除",
+   "unilaterallyAlterOrTerminate/2": "擅自变更或者解除民事法律行为（行为人，行为）",
+   "unilaterallyAlterOrTerminate": "擅自变更或者解除民事法律行为（行为人，行为）",
+   "natureProhibitsTerm/1": "根据其性质不得附期限",
+   "natureProhibitsTerm": "根据其性质不得附期限",
+   "attachTerm/2": "为民事法律行为附期限（行为人，行为）",
+   "attachTerm": "为民事法律行为附期限（行为人，行为）",
+   "attachedEffectiveTerm/1": "附生效期限",
+   "attachedEffectiveTerm": "附生效期限",
+   "termArrived/1": "期限届至",
+   "termArrived": "期限届至",
+   "attachedTerminationTerm/1": "附终止期限",
+   "attachedTerminationTerm": "附终止期限",
+   "termExpired/1": "期限届满",
+   "termExpired": "期限届满",
+   "attachedCondition/1": "附条件",
+   "attachedCondition": "附条件",
+   "approvalRequiredForEffect/1": "依法需经批准才能生效",
+   "approvalRequiredForEffect": "依法需经批准才能生效",
+   "formedButNotEffective/1": "成立但未生效的民事法律行为",
+   "formedButNotEffective": "成立但未生效的民事法律行为"
+  }
+ },
+ "card:g1648": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事法律行为能否附条件、附期限；条件成就或期限届至、届满对行为效力产生何种影响",
+     "rules": [
+      "c158-attach",
+      "c158-eff",
+      "c158-diss",
+      "c160-attach",
+      "c160-eff",
+      "c160-diss"
+     ]
+    },
+    {
+     "text": "当事人为自己的利益不正当地阻止或促成条件成就时，条件是否视为成就",
+     "rules": [
+      "c159-prevent",
+      "c159-cause"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所附条件须为将来发生、可能发生也可能不发生、由当事人约定且合法的事实；法律规定或基于行为性质当然发生的事实（如保险事故）不是所附条件（笔记）",
+     "rules": [
+      "c158-cond-def"
+     ]
+    },
+    {
+     "text": "行为性质上不得附条件、不得附期限的，不得附条件或期限（法条但书）",
+     "rules": [
+      "c158-attach",
+      "c160-attach"
+     ]
+    },
+    {
+     "text": "所附为生效条件（延缓条件、停止条件）且条件成就；或所附为解除条件（消灭条件、失效条件）且条件成就",
+     "rules": [
+      "c158-eff",
+      "c158-diss"
+     ]
+    },
+    {
+     "text": "所附为生效期限（始期）且期限届至；或所附为终止期限（终期）且期限届满",
+     "rules": [
+      "c160-eff",
+      "c160-diss"
+     ]
+    },
+    {
+     "text": "当事人为自己的利益不正当地阻止条件成就，或为自己的利益不正当地促成条件成就",
+     "rules": [
+      "c159-prevent",
+      "c159-cause"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "根据其性质不得附条件、不得附期限的民事法律行为，不适用附条件、附期限的效力规则",
+     "rules": [
+      "c158-attach",
+      "c160-attach"
+     ]
+    },
+    {
+     "text": "所附条件不可能发生或所附条件违法的，应认定该民事法律行为无效（笔记，法条未规定）",
+     "rules": [
+      "c158-impossible",
+      "c158-illegal"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "附生效条件的，自条件成就时生效；附解除条件的，自条件成就时失效",
+     "rules": [
+      "c158-eff",
+      "c158-diss"
+     ]
+    },
+    {
+     "text": "附生效期限的，自期限届至时生效；附终止期限的，自期限届满时失效",
+     "rules": [
+      "c160-eff",
+      "c160-diss"
+     ]
+    },
+    {
+     "text": "不正当地阻止条件成就的，视为条件已经成就；不正当地促成条件成就的，视为条件不成就",
+     "rules": [
+      "c159-prevent",
+      "c159-cause"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第159条的拟制优先于依条件实际成就与否判断效力：条件被不正当地促成的，视为不成就，排除“条件成就即生效”规则的适用",
+     "rules": [
+      "c159-cause",
+      "c158-eff"
+     ]
+    },
+    {
+     "text": "所附条件不可能发生或违法的，行为无效，排除依条件成就而生效的规则（笔记）",
+     "rules": [
+      "c158-impossible",
+      "c158-illegal"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "条件与期限：条件成就与否不确定，具有或然性；期限必然到来，具有确定性。前者适用第158、159条，后者适用第160条",
+     "rules": []
+    },
+    {
+     "text": "延缓条件（生效条件）与解除条件（失效条件）是按作用分类；积极条件（肯定条件）与消极条件（否定条件）是按内容分类，两种分类可交叉组合（笔记）",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“以不可能发生的事实为条件的行为无效”“违法条件无效”，法条未规定，仅见于笔记，属学理",
+     "rules": [
+      "c158-impossible",
+      "c158-illegal"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c158-attach",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "~notSubjectToConditionByNature(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "attachCondition(A,K)"
+     }
+    ],
+    "note": "民事法律行为可以附条件，但根据其性质不得附条件的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c158-eff",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "effectiveCondition(K,C)",
+     "conditionFulfilled(C)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "附生效条件的民事法律行为，自条件成就时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c158-diss",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "dissolvingCondition(K,C)",
+     "conditionFulfilled(C)"
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "附解除条件的民事法律行为，自条件成就时失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c159-prevent",
+    "srcs": [
+     "art159-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     {
+      "or": [
+       "effectiveCondition(K,C)",
+       "dissolvingCondition(K,C)"
+      ]
+     },
+     "improperlyPreventsFulfillment(A,K,C)"
+    ],
+    "heads": [
+     "conditionFulfilled(C)"
+    ],
+    "note": "当事人为自己的利益不正当地阻止条件成就的，视为条件已经成就",
+    "auth": "npc"
+   },
+   {
+    "key": "c159-cause",
+    "srcs": [
+     "art159-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     {
+      "or": [
+       "effectiveCondition(K,C)",
+       "dissolvingCondition(K,C)"
+      ]
+     },
+     "improperlyCausesFulfillment(A,K,C)"
+    ],
+    "heads": [
+     "-conditionFulfilled(C)"
+    ],
+    "note": "当事人为自己的利益不正当地促成条件成就的，视为条件不成就",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-attach",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "~notSubjectToTermByNature(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "attachTerm(A,K)"
+     }
+    ],
+    "note": "民事法律行为可以附期限，但根据其性质不得附期限的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-eff",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "effectiveTerm(K,T)",
+     "termArrived(T)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "附生效期限的民事法律行为，自期限届至时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-diss",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "terminatingTerm(K,T)",
+     "termExpired(T)"
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "附终止期限的民事法律行为，自期限届满时失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c158-cond-def",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "agreedCondition(K,C)",
+     "futureFact(C)",
+     "uncertainFact(C)",
+     "lawfulFact(C)"
+    ],
+    "heads": [
+     "validCondition(K,C)"
+    ],
+    "note": "笔记：条件须为将来发生、可能发生也可能不发生、当事人约定且合法的事实；法律规定或行为性质决定的事实不是条件（学理，法条未展开）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c158-impossible",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "conditionIsImpossible(K,C)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "笔记：所附条件不可能发生的，应认定该民事法律行为无效（学理，法条未规定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c158-illegal",
+    "srcs": [
+     "art158-1"
+    ],
+    "body": [
+     "actOf(A,K)",
+     "conditionViolatesLaw(K,C)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "笔记：所附条件违法的，应认定该民事法律行为无效（学理，法条未规定）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c159-cause",
+    "c158-eff",
+    "条件被不正当地促成的，视为条件不成就，排除依条件成就而生效的规则"
+   ],
+   [
+    "c158-impossible",
+    "c158-eff",
+    "所附条件不可能发生的，行为无效，排除依条件成就而生效的规则（笔记）"
+   ],
+   [
+    "c158-illegal",
+    "c158-eff",
+    "所附条件违法的，行为无效，排除依条件成就而生效的规则（笔记）"
+   ]
+  ],
+  "predicates": {
+   "attachCondition": "为民事法律行为附条件（行为人，行为）",
+   "attachCondition/2": "为民事法律行为附条件（行为人，行为）",
+   "attachTerm": "为民事法律行为附期限（行为人，行为）",
+   "attachTerm/2": "为民事法律行为附期限（行为人，行为）",
+   "effectiveCondition": "所附条件为生效条件（延缓条件、停止条件）（行为，条件）",
+   "effectiveCondition/2": "所附条件为生效条件（延缓条件、停止条件）（行为，条件）",
+   "dissolvingCondition": "所附条件为解除条件（消灭条件、失效条件）（行为，条件）",
+   "dissolvingCondition/2": "所附条件为解除条件（消灭条件、失效条件）（行为，条件）",
+   "conditionFulfilled": "条件成就（含第159条拟制成就）",
+   "conditionFulfilled/1": "条件成就（含第159条拟制成就）",
+   "effectiveTerm": "所附期限为生效期限（始期）（行为，期限）",
+   "effectiveTerm/2": "所附期限为生效期限（始期）（行为，期限）",
+   "terminatingTerm": "所附期限为终止期限（终期）（行为，期限）",
+   "terminatingTerm/2": "所附期限为终止期限（终期）（行为，期限）",
+   "termArrived": "期限届至",
+   "termArrived/1": "期限届至",
+   "termExpired": "期限届满",
+   "termExpired/1": "期限届满",
+   "notSubjectToConditionByNature": "根据其性质不得附条件（如身份行为）",
+   "notSubjectToConditionByNature/1": "根据其性质不得附条件（如身份行为）",
+   "notSubjectToTermByNature": "根据其性质不得附期限",
+   "notSubjectToTermByNature/1": "根据其性质不得附期限",
+   "improperlyPreventsFulfillment": "为自己的利益不正当地阻止条件成就（当事人，行为，条件）",
+   "improperlyPreventsFulfillment/3": "为自己的利益不正当地阻止条件成就（当事人，行为，条件）",
+   "improperlyCausesFulfillment": "为自己的利益不正当地促成条件成就（当事人，行为，条件）",
+   "improperlyCausesFulfillment/3": "为自己的利益不正当地促成条件成就（当事人，行为，条件）",
+   "agreedCondition": "所附条件为当事人约定的事实（非法定性）（行为，条件）",
+   "agreedCondition/2": "所附条件为当事人约定的事实（非法定性）（行为，条件）",
+   "futureFact": "是将来发生的事实（未来性）",
+   "futureFact/1": "是将来发生的事实（未来性）",
+   "uncertainFact": "是可能发生也可能不发生的事实（或然性）",
+   "uncertainFact/1": "是可能发生也可能不发生的事实（或然性）",
+   "lawfulFact": "是合法的事实",
+   "lawfulFact/1": "是合法的事实",
+   "validCondition": "所附条件适格（行为，条件）",
+   "validCondition/2": "所附条件适格（行为，条件）",
+   "conditionIsImpossible": "所附条件不可能发生（行为，条件）",
+   "conditionIsImpossible/2": "所附条件不可能发生（行为，条件）",
+   "conditionViolatesLaw": "所附条件违法（行为，条件）",
+   "conditionViolatesLaw/2": "所附条件违法（行为，条件）"
+  }
+ },
+ "card:g1574": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "基于重大误解、第三人欺诈或者胁迫而实施的民事法律行为，受意思表示瑕疵影响的一方能否请求人民法院或者仲裁机构予以撤销",
+     "rules": [
+      "c147-1",
+      "c149-1",
+      "c150-1",
+      "c150-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人基于重大误解实施民事法律行为；误解须是对行为内容（行为性质、标的物、价金、当事人）的错误理解，且属重大、因行为人过失造成",
+     "rules": [
+      "c147-def",
+      "c147-1"
+     ]
+    },
+    {
+     "text": "第三人实施欺诈行为，使一方在违背真实意思的情况下实施民事法律行为，且对方知道或者应当知道该欺诈行为",
+     "rules": [
+      "c149-1"
+     ]
+    },
+    {
+     "text": "一方以胁迫手段，使对方在违背真实意思的情况下实施民事法律行为",
+     "rules": [
+      "c150-1"
+     ]
+    },
+    {
+     "text": "第三人以胁迫手段，使对方在违背真实意思的情况下实施民事法律行为",
+     "rules": [
+      "c150-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第三人欺诈情形下，相对人不知道也不应当知道该欺诈行为的，受欺诈方不享有撤销权（第149条以“对方知道或者应当知道”为要件）",
+     "rules": [
+      "c149-1"
+     ]
+    },
+    {
+     "text": "仅对行为动机的误解不构成重大误解，不得据此撤销",
+     "rules": [
+      "c147-motive"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基于重大误解的行为人有权请求人民法院或者仲裁机构撤销该民事法律行为",
+     "rules": [
+      "c147-1"
+     ]
+    },
+    {
+     "text": "受第三人欺诈的一方，在相对人知道或应当知道欺诈时，有权请求撤销该民事法律行为",
+     "rules": [
+      "c149-1"
+     ]
+    },
+    {
+     "text": "受胁迫方有权请求撤销该民事法律行为；第三人胁迫时不以相对人知情为要件",
+     "rules": [
+      "c150-1",
+      "c150-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "欺诈、胁迫与重大误解并存时，优先适用第149条（第三人欺诈）、第150条（胁迫）规则",
+     "rules": [
+      "c149-1",
+      "c150-1",
+      "c150-2"
+     ]
+    },
+    {
+     "text": "对动机的误解排除重大误解的认定，优先于重大误解的构成规则",
+     "rules": [
+      "c147-motive"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第146条通谋虚伪意思表示自始无效，不属可撤销事由；第148条为一方欺诈，本行未挂载该条，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "第三人胁迫（第150条）不要求相对人知道或应当知道，与第三人欺诈（第149条）不同",
+     "rules": [
+      "c149-1",
+      "c150-2"
+     ]
+    },
+    {
+     "text": "撤销权须在除斥期间内行使（第152条：一年、九十日、五年），本行未挂载该条，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "撤销后自始没有法律约束力、返还财产、折价补偿等效果规定于第155条、第157条，本行未挂载，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“误解非因故意或过失造成”，与笔记“误解是由于行为人的过失造成的”相反；以笔记为准，重大误解须因过失而生",
+     "rules": [
+      "c147-def"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c147-def",
+    "srcs": [
+     "art147"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "misunderstandsContent(A,K)",
+     "misunderstandingSerious(A,K)",
+     "misunderstandingDueToNegligence(A,K)"
+    ],
+    "heads": [
+     "majorMisunderstanding(A,K)"
+    ],
+    "note": "笔记：重大误解指对行为内容（性质、标的物、价金、当事人）的错误理解，且须为重大、因行为人过失造成",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c147-motive",
+    "srcs": [
+     "art147"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "misunderstandsMotive(A,K)"
+    ],
+    "heads": [
+     "-majorMisunderstanding(A,K)"
+    ],
+    "note": "笔记：民法上的误解仅限于对行为内容的误解，不包括对行为动机的误解",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c147-1",
+    "srcs": [
+     "art147-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "majorMisunderstanding(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exercisesRevocation(A,K)"
+     }
+    ],
+    "note": "基于重大误解实施的民事法律行为，行为人有权请求人民法院或者仲裁机构予以撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c149-1",
+    "srcs": [
+     "art149-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "deceivedByThirdParty(A,T)",
+     "counterpartyKnewOrShouldKnowFraud(K)",
+     "contraryToTrueIntention(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exercisesRevocation(A,K)"
+     }
+    ],
+    "note": "第三人实施欺诈使一方违背真实意思实施民事法律行为，对方知道或者应当知道该欺诈行为的，受欺诈方有权请求撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c150-1",
+    "srcs": [
+     "art150-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "coercedByCounterparty(A,P)",
+     "contraryToTrueIntention(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exercisesRevocation(A,K)"
+     }
+    ],
+    "note": "一方以胁迫手段使对方违背真实意思实施民事法律行为的，受胁迫方有权请求人民法院或者仲裁机构予以撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c150-2",
+    "srcs": [
+     "art150-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "coercedByThirdParty(A,T)",
+     "contraryToTrueIntention(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "exercisesRevocation(A,K)"
+     }
+    ],
+    "note": "第三人以胁迫手段使对方违背真实意思实施民事法律行为的，受胁迫方有权请求撤销；不以相对人知道或应当知道为要件",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c147-motive",
+    "c147-def",
+    "对行为动机的误解不属于重大误解，排除重大误解的认定（笔记）"
+   ],
+   [
+    "c149-1",
+    "c147-1",
+    "欺诈与重大误解并存时，优先适用第149条第三人欺诈规则（学理与 LEGO 卡片）"
+   ],
+   [
+    "c150-1",
+    "c147-1",
+    "胁迫与重大误解并存时，优先适用第150条胁迫规则（学理与 LEGO 卡片）"
+   ],
+   [
+    "c150-2",
+    "c147-1",
+    "第三人胁迫与重大误解并存时，优先适用第150条胁迫规则（学理与 LEGO 卡片）"
+   ]
+  ],
+  "predicates": {
+   "misunderstandsContent": "对民事法律行为的内容（行为性质、标的物、价金、当事人）发生错误理解（行为人，民事法律行为）",
+   "misunderstandingSerious": "该误解是重大的（行为人，民事法律行为）",
+   "misunderstandingDueToNegligence": "该误解因行为人的过失造成（行为人，民事法律行为）",
+   "misunderstandsMotive": "对民事法律行为的动机发生错误理解（行为人，民事法律行为）",
+   "contraryToTrueIntention": "该民事法律行为违背行为人的真实意思（行为人，民事法律行为）"
+  }
+ },
+ "card:g1485": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民事法律行为如何成立：双方或多方意思表示一致、单方意思表示，以及法人、非法人组织的决议行为如何成立",
+     "rules": [
+      "c134-1",
+      "c134-2",
+      "c134-general",
+      "c134-special"
+     ]
+    },
+    {
+     "text": "民事法律行为何时生效，行为人能否擅自变更或者解除",
+     "rules": [
+      "c136-1",
+      "c136-2",
+      "c136-2-effect"
+     ]
+    },
+    {
+     "text": "民事法律行为能否附期限，附生效期限与附终止期限的效力如何",
+     "rules": [
+      "c160-1",
+      "c160-effective",
+      "c160-terminating"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般成立要件：有行为人、行为人作出意思表示、有标的（行为内容）；特别成立要件：如实践性行为须交付标的物",
+     "rules": [
+      "c134-general",
+      "c134-special"
+     ]
+    },
+    {
+     "text": "基于双方或者多方的意思表示一致，或者基于单方的意思表示",
+     "rules": [
+      "c134-1"
+     ]
+    },
+    {
+     "text": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议",
+     "rules": [
+      "c134-2"
+     ]
+    },
+    {
+     "text": "民事法律行为已经成立",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "行为人变更或解除时既非依法律规定，也未经对方同意",
+     "rules": [
+      "c136-2",
+      "c136-2-effect"
+     ]
+    },
+    {
+     "text": "根据该行为的性质可以附期限",
+     "rules": [
+      "c160-1"
+     ]
+    },
+    {
+     "text": "附生效期限且期限已届至；附终止期限且期限已届满",
+     "rules": [
+      "c160-effective",
+      "c160-terminating"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，不适用自成立时生效",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "根据其性质不得附期限的民事法律行为，不得附期限",
+     "rules": [
+      "c160-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基于双方或多方意思表示一致或单方意思表示而成立；决议依法律或章程规定的议事方式和表决程序作出时成立",
+     "rules": [
+      "c134-1",
+      "c134-2"
+     ]
+    },
+    {
+     "text": "民事法律行为自成立时生效",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "行为人不得擅自变更或者解除民事法律行为；擅自变更、解除不产生变更或解除的法律效果",
+     "rules": [
+      "c136-2",
+      "c136-2-effect"
+     ]
+    },
+    {
+     "text": "民事法律行为可以附期限",
+     "rules": [
+      "c160-1"
+     ]
+    },
+    {
+     "text": "附生效期限的，自期限届至时生效；附终止期限的，自期限届满时失效",
+     "rules": [
+      "c160-effective",
+      "c160-terminating"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定或者当事人另有约定（包括附期限）优先于“自成立时生效”的一般规则",
+     "rules": [
+      "c136-1"
+     ]
+    },
+    {
+     "text": "附生效期限、附终止期限的效力发生时间依第160条确定，优先于第136条第1款自成立时生效的一般规则",
+     "rules": [
+      "c160-effective",
+      "c160-terminating"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第134条解决“成立”问题，第136条解决“生效”问题；成立是生效的前提，成立不等于生效",
+     "rules": []
+    },
+    {
+     "text": "第137条、第138条规定的是意思表示（而非民事法律行为）的生效时间，不能与第136条第1款混用",
+     "rules": []
+    },
+    {
+     "text": "第160条的“附期限”与第158条、第159条的“附条件”不同：期限必然届至，条件是否成就并不确定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c134-1",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "bilateralOrMultilateralAgreement(K)",
+       "unilateralIntent(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "actEstablished(K)"
+    ],
+    "note": "民事法律行为可以基于双方或者多方的意思表示一致成立，也可以基于单方的意思表示成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-2",
+    "srcs": [
+     "art134-2"
+    ],
+    "body": [
+     "resolutionMadeBy(R,O)",
+     "perCharterOrLawProcedure(R,O)"
+    ],
+    "heads": [
+     "actEstablished(R)"
+    ],
+    "note": "法人、非法人组织依照法律或者章程规定的议事方式和表决程序作出决议的，该决议行为成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c134-general",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "intentExpressed(A,K)",
+     "hasObject(K)"
+    ],
+    "heads": [
+     "actEstablished(K)"
+    ],
+    "note": "笔记所列一般成立要件：有行为人、行为人作出意思表示、有标的；法条未明文列举，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c134-special",
+    "srcs": [
+     "art134-1"
+    ],
+    "body": [
+     "practicalAct(K)",
+     "delivered(K)"
+    ],
+    "heads": [
+     "actEstablished(K)"
+    ],
+    "note": "笔记所举特别成立要件：实践性行为以标的物交付为特别成立要件；法条未明文规定，属学理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c136-1",
+    "srcs": [
+     "art136-1"
+    ],
+    "body": [
+     "actEstablished(K)",
+     "~lawProvidesOtherwiseOnTakingEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "民事法律行为自成立时生效，但法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c136-2",
+    "srcs": [
+     "art136-2"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "~modificationProvidedByLaw(K)",
+     "~counterpartyConsented(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "unilaterallyModifyOrTerminate(A,K)"
+     }
+    ],
+    "note": "行为人非依法律规定且未经对方同意，不得擅自变更或者解除民事法律行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c136-2-effect",
+    "srcs": [
+     "art136-2"
+    ],
+    "body": [
+     "unilaterallyModifyOrTerminate(A,K)",
+     "~modificationProvidedByLaw(K)",
+     "~counterpartyConsented(K)"
+    ],
+    "heads": [
+     "-modifiedOrTerminated(K)"
+    ],
+    "note": "擅自变更或解除不产生变更、解除的法律效果；系由第136条第2款的禁止性规定推出的学理结论",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c160-1",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "actOf(K,A)",
+     "~natureProhibitsTerm(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "attachTerm(K)"
+     }
+    ],
+    "note": "民事法律行为可以附期限，但根据其性质不得附期限的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-effective",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "attachedTerm(K)",
+     "effectiveTerm(K)",
+     "termArrived(K)"
+    ],
+    "heads": [
+     "takesEffect(K)"
+    ],
+    "note": "附生效期限的民事法律行为，自期限届至时生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c160-terminating",
+    "srcs": [
+     "art160-1"
+    ],
+    "body": [
+     "attachedTerm(K)",
+     "terminatingTerm(K)",
+     "termExpired(K)"
+    ],
+    "heads": [
+     "-takesEffect(K)"
+    ],
+    "note": "附终止期限的民事法律行为，自期限届满时失效（不再发生效力）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c160-effective",
+    "c136-1",
+    "附生效期限的民事法律行为，其生效时间依第160条确定，优先于第136条第1款自成立时生效的一般规则"
+   ],
+   [
+    "c160-terminating",
+    "c136-1",
+    "附终止期限的民事法律行为自期限届满时失效，优先于第136条第1款自成立时生效的一般规则"
+   ]
+  ],
+  "predicates": {
+   "bilateralOrMultilateralAgreement": "基于双方或者多方的意思表示一致（1个参数：民事法律行为）",
+   "unilateralIntent": "基于单方的意思表示（1个参数：民事法律行为）",
+   "actEstablished": "民事法律行为（含决议行为）成立（1个参数：行为）",
+   "resolutionMadeBy": "决议由法人或者非法人组织作出（决议，组织）",
+   "perCharterOrLawProcedure": "依照法律或者章程规定的议事方式和表决程序作出（决议，组织）",
+   "intentExpressed": "行为人作出意思表示（行为人，行为）",
+   "hasObject": "有标的，即行为内容，指行为人通过其行为所要达到的效果（1个参数：行为）",
+   "practicalAct": "实践性（要物）民事法律行为（1个参数：行为）",
+   "lawProvidesOtherwiseOnTakingEffect": "法律对该民事法律行为的生效时间或者效力另有规定（1个参数：行为）",
+   "partiesAgreedOtherwiseOnEffect": "当事人就该民事法律行为的生效时间或者效力另有约定（1个参数：行为）",
+   "takesEffect": "民事法律行为发生法律效力（生效）（1个参数：行为）",
+   "modificationProvidedByLaw": "依法律规定可以变更或者解除该民事法律行为（1个参数：行为）",
+   "counterpartyConsented": "对方同意变更或者解除该民事法律行为（1个参数：行为）",
+   "unilaterallyModifyOrTerminate": "擅自变更或者解除民事法律行为（行为人，行为）",
+   "modifiedOrTerminated": "该民事法律行为已被变更或者解除（1个参数：行为）",
+   "natureProhibitsTerm": "根据其性质不得附期限（1个参数：行为）",
+   "attachTerm": "为该民事法律行为附期限（1个参数：行为）",
+   "attachedTerm": "民事法律行为附有期限（1个参数：行为）",
+   "effectiveTerm": "所附期限为生效期限（1个参数：行为）",
+   "terminatingTerm": "所附期限为终止期限（1个参数：行为）",
+   "termArrived": "生效期限届至（1个参数：行为）",
+   "termExpired": "终止期限届满（1个参数：行为）"
+  }
+ }
+}

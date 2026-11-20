@@ -1,0 +1,795 @@
+{
+ "art:556": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同的权利和义务一并转让（概括转让）时，应适用哪些规定",
+     "rules": [
+      "c556-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同的权利和义务一并转让给第三人",
+     "rules": [
+      "c556-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "一并转让中的债权部分，适用债权转让的有关规定",
+     "rules": [
+      "c556-1"
+     ]
+    },
+    {
+     "text": "一并转让中的债务部分，适用债务转移的有关规定",
+     "rules": [
+      "c556-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决法律适用问题（准用），不规定一并转让的成立要件；一并转让须经对方同意，规定在第555条，本行未挂载该条",
+     "rules": []
+    },
+    {
+     "text": "本条与第555条不同：第555条是概括转让的授权与同意要件，本条是转让后分别准用债权转让、债务转移规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c556-1",
+    "srcs": [
+     "art556-1"
+    ],
+    "body": [
+     "transferContractRightsAndObligationsTogether(K)"
+    ],
+    "heads": [
+     "applyClaimAssignmentProvisions(K)",
+     "applyDebtTransferProvisions(K)"
+    ],
+    "note": "合同的权利和义务一并转让的，其中的债权部分适用债权转让的规定，债务部分适用债务转移的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "transferContractRightsAndObligationsTogether": "合同的权利和义务一并转让（概括转让）（参数：合同）",
+   "applyClaimAssignmentProvisions": "适用债权转让的有关规定（参数：合同）",
+   "applyDebtTransferProvisions": "适用债务转移的有关规定（参数：合同）"
+  }
+ },
+ "art:554": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债务人转移债务后，新债务人是否应当承担与主债务有关的从债务",
+     "rules": [
+      "c554-1",
+      "c554-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人转移债务（债务承担）",
+     "rules": [
+      "c554-1"
+     ]
+    },
+    {
+     "text": "该债务存在与主债务有关的从债务",
+     "rules": [
+      "c554-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "该从债务专属于原债务人自身的除外，新债务人不承担",
+     "rules": [
+      "c554-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "新债务人应当承担与主债务有关的从债务",
+     "rules": [
+      "c554-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "从债务专属于原债务人自身的但书，优先于从债务随同移转的一般规则",
+     "rules": [
+      "c554-exc",
+      "c554-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把本款列为“免责的债务承担”的法律效力；但本条只解决从债务随同移转问题，原债务人是否脱离债务关系取决于债权人是否同意债务转移（第551条），本条未作规定",
+     "rules": []
+    },
+    {
+     "text": "“专属于原债务人自身”指从债务与原债务人的人身、资格或特定关系不可分（如以原债务人特定技能、身份为基础的债务），与“专属于债权人自身”的从权利（第547条）不是同一概念",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c554-1",
+    "srcs": [
+     "art554-1"
+    ],
+    "body": [
+     "debtTransfer(D,N,Debt)",
+     "accessoryDebtOf(Acc,Debt)",
+     "~personalToOriginalDebtor(Acc,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "bearAccessoryDebt(N,Acc)"
+     }
+    ],
+    "note": "债务人D将债务Debt转移给新债务人N的，N应当承担与主债务有关的从债务Acc，但从债务专属于原债务人自身的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c554-exc",
+    "srcs": [
+     "art554-1"
+    ],
+    "body": [
+     "debtTransfer(D,N,Debt)",
+     "accessoryDebtOf(Acc,Debt)",
+     "personalToOriginalDebtor(Acc,D)"
+    ],
+    "heads": [
+     "-bearAccessoryDebt(N,Acc)"
+    ],
+    "note": "从债务专属于原债务人自身的，不随主债务移转，新债务人不承担该从债务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c554-exc",
+    "c554-1",
+    "从债务专属于原债务人自身时，不适用从债务随同主债务移转的一般规则（但书优先）"
+   ]
+  ],
+  "predicates": {
+   "accessoryDebtOf": "是与主债务有关的从债务（从债务，主债务）",
+   "personalToOriginalDebtor": "该从债务专属于原债务人自身（从债务，原债务人）",
+   "bearAccessoryDebt": "承担与主债务有关的从债务（新债务人，从债务）"
+  }
+ },
+ "art:552": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "第三人加入债务（并存的债务承担）的成立条件，以及债权人能否请求第三人在其愿意承担的债务范围内与债务人承担连带债务",
+     "rules": [
+      "c552-1",
+      "c552-2",
+      "c552-3",
+      "c552-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第三人与债务人约定加入债务，并已通知债权人",
+     "rules": [
+      "c552-1"
+     ]
+    },
+    {
+     "text": "或者第三人向债权人表示愿意加入该债务",
+     "rules": [
+      "c552-2"
+     ]
+    },
+    {
+     "text": "债权人未在合理期限内明确拒绝",
+     "rules": [
+      "c552-1",
+      "c552-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债权人在合理期限内明确拒绝的，债务加入不成立，债权人不得请求第三人承担连带债务",
+     "rules": [
+      "c552-1",
+      "c552-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债务加入成立，并对债权人发生效力",
+     "rules": [
+      "c552-1",
+      "c552-2"
+     ]
+    },
+    {
+     "text": "债权人可以请求第三人在其愿意承担的债务范围内与债务人承担连带债务",
+     "rules": [
+      "c552-3"
+     ]
+    },
+    {
+     "text": "第三人在其愿意承担的债务范围内与债务人就同一债务对债权人承担连带债务，原债务人并不脱离债务关系",
+     "rules": [
+      "c552-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是并存的债务承担（债务加入）：原债务人仍负担债务，第三人仅在其愿意承担的范围内与债务人承担连带债务；与第551条免责的债务承担须经债权人同意不同，本条只要求债权人未在合理期限内明确拒绝",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c552-1",
+    "srcs": [
+     "art552-1"
+    ],
+    "body": [
+     "thirdPartyAgreedToJoinDebt(T,D,K)",
+     "notifiedCreditorOfJoinder(D,R,K)",
+     "~creditorRefusedInTime(R,T)"
+    ],
+    "heads": [
+     "debtJoinderEstablished(T,D,R,K)"
+    ],
+    "note": "第三人与债务人约定加入债务并通知债权人，债权人未在合理期限内明确拒绝的，债务加入成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c552-2",
+    "srcs": [
+     "art552-1"
+    ],
+    "body": [
+     "thirdPartyExpressedWillingnessToJoin(T,R,K)",
+     "debtOf(D)",
+     "~creditorRefusedInTime(R,T)"
+    ],
+    "heads": [
+     "debtJoinderEstablished(T,D,R,K)"
+    ],
+    "note": "第三人向债权人表示愿意加入债务（该债务为债务人D所负），债权人未在合理期限内明确拒绝的，债务加入亦成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c552-3",
+    "srcs": [
+     "art552-1"
+    ],
+    "body": [
+     "debtJoinderEstablished(T,D,R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "T",
+      "content": "claimJointPerformanceFrom(R,T,K)"
+     }
+    ],
+    "note": "债务加入成立后，债权人可以请求第三人在其愿意承担的债务范围内与债务人承担连带债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c552-4",
+    "srcs": [
+     "art552-1"
+    ],
+    "body": [
+     "debtJoinderEstablished(T,D,R,K)"
+    ],
+    "heads": [
+     "coDebtors(D,T,R)"
+    ],
+    "note": "第三人在其愿意承担的债务范围内与债务人就同一债务对债权人承担连带债务，原债务人不脱离债务关系",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "thirdPartyAgreedToJoinDebt": "第三人与债务人约定加入债务（第三人，债务人，债务）",
+   "notifiedCreditorOfJoinder": "就第三人加入债务一事通知债权人（通知人，债权人，债务）",
+   "thirdPartyExpressedWillingnessToJoin": "第三人向债权人表示愿意加入债务（第三人，债权人，债务）",
+   "creditorRefusedInTime": "债权人在合理期限内明确拒绝第三人加入债务（债权人，第三人）",
+   "debtJoinderEstablished": "债务加入成立并对债权人发生效力（第三人，债务人，债权人，债务）",
+   "claimJointPerformanceFrom": "请求第三人在其愿意承担的债务范围内与债务人承担连带债务（债权人，第三人，债务）"
+  }
+ },
+ "card:g4407": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同何时生效；依照法律、行政法规应当办理批准等手续而未办理的，合同、报批义务条款的效力以及违反报批义务的责任",
+     "rules": [
+      "c502-effective",
+      "c502-2-noeffect",
+      "c502-clause",
+      "c502-liab",
+      "c502-ref"
+     ]
+    },
+    {
+     "text": "合同变更的条件与内容约定不明确的推定；债务转移、合同权利义务一并转让须经同意",
+     "rules": [
+      "c543",
+      "c543-modified",
+      "c544",
+      "c551-1",
+      "c555"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同依法成立（合同变更以原合同有效为前提）",
+     "rules": [
+      "c502-effective",
+      "c543"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定合同或者合同的变更、转让、解除等情形应当办理批准等手续",
+     "rules": [
+      "c502-clause",
+      "c502-ref"
+     ]
+    },
+    {
+     "text": "当事人协商一致变更合同",
+     "rules": [
+      "c543",
+      "c543-modified"
+     ]
+    },
+    {
+     "text": "债务人将债务的全部或者部分转移给第三人；当事人一方将自己在合同中的权利和义务一并转让给第三人",
+     "rules": [
+      "c551-1",
+      "c555"
+     ]
+    },
+    {
+     "text": "因债权转让而增加履行费用",
+     "rules": [
+      "c550"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，合同不自成立时生效",
+     "rules": [
+      "c502-effective"
+     ]
+    },
+    {
+     "text": "当事人对合同变更的内容约定不明确的，推定为未变更",
+     "rules": [
+      "c544"
+     ]
+    },
+    {
+     "text": "债权人经催告后在合理期限内未作表示的，视为不同意债务转移",
+     "rules": [
+      "c551-2-deemed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依法成立的合同自成立时生效",
+     "rules": [
+      "c502-effective"
+     ]
+    },
+    {
+     "text": "未办理批准等手续影响合同生效的，合同不生效，但不影响合同中履行报批义务条款以及相关条款的效力",
+     "rules": [
+      "c502-2-noeffect",
+      "c502-clause"
+     ]
+    },
+    {
+     "text": "应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+     "rules": [
+      "c502-liab"
+     ]
+    },
+    {
+     "text": "合同的变更、转让、解除等情形应当办理批准等手续的，适用第502条第2款的规定",
+     "rules": [
+      "c502-ref"
+     ]
+    },
+    {
+     "text": "当事人协商一致可以变更合同；变更后按变更后的合同履行，变更对已按原合同所作的履行没有追溯力，也不影响当事人请求赔偿损失的权利",
+     "rules": [
+      "c543",
+      "c543-modified",
+      "c543-doctrine"
+     ]
+    },
+    {
+     "text": "因债权转让增加的履行费用，由让与人负担",
+     "rules": [
+      "c550"
+     ]
+    },
+    {
+     "text": "债务人或者第三人可以催告债权人在合理期限内同意债务转移",
+     "rules": [
+      "c551-2-perm"
+     ]
+    },
+    {
+     "text": "经对方同意，当事人一方可以将自己在合同中的权利和义务一并转让给第三人",
+     "rules": [
+      "c555"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "变更内容约定不明确的推定未变更，优先于协商一致即认定合同已变更的规则",
+     "rules": [
+      "c544"
+     ]
+    },
+    {
+     "text": "未办理批准等手续致合同不生效，优先于合同自成立时生效的规则",
+     "rules": [
+      "c502-2-noeffect"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本节所称合同变更为狭义变更，仅指合同内容的变更，不包括合同主体的变更；主体变更属于合同转让（第555条）",
+     "rules": []
+    },
+    {
+     "text": "合同变更与债权转让、债务转移不同：前者不改变合同主体，后者改变合同主体",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c502-effective",
+    "srcs": [
+     "art502-1"
+    ],
+    "body": [
+     "contract(K)",
+     "lawfullyFormed(K)",
+     "~lawProvidesOtherwiseOnTakingEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "依法成立的合同自成立时生效，法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-2-noeffect",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contract(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "approvalFailureAffectsEffect(K)"
+    ],
+    "heads": [
+     "-valid(K)"
+    ],
+    "note": "应当办理批准等手续而未办理、且未办理影响合同生效的，合同不生效（条文以“影响合同生效”为前提，不生效的效果系解释所得）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c502-clause",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contract(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "approvalFailureAffectsEffect(K)",
+     "approvalClauseOf(C,K)"
+    ],
+    "heads": [
+     "valid(C)"
+    ],
+    "note": "未办理批准等手续影响合同生效的，不影响合同中履行报批义务条款以及相关条款的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-liab",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contract(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "approvalObligor(A,K)",
+     "failsToPerformApprovalObligation(A,K)",
+     "counterpartyOf(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimLiabilityForApprovalBreach(P,A)"
+     }
+    ],
+    "note": "应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-ref",
+    "srcs": [
+     "art502-3"
+    ],
+    "body": [
+     "contractChange(S)",
+     "approvalRequiredByLawsAndRegulations(S)"
+    ],
+    "heads": [
+     "approvalRulesApply(S)"
+    ],
+    "note": "合同的变更、转让、解除等情形应当办理批准等手续的，适用第502条第2款关于报批义务条款效力及违反报批义务责任的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c543",
+    "srcs": [
+     "art543"
+    ],
+    "body": [
+     "contract(K)",
+     "contractParty(P,K)",
+     "agreedToModify(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "modifyContract(P,K)"
+     }
+    ],
+    "note": "当事人协商一致，可以变更合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c543-modified",
+    "srcs": [
+     "art543"
+    ],
+    "body": [
+     "contract(K)",
+     "agreedToModify(K)"
+    ],
+    "heads": [
+     "contractModified(K)"
+    ],
+    "note": "当事人协商一致变更合同的，合同内容发生变更，当事人按变更后的合同履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c543-doctrine",
+    "srcs": [
+     "art543"
+    ],
+    "body": [
+     "contractModified(K)"
+    ],
+    "heads": [
+     "noRetroactiveEffectOnPerformed(K)"
+    ],
+    "note": "笔记：合同变更对已按原合同所作的履行没有追溯力，也不影响当事人请求赔偿损失的权利（学理，条文未明定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c544",
+    "srcs": [
+     "art544"
+    ],
+    "body": [
+     "contract(K)",
+     "modificationContentUnclear(K)"
+    ],
+    "heads": [
+     "-contractModified(K)"
+    ],
+    "note": "当事人对合同变更的内容约定不明确的，推定为未变更",
+    "auth": "npc"
+   },
+   {
+    "key": "c550",
+    "srcs": [
+     "art550"
+    ],
+    "body": [
+     "claimTransferredTo(R,T,D)",
+     "increasedCostFromAssignment(F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "bearCost(R,F)"
+     }
+    ],
+    "note": "因债权转让增加的履行费用，由让与人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c551-1",
+    "srcs": [
+     "art551-1"
+    ],
+    "body": [
+     "debtTransfer(D,T,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "obtainCreditorConsent(D,T,R)"
+     }
+    ],
+    "note": "债务人将债务的全部或者部分转移给第三人的，应当经债权人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c551-2-perm",
+    "srcs": [
+     "art551-2"
+    ],
+    "body": [
+     "debtTransfer(D,T,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "demandConsent(R)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "T",
+      "counterparty": "R",
+      "content": "demandConsent(R)"
+     }
+    ],
+    "note": "债务人或者第三人可以催告债权人在合理期限内予以同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c551-2-deemed",
+    "srcs": [
+     "art551-2"
+    ],
+    "body": [
+     "debtTransfer(D,T,R)",
+     "demandedConsent(R)",
+     "noAnswerWithinReasonablePeriod(R)"
+    ],
+    "heads": [
+     "-creditorConsents(R)"
+    ],
+    "note": "债权人经催告在合理期限内未作表示的，视为不同意债务转移",
+    "auth": "npc"
+   },
+   {
+    "key": "c555",
+    "srcs": [
+     "art555"
+    ],
+    "body": [
+     "jointTransferOfContract(P,T,K)",
+     "counterpartyConsentsToJointTransfer(P,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferRightsAndObligations(P,T,K)"
+     }
+    ],
+    "note": "当事人一方经对方同意，可以将自己在合同中的权利和义务一并转让给第三人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c544",
+    "c543-modified",
+    "变更内容约定不明确的，推定为未变更，排除合同已变更的结论"
+   ],
+   [
+    "c502-2-noeffect",
+    "c502-effective",
+    "法律、行政法规规定应当办理批准等手续且未办理影响合同生效的，优先于合同自成立时生效的规则"
+   ]
+  ],
+  "predicates": {
+   "contract": "合同",
+   "lawfullyFormed": "合同依法成立（参数：合同）",
+   "contractParty": "是合同的当事人（当事人，合同）",
+   "agreedToModify": "当事人协商一致变更合同（参数：合同）",
+   "modifyContract": "变更合同（当事人，合同）",
+   "modificationContentUnclear": "对合同变更的内容约定不明确（参数：合同）",
+   "contractModified": "合同已变更（参数：合同）",
+   "noRetroactiveEffectOnPerformed": "合同变更对已按原合同所作的履行没有追溯力（参数：合同）",
+   "increasedCostFromAssignment": "因债权转让而增加的履行费用（参数：费用）",
+   "bearCost": "负担费用（负担人，费用）",
+   "obtainCreditorConsent": "取得债权人同意（债务人，第三人，债权人）",
+   "demandConsent": "催告债权人在合理期限内同意（参数：债权人）",
+   "noAnswerWithinReasonablePeriod": "经催告后在合理期限内未作表示（参数：债权人）",
+   "failsToPerformApprovalObligation": "未履行办理申请批准等手续的义务（当事人，合同）",
+   "claimLiabilityForApprovalBreach": "请求承担违反报批义务的责任（对方，报批义务人）",
+   "jointTransferOfContract": "将自己在合同中的权利和义务一并转让给第三人（转让人，受让人，合同）",
+   "counterpartyConsentsToJointTransfer": "对方同意合同权利义务一并转让（转让人，受让人，合同）",
+   "transferRightsAndObligations": "一并转让合同中的权利和义务（转让人，受让人，合同）"
+  }
+ }
+}

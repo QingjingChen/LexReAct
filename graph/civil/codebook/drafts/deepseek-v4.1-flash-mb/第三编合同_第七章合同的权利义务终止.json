@@ -1,0 +1,2643 @@
+{
+ "card:g4524": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债务人对同一债权人负担数项同种类债务，给付不足以清偿全部债务时，该给付抵充何宗债务",
+     "rules": [
+      "c560-agree",
+      "c560-designate",
+      "c560-due",
+      "c560-security",
+      "c560-burden",
+      "c560-order",
+      "c560-proportion"
+     ]
+    },
+    {
+     "text": "单笔债务的给付不足以清偿全部债务时，实现债权的费用、利息与主债务的抵充顺序",
+     "rules": [
+      "c561-order",
+      "c561-agree"
+     ]
+    },
+    {
+     "text": "承租人拖欠租金时，次承租人可否代付，代付后如何充抵与追偿",
+     "rules": [
+      "c719-1",
+      "c719-2",
+      "c719-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人对同一债权人负担数项同种类债务，且债务人的给付不足以清偿全部债务",
+     "rules": [
+      "c560-designate",
+      "c560-due"
+     ]
+    },
+    {
+     "text": "当事人对抵充的债务或者抵充顺序另有约定",
+     "rules": [
+      "c560-agree"
+     ]
+    },
+    {
+     "text": "债务人未作指定（法定抵充的前提）",
+     "rules": [
+      "c560-due",
+      "c560-security",
+      "c560-burden",
+      "c560-order",
+      "c560-proportion"
+     ]
+    },
+    {
+     "text": "债务人在履行主债务外还应当支付利息和实现债权的有关费用，且给付不足以清偿全部债务",
+     "rules": [
+      "c561-order",
+      "c561-agree"
+     ]
+    },
+    {
+     "text": "承租人拖欠租金，且转租合同对出租人具有法律约束力",
+     "rules": [
+      "c719-1"
+     ]
+    },
+    {
+     "text": "次承租人已代承租人支付欠付的租金和违约金",
+     "rules": [
+      "c719-2",
+      "c719-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，不适用指定抵充与法定抵充顺序，依约定抵充",
+     "rules": [
+      "c560-agree"
+     ]
+    },
+    {
+     "text": "转租合同对出租人不具有法律约束力的，次承租人不得代承租人支付",
+     "rules": [
+      "c719-1"
+     ]
+    },
+    {
+     "text": "当事人对费用、利息、主债务的抵充顺序另有约定的，从其约定",
+     "rules": [
+      "c561-agree"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有约定的依约定抵充；无约定的由债务人在清偿时指定；未指定的按法定顺序：已到期→担保最少→负担较重→到期在先→按比例",
+     "rules": [
+      "c560-agree",
+      "c560-designate",
+      "c560-due",
+      "c560-security",
+      "c560-burden",
+      "c560-order",
+      "c560-proportion"
+     ]
+    },
+    {
+     "text": "依次抵充实现债权的有关费用、利息、主债务",
+     "rules": [
+      "c561-order"
+     ]
+    },
+    {
+     "text": "次承租人可以代承租人支付其欠付的租金和违约金",
+     "rules": [
+      "c719-1"
+     ]
+    },
+    {
+     "text": "代付的租金和违约金可以充抵次承租人应当向承租人支付的租金",
+     "rules": [
+      "c719-2"
+     ]
+    },
+    {
+     "text": "代付数额超出其应付租金数额的，次承租人可以向承租人追偿",
+     "rules": [
+      "c719-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定抵充优先于指定抵充，指定抵充优先于法定抵充",
+     "rules": [
+      "c560-agree",
+      "c560-designate"
+     ]
+    },
+    {
+     "text": "法定抵充内部：已到期优先于担保最少，担保最少优先于负担较重，负担较重优先于到期先后，到期先后优先于按比例",
+     "rules": [
+      "c560-due",
+      "c560-security",
+      "c560-burden",
+      "c560-order",
+      "c560-proportion"
+     ]
+    },
+    {
+     "text": "第561条中当事人的约定顺序优先于法定顺序",
+     "rules": [
+      "c561-agree"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记中的代物清偿（以他种给付代替原定给付，经合意并现实受领，原定给付债务消灭）本行未挂载法条，不写规则",
+     "rules": []
+    },
+    {
+     "text": "笔记中的代为清偿一般规则（第三人对履行债务有合法利益的有权代为履行，见第524条）本行未挂载；第719条是其在转租场合的特别规定",
+     "rules": []
+    },
+    {
+     "text": "清偿抵充只决定给付抵充何宗债务，不改变债务主体，与债务承担不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c560-agree",
+    "srcs": [
+     "art560-1"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "appropriationAgreed(D,K)"
+    ],
+    "heads": [
+     "appropriatedTo(D,K)"
+    ],
+    "note": "第560条第1款但书：当事人对抵充的债务或抵充顺序另有约定的，依约定抵充",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-designate",
+    "srcs": [
+     "art560-1"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "~agreedOtherwiseOnAppropriation(D,C)",
+     "designatesDebtAtPerformance(D,K)"
+    ],
+    "heads": [
+     "appropriatedTo(D,K)"
+    ],
+    "note": "无约定时，由债务人在清偿时指定其履行的债务（指定抵充）",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-due",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "noDesignationMade(D)",
+     "debtAmong(K1,D,C)",
+     "debtAmong(K2,D,C)",
+     "debtMatured(K1)",
+     "-debtMatured(K2)"
+    ],
+    "heads": [
+     "ranksBefore(K1,K2)"
+    ],
+    "note": "债务人未作指定的，优先履行已经到期的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-security",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "noDesignationMade(D)",
+     "debtAmong(K1,D,C)",
+     "debtAmong(K2,D,C)",
+     "debtMatured(K1)",
+     "debtMatured(K2)",
+     "lessSecurityThan(K1,K2)"
+    ],
+    "heads": [
+     "ranksBefore(K1,K2)"
+    ],
+    "note": "数项债务均到期的，优先履行对债权人缺乏担保或者担保最少的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-burden",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "noDesignationMade(D)",
+     "debtAmong(K1,D,C)",
+     "debtAmong(K2,D,C)",
+     "debtMatured(K1)",
+     "debtMatured(K2)",
+     "equalSecurity(K1,K2)",
+     "heavierBurdenThan(K1,K2)"
+    ],
+    "heads": [
+     "ranksBefore(K1,K2)"
+    ],
+    "note": "均无担保或者担保相等的，优先履行债务人负担较重的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-order",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "noDesignationMade(D)",
+     "debtAmong(K1,D,C)",
+     "debtAmong(K2,D,C)",
+     "debtMatured(K1)",
+     "debtMatured(K2)",
+     "equalSecurity(K1,K2)",
+     "equalBurden(K1,K2)",
+     "earlierDue(K1,K2)"
+    ],
+    "heads": [
+     "ranksBefore(K1,K2)"
+    ],
+    "note": "负担相同的，按照债务到期的先后顺序履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-proportion",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "performanceInsufficient(D,C)",
+     "noDesignationMade(D)",
+     "debtAmong(K1,D,C)",
+     "debtAmong(K2,D,C)",
+     "debtMatured(K1)",
+     "debtMatured(K2)",
+     "equalSecurity(K1,K2)",
+     "equalBurden(K1,K2)",
+     "sameDueTime(K1,K2)"
+    ],
+    "heads": [
+     "appropriatedProRata(K1,K2)"
+    ],
+    "note": "到期时间相同的，按照债务比例履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c561-order",
+    "srcs": [
+     "art561-1"
+    ],
+    "body": [
+     "owesInterestAndExpenses(D,C)",
+     "performanceInsufficient(D,C)",
+     "~agreedOtherwiseOnAppropriationOrder(D,C)"
+    ],
+    "heads": [
+     "ranksBefore(claimExpense,interestAmount)",
+     "ranksBefore(interestAmount,mainDebt)"
+    ],
+    "note": "单笔债务的给付不足清偿全部债务时，依次抵充实现债权的有关费用、利息、主债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c561-agree",
+    "srcs": [
+     "art561-1"
+    ],
+    "body": [
+     "owesInterestAndExpenses(D,C)",
+     "performanceInsufficient(D,C)",
+     "agreedOtherwiseOnAppropriationOrder(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "performPerAgreedOrder(D,C)"
+     }
+    ],
+    "note": "第561条第1款但书：当事人对费用、利息、主债务的抵充顺序另有约定的，按约定顺序履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c719-1",
+    "srcs": [
+     "art719-1"
+    ],
+    "body": [
+     "subTenantOf(S,T)",
+     "owesRent(T,L)",
+     "subleaseBindingOnLandlord(S,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "L",
+      "content": "payRentAndPenaltyFor(S,T,L)"
+     }
+    ],
+    "note": "承租人拖欠租金的，次承租人可以代承租人支付欠付的租金和违约金；转租合同对出租人不具有法律约束力的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c719-2",
+    "srcs": [
+     "art719-2"
+    ],
+    "body": [
+     "subTenantOf(S,T)",
+     "payRentAndPenaltyFor(S,T,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "T",
+      "content": "offsetAgainstRent(S,T)"
+     }
+    ],
+    "note": "次承租人代为支付的租金和违约金，可以充抵其应当向承租人支付的租金",
+    "auth": "npc"
+   },
+   {
+    "key": "c719-3",
+    "srcs": [
+     "art719-2"
+    ],
+    "body": [
+     "subTenantOf(S,T)",
+     "payRentAndPenaltyFor(S,T,L)",
+     "excessOverRent(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "T",
+      "content": "claimReimbursementFrom(S,T)"
+     }
+    ],
+    "note": "代付数额超出其应付租金数额的，次承租人可以向承租人追偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c560-agree",
+    "c560-designate",
+    "当事人对抵充的债务或抵充顺序另有约定的，依约定抵充，优先于债务人指定"
+   ],
+   [
+    "c560-designate",
+    "c560-due",
+    "债务人已在清偿时指定的，不再适用法定抵充顺序（已到期规则）"
+   ],
+   [
+    "c561-agree",
+    "c561-order",
+    "当事人对费用、利息、主债务的抵充顺序另有约定的，从其约定，优先于法定顺序"
+   ]
+  ],
+  "predicates": {
+   "multipleSameKindDebts": "债务人对同一债权人负担数项同种类债务（债务人，债权人）",
+   "performanceInsufficient": "债务人的给付不足以清偿全部债务（债务人，债权人）",
+   "agreedOtherwiseOnAppropriation": "当事人对抵充的债务或者抵充顺序另有约定（债务人，债权人）",
+   "appropriationAgreed": "当事人约定以该给付抵充该债务（债务人，债务）",
+   "designatesDebtAtPerformance": "债务人在清偿时指定其履行的债务（债务人，债务）",
+   "noDesignationMade": "债务人未作指定（债务人）",
+   "appropriatedTo": "该给付抵充于该宗债务（债务人，债务）",
+   "debtAmong": "该债务是债务人对同一债权人所负的数项同种类债务之一（债务，债务人，债权人）",
+   "lessSecurityThan": "对债权人的担保少于（债务1，债务2）",
+   "equalSecurity": "对债权人的担保相等或者均无担保（债务1，债务2）",
+   "heavierBurdenThan": "债务人负担较重（债务1，债务2）",
+   "equalBurden": "债务人负担相同（债务1，债务2）",
+   "earlierDue": "到期在先（债务1，债务2）",
+   "sameDueTime": "到期时间相同（债务1，债务2）",
+   "appropriatedProRata": "按照债务比例抵充（债务1，债务2）",
+   "owesInterestAndExpenses": "债务人在履行主债务外还应当支付利息和实现债权的有关费用（债务人，债权人）",
+   "agreedOtherwiseOnAppropriationOrder": "当事人对费用、利息、主债务的抵充顺序另有约定（债务人，债权人）",
+   "performPerAgreedOrder": "按当事人约定的顺序履行（债务人，债权人）",
+   "subTenantOf": "是次承租人（次承租人，承租人）",
+   "owesRent": "承租人拖欠租金（承租人，出租人）",
+   "subleaseBindingOnLandlord": "转租合同对出租人具有法律约束力（次承租人，出租人）",
+   "payRentAndPenaltyFor": "代承租人支付其欠付的租金和违约金（次承租人，承租人，出租人）",
+   "offsetAgainstRent": "以代付款项充抵应向承租人支付的租金（次承租人，承租人）",
+   "excessOverRent": "代付数额超出其应付的租金数额（次承租人，承租人）",
+   "claimReimbursementFrom": "向承租人追偿（次承租人，承租人）",
+   "claimExpense": "个体常量：实现债权的有关费用",
+   "interestAmount": "个体常量：利息",
+   "mainDebt": "个体常量：主债务"
+  }
+ },
+ "card:g4640": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c566-term：新谓词 contractRescinded 需要在 predicates 中给出中文释义",
+   "c566-term：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-1a：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-1a：新谓词 obligationUnperformed 需要在 predicates 中给出中文释义",
+   "c566-1b：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-1b：新谓词 remedyFitsPerformanceAndNature 需要在 predicates 中给出中文释义",
+   "c566-1b：新谓词 claimRestorationOrOtherRemedy 需要在 predicates 中给出中文释义",
+   "c566-1c：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-1c：新谓词 claimDamages 需要在 predicates 中给出中文释义",
+   "c566-2：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-2：新谓词 terminatedForBreach 需要在 predicates 中给出中文释义",
+   "c566-2-exc：新谓词 terminatedForBreach 需要在 predicates 中给出中文释义",
+   "c566-2-exc：新谓词 partiesAgreedOtherwiseOnBreachLiability 需要在 predicates 中给出中文释义",
+   "c566-3：新谓词 contractRightsEnded 需要在 predicates 中给出中文释义",
+   "c566-3：新谓词 securityLiabilitySurvives 需要在 predicates 中给出中文释义",
+   "c566-3-exc：新谓词 securityContractProvidesOtherwise 需要在 predicates 中给出中文释义",
+   "c566-3-exc：新谓词 securityLiabilitySurvives 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同解除后，尚未履行的部分与已经履行的部分分别产生何种效力；因违约解除时解除权人能否请求违约方承担违约责任；主合同解除后担保人是否仍应承担担保责任\",\n        \"rules\": [\"c566-term\", \"c566-1a\", \"c566-1b\", \"c566-1c\", \"c566-2\", \"c566-3\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同已经解除（双方协议解除或者一方行使解除权），合同的权利义务关系终止\",\n        \"rules\": [\"c566-term\"]\n      },\n      {\n        \"text\": \"合同项下尚有未履行的给付义务\",\n        \"rules\": [\"c566-1a\"]\n      },\n      {\n        \"text\": \"当事人已经履行，且根据履行情况和合同性质适宜恢复原状或采取其他补救措施\",\n        \"rules\": [\"c566-1b\"]\n      },\n      {\n        \"text\": \"合同因违约而解除，请求人为解除权人，相对人为违约方\",\n        \"rules\": [\"c566-2\"]\n      },\n      {\n        \"text\": \"担保合同是主合同的从合同，并为主合同提供担保\",\n        \"rules\": [\"c566-3\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"当事人另有约定的，排除违约解除后请求违约方承担违约责任\",\n        \"rules\": [\"c566-2-exc\"]\n      },\n      {\n        \"text\": \"担保合同另有约定的，担保人不再承担该担保责任\",\n        \"rules\": [\"c566-3-exc\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"尚未履行的，终止履行，义务人不再负履行义务\",\n        \"rules\": [\"c566-1a\"]\n      },\n      {\n        \"text\": \"已经履行的，当事人可以请求恢复原状或者采取其他补救措施\",\n        \"rules\": [\"c566-1b\"]\n      },\n      {\n        \"text\": \"已经履行的，当事人有权请求赔偿损失；合同解除与损害赔偿可以并存（含可得利益）\",\n        \"rules\": [\"c566-1c\"]\n      },\n      {\n        \"text\": \"合同因违约解除的，解除权人可以请求违约方承担违约责任\",\n        \"rules\": [\"c566-2\"]\n      },\n      {\n        \"text\": \"主合同解除后，担保人对债务人应当承担的民事责任仍应当承担担保责任\",\n        \"rules\": [\"c566-3\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"当事人另有约定的，优先于违约解除后请求承担违约责任的法定规则\",\n        \"rules\": [\"c566-2-exc\", \"c566-2\"]\n      },\n      {\n        \"text\": \"担保合同另有约定的，优先于主合同解除后担保责任继续存在的规则\",\n        \"rules\": [\"c566-3-exc\", \"c566-3\"]\n      },\n      {\n        \"text\": \"主合同解除后担保责任仍存续，构成对担保从属性的例外（学理说明）\",\n        \"rules\": [\"c566-3\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记所称“合同权利义务终止不影响结算和清理条款、解决争议条款的效力”属第567条，本条不设该规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第564条（解除权行使期限）、第565条（解除通知与解除生效）是解除权行使规则，不涉及解除后的法律后果\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片把“合同目的无法实现”“解除未经通知或未获司法确认”列为条件，实为第563、565条的要件，本条不采\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片所称“恢复原状优先于赔偿损失”于本条无明文，本条仅规定二者可并存，故不设优先规则\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c566-term\",\n      \"srcs\": [\"art566-1\"],\n      \"body\": [\"contractRescinded(K)\"],\n      \"heads\": [\"contractRightsEnded(K)\"],\n      \"note\": \"有效合同经双方协议解除或一方行使解除权后，合同的权利义务关系终止（笔记的体系性说明，非本条明文）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c566-1a\",\n      \"srcs\": [\"art566-1\"],\n      \"body\": [\"contractRightsEnded(K)\", \"obligationUnperformed(A,K)\"],\n      \"heads\": [\"-stillPerform(A,K)\"],\n      \"note\": \"合同解除后，尚未履行的给付义务终止履行\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-1b\",\n      \"srcs\": [\"art566-1\"],\n      \"body\": [\"contractRightsEnded(K)\", \"performed(A,K)\", \"remedyFitsPerformanceAndNature(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"claimRestorationOrOtherRemedy(A,K)\"}\n      ],\n      \"note\": \"已经履行的，根据履行情况和合同性质，当事人可以请求恢复原状或者采取其他补救措施\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-1c\",\n      \"srcs\": [\"art566-1\"],\n      \"body\": [\"contractRightsEnded(K)\", \"performed(A,K)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"claimDamages(A,K)\"}\n      ],\n      \"note\": \"已经履行的，当事人有权请求赔偿损失，解除与损害赔偿可以并存\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-2\",\n      \"srcs\": [\"art566-2\"],\n      \"body\": [\"contractRightsEnded(K)\", \"terminatedForBreach(K)\", \"terminationRight(H,K)\", \"breachOfContract(B,K)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"H\", \"counterparty\": \"B\", \"content\": \"liableForBreach(B,K)\"}\n      ],\n      \"note\": \"合同因违约解除的，解除权人可以请求违约方承担违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-2-exc\",\n      \"srcs\": [\"art566-2\"],\n      \"body\": [\"terminatedForBreach(K)\", \"breachOfContract(B,K)\", \"partiesAgreedOtherwiseOnBreachLiability(K)\"],\n      \"heads\": [\"-liableForBreach(B,K)\"],\n      \"note\": \"当事人另有约定的，排除违约解除后违约方的违约责任（但书）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-3\",\n      \"srcs\": [\"art566-3\"],\n      \"body\": [\"contractRightsEnded(M)\", \"accessoryContractOf(S,M)\", \"securityFor(S,M)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"S\", \"counterparty\": null, \"content\": \"securityLiabilitySurvives(S,M)\"}\n      ],\n      \"note\": \"主合同解除后，担保人对债务人应当承担的民事责任仍应当承担担保责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c566-3-exc\",\n      \"srcs\": [\"art566-3\"],\n      \"body\": [\"accessoryContractOf(S,M)\", \"securityContractProvidesOtherwise(S)\"],\n      \"heads\": [\"-securityLiabilitySurvives(S,M)\"],\n      \"note\": \"担保合同另有约定的，担保人不再承担该担保责任（但书）\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c566-2-exc\", \"c566-2\", \"当事人另有约定优先于违约解除后请求承担违约责任的法定规则\"],\n    [\"c566-3-exc\", \"c566-3\", \"担保合同另有约定优先于主合同解除后担保责任继续存在的规则\"]\n  ],\n  \"predicates\": {\n    \"contractRescinded/1\": \"合同已被解除（双方协议解除或一方行使解除权）\",\n    \"contractRightsEnded/1\": \"合同的权利义务关系终止（解除的效果）\",\n    \"obligationUnperformed/2\": \"其给付义务尚未履行（当事人，合同）\",\n    \"remedyFitsPerformanceAndNature/1\": \"根据履行情况和合同性质适宜恢复原状或采取其他补救措施（合同）\",\n    \"claimRestorationOrOtherRemedy/2\": \"请求恢复原状或者采取其他补救措施（当事人，合同）\",\n    \"claimDamages/2\": \"请求赔偿损失（当事人，合同）\",\n    \"terminatedForBreach/1\": \"合同因违约而解除（合同）\",\n    \"partiesAgreedOtherwiseOnBreachLiability/1\": \"当事人另有约定排除违约解除后的违约责任（合同）\",\n    \"securityLiabilitySurvives/2\": \"主合同解除后，担保人仍对债务人应当承担的民事责任承担担保责任（担保人，主合同）\",\n    \"securityContractProvidesOtherwise/1\": \"担保合同另有约定（担保合同）\"\n  }\n}"
+ },
+ "card:g4593": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "编译为 ASP 失败：c564-1: 体中含有其所否定的结论 terminationRight(P,K)（DDL 中构成循环，应改用底层事实）"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"债权债务终止的法定情形，以及合同解除后合同权利义务关系的终止\",\n        \"rules\": [\"c557-1\", \"c557-2\"]\n      },\n      {\n        \"text\": \"合同解除的方式：协商一致解除、约定解除权的设立与行使\",\n        \"rules\": [\"c562-1\", \"c562-2a\", \"c562-2b\"]\n      },\n      {\n        \"text\": \"解除权的行使期限届满未行使时，解除权是否消灭\",\n        \"rules\": [\"c564-1\", \"c564-2\"]\n      },\n      {\n        \"text\": \"解除合同的通知、解除的生效时点，以及未通知而直接起诉或申请仲裁时的解除时点\",\n        \"rules\": [\"c565-1a\", \"c565-1b\", \"c565-1c\", \"c565-1d\", \"c565-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"债务已经履行、债务相互抵销、债务人依法提存标的物、债权人免除债务、债权债务同归于一人，或者法律规定、当事人约定终止的其他情形\",\n        \"rules\": [\"c557-1\"]\n      },\n      {\n        \"text\": \"当事人协商一致解除合同\",\n        \"rules\": [\"c562-1\"]\n      },\n      {\n        \"text\": \"当事人约定一方解除合同的事由，且该事由已发生、该方依约定享有解除权\",\n        \"rules\": [\"c562-2a\", \"c562-2b\"]\n      },\n      {\n        \"text\": \"有法定或约定的解除权行使期限而期限届满未行使；或者没有该期限时，自知道或应当知道解除事由之日起一年内不行使，或经对方催告后在合理期限内不行使\",\n        \"rules\": [\"c564-1\", \"c564-2\"]\n      },\n      {\n        \"text\": \"当事人一方依法主张解除合同，应当通知对方；未通知而直接以起诉或申请仲裁方式主张解除的，须经法院或仲裁机构确认\",\n        \"rules\": [\"c565-1a\", \"c565-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"通知载明债务人在一定期限内不履行债务则合同自动解除的，不适用“通知到达即解除”，而自通知载明的期限届满时解除\",\n        \"rules\": [\"c565-1c\"]\n      },\n      {\n        \"text\": \"法律规定了或者当事人约定了行使期限的，不适用第564条第2款的一年期间与催告规则\",\n        \"rules\": [\"c564-1\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"有法定情形之一的，债权债务终止\",\n        \"rules\": [\"c557-1\"]\n      },\n      {\n        \"text\": \"合同解除的，该合同的权利义务关系终止\",\n        \"rules\": [\"c557-2\"]\n      },\n      {\n        \"text\": \"解除权行使期限届满未行使，或无法定、约定期限时一年内不行使、经催告后合理期限内不行使的，解除权消灭\",\n        \"rules\": [\"c564-1\", \"c564-2\"]\n      },\n      {\n        \"text\": \"解除通知到达对方时合同解除\",\n        \"rules\": [\"c565-1b\"]\n      },\n      {\n        \"text\": \"未通知对方而直接起诉或申请仲裁，经确认的，合同自起诉状副本或仲裁申请书副本送达对方时解除\",\n        \"rules\": [\"c565-2\"]\n      },\n      {\n        \"text\": \"对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力\",\n        \"rules\": [\"c565-1d\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"通知载明自动解除条款的，按通知载明的期限届满时解除，优先于“通知到达时解除”\",\n        \"rules\": [\"c565-1c\", \"c565-1b\"]\n      },\n      {\n        \"text\": \"有法定或约定解除权行使期限的，优先适用第564条第1款；第2款仅适用于没有该期限的情形\",\n        \"rules\": [\"c564-1\", \"c564-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第562条是约定解除（协商一致解除与约定解除权），与第563条法定解除（不可抗力、预期违约、根本违约等）不同，后者不以合意为前提，本行未挂载第563条\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第564条是解除权的消灭（一年期间、催告后合理期限），与第152条撤销权的消灭（一年、九十日、五年）不同，二者期间与起算点各异\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记：约定解除权条款既可在订立合同时约定，也可在合同订立后另行约定，只要不违反强制性规定和公序良俗；第562条第2款只规定“可以约定”，未限定约定时间\",\n        \"rules\": [\"c562-2a\"]\n      },\n      {\n        \"text\": \"LEGO 卡片所称“约定解除权优先于法定解除权”“解除后相互返还”等，法条未作规定，本行不形式化\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c557-1\",\n      \"srcs\": [\"art557-1\"],\n      \"body\": [\n        {\n          \"or\": [\n            \"debtRelationPerformed(D)\",\n            \"debtsOffset(D)\",\n            \"subjectMatterDeposited(D)\",\n            \"debtRemitted(D)\",\n            \"claimAndDebtInSamePerson(D)\",\n            \"otherTerminationGroundByLawOrAgreement(D)\"\n          ]\n        }\n      ],\n      \"heads\": [\"debtRelationTerminated(D)\"],\n      \"note\": \"债务已履行、相互抵销、依法提存、债权人免除、债权债务同归一人，或法律、当事人约定终止的其他情形，债权债务终止\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c557-2\",\n      \"srcs\": [\"art557-2\"],\n      \"body\": [\"contractRescinded(K)\"],\n      \"heads\": [\"contractRightsObligationsTerminated(K)\"],\n      \"note\": \"合同解除的，该合同的权利义务关系终止\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c562-1\",\n      \"srcs\": [\"art562-1\"],\n      \"body\": [\"partyTo(P,K)\", \"agreedToRescind(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"rescindContract(P,K)\"}\n      ],\n      \"note\": \"当事人协商一致的，可以解除合同（合意解除）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c562-2a\",\n      \"srcs\": [\"art562-2\"],\n      \"body\": [\"partyTo(P,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"agreeOnRescissionGround(P,K)\"}\n      ],\n      \"note\": \"当事人可以约定一方解除合同的事由；笔记补充该约定可在订立合同时或订立后另行作出\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c562-2b\",\n      \"srcs\": [\"art562-2\"],\n      \"body\": [\"partyTo(P,K)\", \"agreedRescissionRight(P,K)\", \"agreedRescissionGroundOccurred(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"rescindContract(P,K)\"}\n      ],\n      \"note\": \"约定的解除事由发生时，解除权人可以解除合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c564-1\",\n      \"srcs\": [\"art564-1\"],\n      \"body\": [\"terminationRight(P,K)\", \"rescissionPeriodExpiredWithoutExercise(P,K)\"],\n      \"heads\": [\"-terminationRight(P,K)\"],\n      \"note\": \"法律规定或者当事人约定了解除权行使期限，期限届满当事人不行使的，该权利消灭\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c564-2\",\n      \"srcs\": [\"art564-2\"],\n      \"body\": [\n        \"terminationRight(P,K)\",\n        \"noRescissionPeriodProvided(K)\",\n        {\n          \"or\": [\n            \"oneYearSinceKnewRescissionGround(P,K)\",\n            \"noExerciseAfterDemandWithinReasonablePeriod(P,K)\"\n          ]\n        }\n      ],\n      \"heads\": [\"-terminationRight(P,K)\"],\n      \"note\": \"无法定或约定期限时，自知道或应当知道解除事由之日起一年内不行使，或经催告后合理期限内不行使的，解除权消灭\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-1a\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\"partyTo(P,K)\", \"rescissionClaimedLawfully(P,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"notifyOtherPartyOfRescission(P,K)\"}\n      ],\n      \"note\": \"当事人一方依法主张解除合同的，应当通知对方\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-1b\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\"rescissionNoticeArrivedAtCounterparty(K)\"],\n      \"heads\": [\"contractRescinded(K)\"],\n      \"note\": \"合同自解除通知到达对方时解除\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-1c\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\"noticeStatesAutomaticRescission(K)\", \"debtorFailedToPerformWithinStatedPeriod(K)\"],\n      \"heads\": [\"contractRescinded(K)\"],\n      \"note\": \"通知载明债务人在一定期限内不履行则合同自动解除，债务人逾期未履行的，合同自通知载明的期限届满时解除\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-1d\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\"partyTo(P,K)\", \"objectionToRescissionRaised(K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"requestConfirmationOfRescissionValidity(P,K)\"}\n      ],\n      \"note\": \"对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-2\",\n      \"srcs\": [\"art565-2\"],\n      \"body\": [\n        \"rescissionClaimedBySuitWithoutNotice(K)\",\n        \"courtConfirmsRescissionClaim(K)\",\n        \"complaintCopyServedOnCounterparty(K)\"\n      ],\n      \"heads\": [\"contractRescinded(K)\"],\n      \"note\": \"未通知对方而直接以起诉或申请仲裁方式主张解除，经确认的，合同自起诉状副本或仲裁申请书副本送达对方时解除\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c565-1c\", \"c565-1b\", \"通知载明自动解除条款的，解除时点为通知载明的期限届满，而非通知到达\"],\n    [\"c564-1\", \"c564-2\", \"有法定或约定解除权行使期限时优先适用第564条第1款，第2款仅适用于没有该期限的情形\"]\n  ],\n  \"predicates\": {\n    \"debtRelationTerminated\": \"债权债务关系终止（1个参数：债权债务关系）\",\n    \"debtRelationPerformed\": \"债务已经履行（1个参数：债权债务关系）\",\n    \"debtsOffset\": \"债务相互抵销（1个参数：债权债务关系）\",\n    \"subjectMatterDeposited\": \"债务人依法将标的物提存（1个参数：债权债务关系）\",\n    \"debtRemitted\": \"债权人免除债务（1个参数：债权债务关系）\",\n    \"claimAndDebtInSamePerson\": \"债权债务同归于一人（1个参数：债权债务关系）\",\n    \"otherTerminationGroundByLawOrAgreement\": \"法律规定或者当事人约定终止的其他情形（1个参数：债权债务关系）\",\n    \"contractRescinded\": \"合同已解除（1个参数：合同）\",\n    \"contractRightsObligationsTerminated\": \"合同的权利义务关系终止（1个参数：合同）\",\n    \"agreedToRescind\": \"当事人协商一致解除合同（1个参数：合同）\",\n    \"rescindContract\": \"解除合同（2个参数：解除权人，合同）\",\n    \"agreeOnRescissionGround\": \"约定一方解除合同的事由（2个参数：当事人，合同）\",\n    \"agreedRescissionRight\": \"依约定享有解除权（2个参数：当事人，合同）\",\n    \"agreedRescissionGroundOccurred\": \"约定的解除事由已发生（1个参数：合同）\",\n    \"rescissionPeriodExpiredWithoutExercise\": \"解除权行使期限届满而未行使（2个参数：解除权人，合同）\",\n    \"noRescissionPeriodProvided\": \"法律没有规定且当事人没有约定解除权行使期限（1个参数：合同）\",\n    \"oneYearSinceKnewRescissionGround\": \"自知道或者应当知道解除事由之日起一年内未行使解除权（2个参数：解除权人，合同）\",\n    \"noExerciseAfterDemandWithinReasonablePeriod\": \"经对方催告后在合理期限内未行使解除权（2个参数：解除权人，合同）\",\n    \"rescissionClaimedLawfully\": \"依法主张解除合同（2个参数：当事人，合同）\",\n    \"notifyOtherPartyOfRescission\": \"将解除合同的主张通知对方（2个参数：解除权人，合同）\",\n    \"rescissionNoticeArrivedAtCounterparty\": \"解除通知已到达对方（1个参数：合同）\",\n    \"noticeStatesAutomaticRescission\": \"通知载明债务人在一定期限内不履行债务则合同自动解除（1个参数：合同）\",\n    \"debtorFailedToPerformWithinStatedPeriod\": \"债务人在通知载明的期限内未履行债务（1个参数：合同）\",\n    \"objectionToRescissionRaised\": \"对方对解除合同提出异议（1个参数：合同）\",\n    \"requestConfirmationOfRescissionValidity\": \"请求人民法院或者仲裁机构确认解除行为的效力（2个参数：当事人，合同）\",\n    \"rescissionClaimedBySuitWithoutNotice\": \"未通知对方，直接以提起诉讼或者申请仲裁的方式主张解除合同（1个参数：合同）\",\n    \"courtConfirmsRescissionClaim\": \"人民法院或者仲裁机构确认解除主张（1个参数：合同）\",\n    \"complaintCopyServedOnCounterparty\": \"起诉状副本或者仲裁申请书副本已送达对方（1个参数：合同）\"\n  }\n}"
+ },
+ "card:g4589": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何种情形下当事人可以解除合同（法定解除事由）",
+     "rules": [
+      "c563-1",
+      "c563-2",
+      "c563-3",
+      "c563-4",
+      "c563-5",
+      "c563-right"
+     ]
+    },
+    {
+     "text": "以持续履行的债务为内容的不定期合同如何随时解除",
+     "rules": [
+      "c563-2period",
+      "c563-2notice"
+     ]
+    },
+    {
+     "text": "解除权如何行使，合同自何时解除，对方有异议如何处理",
+     "rules": [
+      "c565-1",
+      "c565-1a",
+      "c565-1b",
+      "c565-1c",
+      "c565-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因不可抗力致使不能实现合同目的",
+     "rules": [
+      "c563-1"
+     ]
+    },
+    {
+     "text": "履行期限届满前，一方明确表示或以自己的行为表明不履行主要债务（预期违约）",
+     "rules": [
+      "c563-2"
+     ]
+    },
+    {
+     "text": "一方迟延履行主要债务，经催告后在合理期限内仍未履行",
+     "rules": [
+      "c563-3"
+     ]
+    },
+    {
+     "text": "一方迟延履行债务或者有其他违约行为致使不能实现合同目的（根本违约）",
+     "rules": [
+      "c563-4"
+     ]
+    },
+    {
+     "text": "法律规定的其他解除情形",
+     "rules": [
+      "c563-5"
+     ]
+    },
+    {
+     "text": "合同以持续履行的债务为内容且未定期限",
+     "rules": [
+      "c563-2period",
+      "c563-2notice"
+     ]
+    },
+    {
+     "text": "当事人一方依法主张解除合同",
+     "rules": [
+      "c565-1",
+      "c565-1a",
+      "c565-1b",
+      "c565-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不定期持续性合同随时解除的，应当在合理期限之前通知对方",
+     "rules": [
+      "c563-2notice"
+     ]
+    },
+    {
+     "text": "通知载明债务人在一定期限内不履行债务则合同自动解除，债务人于该期限内未履行的，合同自通知载明的期限届满时解除（不再以通知到达时为准）",
+     "rules": [
+      "c565-1b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备法定解除事由的，当事人可以解除合同",
+     "rules": [
+      "c563-right"
+     ]
+    },
+    {
+     "text": "不定期持续性合同的当事人可以随时解除合同",
+     "rules": [
+      "c563-2period"
+     ]
+    },
+    {
+     "text": "依法主张解除合同的一方应当通知对方",
+     "rules": [
+      "c565-1"
+     ]
+    },
+    {
+     "text": "合同自解除通知到达对方时解除",
+     "rules": [
+      "c565-1a"
+     ]
+    },
+    {
+     "text": "对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力",
+     "rules": [
+      "c565-1c"
+     ]
+    },
+    {
+     "text": "未通知对方而直接以提起诉讼或者申请仲裁的方式主张解除，经人民法院或者仲裁机构确认的，合同自起诉状副本或者仲裁申请书副本送达对方时解除",
+     "rules": [
+      "c565-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "通知载明不履行即自动解除的，期限届满时解除的规则优先于通知到达时解除的一般规则",
+     "rules": [
+      "c565-1b",
+      "c565-1a"
+     ]
+    },
+    {
+     "text": "未通知对方而直接起诉或申请仲裁的，不适用通知到达生效规则，自起诉状副本或仲裁申请书副本送达对方时解除",
+     "rules": [
+      "c565-2",
+      "c565-1a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第562条的协商解除、约定解除与第563条的法定解除不同：前者依当事人合意或约定事由，后者以本条列举的法定事由为要件",
+     "rules": []
+    },
+    {
+     "text": "第564条规定解除权的行使期限（除斥期间），属解除权行使的特别限制，不是解除事由本身",
+     "rules": []
+    },
+    {
+     "text": "第565条只规定解除权行使的方式与合同解除的生效时间，不创设解除事由；解除事由仍须依第563条等认定",
+     "rules": []
+    },
+    {
+     "text": "解除后返还财产、赔偿损失等法律后果规定在第566条，本条不含；LEGO 卡片所列“解除后产生返还财产、赔偿损失等后续责任”不属本条内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c563-1",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "partyTo(P,K)",
+     "forceMajeure(F)",
+     "frustratesPurposeDueToForceMajeure(K,F)"
+    ],
+    "heads": [
+     "terminationGround(K)"
+    ],
+    "note": "因不可抗力致使不能实现合同目的的，构成法定解除事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-2",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "nonBreachingParty(P,K)",
+     "breachingParty(B,K)",
+     "refusesMainDebtBeforeDue(B,K)"
+    ],
+    "heads": [
+     "terminationGround(K)"
+    ],
+    "note": "履行期限届满前，一方明确表示或以自己的行为表明不履行主要债务的，守约方可解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-3",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "nonBreachingParty(P,K)",
+     "breachingParty(B,K)",
+     "delaysMainDebt(B,K)",
+     "stillNotPerformedAfterDemand(B,K)"
+    ],
+    "heads": [
+     "terminationGround(K)"
+    ],
+    "note": "一方迟延履行主要债务，经催告后在合理期限内仍未履行的，守约方可解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-4",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "nonBreachingParty(P,K)",
+     "breachingParty(B,K)",
+     "breachFrustratesPurpose(B,K)"
+    ],
+    "heads": [
+     "terminationGround(K)"
+    ],
+    "note": "一方迟延履行债务或者有其他违约行为致使不能实现合同目的的，守约方可解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-5",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "partyTo(P,K)",
+     "otherTerminationGroundByLaw(K)"
+    ],
+    "heads": [
+     "terminationGround(K)"
+    ],
+    "note": "法律规定的其他解除情形，亦构成法定解除事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-right",
+    "srcs": [
+     "art563-1"
+    ],
+    "body": [
+     "terminationGround(K)",
+     "partyTo(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "terminate(P,K)"
+     }
+    ],
+    "note": "有法定解除事由的，当事人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-2period",
+    "srcs": [
+     "art563-2"
+    ],
+    "body": [
+     "partyTo(P,K)",
+     "indefiniteContractForContinuousPerformance(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "terminate(P,K)"
+     }
+    ],
+    "note": "以持续履行的债务为内容的不定期合同，当事人可以随时解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c563-2notice",
+    "srcs": [
+     "art563-2"
+    ],
+    "body": [
+     "partyTo(P,K)",
+     "indefiniteContractForContinuousPerformance(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyInAdvanceOfReasonablePeriod(P,K)"
+     }
+    ],
+    "note": "第563条第2款但书：不定期持续性合同随时解除的，应当在合理期限之前通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-1",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "claimsTermination(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyCounterparty(P,K)"
+     }
+    ],
+    "note": "当事人一方依法主张解除合同的，应当通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-1a",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "claimsTermination(P,K)",
+     "noticeArrives(P,Q)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "合同自解除通知到达对方时解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-1b",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "claimsTermination(P,K)",
+     "noticeStatesAutoTermination(P,D,K)",
+     "debtorNotPerformedWithinStatedPeriod(D,K)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "通知载明债务人在一定期限内不履行债务则合同自动解除，债务人于该期限内未履行的，合同自通知载明的期限届满时解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-1c",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "objectsToTermination(Q,K)",
+     "partyTo(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestConfirmTerminationEffect(P,K)"
+     }
+    ],
+    "note": "对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-2",
+    "srcs": [
+     "art565-2"
+    ],
+    "body": [
+     "claimsTermination(P,K)",
+     "-notifiedCounterparty(P,K)",
+     "suitOrArbitrationFiled(P)",
+     "courtConfirmsTerminationClaim(P,K)",
+     "complaintCopyServed(P,Q)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "未通知对方而直接以起诉或申请仲裁方式主张解除，经人民法院或仲裁机构确认的，合同自起诉状副本或仲裁申请书副本送达对方时解除",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c565-1b",
+    "c565-1a",
+    "通知载明不履行即自动解除的，属当事人对解除生效时点的特别安排，合同自通知载明的期限届满时解除，不再以通知到达时为准"
+   ],
+   [
+    "c565-2",
+    "c565-1a",
+    "未通知对方而直接起诉或申请仲裁的，不适用通知到达生效规则，合同自起诉状副本或仲裁申请书副本送达对方时解除"
+   ]
+  ],
+  "predicates": {
+   "partyTo": "是合同当事人（当事人，合同）",
+   "frustratesPurposeDueToForceMajeure": "因不可抗力致使不能实现合同目的（合同，不可抗力）",
+   "refusesMainDebtBeforeDue": "在履行期限届满前明确表示或以自己的行为表明不履行主要债务（当事人，合同）",
+   "delaysMainDebt": "迟延履行主要债务（当事人，合同）",
+   "stillNotPerformedAfterDemand": "经催告后在合理期限内仍未履行（当事人，合同）",
+   "otherTerminationGroundByLaw": "法律规定的其他解除情形（合同）",
+   "terminate": "解除合同（当事人，合同）",
+   "indefiniteContractForContinuousPerformance": "以持续履行的债务为内容的不定期合同（合同）",
+   "notifyInAdvanceOfReasonablePeriod": "在合理期限之前通知对方（解除权人，对方）",
+   "claimsTermination": "依法主张解除合同（当事人，合同）",
+   "terminationEffective": "合同解除已生效（合同）",
+   "noticeStatesAutoTermination": "通知载明债务人在一定期限内不履行债务则合同自动解除（通知人，债务人，合同）",
+   "debtorNotPerformedWithinStatedPeriod": "债务人在通知载明的期限内未履行债务（债务人，合同）",
+   "objectsToTermination": "对解除合同有异议（对方，合同）",
+   "requestConfirmTerminationEffect": "请求人民法院或者仲裁机构确认解除行为的效力（当事人，合同）",
+   "notifiedCounterparty": "已通知对方（解除权人，对方）",
+   "courtConfirmsTerminationClaim": "人民法院或者仲裁机构确认解除主张（当事人，合同）",
+   "complaintCopyServed": "起诉状副本或者仲裁申请书副本送达对方（解除权人，对方）"
+  }
+ },
+ "card:g4624": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c564-1：新谓词 terminationPeriodProvided 需要在 predicates 中给出中文释义",
+   "c564-1：新谓词 periodExpiredWithoutExercise 需要在 predicates 中给出中文释义",
+   "c564-2：新谓词 terminationPeriodProvided 需要在 predicates 中给出中文释义",
+   "c564-2：新谓词 oneYearSinceKnewTerminationGround 需要在 predicates 中给出中文释义",
+   "c564-2：新谓词 noExerciseAfterDemand 需要在 predicates 中给出中文释义",
+   "c565-notice：新谓词 lawfullyAssertsTermination 需要在 predicates 中给出中文释义",
+   "c565-notice：新谓词 otherContractParty 需要在 predicates 中给出中文释义",
+   "c565-notice：新谓词 notifyTermination 需要在 predicates 中给出中文释义",
+   "c565-arrival：新谓词 lawfullyAssertsTermination 需要在 predicates 中给出中文释义",
+   "c565-arrival：新谓词 terminationNoticeArrives 需要在 predicates 中给出中文释义",
+   "c565-auto：新谓词 lawfullyAssertsTermination 需要在 predicates 中给出中文释义",
+   "c565-auto：新谓词 noticeStatesAutoTermination 需要在 predicates 中给出中文释义",
+   "c565-auto：新谓词 debtorFailsToPerformWithinStatedPeriod 需要在 predicates 中给出中文释义",
+   "c565-objection：新谓词 objectsToTermination 需要在 predicates 中给出中文释义",
+   "c565-objection：新谓词 requestConfirmationOfTermination 需要在 predicates 中给出中文释义",
+   "c565-2：新谓词 assertsTerminationBySuit 需要在 predicates 中给出中文释义",
+   "c565-2：新谓词 courtConfirmsTerminationClaim 需要在 predicates 中给出中文释义",
+   "c565-2：新谓词 copyOfPleadingServedOn 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"解除权行使期限届满未行使的后果，以及法律未规定、当事人未约定期限时的除权期间\",\n        \"rules\": [\"c564-1\", \"c564-2\"]\n      },\n      {\n        \"text\": \"解除合同的行使方式、合同解除的时点，以及对方异议时的确认程序\",\n        \"rules\": [\"c565-notice\", \"c565-arrival\", \"c565-auto\", \"c565-objection\", \"c565-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"法律规定或者当事人约定了解除权的行使期限\",\n        \"rules\": [\"c564-1\"]\n      },\n      {\n        \"text\": \"法律没有规定且当事人没有约定行使期限，自解除权人知道或者应当知道解除事由之日起一年内不行使，或者经对方催告后在合理期限内不行使\",\n        \"rules\": [\"c564-2\"]\n      },\n      {\n        \"text\": \"当事人一方依法主张解除合同（法定解除无须对方同意）\",\n        \"rules\": [\"c565-notice\", \"c565-arrival\"]\n      },\n      {\n        \"text\": \"解除通知载明债务人在一定期限内不履行债务则合同自动解除，且债务人在该期限内未履行债务\",\n        \"rules\": [\"c565-auto\"]\n      },\n      {\n        \"text\": \"未通知对方，直接以提起诉讼或者申请仲裁的方式依法主张解除合同，并经人民法院或者仲裁机构确认该主张\",\n        \"rules\": [\"c565-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"法律另有规定或者当事人另有约定行使期限的，不适用一年期间与催告后合理期限的除权规则\",\n        \"rules\": [\"c564-2\"]\n      },\n      {\n        \"text\": \"通知载明自动解除条款的，解除时点为通知载明的期限届满，而非通知到达对方之时\",\n        \"rules\": [\"c565-auto\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"行使期限届满当事人不行使的，解除权消灭\",\n        \"rules\": [\"c564-1\"]\n      },\n      {\n        \"text\": \"无约定期限时，一年内不行使或经催告后合理期限内不行使的，解除权消灭\",\n        \"rules\": [\"c564-2\"]\n      },\n      {\n        \"text\": \"主张解除合同应当通知对方，合同自通知到达对方时解除\",\n        \"rules\": [\"c565-notice\", \"c565-arrival\"]\n      },\n      {\n        \"text\": \"通知载明自动解除条款且债务人逾期未履行的，合同自通知载明的期限届满时解除\",\n        \"rules\": [\"c565-auto\"]\n      },\n      {\n        \"text\": \"对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力\",\n        \"rules\": [\"c565-objection\"]\n      },\n      {\n        \"text\": \"未通知而直接起诉或申请仲裁，经确认的，合同自起诉状副本或者仲裁申请书副本送达对方时解除\",\n        \"rules\": [\"c565-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"有法定或约定行使期限的，优先适用第564条第1款，不适用第2款的兜底除权期间\",\n        \"rules\": [\"c564-1\"]\n      },\n      {\n        \"text\": \"通知载明自动解除条款的，解除时点按载明期限届满认定，排除“通知到达即解除”的适用\",\n        \"rules\": [\"c565-auto\"]\n      },\n      {\n        \"text\": \"未通知对方而直接以诉讼或仲裁方式主张解除的，不受第1款通知义务的限制\",\n        \"rules\": [\"c565-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"笔记称“当事人没有约定异议期间，须在解除通知到达之日起三个月内起诉”，该三个月期间出自原司法解释，民法典第565条未作规定，故不写入规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"解除权属形成权，合同自通知到达对方时解除，无须对方同意（笔记学理说明，非条文表述）\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第563条规定解除的法定事由，第564条规定解除权的行使期限，第566条规定解除后的法律后果；本条只解决行使方式、解除时点与异议确认\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c564-1\",\n      \"srcs\": [\"art564-1\"],\n      \"body\": [\n        \"terminationRight(A,K)\",\n        \"terminationPeriodProvided(A,K)\",\n        \"periodExpiredWithoutExercise(A,K)\"\n      ],\n      \"heads\": [\"-terminationRight(A,K)\"],\n      \"note\": \"法律规定或者当事人约定了解除权行使期限，期限届满当事人不行使的，该解除权消灭\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c564-2\",\n      \"srcs\": [\"art564-2\"],\n      \"body\": [\n        \"terminationRight(A,K)\",\n        \"-terminationPeriodProvided(A,K)\",\n        {\n          \"or\": [\n            \"oneYearSinceKnewTerminationGround(A,K)\",\n            \"noExerciseAfterDemand(A,K)\"\n          ]\n        }\n      ],\n      \"heads\": [\"-terminationRight(A,K)\"],\n      \"note\": \"法律未规定且当事人未约定行使期限的，自知道或应当知道解除事由之日起一年内不行使，或经催告后合理期限内不行使的，解除权消灭\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-notice\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\n        \"lawfullyAssertsTermination(A,K)\",\n        \"otherContractParty(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"notifyTermination(A,B,K)\"\n        }\n      ],\n      \"note\": \"当事人一方依法主张解除合同的，应当通知对方（口头、书面均可）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-arrival\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\n        \"lawfullyAssertsTermination(A,K)\",\n        \"terminationNoticeArrives(A,B,K)\"\n      ],\n      \"heads\": [\"contractTerminated(K)\"],\n      \"note\": \"合同自解除通知到达对方时解除\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-auto\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\n        \"lawfullyAssertsTermination(A,K)\",\n        \"noticeStatesAutoTermination(A,B,K)\",\n        \"debtorFailsToPerformWithinStatedPeriod(D,K)\"\n      ],\n      \"heads\": [\"contractTerminated(K)\"],\n      \"note\": \"通知载明债务人在一定期限内不履行则合同自动解除，债务人逾期未履行的，合同自通知载明的期限届满时解除\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-objection\",\n      \"srcs\": [\"art565-1\"],\n      \"body\": [\n        \"contractTerminated(K)\",\n        \"partyTo(P,K)\",\n        \"objectsToTermination(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"requestConfirmationOfTermination(P,K)\"\n        }\n      ],\n      \"note\": \"对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c565-2\",\n      \"srcs\": [\"art565-2\"],\n      \"body\": [\n        \"assertsTerminationBySuit(A,K)\",\n        \"courtConfirmsTerminationClaim(A,K)\",\n        \"copyOfPleadingServedOn(B,K)\"\n      ],\n      \"heads\": [\"contractTerminated(K)\"],\n      \"note\": \"未通知对方而直接起诉或申请仲裁主张解除，经确认的，合同自起诉状副本或仲裁申请书副本送达对方时解除\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c564-1\", \"c564-2\", \"第2款以“法律没有规定或者当事人没有约定解除权行使期限”为前提，属兜底规定，有法定或约定期限时优先适用第1款\"],\n    [\"c565-auto\", \"c565-arrival\", \"通知载明自动解除条款的，解除时点为载明期限届满，排除“通知到达即解除”的一般规则\"],\n    [\"c565-2\", \"c565-notice\", \"第2款是第1款的例外：未通知对方而直接以诉讼或仲裁方式主张解除的，无须先行通知\"]\n  ],\n  \"predicates\": {\n    \"terminationPeriodProvided/2\": \"法律规定了或者当事人约定了合同解除权的行使期限（解除权人，合同）\",\n    \"periodExpiredWithoutExercise/2\": \"解除权行使期限届满，解除权人未行使（解除权人，合同）\",\n    \"oneYearSinceKnewTerminationGround/2\": \"自解除权人知道或者应当知道解除事由之日起一年内未行使解除权（解除权人，合同）\",\n    \"noExerciseAfterDemand/2\": \"经对方催告后在合理期限内不行使解除权（解除权人，合同）\",\n    \"lawfullyAssertsTermination/2\": \"依法主张解除合同（当事人，合同）\",\n    \"otherContractParty/2\": \"是合同的对方当事人（对方，合同）\",\n    \"notifyTermination/3\": \"将解除合同的意思表示通知对方（通知人，对方，合同）\",\n    \"terminationNoticeArrives/3\": \"解除合同的通知到达对方（通知人，对方，合同）\",\n    \"contractTerminated/1\": \"合同已解除\",\n    \"noticeStatesAutoTermination/3\": \"解除通知载明债务人在一定期限内不履行债务则合同自动解除（通知人，对方，合同）\",\n    \"debtorFailsToPerformWithinStatedPeriod/2\": \"债务人在通知载明的期限内未履行债务（债务人，合同）\",\n    \"partyTo/2\": \"是合同当事人（当事人，合同）\",\n    \"objectsToTermination/2\": \"对解除合同有异议（对方，合同）\",\n    \"requestConfirmationOfTermination/2\": \"请求人民法院或者仲裁机构确认解除行为的效力（请求人，合同）\",\n    \"assertsTerminationBySuit/2\": \"未通知对方，直接以提起诉讼或者申请仲裁的方式依法主张解除合同（当事人，合同）\",\n    \"courtConfirmsTerminationClaim/2\": \"人民法院或者仲裁机构确认解除合同的主张（当事人，合同）\",\n    \"copyOfPleadingServedOn/2\": \"起诉状副本或者仲裁申请书副本已送达对方（对方，合同）\"\n  }\n}"
+ },
+ "art:558": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权债务终止后，当事人是否仍负义务、负何种义务（后合同义务）",
+     "rules": [
+      "c558-1",
+      "c558-notify",
+      "c558-assist",
+      "c558-confidential",
+      "c558-recycle"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权债务已经终止（处于终止之后阶段）",
+     "rules": [
+      "c558-1",
+      "c558-notify",
+      "c558-assist",
+      "c558-confidential",
+      "c558-recycle"
+     ]
+    },
+    {
+     "text": "义务主体是该债权债务关系的当事人",
+     "rules": [
+      "c558-1",
+      "c558-notify",
+      "c558-assist",
+      "c558-confidential",
+      "c558-recycle"
+     ]
+    },
+    {
+     "text": "义务的履行应遵循诚信等原则，具体内容与方式根据交易习惯确定",
+     "rules": [
+      "c558-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条无但书，未设免除后合同义务的例外；义务范围随诚信原则与交易习惯而定",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当履行通知义务",
+     "rules": [
+      "c558-notify"
+     ]
+    },
+    {
+     "text": "应当履行协助义务",
+     "rules": [
+      "c558-assist"
+     ]
+    },
+    {
+     "text": "应当履行保密义务",
+     "rules": [
+      "c558-confidential"
+     ]
+    },
+    {
+     "text": "应当履行旧物回收义务",
+     "rules": [
+      "c558-recycle"
+     ]
+    },
+    {
+     "text": "并应履行依诚信原则、交易习惯产生的其他后合同义务（“等”为开放式列举）",
+     "rules": [
+      "c558-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条义务发生于债权债务终止之后，属后合同义务，与履行过程中的附随义务（第509条第2款）所处阶段不同",
+     "rules": []
+    },
+    {
+     "text": "条文列举的通知、协助、保密、旧物回收以“等”收尾，属非穷尽列举，具体义务内容依诚信原则与交易习惯确定",
+     "rules": [
+      "c558-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c558-1",
+    "srcs": [
+     "art558-1"
+    ],
+    "body": [
+     "debtRelationTerminated(K)",
+     "partyToDebtRelation(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performPostContractDuties(P,K)"
+     }
+    ],
+    "note": "债权债务终止后，当事人应当遵循诚信等原则，根据交易习惯履行通知、协助、保密、旧物回收等后合同义务（“等”为开放式列举）",
+    "auth": "npc"
+   },
+   {
+    "key": "c558-notify",
+    "srcs": [
+     "art558-1"
+    ],
+    "body": [
+     "debtRelationTerminated(K)",
+     "partyToDebtRelation(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notify(P,K)"
+     }
+    ],
+    "note": "债权债务终止后，当事人应当履行通知义务，具体方式依诚信原则与交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c558-assist",
+    "srcs": [
+     "art558-1"
+    ],
+    "body": [
+     "debtRelationTerminated(K)",
+     "partyToDebtRelation(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "assist(P,K)"
+     }
+    ],
+    "note": "债权债务终止后，当事人应当履行协助义务，具体方式依诚信原则与交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c558-confidential",
+    "srcs": [
+     "art558-1"
+    ],
+    "body": [
+     "debtRelationTerminated(K)",
+     "partyToDebtRelation(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "keepConfidential(P,K)"
+     }
+    ],
+    "note": "债权债务终止后，当事人应当履行保密义务，具体范围依诚信原则与交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c558-recycle",
+    "srcs": [
+     "art558-1"
+    ],
+    "body": [
+     "debtRelationTerminated(K)",
+     "partyToDebtRelation(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "recycleOldItems(P,K)"
+     }
+    ],
+    "note": "债权债务终止后，当事人应当履行旧物回收义务，具体方式依诚信原则与交易习惯确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "debtRelationTerminated": "债权债务终止（债的关系消灭），本条不限于合同终止",
+   "partyToDebtRelation": "是该债权债务关系的当事人（当事人，债）",
+   "performPostContractDuties": "履行通知、协助、保密、旧物回收等后合同义务（当事人，债）",
+   "notify": "履行通知义务（当事人，债）",
+   "assist": "履行协助义务（当事人，债）",
+   "keepConfidential": "履行保密义务（当事人，债）",
+   "recycleOldItems": "履行旧物回收义务（当事人，债）"
+  }
+ },
+ "card:g4667": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因债权人方面的原因致债务人难以履行债务时，债务人能否以提存替代履行；提存如何成立、发生何种效力",
+     "rules": [
+      "c570-1",
+      "c571-1",
+      "c571-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "须有因债权人原因致难以履行的客观情况：债权人无正当理由拒绝受领；债权人下落不明；债权人死亡未确定继承人、遗产管理人，或者丧失民事行为能力未确定监护人；法律规定的其他情形",
+     "rules": [
+      "c570-1"
+     ]
+    },
+    {
+     "text": "标的物不适于提存或者提存费用过高的，债务人依法可以拍卖、变卖标的物并提存所得价款",
+     "rules": [
+      "c570-2"
+     ]
+    },
+    {
+     "text": "须经法定程序：债务人将标的物或者将标的物依法拍卖、变卖所得价款交付提存部门",
+     "rules": [
+      "c571-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债权人对债务人负有到期债务的，在债权人未履行债务或者提供担保之前，提存部门根据债务人的要求应当拒绝其领取提存物",
+     "rules": [
+      "c574-1-exception"
+     ]
+    },
+    {
+     "text": "债权人未履行对债务人的到期债务，或者债权人向提存部门书面表示放弃领取提存物权利的，债务人负担提存费用后有权取回提存物",
+     "rules": [
+      "c574-2-proviso"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "提存成立的，视为债务人在其提存范围内已经交付标的物",
+     "rules": [
+      "c571-2"
+     ]
+    },
+    {
+     "text": "提存成立后，在提存范围内债务人与债权人之间的债务消灭（学理说明，法条仅规定“视为已交付”）",
+     "rules": [
+      "c571-doctrine"
+     ]
+    },
+    {
+     "text": "标的物提存后，毁损、灭失的风险由债权人承担",
+     "rules": [
+      "c573-risk"
+     ]
+    },
+    {
+     "text": "提存期间，标的物的孳息归债权人所有",
+     "rules": [
+      "c573-fruits"
+     ]
+    },
+    {
+     "text": "提存费用由债权人负担",
+     "rules": [
+      "c573-cost"
+     ]
+    },
+    {
+     "text": "提存后提存物所有权原则上移转于债权人（学理说明，法条未明文）",
+     "rules": [
+      "c573-ownership"
+     ]
+    },
+    {
+     "text": "债权人可以随时领取提存物",
+     "rules": [
+      "c574-1"
+     ]
+    },
+    {
+     "text": "债权人领取提存物的权利自提存之日起五年内不行使而消灭，提存物扣除提存费用后归国家所有",
+     "rules": [
+      "c574-2-lapse"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "债权人对债务人负有到期债务且未履行或未提供担保时，提存部门应拒绝其领取，优先于第574条第1款的随时领取权",
+     "rules": [
+      "c574-1-exception"
+     ]
+    },
+    {
+     "text": "五年期间届满未行使领取权的，提存物扣除费用后归国家所有，优先于提存时所有权移转于债权人的效果",
+     "rules": [
+      "c574-2-lapse"
+     ]
+    },
+    {
+     "text": "债权人未履行到期债务或书面放弃领取的，债务人的取回权排除提存物归国家所有",
+     "rules": [
+      "c574-2-proviso"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "提存与抵销（第568条）不同：提存因债权人方面的原因致履行障碍，抵销须双方互负到期债务且标的物种类、品质相同",
+     "rules": []
+    },
+    {
+     "text": "提存后的通知义务（债务人应及时通知债权人或其继承人、遗产管理人、监护人、财产代管人）规定于第572条，本行未挂载该条，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片把“标的物不适于提存、提存费用过高”列为提存的消极条件，法条实为第570条第2款拍卖、变卖并提存价款的替代方式；其“债务人自身违约导致履行障碍”一项法条未规定，仅作学理理解",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c570-1",
+    "srcs": [
+     "art570-1"
+    ],
+    "body": [
+     "creditorOf(C,D,K)",
+     "subjectMatterOf(T,K)",
+     {
+      "or": [
+       "creditorRefusesAcceptanceWithoutJustification(C,K)",
+       "creditorWhereaboutsUnknown(C)",
+       "dead(C) heirOrAdministratorUndetermined(C)",
+       "incapableAdult(C) guardianUndetermined(C)",
+       "otherDepositGroundProvidedByLaw(C)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "depositSubjectMatter(D,T)"
+     }
+    ],
+    "note": "因债权人无正当理由拒绝受领、下落不明、死亡未定继承人或遗产管理人、丧失行为能力未定监护人及法律规定的其他情形致难以履行的，债务人可以将标的物提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c570-2",
+    "srcs": [
+     "art570-2"
+    ],
+    "body": [
+     "creditorOf(C,D,K)",
+     "subjectMatterOf(T,K)",
+     {
+      "or": [
+       "unsuitableForDeposit(T)",
+       "depositCostExcessive(T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "auctionOrSellAndDepositProceeds(D,T)"
+     }
+    ],
+    "note": "标的物不适于提存或者提存费用过高的，债务人依法可以拍卖或者变卖标的物，提存所得价款",
+    "auth": "npc"
+   },
+   {
+    "key": "c571-1",
+    "srcs": [
+     "art571-1"
+    ],
+    "body": [
+     "deliveredToDepositAgency(D,T)"
+    ],
+    "heads": [
+     "depositEstablished(D,T)"
+    ],
+    "note": "债务人将标的物或者将标的物依法拍卖、变卖所得价款交付提存部门时，提存成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c571-2",
+    "srcs": [
+     "art571-2"
+    ],
+    "body": [
+     "depositEstablished(D,T)"
+    ],
+    "heads": [
+     "deemedDelivered(D,T)"
+    ],
+    "note": "提存成立的，视为债务人在其提存范围内已经交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c571-doctrine",
+    "srcs": [
+     "art571-2"
+    ],
+    "body": [
+     "deemedDelivered(D,T)",
+     "subjectMatterOf(T,K)"
+    ],
+    "heads": [
+     "debtExtinguishedInDepositScope(D,K)"
+    ],
+    "note": "笔记与学理认为提存之日起在提存范围内债务消灭；法条仅规定“视为已交付标的物”，债务消灭属学理解释",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c573-risk",
+    "srcs": [
+     "art573"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     "bearsRiskOfLoss(C,T)"
+    ],
+    "note": "标的物提存后，毁损、灭失的风险由债权人承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c573-fruits",
+    "srcs": [
+     "art573"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     "fruitsBelongTo(C,T)"
+    ],
+    "note": "提存期间，标的物的孳息归债权人所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c573-cost",
+    "srcs": [
+     "art573"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "bearDepositCost(C,T)"
+     }
+    ],
+    "note": "提存费用由债权人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c573-ownership",
+    "srcs": [
+     "art573"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     "belongsTo(C,T)"
+    ],
+    "note": "笔记与学理认为提存后提存物所有权原则上移转于债权人；法条未明文规定，属学理说明",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c574-1",
+    "srcs": [
+     "art574-1"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "collectDepositedThing(C,T)"
+     }
+    ],
+    "note": "债权人可以随时领取提存物",
+    "auth": "npc"
+   },
+   {
+    "key": "c574-1-exception",
+    "srcs": [
+     "art574-1"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)",
+     "debtMatured(C)",
+     "unpaid(C)",
+     "~adequateSecurityProvided(C,D)",
+     "debtorRequestsRefusal(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "depositAgency",
+      "counterparty": null,
+      "content": "refuseCollection(C,T)"
+     }
+    ],
+    "note": "债权人对债务人负有到期债务，在未履行债务或提供担保之前，提存部门根据债务人的要求应当拒绝其领取提存物",
+    "auth": "npc"
+   },
+   {
+    "key": "c574-2-lapse",
+    "srcs": [
+     "art574-2"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)",
+     "fiveYearsSinceDeposit(T)"
+    ],
+    "heads": [
+     "-collectionRight(C,T)",
+     "belongsTo(state,T)"
+    ],
+    "note": "领取提存物的权利自提存之日起五年内不行使而消灭，提存物扣除提存费用后归国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c574-2-proviso",
+    "srcs": [
+     "art574-2"
+    ],
+    "body": [
+     "depositEstablished(D,T)",
+     "creditorOf(C,D,K)",
+     {
+      "or": [
+       "debtMatured(C) unpaid(C)",
+       "waivedCollectionInWriting(C,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "retrieveDepositedThing(D,T)"
+     }
+    ],
+    "note": "债权人未履行对债务人的到期债务，或者书面表示放弃领取提存物的，债务人负担提存费用后有权取回提存物",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c574-1-exception",
+    "c574-1",
+    "债权人对债务人负有到期债务且未履行或未提供担保的，提存部门应拒绝其领取，优先于第574条第1款的随时领取权"
+   ],
+   [
+    "c574-2-lapse",
+    "c573-ownership",
+    "五年内不行使领取权而消灭的，提存物扣除费用后归国家所有，优先于提存时所有权移转于债权人的效果"
+   ],
+   [
+    "c574-2-proviso",
+    "c574-2-lapse",
+    "债权人未履行到期债务或书面放弃领取的，债务人的取回权排除提存物归国家所有"
+   ]
+  ],
+  "predicates": {
+   "subjectMatterOf": "是合同的标的物（标的物，合同）",
+   "creditorRefusesAcceptanceWithoutJustification": "债权人无正当理由拒绝受领（债权人，合同）",
+   "creditorWhereaboutsUnknown": "债权人下落不明",
+   "guardianUndetermined": "债权人丧失民事行为能力后未确定监护人",
+   "otherDepositGroundProvidedByLaw": "法律规定的其他致债务人难以履行债务的情形",
+   "unsuitableForDeposit": "标的物不适于提存",
+   "depositCostExcessive": "提存费用过高",
+   "auctionOrSellAndDepositProceeds": "依法拍卖或者变卖标的物并提存所得价款（债务人，标的物）",
+   "deliveredToDepositAgency": "将标的物或者拍卖、变卖所得价款交付提存部门（债务人，标的物或价款）",
+   "depositEstablished": "提存成立（债务人，标的物）",
+   "deemedDelivered": "视为在提存范围内已经交付标的物（债务人，标的物）",
+   "debtExtinguishedInDepositScope": "在提存范围内债务消灭（债务人，合同）",
+   "bearsRiskOfLoss": "承担提存物毁损、灭失的风险（债权人，提存物）",
+   "fruitsBelongTo": "提存期间提存物的孳息归其所有（债权人，提存物）",
+   "bearDepositCost": "负担提存费用（债权人，提存物）",
+   "collectDepositedThing": "领取提存物（债权人，提存物）",
+   "debtorRequestsRefusal": "要求提存部门拒绝债权人领取提存物（债务人，债权人）",
+   "refuseCollection": "拒绝债权人领取提存物（提存部门，提存物）",
+   "fiveYearsSinceDeposit": "自提存之日起满五年未行使领取权",
+   "collectionRight": "领取提存物的权利（债权人，提存物）",
+   "waivedCollectionInWriting": "向提存部门书面表示放弃领取提存物（债权人，提存物）",
+   "retrieveDepositedThing": "取回提存物（债务人，提存物）"
+  }
+ },
+ "art:567": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同的权利义务关系终止后，合同中的结算和清理条款是否仍然有效",
+     "rules": [
+      "c567-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同的权利义务关系已经终止",
+     "rules": [
+      "c567-1"
+     ]
+    },
+    {
+     "text": "合同中订有结算和清理条款",
+     "rules": [
+      "c567-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "结算和清理条款的效力不受合同终止的影响，仍然有效",
+     "rules": [
+      "c567-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同终止的一般效果（给付义务消灭）不扩及结算和清理条款，本条作为特别规定优先适用",
+     "rules": [
+      "c567-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决结算和清理条款的效力存续问题，不涉及合同终止本身的其他效果（如给付义务消灭、恢复原状、赔偿损失等），也不涉及争议解决条款（另见第507条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c567-1",
+    "srcs": [
+     "art567-1"
+    ],
+    "body": [
+     "contractTerminated(K)",
+     "settlementAndLiquidationClause(T,K)"
+    ],
+    "heads": [
+     "valid(T)"
+    ],
+    "note": "合同的权利义务关系终止，不影响合同中结算和清理条款的效力，该条款仍然有效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "settlementAndLiquidationClause": "是合同中的结算和清理条款（参数1：条款；参数2：合同）"
+  }
+ },
+ "card:g4649": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债务人对同一债权人负担数项种类相同的债务，给付不足以清偿全部债务时，如何确定抵充的债务",
+     "rules": [
+      "c560-1",
+      "c560-2a",
+      "c560-2b",
+      "c560-2c",
+      "c560-2d",
+      "c560-2e"
+     ]
+    },
+    {
+     "text": "法定抵销的构成要件、行使方式与法律效果",
+     "rules": [
+      "c568-1",
+      "c568-2a",
+      "c568-2b",
+      "c568-2c",
+      "c568-effect",
+      "c568-residual",
+      "c568-retro"
+     ]
+    },
+    {
+     "text": "标的物种类、品质不相同的债务能否抵销",
+     "rules": [
+      "c569"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人对同一债权人负担数项种类相同的债务，且债务人的给付不足以清偿全部债务",
+     "rules": [
+      "c560-1"
+     ]
+    },
+    {
+     "text": "当事人互负债务，提出抵销的主动债权已届清偿期，双方债务的标的物种类、品质相同",
+     "rules": [
+      "c568-1"
+     ]
+    },
+    {
+     "text": "标的物种类、品质虽不相同，但当事人协商一致",
+     "rules": [
+      "c569"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "根据债务性质、按照当事人约定或者依照法律规定不得抵销的，不得法定抵销",
+     "rules": [
+      "c568-1"
+     ]
+    },
+    {
+     "text": "当事人对清偿抵充另有约定的，从其约定，不由债务人指定",
+     "rules": [
+      "c560-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "由债务人在清偿时指定其履行的债务",
+     "rules": [
+      "c560-1"
+     ]
+    },
+    {
+     "text": "债务人未作指定的，依次优先履行已到期的债务、对债权人缺乏担保或担保最少的债务、债务人负担较重的债务、到期在先的债务；到期时间相同的，按债务比例履行",
+     "rules": [
+      "c560-2a",
+      "c560-2b",
+      "c560-2c",
+      "c560-2d",
+      "c560-2e"
+     ]
+    },
+    {
+     "text": "符合要件的当事人享有抵销权，主张抵销应当通知对方",
+     "rules": [
+      "c568-1",
+      "c568-2a"
+     ]
+    },
+    {
+     "text": "抵销通知自到达对方时生效；抵销不得附条件或者附期限",
+     "rules": [
+      "c568-2b",
+      "c568-2c"
+     ]
+    },
+    {
+     "text": "抵销使双方债权在对等数额内消灭，未抵销部分债务人仍应清偿，且抵销溯及至抵销权成立之时",
+     "rules": [
+      "c568-effect",
+      "c568-residual",
+      "c568-retro"
+     ]
+    },
+    {
+     "text": "经协商一致的，标的物种类、品质不同的债务也可以抵销",
+     "rules": [
+      "c569"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "已到期的债务优先于未到期的债务；均到期时担保最少者优先，担保相同则负担较重者优先，负担相同则到期在先者优先，到期时间相同才按债务比例履行",
+     "rules": [
+      "c560-2a",
+      "c560-2b",
+      "c560-2c",
+      "c560-2d",
+      "c560-2e"
+     ]
+    },
+    {
+     "text": "当事人另有约定或者债务人已在清偿时指定的，优先于法定抵充顺序",
+     "rules": [
+      "c560-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第569条意定抵销须双方协商一致，适用于标的物种类、品质不同的债务；第568条法定抵销是单方形成权，无须对方同意",
+     "rules": [
+      "c569",
+      "c568-1"
+     ]
+    },
+    {
+     "text": "笔记强调抵销权属形成权，享有抵销权的当事人只需通知对方即发生抵销后果，无须对方同意",
+     "rules": [
+      "c568-2b"
+     ]
+    },
+    {
+     "text": "第570条提存制度用于难以履行债务的情形，不是抵销的替代方案",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c560-1",
+    "srcs": [
+     "art560-1"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~agreedOtherwiseOnDesignation(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "designateDebtToPerform(D,C)"
+     }
+    ],
+    "note": "债务人对同一债权人负担数项种类相同的债务且给付不足清偿全部债务的，除当事人另有约定外，由债务人在清偿时指定其履行的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-2a",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~designatedByDebtor(D,C)",
+     "debtItemOf(T,D)",
+     "debtMatured(T)"
+    ],
+    "heads": [
+     "priorityDebt(T)"
+    ],
+    "note": "债务人未作指定的，优先履行已经到期的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-2b",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~designatedByDebtor(D,C)",
+     "debtItemOf(T,D)",
+     "allDebtsMatured(D)",
+     "leastSecuredDebt(T,C)"
+    ],
+    "heads": [
+     "priorityDebt(T)"
+    ],
+    "note": "数项债务均到期的，优先履行对债权人缺乏担保或者担保最少的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-2c",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~designatedByDebtor(D,C)",
+     "debtItemOf(T,D)",
+     "allDebtsMatured(D)",
+     "equalOrNoSecurity(D)",
+     "heavierBurdenDebt(T,D)"
+    ],
+    "heads": [
+     "priorityDebt(T)"
+    ],
+    "note": "均无担保或者担保相等的，优先履行债务人负担较重的债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-2d",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~designatedByDebtor(D,C)",
+     "debtItemOf(T,D)",
+     "allDebtsMatured(D)",
+     "equalOrNoSecurity(D)",
+     "equalBurden(D)",
+     "earlierDueDebt(T,D)"
+    ],
+    "heads": [
+     "priorityDebt(T)"
+    ],
+    "note": "负担相同的，按照债务到期的先后顺序履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c560-2e",
+    "srcs": [
+     "art560-2"
+    ],
+    "body": [
+     "multipleSameKindDebts(D,C)",
+     "insufficientPerformance(D)",
+     "~designatedByDebtor(D,C)",
+     "allDebtsMatured(D)",
+     "equalOrNoSecurity(D)",
+     "equalBurden(D)",
+     "sameDueTimeDebts(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "performProRata(D,C)"
+     }
+    ],
+    "note": "到期时间相同的，按照债务比例履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c568-1",
+    "srcs": [
+     "art568-1"
+    ],
+    "body": [
+     "mutualDebts(A,B,Debt)",
+     "creditorOf(A,B,Claim)",
+     "sameKindQuality(Claim,Debt)",
+     "debtMatured(Claim)",
+     "~nonSetOffByNature(Debt)",
+     "~agreedNoSetOff(Debt)",
+     "~lawProhibitsSetOff(Debt)"
+    ],
+    "heads": [
+     "setOffRight(A,B,Claim,Debt)",
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "setOff(A,B,Claim,Debt)"
+     }
+    ],
+    "note": "当事人互负债务、主动债权已到期且标的物种类品质相同的，任何一方可以将自己的债务与对方的到期债务抵销；根据债务性质、按照当事人约定或者依照法律规定不得抵销的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c568-2a",
+    "srcs": [
+     "art568-2"
+    ],
+    "body": [
+     "setOffRight(A,B,Claim,Debt)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "notifySetOff(A,B)"
+     }
+    ],
+    "note": "当事人主张抵销的，应当通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c568-2b",
+    "srcs": [
+     "art568-2"
+    ],
+    "body": [
+     "setOffRight(A,B,Claim,Debt)",
+     "noticeArrives(A,B)"
+    ],
+    "heads": [
+     "setOffEffective(A,B,Claim,Debt)"
+    ],
+    "note": "抵销通知自到达对方时生效，无须对方同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c568-2c",
+    "srcs": [
+     "art568-2"
+    ],
+    "body": [
+     "setOffRight(A,B,Claim,Debt)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "attachConditionOrTermToSetOff(A,B)"
+     }
+    ],
+    "note": "抵销不得附条件或者附期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c568-effect",
+    "srcs": [
+     "art568-1"
+    ],
+    "body": [
+     "setOffEffective(A,B,Claim,Debt)"
+    ],
+    "heads": [
+     "extinguishedInEqualAmount(Claim,Debt)"
+    ],
+    "note": "笔记（学理）：抵销使当事人双方的债权在对等数额内消灭，法条未明文规定该效果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c568-residual",
+    "srcs": [
+     "art568-1"
+    ],
+    "body": [
+     "setOffEffective(A,B,Claim,Debt)",
+     "unoffsetPartRemains(Debt)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "performRemainingDebt(A,B,Debt)"
+     }
+    ],
+    "note": "笔记（学理）：对于未抵销的债务部分，债务人仍然负有清偿义务",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c568-retro",
+    "srcs": [
+     "art568-1"
+    ],
+    "body": [
+     "setOffEffective(A,B,Claim,Debt)"
+    ],
+    "heads": [
+     "setOffRetroactiveToWhenRightArose(Claim,Debt)"
+    ],
+    "note": "笔记（学理）：抵销具有溯及力，溯及到抵销权成立之时",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c569",
+    "srcs": [
+     "art569-1"
+    ],
+    "body": [
+     "mutualDebts(A,B,Debt)",
+     "creditorOf(A,B,Claim)",
+     "differentKindOrQuality(Claim,Debt)",
+     "agreedToSetOff(A,B,Claim,Debt)"
+    ],
+    "heads": [
+     "setOffEffective(A,B,Claim,Debt)"
+    ],
+    "note": "当事人互负债务，标的物种类、品质不相同的，经协商一致也可以抵销（意定抵销）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c560-1",
+    "c560-2a",
+    "当事人另有约定或债务人已在清偿时指定的，优先于法定抵充顺序"
+   ],
+   [
+    "c560-2a",
+    "c560-2b",
+    "已到期的债务优先于未到期的债务受清偿"
+   ],
+   [
+    "c560-2b",
+    "c560-2c",
+    "数项债务均到期时，先比较担保的有无与多少，再比较负担轻重"
+   ],
+   [
+    "c560-2c",
+    "c560-2d",
+    "负担相同的，才按债务到期的先后顺序清偿"
+   ],
+   [
+    "c560-2d",
+    "c560-2e",
+    "到期时间相同的，才按债务比例履行"
+   ]
+  ],
+  "predicates": {
+   "multipleSameKindDebts": "债务人对同一债权人负担数项种类相同的债务（债务人，债权人）",
+   "insufficientPerformance": "债务人的给付不足以清偿全部债务（债务人）",
+   "agreedOtherwiseOnDesignation": "当事人对清偿抵充的指定另有约定（债务人，债权人）",
+   "designateDebtToPerform": "在清偿时指定其履行的债务（债务人，债权人）",
+   "designatedByDebtor": "债务人在清偿时已指定其履行的债务（债务人，债权人）",
+   "debtItemOf": "该债务属于债务人所负的数项债务之一（债务，债务人）",
+   "allDebtsMatured": "数项债务均已到期（债务人）",
+   "leastSecuredDebt": "该债务对债权人缺乏担保或者担保最少（债务，债权人）",
+   "equalOrNoSecurity": "数项债务均无担保或者担保相等（债务人）",
+   "heavierBurdenDebt": "该债务使债务人负担较重（债务，债务人）",
+   "equalBurden": "数项债务使债务人负担相同（债务人）",
+   "earlierDueDebt": "该债务到期在先（债务，债务人）",
+   "sameDueTimeDebts": "数项债务到期时间相同（债务人）",
+   "priorityDebt": "该债务优先受清偿（债务）",
+   "performProRata": "按照债务比例履行（债务人，债权人）",
+   "sameKindQuality": "主动债权与被动债权的标的物种类、品质相同（主动债权，被动债权）",
+   "differentKindOrQuality": "主动债权与被动债权的标的物种类、品质不相同（主动债权，被动债权）",
+   "nonSetOffByNature": "根据债务性质不得抵销（债务）",
+   "agreedNoSetOff": "按照当事人约定不得抵销（债务）",
+   "lawProhibitsSetOff": "依照法律规定不得抵销（债务）",
+   "setOffRight": "法定抵销权成立（抵销权人，对方，主动债权，被动债权）",
+   "setOff": "以自己的债务与对方的到期债务抵销（抵销权人，对方，主动债权，被动债权）",
+   "notifySetOff": "向对方作出抵销通知（抵销权人，对方）",
+   "setOffEffective": "抵销生效（抵销权人，对方，主动债权，被动债权）",
+   "attachConditionOrTermToSetOff": "对抵销附条件或者附期限（抵销权人，对方）",
+   "extinguishedInEqualAmount": "双方债权在对等数额内消灭（主动债权，被动债权）",
+   "unoffsetPartRemains": "抵销后仍有未抵销的债务部分（被动债权）",
+   "performRemainingDebt": "就未抵销部分继续履行（债务人，债权人，债务）",
+   "setOffRetroactiveToWhenRightArose": "抵销溯及至抵销权成立之时（主动债权，被动债权）",
+   "agreedToSetOff": "双方协商一致以抵销方式消灭债务（当事人，对方，主动债权，被动债权）"
+  }
+ },
+ "art:559": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权债务终止时，该债权的从权利是否随之消灭",
+     "rules": [
+      "c559-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权债务已经终止，且某项权利是该债权的从权利",
+     "rules": [
+      "c559-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，从权利不因债权债务终止而消灭",
+     "rules": [
+      "c559-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债权的从权利与债权债务同时消灭",
+     "rules": [
+      "c559-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，优先于“从权利随债权债务终止而消灭”的一般规则",
+     "rules": [
+      "c559-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决从权利在债权债务终止后的命运；债权债务终止的原因（清偿、抵销、提存、免除、混同等）由第557条等规定，本条不重复",
+     "rules": []
+    },
+    {
+     "text": "从权利的范围（如担保物权、保证债权等从属性权利）本条未列举，属学理说明，不另设规则",
+     "rules": []
+    },
+    {
+     "text": "第559条第2款关于合同终止后结算和清理条款效力的规定未挂载，不在本卡片范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c559-1",
+    "srcs": [
+     "art559-1"
+    ],
+    "body": [
+     "claimDebtTerminated(K)",
+     "accessoryRightOf(R,K)",
+     "~lawProvidesOtherwiseOnAccessoryRight(R)",
+     "~agreedOtherwiseOnAccessoryRight(R)"
+    ],
+    "heads": [
+     "extinguished(R)"
+    ],
+    "note": "债权债务终止时，债权的从权利同时消灭；法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c559-exc",
+    "srcs": [
+     "art559-1"
+    ],
+    "body": [
+     "claimDebtTerminated(K)",
+     "accessoryRightOf(R,K)",
+     {
+      "or": [
+       "lawProvidesOtherwiseOnAccessoryRight(R)",
+       "agreedOtherwiseOnAccessoryRight(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "-extinguished(R)"
+    ],
+    "note": "法律另有规定或者当事人另有约定的，从权利不因债权债务终止而消灭（但书）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c559-exc",
+    "c559-1",
+    "法律另有规定或者当事人另有约定时，从权利不随债权债务终止而消灭，优先于从权利同时消灭的一般规则"
+   ]
+  ],
+  "predicates": {
+   "claimDebtTerminated": "债权债务终止（参数：债权债务关系）",
+   "claimDebtTerminated/1": "债权债务终止（参数：债权债务关系）",
+   "extinguished": "权利消灭（参数：权利）",
+   "extinguished/1": "权利消灭（参数：权利）",
+   "lawProvidesOtherwiseOnAccessoryRight": "法律对从权利是否随债权债务终止而消灭另有规定（参数：从权利）",
+   "lawProvidesOtherwiseOnAccessoryRight/1": "法律对从权利是否随债权债务终止而消灭另有规定（参数：从权利）",
+   "agreedOtherwiseOnAccessoryRight": "当事人就从权利是否随债权债务终止而消灭另有约定（参数：从权利）",
+   "agreedOtherwiseOnAccessoryRight/1": "当事人就从权利是否随债权债务终止而消灭另有约定（参数：从权利）"
+  }
+ },
+ "art:572": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "标的物提存后，债务人应当及时通知谁",
+     "rules": [
+      "c572-1",
+      "c572-recipient"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人已将标的物提存（提存成立）",
+     "rules": [
+      "c572-1"
+     ]
+    },
+    {
+     "text": "受通知的人为债权人本人，或者债权人的继承人、遗产管理人、监护人、财产代管人",
+     "rules": [
+      "c572-recipient"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "债务人应当及时将提存的事实通知债权人或者债权人的继承人、遗产管理人、监护人、财产代管人",
+     "rules": [
+      "c572-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定提存后的通知义务；提存的事由（债权人无正当理由拒绝受领、下落不明、死亡未确定继承人等）在第570条，提存成立视为交付在第571条，提存后风险、孳息与费用负担在第573条，均不在本条",
+     "rules": []
+    },
+    {
+     "text": "通知对象不限于债权人本人，还包括其继承人、遗产管理人、监护人、财产代管人，与一般“通知对方”的表述不同",
+     "rules": [
+      "c572-recipient"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c572-recipient",
+    "srcs": [
+     "art572-1"
+    ],
+    "body": [
+     "depositedSubjectMatter(D,C)",
+     {
+      "or": [
+       "isSelf(R,C)",
+       "heirCandidate(R,C)",
+       "estateAdministratorOf(R,C)",
+       "guardianOf(R,C)",
+       "propertyCustodian(R,C)"
+      ]
+     }
+    ],
+    "heads": [
+     "depositNoticeRecipient(R,C)"
+    ],
+    "note": "提存后应当受通知的人：债权人本人，或者债权人的继承人、遗产管理人、监护人、财产代管人",
+    "auth": "npc"
+   },
+   {
+    "key": "c572-1",
+    "srcs": [
+     "art572-1"
+    ],
+    "body": [
+     "depositedSubjectMatter(D,C)",
+     "depositNoticeRecipient(R,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "timelyNotifyDeposit(D,R)"
+     }
+    ],
+    "note": "标的物提存后，债务人应当及时通知债权人或者债权人的继承人、遗产管理人、监护人、财产代管人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "depositNoticeRecipient": "是提存后应当受通知的人（债权人本人或其继承人、遗产管理人、监护人、财产代管人）",
+   "estateAdministratorOf": "是遗产管理人（遗产管理人，被继承人）",
+   "timelyNotifyDeposit": "将标的物提存的事实及时通知（债务人，受通知人）"
+  }
+ },
+ "art:576": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权与债务同归一人（混同）时，债权债务是否终止",
+     "rules": [
+      "c576-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "同一人既是债权人又是债务人，即债权和债务同归一人",
+     "rules": [
+      "c576-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "混同损害第三人利益的除外，此时债权债务不终止",
+     "rules": [
+      "c576-1",
+      "c576-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债权债务终止（混同是债的消灭原因之一）",
+     "rules": [
+      "c576-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "损害第三人利益的但书优先于“同归一人即终止”的一般规则",
+     "rules": [
+      "c576-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只规定混同的一般效果；混同与清偿、抵销、提存、免除并列，均为债的消灭原因，其他消灭原因分别规定于第557条等条文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c576-1",
+    "srcs": [
+     "art576"
+    ],
+    "body": [
+     "claimAndDebtMergedInOne(C,D)",
+     "~harmsThirdPartyInterest(C,D)"
+    ],
+    "heads": [
+     "claimAndDebtTerminated(C,D)"
+    ],
+    "note": "债权和债务同归一人的，债权债务终止；不损害第三人利益是适用该效果的前提",
+    "auth": "npc"
+   },
+   {
+    "key": "c576-exc",
+    "srcs": [
+     "art576"
+    ],
+    "body": [
+     "claimAndDebtMergedInOne(C,D)",
+     "harmsThirdPartyInterest(C,D)"
+    ],
+    "heads": [
+     "-claimAndDebtTerminated(C,D)"
+    ],
+    "note": "第576条但书：混同损害第三人利益的，债权债务不终止",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c576-exc",
+    "c576-1",
+    "第576条但书“损害第三人利益的除外”，例外优先于同归一人即终止的一般规则"
+   ]
+  ],
+  "predicates": {
+   "claimAndDebtMergedInOne": "债权与债务同归一人（混同）（债权，债务）",
+   "claimAndDebtMergedInOne/2": "债权与债务同归一人（混同）（债权，债务）",
+   "claimAndDebtTerminated": "该债权债务终止（债权，债务）",
+   "claimAndDebtTerminated/2": "该债权债务终止（债权，债务）",
+   "harmsThirdPartyInterest": "债权债务同归一人损害第三人利益（债权，债务）",
+   "harmsThirdPartyInterest/2": "债权债务同归一人损害第三人利益（债权，债务）"
+  }
+ },
+ "art:575": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人免除债务人部分或者全部债务的，债权债务是否终止；债务人在合理期限内拒绝的，免除效力如何",
+     "rules": [
+      "c575-1",
+      "c575-2",
+      "c575-refuse"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权人向债务人作出免除全部债务的意思表示",
+     "rules": [
+      "c575-1"
+     ]
+    },
+    {
+     "text": "债权人向债务人作出免除部分债务的意思表示",
+     "rules": [
+      "c575-2"
+     ]
+    },
+    {
+     "text": "债务人在合理期限内未拒绝",
+     "rules": [
+      "c575-1",
+      "c575-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债务人在合理期限内拒绝的，免除不发生效力，债权债务不因免除而终止",
+     "rules": [
+      "c575-refuse"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "全部债务被免除且债务人未拒绝的，债权债务全部终止",
+     "rules": [
+      "c575-1"
+     ]
+    },
+    {
+     "text": "部分债务被免除且债务人未拒绝的，债权债务在该部分范围内终止",
+     "rules": [
+      "c575-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "债务人于合理期限内拒绝的但书，优先于免除致债权债务终止的一般规则",
+     "rules": [
+      "c575-refuse"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "免除是债权人单方行为，无须债务人同意；但书仅赋予债务人于合理期限内拒绝的权利，故与双方合意的免除协议不同（学理）",
+     "rules": []
+    },
+    {
+     "text": "部分免除只在该部分范围内终止债权债务，未免除的部分仍然存在，债务人仍应履行",
+     "rules": [
+      "c575-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c575-1",
+    "srcs": [
+     "art575-1"
+    ],
+    "body": [
+     "releasesDebt(C,D,Debt)",
+     "~refusesReleaseWithinReasonableTime(D,Debt)"
+    ],
+    "heads": [
+     "debtTerminated(Debt)"
+    ],
+    "note": "债权人免除债务人全部债务，债务人未在合理期限内拒绝的，债权债务全部终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c575-2",
+    "srcs": [
+     "art575-1"
+    ],
+    "body": [
+     "releasesPartOfDebt(C,D,Debt)",
+     "~refusesReleaseWithinReasonableTime(D,Debt)"
+    ],
+    "heads": [
+     "debtTerminatedInPart(Debt)"
+    ],
+    "note": "债权人免除债务人部分债务，债务人未在合理期限内拒绝的，债权债务部分终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c575-refuse",
+    "srcs": [
+     "art575-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "releasesDebt(C,D,Debt)",
+       "releasesPartOfDebt(C,D,Debt)"
+      ]
+     },
+     "refusesReleaseWithinReasonableTime(D,Debt)"
+    ],
+    "heads": [
+     "releaseIneffective(Debt)"
+    ],
+    "note": "但书：债务人在合理期限内拒绝的，免除不发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c575-refuse",
+    "c575-1",
+    "债务人在合理期限内拒绝的，免除不生效力，优先于免除致债权债务全部终止的规则（第575条但书）"
+   ],
+   [
+    "c575-refuse",
+    "c575-2",
+    "债务人在合理期限内拒绝的，免除不生效力，优先于免除致债权债务部分终止的规则（第575条但书）"
+   ]
+  ],
+  "predicates": {
+   "releasesDebt": "债权人免除债务人的全部债务（债权人，债务人，债务）",
+   "releasesPartOfDebt": "债权人免除债务人的部分债务（债权人，债务人，债务）",
+   "refusesReleaseWithinReasonableTime": "债务人在合理期限内拒绝免除（债务人，债务）",
+   "debtTerminated": "债权债务终止（债务）",
+   "debtTerminatedInPart": "债权债务部分终止（债务）",
+   "releaseIneffective": "免除不发生效力（债务）"
+  }
+ }
+}

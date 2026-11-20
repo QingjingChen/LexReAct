@@ -1,0 +1,1007 @@
+{
+ "card:g4373": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债务人无偿处分财产权益（放弃债权、放弃债权担保、无偿转让财产等）或者恶意延长其到期债权的履行期限，影响债权人债权实现的，债权人可否请求人民法院撤销该行为",
+     "rules": [
+      "c538-ground",
+      "c538-1"
+     ]
+    },
+    {
+     "text": "债务人以明显不合理的低价转让财产、以明显不合理的高价受让他人财产或者为他人的债务提供担保，影响债权人债权实现，且相对人知道或者应当知道该情形的，债权人可否请求人民法院撤销该行为",
+     "rules": [
+      "c539-ground",
+      "c538-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "无偿行为的客观要件：债务人放弃债权、放弃债权担保、无偿转让财产、以其他方式无偿处分财产权益，或者恶意延长其到期债权的履行期限",
+     "rules": [
+      "c538-ground"
+     ]
+    },
+    {
+     "text": "有偿行为的客观要件：债务人以明显不合理的低价转让财产、以明显不合理的高价受让他人财产，或者为他人的债务提供担保",
+     "rules": [
+      "c539-ground"
+     ]
+    },
+    {
+     "text": "债务人的处分行为影响债权人债权的实现，即减少责任财产致债务人无足够财产清偿债务",
+     "rules": [
+      "c538-ground",
+      "c539-ground"
+     ]
+    },
+    {
+     "text": "有偿行为的主观要件：债务人的相对人知道或者应当知道该情形",
+     "rules": [
+      "c539-ground"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "债权成立于债务人处分行为之后，或者行为非以财产为标的（如结婚、收养、继承的承认或抛弃），或者处分行为尚未发生法律效力的，不构成撤销事由（笔记客观要件，学理）",
+     "rules": [
+      "c538-doctrine-time",
+      "c538-doctrine-nonproperty",
+      "c538-doctrine-effective"
+     ]
+    },
+    {
+     "text": "撤销权自债权人知道或者应当知道撤销事由之日起一年内不行使，或者自债务人的行为发生之日起五年内不行使的，撤销权消灭",
+     "rules": [
+      "c541-1",
+      "c541-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债权人可以以自己的名义通过诉讼请求人民法院撤销债务人的行为",
+     "rules": [
+      "c538-1"
+     ]
+    },
+    {
+     "text": "撤销权的行使范围以债权人的债权为限",
+     "rules": [
+      "c540-1"
+     ]
+    },
+    {
+     "text": "债权人行使撤销权的必要费用，由债务人负担",
+     "rules": [
+      "c540-2"
+     ]
+    },
+    {
+     "text": "债务人影响债权人债权实现的行为被撤销的，自始没有法律约束力",
+     "rules": [
+      "c542"
+     ]
+    },
+    {
+     "text": "债权人撤销权不具有优先受偿效力，债权人无优先受偿权（笔记）",
+     "rules": [
+      "c540-doctrine-nopriority"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "撤销权因一年期间或五年期间届满而消灭的规则，优先于债权人可请求撤销的规则",
+     "rules": [
+      "c541-1",
+      "c541-2"
+     ]
+    },
+    {
+     "text": "债权成立在后、行为非以财产为标的、处分行为尚未生效等排除规则，优先于撤销事由成立的规则",
+     "rules": [
+      "c538-doctrine-time",
+      "c538-doctrine-nonproperty",
+      "c538-doctrine-effective"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第538条的无偿行为只需具备客观要件；第539条的有偿行为还须具备相对人知道或者应当知道该情形的主观要件",
+     "rules": []
+    },
+    {
+     "text": "明显不合理低价/高价的判断标准（笔记）：转让价格达不到交易时交易地指导价或市场交易价70%的，一般可视为明显不合理低价；收购价格高于指导价或市场交易价30%的，一般可视为明显不合理高价",
+     "rules": [
+      "c539-doctrine-lowprice",
+      "c539-doctrine-highprice"
+     ]
+    },
+    {
+     "text": "与第535条代位权不同：撤销权针对债务人处分财产的行为，代位权针对债务人怠于行使其权利",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片提示：债务人与相对人恶意串通损害债权人利益的，构成无效而非可撤销，不适用本条（仅供参考）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c538-ground",
+    "srcs": [
+     "art538-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "actOf(D,A)",
+     {
+      "or": [
+       "waivesClaim(D,A)",
+       "waivesClaimSecurity(D,A)",
+       "gratuitouslyTransfersProperty(D,A)",
+       "otherwiseGratuitouslyDisposes(D,A)",
+       "maliciouslyExtendsDueClaim(D,A)"
+      ]
+     },
+     "affectsClaimRealization(A,C)"
+    ],
+    "heads": [
+     "revocationGround(C,A)"
+    ],
+    "note": "无偿处分情形：放弃债权、放弃债权担保、无偿转让财产、其他无偿处分财产权益，或恶意延长到期债权履行期限，影响债权实现的，构成撤销事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c539-ground",
+    "srcs": [
+     "art539-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "actOf(D,A)",
+     {
+      "or": [
+       "transfersAtUnreasonablyLowPrice(D,A)",
+       "acquiresAtUnreasonablyHighPrice(D,A)",
+       "providesSecurityForOthersDebt(D,A)"
+      ]
+     },
+     "affectsClaimRealization(A,C)",
+     "counterpartyKnowsOrShouldKnowSituation(O,D,A)"
+    ],
+    "heads": [
+     "revocationGround(C,A)"
+    ],
+    "note": "有偿处分情形：明显不合理低价转让、明显不合理高价受让、为他人债务提供担保，影响债权实现且相对人知道或应当知道该情形的，构成撤销事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c538-1",
+    "srcs": [
+     "art538-1",
+     "art539-1"
+    ],
+    "body": [
+     "revocationGround(C,A)",
+     "debtRelation(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "requestCourtRevokeAct(C,A)"
+     }
+    ],
+    "note": "有撤销事由的，债权人可以以自己的名义通过诉讼请求人民法院撤销债务人的行为（第538条、第539条效果相同）",
+    "auth": "npc"
+   },
+   {
+    "key": "c540-1",
+    "srcs": [
+     "art540-1"
+    ],
+    "body": [
+     "revocationGround(C,A)"
+    ],
+    "heads": [
+     "revocationLimitedToClaimScope(C,A)"
+    ],
+    "note": "撤销权的行使范围以债权人的债权为限",
+    "auth": "npc"
+   },
+   {
+    "key": "c540-2",
+    "srcs": [
+     "art540-1"
+    ],
+    "body": [
+     "exercisesRevocation(C,A)",
+     "debtRelation(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "bearNecessaryExpenses(D,C,A)"
+     }
+    ],
+    "note": "债权人行使撤销权的必要费用，由债务人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c541-1",
+    "srcs": [
+     "art541-1"
+    ],
+    "body": [
+     "revocationGround(C,A)",
+     "oneYearSinceKnewGround(C,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(C,A)"
+    ],
+    "note": "撤销权自债权人知道或者应当知道撤销事由之日起一年内不行使的，该撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c541-2",
+    "srcs": [
+     "art541-1"
+    ],
+    "body": [
+     "revocationGround(C,A)",
+     "fiveYearsSinceAct(A)",
+     "-exercisesRevocation(C,A)"
+    ],
+    "heads": [
+     "revocationRightExtinguished(C,A)"
+    ],
+    "note": "自债务人的行为发生之日起五年内没有行使撤销权的，该撤销权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c542",
+    "srcs": [
+     "art542-1"
+    ],
+    "body": [
+     "revoked(A)"
+    ],
+    "heads": [
+     "noBindingForceAbInitio(A)"
+    ],
+    "note": "债务人影响债权人债权实现的行为被撤销的，自始没有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c538-doctrine-time",
+    "srcs": [
+     "art538-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "actOf(D,A)",
+     "-claimArisesBeforeAct(C,A)"
+    ],
+    "heads": [
+     "-revocationGround(C,A)"
+    ],
+    "note": "学理（笔记客观要件一）：债权须成立于债务人处分行为之前，债权成立在后的不得撤销",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c538-doctrine-nonproperty",
+    "srcs": [
+     "art538-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "actOf(D,A)",
+     "nonPropertyAct(A)"
+    ],
+    "heads": [
+     "-revocationGround(C,A)"
+    ],
+    "note": "学理（笔记客观要件一）：非以财产为标的的行为（结婚、收养、继承的承认或抛弃等）不可撤销",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c538-doctrine-effective",
+    "srcs": [
+     "art538-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "actOf(D,A)",
+     "-disposalActEffective(A)"
+    ],
+    "heads": [
+     "-revocationGround(C,A)"
+    ],
+    "note": "学理（笔记客观要件二）：尚未发生法律效力的处分行为不影响债权实现，无须撤销",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c539-doctrine-lowprice",
+    "srcs": [
+     "art539-1"
+    ],
+    "body": [
+     "actOf(D,A)",
+     "transferPriceBelow70Percent(A)"
+    ],
+    "heads": [
+     "transfersAtUnreasonablyLowPrice(D,A)"
+    ],
+    "note": "笔记：转让价格达不到交易时交易地指导价或市场交易价70%的，一般可视为明显不合理的低价",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c539-doctrine-highprice",
+    "srcs": [
+     "art539-1"
+    ],
+    "body": [
+     "actOf(D,A)",
+     "acquisitionPriceAbove130Percent(A)"
+    ],
+    "heads": [
+     "acquiresAtUnreasonablyHighPrice(D,A)"
+    ],
+    "note": "笔记：收购价格高于交易时交易地指导价或市场交易价30%的，一般可视为明显不合理的高价",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c540-doctrine-nopriority",
+    "srcs": [
+     "art540-1"
+    ],
+    "body": [
+     "exercisesRevocation(C,A)"
+    ],
+    "heads": [
+     "-priorityRightInRecoveredProperty(C)"
+    ],
+    "note": "笔记：债权人撤销权无优先受偿效力，债权人就追回财产不享有优先受偿权",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c538-doctrine-time",
+    "c538-ground",
+    "债权成立于处分行为之后的，不属于可撤销的处分行为（笔记客观要件）"
+   ],
+   [
+    "c538-doctrine-nonproperty",
+    "c538-ground",
+    "非以财产为标的的行为不可撤销（笔记客观要件）"
+   ],
+   [
+    "c538-doctrine-effective",
+    "c538-ground",
+    "尚未生效的处分行为不影响债权实现，无须撤销（笔记客观要件）"
+   ],
+   [
+    "c541-1",
+    "c538-1",
+    "撤销权因一年期间届满而消灭，债权人不得再请求撤销"
+   ],
+   [
+    "c541-2",
+    "c538-1",
+    "撤销权因五年期间届满而消灭，债权人不得再请求撤销"
+   ]
+  ],
+  "predicates": {
+   "waivesClaim": "债务人放弃其债权（债务人，行为）",
+   "waivesClaimSecurity": "债务人放弃债权担保（债务人，行为）",
+   "gratuitouslyTransfersProperty": "债务人无偿转让财产（债务人，行为）",
+   "otherwiseGratuitouslyDisposes": "债务人以其他方式无偿处分财产权益（债务人，行为）",
+   "maliciouslyExtendsDueClaim": "债务人恶意延长其到期债权的履行期限（债务人，行为）",
+   "transfersAtUnreasonablyLowPrice": "债务人以明显不合理的低价转让财产（债务人，行为）",
+   "acquiresAtUnreasonablyHighPrice": "债务人以明显不合理的高价受让他人财产（债务人，行为）",
+   "providesSecurityForOthersDebt": "债务人为他人的债务提供担保（债务人，行为）",
+   "affectsClaimRealization": "影响债权人债权的实现（行为，债权人）",
+   "counterpartyKnowsOrShouldKnowSituation": "相对人知道或者应当知道该情形（相对人，债务人，行为）",
+   "requestCourtRevokeAct": "请求人民法院撤销债务人的行为（债权人，行为）",
+   "revocationLimitedToClaimScope": "撤销权的行使范围以债权人的债权为限（债权人，行为）",
+   "bearNecessaryExpenses": "负担债权人行使撤销权的必要费用（债务人，债权人，行为）",
+   "claimArisesBeforeAct": "债权成立先于债务人实施处分行为（债权人，行为）",
+   "nonPropertyAct": "非以财产为标的的行为，如结婚、收养、继承的承认或抛弃",
+   "disposalActEffective": "处分行为已发生法律效力",
+   "transferPriceBelow70Percent": "转让价格达不到交易时交易地的指导价或者市场交易价的70%",
+   "acquisitionPriceAbove130Percent": "收购价格高于交易时交易地的指导价或者市场交易价的30%",
+   "priorityRightInRecoveredProperty": "就撤销后追回的财产享有优先受偿权（债权人）"
+  }
+ },
+ "card:g4342": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人代位权的成立条件与行使方式（第535条）",
+     "rules": [
+      "c535-1",
+      "c535-dilatory",
+      "c535-affect",
+      "c535-exclusive",
+      "c535-suit"
+     ]
+    },
+    {
+     "text": "债权到期前能否行使代位权（第536条）",
+     "rules": [
+      "c536-1",
+      "c536-perform",
+      "c536-declare",
+      "c536-other"
+     ]
+    },
+    {
+     "text": "代位权成立的法律效果（第537条）",
+     "rules": [
+      "c537-1",
+      "c537-2",
+      "c537-3"
+     ]
+    },
+    {
+     "text": "撤销权行使范围与必要费用负担（第540条）",
+     "rules": [
+      "c540-1",
+      "c540-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债权人对债务人享有合法债权，且该债权已到期（期前行使见第536条）",
+     "rules": [
+      "c535-1"
+     ]
+    },
+    {
+     "text": "债务人对相对人享有债权或与该债权有关的从权利，且该权利非专属于债务人自身",
+     "rules": [
+      "c535-1",
+      "c535-exclusive"
+     ]
+    },
+    {
+     "text": "债务人怠于行使，即未以诉讼或仲裁方式向相对人主张权利",
+     "rules": [
+      "c535-dilatory"
+     ]
+    },
+    {
+     "text": "影响债权人到期债权的实现，即债务人其他财产不足以清偿对债权人的债务",
+     "rules": [
+      "c535-affect"
+     ]
+    },
+    {
+     "text": "债权到期前，债务人的债权或从权利存在诉讼时效期间即将届满、未及时申报破产债权等情形，影响债权人债权实现",
+     "rules": [
+      "c536-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "该权利专属于债务人自身的除外：基于身份关系、劳动关系产生的请求权，人寿保险金请求权，人身伤害赔偿请求权",
+     "rules": [
+      "c535-1",
+      "c535-exclusive"
+     ]
+    },
+    {
+     "text": "债权到期前行使代位权是第535条“到期方可行使”一般规则的特别规定",
+     "rules": [
+      "c536-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债权人可以自己的名义请求人民法院代位行使债务人对相对人的权利，且必须通过诉讼方式进行",
+     "rules": [
+      "c535-1",
+      "c535-suit"
+     ]
+    },
+    {
+     "text": "代位权的行使范围以债权人的到期债权为限",
+     "rules": [
+      "c535-2a"
+     ]
+    },
+    {
+     "text": "债权人行使代位权的必要费用由债务人负担",
+     "rules": [
+      "c535-2b"
+     ]
+    },
+    {
+     "text": "相对人对债务人的抗辩，可以向行使代位权的债权人主张",
+     "rules": [
+      "c535-3"
+     ]
+    },
+    {
+     "text": "债权到期前，债权人可以代位请求相对人向债务人履行、向破产管理人申报或者作出其他必要的行为",
+     "rules": [
+      "c536-perform",
+      "c536-declare",
+      "c536-other"
+     ]
+    },
+    {
+     "text": "人民法院认定代位权成立的，由相对人向债权人履行义务；债权人接受履行后，债权人与债务人、债务人与相对人之间相应的权利义务终止",
+     "rules": [
+      "c537-1",
+      "c537-2"
+     ]
+    },
+    {
+     "text": "债务人对相对人的债权或从权利被采取保全、执行措施，或者债务人破产的，依照相关法律的规定处理",
+     "rules": [
+      "c537-3"
+     ]
+    },
+    {
+     "text": "笔记观点：债权人就代位受领的给付有优先受偿权，但该债权已被其他债权人冻结的除外",
+     "rules": [
+      "c537-priority"
+     ]
+    },
+    {
+     "text": "撤销权的行使范围以债权人的债权为限，行使撤销权的必要费用由债务人负担",
+     "rules": [
+      "c540-1",
+      "c540-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第536条（债权到期前行使）作为特别规定，优先于第535条以到期债权为前提的一般规则",
+     "rules": [
+      "c536-1"
+     ]
+    },
+    {
+     "text": "债权被采取保全、执行措施或债务人破产时，依相关法律处理，优先于相对人向债权人履行的规则",
+     "rules": [
+      "c537-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记要求债务人对相对人的债权具有金钱给付内容，法条未作此限定，故不写入规则体",
+     "rules": []
+    },
+    {
+     "text": "笔记指出相对人可以是保证人；法条仅称“相对人”",
+     "rules": []
+    },
+    {
+     "text": "笔记指出诉讼费最终由相对人（被告）负担，律师费等由债务人负担；法条仅规定必要费用由债务人负担",
+     "rules": [
+      "c535-2b"
+     ]
+    },
+    {
+     "text": "LEGO卡片把撤销权的成立条件、一年除斥期间、不得对抗善意第三人等混入本行；本行挂载法条仅就撤销权的行使范围与费用负担作规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c535-1",
+    "srcs": [
+     "art535-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "claimRightOf(D,T)",
+     "claimDue(C,D)",
+     "dilatoryInExercising(D,T)",
+     "affectsRealizationOfClaim(D,C)",
+     "~exclusiveToDebtor(D,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "subrogateInOwnName(C,D,T)"
+     }
+    ],
+    "note": "债务人怠于行使其债权或从权利影响债权人到期债权实现的，债权人可以自己的名义代位行使债务人对相对人的权利，但该权利专属于债务人自身的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c535-dilatory",
+    "srcs": [
+     "art535-1"
+    ],
+    "body": [
+     "claimRightOf(D,T)",
+     "-suitOrArbitrationFiled(D)"
+    ],
+    "heads": [
+     "dilatoryInExercising(D,T)"
+    ],
+    "note": "笔记：债务人未以诉讼或仲裁方式向相对人主张权利，构成“怠于行使”",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c535-affect",
+    "srcs": [
+     "art535-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "claimRightOf(D,T)",
+     "insufficientOtherAssets(D,C)"
+    ],
+    "heads": [
+     "affectsRealizationOfClaim(D,C)"
+    ],
+    "note": "笔记：债务人除对相对人的债权外，其他财产不足以清偿对债权人的债务，即影响债权人债权的实现",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c535-exclusive",
+    "srcs": [
+     "art535-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "identityBasedClaim(D,T)",
+       "laborBasedClaim(D,T)",
+       "lifeInsuranceClaim(D,T)",
+       "personalInjuryClaim(D,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "exclusiveToDebtor(D,T)"
+    ],
+    "note": "笔记：专属于债务人自身的权利包括身份关系产生的给付请求权、劳动报酬等基于劳动关系的请求权、人寿保险金请求权、人身伤害赔偿请求权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c535-suit",
+    "srcs": [
+     "art535-1"
+    ],
+    "body": [
+     "subrogateInOwnName(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "exerciseSubrogationBySuit(C,D,T)"
+     }
+    ],
+    "note": "笔记：代位权的行使必须通过诉讼方式进行，不能直接向相对人主张",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c535-2a",
+    "srcs": [
+     "art535-2"
+    ],
+    "body": [
+     "subrogateInOwnName(C,D,T)"
+    ],
+    "heads": [
+     "subrogationScopeLimitedToDueClaim(C,D,T)"
+    ],
+    "note": "代位权的行使范围以债权人的到期债权为限",
+    "auth": "npc"
+   },
+   {
+    "key": "c535-2b",
+    "srcs": [
+     "art535-2"
+    ],
+    "body": [
+     "subrogateInOwnName(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "bearNecessaryExpensesOfSubrogation(D,C)"
+     }
+    ],
+    "note": "债权人行使代位权的必要费用由债务人负担（笔记补充：诉讼费最终由相对人负担，律师费等由债务人负担）",
+    "auth": "npc"
+   },
+   {
+    "key": "c535-3",
+    "srcs": [
+     "art535-3"
+    ],
+    "body": [
+     "subrogateInOwnName(C,D,T)",
+     "defenseOfRelativeAgainstDebtor(T,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "assertDefenseToSubrogatingCreditor(T,C)"
+     }
+    ],
+    "note": "相对人对债务人的抗辩，可以向行使代位权的债权人主张",
+    "auth": "npc"
+   },
+   {
+    "key": "c536-1",
+    "srcs": [
+     "art536-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "claimRightOf(D,T)",
+     {
+      "or": [
+       "limitationAboutToExpire(D,T)",
+       "failedToDeclareBankruptcyClaim(D,T)",
+       "otherHarmingRealization(D,T)"
+      ]
+     },
+     "affectsRealizationOfClaim(D,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "preMaturitySubrogation(C,D,T)"
+     }
+    ],
+    "note": "债权到期前，债务人的债权或从权利存在诉讼时效期间即将届满、未及时申报破产债权等情形，影响债权人债权实现的，债权人可以代位行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c536-perform",
+    "srcs": [
+     "art536-1"
+    ],
+    "body": [
+     "preMaturitySubrogation(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "requestRelativePerformToDebtor(C,T,D)"
+     }
+    ],
+    "note": "期前代位时，债权人可以请求相对人向债务人履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c536-declare",
+    "srcs": [
+     "art536-1"
+    ],
+    "body": [
+     "preMaturitySubrogation(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "declareClaimToBankruptcyAdministrator(C,T,D)"
+     }
+    ],
+    "note": "期前代位时，债权人可以向破产管理人申报",
+    "auth": "npc"
+   },
+   {
+    "key": "c536-other",
+    "srcs": [
+     "art536-1"
+    ],
+    "body": [
+     "preMaturitySubrogation(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "takeOtherNecessaryAct(C,T,D)"
+     }
+    ],
+    "note": "期前代位时，债权人可以作出其他必要的行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c537-1",
+    "srcs": [
+     "art537-1"
+    ],
+    "body": [
+     "subrogationEstablished(C,D,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "performToCreditor(T,C,D)"
+     }
+    ],
+    "note": "人民法院认定代位权成立的，由债务人的相对人向债权人履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c537-2",
+    "srcs": [
+     "art537-1"
+    ],
+    "body": [
+     "subrogationEstablished(C,D,T)",
+     "creditorAcceptedThirdPartyPerformance(C,T,D)"
+    ],
+    "heads": [
+     "correspondingRightsExtinguished(C,D,T)"
+    ],
+    "note": "债权人接受履行后，债权人与债务人、债务人与相对人之间相应的权利义务终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c537-3",
+    "srcs": [
+     "art537-1"
+    ],
+    "body": [
+     "subrogationEstablished(C,D,T)",
+     {
+      "or": [
+       "claimSeizedOrExecuted(D,T)",
+       "debtorBankrupt(D)"
+      ]
+     }
+    ],
+    "heads": [
+     "handledPerRelevantLaw(C,D,T)"
+    ],
+    "note": "债务人对相对人的债权或从权利被采取保全、执行措施，或者债务人破产的，依照相关法律的规定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c537-priority",
+    "srcs": [
+     "art537-1"
+    ],
+    "body": [
+     "subrogationEstablished(C,D,T)",
+     "creditorAcceptedThirdPartyPerformance(C,T,D)",
+     "-claimSeizedByOtherCreditor(C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "prioritySatisfaction(C)"
+     }
+    ],
+    "note": "笔记观点：债权人对代位受领的给付有优先受偿权，但该债权被其他债权人冻结的除外；法条未明文规定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c540-1",
+    "srcs": [
+     "art540-1"
+    ],
+    "body": [
+     "exercisesRevocation(C,D)"
+    ],
+    "heads": [
+     "revocationScopeLimitedToClaim(C,D)"
+    ],
+    "note": "撤销权的行使范围以债权人的债权为限",
+    "auth": "npc"
+   },
+   {
+    "key": "c540-2",
+    "srcs": [
+     "art540-1"
+    ],
+    "body": [
+     "exercisesRevocation(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "C",
+      "content": "bearNecessaryExpensesOfRevocation(D,C)"
+     }
+    ],
+    "note": "债权人行使撤销权的必要费用由债务人负担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c536-1",
+    "c535-1",
+    "第536条是债权到期前行使代位权的特别规定，优先于第535条以到期债权为前提的一般规则"
+   ],
+   [
+    "c537-3",
+    "c537-1",
+    "债权被采取保全、执行措施或债务人破产时依照相关法律处理，优先于相对人向债权人履行的规则"
+   ]
+  ],
+  "predicates": {
+   "claimDue": "债权人对债务人的债权已到期（债权人，债务人）",
+   "dilatoryInExercising": "债务人怠于行使其对相对人的债权或与该债权有关的从权利（债务人，相对人）",
+   "affectsRealizationOfClaim": "影响债权人债权的实现（债务人，债权人）",
+   "insufficientOtherAssets": "债务人的其他财产不足以清偿对债权人的债务（债务人，债权人）",
+   "exclusiveToDebtor": "该权利专属于债务人自身（债务人，相对人）",
+   "identityBasedClaim": "基于扶养、抚养、赡养、继承等身份关系产生的给付请求权（债务人，相对人）",
+   "laborBasedClaim": "基于劳动关系产生的劳动报酬、退休金、养老金、抚恤金、安置费等请求权（债务人，相对人）",
+   "lifeInsuranceClaim": "人寿保险金请求权（债务人，相对人）",
+   "personalInjuryClaim": "人身伤害赔偿请求权（债务人，相对人）",
+   "subrogateInOwnName": "以自己的名义代位行使债务人对相对人的权利（债权人，债务人，相对人）",
+   "exerciseSubrogationBySuit": "通过诉讼方式行使代位权（债权人，债务人，相对人）",
+   "subrogationScopeLimitedToDueClaim": "代位权的行使范围以债权人的到期债权为限（债权人，债务人，相对人）",
+   "bearNecessaryExpensesOfSubrogation": "负担债权人行使代位权的必要费用（债务人，债权人）",
+   "defenseOfRelativeAgainstDebtor": "相对人对债务人享有抗辩（相对人，债务人）",
+   "assertDefenseToSubrogatingCreditor": "向行使代位权的债权人主张其对债务人的抗辩（相对人，债权人）",
+   "preMaturitySubrogation": "债权到期前代位行使债务人对相对人的权利（债权人，债务人，相对人）",
+   "limitationAboutToExpire": "债务人的债权或从权利的诉讼时效期间即将届满（债务人，相对人）",
+   "failedToDeclareBankruptcyClaim": "未及时申报破产债权（债务人，相对人）",
+   "otherHarmingRealization": "其他影响债权人债权实现的情形（债务人，相对人）",
+   "requestRelativePerformToDebtor": "请求相对人向债务人履行（债权人，相对人，债务人）",
+   "declareClaimToBankruptcyAdministrator": "向破产管理人申报（债权人，相对人，债务人）",
+   "takeOtherNecessaryAct": "作出其他必要的行为（债权人，相对人，债务人）",
+   "subrogationEstablished": "人民法院认定代位权成立（债权人，债务人，相对人）",
+   "performToCreditor": "向债权人履行义务（相对人，债权人，债务人）",
+   "correspondingRightsExtinguished": "债权人与债务人、债务人与相对人之间相应的权利义务终止（债权人，债务人，相对人）",
+   "claimSeizedOrExecuted": "债务人对相对人的债权或与该债权有关的从权利被采取保全、执行措施（债务人，相对人）",
+   "debtorBankrupt": "债务人破产",
+   "handledPerRelevantLaw": "依照相关法律的规定处理（债权人，债务人，相对人）",
+   "claimSeizedByOtherCreditor": "该债权已被其他债权人冻结（债权人）",
+   "prioritySatisfaction": "就代位受领的给付优先受偿（债权人）",
+   "revocationScopeLimitedToClaim": "撤销权的行使范围以债权人的债权为限（债权人，债务人）",
+   "bearNecessaryExpensesOfRevocation": "负担债权人行使撤销权的必要费用（债务人，债权人）"
+  }
+ }
+}

@@ -1,0 +1,3216 @@
+{
+ "art:737": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人以虚构租赁物方式订立的融资租赁合同，其效力如何认定",
+     "rules": [
+      "c737-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所订立的合同属于融资租赁合同，且该合同的租赁物系当事人虚构（即以虚构租赁物的方式订立）",
+     "rules": [
+      "c737-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该融资租赁合同无效",
+     "rules": [
+      "c737-1"
+     ]
+    },
+    {
+     "text": "合同无效即自始没有法律约束力（依第155条，属体系解释，非本条明文）",
+     "rules": [
+      "c737-effect"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记将本条误引为“第736条”，挂载法条为第737条第1款，以法条原文为准",
+     "rules": []
+    },
+    {
+     "text": "笔记标题提及“当事人就该情形下租赁物……”的处理，但挂载法条仅规定合同无效，未就租赁物归属、返还或补偿作出规定，故不另设规则",
+     "rules": []
+    },
+    {
+     "text": "本条仅针对“虚构租赁物”这一无效事由，不涉及融资租赁合同的其他效力瑕疵（如违反强制性规定、违背公序良俗等），后者适用总则编相应规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c737-1",
+    "srcs": [
+     "art737-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "fabricatedLeasedObject(K)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "当事人以虚构租赁物方式订立的融资租赁合同无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c737-effect",
+    "srcs": [
+     "art737-1"
+    ],
+    "body": [
+     "void(K)"
+    ],
+    "heads": [
+     "noBindingForceAbInitio(K)"
+    ],
+    "note": "无效的民事法律行为自始没有法律约束力，系依第155条作的体系解释，本条未明文规定",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeasingContract": "融资租赁合同（出租人根据承租人对出卖人、租赁物的选择，向出卖人购买租赁物提供给承租人使用、承租人支付租金）",
+   "fabricatedLeasedObject": "该融资租赁合同的租赁物系当事人虚构，即以虚构租赁物方式订立"
+  }
+ },
+ "art:735": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为融资租赁合同：其构成要素与三方当事人关系",
+     "rules": [
+      "c735-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出租人根据承租人对出卖人、租赁物的选择，向出卖人购买租赁物",
+     "rules": [
+      "c735-1"
+     ]
+    },
+    {
+     "text": "出租人将租赁物提供给承租人使用",
+     "rules": [
+      "c735-1"
+     ]
+    },
+    {
+     "text": "承租人支付租金",
+     "rules": [
+      "c735-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "具备上述要素的合同构成融资租赁合同，属典型合同，适用本节（融资租赁合同）的规定",
+     "rules": [
+      "c735-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "融资租赁合同涉及出卖人、出租人、承租人三方，区别于仅有两方当事人的普通租赁合同与买卖合同；此点由条文所列要素推得，条文未明文表述",
+     "rules": []
+    },
+    {
+     "text": "本条为概念性定义条款，本身不产生请求权；合同的内容与形式、虚构租赁物的效力分别由第736条、第737条规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c735-1",
+    "srcs": [
+     "art735-1"
+    ],
+    "body": [
+     "landlordOf(L,K)",
+     "tenantOf(C,K)",
+     "sellerOf(S,K)",
+     "leasedItem(T,K)",
+     "choosesSellerAndItem(C,S,T)",
+     "purchasesFrom(L,S,T)",
+     "providesForUse(L,C,T)",
+     "paysRent(C,L,K)"
+    ],
+    "heads": [
+     "financialLeasingContract(K)"
+    ],
+    "note": "融资租赁合同的定义：出租人根据承租人对出卖人、租赁物的选择向出卖人购买租赁物，提供给承租人使用，承租人支付租金",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeasingContract": "融资租赁合同（参数：合同）",
+   "leasedItem": "是该合同的租赁物（租赁物，合同）",
+   "choosesSellerAndItem": "承租人选择出卖人和租赁物（承租人，出卖人，租赁物）",
+   "purchasesFrom": "出租人向出卖人购买租赁物（出租人，出卖人，租赁物）",
+   "providesForUse": "出租人将租赁物提供给承租人使用（出租人，承租人，租赁物）",
+   "paysRent": "承租人向出租人支付租金（承租人，出租人，合同）"
+  }
+ },
+ "art:738": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同中，出租人未取得租赁物经营使用所需的行政许可，是否影响融资租赁合同的效力",
+     "rules": [
+      "c738-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "依照法律、行政法规的规定，租赁物的经营使用应当取得行政许可",
+     "rules": [
+      "c738-1"
+     ]
+    },
+    {
+     "text": "出租人未取得该行政许可",
+     "rules": [
+      "c738-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出租人未取得行政许可不影响融资租赁合同的效力，合同仍为有效",
+     "rules": [
+      "c738-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "不得以出租人未取得租赁物经营使用所需的行政许可为由认定融资租赁合同无效；本规则排除该无效认定",
+     "rules": [
+      "c738-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把本款列在“融资租赁合同无效”项下，作为不影响合同效力的情形之一；本款只排除“未取得行政许可”这一事由，融资租赁合同仍可因其他法定事由无效（如虚构租赁物等），相关条文本行未挂载",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c738-1",
+    "srcs": [
+     "art738-1"
+    ],
+    "body": [
+     "financialLease(K)",
+     "licenseRequiredForLeaseUse(K)",
+     "lessorLacksLicense(L,K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "依照法律、行政法规的规定租赁物经营使用应当取得行政许可，出租人未取得的，不影响融资租赁合同的效力，合同仍为有效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLease": "是融资租赁合同（参数：合同）",
+   "financialLease/1": "是融资租赁合同（参数：合同）",
+   "licenseRequiredForLeaseUse": "依照法律、行政法规的规定，租赁物的经营使用应当取得行政许可（参数：融资租赁合同）",
+   "licenseRequiredForLeaseUse/1": "依照法律、行政法规的规定，租赁物的经营使用应当取得行政许可（参数：融资租赁合同）",
+   "lessorLacksLicense": "出租人未取得租赁物经营使用所需的行政许可（参数：出租人，融资租赁合同）",
+   "lessorLacksLicense/2": "出租人未取得租赁物经营使用所需的行政许可（参数：出租人，融资租赁合同）"
+  }
+ },
+ "card:g5362": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同的内容与形式要求",
+     "rules": [
+      "c736-2"
+     ]
+    },
+    {
+     "text": "承租人对出卖人行使索赔权利，是否影响其支付租金的义务",
+     "rules": [
+      "c742-1",
+      "c742-2"
+     ]
+    },
+    {
+     "text": "出租人对租赁物享有的所有权未经登记，能否对抗善意第三人",
+     "rules": [
+      "c745-owner",
+      "c745-1",
+      "c745-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "融资租赁合同（属要式合同，应当采用书面形式）",
+     "rules": [
+      "c736-2"
+     ]
+    },
+    {
+     "text": "承租人依赖出租人的技能确定租赁物，或者出租人干预选择租赁物",
+     "rules": [
+      "c742-2",
+      "c742-3"
+     ]
+    },
+    {
+     "text": "出租人对租赁物享有所有权，该所有权未经登记，且第三人为善意",
+     "rules": [
+      "c745-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "承租人依赖出租人的技能确定租赁物或者出租人干预选择租赁物的，承租人可以请求减免相应租金（第742条第1款但书）",
+     "rules": [
+      "c742-2"
+     ]
+    },
+    {
+     "text": "出租人对租赁物的所有权未经登记的，不得对抗善意第三人",
+     "rules": [
+      "c745-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "合同内容一般包括租赁物的名称、数量、规格、技术性能、检验方法，租赁期限，租金构成及其支付期限和方式、币种，租赁期限届满租赁物的归属等条款（示范性规定，欠缺不影响合同成立）",
+     "rules": []
+    },
+    {
+     "text": "融资租赁合同应当采用书面形式订立",
+     "rules": [
+      "c736-2"
+     ]
+    },
+    {
+     "text": "承租人对出卖人行使索赔权利，不影响其履行支付租金的义务",
+     "rules": [
+      "c742-1"
+     ]
+    },
+    {
+     "text": "承租人可以请求减免相应租金",
+     "rules": [
+      "c742-2"
+     ]
+    },
+    {
+     "text": "出租人仍应对租赁物的瑕疵承担担保责任",
+     "rules": [
+      "c742-3"
+     ]
+    },
+    {
+     "text": "出租人享有租赁物的所有权",
+     "rules": [
+      "c745-owner"
+     ]
+    },
+    {
+     "text": "未经登记的所有权不得对抗善意第三人",
+     "rules": [
+      "c745-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第742条第1款但书（减免租金）优先于前段（不影响支付租金义务）",
+     "rules": [
+      "c742-2",
+      "c742-1"
+     ]
+    },
+    {
+     "text": "所有权已登记的可以对抗第三人；未登记的不得对抗善意第三人",
+     "rules": [
+      "c745-1",
+      "c745-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与传统租赁不同：融资租赁涉及出卖人，租金为融资代价而非单纯使用代价，且为要式合同，须采用书面形式",
+     "rules": []
+    },
+    {
+     "text": "第736条第1款为示范性条款，欠缺该等条款可依第510条、第511条补充确定，不影响合同成立",
+     "rules": []
+    },
+    {
+     "text": "第745条解决的是出租人所有权能否对抗第三人，而非第三人取得所有权，故与善意取得规则不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c736-2",
+    "srcs": [
+     "art736-2"
+    ],
+    "body": [
+     "financialLeasingContract(K)"
+    ],
+    "heads": [
+     "requiredWritingForm(K)",
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "concludeInWriting(K)"
+     }
+    ],
+    "note": "融资租赁合同为要式合同，应当采用书面形式订立",
+    "auth": "npc"
+   },
+   {
+    "key": "c742-1",
+    "srcs": [
+     "art742-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lesseeOf(T,K)",
+     "lessorOf(L,K)",
+     "sellerOf(S,K)",
+     "exercisesClaimAgainstSeller(T,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "payRent(T,L)"
+     }
+    ],
+    "note": "承租人对出卖人行使索赔权利，不影响其履行支付租金的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c742-2",
+    "srcs": [
+     "art742-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lesseeOf(T,K)",
+     "lessorOf(L,K)",
+     {
+      "or": [
+       "reliesOnLessorSkill(T,L)",
+       "lessorIntervenesInSelection(L,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "requestRentReduction(T,L)"
+     }
+    ],
+    "note": "第742条第1款但书：承租人依赖出租人的技能确定租赁物或者出租人干预选择租赁物的，可以请求减免相应租金",
+    "auth": "npc"
+   },
+   {
+    "key": "c742-3",
+    "srcs": [
+     "art742-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lesseeOf(T,K)",
+     "lessorOf(L,K)",
+     {
+      "or": [
+       "reliesOnLessorSkill(T,L)",
+       "lessorIntervenesInSelection(L,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "bearQualityWarranty(L,T)"
+     }
+    ],
+    "note": "笔记与学理：承租人依赖出租人技能确定租赁物或出租人干预选择时，出租人仍应承担租赁物瑕疵担保责任（对应第747条，本行未挂载，故为学理规则）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c745-owner",
+    "srcs": [
+     "art745-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lessorOf(L,K)",
+     "leasedThing(Thing,K)"
+    ],
+    "heads": [
+     "ownerOf(L,Thing)"
+    ],
+    "note": "第745条第1款以出租人享有租赁物所有权为前提，笔记亦列明出租人享有租赁物的所有权（学理归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c745-1",
+    "srcs": [
+     "art745-1"
+    ],
+    "body": [
+     "ownerOf(L,Thing)",
+     "leasedThing(Thing,K)",
+     "-ownershipRegistered(Thing)",
+     "inGoodFaith(T,Thing)"
+    ],
+    "heads": [
+     "-opposableTo(Thing,T)"
+    ],
+    "note": "出租人对租赁物享有的所有权未经登记，不得对抗善意第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c745-2",
+    "srcs": [
+     "art745-1"
+    ],
+    "body": [
+     "ownerOf(L,Thing)",
+     "leasedThing(Thing,K)",
+     "ownershipRegistered(Thing)",
+     "inGoodFaith(T,Thing)"
+    ],
+    "heads": [
+     "opposableTo(Thing,T)"
+    ],
+    "note": "第745条第1款的反面推论：所有权已登记的，可以对抗第三人（学理）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c742-2",
+    "c742-1",
+    "第742条第1款但书：承租人依赖出租人技能确定租赁物或出租人干预选择时，可请求减免相应租金，排除按原额支付租金的义务"
+   ]
+  ],
+  "predicates": {
+   "financialLeasingContract": "是融资租赁合同（参数：合同）",
+   "lesseeOf": "是融资租赁合同的承租人（承租人，合同）",
+   "lessorOf": "是融资租赁合同的出租人（出租人，合同）",
+   "leasedThing": "是该融资租赁合同项下的租赁物（租赁物，合同）",
+   "exercisesClaimAgainstSeller": "承租人对出卖人行使索赔权利（承租人，出卖人）",
+   "payRent": "支付租金（承租人，出租人）",
+   "reliesOnLessorSkill": "承租人依赖出租人的技能确定租赁物（承租人，出租人）",
+   "lessorIntervenesInSelection": "出租人干预承租人选择租赁物（出租人，承租人）",
+   "requestRentReduction": "请求减免相应租金（承租人，出租人）",
+   "bearQualityWarranty": "对租赁物的瑕疵承担担保责任（出租人，承租人）",
+   "ownershipRegistered": "出租人对租赁物的所有权已办理登记（参数：租赁物）",
+   "concludeInWriting": "以书面形式订立（参数：合同）"
+  }
+ },
+ "art:739": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁中，出租人依承租人对出卖人、租赁物的选择订立买卖合同的，出卖人应当向谁交付标的物；承租人受领标的物时享有何种权利",
+     "rules": [
+      "c739-choice",
+      "c739-1",
+      "c739-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同，且出租人根据承租人对出卖人、租赁物的选择订立买卖合同（出卖人、租赁物均由承租人选择）",
+     "rules": [
+      "c739-choice"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出卖人应当按照约定向承租人交付标的物，而不是向作为买受人的出租人交付",
+     "rules": [
+      "c739-1"
+     ]
+    },
+    {
+     "text": "承租人享有与受领标的物有关的买受人的权利（受领、检验标的物，并就标的物向出卖人主张相应权利）",
+     "rules": [
+      "c739-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为融资租赁的特别规定：交付对象为承租人，优先于买卖合同一般规则中“出卖人向买受人交付”的处理",
+     "rules": [
+      "c739-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与普通买卖不同：买卖合同的买受人是出租人，但交付对象是承租人；受领标的物有关的买受人权利也由承租人享有，出租人不因受领环节承担相应后果",
+     "rules": [
+      "c739-1",
+      "c739-2"
+     ]
+    },
+    {
+     "text": "笔记未引用原文或条号，本条无笔记补充的例外；承租人对出卖人的索赔权（第741条）不属于本条内容，故不在此形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c739-choice",
+    "srcs": [
+     "art739-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "landlordOf(L,K)",
+     "tenantOf(T,K)",
+     "sellerOf(S,K)",
+     "subjectMatter(M,K)",
+     "sellerChosenByLessee(S,K)",
+     "subjectMatterChosenByLessee(M,K)"
+    ],
+    "heads": [
+     "saleConcludedPerLesseeChoice(K)"
+    ],
+    "note": "出租人根据承租人对出卖人、租赁物的选择订立买卖合同，是融资租赁中出卖人向承租人交付、承租人享有买受人权利的前提",
+    "auth": "npc"
+   },
+   {
+    "key": "c739-1",
+    "srcs": [
+     "art739-1"
+    ],
+    "body": [
+     "saleConcludedPerLesseeChoice(K)",
+     "sellerOf(S,K)",
+     "tenantOf(T,K)",
+     "subjectMatter(M,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "T",
+      "content": "deliverSubjectMatterToLessee(S,T,M,K)"
+     }
+    ],
+    "note": "买卖合同系依承租人选择订立的，出卖人应当按照约定向承租人交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c739-2",
+    "srcs": [
+     "art739-1"
+    ],
+    "body": [
+     "saleConcludedPerLesseeChoice(K)",
+     "sellerOf(S,K)",
+     "tenantOf(T,K)",
+     "subjectMatter(M,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "S",
+      "content": "exerciseBuyerRightsOnReceipt(T,S,M,K)"
+     }
+    ],
+    "note": "承租人享有与受领标的物有关的买受人的权利，可据此向出卖人受领、检验并主张相应权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（出租人依承租人对出卖人、租赁物的选择订立的买卖合同与租赁合同）",
+   "sellerChosenByLessee": "出卖人系由承租人选择（出卖人，合同）",
+   "subjectMatterChosenByLessee": "租赁物系由承租人选择（标的物，合同）",
+   "saleConcludedPerLesseeChoice": "买卖合同系出租人根据承租人对出卖人、租赁物的选择订立（合同）",
+   "deliverSubjectMatterToLessee": "向承租人交付标的物（出卖人，承租人，标的物，合同）",
+   "exerciseBuyerRightsOnReceipt": "享有并行使与受领标的物有关的买受人的权利（承租人，出卖人，标的物，合同）"
+  }
+ },
+ "card:g5388": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁中，承租人占有租赁物期间租赁物毁损、灭失的，租金风险由谁负担",
+     "rules": [
+      "c751-1"
+     ]
+    },
+    {
+     "text": "租赁物毁损、灭失致融资租赁合同解除，或者致承租人不能返还租赁物时，出租人与承租人各享有什么请求权",
+     "rules": [
+      "c756-1",
+      "c758-1",
+      "c758-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "融资租赁合同；承租人占有租赁物期间；租赁物毁损、灭失",
+     "rules": [
+      "c751-1"
+     ]
+    },
+    {
+     "text": "融资租赁合同因租赁物交付承租人后意外毁损、灭失等不可归责于当事人的原因而解除",
+     "rules": [
+      "c756-1"
+     ]
+    },
+    {
+     "text": "约定租赁期限届满租赁物归承租人所有；承租人已支付大部分租金但无力支付剩余租金；出租人因此解除合同并收回租赁物；收回的租赁物价值超过承租人欠付的租金以及其他费用",
+     "rules": [
+      "c758-1"
+     ]
+    },
+    {
+     "text": "约定租赁期限届满租赁物归出租人所有；因租赁物毁损、灭失或者附合、混合于他物致使承租人不能返还",
+     "rules": [
+      "c758-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，出租人不得请求承租人继续支付租金（第751条但书）",
+     "rules": [
+      "c751-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人有权请求承租人继续支付租金",
+     "rules": [
+      "c751-1"
+     ]
+    },
+    {
+     "text": "出租人可以请求承租人按照租赁物折旧情况给予补偿",
+     "rules": [
+      "c756-1"
+     ]
+    },
+    {
+     "text": "承租人可以请求出租人相应返还（收回的租赁物价值超出欠付租金及其他费用的部分）",
+     "rules": [
+      "c758-1"
+     ]
+    },
+    {
+     "text": "出租人有权请求承租人给予合理补偿",
+     "rules": [
+      "c758-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "融资租赁合同因租赁物意外毁损、灭失等不可归责于当事人的原因而解除的，适用第756条的折旧补偿规则，不再适用第751条的继续支付租金规则",
+     "rules": [
+      "c756-1",
+      "c751-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片 concept:0193 讲的是（一般）租赁中租赁物毁损灭失时承租人的减租、解约救济，并援引第728、730、731条；本行挂载的第751、756、758条属于第十五章融资租赁合同，第751条恰恰规定出租人有权请求承租人继续支付租金，故该卡片仅作参考，不据以立规",
+     "rules": []
+    },
+    {
+     "text": "笔记所列承租人的四项义务中，与本行条文相关的是“支付租金”与“合同终止时返还租赁物”：第751条对应租金风险负担，第758条第2款对应返还不能时的补偿；妥善保管使用维修义务、租赁物致人损害的赔偿责任不在本行条文范围内",
+     "rules": [
+      "c751-1",
+      "c758-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c751-1",
+    "srcs": [
+     "art751-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "landlordOf(R,K)",
+     "tenantOf(B,K)",
+     "leaseOf(K,X)",
+     "tenantPossessesUnderLease(B)",
+     "damagedOrLost(X)",
+     "~lawProvidesOtherwiseOnRentPayment(K)",
+     "~contractProvidesOtherwise(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "B",
+      "content": "continuePayingRent(B,K)"
+     }
+    ],
+    "note": "承租人占有租赁物期间租赁物毁损、灭失的，出租人有权请求承租人继续支付租金，但法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c756-1",
+    "srcs": [
+     "art756-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "landlordOf(R,K)",
+     "tenantOf(B,K)",
+     "leaseOf(K,X)",
+     "delivered(X)",
+     "goodsPerished(X)",
+     "notAttributableToParties(K)",
+     "leaseContractRescinded(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "B",
+      "content": "demandCompensationPerDepreciation(R,B,X,K)"
+     }
+    ],
+    "note": "融资租赁合同因租赁物交付承租人后意外毁损、灭失等不可归责于当事人的原因解除的，出租人可以请求承租人按照租赁物折旧情况给予补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c758-1",
+    "srcs": [
+     "art758-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "landlordOf(R,K)",
+     "tenantOf(B,K)",
+     "leaseOf(K,X)",
+     "agreedOwnershipToLesseeOnExpiry(K)",
+     "paidMostRent(B,K)",
+     "unableToPayRemainingRent(B,K)",
+     "terminate(R,K)",
+     "repossess(R,X)",
+     "repossessedValueExceedsArrears(X,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "R",
+      "content": "demandCorrespondingReturn(B,R,K)"
+     }
+    ],
+    "note": "约定期满租赁物归承租人所有，承租人已付大部分租金但无力支付剩余租金，出租人因此解约收回租赁物，收回价值超过欠付租金及其他费用的，承租人可以请求相应返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c758-2",
+    "srcs": [
+     "art758-2"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "landlordOf(R,K)",
+     "tenantOf(B,K)",
+     "leaseOf(K,X)",
+     "agreedOwnershipToLessorOnExpiry(K)",
+     {
+      "or": [
+       "damagedOrLost(X)",
+       "attachedOrMixedWithOtherThing(X)"
+      ]
+     },
+     "cannotReturn(B,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "B",
+      "content": "demandReasonableCompensation(R,B,X,K)"
+     }
+    ],
+    "note": "约定期满租赁物归出租人所有，因租赁物毁损、灭失或者附合、混合于他物致承租人不能返还的，出租人有权请求承租人给予合理补偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c756-1",
+    "c751-1",
+    "融资租赁合同因租赁物意外毁损、灭失等不可归责于当事人的原因而解除的，适用第756条的折旧补偿规则，不再适用第751条的继续支付租金规则（特别规定优先）"
+   ]
+  ],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（参数：合同）",
+   "damagedOrLost": "租赁物毁损、灭失（参数：租赁物）",
+   "lawProvidesOtherwiseOnRentPayment": "法律对租赁物毁损、灭失后的租金支付另有规定（参数：合同）",
+   "notAttributableToParties": "不可归责于当事人（参数：合同）",
+   "leaseContractRescinded": "融资租赁合同已因不可归责于当事人的原因而解除（参数：合同）",
+   "agreedOwnershipToLesseeOnExpiry": "约定租赁期限届满租赁物归承租人所有（参数：合同）",
+   "agreedOwnershipToLessorOnExpiry": "约定租赁期限届满租赁物归出租人所有（参数：合同）",
+   "paidMostRent": "承租人已支付大部分租金（承租人，合同）",
+   "unableToPayRemainingRent": "承租人无力支付剩余租金（承租人，合同）",
+   "repossess": "解除合同并收回租赁物（出租人，租赁物）",
+   "repossessedValueExceedsArrears": "收回的租赁物价值超过承租人欠付的租金以及其他费用（租赁物，合同）",
+   "attachedOrMixedWithOtherThing": "租赁物附合、混合于他物（参数：租赁物）",
+   "continuePayingRent": "继续支付租金（承租人，合同）",
+   "demandCompensationPerDepreciation": "请求按照租赁物折旧情况给予补偿（出租人，承租人，租赁物，合同）",
+   "demandCorrespondingReturn": "请求相应返还（承租人，出租人，合同）",
+   "demandReasonableCompensation": "请求给予合理补偿（出租人，承租人，租赁物，合同）"
+  }
+ },
+ "art:740": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁中出卖人违反向承租人交付标的物的义务时，承租人在何种情形下可以拒绝受领，拒绝受领后负有何种通知义务",
+     "rules": [
+      "c740-1a",
+      "c740-1b",
+      "c740-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人依出租人（买受人）的指示向承租人交付标的物，即融资租赁中的买卖环节",
+     "rules": [
+      "c740-1a",
+      "c740-1b"
+     ]
+    },
+    {
+     "text": "标的物严重不符合约定",
+     "rules": [
+      "c740-1a"
+     ]
+    },
+    {
+     "text": "未按照约定交付标的物，经承租人或者出租人催告后在合理期限内仍未交付",
+     "rules": [
+      "c740-1b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人可以拒绝受领出卖人向其交付的标的物",
+     "rules": [
+      "c740-1a",
+      "c740-1b"
+     ]
+    },
+    {
+     "text": "承租人拒绝受领标的物的，应当及时通知出租人",
+     "rules": [
+      "c740-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条仅适用于融资租赁中出卖人向承租人交付标的物的情形：拒收权人是承租人而非买受人，通知对象是出租人而非出卖人，与普通买卖中买受人拒收、通知出卖人的规则不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c740-1a",
+    "srcs": [
+     "art740-1"
+    ],
+    "body": [
+     "deliversToThirdPartyPerInstruction(S,R,L,K)",
+     "subjectMatterOf(T,K)",
+     "seriouslyNonConforming(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "S",
+      "content": "refuseAcceptance(L,K)"
+     }
+    ],
+    "note": "出卖人违反向承租人交付标的物的义务，标的物严重不符合约定的，承租人可以拒绝受领",
+    "auth": "npc"
+   },
+   {
+    "key": "c740-1b",
+    "srcs": [
+     "art740-1"
+    ],
+    "body": [
+     "deliversToThirdPartyPerInstruction(S,R,L,K)",
+     "failsToDeliverAsAgreed(S,L,K)",
+     "stillNotPerformedAfterDemand(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "S",
+      "content": "refuseAcceptance(L,K)"
+     }
+    ],
+    "note": "未按照约定交付标的物，经承租人或者出租人催告后在合理期限内仍未交付的，承租人可以拒绝受领（催告主体为承租人或出租人，条文未限定，故以 stillNotPerformedAfterDemand 概括）",
+    "auth": "npc"
+   },
+   {
+    "key": "c740-2",
+    "srcs": [
+     "art740-2"
+    ],
+    "body": [
+     "deliversToThirdPartyPerInstruction(S,R,L,K)",
+     "refuseAcceptance(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "R",
+      "content": "notifyLessorOfRefusal(L,R,K)"
+     }
+    ],
+    "note": "承租人拒绝受领标的物的，应当及时通知出租人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "refuseAcceptance": "承租人拒绝受领出卖人向其交付的标的物（承租人，合同）",
+   "seriouslyNonConforming": "标的物严重不符合约定（标的物，合同）",
+   "failsToDeliverAsAgreed": "出卖人未按照约定向承租人交付标的物（出卖人，承租人，合同）",
+   "notifyLessorOfRefusal": "及时通知出租人拒绝受领标的物（承租人，出租人，合同）"
+  }
+ },
+ "art:746": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同的租金应当如何确定",
+     "rules": [
+      "c746-1",
+      "c746-agreed"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同，且当事人对租金没有另有约定",
+     "rules": [
+      "c746-1"
+     ]
+    },
+    {
+     "text": "当事人对租金另有约定",
+     "rules": [
+      "c746-agreed"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对租金另有约定的，从其约定，不适用法定的租金确定方法",
+     "rules": [
+      "c746-agreed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "租金根据购买租赁物的大部分或者全部成本以及出租人的合理利润确定",
+     "rules": [
+      "c746-1"
+     ]
+    },
+    {
+     "text": "租金按照当事人的约定确定",
+     "rules": [
+      "c746-agreed"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于租金的约定优先于第746条第1款规定的法定确定方法（但书）",
+     "rules": [
+      "c746-agreed"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决租金数额的构成（购买成本＋出租人合理利润），不涉及租金的支付时间、支付方式与迟延责任；笔记未引用原文或条号，无可据以区分的材料",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c746-1",
+    "srcs": [
+     "art746-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "~agreedOtherwiseOnRent(K)"
+    ],
+    "heads": [
+     "rentDeterminedByCostAndProfit(K)"
+    ],
+    "note": "融资租赁合同的租金，除当事人另有约定外，应当根据购买租赁物的大部分或者全部成本以及出租人的合理利润确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c746-agreed",
+    "srcs": [
+     "art746-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "agreedOtherwiseOnRent(K)"
+    ],
+    "heads": [
+     "rentDeterminedByAgreement(K)"
+    ],
+    "note": "当事人对租金另有约定的，租金按约定确定，排除法定确定方法（第746条第1款但书）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c746-agreed",
+    "c746-1",
+    "第746条第1款但书：当事人另有约定的，优先于按购买成本加合理利润确定租金"
+   ]
+  ],
+  "predicates": {
+   "financialLeaseContract": "融资租赁合同（1个参数：合同）",
+   "agreedOtherwiseOnRent": "当事人对租金另有约定（1个参数：合同）",
+   "rentDeterminedByCostAndProfit": "租金根据购买租赁物的大部分或者全部成本以及出租人的合理利润确定（1个参数：合同）",
+   "rentDeterminedByAgreement": "租金按照当事人的约定确定（1个参数：合同）"
+  }
+ },
+ "art:741": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同中，出卖人不履行买卖合同义务的，索赔权由谁行使；承租人行使索赔权时，出租人负有何种义务",
+     "rules": [
+      "c741-agree",
+      "c741-1",
+      "c741-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出租人、出卖人、承租人约定：出卖人不履行买卖合同义务时，由承租人行使索赔的权利",
+     "rules": [
+      "c741-agree",
+      "c741-1"
+     ]
+    },
+    {
+     "text": "出卖人不履行买卖合同义务",
+     "rules": [
+      "c741-1"
+     ]
+    },
+    {
+     "text": "承租人行使索赔权利",
+     "rules": [
+      "c741-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人取得向出卖人索赔的权利（索赔权由承租人行使）",
+     "rules": [
+      "c741-1"
+     ]
+    },
+    {
+     "text": "承租人行使索赔权利的，出租人应当协助",
+     "rules": [
+      "c741-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人约定由承租人索赔的，优先于未作约定时索赔权仍归出租人的默认安排（本条为任意性规定）",
+     "rules": [
+      "c741-1",
+      "c741-default"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为任意性规定：未约定由承租人行使索赔权的，索赔权仍由出租人（买卖合同的买受人）向出卖人行使（学理，条文未明定）",
+     "rules": [
+      "c741-default"
+     ]
+    },
+    {
+     "text": "出租人的“协助”义务以承租人实际行使索赔权为前提，并非独立的给付义务；本条不涉及承租人直接向出租人主张租赁物瑕疵责任的问题",
+     "rules": [
+      "c741-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c741-agree",
+    "srcs": [
+     "art741-1"
+    ],
+    "body": [
+     "financeLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "sellerOf(S,SK)",
+     "saleContractForLease(SK,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "agreeLesseeClaimsAgainstSeller(L,S,T,K)"
+     }
+    ],
+    "note": "出租人、出卖人、承租人可以约定，出卖人不履行买卖合同义务时由承租人行使索赔权（任意性规定，三方共同约定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c741-1",
+    "srcs": [
+     "art741-1"
+    ],
+    "body": [
+     "financeLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "sellerOf(S,SK)",
+     "saleContractForLease(SK,K)",
+     "agreedLesseeClaimsAgainstSeller(L,S,T,K)",
+     "failsToPerformDebt(S,SK)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "S",
+      "content": "claimAgainstSeller(T,S,SK)"
+     }
+    ],
+    "note": "三方约定且出卖人不履行买卖合同义务的，由承租人行使索赔的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c741-2",
+    "srcs": [
+     "art741-1"
+    ],
+    "body": [
+     "financeLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "exercisesClaimRight(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "assistClaim(T)"
+     }
+    ],
+    "note": "承租人行使索赔权利的，出租人应当协助",
+    "auth": "npc"
+   },
+   {
+    "key": "c741-default",
+    "srcs": [
+     "art741-1"
+    ],
+    "body": [
+     "financeLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "sellerOf(S,SK)",
+     "saleContractForLease(SK,K)",
+     "failsToPerformDebt(S,SK)",
+     "~agreedLesseeClaimsAgainstSeller(L,S,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "S",
+      "content": "claimAgainstSeller(L,S,SK)"
+     }
+    ],
+    "note": "学理：本条为任意性规定，未约定由承租人索赔时，索赔权仍由作为买卖合同买受人的出租人行使（条文未明定）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c741-1",
+    "c741-default",
+    "当事人约定由承租人行使索赔权，排除未约定时索赔权归出租人的默认安排（任意性规定）"
+   ]
+  ],
+  "predicates": {
+   "financeLeaseContract": "是融资租赁合同",
+   "financeLeaseContract/1": "是融资租赁合同",
+   "lessorOf": "是融资租赁合同的出租人（出租人，融资租赁合同）",
+   "lessorOf/2": "是融资租赁合同的出租人（出租人，融资租赁合同）",
+   "lesseeOf": "是融资租赁合同的承租人（承租人，融资租赁合同）",
+   "lesseeOf/2": "是融资租赁合同的承租人（承租人，融资租赁合同）",
+   "saleContractForLease": "系为融资租赁合同订立的买卖合同（买卖合同，融资租赁合同）",
+   "saleContractForLease/2": "系为融资租赁合同订立的买卖合同（买卖合同，融资租赁合同）",
+   "agreeLesseeClaimsAgainstSeller": "出租人、出卖人、承租人约定出卖人不履行买卖合同义务时由承租人行使索赔权（出租人，出卖人，承租人，融资租赁合同）",
+   "agreeLesseeClaimsAgainstSeller/4": "出租人、出卖人、承租人约定出卖人不履行买卖合同义务时由承租人行使索赔权（出租人，出卖人，承租人，融资租赁合同）",
+   "agreedLesseeClaimsAgainstSeller": "已约定出卖人不履行买卖合同义务时由承租人行使索赔权（出租人，出卖人，承租人，融资租赁合同）",
+   "agreedLesseeClaimsAgainstSeller/4": "已约定出卖人不履行买卖合同义务时由承租人行使索赔权（出租人，出卖人，承租人，融资租赁合同）",
+   "claimAgainstSeller": "向出卖人行使索赔的权利（索赔人，出卖人，买卖合同）",
+   "claimAgainstSeller/3": "向出卖人行使索赔的权利（索赔人，出卖人，买卖合同）",
+   "exercisesClaimRight": "承租人行使索赔的权利（承租人，融资租赁合同）",
+   "exercisesClaimRight/2": "承租人行使索赔的权利（承租人，融资租赁合同）",
+   "assistClaim": "协助承租人行使索赔权（承租人）",
+   "assistClaim/1": "协助承租人行使索赔权（承租人）"
+  }
+ },
+ "art:744": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出租人根据承租人对出卖人、租赁物的选择订立的买卖合同中，与承租人有关的合同内容，能否未经承租人同意而由出租人变更",
+     "rules": [
+      "c744-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "买卖合同是出租人根据承租人对出卖人、租赁物的选择，与出卖人订立的（融资租赁项下的买卖合同）",
+     "rules": [
+      "c744-1"
+     ]
+    },
+    {
+     "text": "拟变更的是与承租人有关的合同内容",
+     "rules": [
+      "c744-1"
+     ]
+    },
+    {
+     "text": "未经承租人同意",
+     "rules": [
+      "c744-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经承租人同意的，出租人可以变更与承租人有关的合同内容（条文以“未经承租人同意”为要件，反面解释；条文未明定，属学理）",
+     "rules": [
+      "c744-consent"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人不得变更与承租人有关的合同内容，该禁止以承租人为相对人",
+     "rules": [
+      "c744-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只限制“与承租人有关的合同内容”的变更；与承租人无关的合同内容，以及承租人与出卖人之间的其他法律关系，不受本条约束",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条；本条属融资租赁合同章，与第543条“当事人协商一致可以变更合同”的一般规则不同，其限制的是出租人对买卖合同的变更权，关键在于承租人是否同意",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c744-1",
+    "srcs": [
+     "art744-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "saleContractForLease(S,K)",
+     "buyerOf(L,S)",
+     "sellerOf(V,S)",
+     "chosenByLessee(T,V)",
+     "subjectMatter(O,S)",
+     "chosenByLessee(T,O)",
+     "withoutLesseeConsent(T,S)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "modifyContentRelatedToLessee(L,S,T)"
+     }
+    ],
+    "note": "出租人根据承租人对出卖人、租赁物的选择订立的买卖合同中，未经承租人同意，出租人不得变更与承租人有关的合同内容",
+    "auth": "npc"
+   },
+   {
+    "key": "c744-consent",
+    "srcs": [
+     "art744-1"
+    ],
+    "body": [
+     "consentedByLessee(T,S)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "saleContractForLease(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "modifyContentRelatedToLessee(L,S,T)"
+     }
+    ],
+    "note": "反面解释：经承租人同意，出租人可以变更与承租人有关的合同内容；条文未明定，属学理",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（参数：合同）",
+   "lessorOf": "是融资租赁合同的出租人（出租人，合同）",
+   "lesseeOf": "是融资租赁合同的承租人（承租人，合同）",
+   "saleContractForLease": "是为融资租赁而订立的买卖合同（买卖合同，融资租赁合同）",
+   "chosenByLessee": "由承租人选择（承租人，出卖人或租赁物）",
+   "withoutLesseeConsent": "未经承租人同意（承租人，买卖合同）",
+   "consentedByLessee": "经承租人同意（承租人，买卖合同）",
+   "modifyContentRelatedToLessee": "变更与承租人有关的合同内容（出租人，买卖合同，承租人）"
+  }
+ },
+ "art:747": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁物不符合约定或者不符合使用目的时，出租人是否承担赔偿责任",
+     "rules": [
+      "c747-1",
+      "c747-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在租赁关系，且租赁物不符合约定或者不符合使用目的",
+     "rules": [
+      "c747-1",
+      "c747-exc"
+     ]
+    },
+    {
+     "text": "承租人依赖出租人的技能确定租赁物，或者出租人干预选择租赁物",
+     "rules": [
+      "c747-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "承租人依赖出租人的技能确定租赁物，或者出租人干预选择租赁物的，出租人不能免责",
+     "rules": [
+      "c747-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "租赁物不符合约定或者不符合使用目的的，出租人不承担责任",
+     "rules": [
+      "c747-1"
+     ]
+    },
+    {
+     "text": "但书情形下，出租人仍应就租赁物不符合约定或使用目的承担责任",
+     "rules": [
+      "c747-exc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "但书（承租人依赖出租人技能确定租赁物、出租人干预选择租赁物）优先于出租人免责的一般规则",
+     "rules": [
+      "c747-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条免除的是租赁合同中出租人对租赁物的瑕疵担保责任，前提是租赁物由承租人自行选择；若出租人以其技能影响或干预了选择，则回归一般违约责任（学理说明，条文未展开）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c747-1",
+    "srcs": [
+     "art747-1"
+    ],
+    "body": [
+     "landlordOf(A,K)",
+     "tenantOf(B,K)",
+     {
+      "or": [
+       "leasedThingNonConforming(T,K)",
+       "leasedThingUnfitForPurpose(T,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "-liableForLeasedThingDefect(A,T)"
+    ],
+    "note": "租赁物不符合约定或者不符合使用目的的，出租人不承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c747-exc",
+    "srcs": [
+     "art747-1"
+    ],
+    "body": [
+     "landlordOf(A,K)",
+     "tenantOf(B,K)",
+     {
+      "or": [
+       "leasedThingNonConforming(T,K)",
+       "leasedThingUnfitForPurpose(T,K)"
+      ]
+     },
+     {
+      "or": [
+       "reliesOnLessorSkill(B,A,T)",
+       "lessorIntervenesInSelection(A,B,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "liableForLeasedThingDefect(A,T)"
+    ],
+    "note": "但书：承租人依赖出租人的技能确定租赁物，或者出租人干预选择租赁物的，出租人仍应承担责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c747-exc",
+    "c747-1",
+    "第747条但书：承租人依赖出租人的技能确定租赁物或者出租人干预选择租赁物的，排除出租人的免责"
+   ]
+  ],
+  "predicates": {
+   "leasedThingNonConforming": "租赁物不符合约定（参数1：租赁物，参数2：租赁合同）",
+   "leasedThingUnfitForPurpose": "租赁物不符合使用目的（参数1：租赁物，参数2：租赁合同）",
+   "reliesOnLessorSkill": "承租人依赖出租人的技能确定租赁物（承租人，出租人，租赁物）",
+   "lessorIntervenesInSelection": "出租人干预选择租赁物（出租人，承租人，租赁物）",
+   "liableForLeasedThingDefect": "就租赁物不符合约定或者不符合使用目的承担责任（出租人，租赁物）"
+  }
+ },
+ "art:743": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同中，出租人在何种情形下须对承租人索赔失败或受损承担责任，以及责任的性质与范围",
+     "rules": [
+      "c743-1-ground",
+      "c743-1",
+      "c743-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出租人明知租赁物有质量瑕疵而不告知承租人，或者承租人行使索赔权利时未及时提供必要协助",
+     "rules": [
+      "c743-1-ground"
+     ]
+    },
+    {
+     "text": "上述情形致使承租人对出卖人行使索赔权利失败",
+     "rules": [
+      "c743-1-ground"
+     ]
+    },
+    {
+     "text": "出租人怠于行使只能由其自己对出卖人行使的索赔权利，并因此造成承租人损失",
+     "rules": [
+      "c743-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "出租人已告知质量瑕疵，或已及时提供必要协助的，不构成第1款所列情形；索赔失败与出租人行为无因果关系的，亦不适用第1款（属对要件本身的否定，不另设规则）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "第1款情形下，承租人有权请求出租人承担“相应的责任”（与出租人过错及原因力相当的责任）",
+     "rules": [
+      "c743-1"
+     ]
+    },
+    {
+     "text": "第2款情形下，承租人有权请求出租人承担赔偿责任（就承租人因索赔权未行使所受损失）",
+     "rules": [
+      "c743-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1款（妨碍承租人索赔）与第2款（怠于行使专属索赔权）各自独立适用，同一事实同时满足两款时，承租人可择一或并行主张，互不排除",
+     "rules": [
+      "c743-1",
+      "c743-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第747条为一般规则：租赁物不符合约定或不符合使用目的的，出租人不承担责任（承租人依赖出租人技能确定租赁物或出租人干预选择的除外）；本条第1款是该一般规则之外，出租人因妨碍承租人索赔而负责的特别情形",
+     "rules": []
+    },
+    {
+     "text": "第741条规定承租人行使索赔权利时出租人应当协助；本条第1款第2项即该协助义务（附随义务）的违反后果，第1项则是违反诚信告知义务的后果",
+     "rules": []
+    },
+    {
+     "text": "第2款针对的是“只能由出租人对出卖人行使”的索赔权（未约定由承租人索赔或约定仅由出租人行使），与第1款针对承租人自己索赔受阻的情形不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c743-1-ground",
+    "srcs": [
+     "art743-1"
+    ],
+    "body": [
+     "financialLease(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "leasedPropertyOf(P,K)",
+     {
+      "or": [
+       "knowsQualityDefect(L,P) failsToInformOfDefect(L,T,P)",
+       "failsToAssistTimely(L,T)"
+      ]
+     },
+     "claimAgainstSellerFails(T)"
+    ],
+    "heads": [
+     "lessorCausesClaimFailure(L,T,K)"
+    ],
+    "note": "第1款要件：出租人明知租赁物有质量瑕疵而不告知承租人，或承租人行使索赔权利时未及时提供必要协助，且因此致使承租人索赔失败",
+    "auth": "npc"
+   },
+   {
+    "key": "c743-1",
+    "srcs": [
+     "art743-1"
+    ],
+    "body": [
+     "lessorCausesClaimFailure(L,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "claimCorrespondingLiabilityFromLessor(T,L,K)"
+     }
+    ],
+    "note": "第1款效果：承租人有权请求出租人承担相应的责任（非全额赔偿，按原因力与过错确定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c743-2",
+    "srcs": [
+     "art743-2"
+    ],
+    "body": [
+     "financialLease(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "claimOnlyLessorMayExercise(L,K)",
+     "dilatoryInClaimAgainstSeller(L,K)",
+     "causesLossTo(L,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "claimCompensationFrom(T,L,K)"
+     }
+    ],
+    "note": "第2款：出租人怠于行使只能由其自己对出卖人行使的索赔权利，造成承租人损失的，承租人有权请求出租人承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLease": "是融资租赁合同（1个参数：合同）",
+   "lessorOf": "是融资租赁合同的出租人（2个参数：出租人，合同）",
+   "lesseeOf": "是融资租赁合同的承租人（2个参数：承租人，合同）",
+   "leasedPropertyOf": "是融资租赁合同项下的租赁物（2个参数：租赁物，合同）",
+   "knowsQualityDefect": "明知租赁物有质量瑕疵（2个参数：出租人，租赁物）",
+   "failsToInformOfDefect": "未将租赁物质量瑕疵告知承租人（3个参数：出租人，承租人，租赁物）",
+   "failsToAssistTimely": "承租人行使索赔权利时未及时提供必要协助（2个参数：出租人，承租人）",
+   "claimAgainstSellerFails": "承租人对出卖人行使索赔权利失败（1个参数：承租人）",
+   "lessorCausesClaimFailure": "因第743条第1款所列情形致使承租人索赔失败（3个参数：出租人，承租人，合同）",
+   "claimOnlyLessorMayExercise": "该对出卖人的索赔权利只能由出租人行使（2个参数：出租人，合同）",
+   "dilatoryInClaimAgainstSeller": "怠于行使其对出卖人的索赔权利（2个参数：出租人，合同）",
+   "claimCorrespondingLiabilityFromLessor": "请求出租人承担相应的责任（3个参数：承租人，出租人，合同）"
+  }
+ },
+ "art:749": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承租人占有租赁物期间，租赁物造成第三人人身损害或者财产损失的，出租人是否承担民事责任",
+     "rules": [
+      "c749-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承租人依租赁合同占有租赁物（即处于承租人占有租赁物期间）",
+     "rules": [
+      "c749-1"
+     ]
+    },
+    {
+     "text": "租赁物造成第三人人身损害或者财产损失（二者之一即可）",
+     "rules": [
+      "c749-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出租人对该第三人不承担民事责任（责任不因物的归属而由非占有的出租人承担）",
+     "rules": [
+      "c749-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是租赁物致害的特别规定，优先于侵权责任编一般过错责任规则（第1165条）适用",
+     "rules": [
+      "c749-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只免除出租人（非占有人）的责任；承租人作为租赁物的占有人、控制人，其对第三人的责任应依侵权责任编另行判断（学理，条文未写）",
+     "rules": []
+    },
+    {
+     "text": "与第1209条机动车租赁、借用致害规则不同：机动车致害由使用人承担赔偿责任，所有人、管理人仅在有过错时承担相应责任；本条对一般租赁物则直接规定出租人不承担责任",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c749-1",
+    "srcs": [
+     "art749-1"
+    ],
+    "body": [
+     "landlordOf(L,T)",
+     "tenantPossessesUnderLease(T)",
+     {
+      "or": [
+       "leasedThingCausesPersonalInjury(T,X)",
+       "leasedThingCausesPropertyLoss(T,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-bearsLiabilityFor(L,X)"
+    ],
+    "note": "承租人占有租赁物期间，租赁物造成第三人人身损害或者财产损失的，出租人对该第三人不承担责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c749-1",
+    "c1165-1",
+    "第749条是租赁物致害的特别规定，优先于侵权责任编一般过错责任规则"
+   ]
+  ],
+  "predicates": {
+   "leasedThingCausesPersonalInjury": "租赁物造成第三人人身损害（租赁物，第三人）",
+   "leasedThingCausesPropertyLoss": "租赁物造成第三人财产损失（租赁物，第三人）"
+  }
+ },
+ "art:750": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同项下，承租人对租赁物负有何种保管、使用与维修义务",
+     "rules": [
+      "c750-1",
+      "c750-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方是融资租赁合同的承租人，标的物为该合同项下的租赁物",
+     "rules": [
+      "c750-1",
+      "c750-2"
+     ]
+    },
+    {
+     "text": "第2款的维修义务以承租人占有租赁物为期间限制",
+     "rules": [
+      "c750-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人应当妥善保管、使用租赁物（对出租人负担）",
+     "rules": [
+      "c750-1"
+     ]
+    },
+    {
+     "text": "承租人应当履行占有租赁物期间的维修义务（对出租人负担）",
+     "rules": [
+      "c750-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条位于融资租赁合同章，承租人是融资租赁承租人；与普通租赁中出租人负担维修义务（第712条）、承租人仅负妥善保管义务（第714条）不同，本条把占有期间的维修义务分配给承租人",
+     "rules": []
+    },
+    {
+     "text": "本条只规定义务本身，未规定违反义务的赔偿责任或租金效果；相关后果分别由其他条文（如第751条）处理，本行不作形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c750-1",
+    "srcs": [
+     "art750-1"
+    ],
+    "body": [
+     "tenantOf(T,K)",
+     "leasedProperty(X,K)",
+     "landlordOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "safelyKeepAndUse(T,X)"
+     }
+    ],
+    "note": "承租人应当妥善保管、使用租赁物",
+    "auth": "npc"
+   },
+   {
+    "key": "c750-2",
+    "srcs": [
+     "art750-2"
+    ],
+    "body": [
+     "tenantOf(T,K)",
+     "leasedProperty(X,K)",
+     "landlordOf(L,K)",
+     "possessesLeasedProperty(T,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "maintainLeasedProperty(T,X)"
+     }
+    ],
+    "note": "承租人应当履行占有租赁物期间的维修义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "leasedProperty": "是（融资）租赁合同项下的租赁物（参数1：租赁物；参数2：合同）",
+   "possessesLeasedProperty": "占有租赁物（参数1：承租人；参数2：租赁物）",
+   "safelyKeepAndUse": "妥善保管、使用租赁物（参数1：承租人；参数2：租赁物）",
+   "maintainLeasedProperty": "履行租赁物的维修义务（参数1：承租人；参数2：租赁物）"
+  }
+ },
+ "art:748": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "出租人违反保证承租人对租赁物占有和使用的义务时，承租人可否请求赔偿损失",
+     "rules": [
+      "c748-1",
+      "c748-g1",
+      "c748-g2",
+      "c748-g3",
+      "c748-g4",
+      "c748-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出租人与承租人之间存在租赁关系，标的物为租赁物",
+     "rules": [
+      "c748-1",
+      "c748-g1"
+     ]
+    },
+    {
+     "text": "出租人无正当理由收回租赁物",
+     "rules": [
+      "c748-g1"
+     ]
+    },
+    {
+     "text": "出租人无正当理由妨碍、干扰承租人对租赁物的占有和使用",
+     "rules": [
+      "c748-g2"
+     ]
+    },
+    {
+     "text": "因出租人的原因致使第三人对租赁物主张权利",
+     "rules": [
+      "c748-g3"
+     ]
+    },
+    {
+     "text": "不当影响承租人对租赁物占有和使用的其他情形",
+     "rules": [
+      "c748-g4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "出租人有正当理由的，收回租赁物或者妨碍、干扰占有使用不属于第2款第1项、第2项情形",
+     "rules": [
+      "c748-g1",
+      "c748-g2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人应当保证承租人对租赁物的占有和使用",
+     "rules": [
+      "c748-1"
+     ]
+    },
+    {
+     "text": "有第2款所列情形之一的，承租人有权请求出租人赔偿损失",
+     "rules": [
+      "c748-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号；本条只规定出租人对承租人占有、使用的保障义务及违反时的赔偿损失请求权，未涉及租金、维修、解除等事项",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c748-1",
+    "srcs": [
+     "art748-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(A,L)",
+     "tenantOf(B,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "ensurePossessionAndUse(A,B,T)"
+     }
+    ],
+    "note": "出租人应当保证承租人对租赁物的占有和使用",
+    "auth": "npc"
+   },
+   {
+    "key": "c748-g1",
+    "srcs": [
+     "art748-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(A,L)",
+     "tenantOf(B,L)",
+     "reclaimsLeasedThing(A,B,T)",
+     "~justifiedReason(A)"
+    ],
+    "heads": [
+     "landlordBreachOfPossessionDuty(A,B,T)"
+    ],
+    "note": "无正当理由收回租赁物的，构成违反占有使用保障义务（第2款第1项）",
+    "auth": "npc"
+   },
+   {
+    "key": "c748-g2",
+    "srcs": [
+     "art748-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(A,L)",
+     "tenantOf(B,L)",
+     "obstructsPossessionOrUse(A,B,T)",
+     "~justifiedReason(A)"
+    ],
+    "heads": [
+     "landlordBreachOfPossessionDuty(A,B,T)"
+    ],
+    "note": "无正当理由妨碍、干扰承租人对租赁物占有和使用的，构成违反该义务（第2款第2项）",
+    "auth": "npc"
+   },
+   {
+    "key": "c748-g3",
+    "srcs": [
+     "art748-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(A,L)",
+     "tenantOf(B,L)",
+     "thirdPartyClaimsLeasedThingDueToLandlord(A,B,T)"
+    ],
+    "heads": [
+     "landlordBreachOfPossessionDuty(A,B,T)"
+    ],
+    "note": "因出租人的原因致使第三人对租赁物主张权利的，构成违反该义务（第2款第3项）",
+    "auth": "npc"
+   },
+   {
+    "key": "c748-g4",
+    "srcs": [
+     "art748-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(A,L)",
+     "tenantOf(B,L)",
+     "otherImproperAffectsPossessionOrUse(A,B,T)"
+    ],
+    "heads": [
+     "landlordBreachOfPossessionDuty(A,B,T)"
+    ],
+    "note": "不当影响承租人对租赁物占有和使用的其他情形，构成违反该义务（第2款第4项兜底）",
+    "auth": "npc"
+   },
+   {
+    "key": "c748-2",
+    "srcs": [
+     "art748-2"
+    ],
+    "body": [
+     "landlordBreachOfPossessionDuty(A,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimDamagesFrom(B,A,T)"
+     }
+    ],
+    "note": "有第2款所列情形之一的，承租人有权请求出租人赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "ensurePossessionAndUse": "保证承租人对租赁物的占有和使用（出租人，承租人，租赁物）",
+   "reclaimsLeasedThing": "收回租赁物（出租人，承租人，租赁物）",
+   "obstructsPossessionOrUse": "妨碍、干扰承租人对租赁物的占有和使用（出租人，承租人，租赁物）",
+   "thirdPartyClaimsLeasedThingDueToLandlord": "因出租人的原因致使第三人对租赁物主张权利（出租人，承租人，租赁物）",
+   "otherImproperAffectsPossessionOrUse": "不当影响承租人对租赁物占有和使用的其他情形（出租人，承租人，租赁物）",
+   "landlordBreachOfPossessionDuty": "出租人违反保证承租人占有和使用租赁物的义务（出租人，承租人，租赁物）",
+   "claimDamagesFrom": "请求赔偿（承租人，出租人，租赁物）"
+  }
+ },
+ "art:753": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同的承租人未经出租人同意处分租赁物的，出租人是否可以解除融资租赁合同",
+     "rules": [
+      "c753-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同，实施处分的一方是该合同的承租人，主张解除的一方是该合同的出租人",
+     "rules": [
+      "c753-1"
+     ]
+    },
+    {
+     "text": "承租人将租赁物转让、抵押、质押、投资入股或者以其他方式处分",
+     "rules": [
+      "c753-dispose"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "承租人经出租人同意而处分的，不属于本款情形，出租人不得据此解除",
+     "rules": [
+      "c753-dispose"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人可以解除融资租赁合同",
+     "rules": [
+      "c753-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条位于融资租赁合同一章，仅适用于融资租赁；一般租赁中承租人未经同意转租等的解除权另依第716条等规定，不在本条范围",
+     "rules": []
+    },
+    {
+     "text": "本款只赋予出租人解除权，未规定处分行为本身的效力；租赁物所有权属于出租人，承租人擅自处分的效力另依无权处分等规则判断",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c753-dispose",
+    "srcs": [
+     "art753-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lesseeOf(L,K)",
+     {
+      "or": [
+       "transfersLeasedProperty(L,K)",
+       "mortgagesLeasedProperty(L,K)",
+       "pledgesLeasedProperty(L,K)",
+       "investsLeasedPropertyAsShares(L,K)",
+       "otherwiseDisposesLeasedProperty(L,K)"
+      ]
+     },
+     "~consentedByLessor(L,K)"
+    ],
+    "heads": [
+     "disposesLeasedPropertyWithoutConsent(L,K)"
+    ],
+    "note": "承租人未经出租人同意，将租赁物转让、抵押、质押、投资入股或者以其他方式处分的，构成擅自处分租赁物；经出租人同意的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c753-1",
+    "srcs": [
+     "art753-1"
+    ],
+    "body": [
+     "financialLeasingContract(K)",
+     "lessorOf(R,K)",
+     "disposesLeasedPropertyWithoutConsent(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "L",
+      "content": "terminate(R,K)"
+     }
+    ],
+    "note": "承租人未经出租人同意处分租赁物的，出租人可以解除融资租赁合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeasingContract": "是融资租赁合同（1个参数：合同）",
+   "lesseeOf": "是该融资租赁合同的承租人（参数：承租人，合同）",
+   "lessorOf": "是该融资租赁合同的出租人（参数：出租人，合同）",
+   "transfersLeasedProperty": "将租赁物转让（参数：承租人，合同）",
+   "mortgagesLeasedProperty": "将租赁物抵押（参数：承租人，合同）",
+   "pledgesLeasedProperty": "将租赁物质押（参数：承租人，合同）",
+   "investsLeasedPropertyAsShares": "以租赁物投资入股（参数：承租人，合同）",
+   "otherwiseDisposesLeasedProperty": "以其他方式处分租赁物（参数：承租人，合同）",
+   "consentedByLessor": "经出租人同意（参数：承租人，合同）",
+   "disposesLeasedPropertyWithoutConsent": "未经出租人同意处分租赁物（参数：承租人，合同）"
+  }
+ },
+ "art:752": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同的承租人经催告后在合理期限内仍不支付租金的，出租人可否请求支付全部租金，或者解除合同、收回租赁物",
+     "rules": [
+      "c752-1",
+      "c752-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同，T 为承租人、L 为出租人",
+     "rules": [
+      "c752-1",
+      "c752-2"
+     ]
+    },
+    {
+     "text": "承租人拖欠租金，且经催告后在合理期限内仍不支付",
+     "rules": [
+      "c752-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人应当按照约定支付租金",
+     "rules": [
+      "c752-1"
+     ]
+    },
+    {
+     "text": "出租人可以请求支付全部租金（未到期租金加速到期）",
+     "rules": [
+      "c752-2"
+     ]
+    },
+    {
+     "text": "出租人也可以解除合同、收回租赁物",
+     "rules": [
+      "c752-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "法条以“也可以”并列两种救济，学理上认为出租人应择一行使，不宜既请求支付全部租金又解除合同；法条本身未规定同时行使的后果，故不设优先规则",
+     "rules": []
+    },
+    {
+     "text": "“经催告后在合理期限内仍不支付租金”是行使本条救济的前提；催告前出租人只能依约请求到期租金，不能径行请求全部租金或解除合同",
+     "rules": [
+      "c752-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c752-1",
+    "srcs": [
+     "art752-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "tenantOf(T,K)",
+     "landlordOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "payRentPerAgreement(T,L,K)"
+     }
+    ],
+    "note": "融资租赁合同的承租人应当按照约定向出租人支付租金",
+    "auth": "npc"
+   },
+   {
+    "key": "c752-2",
+    "srcs": [
+     "art752-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "tenantOf(T,K)",
+     "landlordOf(L,K)",
+     "owesRent(T,L)",
+     "stillNotPerformedAfterDemand(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "demandAllRent(L,T,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "terminate(L,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "recoverLeasedItem(L,T,K)"
+     }
+    ],
+    "note": "承租人经催告后在合理期限内仍不支付租金的，出租人可以请求支付全部租金（含未到期租金），也可以解除合同并收回租赁物",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeaseContract": "融资租赁合同（出租人依承租人对出卖人、租赁物的选择购买租赁物并提供给承租人使用，承租人支付租金）",
+   "financialLeaseContract/1": "融资租赁合同（出租人依承租人对出卖人、租赁物的选择购买租赁物并提供给承租人使用，承租人支付租金）",
+   "payRentPerAgreement": "按照约定支付租金（承租人，出租人，合同）",
+   "payRentPerAgreement/3": "按照约定支付租金（承租人，出租人，合同）",
+   "demandAllRent": "请求支付全部租金，包括未到期租金（出租人，承租人，合同）",
+   "demandAllRent/3": "请求支付全部租金，包括未到期租金（出租人，承租人，合同）",
+   "recoverLeasedItem": "收回租赁物（出租人，承租人，合同）",
+   "recoverLeasedItem/3": "收回租赁物（出租人，承租人，合同）"
+  }
+ },
+ "art:754": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同在何种情形下，出租人或者承租人可以解除",
+     "rules": [
+      "c754-ground-1",
+      "c754-ground-2",
+      "c754-ground-3",
+      "c754-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出租人与出卖人订立的买卖合同解除、被确认无效或者被撤销，且未能重新订立买卖合同",
+     "rules": [
+      "c754-ground-1"
+     ]
+    },
+    {
+     "text": "租赁物因不可归责于当事人的原因毁损、灭失，且不能修复或者确定替代物",
+     "rules": [
+      "c754-ground-2"
+     ]
+    },
+    {
+     "text": "因出卖人的原因致使融资租赁合同的目的不能实现",
+     "rules": [
+      "c754-ground-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出租人可以解除融资租赁合同",
+     "rules": [
+      "c754-1"
+     ]
+    },
+    {
+     "text": "承租人可以解除融资租赁合同",
+     "rules": [
+      "c754-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记未引用原文或条号，未提供可区分的体系说明；本条是融资租赁合同的特别法定解除事由，与第563条一般法定解除并列，不以一般法定解除事由为条件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c754-ground-1",
+    "srcs": [
+     "art754-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "saleContractFor(S,K)",
+     "saleContractTerminatedOrInvalid(S)",
+     "notRenewedSaleContract(K)"
+    ],
+    "heads": [
+     "financialLeaseTerminationGround(K)"
+    ],
+    "note": "出租人与出卖人订立的买卖合同解除、被确认无效或者被撤销，且未能重新订立买卖合同的，构成解除事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c754-ground-2",
+    "srcs": [
+     "art754-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "leasedThing(X,K)",
+     "destroyedNotAttributableToParties(X,K)",
+     "cannotRepairOrSubstitute(X,K)"
+    ],
+    "heads": [
+     "financialLeaseTerminationGround(K)"
+    ],
+    "note": "租赁物因不可归责于当事人的原因毁损、灭失，且不能修复或者确定替代物的，构成解除事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c754-ground-3",
+    "srcs": [
+     "art754-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "saleContractFor(S,K)",
+     "sellerOf(Seller,S)",
+     "sellerCausesPurposeFailure(Seller,K)"
+    ],
+    "heads": [
+     "financialLeaseTerminationGround(K)"
+    ],
+    "note": "因出卖人的原因致使融资租赁合同的目的不能实现的，构成解除事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c754-1",
+    "srcs": [
+     "art754-1"
+    ],
+    "body": [
+     "financialLeaseTerminationGround(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "terminate(L,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "T",
+      "counterparty": "L",
+      "content": "terminate(T,K)"
+     }
+    ],
+    "note": "有本条所列情形之一的，出租人或者承租人均可以解除融资租赁合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（参数：合同）",
+   "lessorOf": "是融资租赁合同的出租人（参数：出租人，合同）",
+   "lesseeOf": "是融资租赁合同的承租人（参数：承租人，合同）",
+   "saleContractFor": "是为该融资租赁合同提供租赁物、由出租人与出卖人订立的买卖合同（参数：买卖合同，融资租赁合同）",
+   "saleContractTerminatedOrInvalid": "买卖合同已解除、被确认无效或者被撤销（参数：买卖合同）",
+   "notRenewedSaleContract": "未能重新订立买卖合同（参数：融资租赁合同）",
+   "leasedThing": "是融资租赁合同的租赁物（参数：租赁物，合同）",
+   "destroyedNotAttributableToParties": "租赁物因不可归责于当事人的原因毁损、灭失（参数：租赁物，合同）",
+   "cannotRepairOrSubstitute": "租赁物不能修复或者不能确定替代物（参数：租赁物，合同）",
+   "sellerCausesPurposeFailure": "因出卖人的原因致使融资租赁合同目的不能实现（参数：出卖人，融资租赁合同）",
+   "financialLeaseTerminationGround": "存在第754条第1款规定的融资租赁合同解除事由（参数：合同）"
+  }
+ },
+ "art:755": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同因买卖合同解除、被确认无效或者被撤销而解除时，出租人可否请求承租人赔偿相应损失，以及损失已获赔偿时承租人是否仍须赔偿",
+     "rules": [
+      "c755-1",
+      "c755-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "融资租赁合同因买卖合同解除、被确认无效或者被撤销而解除",
+     "rules": [
+      "c755-1",
+      "c755-2"
+     ]
+    },
+    {
+     "text": "出卖人、租赁物系由承租人选择",
+     "rules": [
+      "c755-1"
+     ]
+    },
+    {
+     "text": "出租人的损失已经在买卖合同解除、被确认无效或者被撤销时获得赔偿",
+     "rules": [
+      "c755-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因出租人原因致使买卖合同解除、被确认无效或者被撤销的，出租人无权请求承租人赔偿（但书）",
+     "rules": [
+      "c755-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人有权请求承租人赔偿相应损失，承租人承担相应的赔偿责任",
+     "rules": [
+      "c755-1"
+     ]
+    },
+    {
+     "text": "出租人的损失已获赔偿的，承租人不再承担相应的赔偿责任",
+     "rules": [
+      "c755-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款（损失已获赔偿）优先于第1款的赔偿请求权，承租人相应赔偿责任被排除",
+     "rules": [
+      "c755-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决买卖合同瑕疵导致融资租赁合同解除时的损失分配，且以出卖人、租赁物由承租人选择为前提；出卖人、租赁物非由承租人选择的，不能依本条向承租人求偿（依文义，笔记未涉及）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c755-1",
+    "srcs": [
+     "art755-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "saleContractRescindedVoidOrRevoked(S)",
+     "terminatedDueToSaleContract(K,S)",
+     "sellerChosenByLessee(S,K)",
+     "subjectMatterChosenByLessee(M,K)",
+     "~causedByLessor(S,L)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "claimCompensationFromLessee(L,T)"
+     },
+     "liableForCompensation(T,L,K)"
+    ],
+    "note": "融资租赁合同因买卖合同解除、被确认无效或者被撤销而解除，出卖人、租赁物系由承租人选择的，出租人有权请求承租人赔偿相应损失；因出租人原因致买卖合同解除、无效或被撤销的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c755-2",
+    "srcs": [
+     "art755-2"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "lessorOf(L,K)",
+     "lesseeOf(T,K)",
+     "saleContractRescindedVoidOrRevoked(S)",
+     "terminatedDueToSaleContract(K,S)",
+     "lossCompensated(L,S)"
+    ],
+    "heads": [
+     "-liableForCompensation(T,L,K)"
+    ],
+    "note": "出租人的损失已经在买卖合同解除、被确认无效或者被撤销时获得赔偿的，承租人不再承担相应的赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c755-2",
+    "c755-1",
+    "出租人的损失已在买卖合同解除、被确认无效或者被撤销时获得赔偿的，承租人不再承担相应的赔偿责任，排除第1款的赔偿请求权"
+   ]
+  ],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（参数：合同）",
+   "lessorOf": "是出租人（出租人，融资租赁合同）",
+   "lesseeOf": "是承租人（承租人，融资租赁合同）",
+   "saleContractRescindedVoidOrRevoked": "买卖合同被解除、被确认无效或者被撤销（参数：买卖合同）",
+   "terminatedDueToSaleContract": "融资租赁合同因买卖合同解除、被确认无效或者被撤销而解除（融资租赁合同，买卖合同）",
+   "sellerChosenByLessee": "出卖人系由承租人选择（出卖人，融资租赁合同）",
+   "subjectMatterChosenByLessee": "租赁物系由承租人选择（租赁物，融资租赁合同）",
+   "causedByLessor": "因出租人原因致使买卖合同解除、被确认无效或者被撤销（买卖合同，出租人）",
+   "lossCompensated": "出租人的损失已在买卖合同解除、被确认无效或者被撤销时获得赔偿（出租人，买卖合同）",
+   "claimCompensationFromLessee": "请求承租人赔偿相应损失（出租人，承租人）",
+   "liableForCompensation": "承担相应的赔偿责任（承租人，出租人，融资租赁合同）"
+  }
+ },
+ "art:757": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同租赁期限届满时，租赁物归谁所有",
+     "rules": [
+      "c757-1",
+      "c757-agreed",
+      "c757-default"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同关系（出租人、承租人、租赁物）",
+     "rules": [
+      "c757-1",
+      "c757-agreed",
+      "c757-default"
+     ]
+    },
+    {
+     "text": "当事人已就租赁期限届满时租赁物的归属作出明确约定，并约定归某一方",
+     "rules": [
+      "c757-agreed"
+     ]
+    },
+    {
+     "text": "对租赁物的归属没有约定或者约定不明确，且依据第510条的规定仍不能确定",
+     "rules": [
+      "c757-default"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人已明确约定归属，或者虽无约定、约定不明确但依第510条可以确定的，不适用“归出租人”的默认规则",
+     "rules": [
+      "c757-default"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人和承租人可以约定租赁期限届满租赁物的归属",
+     "rules": [
+      "c757-1"
+     ]
+    },
+    {
+     "text": "有约定的，租赁物所有权按约定归该方",
+     "rules": [
+      "c757-agreed"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确，依第510条仍不能确定的，租赁物的所有权归出租人",
+     "rules": [
+      "c757-default"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人的约定优先于本条法定默认归属规则",
+     "rules": [
+      "c757-agreed",
+      "c757-default"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条仅适用于融资租赁合同；普通租赁合同的租赁物本属出租人，无须适用本条的默认归属规则",
+     "rules": []
+    },
+    {
+     "text": "第510条只是补充确定方法，本行未挂载其原文，故仅以谓词 determinablePerArt510 表示“依第510条仍可确定”，不另设规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c757-1",
+    "srcs": [
+     "art757-1"
+    ],
+    "body": [
+     "financeLease(K,A,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "agreeOnOwnershipAtExpiry(K,T)"
+     }
+    ],
+    "note": "出租人和承租人可以约定租赁期限届满租赁物的归属",
+    "auth": "npc"
+   },
+   {
+    "key": "c757-agreed",
+    "srcs": [
+     "art757-1"
+    ],
+    "body": [
+     "financeLease(K,A,B,T)",
+     "agreedOwnerAtExpiry(K,X,T)"
+    ],
+    "heads": [
+     "ownerOf(X,T)"
+    ],
+    "note": "当事人约定租赁期限届满租赁物归某方的，该方取得租赁物所有权（法条只写“可以约定”，约定之归属效果为学理归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c757-default",
+    "srcs": [
+     "art757-1"
+    ],
+    "body": [
+     "financeLease(K,A,B,T)",
+     "~agreedOwnershipAtExpiry(K,T)",
+     "~determinablePerArt510(K)"
+    ],
+    "heads": [
+     "ownerOf(A,T)"
+    ],
+    "note": "对租赁物的归属没有约定或者约定不明确，依据第510条仍不能确定的，租赁物的所有权归出租人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c757-agreed",
+    "c757-default",
+    "当事人对租赁物归属的约定优先于本条“归出租人”的法定默认规则"
+   ]
+  ],
+  "predicates": {
+   "financeLease": "融资租赁合同（合同，出租人，承租人，租赁物）",
+   "agreeOnOwnershipAtExpiry": "约定租赁期限届满时租赁物的归属（合同，租赁物）",
+   "agreedOwnershipAtExpiry": "已就租赁期限届满时租赁物的归属作出明确约定（合同，租赁物）",
+   "agreedOwnerAtExpiry": "约定租赁期限届满时租赁物归其所有的一方（合同，该方，租赁物）"
+  }
+ },
+ "art:759": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同租赁期限届满，当事人约定承租人仅需支付象征性价款的，租赁物所有权归谁",
+     "rules": [
+      "c759-1",
+      "c759-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同，且当事人约定租赁期限届满时承租人仅需向出租人支付象征性价款",
+     "rules": [
+      "c759-1"
+     ]
+    },
+    {
+     "text": "约定的租金义务已履行完毕",
+     "rules": [
+      "c759-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "视为当事人已约定：租金义务履行完毕后，租赁物的所有权归承租人",
+     "rules": [
+      "c759-1"
+     ]
+    },
+    {
+     "text": "租金义务履行完毕后，租赁物所有权归承租人",
+     "rules": [
+      "c759-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条以“当事人约定承租人仅需支付象征性价款”为前提，属租赁物归承租人的特别情形；无此约定或约定不明时，租赁期限届满租赁物归出租人（第758条第1款，本行未挂载该条）",
+     "rules": []
+    },
+    {
+     "text": "笔记仅复述条文，未增设要件；条文用“视为”，故所有权归属为法律拟制，无须当事人另行就所有权归属达成合意",
+     "rules": [
+      "c759-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c759-1",
+    "srcs": [
+     "art759-1"
+    ],
+    "body": [
+     "financeLease(K)",
+     "tenantOf(S,K)",
+     "landlordOf(R,K)",
+     "leasedPropertyOf(P,K)",
+     "agreedNominalPriceOnExpiry(K,S,R)"
+    ],
+    "heads": [
+     "deemedOwnershipToLesseeAfterRentPerformed(K,S,P)"
+    ],
+    "note": "当事人约定租赁期限届满承租人仅需向出租人支付象征性价款的，视为约定租金义务履行完毕后租赁物所有权归承租人",
+    "auth": "npc"
+   },
+   {
+    "key": "c759-2",
+    "srcs": [
+     "art759-1"
+    ],
+    "body": [
+     "deemedOwnershipToLesseeAfterRentPerformed(K,S,P)",
+     "rentObligationPerformed(K,S)"
+    ],
+    "heads": [
+     "belongsTo(P,S)"
+    ],
+    "note": "租金义务履行完毕后，租赁物所有权依该拟制归属承租人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "financeLease": "是融资租赁合同（参数：合同）",
+   "leasedPropertyOf": "是融资租赁合同项下的租赁物（租赁物，合同）",
+   "agreedNominalPriceOnExpiry": "当事人约定租赁期限届满承租人仅需向出租人支付象征性价款（合同，承租人，出租人）",
+   "deemedOwnershipToLesseeAfterRentPerformed": "视为约定租金义务履行完毕后租赁物所有权归承租人（合同，承租人，租赁物）",
+   "rentObligationPerformed": "约定的租金义务已履行完毕（合同，承租人）"
+  }
+ },
+ "art:760": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "融资租赁合同无效时，租赁物归谁所有、由谁返还、承租人是否应补偿出租人",
+     "rules": [
+      "c760-1",
+      "c760-2",
+      "c760-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在融资租赁合同且该合同无效",
+     "rules": [
+      "c760-1",
+      "c760-2",
+      "c760-3"
+     ]
+    },
+    {
+     "text": "当事人就合同无效情形下租赁物的归属有约定",
+     "rules": [
+      "c760-1"
+     ]
+    },
+    {
+     "text": "当事人就合同无效情形下租赁物的归属没有约定或者约定不明确",
+     "rules": [
+      "c760-2",
+      "c760-3"
+     ]
+    },
+    {
+     "text": "因承租人原因致使合同无效，且出租人不请求返还或者返还后会显著降低租赁物效用",
+     "rules": [
+      "c760-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因承租人原因致合同无效，出租人不请求返还或者返还后会显著降低租赁物效用的，不适用“返还出租人”的规则，租赁物所有权归承租人",
+     "rules": [
+      "c760-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有约定的，按当事人的约定确定租赁物归属",
+     "rules": [
+      "c760-1"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确的，承租人应当将租赁物返还出租人",
+     "rules": [
+      "c760-2"
+     ]
+    },
+    {
+     "text": "租赁物所有权归承租人，承租人应当给予出租人合理补偿",
+     "rules": [
+      "c760-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第760条第1款但书（租赁物归承租人并补偿）优先于无约定时“租赁物应当返还出租人”的规则",
+     "rules": [
+      "c760-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把本条拆为“无效时按约定归属／无约定则返还出租人”与“但书：归承租人并合理补偿”两个节点，与法条原文一致；本行无 LEGO 卡片",
+     "rules": []
+    },
+    {
+     "text": "本条只解决合同无效时租赁物的归属与补偿，合同无效的其他后果（返还价款、折价补偿、赔偿损失等）不在本条，另依第157条处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c760-1",
+    "srcs": [
+     "art760-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "void(K)",
+     "agreedLeasedPropertyOwnership(K,L)"
+    ],
+    "heads": [
+     "ownershipDeterminedByAgreement(K,L)"
+    ],
+    "note": "融资租赁合同无效，当事人就该情形下租赁物归属有约定的，按照其约定确定归属",
+    "auth": "npc"
+   },
+   {
+    "key": "c760-2",
+    "srcs": [
+     "art760-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "void(K)",
+     "leasedProperty(K,L)",
+     "lesseeOf(B,K)",
+     "lessorOf(R,K)",
+     "noAgreedOrUnclearOwnership(K,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "R",
+      "content": "returnLeasedProperty(B,L,K)"
+     }
+    ],
+    "note": "合同无效且就租赁物归属没有约定或者约定不明确的，承租人应当将租赁物返还出租人",
+    "auth": "npc"
+   },
+   {
+    "key": "c760-3",
+    "srcs": [
+     "art760-1"
+    ],
+    "body": [
+     "financialLeaseContract(K)",
+     "void(K)",
+     "leasedProperty(K,L)",
+     "lesseeOf(B,K)",
+     "lessorOf(R,K)",
+     "noAgreedOrUnclearOwnership(K,L)",
+     "voidCausedByLessee(K,B)",
+     {
+      "or": [
+       "lessorDoesNotRequestReturn(R,K)",
+       "returnSignificantlyReducesUtility(L,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "belongsTo(L,B)",
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "R",
+      "content": "giveReasonableCompensation(B,R,K)"
+     }
+    ],
+    "note": "但书：因承租人原因致合同无效，出租人不请求返还或者返还后会显著降低租赁物效用的，租赁物所有权归承租人，承租人应当给予出租人合理补偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c760-3",
+    "c760-2",
+    "第760条第1款但书：因承租人原因致合同无效且出租人不请求返还或返还显著降低租赁物效用的，租赁物归承租人，排除返还出租人的义务"
+   ]
+  ],
+  "predicates": {
+   "financialLeaseContract": "是融资租赁合同（1个参数：合同）",
+   "leasedProperty": "是融资租赁合同项下的租赁物（合同，物）",
+   "lessorOf": "是融资租赁合同的出租人（出租人，合同）",
+   "lesseeOf": "是融资租赁合同的承租人（承租人，合同）",
+   "agreedLeasedPropertyOwnership": "当事人就合同无效情形下租赁物的归属有约定（合同，租赁物）",
+   "noAgreedOrUnclearOwnership": "就合同无效情形下租赁物的归属没有约定或者约定不明确（合同，租赁物）",
+   "ownershipDeterminedByAgreement": "租赁物归属按照当事人的约定确定（合同，租赁物）",
+   "voidCausedByLessee": "因承租人原因致使合同无效（合同，承租人）",
+   "lessorDoesNotRequestReturn": "出租人不请求返还租赁物（出租人，合同）",
+   "returnSignificantlyReducesUtility": "返还租赁物会显著降低租赁物的效用（租赁物，合同）",
+   "returnLeasedProperty": "返还租赁物（承租人，租赁物，合同）",
+   "giveReasonableCompensation": "给予合理补偿（承租人，出租人，合同）"
+  }
+ }
+}

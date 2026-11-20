@@ -1,0 +1,2520 @@
+{
+ "card:g1782": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "代理人自己代理、双方代理的效力，以及代理人不履行职责、与相对人恶意串通时的民事责任",
+     "rules": [
+      "c164-1",
+      "c164-2",
+      "c168-1",
+      "c168-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "代理人不履行或者不完全履行代理职责，造成被代理人损害",
+     "rules": [
+      "c164-1"
+     ]
+    },
+    {
+     "text": "代理人与相对人恶意串通，损害被代理人合法权益",
+     "rules": [
+      "c164-2",
+      "c164-2-void"
+     ]
+    },
+    {
+     "text": "代理人以被代理人的名义与自己实施民事法律行为（自己代理）",
+     "rules": [
+      "c168-1",
+      "c168-1-void"
+     ]
+    },
+    {
+     "text": "代理人以被代理人的名义与其同时代理的其他人实施民事法律行为（双方代理）",
+     "rules": [
+      "c168-2",
+      "c168-2-void"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "自己代理经被代理人同意或者追认的，不受禁止",
+     "rules": [
+      "c168-1"
+     ]
+    },
+    {
+     "text": "双方代理经被代理的双方同意或者追认的，不受禁止",
+     "rules": [
+      "c168-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "代理人应当对被代理人承担民事责任",
+     "rules": [
+      "c164-1"
+     ]
+    },
+    {
+     "text": "代理人和相对人应当承担连带责任",
+     "rules": [
+      "c164-2"
+     ]
+    },
+    {
+     "text": "自己代理、双方代理行为原则上无效（学理，法条仅规定“不得”）",
+     "rules": [
+      "c168-1-void",
+      "c168-2-void"
+     ]
+    },
+    {
+     "text": "恶意串通损害被代理人合法权益的行为无效（笔记，依第154条，本行未挂载该条）",
+     "rules": [
+      "c164-2-void"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第164条第2款恶意串通的连带责任属特别规定，优先于第1款不履行职责的一般责任",
+     "rules": [
+      "c164-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记中“超越代理权限”的后果（越权行为对被代理人不发生效力、由代理人承担责任；被代理人知道而不作否认表示的连带责任）属无权代理（第171、172条）范畴，本行未挂载，不形式化",
+     "rules": []
+    },
+    {
+     "text": "转委托须为被代理人利益并经其同意或追认（第169条），与本节代理权行使原则相关但本行未挂载",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把“被代理人知道越权未作否认表示”列为视为同意，系笔记/学理表述，第164、168条均无此规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c164-1",
+    "srcs": [
+     "art164-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "failsAgentDuty(A,P)",
+     "causesDamageTo(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearCivilLiabilityTo(A,P)"
+     }
+    ],
+    "note": "代理人不履行或者不完全履行职责，造成被代理人损害的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-2",
+    "srcs": [
+     "art164-2"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "colludesWithCounterparty(A,R)",
+     "harmsPrincipalRights(A,R,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearJointLiability(A,R,P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "bearJointLiability(R,A,P)"
+     }
+    ],
+    "note": "代理人和相对人恶意串通，损害被代理人合法权益的，二者应当承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-2-void",
+    "srcs": [
+     "art164-2"
+    ],
+    "body": [
+     "colludesWithCounterparty(A,R)",
+     "harmsPrincipalRights(A,R,P)",
+     "actOf(K,A)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "笔记：恶意串通损害被代理人合法权益的民事法律行为无效，其依据是第154条（本行未挂载），故列为学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c168-1",
+    "srcs": [
+     "art168-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "~principalConsentedOrRatified(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "selfDealing(A,P)"
+     }
+    ],
+    "note": "代理人不得以被代理人的名义与自己实施民事法律行为，但被代理人同意或者追认的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c168-1-void",
+    "srcs": [
+     "art168-1"
+    ],
+    "body": [
+     "selfDealingAct(A,P,K)",
+     "-principalConsentedOrRatified(P,A)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "笔记：自己代理行为通常无效，未经被代理人同意或追认时不发生效力；法条本身只规定“不得”",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c168-2",
+    "srcs": [
+     "art168-2"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "agentOf(A,Q)",
+     "~bothPrincipalsConsentedOrRatified(P,Q,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "dualAgency(A,P,Q)"
+     }
+    ],
+    "note": "代理人不得以被代理人的名义与其同时代理的其他人实施民事法律行为，但被代理的双方同意或者追认的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c168-2-void",
+    "srcs": [
+     "art168-2"
+    ],
+    "body": [
+     "dualAgencyAct(A,P,Q,K)",
+     "-bothPrincipalsConsentedOrRatified(P,Q,A)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "笔记：双方代理行为原则上无效，未经被代理的双方同意或追认时不发生效力；法条本身只规定“不得”",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c164-2",
+    "c164-1",
+    "第164条第2款就恶意串通设有连带责任的特别规定，优先于第1款不履行职责的一般责任"
+   ]
+  ],
+  "predicates": {
+   "agentOf": "是代理人（代理人，被代理人）",
+   "failsAgentDuty": "不履行或者不完全履行代理职责（代理人，被代理人）",
+   "bearCivilLiabilityTo": "承担民事责任（承担者，受害人）",
+   "colludesWithCounterparty": "代理人与相对人恶意串通（代理人，相对人）",
+   "harmsPrincipalRights": "损害被代理人合法权益（代理人，相对人，被代理人）",
+   "bearJointLiability": "承担连带责任（责任人，其他连带责任人，权利人）",
+   "principalConsentedOrRatified": "被代理人同意或者追认（被代理人，代理人）",
+   "bothPrincipalsConsentedOrRatified": "被代理的双方均同意或者追认（被代理人，其他被代理人，代理人）",
+   "selfDealing": "以被代理人的名义与自己实施民事法律行为（代理人，被代理人）",
+   "selfDealingAct": "代理人以被代理人的名义与自己实施的民事法律行为（代理人，被代理人，行为）",
+   "dualAgency": "以被代理人的名义与其同时代理的其他人实施民事法律行为（代理人，被代理人，其他被代理人）",
+   "dualAgencyAct": "代理人以被代理人的名义与其同时代理的其他人实施的民事法律行为（代理人，被代理人，其他被代理人，行为）"
+  }
+ },
+ "card:g1809": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "代理人在代理权限内以被代理人名义实施民事法律行为，其效力归属",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "无权代理（无代理权、超越代理权、代理权终止后仍实施代理行为）对被代理人是否发生效力，被代理人、相对人、行为人各有什么权利与责任",
+     "rules": [
+      "c171-ground",
+      "c171-1",
+      "c171-ratify",
+      "c171-2a",
+      "c171-2b",
+      "c171-2c",
+      "c171-2d",
+      "c171-3a",
+      "c171-3b",
+      "c171-3c",
+      "c171-4"
+     ]
+    },
+    {
+     "text": "表见代理的构成与效力",
+     "rules": [
+      "c172-1"
+     ]
+    },
+    {
+     "text": "被代理人死亡（法人、非法人组织终止）后，委托代理人实施的代理行为是否有效",
+     "rules": [
+      "c174-1",
+      "c174-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "代理人在代理权限内，并以被代理人名义实施民事法律行为",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "委托代理授权采用书面形式",
+     "rules": [
+      "c165-1"
+     ]
+    },
+    {
+     "text": "行为人没有代理权、超越代理权或者代理权终止后，仍以被代理人名义实施代理行为",
+     "rules": [
+      "c171-ground"
+     ]
+    },
+    {
+     "text": "相对人善意（不知道且不应当知道行为人无权代理）",
+     "rules": [
+      "c171-2c",
+      "c171-3a",
+      "c171-3b",
+      "c171-3c"
+     ]
+    },
+    {
+     "text": "相对人有理由相信行为人有代理权",
+     "rules": [
+      "c172-1"
+     ]
+    },
+    {
+     "text": "被代理人死亡后，存在下列情形之一：代理人不知且不应知被代理人死亡；继承人予以承认；授权中明确代理权于代理事务完成时终止；被代理人死亡前已实施、为继承人利益继续代理",
+     "rules": [
+      "c174-1"
+     ]
+    },
+    {
+     "text": "作为被代理人的法人、非法人组织终止",
+     "rules": [
+      "c174-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经被代理人追认的，无权代理行为对被代理人不发生效力",
+     "rules": [
+      "c171-1"
+     ]
+    },
+    {
+     "text": "相对人催告后被代理人自收到通知之日起三十日内未作表示的，视为拒绝追认",
+     "rules": [
+      "c171-2b"
+     ]
+    },
+    {
+     "text": "善意相对人请求赔偿的范围不得超过被代理人追认时相对人所能获得的利益",
+     "rules": [
+      "c171-3c"
+     ]
+    },
+    {
+     "text": "相对人知道或者应当知道行为人无权代理的，不享有善意相对人的权利，由相对人和行为人按照各自的过错承担责任",
+     "rules": [
+      "c171-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有权代理的民事法律行为对被代理人发生效力",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "书面授权委托书应当载明代理人的姓名或者名称、代理事项、权限和期限，并由被代理人签名或者盖章",
+     "rules": [
+      "c165-1"
+     ]
+    },
+    {
+     "text": "相对人可以催告被代理人自收到通知之日起三十日内予以追认",
+     "rules": [
+      "c171-2a"
+     ]
+    },
+    {
+     "text": "行为被追认前，善意相对人有撤销的权利；撤销应当以通知的方式作出",
+     "rules": [
+      "c171-2c",
+      "c171-2d"
+     ]
+    },
+    {
+     "text": "行为未被追认的，善意相对人有权请求行为人履行债务，或者就其受到的损害请求行为人赔偿",
+     "rules": [
+      "c171-3a",
+      "c171-3b"
+     ]
+    },
+    {
+     "text": "被代理人追认后，无权代理转为有权代理，对被代理人发生效力",
+     "rules": [
+      "c171-ratify"
+     ]
+    },
+    {
+     "text": "表见代理的代理行为有效，对被代理人发生效力",
+     "rules": [
+      "c172-1"
+     ]
+    },
+    {
+     "text": "被代理人死亡后符合法定情形的，委托代理人实施的代理行为有效；法人、非法人组织终止的参照适用",
+     "rules": [
+      "c174-1",
+      "c174-2"
+     ]
+    },
+    {
+     "text": "因无权代理给被代理人造成损失的，无权代理人应负赔偿责任（笔记观点，民法典未明文）",
+     "rules": [
+      "c171-agent-loss"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "表见代理优先于狭义无权代理：相对人有理由相信行为人有代理权的，代理行为有效，不适用第171条第1款",
+     "rules": [
+      "c172-1",
+      "c171-1"
+     ]
+    },
+    {
+     "text": "经被代理人追认的，优先于“未经追认对被代理人不发生效力”的规则",
+     "rules": [
+      "c171-ratify",
+      "c171-1"
+     ]
+    },
+    {
+     "text": "催告后三十日内未作表示视为拒绝追认，排除追认效果的认定",
+     "rules": [
+      "c171-2b",
+      "c171-ratify"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记称“无权代理是无效行为”，与第171条不符：无权代理为效力待定，未经追认仅“对被代理人不发生效力”，并非无效",
+     "rules": []
+    },
+    {
+     "text": "笔记“被代理人知道他人以本人名义实施民事行为而不作否认的，视为同意他人代理”出自《民法通则》第66条，民法典未保留该规则，不能作为本行的规则",
+     "rules": []
+    },
+    {
+     "text": "越权代理属于本条“超越代理权”的情形；滥用代理权（有代理权但违背本人利益）不适用无权代理规则",
+     "rules": [
+      "c171-ground"
+     ]
+    },
+    {
+     "text": "LEGO卡片所称“外表授权可归责于被代理人”为学理要件，第172条只要求相对人有理由相信行为人有代理权",
+     "rules": [
+      "c172-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c162-1",
+    "srcs": [
+     "art162-1"
+    ],
+    "body": [
+     "withinAuthority(A,P)",
+     "inPrincipalName(A,P,K)"
+    ],
+    "heads": [
+     "bindsPrincipal(K,P)"
+    ],
+    "note": "代理人在代理权限内、以被代理人名义实施的民事法律行为，对被代理人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c165-1",
+    "srcs": [
+     "art165-1"
+    ],
+    "body": [
+     "writtenAuthorization(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "stateAgentNameScopeAndTerm(P,A)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "signOrSealAuthorization(P,A)"
+     }
+    ],
+    "note": "委托代理授权采用书面形式的，授权委托书应当载明代理人姓名或名称、代理事项、权限和期限，并由被代理人签名或盖章",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-ground",
+    "srcs": [
+     "art171-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "noAgencyAuthority(A,P)",
+       "exceedsAuthority(A,P)",
+       "authorityTerminated(A,P)"
+      ]
+     },
+     "performsAgencyAct(A,P,K)"
+    ],
+    "heads": [
+     "unauthorizedAgency(A,P,K)"
+    ],
+    "note": "无代理权、超越代理权或代理权终止后仍以被代理人名义实施代理行为的，构成无权代理",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-1",
+    "srcs": [
+     "art171-1"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "~ratified(P,K)"
+    ],
+    "heads": [
+     "-bindsPrincipal(K,P)"
+    ],
+    "note": "无权代理未经被代理人追认的，对被代理人不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-ratify",
+    "srcs": [
+     "art171-1"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "ratified(P,K)"
+    ],
+    "heads": [
+     "bindsPrincipal(K,P)"
+    ],
+    "note": "第171条第1款的反面解释：经被代理人追认的，无权代理转为有权代理，对被代理人发生效力（笔记同旨）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c171-2a",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "demandRatification(P,K)"
+     }
+    ],
+    "note": "相对人可以催告被代理人自收到通知之日起三十日内予以追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2b",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "demandedRatification(P)",
+     "noAnswerWithin30Days(P)"
+    ],
+    "heads": [
+     "-ratified(P,K)"
+    ],
+    "note": "被代理人自收到催告通知之日起三十日内未作表示的，视为拒绝追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2c",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "inGoodFaith(C,K)",
+     "~ratified(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "revokeUnauthorizedAgencyAct(C,K)"
+     }
+    ],
+    "note": "行为人实施的行为被追认前，善意相对人有撤销的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2d",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "exercisesRevocation(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "revokeByNotice(C,K)"
+     }
+    ],
+    "note": "撤销应当以通知的方式作出",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-3a",
+    "srcs": [
+     "art171-3"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "inGoodFaith(C,K)",
+     "~ratified(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "demandPerformanceFromAgent(C,A)"
+     }
+    ],
+    "note": "行为未被追认的，善意相对人有权请求行为人履行债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-3b",
+    "srcs": [
+     "art171-3"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "inGoodFaith(C,K)",
+     "~ratified(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "claimCompensationFrom(C,A,K)"
+     }
+    ],
+    "note": "行为未被追认的，善意相对人有权就其受到的损害请求行为人赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-3c",
+    "srcs": [
+     "art171-3"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "inGoodFaith(C,K)",
+     "~ratified(P,K)"
+    ],
+    "heads": [
+     "compensationCappedAtRatificationBenefit(C,K)"
+    ],
+    "note": "但书：赔偿范围不得超过被代理人追认时相对人所能获得的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-4",
+    "srcs": [
+     "art171-4"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "knowsOrShouldKnowNoAuthority(C,A,K)"
+    ],
+    "heads": [
+     "bearCorrespondingLiability(A,C,K)"
+    ],
+    "note": "相对人知道或者应当知道行为人无权代理的，相对人和行为人按照各自的过错承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-agent-loss",
+    "srcs": [
+     "art171-3"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "causesLossToPrincipal(A,P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "compensatePrincipalLoss(A,P,K)"
+     }
+    ],
+    "note": "笔记观点：因无权代理造成被代理人损失的，无权代理人应负赔偿责任；民法典第171条未明文规定，仅作学理规则",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c172-1",
+    "srcs": [
+     "art172-1"
+    ],
+    "body": [
+     "unauthorizedAgency(A,P,K)",
+     "counterpartyInAct(C,K)",
+     "hasReasonToBelieveAuthority(C,A,P)"
+    ],
+    "heads": [
+     "bindsPrincipal(K,P)"
+    ],
+    "note": "表见代理：相对人有理由相信行为人有代理权的，代理行为有效，对被代理人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-1",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "dead(P)",
+     "entrustedAgentOf(A,P)",
+     "performsAgencyAct(A,P,K)",
+     {
+      "or": [
+       "agentUnawareOfDeath(A,P)",
+       "heirsRecognize(P,K)",
+       "authorityTerminatesOnCompletion(P,A)",
+       "performedBeforeDeathForHeirs(A,P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "bindsPrincipal(K,P)"
+    ],
+    "note": "被代理人死亡后，代理人不知且不应知死亡、继承人承认、授权明确于事务完成时终止、或死亡前已实施并为继承人利益继续代理的，代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-2",
+    "srcs": [
+     "art174-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalPerson(P)",
+       "unincorporatedOrganization(P)"
+      ]
+     },
+     "principalEntityTerminated(P)"
+    ],
+    "heads": [
+     "applyArticle174ByReference(P)"
+    ],
+    "note": "作为被代理人的法人、非法人组织终止的，参照适用第174条第1款",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c172-1",
+    "c171-1",
+    "表见代理优先于狭义无权代理：相对人有理由相信行为人有代理权时代理行为有效，不适用第171条第1款"
+   ],
+   [
+    "c171-ratify",
+    "c171-1",
+    "经被代理人追认的，无权代理转为有权代理，对被代理人发生效力"
+   ],
+   [
+    "c171-2b",
+    "c171-ratify",
+    "催告后三十日内未作表示视为拒绝追认，排除追认效果的认定"
+   ]
+  ],
+  "predicates": {
+   "withinAuthority": "代理人在代理权限内（代理人，被代理人）",
+   "inPrincipalName": "以被代理人名义实施民事法律行为（代理人，被代理人，行为）",
+   "bindsPrincipal": "该民事法律行为对被代理人发生效力（行为，被代理人）",
+   "writtenAuthorization": "委托代理授权采用书面形式（被代理人，代理人）",
+   "stateAgentNameScopeAndTerm": "授权委托书载明代理人姓名或名称、代理事项、权限和期限（被代理人，代理人）",
+   "signOrSealAuthorization": "被代理人在授权委托书上签名或者盖章（被代理人，代理人）",
+   "noAgencyAuthority": "行为人没有代理权（行为人，被代理人）",
+   "exceedsAuthority": "行为人超越代理权（行为人，被代理人）",
+   "authorityTerminated": "代理权已终止（行为人，被代理人）",
+   "performsAgencyAct": "仍以被代理人名义实施代理行为（行为人，被代理人，行为）",
+   "unauthorizedAgency": "构成无权代理（行为人，被代理人，行为）",
+   "ratified": "被代理人追认该行为（被代理人，行为）",
+   "counterpartyInAct": "是该民事法律行为的相对人（相对人，行为）",
+   "demandRatification": "催告被代理人追认该行为（被代理人，行为）",
+   "revokeUnauthorizedAgencyAct": "撤销该无权代理行为（相对人，行为）",
+   "revokeByNotice": "以通知方式作出撤销（相对人，行为）",
+   "demandPerformanceFromAgent": "请求无权代理人履行债务（相对人，行为人）",
+   "compensationCappedAtRatificationBenefit": "赔偿范围以被代理人追认时相对人所能获得的利益为限（相对人，行为）",
+   "knowsOrShouldKnowNoAuthority": "相对人知道或者应当知道行为人无权代理（相对人，行为人，行为）",
+   "hasReasonToBelieveAuthority": "相对人有理由相信行为人有代理权（相对人，行为人，被代理人）",
+   "entrustedAgentOf": "是委托代理人（代理人，被代理人）",
+   "agentUnawareOfDeath": "代理人不知道且不应当知道被代理人死亡（代理人，被代理人）",
+   "heirsRecognize": "被代理人的继承人予以承认（被代理人，行为）",
+   "authorityTerminatesOnCompletion": "授权中明确代理权在代理事务完成时终止（被代理人，代理人）",
+   "performedBeforeDeathForHeirs": "被代理人死亡前已实施，为被代理人继承人的利益继续代理（代理人，被代理人，行为）",
+   "principalEntityTerminated": "作为被代理人的法人、非法人组织已终止（被代理人）",
+   "applyArticle174ByReference": "参照适用第174条第1款（被代理人）",
+   "causesLossToPrincipal": "因无权代理给被代理人造成损失（行为人，被代理人，行为）",
+   "compensatePrincipalLoss": "赔偿被代理人的损失（行为人，被代理人，行为）"
+  }
+ },
+ "card:g1696": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c161-1：新谓词 implementThroughAgent 需要在 predicates 中给出中文释义",
+   "c161-2：新谓词 personalPerformanceRequiredByLaw 需要在 predicates 中给出中文释义",
+   "c161-2：新谓词 personalPerformanceAgreed 需要在 predicates 中给出中文释义",
+   "c161-2：新谓词 personalPerformanceRequiredByNature 需要在 predicates 中给出中文释义",
+   "c161-2：新谓词 represent 需要在 predicates 中给出中文释义",
+   "c161-doc-personal：新谓词 personalNatureAct 需要在 predicates 中给出中文释义",
+   "c161-doc-personal：新谓词 personalPerformanceRequiredByNature 需要在 predicates 中给出中文释义",
+   "c161-doc-fact：新谓词 factualAct 需要在 predicates 中给出中文释义",
+   "c161-doc-fact：新谓词 agencyAct 需要在 predicates 中给出中文释义",
+   "c163-entrusted：新谓词 entrustedAgent 需要在 predicates 中给出中文释义",
+   "c163-entrusted：新谓词 exerciseAgencyPerEntrustment 需要在 predicates 中给出中文释义",
+   "c163-statutory：新谓词 statutoryAgent 需要在 predicates 中给出中文释义",
+   "c163-statutory：新谓词 exerciseAgencyPerLaw 需要在 predicates 中给出中文释义",
+   "c164-1：新谓词 agentOf 需要在 predicates 中给出中文释义",
+   "c164-1：新谓词 breachesAgencyDuty 需要在 predicates 中给出中文释义",
+   "c164-1：新谓词 causesDamageToPrincipal 需要在 predicates 中给出中文释义",
+   "c164-1：新谓词 bearCivilLiabilityTo 需要在 predicates 中给出中文释义",
+   "c164-2：新谓词 agentOf 需要在 predicates 中给出中文释义",
+   "c164-2：新谓词 maliciouslyColludesWith 需要在 predicates 中给出中文释义",
+   "c164-2：新谓词 harmsPrincipalRights 需要在 predicates 中给出中文释义",
+   "c164-2：新谓词 bearJointLiability 需要在 predicates 中给出中文释义",
+   "c164-2：新谓词 bearJointLiability 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 entrustedAgent 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 unawareOfPrincipalDeath 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 heirsRatified 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 authorizationTerminatesOnCompletion 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 actedBeforeDeathForHeirsInterest 需要在 predicates 中给出中文释义",
+   "c174-1：新谓词 validAgencyAct 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 entrustedAgent 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 principalTerminated 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 unawareOfTermination 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 successorsRatified 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 authorizationTerminatesOnCompletion 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 actedBeforeTerminationForSuccessorsInterest 需要在 predicates 中给出中文释义",
+   "c174-2：新谓词 validAgencyAct 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"哪些民事法律行为可以通过代理人实施，哪些不得代理\",\n        \"rules\": [\"c161-1\", \"c161-2\", \"c161-doc-personal\"]\n      },\n      {\n        \"text\": \"代理的类型（委托代理、法定代理）及代理权的行使依据\",\n        \"rules\": [\"c163-entrusted\", \"c163-statutory\"]\n      },\n      {\n        \"text\": \"代理人不履行职责、与相对人恶意串通时的民事责任\",\n        \"rules\": [\"c164-1\", \"c164-2\"]\n      },\n      {\n        \"text\": \"被代理人死亡（法人、非法人组织终止）后，委托代理人实施的代理行为是否有效\",\n        \"rules\": [\"c174-1\", \"c174-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"民事主体（自然人、法人、非法人组织）实施民事法律行为\",\n        \"rules\": [\"c161-1\"]\n      },\n      {\n        \"text\": \"依法律规定、当事人约定或者民事法律行为的性质，应当由本人亲自实施\",\n        \"rules\": [\"c161-2\", \"c161-doc-personal\"]\n      },\n      {\n        \"text\": \"代理人为委托代理人（依委托取得代理权）或法定代理人（依法律规定取得代理权）\",\n        \"rules\": [\"c163-entrusted\", \"c163-statutory\"]\n      },\n      {\n        \"text\": \"代理人不履行或者不完全履行职责，并造成被代理人损害\",\n        \"rules\": [\"c164-1\"]\n      },\n      {\n        \"text\": \"代理人与相对人恶意串通，损害被代理人合法权益\",\n        \"rules\": [\"c164-2\"]\n      },\n      {\n        \"text\": \"被代理人死亡后，存在第174条第1款四项情形之一：代理人不知且不应知死亡；继承人承认；授权明确代理权于代理事务完成时终止；死亡前已实施并为继承人利益继续代理\",\n        \"rules\": [\"c174-1\"]\n      },\n      {\n        \"text\": \"作为被代理人的法人、非法人组织终止，参照适用第174条第1款\",\n        \"rules\": [\"c174-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"依法律规定、当事人约定或者行为性质应由本人亲自实施的民事法律行为（立遗嘱、婚姻登记、收养子女等具有人身性质的行为，演出、讲课等须亲自为之的行为）不得代理\",\n        \"rules\": [\"c161-2\", \"c161-doc-personal\"]\n      },\n      {\n        \"text\": \"被代理人死亡后，不具备第174条第1款四项情形之一的，委托代理行为不因该条而有效\",\n        \"rules\": [\"c174-1\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"民事主体可以通过代理人实施民事法律行为\",\n        \"rules\": [\"c161-1\"]\n      },\n      {\n        \"text\": \"委托代理人按照被代理人的委托行使代理权；法定代理人依照法律的规定行使代理权\",\n        \"rules\": [\"c163-entrusted\", \"c163-statutory\"]\n      },\n      {\n        \"text\": \"代理人不履行或者不完全履行职责造成被代理人损害的，应当向被代理人承担民事责任\",\n        \"rules\": [\"c164-1\"]\n      },\n      {\n        \"text\": \"代理人和相对人恶意串通损害被代理人合法权益的，代理人和相对人承担连带责任\",\n        \"rules\": [\"c164-2\"]\n      },\n      {\n        \"text\": \"被代理人死亡（法人、非法人组织终止）后具备法定情形的，委托代理人实施的代理行为有效\",\n        \"rules\": [\"c174-1\", \"c174-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"第161条第2款（不得代理）优先于第161条第1款（可以通过代理人实施）\",\n        \"rules\": [\"c161-2\"]\n      },\n      {\n        \"text\": \"第164条第2款恶意串通的连带责任优先于第164条第1款代理人单独承担民事责任的一般规则\",\n        \"rules\": [\"c164-2\"]\n      },\n      {\n        \"text\": \"符合第174条第1款情形的，代理行为有效，不受被代理人死亡的影响\",\n        \"rules\": [\"c174-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第163条第1款将代理分为委托代理与法定代理，属分类性规定，未另设行为规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"代理主要是实施民事法律行为；事实行为（代人算账、代人抄写）不产生对外法律效力，不构成代理\",\n        \"rules\": [\"c161-doc-fact\"]\n      },\n      {\n        \"text\": \"代理是三方（被代理人、代理人、相对人）外部关系，委托合同仅为内部关系；代理人有独立意思表示，中介人仅报告订约机会或充当媒介，不得代委托人签订合同\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"直接代理以被代理人名义，间接代理以代理人自己名义，法律后果均直接或间接由被代理人承受；无代理权属无权代理，不发生代理效果，须经追认\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c161-1\",\n      \"srcs\": [\"art161-1\"],\n      \"body\": [\"civilSubject(S)\", \"actOf(S,X)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"S\", \"counterparty\": null, \"content\": \"implementThroughAgent(S,X)\"}\n      ],\n      \"note\": \"民事主体可以通过代理人实施民事法律行为\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c161-2\",\n      \"srcs\": [\"art161-2\"],\n      \"body\": [\n        {\"or\": [\n          \"personalPerformanceRequiredByLaw(X)\",\n          \"personalPerformanceAgreed(X)\",\n          \"personalPerformanceRequiredByNature(X)\"\n        ]}\n      ],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"anyone\", \"counterparty\": null, \"content\": \"represent(X)\"}\n      ],\n      \"note\": \"依法律规定、当事人约定或者民事法律行为的性质应当由本人亲自实施的民事法律行为，不得代理（bearer 记为任何人）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c161-doc-personal\",\n      \"srcs\": [\"art161-2\"],\n      \"body\": [\"personalNatureAct(X)\"],\n      \"heads\": [\"personalPerformanceRequiredByNature(X)\"],\n      \"note\": \"笔记：立遗嘱、婚姻登记、收养子女等具有人身性质的行为，以及演出、讲课等须亲自为之的行为，性质上应由本人亲自实施\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c161-doc-fact\",\n      \"srcs\": [\"art161-1\"],\n      \"body\": [\"factualAct(X)\"],\n      \"heads\": [\"-agencyAct(X)\"],\n      \"note\": \"笔记：代理主要是实施民事法律行为，代人算账、代人抄写等事实行为不构成代理\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c163-entrusted\",\n      \"srcs\": [\"art163-2\"],\n      \"body\": [\"entrustedAgent(A,P)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"exerciseAgencyPerEntrustment(A,P)\"}\n      ],\n      \"note\": \"委托代理人按照被代理人的委托行使代理权\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c163-statutory\",\n      \"srcs\": [\"art163-2\"],\n      \"body\": [\"statutoryAgent(A,P)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"exerciseAgencyPerLaw(A,P)\"}\n      ],\n      \"note\": \"法定代理人依照法律的规定行使代理权\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c164-1\",\n      \"srcs\": [\"art164-1\"],\n      \"body\": [\n        \"agentOf(A,P)\",\n        \"breachesAgencyDuty(A,P)\",\n        \"causesDamageToPrincipal(A,P)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"bearCivilLiabilityTo(A,P)\"}\n      ],\n      \"note\": \"代理人不履行或者不完全履行职责，造成被代理人损害的，应当承担民事责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c164-2\",\n      \"srcs\": [\"art164-2\"],\n      \"body\": [\n        \"agentOf(A,P)\",\n        \"counterpartyOf(C,P)\",\n        \"maliciouslyColludesWith(A,C)\",\n        \"harmsPrincipalRights(A,C,P)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"bearJointLiability(A,C)\"},\n        {\"type\": \"OBL\", \"bearer\": \"C\", \"counterparty\": \"P\", \"content\": \"bearJointLiability(C,A)\"}\n      ],\n      \"note\": \"代理人和相对人恶意串通，损害被代理人合法权益的，代理人和相对人应当承担连带责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c174-1\",\n      \"srcs\": [\"art174-1\"],\n      \"body\": [\n        \"entrustedAgent(A,P)\",\n        \"died(P)\",\n        {\"or\": [\n          \"unawareOfPrincipalDeath(A,P)\",\n          \"heirsRatified(A,P)\",\n          \"authorizationTerminatesOnCompletion(A,P)\",\n          \"actedBeforeDeathForHeirsInterest(A,P)\"\n        ]}\n      ],\n      \"heads\": [\"validAgencyAct(A,P)\"],\n      \"note\": \"被代理人死亡后，具备代理人不知且不应知死亡、继承人承认、授权明确于事务完成时终止、死亡前已实施并为继承人利益继续代理四种情形之一的，委托代理行为有效\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c174-2\",\n      \"srcs\": [\"art174-2\"],\n      \"body\": [\n        \"entrustedAgent(A,P)\",\n        \"principalTerminated(P)\",\n        {\"or\": [\n          \"unawareOfTermination(A,P)\",\n          \"successorsRatified(A,P)\",\n          \"authorizationTerminatesOnCompletion(A,P)\",\n          \"actedBeforeTerminationForSuccessorsInterest(A,P)\"\n        ]}\n      ],\n      \"heads\": [\"validAgencyAct(A,P)\"],\n      \"note\": \"作为被代理人的法人、非法人组织终止的，参照适用第174条第1款，具备相应情形的代理行为有效\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c161-2\", \"c161-1\", \"依法律规定、当事人约定或行为性质应由本人亲自实施的民事法律行为不得代理，优先于可以通过代理人实施的一般规则\"],\n    [\"c164-2\", \"c164-1\", \"代理人与相对人恶意串通的，二者承担连带责任，优先于代理人单独向被代理人承担民事责任的一般规则\"]\n  ],\n  \"predicates\": {\n    \"implementThroughAgent/2\": \"通过代理人实施民事法律行为（民事主体，民事法律行为）\",\n    \"personalPerformanceRequiredByLaw/1\": \"依法律规定应当由本人亲自实施（民事法律行为）\",\n    \"personalPerformanceAgreed/1\": \"依当事人约定应当由本人亲自实施（民事法律行为）\",\n    \"personalPerformanceRequiredByNature/1\": \"依民事法律行为的性质应当由本人亲自实施（民事法律行为）\",\n    \"personalNatureAct/1\": \"具有人身性质或须亲自为之的行为（立遗嘱、婚姻登记、收养子女、演出、讲课等）\",\n    \"factualAct/1\": \"事实行为（代人算账、代人抄写等不产生对外法律效力的行为）\",\n    \"agencyAct/1\": \"代理行为（代理人以被代理人名义或自己名义与第三人实施的民事法律行为）\",\n    \"represent/1\": \"代理实施该民事法律行为（民事法律行为）\",\n    \"entrustedAgent/2\": \"是委托代理人（代理人，被代理人）\",\n    \"statutoryAgent/2\": \"是法定代理人（代理人，被代理人）\",\n    \"exerciseAgencyPerEntrustment/2\": \"按照被代理人的委托行使代理权（代理人，被代理人）\",\n    \"exerciseAgencyPerLaw/2\": \"依照法律的规定行使代理权（代理人，被代理人）\",\n    \"agentOf/2\": \"是代理人（代理人，被代理人）\",\n    \"breachesAgencyDuty/2\": \"不履行或者不完全履行代理职责（代理人，被代理人）\",\n    \"causesDamageToPrincipal/2\": \"造成被代理人损害（代理人，被代理人）\",\n    \"bearCivilLiabilityTo/2\": \"向被代理人承担民事责任（代理人，被代理人）\",\n    \"maliciouslyColludesWith/2\": \"与相对人恶意串通（代理人，相对人）\",\n    \"harmsPrincipalRights/3\": \"损害被代理人合法权益（代理人，相对人，被代理人）\",\n    \"bearJointLiability/2\": \"承担连带责任（责任人，其他连带责任人）\",\n    \"validAgencyAct/2\": \"委托代理人实施的代理行为有效（代理人，被代理人）\",\n    \"unawareOfPrincipalDeath/2\": \"代理人不知道且不应当知道被代理人死亡（代理人，被代理人）\",\n    \"heirsRatified/2\": \"被代理人的继承人予以承认（代理人，被代理人）\",\n    \"authorizationTerminatesOnCompletion/2\": \"授权中明确代理权在代理事务完成时终止（代理人，被代理人）\",\n    \"actedBeforeDeathForHeirsInterest/2\": \"被代理人死亡前已经实施，为了被代理人的继承人的利益继续代理（代理人，被代理人）\",\n    \"principalTerminated/1\": \"作为被代理人的法人、非法人组织终止\",\n    \"unawareOfTermination/2\": \"代理人不知道且不应当知道被代理人（法人、非法人组织）终止（代理人，被代理人）\",\n    \"successorsRatified/2\": \"被代理人的权利义务承受人予以承认（代理人，被代理人）\",\n    \"actedBeforeTerminationForSuccessorsInterest/2\": \"被代理人终止前已经实施，为了承受人的利益继续代理（代理人，被代理人）\"\n  }\n}"
+ },
+ "art:175": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法定代理在哪些情形下终止；终止后代理人是否仍为法定代理人",
+     "rules": [
+      "c175-1",
+      "c175-2",
+      "c175-3",
+      "c175-4",
+      "c175-effect"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被代理人取得或者恢复完全民事行为能力",
+     "rules": [
+      "c175-1"
+     ]
+    },
+    {
+     "text": "代理人丧失民事行为能力",
+     "rules": [
+      "c175-2"
+     ]
+    },
+    {
+     "text": "代理人死亡，或者被代理人死亡",
+     "rules": [
+      "c175-3"
+     ]
+    },
+    {
+     "text": "法律规定的其他情形（兜底）",
+     "rules": [
+      "c175-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "法定代理终止，代理人不再具有该被代理人的法定代理人身份",
+     "rules": [
+      "c175-effect"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规范法定代理的终止；委托代理的终止适用第173条（本行未挂载），其事由（代理期限届满、事务完成、被代理人取消委托、代理人辞去委托等）与本条不同，不得混用",
+     "rules": []
+    },
+    {
+     "text": "本条未规定终止后的善后义务与已实施代理行为的效力；笔记未涉及本条，无补充规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c175-1",
+    "srcs": [
+     "art175"
+    ],
+    "body": [
+     "legalRepresentative(A,P)",
+     {
+      "or": [
+       "fullCapacity(P)",
+       "capacityRecovered(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryAgencyTerminated(A,P)"
+    ],
+    "note": "被代理人取得或者恢复完全民事行为能力的，法定代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c175-2",
+    "srcs": [
+     "art175"
+    ],
+    "body": [
+     "legalRepresentative(A,P)",
+     "-hasCivilConductCapacity(A)"
+    ],
+    "heads": [
+     "statutoryAgencyTerminated(A,P)"
+    ],
+    "note": "代理人丧失民事行为能力的，法定代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c175-3",
+    "srcs": [
+     "art175"
+    ],
+    "body": [
+     "legalRepresentative(A,P)",
+     {
+      "or": [
+       "dead(A)",
+       "dead(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryAgencyTerminated(A,P)"
+    ],
+    "note": "代理人或者被代理人死亡的，法定代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c175-4",
+    "srcs": [
+     "art175"
+    ],
+    "body": [
+     "legalRepresentative(A,P)",
+     "otherReasonProvidedByLaw(R)"
+    ],
+    "heads": [
+     "statutoryAgencyTerminated(A,P)"
+    ],
+    "note": "法律规定的其他情形，作为法定代理终止的兜底事由",
+    "auth": "npc"
+   },
+   {
+    "key": "c175-effect",
+    "srcs": [
+     "art175"
+    ],
+    "body": [
+     "statutoryAgencyTerminated(A,P)"
+    ],
+    "heads": [
+     "-legalRepresentative(A,P)"
+    ],
+    "note": "法定代理终止后，代理人不再具有法定代理人身份与法定代理权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "statutoryAgencyTerminated": "法定代理终止（参数1：法定代理人，参数2：被代理人）"
+  }
+ },
+ "card:g1861": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "委托代理因哪些事实而终止",
+     "rules": [
+      "c173-1",
+      "c173-2",
+      "c173-3",
+      "c173-4",
+      "c173-5"
+     ]
+    },
+    {
+     "text": "被代理人死亡后，委托代理人实施的代理行为在哪些情形下仍然有效",
+     "rules": [
+      "c174-1",
+      "c174-2",
+      "c174-3",
+      "c174-4",
+      "c174-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "代理期限届满，或者代理事务已经完成（委托代理终止最常见的原因）",
+     "rules": [
+      "c173-1"
+     ]
+    },
+    {
+     "text": "被代理人取消委托，或者代理人辞去委托（委托代理以双方信任为基础，任何一方均可单方终止）",
+     "rules": [
+      "c173-2"
+     ]
+    },
+    {
+     "text": "代理人丧失民事行为能力（代理要求代理人具有完全民事行为能力）",
+     "rules": [
+      "c173-3"
+     ]
+    },
+    {
+     "text": "代理人死亡，或者被代理人死亡",
+     "rules": [
+      "c173-4"
+     ]
+    },
+    {
+     "text": "作为代理人或者被代理人的法人、非法人组织终止",
+     "rules": [
+      "c173-5"
+     ]
+    },
+    {
+     "text": "被代理人死亡后：代理人不知道且不应当知道被代理人死亡",
+     "rules": [
+      "c174-1"
+     ]
+    },
+    {
+     "text": "被代理人死亡后：被代理人的继承人予以承认",
+     "rules": [
+      "c174-2"
+     ]
+    },
+    {
+     "text": "被代理人死亡后：授权中明确代理权在代理事务完成时终止",
+     "rules": [
+      "c174-3"
+     ]
+    },
+    {
+     "text": "被代理人死亡后：被代理人死亡前已经实施，为了被代理人的继承人的利益继续代理",
+     "rules": [
+      "c174-4"
+     ]
+    },
+    {
+     "text": "作为被代理人的法人、非法人组织终止的，参照适用第174条第1款的四项情形",
+     "rules": [
+      "c174-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "被代理人死亡后，存在第174条第1款四项情形之一的，代理行为仍然有效，排除“代理终止后代理行为对被代理人不发生效力”的一般效果",
+     "rules": [
+      "c174-1",
+      "c174-2",
+      "c174-3",
+      "c174-4",
+      "c174-5"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "委托代理终止，代理人不再具有以被代理人名义实施代理行为的资格",
+     "rules": [
+      "c173-1",
+      "c173-2",
+      "c173-3",
+      "c173-4",
+      "c173-5"
+     ]
+    },
+    {
+     "text": "被代理人死亡后具备法定例外情形的，委托代理人实施的代理行为有效（对被代理人或其继承人发生效力）",
+     "rules": [
+      "c174-1",
+      "c174-2",
+      "c174-3",
+      "c174-4",
+      "c174-5"
+     ]
+    },
+    {
+     "text": "委托代理终止后实施的代理行为，对被代理人不发生效力（学理说明，法条未明文）",
+     "rules": [
+      "c173-d"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第174条“被代理人死亡后代理行为有效”的例外，优先于第173条第1款第4项因被代理人死亡而终止代理的一般效果",
+     "rules": [
+      "c174-1",
+      "c174-2",
+      "c174-3",
+      "c174-4",
+      "c174-5"
+     ]
+    },
+    {
+     "text": "授权中明确代理权在代理事务完成时终止的，属于特别约定，优先于一般终止规则判断代理行为效力",
+     "rules": [
+      "c174-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本行只涉及委托代理终止；法定代理终止（第175条）不在本行挂载法条之内，LEGO 卡片混入的“被代理人取得或恢复完全民事行为能力”“监护关系因收养解除、撤销或离婚而消灭”等法定代理终止事由不予采纳",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称例外情形下代理行为“不得对抗善意相对人”，法条并无此表述，不予采纳",
+     "rules": []
+    },
+    {
+     "text": "第174条第2款是参照适用条款，把第1款的“被代理人死亡”扩张适用于作为被代理人的法人、非法人组织终止",
+     "rules": [
+      "c174-5"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c173-1",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     {
+      "or": [
+       "agencyTermExpired(P,A)",
+       "agencyMatterCompleted(P,A)"
+      ]
+     }
+    ],
+    "heads": [
+     "agencyTerminated(P,A)"
+    ],
+    "note": "代理期限届满或者代理事务完成的，委托代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c173-2",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     {
+      "or": [
+       "principalRevokesEntrustment(P,A)",
+       "agentResignsEntrustment(P,A)"
+      ]
+     }
+    ],
+    "heads": [
+     "agencyTerminated(P,A)"
+    ],
+    "note": "被代理人取消委托或者代理人辞去委托的，委托代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c173-3",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     "agentLosesCapacity(A)"
+    ],
+    "heads": [
+     "agencyTerminated(P,A)"
+    ],
+    "note": "代理人丧失民事行为能力的，委托代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c173-4",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     {
+      "or": [
+       "died(A)",
+       "died(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "agencyTerminated(P,A)"
+    ],
+    "note": "代理人或者被代理人死亡的，委托代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c173-5",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     {
+      "or": [
+       "terminated(P)",
+       "unincorporatedOrgDissolved(P)",
+       "terminated(A)",
+       "unincorporatedOrgDissolved(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "agencyTerminated(P,A)"
+    ],
+    "note": "作为代理人或者被代理人的法人、非法人组织终止的，委托代理终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-1",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     "died(P)",
+     "actOf(Act,A)",
+     "agentUnawareOfPrincipalEnd(A,P)"
+    ],
+    "heads": [
+     "valid(Act)"
+    ],
+    "note": "被代理人死亡后，代理人不知道且不应当知道被代理人死亡的，其实施的代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-2",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     "died(P)",
+     "actOf(Act,A)",
+     "successorRatifies(P,Act)"
+    ],
+    "heads": [
+     "valid(Act)"
+    ],
+    "note": "被代理人死亡后，其继承人予以承认的，代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-3",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     "died(P)",
+     "actOf(Act,A)",
+     "authorizationTerminatesOnCompletion(P,A)"
+    ],
+    "heads": [
+     "valid(Act)"
+    ],
+    "note": "被代理人死亡后，授权中明确代理权在代理事务完成时终止的，代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-4",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     "died(P)",
+     "actOf(Act,A)",
+     "performedBeforeEndForSuccessorInterest(Act,P)"
+    ],
+    "heads": [
+     "valid(Act)"
+    ],
+    "note": "被代理人死亡前已经实施，为了被代理人的继承人的利益继续代理的，代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-5",
+    "srcs": [
+     "art174-2"
+    ],
+    "body": [
+     "entrustmentAgency(P,A)",
+     {
+      "or": [
+       "terminated(P)",
+       "unincorporatedOrgDissolved(P)"
+      ]
+     },
+     "actOf(Act,A)",
+     {
+      "or": [
+       "agentUnawareOfPrincipalEnd(A,P)",
+       "successorRatifies(P,Act)",
+       "authorizationTerminatesOnCompletion(P,A)",
+       "performedBeforeEndForSuccessorInterest(Act,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "valid(Act)"
+    ],
+    "note": "作为被代理人的法人、非法人组织终止的，参照适用第174条第1款，具备四项情形之一的代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c173-d",
+    "srcs": [
+     "art173-1"
+    ],
+    "body": [
+     "agencyTerminated(P,A)",
+     "actOf(Act,A)",
+     "afterAgencyTermination(Act)"
+    ],
+    "heads": [
+     "-valid(Act)"
+    ],
+    "note": "学理说明：委托代理终止后代理人仍以被代理人名义实施的代理行为，对被代理人不发生效力；法条未明文，仅由第173条终止效果推得",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c174-1",
+    "c173-d",
+    "被代理人死亡后代理人善意不知情的，代理行为有效，优先于代理终止后行为无效的一般效果"
+   ],
+   [
+    "c174-2",
+    "c173-d",
+    "继承人承认代理行为的，代理行为有效，优先于代理终止后行为无效的一般效果"
+   ],
+   [
+    "c174-3",
+    "c173-d",
+    "授权明确代理权于事务完成时终止的特别约定，优先于代理终止后行为无效的一般效果"
+   ],
+   [
+    "c174-4",
+    "c173-d",
+    "死亡前已实施并为继承人利益继续代理的，代理行为有效，优先于代理终止后行为无效的一般效果"
+   ],
+   [
+    "c174-5",
+    "c173-d",
+    "被代理人为法人、非法人组织终止时参照适用第174条第1款，优先于代理终止后行为无效的一般效果"
+   ]
+  ],
+  "predicates": {
+   "entrustmentAgency": "委托代理关系（被代理人，代理人）",
+   "agencyTerminated": "委托代理终止（被代理人，代理人）",
+   "agencyTermExpired": "代理期限届满（被代理人，代理人）",
+   "agencyMatterCompleted": "代理事务完成（被代理人，代理人）",
+   "principalRevokesEntrustment": "被代理人取消委托（被代理人，代理人）",
+   "agentResignsEntrustment": "代理人辞去委托（被代理人，代理人）",
+   "agentLosesCapacity": "代理人丧失民事行为能力（代理人）",
+   "agentUnawareOfPrincipalEnd": "代理人不知道且不应当知道被代理人死亡（或作为被代理人的法人、非法人组织终止）（代理人，被代理人）",
+   "successorRatifies": "被代理人的继承人（或终止组织的权利义务承受人）予以承认（被代理人，代理行为）",
+   "authorizationTerminatesOnCompletion": "授权中明确代理权在代理事务完成时终止（被代理人，代理人）",
+   "performedBeforeEndForSuccessorInterest": "被代理人死亡（终止）前已经实施，为了继承人（承受人）的利益继续代理（代理行为，被代理人）",
+   "afterAgencyTermination": "该代理行为是在委托代理终止后实施的（代理行为）"
+  }
+ },
+ "card:g1833": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "代理行为的效力归属：代理人在代理权限内、以被代理人名义实施的民事法律行为，对被代理人发生效力",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "代理的类型（委托代理、法定代理）及代理权的行使依据",
+     "rules": [
+      "c163-1",
+      "c163-2",
+      "c163-3"
+     ]
+    },
+    {
+     "text": "代理人不履行职责、与相对人恶意串通、实施违法代理时的民事责任",
+     "rules": [
+      "c164-1",
+      "c164-2",
+      "c167-1"
+     ]
+    },
+    {
+     "text": "书面授权委托书应载明的事项；数人代理同一事项时共同行使代理权",
+     "rules": [
+      "c165-1",
+      "c166-1"
+     ]
+    },
+    {
+     "text": "自己代理、双方代理的禁止及其例外",
+     "rules": [
+      "c168-1",
+      "c168-2"
+     ]
+    },
+    {
+     "text": "转委托的条件，以及经同意与未经同意时责任的不同分配",
+     "rules": [
+      "c169-1",
+      "c169-2",
+      "c169-3"
+     ]
+    },
+    {
+     "text": "职务代理的效力及组织对工作人员职权范围限制的对抗力",
+     "rules": [
+      "c170-1",
+      "c170-2"
+     ]
+    },
+    {
+     "text": "无权代理的效力、相对人的催告权与撤销权、相对人与行为人的责任分担",
+     "rules": [
+      "c171-1",
+      "c171-ratified",
+      "c171-2a",
+      "c171-2b",
+      "c171-2c",
+      "c171-3",
+      "c171-4"
+     ]
+    },
+    {
+     "text": "表见代理的构成要件与法律后果",
+     "rules": [
+      "c172-1",
+      "c172-appearance",
+      "c172-excl",
+      "c172-recourse"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "代理人具有代理权（在代理权限内），并以被代理人名义实施民事法律行为",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "代理为委托代理或者法定代理",
+     "rules": [
+      "c163-1"
+     ]
+    },
+    {
+     "text": "代理人不履行或者不完全履行职责，造成被代理人损害",
+     "rules": [
+      "c164-1"
+     ]
+    },
+    {
+     "text": "代理人与相对人恶意串通，损害被代理人合法权益",
+     "rules": [
+      "c164-2"
+     ]
+    },
+    {
+     "text": "委托代理授权采用书面形式",
+     "rules": [
+      "c165-1"
+     ]
+    },
+    {
+     "text": "数人为同一代理事项的代理人",
+     "rules": [
+      "c166-1"
+     ]
+    },
+    {
+     "text": "代理人知道或应当知道代理事项违法仍实施代理行为，或者被代理人知道或应当知道代理行为违法而未作反对表示",
+     "rules": [
+      "c167-1"
+     ]
+    },
+    {
+     "text": "代理人以被代理人名义与自己实施民事法律行为",
+     "rules": [
+      "c168-1"
+     ]
+    },
+    {
+     "text": "代理人以被代理人名义与其同时代理的其他人实施民事法律行为",
+     "rules": [
+      "c168-2"
+     ]
+    },
+    {
+     "text": "代理人需要转委托第三人代理",
+     "rules": [
+      "c169-1"
+     ]
+    },
+    {
+     "text": "转委托代理经被代理人同意或者追认",
+     "rules": [
+      "c169-2"
+     ]
+    },
+    {
+     "text": "转委托代理未经被代理人同意或者追认",
+     "rules": [
+      "c169-3"
+     ]
+    },
+    {
+     "text": "工作人员执行法人或非法人组织工作任务，就职权范围内事项、以组织名义实施民事法律行为",
+     "rules": [
+      "c170-1"
+     ]
+    },
+    {
+     "text": "组织对工作人员职权范围作出限制，而相对人善意",
+     "rules": [
+      "c170-2"
+     ]
+    },
+    {
+     "text": "行为人没有代理权、超越代理权或者代理权终止后仍以被代理人名义实施代理行为",
+     "rules": [
+      "c171-1"
+     ]
+    },
+    {
+     "text": "相对人催告后被代理人自收到通知之日起三十日内未作表示",
+     "rules": [
+      "c171-2b"
+     ]
+    },
+    {
+     "text": "相对人善意，且行为尚未被被代理人追认",
+     "rules": [
+      "c171-2c",
+      "c171-3"
+     ]
+    },
+    {
+     "text": "相对人知道或者应当知道行为人无权代理",
+     "rules": [
+      "c171-4"
+     ]
+    },
+    {
+     "text": "相对人有理由相信行为人有代理权（表见代理）",
+     "rules": [
+      "c172-1"
+     ]
+    },
+    {
+     "text": "存在可归责于被代理人的外表授权：表见授权表示、授权不明、代理关系终止后未采取必要措施通知相对人（笔记）",
+     "rules": [
+      "c172-appearance"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "被代理人同意或者追认的，代理人可以以被代理人名义与自己实施民事法律行为",
+     "rules": [
+      "c168-1"
+     ]
+    },
+    {
+     "text": "被代理的双方同意或者追认的，代理人可以实施双方代理",
+     "rules": [
+      "c168-2"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，数名代理人不必共同行使代理权",
+     "rules": [
+      "c166-1"
+     ]
+    },
+    {
+     "text": "紧急情况下代理人为维护被代理人利益需要转委托的，代理人对转委托第三人的行为不承担责任",
+     "rules": [
+      "c169-3"
+     ]
+    },
+    {
+     "text": "被代理人追认的，无权代理对被代理人发生效力",
+     "rules": [
+      "c171-ratified"
+     ]
+    },
+    {
+     "text": "行为人伪造、盗窃公章、合同书、授权委托书实施行为，或者假冒他人名义实施行为的，外表授权不可归责于被代理人，不构成表见代理（笔记）",
+     "rules": [
+      "c172-excl"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "代理行为对被代理人发生效力，被代理人享有其权利、承担其义务",
+     "rules": [
+      "c162-1"
+     ]
+    },
+    {
+     "text": "委托代理人按照被代理人的委托行使代理权；法定代理人依照法律的规定行使代理权",
+     "rules": [
+      "c163-2",
+      "c163-3"
+     ]
+    },
+    {
+     "text": "代理人不履行或者不完全履行职责造成损害的，应当承担民事责任",
+     "rules": [
+      "c164-1"
+     ]
+    },
+    {
+     "text": "代理人和相对人恶意串通的，二者承担连带责任",
+     "rules": [
+      "c164-2"
+     ]
+    },
+    {
+     "text": "授权委托书应当载明代理人姓名或名称、代理事项、权限和期限，并由被代理人签名或者盖章",
+     "rules": [
+      "c165-1"
+     ]
+    },
+    {
+     "text": "数名代理人应当共同行使代理权",
+     "rules": [
+      "c166-1"
+     ]
+    },
+    {
+     "text": "违法代理的，被代理人和代理人承担连带责任",
+     "rules": [
+      "c167-1"
+     ]
+    },
+    {
+     "text": "转委托经同意或追认的，被代理人可以就代理事务直接指示转委托的第三人，代理人仅就第三人的选任和指示承担责任",
+     "rules": [
+      "c169-2"
+     ]
+    },
+    {
+     "text": "转委托未经同意或追认的，代理人对转委托第三人的行为承担责任",
+     "rules": [
+      "c169-3"
+     ]
+    },
+    {
+     "text": "职务代理行为对法人或非法人组织发生效力；组织对工作人员职权范围的限制不得对抗善意相对人",
+     "rules": [
+      "c170-1",
+      "c170-2"
+     ]
+    },
+    {
+     "text": "无权代理未经追认的，对被代理人不发生效力；被代理人三十日内未作表示的，视为拒绝追认",
+     "rules": [
+      "c171-1",
+      "c171-2b"
+     ]
+    },
+    {
+     "text": "相对人可以催告被代理人追认；行为被追认前，善意相对人可以通知方式撤销",
+     "rules": [
+      "c171-2a",
+      "c171-2c"
+     ]
+    },
+    {
+     "text": "行为未被追认的，善意相对人有权请求行为人履行债务或者就其受到的损害请求赔偿（赔偿不超过被代理人追认时所能获得的利益）",
+     "rules": [
+      "c171-3"
+     ]
+    },
+    {
+     "text": "相对人知道或应当知道无权代理的，相对人和行为人按照各自的过错承担责任",
+     "rules": [
+      "c171-4"
+     ]
+    },
+    {
+     "text": "表见代理的代理行为有效，由被代理人承担后果；被代理人有权请求无权代理人赔偿因无权代理造成的损失（笔记）",
+     "rules": [
+      "c172-1",
+      "c172-recourse"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "表见代理优先于狭义无权代理：相对人有理由相信行为人有代理权且外表授权可归责于被代理人的，代理行为有效",
+     "rules": [
+      "c172-1"
+     ]
+    },
+    {
+     "text": "被代理人追认的，优先于无权代理对被代理人不发生效力的规则",
+     "rules": [
+      "c171-ratified"
+     ]
+    },
+    {
+     "text": "外表授权不可归责于被代理人（伪造、盗窃公章或假冒名义）的，排除表见代理的适用",
+     "rules": [
+      "c172-excl"
+     ]
+    },
+    {
+     "text": "组织对工作人员职权范围的限制不得对抗善意相对人，善意相对人仍可主张行为对组织发生效力",
+     "rules": [
+      "c170-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "表见代理与狭义无权代理：表见代理须有可归责于被代理人的外表授权且相对人有正当理由相信，后果由被代理人承担；狭义无权代理未经追认对被代理人不发生效力",
+     "rules": [
+      "c172-1",
+      "c172-excl",
+      "c171-1"
+     ]
+    },
+    {
+     "text": "委托合同与代理关系不同：委托合同是内部合意，代理是对外实施法律行为的授权（笔记、LEGO 卡片）",
+     "rules": []
+    },
+    {
+     "text": "工作人员职务代理适用第170条，与一般委托代理（第162条、第171条）不同",
+     "rules": [
+      "c170-1"
+     ]
+    },
+    {
+     "text": "自己代理、双方代理是代理权行使的禁止，与无权代理的效力规则不同",
+     "rules": [
+      "c168-1",
+      "c168-2"
+     ]
+    },
+    {
+     "text": "笔记将表见代理置于“无权代理”项下，但第172条使其发生有权代理的效力，属无权代理的例外",
+     "rules": [
+      "c172-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c162-1",
+    "srcs": [
+     "art162-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "withinAuthority(A,P)",
+     "actInPrincipalName(A,P,B)"
+    ],
+    "heads": [
+     "bindsPrincipal(B,P)"
+    ],
+    "note": "代理人在代理权限内、以被代理人名义实施的民事法律行为，对被代理人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c163-1",
+    "srcs": [
+     "art163-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "entrustedAgent(A,P)",
+       "statutoryAgent(A,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "agentOf(A,P)"
+    ],
+    "note": "代理包括委托代理和法定代理，二者均属代理",
+    "auth": "npc"
+   },
+   {
+    "key": "c163-2",
+    "srcs": [
+     "art163-2"
+    ],
+    "body": [
+     "entrustedAgent(A,P)"
+    ],
+    "heads": [
+     "exercisesAgencyPerEntrustment(A,P)"
+    ],
+    "note": "委托代理人按照被代理人的委托行使代理权",
+    "auth": "npc"
+   },
+   {
+    "key": "c163-3",
+    "srcs": [
+     "art163-2"
+    ],
+    "body": [
+     "statutoryAgent(A,P)"
+    ],
+    "heads": [
+     "exercisesAgencyPerLaw(A,P)"
+    ],
+    "note": "法定代理人依照法律的规定行使代理权",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-1",
+    "srcs": [
+     "art164-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     {
+      "or": [
+       "failsAgencyDuty(A,P)",
+       "performsAgencyDutyIncompletely(A,P)"
+      ]
+     },
+     "causesDamageTo(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearCivilLiabilityTo(A,P)"
+     }
+    ],
+    "note": "代理人不履行或者不完全履行职责造成被代理人损害的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-2",
+    "srcs": [
+     "art164-2"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "colludedWith(A,T)",
+     "harmsOthersRights(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearJointLiabilityWith(A,T)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "bearJointLiabilityWith(T,A)"
+     }
+    ],
+    "note": "代理人和相对人恶意串通损害被代理人合法权益的，代理人和相对人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c165-1",
+    "srcs": [
+     "art165"
+    ],
+    "body": [
+     "entrustedAgent(A,P)",
+     "writtenAuthorization(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "includeRequiredItemsInAuthorization(P,A)"
+     }
+    ],
+    "note": "书面授权委托书应当载明代理人姓名或名称、代理事项、权限和期限，并由被代理人签名或者盖章",
+    "auth": "npc"
+   },
+   {
+    "key": "c166-1",
+    "srcs": [
+     "art166"
+    ],
+    "body": [
+     "multipleAgentsSameMatter(A,P)",
+     "~agreedOtherwiseOnJointAgency(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "exerciseAgencyJointly(A,P)"
+     }
+    ],
+    "note": "数人为同一代理事项的代理人的，应当共同行使代理权，但当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c167-1",
+    "srcs": [
+     "art167"
+    ],
+    "body": [
+     {
+      "or": [
+       "agentKnowsMatterIllegal(A,P)",
+       "principalKnowsActIllegalNoObjection(A,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearJointLiabilityWith(A,P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "bearJointLiabilityWith(P,A)"
+     }
+    ],
+    "note": "代理人知道或应当知道代理事项违法仍实施代理行为，或被代理人知道或应当知道代理行为违法未作反对表示的，被代理人和代理人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c168-1",
+    "srcs": [
+     "art168-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "~principalConsentedOrRatified(P,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "selfDealing(A,P)"
+     }
+    ],
+    "note": "代理人不得以被代理人名义与自己实施民事法律行为，但被代理人同意或者追认的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c168-2",
+    "srcs": [
+     "art168-2"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "alsoAgentFor(A,T)",
+     "~bothPrincipalsConsentedOrRatified(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "dualAgency(A,P,T)"
+     }
+    ],
+    "note": "代理人不得以被代理人名义与其同时代理的其他人实施民事法律行为，但被代理的双方同意或者追认的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c169-1",
+    "srcs": [
+     "art169-1"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "needsSubDelegation(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "obtainConsentOrRatificationForSubDelegation(A,P)"
+     }
+    ],
+    "note": "代理人需要转委托第三人代理的，应当取得被代理人的同意或者追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c169-2",
+    "srcs": [
+     "art169-2"
+    ],
+    "body": [
+     "subDelegationConsented(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "instructSubAgentDirectly(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearLiabilityForSelectionAndInstruction(A)"
+     }
+    ],
+    "note": "转委托经同意或追认的，被代理人可以就代理事务直接指示转委托的第三人，代理人仅就第三人的选任和指示承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c169-3",
+    "srcs": [
+     "art169-3"
+    ],
+    "body": [
+     "agentOf(A,P)",
+     "subDelegationNotConsented(A,P)",
+     "~emergencyForPrincipalsInterest(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearLiabilityForSubAgentActs(A)"
+     }
+    ],
+    "note": "转委托未经同意或追认的，代理人对转委托第三人的行为承担责任；紧急情况下为维护被代理人利益而转委托的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c170-1",
+    "srcs": [
+     "art170-1"
+    ],
+    "body": [
+     "employeeOf(E,L)",
+     "withinScopeOfDuty(E,L)",
+     "actInOrgName(E,L,B)"
+    ],
+    "heads": [
+     "bindsOrg(B,L)"
+    ],
+    "note": "执行法人或非法人组织工作任务的人员，就职权范围内事项以组织名义实施的行为，对组织发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c170-2",
+    "srcs": [
+     "art170-2"
+    ],
+    "body": [
+     "employeeOf(E,L)",
+     "restrictsScopeOfDuty(L,E)",
+     "actInOrgName(E,L,B)",
+     "counterpartyOf(T,B)",
+     "inGoodFaith(T,B)"
+    ],
+    "heads": [
+     "bindsOrg(B,L)",
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "assertScopeRestrictionAgainst(L,T,B)"
+     }
+    ],
+    "note": "组织对工作人员职权范围的限制不得对抗善意相对人，善意相对人仍可主张行为对组织发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-1",
+    "srcs": [
+     "art171-1"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "~ratified(P,A,B)"
+    ],
+    "heads": [
+     "-bindsPrincipal(B,P)"
+    ],
+    "note": "无权代理未经被代理人追认的，对被代理人不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-ratified",
+    "srcs": [
+     "art171-1"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "ratified(P,A,B)"
+    ],
+    "heads": [
+     "bindsPrincipal(B,P)"
+    ],
+    "note": "无权代理经被代理人追认的，对被代理人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2a",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "demandRatification(T)"
+     }
+    ],
+    "note": "相对人可以催告被代理人自收到通知之日起三十日内予以追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2b",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "noAnswerWithin30Days(T)"
+    ],
+    "heads": [
+     "ratificationRefused(P)",
+     "-ratified(P,A,B)"
+    ],
+    "note": "被代理人三十日内未作表示的，视为拒绝追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-2c",
+    "srcs": [
+     "art171-2"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "inGoodFaith(T,B)",
+     "~ratified(P,A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "A",
+      "content": "revocationRight(T,B)"
+     }
+    ],
+    "note": "行为被追认前，善意相对人有撤销的权利，撤销应当以通知的方式作出",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-3",
+    "srcs": [
+     "art171-3"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "inGoodFaith(T,B)",
+     "~ratified(P,A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "A",
+      "content": "claimPerformanceOrCompensation(T,A)"
+     }
+    ],
+    "note": "行为未被追认的，善意相对人有权请求行为人履行债务或者就损害请求赔偿，赔偿范围不超过被代理人追认时相对人所能获得的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c171-4",
+    "srcs": [
+     "art171-4"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "knowsOrShouldKnowNoAuthority(T,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "A",
+      "content": "bearLiabilityPerFault(T,A,B)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "T",
+      "content": "bearLiabilityPerFault(A,T,B)"
+     }
+    ],
+    "note": "相对人知道或者应当知道行为人无权代理的，相对人和行为人按照各自的过错承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c172-1",
+    "srcs": [
+     "art172"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "actInPrincipalName(A,P,B)",
+     "counterpartyOf(T,B)",
+     "reasonablyBelievesAuthority(T,A)",
+     "appearanceAttributableTo(P,A)"
+    ],
+    "heads": [
+     "bindsPrincipal(B,P)"
+    ],
+    "note": "行为人无权代理，相对人有理由相信其有代理权且外表授权可归责于被代理人的，代理行为有效（表见代理）",
+    "auth": "npc"
+   },
+   {
+    "key": "c172-appearance",
+    "srcs": [
+     "art172"
+    ],
+    "body": [
+     {
+      "or": [
+       "apparentAuthorizationByPrincipal(P,A)",
+       "authorityScopeUnclear(P,A)",
+       "failedToNotifyTermination(P,A)"
+      ]
+     }
+    ],
+    "heads": [
+     "appearanceAttributableTo(P,A)"
+    ],
+    "note": "笔记归纳的常见表见代理情形：表见授权表示、授权不明、代理关系终止后未采取必要措施通知相对人，均构成可归责于被代理人的外表授权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c172-excl",
+    "srcs": [
+     "art172"
+    ],
+    "body": [
+     {
+      "or": [
+       "forgedOrStolenDocuments(A,P)",
+       "impersonatedName(A,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "-appearanceAttributableTo(P,A)"
+    ],
+    "note": "笔记：伪造、盗窃公章、合同书、授权委托书实施行为，或假冒他人名义实施行为的，外表授权不可归责于被代理人，不构成表见代理",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c172-recourse",
+    "srcs": [
+     "art172"
+    ],
+    "body": [
+     "bindsPrincipal(B,P)",
+     "noAuthority(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimAgentCompensation(P,A)"
+     }
+    ],
+    "note": "笔记：表见代理成立后由被代理人承担后果，被代理人有权要求无权代理人赔偿因无权代理造成的损失",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c172-1",
+    "c171-1",
+    "表见代理优先于狭义无权代理：相对人有理由相信行为人有代理权且外表授权可归责于被代理人的，代理行为有效"
+   ],
+   [
+    "c171-ratified",
+    "c171-1",
+    "被代理人追认的，无权代理对被代理人发生效力"
+   ],
+   [
+    "c172-excl",
+    "c172-appearance",
+    "伪造、盗窃公章或假冒名义的外表授权不可归责于被代理人，排除表见代理的成立"
+   ],
+   [
+    "c170-2",
+    "c170-1",
+    "组织对工作人员职权范围的限制不得对抗善意相对人，善意相对人仍可主张行为对组织发生效力"
+   ]
+  ],
+  "predicates": {
+   "agentOf": "是代理人（代理人，被代理人）",
+   "withinAuthority": "在代理权限内（代理人，被代理人）",
+   "actInPrincipalName": "以被代理人名义实施民事法律行为（代理人，被代理人，行为）",
+   "bindsPrincipal": "民事法律行为对被代理人发生效力（行为，被代理人）",
+   "entrustedAgent": "是委托代理人（代理人，被代理人）",
+   "statutoryAgent": "是法定代理人（代理人，被代理人）",
+   "exercisesAgencyPerEntrustment": "按照被代理人的委托行使代理权（代理人，被代理人）",
+   "exercisesAgencyPerLaw": "依照法律的规定行使代理权（代理人，被代理人）",
+   "failsAgencyDuty": "不履行代理职责（代理人，被代理人）",
+   "performsAgencyDutyIncompletely": "不完全履行代理职责（代理人，被代理人）",
+   "bearCivilLiabilityTo": "向被代理人承担民事责任（承担者，被代理人）",
+   "colludedWith": "与相对人恶意串通（代理人，相对人）",
+   "bearJointLiabilityWith": "与所列主体承担连带责任（承担者，连带责任人）",
+   "writtenAuthorization": "委托代理授权采用书面形式（被代理人，代理人）",
+   "includeRequiredItemsInAuthorization": "在授权委托书中载明代理人姓名或名称、代理事项、权限和期限并签名或盖章（被代理人，代理人）",
+   "multipleAgentsSameMatter": "数人为同一代理事项的代理人（代理人，被代理人）",
+   "agreedOtherwiseOnJointAgency": "当事人就共同行使代理权另有约定（被代理人）",
+   "exerciseAgencyJointly": "共同行使代理权（代理人，被代理人）",
+   "agentKnowsMatterIllegal": "代理人知道或应当知道代理事项违法仍实施代理行为（代理人，被代理人）",
+   "principalKnowsActIllegalNoObjection": "被代理人知道或应当知道代理行为违法未作反对表示（被代理人，代理人）",
+   "principalConsentedOrRatified": "被代理人同意或者追认（被代理人，代理人）",
+   "selfDealing": "以被代理人名义与自己实施民事法律行为（代理人，被代理人）",
+   "alsoAgentFor": "同时代理其他人（代理人，第三人）",
+   "bothPrincipalsConsentedOrRatified": "被代理的双方同意或者追认（被代理人，第三人）",
+   "dualAgency": "以被代理人名义与其同时代理的其他人实施民事法律行为（代理人，被代理人，第三人）",
+   "needsSubDelegation": "需要转委托第三人代理（代理人，被代理人）",
+   "obtainConsentOrRatificationForSubDelegation": "就转委托取得被代理人的同意或者追认（代理人，被代理人）",
+   "subDelegationConsented": "转委托代理经被代理人同意或者追认（代理人，被代理人）",
+   "instructSubAgentDirectly": "就代理事务直接指示转委托的第三人（被代理人）",
+   "bearLiabilityForSelectionAndInstruction": "仅就第三人的选任和指示承担责任（代理人）",
+   "subDelegationNotConsented": "转委托代理未经被代理人同意或者追认（代理人，被代理人）",
+   "emergencyForPrincipalsInterest": "紧急情况下为维护被代理人利益需要转委托（代理人，被代理人）",
+   "bearLiabilityForSubAgentActs": "对转委托第三人的行为承担责任（代理人）",
+   "withinScopeOfDuty": "就职权范围内的事项（工作人员，组织）",
+   "actInOrgName": "以法人或非法人组织名义实施民事法律行为（工作人员，组织，行为）",
+   "bindsOrg": "民事法律行为对法人或非法人组织发生效力（行为，组织）",
+   "restrictsScopeOfDuty": "对工作人员职权范围作出限制（组织，工作人员）",
+   "assertScopeRestrictionAgainst": "主张职权范围限制以对抗相对人（组织，相对人，行为）",
+   "noAuthority": "没有代理权、超越代理权或者代理权终止后仍实施代理行为（行为人，被代理人）",
+   "ratified": "被代理人追认（被代理人，行为人，行为）",
+   "demandRatification": "催告被代理人追认（相对人）",
+   "claimPerformanceOrCompensation": "请求行为人履行债务或者就损害请求赔偿（相对人，行为人）",
+   "knowsOrShouldKnowNoAuthority": "知道或者应当知道行为人无权代理（相对人，行为人）",
+   "bearLiabilityPerFault": "按照各自的过错承担责任（主体，相对方，行为）",
+   "reasonablyBelievesAuthority": "有理由相信行为人有代理权（相对人，行为人）",
+   "appearanceAttributableTo": "外表授权可归责于被代理人（被代理人，行为人）",
+   "apparentAuthorizationByPrincipal": "被代理人以直接或间接意思表示表明授予他人代理权（表见授权表示）（被代理人，行为人）",
+   "authorityScopeUnclear": "代理授权不明（被代理人，代理人）",
+   "failedToNotifyTermination": "代理关系终止后未采取必要措施通知相对人（被代理人，代理人）",
+   "forgedOrStolenDocuments": "伪造、盗窃公章、合同书、授权委托书实施民事法律行为（行为人，被代理人）",
+   "impersonatedName": "假冒他人名义实施民事法律行为（行为人，被代理人）",
+   "claimAgentCompensation": "请求无权代理人赔偿因无权代理造成的损失（被代理人，行为人）"
+  }
+ }
+}

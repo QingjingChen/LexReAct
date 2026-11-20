@@ -1,0 +1,369 @@
+{
+ "art:204": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "期间的计算方法如何确定：依照本法（总则编第十章第200条至第203条）的规定；法律另有规定或者当事人另有约定的，从其规定或者约定。本条为指引性、宣示性规定，本身不产生独立的构成要件与法律效果，具体计算方法（按公历年月日小时计算、起算日不计入、期间最后一日的截止时点、期间顺延等）由本法相应条文及特别规定、当事人约定确定",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g1994": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "民法上的期间按什么单位计算，如何起算、如何确定最后一日与截止时间",
+     "rules": [
+      "c200-1",
+      "c201-1",
+      "c201-2",
+      "c202-1",
+      "c202-2",
+      "c203-1",
+      "c203-2",
+      "c203-3"
+     ]
+    },
+    {
+     "text": "“以上”“以下”“以内”“届满”与“不满”“超过”“以外”是否包括本数",
+     "rules": [
+      "c1259-1",
+      "c1259-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "按年、月、日计算期间的，开始的当日不计入，自下一日开始计算",
+     "rules": [
+      "c201-1"
+     ]
+    },
+    {
+     "text": "按小时计算期间的，自法律规定或者当事人约定的时间开始计算",
+     "rules": [
+      "c201-2"
+     ]
+    },
+    {
+     "text": "按年、月计算期间的，到期月有对应日的以对应日为最后一日；没有对应日的以月末日为最后一日",
+     "rules": [
+      "c202-1",
+      "c202-2"
+     ]
+    },
+    {
+     "text": "期间的最后一日是法定休假日",
+     "rules": [
+      "c203-1"
+     ]
+    },
+    {
+     "text": "期间的最后一日有业务时间",
+     "rules": [
+      "c203-3"
+     ]
+    },
+    {
+     "text": "用语为“以上”“以下”“以内”“届满”，或者为“不满”“超过”“以外”",
+     "rules": [
+      "c1259-1",
+      "c1259-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "按小时计算的期间不适用“开始当日不计入、自下一日起算”的规则，而自法律规定或者当事人约定的时间起算",
+     "rules": [
+      "c201-2"
+     ]
+    },
+    {
+     "text": "有业务时间的，以停止业务活动的时间为截止时间，而非二十四时",
+     "rules": [
+      "c203-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "民法所称的期间按照公历年、月、日、小时计算",
+     "rules": [
+      "c200-1"
+     ]
+    },
+    {
+     "text": "按年、月、日计算期间的，开始当日不计入，自下一日开始计算",
+     "rules": [
+      "c201-1"
+     ]
+    },
+    {
+     "text": "按年、月计算期间的，到期月的对应日为期间的最后一日；没有对应日的，月末日为期间的最后一日",
+     "rules": [
+      "c202-1",
+      "c202-2"
+     ]
+    },
+    {
+     "text": "期间的最后一日是法定休假日的，以法定休假日结束的次日为期间的最后一日",
+     "rules": [
+      "c203-1"
+     ]
+    },
+    {
+     "text": "期间最后一日的截止时间为二十四时",
+     "rules": [
+      "c203-2"
+     ]
+    },
+    {
+     "text": "“以上”“以下”“以内”“届满”包括本数；“不满”“超过”“以外”不包括本数",
+     "rules": [
+      "c1259-1",
+      "c1259-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有业务时间的，停止业务活动的时间优先于二十四时作为期间最后一日的截止时间",
+     "rules": [
+      "c203-3",
+      "c203-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片所称“法定期间优先于意定期间”“特殊期间优先于一般期间”，第200–203条并无此规定，属学理概括，不写成规则",
+     "rules": []
+    },
+    {
+     "text": "笔记称“法定休息日”，法条用语为“法定休假日”，二者含义一致，均指第203条第1款的顺延事由",
+     "rules": [
+      "c203-1"
+     ]
+    },
+    {
+     "text": "本节只规定期间的计算方法，不涉及诉讼时效的中止、中断、延长，也不涉及除斥期间的不变期间效力；LEGO 卡片将期间与诉讼时效、除斥期间作效力对比，属学理说明",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c200-1",
+    "srcs": [
+     "art200"
+    ],
+    "body": [
+     "period(P)"
+    ],
+    "heads": [
+     "periodCalculatedByCalendarUnits(P)"
+    ],
+    "note": "民法所称的期间按照公历年、月、日、小时计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c201-1",
+    "srcs": [
+     "art201-1"
+    ],
+    "body": [
+     "periodCalculatedByYearMonthDay(P)",
+     "startDayOf(P,D)"
+    ],
+    "heads": [
+     "startDayExcluded(P)",
+     "periodStartsFromNextDay(P,D)"
+    ],
+    "note": "按年、月、日计算期间的，开始的当日不计入，自下一日开始计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c201-2",
+    "srcs": [
+     "art201-2"
+    ],
+    "body": [
+     "periodCalculatedByHour(P)"
+    ],
+    "heads": [
+     "periodStartsFromAgreedOrStatutoryTime(P)"
+    ],
+    "note": "按小时计算期间的，自法律规定或者当事人约定的时间开始计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c202-1",
+    "srcs": [
+     "art202"
+    ],
+    "body": [
+     "periodCalculatedByYearMonth(P)",
+     "correspondingDayExists(P)"
+    ],
+    "heads": [
+     "lastDayIsCorrespondingDay(P)"
+    ],
+    "note": "按年、月计算期间的，到期月的对应日为期间的最后一日",
+    "auth": "npc"
+   },
+   {
+    "key": "c202-2",
+    "srcs": [
+     "art202"
+    ],
+    "body": [
+     "periodCalculatedByYearMonth(P)",
+     "noCorrespondingDay(P)"
+    ],
+    "heads": [
+     "lastDayIsMonthEnd(P)"
+    ],
+    "note": "按年、月计算期间，到期月没有对应日的，月末日为期间的最后一日",
+    "auth": "npc"
+   },
+   {
+    "key": "c203-1",
+    "srcs": [
+     "art203-1"
+    ],
+    "body": [
+     "lastDayIsStatutoryHoliday(P)"
+    ],
+    "heads": [
+     "lastDayExtendedToDayAfterHoliday(P)"
+    ],
+    "note": "期间的最后一日是法定休假日的，以法定休假日结束的次日为期间的最后一日",
+    "auth": "npc"
+   },
+   {
+    "key": "c203-2",
+    "srcs": [
+     "art203-2"
+    ],
+    "body": [
+     "period(P)"
+    ],
+    "heads": [
+     "deadlineAt24(P)"
+    ],
+    "note": "期间最后一日的截止时间为二十四时",
+    "auth": "npc"
+   },
+   {
+    "key": "c203-3",
+    "srcs": [
+     "art203-2"
+    ],
+    "body": [
+     "period(P)",
+     "hasBusinessHours(P)"
+    ],
+    "heads": [
+     "deadlineAtBusinessClose(P)"
+    ],
+    "note": "有业务时间的，以停止业务活动的时间为期间最后一日的截止时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c1259-1",
+    "srcs": [
+     "art1259"
+    ],
+    "body": [
+     {
+      "or": [
+       "termAbove(X)",
+       "termBelow(X)",
+       "termWithin(X)",
+       "termReaching(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "includesThisNumber(X)"
+    ],
+    "note": "民法所称“以上”“以下”“以内”“届满”，包括本数",
+    "auth": "npc"
+   },
+   {
+    "key": "c1259-2",
+    "srcs": [
+     "art1259"
+    ],
+    "body": [
+     {
+      "or": [
+       "termLessThan(X)",
+       "termExceeds(X)",
+       "termOutside(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "excludesThisNumber(X)"
+    ],
+    "note": "民法所称“不满”“超过”“以外”，不包括本数",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c203-3",
+    "c203-2",
+    "有业务时间的，以停止业务活动的时间为截止时间，排除二十四时的规定"
+   ]
+  ],
+  "predicates": {
+   "period": "期间（依第200–203条计算的时间段）",
+   "periodCalculatedByCalendarUnits": "期间按照公历年、月、日、小时计算",
+   "periodCalculatedByYearMonthDay": "按年、月、日计算的期间",
+   "periodCalculatedByHour": "按小时计算的期间",
+   "periodCalculatedByYearMonth": "按年、月计算的期间",
+   "startDayOf": "期间的开始当日（期间，日）",
+   "startDayExcluded": "期间的开始当日不计入",
+   "periodStartsFromNextDay": "期间自开始当日的下一日开始计算（期间，开始当日）",
+   "periodStartsFromAgreedOrStatutoryTime": "期间自法律规定或者当事人约定的时间开始计算",
+   "correspondingDayExists": "到期月存在与起算日对应的日",
+   "noCorrespondingDay": "到期月没有与起算日对应的日",
+   "lastDayIsCorrespondingDay": "到期月的对应日为期间的最后一日",
+   "lastDayIsMonthEnd": "月末日为期间的最后一日",
+   "lastDayIsStatutoryHoliday": "期间的最后一日是法定休假日",
+   "lastDayExtendedToDayAfterHoliday": "以法定休假日结束的次日为期间的最后一日",
+   "deadlineAt24": "期间最后一日的截止时间为二十四时",
+   "hasBusinessHours": "期间的最后一日有业务时间",
+   "deadlineAtBusinessClose": "以停止业务活动的时间为期间最后一日的截止时间",
+   "termAbove": "用语为“以上”",
+   "termBelow": "用语为“以下”",
+   "termWithin": "用语为“以内”",
+   "termReaching": "用语为“届满”（与词表中表示“期限届满”的 termExpired 相区别）",
+   "termLessThan": "用语为“不满”",
+   "termExceeds": "用语为“超过”",
+   "termOutside": "用语为“以外”",
+   "includesThisNumber": "该用语包括本数",
+   "excludesThisNumber": "该用语不包括本数"
+  }
+ }
+}

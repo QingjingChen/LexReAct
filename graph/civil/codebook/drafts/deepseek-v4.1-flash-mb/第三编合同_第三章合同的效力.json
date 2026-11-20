@@ -1,0 +1,532 @@
+{
+ "art:507": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同不生效、无效、被撤销或者终止时，合同中有关解决争议方法的条款是否仍然有效",
+     "rules": [
+      "c507-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同不生效、无效、被撤销或者终止（四种情形之一）",
+     "rules": [
+      "c507-1"
+     ]
+    },
+    {
+     "text": "合同中订有关于解决争议方法的条款，如仲裁条款、协议管辖条款、选择法律适用条款等",
+     "rules": [
+      "c507-scope"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "合同中有关解决争议方法的条款的效力不受影响，仍然有效，可据以解决纠纷",
+     "rules": [
+      "c507-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同整体不生效、无效、被撤销或者终止的后果不及于争议解决条款，该条款的效力独立判断",
+     "rules": [
+      "c507-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决争议解决方法条款的效力问题，合同其他条款的效力仍依第156条等规定判断；争议解决条款自身存在无效事由（如仲裁条款无效）的，仍适用其自身的效力规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c507-1",
+    "srcs": [
+     "art507-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "contractNotEffective(K)",
+       "contractVoidOrRescinded(K)",
+       "contractTerminated(K)"
+      ]
+     },
+     "disputeResolutionClause(K,C)"
+    ],
+    "heads": [
+     "valid(C)"
+    ],
+    "note": "合同不生效、无效、被撤销或者终止的，不影响合同中有关解决争议方法的条款的效力，该条款仍然有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c507-scope",
+    "srcs": [
+     "art507-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "arbitrationClause(C,K)",
+       "choiceOfCourtClause(C,K)",
+       "choiceOfLawClause(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "disputeResolutionClause(K,C)"
+    ],
+    "note": "学理上“有关解决争议方法的条款”包括仲裁条款、协议管辖条款、选择法律适用条款等；条文未作列举，属学理解释",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "contractNotEffective": "合同不生效（尚未生效或者确定不发生效力）",
+   "contractTerminated": "合同终止（合同权利义务终止）",
+   "disputeResolutionClause": "是合同中有关解决争议方法的条款（参数1：合同；参数2：条款）",
+   "arbitrationClause": "是仲裁条款（参数1：条款；参数2：合同）",
+   "choiceOfCourtClause": "是协议管辖（选择受诉法院）条款（参数1：条款；参数2：合同）",
+   "choiceOfLawClause": "是选择法律适用条款（参数1：条款；参数2：合同）"
+  }
+ },
+ "art:508": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同编对合同的效力没有规定时，应当适用何种规范",
+     "rules": [
+      "c508-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所涉事项属于合同的效力问题，且合同编对该事项没有规定",
+     "rules": [
+      "c508-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合同编对合同效力已有规定的，不适用第一编第六章（本条为补充性的准用规范）",
+     "rules": [
+      "c508-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用本法第一编第六章关于民事法律行为（意思表示、民事法律行为的效力等）的有关规定",
+     "rules": [
+      "c508-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同编自身关于合同效力的规定优先于本条准用第一编第六章",
+     "rules": [
+      "c508-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是指示参照的准用性规范，本身不直接认定合同有效或无效，只把合同效力问题引向第一编第六章；合同编已有的效力规定（如合同生效、超越经营范围订立合同等）应先行适用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c508-1",
+    "srcs": [
+     "art508-1"
+    ],
+    "body": [
+     "contractValidityMatter(K)",
+     "~contractBookProvidesOnValidity(K)"
+    ],
+    "heads": [
+     "applyBook1Ch6(K)"
+    ],
+    "note": "合同编对合同效力没有规定的，适用第一编第六章（民事法律行为）的有关规定；合同编已有规定的，依其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "contractValidityMatter": "所涉事项属于合同的效力问题（参数：合同）",
+   "contractBookProvidesOnValidity": "合同编对合同效力已有规定（参数：合同）",
+   "applyBook1Ch6": "适用本法第一编第六章关于民事法律行为的有关规定（参数：合同）",
+   "contractValidityMatter/1": "所涉事项属于合同的效力问题（参数：合同）",
+   "contractBookProvidesOnValidity/1": "合同编对合同效力已有规定（参数：合同）",
+   "applyBook1Ch6/1": "适用本法第一编第六章关于民事法律行为的有关规定（参数：合同）"
+  }
+ },
+ "card:g4121": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "依法成立的合同何时生效；法律另有规定或者当事人另有约定时如何确定生效",
+     "rules": [
+      "c502-1",
+      "c502-1-law",
+      "c502-1-agreement"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定合同应当办理批准等手续的，未办理对合同效力、报批义务条款效力以及违反报批义务责任的影响",
+     "rules": [
+      "c502-2-approval",
+      "c502-2-effect",
+      "c502-2-clause",
+      "c502-2-liability"
+     ]
+    },
+    {
+     "text": "合同的变更、转让、解除等情形依法应当办理批准等手续的，是否适用同一规则",
+     "rules": [
+      "c502-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同依法成立",
+     "rules": [
+      "c502-1"
+     ]
+    },
+    {
+     "text": "法律、行政法规规定该合同应当办理批准等手续，且存在依该规定负有办理申请批准等手续义务的当事人",
+     "rules": [
+      "c502-2-approval"
+     ]
+    },
+    {
+     "text": "未办理批准等手续，且该未办理影响合同生效",
+     "rules": [
+      "c502-2-effect"
+     ]
+    },
+    {
+     "text": "合同中包含履行报批义务的条款以及相关条款",
+     "rules": [
+      "c502-2-clause"
+     ]
+    },
+    {
+     "text": "应当办理申请批准等手续的当事人未履行该义务，请求人为其对方",
+     "rules": [
+      "c502-2-liability"
+     ]
+    },
+    {
+     "text": "合同的变更、转让、解除等情形依照法律、行政法规应当办理批准等手续",
+     "rules": [
+      "c502-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的，不适用“自成立时生效”",
+     "rules": [
+      "c502-1-law",
+      "c502-1-agreement"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依法成立的合同自成立时生效",
+     "rules": [
+      "c502-1"
+     ]
+    },
+    {
+     "text": "法律另有规定的，依照其规定确定生效",
+     "rules": [
+      "c502-1-law"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，按照约定的时间或者条件生效",
+     "rules": [
+      "c502-1-agreement"
+     ]
+    },
+    {
+     "text": "应当办理批准等手续的，负有义务的当事人应当依照法律、行政法规的规定办理申请批准等手续",
+     "rules": [
+      "c502-2-approval"
+     ]
+    },
+    {
+     "text": "未办理批准等手续影响合同生效的，合同确定不发生效力（未生效）",
+     "rules": [
+      "c502-2-effect"
+     ]
+    },
+    {
+     "text": "合同未生效不影响合同中履行报批义务条款以及相关条款的效力",
+     "rules": [
+      "c502-2-clause"
+     ]
+    },
+    {
+     "text": "应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+     "rules": [
+      "c502-2-liability"
+     ]
+    },
+    {
+     "text": "合同的变更、转让、解除等情形应当办理批准等手续的，适用第2款的规定",
+     "rules": [
+      "c502-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定、当事人另有约定优先于“依法成立的合同自成立时生效”的一般规则",
+     "rules": [
+      "c502-1-law",
+      "c502-1-agreement"
+     ]
+    },
+    {
+     "text": "报批义务条款及相关条款的效力独立于合同是否生效，不因合同未生效而受影响",
+     "rules": [
+      "c502-2-clause"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片所列“合同未依法成立”“恶意串通损害第三人利益”“违反强制性规定或公序良俗”属于第143条、第153条等规定的效力要件，不是第502条的要件",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列“当事人已实际履行部分合同义务”并非第502条明文要件；条文只规定报批义务条款的独立效力与违反报批义务的责任",
+     "rules": []
+    },
+    {
+     "text": "第502条不同于第500条缔约过失责任、第501条保密义务、第503条无权代理的追认、第504条越权代表行为的效力",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c502-1",
+    "srcs": [
+     "art502-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "establishedAccordingToLaw(K)",
+     "~lawProvidesOtherwiseOnEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "valid(K)"
+    ],
+    "note": "依法成立的合同自成立时生效，但法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-1-law",
+    "srcs": [
+     "art502-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "establishedAccordingToLaw(K)",
+     "lawProvidesOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffectPerLaw(K)"
+    ],
+    "note": "法律对合同生效另有规定的，依照其规定确定生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-1-agreement",
+    "srcs": [
+     "art502-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "establishedAccordingToLaw(K)",
+     "partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "takesEffectPerAgreement(K)"
+    ],
+    "note": "当事人对合同生效时间或者效力另有约定的，按照约定生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-2-approval",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "approvalObligor(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainApproval(K)"
+     }
+    ],
+    "note": "法律、行政法规规定合同应当办理批准等手续的，负有义务的当事人应当依照其规定办理申请批准等手续",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-2-effect",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "-obtainApproval(K)",
+     "approvalFailureAffectsEffect(K)"
+    ],
+    "heads": [
+     "ineffective(K)"
+    ],
+    "note": "未办理批准等手续影响合同生效的，合同确定不发生效力（未生效）",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-2-clause",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "ineffective(K)",
+     "approvalClauseOf(C,K)"
+    ],
+    "heads": [
+     "valid(C)"
+    ],
+    "note": "未办理批准等手续影响合同生效的，不影响合同中履行报批义务条款以及相关条款的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-2-liability",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "approvalObligor(P,K)",
+     "-obtainApproval(K)",
+     "counterpartyOf(Q,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "Q",
+      "counterparty": "P",
+      "content": "claimBreachLiabilityFrom(Q,P,K)"
+     }
+    ],
+    "note": "应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-3",
+    "srcs": [
+     "art502-3"
+    ],
+    "body": [
+     "contractChange(A)",
+     "approvalRequiredByLawsAndRegulations(A)"
+    ],
+    "heads": [
+     "approvalRulesApply(A)"
+    ],
+    "note": "合同的变更、转让、解除等情形依法应当办理批准等手续的，适用第2款关于报批义务条款效力及违反报批义务责任的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c502-1-law",
+    "c502-1",
+    "法律对合同生效另有规定的，优先于“自成立时生效”的一般规则"
+   ],
+   [
+    "c502-1-agreement",
+    "c502-1",
+    "当事人对合同生效另有约定的，优先于“自成立时生效”的一般规则"
+   ],
+   [
+    "c502-2-clause",
+    "c502-2-effect",
+    "报批义务条款及相关条款的效力独立于合同是否生效，不因合同未生效而受影响"
+   ]
+  ],
+  "predicates": {
+   "approvalObligor": "依法律、行政法规负有办理申请批准等手续义务的当事人（参数：当事人，合同或变更、转让、解除等情形）",
+   "approvalFailureAffectsEffect": "未办理批准等手续影响合同生效（参数：合同）",
+   "approvalClauseOf": "是合同中履行报批义务的条款以及相关条款（参数：条款，合同）",
+   "contractChange": "合同的变更、转让、解除等情形（参数：情形）",
+   "approvalRulesApply": "适用第502条第2款关于报批义务条款效力及违反报批义务责任的规定（参数：情形）"
+  }
+ },
+ "card:g4149": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 contract 已在词表中表示“合同”，不能重新定义为“存在合同（合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n \"nl\": {\n  \"issue\": [\n   {\n    \"text\": \"法人的法定代表人或者非法人组织的负责人超越权限订立合同，该代表行为及所订合同对法人、非法人组织是否发生效力\",\n    \"rules\": [\"c504-1\", \"c504-exc\"]\n   },\n   {\n    \"text\": \"当事人超越经营范围订立合同，能否仅以超越经营范围认定合同无效\",\n    \"rules\": [\"c505-1\", \"c505-2\"]\n   }\n  ],\n  \"conditions\": [\n   {\n    \"text\": \"订立合同的一方是法人的法定代表人或者非法人组织的负责人，且其超越权限订立该合同\",\n    \"rules\": [\"c504-1\", \"c504-exc\"]\n   },\n   {\n    \"text\": \"相对人不知道且不应当知道代表人超越权限（相对人善意）\",\n    \"rules\": [\"c504-1\"]\n   },\n   {\n    \"text\": \"当事人订立的合同超越其经营范围\",\n    \"rules\": [\"c505-1\", \"c505-2\"]\n   }\n  ],\n  \"exceptions\": [\n   {\n    \"text\": \"相对人知道或者应当知道代表人超越权限的，该代表行为不生效，订立的合同对法人、非法人组织不发生效力，其效力依无权代理（第171条）等规则处理\",\n    \"rules\": [\"c504-exc\"]\n   }\n  ],\n  \"effects\": [\n   {\n    \"text\": \"相对人善意的，该代表行为有效，订立的合同对法人或者非法人组织发生效力\",\n    \"rules\": [\"c504-1\"]\n   },\n   {\n    \"text\": \"超越经营范围订立的合同，其效力应当依照总则编第六章第三节和合同编的有关规定确定\",\n    \"rules\": [\"c505-1\"]\n   },\n   {\n    \"text\": \"不得仅以超越经营范围确认合同无效\",\n    \"rules\": [\"c505-2\"]\n   }\n  ],\n  \"priority\": [\n   {\n    \"text\": \"第504条但书（相对人恶意）优先于越权代表有效规则，排除代表行为有效及合同对组织发生效力的结论\",\n    \"rules\": [\"c504-exc\", \"c504-1\"]\n   },\n   {\n    \"text\": \"经营范围不构成独立的无效事由，合同效力须回到总则编第六章第三节及合同编的无效规则判断\",\n    \"rules\": [\"c505-1\", \"c505-2\"]\n   }\n  ],\n  \"distinguish\": [\n   {\n    \"text\": \"LEGO 卡片把“合同违反强制性规定或公序良俗”“法人明确拒绝追认”列为越权代表规则的消极条件，法条并未规定；前者属总则编第六章第三节的无效事由，后者属无权代理追认（第171条、第503条）问题，不能作为第504条本身的例外\",\n    \"rules\": []\n   },\n   {\n    \"text\": \"第503条是无权代理人以被代理人名义订立合同的追认规则，第504条是代表人越权代表的效力规则，适用对象不同\",\n    \"rules\": []\n   },\n   {\n    \"text\": \"第505条处理的是经营范围限制，不涉及代表权限制，不能用于解决越权代表问题；反之第504条也不解决经营范围问题\",\n    \"rules\": []\n   }\n  ]\n },\n \"rules\": [\n  {\n   \"key\": \"c504-1\",\n   \"srcs\": [\"art504-1\"],\n   \"body\": [\n    \"contract(K)\",\n    {\"or\": [\"legalRepOf(R,O)\", \"headOfUnincorporatedOrg(R,O)\"]},\n    \"exceedsRepresentativeAuthority(R,K)\",\n    \"counterpartyOf(C,K)\",\n    \"~knowsOrShouldKnowRepExceedsAuthority(C,R)\"\n   ],\n   \"heads\": [\n    \"representationActValid(R,O,K)\",\n    \"bindsOrg(K,O)\"\n   ],\n   \"note\": \"法人的法定代表人或者非法人组织的负责人超越权限订立的合同，除相对人知道或者应当知道其超越权限外，该代表行为有效，订立的合同对法人或者非法人组织发生效力\",\n   \"auth\": \"npc\"\n  },\n  {\n   \"key\": \"c504-exc\",\n   \"srcs\": [\"art504-1\"],\n   \"body\": [\n    \"contract(K)\",\n    {\"or\": [\"legalRepOf(R,O)\", \"headOfUnincorporatedOrg(R,O)\"]},\n    \"exceedsRepresentativeAuthority(R,K)\",\n    \"counterpartyOf(C,K)\",\n    \"knowsOrShouldKnowRepExceedsAuthority(C,R)\"\n   ],\n   \"heads\": [\n    \"-representationActValid(R,O,K)\",\n    \"-bindsOrg(K,O)\"\n   ],\n   \"note\": \"第504条但书：相对人知道或者应当知道代表人超越权限的，代表行为不生效，合同对法人、非法人组织不发生效力，其效力依无权代理等规则处理\",\n   \"auth\": \"npc\"\n  },\n  {\n   \"key\": \"c505-1\",\n   \"srcs\": [\"art505-1\"],\n   \"body\": [\n    \"contract(K)\",\n    \"exceedsBusinessScope(P,K)\"\n   ],\n   \"heads\": [\n    \"validityByApplicableLaw(K)\"\n   ],\n   \"note\": \"当事人超越经营范围订立的合同，其效力应当依照本法第一编第六章第三节和本编的有关规定确定\",\n   \"auth\": \"npc\"\n  },\n  {\n   \"key\": \"c505-2\",\n   \"srcs\": [\"art505-1\"],\n   \"body\": [\n    \"contract(K)\",\n    \"exceedsBusinessScope(P,K)\"\n   ],\n   \"heads\": [\n    {\n     \"type\": \"FOR\",\n     \"bearer\": \"court\",\n     \"counterparty\": null,\n     \"content\": \"confirmVoidSolelyForExceedingBusinessScope(K)\"\n    }\n   ],\n   \"note\": \"不得仅以超越经营范围确认合同无效\",\n   \"auth\": \"npc\"\n  }\n ],\n \"overrides\": [\n  [\"c504-exc\", \"c504-1\", \"第504条但书：相对人知道或者应当知道代表人超越权限的，不适用越权代表有效规则\"]\n ],\n \"predicates\": {\n  \"contract\": \"存在合同（合同）\",\n  \"headOfUnincorporatedOrg\": \"是非法人组织的负责人（人，非法人组织）\",\n  \"exceedsRepresentativeAuthority\": \"代表人超越权限订立合同（代表人，合同）\",\n  \"knowsOrShouldKnowRepExceedsAuthority\": \"相对人知道或者应当知道代表人超越权限（相对人，代表人）\",\n  \"representationActValid\": \"代表行为有效（代表人，组织，合同）\",\n  \"exceedsBusinessScope\": \"当事人超越经营范围订立合同（当事人，合同）\",\n  \"confirmVoidSolelyForExceedingBusinessScope\": \"仅以超越经营范围为由确认合同无效（法院行为）\"\n }\n}"
+ },
+ "card:g4138": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c503：谓词 ratified 已有用法为 2 个参数，这里用了 3 个",
+   "c503-effect：谓词 ratified 已有用法为 2 个参数，这里用了 3 个",
+   "谓词 contract 已在词表中表示“合同”，不能重新定义为“合同（1个参数：合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"依法成立的合同何时生效；法律、行政法规规定应当办理批准等手续的合同，未报批时效力如何、由谁承担何种责任\",\n        \"rules\": [\"c502-1\", \"c502-2-obligation\", \"c502-2-noeffect\", \"c502-2-clause\", \"c502-2-liability\"]\n      },\n      {\n        \"text\": \"无权代理人以被代理人名义订立的合同，何种情形下视为被代理人追认\",\n        \"rules\": [\"c503\", \"c503-effect\"]\n      },\n      {\n        \"text\": \"法人的法定代表人或者非法人组织的负责人超越权限订立的合同，其代表行为与合同效力如何认定\",\n        \"rules\": [\"c504-1\", \"c504-exception\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同依法成立\",\n        \"rules\": [\"c502-1\"]\n      },\n      {\n        \"text\": \"依照法律、行政法规的规定，合同应当办理批准等手续，且该当事人负有申请报批的义务\",\n        \"rules\": [\"c502-2-obligation\"]\n      },\n      {\n        \"text\": \"无权代理人以被代理人名义订立合同，且被代理人已经开始履行合同义务或者接受相对人履行\",\n        \"rules\": [\"c503\"]\n      },\n      {\n        \"text\": \"法人的法定代表人或者非法人组织的负责人超越权限订立合同，且相对人不知道也不应当知道其超越权限\",\n        \"rules\": [\"c504-1\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"法律对合同生效另有规定，或者当事人对生效时间、效力另有约定的，不适用自成立时生效\",\n        \"rules\": [\"c502-1\"]\n      },\n      {\n        \"text\": \"未办理批准等手续影响合同生效的，合同不生效\",\n        \"rules\": [\"c502-2-noeffect\"]\n      },\n      {\n        \"text\": \"相对人知道或者应当知道法定代表人、负责人超越权限的，代表行为不生效，合同不对法人或者非法人组织发生效力\",\n        \"rules\": [\"c504-exception\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"依法成立的合同自成立时生效\",\n        \"rules\": [\"c502-1\"]\n      },\n      {\n        \"text\": \"应当办理申请批准等手续的当事人负有办理报批手续的义务\",\n        \"rules\": [\"c502-2-obligation\"]\n      },\n      {\n        \"text\": \"未办理批准等手续影响合同生效的，合同不生效，但不影响合同中履行报批等义务条款以及相关条款的效力\",\n        \"rules\": [\"c502-2-noeffect\", \"c502-2-clause\"]\n      },\n      {\n        \"text\": \"应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任\",\n        \"rules\": [\"c502-2-liability\"]\n      },\n      {\n        \"text\": \"合同的变更、转让、解除等情形依法应当办理批准等手续的，适用第2款关于报批义务、未报批对生效的影响及违反报批义务责任的规定\",\n        \"rules\": [\"c502-3\"]\n      },\n      {\n        \"text\": \"被代理人已经开始履行合同义务或者接受相对人履行的，视为对合同的追认\",\n        \"rules\": [\"c503\"]\n      },\n      {\n        \"text\": \"经追认，合同对被代理人发生效力\",\n        \"rules\": [\"c503-effect\"]\n      },\n      {\n        \"text\": \"法定代表人、负责人越权订立的合同，该代表行为有效，订立的合同对法人或者非法人组织发生效力\",\n        \"rules\": [\"c504-1\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"法律、行政法规规定应当办理批准手续且未办理影响合同生效的，优先于“自成立时生效”的一般规则（第502条第1款“法律另有规定”的但书）\",\n        \"rules\": [\"c502-2-noeffect\"]\n      },\n      {\n        \"text\": \"相对人知道或者应当知道超越权限的，排除代表行为有效及合同对法人、非法人组织发生效力的规则\",\n        \"rules\": [\"c504-exception\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"合同成立与合同生效是两个问题：成立是事实判断，生效是效力判断；第502条第1款以“依法成立”为前提，再判断是否生效\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"无权代理追认（第503条）与越权代表（第504条）不同：前者为效力待定，须经被代理人追认；后者原则上有效，仅相对人恶意时例外\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记另提及“合同不生效、无效、被撤销或者终止不影响解决争议方法条款的效力”，该规则不在本行挂载法条之内（属第507条），此处不设规则\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c502-1\",\n      \"srcs\": [\"art502-1\"],\n      \"body\": [\n        \"lawfullyEstablishedContract(K)\",\n        \"~lawProvidesOtherwiseOnEffect(K)\",\n        \"~partiesAgreedOtherwiseOnEffect(K)\"\n      ],\n      \"heads\": [\"takesEffect(K)\"],\n      \"note\": \"依法成立的合同自成立时生效，但法律另有规定或者当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c502-2-obligation\",\n      \"srcs\": [\"art502-2\"],\n      \"body\": [\n        \"contract(K)\",\n        \"approvalRequiredByLawsAndRegulations(K)\",\n        \"partyRequiredToObtainApproval(P,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"obtainApproval(K)\"\n        }\n      ],\n      \"note\": \"依照法律、行政法规的规定合同应当办理批准等手续的，应当办理申请批准等手续的当事人负有报批义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c502-2-noeffect\",\n      \"srcs\": [\"art502-2\"],\n      \"body\": [\n        \"contract(K)\",\n        \"approvalRequiredForEffectiveness(K)\",\n        \"~obtainApproval(K)\"\n      ],\n      \"heads\": [\"-takesEffect(K)\"],\n      \"note\": \"未办理批准等手续影响合同生效的，合同不生效\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c502-2-clause\",\n      \"srcs\": [\"art502-2\"],\n      \"body\": [\n        \"contract(K)\",\n        \"approvalRequiredForEffectiveness(K)\",\n        \"~obtainApproval(K)\"\n      ],\n      \"heads\": [\"approvalClauseRemainsValid(K)\"],\n      \"note\": \"未办理批准等手续影响合同生效的，不影响合同中履行报批等义务条款以及相关条款的效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c502-2-liability\",\n      \"srcs\": [\"art502-2\"],\n      \"body\": [\n        \"contract(K)\",\n        \"partyRequiredToObtainApproval(P,K)\",\n        \"counterpartyOf(O,K)\",\n        \"~obtainApproval(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"claimLiabilityForFailureToObtainApproval(O,P,K)\"\n        }\n      ],\n      \"note\": \"应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c502-3\",\n      \"srcs\": [\"art502-3\"],\n      \"body\": [\n        \"contract(K)\",\n        \"changeTransferTerminationRequiresApproval(K)\"\n      ],\n      \"heads\": [\"approvalRulesApply(K)\"],\n      \"note\": \"合同的变更、转让、解除等情形依法应当办理批准等手续的，适用第502条第2款的规定\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c503\",\n      \"srcs\": [\"art503-1\"],\n      \"body\": [\n        \"unauthorizedAgency(A,P,K)\",\n        \"inPrincipalName(A,P,K)\",\n        {\n          \"or\": [\n            \"beganPerforming(P,K)\",\n            \"acceptedCounterpartyPerformance(P,K)\"\n          ]\n        }\n      ],\n      \"heads\": [\"ratified(P,A,K)\"],\n      \"note\": \"无权代理人以被代理人名义订立合同，被代理人已经开始履行合同义务或者接受相对人履行的，视为对合同的追认\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c503-effect\",\n      \"srcs\": [\"art503-1\"],\n      \"body\": [\"ratified(P,A,K)\"],\n      \"heads\": [\"bindsPrincipal(K,P)\"],\n      \"note\": \"追认后合同对被代理人发生效力；该效力后果法条未明文，属学理（参见总则编第171条）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c504-1\",\n      \"srcs\": [\"art504-1\"],\n      \"body\": [\n        \"contract(K)\",\n        \"legalRepresentativeOf(R,F)\",\n        \"exceedsAuthorityInContracting(R,F,K)\",\n        \"counterpartyOf(O,K)\",\n        \"~knowsOrShouldKnowExceedsAuthority(O,R)\"\n      ],\n      \"heads\": [\n        \"validRepresentationAct(R,F,K)\",\n        \"bindsOrg(K,F)\"\n      ],\n      \"note\": \"法定代表人、负责人超越权限订立的合同，除相对人知道或者应当知道其超越权限外，该代表行为有效，合同对法人或者非法人组织发生效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c504-exception\",\n      \"srcs\": [\"art504-1\"],\n      \"body\": [\n        \"contract(K)\",\n        \"legalRepresentativeOf(R,F)\",\n        \"exceedsAuthorityInContracting(R,F,K)\",\n        \"counterpartyOf(O,K)\",\n        \"knowsOrShouldKnowExceedsAuthority(O,R)\"\n      ],\n      \"heads\": [\n        \"-validRepresentationAct(R,F,K)\",\n        \"-bindsOrg(K,F)\"\n      ],\n      \"note\": \"相对人知道或者应当知道其超越权限的，代表行为不生效，合同不对法人或者非法人组织发生效力（第504条但书）\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c502-2-noeffect\",\n      \"c502-1\",\n      \"法律、行政法规规定应当办理批准手续且未办理影响合同生效的，优先于“自成立时生效”的一般规则（第502条第1款“法律另有规定”的但书）\"\n    ],\n    [\n      \"c504-exception\",\n      \"c504-1\",\n      \"相对人知道或者应当知道法定代表人、负责人超越权限的，代表行为不生效（第504条但书）\"\n    ]\n  ],\n  \"predicates\": {\n    \"contract\": \"合同（1个参数：合同）\",\n    \"lawfullyEstablishedContract\": \"合同已依法成立（1个参数：合同）\",\n    \"partyRequiredToObtainApproval\": \"依照法律、行政法规的规定应当办理申请批准等手续的当事人（当事人，合同）\",\n    \"approvalRequiredForEffectiveness\": \"未办理批准等手续将影响合同生效（1个参数：合同）\",\n    \"approvalClauseRemainsValid\": \"合同中履行报批等义务条款以及相关条款的效力不受未办理批准手续影响（1个参数：合同）\",\n    \"claimLiabilityForFailureToObtainApproval\": \"请求未履行报批义务的当事人承担违反该义务的责任（对方，报批义务人，合同）\",\n    \"changeTransferTerminationRequiresApproval\": \"合同的变更、转让、解除等情形依照法律、行政法规的规定应当办理批准等手续（1个参数：合同）\",\n    \"approvalRulesApply\": \"适用第502条第2款关于报批义务、未报批对生效的影响及违反报批义务责任的规定（1个参数：合同）\",\n    \"beganPerforming\": \"被代理人已经开始履行合同义务（被代理人，合同）\",\n    \"acceptedCounterpartyPerformance\": \"被代理人接受相对人履行（被代理人，合同）\",\n    \"exceedsAuthorityInContracting\": \"法定代表人、负责人超越权限订立合同（代表人，法人或非法人组织，合同）\",\n    \"knowsOrShouldKnowExceedsAuthority\": \"相对人知道或者应当知道法定代表人、负责人超越权限（相对人，代表人）\",\n    \"validRepresentationAct\": \"代表行为有效（代表人，法人或非法人组织，合同）\"\n  }\n}"
+ }
+}

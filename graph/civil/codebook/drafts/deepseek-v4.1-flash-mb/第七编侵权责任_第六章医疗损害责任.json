@@ -1,0 +1,1611 @@
+{
+ "art:1218": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "患者在诊疗活动中受到损害时，医疗机构在何种条件下承担赔偿责任",
+     "rules": [
+      "c1218-1",
+      "c1218-staff"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "患者是在诊疗活动中受到损害（诊疗活动、损害事实）",
+     "rules": [
+      "c1218-1"
+     ]
+    },
+    {
+     "text": "医疗机构本身有过错",
+     "rules": [
+      "c1218-1"
+     ]
+    },
+    {
+     "text": "或者其医务人员有过错，该过错归属于医疗机构",
+     "rules": [
+      "c1218-staff",
+      "c1218-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "由医疗机构（而非医务人员个人）向患者承担赔偿责任",
+     "rules": [
+      "c1218-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是医疗损害的一般过错责任，须由患者一方证明过错；第1222条（违反诊疗规范、隐匿或拒绝提供病历、遗失伪造篡改销毁病历）为过错推定，第1224条规定患者不配合、限于当时医疗水平等免责事由，均不在本条",
+     "rules": []
+    },
+    {
+     "text": "医务人员因执行工作任务致害，对外由医疗机构承担赔偿责任，患者不直接向医务人员个人请求赔偿（与第1191条用人单位责任一致）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1218-1",
+    "srcs": [
+     "art1218"
+    ],
+    "body": [
+     "patient(P)",
+     "medicalInstitution(M)",
+     "inMedicalActivity(P,M)",
+     "damage(P,D)",
+     "fault(M,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "P",
+      "content": "payCompensation(M,P)"
+     }
+    ],
+    "note": "患者在诊疗活动中受到损害，医疗机构或者其医务人员有过错的，由医疗机构承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1218-staff",
+    "srcs": [
+     "art1218"
+    ],
+    "body": [
+     "employeeOf(S,M)",
+     "medicalInstitution(M)",
+     "fault(S,D)"
+    ],
+    "heads": [
+     "fault(M,D)"
+    ],
+    "note": "条文“医疗机构或者其医务人员有过错”表明：医务人员的过错归属于医疗机构，由医疗机构对外负责",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "patient": "是患者（接受诊疗活动的自然人）",
+   "inMedicalActivity": "在诊疗活动中（患者，医疗机构）"
+  }
+ },
+ "art:1220": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因抢救生命垂危的患者等紧急情况，不能取得患者或者其近亲属意见时，医疗机构经批准后可否立即实施相应的医疗措施",
+     "rules": [
+      "c1220-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在因抢救生命垂危的患者等紧急情况",
+     "rules": [
+      "c1220-1"
+     ]
+    },
+    {
+     "text": "不能取得患者或者其近亲属的意见",
+     "rules": [
+      "c1220-1"
+     ]
+    },
+    {
+     "text": "经医疗机构负责人或者授权的负责人批准",
+     "rules": [
+      "c1220-approval",
+      "c1220-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "医疗机构可以立即实施相应的医疗措施",
+     "rules": [
+      "c1220-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "符合本条紧急情况并经批准的救治，优先于一般情形下取得患者或其近亲属说明同意的要求（第1219条，本行未挂载）",
+     "rules": [
+      "c1220-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决“不能取得患者或者其近亲属意见”的紧急情形；能够取得意见的，仍应依第1219条取得同意，不适用本条的径行实施权限",
+     "rules": []
+    },
+    {
+     "text": "本条为授权性规范（“可以”），并非强制医疗机构必须实施；是否实施仍由医疗机构依诊疗规范判断",
+     "rules": [
+      "c1220-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1220-1",
+    "srcs": [
+     "art1220-1"
+    ],
+    "body": [
+     "lifeThreateningEmergency(P)",
+     "cannotObtainPatientOrRelativeOpinion(P)",
+     "medicalInstitution(M)",
+     "approvedByResponsiblePerson(M)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": "P",
+      "content": "implementMedicalMeasures(M,P)"
+     }
+    ],
+    "note": "因抢救生命垂危的患者等紧急情况，不能取得患者或者其近亲属意见，经医疗机构负责人或者授权的负责人批准的，医疗机构可以立即实施相应的医疗措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1220-approval",
+    "srcs": [
+     "art1220-1"
+    ],
+    "body": [
+     "medicalInstitution(M)",
+     {
+      "or": [
+       "headOfInstitution(H,M)",
+       "authorizedByHead(H,M)"
+      ]
+     }
+    ],
+    "heads": [
+     "approvedByResponsiblePerson(M)"
+    ],
+    "note": "批准主体为医疗机构负责人或者其授权的负责人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lifeThreateningEmergency": "因抢救生命垂危的患者等紧急情况（参数：患者）",
+   "cannotObtainPatientOrRelativeOpinion": "不能取得患者或者其近亲属的意见（参数：患者）",
+   "approvedByResponsiblePerson": "经医疗机构负责人或者授权的负责人批准（参数：医疗机构）",
+   "headOfInstitution": "是医疗机构的负责人（负责人，医疗机构）",
+   "authorizedByHead": "是医疗机构负责人授权的负责人（被授权人，医疗机构）",
+   "implementMedicalMeasures": "立即实施相应的医疗措施（医疗机构，患者）"
+  }
+ },
+ "card:g7757": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "患者在诊疗活动中受到损害，具备哪些情形可以推定医疗机构有过错",
+     "rules": [
+      "c1222-presume",
+      "c1222-fault"
+     ]
+    },
+    {
+     "text": "因药品、消毒产品、医疗器械缺陷或者输入不合格血液致害，患者可以向谁请求赔偿，医疗机构赔偿后能否追偿",
+     "rules": [
+      "c1223-1",
+      "c1223-2",
+      "c1223-3"
+     ]
+    },
+    {
+     "text": "患者在诊疗活动中受到损害，哪些情形下医疗机构不承担赔偿责任",
+     "rules": [
+      "c1224-1",
+      "c1224-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "医疗损害责任的构成（笔记四要件）：医疗机构及其医务人员实施违法的诊疗行为；患者遭受非正常损害；违法诊疗行为与损害之间有因果关系；医疗机构或医务人员有过错",
+     "rules": [
+      "c1222-liable"
+     ]
+    },
+    {
+     "text": "推定过错的三项事由：违反法律、行政法规、规章以及其他有关诊疗规范的规定；隐匿或者拒绝提供与纠纷有关的病历资料；遗失、伪造、篡改或者违法销毁病历资料",
+     "rules": [
+      "c1222-presume"
+     ]
+    },
+    {
+     "text": "因药品、消毒产品、医疗器械的缺陷，或者输入不合格的血液造成患者损害",
+     "rules": [
+      "c1223-1",
+      "c1223-2"
+     ]
+    },
+    {
+     "text": "免责事由：患者或其近亲属不配合医疗机构进行符合诊疗规范的诊疗；医务人员在抢救生命垂危的患者等紧急情况下已尽到合理诊疗义务；限于当时的医疗水平难以诊疗",
+     "rules": [
+      "c1224-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "推定过错可以被推翻：医疗机构举证证明自己没有过错的，不认定其有过错",
+     "rules": [
+      "c1222-fault"
+     ]
+    },
+    {
+     "text": "具备第1224条第1款三项情形之一的，医疗机构不承担赔偿责任",
+     "rules": [
+      "c1224-1"
+     ]
+    },
+    {
+     "text": "患者一方不配合的情形中，医疗机构或者其医务人员也有过错的，仍应当承担相应的赔偿责任",
+     "rules": [
+      "c1224-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备第1222条三项情形之一的，推定医疗机构有过错，患者无须就具体过错举证",
+     "rules": [
+      "c1222-presume",
+      "c1222-fault"
+     ]
+    },
+    {
+     "text": "构成医疗损害责任的，由医疗机构（责任主体）向患者承担侵权赔偿责任",
+     "rules": [
+      "c1222-liable",
+      "c1222-pay"
+     ]
+    },
+    {
+     "text": "医疗产品、不合格血液致害的，患者可以向药品上市许可持有人、生产者、血液提供机构请求赔偿，也可以向医疗机构请求赔偿（不真正连带）",
+     "rules": [
+      "c1223-1",
+      "c1223-2"
+     ]
+    },
+    {
+     "text": "患者向医疗机构请求赔偿的，医疗机构赔偿后有权向负有责任的药品上市许可持有人、生产者、血液提供机构追偿",
+     "rules": [
+      "c1223-3"
+     ]
+    },
+    {
+     "text": "具备免责事由的，医疗机构不承担赔偿责任",
+     "rules": [
+      "c1224-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1222条的过错推定一旦成立，即认定医疗机构有过错，除非其举证证明自己无过错",
+     "rules": [
+      "c1222-fault",
+      "c1222-liable"
+     ]
+    },
+    {
+     "text": "第1224条第1款的免责规定排除依第1222条推定过错而生的赔偿责任",
+     "rules": [
+      "c1224-1"
+     ]
+    },
+    {
+     "text": "第1224条第2款（医疗机构也有过错仍承担相应责任）优先于第1款第1项的免责",
+     "rules": [
+      "c1224-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记将医疗损害责任列为一般侵权（过错责任），第1222条仅为例外的过错推定；与第1223条医疗产品责任（不真正连带＋追偿）不同，后者不以医疗机构过错为要件",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称不可抗力、第三人原因亦属免责事由，但第1224条并未列举，本节免责事由仅限该条三项",
+     "rules": []
+    },
+    {
+     "text": "医务人员是行为主体，医疗机构是用人者意义上的责任主体，故责任由医疗机构承担",
+     "rules": [
+      "c1222-liable"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1222-presume",
+    "srcs": [
+     "art1222-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patient(P)",
+     "damage(P,D)",
+     "treatedAt(P,H)",
+     {
+      "or": [
+       "violatesDiagnosisNorms(H)",
+       "concealsOrRefusesRecords(H)",
+       "losesForgesAltersOrDestroysRecords(H)"
+      ]
+     }
+    ],
+    "heads": [
+     "faultPresumed(H)"
+    ],
+    "note": "患者在诊疗活动中受损，医疗机构有违反诊疗规范、隐匿或拒绝提供病历、遗失伪造篡改违法销毁病历三种情形之一的，推定其有过错",
+    "auth": "npc"
+   },
+   {
+    "key": "c1222-fault",
+    "srcs": [
+     "art1222-1"
+    ],
+    "body": [
+     "faultPresumed(H)",
+     "patient(P)",
+     "treatedAt(P,H)",
+     "~provesNoFault(H,P)"
+    ],
+    "heads": [
+     "fault(H,P)"
+    ],
+    "note": "推定过错即认定医疗机构有过错，但医疗机构举证证明自己没有过错的除外（举证责任倒置，可反驳的推定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1222-liable",
+    "srcs": [
+     "art1222-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patient(P)",
+     "damage(P,D)",
+     "treatedAt(P,H)",
+     "unlawfulDiagnosisAct(H)",
+     "causation(H)",
+     "fault(H,P)"
+    ],
+    "heads": [
+     "liable(H,P,D)"
+    ],
+    "note": "医疗损害责任的四要件（违法诊疗行为、非正常损害、因果关系、过错）来自笔记与学理，第1222条只解决过错的认定方式；医务人员为行为主体，医疗机构为责任主体",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1222-pay",
+    "srcs": [
+     "art1222-1"
+    ],
+    "body": [
+     "liable(H,P,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "payCompensation(H,P)"
+     }
+    ],
+    "note": "构成医疗损害责任的，医疗机构应当向患者承担赔偿责任",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1223-1",
+    "srcs": [
+     "art1223-1"
+    ],
+    "body": [
+     "patient(P)",
+     "damage(P,D)",
+     {
+      "or": [
+       "defectiveMedicalProduct(C)",
+       "unqualifiedBlood(C)"
+      ]
+     },
+     "causation(C)",
+     {
+      "or": [
+       "marketingAuthorizationHolder(M)",
+       "producer(M,C)",
+       "bloodProvider(M)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "M",
+      "content": "claimCompensationFrom(P,M,C)"
+     }
+    ],
+    "note": "因药品、消毒产品、医疗器械缺陷或输入不合格血液致害的，患者可以向药品上市许可持有人、生产者、血液提供机构请求赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1223-2",
+    "srcs": [
+     "art1223-1"
+    ],
+    "body": [
+     "patient(P)",
+     "damage(P,D)",
+     {
+      "or": [
+       "defectiveMedicalProduct(C)",
+       "unqualifiedBlood(C)"
+      ]
+     },
+     "causation(C)",
+     "medicalInstitution(H)",
+     "treatedAt(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "H",
+      "content": "claimCompensationFrom(P,H,C)"
+     }
+    ],
+    "note": "同一情形下患者也可以向医疗机构请求赔偿，形成不真正连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1223-3",
+    "srcs": [
+     "art1223-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "paidVictim(H,P)",
+     "responsibleForDefect(M,C)",
+     {
+      "or": [
+       "defectiveMedicalProduct(C)",
+       "unqualifiedBlood(C)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": "M",
+      "content": "recourse(H,M,P)"
+     }
+    ],
+    "note": "患者向医疗机构请求赔偿的，医疗机构赔偿后有权向负有责任的药品上市许可持有人、生产者、血液提供机构追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1224-1",
+    "srcs": [
+     "art1224-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patient(P)",
+     "damage(P,D)",
+     "treatedAt(P,H)",
+     {
+      "or": [
+       "patientOrRelativeNonCooperation(P)",
+       "emergencyReasonableCare(H)",
+       "beyondMedicalLevelAtTime(H)"
+      ]
+     }
+    ],
+    "heads": [
+     "-liable(H,P,D)"
+    ],
+    "note": "患者或其近亲属不配合符合诊疗规范的诊疗、紧急情况下已尽合理诊疗义务、限于当时医疗水平难以诊疗的，医疗机构不承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1224-2",
+    "srcs": [
+     "art1224-2"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patient(P)",
+     "damage(P,D)",
+     "treatedAt(P,H)",
+     "patientOrRelativeNonCooperation(P)",
+     "fault(H,P)"
+    ],
+    "heads": [
+     "liable(H,P,D)"
+    ],
+    "note": "患者一方不配合的情形中，医疗机构或者其医务人员也有过错的，仍应当承担相应的赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1224-1",
+    "c1222-liable",
+    "第1224条第1款为法定免责事由，排除依第1222条推定过错而生的赔偿责任"
+   ],
+   [
+    "c1224-2",
+    "c1224-1",
+    "第1224条第2款：患者不配合但医疗机构或其医务人员也有过错的，仍应承担相应的赔偿责任"
+   ]
+  ],
+  "predicates": {
+   "patient": "是患者（1个参数：患者）",
+   "treatedAt": "在医疗机构接受诊疗活动（患者，医疗机构）",
+   "unlawfulDiagnosisAct": "实施违法的诊疗行为（医疗机构及其医务人员）",
+   "violatesDiagnosisNorms": "违反法律、行政法规、规章以及其他有关诊疗规范的规定（医疗机构）",
+   "concealsOrRefusesRecords": "隐匿或者拒绝提供与纠纷有关的病历资料（医疗机构）",
+   "losesForgesAltersOrDestroysRecords": "遗失、伪造、篡改或者违法销毁病历资料（医疗机构）",
+   "faultPresumed": "推定医疗机构有过错（医疗机构）",
+   "patientOrRelativeNonCooperation": "患者或其近亲属不配合医疗机构进行符合诊疗规范的诊疗（患者）",
+   "emergencyReasonableCare": "医务人员在抢救生命垂危的患者等紧急情况下已尽到合理诊疗义务（医疗机构）",
+   "beyondMedicalLevelAtTime": "限于当时的医疗水平难以诊疗（医疗机构）",
+   "defectiveMedicalProduct": "药品、消毒产品或者医疗器械存在缺陷（缺陷产品）",
+   "unqualifiedBlood": "输入不合格的血液（血液）",
+   "marketingAuthorizationHolder": "是药品上市许可持有人（主体）",
+   "bloodProvider": "是血液提供机构（主体）",
+   "responsibleForDefect": "对缺陷产品或者不合格血液负有责任（主体，缺陷产品/血液）"
+  }
+ },
+ "art:1221": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "医务人员在诊疗活动中未尽到与当时的医疗水平相应的诊疗义务、造成患者损害的，由谁承担赔偿责任",
+     "rules": [
+      "c1221-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是医疗机构的医务人员，且其行为发生在诊疗活动中（诊断、治疗、护理、检验等）",
+     "rules": [
+      "c1221-1"
+     ]
+    },
+    {
+     "text": "医务人员未尽到与当时的医疗水平相应的诊疗义务（以诊疗当时、当地同类医务人员的客观注意义务为标准）",
+     "rules": [
+      "c1221-1"
+     ]
+    },
+    {
+     "text": "该诊疗行为造成患者损害",
+     "rules": [
+      "c1221-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "存在第1224条第1款规定的免责事由（患者或其近亲属不配合诊疗、抢救生命垂危患者等紧急情况下已尽合理诊疗义务、限于当时医疗水平难以诊疗）的，医疗机构不承担赔偿责任；该条未在本行挂载，依学理与体系补充",
+     "rules": [
+      "c1221-exempt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "由医疗机构（而非医务人员个人）向患者承担赔偿责任",
+     "rules": [
+      "c1221-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1224条的免责事由优先于本条的赔偿责任，成立免责事由时医疗机构不承担赔偿责任",
+     "rules": [
+      "c1221-exempt"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决医疗损害责任的构成与赔偿主体：责任主体是医疗机构，医务人员个人不直接向患者承担赔偿责任；过错与因果关系的举证责任分配由第1218条以下规定，本条未涉及",
+     "rules": []
+    },
+    {
+     "text": "“与当时的医疗水平相应的诊疗义务”是客观标准，须结合患者病情、医疗机构等级与客观条件判断，不得以事后医学进展或更高水平专科标准衡量",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1221-1",
+    "srcs": [
+     "art1221-1"
+    ],
+    "body": [
+     "employeeOf(S,H)",
+     "inMedicalTreatment(S,P)",
+     "failsDueCareStandard(S,P)",
+     "causesPatientHarm(S,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "payCompensation(H,P)"
+     }
+    ],
+    "note": "医务人员在诊疗活动中未尽到与当时的医疗水平相应的诊疗义务，造成患者损害的，医疗机构应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1221-exempt",
+    "srcs": [
+     "art1221-1"
+    ],
+    "body": [
+     "employeeOf(S,H)",
+     "inMedicalTreatment(S,P)",
+     "failsDueCareStandard(S,P)",
+     "causesPatientHarm(S,P)",
+     "exemptUnderArt1224(P)"
+    ],
+    "heads": [
+     "-payCompensation(H,P)"
+    ],
+    "note": "存在第1224条第1款免责事由（患者或其近亲属不配合诊疗、紧急情况下已尽合理诊疗义务、限于当时医疗水平难以诊疗）时，医疗机构不承担赔偿责任；该条未在本行挂载，属学理与体系补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1221-exempt",
+    "c1221-1",
+    "存在第1224条免责事由时医疗机构不承担赔偿责任，优先于第1221条的赔偿责任"
+   ]
+  ],
+  "predicates": {
+   "inMedicalTreatment": "在诊疗活动中为患者实施诊断、治疗、护理、检验等诊疗行为（参数1：医务人员；参数2：患者）",
+   "failsDueCareStandard": "未尽到与当时的医疗水平相应的诊疗义务（参数1：医务人员；参数2：患者）",
+   "causesPatientHarm": "诊疗行为造成患者损害（参数1：医务人员；参数2：患者）",
+   "exemptUnderArt1224": "存在第1224条第1款规定的免责事由（患者或其近亲属不配合诊疗；抢救生命垂危患者等紧急情况下已尽合理诊疗义务；限于当时医疗水平难以诊疗）（参数：患者）"
+  }
+ },
+ "art:1219": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "医务人员在诊疗活动中的说明义务与取得同意义务如何履行；未尽该义务造成患者损害的，由谁承担赔偿责任",
+     "rules": [
+      "c1219-1",
+      "c1219-2",
+      "c1219-3",
+      "c1219-breach-1",
+      "c1219-breach-2",
+      "c1219-liability"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "医务人员在诊疗活动中对患者实施诊疗",
+     "rules": [
+      "c1219-1"
+     ]
+    },
+    {
+     "text": "需要实施手术、特殊检查、特殊治疗",
+     "rules": [
+      "c1219-2",
+      "c1219-3"
+     ]
+    },
+    {
+     "text": "不能或者不宜向患者本人说明",
+     "rules": [
+      "c1219-3",
+      "c1219-breach-2"
+     ]
+    },
+    {
+     "text": "未说明病情、医疗措施，或未就手术等说明医疗风险、替代医疗方案，或未取得明确同意",
+     "rules": [
+      "c1219-breach-1",
+      "c1219-breach-2"
+     ]
+    },
+    {
+     "text": "造成患者损害，且该医务人员为医疗机构的工作人员",
+     "rules": [
+      "c1219-liability"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不能或者不宜向患者说明的，向患者的近亲属说明并取得其明确同意即可，不再要求向患者本人说明并取得其同意",
+     "rules": [
+      "c1219-2",
+      "c1219-3",
+      "c1219-breach-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "医务人员应当向患者说明病情和医疗措施",
+     "rules": [
+      "c1219-1"
+     ]
+    },
+    {
+     "text": "需要实施手术、特殊检查、特殊治疗的，应当及时向患者具体说明医疗风险、替代医疗方案等情况，并取得其明确同意",
+     "rules": [
+      "c1219-2"
+     ]
+    },
+    {
+     "text": "不能或者不宜向患者说明的，应当向患者的近亲属说明医疗风险、替代医疗方案等情况，并取得其明确同意",
+     "rules": [
+      "c1219-3"
+     ]
+    },
+    {
+     "text": "医务人员未尽第1款义务造成患者损害的，医疗机构应当承担赔偿责任",
+     "rules": [
+      "c1219-liability"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条针对的是说明义务与取得同意义务的违反；医务人员未尽与当时医疗水平相应的诊疗义务的赔偿责任，规定在第1220条，不在本条",
+     "rules": []
+    },
+    {
+     "text": "因抢救生命垂危的患者等紧急情况不能取得患者或者其近亲属意见的，经医疗机构负责人或者授权的负责人批准可以立即实施相应医疗措施，属第1221条，不适用本条的同意要求",
+     "rules": []
+    },
+    {
+     "text": "本条只规定医疗机构的赔偿责任，未规定免责事由；患者或者其近亲属不配合诊疗等免责事由规定在第1224条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1219-1",
+    "srcs": [
+     "art1219-1"
+    ],
+    "body": [
+     "medicalStaff(S)",
+     "inDiagnosisAndTreatment(S,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "explainConditionAndMeasures(S,P)"
+     }
+    ],
+    "note": "医务人员在诊疗活动中应当向患者说明病情和医疗措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1219-2",
+    "srcs": [
+     "art1219-1"
+    ],
+    "body": [
+     "medicalStaff(S)",
+     "inDiagnosisAndTreatment(S,P)",
+     "needsSurgerySpecialExamOrTreatment(P)",
+     "~cannotOrUnsuitableToExplainToPatient(S,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "explainRisksAndAlternatives(S,P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "obtainExplicitConsent(S,P)"
+     }
+    ],
+    "note": "需要实施手术、特殊检查、特殊治疗的，应当及时向患者具体说明医疗风险、替代医疗方案等情况，并取得其明确同意；不能或者不宜向患者说明的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1219-3",
+    "srcs": [
+     "art1219-1"
+    ],
+    "body": [
+     "medicalStaff(S)",
+     "inDiagnosisAndTreatment(S,P)",
+     "needsSurgerySpecialExamOrTreatment(P)",
+     "cannotOrUnsuitableToExplainToPatient(S,P)",
+     "nearRelativeOf(R,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "R",
+      "content": "explainRisksAndAlternatives(S,R)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "R",
+      "content": "obtainExplicitConsent(S,R)"
+     }
+    ],
+    "note": "不能或者不宜向患者说明的，应当向患者的近亲属说明医疗风险、替代医疗方案等情况并取得其明确同意（该但书文义上系针对手术、特殊检查、特殊治疗）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1219-breach-1",
+    "srcs": [
+     "art1219-1"
+    ],
+    "body": [
+     "medicalStaff(S)",
+     "inDiagnosisAndTreatment(S,P)",
+     "~cannotOrUnsuitableToExplainToPatient(S,P)",
+     {
+      "or": [
+       "-explainConditionAndMeasures(S,P)",
+       "needsSurgerySpecialExamOrTreatment(P) -explainRisksAndAlternatives(S,P)",
+       "needsSurgerySpecialExamOrTreatment(P) -obtainExplicitConsent(S,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "failedToFulfillArt1219Duty(S,P)"
+    ],
+    "note": "可以向患者说明而未说明病情、医疗措施，或未就手术等说明风险与替代方案、未取得其明确同意的，属未尽第1款义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1219-breach-2",
+    "srcs": [
+     "art1219-1"
+    ],
+    "body": [
+     "medicalStaff(S)",
+     "inDiagnosisAndTreatment(S,P)",
+     "cannotOrUnsuitableToExplainToPatient(S,P)",
+     "nearRelativeOf(R,P)",
+     {
+      "or": [
+       "-explainRisksAndAlternatives(S,R)",
+       "-obtainExplicitConsent(S,R)"
+      ]
+     }
+    ],
+    "heads": [
+     "failedToFulfillArt1219Duty(S,P)"
+    ],
+    "note": "不能或者不宜向患者说明时，未向患者的近亲属说明并取得其明确同意的，属未尽第1款义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1219-liability",
+    "srcs": [
+     "art1219-2"
+    ],
+    "body": [
+     "failedToFulfillArt1219Duty(S,P)",
+     "patientSuffersHarm(P)",
+     "medicalInstitution(H)",
+     "employeeOf(S,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "payCompensation(H,P)"
+     }
+    ],
+    "note": "医务人员未尽第1款义务造成患者损害的，由其所属医疗机构承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "medicalStaff": "是医务人员（1个参数：行为人）",
+   "inDiagnosisAndTreatment": "在诊疗活动中对患者实施诊疗（医务人员，患者）",
+   "explainConditionAndMeasures": "向患者说明病情和医疗措施（医务人员，患者）",
+   "needsSurgerySpecialExamOrTreatment": "需要实施手术、特殊检查、特殊治疗（患者）",
+   "cannotOrUnsuitableToExplainToPatient": "不能或者不宜向患者本人说明（医务人员，患者）",
+   "explainRisksAndAlternatives": "及时向被说明人具体说明医疗风险、替代医疗方案等情况（医务人员，被说明人）",
+   "obtainExplicitConsent": "取得明确同意（医务人员，同意人）",
+   "failedToFulfillArt1219Duty": "未尽到第1219条第1款规定的说明与取得同意义务（医务人员，患者）",
+   "patientSuffersHarm": "患者受到损害（患者）"
+  }
+ },
+ "art:1225": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "医疗机构及其医务人员对病历资料的填写、保管义务，以及患者要求查阅、复制时医疗机构的及时提供义务",
+     "rules": [
+      "c1225-1",
+      "c1225-staff",
+      "c1225-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "病历资料包括住院志、医嘱单、检验报告、手术及麻醉记录、病理资料、护理记录等",
+     "rules": [
+      "c1225-scope"
+     ]
+    },
+    {
+     "text": "义务主体为医疗机构及其医务人员（医疗机构的工作人员）",
+     "rules": [
+      "c1225-1",
+      "c1225-staff"
+     ]
+    },
+    {
+     "text": "患者向医疗机构提出查阅、复制病历资料的要求",
+     "rules": [
+      "c1225-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "医疗机构应当按照规定填写并妥善保管病历资料",
+     "rules": [
+      "c1225-1"
+     ]
+    },
+    {
+     "text": "医务人员应当按照规定填写并妥善保管病历资料",
+     "rules": [
+      "c1225-staff"
+     ]
+    },
+    {
+     "text": "患者要求查阅、复制的，医疗机构应当及时提供",
+     "rules": [
+      "c1225-2"
+     ]
+    },
+    {
+     "text": "患者对病历资料享有查阅、复制权（由第2款反面推知，学理说明）",
+     "rules": [
+      "c1225-right"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1222条（本行未挂载）就隐匿或拒绝提供、遗失、伪造、篡改、违法销毁病历资料规定过错推定，属举证责任规则；本条只规定填写、保管与提供义务，不涉及过错推定",
+     "rules": []
+    },
+    {
+     "text": "第1226条（本行未挂载）规定医疗机构及其医务人员对患者隐私和个人信息的保密义务，与本条的病历资料提供义务并行，不因提供查阅、复制而免除",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1225-scope",
+    "srcs": [
+     "art1225-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "inpatientRecord(R)",
+       "doctorOrderSheet(R)",
+       "inspectionReport(R)",
+       "surgeryAnesthesiaRecord(R)",
+       "pathologyMaterial(R)",
+       "nursingRecord(R)",
+       "otherMedicalRecord(R)"
+      ]
+     }
+    ],
+    "heads": [
+     "medicalRecord(R)"
+    ],
+    "note": "病历资料的范围：住院志、医嘱单、检验报告、手术及麻醉记录、病理资料、护理记录等",
+    "auth": "npc"
+   },
+   {
+    "key": "c1225-1",
+    "srcs": [
+     "art1225-1"
+    ],
+    "body": [
+     "medicalInstitution(I)",
+     "medicalRecord(R)",
+     "recordOf(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "fillInAndKeepMedicalRecords(I,R)"
+     }
+    ],
+    "note": "医疗机构应当按照规定填写并妥善保管其病历资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c1225-staff",
+    "srcs": [
+     "art1225-1"
+    ],
+    "body": [
+     "medicalInstitution(I)",
+     "employeeOf(S,I)",
+     "medicalRecord(R)",
+     "recordOf(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "fillInAndKeepMedicalRecords(S,R)"
+     }
+    ],
+    "note": "医疗机构的工作人员（医务人员）同样应当按照规定填写并妥善保管病历资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c1225-2",
+    "srcs": [
+     "art1225-2"
+    ],
+    "body": [
+     "medicalInstitution(I)",
+     "medicalRecord(R)",
+     "recordOf(R,I)",
+     "patientOf(P,I)",
+     "requestsInspectionOrCopy(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": "P",
+      "content": "provideRecordsPromptly(I,P,R)"
+     }
+    ],
+    "note": "患者要求查阅、复制第1款所列病历资料的，医疗机构应当及时提供",
+    "auth": "npc"
+   },
+   {
+    "key": "c1225-right",
+    "srcs": [
+     "art1225-2"
+    ],
+    "body": [
+     "medicalInstitution(I)",
+     "medicalRecord(R)",
+     "recordOf(R,I)",
+     "patientOf(P,I)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "I",
+      "content": "inspectOrCopy(P,R)"
+     }
+    ],
+    "note": "由第2款“患者要求查阅、复制……应当及时提供”反面推知患者享有查阅、复制权；条文未明文写“有权”，故列为学理",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "medicalRecord": "是病历资料（第1225条第1款所列住院志、医嘱单、检验报告、手术及麻醉记录、病理资料、护理记录等）",
+   "recordOf": "该病历资料由该医疗机构填写、保管（病历资料，医疗机构）",
+   "patientOf": "是该医疗机构的患者（患者，医疗机构）",
+   "requestsInspectionOrCopy": "要求查阅、复制病历资料（患者，病历资料）",
+   "fillInAndKeepMedicalRecords": "按照规定填写并妥善保管病历资料（义务人，病历资料）",
+   "provideRecordsPromptly": "及时向患者提供查阅、复制的病历资料（医疗机构，患者，病历资料）",
+   "inspectOrCopy": "查阅、复制病历资料（患者，病历资料）",
+   "inpatientRecord": "是住院志",
+   "doctorOrderSheet": "是医嘱单",
+   "inspectionReport": "是检验报告",
+   "surgeryAnesthesiaRecord": "是手术及麻醉记录",
+   "pathologyMaterial": "是病理资料",
+   "nursingRecord": "是护理记录",
+   "otherMedicalRecord": "是“等病历资料”所指的其他病历资料"
+  }
+ },
+ "art:1226": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "医疗机构及其医务人员对患者的隐私和个人信息负有何种保密义务；泄露患者隐私、个人信息，或者未经患者同意公开其病历资料的，是否应当承担侵权责任",
+     "rules": [
+      "c1226-1",
+      "c1226-2",
+      "c1226-3",
+      "c1226-4",
+      "c1226-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是医疗机构，或者是医疗机构的工作人员（医务人员）",
+     "rules": [
+      "c1226-1",
+      "c1226-2",
+      "c1226-3",
+      "c1226-4"
+     ]
+    },
+    {
+     "text": "义务或侵害的对象是在该医疗机构就诊的患者的隐私或者个人信息",
+     "rules": [
+      "c1226-1",
+      "c1226-2",
+      "c1226-3",
+      "c1226-4"
+     ]
+    },
+    {
+     "text": "泄露患者的隐私或者个人信息",
+     "rules": [
+      "c1226-3",
+      "c1226-4"
+     ]
+    },
+    {
+     "text": "未经患者同意公开其病历资料",
+     "rules": [
+      "c1226-5"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "医疗机构应当对患者的隐私和个人信息保密",
+     "rules": [
+      "c1226-1"
+     ]
+    },
+    {
+     "text": "医务人员应当对患者的隐私和个人信息保密",
+     "rules": [
+      "c1226-2"
+     ]
+    },
+    {
+     "text": "医疗机构泄露患者隐私、个人信息的，应当承担侵权责任",
+     "rules": [
+      "c1226-3"
+     ]
+    },
+    {
+     "text": "医务人员泄露患者隐私、个人信息的，应当承担侵权责任",
+     "rules": [
+      "c1226-4"
+     ]
+    },
+    {
+     "text": "未经患者同意公开其病历资料的，应当承担侵权责任",
+     "rules": [
+      "c1226-5"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1226条第2款（遗失、伪造、篡改或者违法销毁病历资料时推定医疗机构有过错）未在本行挂载，不在本卡片范围",
+     "rules": []
+    },
+    {
+     "text": "本条针对医疗场景中的患者隐私与个人信息，与隐私权、个人信息保护的一般规定竞合时属特别规定（学理）",
+     "rules": []
+    },
+    {
+     "text": "保密义务的主体既包括医疗机构，也包括其医务人员；侵权责任分别由实施泄露、公开行为的主体承担",
+     "rules": [
+      "c1226-1",
+      "c1226-2",
+      "c1226-3",
+      "c1226-4"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1226-1",
+    "srcs": [
+     "art1226-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patientOf(P,H)",
+     {
+      "or": [
+       "privacyOf(I,P)",
+       "personalInformationOf(I,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "keepConfidentialInfo(H,I)"
+     }
+    ],
+    "note": "医疗机构应当对患者的隐私和个人信息保密",
+    "auth": "npc"
+   },
+   {
+    "key": "c1226-2",
+    "srcs": [
+     "art1226-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "employeeOf(S,H)",
+     "patientOf(P,H)",
+     {
+      "or": [
+       "privacyOf(I,P)",
+       "personalInformationOf(I,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "P",
+      "content": "keepConfidentialInfo(S,I)"
+     }
+    ],
+    "note": "医疗机构的工作人员（医务人员）同样应当对患者的隐私和个人信息保密",
+    "auth": "npc"
+   },
+   {
+    "key": "c1226-3",
+    "srcs": [
+     "art1226-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patientOf(P,H)",
+     {
+      "or": [
+       "leakOrIllegallyProvideInfo(H,I) privacyOf(I,P)",
+       "leakOrIllegallyProvideInfo(H,I) personalInformationOf(I,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "bearTortLiability(H,P)"
+    ],
+    "note": "医疗机构泄露患者隐私或者个人信息的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1226-4",
+    "srcs": [
+     "art1226-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "employeeOf(S,H)",
+     "patientOf(P,H)",
+     {
+      "or": [
+       "leakOrIllegallyProvideInfo(S,I) privacyOf(I,P)",
+       "leakOrIllegallyProvideInfo(S,I) personalInformationOf(I,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "bearTortLiability(S,P)"
+    ],
+    "note": "医务人员泄露患者隐私或者个人信息的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1226-5",
+    "srcs": [
+     "art1226-1"
+    ],
+    "body": [
+     "medicalInstitution(H)",
+     "patientOf(P,H)",
+     "medicalRecordOf(R,P)",
+     "disclosesMedicalRecordWithoutConsent(H,R)"
+    ],
+    "heads": [
+     "bearTortLiability(H,P)"
+    ],
+    "note": "未经患者同意公开其病历资料的，应当承担侵权责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "patientOf": "是该医疗机构诊疗的患者（患者，医疗机构）",
+   "medicalRecordOf": "是该患者的病历资料（病历资料，患者）",
+   "disclosesMedicalRecordWithoutConsent": "未经患者同意公开其病历资料（行为人，病历资料）"
+  }
+ },
+ "art:1227": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "医疗机构及其医务人员违反诊疗规范实施不必要的检查，是否为法律所禁止",
+     "rules": [
+      "c1227-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为主体是医疗机构，或者是该医疗机构的医务人员",
+     "rules": [
+      "c1227-1"
+     ]
+    },
+    {
+     "text": "所实施的检查违反诊疗规范，且属于不必要的检查",
+     "rules": [
+      "c1227-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "不得实施该不必要的检查（禁止性义务，医疗机构与医务人员均受约束）",
+     "rules": [
+      "c1227-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条禁止的是“违反诊疗规范”且“不必要”的检查，两个要件须同时具备；符合诊疗规范、为诊断治疗所必需的检查不在禁止之列",
+     "rules": [
+      "c1227-1"
+     ]
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条；本条为禁止性规范，未直接规定违反后的赔偿责任，赔偿问题由医疗损害责任的其他条文处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1227-1",
+    "srcs": [
+     "art1227-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "medicalInstitution(A)",
+       "medicalStaff(A)"
+      ]
+     },
+     "violatesDiagnosticTreatmentNorms(A)",
+     "unnecessaryExamination(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "performUnnecessaryExamination(A)"
+     }
+    ],
+    "note": "医疗机构及其医务人员不得违反诊疗规范实施不必要的检查；主体为医疗机构或医务人员，且“违反诊疗规范”与“不必要”须同时具备",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "medicalStaff": "是医疗机构的医务人员（行为人）",
+   "violatesDiagnosticTreatmentNorms": "违反诊疗规范（行为人）",
+   "unnecessaryExamination": "属于不必要的检查（行为人所实施的检查）",
+   "performUnnecessaryExamination": "实施不必要的检查（行为人）"
+  }
+ },
+ "art:1228": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "干扰医疗秩序、妨碍医务人员工作、生活，或者侵害医务人员合法权益的，是否应当承担法律责任",
+     "rules": [
+      "c1228-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "医疗机构及其医务人员的合法权益受法律保护（宣示性、原则性规定，不单独构成请求权基础）",
+     "rules": []
+    },
+    {
+     "text": "实施下列行为之一：干扰医疗秩序；妨碍医务人员工作、生活；侵害医务人员合法权益",
+     "rules": [
+      "c1228-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当依法承担法律责任；责任的性质、种类与构成要件依其他法律规定（如侵权责任编）确定，本条不另行规定",
+     "rules": [
+      "c1228-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款为宣示性规定，仅确认医疗机构及其医务人员合法权益受法律保护，不能单独作为请求权基础；第2款为行为规范，且“依法”承担法律责任，须结合侵权责任编等规定适用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1228-2",
+    "srcs": [
+     "art1228-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "disturbsMedicalOrder(X)",
+       "obstructsMedicalPersonnelWorkOrLife(X)",
+       "infringesMedicalPersonnelRights(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "bearLegalLiability(X)"
+     }
+    ],
+    "note": "干扰医疗秩序、妨碍医务人员工作、生活或侵害医务人员合法权益的，应当依法承担法律责任（责任种类与构成要件依其他法律规定确定）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "disturbsMedicalOrder": "干扰医疗秩序（1个参数：行为人）",
+   "obstructsMedicalPersonnelWorkOrLife": "妨碍医务人员工作、生活（1个参数：行为人）",
+   "infringesMedicalPersonnelRights": "侵害医务人员合法权益（1个参数：行为人）",
+   "bearLegalLiability": "依法承担法律责任（1个参数：行为人），责任种类与构成要件依其他法律规定确定"
+  }
+ }
+}

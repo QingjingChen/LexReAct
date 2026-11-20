@@ -1,0 +1,879 @@
+{
+ "art:954": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "行纪人在何种情形下可以处分交付的瑕疵或易腐烂、变质的委托物",
+     "rules": [
+      "c954-consent",
+      "c954-nocontact"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "委托物交付给行纪人时有瑕疵或者容易腐烂、变质",
+     "rules": [
+      "c954-consent",
+      "c954-nocontact"
+     ]
+    },
+    {
+     "text": "经委托人同意",
+     "rules": [
+      "c954-consent"
+     ]
+    },
+    {
+     "text": "不能与委托人及时取得联系",
+     "rules": [
+      "c954-nocontact"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "经委托人同意的，行纪人可以处分该委托物",
+     "rules": [
+      "c954-consent"
+     ]
+    },
+    {
+     "text": "不能与委托人及时取得联系的，行纪人可以合理处分该委托物",
+     "rules": [
+      "c954-nocontact"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决行纪人对委托物的处分权限（同意或无法联系时的合理处分），不涉及行纪人的保管义务、费用负担及委托物的所有权归属；笔记未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c954-consent",
+    "srcs": [
+     "art954-1"
+    ],
+    "body": [
+     "commissionAgent(A)",
+     "principal(P)",
+     "consignedGoods(G)",
+     "deliveredToAgent(G,A)",
+     "defectiveOrPerishable(G)",
+     "principalConsentGiven(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "disposeGoods(A,G)"
+     }
+    ],
+    "note": "委托物交付给行纪人时有瑕疵或者容易腐烂、变质，经委托人同意的，行纪人可以处分该物",
+    "auth": "npc"
+   },
+   {
+    "key": "c954-nocontact",
+    "srcs": [
+     "art954-1"
+    ],
+    "body": [
+     "commissionAgent(A)",
+     "principal(P)",
+     "consignedGoods(G)",
+     "deliveredToAgent(G,A)",
+     "defectiveOrPerishable(G)",
+     "cannotContactPrincipalTimely(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "disposeReasonably(A,G)"
+     }
+    ],
+    "note": "不能与委托人及时取得联系的，行纪人可以合理处分该委托物（无须事先同意，但须合理）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commissionAgent": "是行纪人（1个参数：行纪人）",
+   "principal": "是委托人（1个参数：委托人）",
+   "consignedGoods": "是委托物（1个参数：委托物）",
+   "deliveredToAgent": "委托物已交付给行纪人（参数1：委托物；参数2：行纪人）",
+   "defectiveOrPerishable": "委托物有瑕疵或者容易腐烂、变质（1个参数：委托物）",
+   "principalConsentGiven": "经委托人同意（参数1：委托人；参数2：委托物）",
+   "cannotContactPrincipalTimely": "不能与委托人及时取得联系（1个参数：委托人）",
+   "disposeGoods": "处分该委托物（参数1：行纪人；参数2：委托物）",
+   "disposeReasonably": "合理处分该委托物（参数1：行纪人；参数2：委托物）"
+  }
+ },
+ "art:953": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "行纪人占有委托物时，对委托物负有何种保管义务",
+     "rules": [
+      "c953-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为行纪人，且其占有委托物",
+     "rules": [
+      "c953-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "行纪人应当妥善保管委托物",
+     "rules": [
+      "c953-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只挂载了第1款（占有委托物的保管义务）；第2款关于委托物有瑕疵或易腐烂变质时行纪人处置委托物的规定未挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "“行纪人”“委托物”的概念依第951条行纪合同的定义确定，该条未在本行挂载，故仅以原子 commissionAgent、entrustedGoods 表示，不作定义性规则",
+     "rules": []
+    },
+    {
+     "text": "本条为行纪人对委托物的保管义务，与第432条质权人保管质押财产、第451条保管遗失物等义务主体、客体均不同，不得混用同一谓词",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c953-1",
+    "srcs": [
+     "art953-1"
+    ],
+    "body": [
+     "commissionAgent(A)",
+     "possessesEntrustedGoods(A,G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "safelyKeepEntrustedGoods(A,G)"
+     }
+    ],
+    "note": "行纪人占有委托物的，应当妥善保管委托物",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commissionAgent": "是行纪人（依第951条行纪合同受托为委托人从事贸易活动的一方）",
+   "possessesEntrustedGoods": "占有委托物（行纪人，委托物）",
+   "safelyKeepEntrustedGoods": "妥善保管委托物（行纪人，委托物）"
+  }
+ },
+ "art:960": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "行纪合同章对某一事项没有规定时，如何补充适用法律",
+     "rules": [
+      "c960-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所涉合同为行纪合同，即行纪人以自己的名义为委托人从事贸易活动、委托人支付报酬的合同",
+     "rules": [
+      "c960-1"
+     ]
+    },
+    {
+     "text": "该事项在本章（行纪合同章，第951–960条）没有规定",
+     "rules": [
+      "c960-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本章对该事项已有规定的，不参照适用委托合同的规定；参照适用只起补充作用",
+     "rules": [
+      "c960-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "参照适用委托合同章（第919–936条）的有关规定",
+     "rules": [
+      "c960-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "行纪合同章的特别规定优先于参照适用的委托合同规定",
+     "rules": [
+      "c960-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "行纪合同与委托合同不同：行纪人以自己的名义为委托人从事贸易活动，合同为有偿，行纪人与第三人订立合同时对该合同直接享有权利、承担义务（第951条、第958条）；参照适用不改变这些区别",
+     "rules": []
+    },
+    {
+     "text": "本条是准用性（参照适用）规范，不是直接适用；被参照的是委托合同章关于委托合同的规定，而不是合同编通则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c960-1",
+    "srcs": [
+     "art960-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "matterNotProvidedInCommissionChapter(K)"
+    ],
+    "heads": [
+     "applyMandateContractProvisionsByReference(K)"
+    ],
+    "note": "行纪合同章对某一事项没有规定的，参照适用委托合同的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c960-2",
+    "srcs": [
+     "art960-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "matterProvidedInCommissionChapter(K)"
+    ],
+    "heads": [
+     "-applyMandateContractProvisionsByReference(K)"
+    ],
+    "note": "参照适用只起补充作用：本章已有规定的，不参照适用委托合同的规定（由“本章没有规定的”反面推出，属学理说明）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commissionContract": "行纪合同：行纪人以自己的名义为委托人从事贸易活动、委托人支付报酬的合同（第951条）",
+   "matterNotProvidedInCommissionChapter": "该事项在行纪合同章（第951–960条）中没有规定",
+   "matterProvidedInCommissionChapter": "该事项在行纪合同章（第951–960条）中已有规定",
+   "applyMandateContractProvisionsByReference": "参照适用委托合同章（第919–936条）的有关规定（参数：行纪合同）"
+  }
+ },
+ "card:g5824": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "行纪人低于委托人指定价格卖出或高于指定价格买入时，是否须经委托人同意；未经同意而补偿差额的，该买卖是否对委托人发生效力",
+     "rules": [
+      "c955-1-consent",
+      "c955-1-effect"
+     ]
+    },
+    {
+     "text": "行纪人以更有利价格成交时，增加报酬与多得的利益如何归属",
+     "rules": [
+      "c955-2-increase",
+      "c955-2-benefit"
+     ]
+    },
+    {
+     "text": "行纪人能否自己作为买受人或出卖人（自我交易），并仍请求委托人支付报酬",
+     "rules": [
+      "c956-1",
+      "c956-2"
+     ]
+    },
+    {
+     "text": "委托人拒绝受领买入的委托物，或对不能卖出、撤回出卖的委托物不取回、不处分时，行纪人能否提存",
+     "rules": [
+      "c957-1-accept",
+      "c957-1-deposit",
+      "c957-2"
+     ]
+    },
+    {
+     "text": "行纪人与第三人订立合同的法律地位，以及第三人违约致委托人损害时的责任归属",
+     "rules": [
+      "c958-1",
+      "c958-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行纪合同：行纪人以自己的名义为委托人从事贸易活动，委托人支付报酬的合同",
+     "rules": [
+      "c951-1"
+     ]
+    },
+    {
+     "text": "行纪人低于委托人指定的价格卖出，或者高于委托人指定的价格买入",
+     "rules": [
+      "c955-1-consent",
+      "c955-1-effect"
+     ]
+    },
+    {
+     "text": "行纪人高于委托人指定的价格卖出，或者低于委托人指定的价格买入",
+     "rules": [
+      "c955-2-increase",
+      "c955-2-benefit"
+     ]
+    },
+    {
+     "text": "委托人对价格有特别指示",
+     "rules": [
+      "c955-3"
+     ]
+    },
+    {
+     "text": "卖出或买入的是具有市场定价的商品，且委托人无相反的意思表示",
+     "rules": [
+      "c956-1"
+     ]
+    },
+    {
+     "text": "行纪人按照约定买入委托物",
+     "rules": [
+      "c957-1-accept",
+      "c957-1-deposit"
+     ]
+    },
+    {
+     "text": "委托物不能卖出或者委托人撤回出卖",
+     "rules": [
+      "c957-2"
+     ]
+    },
+    {
+     "text": "行纪人与第三人订立合同",
+     "rules": [
+      "c958-1"
+     ]
+    },
+    {
+     "text": "第三人不履行义务致使委托人受到损害",
+     "rules": [
+      "c958-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经委托人同意，但行纪人补偿其差额的，该买卖仍对委托人发生效力（同意要件的例外）",
+     "rules": [
+      "c955-1-effect"
+     ]
+    },
+    {
+     "text": "委托人有相反的意思表示的，行纪人不得自己作为买受人或出卖人",
+     "rules": [
+      "c956-1"
+     ]
+    },
+    {
+     "text": "行纪人与委托人另有约定的，行纪人不承担赔偿责任",
+     "rules": [
+      "c958-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "行纪人应当经委托人同意",
+     "rules": [
+      "c955-1-consent"
+     ]
+    },
+    {
+     "text": "行纪人可以按照约定增加报酬；没有约定或约定不明确且依第510条仍不能确定的，该利益属于委托人",
+     "rules": [
+      "c955-2-increase",
+      "c955-2-benefit"
+     ]
+    },
+    {
+     "text": "行纪人不得违背委托人的价格特别指示卖出或者买入",
+     "rules": [
+      "c955-3"
+     ]
+    },
+    {
+     "text": "行纪人可以自己作为买受人或出卖人，并仍然可以请求委托人支付报酬",
+     "rules": [
+      "c956-1",
+      "c956-2"
+     ]
+    },
+    {
+     "text": "委托人应当及时受领；经催告无正当理由拒绝受领的，行纪人依法可以提存委托物",
+     "rules": [
+      "c957-1-accept",
+      "c957-1-deposit"
+     ]
+    },
+    {
+     "text": "经催告委托人不取回或者不处分该物的，行纪人依法可以提存委托物",
+     "rules": [
+      "c957-2"
+     ]
+    },
+    {
+     "text": "行纪人对与第三人订立的合同直接享有权利、承担义务",
+     "rules": [
+      "c958-1"
+     ]
+    },
+    {
+     "text": "行纪人应当对委托人承担赔偿责任",
+     "rules": [
+      "c958-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "委托人对价格有特别指示的，第955条第3款优先于第1款：即使经委托人同意并补偿差额，也不得违背该指示卖出或者买入",
+     "rules": [
+      "c955-3",
+      "c955-1-effect"
+     ]
+    },
+    {
+     "text": "行纪人对外合同的直接效力与第三人违约的赔偿责任，是行纪合同的特别规则，优先于一般委托合同规则（笔记/学理）",
+     "rules": [
+      "c958-1",
+      "c958-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片把“委托人明知第三人履约能力不足仍同意交易”列为免责事由，法条与笔记均无此规定；第958条第2款的免责事由仅为“行纪人与委托人另有约定”",
+     "rules": []
+    },
+    {
+     "text": "第956条是行纪人自我交易（自己作为买受人或出卖人）的规则，与第958条行纪人与第三人订立合同的对外效力规则不同",
+     "rules": [
+      "c956-1",
+      "c958-1"
+     ]
+    },
+    {
+     "text": "第957条的提存以经行纪人催告为前提，属行纪合同的特别规定，与一般提存规则不同",
+     "rules": [
+      "c957-1-deposit",
+      "c957-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c951-1",
+    "srcs": [
+     "art951-1"
+    ],
+    "body": [
+     "contract(K)",
+     "actsInOwnNameForPrincipal(A,P,K)",
+     "principalPaysRemuneration(P,A,K)"
+    ],
+    "heads": [
+     "commissionContract(K)"
+    ],
+    "note": "行纪合同的定义：行纪人以自己的名义为委托人从事贸易活动，委托人支付报酬的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-1-consent",
+    "srcs": [
+     "art955-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     {
+      "or": [
+       "sellsBelowDesignatedPrice(A,K)",
+       "buysAboveDesignatedPrice(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "obtainPrincipalConsent(A,P,K)"
+     }
+    ],
+    "note": "低于指定价格卖出或高于指定价格买入的，行纪人应当经委托人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-1-effect",
+    "srcs": [
+     "art955-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     {
+      "or": [
+       "sellsBelowDesignatedPrice(A,K)",
+       "buysAboveDesignatedPrice(A,K)"
+      ]
+     },
+     "-consentedByPrincipal(A,P,K)",
+     "compensatesDifference(A,K)"
+    ],
+    "heads": [
+     "saleBindsPrincipal(A,K)"
+    ],
+    "note": "未经委托人同意，行纪人补偿其差额的，该买卖对委托人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-2-increase",
+    "srcs": [
+     "art955-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     {
+      "or": [
+       "sellsAboveDesignatedPrice(A,K)",
+       "buysBelowDesignatedPrice(A,K)"
+      ]
+     },
+     "agreedIncreaseRemuneration(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "increaseRemuneration(A,P,K)"
+     }
+    ],
+    "note": "高于指定价格卖出或低于指定价格买入的，行纪人可以按照约定增加报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-2-benefit",
+    "srcs": [
+     "art955-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     {
+      "or": [
+       "sellsAboveDesignatedPrice(A,K)",
+       "buysBelowDesignatedPrice(A,K)"
+      ]
+     },
+     "-agreedIncreaseRemuneration(A,K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "benefitBelongsToPrincipal(A,K)"
+    ],
+    "note": "没有约定或者约定不明确，依第510条仍不能确定的，多得的利益属于委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-3",
+    "srcs": [
+     "art955-3"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "specialPriceInstruction(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "deviateFromPriceInstruction(A,K)"
+     }
+    ],
+    "note": "委托人对价格有特别指示的，行纪人不得违背该指示卖出或者买入",
+    "auth": "npc"
+   },
+   {
+    "key": "c956-1",
+    "srcs": [
+     "art956-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "marketPricedGoods(G)",
+     "~contraryIntentionOfPrincipal(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "actsAsBuyerOrSeller(A,K)"
+     }
+    ],
+    "note": "卖出或买入具有市场定价的商品，除委托人有相反的意思表示外，行纪人自己可以作为买受人或者出卖人",
+    "auth": "npc"
+   },
+   {
+    "key": "c956-2",
+    "srcs": [
+     "art956-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "actsAsBuyerOrSeller(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "requestRemuneration(A,P,K)"
+     }
+    ],
+    "note": "行纪人自己作为买受人或出卖人的，仍然可以请求委托人支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-1-accept",
+    "srcs": [
+     "art957-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "purchasedEntrustedGoodsPerAgreement(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "acceptEntrustedGoodsInTime(P,K)"
+     }
+    ],
+    "note": "行纪人按照约定买入委托物的，委托人应当及时受领",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-1-deposit",
+    "srcs": [
+     "art957-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "purchasedEntrustedGoodsPerAgreement(A,K)",
+     "demandedAcceptance(A,P,K)",
+     "refusesAcceptanceWithoutJustification(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "depositEntrustedGoods(A,K)"
+     }
+    ],
+    "note": "经行纪人催告，委托人无正当理由拒绝受领的，行纪人依法可以提存委托物",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-2",
+    "srcs": [
+     "art957-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     {
+      "or": [
+       "goodsCannotBeSold(K)",
+       "principalWithdrawsSale(P,K)"
+      ]
+     },
+     "demandedRetrievalOrDisposal(A,P,K)",
+     "principalFailsToRetrieveOrDispose(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "depositEntrustedGoods(A,K)"
+     }
+    ],
+    "note": "委托物不能卖出或者委托人撤回出卖，经催告委托人不取回或者不处分该物的，行纪人依法可以提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c958-1",
+    "srcs": [
+     "art958-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "concludesContractWithThirdParty(A,T,C)"
+    ],
+    "heads": [
+     "directlyEnjoysRightsAndBearsObligations(A,C)"
+    ],
+    "note": "行纪人与第三人订立合同的，行纪人对该合同直接享有权利、承担义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c958-2",
+    "srcs": [
+     "art958-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgent(A,K)",
+     "principal(P,K)",
+     "thirdPartyFailsToPerform(T,A,C)",
+     "thirdPartyBreachHarmsPrincipal(T,P,K)",
+     "~contractProvidesOtherwise(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "payCompensation(A,P)"
+     }
+    ],
+    "note": "第三人不履行义务致使委托人受到损害的，行纪人应当承担赔偿责任，但行纪人与委托人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c955-3",
+    "c955-1-effect",
+    "委托人对价格有特别指示时，行纪人不得违背指示，即使经同意并补偿差额也不发生对委托人效力，第3款为特别规定"
+   ],
+   [
+    "c955-3",
+    "c955-1-consent",
+    "有价格特别指示时，不存在经委托人同意即可低于或高于指示价格成交的空间，第3款优先"
+   ]
+  ],
+  "predicates": {
+   "commissionContract": "行纪合同（参数：合同）",
+   "actsInOwnNameForPrincipal": "行纪人以自己的名义为委托人从事贸易活动（行纪人，委托人，合同）",
+   "principalPaysRemuneration": "委托人向行纪人支付报酬（委托人，行纪人，合同）",
+   "commissionAgent": "是行纪人（行纪人，合同）",
+   "principal": "是委托人（委托人，合同）",
+   "sellsBelowDesignatedPrice": "低于委托人指定的价格卖出（行纪人，合同）",
+   "buysAboveDesignatedPrice": "高于委托人指定的价格买入（行纪人，合同）",
+   "sellsAboveDesignatedPrice": "高于委托人指定的价格卖出（行纪人，合同）",
+   "buysBelowDesignatedPrice": "低于委托人指定的价格买入（行纪人，合同）",
+   "obtainPrincipalConsent": "取得委托人同意（行纪人，委托人，合同）",
+   "consentedByPrincipal": "已经委托人同意（行纪人，委托人，合同）",
+   "compensatesDifference": "行纪人补偿其差额（行纪人，合同）",
+   "saleBindsPrincipal": "该买卖对委托人发生效力（行纪人，合同）",
+   "agreedIncreaseRemuneration": "约定增加报酬（行纪人，合同）",
+   "increaseRemuneration": "增加报酬（行纪人，委托人，合同）",
+   "determinablePerArt510": "依据第510条的规定仍可以确定（合同）",
+   "benefitBelongsToPrincipal": "多得的利益属于委托人（行纪人，合同）",
+   "specialPriceInstruction": "委托人对价格有特别指示（委托人，合同）",
+   "deviateFromPriceInstruction": "违背价格特别指示卖出或者买入（行纪人，合同）",
+   "marketPricedGoods": "具有市场定价的商品（商品）",
+   "contraryIntentionOfPrincipal": "委托人作出相反的意思表示（委托人，合同）",
+   "actsAsBuyerOrSeller": "行纪人自己作为买受人或者出卖人（行纪人，合同）",
+   "requestRemuneration": "请求委托人支付报酬（行纪人，委托人，合同）",
+   "purchasedEntrustedGoodsPerAgreement": "按照约定买入委托物（行纪人，合同）",
+   "acceptEntrustedGoodsInTime": "及时受领委托物（委托人，合同）",
+   "demandedAcceptance": "行纪人催告委托人受领（行纪人，委托人，合同）",
+   "refusesAcceptanceWithoutJustification": "无正当理由拒绝受领（委托人，合同）",
+   "depositEntrustedGoods": "依法提存委托物（行纪人，合同）",
+   "goodsCannotBeSold": "委托物不能卖出（合同）",
+   "principalWithdrawsSale": "委托人撤回出卖（委托人，合同）",
+   "demandedRetrievalOrDisposal": "行纪人催告取回或者处分（行纪人，委托人，合同）",
+   "principalFailsToRetrieveOrDispose": "委托人不取回或者不处分该物（委托人，合同）",
+   "concludesContractWithThirdParty": "与第三人订立合同（行纪人，第三人，与第三人订立的合同）",
+   "directlyEnjoysRightsAndBearsObligations": "对该合同直接享有权利、承担义务（行纪人，与第三人订立的合同）",
+   "thirdPartyBreachHarmsPrincipal": "第三人违约致使委托人受到损害（第三人，委托人，行纪合同）"
+  }
+ },
+ "card:g5812": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "谓词 contract 已在词表中表示“合同”，不能重新定义为“合同（参数：合同）”，请换名或沿用原义",
+   "谓词 contractEffective 已在词表中表示“合同已生效（参数：合同）”，不能重新定义为“合同已生效”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"合同生效后，当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，如何确定合同内容\",\n        \"rules\": [\"c510-1\", \"c510-2\"]\n      },\n      {\n        \"text\": \"行纪合同如何界定；行纪人与委托人之间关于费用负担、价格指示、自约权、提存、报酬与留置的权利义务\",\n        \"rules\": [\"c951-def\", \"c952-1\", \"c955-1\", \"c955-1b\", \"c955-2\", \"c955-2b\", \"c955-3\", \"c956-1\", \"c956-2\", \"c957-1\", \"c957-1b\", \"c957-2\", \"c959-1\", \"c959-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"合同已生效，且当事人就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确\",\n        \"rules\": [\"c510-1\", \"c510-2\"]\n      },\n      {\n        \"text\": \"行纪人以自己的名义为委托人从事贸易活动，委托人支付报酬\",\n        \"rules\": [\"c951-def\"]\n      },\n      {\n        \"text\": \"行纪人处理委托事务支出费用\",\n        \"rules\": [\"c952-1\"]\n      },\n      {\n        \"text\": \"行纪人低于委托人指定的价格卖出，或者高于委托人指定的价格买入\",\n        \"rules\": [\"c955-1\", \"c955-1b\"]\n      },\n      {\n        \"text\": \"行纪人高于委托人指定的价格卖出，或者低于委托人指定的价格买入\",\n        \"rules\": [\"c955-2\", \"c955-2b\"]\n      },\n      {\n        \"text\": \"委托人对价格有特别指示\",\n        \"rules\": [\"c955-3\"]\n      },\n      {\n        \"text\": \"卖出或者买入的是具有市场定价的商品，且委托人无相反的意思表示\",\n        \"rules\": [\"c956-1\"]\n      },\n      {\n        \"text\": \"行纪人按照约定买入委托物；或者委托物不能卖出、委托人撤回出卖\",\n        \"rules\": [\"c957-1\", \"c957-1b\", \"c957-2\"]\n      },\n      {\n        \"text\": \"行纪人完成或者部分完成委托事务；委托人逾期不支付报酬\",\n        \"rules\": [\"c959-1\", \"c959-2\"]\n      },\n      {\n        \"text\": \"行纪人依委托人的指示从事贸易活动，并保管、合理处分委托物，报告和移交交易所得（笔记）\",\n        \"rules\": [\"c951-instruct\", \"c951-custody\"]\n      },\n      {\n        \"text\": \"行纪人与第三人订立合同的，由行纪人直接履行该合同（笔记）\",\n        \"rules\": [\"c951-direct\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"当事人就处理委托事务的费用负担另有约定的，从其约定，行纪人不再负担\",\n        \"rules\": [\"c952-exc\"]\n      },\n      {\n        \"text\": \"当事人就留置权另有约定的，行纪人对委托物不享有留置权\",\n        \"rules\": [\"c959-exc\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"当事人可以协议补充；不能达成补充协议的，按照合同相关条款或者交易习惯确定\",\n        \"rules\": [\"c510-1\", \"c510-2\"]\n      },\n      {\n        \"text\": \"行纪人处理委托事务支出的费用，由行纪人负担\",\n        \"rules\": [\"c952-1\"]\n      },\n      {\n        \"text\": \"低于指定价格卖出或高于指定价格买入的，应当经委托人同意；未经同意但行纪人补偿其差额的，该买卖对委托人发生效力\",\n        \"rules\": [\"c955-1\", \"c955-1b\"]\n      },\n      {\n        \"text\": \"高于指定价格卖出或低于指定价格买入的，可以按照约定增加报酬；没有约定或约定不明确且依第510条仍不能确定的，该利益属于委托人\",\n        \"rules\": [\"c955-2\", \"c955-2b\"]\n      },\n      {\n        \"text\": \"委托人对价格有特别指示的，行纪人不得违背该指示卖出或者买入\",\n        \"rules\": [\"c955-3\"]\n      },\n      {\n        \"text\": \"行纪人可以自己作为买受人或者出卖人，并仍然可以请求委托人支付报酬\",\n        \"rules\": [\"c956-1\", \"c956-2\"]\n      },\n      {\n        \"text\": \"委托人应当及时受领；经催告无正当理由拒绝受领，或委托物不能卖出、委托人撤回出卖经催告不取回、不处分的，行纪人依法可以提存委托物\",\n        \"rules\": [\"c957-1\", \"c957-1b\", \"c957-2\"]\n      },\n      {\n        \"text\": \"行纪人完成或者部分完成委托事务的，委托人应当支付相应报酬；逾期不支付的，行纪人对委托物享有留置权\",\n        \"rules\": [\"c959-1\", \"c959-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"当事人另有约定时，排除行纪人负担费用、对委托物享有留置权的一般规则\",\n        \"rules\": [\"c952-exc\", \"c959-exc\"]\n      },\n      {\n        \"text\": \"委托人对价格有特别指示的，行纪人不得违背，优先于第955条第1款经委托人同意即可变通的一般规则\",\n        \"rules\": [\"c955-3\"]\n      },\n      {\n        \"text\": \"能达成补充协议的，优先按补充协议确定合同内容；不能达成时才按合同相关条款或者交易习惯确定\",\n        \"rules\": [\"c510-1\", \"c510-2\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"行纪合同与委托合同：行纪人以自己的名义办理事务且限于商品寄售、购销等贸易活动；合同编未明确规定的，参照适用委托合同的规定（笔记）\",\n        \"rules\": [\"c951-ref\"]\n      },\n      {\n        \"text\": \"行纪合同与代理、居间：代理以被代理人名义，居间人不介入交易；行纪人以自己名义与第三人订约并直接履行（笔记、LEGO）\",\n        \"rules\": [\"c951-direct\"]\n      },\n      {\n        \"text\": \"笔记称行纪人仅限于经审查、登记可从事贸易活动的主体，法条未作此限定\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称行纪人违反保管义务或未报告、移交交易所得即不享有报酬请求权，法条无此限制，仅作参考\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c510-1\",\n      \"srcs\": [\"art510-1\"],\n      \"body\": [\"contract(K)\", \"contractEffective(K)\", \"partyTo(P,K)\", \"contentItem(K,T)\", \"~agreedOn(K,T)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"P\", \"counterparty\": null, \"content\": \"supplementByAgreement(P,K,T)\"}\n      ],\n      \"note\": \"合同生效后，就质量、价款或者报酬、履行地点等内容没有约定或者约定不明确的，当事人可以协议补充\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c510-2\",\n      \"srcs\": [\"art510-1\"],\n      \"body\": [\"contract(K)\", \"contractEffective(K)\", \"contentItem(K,T)\", \"~agreedOn(K,T)\", \"noSupplementaryAgreement(K,T)\"],\n      \"heads\": [\"contentDeterminedPerRelatedTermsOrTradeUsage(K,T)\"],\n      \"note\": \"不能达成补充协议的，按照合同相关条款或者交易习惯确定该内容\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c951-def\",\n      \"srcs\": [\"art951-1\"],\n      \"body\": [\"contract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"actsInOwnNameForPrincipal(A,P)\", \"tradeActivity(K)\", \"paysRemuneration(P,A,K)\"],\n      \"heads\": [\"commissionContract(K)\"],\n      \"note\": \"行纪合同的定义：行纪人以自己的名义为委托人从事贸易活动、委托人支付报酬的合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c951-ref\",\n      \"srcs\": [\"art951-1\"],\n      \"body\": [\"commissionContract(K)\", \"matterNotProvidedByContractPart(K)\"],\n      \"heads\": [\"applyMandateContractRulesByReference(K)\"],\n      \"note\": \"笔记：行纪合同本质上是特殊委托合同，合同编未明确规定的，参照适用委托合同的规定（学理，非法条明文）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c951-instruct\",\n      \"srcs\": [\"art951-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"followPrincipalsInstructions(A,K)\"}\n      ],\n      \"note\": \"笔记所列行纪人义务：依委托人的指示从事贸易活动（学理；价格特别指示见第955条第3款）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c951-custody\",\n      \"srcs\": [\"art951-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"custodyAndDisposeGoods(A,K)\"},\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"reportAndTransferProceeds(A,K)\"}\n      ],\n      \"note\": \"笔记所列行纪人义务：保管并合理处分委托物，报告和移交交易所得（学理，法条未明文）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c951-direct\",\n      \"srcs\": [\"art951-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"contractWithThirdParty(A,T,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"performContractWithThirdParty(A,T,K)\"}\n      ],\n      \"note\": \"笔记所列行纪人义务：行纪人以自己名义与第三人订约，由行纪人直接履行该合同（学理）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c952-1\",\n      \"srcs\": [\"art952-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"expenseIncurredByAgent(A,K)\", \"~agreedOtherwiseOnExpense(K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"bearExpense(A,K)\"}\n      ],\n      \"note\": \"行纪人处理委托事务支出的费用，由行纪人负担，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c952-exc\",\n      \"srcs\": [\"art952-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"agreedOtherwiseOnExpense(K)\"],\n      \"heads\": [\"-bearExpense(A,K)\"],\n      \"note\": \"当事人就费用负担另有约定的，行纪人不负担该费用（第952条但书）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c955-1\",\n      \"srcs\": [\"art955-1\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"sellsBelowSpecifiedPrice(A,K)\", \"buysAboveSpecifiedPrice(A,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"obtainPrincipalsConsent(A,P,K)\"}\n      ],\n      \"note\": \"低于委托人指定价格卖出或高于指定价格买入的，应当经委托人同意\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c955-1b\",\n      \"srcs\": [\"art955-1\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"sellsBelowSpecifiedPrice(A,K)\", \"buysAboveSpecifiedPrice(A,K)\"]},\n        \"-consentedByPrincipal(A,P,K)\",\n        \"compensatesDifference(A,K)\"\n      ],\n      \"heads\": [\"saleBindsPrincipal(K)\"],\n      \"note\": \"未经委托人同意，但行纪人补偿其差额的，该买卖对委托人发生效力\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c955-2\",\n      \"srcs\": [\"art955-2\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"sellsAboveSpecifiedPrice(A,K)\", \"buysBelowSpecifiedPrice(A,K)\"]},\n        \"agreedAdditionalRemuneration(K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"demandAdditionalRemuneration(A,P,K)\"}\n      ],\n      \"note\": \"高于指定价格卖出或低于指定价格买入的，可以按照约定增加报酬\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c955-2b\",\n      \"srcs\": [\"art955-2\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"sellsAboveSpecifiedPrice(A,K)\", \"buysBelowSpecifiedPrice(A,K)\"]},\n        \"~agreedAdditionalRemuneration(K)\",\n        \"undeterminedPerArt510(K)\"\n      ],\n      \"heads\": [\"surplusBelongsTo(K,P)\"],\n      \"note\": \"没有约定或约定不明确，依第510条仍不能确定的，该额外利益属于委托人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c955-3\",\n      \"srcs\": [\"art955-3\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"specialPriceInstruction(P,K)\"],\n      \"heads\": [\n        {\"type\": \"FOR\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"deviateFromPriceInstruction(A,K)\"}\n      ],\n      \"note\": \"委托人对价格有特别指示的，行纪人不得违背该指示卖出或者买入\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c956-1\",\n      \"srcs\": [\"art956-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"marketPricedGoods(K)\", \"~contraryIntention(P,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"actAsBuyerOrSeller(A,K)\"}\n      ],\n      \"note\": \"卖出或买入具有市场定价的商品，除委托人有相反意思表示外，行纪人可以自己作为买受人或出卖人（自约权）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c956-2\",\n      \"srcs\": [\"art956-2\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"actAsBuyerOrSeller(A,K)\"],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"claimRemuneration(A,P,K)\"}\n      ],\n      \"note\": \"行纪人行使自约权的，仍然可以请求委托人支付报酬\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c957-1\",\n      \"srcs\": [\"art957-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"buysPerAgreement(A,K)\"],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"A\", \"content\": \"acceptGoodsTimely(P,K)\"}\n      ],\n      \"note\": \"行纪人按照约定买入委托物的，委托人应当及时受领\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c957-1b\",\n      \"srcs\": [\"art957-1\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        \"buysPerAgreement(A,K)\",\n        \"demandedAcceptance(A,P,K)\",\n        \"-justifiedReason(P)\",\n        \"refusesToAccept(P,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"depositGoods(A,K)\"}\n      ],\n      \"note\": \"经行纪人催告，委托人无正当理由拒绝受领的，行纪人依法可以提存委托物\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c957-2\",\n      \"srcs\": [\"art957-2\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"goodsCannotBeSold(K)\", \"principalWithdrawsSale(P,K)\"]},\n        \"demandedRetrievalOrDisposal(A,P,K)\",\n        {\"or\": [\"failsToRetrieve(P,K)\", \"failsToDispose(P,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"A\", \"counterparty\": null, \"content\": \"depositGoods(A,K)\"}\n      ],\n      \"note\": \"委托物不能卖出或委托人撤回出卖，经催告委托人不取回或者不处分该物的，行纪人依法可以提存\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c959-1\",\n      \"srcs\": [\"art959-1\"],\n      \"body\": [\n        \"commissionContract(K)\",\n        \"commissionAgent(A,K)\",\n        \"principal(P,K)\",\n        {\"or\": [\"completedEntrustedAffair(A,K)\", \"partiallyCompletedEntrustedAffair(A,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"A\", \"content\": \"payCorrespondingRemuneration(P,A,K)\"}\n      ],\n      \"note\": \"行纪人完成或者部分完成委托事务的，委托人应当向其支付相应的报酬\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c959-2\",\n      \"srcs\": [\"art959-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"principal(P,K)\", \"remunerationOverdueUnpaid(P,K)\", \"~agreedOtherwiseOnLien(K)\"],\n      \"heads\": [\n        {\"type\": \"RIGHT\", \"bearer\": \"A\", \"counterparty\": \"P\", \"content\": \"lienOnEntrustedGoods(A,K)\"}\n      ],\n      \"note\": \"委托人逾期不支付报酬的，行纪人对委托物享有留置权，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c959-exc\",\n      \"srcs\": [\"art959-1\"],\n      \"body\": [\"commissionContract(K)\", \"commissionAgent(A,K)\", \"agreedOtherwiseOnLien(K)\"],\n      \"heads\": [\"-lienOnEntrustedGoods(A,K)\"],\n      \"note\": \"当事人就留置权另有约定的，行纪人对委托物不享有留置权（第959条但书）\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c952-exc\", \"c952-1\", \"当事人就费用负担另有约定时，排除行纪人负担费用的一般规则\"],\n    [\"c959-exc\", \"c959-2\", \"当事人就留置权另有约定时，排除行纪人对委托物享有留置权的一般规则\"],\n    [\"c955-3\", \"c955-1\", \"委托人对价格有特别指示的，行纪人不得违背，优先于经委托人同意即可变通的一般规则\"],\n    [\"c510-2\", \"c510-1\", \"能达成补充协议时优先按补充协议确定合同内容，不能达成时才按合同相关条款或者交易习惯确定\"]\n  ],\n  \"predicates\": {\n    \"contract\": \"合同（参数：合同）\",\n    \"contractEffective\": \"合同已生效\",\n    \"partyTo\": \"是合同当事人（当事人，合同）\",\n    \"contentItem\": \"合同内容事项，如质量、价款或者报酬、履行地点等（合同，事项）\",\n    \"agreedOn\": \"当事人就该事项已有明确约定（合同，事项）\",\n    \"supplementByAgreement\": \"就该事项协议补充（当事人，合同，事项）\",\n    \"noSupplementaryAgreement\": \"未能就该事项达成补充协议（合同，事项）\",\n    \"contentDeterminedPerRelatedTermsOrTradeUsage\": \"按照合同相关条款或者交易习惯确定该事项内容（合同，事项）\",\n    \"commissionContract\": \"行纪合同（参数：合同）\",\n    \"commissionAgent\": \"是行纪人（行纪人，合同）\",\n    \"principal\": \"是委托人（委托人，合同）\",\n    \"actsInOwnNameForPrincipal\": \"以自己的名义为委托人从事贸易活动（行纪人，委托人）\",\n    \"tradeActivity\": \"合同标的为商品寄售、购销等贸易活动（合同）\",\n    \"paysRemuneration\": \"委托人支付报酬（委托人，行纪人，合同）\",\n    \"matterNotProvidedByContractPart\": \"合同编未就该事项作出明确规定（合同）\",\n    \"applyMandateContractRulesByReference\": \"参照适用委托合同的规定（合同）\",\n    \"followPrincipalsInstructions\": \"依委托人的指示从事贸易活动（行纪人，合同）\",\n    \"custodyAndDisposeGoods\": \"保管并合理处分委托物（行纪人，合同）\",\n    \"reportAndTransferProceeds\": \"报告并移交交易所得（行纪人，合同）\",\n    \"contractWithThirdParty\": \"与第三人订立合同（行纪人，第三人，合同）\",\n    \"performContractWithThirdParty\": \"直接履行与第三人订立的合同（行纪人，第三人，合同）\",\n    \"expenseIncurredByAgent\": \"处理委托事务支出费用（行纪人，合同）\",\n    \"agreedOtherwiseOnExpense\": \"当事人就处理委托事务的费用负担另有约定（合同）\",\n    \"bearExpense\": \"负担处理委托事务支出的费用（行纪人，合同）\",\n    \"sellsBelowSpecifiedPrice\": \"低于委托人指定的价格卖出（行纪人，合同）\",\n    \"buysAboveSpecifiedPrice\": \"高于委托人指定的价格买入（行纪人，合同）\",\n    \"sellsAboveSpecifiedPrice\": \"高于委托人指定的价格卖出（行纪人，合同）\",\n    \"buysBelowSpecifiedPrice\": \"低于委托人指定的价格买入（行纪人，合同）\",\n    \"obtainPrincipalsConsent\": \"取得委托人同意（行纪人，委托人，合同）\",\n    \"consentedByPrincipal\": \"已获委托人同意（行纪人，委托人，合同）\",\n    \"compensatesDifference\": \"补偿其差额（行纪人，合同）\",\n    \"saleBindsPrincipal\": \"该买卖对委托人发生效力（合同）\",\n    \"agreedAdditionalRemuneration\": \"约定可以增加报酬（合同）\",\n    \"demandAdditionalRemuneration\": \"请求增加报酬（行纪人，委托人，合同）\",\n    \"undeterminedPerArt510\": \"依第510条的规定仍不能确定（合同）\",\n    \"surplusBelongsTo\": \"额外利益属于委托人（合同，委托人）\",\n    \"specialPriceInstruction\": \"委托人对价格有特别指示（委托人，合同）\",\n    \"deviateFromPriceInstruction\": \"违背价格特别指示卖出或者买入（行纪人，合同）\",\n    \"marketPricedGoods\": \"卖出或者买入的商品具有市场定价（合同）\",\n    \"contraryIntention\": \"有相反的意思表示（委托人，合同）\",\n    \"actAsBuyerOrSeller\": \"自己作为买受人或者出卖人（行纪人，合同）\",\n    \"claimRemuneration\": \"请求委托人支付报酬（行纪人，委托人，合同）\",\n    \"buysPerAgreement\": \"按照约定买入委托物（行纪人，合同）\",\n    \"acceptGoodsTimely\": \"及时受领委托物（委托人，合同）\",\n    \"demandedAcceptance\": \"催告委托人受领（行纪人，委托人，合同）\",\n    \"refusesToAccept\": \"拒绝受领委托物（委托人，合同）\",\n    \"depositGoods\": \"依法提存委托物（行纪人，合同）\",\n    \"goodsCannotBeSold\": \"委托物不能卖出（合同）\",\n    \"principalWithdrawsSale\": \"委托人撤回出卖（委托人，合同）\",\n    \"demandedRetrievalOrDisposal\": \"催告委托人取回或者处分委托物（行纪人，委托人，合同）\",\n    \"failsToRetrieve\": \"不取回委托物（委托人，合同）\",\n    \"failsToDispose\": \"不处分委托物（委托人，合同）\",\n    \"completedEntrustedAffair\": \"完成委托事务（行纪人，合同）\",\n    \"partiallyCompletedEntrustedAffair\": \"部分完成委托事务（行纪人，合同）\",\n    \"payCorrespondingRemuneration\": \"支付相应的报酬（委托人，行纪人，合同）\",\n    \"remunerationOverdueUnpaid\": \"逾期不支付报酬（委托人，合同）\",\n    \"agreedOtherwiseOnLien\": \"当事人就留置权另有约定（合同）\",\n    \"lienOnEntrustedGoods\": \"对委托物享有留置权（行纪人，合同）\"\n  }\n}"
+ }
+}

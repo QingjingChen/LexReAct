@@ -1,0 +1,478 @@
+{
+ "art:938": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物业服务合同的内容范围、物业服务人公开服务承诺的效力，以及物业服务合同的形式要求",
+     "rules": [
+      "c938-2",
+      "c938-2-bind",
+      "c938-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "物业服务人公开作出服务承诺，且该承诺有利于业主",
+     "rules": [
+      "c938-2"
+     ]
+    },
+    {
+     "text": "所涉合同属于物业服务合同",
+     "rules": [
+      "c938-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "物业服务合同的内容一般包括服务事项、服务质量、服务费用的标准和收取办法、维修资金的使用、服务用房的管理和使用、服务期限、服务交接等条款（示范性列举，非强制内容）",
+     "rules": []
+    },
+    {
+     "text": "物业服务人公开作出的有利于业主的服务承诺，成为物业服务合同的组成部分",
+     "rules": [
+      "c938-2"
+     ]
+    },
+    {
+     "text": "该承诺成为合同内容后，物业服务人应当履行该承诺",
+     "rules": [
+      "c938-2-bind"
+     ]
+    },
+    {
+     "text": "物业服务合同应当采用书面形式订立",
+     "rules": [
+      "c938-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款“一般包括”为示范性、提示性列举，当事人可另行约定其他条款，缺少其中某项不影响合同成立与效力",
+     "rules": []
+    },
+    {
+     "text": "第3款的书面形式要求属于形式要求，未采用书面形式但一方已履行主要义务、对方接受的，合同仍可成立（第490条第2款），本条不改变该规则",
+     "rules": []
+    },
+    {
+     "text": "第2款只要求承诺“有利于业主”且系物业服务人“公开作出”，业主一方作出的公开表示或不利于业主的承诺不适用本款",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c938-2",
+    "srcs": [
+     "art938-2"
+    ],
+    "body": [
+     "propertyServiceProvider(P)",
+     "publicCommitment(P,CM)",
+     "favorableToOwners(CM)"
+    ],
+    "heads": [
+     "partOfContract(CM)"
+    ],
+    "note": "物业服务人公开作出的有利于业主的服务承诺，为物业服务合同的组成部分",
+    "auth": "npc"
+   },
+   {
+    "key": "c938-2-bind",
+    "srcs": [
+     "art938-2"
+    ],
+    "body": [
+     "partOfContract(CM)",
+     "publicCommitment(P,CM)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performCommitment(P,CM)"
+     }
+    ],
+    "note": "承诺既已成为合同内容，物业服务人即应受其约束并履行（条文只规定“组成部分”，约束力系学理推论）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c938-3",
+    "srcs": [
+     "art938-3"
+    ],
+    "body": [
+     "propertyServiceContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "concludeInWriting(K)"
+     }
+    ],
+    "note": "物业服务合同应当采用书面形式，当事人双方均负此形式义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "publicCommitment": "物业服务人公开作出的服务承诺（物业服务人，承诺）",
+   "favorableToOwners": "该服务承诺有利于业主（承诺）",
+   "propertyServiceContract": "是物业服务合同（合同）",
+   "performCommitment": "履行公开作出的服务承诺（物业服务人，承诺）"
+  }
+ },
+ "art:947": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "物业服务期限届满前，业主依法共同决定续聘的，是否应当续订物业服务合同；物业服务人不同意续聘时，应如何通知业主或业主委员会",
+     "rules": [
+      "c947-1",
+      "c947-2",
+      "c947-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "物业服务期限届满前，业主依法共同决定续聘原物业服务人",
+     "rules": [
+      "c947-1"
+     ]
+    },
+    {
+     "text": "物业服务期限届满前，物业服务人不同意续聘",
+     "rules": [
+      "c947-2",
+      "c947-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合同对通知期限另有约定的，从其约定，不适用九十日的通知期限",
+     "rules": [
+      "c947-2b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "业主应当与原物业服务人在合同期限届满前续订物业服务合同",
+     "rules": [
+      "c947-1"
+     ]
+    },
+    {
+     "text": "物业服务人应当在合同期限届满前九十日书面通知业主或者业主委员会",
+     "rules": [
+      "c947-2"
+     ]
+    },
+    {
+     "text": "合同对通知期限另有约定的，物业服务人按约定的期限书面通知业主或者业主委员会",
+     "rules": [
+      "c947-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合同对通知期限另有约定的，优先于第947条第2款规定的九十日通知期限",
+     "rules": [
+      "c947-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款的义务主体是业主（共同决定续聘后应当续订），第2款的义务主体是物业服务人（不同意续聘时应当书面通知），两者义务主体与内容不同",
+     "rules": []
+    },
+    {
+     "text": "第2款的通知对象为业主或者业主委员会，二者择一即可；通知须采书面形式",
+     "rules": [
+      "c947-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c947-1",
+    "srcs": [
+     "art947-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "beforeServiceTermExpiry(K)",
+     "ownersDecideRenewal(K)",
+     "originalProvider(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "owners",
+      "counterparty": "P",
+      "content": "renewPropertyServiceContract(P,K)"
+     }
+    ],
+    "note": "物业服务期限届满前，业主依法共同决定续聘的，应当与原物业服务人在合同期限届满前续订物业服务合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c947-2",
+    "srcs": [
+     "art947-2"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "beforeServiceTermExpiry(K)",
+     "propertyServiceProvider(P)",
+     "providerRefusesRenewal(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyInWriting90DaysBeforeExpiry(P,K)"
+     }
+    ],
+    "note": "物业服务期限届满前，物业服务人不同意续聘的，应当在合同期限届满前九十日书面通知业主或者业主委员会",
+    "auth": "npc"
+   },
+   {
+    "key": "c947-2b",
+    "srcs": [
+     "art947-2"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "beforeServiceTermExpiry(K)",
+     "propertyServiceProvider(P)",
+     "providerRefusesRenewal(P,K)",
+     "noticePeriodOtherwiseAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyInWritingWithinAgreedPeriod(P,K)"
+     }
+    ],
+    "note": "但书：合同对通知期限另有约定的，物业服务人按约定的期限书面通知，排除九十日通知期限的适用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c947-2b",
+    "c947-2",
+    "合同对通知期限另有约定的，从其约定，排除第947条第2款九十日通知期限的适用"
+   ]
+  ],
+  "predicates": {
+   "propertyServiceContract": "物业服务合同（1个参数：合同）",
+   "beforeServiceTermExpiry": "处于物业服务期限届满前（1个参数：合同）",
+   "ownersDecideRenewal": "业主依法共同决定续聘（1个参数：合同）",
+   "originalProvider": "是原物业服务人（2个参数：物业服务人，合同）",
+   "providerRefusesRenewal": "物业服务人不同意续聘（2个参数：物业服务人，合同）",
+   "noticePeriodOtherwiseAgreed": "合同对通知期限另有约定（1个参数：合同）",
+   "renewPropertyServiceContract": "续订物业服务合同（2个参数：业主，合同）",
+   "notifyInWriting90DaysBeforeExpiry": "在合同期限届满前九十日书面通知业主或者业主委员会（2个参数：物业服务人，合同）",
+   "notifyInWritingWithinAgreedPeriod": "按合同约定的通知期限书面通知业主或者业主委员会（2个参数：物业服务人，合同）"
+  }
+ },
+ "art:939": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设单位依法与物业服务人订立的前期物业服务合同，以及业主委员会与业主大会依法选聘的物业服务人订立的物业服务合同，是否对业主具有法律约束力",
+     "rules": [
+      "c939-pre",
+      "c939-comm"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前期物业服务合同：由建设单位依法与物业服务人订立，且系为该业主所在建筑区划提供物业服务",
+     "rules": [
+      "c939-pre"
+     ]
+    },
+    {
+     "text": "物业服务合同：由业主委员会与业主大会依法选聘的物业服务人订立，且系为该业主所在建筑区划提供物业服务",
+     "rules": [
+      "c939-comm"
+     ]
+    },
+    {
+     "text": "“依法”要件：合同订立及物业服务人的选聘均须符合法律、行政法规及法定程序",
+     "rules": [
+      "c939-pre",
+      "c939-comm"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "前期物业服务合同对业主具有法律约束力",
+     "rules": [
+      "c939-pre"
+     ]
+    },
+    {
+     "text": "业主委员会与业主大会依法选聘的物业服务人订立的物业服务合同对业主具有法律约束力",
+     "rules": [
+      "c939-comm"
+     ]
+    },
+    {
+     "text": "业主虽非合同当事人，仍受合同约束，不得以未参与订立为由否认约束力",
+     "rules": [
+      "c939-doctrine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是合同相对性的例外：合同虽由建设单位或业主委员会订立，仍对未参与订立的业主发生约束力，优先于“合同仅对当事人具有法律约束力”的一般规则",
+     "rules": [
+      "c939-pre",
+      "c939-comm"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "两类合同订立主体不同：前期物业服务合同由建设单位与物业服务人订立，业主未参与；物业服务合同由业主委员会与业主大会依法选聘的物业服务人订立",
+     "rules": [
+      "c939-pre",
+      "c939-comm"
+     ]
+    },
+    {
+     "text": "本条只解决合同对业主的约束力；物业服务人的服务义务、业主支付物业费的义务以及业主不得以未接受服务为由拒付，规定在第939条第2款、第944条，本行未挂载",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c939-pre",
+    "srcs": [
+     "art939-1"
+    ],
+    "body": [
+     "preliminaryPropertyServiceContract(K)",
+     "developer(D)",
+     "propertyServiceProvider(P)",
+     "concludedBetween(K,D,P)",
+     "lawfullyConcluded(K)",
+     "servesBuilding(K,B)",
+     "buildingOwner(O,B)"
+    ],
+    "heads": [
+     "bindingOnOwner(K,O)"
+    ],
+    "note": "建设单位依法与物业服务人订立的前期物业服务合同，对业主具有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c939-comm",
+    "srcs": [
+     "art939-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "ownersCommittee(C)",
+     "ownersAssembly(A)",
+     "propertyServiceProvider(P)",
+     "concludedBetween(K,C,P)",
+     "lawfullySelectedBy(P,A)",
+     "lawfullyConcluded(K)",
+     "servesBuilding(K,B)",
+     "buildingOwner(O,B)"
+    ],
+    "heads": [
+     "bindingOnOwner(K,O)"
+    ],
+    "note": "业主委员会与业主大会依法选聘的物业服务人订立的物业服务合同，对业主具有法律约束力",
+    "auth": "npc"
+   },
+   {
+    "key": "c939-doctrine",
+    "srcs": [
+     "art939-1"
+    ],
+    "body": [
+     "bindingOnOwner(K,O)",
+     "-isContractParty(K,O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "denyBindingOnGroundOfNonParty(K)"
+     }
+    ],
+    "note": "学理：业主并非合同当事人，但依本条第1款仍受约束，不得以未参与订立为由否认合同对自己的效力（法条未明文，属学理解释）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "preliminaryPropertyServiceContract": "是前期物业服务合同（建设单位依法与物业服务人订立）",
+   "propertyServiceContract": "是物业服务合同（业主委员会与业主大会依法选聘的物业服务人订立）",
+   "developer": "是建设单位",
+   "concludedBetween": "合同由该两方订立（合同，一方，另一方）",
+   "lawfullyConcluded": "依法订立（合同）",
+   "lawfullySelectedBy": "依法被业主大会选聘（物业服务人，业主大会）",
+   "servesBuilding": "该合同为该建筑物（建筑区划）提供物业服务（合同，建筑物）",
+   "bindingOnOwner": "该合同对业主具有法律约束力（合同，业主）",
+   "isContractParty": "是合同当事人（合同，主体）",
+   "denyBindingOnGroundOfNonParty": "以未参与订立为由否认合同对自己的约束力"
+  }
+ },
+ "card:g5795": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c948-3：谓词 otherPartyOf 已有用法为 3 个参数，这里用了 2 个",
+   "谓词 contract 已在词表中表示“合同”，不能重新定义为“是合同（1个参数：合同）”，请换名或沿用原义",
+   "谓词 contractEffective 已在词表中表示“合同已生效（参数：合同）”，不能重新定义为“合同已生效（1个参数：合同）”，请换名或沿用原义",
+   "谓词 compensateLoss 已在词表中表示“依法赔偿损失（得利人，受损失的人）”，不能重新定义为“赔偿损失（赔偿义务人，受损失人）”，请换名或沿用原义",
+   "谓词 partyTo 已在词表中表示“是合同当事人（当事人，合同）”，不能重新定义为“是合同的当事人（当事人，合同）”，请换名或沿用原义",
+   "谓词 otherPartyOf 已在词表中表示“是对方当事人（对方，当事人，选择之债）”，不能重新定义为“是其在合同中的对方当事人（当事人，对方当事人）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"物业服务合同的界定、物业服务人与业主的主要义务，以及合同终止后的后合同义务\",\n        \"rules\": [\n          \"c937-def\",\n          \"c937-2\",\n          \"c941-1\",\n          \"c942-1\",\n          \"c943\",\n          \"c944-1\",\n          \"c949-1a\",\n          \"c950-1\"\n        ]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"物业服务人在物业服务区域内为业主提供建筑物及其附属设施的维修养护、环境卫生和相关秩序的管理维护等服务，业主支付物业费\",\n        \"rules\": [\n          \"c937-def\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人包括物业服务企业和其他管理人\",\n        \"rules\": [\n          \"c937-2\"\n        ]\n      },\n      {\n        \"text\": \"前期物业服务合同约定的服务期限届满前，业主委员会或者业主与新物业服务人订立的物业服务合同生效\",\n        \"rules\": [\n          \"c940\"\n        ]\n      },\n      {\n        \"text\": \"业主违反约定逾期不支付物业费\",\n        \"rules\": [\n          \"c944-2a\"\n        ]\n      },\n      {\n        \"text\": \"业主依照法定程序共同决定解聘物业服务人\",\n        \"rules\": [\n          \"c946-1\"\n        ]\n      },\n      {\n        \"text\": \"物业服务期限届满后，业主没有依法作出续聘或者另聘物业服务人的决定，物业服务人继续提供物业服务\",\n        \"rules\": [\n          \"c948-1\"\n        ]\n      },\n      {\n        \"text\": \"物业服务合同终止后，业主或者业主大会选聘的新物业服务人或者决定自行管理的业主尚未接管\",\n        \"rules\": [\n          \"c950-1\"\n        ]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"决定解聘应当提前六十日书面通知物业服务人，但合同对通知期限另有约定的除外\",\n        \"rules\": [\n          \"c946-2\"\n        ]\n      },\n      {\n        \"text\": \"解除合同造成物业服务人损失的，除不可归责于业主的事由外，业主应当赔偿损失\",\n        \"rules\": [\n          \"c946-3\"\n        ]\n      },\n      {\n        \"text\": \"不定期物业服务合同当事人可以随时解除，但应当提前六十日书面通知对方（合同对通知期限另有约定的除外）\",\n        \"rules\": [\n          \"c948-2\",\n          \"c948-3\"\n        ]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"前期物业服务合同约定的服务期限届满前，业主委员会或者业主与新物业服务人订立的物业服务合同生效的，前期物业服务合同终止\",\n        \"rules\": [\n          \"c940\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人将部分专项服务事项委托给专业性服务组织或者其他第三人的，应当就该部分专项服务事项向业主负责\",\n        \"rules\": [\n          \"c941-1\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人不得将全部物业服务转委托给第三人，或者将全部物业服务支解后分别转委托给第三人\",\n        \"rules\": [\n          \"c941-2\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人应当按照约定和物业的使用性质妥善维修、养护、清洁、绿化和经营管理业主共有部分，维护基本秩序，采取合理措施保护业主的人身、财产安全\",\n        \"rules\": [\n          \"c942-1\"\n        ]\n      },\n      {\n        \"text\": \"对物业服务区域内违反治安、环保、消防等法律法规的行为，物业服务人应当及时采取合理措施制止、向有关行政主管部门报告并协助处理\",\n        \"rules\": [\n          \"c942-2\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人应当定期将服务事项、负责人员、质量要求、收费项目、收费标准、履行情况以及维修资金使用情况、共有部分经营与收益情况等以合理方式向业主公开并向业主大会、业主委员会报告\",\n        \"rules\": [\n          \"c943\"\n        ]\n      },\n      {\n        \"text\": \"业主应当按照约定向物业服务人支付物业费\",\n        \"rules\": [\n          \"c944-1\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人已按照约定和有关规定提供服务的，业主不得以未接受或者无需接受相关物业服务为由拒绝支付物业费\",\n        \"rules\": [\n          \"c944-1b\"\n        ]\n      },\n      {\n        \"text\": \"业主逾期不支付物业费的，物业服务人可以催告其在合理期限内支付；合理期限届满仍不支付的，可以提起诉讼或者申请仲裁\",\n        \"rules\": [\n          \"c944-2a\",\n          \"c944-2b\"\n        ]\n      },\n      {\n        \"text\": \"物业服务人不得采取停止供电、供水、供热、供燃气等方式催交物业费\",\n        \"rules\": [\n          \"c944-3\"\n        ]\n      },\n      {\n        \"text\": \"业主装饰装修房屋的，应当事先告知物业服务人、遵守其提示的合理注意事项并配合必要的现场检查\",\n        \"rules\": [\n          \"c945-1\"\n        ]\n      },\n      {\n        \"text\": \"业主转让、出租物业专有部分、设立居住权或者依法改变共有部分用途的，应当及时将相关情况告知物业服务人\",\n        \"rules\": [\n          \"c945-2\"\n        ]\n      },\n      {\n        \"text\": \"业主依照法定程序共同决定解聘物业服务人的，可以解除物业服务合同；决定解聘的应当提前六十日书面通知，造成物业服务人损失的应当赔偿\",\n        \"rules\": [\n          \"c946-1\",\n          \"c946-2\",\n          \"c946-3\"\n        ]\n      },\n      {\n        \"text\": \"物业服务期限届满后业主未作续聘或另聘决定而物业服务人继续服务的，原物业服务合同继续有效但服务期限为不定期；当事人可以随时解除，但应当提前六十日书面通知对方\",\n        \"rules\": [\n          \"c948-1\",\n          \"c948-2\",\n          \"c948-3\"\n        ]\n      },\n      {\n        \"text\": \"物业服务合同终止的，原物业服务人应当在约定期限或者合理期限内退出物业服务区域，交还物业服务用房、相关设施和必需资料，配合新物业服务人交接并如实告知物业的使用和管理状况\",\n        \"rules\": [\n          \"c949-1a\",\n          \"c949-1b\"\n        ]\n      },\n      {\n        \"text\": \"原物业服务人违反退出、交还与交接义务的，不得请求业主支付物业服务合同终止后的物业费；造成业主损失的，应当赔偿损失\",\n        \"rules\": [\n          \"c949-2a\",\n          \"c949-2b\"\n        ]\n      },\n      {\n        \"text\": \"物业服务合同终止后，在新物业服务人或者决定自行管理的业主接管之前，原物业服务人应当继续处理物业服务事项，并可以请求业主支付该期间的物业费\",\n        \"rules\": [\n          \"c950-1\",\n          \"c950-2\"\n        ]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"物业服务人已按约定和有关规定提供服务的，业主不得以未接受或者无需接受相关物业服务为由拒付物业费，排除其相应抗辩\",\n        \"rules\": [\n          \"c944-1b\"\n        ]\n      },\n      {\n        \"text\": \"即使业主欠费，物业服务人也不得以停止供电、供水、供热、供燃气等方式催交物业费\",\n        \"rules\": [\n          \"c944-3\"\n        ]\n      },\n      {\n        \"text\": \"原物业服务人依第950条继续处理物业服务事项的，可以请求该期间的物业费，构成第949条第2款“不得请求终止后物业费”的例外\",\n        \"rules\": [\n          \"c950-2\",\n          \"c949-2a\"\n        ]\n      },\n      {\n        \"text\": \"解聘与不定期合同解除的通知期限，合同另有约定的优先于六十日的法定通知期限\",\n        \"rules\": [\n          \"c946-2\",\n          \"c948-3\"\n        ]\n      },\n      {\n        \"text\": \"不定期物业服务合同当事人可随时解除，属特别规定，不受第946条业主共同决定解聘程序的限制\",\n        \"rules\": [\n          \"c948-2\",\n          \"c946-1\"\n        ]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"LEGO 卡片称物业服务合同以持续性劳务为标的，不同于承揽合同（以完成特定工作成果为目的）与租赁合同（转移占有、以使用收益为核心），属学理区分，法条未作规定\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记将本节列为2020年新增的典型合同（第十六节）；第947条（续聘、另聘）未挂载，本卡片不涉及\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"LEGO 卡片称物业服务人未履行报告义务“可能影响其收费权利”，法条未作此规定，不予采纳\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"第937条第2款将“其他管理人”一并纳入物业服务人，与第941条以下义务主体范围一致\",\n        \"rules\": [\n          \"c937-2\"\n        ]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c937-def\",\n      \"srcs\": [\n        \"art937-1\"\n      ],\n      \"body\": [\n        \"contract(K)\",\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"providesServiceInArea(P,Area)\",\n        \"payPropertyFee(O,P)\"\n      ],\n      \"heads\": [\n        \"propertyServiceContract(K)\"\n      ],\n      \"note\": \"物业服务合同是物业服务人在物业服务区域内为业主提供维修养护、环境卫生和秩序管理等服务、业主支付物业费的合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c937-2\",\n      \"srcs\": [\n        \"art937-2\"\n      ],\n      \"body\": [\n        {\n          \"or\": [\n            \"propertyServiceEnterprise(P)\",\n            \"otherManager(P)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        \"propertyServiceProvider(P)\"\n      ],\n      \"note\": \"物业服务人包括物业服务企业和其他管理人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c940\",\n      \"srcs\": [\n        \"art940-1\"\n      ],\n      \"body\": [\n        \"preliminaryPropertyServiceContract(K1)\",\n        \"propertyServiceContract(K2)\",\n        \"contractEffective(K2)\",\n        \"beforeServicePeriodExpiry(K1)\",\n        \"concludedByOwnerOrOwnersOrg(K2)\"\n      ],\n      \"heads\": [\n        \"contractTerminated(K1)\"\n      ],\n      \"note\": \"前期物业服务合同约定的服务期限届满前，业主委员会或者业主与新物业服务人订立的物业服务合同生效的，前期物业服务合同终止\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c941-1\",\n      \"srcs\": [\n        \"art941-1\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"entrustsSpecialServiceTo(P,T)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"beLiableForSpecialService(P,T)\"\n        }\n      ],\n      \"note\": \"将部分专项服务事项委托给专业性服务组织或者其他第三人的，物业服务人应当就该部分专项服务事项向业主负责\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c941-2\",\n      \"srcs\": [\n        \"art941-2\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"entrustAllServiceToThirdParty(P)\"\n        }\n      ],\n      \"note\": \"物业服务人不得将全部物业服务转委托给第三人，也不得将全部物业服务支解后分别转委托给第三人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c942-1\",\n      \"srcs\": [\n        \"art942-1\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"maintainCommonPartsAndProtectOwners(P)\"\n        }\n      ],\n      \"note\": \"按照约定和物业的使用性质妥善维修、养护、清洁、绿化和经营管理业主共有部分，维护基本秩序，采取合理措施保护业主人身、财产安全\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c942-2\",\n      \"srcs\": [\n        \"art942-2\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\",\n        \"illegalActInServiceArea(A,Area)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"stopAndReportIllegalAct(P,A)\"\n        }\n      ],\n      \"note\": \"对物业服务区域内违反治安、环保、消防等法律法规的行为，应当及时采取合理措施制止、向有关行政主管部门报告并协助处理\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c943\",\n      \"srcs\": [\n        \"art943-1\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"discloseAndReportServiceInfoPeriodically(P)\"\n        }\n      ],\n      \"note\": \"定期将服务事项、负责人员、质量要求、收费项目与标准、履行情况、维修资金使用及共有部分经营收益情况等以合理方式向业主公开并向业主大会、业主委员会报告\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c944-1\",\n      \"srcs\": [\n        \"art944-1\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"propertyServiceContract(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"payPropertyFee(O,P)\"\n        }\n      ],\n      \"note\": \"业主应当按照约定向物业服务人支付物业费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c944-1b\",\n      \"srcs\": [\n        \"art944-1\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"serviceProvidedPerAgreement(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"refusePaymentOnGroundOfNonAcceptance(O,P)\"\n        }\n      ],\n      \"note\": \"物业服务人已按照约定和有关规定提供服务的，业主不得以未接受或者无需接受相关物业服务为由拒绝支付物业费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c944-2a\",\n      \"srcs\": [\n        \"art944-2\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"overdueNonPayment(O,P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"demandPaymentWithinReasonablePeriod(P,O)\"\n        }\n      ],\n      \"note\": \"业主违反约定逾期不支付物业费的，物业服务人可以催告其在合理期限内支付\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c944-2b\",\n      \"srcs\": [\n        \"art944-2\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"stillNotPaidAfterDemand(O,P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"sueOrArbitrateForPropertyFee(P,O)\"\n        }\n      ],\n      \"note\": \"合理期限届满仍不支付的，物业服务人可以提起诉讼或者申请仲裁\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c944-3\",\n      \"srcs\": [\n        \"art944-3\"\n      ],\n      \"body\": [\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"overdueNonPayment(O,P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"cutOffUtilitiesToCollectFee(P,O)\"\n        }\n      ],\n      \"note\": \"物业服务人不得采取停止供电、供水、供热、供燃气等方式催交物业费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c945-1\",\n      \"srcs\": [\n        \"art945-1\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"decoratesHouse(O)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"notifyAndCooperateWithInspection(O,P)\"\n        }\n      ],\n      \"note\": \"业主装饰装修房屋的，应当事先告知物业服务人，遵守其提示的合理注意事项，并配合必要的现场检查\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c945-2\",\n      \"srcs\": [\n        \"art945-2\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        {\n          \"or\": [\n            \"transfersOrLeasesExclusivePart(O)\",\n            \"establishesResidenceRight(O)\",\n            \"changesCommonPartUse(O)\"\n          ]\n        }\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"notifyProviderInTime(O,P)\"\n        }\n      ],\n      \"note\": \"业主转让、出租物业专有部分、设立居住权或者依法改变共有部分用途的，应当及时将相关情况告知物业服务人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c946-1\",\n      \"srcs\": [\n        \"art946-1\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceContract(K)\",\n        \"collectiveDecisionToDismiss(O)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"O\",\n          \"counterparty\": null,\n          \"content\": \"terminatePropertyServiceContract(O,K)\"\n        }\n      ],\n      \"note\": \"业主依照法定程序共同决定解聘物业服务人的，可以解除物业服务合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c946-2\",\n      \"srcs\": [\n        \"art946-1\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"propertyServiceContract(K)\",\n        \"collectiveDecisionToDismiss(O)\",\n        \"~agreedOtherwiseOnNoticePeriod(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"notifyInWriting60DaysInAdvance(O,P)\"\n        }\n      ],\n      \"note\": \"决定解聘的，应当提前六十日书面通知物业服务人，但合同对通知期限另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c946-3\",\n      \"srcs\": [\n        \"art946-2\"\n      ],\n      \"body\": [\n        \"condominiumOwner(O,B)\",\n        \"propertyServiceProvider(P)\",\n        \"propertyServiceContract(K)\",\n        \"collectiveDecisionToDismiss(O)\",\n        \"terminatesContractCausesLoss(O,P)\",\n        \"~notAttributableToParty(O)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"O\",\n          \"counterparty\": \"P\",\n          \"content\": \"compensateLoss(O,P)\"\n        }\n      ],\n      \"note\": \"依前款规定解除合同造成物业服务人损失的，除不可归责于业主的事由外，业主应当赔偿损失\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c948-1\",\n      \"srcs\": [\n        \"art948-1\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"servicePeriodExpired(K)\",\n        \"noDecisionOnRenewalOrNewProvider(O)\",\n        \"continuesProvidingService(P)\"\n      ],\n      \"heads\": [\n        \"valid(K)\",\n        \"serviceTermIndefinite(K)\"\n      ],\n      \"note\": \"服务期限届满后业主未依法作出续聘或另聘决定而物业服务人继续提供服务的，原物业服务合同继续有效，但服务期限为不定期\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c948-2\",\n      \"srcs\": [\n        \"art948-2\"\n      ],\n      \"body\": [\n        \"serviceTermIndefinite(K)\",\n        \"partyTo(X,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"X\",\n          \"counterparty\": null,\n          \"content\": \"terminateIndefiniteContract(X,K)\"\n        }\n      ],\n      \"note\": \"当事人可以随时解除不定期物业服务合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c948-3\",\n      \"srcs\": [\n        \"art948-2\"\n      ],\n      \"body\": [\n        \"serviceTermIndefinite(K)\",\n        \"partyTo(X,K)\",\n        \"otherPartyOf(X,Y)\",\n        \"~agreedOtherwiseOnNoticePeriod(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"X\",\n          \"counterparty\": \"Y\",\n          \"content\": \"notifyInWriting60DaysInAdvance(X,Y)\"\n        }\n      ],\n      \"note\": \"解除不定期物业服务合同应当提前六十日书面通知对方（合同对通知期限另有约定的除外）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c949-1a\",\n      \"srcs\": [\n        \"art949-1\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"withdrawAndHandOver(P)\"\n        }\n      ],\n      \"note\": \"物业服务合同终止的，原物业服务人应当在约定期限或者合理期限内退出物业服务区域，将物业服务用房、相关设施和必需资料交还给业主委员会、决定自行管理的业主或者其指定的人\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c949-1b\",\n      \"srcs\": [\n        \"art949-1\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"newProviderOrSelfManager(N)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"N\",\n          \"content\": \"cooperateWithHandoverAndInform(P)\"\n        }\n      ],\n      \"note\": \"原物业服务人应当配合新物业服务人做好交接工作，并如实告知物业的使用和管理状况\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c949-2a\",\n      \"srcs\": [\n        \"art949-2\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"violatesPostContractDuties(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"FOR\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"requestPostTerminationFee(P)\"\n        }\n      ],\n      \"note\": \"原物业服务人违反退出、交还与交接义务的，不得请求业主支付物业服务合同终止后的物业费\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c949-2b\",\n      \"srcs\": [\n        \"art949-2\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"violatesPostContractDuties(P)\",\n        \"causesLossToOwner(P,O)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"compensateLoss(P,O)\"\n        }\n      ],\n      \"note\": \"原物业服务人违反前款规定造成业主损失的，应当赔偿损失\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c950-1\",\n      \"srcs\": [\n        \"art950-1\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"~newProviderOrSelfManagerTookOver(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"P\",\n          \"counterparty\": null,\n          \"content\": \"continueHandlingServiceMatters(P)\"\n        }\n      ],\n      \"note\": \"物业服务合同终止后，在业主或者业主大会选聘的新物业服务人或者决定自行管理的业主接管之前，原物业服务人应当继续处理物业服务事项\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c950-2\",\n      \"srcs\": [\n        \"art950-1\"\n      ],\n      \"body\": [\n        \"propertyServiceContract(K)\",\n        \"contractTerminated(K)\",\n        \"propertyServiceProvider(P)\",\n        \"condominiumOwner(O,B)\",\n        \"continuesHandlingServiceMatters(P)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"P\",\n          \"counterparty\": \"O\",\n          \"content\": \"requestFeeForInterimPeriod(P,O)\"\n        }\n      ],\n      \"note\": \"原物业服务人继续处理物业服务事项的，可以请求业主支付该期间的物业费\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\n      \"c950-2\",\n      \"c949-2a\",\n      \"第950条允许原物业服务人在接管前继续处理服务事项并请求该期间的物业费，构成第949条第2款“不得请求终止后物业费”的例外\"\n    ],\n    [\n      \"c948-2\",\n      \"c946-1\",\n      \"不定期物业服务合同依第948条第2款可随时解除，属特别规定，不受第946条业主共同决定解聘程序的限制\"\n    ]\n  ],\n  \"predicates\": {\n    \"contract\": \"是合同（1个参数：合同）\",\n    \"propertyServiceContract\": \"是物业服务合同（1个参数：合同）\",\n    \"preliminaryPropertyServiceContract\": \"是前期物业服务合同（1个参数：合同）\",\n    \"providesServiceInArea\": \"在物业服务区域内提供物业服务（物业服务人，物业服务区域）\",\n    \"payPropertyFee\": \"业主向物业服务人支付物业费（业主，物业服务人）\",\n    \"contractEffective\": \"合同已生效（1个参数：合同）\",\n    \"beforeServicePeriodExpiry\": \"在约定的服务期限届满前（1个参数：合同）\",\n    \"concludedByOwnerOrOwnersOrg\": \"由业主委员会或者业主订立（1个参数：合同）\",\n    \"entrustsSpecialServiceTo\": \"将部分专项服务事项委托给专业性服务组织或者其他第三人（物业服务人，第三人）\",\n    \"beLiableForSpecialService\": \"就该部分专项服务事项向业主负责（物业服务人，专项服务事项）\",\n    \"entrustAllServiceToThirdParty\": \"将全部物业服务转委托给第三人，或者将全部物业服务支解后分别转委托给第三人（物业服务人）\",\n    \"maintainCommonPartsAndProtectOwners\": \"妥善维修养护共有部分、维护基本秩序并采取合理措施保护业主人身财产安全（物业服务人）\",\n    \"illegalActInServiceArea\": \"在物业服务区域内实施违反治安、环保、消防等法律法规的行为（行为人，物业服务区域）\",\n    \"stopAndReportIllegalAct\": \"及时采取合理措施制止、向有关行政主管部门报告并协助处理违法行为（物业服务人，违法行为）\",\n    \"discloseAndReportServiceInfoPeriodically\": \"定期公开服务信息并向业主大会、业主委员会报告（物业服务人）\",\n    \"serviceProvidedPerAgreement\": \"已按照约定和有关规定提供服务（物业服务人）\",\n    \"refusePaymentOnGroundOfNonAcceptance\": \"以未接受或者无需接受相关物业服务为由拒绝支付物业费（业主，物业服务人）\",\n    \"overdueNo"
+ }
+}

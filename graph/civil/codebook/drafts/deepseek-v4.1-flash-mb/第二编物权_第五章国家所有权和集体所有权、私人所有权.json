@@ -1,0 +1,2930 @@
+{
+ "art:247": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "矿藏、水流、海域的所有权归谁享有",
+     "rules": [
+      "c247-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体为矿藏、水流或者海域之一",
+     "rules": [
+      "c247-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该矿藏、水流、海域属于国家所有（国家为所有权人）",
+     "rules": [
+      "c247-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只解决矿藏、水流、海域的国家所有权归属，不涉及这些资源的利用（如海域使用权、采矿权等）问题",
+     "rules": []
+    },
+    {
+     "text": "第247条第2款关于集体所有土地的规定未挂载，不在本卡范围；笔记与LEGO卡片均未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c247-1",
+    "srcs": [
+     "art247-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "mineralResource(X)",
+       "waterFlow(X)",
+       "seaArea(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "矿藏、水流、海域属于国家所有，即国家为这三类客体的所有权人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mineralResource": "是矿藏",
+   "waterFlow": "是水流",
+   "seaArea": "是海域"
+  }
+ },
+ "art:249": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "城市的土地，以及农村和城市郊区中法律规定属于国家所有的土地，归谁所有",
+     "rules": [
+      "c249-1",
+      "c249-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该土地位于城市",
+     "rules": [
+      "c249-1"
+     ]
+    },
+    {
+     "text": "该土地位于农村或城市郊区，且法律规定属于国家所有",
+     "rules": [
+      "c249-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "城市的土地属于国家所有",
+     "rules": [
+      "c249-1"
+     ]
+    },
+    {
+     "text": "法律规定属于国家所有的农村和城市郊区的土地，属于国家所有",
+     "rules": [
+      "c249-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定国家所有的土地范围；农村和城市郊区的土地以集体所有为原则，仅“法律规定属于国家所有的”部分归国家，该原则性规定见第260条，不在本条挂载范围内",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条，本条为土地所有权归属的权属确认规范，不产生请求权的行使规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c249-1",
+    "srcs": [
+     "art249-1"
+    ],
+    "body": [
+     "cityLand(L)"
+    ],
+    "heads": [
+     "stateOwned(L)"
+    ],
+    "note": "城市的土地属于国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c249-2",
+    "srcs": [
+     "art249-1"
+    ],
+    "body": [
+     "ruralOrSuburbanLand(L)",
+     "lawProvidesStateOwnership(L)"
+    ],
+    "heads": [
+     "stateOwned(L)"
+    ],
+    "note": "农村和城市郊区的土地，只有法律规定属于国家所有的，才属于国家所有",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "cityLand": "该土地位于城市（城市的土地）",
+   "ruralOrSuburbanLand": "该土地位于农村或者城市郊区",
+   "lawProvidesStateOwnership": "法律规定该土地属于国家所有"
+  }
+ },
+ "art:246": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些财产属于国家所有（即全民所有），国有财产的所有权由谁代表国家行使",
+     "rules": [
+      "c246-1",
+      "c246-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该财产依照法律规定属于国家所有",
+     "rules": [
+      "c246-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对国有财产所有权的行使另有规定的，依照该规定",
+     "rules": [
+      "c246-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该财产属于国家所有，即全民所有",
+     "rules": [
+      "c246-1"
+     ]
+    },
+    {
+     "text": "国有财产由国务院代表国家行使所有权",
+     "rules": [
+      "c246-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对国有财产所有权的行使另有规定时，优先适用该特别规定，排除“由国务院代表国家行使所有权”的一般规则",
+     "rules": [
+      "c246-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、权属确认性规定：只确认“国家所有即全民所有”及国务院代表行使所有权，不创设具体取得规则；国有财产的具体范围由其他法律（如本法第247条至第254条及自然资源单行法）规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c246-1",
+    "srcs": [
+     "art246-1"
+    ],
+    "body": [
+     "lawProvidesStateOwnership(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "法律规定属于国家所有的财产，属于国家所有，即全民所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c246-2",
+    "srcs": [
+     "art246-2"
+    ],
+    "body": [
+     "stateOwned(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "stateCouncil",
+      "counterparty": null,
+      "content": "exerciseOwnershipOnBehalfOfState(X)"
+     }
+    ],
+    "note": "国有财产由国务院代表国家行使所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c246-3",
+    "srcs": [
+     "art246-2"
+    ],
+    "body": [
+     "stateOwned(X)",
+     "lawProvidesOtherwiseOnStateOwnership(X)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(X)"
+    ],
+    "note": "法律对国有财产所有权的行使另有规定的，依照该规定处理（第2款但书）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c246-3",
+    "c246-2",
+    "第2款但书“法律另有规定的，依照其规定”，特别规定优先于国务院代表国家行使所有权的一般规则"
+   ]
+  ],
+  "predicates": {
+   "lawProvidesStateOwnership": "法律规定该财产属于国家所有",
+   "exerciseOwnershipOnBehalfOfState": "代表国家行使对该财产的所有权",
+   "lawProvidesOtherwiseOnStateOwnership": "法律对国有财产所有权的行使另有规定"
+  }
+ },
+ "art:251": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律规定属于国家所有的野生动植物资源，其所有权归属如何确定",
+     "rules": [
+      "c251-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该客体为野生动植物资源",
+     "rules": [
+      "c251-1"
+     ]
+    },
+    {
+     "text": "法律规定该野生动植物资源属于国家所有",
+     "rules": [
+      "c251-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该野生动植物资源属于国家所有，即由国家享有所有权",
+     "rules": [
+      "c251-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是所有权归属的确认性（宣示性）规范，只确定国家所有权的主体，不产生义务性后果；国家所有权的行使、保护等另由物权编相关条文规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，LEGO 卡片缺失，本条形式化仅以法条原文为依据，未作学理扩张",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c251-1",
+    "srcs": [
+     "art251-1"
+    ],
+    "body": [
+     "wildlifeResource(X)",
+     "lawProvidesStateOwnership(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "法律规定属于国家所有的野生动植物资源，属于国家所有（所有权归属的确认性规范）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "wildlifeResource": "是野生动植物资源",
+   "lawProvidesStateOwnership": "法律规定该资源属于国家所有"
+  }
+ },
+ "art:250": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "森林、山岭、草原、荒地、滩涂等自然资源归谁所有",
+     "rules": [
+      "c250-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为森林、山岭、草原、荒地、滩涂等自然资源（“等”为不完全列举，凡属自然资源者均在本条射程内）",
+     "rules": [
+      "c250-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律规定该自然资源属于集体所有的，不归国家所有（但书）",
+     "rules": [
+      "c250-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该自然资源属于国家所有，即依法属于国家所有",
+     "rules": [
+      "c250-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定自然资源的所有权归属，且以“法律规定属于集体所有”为唯一例外；与第249条（法律规定属于国家所有的农村和城市郊区土地）、第251条（野生动植物资源）分列，不得径行援引本条处理土地或野生动植物资源的归属",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均无相关内容，本条仅依挂载的第250条第1款原文形式化，未挂载的第2款不在本卡片范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c250-1",
+    "srcs": [
+     "art250-1"
+    ],
+    "body": [
+     "naturalResource(X)",
+     "~lawProvidesCollectiveOwnership(X)"
+    ],
+    "heads": [
+     "belongsTo(X,state)"
+    ],
+    "note": "森林、山岭、草原、荒地、滩涂等自然资源属于国家所有，但法律规定属于集体所有的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lawProvidesCollectiveOwnership": "法律规定该自然资源属于集体所有（第250条第1款但书所指情形）"
+  }
+ },
+ "art:252": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无线电频谱资源归谁所有",
+     "rules": [
+      "c252-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体为无线电频谱资源",
+     "rules": [
+      "c252-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "无线电频谱资源属于国家所有，即由国家专有，他人不得取得其所有权",
+     "rules": [
+      "c252-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为物权编第五章中的权属确认（宣示）性规范，只确认归属，不设义务；笔记与 LEGO 卡片均未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c252-1",
+    "srcs": [
+     "art252-1"
+    ],
+    "body": [
+     "radioSpectrumResource(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "无线电频谱资源属于国家所有，即由国家专有，不适用先占等取得方式",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "radioSpectrumResource": "是无线电频谱资源（客体）"
+  }
+ },
+ "card:g0020": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无居民海岛归谁所有、由谁代表国家行使所有权",
+     "rules": [
+      "c248-1",
+      "c248-2"
+     ]
+    },
+    {
+     "text": "哪些财产可以抵押、由谁抵押、能否一并抵押",
+     "rules": [
+      "c395-obj",
+      "c395-1",
+      "c395-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为无居民海岛",
+     "rules": [
+      "c248-1",
+      "c248-2"
+     ]
+    },
+    {
+     "text": "抵押人对该财产有处分权（抵押人为债务人或者第三人）",
+     "rules": [
+      "c395-1"
+     ]
+    },
+    {
+     "text": "财产属于第395条第1款所列七类之一：建筑物和其他土地附着物、建设用地使用权、海域使用权、生产设备原材料半成品产品、正在建造的建筑物船舶航空器、交通运输工具、法律行政法规未禁止抵押的其他财产",
+     "rules": [
+      "c395-obj"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规禁止抵押的财产，不属于第（七）项“其他财产”，不得抵押",
+     "rules": [
+      "c395-obj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "无居民海岛属于国家所有",
+     "rules": [
+      "c248-1"
+     ]
+    },
+    {
+     "text": "国务院代表国家行使无居民海岛所有权",
+     "rules": [
+      "c248-2"
+     ]
+    },
+    {
+     "text": "抵押人可以就上述适格财产设定抵押",
+     "rules": [
+      "c395-1"
+     ]
+    },
+    {
+     "text": "抵押人可以将前款所列财产一并抵押",
+     "rules": [
+      "c395-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无居民海岛所有权专属于国家，排除集体、私人取得该岛所有权",
+     "rules": [
+      "c248-1"
+     ]
+    },
+    {
+     "text": "第（一）至（六）项为列举规定，只有不属于列举范围时才适用第（七）项兜底条款",
+     "rules": [
+      "c395-obj"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把无居民海岛所有权置于“自物权—所有权—国家所有权”之下，而海域使用权属用益物权（他物权），第395条第1款第（三）项确认其可以抵押，二者在体系上层次不同",
+     "rules": []
+    },
+    {
+     "text": "第2款“一并抵押”是授权性规定，抵押人也可以选择就其中一项财产单独抵押",
+     "rules": [
+      "c395-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c248-1",
+    "srcs": [
+     "art248-1"
+    ],
+    "body": [
+     "uninhabitedIsland(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "无居民海岛属于国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c248-2",
+    "srcs": [
+     "art248-1"
+    ],
+    "body": [
+     "uninhabitedIsland(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "stateCouncil",
+      "counterparty": null,
+      "content": "exerciseStateOwnership(X)"
+     }
+    ],
+    "note": "国务院代表国家行使无居民海岛所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c395-obj",
+    "srcs": [
+     "art395-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "building(P)",
+       "otherLandAttachment(P)",
+       "constructionLandUseRight(P)",
+       "seaAreaUseRight(P)",
+       "productionEquipmentMaterialsProducts(P)",
+       "buildingUnderConstruction(P)",
+       "underConstructionVesselOrAircraft(P)",
+       "specialMovable(P)",
+       "notProhibitedFromMortgage(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "mortgageObjectOk(P)"
+    ],
+    "note": "可以抵押的财产范围：建筑物和其他土地附着物、建设用地使用权、海域使用权、生产设备原材料半成品产品、正在建造的建筑物船舶航空器、交通运输工具、法律行政法规未禁止抵押的其他财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c395-1",
+    "srcs": [
+     "art395-1"
+    ],
+    "body": [
+     "hasDisposalPower(M,P)",
+     "mortgageObjectOk(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "mortgage(M,P)"
+     }
+    ],
+    "note": "债务人或者第三人有权处分的适格财产可以抵押",
+    "auth": "npc"
+   },
+   {
+    "key": "c395-2",
+    "srcs": [
+     "art395-2"
+    ],
+    "body": [
+     "hasDisposalPower(M,P)",
+     "hasDisposalPower(M,Q)",
+     "mortgageObjectOk(P)",
+     "mortgageObjectOk(Q)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "mortgageTogether(M,P,Q)"
+     }
+    ],
+    "note": "抵押人可以将前款所列财产一并抵押",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "uninhabitedIsland": "是无居民海岛（1个参数：标的物）",
+   "exerciseStateOwnership": "代表国家行使所有权（1个参数：标的物）",
+   "otherLandAttachment": "是建筑物以外的其他土地附着物（1个参数：标的物）",
+   "productionEquipmentMaterialsProducts": "是生产设备、原材料、半成品、产品（1个参数：标的物）",
+   "underConstructionVesselOrAircraft": "是正在建造的船舶、航空器（1个参数：标的物）",
+   "notProhibitedFromMortgage": "是法律、行政法规未禁止抵押的其他财产（1个参数：标的物）",
+   "mortgage": "设定抵押（2个参数：抵押人，抵押财产）",
+   "mortgageTogether": "将多项财产一并抵押（3个参数：抵押人，财产一，财产二）"
+  }
+ },
+ "art:253": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律规定属于国家所有的文物，其所有权归谁",
+     "rules": [
+      "c253-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该物为文物",
+     "rules": [
+      "c253-1"
+     ]
+    },
+    {
+     "text": "法律（而非行政法规、地方性法规或当事人约定）规定该文物属于国家所有",
+     "rules": [
+      "c253-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该文物属于国家所有，即国家取得其所有权",
+     "rules": [
+      "c253-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是文物所有权归属的构成性规定，只解决“归谁所有”，不涉及文物保护、管理、流转限制等公法上的管理措施",
+     "rules": []
+    },
+    {
+     "text": "法律未规定属于国家所有的文物，不能依本条认定为国家所有，其归属应依其他规则（如集体所有、私人所有及取得规则）确定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c253-1",
+    "srcs": [
+     "art253-1"
+    ],
+    "body": [
+     "culturalRelic(X)",
+     "lawProvidesStateOwnership(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "法律规定属于国家所有的文物，属于国家所有",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "culturalRelic": "是文物（1个参数：标的物）",
+   "lawProvidesStateOwnership": "法律规定该物属于国家所有（1个参数：标的物）"
+  }
+ },
+ "card:g2418": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无居民海岛归谁所有、由谁代表国家行使所有权",
+     "rules": [
+      "c248-1",
+      "c248-2"
+     ]
+    },
+    {
+     "text": "集体所有的不动产和动产包括哪些财产",
+     "rules": [
+      "c260-1",
+      "c260-2",
+      "c260-3",
+      "c260-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体为无居民海岛",
+     "rules": [
+      "c248-1",
+      "c248-2",
+      "c248-exclusive"
+     ]
+    },
+    {
+     "text": "财产属于本条列举的四类之一：法律规定属于集体所有的土地和森林、山岭、草原、荒地、滩涂；集体所有的建筑物、生产设施、农田水利设施；集体所有的教育、科学、文化、卫生、体育等设施；集体所有的其他不动产和动产",
+     "rules": [
+      "c260-1",
+      "c260-2",
+      "c260-3",
+      "c260-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "无居民海岛专属国家所有，任何组织和个人不能取得其所有权，不因实际占有、长期使用或自然形态上可归入滩涂等而归集体或私人所有（笔记、LEGO 卡片，法条未明文）",
+     "rules": [
+      "c248-exclusive"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "无居民海岛属于国家所有",
+     "rules": [
+      "c248-1"
+     ]
+    },
+    {
+     "text": "国务院代表国家行使无居民海岛所有权",
+     "rules": [
+      "c248-2"
+     ]
+    },
+    {
+     "text": "列举的四类不动产和动产属于集体所有",
+     "rules": [
+      "c260-1",
+      "c260-2",
+      "c260-3",
+      "c260-4"
+     ]
+    },
+    {
+     "text": "农民集体所有的财产属于本集体成员集体所有（笔记补充，规定于第261条，本条未规定）",
+     "rules": [
+      "c260-members"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无居民海岛国家所有的特别规定优先于第260条关于集体财产范围的一般列举，即使该岛在自然形态上可归入滩涂等，也不因此成为集体财产",
+     "rules": [
+      "c248-1",
+      "c248-exclusive"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记把城市土地、矿藏、水流、海域、无线电频谱资源、国防资产等也列为专属国家所有，本条只规定无居民海岛；其余客体见第242条等，本行未挂载",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称无居民海岛所有权不以登记为生效要件、不适用一般物权变动规则、具有绝对优先性，属学理推论，法条未作规定",
+     "rules": []
+    },
+    {
+     "text": "第260条是集体所有权客体的列举，与第248条的国家所有权分属不同所有制类型；私人所有权客体为扣除专属国家所有和集体所有之外的财产（笔记）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c248-1",
+    "srcs": [
+     "art248-1"
+    ],
+    "body": [
+     "uninhabitedIsland(I)"
+    ],
+    "heads": [
+     "stateOwned(I)"
+    ],
+    "note": "无居民海岛属于国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c248-2",
+    "srcs": [
+     "art248-1"
+    ],
+    "body": [
+     "uninhabitedIsland(I)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "stateCouncil",
+      "counterparty": null,
+      "content": "exerciseStateOwnership(stateCouncil,I)"
+     }
+    ],
+    "note": "国务院代表国家行使无居民海岛所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c248-exclusive",
+    "srcs": [
+     "art248-1"
+    ],
+    "body": [
+     "uninhabitedIsland(I)"
+    ],
+    "heads": [
+     "exclusivelyStateOwned(I)"
+    ],
+    "note": "笔记与 LEGO 卡片：无居民海岛专属国家所有，任何组织和个人不能取得所有权，占有或使用不构成取得依据（法条未明文，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c260-1",
+    "srcs": [
+     "art260-1"
+    ],
+    "body": [
+     "landForestEtcBelongingToCollectiveByLaw(P)"
+    ],
+    "heads": [
+     "collectivelyOwned(P)"
+    ],
+    "note": "法律规定属于集体所有的土地和森林、山岭、草原、荒地、滩涂，属于集体所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c260-2",
+    "srcs": [
+     "art260-1"
+    ],
+    "body": [
+     "collectiveBuildingProductionFacilityOrIrrigationWorks(P)"
+    ],
+    "heads": [
+     "collectivelyOwned(P)"
+    ],
+    "note": "集体所有的建筑物、生产设施、农田水利设施，属于集体所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c260-3",
+    "srcs": [
+     "art260-1"
+    ],
+    "body": [
+     "collectiveEducationCultureHealthSportsFacility(P)"
+    ],
+    "heads": [
+     "collectivelyOwned(P)"
+    ],
+    "note": "集体所有的教育、科学、文化、卫生、体育等设施，属于集体所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c260-4",
+    "srcs": [
+     "art260-1"
+    ],
+    "body": [
+     "otherCollectiveImmovableOrMovable(P)"
+    ],
+    "heads": [
+     "collectivelyOwned(P)"
+    ],
+    "note": "集体所有的其他不动产和动产，属于集体所有（兜底项）",
+    "auth": "npc"
+   },
+   {
+    "key": "c260-members",
+    "srcs": [
+     "art260-1"
+    ],
+    "body": [
+     "collectivelyOwned(P)"
+    ],
+    "heads": [
+     "ownedByAllMembersCollectively(P)"
+    ],
+    "note": "笔记：农民集体所有的财产属于本集体成员集体所有；该内容规定在第261条，本条未规定，属学理补充",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c248-1",
+    "c260-1",
+    "无居民海岛专属国家所有，属特别规定，优先于第260条集体财产范围的一般列举，不因可归入滩涂等类型而成为集体财产"
+   ]
+  ],
+  "predicates": {
+   "uninhabitedIsland/1": "是无居民海岛",
+   "uninhabitedIsland": "是无居民海岛",
+   "exerciseStateOwnership/2": "代表国家行使所有权（行使主体，标的物）",
+   "exerciseStateOwnership": "代表国家行使所有权（行使主体，标的物）",
+   "collectivelyOwned/1": "属于集体所有的不动产或动产",
+   "collectivelyOwned": "属于集体所有的不动产或动产",
+   "landForestEtcBelongingToCollectiveByLaw/1": "是法律规定属于集体所有的土地、森林、山岭、草原、荒地、滩涂",
+   "landForestEtcBelongingToCollectiveByLaw": "是法律规定属于集体所有的土地、森林、山岭、草原、荒地、滩涂",
+   "collectiveBuildingProductionFacilityOrIrrigationWorks/1": "是集体所有的建筑物、生产设施、农田水利设施",
+   "collectiveBuildingProductionFacilityOrIrrigationWorks": "是集体所有的建筑物、生产设施、农田水利设施",
+   "collectiveEducationCultureHealthSportsFacility/1": "是集体所有的教育、科学、文化、卫生、体育等设施",
+   "collectiveEducationCultureHealthSportsFacility": "是集体所有的教育、科学、文化、卫生、体育等设施",
+   "otherCollectiveImmovableOrMovable/1": "是集体所有的其他不动产和动产",
+   "otherCollectiveImmovableOrMovable": "是集体所有的其他不动产和动产",
+   "ownedByAllMembersCollectively/1": "属于本集体成员集体所有",
+   "ownedByAllMembersCollectively": "属于本集体成员集体所有"
+  }
+ },
+ "art:254": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国防资产，以及铁路、公路、电力设施、电信设施、油气管道等基础设施，是否属于国家所有",
+     "rules": [
+      "c254-1",
+      "c254-2-type",
+      "c254-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该财产是国防资产",
+     "rules": [
+      "c254-1"
+     ]
+    },
+    {
+     "text": "该财产属于铁路、公路、电力设施、电信设施、油气管道等基础设施（“等”为不完全列举）",
+     "rules": [
+      "c254-2-type"
+     ]
+    },
+    {
+     "text": "该基础设施依照法律规定为国家所有",
+     "rules": [
+      "c254-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "国防资产属于国家所有",
+     "rules": [
+      "c254-1"
+     ]
+    },
+    {
+     "text": "依照法律规定为国家所有的基础设施，属于国家所有",
+     "rules": [
+      "c254-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款对国防资产直接规定属于国家所有，不以“依照法律规定”为条件；第2款对基础设施则须“依照法律规定为国家所有”才属于国家所有，故第2款多一项构成要件",
+     "rules": [
+      "c254-1",
+      "c254-2"
+     ]
+    },
+    {
+     "text": "本条用语为“属于国家所有”，与第242条“法律规定专属于国家所有”不同：后者排除其他主体取得所有权，本条不产生该排除效果",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，本条仅依原文形式化，未补充学理内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c254-1",
+    "srcs": [
+     "art254-1"
+    ],
+    "body": [
+     "nationalDefenseAsset(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "国防资产属于国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c254-2-type",
+    "srcs": [
+     "art254-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "railway(X)",
+       "highway(X)",
+       "powerFacility(X)",
+       "telecomFacility(X)",
+       "oilGasPipeline(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "infrastructure(X)"
+    ],
+    "note": "铁路、公路、电力设施、电信设施、油气管道属于本条所称基础设施；原文“等”为不完全列举，不排除其他同类基础设施",
+    "auth": "npc"
+   },
+   {
+    "key": "c254-2",
+    "srcs": [
+     "art254-2"
+    ],
+    "body": [
+     "infrastructure(X)",
+     "lawProvidesStateOwnership(X)"
+    ],
+    "heads": [
+     "stateOwned(X)"
+    ],
+    "note": "铁路、公路、电力设施、电信设施和油气管道等基础设施，依照法律规定为国家所有的，属于国家所有",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "nationalDefenseAsset": "是国防资产",
+   "infrastructure": "是铁路、公路、电力设施、电信设施、油气管道等基础设施",
+   "lawProvidesStateOwnership": "依照法律规定为国家所有",
+   "railway": "是铁路",
+   "highway": "是公路",
+   "powerFacility": "是电力设施",
+   "telecomFacility": "是电信设施",
+   "oilGasPipeline": "是油气管道"
+  }
+ },
+ "art:256": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家举办的事业单位对其直接支配的不动产和动产享有哪些权利，这些权利是否受限制",
+     "rules": [
+      "c256-1",
+      "c256-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体是国家举办的事业单位",
+     "rules": [
+      "c256-1",
+      "c256-2"
+     ]
+    },
+    {
+     "text": "权利客体是该事业单位直接支配的不动产和动产",
+     "rules": [
+      "c256-1",
+      "c256-2"
+     ]
+    },
+    {
+     "text": "收益、处分权能须依照法律和国务院的有关规定行使，并非不受限制",
+     "rules": [
+      "c256-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对该不动产和动产享有占有、使用的权利",
+     "rules": [
+      "c256-1"
+     ]
+    },
+    {
+     "text": "依照法律和国务院的有关规定，享有收益、处分的权利",
+     "rules": [
+      "c256-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条赋予的是对国家所有财产的直接支配权能，而非所有权本身；与第255条国家机关的权能相比，事业单位多出“收益”一项，但收益、处分均须依照法律和国务院的有关规定，不得自主处分",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c256-1",
+    "srcs": [
+     "art256-1"
+    ],
+    "body": [
+     "stateRunPublicInstitution(O)",
+     "directlyControls(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "possessAndUse(O,P)"
+     }
+    ],
+    "note": "国家举办的事业单位对其直接支配的不动产和动产，享有占有、使用的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c256-2",
+    "srcs": [
+     "art256-1"
+    ],
+    "body": [
+     "stateRunPublicInstitution(O)",
+     "directlyControls(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "profitAndDisposePerLawAndStateCouncil(O,P)"
+     }
+    ],
+    "note": "收益、处分的权能须依照法律和国务院的有关规定行使，与占有、使用不同，附有规范依据上的限制",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateRunPublicInstitution": "是国家举办的事业单位（1个参数：组织）",
+   "directlyControls": "直接支配该不动产或动产（事业单位，财产）",
+   "possessAndUse": "享有占有、使用的权能（权利人，不动产或动产）",
+   "profitAndDisposePerLawAndStateCouncil": "依照法律和国务院的有关规定享有收益、处分的权能（权利人，不动产或动产）"
+  }
+ },
+ "art:258": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家所有的财产受法律保护，任何组织或者个人不得侵占、哄抢、私分、截留、破坏",
+     "rules": [
+      "c258-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的财产依法属于国家所有",
+     "rules": [
+      "c258-1"
+     ]
+    },
+    {
+     "text": "行为主体为任何组织或者个人（不限于国家以外的组织、个人）",
+     "rules": [
+      "c258-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "禁止任何组织或者个人侵占、哄抢、私分、截留、破坏国家所有的财产",
+     "rules": [
+      "c258-1"
+     ]
+    },
+    {
+     "text": "国家所有的财产受法律保护（宣示性规定，不产生具体请求权内容）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性与禁止性规定，未规定侵占、哄抢、私分、截留、破坏国家财产后的责任形式；造成损害的，应依侵权责任编等规定另行处理",
+     "rules": []
+    },
+    {
+     "text": "本条保护对象限于国家所有的财产，集体所有、私人所有的财产分别由第259条、第260条以下及物权编其他规定保护",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c258-1",
+    "srcs": [
+     "art258-1"
+    ],
+    "body": [
+     "stateOwned(P)",
+     "organizationOrIndividual(O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "encroachSeizeDivideWithholdOrDestroy(O,P)"
+     }
+    ],
+    "note": "国家所有的财产受法律保护，禁止任何组织或者个人侵占、哄抢、私分、截留、破坏",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "encroachSeizeDivideWithholdOrDestroy": "侵占、哄抢、私分、截留、破坏国家所有的财产（行为人，财产）"
+  }
+ },
+ "art:257": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家出资的企业，由谁代表国家履行出资人职责、享有出资人权益",
+     "rules": [
+      "c257-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "企业属于国家出资的企业",
+     "rules": [
+      "c257-1"
+     ]
+    },
+    {
+     "text": "主体为国务院或者地方人民政府，并依照法律、行政法规的规定分别代表（中央与地方分级代表）",
+     "rules": [
+      "c257-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "国务院、地方人民政府代表国家履行出资人职责",
+     "rules": [
+      "c257-1"
+     ]
+    },
+    {
+     "text": "国务院、地方人民政府享有出资人权益",
+     "rules": [
+      "c257-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是宣示性、授权性规定，只解决国家出资企业中“国家所有权由谁代表行使”的问题，不直接为当事人创设民事请求权；出资人职责与权益的具体内容、行使方式依公司法、企业国有资产法等特别规定",
+     "rules": []
+    },
+    {
+     "text": "“分别代表”指按企业出资关系分别由国务院（中央层面）与地方人民政府（地方层面）代表，具体划分标准法条未定，属学理与国有资产管理体制的内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c257-1",
+    "srcs": [
+     "art257-1"
+    ],
+    "body": [
+     "stateInvestedEnterprise(E)",
+     "stateCouncilOrLocalGovernment(G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "performInvestorDuties(G,E)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "enjoyInvestorRights(G,E)"
+     }
+    ],
+    "note": "国家出资的企业，由国务院、地方人民政府依照法律、行政法规规定分别代表国家履行出资人职责、享有出资人权益；本条为授权/宣示性规定，具体内容依特别法",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateInvestedEnterprise": "是国家出资的企业（参数1：企业）",
+   "stateCouncilOrLocalGovernment": "是国务院或地方人民政府（参数1：主体）",
+   "performInvestorDuties": "代表国家履行出资人职责（参数1：代表主体，参数2：企业）",
+   "enjoyInvestorRights": "享有出资人权益（参数1：代表主体，参数2：企业）"
+  }
+ },
+ "art:255": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关对其直接支配的不动产和动产享有哪些权能，处分权受何限制",
+     "rules": [
+      "c255-1",
+      "c255-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体是国家机关，客体是其直接支配的不动产或者动产",
+     "rules": [
+      "c255-1",
+      "c255-2"
+     ]
+    },
+    {
+     "text": "行使处分权须依照法律和国务院的有关规定",
+     "rules": [
+      "c255-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "国家机关对其直接支配的不动产和动产享有占有、使用的权利",
+     "rules": [
+      "c255-1"
+     ]
+    },
+    {
+     "text": "国家机关享有依照法律和国务院的有关规定处分该不动产、动产的权利",
+     "rules": [
+      "c255-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "处分权能只能在法律和国务院有关规定范围内行使，该限制优先于一般权能的表述",
+     "rules": [
+      "c255-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条列举的权能只有占有、使用、处分，不含收益；与所有权四项权能（占有、使用、收益、处分）不同，此点属学理说明",
+     "rules": [
+      "c255-noProfit"
+     ]
+    },
+    {
+     "text": "本条规范的是国家机关作为国家所有权行使主体对其“直接支配”之物的权能，而非国家机关作为机关法人的一般民事权利能力",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c255-1",
+    "srcs": [
+     "art255-1"
+    ],
+    "body": [
+     "stateOrgan(A)",
+     "directlyControls(A,T)",
+     {
+      "or": [
+       "movable(T)",
+       "immovableThing(T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "possessUse(A,T)"
+     }
+    ],
+    "note": "国家机关对其直接支配的不动产和动产，享有占有、使用的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c255-2",
+    "srcs": [
+     "art255-1"
+    ],
+    "body": [
+     "stateOrgan(A)",
+     "directlyControls(A,T)",
+     {
+      "or": [
+       "movable(T)",
+       "immovableThing(T)"
+      ]
+     },
+     "disposePerLawAndStateCouncilRegs(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "dispose(A,T)"
+     }
+    ],
+    "note": "国家机关享有处分权，但处分须依照法律和国务院的有关规定进行",
+    "auth": "npc"
+   },
+   {
+    "key": "c255-noProfit",
+    "srcs": [
+     "art255-1"
+    ],
+    "body": [
+     "stateOrgan(A)",
+     "directlyControls(A,T)",
+     {
+      "or": [
+       "movable(T)",
+       "immovableThing(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "-enjoysProfit(A,T)"
+    ],
+    "note": "学理说明：本条只列举占有、使用、处分，国家机关对其直接支配之物不享有收益权能",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrgan": "是国家机关（参数1：主体）",
+   "directlyControls": "直接支配某不动产或动产（参数1：国家机关，参数2：不动产或动产）",
+   "immovableThing": "是不动产（参数1：物）",
+   "possessUse": "享有占有、使用的权能（参数1：权利人，参数2：不动产或动产）",
+   "dispose": "享有处分的权能（参数1：权利人，参数2：不动产或动产）",
+   "disposePerLawAndStateCouncilRegs": "依照法律和国务院的有关规定处分（参数1：国家机关，参数2：不动产或动产）",
+   "enjoysProfit": "享有收益的权能（参数1：权利人，参数2：物）"
+  }
+ },
+ "art:262": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "对于集体所有的土地和森林、山岭、草原、荒地、滩涂等，应当由谁代表集体行使所有权",
+     "rules": [
+      "c262-general",
+      "c262-1",
+      "c262-2",
+      "c262-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客体为集体所有的土地、森林、山岭、草原、荒地、滩涂等",
+     "rules": [
+      "c262-general",
+      "c262-1",
+      "c262-2",
+      "c262-3"
+     ]
+    },
+    {
+     "text": "该土地等属于村农民集体所有",
+     "rules": [
+      "c262-1"
+     ]
+    },
+    {
+     "text": "该土地等分别属于村内两个以上农民集体所有",
+     "rules": [
+      "c262-2"
+     ]
+    },
+    {
+     "text": "该土地等属于乡镇农民集体所有",
+     "rules": [
+      "c262-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "属于村农民集体所有的，由村集体经济组织或者村民委员会依法代表集体行使所有权",
+     "rules": [
+      "c262-1"
+     ]
+    },
+    {
+     "text": "分别属于村内两个以上农民集体所有的，由村内各该集体经济组织或者村民小组依法代表集体行使所有权",
+     "rules": [
+      "c262-2"
+     ]
+    },
+    {
+     "text": "属于乡镇农民集体所有的，由乡镇集体经济组织代表集体行使所有权",
+     "rules": [
+      "c262-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条解决的是“由谁代表集体行使所有权”，与第261条解决“农民集体所有的不动产和动产属于本集体成员集体所有”的归属问题不同，二者不可混用",
+     "rules": []
+    },
+    {
+     "text": "本条未规定村集体经济组织未设立时的处理；依第101条，未设立村集体经济组织的，村民委员会可以依法代行村集体经济组织的职能",
+     "rules": []
+    },
+    {
+     "text": "笔记未涉及本条，本卡片仅依第262条第1款原文形式化，未引入学理补充",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c262-general",
+    "srcs": [
+     "art262-1"
+    ],
+    "body": [
+     "collectivelyOwnedLandOrResource(X)",
+     {
+      "or": [
+       "ownedByVillageFarmersCollective(X)",
+       "ownedByVillageInternalFarmersCollective(X)",
+       "ownedByTownshipFarmersCollective(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "ownershipExercisedByStatutoryRepresentative(X)"
+    ],
+    "note": "集体所有的土地等，其所有权须依照本款所列规定由法定主体代表集体行使，而非由集体成员各自行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c262-1",
+    "srcs": [
+     "art262-1"
+    ],
+    "body": [
+     "collectivelyOwnedLandOrResource(X)",
+     "ownedByVillageFarmersCollective(X)",
+     {
+      "or": [
+       "villageCollectiveEconomicOrg(O)",
+       "villagersCommittee(O)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "exerciseOwnershipOnBehalfOf(O,X)"
+     }
+    ],
+    "note": "属于村农民集体所有的，由村集体经济组织或者村民委员会依法代表集体行使所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c262-2",
+    "srcs": [
+     "art262-1"
+    ],
+    "body": [
+     "collectivelyOwnedLandOrResource(X)",
+     "ownedByVillageInternalFarmersCollective(X)",
+     {
+      "or": [
+       "villageInternalCollectiveEconomicOrg(O)",
+       "villagersGroup(O)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "exerciseOwnershipOnBehalfOf(O,X)"
+     }
+    ],
+    "note": "分别属于村内两个以上农民集体所有的，由村内各该集体经济组织或者村民小组依法代表集体行使所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c262-3",
+    "srcs": [
+     "art262-1"
+    ],
+    "body": [
+     "collectivelyOwnedLandOrResource(X)",
+     "ownedByTownshipFarmersCollective(X)",
+     "townshipCollectiveEconomicOrg(O)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "exerciseOwnershipOnBehalfOf(O,X)"
+     }
+    ],
+    "note": "属于乡镇农民集体所有的，由乡镇集体经济组织代表集体行使所有权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "collectivelyOwnedLandOrResource": "是集体所有的土地、森林、山岭、草原、荒地、滩涂等（第262条第1款的客体）",
+   "ownedByVillageFarmersCollective": "属于村农民集体所有",
+   "ownedByVillageInternalFarmersCollective": "分别属于村内两个以上农民集体所有",
+   "ownedByTownshipFarmersCollective": "属于乡镇农民集体所有",
+   "villageCollectiveEconomicOrg": "是村集体经济组织",
+   "villageInternalCollectiveEconomicOrg": "是村内各该集体经济组织",
+   "villagersGroup": "是村民小组",
+   "townshipCollectiveEconomicOrg": "是乡镇集体经济组织",
+   "exerciseOwnershipOnBehalfOf": "代表集体行使所有权（行使主体，标的物）",
+   "ownershipExercisedByStatutoryRepresentative": "该集体所有的土地等须由法定主体代表集体行使所有权"
+  }
+ },
+ "art:259": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "履行国有财产管理、监督职责的机构及其工作人员负有何种义务；滥用职权、玩忽职守或者违反国有财产管理规定造成国有财产损失的，应当承担何种法律责任",
+     "rules": [
+      "c259-1-org",
+      "c259-1-staff",
+      "c259-1-liab-staff",
+      "c259-1-liab-org",
+      "c259-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是履行国有财产管理、监督职责的机构，以及该机构的工作人员",
+     "rules": [
+      "c259-1-org",
+      "c259-1-staff"
+     ]
+    },
+    {
+     "text": "滥用职权、玩忽职守，并造成国有财产损失",
+     "rules": [
+      "c259-1-liab-staff",
+      "c259-1-liab-org"
+     ]
+    },
+    {
+     "text": "违反国有财产管理规定，在企业改制、合并分立、关联交易等过程中，低价转让、合谋私分、擅自担保或者以其他方式造成国有财产损失",
+     "rules": [
+      "c259-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当依法加强对国有财产的管理、监督，促进国有财产保值增值，防止国有财产损失",
+     "rules": [
+      "c259-1-org",
+      "c259-1-staff"
+     ]
+    },
+    {
+     "text": "滥用职权、玩忽职守造成国有财产损失的，应当依法承担法律责任",
+     "rules": [
+      "c259-1-liab-staff",
+      "c259-1-liab-org"
+     ]
+    },
+    {
+     "text": "违反国有财产管理规定，在企业改制、合并分立、关联交易等过程中低价转让、合谋私分、擅自担保或者以其他方式造成国有财产损失的，应当依法承担法律责任",
+     "rules": [
+      "c259-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条位于物权编国家所有权部分，是管理与责任引致条款：只宣示管理、监督义务并指向“依法承担法律责任”，并未直接规定具体的责任构成与赔偿范围；民事责任仍须结合侵权等规则确定，且“法律责任”不限于民事责任，还包括行政责任、刑事责任",
+     "rules": []
+    },
+    {
+     "text": "第2款是对企业改制、合并分立、关联交易等特定过程中造成国有财产损失情形的具体列举，与第1款的滥用职权、玩忽职守情形并列，可同时适用，不互相排斥",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c259-1-org",
+    "srcs": [
+     "art259-1"
+    ],
+    "body": [
+     "statePropertyManagementOrg(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "manageAndSuperviseStateProperty(O)"
+     }
+    ],
+    "note": "履行国有财产管理、监督职责的机构，应当依法加强对国有财产的管理、监督，促进保值增值，防止国有财产损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c259-1-staff",
+    "srcs": [
+     "art259-1"
+    ],
+    "body": [
+     "statePropertyManagementOrg(O)",
+     "employeeOf(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "manageAndSuperviseStateProperty(P)"
+     }
+    ],
+    "note": "上述机构的工作人员同样应当依法加强对国有财产的管理、监督，促进保值增值，防止国有财产损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c259-1-liab-staff",
+    "srcs": [
+     "art259-1"
+    ],
+    "body": [
+     "statePropertyManagementOrg(O)",
+     "employeeOf(P,O)",
+     {
+      "or": [
+       "abuseOfPower(P)",
+       "derelictionOfDuty(P)"
+      ]
+     },
+     "causesStatePropertyLoss(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearLegalLiabilityForStatePropertyLoss(P)"
+     }
+    ],
+    "note": "机构工作人员滥用职权、玩忽职守，造成国有财产损失的，应当依法承担法律责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c259-1-liab-org",
+    "srcs": [
+     "art259-1"
+    ],
+    "body": [
+     "statePropertyManagementOrg(O)",
+     {
+      "or": [
+       "abuseOfPower(O)",
+       "derelictionOfDuty(O)"
+      ]
+     },
+     "causesStatePropertyLoss(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "bearLegalLiabilityForStatePropertyLoss(O)"
+     }
+    ],
+    "note": "第1款主体为“机构及其工作人员”，机构自身滥用职权、玩忽职守造成国有财产损失的，亦应依法承担法律责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c259-2",
+    "srcs": [
+     "art259-2"
+    ],
+    "body": [
+     "violatesStatePropertyManagementRules(A)",
+     {
+      "or": [
+       "inEnterpriseRestructuring(A)",
+       "inMergerOrSplit(A)",
+       "inRelatedPartyTransaction(A)",
+       "inOtherStatePropertyProcess(A)"
+      ]
+     },
+     {
+      "or": [
+       "lowPriceTransfer(A)",
+       "conspireToDivide(A)",
+       "unauthorizedGuarantee(A)",
+       "otherMeansCausesStatePropertyLoss(A)"
+      ]
+     },
+     "causesStatePropertyLoss(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "bearLegalLiabilityForStatePropertyLoss(A)"
+     }
+    ],
+    "note": "违反国有财产管理规定，在企业改制、合并分立、关联交易等过程中低价转让、合谋私分、擅自担保或者以其他方式造成国有财产损失的，应当依法承担法律责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "statePropertyManagementOrg": "履行国有财产管理、监督职责的机构",
+   "manageAndSuperviseStateProperty": "依法加强对国有财产的管理、监督，促进国有财产保值增值，防止国有财产损失",
+   "abuseOfPower": "滥用职权",
+   "derelictionOfDuty": "玩忽职守",
+   "causesStatePropertyLoss": "造成国有财产损失",
+   "bearLegalLiabilityForStatePropertyLoss": "就造成国有财产损失依法承担法律责任（不限于民事责任，含行政、刑事责任）",
+   "violatesStatePropertyManagementRules": "违反国有财产管理规定",
+   "inEnterpriseRestructuring": "在企业改制过程中",
+   "inMergerOrSplit": "在企业合并、分立过程中",
+   "inRelatedPartyTransaction": "在关联交易过程中",
+   "inOtherStatePropertyProcess": "在其他与改制、合并分立、关联交易类似的过程中",
+   "lowPriceTransfer": "低价转让国有财产",
+   "conspireToDivide": "合谋私分国有财产",
+   "unauthorizedGuarantee": "擅自以国有财产提供担保",
+   "otherMeansCausesStatePropertyLoss": "以其他方式造成国有财产损失"
+  }
+ },
+ "art:261": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "农民集体所有的不动产和动产归谁所有；哪些事项应当依照法定程序经本集体成员决定",
+     "rules": [
+      "c261-1",
+      "c261-2",
+      "c261-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为农民集体所有的不动产或者动产",
+     "rules": [
+      "c261-1"
+     ]
+    },
+    {
+     "text": "事项属于：土地承包方案以及将土地发包给本集体以外的组织或者个人承包；个别土地承包经营权人之间承包地的调整；土地补偿费等费用的使用、分配办法；集体出资的企业的所有权变动等事项；法律规定的其他事项",
+     "rules": [
+      "c261-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该不动产和动产属于本集体成员集体所有",
+     "rules": [
+      "c261-1"
+     ]
+    },
+    {
+     "text": "该事项应当依照法定程序经本集体成员决定",
+     "rules": [
+      "c261-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条解决集体所有权的归属与须经成员决定的事项；由谁代表集体行使所有权（村集体经济组织、村民委员会等）由第262条规定，本行未挂载该条",
+     "rules": []
+    },
+    {
+     "text": "笔记与LEGO卡片均未涉及本条，规则全部依条文原文写就；第2款第（五）项为兜底条款，其他法律规定的其他事项同样须经成员决定",
+     "rules": [
+      "c261-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c261-1",
+    "srcs": [
+     "art261-1"
+    ],
+    "body": [
+     "farmerCollectiveOwned(P,C)"
+    ],
+    "heads": [
+     "collectivelyOwnedByMembers(P,C)"
+    ],
+    "note": "农民集体所有的不动产和动产，属于本集体成员集体所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c261-2",
+    "srcs": [
+     "art261-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "landContractingPlan(T)",
+       "outsourcingLandToOutsider(T)",
+       "adjustmentOfContractLand(T)",
+       "useAndDistributionOfLandCompensationFee(T)",
+       "ownershipChangeOfCollectiveEnterprise(T)",
+       "otherMatterProvidedByLaw(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "matterRequiringMemberDecision(T)"
+    ],
+    "note": "列举应当经本集体成员决定的事项：土地承包方案及对外发包、承包地调整、土地补偿费等费用的使用分配办法、集体出资企业的所有权变动等、法律规定的其他事项",
+    "auth": "npc"
+   },
+   {
+    "key": "c261-3",
+    "srcs": [
+     "art261-2"
+    ],
+    "body": [
+     "farmerCollective(C)",
+     "matterRequiringMemberDecision(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "decideByMembersPerStatutoryProcedure(T)"
+     }
+    ],
+    "note": "上述事项应当依照法定程序经本集体成员决定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "farmerCollectiveOwned": "是农民集体所有的不动产或者动产（标的物，集体）",
+   "farmerCollectiveOwned/2": "是农民集体所有的不动产或者动产（标的物，集体）",
+   "collectivelyOwnedByMembers": "属于本集体成员集体所有（标的物，集体）",
+   "collectivelyOwnedByMembers/2": "属于本集体成员集体所有（标的物，集体）",
+   "farmerCollective": "是农民集体",
+   "farmerCollective/1": "是农民集体",
+   "matterRequiringMemberDecision": "是应当经本集体成员决定的事项",
+   "matterRequiringMemberDecision/1": "是应当经本集体成员决定的事项",
+   "landContractingPlan": "是土地承包方案",
+   "landContractingPlan/1": "是土地承包方案",
+   "outsourcingLandToOutsider": "是将土地发包给本集体以外的组织或者个人承包的事项",
+   "outsourcingLandToOutsider/1": "是将土地发包给本集体以外的组织或者个人承包的事项",
+   "adjustmentOfContractLand": "是个别土地承包经营权人之间承包地的调整",
+   "adjustmentOfContractLand/1": "是个别土地承包经营权人之间承包地的调整",
+   "useAndDistributionOfLandCompensationFee": "是土地补偿费等费用的使用、分配办法",
+   "useAndDistributionOfLandCompensationFee/1": "是土地补偿费等费用的使用、分配办法",
+   "ownershipChangeOfCollectiveEnterprise": "是集体出资的企业的所有权变动等事项",
+   "ownershipChangeOfCollectiveEnterprise/1": "是集体出资的企业的所有权变动等事项",
+   "otherMatterProvidedByLaw": "是法律规定的其他应当经本集体成员决定的事项",
+   "otherMatterProvidedByLaw/1": "是法律规定的其他应当经本集体成员决定的事项",
+   "decideByMembersPerStatutoryProcedure": "依照法定程序经本集体成员决定（事项）",
+   "decideByMembersPerStatutoryProcedure/1": "依照法定程序经本集体成员决定（事项）"
+  }
+ },
+ "art:265": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "集体所有的财产受何种保护；农村集体经济组织、村民委员会或者其负责人作出的决定侵害集体成员合法权益时，受侵害的集体成员能否请求人民法院撤销该决定",
+     "rules": [
+      "c265-1",
+      "c265-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象是集体所有的财产，行为主体为任何组织或者个人",
+     "rules": [
+      "c265-1"
+     ]
+    },
+    {
+     "text": "决定由农村集体经济组织、村民委员会或者其负责人作出",
+     "rules": [
+      "c265-2"
+     ]
+    },
+    {
+     "text": "该决定侵害集体成员的合法权益，请求人为受侵害的集体成员",
+     "rules": [
+      "c265-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "集体所有的财产受法律保护（宣示性规定）",
+     "rules": []
+    },
+    {
+     "text": "禁止任何组织或者个人侵占、哄抢、私分、破坏集体所有的财产",
+     "rules": [
+      "c265-1"
+     ]
+    },
+    {
+     "text": "受侵害的集体成员有权请求人民法院撤销该决定",
+     "rules": [
+      "c265-2"
+     ]
+    },
+    {
+     "text": "决定被人民法院撤销后，对集体成员不再有效（学理说明，法条仅规定“请求人民法院予以撤销”）",
+     "rules": [
+      "c265-effect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款是集体成员撤销权的特别规定，优先于法人、非法人组织决议撤销的一般规定（第85条、第94条）",
+     "rules": [
+      "c265-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是对世的禁止性规范，义务主体为任何组织或者个人；第2款是集体成员的个别救济权，义务主体为作出决定的农村集体经济组织、村民委员会或其负责人",
+     "rules": [
+      "c265-1",
+      "c265-2"
+     ]
+    },
+    {
+     "text": "第2款撤销的对象限于农村集体经济组织、村民委员会或者其负责人作出的决定，不及于集体成员依第261条就集体事项作出的决定",
+     "rules": [
+      "c265-2"
+     ]
+    },
+    {
+     "text": "本行笔记未引用原文或条号，未提供额外解释；本行无 LEGO 卡片可供参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c265-1",
+    "srcs": [
+     "art265-1"
+    ],
+    "body": [
+     "collectiveOwnedProperty(P)",
+     "organizationOrIndividual(O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "encroachSeizeDivideOrDestroy(O,P)"
+     }
+    ],
+    "note": "集体所有的财产受法律保护，禁止任何组织或者个人侵占、哄抢、私分、破坏",
+    "auth": "npc"
+   },
+   {
+    "key": "c265-2",
+    "srcs": [
+     "art265-2"
+    ],
+    "body": [
+     "collectiveOrgDecision(D,S)",
+     {
+      "or": [
+       "ruralCollectiveEconomicOrganization(S)",
+       "villagersCommittee(S)",
+       "collectiveOrgHead(S)"
+      ]
+     },
+     "infringesCollectiveMemberRights(D,M)",
+     "collectiveMember(M)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": null,
+      "content": "requestCourtRevokeDecision(M,D)"
+     }
+    ],
+    "note": "农村集体经济组织、村民委员会或者其负责人作出的决定侵害集体成员合法权益的，受侵害的集体成员可以请求人民法院予以撤销",
+    "auth": "npc"
+   },
+   {
+    "key": "c265-effect",
+    "srcs": [
+     "art265-2"
+    ],
+    "body": [
+     "decisionRevoked(D)"
+    ],
+    "heads": [
+     "-valid(D)"
+    ],
+    "note": "决定被人民法院撤销后不再有效；法条仅规定“请求人民法院予以撤销”，撤销的效力内容属学理说明",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "collectiveOwnedProperty": "是集体所有的财产",
+   "encroachSeizeDivideOrDestroy": "侵占、哄抢、私分、破坏集体所有的财产（行为人，集体财产）",
+   "collectiveOrgDecision": "农村集体经济组织、村民委员会或者其负责人作出的决定（决定，作出者）",
+   "collectiveOrgHead": "是农村集体经济组织或者村民委员会的负责人",
+   "infringesCollectiveMemberRights": "决定侵害集体成员的合法权益（决定，集体成员）"
+  }
+ },
+ "art:263": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "城镇集体所有的不动产和动产，由谁享有占有、使用、收益和处分的权利，并依何规定行使",
+     "rules": [
+      "c263-1",
+      "c263-exercise"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "标的物为城镇集体所有的不动产或动产，且属于本集体所有",
+     "rules": [
+      "c263-1",
+      "c263-exercise"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "由本集体享有占有、使用、收益和处分的权利",
+     "rules": [
+      "c263-1"
+     ]
+    },
+    {
+     "text": "上述权能依照法律、行政法规的规定行使",
+     "rules": [
+      "c263-exercise"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为城镇集体所有权及其权能的宣示性规定，未设具体行使程序与救济；集体所有权的行使、保护以及集体成员的相关权利，另依法律、行政法规及物权编其他规定处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c263-1",
+    "srcs": [
+     "art263-1"
+    ],
+    "body": [
+     "urbanCollectiveOwned(P)",
+     "ownedByUrbanCollective(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "possessUseProfitDispose(C,P)"
+     }
+    ],
+    "note": "城镇集体所有的不动产和动产，由本集体享有占有、使用、收益和处分的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c263-exercise",
+    "srcs": [
+     "art263-1"
+    ],
+    "body": [
+     "urbanCollectiveOwned(P)",
+     "ownedByUrbanCollective(P,C)"
+    ],
+    "heads": [
+     "exercisePerLawsAndRegulations(C,P)"
+    ],
+    "note": "本集体上述权能的行使，依照法律、行政法规的规定进行",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "urbanCollectiveOwned": "是城镇集体所有的不动产或动产（标的物）",
+   "ownedByUrbanCollective": "该不动产或动产属于该城镇集体所有（标的物，集体）",
+   "exercisePerLawsAndRegulations": "依照法律、行政法规的规定行使对标的物占有、使用、收益和处分的权能（集体，标的物）"
+  }
+ },
+ "art:266": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "私人对其所有的哪些财产享有所有权，即私人所有权的主体与客体范围",
+     "rules": [
+      "c266-1",
+      "c266-subject"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为私人，即自然人、个体工商户、农村承包经营户以及法人、其他组织等非国家、非集体的私人主体",
+     "rules": [
+      "c266-subject"
+     ]
+    },
+    {
+     "text": "客体为私人所有的合法的收入、房屋、生活用品、生产工具、原材料等不动产和动产",
+     "rules": [
+      "c266-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条限于“合法的”财产；违法所得及其他依法不得由私人所有的财产，不产生私人所有权",
+     "rules": [
+      "c266-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "私人对其合法的不动产和动产享有所有权，即依法占有、使用、收益和处分的全面支配权",
+     "rules": [
+      "c266-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是宣示性规定，只界定私人所有权的主体与客体范围，不设具体救济规则；所有权的权能见第240条，私人合法财产的保护（禁止侵占、哄抢、破坏）见第267条，与第260条以下集体所有权、第255条以下国家所有权并列",
+     "rules": []
+    },
+    {
+     "text": "“私人”不限于自然人，还包括个体工商户、农村承包经营户以及法人、其他组织；此点法条未明写，属学理说明",
+     "rules": [
+      "c266-subject"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c266-subject",
+    "srcs": [
+     "art266-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(P)",
+       "individualBusiness(P)",
+       "ruralContractHousehold(P)",
+       "organization(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "privateSubject(P)"
+    ],
+    "note": "学理说明：本条的“私人”包括自然人、个体工商户、农村承包经营户以及法人、其他组织等非国家、非集体的私人主体（法条未明写）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c266-1",
+    "srcs": [
+     "art266-1"
+    ],
+    "body": [
+     "privateSubject(P)",
+     "lawfulProperty(X)",
+     "belongsTo(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "own(P,X)"
+     }
+    ],
+    "note": "私人对其合法的收入、房屋、生活用品、生产工具、原材料等不动产和动产享有所有权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "privateSubject": "私人：自然人、个体工商户、农村承包经营户以及法人、其他组织等非国家、非集体的私人主体",
+   "lawfulProperty": "合法的收入、房屋、生活用品、生产工具、原材料等不动产或者动产",
+   "own": "享有所有权，即依法对物为占有、使用、收益和处分的全面支配"
+  }
+ },
+ "art:267": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "私人的合法财产是否受法律保护，任何组织或者个人能否侵占、哄抢、破坏",
+     "rules": [
+      "c267-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该财产属于私人（自然人）的合法财产",
+     "rules": [
+      "c267-1"
+     ]
+    },
+    {
+     "text": "行为人为任何组织或者个人",
+     "rules": [
+      "c267-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "私人的合法财产受法律保护（宣示性规定，不产生具体请求权）",
+     "rules": []
+    },
+    {
+     "text": "禁止任何组织或者个人侵占、哄抢、破坏私人的合法财产",
+     "rules": [
+      "c267-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是私人财产保护的宣示性、原则性规定，与第265条（集体成员权益）、第266条（集体所有）并列；财产被侵占、哄抢、破坏后的具体救济，适用物权保护方式（第233条至第238条）及侵权责任编的规定，本条本身不另行设定责任",
+     "rules": []
+    },
+    {
+     "text": "本条保护对象限于“合法财产”，违法取得的财产不在保护范围；此限制来自条文“合法”二字，笔记与 LEGO 卡片均未涉及",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c267-1",
+    "srcs": [
+     "art267-1"
+    ],
+    "body": [
+     "lawfulPrivatePropertyOf(X,P)",
+     "naturalPerson(P)",
+     "organizationOrIndividual(A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "encroachSeizeDestroy(A,X)"
+     }
+    ],
+    "note": "私人的合法财产受法律保护，禁止任何组织或者个人侵占、哄抢、破坏",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lawfulPrivatePropertyOf": "该财产是私人的合法财产（财产，私人）",
+   "encroachSeizeDestroy": "侵占、哄抢、破坏他人财产（行为人，财产）"
+  }
+ },
+ "art:270": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "社会团体法人、捐助法人依法所有的不动产和动产，是否受法律保护",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体为社会团体法人或者捐助法人",
+     "rules": []
+    },
+    {
+     "text": "受保护的客体是上述法人依法所有的不动产和动产（须为“依法所有”，即取得与保有均有法律依据）",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "上述法人对其依法所有的不动产和动产享有的所有权受法律保护，他人不得侵害；受侵害时可依物权保护的规定请求返还原物、排除妨害、消除危险、修理重作更换或恢复原状、损害赔偿",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、确权性规定，本身不创设新的物权类型，也不单独构成请求权基础；具体救济仍适用物权保护的一般规定",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可对应的解释材料；LEGO 卡片亦无，故本条不作规则化处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:269": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "营利法人对其不动产和动产享有何种权利；营利法人以外的法人对其不动产和动产的权利如何确定",
+     "rules": [
+      "c269-1",
+      "c269-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是营利法人，且该不动产、动产属于该法人",
+     "rules": [
+      "c269-1"
+     ]
+    },
+    {
+     "text": "主体是法人但不是营利法人（非营利法人、特别法人等），且该不动产、动产属于该法人",
+     "rules": [
+      "c269-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "上述权利的享有与行使须依照法律、行政法规以及章程的规定；法律、行政法规或章程另有规定的，从其规定",
+     "rules": [
+      "c269-1",
+      "c269-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "营利法人对其不动产和动产享有占有、使用、收益和处分的权利",
+     "rules": [
+      "c269-1"
+     ]
+    },
+    {
+     "text": "营利法人以外的法人对其不动产和动产的权利，适用有关法律、行政法规以及章程的规定（转介条款，不直接赋予四项权能）",
+     "rules": [
+      "c269-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律、行政法规以及章程对法人财产权另有规定的，优先于本条关于四项权能的一般规定",
+     "rules": [
+      "c269-1",
+      "c269-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条规范的是法人自身对其财产的权利，不涉及出资人、成员或第三人的权利；第2款为转介条款，非营利法人、特别法人的财产权内容由其他法律、行政法规及章程确定，不能直接套用第1款的四项权能",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c269-1",
+    "srcs": [
+     "art269-1"
+    ],
+    "body": [
+     "forProfitLegalPerson(P)",
+     "belongsTo(X,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "possessUseProfitDispose(P,X)"
+     }
+    ],
+    "note": "营利法人对其所有的不动产和动产，依照法律、行政法规以及章程享有占有、使用、收益和处分的权利（“依照法律、行政法规以及章程”作为权利行使的限定，写入说明而不单列为原子）",
+    "auth": "npc"
+   },
+   {
+    "key": "c269-2",
+    "srcs": [
+     "art269-2"
+    ],
+    "body": [
+     "legalPersonEntity(P)",
+     "-forProfitLegalPerson(P)",
+     "belongsTo(X,P)"
+    ],
+    "heads": [
+     "specialProvisionsApply(P)"
+    ],
+    "note": "营利法人以外的法人对其不动产和动产的权利，适用有关法律、行政法规以及章程的规定（转介条款，具体权能内容由各该规定确定）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:268": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "国家、集体和私人能否出资设立企业；出资人将不动产或者动产投入企业后，对企业享有何种权利、承担何种义务",
+     "rules": [
+      "c268-1",
+      "c268-2",
+      "c268-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出资主体为国家、集体或者私人；所设立的企业为有限责任公司、股份有限公司或者其他企业",
+     "rules": [
+      "c268-1"
+     ]
+    },
+    {
+     "text": "出资人将不动产或者动产投入到企业，其权益按约定或者出资比例确定",
+     "rules": [
+      "c268-2",
+      "c268-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "出资须“依法”进行；违法出资不受本条保护（本条未展开具体限制，由公司法等特别法规定）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "国家、集体和私人可以出资设立有限责任公司、股份有限公司或者其他企业",
+     "rules": [
+      "c268-1"
+     ]
+    },
+    {
+     "text": "出资人按照约定或者出资比例享有资产收益、重大决策以及选择经营管理者等权利",
+     "rules": [
+      "c268-2"
+     ]
+    },
+    {
+     "text": "出资人在享有权利的同时履行相应义务",
+     "rules": [
+      "c268-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为宣示性、原则性规定，只确认出资主体、企业形式与出资人权利义务的基本框架，未规定出资比例计算、治理机构、责任承担等具体规则，这些适用公司法等特别法",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c268-1",
+    "srcs": [
+     "art268-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateInvestor(I)",
+       "collectiveInvestor(I)",
+       "privateInvestor(I)"
+      ]
+     },
+     {
+      "or": [
+       "limitedLiabilityCompany(E)",
+       "jointStockCompany(E)",
+       "otherEnterprise(E)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "I",
+      "counterparty": null,
+      "content": "establishEnterpriseByContribution(I,E)"
+     }
+    ],
+    "note": "国家、集体和私人依法可以出资设立有限责任公司、股份有限公司或者其他企业",
+    "auth": "npc"
+   },
+   {
+    "key": "c268-2",
+    "srcs": [
+     "art268-1"
+    ],
+    "body": [
+     "investorOf(I,E)",
+     "contributedPropertyTo(I,E)",
+     {
+      "or": [
+       "agreedOnShare(I,E)",
+       "contributionRatio(I,E)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "I",
+      "counterparty": "E",
+      "content": "enjoyAssetReturnsMajorDecisionsAndChooseManagers(I,E)"
+     }
+    ],
+    "note": "出资人将不动产或者动产投入企业的，按照约定或者出资比例享有资产收益、重大决策以及选择经营管理者等权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c268-3",
+    "srcs": [
+     "art268-1"
+    ],
+    "body": [
+     "investorOf(I,E)",
+     "contributedPropertyTo(I,E)",
+     {
+      "or": [
+       "agreedOnShare(I,E)",
+       "contributionRatio(I,E)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "I",
+      "counterparty": "E",
+      "content": "performInvestorObligations(I,E)"
+     }
+    ],
+    "note": "出资人在按约定或者出资比例享有权利的同时，应当履行相应义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateInvestor": "国家作为出资人",
+   "collectiveInvestor": "集体作为出资人",
+   "privateInvestor": "私人（自然人、法人或者非法人组织）作为出资人",
+   "otherEnterprise": "有限责任公司、股份有限公司以外的其他企业",
+   "establishEnterpriseByContribution": "出资设立企业（出资人，企业）",
+   "investorOf": "是企业的出资人（出资人，企业）",
+   "contributedPropertyTo": "将不动产或者动产投入到企业（出资人，企业）",
+   "agreedOnShare": "出资人之间就权益分配有约定（出资人，企业）",
+   "contributionRatio": "按出资比例确定权益（出资人，企业）",
+   "enjoyAssetReturnsMajorDecisionsAndChooseManagers": "享有资产收益、重大决策以及选择经营管理者等权利（出资人，企业）",
+   "performInvestorObligations": "履行出资人的义务（出资人，企业）"
+  }
+ }
+}

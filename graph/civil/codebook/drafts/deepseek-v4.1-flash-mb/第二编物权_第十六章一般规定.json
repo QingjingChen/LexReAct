@@ -1,0 +1,1050 @@
+{
+ "art:389": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "担保物权所担保的债权与费用范围如何确定；当事人另有约定时如何处理",
+     "rules": [
+      "c389-scope",
+      "c389-agreed"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在担保物权，且被担保的债权或费用属于主债权、利息、违约金、损害赔偿金、保管担保财产的费用、实现担保物权的费用之一",
+     "rules": [
+      "c389-scope"
+     ]
+    },
+    {
+     "text": "当事人未就担保范围另有约定（适用法定担保范围的前提）",
+     "rules": [
+      "c389-scope"
+     ]
+    },
+    {
+     "text": "当事人就担保范围另有约定",
+     "rules": [
+      "c389-agreed"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，不适用本款列举的法定担保范围，按照其约定确定",
+     "rules": [
+      "c389-agreed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "主债权及其利息、违约金、损害赔偿金、保管担保财产和实现担保物权的费用，均属于担保物权的担保范围",
+     "rules": [
+      "c389-scope"
+     ]
+    },
+    {
+     "text": "担保范围按照当事人的约定确定",
+     "rules": [
+      "c389-agreed"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人关于担保范围的约定优先于本款列举的法定担保范围",
+     "rules": [
+      "c389-agreed",
+      "c389-scope"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记未引用本条原文或条号，本行亦无 LEGO 卡片；本条只界定担保范围，担保物权人优先受偿的一般规定见第386条，不在本行挂载范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c389-scope",
+    "srcs": [
+     "art389-1"
+    ],
+    "body": [
+     "securityInterest(S)",
+     "~agreedOtherwiseOnScope(S)",
+     {
+      "or": [
+       "principalClaimOf(S,C)",
+       "interestOf(S,C)",
+       "penaltyOf(S,C)",
+       "damagesOf(S,C)",
+       "custodyExpenseOf(S,C)",
+       "enforcementExpenseOf(S,C)"
+      ]
+     }
+    ],
+    "heads": [
+     "inScope(S,C)"
+    ],
+    "note": "担保物权的担保范围包括主债权及其利息、违约金、损害赔偿金、保管担保财产和实现担保物权的费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c389-agreed",
+    "srcs": [
+     "art389-1"
+    ],
+    "body": [
+     "securityInterest(S)",
+     "agreedOtherwiseOnScope(S)"
+    ],
+    "heads": [
+     "scopeDeterminedByAgreement(S)"
+    ],
+    "note": "当事人对担保范围另有约定的，按照其约定确定担保范围",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c389-agreed",
+    "c389-scope",
+    "当事人另有约定优先于本款列举的法定担保范围"
+   ]
+  ],
+  "predicates": {
+   "securityInterest": "担保物权（1个参数：担保物权）",
+   "principalClaimOf": "是担保物权所担保的主债权（参数1：担保物权；参数2：主债权）",
+   "interestOf": "是主债权的利息（参数1：担保物权；参数2：利息）",
+   "penaltyOf": "是主债权的违约金（参数1：担保物权；参数2：违约金）",
+   "damagesOf": "是主债权的损害赔偿金（参数1：担保物权；参数2：损害赔偿金）",
+   "custodyExpenseOf": "是保管担保财产的费用（参数1：担保物权；参数2：费用）",
+   "enforcementExpenseOf": "是实现担保物权的费用（参数1：担保物权；参数2：费用）",
+   "inScope": "属于担保物权的担保范围（参数1：担保物权；参数2：被担保的债权或费用）",
+   "agreedOtherwiseOnScope": "当事人就担保范围另有约定（1个参数：担保物权）",
+   "scopeDeterminedByAgreement": "担保范围按照当事人的约定确定（1个参数：担保物权）"
+  }
+ },
+ "art:386": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "担保物权人在何种条件下享有就担保财产优先受偿的权利；法律另有规定时如何处理",
+     "rules": [
+      "c386-1",
+      "c386-exc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利人是担保物权人（抵押权人、质权人、留置权人），且该担保物权系就特定担保财产而存在",
+     "rules": [
+      "c386-1"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务，或者发生当事人约定的实现担保物权的情形（二者之一即可）",
+     "rules": [
+      "c386-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的除外：法律对就担保财产优先受偿另有规定（其他法定优先权、特别顺位规则等）时，不适用本条规定的优先受偿，依该规定处理",
+     "rules": [
+      "c386-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "担保物权人依法享有就担保财产优先受偿的权利（优先于普通债权受偿）",
+     "rules": [
+      "c386-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定时，例外规则优先于本条的一般优先受偿规则",
+     "rules": [
+      "c386-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是担保物权的一般规定；抵押权、质权、留置权的设立与实现条件分别由物权编担保物权分编各章规定，本条不解决同一财产上数个担保物权之间的顺位（学理）",
+     "rules": []
+    },
+    {
+     "text": "“优先受偿”以担保物权有效存在为前提，仅指就担保财产优先于普通债权受偿，并非取得担保财产的所有权（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c386-1",
+    "srcs": [
+     "art386-1"
+    ],
+    "body": [
+     "securityInterestHolder(S,P)",
+     "debtorOf(D,P)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "agreedRealizationEventOccurred(S,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "D",
+      "content": "priorityPaymentFrom(S,P)"
+     }
+    ],
+    "note": "担保物权人在债务人不履行到期债务或者发生当事人约定的实现担保物权的情形时，依法享有就担保财产优先受偿的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c386-exc",
+    "srcs": [
+     "art386-1"
+    ],
+    "body": [
+     "securityInterestHolder(S,P)",
+     "lawProvidesOtherwiseOnPriority(P)"
+    ],
+    "heads": [
+     "-priorityPaymentFrom(S,P)"
+    ],
+    "note": "第386条但书：法律另有规定的，担保物权人不享有本条规定的就担保财产优先受偿的权利，依该规定处理",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c386-exc",
+    "c386-1",
+    "第386条但书“法律另有规定的除外”"
+   ]
+  ],
+  "predicates": {
+   "debtorOf": "是就该担保财产负担被担保债务的债务人（参数1：债务人；参数2：担保财产）",
+   "failsToPerformDueDebt": "债务人不履行到期债务（参数1：债务人）",
+   "agreedRealizationEventOccurred": "发生当事人约定的实现担保物权的情形（参数1：担保物权人；参数2：担保财产）",
+   "priorityPaymentFrom": "就担保财产优先受偿（参数1：担保物权人；参数2：担保财产）",
+   "lawProvidesOtherwiseOnPriority": "法律对就担保财产优先受偿另有规定（参数1：担保财产）"
+  }
+ },
+ "card:g3547": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "被担保的债权既有物的担保又有人的担保（混合担保）时，债权人应当按照什么顺序实现债权",
+     "rules": [
+      "c392-mixed",
+      "c392-1",
+      "c392-2",
+      "c392-3",
+      "c392-4"
+     ]
+    },
+    {
+     "text": "债权人为保障债权实现可否设立担保物权；第三人为债务人提供担保后可否要求反担保",
+     "rules": [
+      "c387-1",
+      "c387-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "同一债权既有物的担保又有人的担保",
+     "rules": [
+      "c392-mixed"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务，或者发生当事人约定的实现担保物权的情形",
+     "rules": [
+      "c392-1",
+      "c392-2",
+      "c392-3",
+      "c392-4"
+     ]
+    },
+    {
+     "text": "当事人就实现债权的顺序有约定且约定明确",
+     "rules": [
+      "c392-1"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确，且物的担保由债务人自己提供",
+     "rules": [
+      "c392-2"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确，且物的担保由第三人提供（另有保证人）",
+     "rules": [
+      "c392-3",
+      "c392-4"
+     ]
+    },
+    {
+     "text": "债权人在借贷、买卖等民事活动中，为保障实现其债权需要担保",
+     "rules": [
+      "c387-1"
+     ]
+    },
+    {
+     "text": "第三人为债务人向债权人提供担保",
+     "rules": [
+      "c387-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人对实现债权的顺序有约定或者约定明确的，从其约定，不适用法定的先后顺序",
+     "rules": [
+      "c392-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有约定的，债权人应当按照约定实现债权",
+     "rules": [
+      "c392-1"
+     ]
+    },
+    {
+     "text": "无约定或约定不明确且债务人自己提供物的担保的，债权人应当先就该物的担保实现债权",
+     "rules": [
+      "c392-2"
+     ]
+    },
+    {
+     "text": "无约定或约定不明确且第三人提供物的担保的，债权人可以就物的担保实现债权，也可以请求保证人承担保证责任（第三人物保与人保地位平等，债权人有选择权）",
+     "rules": [
+      "c392-3",
+      "c392-4"
+     ]
+    },
+    {
+     "text": "提供担保的第三人承担担保责任后，有权向债务人追偿",
+     "rules": [
+      "c392-5"
+     ]
+    },
+    {
+     "text": "担保人之间不能要求分担（笔记观点，法条未规定）",
+     "rules": [
+      "c392-nocontribution"
+     ]
+    },
+    {
+     "text": "债权人可以依照本法和其他法律的规定设立担保物权",
+     "rules": [
+      "c387-1"
+     ]
+    },
+    {
+     "text": "为债务人提供担保的第三人可以要求债务人提供反担保；反担保适用本法和其他法律的规定",
+     "rules": [
+      "c387-2",
+      "c387-ref"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人的约定优先于法定的实现顺序（约定优先于“先就债务人自己提供的物保受偿”）",
+     "rules": [
+      "c392-1"
+     ]
+    },
+    {
+     "text": "第三人提供物保时，债权人享有选择权，不必然先执行物保，也不必然先请求保证人承担责任",
+     "rules": [
+      "c392-3",
+      "c392-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第391条：第三人提供担保，未经其书面同意，债权人允许债务人转移债务的，担保人不再承担相应的担保责任；本条不涉及债务转移",
+     "rules": []
+    },
+    {
+     "text": "第393条（担保物权消灭事由）、第394条（抵押权的设立与优先受偿）与本条的清偿顺序规则不同，本条只解决混合担保中的实现顺序与追偿",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所列“债权人放弃物的担保且未通知保证人致保证人免责”等负条件，法条与笔记均未在本条中规定，仅作参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c387-1",
+    "srcs": [
+     "art387-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "needsSecurity(C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "establishSecurityInterest(C)"
+     }
+    ],
+    "note": "债权人在借贷、买卖等民事活动中为保障实现其债权需要担保的，可以依照本法和其他法律的规定设立担保物权",
+    "auth": "npc"
+   },
+   {
+    "key": "c387-2",
+    "srcs": [
+     "art387-2"
+    ],
+    "body": [
+     "thirdPartyProvidesSecurity(T,D,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "T",
+      "counterparty": "D",
+      "content": "requireCounterGuarantee(T,D)"
+     }
+    ],
+    "note": "第三人为债务人向债权人提供担保的，可以要求债务人提供反担保",
+    "auth": "npc"
+   },
+   {
+    "key": "c387-ref",
+    "srcs": [
+     "art387-2"
+    ],
+    "body": [
+     "counterGuarantee(G)"
+    ],
+    "heads": [
+     "applySecurityProvisions(G)"
+    ],
+    "note": "反担保适用本法和其他法律的规定（引用性规范）",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-mixed",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "debtRelation(C,D)",
+     "propertySecurityFor(C)",
+     "personalSecurityFor(C)"
+    ],
+    "heads": [
+     "mixedSecurity(C)"
+    ],
+    "note": "同一被担保债权既有物的担保又有人的担保，构成混合担保",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-1",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "mixedSecurity(C)",
+     "debtRelation(C,D)",
+     {
+      "or": [
+       "debtMatured(D) unpaid(D)",
+       "agreedRealizationEventOccurred(C)"
+      ]
+     },
+     "agreedRealizationOrder(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "realizeClaimPerAgreement(C)"
+     }
+    ],
+    "note": "混合担保中当事人对实现债权有约定的，债权人应当按照约定实现债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-2",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "mixedSecurity(C)",
+     "debtRelation(C,D)",
+     {
+      "or": [
+       "debtMatured(D) unpaid(D)",
+       "agreedRealizationEventOccurred(C)"
+      ]
+     },
+     "noAgreedRealizationOrder(C)",
+     "debtorProvidedPropertySecurity(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "realizeClaimOnPropertySecurity(C)"
+     }
+    ],
+    "note": "没有约定或者约定不明确，物的担保由债务人自己提供的，债权人应当先就该物的担保实现债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-3",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "mixedSecurity(C)",
+     "debtRelation(C,D)",
+     {
+      "or": [
+       "debtMatured(D) unpaid(D)",
+       "agreedRealizationEventOccurred(C)"
+      ]
+     },
+     "noAgreedRealizationOrder(C)",
+     "thirdPartyProvidedPropertySecurity(T,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "realizeClaimOnPropertySecurity(C)"
+     }
+    ],
+    "note": "没有约定或者约定不明确，第三人提供物的担保的，债权人可以就物的担保实现债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-4",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "mixedSecurity(C)",
+     "debtRelation(C,D)",
+     {
+      "or": [
+       "debtMatured(D) unpaid(D)",
+       "agreedRealizationEventOccurred(C)"
+      ]
+     },
+     "noAgreedRealizationOrder(C)",
+     "thirdPartyProvidedPropertySecurity(T,C)",
+     "guarantor(G,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "claimGuarantorLiability(C,G)"
+     }
+    ],
+    "note": "没有约定或者约定不明确，第三人提供物的担保的，债权人也可以请求保证人承担保证责任（第三人物保与人保地位平等）",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-5",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "thirdPartySecurityProvider(S)",
+     "bearsSecurityLiability(S,C)",
+     "debtRelation(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "D",
+      "content": "recourseAgainstDebtor(S,D)"
+     }
+    ],
+    "note": "提供担保的第三人承担担保责任后，有权向债务人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c392-nocontribution",
+    "srcs": [
+     "art392-1"
+    ],
+    "body": [
+     "thirdPartySecurityProvider(S1)",
+     "thirdPartySecurityProvider(S2)",
+     "bearsSecurityLiability(S1,C)",
+     "bearsSecurityLiability(S2,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S1",
+      "counterparty": "S2",
+      "content": "demandContributionFrom(S1,S2)"
+     }
+    ],
+    "note": "笔记观点：担保人之间不能要求分担，只能各自向债务人追偿；法条未明文规定，故列为学理规则",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c392-1",
+    "c392-2",
+    "当事人对实现债权的顺序有约定的，按约定实现债权，优先于债务人自己提供物保时先就物保受偿的法定顺序"
+   ],
+   [
+    "c392-1",
+    "c392-3",
+    "当事人对实现债权的顺序有约定的，按约定实现债权，优先于第三人提供物保时债权人可就物保受偿的任意性规则"
+   ],
+   [
+    "c392-1",
+    "c392-4",
+    "当事人对实现债权的顺序有约定的，按约定实现债权，优先于请求保证人承担保证责任的任意性规则"
+   ]
+  ],
+  "predicates": {
+   "mixedSecurity": "被担保的债权既有物的担保又有人的担保（混合担保）（1个参数：债权人）",
+   "propertySecurityFor": "该债权有物的担保（1个参数：债权人）",
+   "personalSecurityFor": "该债权有人的担保（1个参数：债权人）",
+   "agreedRealizationOrder": "当事人就实现债权的顺序有约定且约定明确（1个参数：债权人）",
+   "noAgreedRealizationOrder": "当事人就实现债权的顺序没有约定或者约定不明确（1个参数：债权人）",
+   "agreedRealizationEventOccurred": "发生当事人约定的实现担保物权的情形（1个参数：债权人）",
+   "debtorProvidedPropertySecurity": "物的担保由债务人自己提供（1个参数：债权人）",
+   "thirdPartyProvidedPropertySecurity": "物的担保由第三人提供（第三人，债权人）",
+   "realizeClaimOnPropertySecurity": "就物的担保实现债权（债权人）",
+   "realizeClaimPerAgreement": "按照当事人约定实现债权（债权人）",
+   "claimGuarantorLiability": "请求保证人承担保证责任（债权人，保证人）",
+   "guarantor": "是保证人（保证人，债权人）",
+   "thirdPartySecurityProvider": "是提供担保的第三人（1个参数：担保人）",
+   "bearsSecurityLiability": "承担担保责任（担保人，债权人）",
+   "recourseAgainstDebtor": "向债务人追偿（担保人，债务人）",
+   "needsSecurity": "为保障实现其债权需要担保（1个参数：债权人）",
+   "establishSecurityInterest": "设立担保物权（1个参数：债权人）",
+   "thirdPartyProvidesSecurity": "第三人为债务人向债权人提供担保（第三人，债务人，债权人）",
+   "requireCounterGuarantee": "要求债务人提供反担保（第三人，债务人）",
+   "counterGuarantee": "是反担保（1个参数：担保）",
+   "applySecurityProvisions": "适用本法和其他法律关于担保的规定（1个参数：反担保）",
+   "demandContributionFrom": "要求其他担保人分担担保责任（担保人，其他担保人）"
+  }
+ },
+ "art:391": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "第三人提供担保，债权人未经担保人书面同意而允许债务人转移全部或者部分债务的，担保人是否仍须承担担保责任",
+     "rules": [
+      "c391-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "担保人（保证人或者以自己财产提供担保的物上保证人）为债务人的债务提供担保",
+     "rules": [
+      "c391-1"
+     ]
+    },
+    {
+     "text": "债权人允许债务人转移全部或者部分债务",
+     "rules": [
+      "c391-1"
+     ]
+    },
+    {
+     "text": "未经担保人书面同意",
+     "rules": [
+      "c391-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "担保人已书面同意的，不发生免除担保责任的效果，担保人仍按原担保承担担保责任",
+     "rules": [
+      "c391-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "担保人不再承担相应的担保责任，即对被转移的全部或者部分债务不再承担担保责任",
+     "rules": [
+      "c391-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只免除“相应的”担保责任：债务部分转移的，担保人对未转移部分仍应承担担保责任",
+     "rules": []
+    },
+    {
+     "text": "本条限于第三人提供的担保；债务人以自己的财产提供担保的，不适用本条",
+     "rules": []
+    },
+    {
+     "text": "本条以债权人“允许”债务人转移债务为前提，与未经债权人同意的债务转移（第551条）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c391-1",
+    "srcs": [
+     "art391"
+    ],
+    "body": [
+     "thirdPartySecurityFor(G,D,Debt)",
+     "creditorPermitsDebtTransfer(Cr,D,Debt)",
+     "~writtenConsentToTransfer(G,Debt)"
+    ],
+    "heads": [
+     "-bearsSecurityLiability(G,D,Debt)"
+    ],
+    "note": "第三人提供担保，未经其书面同意，债权人允许债务人转移全部或者部分债务的，担保人对被转移的相应部分不再承担担保责任（Debt 指被转移的债务，全部或部分）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "thirdPartySecurityFor": "第三人（保证人或以自己财产担保的物上保证人）为债务人的债务提供担保（担保人，债务人，债务）",
+   "creditorPermitsDebtTransfer": "债权人允许债务人转移债务（债权人，债务人，被转移的债务）",
+   "writtenConsentToTransfer": "担保人书面同意债务转移（担保人，被转移的债务）",
+   "bearsSecurityLiability": "担保人承担担保责任（担保人，债务人，债务）"
+  }
+ },
+ "art:388": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "设立担保物权是否应当订立担保合同，担保合同包括哪些类型",
+     "rules": [
+      "c388-1",
+      "c388-2a",
+      "c388-2b",
+      "c388-2c"
+     ]
+    },
+    {
+     "text": "主债权债务合同无效时担保合同的效力如何，担保合同被确认无效后债务人、担保人、债权人如何承担民事责任",
+     "rules": [
+      "c388-3",
+      "c388-4",
+      "c388-4exc",
+      "c388-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "设立担保物权（抵押、质押或其他具有担保功能的合同）",
+     "rules": [
+      "c388-1",
+      "c388-2a",
+      "c388-2b",
+      "c388-2c"
+     ]
+    },
+    {
+     "text": "担保合同担保的是主债权债务合同，故为从合同",
+     "rules": [
+      "c388-3"
+     ]
+    },
+    {
+     "text": "主债权债务合同无效",
+     "rules": [
+      "c388-4"
+     ]
+    },
+    {
+     "text": "担保合同已被确认无效，且债务人、担保人或债权人有过错",
+     "rules": [
+      "c388-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，担保合同不因主债权债务合同无效而无效",
+     "rules": [
+      "c388-4exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当依照本法和其他法律的规定订立担保合同",
+     "rules": [
+      "c388-1"
+     ]
+    },
+    {
+     "text": "抵押合同、质押合同和其他具有担保功能的合同均属于担保合同",
+     "rules": [
+      "c388-2a",
+      "c388-2b",
+      "c388-2c"
+     ]
+    },
+    {
+     "text": "担保合同是主债权债务合同的从合同",
+     "rules": [
+      "c388-3"
+     ]
+    },
+    {
+     "text": "主债权债务合同无效的，担保合同无效",
+     "rules": [
+      "c388-4"
+     ]
+    },
+    {
+     "text": "担保合同被确认无效后，有过错的债务人、担保人、债权人应当根据其过错各自承担相应的民事责任",
+     "rules": [
+      "c388-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律另有规定时，排除“主合同无效则担保合同无效”的从属性规则，担保合同仍为有效",
+     "rules": [
+      "c388-4exc",
+      "c388-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第2款的“各自承担相应的民事责任”是按过错分担，并非连带责任；具体分担比例由担保制度司法解释细化（学理与司法解释）",
+     "rules": []
+    },
+    {
+     "text": "保证合同规定于合同编（第681条以下），其从属性见第682条，不属于本条（物权编担保物权一般规定）的调整范围",
+     "rules": []
+    },
+    {
+     "text": "本条但书所称“法律另有规定”，学理与司法解释主要指向独立保函等独立担保，其效力不受主合同无效影响",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c388-1",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "establishSecurityInterest(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeSecurityContract(P)"
+     }
+    ],
+    "note": "设立担保物权的，应当依照本法和其他法律的规定订立担保合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-2a",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "mortgageContract(K,M,O,X)"
+    ],
+    "heads": [
+     "securityContract(K)"
+    ],
+    "note": "抵押合同属于担保合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-2b",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "pledgeContract(K,M,O,X)"
+    ],
+    "heads": [
+     "securityContract(K)"
+    ],
+    "note": "质押合同属于担保合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-2c",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "otherSecurityFunctionContract(K)"
+    ],
+    "heads": [
+     "securityContract(K)"
+    ],
+    "note": "其他具有担保功能的合同也属于担保合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-3",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "securityContract(K)",
+     "mainClaimDebtContract(M)",
+     "securityFor(K,M)"
+    ],
+    "heads": [
+     "accessoryContractOf(K,M)"
+    ],
+    "note": "担保合同是主债权债务合同的从合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-4",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "accessoryContractOf(K,M)",
+     "void(M)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "主债权债务合同无效的，担保合同无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-4exc",
+    "srcs": [
+     "art388-1"
+    ],
+    "body": [
+     "accessoryContractOf(K,M)",
+     "void(M)",
+     "lawProvidesOtherwiseOnAccessoriness(K)"
+    ],
+    "heads": [
+     "-void(K)"
+    ],
+    "note": "第388条第1款但书：法律另有规定的，担保合同不因主债权债务合同无效而无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c388-5",
+    "srcs": [
+     "art388-2"
+    ],
+    "body": [
+     "securityContract(K)",
+     "confirmedVoid(K)",
+     "partyToSecurityContract(P,K)",
+     "fault(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearCorrespondingLiabilityPerFault(P,K)"
+     }
+    ],
+    "note": "担保合同被确认无效后，有过错的债务人、担保人、债权人应当根据其过错各自承担相应的民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c388-4exc",
+    "c388-4",
+    "第388条第1款但书：法律另有规定的，担保合同不因主债权债务合同无效而无效"
+   ]
+  ],
+  "predicates": {
+   "establishSecurityInterest": "设立担保物权（设立人）",
+   "concludeSecurityContract": "订立担保合同（设立人）",
+   "otherSecurityFunctionContract": "其他具有担保功能的合同",
+   "securityContract": "是担保合同",
+   "mainClaimDebtContract": "是主债权债务合同",
+   "securityFor": "为该主债权债务合同提供担保（担保合同，主合同）",
+   "accessoryContractOf": "是主债权债务合同的从合同（担保合同，主合同）",
+   "lawProvidesOtherwiseOnAccessoriness": "法律对担保合同的从属性另有规定（担保合同）",
+   "confirmedVoid": "已被确认无效",
+   "partyToSecurityContract": "是担保合同的当事人（当事人，担保合同）",
+   "bearCorrespondingLiabilityPerFault": "根据其过错承担相应的民事责任（责任人，担保合同）"
+  }
+ }
+}

@@ -1,0 +1,822 @@
+{
+ "art:767": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人约定无追索权保理的，保理人应当向谁主张应收账款债权；其取得的款项超过保理融资款本息和相关费用的部分，是否应当返还给应收账款债权人",
+     "rules": [
+      "c767-1",
+      "c767-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人约定无追索权保理（保理合同为无追索权型）",
+     "rules": [
+      "c767-1",
+      "c767-2"
+     ]
+    },
+    {
+     "text": "保理人向应收账款债务人主张债权后取得的款项，超过保理融资款本息和相关费用",
+     "rules": [
+      "c767-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "保理人应当向应收账款债务人主张应收账款债权（而非向应收账款债权人主张）",
+     "rules": [
+      "c767-1"
+     ]
+    },
+    {
+     "text": "超过保理融资款本息和相关费用的部分，保理人无需向应收账款债权人返还，可以保有",
+     "rules": [
+      "c767-2"
+     ]
+    },
+    {
+     "text": "（学理）无追索权保理中，应收账款债务人不能清偿的风险由保理人承担，保理人不得向应收账款债权人主张返还保理融资款本息",
+     "rules": [
+      "c767-doctrine"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与第766条有追索权保理相区别：有追索权保理中保理人可以向应收账款债权人主张返还保理融资款本息或回购应收账款债权，也可以向应收账款债务人主张，且从债务人处取得的款项扣除本息和费用后有剩余的，剩余部分应当返还给应收账款债权人；无追索权保理则只能向债务人主张，超额部分归保理人",
+     "rules": []
+    },
+    {
+     "text": "本条只规定无追索权保理中保理人的主张对象与超额部分的归属，未规定保理登记、通知债务人等事项，这些事项适用保理合同的一般规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c767-1",
+    "srcs": [
+     "art767-1"
+    ],
+    "body": [
+     "nonRecourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesDebtorOf(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "D",
+      "content": "claimsReceivablesAgainst(F,D)"
+     }
+    ],
+    "note": "当事人约定无追索权保理的，保理人应当向应收账款债务人主张应收账款债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c767-2",
+    "srcs": [
+     "art767-1"
+    ],
+    "body": [
+     "nonRecourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesCreditorOf(C,K)",
+     "excessOverFactoringFinancing(F,E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "retainExcess(F,E)"
+     }
+    ],
+    "note": "保理人取得超过保理融资款本息和相关费用的部分，无需向应收账款债权人返还，即可以保有该超额部分",
+    "auth": "npc"
+   },
+   {
+    "key": "c767-doctrine",
+    "srcs": [
+     "art767-1"
+    ],
+    "body": [
+     "nonRecourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesCreditorOf(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "demandReturnOfFinancing(F,C)"
+     }
+    ],
+    "note": "学理说明：无追索权保理的风险由保理人承担，债务人不清偿时保理人不得回头向应收账款债权人主张返还融资款本息；条文本身只规定主张对象与超额部分归属，未明文写“不得追索”",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "nonRecourseFactoring": "当事人约定为无追索权保理（参数：保理合同）",
+   "factorOf": "是保理人（保理人，保理合同）",
+   "receivablesDebtorOf": "是应收账款债务人（应收账款债务人，保理合同）",
+   "receivablesCreditorOf": "是应收账款债权人（应收账款债权人，保理合同）",
+   "claimsReceivablesAgainst": "向应收账款债务人主张应收账款债权（保理人，应收账款债务人）",
+   "excessOverFactoringFinancing": "取得的款项超过保理融资款本息和相关费用的部分（保理人，超出部分）",
+   "retainExcess": "保有超过保理融资款本息和相关费用的部分而无需返还（保理人，超出部分）",
+   "demandReturnOfFinancing": "向应收账款债权人主张返还保理融资款本息（保理人，应收账款债权人）"
+  }
+ },
+ "art:769": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "保理合同章（第761–769条）对有关事项没有规定的，应当适用何种规则",
+     "rules": [
+      "c769-1",
+      "c769-chapter"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "系保理合同，且有关事项在保理合同章中没有规定",
+     "rules": [
+      "c769-1"
+     ]
+    },
+    {
+     "text": "系保理合同，且有关事项在保理合同章中已有规定",
+     "rules": [
+      "c769-chapter"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "“本章没有规定的”之反面：本章已有规定的事项，不适用债权转让的规定",
+     "rules": [
+      "c769-chapter"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用本编（合同编）第六章关于债权转让的有关规定（第545–550条等）",
+     "rules": [
+      "c769-1"
+     ]
+    },
+    {
+     "text": "本章有规定的事项，适用本章规定，不转介适用债权转让规则",
+     "rules": [
+      "c769-chapter"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "保理合同章的特别规定优先于债权转让的一般规定，仅在章内无规定时才转介适用债权转让规则",
+     "rules": [
+      "c769-chapter",
+      "c769-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是转介（参照适用）条款，本身不创设权利义务，只解决法律适用顺序；保理以应收账款转让为核心，故章内未规定事项回归债权转让规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c769-1",
+    "srcs": [
+     "art769"
+    ],
+    "body": [
+     "factoringContract(K)",
+     "matterNotProvidedInFactoringChapter(K)"
+    ],
+    "heads": [
+     "applyClaimAssignmentProvisions(K)"
+    ],
+    "note": "保理合同章（第761–769条）对有关事项没有规定的，适用合同编第六章债权转让的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c769-chapter",
+    "srcs": [
+     "art769"
+    ],
+    "body": [
+     "factoringContract(K)",
+     "matterProvidedInFactoringChapter(K)"
+    ],
+    "heads": [
+     "-applyClaimAssignmentProvisions(K)"
+    ],
+    "note": "对“本章没有规定的”作反面解释：本章已有规定的事项不适用债权转让的规定（反面解释属学理，条文未明文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c769-chapter",
+    "c769-1",
+    "保理合同章有特别规定的，优先适用本章规定，不适用债权转让的规定"
+   ]
+  ],
+  "predicates": {
+   "factoringContract": "保理合同（应收账款债权人将现有或将有的应收账款转让给保理人，保理人提供资金融通、账户管理、应收账款催收或付款担保等服务的合同）",
+   "matterNotProvidedInFactoringChapter": "该事项在保理合同章（第761–769条）中没有规定（参数：保理合同）",
+   "matterProvidedInFactoringChapter": "该事项在保理合同章（第761–769条）中已有规定（参数：保理合同）"
+  }
+ },
+ "art:768": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "应收账款债权人就同一应收账款订立多个保理合同、多个保理人均主张权利时，该应收账款由哪一保理人取得（保理人债权实现的顺序）",
+     "rules": [
+      "c768-1",
+      "c768-2",
+      "c768-3",
+      "c768-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "应收账款债权人就同一应收账款订立多个保理合同，多个保理人均主张取得该应收账款",
+     "rules": [
+      "c768-1",
+      "c768-2",
+      "c768-3",
+      "c768-4"
+     ]
+    },
+    {
+     "text": "其中一个保理人的保理已经办理登记，另一保理人的保理未办理登记",
+     "rules": [
+      "c768-1"
+     ]
+    },
+    {
+     "text": "各保理人的保理均已办理登记，且登记时间有先后",
+     "rules": [
+      "c768-2"
+     ]
+    },
+    {
+     "text": "各保理人的保理均未办理登记，但转让通知已到达应收账款债务人，且到达时间有先后",
+     "rules": [
+      "c768-3"
+     ]
+    },
+    {
+     "text": "各保理人的保理既未办理登记，转让通知也未到达应收账款债务人",
+     "rules": [
+      "c768-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "已经登记的先于未登记的取得应收账款",
+     "rules": [
+      "c768-1"
+     ]
+    },
+    {
+     "text": "均已经登记的，按照登记时间的先后顺序取得应收账款，登记在先的保理人取得",
+     "rules": [
+      "c768-2"
+     ]
+    },
+    {
+     "text": "均未登记的，由最先到达应收账款债务人的转让通知中载明的保理人取得应收账款",
+     "rules": [
+      "c768-3"
+     ]
+    },
+    {
+     "text": "既未登记也未通知的，各保理人按照保理融资款或者服务报酬的比例取得应收账款",
+     "rules": [
+      "c768-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "取得顺序为：已登记 ＞ 未登记但已通知 ＞ 既未登记也未通知；同一层次内，登记按登记时间先后，通知按到达债务人的先后，均无则按保理融资款或者服务报酬的比例。四项规则以互不重叠的条件分别表述，故不产生规则冲突",
+     "rules": [
+      "c768-1",
+      "c768-2",
+      "c768-3",
+      "c768-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只解决多个保理人之间的顺位；第768条第2款关于保理人向应收账款债务人、第三人主张权利的规定未挂载，不在本卡片范围",
+     "rules": []
+    },
+    {
+     "text": "笔记只摘录了“均已经登记按登记时间先后”和“均未登记由最先到达债务人的通知载明的保理人取得”两项，与法条一致；登记优先于未登记、既未登记也未通知按比例取得两项以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c768-1",
+    "srcs": [
+     "art768-1"
+    ],
+    "body": [
+     "factoringContract(F1,C,R,D)",
+     "factoringContract(F2,C,R,D)",
+     "claimsReceivables(F1,R)",
+     "claimsReceivables(F2,R)",
+     "registeredFactoring(F1,R)",
+     "unregisteredFactoring(F2,R)"
+    ],
+    "heads": [
+     "acquiresReceivables(F1,R)"
+    ],
+    "note": "多个保理人主张权利时，已经登记的先于未登记的取得应收账款",
+    "auth": "npc"
+   },
+   {
+    "key": "c768-2",
+    "srcs": [
+     "art768-1"
+    ],
+    "body": [
+     "factoringContract(F1,C,R,D)",
+     "factoringContract(F2,C,R,D)",
+     "claimsReceivables(F1,R)",
+     "claimsReceivables(F2,R)",
+     "registeredFactoring(F1,R)",
+     "registeredFactoring(F2,R)",
+     "registeredEarlier(F1,F2)"
+    ],
+    "heads": [
+     "acquiresReceivables(F1,R)"
+    ],
+    "note": "均已经登记的，按照登记时间的先后顺序，登记在先的保理人取得应收账款",
+    "auth": "npc"
+   },
+   {
+    "key": "c768-3",
+    "srcs": [
+     "art768-1"
+    ],
+    "body": [
+     "factoringContract(F1,C,R,D)",
+     "factoringContract(F2,C,R,D)",
+     "claimsReceivables(F1,R)",
+     "claimsReceivables(F2,R)",
+     "unregisteredFactoring(F1,R)",
+     "unregisteredFactoring(F2,R)",
+     "noticeReachedDebtorFirst(F1,R,D)"
+    ],
+    "heads": [
+     "acquiresReceivables(F1,R)"
+    ],
+    "note": "均未登记的，由最先到达应收账款债务人的转让通知中载明的保理人取得应收账款",
+    "auth": "npc"
+   },
+   {
+    "key": "c768-4",
+    "srcs": [
+     "art768-1"
+    ],
+    "body": [
+     "factoringContract(F,C,R,D)",
+     "claimsReceivables(F,R)",
+     "unregisteredFactoring(F,R)",
+     "noNoticeToDebtor(R)",
+     "factorsClaiming(R,Fs)"
+    ],
+    "heads": [
+     "acquiresReceivablesProRata(F,R,Fs)"
+    ],
+    "note": "既未登记也未通知的，各保理人按照保理融资款或者服务报酬的比例取得应收账款",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "factoringContract": "保理人F与应收账款债权人C就应收账款R订立保理合同，R的债务人为D（4个参数：保理人，债权人，应收账款，债务人）",
+   "factoringContract/4": "保理人F与应收账款债权人C就应收账款R订立保理合同，R的债务人为D（保理人，债权人，应收账款，债务人）",
+   "claimsReceivables": "保理人主张取得该应收账款（2个参数：保理人，应收账款）",
+   "claimsReceivables/2": "保理人主张取得该应收账款（保理人，应收账款）",
+   "registeredFactoring": "保理人就该应收账款的保理已经办理登记（2个参数：保理人，应收账款）",
+   "registeredFactoring/2": "保理人就该应收账款的保理已经办理登记（保理人，应收账款）",
+   "unregisteredFactoring": "保理人就该应收账款的保理未办理登记（2个参数：保理人，应收账款）",
+   "unregisteredFactoring/2": "保理人就该应收账款的保理未办理登记（保理人，应收账款）",
+   "noticeReachedDebtorFirst": "转让通知最先到达应收账款债务人（3个参数：保理人，应收账款，债务人）",
+   "noticeReachedDebtorFirst/3": "转让通知最先到达应收账款债务人（保理人，应收账款，债务人）",
+   "noNoticeToDebtor": "就该应收账款，各保理人的转让通知均未到达应收账款债务人（1个参数：应收账款）",
+   "noNoticeToDebtor/1": "就该应收账款，各保理人的转让通知均未到达应收账款债务人（应收账款）",
+   "factorsClaiming": "就该应收账款主张权利的保理人群体（2个参数：应收账款，保理人群体）",
+   "factorsClaiming/2": "就该应收账款主张权利的保理人群体（应收账款，保理人群体）",
+   "acquiresReceivables": "取得应收账款（2个参数：保理人，应收账款）",
+   "acquiresReceivables/2": "取得应收账款（保理人，应收账款）",
+   "acquiresReceivablesProRata": "按照保理融资款或者服务报酬的比例取得应收账款（3个参数：保理人，应收账款，保理人群体）",
+   "acquiresReceivablesProRata/3": "按照保理融资款或者服务报酬的比例取得应收账款（保理人，应收账款，保理人群体）"
+  }
+ },
+ "card:g5423": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "保理合同如何界定：应收账款债权人将现有的或者将有的应收账款转让给保理人，保理人提供资金融通、应收账款管理或者催收、应收账款债务人付款担保等服务",
+     "rules": [
+      "c761-def"
+     ]
+    },
+    {
+     "text": "保理合同的形式要求",
+     "rules": [
+      "c762-2"
+     ]
+    },
+    {
+     "text": "应收账款系虚构时，应收账款债务人能否以应收账款不存在为由对抗保理人",
+     "rules": [
+      "c763-1"
+     ]
+    },
+    {
+     "text": "保理人向应收账款债务人发出应收账款转让通知时负有何种义务",
+     "rules": [
+      "c764-1"
+     ]
+    },
+    {
+     "text": "应收账款债务人接到转让通知后，基础交易合同的变更或者终止对保理人是否发生效力",
+     "rules": [
+      "c765-1"
+     ]
+    },
+    {
+     "text": "有追索权保理中保理人可以向谁主张权利、剩余部分如何处理",
+     "rules": [
+      "c766-1-creditor",
+      "c766-1-debtor",
+      "c766-1-surplus"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "应收账款债权人将现有的或者将有的应收账款转让给保理人，保理人提供资金融通、应收账款管理或者催收、应收账款债务人付款担保等服务",
+     "rules": [
+      "c761-def"
+     ]
+    },
+    {
+     "text": "保理合同的内容一般包括业务类型、服务范围、服务期限、基础交易合同情况、应收账款信息、保理融资款或者服务报酬及其支付方式等条款（示范性规定，不产生具体义务）",
+     "rules": []
+    },
+    {
+     "text": "应收账款债权人与债务人虚构应收账款作为转让标的，与保理人订立保理合同",
+     "rules": [
+      "c763-1"
+     ]
+    },
+    {
+     "text": "保理人向应收账款债务人发出应收账款转让通知",
+     "rules": [
+      "c764-1"
+     ]
+    },
+    {
+     "text": "应收账款债务人接到转让通知后，应收账款债权人与债务人无正当理由协商变更或者终止基础交易合同，且对保理人产生不利影响",
+     "rules": [
+      "c765-1"
+     ]
+    },
+    {
+     "text": "当事人约定有追索权保理",
+     "rules": [
+      "c766-1-creditor",
+      "c766-1-debtor",
+      "c766-1-surplus"
+     ]
+    },
+    {
+     "text": "保理人向应收账款债务人主张应收账款债权，扣除保理融资款本息和相关费用后有剩余",
+     "rules": [
+      "c766-1-surplus"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "保理人明知应收账款系虚构的，应收账款债务人仍可以应收账款不存在为由对抗保理人",
+     "rules": [
+      "c763-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述定义的合同属于保理合同",
+     "rules": [
+      "c761-def"
+     ]
+    },
+    {
+     "text": "保理合同应当采用书面形式",
+     "rules": [
+      "c762-2"
+     ]
+    },
+    {
+     "text": "应收账款债务人不得以应收账款不存在为由对抗保理人",
+     "rules": [
+      "c763-1"
+     ]
+    },
+    {
+     "text": "保理人应当表明保理人身份并附有必要凭证",
+     "rules": [
+      "c764-1"
+     ]
+    },
+    {
+     "text": "该变更或者终止基础交易合同对保理人不发生效力",
+     "rules": [
+      "c765-1"
+     ]
+    },
+    {
+     "text": "保理人可以请求应收账款债权人返还保理融资款本息或者回购应收账款债权，也可以请求应收账款债务人支付应收账款",
+     "rules": [
+      "c766-1-creditor",
+      "c766-1-debtor"
+     ]
+    },
+    {
+     "text": "有追索权保理下，扣除保理融资款本息和相关费用后的剩余部分应当返还给应收账款债权人",
+     "rules": [
+      "c766-1-surplus"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "保理人明知虚构的但书优先于不得对抗规则，债务人仍可主张应收账款不存在",
+     "rules": [
+      "c763-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "保理合同不同于普通债权让与：保理人须提供资金融通、应收账款管理或者催收、付款担保等综合性服务",
+     "rules": []
+    },
+    {
+     "text": "保理是应收账款的转让，不是应收账款质押，不适用质权等担保物权规则",
+     "rules": []
+    },
+    {
+     "text": "无追索权保理的效果（保理人应当向应收账款债务人主张债权、超额部分无需返还）规定于第766条第2款，本行未挂载该款，故仅作学理说明，不写成规则",
+     "rules": []
+    },
+    {
+     "text": "多个保理人主张权利时的受偿顺位规定于第768条，本行未挂载；LEGO 卡片所述登记优先、通知先后、比例分配等顺位规则仅供参考，不作规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c761-def",
+    "srcs": [
+     "art761-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "receivablesCreditor(C,R)",
+     "existingOrFutureReceivable(R)",
+     "transfersReceivableTo(C,F,R,K)",
+     {
+      "or": [
+       "financingService(F,K)",
+       "receivablesManagementOrCollection(F,K)",
+       "paymentGuarantee(F,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "factoringContract(K)"
+    ],
+    "note": "保理合同是应收账款债权人将现有的或者将有的应收账款转让给保理人，保理人提供资金融通、应收账款管理或者催收、应收账款债务人付款担保等服务的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c762-2",
+    "srcs": [
+     "art762-2"
+    ],
+    "body": [
+     "factoringContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "inWritingForm(K)"
+     }
+    ],
+    "note": "保理合同应当采用书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c763-1",
+    "srcs": [
+     "art763-1"
+    ],
+    "body": [
+     "factoringContract(K)",
+     "transfersReceivableTo(C,F,R,K)",
+     "fabricateReceivables(C,D)",
+     "~knowsFabrication(F)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "D",
+      "counterparty": "F",
+      "content": "assertNonexistenceAgainst(D,F)"
+     }
+    ],
+    "note": "债权人与债务人虚构应收账款作为转让标的的，债务人不得以应收账款不存在为由对抗保理人，但保理人明知虚构的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c764-1",
+    "srcs": [
+     "art764-1"
+    ],
+    "body": [
+     "notifyAssignment(F,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "D",
+      "content": "showIdentityAndVouchers(F,D)"
+     }
+    ],
+    "note": "保理人向应收账款债务人发出应收账款转让通知的，应当表明保理人身份并附有必要凭证",
+    "auth": "npc"
+   },
+   {
+    "key": "c765-1",
+    "srcs": [
+     "art765-1"
+    ],
+    "body": [
+     "assignmentNoticeReceived(D)",
+     "modifyOrTerminateBaseContractWithoutCause(C,D)",
+     "adverseEffectOnFactor(F)"
+    ],
+    "heads": [
+     "-effectiveAgainstFactor(C,D,F)"
+    ],
+    "note": "债务人接到转让通知后，债权人与债务人无正当理由协商变更或者终止基础交易合同，对保理人产生不利影响的，对保理人不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c766-1-creditor",
+    "srcs": [
+     "art766-1"
+    ],
+    "body": [
+     "recourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesCreditor(C,R)",
+     "transfersReceivableTo(C,F,R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "claimRepaymentOrRepurchase(F,C,K)"
+     }
+    ],
+    "note": "约定有追索权保理的，保理人可以向应收账款债权人主张返还保理融资款本息或者回购应收账款债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c766-1-debtor",
+    "srcs": [
+     "art766-1"
+    ],
+    "body": [
+     "recourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesDebtor(D,R)",
+     "transfersReceivableTo(C,F,R,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "F",
+      "counterparty": "D",
+      "content": "claimReceivablesFromDebtor(F,D,K)"
+     }
+    ],
+    "note": "约定有追索权保理的，保理人也可以向应收账款债务人主张应收账款债权",
+    "auth": "npc"
+   },
+   {
+    "key": "c766-1-surplus",
+    "srcs": [
+     "art766-1"
+    ],
+    "body": [
+     "recourseFactoring(K)",
+     "factorOf(F,K)",
+     "receivablesCreditor(C,R)",
+     "transfersReceivableTo(C,F,R,K)",
+     "surplusAfterDeduction(F,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "C",
+      "content": "returnSurplus(F,C,K)"
+     }
+    ],
+    "note": "有追索权保理中，保理人向债务人主张应收账款债权，扣除保理融资款本息和相关费用后有剩余的，剩余部分应当返还给应收账款债权人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "factoringContract": "保理合同（应收账款债权人转让应收账款、保理人提供保理服务的合同）",
+   "receivablesCreditor": "是应收账款债权人（债权人，应收账款）",
+   "receivablesDebtor": "是应收账款债务人（债务人，应收账款）",
+   "transfersReceivableTo": "将应收账款转让给保理人（债权人，保理人，应收账款，合同）",
+   "financingService": "保理人提供资金融通服务（保理人，合同）",
+   "receivablesManagementOrCollection": "保理人提供应收账款管理或者催收服务（保理人，合同）",
+   "paymentGuarantee": "保理人提供应收账款债务人付款担保服务（保理人，合同）",
+   "factorOf": "是保理人（保理人，合同）",
+   "fabricateReceivables": "应收账款债权人与债务人虚构应收账款作为转让标的（债权人，债务人）",
+   "knowsFabrication": "保理人明知应收账款系虚构",
+   "assertNonexistenceAgainst": "以应收账款不存在为由对抗保理人（应收账款债务人，保理人）",
+   "notifyAssignment": "向应收账款债务人发出应收账款转让通知（保理人，债务人）",
+   "showIdentityAndVouchers": "表明保理人身份并附有必要凭证（保理人，债务人）",
+   "assignmentNoticeReceived": "应收账款债务人已接到应收账款转让通知",
+   "modifyOrTerminateBaseContractWithoutCause": "无正当理由协商变更或者终止基础交易合同（债权人，债务人）",
+   "adverseEffectOnFactor": "对保理人产生不利影响",
+   "effectiveAgainstFactor": "变更或者终止基础交易合同对保理人发生效力（债权人，债务人，保理人）",
+   "recourseFactoring": "当事人约定有追索权保理（合同）",
+   "claimRepaymentOrRepurchase": "向应收账款债权人主张返还保理融资款本息或者回购应收账款债权（保理人，债权人，合同）",
+   "claimReceivablesFromDebtor": "向应收账款债务人主张应收账款债权（保理人，债务人，合同）",
+   "surplusAfterDeduction": "扣除保理融资款本息和相关费用后有剩余（保理人，合同）",
+   "returnSurplus": "将剩余部分返还给应收账款债权人（保理人，债权人，合同）"
+  }
+ }
+}

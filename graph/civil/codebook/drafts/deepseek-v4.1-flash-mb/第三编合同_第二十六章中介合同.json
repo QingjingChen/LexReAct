@@ -1,0 +1,473 @@
+{
+ "card:g5847": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "中介合同如何定义与认定",
+     "rules": [
+      "c961-def"
+     ]
+    },
+    {
+     "text": "中介人的如实报告义务，以及违反该义务的后果",
+     "rules": [
+      "c962-1",
+      "c962-2"
+     ]
+    },
+    {
+     "text": "中介人促成合同成立时，报酬与中介活动费用如何负担",
+     "rules": [
+      "c963-1",
+      "c963-determine",
+      "c963-media",
+      "c963-2"
+     ]
+    },
+    {
+     "text": "中介人未促成合同成立时，能否请求报酬或费用",
+     "rules": [
+      "c964-1",
+      "c964-2"
+     ]
+    },
+    {
+     "text": "委托人接受服务后绕开中介人直接订约（跳单）的责任",
+     "rules": [
+      "c965"
+     ]
+    },
+    {
+     "text": "本章没有规定的事项能否参照适用委托合同",
+     "rules": [
+      "c966"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "中介人向委托人报告订立合同的机会或者提供订立合同的媒介服务，委托人支付报酬",
+     "rules": [
+      "c961-def"
+     ]
+    },
+    {
+     "text": "中介人促成合同成立",
+     "rules": [
+      "c963-1",
+      "c963-2"
+     ]
+    },
+    {
+     "text": "对中介人的报酬没有约定或者约定不明确，且依据第510条仍不能确定",
+     "rules": [
+      "c963-determine"
+     ]
+    },
+    {
+     "text": "因中介人提供订立合同的媒介服务而促成合同成立",
+     "rules": [
+      "c963-media"
+     ]
+    },
+    {
+     "text": "中介人未促成合同成立",
+     "rules": [
+      "c964-1",
+      "c964-2"
+     ]
+    },
+    {
+     "text": "委托人接受中介人的服务后，利用其提供的交易机会或者媒介服务，绕开中介人直接订立合同",
+     "rules": [
+      "c965"
+     ]
+    },
+    {
+     "text": "中介人故意隐瞒与订立合同有关的重要事实或者提供虚假情况，损害委托人利益",
+     "rules": [
+      "c962-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "中介人未促成合同成立的，不得请求支付报酬；但可以按照约定请求委托人支付从事中介活动支出的必要费用",
+     "rules": [
+      "c964-1",
+      "c964-2"
+     ]
+    },
+    {
+     "text": "中介人故意隐瞒重要事实或者提供虚假情况、损害委托人利益的，不得请求支付报酬",
+     "rules": [
+      "c962-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "中介人应当就有关订立合同的事项向委托人如实报告",
+     "rules": [
+      "c962-1"
+     ]
+    },
+    {
+     "text": "中介人故意隐瞒重要事实或者提供虚假情况、损害委托人利益的，不得请求支付报酬，并应当承担赔偿责任",
+     "rules": [
+      "c962-2"
+     ]
+    },
+    {
+     "text": "中介人促成合同成立的，委托人应当按照约定支付报酬；没有约定或者约定不明确且依第510条仍不能确定的，根据中介人的劳务合理确定",
+     "rules": [
+      "c963-1",
+      "c963-determine"
+     ]
+    },
+    {
+     "text": "因提供媒介服务而促成合同成立的，由该合同的当事人平均负担中介人的报酬",
+     "rules": [
+      "c963-media"
+     ]
+    },
+    {
+     "text": "中介人促成合同成立的，中介活动的费用由中介人负担",
+     "rules": [
+      "c963-2"
+     ]
+    },
+    {
+     "text": "中介人未促成合同成立的，可以按照约定请求委托人支付从事中介活动支出的必要费用",
+     "rules": [
+      "c964-2"
+     ]
+    },
+    {
+     "text": "委托人跳单的，应当向中介人支付报酬",
+     "rules": [
+      "c965"
+     ]
+    },
+    {
+     "text": "本章没有规定的，参照适用委托合同的有关规定",
+     "rules": [
+      "c966"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第965条的跳单责任是特别规定，不以中介人促成合同成立为要件，优先于第963条第1款按约定支付报酬的规则",
+     "rules": [
+      "c965"
+     ]
+    },
+    {
+     "text": "中介人违反如实报告义务的，不得请求报酬，优先于其基于促成合同成立而享有的报酬请求权",
+     "rules": [
+      "c962-2"
+     ]
+    },
+    {
+     "text": "第964条但书允许在未促成合同成立时按约定请求必要费用，构成“不得请求支付报酬”的例外",
+     "rules": [
+      "c964-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "中介合同即原合同法上的居间合同；与委托合同不同，中介人只报告订立合同的机会或者提供媒介服务，不亲自处理委托事务，报酬原则上以促成合同成立为条件",
+     "rules": []
+    },
+    {
+     "text": "与行纪合同不同，中介人不以自己名义与第三人订立合同，也不因此对该合同直接享有权利、承担义务",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片称“中介人未实际开展中介活动或未支出必要费用的，不得请求必要费用”，法条只要求“按照约定”且限于“必要费用”，未设该要件，故不另立规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c961-def",
+    "srcs": [
+     "art961-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "reportsContractOpportunity(B,P,K)",
+       "providesMediaService(B,P,K)"
+      ]
+     },
+     "payRemuneration(P,B,K)"
+    ],
+    "heads": [
+     "intermediaryContract(K)"
+    ],
+    "note": "中介合同是中介人向委托人报告订立合同的机会或者提供订立合同的媒介服务、委托人支付报酬的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c962-1",
+    "srcs": [
+     "art962-1"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "reportTruthfully(B,P,K)"
+     }
+    ],
+    "note": "中介人应当就有关订立合同的事项向委托人如实报告",
+    "auth": "npc"
+   },
+   {
+    "key": "c962-2",
+    "srcs": [
+     "art962-2"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)",
+     "concealsMaterialFactOrProvidesFalseInfo(B,P)",
+     "harmsPrincipalInterest(B,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "requestRemuneration(B,P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "compensate(B,P,K)"
+     }
+    ],
+    "note": "中介人故意隐瞒与订立合同有关的重要事实或者提供虚假情况、损害委托人利益的，不得请求支付报酬并应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c963-1",
+    "srcs": [
+     "art963-1"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)",
+     "facilitatedContract(B,K)",
+     {
+      "or": [
+       "remunerationAgreed(K)",
+       "remunerationDeterminedByService(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "payRemuneration(P,B,K)"
+     }
+    ],
+    "note": "中介人促成合同成立的，委托人应当按照约定支付报酬；报酬依劳务合理确定的，亦应支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c963-determine",
+    "srcs": [
+     "art963-1"
+    ],
+    "body": [
+     "facilitatedContract(B,K)",
+     "noAgreedOrUnclearRemuneration(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "remunerationDeterminedByService(K)"
+    ],
+    "note": "对报酬没有约定或者约定不明确、依据第510条仍不能确定的，根据中介人的劳务合理确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c963-media",
+    "srcs": [
+     "art963-1"
+    ],
+    "body": [
+     "facilitatedByMediaService(B,K)",
+     "partyToConcludedContract(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "bearRemunerationEqually(P,B,K)"
+     }
+    ],
+    "note": "因中介人提供订立合同的媒介服务而促成合同成立的，由该合同的当事人平均负担中介人的报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c963-2",
+    "srcs": [
+     "art963-2"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "facilitatedContract(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "bearIntermediaryExpenses(B,K)"
+     }
+    ],
+    "note": "中介人促成合同成立的，中介活动的费用由中介人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c964-1",
+    "srcs": [
+     "art964"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)",
+     "-facilitatedContract(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "requestRemuneration(B,P,K)"
+     }
+    ],
+    "note": "中介人未促成合同成立的，不得请求支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c964-2",
+    "srcs": [
+     "art964"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)",
+     "-facilitatedContract(B,K)",
+     "agreedNecessaryExpenses(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "P",
+      "content": "claimIntermediaryNecessaryExpenses(B,P,K)"
+     }
+    ],
+    "note": "但书：未促成合同成立的，中介人可以按照约定请求委托人支付从事中介活动支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c965",
+    "srcs": [
+     "art965"
+    ],
+    "body": [
+     "intermediaryOf(B,K)",
+     "principalOf(P,K)",
+     "acceptedIntermediaryService(P,B,K)",
+     "usesOpportunityOrMediaService(P,B,K)",
+     "bypassesIntermediary(P,B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "payRemuneration(P,B,K)"
+     }
+    ],
+    "note": "委托人接受服务后利用中介人提供的交易机会或者媒介服务、绕开中介人直接订立合同的，应当向中介人支付报酬（跳单责任）",
+    "auth": "npc"
+   },
+   {
+    "key": "c966",
+    "srcs": [
+     "art966"
+    ],
+    "body": [
+     "intermediaryContract(K)",
+     "matterNotProvidedInIntermediaryChapter(M)"
+    ],
+    "heads": [
+     "applyMandateContractProvisionsByReference(K)"
+    ],
+    "note": "本章没有规定的，参照适用委托合同的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c965",
+    "c963-1",
+    "第965条的跳单责任是特别规定，不以中介人促成合同成立为要件，优先于第963条第1款"
+   ],
+   [
+    "c962-2",
+    "c963-1",
+    "中介人故意隐瞒重要事实或者提供虚假情况、损害委托人利益的，不得请求报酬，优先于促成合同成立时的报酬请求权"
+   ],
+   [
+    "c964-2",
+    "c964-1",
+    "第964条但书允许未促成合同成立时按约定请求必要费用，构成不得请求报酬的例外"
+   ]
+  ],
+  "predicates": {
+   "intermediaryContract": "是中介合同（合同）",
+   "intermediaryOf": "是中介合同的中介人（中介人，合同）",
+   "reportsContractOpportunity": "向委托人报告订立合同的机会（中介人，委托人，合同）",
+   "providesMediaService": "向委托人提供订立合同的媒介服务（中介人，委托人，合同）",
+   "payRemuneration": "向中介人支付报酬（委托人，中介人，合同）",
+   "reportTruthfully": "就有关订立合同的事项向委托人如实报告（中介人，委托人，合同）",
+   "harmsPrincipalInterest": "损害委托人利益（中介人，委托人）",
+   "facilitatedContract": "促成合同成立（中介人，中介合同）",
+   "facilitatedByMediaService": "因提供订立合同的媒介服务而促成合同成立（中介人，中介合同）",
+   "remunerationAgreed": "当事人对中介人的报酬有约定（合同）",
+   "noAgreedOrUnclearRemuneration": "对中介人的报酬没有约定或者约定不明确（合同）",
+   "remunerationDeterminedByService": "根据中介人的劳务合理确定报酬（合同）",
+   "partyToConcludedContract": "是所促成的合同的当事人（当事人，中介合同）",
+   "bearRemunerationEqually": "平均负担中介人的报酬（合同当事人，中介人，中介合同）",
+   "bearIntermediaryExpenses": "负担中介活动的费用（中介人，中介合同）",
+   "claimIntermediaryNecessaryExpenses": "请求委托人支付从事中介活动支出的必要费用（中介人，委托人，合同）",
+   "agreedNecessaryExpenses": "约定由委托人支付从事中介活动支出的必要费用（合同）",
+   "acceptedIntermediaryService": "接受中介人的服务（委托人，中介人，合同）",
+   "usesOpportunityOrMediaService": "利用中介人提供的交易机会或者媒介服务（委托人，中介人，合同）",
+   "bypassesIntermediary": "绕开中介人直接订立合同（委托人，中介人，合同）",
+   "matterNotProvidedInIntermediaryChapter": "是中介合同章没有规定的事项（事项）"
+  }
+ }
+}

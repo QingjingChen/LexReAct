@@ -1,0 +1,796 @@
+{
+ "art:1005": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人的生命权、身体权、健康权受到侵害或者处于其他危难情形时，谁负有及时施救的义务",
+     "rules": [
+      "c1005-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受害人为自然人，其生命权、身体权、健康权受到侵害，或者处于其他危难情形",
+     "rules": [
+      "c1005-1"
+     ]
+    },
+    {
+     "text": "义务人为依法负有法定救助义务的组织或者个人（其主体与范围由其他法律确定）",
+     "rules": [
+      "c1005-1",
+      "c1005-duty"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "负有法定救助义务的组织或者个人应当及时施救",
+     "rules": [
+      "c1005-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为引致性规定：只确立“及时施救”的义务，救助义务的主体与具体内容由其他法律、行政法规规定，本条不自行创设救助义务人",
+     "rules": [
+      "c1005-duty"
+     ]
+    },
+    {
+     "text": "笔记未引用本条原文或条号，本条无笔记层面的例外或体系说明可采",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1005-1",
+    "srcs": [
+     "art1005-1"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     {
+      "or": [
+       "lifeBodyHealthInfringed(P)",
+       "inOtherDanger(P)"
+      ]
+     },
+     "statutoryRescueDuty(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "timelyRescue(O,P)"
+     }
+    ],
+    "note": "自然人的生命权、身体权、健康权受到侵害或者处于其他危难情形的，负有法定救助义务的组织或者个人应当及时施救",
+    "auth": "npc"
+   },
+   {
+    "key": "c1005-duty",
+    "srcs": [
+     "art1005-1"
+    ],
+    "body": [
+     "statutoryRescueDuty(O,P)"
+    ],
+    "heads": [
+     "rescueDutyPerOtherLaws(O,P)"
+    ],
+    "note": "“负有法定救助义务的组织或者个人”为引致概念，其主体与范围依其他法律、行政法规确定（学理说明，条文本身未列举）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lifeBodyHealthInfringed": "自然人的生命权、身体权或者健康权受到侵害（1个参数：受害人）",
+   "inOtherDanger": "处于其他危难情形（1个参数：受害人）",
+   "statutoryRescueDuty": "负有法定救助义务（2个参数：义务人，受害人）",
+   "timelyRescue": "及时施救（2个参数：义务人，受害人）",
+   "rescueDutyPerOtherLaws": "救助义务的主体与具体内容依其他法律、行政法规确定（2个参数：义务人，受害人）"
+  }
+ },
+ "card:g6110": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人享有的生命权、身体权、健康权的内容与保护范围，以及任何组织或者个人不得侵害的义务",
+     "rules": [
+      "c1002-1",
+      "c1002-2",
+      "c1003-1",
+      "c1003-2",
+      "c1004-1",
+      "c1004-2"
+     ]
+    },
+    {
+     "text": "人体细胞、人体组织、人体器官、遗体能否捐献、由谁决定、采何形式，以及买卖的效力",
+     "rules": [
+      "c1006-1",
+      "c1006-1b",
+      "c1006-2",
+      "c1006-3",
+      "c1006-3b",
+      "c1007-1",
+      "c1007-2"
+     ]
+    },
+    {
+     "text": "临床试验与人体基因、人体胚胎等医学科研活动的合法要件",
+     "rules": [
+      "c1008-1",
+      "c1008-2",
+      "c1009"
+     ]
+    },
+    {
+     "text": "性骚扰、非法剥夺或限制行动自由、非法搜查身体的民事责任，以及单位的防治义务",
+     "rules": [
+      "c1010-1",
+      "c1010-2",
+      "c1011"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利主体限于自然人；生命权以生命安全、生命尊严为客体，身体权以身体完整与行动自由为内容，健康权以身心健康为内容",
+     "rules": [
+      "c1002-1",
+      "c1003-1",
+      "c1004-1"
+     ]
+    },
+    {
+     "text": "生前捐献须为完全民事行为能力人依法自主决定，且为无偿",
+     "rules": [
+      "c1006-1"
+     ]
+    },
+    {
+     "text": "死后捐献须该自然人生前未表示不同意捐献，并由其配偶、成年子女、父母共同决定（全票决）",
+     "rules": [
+      "c1006-3"
+     ]
+    },
+    {
+     "text": "临床试验须为研制新药、医疗器械或者发展新的预防和治疗方法而进行",
+     "rules": [
+      "c1008-1"
+     ]
+    },
+    {
+     "text": "性骚扰须违背他人意愿，以言语、文字、图像、肢体行为等方式实施",
+     "rules": [
+      "c1010-1"
+     ]
+    },
+    {
+     "text": "侵害身体权的情形包括以非法拘禁等方式剥夺、限制他人行动自由，或者非法搜查他人身体",
+     "rules": [
+      "c1011"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "自然人生前已表示不同意捐献的，其死亡后配偶、成年子女、父母不得决定捐献",
+     "rules": [
+      "c1006-3"
+     ]
+    },
+    {
+     "text": "捐献须无偿；以任何形式买卖人体细胞、组织、器官、遗体的，不属于合法捐献，买卖行为无效",
+     "rules": [
+      "c1007-1",
+      "c1007-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "任何组织或者个人不得侵害他人的生命权、身体权、健康权",
+     "rules": [
+      "c1002-2",
+      "c1003-2",
+      "c1004-2"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得强迫、欺骗、利诱完全民事行为能力人捐献",
+     "rules": [
+      "c1006-1b"
+     ]
+    },
+    {
+     "text": "同意捐献应当采用书面形式，也可以订立遗嘱；死后共同决定捐献亦应当采用书面形式",
+     "rules": [
+      "c1006-2",
+      "c1006-3b"
+     ]
+    },
+    {
+     "text": "违反禁止买卖规定的买卖行为无效",
+     "rules": [
+      "c1007-2"
+     ]
+    },
+    {
+     "text": "临床试验应当依法经相关主管部门批准、经伦理委员会审查同意，向受试者或其监护人告知试验目的、用途和可能风险等详细情况并取得书面同意；不得向受试者收取试验费用",
+     "rules": [
+      "c1008-1",
+      "c1008-2"
+     ]
+    },
+    {
+     "text": "从事与人体基因、人体胚胎等有关的医学和科研活动，应当遵守法律、行政法规和国家有关规定，不得危害人体健康、违背伦理道德、损害公共利益",
+     "rules": [
+      "c1009"
+     ]
+    },
+    {
+     "text": "性骚扰的受害人有权依法请求行为人承担民事责任；机关、企业、学校等单位应当采取合理的预防、受理投诉、调查处置等措施，防止和制止利用职权、从属关系等实施性骚扰",
+     "rules": [
+      "c1010-1",
+      "c1010-2"
+     ]
+    },
+    {
+     "text": "以非法拘禁等方式剥夺、限制他人行动自由或者非法搜查他人身体的，受害人有权依法请求行为人承担民事责任",
+     "rules": [
+      "c1011"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "买卖人体细胞、组织、器官、遗体的行为无效，优先于捐献同意规则：捐献以无偿为要件，有偿“捐献”不因同意而有效",
+     "rules": [
+      "c1007-2",
+      "c1006-1"
+     ]
+    },
+    {
+     "text": "生命权是自然人最基本的人格权，为其他民事权利的前提和基础（学理，条文未明定优先顺序）",
+     "rules": [
+      "c1002-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "生命权、身体权、健康权虽同属物质性人格权，但客体不同：生命权以生命安全与生命尊严为客体，身体权以身体完整与行动自由为客体，健康权以身体生理机能的正常运作与完善发挥（含心理健康）为客体",
+     "rules": []
+    },
+    {
+     "text": "笔记将性骚扰、医学研究侵害健康权列为侵害健康权的类型，条文分别规定在第1010条、第1009条，而非第1004条",
+     "rules": [
+      "c1010-1",
+      "c1009"
+     ]
+    },
+    {
+     "text": "笔记将非法搜查身体、剥夺或限制行动自由列为侵害身体权的类型，条文单列于第1011条，与第1003条的身体权宣示条款相衔接",
+     "rules": [
+      "c1011"
+     ]
+    },
+    {
+     "text": "生命权、身体权、健康权的主体限于自然人，法人、非法人组织不享有（学理与LEGO卡片，条文未明文排除）",
+     "rules": []
+    },
+    {
+     "text": "生命利益支配权（献身、参加危险竞技、安乐死）属学理讨论，条文仅规定生命权受保护，未作规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1002-1",
+    "srcs": [
+     "art1002-1"
+    ],
+    "body": [
+     "naturalPerson(N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "enjoysLifeRight(N)"
+     }
+    ],
+    "note": "自然人享有生命权，其生命安全和生命尊严受法律保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c1002-2",
+    "srcs": [
+     "art1002-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     {
+      "or": [
+       "naturalPerson(V)",
+       "organization(V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": "N",
+      "content": "infringesLifeRight(V,N)"
+     }
+    ],
+    "note": "任何组织或者个人不得侵害他人的生命权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1003-1",
+    "srcs": [
+     "art1003-1"
+    ],
+    "body": [
+     "naturalPerson(N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "enjoysBodilyRight(N)"
+     }
+    ],
+    "note": "自然人享有身体权，其身体完整和行动自由受法律保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c1003-2",
+    "srcs": [
+     "art1003-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     {
+      "or": [
+       "naturalPerson(V)",
+       "organization(V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": "N",
+      "content": "infringesBodilyRight(V,N)"
+     }
+    ],
+    "note": "任何组织或者个人不得侵害他人的身体权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1004-1",
+    "srcs": [
+     "art1004-1"
+    ],
+    "body": [
+     "naturalPerson(N)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "N",
+      "counterparty": null,
+      "content": "enjoysHealthRight(N)"
+     }
+    ],
+    "note": "自然人享有健康权，其身心健康受法律保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c1004-2",
+    "srcs": [
+     "art1004-1"
+    ],
+    "body": [
+     "naturalPerson(N)",
+     {
+      "or": [
+       "naturalPerson(V)",
+       "organization(V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": "N",
+      "content": "infringesHealthRight(V,N)"
+     }
+    ],
+    "note": "任何组织或者个人不得侵害他人的健康权",
+    "auth": "npc"
+   },
+   {
+    "key": "c1006-1",
+    "srcs": [
+     "art1006-1"
+    ],
+    "body": [
+     "fullCapacity(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "decideFreeDonation(P)"
+     }
+    ],
+    "note": "完全民事行为能力人有权依法自主决定无偿捐献其人体细胞、人体组织、人体器官、遗体",
+    "auth": "npc"
+   },
+   {
+    "key": "c1006-1b",
+    "srcs": [
+     "art1006-1"
+    ],
+    "body": [
+     "fullCapacity(P)",
+     {
+      "or": [
+       "naturalPerson(V)",
+       "organization(V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": "P",
+      "content": "coerceDeceiveOrInduceDonation(V,P)"
+     }
+    ],
+    "note": "任何组织或者个人不得强迫、欺骗、利诱完全民事行为能力人捐献",
+    "auth": "npc"
+   },
+   {
+    "key": "c1006-2",
+    "srcs": [
+     "art1006-2"
+    ],
+    "body": [
+     "fullCapacity(P)",
+     "consentsToDonation(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "useWrittenFormForDonation(P)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "makeWillForDonation(P)"
+     }
+    ],
+    "note": "完全民事行为能力人同意捐献的，应当采用书面形式，也可以订立遗嘱",
+    "auth": "npc"
+   },
+   {
+    "key": "c1006-3",
+    "srcs": [
+     "art1006-3"
+    ],
+    "body": [
+     "naturalPerson(D)",
+     "dead(D)",
+     "-objectedToDonation(D)",
+     {
+      "or": [
+       "spouseOf(S,D)",
+       "adultChildOf(S,D)",
+       "parentOf(S,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "jointlyDecideDonation(S,D)"
+     }
+    ],
+    "note": "自然人生前未表示不同意捐献的，其死亡后配偶、成年子女、父母可以共同决定捐献（须共同决定，全票决）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1006-3b",
+    "srcs": [
+     "art1006-3"
+    ],
+    "body": [
+     "jointlyDecideDonation(S,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "useWrittenFormForDonationDecision(S,D)"
+     }
+    ],
+    "note": "死后共同决定捐献的，决定捐献应当采用书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c1007-1",
+    "srcs": [
+     "art1007-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(V)",
+       "organization(V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "V",
+      "counterparty": null,
+      "content": "tradeHumanBodyParts(V)"
+     }
+    ],
+    "note": "禁止以任何形式买卖人体细胞、人体组织、人体器官、遗体",
+    "auth": "npc"
+   },
+   {
+    "key": "c1007-2",
+    "srcs": [
+     "art1007-2"
+    ],
+    "body": [
+     "saleOfHumanBodyParts(A)"
+    ],
+    "heads": [
+     "void(A)"
+    ],
+    "note": "违反禁止买卖规定的买卖行为无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1008-1",
+    "srcs": [
+     "art1008-1"
+    ],
+    "body": [
+     "conductsClinicalTrial(R,T)",
+     "trialForNewDrugDeviceOrMethod(T)",
+     "subjectOrGuardian(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "obtainCompetentAuthorityApproval(R,T)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "obtainEthicsCommitteeConsent(R,T)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "S",
+      "content": "discloseTrialInfo(R,S,T)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "S",
+      "content": "obtainWrittenConsent(R,S,T)"
+     }
+    ],
+    "note": "为研制新药、医疗器械或者发展新的预防和治疗方法进行临床试验，应当依法经相关主管部门批准、经伦理委员会审查同意，向受试者或其监护人告知试验目的、用途和可能产生的风险等详细情况，并经其书面同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c1008-2",
+    "srcs": [
+     "art1008-2"
+    ],
+    "body": [
+     "conductsClinicalTrial(R,T)",
+     "subject(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": "S",
+      "content": "chargeTrialFee(R,S,T)"
+     }
+    ],
+    "note": "进行临床试验的，不得向受试者收取试验费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c1009",
+    "srcs": [
+     "art1009"
+    ],
+    "body": [
+     "conductsGeneOrEmbryoActivity(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "complyWithLawsAndRegsOnGeneActivity(R)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "harmHumanHealth(R)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "violateEthics(R)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "harmPublicInterest(R)"
+     }
+    ],
+    "note": "从事与人体基因、人体胚胎等有关的医学和科研活动，应当遵守法律、行政法规和国家有关规定，不得危害人体健康、违背伦理道德、损害公共利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c1010-1",
+    "srcs": [
+     "art1010-1"
+    ],
+    "body": [
+     "sexualHarassment(H,V)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "H",
+      "content": "claimDamagesOrOtherCivilLiability(V,H)"
+     }
+    ],
+    "note": "违背他人意愿，以言语、文字、图像、肢体行为等方式对他人实施性骚扰的，受害人有权依法请求行为人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1010-2",
+    "srcs": [
+     "art1010-2"
+    ],
+    "body": [
+     "organization(U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": null,
+      "content": "takeMeasuresToPreventSexualHarassment(U)"
+     }
+    ],
+    "note": "机关、企业、学校等单位应当采取合理的预防、受理投诉、调查处置等措施，防止和制止利用职权、从属关系等实施性骚扰",
+    "auth": "npc"
+   },
+   {
+    "key": "c1011",
+    "srcs": [
+     "art1011"
+    ],
+    "body": [
+     {
+      "or": [
+       "deprivesOrRestrictsFreedom(H,V)",
+       "unlawfullySearchesBody(H,V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "H",
+      "content": "claimDamagesOrOtherCivilLiability(V,H)"
+     }
+    ],
+    "note": "以非法拘禁等方式剥夺、限制他人行动自由，或者非法搜查他人身体的，受害人有权依法请求行为人承担民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1007-2",
+    "c1006-1",
+    "捐献以无偿为要件；以任何形式买卖人体细胞、组织、器官、遗体的行为无效，不因“捐献同意”而有效"
+   ]
+  ],
+  "predicates": {
+   "enjoysLifeRight": "享有生命权（自然人）",
+   "enjoysBodilyRight": "享有身体权（自然人）",
+   "enjoysHealthRight": "享有健康权（自然人）",
+   "infringesLifeRight": "侵害他人生命权（行为人，权利人）",
+   "infringesBodilyRight": "侵害他人身体权（行为人，权利人）",
+   "infringesHealthRight": "侵害他人健康权（行为人，权利人）",
+   "decideFreeDonation": "依法自主决定无偿捐献自己的人体细胞、人体组织、人体器官、遗体（捐献人）",
+   "coerceDeceiveOrInduceDonation": "强迫、欺骗、利诱他人捐献（行为人，捐献人）",
+   "consentsToDonation": "同意捐献（捐献人）",
+   "useWrittenFormForDonation": "捐献同意采用书面形式（捐献人）",
+   "makeWillForDonation": "以订立遗嘱的方式作出捐献同意（捐献人）",
+   "objectedToDonation": "生前表示不同意捐献（死者）",
+   "jointlyDecideDonation": "共同决定捐献（近亲属，死者）",
+   "useWrittenFormForDonationDecision": "共同决定捐献采用书面形式（决定人，死者）",
+   "tradeHumanBodyParts": "买卖人体细胞、人体组织、人体器官、遗体（行为人）",
+   "saleOfHumanBodyParts": "买卖人体细胞、人体组织、人体器官、遗体的行为（行为）",
+   "conductsClinicalTrial": "进行临床试验（试验者，试验）",
+   "trialForNewDrugDeviceOrMethod": "为研制新药、医疗器械或者发展新的预防和治疗方法（试验）",
+   "subjectOrGuardian": "是受试者或者受试者的监护人（人，试验）",
+   "subject": "是受试者（人，试验）",
+   "obtainCompetentAuthorityApproval": "依法经相关主管部门批准（试验者，试验）",
+   "obtainEthicsCommitteeConsent": "经伦理委员会审查同意（试验者，试验）",
+   "discloseTrialInfo": "向受试者或其监护人告知试验目的、用途和可能产生的风险等详细情况（试验者，受试者方，试验）",
+   "obtainWrittenConsent": "取得受试者或其监护人的书面同意（试验者，受试者方，试验）",
+   "chargeTrialFee": "向受试者收取试验费用（试验者，受试者，试验）",
+   "conductsGeneOrEmbryoActivity": "从事与人体基因、人体胚胎等有关的医学和科研活动（活动实施者）",
+   "complyWithLawsAndRegsOnGeneActivity": "遵守法律、行政法规和国家有关规定（活动实施者）",
+   "harmHumanHealth": "危害人体健康（活动实施者）",
+   "violateEthics": "违背伦理道德（活动实施者）",
+   "harmPublicInterest": "损害公共利益（活动实施者）",
+   "sexualHarassment": "违背他人意愿，以言语、文字、图像、肢体行为等方式实施性骚扰（行为人，受害人）",
+   "takeMeasuresToPreventSexualHarassment": "采取合理的预防、受理投诉、调查处置等措施，防止和制止利用职权、从属关系等实施性骚扰（单位）",
+   "deprivesOrRestrictsFreedom": "以非法拘禁等方式剥夺、限制他人行动自由（行为人，受害人）",
+   "unlawfullySearchesBody": "非法搜查他人身体（行为人，受害人）"
+  }
+ }
+}

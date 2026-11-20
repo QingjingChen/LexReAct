@@ -1,0 +1,1381 @@
+{
+ "art:774": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽人提供材料时，应承担何种义务",
+     "rules": [
+      "c774-select",
+      "c774-inspect"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在承揽合同，且材料由承揽人提供（承揽人、定作人确定）",
+     "rules": [
+      "c774-select",
+      "c774-inspect"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承揽人应当按照约定选用材料",
+     "rules": [
+      "c774-select"
+     ]
+    },
+    {
+     "text": "承揽人应当接受定作人对材料的检验",
+     "rules": [
+      "c774-inspect"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定承揽人提供材料的情形；定作人提供材料时承揽人的检验、通知等义务不在本条，笔记与 LEGO 卡片均未涉及本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c774-select",
+    "srcs": [
+     "art774-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorFor(C,K)",
+     "clientFor(W,K)",
+     "providesMaterials(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "W",
+      "content": "selectMaterialsPerAgreement(C,K)"
+     }
+    ],
+    "note": "承揽人提供材料的，应当按照约定选用材料",
+    "auth": "npc"
+   },
+   {
+    "key": "c774-inspect",
+    "srcs": [
+     "art774-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorFor(C,K)",
+     "clientFor(W,K)",
+     "providesMaterials(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "W",
+      "content": "acceptInspectionByClient(C,W,K)"
+     }
+    ],
+    "note": "承揽人提供材料的，应当接受定作人检验",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "承揽合同（承揽人按定作人要求完成工作、交付成果，定作人支付报酬的合同）",
+   "contractorFor": "是承揽人（参数1：承揽人；参数2：承揽合同）",
+   "clientFor": "是定作人（参数1：定作人；参数2：承揽合同）",
+   "providesMaterials": "由承揽人提供材料（参数1：承揽人；参数2：承揽合同）",
+   "selectMaterialsPerAgreement": "按照约定选用材料（参数1：承揽人；参数2：承揽合同）",
+   "acceptInspectionByClient": "接受定作人对材料的检验（参数1：承揽人；参数2：定作人；参数3：承揽合同）"
+  }
+ },
+ "art:773": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽人能否将其承揽的辅助工作交由第三人完成，以及转交后对定作人承担何种责任",
+     "rules": [
+      "c773-1",
+      "c773-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在承揽合同，一方为承揽人、另一方为定作人，所涉工作属于承揽人所承揽工作中的辅助工作",
+     "rules": [
+      "c773-1",
+      "c773-2"
+     ]
+    },
+    {
+     "text": "承揽人已将该辅助工作交由定作人以外的第三人完成",
+     "rules": [
+      "c773-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承揽人可以将其承揽的辅助工作交由第三人完成，无须定作人同意",
+     "rules": [
+      "c773-1"
+     ]
+    },
+    {
+     "text": "承揽人将辅助工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责，不因转交而免责",
+     "rules": [
+      "c773-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只允许转交“辅助工作”；主要工作应当由承揽人以自己的设备、技术和劳力完成（第772条，当事人另有约定的除外），该条未在本行挂载，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "第773条第2款关于承揽人擅自将其承揽的主要工作交由第三人完成时定作人可以解除合同的规定，未在本行挂载，故不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c773-1",
+    "srcs": [
+     "art773-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(P,K)",
+     "auxiliaryWork(W,K)",
+     "thirdPerson(T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "entrustAuxiliaryWorkTo(C,T,W)"
+     }
+    ],
+    "note": "承揽人可以将其承揽的辅助工作交由第三人完成，无须定作人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c773-2",
+    "srcs": [
+     "art773-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(P,K)",
+     "auxiliaryWork(W,K)",
+     "thirdPerson(T)",
+     "entrustAuxiliaryWorkTo(C,T,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "beResponsibleForWorkResult(C,P,T,W)"
+     }
+    ],
+    "note": "承揽人将辅助工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责，不因转交而免除责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "是承揽合同（1个参数：合同）",
+   "workContractorOf": "是该承揽合同的承揽人（承揽人，合同）",
+   "workClientOf": "是该承揽合同的定作人（定作人，合同）",
+   "auxiliaryWork": "该工作属于承揽人所承揽工作中的辅助工作（工作，合同）",
+   "thirdPerson": "是承揽人与定作人以外的第三人（1个参数：第三人）",
+   "entrustAuxiliaryWorkTo": "承揽人将其承揽的辅助工作交由第三人完成（承揽人，第三人，工作）",
+   "beResponsibleForWorkResult": "就该第三人完成的工作成果向定作人负责（承揽人，定作人，第三人，工作）"
+  }
+ },
+ "art:775": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "定作人提供材料时，定作人与承揽人各自负有何种义务；承揽人可否更换定作人提供的材料或零部件",
+     "rules": [
+      "c775-1a",
+      "c775-1b",
+      "c775-1c",
+      "c775-2a",
+      "c775-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "定作人提供材料",
+     "rules": [
+      "c775-1a",
+      "c775-1b",
+      "c775-2a"
+     ]
+    },
+    {
+     "text": "承揽人检验后发现定作人提供的材料不符合约定",
+     "rules": [
+      "c775-1c"
+     ]
+    },
+    {
+     "text": "零部件不需要修理",
+     "rules": [
+      "c775-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经定作人同意而更换材料的，不属于“擅自更换”，不受第2款第1句禁止（学理，由“擅自”一语反面解释得出）",
+     "rules": [
+      "c775-2a-consent"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "定作人应当按照约定提供材料",
+     "rules": [
+      "c775-1a"
+     ]
+    },
+    {
+     "text": "承揽人应当及时检验定作人提供的材料",
+     "rules": [
+      "c775-1b"
+     ]
+    },
+    {
+     "text": "材料不符合约定的，承揽人应当及时通知定作人更换、补齐或者采取其他补救措施",
+     "rules": [
+      "c775-1c"
+     ]
+    },
+    {
+     "text": "承揽人不得擅自更换定作人提供的材料，不得更换不需要修理的零部件",
+     "rules": [
+      "c775-2a",
+      "c775-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "经定作人同意的更换优先于第2款第1句的禁止性规定，不构成擅自更换",
+     "rules": [
+      "c775-2a-consent",
+      "c775-2a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款及第2款第1句仅适用于定作人提供材料的情形；承揽人提供材料的，适用第774条",
+     "rules": []
+    },
+    {
+     "text": "第2款第2句“不得更换不需要修理的零部件”不以定作人提供材料为前提，属承揽人的一般义务",
+     "rules": []
+    },
+    {
+     "text": "笔记未引用原文或条号，无可据以补充的例外或学理限制",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c775-1a",
+    "srcs": [
+     "art775-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)",
+     "clientProvidesMaterials(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "W",
+      "content": "provideMaterialsPerAgreement(C,K)"
+     }
+    ],
+    "note": "定作人提供材料的，应当按照约定提供材料",
+    "auth": "npc"
+   },
+   {
+    "key": "c775-1b",
+    "srcs": [
+     "art775-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)",
+     "clientProvidesMaterials(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "W",
+      "counterparty": "C",
+      "content": "inspectClientMaterialsTimely(W,K)"
+     }
+    ],
+    "note": "承揽人对定作人提供的材料应当及时检验",
+    "auth": "npc"
+   },
+   {
+    "key": "c775-1c",
+    "srcs": [
+     "art775-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)",
+     "clientMaterialsNonConforming(K)",
+     "discoversNonConformity(W,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "W",
+      "counterparty": "C",
+      "content": "notifyClientToReplaceOrRemedy(W,K)"
+     }
+    ],
+    "note": "发现材料不符合约定时，承揽人应当及时通知定作人更换、补齐或者采取其他补救措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c775-2a",
+    "srcs": [
+     "art775-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)",
+     "clientProvidesMaterials(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "W",
+      "counterparty": "C",
+      "content": "replaceClientMaterials(W,K)"
+     }
+    ],
+    "note": "承揽人不得擅自更换定作人提供的材料（“擅自”即未经定作人同意）",
+    "auth": "npc"
+   },
+   {
+    "key": "c775-2b",
+    "srcs": [
+     "art775-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "W",
+      "counterparty": "C",
+      "content": "replacePartsNotNeedingRepair(W,K)"
+     }
+    ],
+    "note": "承揽人不得更换不需要修理的零部件",
+    "auth": "npc"
+   },
+   {
+    "key": "c775-2a-consent",
+    "srcs": [
+     "art775-2"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "clientOf(C,K)",
+     "workContractorOf(W,K)",
+     "clientConsentsToReplacement(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "W",
+      "counterparty": "C",
+      "content": "replaceClientMaterials(W,K)"
+     }
+    ],
+    "note": "学理：第2款第1句禁止的是“擅自”更换，经定作人同意更换材料的不在禁止之列（由“擅自”反面解释得出，法条未明文）",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c775-2a-consent",
+    "c775-2a",
+    "经定作人同意更换材料即非“擅自更换”，第2款第1句的禁止不适用"
+   ]
+  ],
+  "predicates": {
+   "clientOf": "是承揽合同的定作人（参数1：定作人，参数2：合同）",
+   "workContractorOf": "是承揽合同的承揽人（参数1：承揽人，参数2：合同）",
+   "clientProvidesMaterials": "定作人提供材料（参数：合同）",
+   "provideMaterialsPerAgreement": "按照约定提供材料（参数1：定作人，参数2：合同）",
+   "inspectClientMaterialsTimely": "及时检验定作人提供的材料（参数1：承揽人，参数2：合同）",
+   "discoversNonConformity": "发现定作人提供的材料不符合约定（参数1：承揽人，参数2：合同）",
+   "clientMaterialsNonConforming": "定作人提供的材料不符合约定（参数：合同）",
+   "notifyClientToReplaceOrRemedy": "及时通知定作人更换、补齐或者采取其他补救措施（参数1：承揽人，参数2：合同）",
+   "replaceClientMaterials": "更换定作人提供的材料（参数1：承揽人，参数2：合同）",
+   "replacePartsNotNeedingRepair": "更换不需要修理的零部件（参数1：承揽人，参数2：合同）",
+   "clientConsentsToReplacement": "定作人同意承揽人更换材料（参数1：定作人，参数2：合同）"
+  }
+ },
+ "card:g5445": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为承揽合同：承揽人按定作人要求完成工作、交付工作成果，定作人支付报酬；哪些工作属于承揽",
+     "rules": [
+      "c770-1",
+      "c770-2"
+     ]
+    },
+    {
+     "text": "承揽人是否必须以自己的设备、技术和劳力完成主要工作；将主要工作交由第三人完成时对定作人负何责任、定作人可否解除合同",
+     "rules": [
+      "c772-1",
+      "c772-2-liability",
+      "c772-2-terminate"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承揽人按照定作人的要求完成工作、交付工作成果，定作人支付报酬",
+     "rules": [
+      "c770-1"
+     ]
+    },
+    {
+     "text": "承揽工作属于加工、定作、修理、复制、测试、检验等",
+     "rules": [
+      "c770-2"
+     ]
+    },
+    {
+     "text": "承揽人将其承揽的主要工作交由第三人完成",
+     "rules": [
+      "c772-2-liability",
+      "c772-2-terminate"
+     ]
+    },
+    {
+     "text": "该交由第三人完成未经定作人同意",
+     "rules": [
+      "c772-2-terminate"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，承揽人不必以自己的设备、技术和劳力完成主要工作",
+     "rules": [
+      "c772-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立承揽合同关系，承揽人与定作人互负完成交付工作成果与支付报酬的义务",
+     "rules": [
+      "c770-1",
+      "c770-2"
+     ]
+    },
+    {
+     "text": "承揽合同为双务、有偿、诺成性、不要式合同",
+     "rules": [
+      "c770-nature"
+     ]
+    },
+    {
+     "text": "承揽人应当以自己的设备、技术和劳力完成主要工作",
+     "rules": [
+      "c772-1"
+     ]
+    },
+    {
+     "text": "承揽人就该第三人完成的工作成果向定作人负责",
+     "rules": [
+      "c772-2-liability"
+     ]
+    },
+    {
+     "text": "未经定作人同意的，定作人可以解除合同",
+     "rules": [
+      "c772-2-terminate"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "定作人依第772条第2款解除合同的，优先于承揽人亲自完成主要工作的义务（解除后不再负该义务）",
+     "rules": [
+      "c772-2-terminate",
+      "c772-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第771条列举的合同内容（标的、数量、质量、报酬、承揽方式、材料提供、履行期限、验收标准和方法）为一般性、示范性规定，欠缺某项不影响承揽合同的成立，故不设规则",
+     "rules": []
+    },
+    {
+     "text": "承揽以完成一定工作为目的，标的为具有特定性的工作成果而非工作过程，承揽人义务具有不可让与性；据此与委托合同（处理事务、不以交付成果为要件）、雇佣合同（以提供劳务为核心）、买卖合同（以转移所有权为目的）相区分（笔记学理）",
+     "rules": [
+      "c770-feature"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c770-1",
+    "srcs": [
+     "art770-1"
+    ],
+    "body": [
+     "contract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "completesWorkPerRequirement(C,O,K)",
+     "deliversWorkResult(C,O,K)",
+     "paysRemuneration(O,C,K)"
+    ],
+    "heads": [
+     "workContract(K)"
+    ],
+    "note": "承揽合同是承揽人按照定作人的要求完成工作、交付工作成果，定作人支付报酬的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c770-2",
+    "srcs": [
+     "art770-2"
+    ],
+    "body": [
+     "contract(K)",
+     {
+      "or": [
+       "processingWork(K)",
+       "customMakingWork(K)",
+       "repairWork(K)",
+       "replicationWork(K)",
+       "testingWork(K)",
+       "inspectionWork(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "workContract(K)"
+    ],
+    "note": "承揽包括加工、定作、修理、复制、测试、检验等工作，属此类工作即构成承揽合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c770-feature",
+    "srcs": [
+     "art770-1"
+    ],
+    "body": [
+     "workContract(K)"
+    ],
+    "heads": [
+     "objectIsSpecificWorkResult(K)"
+    ],
+    "note": "笔记学理：承揽以完成一定工作为目的，标的为具有特定性的工作成果而非工作过程，承揽人义务具有不可让与性",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c770-nature",
+    "srcs": [
+     "art770-1"
+    ],
+    "body": [
+     "workContract(K)"
+    ],
+    "heads": [
+     "bilateralOnerousConsensualInformal(K)"
+    ],
+    "note": "笔记学理：承揽合同为双务、有偿、诺成性、不要式合同",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c772-1",
+    "srcs": [
+     "art772-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "~agreedOtherwiseOnMainWork(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "completeMainWorkPersonally(C,K)"
+     }
+    ],
+    "note": "承揽人应当以自己的设备、技术和劳力完成主要工作，但当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c772-2-liability",
+    "srcs": [
+     "art772-2"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "entrustsMainWorkToThirdParty(C,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "beResponsibleForThirdPartyWorkResult(C,O,K)"
+     }
+    ],
+    "note": "承揽人将主要工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责",
+    "auth": "npc"
+   },
+   {
+    "key": "c772-2-terminate",
+    "srcs": [
+     "art772-2"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "entrustsMainWorkToThirdParty(C,T,K)",
+     "-consentedByClient(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "terminate(O,K)"
+     }
+    ],
+    "note": "承揽人未经定作人同意将主要工作交由第三人完成的，定作人也可以解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c772-2-terminate",
+    "c772-1",
+    "定作人依第772条第2款解除合同的，承揽人不再负亲自完成主要工作的义务（解除优先于继续履行）"
+   ]
+  ],
+  "predicates": {
+   "workContract": "是承揽合同",
+   "workContractorOf": "是承揽人（承揽人，合同）",
+   "workClientOf": "是定作人（定作人，合同）",
+   "completesWorkPerRequirement": "按照定作人的要求完成工作（承揽人，定作人，合同）",
+   "deliversWorkResult": "交付工作成果（承揽人，定作人，合同）",
+   "paysRemuneration": "支付报酬（定作人，承揽人，合同）",
+   "processingWork": "承揽工作为加工",
+   "customMakingWork": "承揽工作为定作",
+   "repairWork": "承揽工作为修理",
+   "replicationWork": "承揽工作为复制",
+   "testingWork": "承揽工作为测试",
+   "inspectionWork": "承揽工作为检验",
+   "agreedOtherwiseOnMainWork": "当事人约定承揽人可将主要工作交由第三人完成（对亲自完成主要工作另有约定）",
+   "completeMainWorkPersonally": "以自己的设备、技术和劳力完成主要工作（承揽人，合同）",
+   "entrustsMainWorkToThirdParty": "将承揽的主要工作交由第三人完成（承揽人，第三人，合同）",
+   "consentedByClient": "经定作人同意（定作人，承揽人，合同）",
+   "beResponsibleForThirdPartyWorkResult": "就第三人完成的工作成果向定作人负责（承揽人，定作人，合同）",
+   "objectIsSpecificWorkResult": "标的为具有特定性的工作成果（而非工作过程）",
+   "bilateralOnerousConsensualInformal": "为双务、有偿、诺成性、不要式合同"
+  }
+ },
+ "art:777": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "定作人在承揽工作进行中变更承揽工作的要求，造成承揽人损失的，是否应当赔偿、由谁赔偿",
+     "rules": [
+      "c777-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在承揽合同，一方为定作人、另一方为承揽人",
+     "rules": [
+      "c777-1"
+     ]
+    },
+    {
+     "text": "定作人在承揽工作进行中变更承揽工作的要求（条文以定作人享有中途变更权为前提）",
+     "rules": [
+      "c777-1",
+      "c777-perm"
+     ]
+    },
+    {
+     "text": "该变更造成承揽人损失",
+     "rules": [
+      "c777-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "定作人应当赔偿承揽人因变更所受的损失",
+     "rules": [
+      "c777-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定“变更要求致损”的赔偿责任，未规定变更权的行使方式，也未规定变更后报酬、工作期限的调整；变更权本身由学理与体系解释（承揽合同的定义、定作人指示与协作义务）得出，条文未明文授予",
+     "rules": []
+    },
+    {
+     "text": "与定作人“随时解除合同”致损赔偿（第776条）不同：本条针对的是合同继续存在、仅工作内容被变更的情形；本条亦不同于承揽人交付成果不符合要求时的违约责任",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未涉及本条，本条形式化仅依据法条原文",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c777-1",
+    "srcs": [
+     "art777-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "clientOf(A,K)",
+     "contractorPartyOf(B,K)",
+     "changesRequirementMidway(A,K)",
+     "causesLossTo(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "payCompensation(A,B)"
+     }
+    ],
+    "note": "定作人中途变更承揽工作的要求，造成承揽人损失的，应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c777-perm",
+    "srcs": [
+     "art777-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "clientOf(A,K)",
+     "contractorPartyOf(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "changeWorkRequirement(A,K)"
+     }
+    ],
+    "note": "条文以定作人有权中途变更工作要求为前提；变更权本身系学理与体系解释的结论，条文未明文授予，故标为 doctrine",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "是承揽合同（承揽人按定作人要求完成工作、交付成果，定作人支付报酬的合同）",
+   "clientOf": "是定作人（参数：人，承揽合同）",
+   "contractorPartyOf": "是承揽合同的承揽人（参数：人，承揽合同）",
+   "changesRequirementMidway": "在承揽工作进行中变更承揽工作的要求（参数：定作人，承揽合同）",
+   "changeWorkRequirement": "变更承揽工作的要求（参数：定作人，承揽合同）"
+  }
+ },
+ "art:776": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽人发现定作人提供的图纸或者技术要求不合理时负有何种义务；因定作人怠于答复等原因造成承揽人损失的，由谁赔偿",
+     "rules": [
+      "c776-1",
+      "c776-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在承揽合同关系，一方为承揽人、另一方为定作人",
+     "rules": [
+      "c776-1",
+      "c776-2"
+     ]
+    },
+    {
+     "text": "图纸或者技术要求由定作人提供，且承揽人发现其不合理",
+     "rules": [
+      "c776-1"
+     ]
+    },
+    {
+     "text": "定作人怠于答复或者存在其他可归责于定作人的原因，并因此造成承揽人损失",
+     "rules": [
+      "c776-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承揽人应当及时通知定作人（图纸或技术要求不合理）",
+     "rules": [
+      "c776-1"
+     ]
+    },
+    {
+     "text": "定作人应当赔偿承揽人的损失",
+     "rules": [
+      "c776-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是承揽合同中定作人提供图纸、技术要求情形下的特别规定，就通知义务与赔偿责任的认定优先于合同编通则关于违约责任的一般规定（第577条）",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条针对“定作人提供的图纸或者技术要求不合理”，与第775条（材料由何方提供）以及第777条（定作人中途变更承揽工作要求造成损失的赔偿）分工不同，不可混用",
+     "rules": []
+    },
+    {
+     "text": "本条“等原因”为开放式表述，除怠于答复外，其他可归责于定作人的原因致承揽人损失的，同样适用赔偿规则；此为对文义的概括理解，条文本身未列举",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c776-1",
+    "srcs": [
+     "art776-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "providedSpecByClient(S,O,K)",
+     "unreasonableSpec(S)",
+     "discovers(C,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "timelyNotifyClient(C,O,S)"
+     }
+    ],
+    "note": "承揽人发现定作人提供的图纸或者技术要求不合理的，应当及时通知定作人",
+    "auth": "npc"
+   },
+   {
+    "key": "c776-2",
+    "srcs": [
+     "art776-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "workContractorOf(C,K)",
+     "workClientOf(O,K)",
+     "clientDelayInReplyOrOtherCause(O,C)",
+     "causesLossToContractor(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "payCompensation(O,C)"
+     }
+    ],
+    "note": "因定作人怠于答复等原因造成承揽人损失的，定作人应当赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "承揽合同（承揽人按定作人要求完成工作、交付工作成果，定作人支付报酬的合同）",
+   "workContractorOf": "是承揽人（承揽人，合同）",
+   "workClientOf": "是定作人（定作人，合同）",
+   "providedSpecByClient": "是由定作人提供的图纸或者技术要求（图纸或技术要求，定作人，合同）",
+   "unreasonableSpec": "图纸或者技术要求不合理",
+   "discovers": "发现（承揽人，图纸或技术要求）",
+   "timelyNotifyClient": "及时通知定作人（承揽人，定作人，图纸或技术要求）",
+   "clientDelayInReplyOrOtherCause": "定作人怠于答复或者存在其他可归责于定作人的原因（定作人，承揽人）",
+   "causesLossToContractor": "造成承揽人损失（定作人，承揽人）"
+  }
+ },
+ "art:779": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽合同履行中，承揽人是否应当接受定作人的监督检验，定作人监督检验的界限何在",
+     "rules": [
+      "c779-1",
+      "c779-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在承揽合同关系，一方为承揽人、另一方为定作人",
+     "rules": [
+      "c779-1",
+      "c779-2"
+     ]
+    },
+    {
+     "text": "承揽人处于工作期间（工作尚未完成）",
+     "rules": [
+      "c779-1",
+      "c779-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承揽人在工作期间应当接受定作人必要的监督检验",
+     "rules": [
+      "c779-1"
+     ]
+    },
+    {
+     "text": "定作人不得因监督检验妨碍承揽人的正常工作",
+     "rules": [
+      "c779-2"
+     ]
+    },
+    {
+     "text": "定作人享有对承揽工作的监督检验权（由“不得因监督检验妨碍承揽人的正常工作”反向推知，条文未明文规定，属学理解释）",
+     "rules": [
+      "c779-right"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "承揽人只须接受“必要”的监督检验，超出必要范围的检验请求不属本条义务射程；定作人行使监督检验权不得妨碍承揽人的正常工作，二者互为边界",
+     "rules": []
+    },
+    {
+     "text": "本条仅规范工作期间的监督检验，不含定作人的协助义务、验收与报酬支付（分别见承揽合同其他条款）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c779-1",
+    "srcs": [
+     "art779-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "duringWorkPeriod(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "acceptNecessaryInspection(C,O)"
+     }
+    ],
+    "note": "承揽人在工作期间应当接受定作人必要的监督检验",
+    "auth": "npc"
+   },
+   {
+    "key": "c779-2",
+    "srcs": [
+     "art779-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "duringWorkPeriod(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "hinderNormalWorkByInspection(O,C)"
+     }
+    ],
+    "note": "定作人不得因监督检验妨碍承揽人的正常工作",
+    "auth": "npc"
+   },
+   {
+    "key": "c779-right",
+    "srcs": [
+     "art779-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "duringWorkPeriod(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "superviseAndInspectWork(C)"
+     }
+    ],
+    "note": "定作人享有监督检验权，系由“不得因监督检验妨碍承揽人的正常工作”反向推知，条文未明文规定，属学理解释",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "承揽合同（承揽人按定作人要求完成工作、交付成果，定作人支付报酬的合同）",
+   "contractorOfWork": "是承揽合同的承揽人（承揽人，合同）",
+   "clientOfWork": "是承揽合同的定作人（定作人，合同）",
+   "duringWorkPeriod": "处于工作期间，工作尚未完成（承揽人，合同）",
+   "acceptNecessaryInspection": "接受定作人必要的监督检验（承揽人，定作人）",
+   "hinderNormalWorkByInspection": "因监督检验妨碍承揽人的正常工作（定作人，承揽人）",
+   "superviseAndInspectWork": "对承揽人的工作进行监督检验（定作人，承揽人）"
+  }
+ },
+ "art:786": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "共同承揽人是否对定作人承担连带责任；当事人另有约定时如何处理",
+     "rules": [
+      "c786-1",
+      "c786-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "二人以上均为同一承揽关系中的共同承揽人，对同一定作人负责",
+     "rules": [
+      "c786-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定（约定共同承揽人不承担连带责任或另行安排责任方式）",
+     "rules": [
+      "c786-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同承揽人对定作人承担连带责任",
+     "rules": [
+      "c786-1"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，共同承揽人不承担连带责任",
+     "rules": [
+      "c786-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人另有约定的，优先于本条法定连带责任的效果",
+     "rules": [
+      "c786-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本行笔记未引用原文或条号，亦无 LEGO 卡片；本条只规定共同承揽人对定作人的对外连带责任，未规定承揽人之间的内部份额分担",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c786-1",
+    "srcs": [
+     "art786-1"
+    ],
+    "body": [
+     "coContractor(W,K)",
+     "coContractor(V,K)",
+     "~contractProvidesOtherwise(K)"
+    ],
+    "heads": [
+     "bearJointLiability(W,V,K)"
+    ],
+    "note": "共同承揽人对定作人承担连带责任，但当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c786-2",
+    "srcs": [
+     "art786-1"
+    ],
+    "body": [
+     "coContractor(W,K)",
+     "coContractor(V,K)",
+     "contractProvidesOtherwise(K)"
+    ],
+    "heads": [
+     "-bearJointLiability(W,V,K)"
+    ],
+    "note": "但书：当事人另有约定的，共同承揽人对定作人不承担连带责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c786-2",
+    "c786-1",
+    "当事人另有约定属于但书情形，优先于法定的连带责任效果"
+   ]
+  ],
+  "predicates": {
+   "coContractor": "是同一承揽关系中的共同承揽人（承揽人，定作人）"
+  }
+ },
+ "art:785": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽人对定作人负有何种保密义务；未经定作人许可，承揽人能否留存复制品或者技术资料",
+     "rules": [
+      "c785-1",
+      "c785-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在承揽合同，一方为承揽人，另一方为定作人",
+     "rules": [
+      "c785-1",
+      "c785-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "经定作人许可的，承揽人可以留存复制品或者技术资料，不受“不得留存”的禁止",
+     "rules": [
+      "c785-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承揽人应当按照定作人的要求保守秘密",
+     "rules": [
+      "c785-1"
+     ]
+    },
+    {
+     "text": "未经定作人许可，承揽人不得留存复制品或者技术资料",
+     "rules": [
+      "c785-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定承揽人的保密义务与不得留存复制品、技术资料的禁止，未规定违反后的责任；违反者依违约责任等规定处理，属学理说明",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c785-1",
+    "srcs": [
+     "art785-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorUnder(W,K)",
+     "clientUnder(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "W",
+      "counterparty": "P",
+      "content": "keepSecretPerClientRequirement(W,P,K)"
+     }
+    ],
+    "note": "承揽人应当按照定作人的要求保守秘密",
+    "auth": "npc"
+   },
+   {
+    "key": "c785-2",
+    "srcs": [
+     "art785-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorUnder(W,K)",
+     "clientUnder(P,K)",
+     "~licensedBy(P,W,copiesOrTechnicalData)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "W",
+      "counterparty": "P",
+      "content": "retainCopiesOrTechnicalData(W,K)"
+     }
+    ],
+    "note": "未经定作人许可，承揽人不得留存复制品或者技术资料；经定作人许可的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "workContract": "承揽合同（1个参数：合同）",
+   "contractorUnder": "是承揽合同中的承揽人（承揽人，合同）",
+   "clientUnder": "是承揽合同中的定作人（定作人，合同）",
+   "keepSecretPerClientRequirement": "按照定作人的要求保守秘密（承揽人，定作人，合同）",
+   "retainCopiesOrTechnicalData": "留存复制品或者技术资料（承揽人，合同）"
+  }
+ },
+ "card:g5444": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c772-1：新谓词 completeMainWorkPersonally 需要在 predicates 中给出中文释义",
+   "c772-2a：新谓词 beLiableForThirdPartyWorkResult 需要在 predicates 中给出中文释义",
+   "c778-1：新谓词 assistContractor 需要在 predicates 中给出中文释义",
+   "c778-2：新谓词 demandPerformanceAndExtendPeriod 需要在 predicates 中给出中文释义",
+   "c780-1：新谓词 deliverWorkResultAndDocuments 需要在 predicates 中给出中文释义",
+   "c780-2：新谓词 inspectAndAcceptWorkResult 需要在 predicates 中给出中文释义",
+   "c781：新谓词 chooseBreachRemedyForQualityDefect 需要在 predicates 中给出中文释义",
+   "c782-1：新谓词 payRemunerationOnAgreedTime 需要在 predicates 中给出中文释义",
+   "c782-2：新谓词 payRemunerationOnDelivery 需要在 predicates 中给出中文释义",
+   "c782-3：新谓词 payRemunerationProRata 需要在 predicates 中给出中文释义",
+   "c783-lien：新谓词 lienOnWorkResult 需要在 predicates 中给出中文释义",
+   "c783-refuse：新谓词 refuseToDeliverWorkResult 需要在 predicates 中给出中文释义",
+   "c784-1：新谓词 properlyKeepMaterialsAndWorkResult 需要在 predicates 中给出中文释义",
+   "谓词 contractorOf 已在词表中表示“是该合同的承包方（承包人）（参数：合同，承包人）”，不能重新定义为“是承揽人（承揽人，合同）”，请换名或沿用原义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"承揽合同的界定与承揽工作类型，以及承揽人亲自完成主要工作、交付工作成果、妥善保管材料与成果的义务\",\n        \"rules\": [\"c770-1\", \"c770-2\", \"c772-1\", \"c772-2a\", \"c780-1\", \"c784-1\", \"c784-2\"]\n      },\n      {\n        \"text\": \"定作人未支付报酬或材料费等价款时承揽人的留置权与拒绝交付权，以及定作人的任意解除权\",\n        \"rules\": [\"c783-lien\", \"c783-refuse\", \"c787-1\", \"c787-2\"]\n      },\n      {\n        \"text\": \"定作人不履行协助义务、工作成果不符合质量要求、报酬支付期限不明时的处理\",\n        \"rules\": [\"c778-1\", \"c778-2\", \"c778-3\", \"c781\", \"c782-1\", \"c782-2\", \"c782-3\", \"c780-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"承揽人按照定作人的要求完成工作、交付工作成果，定作人支付报酬\",\n        \"rules\": [\"c770-1\"]\n      },\n      {\n        \"text\": \"承揽工作属于加工、定作、修理、复制、测试、检验等工作\",\n        \"rules\": [\"c770-2\"]\n      },\n      {\n        \"text\": \"承揽工作需要定作人协助\",\n        \"rules\": [\"c778-1\"]\n      },\n      {\n        \"text\": \"定作人不履行协助义务致使承揽工作不能完成\",\n        \"rules\": [\"c778-2\", \"c778-3\"]\n      },\n      {\n        \"text\": \"承揽人将承揽的主要工作交由第三人完成\",\n        \"rules\": [\"c772-2a\", \"c772-2b\"]\n      },\n      {\n        \"text\": \"承揽人完成工作\",\n        \"rules\": [\"c780-1\"]\n      },\n      {\n        \"text\": \"工作成果已交付定作人\",\n        \"rules\": [\"c780-2\"]\n      },\n      {\n        \"text\": \"承揽人交付的工作成果不符合质量要求\",\n        \"rules\": [\"c781\"]\n      },\n      {\n        \"text\": \"对支付报酬的期限没有约定或者约定不明确，且依据第510条仍不能确定\",\n        \"rules\": [\"c782-2\", \"c782-3\"]\n      },\n      {\n        \"text\": \"定作人未向承揽人支付报酬或者材料费等价款\",\n        \"rules\": [\"c783-lien\", \"c783-refuse\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"当事人另有约定的，承揽人无须以自己的设备、技术和劳力完成主要工作\",\n        \"rules\": [\"c772-1\"]\n      },\n      {\n        \"text\": \"当事人另有约定（如约定排除留置权）的，承揽人不享有留置权或拒绝交付的权利\",\n        \"rules\": [\"c783-lien\", \"c783-refuse\"]\n      },\n      {\n        \"text\": \"承揽人将主要工作交由第三人完成未经定作人同意的，定作人可以解除合同\",\n        \"rules\": [\"c772-2b\"]\n      },\n      {\n        \"text\": \"定作人在承揽人完成工作前可以随时解除合同\",\n        \"rules\": [\"c787-1\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"承揽人将主要工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责\",\n        \"rules\": [\"c772-2a\"]\n      },\n      {\n        \"text\": \"定作人不履行协助义务致使承揽工作不能完成的，承揽人可以催告其在合理期限内履行并顺延履行期限；定作人逾期不履行的，承揽人可以解除合同\",\n        \"rules\": [\"c778-2\", \"c778-3\"]\n      },\n      {\n        \"text\": \"承揽人完成工作的，应当交付工作成果并提交必要的技术资料和有关质量证明；定作人应当验收该工作成果\",\n        \"rules\": [\"c780-1\", \"c780-2\"]\n      },\n      {\n        \"text\": \"工作成果不符合质量要求的，定作人可以合理选择请求修理、重作、减少报酬、赔偿损失等违约责任\",\n        \"rules\": [\"c781\"]\n      },\n      {\n        \"text\": \"定作人应当按照约定的期限支付报酬；期限不明且依第510条不能确定的，于交付工作成果时支付，工作成果部分交付的相应支付\",\n        \"rules\": [\"c782-1\", \"c782-2\", \"c782-3\"]\n      },\n      {\n        \"text\": \"定作人未支付报酬或者材料费等价款时，承揽人对完成的工作成果享有留置权，或者有权拒绝交付\",\n        \"rules\": [\"c783-lien\", \"c783-refuse\"]\n      },\n      {\n        \"text\": \"承揽人应当妥善保管定作人提供的材料以及完成的工作成果；因保管不善造成毁损、灭失的，应当承担赔偿责任\",\n        \"rules\": [\"c784-1\", \"c784-2\"]\n      },\n      {\n        \"text\": \"定作人在承揽人完成工作前可以随时解除合同，造成承揽人损失的，应当赔偿损失\",\n        \"rules\": [\"c787-1\", \"c787-2\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"定作人未付报酬或材料费等价款时，承揽人的拒绝交付权排除第780条的交付工作成果义务\",\n        \"rules\": [\"c783-refuse\"]\n      },\n      {\n        \"text\": \"定作人于承揽人完成工作前随时解除合同的，承揽人不再负交付工作成果的义务\",\n        \"rules\": [\"c787-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第771条关于承揽合同内容（标的、数量、质量、报酬、承揽方式、材料提供、履行期限、验收标准和方法等）的规定为提示性规定，不产生独立规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记所列共同承揽人连带责任、保密义务、接受定作人监督检查等义务，本行挂载法条未作规定，不写规则\",\n        \"rules\": []\n      },\n      {\n        \"text\": \"笔记强调留置权为法定担保物权，无须当事人特别约定，但可依第783条但书约定排除\",\n        \"rules\": [\"c783-lien\"]\n      },\n      {\n        \"text\": \"承揽合同区别于雇佣、买卖、委托合同：以依定作人要求完成并交付特定工作成果为目的，而非单纯提供劳务或交付现存物品\",\n        \"rules\": [\"c770-1\"]\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c770-1\",\n      \"srcs\": [\"art770-1\"],\n      \"body\": [\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"completesWorkPerRequirements(A,B,K)\",\n        \"deliversWorkResult(A,B,K)\",\n        \"paysRemuneration(B,A,K)\"\n      ],\n      \"heads\": [\"workContract(K)\"],\n      \"note\": \"承揽合同是承揽人按照定作人的要求完成工作、交付工作成果，定作人支付报酬的合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c770-2\",\n      \"srcs\": [\"art770-2\"],\n      \"body\": [\n        {\n          \"or\": [\n            \"processingWork(W)\",\n            \"customMakingWork(W)\",\n            \"repairWork(W)\",\n            \"duplicationWork(W)\",\n            \"testingWork(W)\",\n            \"inspectionWork(W)\"\n          ]\n        }\n      ],\n      \"heads\": [\"workType(W)\"],\n      \"note\": \"承揽包括加工、定作、修理、复制、测试、检验等工作（“等”为不完全列举）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c772-1\",\n      \"srcs\": [\"art772-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"~contractProvidesOtherwise(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": null,\n          \"content\": \"completeMainWorkPersonally(A,K)\"\n        }\n      ],\n      \"note\": \"承揽人应当以自己的设备、技术和劳力完成主要工作，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c772-2a\",\n      \"srcs\": [\"art772-2\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"entrustsMainWorkToThirdParty(A,T,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"beLiableForThirdPartyWorkResult(A,B,K)\"\n        }\n      ],\n      \"note\": \"承揽人将主要工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c772-2b\",\n      \"srcs\": [\"art772-2\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"entrustsMainWorkToThirdParty(A,T,K)\",\n        \"~consentedByClient(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"terminateContract(K)\"\n        }\n      ],\n      \"note\": \"未经定作人同意将主要工作交由第三人完成的，定作人也可以解除合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c778-1\",\n      \"srcs\": [\"art778-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"needsClientAssistance(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"assistContractor(B,K)\"\n        }\n      ],\n      \"note\": \"承揽工作需要定作人协助的，定作人有协助的义务\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c778-2\",\n      \"srcs\": [\"art778-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"failsToAssistCausingImpossibility(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"demandPerformanceAndExtendPeriod(A,B,K)\"\n        }\n      ],\n      \"note\": \"定作人不履行协助义务致使承揽工作不能完成的，承揽人可以催告其在合理期限内履行，并可以顺延履行期限\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c778-3\",\n      \"srcs\": [\"art778-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"failsToAssistCausingImpossibility(B,K)\",\n        \"stillNotPerformedAfterDemand(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"terminateContract(K)\"\n        }\n      ],\n      \"note\": \"定作人经催告后逾期仍不履行协助义务的，承揽人可以解除合同\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c780-1\",\n      \"srcs\": [\"art780-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"completedWork(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"deliverWorkResultAndDocuments(A,B,K)\"\n        }\n      ],\n      \"note\": \"承揽人完成工作的，应当向定作人交付工作成果，并提交必要的技术资料和有关质量证明\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c780-2\",\n      \"srcs\": [\"art780-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"workResultDelivered(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"inspectAndAcceptWorkResult(B,A,K)\"\n        }\n      ],\n      \"note\": \"定作人应当验收承揽人交付的工作成果\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c781\",\n      \"srcs\": [\"art781\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"workResultQualityNonConforming(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"chooseBreachRemedyForQualityDefect(B,A,K)\"\n        }\n      ],\n      \"note\": \"工作成果不符合质量要求的，定作人可以合理选择请求修理、重作、减少报酬、赔偿损失等违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c782-1\",\n      \"srcs\": [\"art782-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"agreedRemunerationPeriod(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payRemunerationOnAgreedTime(B,A,K)\"\n        }\n      ],\n      \"note\": \"定作人应当按照约定的期限支付报酬\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c782-2\",\n      \"srcs\": [\"art782-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"noAgreedOrUnclearRemunerationPeriod(K)\",\n        \"-determinablePerArt510(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payRemunerationOnDelivery(B,A,K)\"\n        }\n      ],\n      \"note\": \"支付报酬期限没有约定或约定不明确，依第510条仍不能确定的，定作人应当在承揽人交付工作成果时支付\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c782-3\",\n      \"srcs\": [\"art782-1\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"noAgreedOrUnclearRemunerationPeriod(K)\",\n        \"-determinablePerArt510(K)\",\n        \"partialDeliveryOfWorkResult(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"payRemunerationProRata(B,A,K)\"\n        }\n      ],\n      \"note\": \"工作成果部分交付的，定作人应当相应支付报酬\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c783-lien\",\n      \"srcs\": [\"art783\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"unpaidRemunerationOrMaterials(B,A,K)\",\n        \"~contractProvidesOtherwise(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"lienOnWorkResult(A,K)\"\n        }\n      ],\n      \"note\": \"定作人未支付报酬或者材料费等价款的，承揽人对完成的工作成果享有留置权，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c783-refuse\",\n      \"srcs\": [\"art783\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"unpaidRemunerationOrMaterials(B,A,K)\",\n        \"~contractProvidesOtherwise(K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"RIGHT\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"refuseToDeliverWorkResult(A,K)\"\n        }\n      ],\n      \"note\": \"定作人未支付报酬或者材料费等价款的，承揽人有权拒绝交付工作成果，当事人另有约定的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c784-1\",\n      \"srcs\": [\"art784\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"properlyKeepMaterialsAndWorkResult(A,B,K)\"\n        }\n      ],\n      \"note\": \"承揽人应当妥善保管定作人提供的材料以及完成的工作成果\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c784-2\",\n      \"srcs\": [\"art784\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"contractorOf(A,K)\",\n        \"clientOf(B,K)\",\n        \"poorCustodyCausesDamage(A,O,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"A\",\n          \"counterparty\": \"B\",\n          \"content\": \"compensate(A,B,K)\"\n        }\n      ],\n      \"note\": \"因保管不善造成定作人提供的材料或者工作成果毁损、灭失的，承揽人应当承担赔偿责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c787-1\",\n      \"srcs\": [\"art787\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"-completedWork(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"PERM\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"terminateContract(K)\"\n        }\n      ],\n      \"note\": \"定作人在承揽人完成工作前可以随时解除合同（任意解除权）\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c787-2\",\n      \"srcs\": [\"art787\"],\n      \"body\": [\n        \"workContract(K)\",\n        \"clientOf(B,K)\",\n        \"contractorOf(A,K)\",\n        \"exercisesTermination(B,K)\",\n        \"damage(A,K)\"\n      ],\n      \"heads\": [\n        {\n          \"type\": \"OBL\",\n          \"bearer\": \"B\",\n          \"counterparty\": \"A\",\n          \"content\": \"compensate(A,B,K)\"\n        }\n      ],\n      \"note\": \"定作人解除合同造成承揽人损失的，应当赔偿损失\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c783-refuse\", \"c780-1\", \"定作人未付报酬或材料费等价款时，承揽人的拒绝交付权排除第780条的交付工作成果义务\"],\n    [\"c787-1\", \"c780-1\", \"定作人在承揽人完成工作前随时解除合同的，承揽人不再负交付工作成果的义务\"]\n  ],\n  \"predicates\": {\n    \"workContract\": \"是承揽合同（参数：合同）\",\n    \"contractorOf\": \"是承揽人（承揽人，合同）\",\n    \"clientOf\": \"是定作人（定作人，合同）\",\n    \"completesWorkPerRequirements\": \"按照定作人的要求完成工作（承揽人，定作人，合同）\",\n    \"deliversWorkResult\": \"交付工作成果（承揽人，定作人，合同）\",\n    \"paysRemuneration\": \"支付报酬（定作人，承揽人，合同）\",\n    \"workType\": \"属于承揽的工作类型（工作）\",\n    \"processingWork\": \"加工\",\n    \"customMakingWork\": \"定作\",\n    \"repairWork\": \"修理\",\n    \"duplicationWork\": \"复制\",\n    \"testingWork\": \"测试\",\n    \"inspectionWork\": \"检验\",\n    \"entrustsMainWorkToThirdParty\": \"将承揽的主要工作交由第三人完成（承揽人，第三人，合同）\",\n    \"consentedByClient\": \"经定作人同意（定作人，合同）\",\n    \"needsClientAssistance\": \"承揽工作需要定作人协助（合同）\",\n    \"failsToAssistCausingImpossibility\": \"不履行协助义务致使承揽工作不能完成（定作人，合同）\",\n    \"completedWork\": \"已完成工作（承揽人，合同）\",\n    \"workResultDelivered\": \"工作成果已交付（承揽人，合同）\",\n    \"workResultQualityNonConforming\": \"交付的工作成果不符合质量要求（承揽人，合同）\",\n    \"agreedRemunerationPeriod\": \"对支付报酬的期限有明确约定（合同）\",\n    \"noAgreedOrUnclearRemunerationPeriod\": \"对支付报酬的期限没有约定或者约定不明确（合同）\",\n    \"partialDeliveryOfWorkResult\": \"工作成果部分交付（合同）\",\n    \"unpaidRemunerationOrMaterials\": \"未支付报酬或者材料费等价款（定作人，承揽人，合同）\",\n    \"poorCustodyCausesDamage\": \"因保管不善造成毁损、灭失（承揽人，保管的材料或工作成果，合同）\",\n    \"exercisesTermination\": \"行使合同解除权（当事人，合同）\"\n  }\n}"
+ }
+}

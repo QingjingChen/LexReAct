@@ -1,0 +1,693 @@
+{
+ "art:1040": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "婚姻家庭编的调整范围：因婚姻家庭产生的民事关系",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该民事关系因婚姻家庭而产生（即基于婚姻、亲子、其他亲属等家庭身份关系而发生）",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "属于婚姻家庭编调整范围的民事关系，适用本编规定；本条为宣示性、范围性条款，本身不产生具体权利义务，具体规则由本编其他条文规定",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条与总则编关于民法调整对象（人身关系、财产关系）的规定相衔接：婚姻家庭编所调整的是其中因婚姻家庭产生的人身关系和财产关系，而非全部民事关系",
+     "rules": []
+    },
+    {
+     "text": "笔记与 LEGO 卡片均未提供本条材料，故不作扩张解释；本条不含但书与例外，无需设置优先关系",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1041": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "婚姻家庭受国家保护，以及婚姻家庭领域实行的基本制度与对特定主体合法权益的保护，是否可作为裁判依据",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "婚姻家庭受国家保护（宣示性规定，不产生具体请求权）",
+     "rules": []
+    },
+    {
+     "text": "实行婚姻自由、一夫一妻、男女平等的婚姻制度（婚姻家庭编的基本原则）",
+     "rules": []
+    },
+    {
+     "text": "保护妇女、未成年人、老年人、残疾人的合法权益（对特定主体的保护性宣示，具体保护规则见本编及其他法律的特别规定）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条三款均为宣示性、原则性规定，不直接设定构成要件与法律效果，故不形式化为可废止规则；违反婚姻自由、一夫一妻、男女平等等原则的具体后果，由本编其他条文（如禁止重婚、禁止家庭暴力、无效婚姻与可撤销婚姻等）以及特别保护规定承担",
+     "rules": []
+    },
+    {
+     "text": "第3款对妇女、未成年人、老年人、残疾人的保护属概括性宣示，与针对上述主体的特别规定（特别法、特别条款）并存时，应适用特别规定，本条仅具价值指引作用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1044": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "收养应当遵循何种原则，以及借收养名义买卖未成年人是否被禁止",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "本条为原则性、宣示性规定，不设可形式化的构成要件；收养关系的具体成立条件由收养编其他条文规定",
+     "rules": []
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "收养应当遵循最有利于被收养人的原则，保障被收养人和收养人的合法权益",
+     "rules": []
+    },
+    {
+     "text": "禁止借收养名义买卖未成年人",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条属于原则性、宣示性条款，不产生构成性结论或可废止的道义结论，故不写规则，rules 为空列表；违反第2款禁止性规定的行为，其效力与责任依收养编其他条文及总则关于无效民事法律行为的规定处理",
+     "rules": []
+    },
+    {
+     "text": "本行笔记未引用原文或条号，亦无 LEGO 卡片可供参考，故本卡片仅以法条原文为准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1042": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "婚姻家庭领域禁止哪些行为：包办、买卖婚姻及其他干涉婚姻自由的行为，借婚姻索取财物，重婚，有配偶者与他人同居，家庭暴力，家庭成员间的虐待和遗弃",
+     "rules": [
+      "c1042-1a",
+      "c1042-1b",
+      "c1042-2a",
+      "c1042-2b",
+      "c1042-3a",
+      "c1042-3b",
+      "c1042-3c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人与相对方均为自然人；干涉婚姻自由指向当事人的结婚、离婚自由，借婚姻索取财物指向以婚姻为条件的财产给付",
+     "rules": [
+      "c1042-1a",
+      "c1042-1b"
+     ]
+    },
+    {
+     "text": "重婚以行为人已有配偶为必要；有配偶者与他人同居亦以行为人存在配偶为前提，且同居对象为配偶以外的人",
+     "rules": [
+      "c1042-2a",
+      "c1042-2b"
+     ]
+    },
+    {
+     "text": "家庭暴力、虐待、遗弃须发生在家庭成员之间，受害方为家庭成员",
+     "rules": [
+      "c1042-3a",
+      "c1042-3b",
+      "c1042-3c"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "禁止包办、买卖婚姻和其他干涉婚姻自由的行为",
+     "rules": [
+      "c1042-1a"
+     ]
+    },
+    {
+     "text": "禁止借婚姻索取财物",
+     "rules": [
+      "c1042-1b"
+     ]
+    },
+    {
+     "text": "禁止重婚",
+     "rules": [
+      "c1042-2a"
+     ]
+    },
+    {
+     "text": "禁止有配偶者与他人同居",
+     "rules": [
+      "c1042-2b"
+     ]
+    },
+    {
+     "text": "禁止家庭暴力",
+     "rules": [
+      "c1042-3a"
+     ]
+    },
+    {
+     "text": "禁止家庭成员间的虐待和遗弃",
+     "rules": [
+      "c1042-3b",
+      "c1042-3c"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是禁止性规范，本身不规定法律后果；重婚的婚姻无效依第1051条，家庭暴力、虐待、遗弃是判决离婚的法定事由（第1079条）和离婚损害赔偿事由（第1091条）",
+     "rules": []
+    },
+    {
+     "text": "学理上，按当地习俗给付彩礼不属于“借婚姻索取财物”；但以结婚为条件强行索要财物、数额明显超出习俗的，落入本条第1款后段禁止范围",
+     "rules": []
+    },
+    {
+     "text": "学理上，持续性、经常性的家庭暴力构成虐待，故同一行为可同时落入第3款前段与后段；遗弃以行为人负有扶养、赡养、扶养义务为前提",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1042-1a",
+    "srcs": [
+     "art1042-1"
+    ],
+    "body": [
+     "naturalPerson(A)",
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "interferesWithMarriageFreedom(A,P)"
+     }
+    ],
+    "note": "禁止包办婚姻、买卖婚姻和其他干涉婚姻自由的行为（行为人，被干涉的当事人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-1b",
+    "srcs": [
+     "art1042-1"
+    ],
+    "body": [
+     "naturalPerson(A)",
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "extortsPropertyThroughMarriage(A,P)"
+     }
+    ],
+    "note": "禁止借婚姻索取财物（行为人，给付财物的一方）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-2a",
+    "srcs": [
+     "art1042-2"
+    ],
+    "body": [
+     "naturalPerson(A)",
+     "spouseOf(S,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "commitsBigamy(A)"
+     }
+    ],
+    "note": "禁止重婚，即已有配偶者又与他人结婚（A 有配偶 S）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-2b",
+    "srcs": [
+     "art1042-2"
+    ],
+    "body": [
+     "spouseOf(S,A)",
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "cohabitsWithOther(A,P)"
+     }
+    ],
+    "note": "禁止有配偶者与他人同居（A 有配偶 S，仍与配偶以外的 P 同居）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-3a",
+    "srcs": [
+     "art1042-3"
+    ],
+    "body": [
+     "familyMember(V,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "commitsDomesticViolence(A,V)"
+     }
+    ],
+    "note": "禁止家庭暴力（行为人，受害家庭成员）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-3b",
+    "srcs": [
+     "art1042-3"
+    ],
+    "body": [
+     "familyMember(V,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "abusesFamilyMember(A,V)"
+     }
+    ],
+    "note": "禁止家庭成员间的虐待（行为人，受害家庭成员）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1042-3c",
+    "srcs": [
+     "art1042-3"
+    ],
+    "body": [
+     "familyMember(V,A)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "abandonsFamilyMember(A,V)"
+     }
+    ],
+    "note": "禁止家庭成员间的遗弃（行为人，被遗弃的家庭成员）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "interferesWithMarriageFreedom/2": "实施包办婚姻、买卖婚姻或其他干涉婚姻自由的行为（行为人，被干涉的当事人）",
+   "interferesWithMarriageFreedom": "实施包办婚姻、买卖婚姻或其他干涉婚姻自由的行为（行为人，被干涉的当事人）",
+   "extortsPropertyThroughMarriage/2": "借婚姻索取财物（行为人，给付财物的一方）",
+   "extortsPropertyThroughMarriage": "借婚姻索取财物（行为人，给付财物的一方）",
+   "commitsBigamy/1": "重婚，即已有配偶又与他人结婚（行为人）",
+   "commitsBigamy": "重婚，即已有配偶又与他人结婚（行为人）",
+   "cohabitsWithOther/2": "有配偶者与配偶以外的人同居（行为人，同居对象）",
+   "cohabitsWithOther": "有配偶者与配偶以外的人同居（行为人，同居对象）",
+   "commitsDomesticViolence/2": "实施家庭暴力（行为人，受害家庭成员）",
+   "commitsDomesticViolence": "实施家庭暴力（行为人，受害家庭成员）",
+   "abusesFamilyMember/2": "虐待家庭成员（行为人，受害家庭成员）",
+   "abusesFamilyMember": "虐待家庭成员（行为人，受害家庭成员）",
+   "abandonsFamilyMember/2": "遗弃家庭成员（行为人，被遗弃的家庭成员）",
+   "abandonsFamilyMember": "遗弃家庭成员（行为人，被遗弃的家庭成员）",
+   "familyMember/2": "是家庭成员（成员，相对人）",
+   "familyMember": "是家庭成员（成员，相对人）"
+  }
+ },
+ "card:g6441": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "亲属、近亲属与家庭成员的范围如何界定，亲属分为哪些种类",
+     "rules": [
+      "c1045-1",
+      "c1045-2",
+      "c1045-3a",
+      "c1045-3b"
+     ]
+    },
+    {
+     "text": "第1043条关于树立优良家风、夫妻互相忠实尊重关爱、家庭成员敬老爱幼、维护平等和睦文明婚姻家庭关系的倡导性规定，不产生具体请求权",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "亲属因婚姻、血缘或法律拟制而产生，包括配偶、血亲和姻亲三类；血亲又分自然血亲与拟制血亲",
+     "rules": [
+      "c1045-1",
+      "c1045-blood",
+      "c1045-natural",
+      "c1045-fictitious",
+      "c1045-affinity"
+     ]
+    },
+    {
+     "text": "近亲属限于配偶、父母、子女、兄弟姐妹、祖父母、外祖父母、孙子女、外孙子女",
+     "rules": [
+      "c1045-2"
+     ]
+    },
+    {
+     "text": "家庭成员为配偶、父母、子女，以及其他共同生活的近亲属",
+     "rules": [
+      "c1045-3a",
+      "c1045-3b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "配偶本身不属于姻亲；姻亲仅指配偶一方与对方血亲之间的亲属关系",
+     "rules": [
+      "c1045-affinity-excl"
+     ]
+    },
+    {
+     "text": "仅具近亲属身份但未与其共同生活者，不构成家庭成员",
+     "rules": [
+      "c1045-3b",
+      "c1045-dist"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合第1045条第2款列举者为近亲属，取得婚姻家庭编上的近亲属地位",
+     "rules": [
+      "c1045-2"
+     ]
+    },
+    {
+     "text": "家庭成员一定是近亲属，但近亲属不一定是家庭成员",
+     "rules": [
+      "c1045-dist"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "配偶身份排除姻亲认定，“配偶不属姻亲”优先于姻亲的认定规则",
+     "rules": [
+      "c1045-affinity-excl"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记提到的禁婚亲范围（直系血亲或者三代以内的旁系血亲禁止结婚）规定在第1048条，本条未涉及",
+     "rules": []
+    },
+    {
+     "text": "笔记关于直系血亲与旁系血亲、直系姻亲与旁系姻亲的划分以及亲等世代计算法，属学理阐释，条文未作规定",
+     "rules": []
+    },
+    {
+     "text": "笔记强调亲属的身份性（身份称谓不得随意变更或解除）与亲属间权利义务的法定性（不得以约定改变或放弃），条文未设相应规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1045-1",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "spouseOf(X,Y)",
+       "bloodRelativeOf(X,Y)",
+       "affinityOf(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "relative(X)"
+    ],
+    "note": "亲属包括配偶、血亲和姻亲三类",
+    "auth": "npc"
+   },
+   {
+    "key": "c1045-blood",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalBloodRelativeOf(X,Y)",
+       "fictitiousBloodRelativeOf(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "bloodRelativeOf(X,Y)"
+    ],
+    "note": "笔记：血亲包括自然血亲与拟制血亲，条文仅列举“血亲”而未细分",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1045-natural",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "biologicalChild(X,Y)",
+       "biologicalParent(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "naturalBloodRelativeOf(X,Y)"
+    ],
+    "note": "笔记：自然血亲因出生而形成，婚生、非婚生及全血缘、半血缘均同",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1045-fictitious",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "adoptedChild(X,Y)",
+       "adoptiveParent(X,Y)",
+       "stepchildWithSupport(X,Y)",
+       "stepparentWithSupport(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "fictitiousBloodRelativeOf(X,Y)"
+    ],
+    "note": "笔记：拟制血亲包括因收养形成的血亲和有扶养关系的继父母子女",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1045-affinity",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     "spouseOf(X,Y)",
+     "bloodRelativeOf(Z,Y)"
+    ],
+    "heads": [
+     "affinityOf(X,Z)"
+    ],
+    "note": "笔记：姻亲以婚姻为中介，指配偶一方与对方血亲之间的亲属关系",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1045-affinity-excl",
+    "srcs": [
+     "art1045-1"
+    ],
+    "body": [
+     "spouseOf(X,Y)"
+    ],
+    "heads": [
+     "-affinityOf(X,Y)"
+    ],
+    "note": "笔记：配偶本身不在姻亲之列，故配偶之间不认定为姻亲",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1045-2",
+    "srcs": [
+     "art1045-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "spouseOf(X,Y)",
+       "parentOf(X,Y)",
+       "childOf(X,Y)",
+       "siblingOf(X,Y)",
+       "grandparentOf(X,Y)",
+       "grandchildOf(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "closeRelative(X)"
+    ],
+    "note": "配偶、父母、子女、兄弟姐妹、祖父母、外祖父母、孙子女、外孙子女为近亲属",
+    "auth": "npc"
+   },
+   {
+    "key": "c1045-3a",
+    "srcs": [
+     "art1045-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "spouseOf(X,Y)",
+       "parentOf(X,Y)",
+       "childOf(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "coreFamilyMember(X)",
+     "familyMember(X)"
+    ],
+    "note": "配偶、父母、子女为家庭成员，且属第3款列举的核心家庭成员",
+    "auth": "npc"
+   },
+   {
+    "key": "c1045-3b",
+    "srcs": [
+     "art1045-3"
+    ],
+    "body": [
+     "closeRelative(X)",
+     "cohabitsWith(X,Y)",
+     "-coreFamilyMember(X)"
+    ],
+    "heads": [
+     "familyMember(X)"
+    ],
+    "note": "配偶、父母、子女以外的其他近亲属，须共同生活方为家庭成员",
+    "auth": "npc"
+   },
+   {
+    "key": "c1045-dist",
+    "srcs": [
+     "art1045-3"
+    ],
+    "body": [
+     "familyMember(X)"
+    ],
+    "heads": [
+     "closeRelative(X)"
+    ],
+    "note": "笔记：家庭成员一定是近亲属，但近亲属不一定是家庭成员",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1045-affinity-excl",
+    "c1045-affinity",
+    "配偶虽为亲属，但配偶本身不在姻亲之列，故排除姻亲认定"
+   ]
+  ],
+  "predicates": {
+   "relative": "是亲属（因婚姻、血缘或法律拟制而产生的社会关系中的一方），1个参数",
+   "bloodRelativeOf": "是……的血亲（参数1：血亲；参数2：相对人），2个参数",
+   "naturalBloodRelativeOf": "是……的自然血亲（因出生而具有真实血缘联系，参数1：血亲；参数2：相对人），2个参数",
+   "fictitiousBloodRelativeOf": "是……的拟制血亲（本无血缘但法律确认与血亲相同的权利义务，参数1：血亲；参数2：相对人），2个参数",
+   "affinityOf": "是……的姻亲（以婚姻为中介，配偶一方与对方血亲之间的亲属关系，参数1：姻亲；参数2：相对人），2个参数",
+   "closeRelative": "是近亲属，1个参数",
+   "grandchildOf": "是孙子女、外孙子女（参数1：孙辈；参数2：祖辈），2个参数",
+   "coreFamilyMember": "是配偶、父母或子女（第1045条第3款列举的核心家庭成员），1个参数",
+   "familyMember": "是家庭成员，1个参数",
+   "cohabitsWith": "与……共同生活（同居一家共同生活），2个参数"
+  }
+ }
+}

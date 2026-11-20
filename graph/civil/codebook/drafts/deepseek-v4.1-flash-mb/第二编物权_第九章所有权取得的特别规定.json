@@ -1,0 +1,1691 @@
+{
+ "card:g0373": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为非法人组织，其包括哪些具体类型",
+     "rules": [
+      "c102-1",
+      "c102-2"
+     ]
+    },
+    {
+     "text": "主物转让时，从物是否随同转让",
+     "rules": [
+      "c320-1",
+      "c320-exc"
+     ]
+    },
+    {
+     "text": "天然孳息与法定孳息分别由谁取得",
+     "rules": [
+      "c321-1",
+      "c321-2",
+      "c321-3",
+      "c321-4",
+      "c321-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不具有法人资格，但能够依法以自己的名义从事民事活动的组织",
+     "rules": [
+      "c102-1"
+     ]
+    },
+    {
+     "text": "个人独资企业、合伙企业、不具有法人资格的专业服务机构等",
+     "rules": [
+      "c102-2"
+     ]
+    },
+    {
+     "text": "主物已转让给受让人，且该物为某从物所从属的主物",
+     "rules": [
+      "c320-1"
+     ]
+    },
+    {
+     "text": "标的为天然孳息，且存在该物的所有权人；同一物上既有所有权人又有用益物权人",
+     "rules": [
+      "c321-1",
+      "c321-2"
+     ]
+    },
+    {
+     "text": "标的为法定孳息，当事人有约定，或者没有约定、约定不明确",
+     "rules": [
+      "c321-4",
+      "c321-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人就从物是否随主物转让另有约定的，从物不随主物转让",
+     "rules": [
+      "c320-exc"
+     ]
+    },
+    {
+     "text": "当事人就天然孳息归属另有约定的，按约定取得，排除法定归属规则",
+     "rules": [
+      "c321-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "非法人组织属于民事主体，得以自己的名义从事民事活动",
+     "rules": [
+      "c102-1"
+     ]
+    },
+    {
+     "text": "从物随主物一并转让给同一受让人",
+     "rules": [
+      "c320-1"
+     ]
+    },
+    {
+     "text": "天然孳息由所有权人取得；既有所有权人又有用益物权人的，由用益物权人取得",
+     "rules": [
+      "c321-1",
+      "c321-2"
+     ]
+    },
+    {
+     "text": "法定孳息按当事人约定取得；没有约定或约定不明确的，按交易习惯取得",
+     "rules": [
+      "c321-4",
+      "c321-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人另有约定优先于“从物随主物转让”的法定规则（意思自治优先）",
+     "rules": [
+      "c320-exc"
+     ]
+    },
+    {
+     "text": "同一物上既有所有权人又有用益物权人时，用益物权人取得天然孳息优先于所有权人取得的一般规则",
+     "rules": [
+      "c321-2"
+     ]
+    },
+    {
+     "text": "当事人关于孳息归属的约定优先于法定归属规则",
+     "rules": [
+      "c321-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：民法中的主体是法律承认的、可成为主体的潜在资格，民事法律关系的主体则是具体参与某一法律关系者；第102条只界定非法人组织这一主体类型，笔记将民事主体归纳为自然人、法人和非法人组织（国家、集体在特定场合亦为主体）",
+     "rules": [
+      "c102-doctrine"
+     ]
+    },
+    {
+     "text": "笔记：主物与从物须为同一人所有，且需共同使用才能更好发挥效用，区别于原物与孳息的派生关系；第320条仅规定主物转让时从物的命运",
+     "rules": [
+      "c320-sameOwner"
+     ]
+    },
+    {
+     "text": "笔记：天然孳息依物的自然属性产生（与原物分离），法定孳息依法律关系产生（利息、租金等）；第321条分两款分别规定二者的归属",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c102-1",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     "organization(O)",
+     "-legalPerson(O)",
+     "conductsCivilActivityInOwnName(O)"
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "非法人组织：不具有法人资格，但能够依法以自己的名义从事民事活动的组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-2",
+    "srcs": [
+     "art102-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "soleProprietorship(O)",
+       "partnership(O)",
+       "professionalServiceOrgWithoutLegalPerson(O)"
+      ]
+     }
+    ],
+    "heads": [
+     "unincorporatedOrganization(O)"
+    ],
+    "note": "非法人组织包括个人独资企业、合伙企业、不具有法人资格的专业服务机构等",
+    "auth": "npc"
+   },
+   {
+    "key": "c102-doctrine",
+    "srcs": [
+     "art102-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "naturalPerson(P)",
+       "legalPerson(P)",
+       "unincorporatedOrganization(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "civilSubject(P)"
+    ],
+    "note": "笔记归纳：民事主体主要包括自然人、法人和非法人组织（国家、集体在特定场合亦为主体）；法条未作此列举，属学理总结",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c320-1",
+    "srcs": [
+     "art320-1"
+    ],
+    "body": [
+     "principalThing(P)",
+     "accessoryOf(A,P)",
+     "transferredTo(P,X)",
+     "~agreedOtherwiseOnAccessory(A)"
+    ],
+    "heads": [
+     "transferredTo(A,X)"
+    ],
+    "note": "主物转让的，从物随主物转让给同一受让人，但当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c320-exc",
+    "srcs": [
+     "art320-1"
+    ],
+    "body": [
+     "principalThing(P)",
+     "accessoryOf(A,P)",
+     "transferredTo(P,X)",
+     "agreedOtherwiseOnAccessory(A)"
+    ],
+    "heads": [
+     "-transferredTo(A,X)"
+    ],
+    "note": "当事人就从物是否随主物转让另有约定的，从物不随主物转让",
+    "auth": "npc"
+   },
+   {
+    "key": "c320-sameOwner",
+    "srcs": [
+     "art320-1"
+    ],
+    "body": [
+     "accessoryOf(A,P)"
+    ],
+    "heads": [
+     "sameOwner(A,P)"
+    ],
+    "note": "笔记：主物与从物须为同一人所有，且需共同使用才能更好发挥效用；法条未明文，属学理对主从物关系的界定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c321-1",
+    "srcs": [
+     "art321-1"
+    ],
+    "body": [
+     "naturalFruit(F)",
+     "ownerOf(O,F)",
+     "~agreedOtherwiseOnFruit(F)"
+    ],
+    "heads": [
+     "acquiresNaturalFruit(O,F)"
+    ],
+    "note": "天然孳息由所有权人取得，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c321-2",
+    "srcs": [
+     "art321-1"
+    ],
+    "body": [
+     "naturalFruit(F)",
+     "ownerOf(O,F)",
+     "usufructuaryOf(U,F)",
+     "~agreedOtherwiseOnFruit(F)"
+    ],
+    "heads": [
+     "acquiresNaturalFruit(U,F)"
+    ],
+    "note": "同一物上既有所有权人又有用益物权人的，天然孳息由用益物权人取得",
+    "auth": "npc"
+   },
+   {
+    "key": "c321-3",
+    "srcs": [
+     "art321-1"
+    ],
+    "body": [
+     "naturalFruit(F)",
+     "agreedFruitRecipient(F,R)"
+    ],
+    "heads": [
+     "acquiresNaturalFruit(R,F)"
+    ],
+    "note": "天然孳息的归属，当事人另有约定的，按照其约定取得",
+    "auth": "npc"
+   },
+   {
+    "key": "c321-4",
+    "srcs": [
+     "art321-2"
+    ],
+    "body": [
+     "legalFruit(F)",
+     "agreedFruitRecipient(F,R)"
+    ],
+    "heads": [
+     "acquiresLegalFruit(R,F)"
+    ],
+    "note": "法定孳息，当事人有约定的，按照约定取得",
+    "auth": "npc"
+   },
+   {
+    "key": "c321-5",
+    "srcs": [
+     "art321-2"
+    ],
+    "body": [
+     "legalFruit(F)",
+     "noAgreementOrUnclearOnFruit(F)",
+     "tradeUsageAllocatesFruit(F,R)"
+    ],
+    "heads": [
+     "acquiresLegalFruit(R,F)"
+    ],
+    "note": "法定孳息没有约定或者约定不明确的，按照交易习惯取得",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c320-exc",
+    "c320-1",
+    "当事人另有约定优先于“从物随主物转让”的法定规则（意思自治优先）"
+   ],
+   [
+    "c321-2",
+    "c321-1",
+    "同一物上既有所有权人又有用益物权人时，天然孳息归用益物权人取得，优先于归所有权人取得的一般规则"
+   ],
+   [
+    "c321-3",
+    "c321-1",
+    "当事人就天然孳息归属另有约定的，约定优先于法定归属规则"
+   ],
+   [
+    "c321-3",
+    "c321-2",
+    "当事人就天然孳息归属另有约定的，约定优先于用益物权人取得规则"
+   ]
+  ],
+  "predicates": {
+   "unincorporatedOrganization": "是非法人组织",
+   "soleProprietorship": "是个人独资企业",
+   "partnership": "是合伙企业",
+   "professionalServiceOrgWithoutLegalPerson": "是不具有法人资格的专业服务机构",
+   "principalThing": "是主物",
+   "accessoryOf": "是从物，从属于主物（参数1：从物，参数2：主物）",
+   "transferredTo": "已转让给（参数1：物，参数2：受让人）",
+   "agreedOtherwiseOnAccessory": "当事人就从物是否随主物转让另有约定",
+   "sameOwner": "主物与从物同属一人所有（参数1：从物，参数2：主物）",
+   "naturalFruit": "是天然孳息",
+   "legalFruit": "是法定孳息",
+   "ownerOf": "是所有权人（参数1：所有权人，参数2：物）",
+   "usufructuaryOf": "是用益物权人（参数1：用益物权人，参数2：物）",
+   "acquiresNaturalFruit": "取得天然孳息（参数1：取得人，参数2：孳息）",
+   "acquiresLegalFruit": "取得法定孳息（参数1：取得人，参数2：孳息）",
+   "agreedOtherwiseOnFruit": "当事人就孳息归属另有约定",
+   "agreedFruitRecipient": "约定由某人取得孳息（参数1：孳息，参数2：约定取得人）",
+   "noAgreementOrUnclearOnFruit": "就孳息归属没有约定或者约定不明确",
+   "tradeUsageAllocatesFruit": "依交易习惯由某人取得孳息（参数1：孳息，参数2：取得人）"
+  }
+ },
+ "card:g2593": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "无处分权人将不动产或者动产转让给受让人时，受让人在何种条件下取得所有权，原所有权人能否追回",
+     "rules": [
+      "c311-recover",
+      "c311-1"
+     ]
+    },
+    {
+     "text": "善意受让人取得动产所有权后，该动产上的原有权利是否消灭",
+     "rules": [
+      "c313-1"
+     ]
+    },
+    {
+     "text": "遗失物、漂流物、埋藏物、隐藏物的归属及法律适用",
+     "rules": [
+      "c318-1",
+      "c319-1",
+      "c319-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受让人受让该不动产或者动产时是善意；以合理的价格转让；转让的不动产或者动产依照法律规定应当登记的已经登记，不需要登记的已经交付给受让人",
+     "rules": [
+      "c311-1"
+     ]
+    },
+    {
+     "text": "遗失物自发布招领公告之日起一年内无人认领",
+     "rules": [
+      "c318-1"
+     ]
+    },
+    {
+     "text": "拾得漂流物、发现埋藏物或者隐藏物",
+     "rules": [
+      "c319-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，不适用善意取得（如遗失物、盗赃物等特别规定）",
+     "rules": [
+      "c311-1"
+     ]
+    },
+    {
+     "text": "善意受让人在受让时知道或者应当知道该动产上的原有权利的，原有权利不消灭",
+     "rules": [
+      "c313-1"
+     ]
+    },
+    {
+     "text": "法律对拾得漂流物、发现埋藏物或者隐藏物另有规定的，依照其规定，不参照适用拾得遗失物的规定",
+     "rules": [
+      "c319-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合善意取得要件的，受让人取得该不动产或者动产的所有权，原所有权人丧失所有权",
+     "rules": [
+      "c311-1"
+     ]
+    },
+    {
+     "text": "受让人依法取得所有权的，原所有权人有权向无处分权人请求损害赔偿（可与违约、侵权、不当得利等请求权竞合）",
+     "rules": [
+      "c311-2"
+     ]
+    },
+    {
+     "text": "当事人善意取得其他物权的，参照适用善意取得所有权的前两款规定",
+     "rules": [
+      "c311-3"
+     ]
+    },
+    {
+     "text": "善意受让人取得动产后，该动产上的原有权利消灭（原始取得）",
+     "rules": [
+      "c313-1"
+     ]
+    },
+    {
+     "text": "遗失物自发布招领公告之日起一年内无人认领的，归国家所有",
+     "rules": [
+      "c318-1"
+     ]
+    },
+    {
+     "text": "拾得漂流物、发现埋藏物或者隐藏物的，参照适用拾得遗失物的有关规定",
+     "rules": [
+      "c319-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "符合善意取得要件的，受让人取得所有权优先于原所有权人的追回权",
+     "rules": [
+      "c311-1",
+      "c311-recover"
+     ]
+    },
+    {
+     "text": "法律对漂流物、埋藏物、隐藏物另有规定的，优先于参照适用拾得遗失物的规定",
+     "rules": [
+      "c319-2",
+      "c319-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第312条遗失物善意取得（权利人二年内请求返还、经拍卖或者向具有经营资格的经营者购得时须支付费用）是特别规定，本行未挂载；LEGO 卡片所称“两年时效”属第312条，不在第311条",
+     "rules": []
+    },
+    {
+     "text": "笔记例：乙无权处分与丙订立的买卖合同有效，丙善意取得古籍所有权，甲可请求乙承担侵权责任、违约责任或返还不当得利；合同效力与物权变动相区分，该结论依合同编，不在本条",
+     "rules": []
+    },
+    {
+     "text": "第313条仅适用于动产，且属原始取得，其“原有权利消灭”以受让人不知该权利为限",
+     "rules": [
+      "c313-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c311-recover",
+    "srcs": [
+     "art311-1"
+    ],
+    "body": [
+     "transfersWithoutAuthority(D,B,T)",
+     "ownerOf(O,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "D",
+      "content": "claimPropertyReturn(O,T)"
+     }
+    ],
+    "note": "无处分权人将不动产或者动产转让给受让人的，所有权人有权追回（受善意取得规则排除）",
+    "auth": "npc"
+   },
+   {
+    "key": "c311-1",
+    "srcs": [
+     "art311-1"
+    ],
+    "body": [
+     "transfersWithoutAuthority(D,B,T)",
+     "ownerOf(O,T)",
+     "inGoodFaith(B,T)",
+     "paidReasonablePrice(B,T)",
+     {
+      "or": [
+       "transferRegistered(T)",
+       "transferNotRequiringRegistration(T) delivered(T)"
+      ]
+     },
+     "~lawProvidesOtherwiseOnAcquisition(T)"
+    ],
+    "heads": [
+     "acquiresOwnership(B,T)",
+     "losesOwnership(O,T)"
+    ],
+    "note": "除法律另有规定外，受让人受让时善意、以合理价格受让，应登记的已登记、不需登记的已交付的，取得所有权，原所有权人丧失所有权",
+    "auth": "npc"
+   },
+   {
+    "key": "c311-2",
+    "srcs": [
+     "art311-2"
+    ],
+    "body": [
+     "acquiresOwnership(B,T)",
+     "ownerOf(O,T)",
+     "transfersWithoutAuthority(D,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "D",
+      "content": "claimCompensationFrom(O,D,T)"
+     }
+    ],
+    "note": "受让人依善意取得取得所有权的，原所有权人有权向无处分权人请求损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c311-3",
+    "srcs": [
+     "art311-3"
+    ],
+    "body": [
+     "acquiresOtherRealRight(B,T)"
+    ],
+    "heads": [
+     "applyBonaFideAcquisitionRules(B,T)"
+    ],
+    "note": "当事人善意取得其他物权的，参照适用前两款关于善意取得所有权及其损害赔偿的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c313-1",
+    "srcs": [
+     "art313"
+    ],
+    "body": [
+     "acquiresOwnership(B,T)",
+     "movable(T)",
+     "~knewOrShouldKnowPriorRight(B,T)"
+    ],
+    "heads": [
+     "priorRightExtinguished(T)"
+    ],
+    "note": "善意受让人取得动产后该动产上的原有权利消灭；但受让时知道或者应当知道该权利的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c318-1",
+    "srcs": [
+     "art318"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "announcementPublished(T)",
+     "unclaimedWithinOneYear(T)"
+    ],
+    "heads": [
+     "belongsTo(T,state)"
+    ],
+    "note": "遗失物自发布招领公告之日起一年内无人认领的，归国家所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c319-1",
+    "srcs": [
+     "art319"
+    ],
+    "body": [
+     {
+      "or": [
+       "driftwood(T)",
+       "buriedOrHiddenObject(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyLostPropertyRules(T)"
+    ],
+    "note": "拾得漂流物、发现埋藏物或者隐藏物的，参照适用拾得遗失物的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c319-2",
+    "srcs": [
+     "art319"
+    ],
+    "body": [
+     {
+      "or": [
+       "driftwood(T)",
+       "buriedOrHiddenObject(T)"
+      ]
+     },
+     "lawProvidesOtherwise(T)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(T)"
+    ],
+    "note": "法律对漂流物、埋藏物、隐藏物另有规定的，依照其规定处理，不参照适用拾得遗失物的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c311-1",
+    "c311-recover",
+    "符合善意取得要件的，受让人取得所有权，原所有权人不得再追回"
+   ],
+   [
+    "c319-2",
+    "c319-1",
+    "法律另有规定的，依照其规定，优先于参照适用拾得遗失物的规定"
+   ]
+  ],
+  "predicates": {
+   "transfersWithoutAuthority": "无处分权人将不动产或者动产转让给受让人（转让人，受让人，标的物）",
+   "ownerOf": "是标的物的所有权人（原所有权人，标的物）",
+   "transferRegistered": "转让的不动产或者动产已依法办理登记（标的物）",
+   "transferNotRequiringRegistration": "该不动产或者动产的转让依照法律规定不需要登记（标的物）",
+   "lawProvidesOtherwiseOnAcquisition": "法律对善意取得另有规定（标的物）",
+   "acquiresOwnership": "取得标的物的所有权（受让人，标的物）",
+   "losesOwnership": "原所有权人丧失所有权（原所有权人，标的物）",
+   "acquiresOtherRealRight": "取得其他物权（受让人，标的物）",
+   "applyBonaFideAcquisitionRules": "参照适用第311条第1款、第2款关于善意取得的规定（受让人，标的物）",
+   "knewOrShouldKnowPriorRight": "受让时知道或者应当知道该动产上的原有权利（受让人，标的物）",
+   "priorRightExtinguished": "该动产上的原有权利消灭（标的物）",
+   "lostProperty": "是遗失物（标的物）",
+   "announcementPublished": "已发布招领公告（标的物）",
+   "unclaimedWithinOneYear": "自发布招领公告之日起一年内无人认领（标的物）",
+   "driftwood": "是漂流物（标的物）",
+   "buriedOrHiddenObject": "是埋藏物或者隐藏物（标的物）",
+   "applyLostPropertyRules": "参照适用拾得遗失物的有关规定（标的物）"
+  }
+ },
+ "card:g2524": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "拾得遗失物后，拾得人、有关部门负有哪些返还、通知、送交、保管义务；遗失物经转让被他人占有时，权利人如何追回、受让人如何保护，以及费用与悬赏报酬如何负担",
+     "rules": [
+      "c312-recover",
+      "c312-1",
+      "c312-damages",
+      "c312-2",
+      "c312-3",
+      "c314-1",
+      "c314-2",
+      "c315-1",
+      "c315-2",
+      "c316-1",
+      "c316-2",
+      "c316-3",
+      "c317-1",
+      "c317-2",
+      "c317-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "拾得遗失物（拾得人实际占有遗失物）",
+     "rules": [
+      "c314-1",
+      "c314-2",
+      "c316-1"
+     ]
+    },
+    {
+     "text": "遗失物通过转让被他人占有；受让人通过拍卖或者向具有经营资格的经营者购得该遗失物",
+     "rules": [
+      "c312-1",
+      "c312-2"
+     ]
+    },
+    {
+     "text": "有关部门收到遗失物，且知道或者不知道权利人",
+     "rules": [
+      "c315-1",
+      "c315-2"
+     ]
+    },
+    {
+     "text": "遗失物尚未送交有关部门（拾得人保管期间）、尚未被权利人领取（有关部门保管期间）",
+     "rules": [
+      "c316-1",
+      "c316-2"
+     ]
+    },
+    {
+     "text": "权利人领取遗失物；权利人悬赏寻找遗失物",
+     "rules": [
+      "c317-1",
+      "c317-2"
+     ]
+    },
+    {
+     "text": "拾得人侵占遗失物",
+     "rules": [
+      "c317-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "受让人通过拍卖或者向具有经营资格的经营者购得遗失物的，权利人请求返还原物时应当支付受让人所付的费用（第312条但书）",
+     "rules": [
+      "c312-2"
+     ]
+    },
+    {
+     "text": "拾得人侵占遗失物的，无权请求保管遗失物等支出的费用，也无权请求权利人按照承诺履行义务",
+     "rules": [
+      "c317-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "所有权人或者其他权利人有权追回遗失物；遗失物经转让被他人占有的，可向无处分权人请求损害赔偿，或者自知道或应当知道受让人之日起二年内向受让人请求返还原物",
+     "rules": [
+      "c312-recover",
+      "c312-1",
+      "c312-damages"
+     ]
+    },
+    {
+     "text": "权利人向受让人支付所付费用后，有权向无处分权人追偿",
+     "rules": [
+      "c312-3"
+     ]
+    },
+    {
+     "text": "拾得人应当返还权利人，并及时通知权利人领取或者送交公安等有关部门",
+     "rules": [
+      "c314-1",
+      "c314-2"
+     ]
+    },
+    {
+     "text": "有关部门知道权利人的应当及时通知其领取，不知道的应当及时发布招领公告",
+     "rules": [
+      "c315-1",
+      "c315-2"
+     ]
+    },
+    {
+     "text": "拾得人、有关部门应当妥善保管遗失物；因故意或者重大过失致遗失物毁损、灭失的，应当承担民事责任",
+     "rules": [
+      "c316-1",
+      "c316-2",
+      "c316-3"
+     ]
+    },
+    {
+     "text": "权利人领取遗失物时应当向拾得人或有关部门支付保管遗失物等支出的必要费用；悬赏寻找的，应当按照承诺履行义务",
+     "rules": [
+      "c317-1",
+      "c317-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "拾得人侵占遗失物的，第317条第3款排除第1款的必要费用请求权与第2款的悬赏报酬请求权",
+     "rules": [
+      "c317-3"
+     ]
+    },
+    {
+     "text": "遗失物经转让被他人占有的，适用第312条关于二年内请求受让人返还原物及支付受让人所付费用的特别规则，优先于一般追回规则",
+     "rules": [
+      "c312-1",
+      "c312-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第312条解决权利人对受让人的追回、费用负担与追偿；第314–316条是拾得人、有关部门的返还、通知、送交与保管义务；第317条是必要费用与悬赏报酬的负担",
+     "rules": []
+    },
+    {
+     "text": "笔记（学理）：拾得人通知权利人，或者有关部门发布招领公告后，在失主与拾得人或有关部门之间成立无因管理之债",
+     "rules": [
+      "c314-gm"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所称“拒不返还构成侵权”并非条文原文，本卡片不另设规则，仅在返还义务（第314条）中体现",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c312-recover",
+    "srcs": [
+     "art312-1"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "rightHolderOf(R,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "recoverLostProperty(R,T)"
+     }
+    ],
+    "note": "所有权人或者其他权利人有权追回遗失物",
+    "auth": "npc"
+   },
+   {
+    "key": "c312-1",
+    "srcs": [
+     "art312-1"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "rightHolderOf(R,T)",
+     "possessedByTransferee(T,B)",
+     "withinTwoYearsOfKnowingTransferee(R,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "B",
+      "content": "claimReturnOfLostProperty(R,T)"
+     }
+    ],
+    "note": "遗失物通过转让被他人占有的，权利人有权自知道或应当知道受让人之日起二年内向受让人请求返还原物",
+    "auth": "npc"
+   },
+   {
+    "key": "c312-damages",
+    "srcs": [
+     "art312-1"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "rightHolderOf(R,T)",
+     "transferredBy(T,P)",
+     "-hasDisposalPower(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "claimDamagesFromUndisposedPerson(R,P,T)"
+     }
+    ],
+    "note": "遗失物经无处分权人转让的，权利人有权向无处分权人请求损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c312-2",
+    "srcs": [
+     "art312-1"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "rightHolderOf(R,T)",
+     "possessedByTransferee(T,B)",
+     "boughtAtAuctionOrLicensedDealer(B,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "B",
+      "content": "payTransfereeExpenses(R,B,T)"
+     }
+    ],
+    "note": "但书：受让人通过拍卖或者向具有经营资格的经营者购得遗失物的，权利人请求返还原物时应当支付受让人所付的费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c312-3",
+    "srcs": [
+     "art312-1"
+    ],
+    "body": [
+     "lostProperty(T)",
+     "paidTransfereeExpenses(R,B,T)",
+     "transferredBy(T,P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "seekRecourseFromUndisposedPerson(R,P)"
+     }
+    ],
+    "note": "权利人向受让人支付所付费用后，有权向无处分权人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c314-1",
+    "srcs": [
+     "art314-1"
+    ],
+    "body": [
+     "foundLostProperty(F,T)",
+     "rightHolderOf(R,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "R",
+      "content": "returnLostProperty(F,T)"
+     }
+    ],
+    "note": "拾得遗失物，应当返还权利人",
+    "auth": "npc"
+   },
+   {
+    "key": "c314-2",
+    "srcs": [
+     "art314-1"
+    ],
+    "body": [
+     "foundLostProperty(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "notifyRightHolderOrDeliverToAuthorities(F,T)"
+     }
+    ],
+    "note": "拾得人应当及时通知权利人领取，或者送交公安等有关部门（二者择一）",
+    "auth": "npc"
+   },
+   {
+    "key": "c314-gm",
+    "srcs": [
+     "art314-1"
+    ],
+    "body": [
+     "foundLostProperty(F,T)",
+     "rightHolderOf(R,T)",
+     "notifiedOrDeliveredToAuthorities(F,T)"
+    ],
+    "heads": [
+     "negotiorumGestioDebt(F,R)"
+    ],
+    "note": "学理（笔记）：拾得人通知权利人或者有关部门发布招领公告后，在失主与拾得人或有关部门之间成立无因管理之债；条文未明文规定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c315-1",
+    "srcs": [
+     "art315-1"
+    ],
+    "body": [
+     "authoritiesReceiveLostProperty(A,T)",
+     "knowsRightHolder(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "notifyRightHolderToCollect(A,T)"
+     }
+    ],
+    "note": "有关部门收到遗失物，知道权利人的，应当及时通知其领取",
+    "auth": "npc"
+   },
+   {
+    "key": "c315-2",
+    "srcs": [
+     "art315-1"
+    ],
+    "body": [
+     "authoritiesReceiveLostProperty(A,T)",
+     "-knowsRightHolder(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "publishFindingNotice(A,T)"
+     }
+    ],
+    "note": "有关部门收到遗失物，不知道权利人的，应当及时发布招领公告",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-1",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     "foundLostProperty(F,T)",
+     "notYetDeliveredToAuthorities(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "properlyKeepLostProperty(F,T)"
+     }
+    ],
+    "note": "拾得人在遗失物送交有关部门前，应当妥善保管遗失物",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-2",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     "authoritiesReceiveLostProperty(A,T)",
+     "notYetCollectedByRightHolder(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "properlyKeepLostProperty(A,T)"
+     }
+    ],
+    "note": "有关部门在遗失物被领取前，应当妥善保管遗失物",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-3",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "foundLostProperty(F,T)",
+       "authoritiesReceiveLostProperty(F,T)"
+      ]
+     },
+     "damagesLostPropertyByIntentOrGrossNegligence(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "bearCivilLiabilityForLostPropertyDamage(F,T)"
+     }
+    ],
+    "note": "拾得人或有关部门因故意或者重大过失致使遗失物毁损、灭失的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-1",
+    "srcs": [
+     "art317-1"
+    ],
+    "body": [
+     "collectsLostProperty(R,T)",
+     {
+      "or": [
+       "foundLostProperty(F,T)",
+       "authoritiesReceiveLostProperty(F,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "F",
+      "content": "payNecessaryExpenses(R,F,T)"
+     }
+    ],
+    "note": "权利人领取遗失物时，应当向拾得人或者有关部门支付保管遗失物等支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-2",
+    "srcs": [
+     "art317-2"
+    ],
+    "body": [
+     "collectsLostProperty(R,T)",
+     "madeRewardPromise(R,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "performRewardPromise(R,T)"
+     }
+    ],
+    "note": "权利人悬赏寻找遗失物的，领取遗失物时应当按照承诺履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-3",
+    "srcs": [
+     "art317-3"
+    ],
+    "body": [
+     "misappropriatedLostProperty(F,T)"
+    ],
+    "heads": [
+     "-claimExpenses(F,T)",
+     "-claimReward(F,T)"
+    ],
+    "note": "拾得人侵占遗失物的，无权请求保管遗失物等支出的费用，也无权请求权利人按照承诺履行义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c317-3",
+    "c317-1",
+    "拾得人侵占遗失物的，不得请求保管遗失物等支出的必要费用"
+   ],
+   [
+    "c317-3",
+    "c317-2",
+    "拾得人侵占遗失物的，不得请求权利人按照悬赏承诺履行义务"
+   ],
+   [
+    "c312-2",
+    "c312-1",
+    "受让人通过拍卖或者向具有经营资格的经营者购得遗失物的，权利人请求返还原物须支付受让人所付费用（第312条但书）"
+   ],
+   [
+    "c312-1",
+    "c312-recover",
+    "遗失物经转让被他人占有的，适用二年内向受让人请求返还的特别规则，而非一般追回规则"
+   ]
+  ],
+  "predicates": {
+   "lostProperty": "是遗失物",
+   "rightHolderOf": "是遗失物的所有权人或其他权利人（人，物）",
+   "recoverLostProperty": "追回遗失物（权利人，物）",
+   "possessedByTransferee": "遗失物通过转让被他人占有（物，受让人）",
+   "withinTwoYearsOfKnowingTransferee": "自知道或应当知道受让人之日起二年内（权利人，受让人）",
+   "claimReturnOfLostProperty": "请求返还原物（权利人，物）",
+   "transferredBy": "遗失物由该人转让（物，转让人）",
+   "claimDamagesFromUndisposedPerson": "向无处分权人请求损害赔偿（权利人，无处分权人，物）",
+   "boughtAtAuctionOrLicensedDealer": "受让人通过拍卖或向具有经营资格的经营者购得遗失物（受让人，物）",
+   "payTransfereeExpenses": "支付受让人所付的费用（权利人，受让人，物）",
+   "paidTransfereeExpenses": "已向受让人支付其所付的费用（权利人，受让人，物）",
+   "seekRecourseFromUndisposedPerson": "向无处分权人追偿（权利人，无处分权人）",
+   "foundLostProperty": "拾得遗失物（拾得人，物）",
+   "returnLostProperty": "返还遗失物（拾得人，物）",
+   "notifyRightHolderOrDeliverToAuthorities": "及时通知权利人领取或送交公安等有关部门（拾得人，物）",
+   "notifiedOrDeliveredToAuthorities": "已通知权利人或已送交有关部门（拾得人，物）",
+   "negotiorumGestioDebt": "成立无因管理之债（拾得人或有关部门，权利人）",
+   "authoritiesReceiveLostProperty": "有关部门收到遗失物（部门，物）",
+   "knowsRightHolder": "知道权利人（部门，物）",
+   "notifyRightHolderToCollect": "通知权利人领取（部门，物）",
+   "publishFindingNotice": "发布招领公告（部门，物）",
+   "notYetDeliveredToAuthorities": "遗失物尚未送交有关部门（拾得人，物）",
+   "notYetCollectedByRightHolder": "遗失物尚未被权利人领取（部门，物）",
+   "properlyKeepLostProperty": "妥善保管遗失物（保管人，物）",
+   "damagesLostPropertyByIntentOrGrossNegligence": "因故意或重大过失致遗失物毁损、灭失（保管人，物）",
+   "bearCivilLiabilityForLostPropertyDamage": "就遗失物毁损、灭失承担民事责任（保管人，物）",
+   "collectsLostProperty": "领取遗失物（权利人，物）",
+   "payNecessaryExpenses": "支付保管遗失物等支出的必要费用（权利人，保管人，物）",
+   "madeRewardPromise": "悬赏寻找遗失物（权利人，物）",
+   "performRewardPromise": "按照悬赏承诺履行义务（权利人，物）",
+   "misappropriatedLostProperty": "侵占遗失物（拾得人，物）",
+   "claimExpenses": "请求保管遗失物等支出的必要费用（拾得人，物）",
+   "claimReward": "请求权利人按照悬赏承诺履行义务（拾得人，物）"
+  }
+ },
+ "card:g2537": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "拾得遗失物后，拾得人负有哪些返还、通知或送交义务",
+     "rules": [
+      "c314-1",
+      "c314-2"
+     ]
+    },
+    {
+     "text": "遗失物送交有关部门前、被领取前由谁妥善保管，因故意或重大过失致毁损灭失由谁承担民事责任",
+     "rules": [
+      "c316-1",
+      "c316-2",
+      "c316-3"
+     ]
+    },
+    {
+     "text": "权利人领取遗失物时，是否应偿还必要费用、是否应按悬赏承诺履行义务",
+     "rules": [
+      "c317-1",
+      "c317-2"
+     ]
+    },
+    {
+     "text": "拾得人侵占遗失物的，还能否请求必要费用与悬赏报酬",
+     "rules": [
+      "c317-3a",
+      "c317-3b"
+     ]
+    },
+    {
+     "text": "完成悬赏广告特定行为的人能否请求支付报酬",
+     "rules": [
+      "c499-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "拾得遗失物（拾得人、遗失物）",
+     "rules": [
+      "c314-1",
+      "c314-2",
+      "c316-1",
+      "c316-3"
+     ]
+    },
+    {
+     "text": "遗失物尚未送交公安等有关部门；遗失物尚未被权利人领取",
+     "rules": [
+      "c316-1",
+      "c316-2"
+     ]
+    },
+    {
+     "text": "权利人领取遗失物，且拾得人或有关部门已支出保管遗失物等必要费用",
+     "rules": [
+      "c317-1"
+     ]
+    },
+    {
+     "text": "权利人悬赏寻找遗失物并承诺支付报酬",
+     "rules": [
+      "c317-2",
+      "c317-3b"
+     ]
+    },
+    {
+     "text": "拾得人侵占遗失物",
+     "rules": [
+      "c317-3a",
+      "c317-3b"
+     ]
+    },
+    {
+     "text": "悬赏人以公开方式声明对完成特定行为的人支付报酬，且该人完成了该行为",
+     "rules": [
+      "c499-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "遗失物已送交有关部门的，拾得人不再负保管义务",
+     "rules": [
+      "c316-1"
+     ]
+    },
+    {
+     "text": "遗失物已被领取的，有关部门不再负保管义务",
+     "rules": [
+      "c316-2"
+     ]
+    },
+    {
+     "text": "拾得人侵占遗失物的，丧失必要费用请求权与悬赏报酬请求权",
+     "rules": [
+      "c317-3a",
+      "c317-3b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "拾得人应当将遗失物返还权利人",
+     "rules": [
+      "c314-1"
+     ]
+    },
+    {
+     "text": "拾得人应当及时通知权利人领取，或者送交公安等有关部门",
+     "rules": [
+      "c314-2"
+     ]
+    },
+    {
+     "text": "拾得人（送交前）、有关部门（被领取前）应当妥善保管遗失物",
+     "rules": [
+      "c316-1",
+      "c316-2"
+     ]
+    },
+    {
+     "text": "因故意或者重大过失致使遗失物毁损、灭失的，应当向权利人承担民事责任",
+     "rules": [
+      "c316-3"
+     ]
+    },
+    {
+     "text": "权利人领取遗失物时，应当向拾得人或有关部门支付保管遗失物等支出的必要费用",
+     "rules": [
+      "c317-1"
+     ]
+    },
+    {
+     "text": "权利人悬赏寻找遗失物的，领取时应当按照承诺履行义务",
+     "rules": [
+      "c317-2"
+     ]
+    },
+    {
+     "text": "完成悬赏广告特定行为的人可以请求悬赏人支付报酬",
+     "rules": [
+      "c499-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "拾得人侵占遗失物的，第317条第3款排除其依第317条第1款请求必要费用、依第317条第2款请求按承诺履行的权利",
+     "rules": [
+      "c317-3a",
+      "c317-3b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第316条侧重保管义务与毁损灭失的赔偿责任，第317条侧重费用偿还请求权与悬赏承诺的履行，二者规范对象不同",
+     "rules": []
+    },
+    {
+     "text": "第499条是悬赏广告的一般规定，第317条第2款是遗失物悬赏情形下的特别规定，二者结论一致、可并行适用",
+     "rules": [
+      "c499-1",
+      "c317-2"
+     ]
+    },
+    {
+     "text": "笔记：悬赏人支付报酬的义务与遗失物返还义务不属于“同一法律关系”，故权利人不按承诺履行时，拾得人不得留置遗失物（学理，条文未明定）",
+     "rules": [
+      "c317-lien"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c314-1",
+    "srcs": [
+     "art314-1"
+    ],
+    "body": [
+     "findsLostProperty(F,T)",
+     "rightHolderOf(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": "P",
+      "content": "returnLostProperty(F,T)"
+     }
+    ],
+    "note": "拾得遗失物的，应当将遗失物返还权利人",
+    "auth": "npc"
+   },
+   {
+    "key": "c314-2",
+    "srcs": [
+     "art314-1"
+    ],
+    "body": [
+     "findsLostProperty(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "notifyOrDeliver(F,T)"
+     }
+    ],
+    "note": "拾得人应当及时通知权利人领取，或者送交公安等有关部门（二者择一）",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-1",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     "findsLostProperty(F,T)",
+     "~deliveredToAuthorities(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "F",
+      "counterparty": null,
+      "content": "safekeepLostProperty(F,T)"
+     }
+    ],
+    "note": "遗失物送交有关部门前，拾得人应当妥善保管遗失物",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-2",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     "heldByAuthorities(T,D)",
+     "~claimedByRightHolder(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "safekeepLostProperty(D,T)"
+     }
+    ],
+    "note": "遗失物被领取前，有关部门应当妥善保管遗失物",
+    "auth": "npc"
+   },
+   {
+    "key": "c316-3",
+    "srcs": [
+     "art316-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "findsLostProperty(C,T)",
+       "heldByAuthorities(T,C)"
+      ]
+     },
+     "causesLossByIntentOrGrossNegligence(C,T)",
+     "rightHolderOf(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "compensateLostPropertyLoss(C,P,T)"
+     }
+    ],
+    "note": "拾得人或有关部门因故意或者重大过失致使遗失物毁损、灭失的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-1",
+    "srcs": [
+     "art317-1"
+    ],
+    "body": [
+     "claimsLostProperty(P,T)",
+     "necessaryExpensesIncurred(C,T)",
+     {
+      "or": [
+       "findsLostProperty(C,T)",
+       "heldByAuthorities(T,C)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "payNecessaryExpenses(P,C,T)"
+     }
+    ],
+    "note": "权利人领取遗失物时，应当向拾得人或者有关部门支付保管遗失物等支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-2",
+    "srcs": [
+     "art317-2"
+    ],
+    "body": [
+     "claimsLostProperty(P,T)",
+     "promisedReward(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performRewardPromise(P,T)"
+     }
+    ],
+    "note": "权利人悬赏寻找遗失物的，领取遗失物时应当按照承诺履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-3a",
+    "srcs": [
+     "art317-3"
+    ],
+    "body": [
+     "misappropriatesLostProperty(F,T)"
+    ],
+    "heads": [
+     "-claimNecessaryExpenses(F,T)"
+    ],
+    "note": "拾得人侵占遗失物的，无权请求保管遗失物等支出的费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-3b",
+    "srcs": [
+     "art317-3"
+    ],
+    "body": [
+     "misappropriatesLostProperty(F,T)",
+     "promisedReward(P,T)"
+    ],
+    "heads": [
+     "-claimReward(F,P)"
+    ],
+    "note": "拾得人侵占遗失物的，无权请求权利人按照承诺履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c317-lien",
+    "srcs": [
+     "art317-2",
+     "art317-3"
+    ],
+    "body": [
+     "findsLostProperty(F,T)",
+     "promisedReward(P,T)",
+     "~rewardClaimInSameLegalRelation(F,P,T)"
+    ],
+    "heads": [
+     "-lienOnLostProperty(F,T)"
+    ],
+    "note": "笔记学理：悬赏报酬义务与遗失物返还义务不属同一法律关系，权利人不按承诺履行时拾得人不得留置遗失物（条文未明定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c499-1",
+    "srcs": [
+     "art499-1"
+    ],
+    "body": [
+     "offersRewardPublicly(P,A)",
+     "completesAct(X,A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "X",
+      "counterparty": "P",
+      "content": "claimReward(X,P)"
+     }
+    ],
+    "note": "悬赏人以公开方式声明对完成特定行为的人支付报酬的，完成该行为的人可以请求其支付",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c317-3a",
+    "c317-1",
+    "拾得人侵占遗失物的，无权请求保管遗失物等支出的必要费用"
+   ],
+   [
+    "c317-3b",
+    "c317-2",
+    "拾得人侵占遗失物的，无权请求权利人按照悬赏承诺履行义务"
+   ]
+  ],
+  "predicates": {
+   "findsLostProperty": "拾得遗失物（拾得人，遗失物）",
+   "rightHolderOf": "是遗失物的权利人（权利人，遗失物）",
+   "returnLostProperty": "返还遗失物（拾得人，遗失物）",
+   "notifyOrDeliver": "及时通知权利人领取或者送交公安等有关部门（拾得人，遗失物）",
+   "deliveredToAuthorities": "遗失物已送交公安等有关部门（拾得人，遗失物）",
+   "heldByAuthorities": "遗失物由公安等有关部门保管（遗失物，部门）",
+   "claimedByRightHolder": "遗失物已被权利人领取（遗失物）",
+   "safekeepLostProperty": "妥善保管遗失物（保管人，遗失物）",
+   "causesLossByIntentOrGrossNegligence": "因故意或者重大过失致使遗失物毁损、灭失（行为人，遗失物）",
+   "compensateLostPropertyLoss": "赔偿遗失物毁损、灭失的损失（赔偿人，权利人，遗失物）",
+   "claimsLostProperty": "权利人领取遗失物（权利人，遗失物）",
+   "necessaryExpensesIncurred": "支出保管遗失物等必要费用（支出人，遗失物）",
+   "payNecessaryExpenses": "支付保管遗失物等支出的必要费用（权利人，支出人，遗失物）",
+   "promisedReward": "悬赏寻找遗失物并承诺支付报酬（悬赏人，遗失物）",
+   "performRewardPromise": "按照悬赏承诺履行义务（悬赏人，遗失物）",
+   "misappropriatesLostProperty": "侵占遗失物（拾得人，遗失物）",
+   "claimNecessaryExpenses": "请求支付保管遗失物等必要费用（拾得人，遗失物）",
+   "claimReward": "请求支付悬赏报酬（行为人，悬赏人）",
+   "offersRewardPublicly": "以公开方式声明对完成特定行为的人支付报酬（悬赏人，特定行为）",
+   "completesAct": "完成悬赏广告指定的特定行为（行为人，特定行为）",
+   "lienOnLostProperty": "对遗失物享有留置权（拾得人，遗失物）",
+   "rewardClaimInSameLegalRelation": "悬赏报酬请求权与遗失物返还义务属于同一法律关系（拾得人，悬赏人，遗失物）"
+  }
+ }
+}

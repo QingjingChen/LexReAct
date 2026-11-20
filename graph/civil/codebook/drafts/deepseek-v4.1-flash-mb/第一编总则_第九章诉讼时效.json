@@ -1,0 +1,1263 @@
+{
+ "art:199": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "法律规定或者当事人约定的撤销权、解除权等权利的存续期间（除斥期间）如何起算、是否适用诉讼时效中止、中断、延长的规定，以及期间届满后权利处于何种状态",
+     "rules": [
+      "c199-start",
+      "c199-noLimitationRules",
+      "c199-expiry"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在法律规定或者当事人约定的撤销权、解除权等权利的存续期间",
+     "rules": [
+      "c199-start",
+      "c199-noLimitationRules",
+      "c199-expiry"
+     ]
+    },
+    {
+     "text": "权利人知道或者应当知道权利已经产生",
+     "rules": [
+      "c199-start"
+     ]
+    },
+    {
+     "text": "法律对该权利的存续期间另有规定",
+     "rules": [
+      "c199-other-law"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，不适用“自权利人知道或者应当知道权利产生之日起计算”的一般起算规则，而依该规定计算",
+     "rules": [
+      "c199-start",
+      "c199-other-law"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "存续期间自权利人知道或者应当知道权利产生之日起计算",
+     "rules": [
+      "c199-start"
+     ]
+    },
+    {
+     "text": "该存续期间不适用有关诉讼时效中止、中断和延长的规定",
+     "rules": [
+      "c199-noLimitationRules"
+     ]
+    },
+    {
+     "text": "存续期间届满，撤销权、解除权等权利消灭",
+     "rules": [
+      "c199-expiry"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法律对存续期间另有规定的，优先于“自权利人知道或者应当知道权利产生之日起计算”的一般规则适用",
+     "rules": [
+      "c199-other-law",
+      "c199-start"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "存续期间（除斥期间）与诉讼时效不同：不因中止、中断、延长而变动，期间届满后权利本身消灭，而非仅使义务人取得时效抗辩权（学理，条文未明文表述）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c199-start",
+    "srcs": [
+     "art199-1"
+    ],
+    "body": [
+     "existencePeriodOf(P,R)",
+     "holderOf(H,R)",
+     "knowsOrShouldKnowRightArises(H,R)",
+     "~lawProvidesOtherwiseOnExistencePeriod(P)"
+    ],
+    "heads": [
+     "periodRunsFromKnowledge(P,R)"
+    ],
+    "note": "法律规定或者当事人约定的撤销权、解除权等权利的存续期间，除法律另有规定外，自权利人知道或者应当知道权利产生之日起计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c199-other-law",
+    "srcs": [
+     "art199-1"
+    ],
+    "body": [
+     "existencePeriodOf(P,R)",
+     "lawProvidesOtherwiseOnExistencePeriod(P)"
+    ],
+    "heads": [
+     "periodRunsPerOtherLaw(P)"
+    ],
+    "note": "法律对存续期间的起算另有规定的，依该规定计算，不适用自知道或者应当知道权利产生之日起算的规则",
+    "auth": "npc"
+   },
+   {
+    "key": "c199-noLimitationRules",
+    "srcs": [
+     "art199-1"
+    ],
+    "body": [
+     "existencePeriodOf(P,R)"
+    ],
+    "heads": [
+     "limitationRulesDoNotApply(P)"
+    ],
+    "note": "撤销权、解除权等权利的存续期间不适用有关诉讼时效中止、中断和延长的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c199-expiry",
+    "srcs": [
+     "art199-1"
+    ],
+    "body": [
+     "existencePeriodOf(P,R)",
+     "holderOf(H,R)",
+     "existencePeriodExpired(P)"
+    ],
+    "heads": [
+     "rightExtinguished(R,H)"
+    ],
+    "note": "存续期间届满，撤销权、解除权等权利消灭",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c199-other-law",
+    "c199-start",
+    "“除法律另有规定外”系另有规定优先：法律对存续期间另有规定时，不适用自权利人知道或者应当知道权利产生之日起算的一般规则"
+   ]
+  ],
+  "predicates": {
+   "existencePeriodOf": "是法律规定或者当事人约定的撤销权、解除权等权利的存续期间（除斥期间）（期间，权利）",
+   "holderOf": "是该权利的权利人（权利人，权利）",
+   "knowsOrShouldKnowRightArises": "知道或者应当知道该权利已经产生（权利人，权利）",
+   "periodRunsFromKnowledge": "该存续期间自权利人知道或者应当知道权利产生之日起计算（期间，权利）",
+   "lawProvidesOtherwiseOnExistencePeriod": "法律对该权利的存续期间另有规定（期间）",
+   "periodRunsPerOtherLaw": "该存续期间依法律的另有规定计算（期间）",
+   "limitationRulesDoNotApply": "不适用有关诉讼时效中止、中断、延长的规定（期间）",
+   "existencePeriodExpired": "存续期间已届满（期间）",
+   "rightExtinguished": "该权利消灭（权利，权利人）"
+  }
+ },
+ "card:g3643": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些请求权不适用诉讼时效的规定",
+     "rules": [
+      "c196-1",
+      "c196-2",
+      "c196-3",
+      "c196-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "请求停止侵害、排除妨碍、消除危险（妨害已发生或有妨害之虞均可）",
+     "rules": [
+      "c196-1"
+     ]
+    },
+    {
+     "text": "不动产物权人以及登记动产物权的权利人请求返还财产",
+     "rules": [
+      "c196-2"
+     ]
+    },
+    {
+     "text": "请求支付抚养费、赡养费或者扶养费",
+     "rules": [
+      "c196-3"
+     ]
+    },
+    {
+     "text": "依法不适用诉讼时效的其他请求权（兜底项，须另有法律规定）",
+     "rules": [
+      "c196-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "上述请求权不适用诉讼时效，义务人不得以诉讼时效期间届满为由提出时效抗辩",
+     "rules": [
+      "c196-effect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条是诉讼时效适用的法定例外（特别规定），优先于诉讼时效期间届满即产生抗辩权的一般规则",
+     "rules": [
+      "c196-effect"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记讲的是第462条占有保护中的停止侵害、排除妨碍、消除危险请求权（无期限限制）；本条只解决诉讼时效是否适用的问题，不创设请求权基础，占有保护请求权本身规定在第462条",
+     "rules": []
+    },
+    {
+     "text": "LEGO卡片所列恢复原状（第237条）、损害赔偿（第238条）请求权不在本条排除之列，仍适用诉讼时效；返还原物请求权仅限不动产物权和登记的动产物权，未登记动产的返还请求权亦适用诉讼时效",
+     "rules": [
+      "c196-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c196-1",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "claim(C)",
+     "seeksCessationOrRemoval(C)"
+    ],
+    "heads": [
+     "exemptFromLimitation(C)"
+    ],
+    "note": "请求停止侵害、排除妨碍、消除危险的请求权不适用诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-2",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "claim(C)",
+     "returnOfImmovableOrRegisteredMovable(C)"
+    ],
+    "heads": [
+     "exemptFromLimitation(C)"
+    ],
+    "note": "不动产物权和登记的动产物权的权利人请求返还财产的请求权不适用诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-3",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "claim(C)",
+     "supportOrMaintenancePayment(C)"
+    ],
+    "heads": [
+     "exemptFromLimitation(C)"
+    ],
+    "note": "请求支付抚养费、赡养费或者扶养费的请求权不适用诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-4",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "claim(C)",
+     "statutorilyExempt(C)"
+    ],
+    "heads": [
+     "exemptFromLimitation(C)"
+    ],
+    "note": "依法不适用诉讼时效的其他请求权，兜底项，须另有法律规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-effect",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "exemptFromLimitation(C)",
+     "obligorOf(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "raiseLimitationDefense(O,C)"
+     }
+    ],
+    "note": "不适用诉讼时效的请求权，义务人不得以诉讼时效期间届满为由抗辩",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "raiseLimitationDefense": "主张诉讼时效期间届满的抗辩（义务人，权利人）"
+  }
+ },
+ "card:g1902": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "向人民法院请求保护民事权利的诉讼时效期间有多长、自何时起算、最长保护期间及能否延长",
+     "rules": [
+      "c188-1",
+      "c188-2",
+      "c188-3",
+      "c188-4"
+     ]
+    },
+    {
+     "text": "诉讼时效期间届满后义务人取得何种抗辩权，其同意履行或已自愿履行后有何限制",
+     "rules": [
+      "c192-defense",
+      "c192-agree",
+      "c192-performed"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受保护的对象须为请求权；所有权、人格权等支配权以及撤销权等形成权不适用诉讼时效",
+     "rules": [
+      "c188-scope"
+     ]
+    },
+    {
+     "text": "权利人知道或者应当知道权利受到损害以及义务人",
+     "rules": [
+      "c188-2"
+     ]
+    },
+    {
+     "text": "自权利受到损害之日起已超过二十年",
+     "rules": [
+      "c188-3"
+     ]
+    },
+    {
+     "text": "有特殊情况，且权利人已提出申请",
+     "rules": [
+      "c188-4"
+     ]
+    },
+    {
+     "text": "诉讼时效期间已届满，且义务人主张时效抗辩",
+     "rules": [
+      "c192-defense"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对诉讼时效期间另有规定的，依照其规定（不适用三年普通期间）",
+     "rules": [
+      "c188-1"
+     ]
+    },
+    {
+     "text": "超过二十年但有特殊情况的，人民法院可以根据权利人的申请决定延长",
+     "rules": [
+      "c188-4"
+     ]
+    },
+    {
+     "text": "期间届满后义务人同意履行的，不得再以期间届满为由抗辩",
+     "rules": [
+      "c192-agree"
+     ]
+    },
+    {
+     "text": "期间届满后义务人已经自愿履行的，不得请求返还",
+     "rules": [
+      "c192-performed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "请求保护民事权利的诉讼时效期间为三年",
+     "rules": [
+      "c188-1"
+     ]
+    },
+    {
+     "text": "自权利人知道或者应当知道权利受到损害以及义务人之日起满三年，诉讼时效期间届满",
+     "rules": [
+      "c188-2"
+     ]
+    },
+    {
+     "text": "自权利受到损害之日起超过二十年的，人民法院不予保护",
+     "rules": [
+      "c188-3"
+     ]
+    },
+    {
+     "text": "诉讼时效期间届满的，义务人可以提出不履行义务的抗辩",
+     "rules": [
+      "c192-defense"
+     ]
+    },
+    {
+     "text": "义务人未提出时效抗辩的，人民法院不得主动适用诉讼时效的规定进行裁判",
+     "rules": [
+      "c192-exofficio"
+     ]
+    },
+    {
+     "text": "期间届满后义务人同意履行的，不得以期间届满为由抗辩",
+     "rules": [
+      "c192-agree"
+     ]
+    },
+    {
+     "text": "期间届满后义务人已自愿履行的，不得请求返还",
+     "rules": [
+      "c192-performed"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "二十年最长期间届满即不予保护，优先于三年普通期间未届满的保护",
+     "rules": [
+      "c188-3",
+      "c188-2"
+     ]
+    },
+    {
+     "text": "有特殊情况经权利人申请决定延长的，优先于二十年期间届满不予保护",
+     "rules": [
+      "c188-4",
+      "c188-3"
+     ]
+    },
+    {
+     "text": "届满后同意履行的，排除义务人的时效抗辩权",
+     "rules": [
+      "c192-agree",
+      "c192-defense"
+     ]
+    },
+    {
+     "text": "届满后已自愿履行的，排除义务人的返还请求",
+     "rules": [
+      "c192-performed",
+      "c192-defense"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "除斥期间适用于形成权（如撤销权、解除权），支配权适用存续期间，均不适用诉讼时效；请求确认合同无效、分割共有物等亦非债权请求权",
+     "rules": [
+      "c188-scope"
+     ]
+    },
+    {
+     "text": "最长诉讼时效期间不发生中断、中止；普通、特殊诉讼时效可因法定事由中断、中止（第194、195条），本条不含该内容",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片把中断、中止事由列为“积极条件”，并称法院不得依职权适用时效，前者属第194、195条，后者出自诉讼时效司法解释，均非第188、192条原文",
+     "rules": [
+      "c192-exofficio"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c188-1",
+    "srcs": [
+     "art188-1"
+    ],
+    "body": [
+     "claim(C)",
+     "~lawProvidesOtherwiseOnLimitation(C)"
+    ],
+    "heads": [
+     "limitationPeriod3Years(C)"
+    ],
+    "note": "向人民法院请求保护民事权利的诉讼时效期间为三年；法律另有规定的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-2",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(C)",
+     "threeYearsSinceKnew(C)"
+    ],
+    "heads": [
+     "limitationExpired(C)"
+    ],
+    "note": "诉讼时效期间自权利人知道或者应当知道权利受到损害以及义务人之日起计算，满三年即届满",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-3",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(C)",
+     "twentyYearsSinceDamage(C)",
+     "~courtExtends(C)"
+    ],
+    "heads": [
+     "notProtectedByCourt(C)"
+    ],
+    "note": "自权利受到损害之日起超过二十年的，人民法院不予保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-4",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(C)",
+     "twentyYearsSinceDamage(C)",
+     "specialCircumstances(C)",
+     "appliedForExtension(C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "extendLimitationPeriod(C)"
+     }
+    ],
+    "note": "有特殊情况的，人民法院可以根据权利人的申请决定延长二十年期间",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-scope",
+    "srcs": [
+     "art188-1"
+    ],
+    "body": [
+     "civilRight(R)",
+     "-claim(R)"
+    ],
+    "heads": [
+     "exemptFromLimitation(R)"
+    ],
+    "note": "笔记学理：诉讼时效仅适用于请求权，支配权、形成权等请求权以外的权利不适用诉讼时效（条文未明定）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c192-defense",
+    "srcs": [
+     "art192-1"
+    ],
+    "body": [
+     "limitationExpired(C)",
+     "obligorOf(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "refusePerformance(O,C)"
+     }
+    ],
+    "note": "诉讼时效期间届满的，义务人可以提出不履行义务的抗辩",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-exofficio",
+    "srcs": [
+     "art192-1"
+    ],
+    "body": [
+     "limitationExpired(C)",
+     "obligorOf(O,C)",
+     "-raisedLimitationDefense(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLimitationExOfficio(court,C)"
+     }
+    ],
+    "note": "诉讼时效司法解释：义务人未提出时效抗辩的，人民法院不得释明并主动适用诉讼时效裁判",
+    "auth": "spc"
+   },
+   {
+    "key": "c192-agree",
+    "srcs": [
+     "art192-2"
+    ],
+    "body": [
+     "limitationExpired(C)",
+     "obligorOf(O,C)",
+     "obligorAgreesToPerform(O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "raiseLimitationDefense(O,C)"
+     }
+    ],
+    "note": "期间届满后义务人同意履行的，不得以诉讼时效期间届满为由抗辩",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-performed",
+    "srcs": [
+     "art192-2"
+    ],
+    "body": [
+     "limitationExpired(C)",
+     "obligorOf(O,C)",
+     "voluntarilyPerformed(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "restitutionClaim(O,C)"
+     }
+    ],
+    "note": "期间届满后义务人已经自愿履行的，不得请求返还",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c188-3",
+    "c188-2",
+    "二十年最长期间届满即不予保护，不因三年普通期间未届满而受保护"
+   ],
+   [
+    "c188-4",
+    "c188-3",
+    "有特殊情况经权利人申请决定延长的，优先于二十年期间届满不予保护"
+   ],
+   [
+    "c192-agree",
+    "c192-defense",
+    "届满后同意履行的，排除义务人的时效抗辩权"
+   ],
+   [
+    "c192-performed",
+    "c192-defense",
+    "届满后已自愿履行的，排除义务人的返还请求"
+   ]
+  ],
+  "predicates": {
+   "lawProvidesOtherwiseOnLimitation": "法律对诉讼时效期间另有规定（参数1：请求权）",
+   "limitationPeriod3Years": "诉讼时效期间为三年（参数1：请求权）",
+   "specialCircumstances": "存在特殊情况（参数1：请求权）",
+   "appliedForExtension": "权利人已申请延长诉讼时效期间（参数1：请求权）",
+   "extendLimitationPeriod": "决定延长诉讼时效期间（参数1：请求权）",
+   "refusePerformance": "提出不履行义务的抗辩（义务人，请求权）",
+   "raiseLimitationDefense": "以诉讼时效期间届满为由提出抗辩（义务人，请求权）",
+   "raisedLimitationDefense": "已提出诉讼时效抗辩（义务人，请求权）",
+   "civilRight": "民事权利（参数1：权利）"
+  }
+ },
+ "card:g1893": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "向人民法院请求保护民事权利的诉讼时效期间有多长、自何时起算，届满后产生何种法律后果",
+     "rules": [
+      "c188-1",
+      "c188-start",
+      "c188-2",
+      "c192-defense"
+     ]
+    },
+    {
+     "text": "诉讼时效因何中止、中断，哪些请求权不适用诉讼时效",
+     "rules": [
+      "c194-ground",
+      "c195-ground",
+      "c196-exempt"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "权利人享有请求特定义务人为或不为一定行为的请求权（债权请求权）",
+     "rules": [
+      "c188-1"
+     ]
+    },
+    {
+     "text": "自权利人知道或者应当知道权利受到损害以及义务人之日起满三年",
+     "rules": [
+      "c188-start",
+      "c188-1"
+     ]
+    },
+    {
+     "text": "当事人约定同一债务分期履行的，自最后一期履行期限届满之日起计算",
+     "rules": [
+      "c189"
+     ]
+    },
+    {
+     "text": "自权利受到损害之日起超过二十年",
+     "rules": [
+      "c188-2"
+     ]
+    },
+    {
+     "text": "在时效期间最后六个月内，因不可抗力、无（限制）民事行为能力人无法定代理人、继承开始后未确定继承人或遗产管理人、权利人被义务人或其他人控制、其他障碍，不能行使请求权",
+     "rules": [
+      "c194-ground"
+     ]
+    },
+    {
+     "text": "权利人向义务人提出履行请求、义务人同意履行、权利人提起诉讼或申请仲裁、与提起诉讼或申请仲裁具有同等效力的其他情形",
+     "rules": [
+      "c195-ground"
+     ]
+    },
+    {
+     "text": "请求停止侵害、排除妨碍、消除危险；不动产物权和登记的动产物权人请求返还财产；请求支付抚养费、赡养费或扶养费；依法不适用诉讼时效的其他请求权",
+     "rules": [
+      "c196-exempt"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对诉讼时效期间另有规定的，依照其规定，不适用三年期间",
+     "rules": [
+      "c188-1"
+     ]
+    },
+    {
+     "text": "超过二十年但有特殊情况的，人民法院可以根据权利人的申请决定延长",
+     "rules": [
+      "c188-2ext"
+     ]
+    },
+    {
+     "text": "时效届满后义务人同意履行的，不得以时效届满为由抗辩；已自愿履行的，不得请求返还",
+     "rules": [
+      "c192-agree",
+      "c192-voluntary"
+     ]
+    },
+    {
+     "text": "一审未提出时效抗辩而首次在二审提出，且不能基于新的证据证明请求权已过时效的，人民法院不予支持；据此申请再审或提出再审抗辩的亦不予支持",
+     "rules": [
+      "c192-late"
+     ]
+    },
+    {
+     "text": "诉讼时效规定具有强制性，当事人不得约定延长、缩短时效期间或预先放弃时效利益",
+     "rules": [
+      "c188-mandatory"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "时效期间届满，义务人取得不履行义务的抗辩权，可以拒绝履行",
+     "rules": [
+      "c192-defense"
+     ]
+    },
+    {
+     "text": "是否行使抗辩权取决于义务人，人民法院不得依职权主动适用诉讼时效",
+     "rules": [
+      "c192-court"
+     ]
+    },
+    {
+     "text": "自权利受到损害之日起超过二十年的，人民法院不予保护",
+     "rules": [
+      "c188-2"
+     ]
+    },
+    {
+     "text": "时效中止的，自中止原因消除之日起满六个月，诉讼时效期间届满",
+     "rules": [
+      "c194-2"
+     ]
+    },
+    {
+     "text": "时效中断的，从中断、有关程序终结时起，诉讼时效期间重新计算",
+     "rules": [
+      "c195-restart"
+     ]
+    },
+    {
+     "text": "不适用诉讼时效的请求权，不因时效期间届满而受影响",
+     "rules": [
+      "c196-effect"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "同一债务分期履行的特别起算规则优先于一般起算规则",
+     "rules": [
+      "c189"
+     ]
+    },
+    {
+     "text": "时效中断后期间重新计算，排除已届满的三年期间",
+     "rules": [
+      "c195-restart"
+     ]
+    },
+    {
+     "text": "不适用诉讼时效的请求权排除时效届满的效果",
+     "rules": [
+      "c196-effect"
+     ]
+    },
+    {
+     "text": "届满后义务人同意履行，其时效抗辩权消灭，优先于第192条第1款的抗辩权",
+     "rules": [
+      "c192-agree"
+     ]
+    },
+    {
+     "text": "有特殊情况经权利人申请，法院决定延长，优先于二十年不予保护的规则",
+     "rules": [
+      "c188-2ext"
+     ]
+    },
+    {
+     "text": "未在一审及时行使抗辩权的程序限制，优先于第192条第1款赋予的抗辩权",
+     "rules": [
+      "c192-late"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "除斥期间不适用中止、中断，期间届满权利本身消灭；诉讼时效届满仅产生抗辩权，实体权利不消灭（笔记、学理，条文未明文）",
+     "rules": [
+      "c192-defense"
+     ]
+    },
+    {
+     "text": "二十年最长保护期自权利受损害之日起算，与三年普通时效自知道或应当知道权利受损及义务人之日起算不同，且可依申请延长",
+     "rules": [
+      "c188-2",
+      "c188-2ext"
+     ]
+    },
+    {
+     "text": "笔记所称“法院不得主动适用诉讼时效”出自第193条，本行未挂载该条，此处仅由第192条抗辩权性质推得，标为学理",
+     "rules": [
+      "c192-court"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c188-1",
+    "srcs": [
+     "art188-1"
+    ],
+    "body": [
+     "claim(K)",
+     "threeYearsSinceKnew(K)",
+     "~lawProvidesOtherwiseOnLimitationPeriod(K)"
+    ],
+    "heads": [
+     "limitationExpired(K)"
+    ],
+    "note": "向人民法院请求保护民事权利的诉讼时效期间为三年，自知道或应当知道权利受损及义务人之日起满三年即届满；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-start",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(K)",
+     "knowsOrShouldKnowDamageAndObligor(K)"
+    ],
+    "heads": [
+     "limitationRunsFromKnowledge(K)"
+    ],
+    "note": "诉讼时效期间自权利人知道或者应当知道权利受到损害以及义务人之日起计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-2",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(K)",
+     "twentyYearsSinceDamage(K)"
+    ],
+    "heads": [
+     "notProtectedByCourt(K)"
+    ],
+    "note": "自权利受到损害之日起超过二十年的，人民法院不予保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c188-2ext",
+    "srcs": [
+     "art188-2"
+    ],
+    "body": [
+     "claim(K)",
+     "twentyYearsSinceDamage(K)",
+     "specialCircumstances(K)",
+     "appliedForExtension(K)"
+    ],
+    "heads": [
+     "courtExtends(K)"
+    ],
+    "note": "超过二十年但有特殊情况的，人民法院可以根据权利人的申请决定延长",
+    "auth": "npc"
+   },
+   {
+    "key": "c189",
+    "srcs": [
+     "art189"
+    ],
+    "body": [
+     "claim(K)",
+     "installmentDebtAgreed(K)",
+     "lastInstallmentDue(K)"
+    ],
+    "heads": [
+     "limitationRunsFromLastInstallment(K)"
+    ],
+    "note": "当事人约定同一债务分期履行的，诉讼时效期间自最后一期履行期限届满之日起计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-defense",
+    "srcs": [
+     "art192-1"
+    ],
+    "body": [
+     "limitationExpired(K)",
+     "obligorOf(Ob,K)"
+    ],
+    "heads": [
+     "limitationDefense(Ob,K)",
+     {
+      "type": "PERM",
+      "bearer": "Ob",
+      "counterparty": null,
+      "content": "refuseToPerform(Ob,K)"
+     }
+    ],
+    "note": "诉讼时效期间届满的，义务人取得不履行义务的抗辩权，可以拒绝履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-court",
+    "srcs": [
+     "art192-1"
+    ],
+    "body": [
+     "limitationExpired(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLimitationExOfficio(court,K)"
+     }
+    ],
+    "note": "笔记：抗辩权是否行使取决于义务人，法院不得依职权主动适用诉讼时效（第193条，本行未挂载，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c192-agree",
+    "srcs": [
+     "art192-2"
+    ],
+    "body": [
+     "limitationExpired(K)",
+     "obligorOf(Ob,K)",
+     "obligorAgreesToPerform(K)"
+    ],
+    "heads": [
+     "-limitationDefense(Ob,K)"
+    ],
+    "note": "时效期间届满后义务人同意履行的，不得以时效届满为由抗辩，其时效抗辩权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-voluntary",
+    "srcs": [
+     "art192-2"
+    ],
+    "body": [
+     "limitationExpired(K)",
+     "obligorOf(Ob,K)",
+     "voluntarilyPerformed(Ob,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "Ob",
+      "counterparty": null,
+      "content": "demandReturn(Ob,K)"
+     }
+    ],
+    "note": "时效期间届满后义务人已经自愿履行的，不得请求返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c192-late",
+    "srcs": [
+     "art192-1"
+    ],
+    "body": [
+     "limitationDefense(Ob,K)",
+     "raisedFirstInSecondInstance(Ob,K)",
+     "~newEvidenceShowsExpiry(Ob,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "rejectLimitationDefense(Ob,K)"
+     }
+    ],
+    "note": "笔记：一审未提出时效抗辩而二审首次提出且无新证据证明时效已过的，法院不予支持，据此申请再审或提出再审抗辩的亦不予支持（诉讼时效司法解释，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c188-mandatory",
+    "srcs": [
+     "art188-1"
+    ],
+    "body": [
+     "limitationAgreement(A,K)"
+    ],
+    "heads": [
+     "void(A)"
+    ],
+    "note": "笔记：诉讼时效规定具有强制性，当事人不得约定延长、缩短时效期间或预先放弃时效利益，此类约定无效（第197条，本行未挂载，属学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c194-ground",
+    "srcs": [
+     "art194-1"
+    ],
+    "body": [
+     "claim(K)",
+     "withinLastSixMonths(K)",
+     {
+      "or": [
+       "forceMajeure(K)",
+       "incapableClaimantWithoutAgent(K)",
+       "heirOrAdministratorUndetermined(K)",
+       "claimantControlledByObligor(K)",
+       "otherObstacle(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "limitationSuspended(K)"
+    ],
+    "note": "在时效期间最后六个月内因不可抗力、无法定代理人、继承人未定、权利人被控制或其他障碍不能行使请求权的，诉讼时效中止",
+    "auth": "npc"
+   },
+   {
+    "key": "c194-2",
+    "srcs": [
+     "art194-2"
+    ],
+    "body": [
+     "limitationSuspended(K)",
+     "obstacleRemoved(K)",
+     "sixMonthsSinceRemoval(K)"
+    ],
+    "heads": [
+     "limitationExpired(K)"
+    ],
+    "note": "自中止时效的原因消除之日起满六个月，诉讼时效期间届满",
+    "auth": "npc"
+   },
+   {
+    "key": "c195-ground",
+    "srcs": [
+     "art195-1"
+    ],
+    "body": [
+     "claim(K)",
+     {
+      "or": [
+       "creditorDemandsPerformance(K)",
+       "obligorAgreesToPerform(K)",
+       "suitOrArbitrationFiled(K)",
+       "equivalentProceeding(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "limitationInterrupted(K)"
+    ],
+    "note": "权利人请求履行、义务人同意履行、提起诉讼或申请仲裁、与提起诉讼或申请仲裁具有同等效力的其他情形，诉讼时效中断",
+    "auth": "npc"
+   },
+   {
+    "key": "c195-restart",
+    "srcs": [
+     "art195-1"
+    ],
+    "body": [
+     "limitationInterrupted(K)"
+    ],
+    "heads": [
+     "-limitationExpired(K)"
+    ],
+    "note": "时效中断的，从中断、有关程序终结时起诉讼时效期间重新计算，已过期间不再计入",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-exempt",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "claim(K)",
+     {
+      "or": [
+       "seeksCessationOrRemoval(K)",
+       "returnOfImmovableOrRegisteredMovable(K)",
+       "supportOrMaintenancePayment(K)",
+       "statutorilyExempt(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "exemptFromLimitation(K)"
+    ],
+    "note": "请求停止侵害、排除妨碍、消除危险，不动产物权和登记的动产物权人请求返还财产，请求支付抚养费、赡养费或扶养费，以及依法不适用诉讼时效的其他请求权，不适用诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c196-effect",
+    "srcs": [
+     "art196"
+    ],
+    "body": [
+     "exemptFromLimitation(K)"
+    ],
+    "heads": [
+     "-limitationExpired(K)"
+    ],
+    "note": "不适用诉讼时效的请求权，不因时效期间届满而受影响，义务人不得据时效届满抗辩",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c189",
+    "c188-start",
+    "同一债务分期履行的起算属特别规定，优先于自知道权利受损及义务人之日起算的一般规则"
+   ],
+   [
+    "c195-restart",
+    "c188-1",
+    "时效中断后期间重新计算，排除已届满的三年期间"
+   ],
+   [
+    "c196-effect",
+    "c188-1",
+    "不适用诉讼时效的请求权，排除时效届满的效果"
+   ],
+   [
+    "c192-agree",
+    "c192-defense",
+    "届满后义务人同意履行，其时效抗辩权消灭，优先于第192条第1款的抗辩权"
+   ],
+   [
+    "c188-2ext",
+    "c188-2",
+    "有特殊情况经权利人申请，法院决定延长，排除二十年不予保护"
+   ],
+   [
+    "c192-late",
+    "c192-defense",
+    "未在一审及时行使抗辩权的程序限制，优先于第192条第1款赋予的抗辩权"
+   ]
+  ],
+  "predicates": {
+   "knowsOrShouldKnowDamageAndObligor": "权利人知道或者应当知道权利受到损害以及义务人",
+   "limitationRunsFromKnowledge": "诉讼时效期间自权利人知道或应当知道权利受损及义务人之日起计算",
+   "limitationRunsFromLastInstallment": "诉讼时效期间自最后一期履行期限届满之日起计算",
+   "installmentDebtAgreed": "当事人约定同一债务分期履行",
+   "lastInstallmentDue": "最后一期履行期限届满",
+   "lawProvidesOtherwiseOnLimitationPeriod": "法律对诉讼时效期间另有规定",
+   "specialCircumstances": "存在特殊情况",
+   "appliedForExtension": "权利人已申请延长诉讼时效期间",
+   "refuseToPerform": "拒绝履行（义务人，请求权）",
+   "demandReturn": "请求返还已履行的给付（义务人，给付）",
+   "obstacleRemoved": "中止时效的原因已消除",
+   "sixMonthsSinceRemoval": "自中止原因消除之日起已满六个月",
+   "raisedFirstInSecondInstance": "一审未提出时效抗辩而首次在二审提出（义务人，请求权）",
+   "newEvidenceShowsExpiry": "基于新的证据能够证明请求权已过诉讼时效期间（义务人，请求权）",
+   "rejectLimitationDefense": "不支持义务人的诉讼时效抗辩（义务人，请求权）",
+   "limitationAgreement": "约定延长、缩短诉讼时效期间或预先放弃时效利益的协议（协议，请求权）"
+  }
+ }
+}

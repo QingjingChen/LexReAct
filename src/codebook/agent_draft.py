@@ -31,7 +31,7 @@ def setup(law):
     root = D.DOM['drafts']
     mine = root / VERSION
     rows = [r for r in json.load(open(D.DOM['rows'], encoding='utf-8')) if not r['rules'] and r['articles']]
-    prior = {**D.load_drafts(root), **D.load_drafts(mine)}
+    prior = {**D.load_drafts(root / 'deepseek-v4.1-flash-mb'), **D.load_drafts(root), **D.load_drafts(mine)}
     return root, mine, rows, prior
 
 

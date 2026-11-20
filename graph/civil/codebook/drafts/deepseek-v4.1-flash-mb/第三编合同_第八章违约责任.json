@@ -1,0 +1,2202 @@
+{
+ "card:g4761": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "非金钱债务不履行或者履行不符合约定时，对方可否请求继续履行；何种情形排除该请求权",
+     "rules": [
+      "c580-1",
+      "c580-1-exc"
+     ]
+    },
+    {
+     "text": "存在除外情形且致使合同目的不能实现时，合同权利义务关系如何处理，违约责任是否受影响",
+     "rules": [
+      "c580-2",
+      "c580-2-liability"
+     ]
+    },
+    {
+     "text": "根据债务的性质不得强制履行时，对方可否请求其负担由第三人替代履行的费用",
+     "rules": [
+      "c581"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方不履行非金钱债务，或者履行非金钱债务不符合约定",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "除外情形之一：法律上或者事实上不能履行；债务的标的不适于强制履行或者履行费用过高；债权人在合理期限内未请求履行",
+     "rules": [
+      "c580-1-exc"
+     ]
+    },
+    {
+     "text": "上述除外情形之一致使不能实现合同目的，且当事人提出请求",
+     "rules": [
+      "c580-2"
+     ]
+    },
+    {
+     "text": "根据债务的性质不得强制履行",
+     "rules": [
+      "c581"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有法律上或事实上不能履行、标的不适于强制履行或履行费用过高、债权人合理期限内未请求履行之一者，不得请求继续履行",
+     "rules": [
+      "c580-1-exc",
+      "c580-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "不存在除外情形的，对方可以请求履行",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系",
+     "rules": [
+      "c580-2"
+     ]
+    },
+    {
+     "text": "终止合同权利义务关系不影响违约责任的承担",
+     "rules": [
+      "c580-2-liability"
+     ]
+    },
+    {
+     "text": "对方可以请求其负担由第三人替代履行的费用",
+     "rules": [
+      "c581"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第580条第1款但书的除外情形构成对继续履行请求权的特别限制，优先于一般履行请求权",
+     "rules": [
+      "c580-1-exc",
+      "c580-1"
+     ]
+    },
+    {
+     "text": "合同关系终止不阻却违约责任，责任承担独立于继续履行",
+     "rules": [
+      "c580-2-liability"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条限于非金钱债务；金钱债务的履行请求权适用第579条，不适用本条的除外情形",
+     "rules": []
+    },
+    {
+     "text": "第581条与第580条第1款第2项不同：债务性质不得强制履行时，对方可请求第三人替代履行的费用，而非仅排除履行请求",
+     "rules": [
+      "c581"
+     ]
+    },
+    {
+     "text": "LEGO 卡片称“合同解除权”，法条用语为“终止合同权利义务关系”，二者不宜混同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c580-1",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     "nonMonetaryDebt(D,K)",
+     "failsToPerformDebt(D,K)",
+     "creditorOf(C,D,K)",
+     "~performanceClaimExcluded(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "claimPerformance(C,K)"
+     }
+    ],
+    "note": "一方不履行非金钱债务或者履行不符合约定的，对方可以请求履行，但无第580条第1款但书除外情形为限",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-1-exc",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     "nonMonetaryDebt(D,K)",
+     "failsToPerformDebt(D,K)",
+     {
+      "or": [
+       "legallyOrFactuallyImpossible(D,K)",
+       "unsuitableForSpecificPerformance(D,K)",
+       "performanceCostExcessive(D,K)",
+       "noPerformanceRequestWithinReasonablePeriod(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "performanceClaimExcluded(D,K)"
+    ],
+    "note": "继续履行请求权的三项除外情形：法律上或事实上不能履行；标的不适于强制履行或履行费用过高；债权人合理期限内未请求履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-2",
+    "srcs": [
+     "art580-2"
+    ],
+    "body": [
+     "performanceClaimExcluded(D,K)",
+     "breachFrustratesPurpose(D,K)",
+     "requestTerminationOfContractRights(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "contractTerminated(K)"
+     }
+    ],
+    "note": "有除外情形之一致使不能实现合同目的的，人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系（仲裁机构一并以 court 表示）",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-2-liability",
+    "srcs": [
+     "art580-2"
+    ],
+    "body": [
+     "contractTerminated(K)",
+     "breachingParty(D,K)"
+    ],
+    "heads": [
+     "liableForBreach(D,K)"
+    ],
+    "note": "终止合同权利义务关系不影响违约责任的承担",
+    "auth": "npc"
+   },
+   {
+    "key": "c581",
+    "srcs": [
+     "art581"
+    ],
+    "body": [
+     "failsToPerformDebt(D,K)",
+     "debtNotSubjectToSpecificPerformanceByNature(D,K)",
+     "creditorOf(C,D,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "D",
+      "content": "claimSubstitutePerformanceCost(C,D,K)"
+     }
+    ],
+    "note": "根据债务的性质不得强制履行的，对方可以请求其负担由第三人替代履行的费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c580-1-exc",
+    "c580-1",
+    "第580条第1款但书的除外情形优先于继续履行请求权"
+   ]
+  ],
+  "predicates": {
+   "nonMonetaryDebt": "一方所负债务为非金钱债务（债务人，合同）",
+   "failsToPerformDebt": "不履行债务或者履行债务不符合约定（债务人，合同）",
+   "legallyOrFactuallyImpossible": "法律上或者事实上不能履行（债务人，合同）",
+   "unsuitableForSpecificPerformance": "债务的标的不适于强制履行（债务人，合同）",
+   "performanceCostExcessive": "履行费用过高（债务人，合同）",
+   "noPerformanceRequestWithinReasonablePeriod": "债权人在合理期限内未请求履行（合同）",
+   "performanceClaimExcluded": "存在第580条第1款但书的除外情形，继续履行请求权被排除（债务人，合同）",
+   "claimPerformance": "请求履行（债权人，合同）",
+   "requestTerminationOfContractRights": "当事人请求终止合同权利义务关系（当事人，合同）",
+   "debtNotSubjectToSpecificPerformanceByNature": "根据债务的性质不得强制履行（债务人，合同）",
+   "claimSubstitutePerformanceCost": "请求负担由第三人替代履行的费用（债权人，债务人，合同）"
+  }
+ },
+ "card:g3844": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人一方违约时应当承担何种违约责任；非金钱债务的对方可否请求继续履行，何种情形下不得请求",
+     "rules": [
+      "c577-breach",
+      "c577-1",
+      "c580-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人一方不履行合同义务，或者履行合同义务不符合约定（构成违约）",
+     "rules": [
+      "c577-breach"
+     ]
+    },
+    {
+     "text": "债务的标的为非金钱债务，且请求履行的对方为守约方",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "法律上或者事实上不能履行",
+     "rules": [
+      "c580-exc1"
+     ]
+    },
+    {
+     "text": "债务的标的不适于强制履行，或者履行费用过高",
+     "rules": [
+      "c580-exc2"
+     ]
+    },
+    {
+     "text": "债权人在合理期限内未请求履行",
+     "rules": [
+      "c580-exc3"
+     ]
+    },
+    {
+     "text": "有上述除外情形之一，致使不能实现合同目的，且当事人向人民法院或仲裁机构提出请求",
+     "rules": [
+      "c580-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有第580条第1款三项除外情形之一的（法律上或事实上不能履行；标的不适于强制履行或履行费用过高；债权人在合理期限内未请求履行），对方不得请求继续履行",
+     "rules": [
+      "c580-exc1",
+      "c580-exc2",
+      "c580-exc3",
+      "c580-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "违约方应当承担继续履行、采取补救措施或者赔偿损失等违约责任",
+     "rules": [
+      "c577-1"
+     ]
+    },
+    {
+     "text": "非金钱债务不履行或履行不符合约定的，对方可以请求履行",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "有除外情形致不能实现合同目的的，人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系",
+     "rules": [
+      "c580-2"
+     ]
+    },
+    {
+     "text": "合同因上述情形终止的，不影响违约责任的承担",
+     "rules": [
+      "c580-2-liability"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第580条对非金钱债务继续履行请求的限制属特别规定，优先于第577条关于继续履行等违约责任的一般规定",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "有第580条第1款除外情形且致不能实现合同目的时，依第2款终止合同权利义务关系，不再支持继续履行的请求",
+     "rules": [
+      "c580-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第580条第1款仅适用于非金钱债务；金钱债务不适用该条三项除外情形，仍适用第577条承担违约责任",
+     "rules": [
+      "c580-1"
+     ]
+    },
+    {
+     "text": "笔记讨论的是违约定金的定金罚则（给付定金方不履行无权要求返还、收受定金方不履行应双倍返还、超过主合同标的额20%的部分不产生定金效力、不完全履行按未履行部分比例适用），属第587条以下的定金规则，本行未挂载该条，故不形式化",
+     "rules": []
+    },
+    {
+     "text": "LEGO 卡片所称“债务履行障碍的触发条件”侧重当事人约定的触发情形，与第577、580条的法定违约责任及继续履行请求规则不完全对应，仅作参考",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c577-breach",
+    "srcs": [
+     "art577"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     {
+      "or": [
+       "nonPerformance(A,K)",
+       "nonConformingPerformance(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "breachingParty(A,K)"
+    ],
+    "note": "当事人一方不履行合同义务或者履行合同义务不符合约定的，即为违约方",
+    "auth": "npc"
+   },
+   {
+    "key": "c577-1",
+    "srcs": [
+     "art577"
+    ],
+    "body": [
+     "breachingParty(A,K)",
+     "nonBreachingParty(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "liableForBreach(A,K)"
+     }
+    ],
+    "note": "违约方应当向对方承担继续履行、采取补救措施或者赔偿损失等违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-1",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "nonMonetaryDebt(K)",
+     {
+      "or": [
+       "nonPerformance(A,K)",
+       "nonConformingPerformance(A,K)"
+      ]
+     },
+     "nonBreachingParty(B,K)",
+     "~performanceExcluded(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "requestPerformance(B,A,K)"
+     }
+    ],
+    "note": "一方不履行非金钱债务或者履行非金钱债务不符合约定的，对方可以请求履行；但有第580条第1款三项除外情形之一的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-exc1",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     "legallyOrFactuallyImpossible(K)"
+    ],
+    "heads": [
+     "performanceExcluded(K)"
+    ],
+    "note": "法律上或者事实上不能履行的，属于不得请求继续履行的除外情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-exc2",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "unsuitableForCompelledPerformance(K)",
+       "performanceCostExcessive(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "performanceExcluded(K)"
+    ],
+    "note": "债务的标的不适于强制履行或者履行费用过高的，属于不得请求继续履行的除外情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-exc3",
+    "srcs": [
+     "art580-1"
+    ],
+    "body": [
+     "creditorFailedToRequestWithinReasonablePeriod(B,K)"
+    ],
+    "heads": [
+     "performanceExcluded(K)"
+    ],
+    "note": "债权人在合理期限内未请求履行的，属于不得请求继续履行的除外情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-2",
+    "srcs": [
+     "art580-2"
+    ],
+    "body": [
+     "performanceExcluded(K)",
+     "exclusionFrustratesPurpose(K)",
+     "requestModifyOrTerminate(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "terminateContract(K)"
+     }
+    ],
+    "note": "有前款除外情形之一，致使不能实现合同目的的，人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c580-2-liability",
+    "srcs": [
+     "art580-2"
+    ],
+    "body": [
+     "contractTerminated(K)",
+     "breachingParty(A,K)",
+     "nonBreachingParty(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "liableForBreach(A,K)"
+     }
+    ],
+    "note": "合同因第580条第2款终止的，不影响违约方违约责任的承担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c580-1",
+    "c577-1",
+    "第580条系对非金钱债务继续履行请求的特别规定（三项除外情形），优先于第577条关于继续履行等违约责任的一般规定"
+   ],
+   [
+    "c580-2",
+    "c580-1",
+    "有第580条第1款除外情形且致不能实现合同目的时，依第2款终止合同权利义务关系，排除继续履行的请求"
+   ]
+  ],
+  "predicates": {
+   "nonPerformance": "不履行合同义务（当事人，合同）",
+   "nonConformingPerformance": "履行合同义务不符合约定（当事人，合同）",
+   "nonMonetaryDebt": "该合同项下债务的标的为非金钱债务（参数：合同）",
+   "performanceExcluded": "存在第580条第1款但书规定的除外情形（参数：合同）",
+   "legallyOrFactuallyImpossible": "法律上或者事实上不能履行（参数：合同）",
+   "unsuitableForCompelledPerformance": "债务的标的不适于强制履行（参数：合同）",
+   "performanceCostExcessive": "履行费用过高（参数：合同）",
+   "creditorFailedToRequestWithinReasonablePeriod": "债权人在合理期限内未请求履行（债权人，合同）",
+   "requestPerformance": "请求债务人履行债务（债权人，合同）",
+   "exclusionFrustratesPurpose": "因第580条第1款除外情形致使不能实现合同目的（参数：合同）",
+   "terminateContract": "终止合同权利义务关系（参数：合同）"
+  }
+ },
+ "card:g4745": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人一方因不可抗力不能履行合同的，能否免除违约责任、免除的范围如何；迟延履行后发生不可抗力的，是否仍可免责",
+     "rules": [
+      "c590-1",
+      "c590-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人一方因不可抗力不能履行合同，即不可抗力与合同履行障碍之间具有因果关系",
+     "rules": [
+      "c590-1",
+      "c590-notify",
+      "c590-proof"
+     ]
+    },
+    {
+     "text": "免责范围取决于不可抗力的影响程度，可部分或全部免除",
+     "rules": [
+      "c590-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律对不可抗力免责另有规定的，依该规定处理（不适用本款免责）",
+     "rules": [
+      "c590-1"
+     ]
+    },
+    {
+     "text": "当事人迟延履行后发生不可抗力的，不免除其违约责任",
+     "rules": [
+      "c590-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "根据不可抗力的影响，部分或者全部免除责任",
+     "rules": [
+      "c590-1"
+     ]
+    },
+    {
+     "text": "因不可抗力不能履行合同的，应当及时通知对方，以减轻可能给对方造成的损失",
+     "rules": [
+      "c590-notify"
+     ]
+    },
+    {
+     "text": "应当在合理期限内提供不可抗力的证明",
+     "rules": [
+      "c590-proof"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款（迟延履行后发生不可抗力不免责）优先于第1款的不可抗力免责规则",
+     "rules": [
+      "c590-2",
+      "c590-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "LEGO 卡片称“未及时通知或未在合理期限内提供证明即不免除责任”，法条只设通知义务与证明义务，并未直接规定不免责；因未及时通知致损失扩大的，不得就扩大部分主张赔偿，属第591条守约方减损规则，本行不设规则",
+     "rules": []
+    },
+    {
+     "text": "第590条是一般的法定免责事由（通常仅指不可抗力）；违约金与定金并存时的选择适用见第588条，双方违约与过错相抵见第592条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c590-1",
+    "srcs": [
+     "art590-1"
+    ],
+    "body": [
+     "partyToContract(P,K)",
+     "forceMajeure(F)",
+     "cannotPerformDueTo(P,K,F)",
+     "~lawProvidesOtherwiseOnLiability(K)"
+    ],
+    "heads": [
+     "-liableForBreach(P,K)"
+    ],
+    "note": "当事人一方因不可抗力不能履行合同的，根据不可抗力的影响部分或者全部免除责任；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c590-notify",
+    "srcs": [
+     "art590-1"
+    ],
+    "body": [
+     "partyToContract(P,K)",
+     "forceMajeure(F)",
+     "cannotPerformDueTo(P,K,F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyCounterparty(P,K)"
+     }
+    ],
+    "note": "因不可抗力不能履行合同的，应当及时通知对方，以减轻可能给对方造成的损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c590-proof",
+    "srcs": [
+     "art590-1"
+    ],
+    "body": [
+     "partyToContract(P,K)",
+     "forceMajeure(F)",
+     "cannotPerformDueTo(P,K,F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "provideProofWithinReasonableTime(P,K)"
+     }
+    ],
+    "note": "因不可抗力不能履行合同的，应当在合理期限内提供证明",
+    "auth": "npc"
+   },
+   {
+    "key": "c590-2",
+    "srcs": [
+     "art590-2"
+    ],
+    "body": [
+     "partyToContract(P,K)",
+     "delaysMainDebt(P,K)",
+     "forceMajeureAfterDelay(P,K)"
+    ],
+    "heads": [
+     "liableForBreach(P,K)"
+    ],
+    "note": "当事人迟延履行后发生不可抗力的，不免除其违约责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c590-2",
+    "c590-1",
+    "第590条第2款：迟延履行后发生不可抗力的，不免除违约责任，排除第1款不可抗力免责的效果"
+   ]
+  ],
+  "predicates": {
+   "partyToContract": "是合同的当事人（当事人，合同）",
+   "provideProofWithinReasonableTime": "在合理期限内提供不可抗力等证明（当事人，合同）",
+   "forceMajeureAfterDelay": "不可抗力发生在当事人迟延履行之后（当事人，合同）"
+  }
+ },
+ "card:g4732": {
+  "status": "failed",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [
+   "c577-valid：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c577-1：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c577-1：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c577-1：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c577-actual：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c577-actual：新谓词 performancePeriodExpired 需要在 predicates 中给出中文释义",
+   "c577-actual：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c577-improper：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c577-improper：新谓词 performanceConforms 需要在 predicates 中给出中文释义",
+   "c577-improper：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c577-anticipatory：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c577-anticipatory：新谓词 expresslyRefusesPerformance 需要在 predicates 中给出中文释义",
+   "c577-anticipatory：新谓词 indicatesByConductNonPerformance 需要在 predicates 中给出中文释义",
+   "c577-anticipatory：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c577-exempt：新谓词 exemptFromBreachLiability 需要在 predicates 中给出中文释义",
+   "c578-1：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c578-1：新谓词 expresslyRefusesPerformance 需要在 predicates 中给出中文释义",
+   "c578-1：新谓词 indicatesByConductNonPerformance 需要在 predicates 中给出中文释义",
+   "c578-1：新谓词 claimBreachLiabilityBeforeDue 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 nonMonetaryDebt 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 performanceImpossible 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 unsuitableForSpecificPerformance 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 performanceCostExcessive 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 creditorFailedToRequestInTime 需要在 predicates 中给出中文释义",
+   "c580-1：新谓词 claimPerformance 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 performanceImpossible 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 unsuitableForSpecificPerformance 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 performanceCostExcessive 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 creditorFailedToRequestInTime 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 frustratesContractPurpose 需要在 predicates 中给出中文释义",
+   "c580-2：新谓词 terminateContractRightsAndObligations 需要在 predicates 中给出中文释义",
+   "c580-2b：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c580-2b：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c580-2b：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 tookRemedialMeasures 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 otherLossRemains 需要在 predicates 中给出中文释义",
+   "c583-1：新谓词 compensateRemainingLoss 需要在 predicates 中给出中文释义",
+   "c584-1：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c584-1：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c584-1：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c584-1：新谓词 causesLoss 需要在 predicates 中给出中文释义",
+   "c584-1：新谓词 compensateFullLoss 需要在 predicates 中给出中文释义",
+   "c584-2：新谓词 contractInForce 需要在 predicates 中给出中文释义",
+   "c584-2：新谓词 nonPerformance 需要在 predicates 中给出中文释义",
+   "c584-2：新谓词 performanceNotConforming 需要在 predicates 中给出中文释义",
+   "c584-2：新谓词 unforeseeableLoss 需要在 predicates 中给出中文释义",
+   "c584-2：新谓词 limitCompensationToForeseeableLoss 需要在 predicates 中给出中文释义"
+  ],
+  "last": "{\n  \"nl\": {\n    \"issue\": [\n      {\n        \"text\": \"当事人一方不履行合同义务或者履行合同义务不符合约定的，应当承担何种违约责任\",\n        \"rules\": [\"c577-1\"]\n      },\n      {\n        \"text\": \"履行期限届满前一方明确表示或者以自己的行为表明不履行的，对方能否提前请求其承担违约责任\",\n        \"rules\": [\"c578-1\"]\n      },\n      {\n        \"text\": \"非金钱债务不履行时，对方请求履行受哪些限制；因除外情形致不能实现合同目的时，合同关系如何处理\",\n        \"rules\": [\"c580-1\", \"c580-2\", \"c580-2b\"]\n      },\n      {\n        \"text\": \"违约损失赔偿的范围、可得利益与可预见性限制\",\n        \"rules\": [\"c583-1\", \"c584-1\", \"c584-2\"]\n      }\n    ],\n    \"conditions\": [\n      {\n        \"text\": \"当事人之间存在有效合同（笔记列为违约责任构成要件之一）\",\n        \"rules\": [\"c577-valid\"]\n      },\n      {\n        \"text\": \"客观上有违约行为：不履行（实际不履行、预期违约）或者不适当履行\",\n        \"rules\": [\"c577-actual\", \"c577-improper\", \"c577-anticipatory\"]\n      },\n      {\n        \"text\": \"不履行的是非金钱债务，或者履行非金钱债务不符合约定\",\n        \"rules\": [\"c580-1\"]\n      },\n      {\n        \"text\": \"违约行为造成对方损失\",\n        \"rules\": [\"c584-1\"]\n      },\n      {\n        \"text\": \"在履行义务或者采取补救措施后，对方还有其他损失\",\n        \"rules\": [\"c583-1\"]\n      },\n      {\n        \"text\": \"有第580条第1款除外情形之一，致使不能实现合同目的，且当事人提出请求\",\n        \"rules\": [\"c580-2\"]\n      }\n    ],\n    \"exceptions\": [\n      {\n        \"text\": \"法律上或者事实上不能履行；债务的标的不适于强制履行或者履行费用过高；债权人在合理期限内未请求履行（第580条第1款但书）\",\n        \"rules\": [\"c580-1\"]\n      },\n      {\n        \"text\": \"赔偿额不得超过违约一方订立合同时预见到或者应当预见到的因违约可能造成的损失\",\n        \"rules\": [\"c584-2\"]\n      },\n      {\n        \"text\": \"不存在免责事由（笔记列为构成要件之三）；存在法定或约定免责事由的，不承担违约责任\",\n        \"rules\": [\"c577-exempt\"]\n      }\n    ],\n    \"effects\": [\n      {\n        \"text\": \"违约方应当承担继续履行、采取补救措施或者赔偿损失等违约责任\",\n        \"rules\": [\"c577-1\"]\n      },\n      {\n        \"text\": \"对方可以在履行期限届满前请求其承担违约责任\",\n        \"rules\": [\"c578-1\"]\n      },\n      {\n        \"text\": \"对方可以请求履行该非金钱债务\",\n        \"rules\": [\"c580-1\"]\n      },\n      {\n        \"text\": \"人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系，但不影响违约责任的承担\",\n        \"rules\": [\"c580-2\", \"c580-2b\"]\n      },\n      {\n        \"text\": \"履行义务或者采取补救措施后对方还有其他损失的，应当赔偿损失\",\n        \"rules\": [\"c583-1\"]\n      },\n      {\n        \"text\": \"损失赔偿额应当相当于因违约所造成的损失，包括合同履行后可以获得的利益\",\n        \"rules\": [\"c584-1\"]\n      }\n    ],\n    \"priority\": [\n      {\n        \"text\": \"可预见性规则优先，限制第584条前段的完全赔偿范围\",\n        \"rules\": [\"c584-2\", \"c584-1\"]\n      },\n      {\n        \"text\": \"预期违约情形下第578条作为特别规定优先适用，可在履行期限届满前追责\",\n        \"rules\": [\"c578-1\", \"c577-1\"]\n      },\n      {\n        \"text\": \"存在免责事由时排除第577条的违约责任\",\n        \"rules\": [\"c577-exempt\", \"c577-1\"]\n      }\n    ],\n    \"distinguish\": [\n      {\n        \"text\": \"第578条针对履行期限届满前的预期违约（明确表示或以行为表明不履行），第577条针对实际不履行与不适当履行；笔记将预期违约亦归入“不履行”\",\n        \"rules\": [\"c578-1\", \"c577-actual\", \"c577-anticipatory\"]\n      },\n      {\n        \"text\": \"第580条限于非金钱债务的履行请求并列举三项除外情形；金钱债务的支付请求权（第579条）本行未挂载，不写规则\",\n        \"rules\": [\"c580-1\"]\n      },\n      {\n        \"text\": \"第583条处理采取补救措施后仍存在的其他损失，第584条处理损失赔偿的范围与可预见性限制，二者层次不同\",\n        \"rules\": [\"c583-1\", \"c584-1\"]\n      },\n      {\n        \"text\": \"LEGO 卡片提到的债务免除（第575条）、债权债务混同（第576条）属合同权利义务终止，本行未挂载，不写规则\",\n        \"rules\": []\n      }\n    ]\n  },\n  \"rules\": [\n    {\n      \"key\": \"c577-valid\",\n      \"srcs\": [\"art577\"],\n      \"body\": [\"contractAgreement(K)\", \"valid(K)\"],\n      \"heads\": [\"contractInForce(K)\"],\n      \"note\": \"笔记将“当事人之间存在有效合同”列为违约责任构成要件；合同有效成立方发生违约责任（学理，非第577条明文）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c577-1\",\n      \"srcs\": [\"art577\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"O\", \"content\": \"liableForBreach(P,K)\"}\n      ],\n      \"note\": \"一方不履行合同义务或者履行合同义务不符合约定的，应当承担继续履行、采取补救措施或者赔偿损失等违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c577-actual\",\n      \"srcs\": [\"art577\"],\n      \"body\": [\"contractInForce(K)\", \"partyToDebtRelation(P,K)\", \"performancePeriodExpired(K)\", \"~performed(P,K)\"],\n      \"heads\": [\"nonPerformance(P,K)\"],\n      \"note\": \"笔记：实际不履行指履行期限届满之时仍未履行\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c577-improper\",\n      \"srcs\": [\"art577\"],\n      \"body\": [\"contractInForce(K)\", \"partyToDebtRelation(P,K)\", \"performed(P,K)\", \"~performanceConforms(P,K)\"],\n      \"heads\": [\"performanceNotConforming(P,K)\"],\n      \"note\": \"笔记：不适当履行指虽有履行行为但履行不符合合同要求\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c577-anticipatory\",\n      \"srcs\": [\"art577\", \"art578\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        {\"or\": [\"expresslyRefusesPerformance(P,K)\", \"indicatesByConductNonPerformance(P,K)\"]}\n      ],\n      \"heads\": [\"nonPerformance(P,K)\"],\n      \"note\": \"笔记：预期违约（履行期届满前明确表示或以行为表明不履行）亦属违约行为之“不履行”\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c577-exempt\",\n      \"srcs\": [\"art577\"],\n      \"body\": [\"exemptFromBreachLiability(P,K)\"],\n      \"heads\": [\"-liableForBreach(P,K)\"],\n      \"note\": \"笔记将“不存在免责事由”列为构成要件之三；存在法定或约定免责事由的，不承担违约责任（本行未挂载第590条，仅作学理提示）\",\n      \"auth\": \"doctrine\"\n    },\n    {\n      \"key\": \"c578-1\",\n      \"srcs\": [\"art578\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"expresslyRefusesPerformance(P,K)\", \"indicatesByConductNonPerformance(P,K)\"]}\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"O\", \"counterparty\": \"P\", \"content\": \"claimBreachLiabilityBeforeDue(O,P,K)\"}\n      ],\n      \"note\": \"一方明确表示或者以自己的行为表明不履行合同义务的，对方可以在履行期限届满前请求其承担违约责任\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c580-1\",\n      \"srcs\": [\"art580-1\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        \"nonMonetaryDebt(P,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]},\n        \"~performanceImpossible(P,K)\",\n        \"~unsuitableForSpecificPerformance(P,K)\",\n        \"~performanceCostExcessive(P,K)\",\n        \"~creditorFailedToRequestInTime(O,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"O\", \"counterparty\": \"P\", \"content\": \"claimPerformance(O,P)\"}\n      ],\n      \"note\": \"不履行非金钱债务或者履行不符合约定的，对方可以请求履行；但法律上或事实上不能履行、标的不适于强制履行或履行费用过高、债权人合理期限内未请求履行的除外\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c580-2\",\n      \"srcs\": [\"art580-2\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        \"requestModifyOrTerminate(P,K)\",\n        {\n          \"or\": [\n            \"performanceImpossible(P,K)\",\n            \"unsuitableForSpecificPerformance(P,K)\",\n            \"performanceCostExcessive(P,K)\",\n            \"creditorFailedToRequestInTime(O,K)\"\n          ]\n        },\n        \"frustratesContractPurpose(K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"PERM\", \"bearer\": \"court\", \"counterparty\": null, \"content\": \"terminateContractRightsAndObligations(K)\"}\n      ],\n      \"note\": \"有第580条第1款除外情形之一，致使不能实现合同目的的，人民法院或者仲裁机构可以根据当事人的请求终止合同权利义务关系\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c580-2b\",\n      \"srcs\": [\"art580-2\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]},\n        \"contractTerminated(K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"O\", \"content\": \"liableForBreach(P,K)\"}\n      ],\n      \"note\": \"合同因第580条第2款终止的，不影响违约责任的承担\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c583-1\",\n      \"srcs\": [\"art583\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]},\n        {\"or\": [\"performed(P,K)\", \"tookRemedialMeasures(P,K)\"]},\n        \"otherLossRemains(O,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"O\", \"content\": \"compensateRemainingLoss(P,O,K)\"}\n      ],\n      \"note\": \"不履行或者履行不符合约定，在履行义务或者采取补救措施后对方还有其他损失的，应当赔偿损失\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c584-1\",\n      \"srcs\": [\"art584\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]},\n        \"causesLoss(P,O,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"O\", \"content\": \"compensateFullLoss(P,O,K)\"}\n      ],\n      \"note\": \"违约造成对方损失的，损失赔偿额应当相当于因违约所造成的损失，包括合同履行后可以获得的利益\",\n      \"auth\": \"npc\"\n    },\n    {\n      \"key\": \"c584-2\",\n      \"srcs\": [\"art584\"],\n      \"body\": [\n        \"contractInForce(K)\",\n        \"partyToDebtRelation(P,K)\",\n        \"partyToDebtRelation(O,K)\",\n        {\"or\": [\"nonPerformance(P,K)\", \"performanceNotConforming(P,K)\"]},\n        \"unforeseeableLoss(P,K)\"\n      ],\n      \"heads\": [\n        {\"type\": \"OBL\", \"bearer\": \"P\", \"counterparty\": \"O\", \"content\": \"limitCompensationToForeseeableLoss(P,K)\"}\n      ],\n      \"note\": \"赔偿额不得超过违约一方订立合同时预见到或者应当预见到的因违约可能造成的损失\",\n      \"auth\": \"npc\"\n    }\n  ],\n  \"overrides\": [\n    [\"c584-2\", \"c584-1\", \"可预见性规则（第584条但书）限制损失赔偿范围，优先于完全赔偿\"],\n    [\"c578-1\", \"c577-1\", \"预期违约情形下第578条为特别规定，对方可在履行期限届满前请求承担违约责任\"],\n    [\"c577-exempt\", \"c577-1\", \"存在免责事由的，不承担违约责任（笔记：构成要件之三）\"]\n  ],\n  \"predicates\": {\n    \"contractInForce/1\": \"合同有效成立并对当事人具有拘束力（有效合同）\",\n    \"nonPerformance/2\": \"不履行合同义务（当事人，合同）\",\n    \"performanceNotConforming/2\": \"履行合同义务不符合约定（当事人，合同）\",\n    \"performanceConforms/2\": \"履行符合合同要求（当事人，合同）\",\n    \"performancePeriodExpired/1\": \"合同履行期限已届满（合同）\",\n    \"expresslyRefusesPerformance/2\": \"明确表示不履行合同义务（当事人，合同）\",\n    \"indicatesByConductNonPerformance/2\": \"以自己的行为表明不履行合同义务（当事人，合同）\",\n    \"claimBreachLiabilityBeforeDue/3\": \"在履行期限届满前请求承担违约责任（对方，违约方，合同）\",\n    \"nonMonetaryDebt/2\": \"该合同项下的债务为非金钱债务（债务人，合同）\",\n    \"claimPerformance/2\": \"请求债务人履行债务（债权人，债务人）\",\n    \"performanceImpossible/2\": \"法律上或者事实上不能履行（债务人，合同）\",\n    \"unsuitableForSpecificPerformance/2\": \"债务的标的不适于强制履行（债务人，合同）\",\n    \"performanceCostExcessive/2\": \"履行费用过高（债务人，合同）\",\n    \"creditorFailedToRequestInTime/2\": \"债权人在合理期限内未请求履行（债权人，合同）\",\n    \"frustratesContractPurpose/1\": \"致使不能实现合同目的（合同）\",\n    \"terminateContractRightsAndObligations/1\": \"终止合同权利义务关系（合同）\",\n    \"tookRemedialMeasures/2\": \"采取补救措施（当事人，合同）\",\n    \"otherLossRemains/2\": \"履行义务、采取补救措施后对方还有其他损失（对方，合同）\",\n    \"compensateRemainingLoss/3\": \"赔偿履行义务、采取补救措施后仍存在的其他损失（违约方，对方，合同）\",\n    \"causesLoss/3\": \"违约行为造成对方损失（违约方，对方，合同）\",\n    \"compensateFullLoss/3\": \"赔偿相当于因违约所造成的损失，包括合同履行后可以获得的利益（违约方，对方，合同）\",\n    \"unforeseeableLoss/2\": \"损失超出违约方订立合同时预见到或者应当预见到的范围（违约方，合同）\",\n    \"limitCompensationToForeseeableLoss/2\": \"赔偿额不得超过订立合同时预见到或者应当预见到的损失（违约方，合同）\",\n    \"exemptFromBreachLiability/2\": \"存在法定或者约定的免责事由（当事人，合同）\"\n  }\n}"
+ },
+ "card:g3829": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 3,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "定金合同的成立时点、定金数额的上限，以及定金罚则（无权请求返还定金／双倍返还定金）的适用条件",
+     "rules": [
+      "c586-form-paid",
+      "c586-cap20",
+      "c587-payer-forfeit",
+      "c587-receiver-double"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人可以约定一方向对方给付定金，作为债权的担保（定金为约定的担保方式）",
+     "rules": [
+      "c586-perm-agree"
+     ]
+    },
+    {
+     "text": "定金已实际交付；定金合同自实际交付定金时成立（实践性合同）",
+     "rules": [
+      "c586-form-paid"
+     ]
+    },
+    {
+     "text": "定金数额由当事人约定，但不得超过主合同标的额的百分之二十",
+     "rules": [
+      "c586-cap20"
+     ]
+    },
+    {
+     "text": "实际交付的定金数额多于或者少于约定的数额",
+     "rules": [
+      "c586-amend-deemed"
+     ]
+    },
+    {
+     "text": "给付定金的一方或者收受定金的一方不履行债务，或者履行债务不符合约定，且致使不能实现合同目的",
+     "rules": [
+      "c587-payer-forfeit",
+      "c587-receiver-double"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "定金超过主合同标的额百分之二十的，超过部分不产生定金的效力，不适用定金罚则，应予返还",
+     "rules": [
+      "c586-cap20",
+      "c586-excess-refund"
+     ]
+    },
+    {
+     "text": "定金未实际交付的，定金合同不成立；在成约定金的情形下，主合同也不成立或者不生效",
+     "rules": [
+      "c586-form-paid",
+      "c586-cheng-effect"
+     ]
+    },
+    {
+     "text": "成约定金：主合同已经履行或者已经履行主要部分的，不因未交付定金而影响主合同的成立或者生效",
+     "rules": [
+      "c586-cheng-exc-performed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "债务人履行债务的，定金应当抵作价款或者收回",
+     "rules": [
+      "c587-perform-offset"
+     ]
+    },
+    {
+     "text": "给付定金的一方不履行债务或者履行债务不符合约定，致使不能实现合同目的的，无权请求返还定金",
+     "rules": [
+      "c587-payer-forfeit"
+     ]
+    },
+    {
+     "text": "收受定金的一方不履行债务或者履行债务不符合约定，致使不能实现合同目的的，应当双倍返还定金",
+     "rules": [
+      "c587-receiver-double"
+     ]
+    },
+    {
+     "text": "实际交付的定金数额多于或者少于约定数额的，视为变更约定的定金数额",
+     "rules": [
+      "c586-amend-deemed"
+     ]
+    },
+    {
+     "text": "立约定金：拒绝订立合同的一方适用定金罚则，即给付定金方无权请求返还定金，收受定金方应当双倍返还定金",
+     "rules": [
+      "c586-prelim-payer-fine",
+      "c586-prelim-receiver-fine"
+     ]
+    },
+    {
+     "text": "解约定金：以丧失定金或者双倍返还定金为代价，为当事人保留单方解除主合同的权利",
+     "rules": [
+      "c586-term-right-payer",
+      "c586-term-right-receiver"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "成约定金下，主合同已履行或者已履行主要部分的，优先于“未交付定金则主合同不成立或者不生效”的规则",
+     "rules": [
+      "c586-cheng-exc-performed",
+      "c586-cheng-effect"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "定金罚则以“致使不能实现合同目的”为要件；仅迟延履行或者其他轻微违约而未致合同目的不能实现的，不适用定金罚则（LEGO 卡片、学理）",
+     "rules": [
+      "c587-payer-forfeit",
+      "c587-receiver-double"
+     ]
+    },
+    {
+     "text": "违约定金与预付款：前者是担保方式，兼具证明合同成立、预先给付的作用并有制裁功能；后者只是支付手段，无担保与制裁功能（笔记）",
+     "rules": []
+    },
+    {
+     "text": "定金与违约金并用的规则规定在第588条，本行未挂载该条，故不在此形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记称我国现行法承认立约定金、成约定金、解约定金、违约定金四类；第586、587条只规定定金的一般成立与罚则，分类属学理",
+     "rules": [
+      "c586-prelim-payer-fine",
+      "c586-cheng-effect",
+      "c586-term-right-payer"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c586-perm-agree",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "contractAgreement(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "agreeOnDeposit(K)"
+     }
+    ],
+    "note": "当事人可以约定一方向对方给付定金作为债权的担保（授权性规定，bearer 用常量 parties 表示合同当事人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c586-form-paid",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "depositAgreed(K)",
+     "depositActuallyPaid(K)"
+    ],
+    "heads": [
+     "depositContractFormed(K)"
+    ],
+    "note": "定金合同为实践性合同，自实际交付定金时成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c586-cap20",
+    "srcs": [
+     "art586-2"
+    ],
+    "body": [
+     "depositAgreed(K)",
+     "exceeds20PercentOfSubject(K)"
+    ],
+    "heads": [
+     "excessNotDeposit(K)"
+    ],
+    "note": "定金数额不得超过主合同标的额的百分之二十，超过部分不产生定金的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c586-excess-refund",
+    "srcs": [
+     "art586-2"
+    ],
+    "body": [
+     "excessNotDeposit(K)",
+     "depositPayer(D,K)",
+     "depositReceiver(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "returnExcessDeposit(R,D,K)"
+     }
+    ],
+    "note": "学理与笔记：超过百分之二十的部分不产生定金效力，收受定金方应将该部分返还给付定金方",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-amend-deemed",
+    "srcs": [
+     "art586-2"
+    ],
+    "body": [
+     "depositActuallyPaid(K)",
+     "actualAmountDiffersFromAgreed(K)"
+    ],
+    "heads": [
+     "depositAmountDeemedAmended(K)"
+    ],
+    "note": "实际交付的定金数额多于或者少于约定数额的，视为变更约定的定金数额",
+    "auth": "npc"
+   },
+   {
+    "key": "c587-perform-offset",
+    "srcs": [
+     "art587"
+    ],
+    "body": [
+     "performed(D,K)",
+     "depositPayer(D,K)",
+     "depositReceiver(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "applyDepositToPriceOrReturnDeposit(R,D,K)"
+     }
+    ],
+    "note": "债务人履行债务的，定金应当抵作价款或者收回（由收受定金方抵作价款或返还）",
+    "auth": "npc"
+   },
+   {
+    "key": "c587-payer-forfeit",
+    "srcs": [
+     "art587"
+    ],
+    "body": [
+     "depositPayer(D,K)",
+     {
+      "or": [
+       "unpaid(D)",
+       "performanceNonConforming(D,K)"
+      ]
+     },
+     "breachFrustratesPurpose(D,K)"
+    ],
+    "heads": [
+     "-depositRefundClaim(D,K)"
+    ],
+    "note": "给付定金一方不履行债务或者履行不符合约定，致使不能实现合同目的的，无权请求返还定金",
+    "auth": "npc"
+   },
+   {
+    "key": "c587-receiver-double",
+    "srcs": [
+     "art587"
+    ],
+    "body": [
+     "depositReceiver(R,K)",
+     "depositPayer(D,K)",
+     {
+      "or": [
+       "unpaid(R)",
+       "performanceNonConforming(R,K)"
+      ]
+     },
+     "breachFrustratesPurpose(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "returnDoubleDeposit(R,D,K)"
+     }
+    ],
+    "note": "收受定金一方不履行债务或者履行不符合约定，致使不能实现合同目的的，应当双倍返还定金",
+    "auth": "npc"
+   },
+   {
+    "key": "c586-prelim-payer-fine",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "preliminaryDepositAgreed(K)",
+     "depositPayer(D,K)",
+     "refusesToConcludeContract(D,K)"
+    ],
+    "heads": [
+     "-depositRefundClaim(D,K)"
+    ],
+    "note": "笔记（学理）：立约定金——给付定金一方拒绝订立合同的，无权请求返还定金",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-prelim-receiver-fine",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "preliminaryDepositAgreed(K)",
+     "depositReceiver(R,K)",
+     "depositPayer(D,K)",
+     "refusesToConcludeContract(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "returnDoubleDeposit(R,D,K)"
+     }
+    ],
+    "note": "笔记（学理）：立约定金——收受定金一方拒绝订立合同的，应当双倍返还定金",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-cheng-effect",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "formationDepositAgreed(K)",
+     "~depositActuallyPaid(K)"
+    ],
+    "heads": [
+     "-mainContractFormed(K)"
+    ],
+    "note": "笔记（学理）：成约定金——定金不交付的，主合同不成立或者不生效",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-cheng-exc-performed",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "formationDepositAgreed(K)",
+     "performedMainObligation(P,K)"
+    ],
+    "heads": [
+     "mainContractFormed(K)"
+    ],
+    "note": "笔记（学理）：成约定金——主合同已经履行或者已经履行主要部分的，不因未交付定金而否定主合同的成立或生效",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-term-right-payer",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "terminationDepositAgreed(K)",
+     "depositPayer(D,K)",
+     "depositReceiver(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "terminateByForfeitingDeposit(D,K)"
+     }
+    ],
+    "note": "笔记（学理）：解约定金——给付定金方以丧失定金为代价保留单方解除主合同的权利",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c586-term-right-receiver",
+    "srcs": [
+     "art586-1"
+    ],
+    "body": [
+     "terminationDepositAgreed(K)",
+     "depositReceiver(R,K)",
+     "depositPayer(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "D",
+      "content": "terminateByReturningDoubleDeposit(R,D,K)"
+     }
+    ],
+    "note": "笔记（学理）：解约定金——收受定金方以双倍返还定金为代价保留单方解除主合同的权利",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c586-cheng-exc-performed",
+    "c586-cheng-effect",
+    "成约定金下主合同已履行或已履行主要部分的，不因未交付定金而否定主合同的成立或生效（笔记）"
+   ]
+  ],
+  "predicates": {
+   "agreeOnDeposit": "当事人约定以定金担保债权（1个参数：合同）",
+   "returnExcessDeposit": "返还超过主合同标的额百分之二十部分的定金（收受定金方，给付定金方，合同）",
+   "actualAmountDiffersFromAgreed": "实际交付的定金数额多于或者少于约定数额（1个参数：合同）",
+   "depositAmountDeemedAmended": "视为变更约定的定金数额（1个参数：合同）",
+   "applyDepositToPriceOrReturnDeposit": "将定金抵作价款或者收回（收受定金方，给付定金方，合同）",
+   "performanceNonConforming": "履行债务不符合约定（当事人，合同）",
+   "preliminaryDepositAgreed": "约定立约定金，即以定金担保主合同的订立（1个参数：合同）",
+   "refusesToConcludeContract": "拒绝订立合同（当事人，合同）",
+   "formationDepositAgreed": "约定成约定金，即以交付定金作为主合同成立或者生效的要件（1个参数：合同）",
+   "mainContractFormed": "主合同成立或者生效（1个参数：合同）",
+   "terminationDepositAgreed": "约定解约定金，即以丧失定金或者双倍返还定金为代价解除主合同（1个参数：合同）",
+   "terminateByForfeitingDeposit": "以丧失定金为代价单方解除主合同（给付定金方，合同）",
+   "terminateByReturningDoubleDeposit": "以双倍返还定金为代价单方解除主合同（收受定金方，合同）"
+  }
+ },
+ "art:594": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 1,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "因国际货物买卖合同争议、技术进出口合同争议提起诉讼或者申请仲裁的，适用多长的诉讼时效期间",
+     "rules": [
+      "c594-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "争议属于国际货物买卖合同争议，或者属于技术进出口合同争议",
+     "rules": [
+      "c594-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该争议提起诉讼或者申请仲裁的诉讼时效期间为四年",
+     "rules": [
+      "c594-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "四年期间属于特殊诉讼时效，优先于第188条第1款三年普通诉讼时效期间适用",
+     "rules": [
+      "c594-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第594条第2款“第二分编 典型合同”是法典分编标题，不是规范条款，不产生规则",
+     "rules": []
+    },
+    {
+     "text": "笔记只记载四年特殊时效，未改变起算、中止、中断规则，这些仍适用总则一般规定（第188条第2款、第194–195条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c594-1",
+    "srcs": [
+     "art594-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "internationalGoodsSaleContractDispute(D)",
+       "technologyImportExportContractDispute(D)"
+      ]
+     }
+    ],
+    "heads": [
+     "limitationPeriod4Years(D)"
+    ],
+    "note": "因国际货物买卖合同和技术进出口合同争议提起诉讼或者申请仲裁的，诉讼时效期间为四年",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c594-1",
+    "c188-1",
+    "特别诉讼时效优先于普通诉讼时效：国际货物买卖合同、技术进出口合同争议适用四年期间，不适用第188条第1款的三年期间"
+   ]
+  ],
+  "predicates": {
+   "internationalGoodsSaleContractDispute": "争议属于国际货物买卖合同争议",
+   "technologyImportExportContractDispute": "争议属于技术进出口合同争议",
+   "limitationPeriod4Years": "诉讼时效期间为四年"
+  }
+ },
+ "art:579": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人一方未支付价款、报酬、租金、利息，或者不履行其他金钱债务时，对方可以主张何种救济",
+     "rules": [
+      "c579-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方未支付价款、报酬、租金、利息",
+     "rules": [
+      "c579-scope1"
+     ]
+    },
+    {
+     "text": "或者不履行其他金钱债务",
+     "rules": [
+      "c579-scope2"
+     ]
+    },
+    {
+     "text": "主张权利的一方是该债权债务关系中的对方当事人",
+     "rules": [
+      "c579-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对方可以请求该方支付，即请求金钱债务的继续履行",
+     "rules": [
+      "c579-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定金钱债务的继续履行请求权，不涉及非金钱债务的继续履行（第580条）及违约损害赔偿等其他救济；笔记与LEGO卡片均未涉及本条，故无体系性例外可援引",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c579-scope1",
+    "srcs": [
+     "art579"
+    ],
+    "body": [
+     "unpaidPriceRemunerationRentOrInterest(A,K)"
+    ],
+    "heads": [
+     "failsToPayMonetaryDebt(A,K)"
+    ],
+    "note": "未支付价款、报酬、租金、利息，属于本条所称不履行金钱债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c579-scope2",
+    "srcs": [
+     "art579"
+    ],
+    "body": [
+     "failsToPerformOtherMonetaryDebt(A,K)"
+    ],
+    "heads": [
+     "failsToPayMonetaryDebt(A,K)"
+    ],
+    "note": "不履行其他金钱债务，同样属于本条调整的不履行金钱债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c579-1",
+    "srcs": [
+     "art579"
+    ],
+    "body": [
+     "partyToDebtRelation(A,K)",
+     "partyToDebtRelation(B,K)",
+     "failsToPayMonetaryDebt(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimPayment(B,A,K)"
+     }
+    ],
+    "note": "一方未支付价款、报酬、租金、利息或者不履行其他金钱债务的，对方可以请求其支付",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unpaidPriceRemunerationRentOrInterest": "未支付价款、报酬、租金、利息（债务人，金钱债务）",
+   "failsToPerformOtherMonetaryDebt": "不履行其他金钱债务（债务人，金钱债务）",
+   "failsToPayMonetaryDebt": "不履行金钱债务，即未支付价款、报酬、租金、利息或者不履行其他金钱债务（债务人，金钱债务）",
+   "claimPayment": "请求支付金钱债务（债权人，债务人，金钱债务）"
+  }
+ },
+ "card:g4716": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "一方违约后，对方是否负有防止损失扩大的义务，违反该义务的后果如何，防止损失扩大的费用由谁负担",
+     "rules": [
+      "c591-1a",
+      "c591-1b",
+      "c591-2"
+     ]
+    },
+    {
+     "text": "双方都违反合同时责任如何分担；对方对损失的发生有过错时，赔偿额能否减少",
+     "rules": [
+      "c592-1",
+      "c592-2"
+     ]
+    },
+    {
+     "text": "一方因第三人的原因造成违约的，是否仍应向对方承担违约责任；其与第三人之间的纠纷如何处理",
+     "rules": [
+      "c593-1",
+      "c593-2",
+      "c593-relativity"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人一方存在违约行为（不履行或者不适当履行合同义务）",
+     "rules": [
+      "c591-1a",
+      "c591-1b",
+      "c591-2",
+      "c592-1",
+      "c592-2",
+      "c593-1",
+      "c593-2",
+      "c593-relativity"
+     ]
+    },
+    {
+     "text": "对方（守约方）未采取适当措施，且因此致使损失扩大",
+     "rules": [
+      "c591-1b"
+     ]
+    },
+    {
+     "text": "对方为防止损失扩大支出了合理费用",
+     "rules": [
+      "c591-2"
+     ]
+    },
+    {
+     "text": "当事人双方都违反合同",
+     "rules": [
+      "c592-1"
+     ]
+    },
+    {
+     "text": "一方违约造成对方损失，而对方对损失的发生有过错",
+     "rules": [
+      "c592-2"
+     ]
+    },
+    {
+     "text": "违约系因第三人的原因造成",
+     "rules": [
+      "c593-1",
+      "c593-2",
+      "c593-relativity"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "对方已采取适当措施防止损失扩大的，不发生“不得就扩大的损失请求赔偿”的效果",
+     "rules": [
+      "c591-1b"
+     ]
+    },
+    {
+     "text": "对方对损失的发生没有过错的，不减少损失赔偿额",
+     "rules": [
+      "c592-2"
+     ]
+    },
+    {
+     "text": "第三人原因并非免责事由：违约方与第三人之间的纠纷依法律规定或者约定另行处理，不影响对方向违约方主张违约责任",
+     "rules": [
+      "c593-1",
+      "c593-2",
+      "c593-relativity"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对方应当采取适当措施防止损失的扩大",
+     "rules": [
+      "c591-1a"
+     ]
+    },
+    {
+     "text": "没有采取适当措施致使损失扩大的，不得就扩大的损失请求赔偿",
+     "rules": [
+      "c591-1b"
+     ]
+    },
+    {
+     "text": "当事人因防止损失扩大而支出的合理费用，由违约方负担",
+     "rules": [
+      "c591-2"
+     ]
+    },
+    {
+     "text": "当事人都违反合同的，应当各自承担相应的责任",
+     "rules": [
+      "c592-1"
+     ]
+    },
+    {
+     "text": "对方对损失的发生有过错的，可以相应减少损失赔偿额",
+     "rules": [
+      "c592-2"
+     ]
+    },
+    {
+     "text": "一方因第三人的原因造成违约的，应当依法向对方承担违约责任",
+     "rules": [
+      "c593-1"
+     ]
+    },
+    {
+     "text": "违约方与第三人之间的纠纷，依照法律规定或者按照约定处理",
+     "rules": [
+      "c593-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第593条为特别规则，优先于违约责任的一般原则：违约方不得以“系第三人原因”对抗对方的违约赔偿请求",
+     "rules": [
+      "c593-1"
+     ]
+    },
+    {
+     "text": "第591条第1款后半句的限制优先于一般的损失赔偿请求权：扩大部分的损失不予赔偿",
+     "rules": [
+      "c591-1b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第592条与第593条不同：前者处理双方违约及与有过失的责任分担与赔偿额减少，后者不因第三人原因而免除违约方对对方的违约责任",
+     "rules": [
+      "c592-1",
+      "c592-2",
+      "c593-1"
+     ]
+    },
+    {
+     "text": "笔记强调违约责任的相对性：违约责任是违约方自己违反合同的责任，不是其辅助人（第三人）的责任，故对因第三人原因造成的违约仍应负责",
+     "rules": [
+      "c593-1",
+      "c593-relativity"
+     ]
+    },
+    {
+     "text": "LEGO 卡片所列“当事人对第三人行为有指示、教唆或共同过错”“合同约定由第三人直接向相对方承担责任”“第三人行为属不可抗力”等否定条件，法条未作规定；不可抗力免责属第590条，不在本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c591-1a",
+    "srcs": [
+     "art591-1"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "nonBreachingParty(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "B",
+      "content": "takeMeasuresToPreventLossExpansion(O,K)"
+     }
+    ],
+    "note": "当事人一方违约后，对方应当采取适当措施防止损失的扩大",
+    "auth": "npc"
+   },
+   {
+    "key": "c591-1b",
+    "srcs": [
+     "art591-1"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "nonBreachingParty(O,K)",
+     "-takeMeasuresToPreventLossExpansion(O,K)",
+     "lossExpanded(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "B",
+      "content": "claimCompensationForExpandedLoss(O,K)"
+     }
+    ],
+    "note": "没有采取适当措施致使损失扩大的，不得就扩大的损失请求赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c591-2",
+    "srcs": [
+     "art591-2"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "nonBreachingParty(O,K)",
+     "reasonableExpensesToPreventExpansion(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "O",
+      "content": "bearReasonableExpenses(B,O,K)"
+     }
+    ],
+    "note": "当事人因防止损失扩大而支出的合理费用，由违约方负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c592-1",
+    "srcs": [
+     "art592-1"
+    ],
+    "body": [
+     "breachOfContract(A,K)",
+     "breachOfContract(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "liableForBreach(A,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "liableForBreach(B,K)"
+     }
+    ],
+    "note": "当事人都违反合同的，应当各自承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c592-2",
+    "srcs": [
+     "art592-2"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "causesLossTo(B,O)",
+     "faultForLossOccurrence(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "O",
+      "content": "reduceDamagesCorrespondingly(B,O,K)"
+     }
+    ],
+    "note": "一方违约造成对方损失，对方对损失的发生有过错的，可以相应减少损失赔偿额（与有过失）",
+    "auth": "npc"
+   },
+   {
+    "key": "c593-1",
+    "srcs": [
+     "art593"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "causedByThirdParty(B,T,K)",
+     "nonBreachingParty(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "O",
+      "content": "liableForBreach(B,K)"
+     }
+    ],
+    "note": "当事人一方因第三人的原因造成违约的，应当依法向对方承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c593-2",
+    "srcs": [
+     "art593"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "causedByThirdParty(B,T,K)"
+    ],
+    "heads": [
+     "thirdPartyDisputeHandledPerLawOrAgreement(B,T)"
+    ],
+    "note": "当事人一方和第三人之间的纠纷，依照法律规定或者按照约定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c593-relativity",
+    "srcs": [
+     "art593"
+    ],
+    "body": [
+     "breachOfContract(B,K)",
+     "causedByThirdParty(B,T,K)"
+    ],
+    "heads": [
+     "-liableForBreach(T,K)"
+    ],
+    "note": "笔记：违约责任具有相对性，是违约方自己违反合同的责任，不是第三人（辅助人）的责任；法条未明文，属学理说明",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "takeMeasuresToPreventLossExpansion": "采取适当措施防止损失扩大（守约方，合同）",
+   "claimCompensationForExpandedLoss": "就扩大的损失请求赔偿（守约方，合同）",
+   "lossExpanded": "因未采取适当措施致使损失扩大（守约方，合同）",
+   "reasonableExpensesToPreventExpansion": "为防止损失扩大而支出的合理费用（守约方，合同）",
+   "bearReasonableExpenses": "负担防止损失扩大的合理费用（违约方，守约方，合同）",
+   "faultForLossOccurrence": "对损失的发生有过错（对方当事人，合同）",
+   "reduceDamagesCorrespondingly": "相应减少损失赔偿额（违约方，对方，合同）",
+   "causedByThirdParty": "因第三人的原因造成违约（违约方，第三人，合同）",
+   "thirdPartyDisputeHandledPerLawOrAgreement": "违约方与第三人之间的纠纷依照法律规定或者按照约定处理（违约方，第三人）"
+  }
+ },
+ "card:g4830": {
+  "status": "ok",
+  "model": "deepseek-v4.1-flash-mb",
+  "attempts": 2,
+  "errors": [],
+  "nl": {
+   "issue": [
+    {
+     "text": "违约损失赔偿的范围如何确定：完全赔偿、可得利益与可预见性规则的关系",
+     "rules": [
+      "c583-1",
+      "c584-scope",
+      "c584-1",
+      "c584-cap"
+     ]
+    },
+    {
+     "text": "约定违约金或损失赔偿额计算方法的效力，以及违约金的司法调整与迟延履行违约金",
+     "rules": [
+      "c585-1",
+      "c585-method",
+      "c585-2-increase",
+      "c585-2-reduce",
+      "c585-delay"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人一方不履行合同义务或者履行合同义务不符合约定，且对方因此遭受损失",
+     "rules": [
+      "c583-1",
+      "c584-scope"
+     ]
+    },
+    {
+     "text": "赔偿范围包括实际损失（财产损害、人身损害，含精神损害赔偿）与可得利益损失（合同履行后可以获得的利益）",
+     "rules": [
+      "c584-lossTypes"
+     ]
+    },
+    {
+     "text": "该损失是违约方在订立合同时预见到或者应当预见到的（预见主体为债务人，预见时间为合同成立时，预见范围须具有合理性）",
+     "rules": [
+      "c584-scope",
+      "c584-cap"
+     ]
+    },
+    {
+     "text": "当事人约定一方违约时支付一定数额的违约金，或者约定因违约产生的损失赔偿额的计算方法",
+     "rules": [
+      "c585-1",
+      "c585-method"
+     ]
+    },
+    {
+     "text": "约定的违约金低于造成的损失，或者过分高于造成的损失，且当事人请求调整",
+     "rules": [
+      "c585-2-increase",
+      "c585-2-reduce"
+     ]
+    },
+    {
+     "text": "当事人就迟延履行约定违约金，违约方已支付违约金",
+     "rules": [
+      "c585-delay"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "损失超出违约方订立合同时预见到或者应当预见到的范围的部分，不予赔偿（可预见性规则构成赔偿上限）",
+     "rules": [
+      "c584-cap"
+     ]
+    },
+    {
+     "text": "约定的违约金过分高于造成的损失的，人民法院或者仲裁机构可以根据当事人的请求予以适当减少",
+     "rules": [
+      "c585-2-reduce"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "履行义务或者采取补救措施后对方还有其他损失的，应当赔偿损失",
+     "rules": [
+      "c583-1"
+     ]
+    },
+    {
+     "text": "损失赔偿额应当相当于因违约所造成的损失，包括合同履行后可以获得的利益，但不得超过可预见范围",
+     "rules": [
+      "c584-scope",
+      "c584-1",
+      "c584-cap"
+     ]
+    },
+    {
+     "text": "违约方应当按照约定向对方支付违约金，或者按约定的计算方法支付损失赔偿额",
+     "rules": [
+      "c585-1",
+      "c585-method"
+     ]
+    },
+    {
+     "text": "人民法院或者仲裁机构可以依当事人请求增加（违约金低于损失时）或者适当减少（违约金过分高于损失时）违约金",
+     "rules": [
+      "c585-2-increase",
+      "c585-2-reduce"
+     ]
+    },
+    {
+     "text": "迟延履行的违约方支付违约金后，还应当履行债务",
+     "rules": [
+      "c585-delay"
+     ]
+    },
+    {
+     "text": "经营者对消费者提供商品或者服务有欺诈行为的，依照《消费者权益保护法》承担损害赔偿责任（笔记补充，非本条内容）",
+     "rules": [
+      "c584-consumer"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "可预见性规则是赔偿范围的上限，优先于完全赔偿原则，排除不可预见损失的赔偿",
+     "rules": [
+      "c584-cap"
+     ]
+    },
+    {
+     "text": "可预见性限制同样约束第583条“采取补救措施后赔偿其他损失”的义务",
+     "rules": [
+      "c584-cap",
+      "c583-1"
+     ]
+    },
+    {
+     "text": "违约金低于或过分高于损失时，司法调整规则优先于按约定数额支付违约金的规则",
+     "rules": [
+      "c585-2-increase",
+      "c585-2-reduce",
+      "c585-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第583条侧重履行义务或采取补救措施后的剩余损失赔偿，不强调可预见性；第584条确定赔偿范围并设可预见性上限",
+     "rules": []
+    },
+    {
+     "text": "第585条以意思自治（约定违约金、约定计算方法）为主、司法调整为辅，与第584条法定赔偿范围的计算路径不同",
+     "rules": []
+    },
+    {
+     "text": "第582条处理履行瑕疵的补救责任，不涉及赔偿范围的限制（LEGO卡片提示）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c583-1",
+    "srcs": [
+     "art583"
+    ],
+    "body": [
+     "nonPerformanceOrNonconforming(P,K)",
+     "partyTo(O,K)",
+     "otherLossAfterRemedy(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payCompensation(P,O)"
+     }
+    ],
+    "note": "一方不履行合同义务或履行不符合约定，在履行义务或采取补救措施后对方还有其他损失的，应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c584-scope",
+    "srcs": [
+     "art584"
+    ],
+    "body": [
+     "nonPerformanceOrNonconforming(P,K)",
+     "partyTo(O,K)",
+     "lossCausedByBreach(O,P,K)"
+    ],
+    "heads": [
+     "compensableLoss(P,O,K)"
+    ],
+    "note": "因违约造成对方损失的，损失赔偿额相当于违约造成的损失，包括合同履行后可以获得的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c584-cap",
+    "srcs": [
+     "art584"
+    ],
+    "body": [
+     "nonPerformanceOrNonconforming(P,K)",
+     "partyTo(O,K)",
+     "lossCausedByBreach(O,P,K)",
+     "unforeseeableLoss(P,K)"
+    ],
+    "heads": [
+     "-compensableLoss(P,O,K)"
+    ],
+    "note": "但书：赔偿不得超过违约方订立合同时预见到或者应当预见到的因违约可能造成的损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c584-1",
+    "srcs": [
+     "art584"
+    ],
+    "body": [
+     "compensableLoss(P,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payDamagesEqualToLoss(P,O,K)"
+     }
+    ],
+    "note": "对属于可赔偿范围的损失，违约方应当赔偿，赔偿额相当于该损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c584-lossTypes",
+    "srcs": [
+     "art584"
+    ],
+    "body": [
+     "lossCausedByBreach(O,P,K)",
+     {
+      "or": [
+       "actualLoss(O,K)",
+       "expectedBenefitLoss(O,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "compensableLoss(P,O,K)"
+    ],
+    "note": "笔记：赔偿范围包括实际损失（财产损害、人身损害，含精神损害赔偿）与可得利益损失；法条仅明示可得利益，实际损失为学理归纳",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c584-consumer",
+    "srcs": [
+     "art584"
+    ],
+    "body": [
+     "operatorFraudToConsumer(B,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "C",
+      "content": "payPunitiveDamagesPerConsumerProtectionLaw(B,C)"
+     }
+    ],
+    "note": "笔记：经营者对消费者提供商品或服务有欺诈行为的，依《消费者权益保护法》承担赔偿责任，属其他法律特别规定，非本条内容",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c585-1",
+    "srcs": [
+     "art585-1"
+    ],
+    "body": [
+     "liquidatedDamages(K)",
+     "breachOfContract(P,K)",
+     "partyTo(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payLiquidatedDamages(P,O,K)"
+     }
+    ],
+    "note": "当事人约定一方违约时向对方支付一定数额违约金的，违约方应当按约定支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c585-method",
+    "srcs": [
+     "art585-1"
+    ],
+    "body": [
+     "damagesCalculationMethodAgreed(K)",
+     "breachOfContract(P,K)",
+     "partyTo(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "payDamagesPerAgreedMethod(P,O,K)"
+     }
+    ],
+    "note": "当事人约定因违约产生的损失赔偿额计算方法的，按该方法计算并支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c585-2-increase",
+    "srcs": [
+     "art585-2"
+    ],
+    "body": [
+     "liquidatedDamages(K)",
+     "lowerThanLoss(K)",
+     "partyRequestsAdjustment(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "increaseLiquidatedDamages(K)"
+     }
+    ],
+    "note": "约定违约金低于造成的损失的，人民法院或者仲裁机构可以根据当事人的请求予以增加",
+    "auth": "npc"
+   },
+   {
+    "key": "c585-2-reduce",
+    "srcs": [
+     "art585-2"
+    ],
+    "body": [
+     "liquidatedDamages(K)",
+     "excessivelyHigherThanLoss(K)",
+     "partyRequestsAdjustment(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "reduceLiquidatedDamages(K)"
+     }
+    ],
+    "note": "约定违约金过分高于造成的损失的，人民法院或者仲裁机构可以根据当事人的请求予以适当减少",
+    "auth": "npc"
+   },
+   {
+    "key": "c585-delay",
+    "srcs": [
+     "art585-3"
+    ],
+    "body": [
+     "liquidatedDamagesForDelay(K)",
+     "breachOfContract(P,K)",
+     "partyTo(O,K)",
+     "paidLD(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "stillPerform(P,K)"
+     }
+    ],
+    "note": "就迟延履行约定违约金的，违约方支付违约金后还应当履行债务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c584-cap",
+    "c584-scope",
+    "可预见性规则构成赔偿范围的上限，排除超出订立合同时可预见范围的损失"
+   ],
+   [
+    "c584-cap",
+    "c583-1",
+    "第583条的赔偿损失义务同样受第584条可预见性上限的限制"
+   ],
+   [
+    "c585-2-increase",
+    "c585-1",
+    "违约金低于损失时，经当事人请求的司法增加优先于按约定数额支付"
+   ],
+   [
+    "c585-2-reduce",
+    "c585-1",
+    "违约金过分高于损失时，经当事人请求的司法减少优先于按约定数额支付"
+   ]
+  ],
+  "predicates": {
+   "nonPerformanceOrNonconforming": "不履行合同义务或者履行合同义务不符合约定（当事人，合同）",
+   "partyTo": "是合同当事人（当事人，合同）",
+   "otherLossAfterRemedy": "履行义务或者采取补救措施后对方还有其他损失（受损方，合同）",
+   "lossCausedByBreach": "因违约造成对方损失（受损方，违约方，合同）",
+   "compensableLoss": "属于依法应予赔偿的违约损失（违约方，受损方，合同）",
+   "unforeseeableLoss": "损失超出违约方订立合同时预见到或者应当预见到的范围（违约方，合同）",
+   "actualLoss": "实际损失，即因违约遭受的财产损害、人身损害（含精神损害）（受损方，合同）",
+   "expectedBenefitLoss": "可得利益损失，即合同履行后可以获得的利益（受损方，合同）",
+   "damagesCalculationMethodAgreed": "约定因违约产生的损失赔偿额的计算方法（合同）",
+   "operatorFraudToConsumer": "经营者对消费者提供商品或者服务有欺诈行为（经营者，消费者，合同）",
+   "payDamagesEqualToLoss": "赔偿额相当于因违约造成的损失（违约方，受损方，合同）",
+   "payPunitiveDamagesPerConsumerProtectionLaw": "依照《消费者权益保护法》承担损害赔偿责任（经营者，消费者）",
+   "payLiquidatedDamages": "按约定向对方支付违约金（违约方，对方，合同）",
+   "payDamagesPerAgreedMethod": "按约定的计算方法支付损失赔偿额（违约方，对方，合同）",
+   "increaseLiquidatedDamages": "增加约定的违约金（合同）",
+   "reduceLiquidatedDamages": "适当减少约定的违约金（合同）"
+  }
+ }
+}
