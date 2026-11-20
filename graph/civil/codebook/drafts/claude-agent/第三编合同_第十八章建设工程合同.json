@@ -1,0 +1,2374 @@
+{
+ "art:796": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "实行监理的建设工程，发包人与监理人的合同形式与法律适用",
+     "rules": [
+      "c796-1",
+      "c796-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "建设工程实行监理",
+     "rules": [
+      "c796-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "发包人应当与监理人采用书面形式订立委托监理合同",
+     "rules": [
+      "c796-1"
+     ]
+    },
+    {
+     "text": "发包人与监理人的权利和义务以及法律责任，依照本编委托合同以及其他有关法律、行政法规的规定",
+     "rules": [
+      "c796-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "委托监理合同是委托合同，不是建设工程合同；监理人不是承包人",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c796-1",
+    "srcs": [
+     "art796"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "employerOf(E,K)",
+     "supervisionImplemented(K)",
+     "supervisorFor(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "S",
+      "content": "concludeWrittenSupervisionContract(E,S,K)"
+     }
+    ],
+    "note": "建设工程实行监理的，发包人应当与监理人采用书面形式订立委托监理合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c796-2",
+    "srcs": [
+     "art796"
+    ],
+    "body": [
+     "supervisionContract(M,E,S)"
+    ],
+    "heads": [
+     "governedByEntrustmentRulesAndRelatedLaws(M)"
+    ],
+    "note": "发包人与监理人的权利和义务以及法律责任，应当依照本编委托合同以及其他有关法律、行政法规的规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "supervisionImplemented": "建设工程合同K所涉工程实行监理（合同）",
+   "supervisorFor": "S是建设工程合同K所涉工程的监理人（监理人，合同）",
+   "concludeWrittenSupervisionContract": "发包人E与监理人S就合同K所涉工程采用书面形式订立委托监理合同（发包人，监理人，合同）",
+   "supervisionContract": "M是发包人E与监理人S订立的委托监理合同（监理合同，发包人，监理人）",
+   "governedByEntrustmentRulesAndRelatedLaws": "委托监理合同M当事人的权利义务及法律责任依照委托合同以及其他有关法律、行政法规的规定（监理合同）"
+  }
+ },
+ "art:797": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "发包人对施工的检查权",
+     "rules": [
+      "c797"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "不妨碍承包人正常作业",
+     "rules": [
+      "c797"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "检查妨碍承包人正常作业的，不在本条许可之列",
+     "rules": [
+      "c797"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "发包人可以随时对作业进度、质量进行检查",
+     "rules": [
+      "c797"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "隐蔽工程隐蔽前的检查见第798条；承揽合同中定作人的监督检验见第779条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c797",
+    "srcs": [
+     "art797"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "~inspectionHindersNormalWork(E,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "inspectProgressAndQuality(E,K)"
+     }
+    ],
+    "note": "发包人在不妨碍承包人正常作业的情况下，可以随时对作业进度、质量进行检查",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "inspectionHindersNormalWork": "发包人E的检查妨碍承包人C在合同K项下的正常作业（发包人，承包人，合同）",
+   "inspectProgressAndQuality": "发包人E随时对合同K项下的作业进度、质量进行检查（发包人，合同）"
+  }
+ },
+ "art:790": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设工程招标投标活动应遵循的原则",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "建设工程的招标投标活动，应当依照有关法律（招标投标法等）的规定公开、公平、公正进行（原则性、引致性规定，不写规则）",
+     "rules": []
+    },
+    {
+     "text": "建设工程必须进行招标而未招标或者中标无效的，建设工程施工合同无效（司法解释）",
+     "rules": [
+      "c790-spc1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "其他施工合同无效事由（无资质、超越资质、借用资质、转包、违法分包）见 card:g5499 c793-spc1、c791-spc1",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c790-spc1",
+    "srcs": [
+     "art790"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     {
+      "or": [
+       "mandatoryTenderNotConducted(K)",
+       "bidWinningVoid(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "《最高人民法院关于审理建设工程施工合同纠纷案件适用法律问题的解释（一）》（法释〔2020〕25号）第1条第1款第3项：建设工程必须进行招标而未招标或者中标无效的，依民法典第153条第1款认定施工合同无效（已据最高法官网逐字核对）",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mandatoryTenderNotConducted": "施工合同K所涉建设工程依法必须进行招标而未招标（合同）",
+   "bidWinningVoid": "施工合同K所依据的中标无效（合同）"
+  }
+ },
+ "art:800": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "勘察、设计质量不合格或逾期提交文件的责任",
+     "rules": [
+      "c800"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "勘察、设计的质量不符合要求，或者未按照期限提交勘察、设计文件拖延工期，并造成发包人损失",
+     "rules": [
+      "c800"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "勘察人、设计人应当继续完善勘察、设计，减收或者免收勘察、设计费，并赔偿损失",
+     "rules": [
+      "c800"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "发包人原因造成勘察、设计返工、停工或修改设计的，由发包人增付费用（第805条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c800",
+    "srcs": [
+     "art800"
+    ],
+    "body": [
+     "contract(K)",
+     {
+      "or": [
+       "surveyContract(K)",
+       "designContract(K)"
+      ]
+     },
+     "contractorOf(S,K)",
+     "employerOf(E,K)",
+     {
+      "or": [
+       "surveyDesignQualityNonconforming(S,K)",
+       "surveyDesignDocumentsLateDelayingSchedule(S,K)"
+      ]
+     },
+     "lossCausedToEmployer(E,S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "E",
+      "content": "continueImprovingSurveyDesign(S,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "E",
+      "content": "reduceOrWaiveSurveyDesignFee(S,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "E",
+      "content": "compensateLoss(S,E)"
+     }
+    ],
+    "note": "勘察、设计的质量不符合要求或者未按照期限提交勘察、设计文件拖延工期，造成发包人损失的，勘察人、设计人应当继续完善勘察、设计，减收或者免收勘察、设计费并赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "surveyDesignQualityNonconforming": "勘察人、设计人S在合同K项下的勘察、设计质量不符合要求（勘察设计人，合同）",
+   "surveyDesignDocumentsLateDelayingSchedule": "勘察人、设计人S未按照期限提交合同K的勘察、设计文件，拖延工期（勘察设计人，合同）",
+   "lossCausedToEmployer": "勘察人、设计人S的上述行为造成发包人E在合同K项下的损失（发包人，勘察设计人，合同）",
+   "continueImprovingSurveyDesign": "勘察人、设计人S继续完善合同K的勘察、设计（勘察设计人，合同）",
+   "reduceOrWaiveSurveyDesignFee": "勘察人、设计人S减收或者免收合同K的勘察、设计费（勘察设计人，合同）"
+  }
+ },
+ "card:g5499": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设工程发包、分包、转包的边界；施工合同无效后工程价款如何处理；竣工验收、交付使用与质量返修",
+     "rules": [
+      "c791-1a",
+      "c791-1b",
+      "c791-2a",
+      "c791-2c",
+      "c793-1",
+      "c799-1a",
+      "c801-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "发包人可以与总承包人订立建设工程合同，也可以分别与勘察人、设计人、施工人订立勘察、设计、施工承包合同",
+     "rules": [
+      "c791-1a"
+     ]
+    },
+    {
+     "text": "经发包人同意，总承包人或勘察、设计、施工承包人可以将自己承包的部分工作交由第三人完成",
+     "rules": [
+      "c791-2a"
+     ]
+    },
+    {
+     "text": "国家重大建设工程合同，应当按照国家规定的程序和国家批准的投资计划、可行性研究报告等文件订立",
+     "rules": [
+      "c792"
+     ]
+    },
+    {
+     "text": "施工合同无效的认定（司法解释）：承包人未取得建筑业企业资质或超越资质等级；没有资质的实际施工人借用有资质企业名义；因转包、违法分包与他人签订的施工合同；但超越资质等级许可范围签订、竣工前取得相应资质的，不按无效处理",
+     "rules": [
+      "c793-spc1",
+      "c793-spc4",
+      "c791-spc1"
+     ]
+    },
+    {
+     "text": "施工合同无效后果区分：工程经验收合格／验收不合格经修复后合格／修复后仍不合格",
+     "rules": [
+      "c793-1",
+      "c793-2a",
+      "c793-2a-doc",
+      "c793-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "禁止发包人将应当由一个承包人完成的建设工程支解成若干部分发包给数个承包人",
+     "rules": [
+      "c791-1b"
+     ]
+    },
+    {
+     "text": "承包人不得将全部建设工程转包给第三人，不得将全部工程支解后以分包名义分别转包给第三人",
+     "rules": [
+      "c791-2c"
+     ]
+    },
+    {
+     "text": "即使经发包人同意，也禁止分包给不具备相应资质条件的单位；主体结构施工必须由承包人自行完成，不得分包",
+     "rules": [
+      "c791-3a",
+      "c791-3c",
+      "c791-3d"
+     ]
+    },
+    {
+     "text": "禁止分包单位将其承包的工程再分包",
+     "rules": [
+      "c791-3b"
+     ]
+    },
+    {
+     "text": "修复后的建设工程经验收仍不合格的，承包人无权请求参照合同关于工程价款的约定折价补偿",
+     "rules": [
+      "c793-2b"
+     ]
+    },
+    {
+     "text": "未经竣工验收发包人擅自使用后，又以使用部分质量不符合约定为由主张权利的，不予支持；但承包人在合理使用寿命内仍对地基基础工程和主体结构质量承担民事责任（司法解释）",
+     "rules": [
+      "c799-spc14a",
+      "c799-spc14b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "第三人就其完成的工作成果与总承包人或勘察、设计、施工承包人向发包人承担连带责任",
+     "rules": [
+      "c791-2b"
+     ]
+    },
+    {
+     "text": "施工合同无效但工程经验收合格的，可以参照合同关于工程价款的约定折价补偿承包人",
+     "rules": [
+      "c793-1"
+     ]
+    },
+    {
+     "text": "无效且验收不合格、修复后经验收合格的，发包人可以请求承包人承担修复费用；学理上承包人仍可参照约定请求折价补偿",
+     "rules": [
+      "c793-2a",
+      "c793-2a-doc"
+     ]
+    },
+    {
+     "text": "发包人对因建设工程不合格造成的损失有过错的，应当承担相应的责任",
+     "rules": [
+      "c793-3"
+     ]
+    },
+    {
+     "text": "竣工后发包人应当根据施工图纸及说明书、国家施工验收规范和质量检验标准及时验收；验收合格的，应当按约定支付价款并接收工程",
+     "rules": [
+      "c799-1a",
+      "c799-1b"
+     ]
+    },
+    {
+     "text": "竣工经验收合格后方可交付使用；未经验收或验收不合格的，不得交付使用",
+     "rules": [
+      "c799-2"
+     ]
+    },
+    {
+     "text": "因施工人原因致工程质量不符合约定的，发包人有权请求施工人在合理期限内无偿修理或者返工、改建；因此逾期交付的，施工人应承担违约责任",
+     "rules": [
+      "c801-1",
+      "c801-2"
+     ]
+    },
+    {
+     "text": "施工人原因致质量不符合约定、承包人拒绝修理返工改建的，发包人可请求减少支付工程价款（司法解释）",
+     "rules": [
+      "c801-spc12"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第791条第3款的禁止（无资质分包、主体结构分包）优先于第2款经发包人同意可以分包的许可",
+     "rules": [
+      "c791-3a",
+      "c791-3c",
+      "c791-2a"
+     ]
+    },
+    {
+     "text": "司法解释第4条（竣工前取得相应资质）排除第1条第1项超越资质等级的无效认定",
+     "rules": [
+      "c793-spc4",
+      "c793-spc1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第795条列举施工合同一般包括的条款（工程范围、建设工期、中间交工工程开竣工时间、工程质量、工程造价、技术资料交付时间、材料设备供应责任、拨款和结算、竣工验收、质量保修范围和质量保证期、相互协作等），为倡导性规定，不写规则",
+     "rules": []
+    },
+    {
+     "text": "第793、799条同时挂在 card:g5525，规则只写在本行；第806条第3款合同解除后已完成工程质量不合格的，参照第793条处理（见 card:g5525 c806-3b）",
+     "rules": []
+    },
+    {
+     "text": "必须招标而未招标或中标无效导致施工合同无效（法释〔2020〕25号第1条第1款第3项）见 art:790 行 c790-spc1；无效合同的损失赔偿举证（同解释第6条）、数份无效合同的参照（第24条）未形式化",
+     "rules": []
+    },
+    {
+     "text": "第801条与第802条区分：第801条为交付前后质量不符约定的返修和逾期违约责任；第802条为合理使用期限内造成人身、财产损害的赔偿责任（见 art:802）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c791-1a",
+    "srcs": [
+     "art791-1"
+    ],
+    "body": [
+     "employerOfProject(E,W)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "awardToGeneralOrSeparateContractors(E,W)"
+     }
+    ],
+    "note": "发包人可以与总承包人订立建设工程合同，也可以分别与勘察人、设计人、施工人订立勘察、设计、施工承包合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-1b",
+    "srcs": [
+     "art791-1"
+    ],
+    "body": [
+     "employerOfProject(E,W)",
+     "projectForSingleContractor(W)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "splitProjectToMultipleContractors(E,W)"
+     }
+    ],
+    "note": "发包人不得将应当由一个承包人完成的建设工程支解成若干部分发包给数个承包人",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-2a",
+    "srcs": [
+     "art791-2"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "partOfContractedWork(X,K)",
+     "employerConsentedSubcontract(E,X,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "subcontractToThirdParty(C,X,T)"
+     }
+    ],
+    "note": "总承包人或者勘察、设计、施工承包人经发包人同意，可以将自己承包的部分工作交由第三人完成",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-2b",
+    "srcs": [
+     "art791-2"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "partOfContractedWork(X,K)",
+     "employerConsentedSubcontract(E,X,T)",
+     "subcontractorFor(T,C,X)"
+    ],
+    "heads": [
+     "jointlyLiableForWorkResult(T,C,E,X)"
+    ],
+    "note": "第三人就其完成的工作成果与总承包人或者勘察、设计、施工承包人向发包人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-2c",
+    "srcs": [
+     "art791-2"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "transferWholeProject(C,K)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "splitAndTransferAsSubcontracts(C,K)"
+     }
+    ],
+    "note": "承包人不得将其承包的全部建设工程转包给第三人，或者将全部建设工程支解以后以分包的名义分别转包给第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-3a",
+    "srcs": [
+     "art791-3"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "partOfContractedWork(X,K)",
+     "lacksQualificationFor(T,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "subcontractToThirdParty(C,X,T)"
+     }
+    ],
+    "note": "禁止承包人将工程分包给不具备相应资质条件的单位",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-3b",
+    "srcs": [
+     "art791-3"
+    ],
+    "body": [
+     "subcontractorFor(T,C,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "furtherSubcontract(T,X)"
+     }
+    ],
+    "note": "禁止分包单位将其承包的工程再分包",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-3c",
+    "srcs": [
+     "art791-3"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "partOfContractedWork(X,K)",
+     "mainStructureConstruction(X)",
+     "employerConsentedSubcontract(E,X,T)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "subcontractToThirdParty(C,X,T)"
+     }
+    ],
+    "note": "建设工程主体结构的施工必须由承包人自行完成，即使经发包人同意也不得分包",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-3d",
+    "srcs": [
+     "art791-3"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "partOfContractedWork(X,K)",
+     "mainStructureConstruction(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "performPersonally(C,X)"
+     }
+    ],
+    "note": "建设工程主体结构的施工必须由承包人自行完成",
+    "auth": "npc"
+   },
+   {
+    "key": "c791-spc1",
+    "srcs": [
+     "art791"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     {
+      "or": [
+       "concludedThroughTransfer(K)",
+       "concludedThroughIllegalSubcontract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "《最高人民法院关于审理建设工程施工合同纠纷案件适用法律问题的解释（一）》（法释〔2020〕25号）第1条第2款：承包人因转包、违法分包建设工程与他人签订的建设工程施工合同，依民法典第153条第1款及第791条第2款、第3款认定无效（已据最高法官网逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c792",
+    "srcs": [
+     "art792"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "majorStateProjectContract(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "concludePerStateProcedureAndApprovedDocuments(K)"
+     }
+    ],
+    "note": "国家重大建设工程合同，应当按照国家规定的程序和国家批准的投资计划、可行性研究报告等文件订立",
+    "auth": "npc"
+   },
+   {
+    "key": "c793-spc1",
+    "srcs": [
+     "art793"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "contractorOf(C,K)",
+     {
+      "or": [
+       "contractorUnqualifiedOrExceedsGrade(C,K)",
+       "unqualifiedBuilderBorrowedName(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "法释〔2020〕25号第1条第1款第1、2项：承包人未取得建筑业企业资质或者超越资质等级的；没有资质的实际施工人借用有资质的建筑施工企业名义的，依民法典第153条第1款认定施工合同无效（已逐字核对；该条为第793条“施工合同无效”的前提认定）",
+    "auth": "spc"
+   },
+   {
+    "key": "c793-spc4",
+    "srcs": [
+     "art793"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "contractorOf(C,K)",
+     "exceededGradeScopeAtConclusion(C,K)",
+     "obtainedGradeBeforeCompletion(C,K)"
+    ],
+    "heads": [
+     "-void(K)"
+    ],
+    "note": "法释〔2020〕25号第4条：承包人超越资质等级许可的业务范围签订施工合同，在建设工程竣工前取得相应资质等级，当事人请求按照无效合同处理的，人民法院不予支持（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c793-1",
+    "srcs": [
+     "art793-1"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "void(K)",
+     "projectOf(W,K)",
+     "passedAcceptance(W)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "claimCompensationPerAgreedPrice(C,E,K)"
+     }
+    ],
+    "note": "建设工程施工合同无效，但是建设工程经验收合格的，可以参照合同关于工程价款的约定折价补偿承包人（结合第2款第2项“承包人无权请求”的表述，以承包人请求的许可表达）",
+    "auth": "npc"
+   },
+   {
+    "key": "c793-2a",
+    "srcs": [
+     "art793-2"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "void(K)",
+     "projectOf(W,K)",
+     "failedAcceptance(W)",
+     "repairedPassedAcceptance(W)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "claimRepairCost(E,C,K)"
+     }
+    ],
+    "note": "施工合同无效且工程经验收不合格，修复后的建设工程经验收合格的，发包人可以请求承包人承担修复费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c793-2a-doc",
+    "srcs": [
+     "art793-2"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "void(K)",
+     "projectOf(W,K)",
+     "failedAcceptance(W)",
+     "repairedPassedAcceptance(W)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "claimCompensationPerAgreedPrice(C,E,K)"
+     }
+    ],
+    "note": "学理（体系解释，第793条第1款与第2款第1项结合）：修复后经验收合格的，承包人仍可参照合同约定请求折价补偿，但须承担修复费用；条文未明文规定",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c793-2b",
+    "srcs": [
+     "art793-2"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "void(K)",
+     "projectOf(W,K)",
+     "failedAcceptance(W)",
+     "repairedFailedAcceptance(W)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "claimCompensationPerAgreedPrice(C,E,K)"
+     }
+    ],
+    "note": "修复后的建设工程经验收不合格的，承包人无权请求参照合同关于工程价款的约定折价补偿（“无权请求”以 FOR 表达请求被排除）",
+    "auth": "npc"
+   },
+   {
+    "key": "c793-3",
+    "srcs": [
+     "art793-3"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "void(K)",
+     "projectOf(W,K)",
+     "failedAcceptance(W)",
+     "employerOf(E,K)",
+     "employerFaultForDefectLoss(E,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "bearCorrespondingLiabilityForDefectLoss(E,W)"
+     }
+    ],
+    "note": "发包人对因建设工程不合格造成的损失有过错的，应当承担相应的责任（置于施工合同无效的语境）",
+    "auth": "npc"
+   },
+   {
+    "key": "c799-1a",
+    "srcs": [
+     "art799-1"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "projectCompleted(W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "conductCompletionAcceptanceTimely(E,W)"
+     }
+    ],
+    "note": "建设工程竣工后，发包人应当根据施工图纸及说明书、国家颁发的施工验收规范和质量检验标准及时进行验收",
+    "auth": "npc"
+   },
+   {
+    "key": "c799-1b",
+    "srcs": [
+     "art799-1"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "passedAcceptance(W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "payPriceAsAgreed(E,C,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "takeOverProject(E,W)"
+     }
+    ],
+    "note": "验收合格的，发包人应当按照约定支付价款，并接收该建设工程",
+    "auth": "npc"
+   },
+   {
+    "key": "c799-2",
+    "srcs": [
+     "art799-2"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "projectOf(W,K)",
+     {
+      "or": [
+       "notYetAccepted(W)",
+       "failedAcceptance(W)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "deliverForUse(W)"
+     }
+    ],
+    "note": "建设工程竣工经验收合格后方可交付使用；未经验收或者验收不合格的，不得交付使用",
+    "auth": "npc"
+   },
+   {
+    "key": "c799-spc14a",
+    "srcs": [
+     "art799-2"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "notYetAccepted(W)",
+     "employerUsedWithoutAuthorization(E,W)"
+    ],
+    "heads": [
+     "-qualityClaimOnUsedPartSupported(E,W)"
+    ],
+    "note": "法释〔2020〕25号第14条前段：建设工程未经竣工验收，发包人擅自使用后，又以使用部分质量不符合约定为由主张权利的，人民法院不予支持（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c799-spc14b",
+    "srcs": [
+     "art799-2"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "notYetAccepted(W)",
+     "employerUsedWithoutAuthorization(E,W)",
+     "foundationOrMainStructureDefectWithinUsefulLife(W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "liableForFoundationAndMainStructureQuality(C,W)"
+     }
+    ],
+    "note": "法释〔2020〕25号第14条但书：承包人应当在建设工程的合理使用寿命内对地基基础工程和主体结构质量承担民事责任（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c801-1",
+    "srcs": [
+     "art801"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "qualityNonconformingByContractor(C,W)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "requestFreeRepairOrRework(E,C,W)"
+     }
+    ],
+    "note": "因施工人的原因致使建设工程质量不符合约定的，发包人有权请求施工人在合理期限内无偿修理或者返工、改建",
+    "auth": "npc"
+   },
+   {
+    "key": "c801-2",
+    "srcs": [
+     "art801"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "qualityNonconformingByContractor(C,W)",
+     "repairedOrReworked(W)",
+     "deliveryOverdue(W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "liableForBreach(C,K)"
+     }
+    ],
+    "note": "经过修理或者返工、改建后，造成逾期交付的，施工人应当承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c801-spc12",
+    "srcs": [
+     "art801"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "projectOf(W,K)",
+     "employerOf(E,K)",
+     "contractorOf(C,K)",
+     "qualityNonconformingByContractor(C,W)",
+     "contractorRefusesRepairOrRework(C,W)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "requestReducedPrice(E,C,K)"
+     }
+    ],
+    "note": "法释〔2020〕25号第12条：因承包人的原因造成建设工程质量不符合约定，承包人拒绝修理、返工或者改建，发包人请求减少支付工程价款的，人民法院应予支持（已逐字核对）",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c791-3a",
+    "c791-2a",
+    "第791条第3款禁止分包给不具备相应资质条件的单位，发包人同意亦不能使之合法"
+   ],
+   [
+    "c791-3c",
+    "c791-2a",
+    "主体结构施工必须由承包人自行完成，排除经同意分包的许可"
+   ],
+   [
+    "c793-spc4",
+    "c793-spc1",
+    "法释〔2020〕25号第4条：竣工前取得相应资质等级的，不按无效合同处理"
+   ]
+  ],
+  "predicates": {
+   "constructionContract": "K是建设工程合同（承包人进行工程建设、发包人支付价款，含勘察、设计、施工合同）（合同）",
+   "constructionWorkContract": "K是建设工程施工合同（合同）",
+   "employerOf": "E是建设工程合同K的发包人（发包人，合同）",
+   "contractorOf": "C是建设工程合同K的承包人，含总承包人及勘察、设计、施工承包人（承包人，合同）",
+   "projectOf": "W是建设工程合同K项下的建设工程（工程，合同）",
+   "employerOfProject": "E是建设工程W的发包人（发包人，工程）",
+   "awardToGeneralOrSeparateContractors": "发包人E就工程W与总承包人订立建设工程合同，或者分别与勘察人、设计人、施工人订立承包合同（发包人，工程）",
+   "projectForSingleContractor": "建设工程W是应当由一个承包人完成的建设工程（工程）",
+   "splitProjectToMultipleContractors": "发包人E将工程W支解成若干部分发包给数个承包人（发包人，工程）",
+   "partOfContractedWork": "X是承包人在建设工程合同K中承包的部分工作（工作，合同）",
+   "employerConsentedSubcontract": "发包人E同意将工作X交由第三人T完成（发包人，工作，第三人）",
+   "subcontractToThirdParty": "承包人C将其承包的工作X交由第三人T完成（分包）（承包人，工作，第三人）",
+   "subcontractorFor": "T是从承包人C处分包工作X的分包单位（分包人，承包人，工作）",
+   "jointlyLiableForWorkResult": "第三人T就其完成的工作成果X与承包人C向发包人E承担连带责任（分包人，承包人，发包人，工作）",
+   "transferWholeProject": "承包人C将其承包的全部建设工程转包给第三人（承包人，合同）",
+   "splitAndTransferAsSubcontracts": "承包人C将其承包的全部建设工程支解以后以分包的名义分别转包给第三人（承包人，合同）",
+   "lacksQualificationFor": "单位T不具备完成工作X的相应资质条件（单位，工作）",
+   "furtherSubcontract": "分包单位T将其承包的工程X再分包（分包人，工作）",
+   "mainStructureConstruction": "工作X是建设工程主体结构的施工（工作）",
+   "performPersonally": "承包人C自行完成工作X（承包人，工作）",
+   "concludedThroughTransfer": "施工合同K是承包人因转包建设工程与他人签订的（合同）",
+   "concludedThroughIllegalSubcontract": "施工合同K是承包人因违法分包建设工程与他人签订的（合同）",
+   "majorStateProjectContract": "K是国家重大建设工程合同（合同）",
+   "concludePerStateProcedureAndApprovedDocuments": "按照国家规定的程序和国家批准的投资计划、可行性研究报告等文件订立合同K（合同）",
+   "contractorUnqualifiedOrExceedsGrade": "承包人C订立施工合同K时未取得建筑业企业资质或者超越资质等级（承包人，合同）",
+   "unqualifiedBuilderBorrowedName": "施工合同K系没有资质的实际施工人借用有资质的建筑施工企业名义订立（合同）",
+   "exceededGradeScopeAtConclusion": "承包人C超越资质等级许可的业务范围签订施工合同K（承包人，合同）",
+   "obtainedGradeBeforeCompletion": "承包人C在建设工程竣工前取得相应资质等级（承包人，合同）",
+   "passedAcceptance": "建设工程W经验收合格（工程）",
+   "failedAcceptance": "建设工程W经验收不合格（工程）",
+   "repairedPassedAcceptance": "建设工程W修复后经验收合格（工程）",
+   "repairedFailedAcceptance": "建设工程W修复后经验收仍不合格（工程）",
+   "claimCompensationPerAgreedPrice": "承包人C请求发包人E参照合同K关于工程价款的约定折价补偿（承包人，发包人，合同）",
+   "claimRepairCost": "发包人E请求承包人C承担合同K项下工程的修复费用（发包人，承包人，合同）",
+   "employerFaultForDefectLoss": "发包人E对因建设工程W不合格造成的损失有过错（发包人，工程）",
+   "bearCorrespondingLiabilityForDefectLoss": "发包人E就因建设工程W不合格造成的损失承担与其过错相应的责任（发包人，工程）",
+   "projectCompleted": "建设工程W已竣工（工程）",
+   "conductCompletionAcceptanceTimely": "发包人E根据施工图纸及说明书、国家颁发的施工验收规范和质量检验标准及时对工程W进行竣工验收（发包人，工程）",
+   "payPriceAsAgreed": "发包人E按照合同K的约定向承包人C支付价款（发包人，承包人，合同）",
+   "takeOverProject": "发包人E接收建设工程W（发包人，工程）",
+   "notYetAccepted": "建设工程W未经竣工验收（工程）",
+   "deliverForUse": "将建设工程W交付使用（工程）",
+   "employerUsedWithoutAuthorization": "建设工程未经竣工验收，发包人E擅自使用工程W（发包人，工程）",
+   "qualityClaimOnUsedPartSupported": "发包人E以工程W使用部分质量不符合约定为由主张权利获得支持（发包人，工程）",
+   "foundationOrMainStructureDefectWithinUsefulLife": "工程W在合理使用寿命内地基基础工程或主体结构存在质量问题（工程）",
+   "liableForFoundationAndMainStructureQuality": "承包人C在合理使用寿命内对工程W的地基基础工程和主体结构质量承担民事责任（承包人，工程）",
+   "qualityNonconformingByContractor": "因施工人C的原因致使建设工程W质量不符合约定（施工人，工程）",
+   "requestFreeRepairOrRework": "发包人E请求施工人C在合理期限内对工程W无偿修理或者返工、改建（发包人，施工人，工程）",
+   "repairedOrReworked": "建设工程W已经过修理或者返工、改建（工程）",
+   "deliveryOverdue": "建设工程W逾期交付（工程）",
+   "contractorRefusesRepairOrRework": "承包人C拒绝对工程W修理、返工或者改建（承包人，工程）",
+   "requestReducedPrice": "发包人E请求减少向承包人C支付合同K的工程价款（发包人，承包人，合同）"
+  }
+ },
+ "art:803": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "发包人未按约提供施工条件时承包人的救济",
+     "rules": [
+      "c803"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "发包人未按照约定的时间和要求提供原材料、设备、场地、资金、技术资料",
+     "rules": [
+      "c803"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承包人可以顺延工程日期，并有权请求赔偿停工、窝工等损失",
+     "rules": [
+      "c803"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "发包人提供的主要材料设备不符合强制性标准或不履行协助义务致无法施工，经催告仍不履行的，承包人可解除合同（第806条第2款，见 card:g5525 c806-2）",
+     "rules": []
+    },
+    {
+     "text": "发包人原因致工程中途停建、缓建的损失赔偿见第804条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c803",
+    "srcs": [
+     "art803"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "employerFailedToProvideAsAgreed(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "extendConstructionPeriod(C,K)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "claimStoppageAndIdleLosses(C,E,K)"
+     }
+    ],
+    "note": "发包人未按照约定的时间和要求提供原材料、设备、场地、资金、技术资料的，承包人可以顺延工程日期，并有权请求赔偿停工、窝工等损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "employerFailedToProvideAsAgreed": "发包人E未按照合同K约定的时间和要求提供原材料、设备、场地、资金、技术资料（发包人，合同）"
+  }
+ },
+ "card:g5525": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设工程合同的法定解除事由及解除后结算；承包人建设工程价款优先受偿权的成立、顺位、范围、期限与放弃",
+     "rules": [
+      "c806-1",
+      "c806-2",
+      "c807-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承包人将建设工程转包、违法分包的，发包人可以解除合同",
+     "rules": [
+      "c806-1"
+     ]
+    },
+    {
+     "text": "发包人提供的主要建筑材料、建筑构配件和设备不符合强制性标准或者不履行协助义务，致使承包人无法施工，经催告后在合理期限内仍未履行的，承包人可以解除合同",
+     "rules": [
+      "c806-2"
+     ]
+    },
+    {
+     "text": "发包人未按约定支付价款的，承包人可以催告其在合理期限内支付；逾期不支付的，承包人可以与发包人协议折价，或请求人民法院依法拍卖",
+     "rules": [
+      "c807-demand",
+      "c807-1"
+     ]
+    },
+    {
+     "text": "优先受偿权的主体为与发包人订立施工合同的承包人；装饰装修工程具备折价或拍卖条件的，其承包人亦可就该装饰装修工程优先受偿（司法解释）",
+     "rules": [
+      "c807-spc35",
+      "c807-spc37"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "根据建设工程的性质不宜折价、拍卖的，不得折价、拍卖，也不成立就该工程价款的优先受偿",
+     "rules": [
+      "c807-1",
+      "c807-2"
+     ]
+    },
+    {
+     "text": "建设工程质量不合格的，承包人不享有优先受偿权（法释第38、39条以质量合格为条件，反面推论为学理）",
+     "rules": [
+      "c807-qual"
+     ]
+    },
+    {
+     "text": "承包人应在合理期限内行使优先受偿权，最长不超过十八个月，自发包人应当给付建设工程价款之日起算；笔记中“竣工之日起六个月”系旧司法解释规定，已不适用",
+     "rules": [
+      "c807-spc41"
+     ]
+    },
+    {
+     "text": "发包人与承包人约定放弃或限制优先受偿权，损害建筑工人利益的，发包人不得据此主张承包人不享有优先受偿权",
+     "rules": [
+      "c807-spc42"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "合同解除后，已完成的建设工程质量合格的，发包人应当按约定支付相应工程价款；质量不合格的，参照第793条处理",
+     "rules": [
+      "c806-3a",
+      "c806-3b"
+     ]
+    },
+    {
+     "text": "建设工程的价款就该工程折价或者拍卖的价款优先受偿；未竣工工程质量合格的，就其承建部分优先受偿",
+     "rules": [
+      "c807-2"
+     ]
+    },
+    {
+     "text": "优先受偿范围依国务院有关行政主管部门关于建设工程价款范围的规定确定；逾期付款利息、违约金、损害赔偿金不在优先受偿范围内",
+     "rules": [
+      "c807-spc40"
+     ]
+    },
+    {
+     "text": "本章没有规定的，适用承揽合同的有关规定",
+     "rules": [
+      "c808"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "建设工程价款优先受偿权优于抵押权和其他债权（司法解释）",
+     "rules": [
+      "c807-spc36"
+     ]
+    },
+    {
+     "text": "质量不合格、超过行使期限、有效放弃约定的情形排除第807条的优先受偿",
+     "rules": [
+      "c807-qual",
+      "c807-spc41",
+      "c807-spc42"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第793条（施工合同无效的折价补偿与修复）和第799条（竣工验收、交付使用）同时挂在 card:g5499，规则见该行 c793-1、c793-2a、c793-2b、c793-3、c799-1a、c799-1b、c799-2，本行不重写",
+     "rules": []
+    },
+    {
+     "text": "笔记“消费者交付全部或大部分购房款后，承包人优先受偿权不得对抗买受人”源自已废止的2002年批复；现行规则见《最高人民法院关于商品房消费者权利保护问题的批复》（法释〔2023〕1号，以居住为目的并已支付全部价款等条件），未逐字核对，暂不形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记“装饰装修工程发包人不是建筑物所有权人的除外”系旧解释表述；现行法释〔2020〕25号第37条改为以“具备折价或者拍卖条件”为要件",
+     "rules": [
+      "c807-spc37"
+     ]
+    },
+    {
+     "text": "第806条第1款的转包、违法分包含义见第791条（card:g5499 c791-2c、c791-3a、c791-3b、c791-3c）；第806条为建设工程合同的特别法定解除事由，不排斥第563条一般法定解除",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c806-1",
+    "srcs": [
+     "art806-1"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     {
+      "or": [
+       "transferWholeProjectDone(C,K)",
+       "illegalSubcontractDone(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "rescindContract(E,K)"
+     }
+    ],
+    "note": "承包人将建设工程转包、违法分包的，发包人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c806-2",
+    "srcs": [
+     "art806-2"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     {
+      "or": [
+       "employerSuppliesNonconformingToMandatoryStandard(E,K)",
+       "employerFailsCooperationDuty(E,K)"
+      ]
+     },
+     "contractorUnableToConstruct(C,K)",
+     "stillNotPerformedInReasonableTime(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "rescindContract(C,K)"
+     }
+    ],
+    "note": "发包人提供的主要建筑材料、建筑构配件和设备不符合强制性标准或者不履行协助义务，致使承包人无法施工，经催告后在合理期限内仍未履行相应义务的，承包人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c806-3a",
+    "srcs": [
+     "art806-3"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractRescinded(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "completedWorkQualified(W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "payCorrespondingPriceAsAgreed(E,C,K)"
+     }
+    ],
+    "note": "合同解除后，已经完成的建设工程质量合格的，发包人应当按照约定支付相应的工程价款",
+    "auth": "npc"
+   },
+   {
+    "key": "c806-3b",
+    "srcs": [
+     "art806-3"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractRescinded(K)",
+     "projectOf(W,K)",
+     "completedWorkUnqualified(W)"
+    ],
+    "heads": [
+     "applyArt793MutatisMutandis(K)"
+    ],
+    "note": "合同解除后，已经完成的建设工程质量不合格的，参照本法第793条的规定处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c807-demand",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "employerUnpaidAsAgreed(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "demandPaymentInReasonableTime(C,E,K)"
+     }
+    ],
+    "note": "发包人未按照约定支付价款的，承包人可以催告发包人在合理期限内支付价款",
+    "auth": "npc"
+   },
+   {
+    "key": "c807-1",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "employerStillUnpaidAfterDemand(E,K)",
+     "~unsuitableForDiscountOrAuctionByNature(W)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "agreeDiscountOfProject(C,E,W)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "requestCourtAuctionOfProject(C,W)"
+     }
+    ],
+    "note": "发包人逾期不支付的，除根据建设工程的性质不宜折价、拍卖外，承包人可以与发包人协议将该工程折价，也可以请求人民法院将该工程依法拍卖",
+    "auth": "npc"
+   },
+   {
+    "key": "c807-2",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "employerStillUnpaidAfterDemand(E,K)",
+     "~unsuitableForDiscountOrAuctionByNature(W)"
+    ],
+    "heads": [
+     "constructionPricePriority(C,W)"
+    ],
+    "note": "建设工程的价款就该工程折价或者拍卖的价款优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c807-spc35",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionWorkContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "contractedDirectlyWithEmployer(C,E,K)"
+    ],
+    "heads": [
+     "priorityEligibleContractor(C,W)"
+    ],
+    "note": "法释〔2020〕25号第35条：与发包人订立建设工程施工合同的承包人，依据民法典第807条请求其承建工程的价款就工程折价或者拍卖的价款优先受偿的，人民法院应予支持（已据最高法官网逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c807-spc36",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionPricePriority(C,W)",
+     "competingMortgageOrOtherClaim(R,W)"
+    ],
+    "heads": [
+     "ranksBefore(C,R)"
+    ],
+    "note": "法释〔2020〕25号第36条：承包人根据民法典第807条享有的建设工程价款优先受偿权优于抵押权和其他债权（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c807-spc37",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "decorationWorkContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "employerStillUnpaidAfterDemand(E,K)",
+     "decorationWorkDiscountableOrAuctionable(W)"
+    ],
+    "heads": [
+     "constructionPricePriority(C,W)"
+    ],
+    "note": "法释〔2020〕25号第37条：装饰装修工程具备折价或者拍卖条件，装饰装修工程的承包人请求工程价款就该装饰装修工程折价或者拍卖的价款优先受偿的，人民法院应予支持（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c807-qual",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "projectOf(W,K)",
+     "builtPartQualityUnqualified(C,W)"
+    ],
+    "heads": [
+     "-constructionPricePriority(C,W)"
+    ],
+    "note": "学理（笔记“质量合格是优先受偿权行使的前提”）：法释〔2020〕25号第38条（质量合格的可优先受偿）、第39条（未竣工但质量合格的就承建部分优先受偿）的反面推论；司法解释未明文规定不合格即不享有",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c807-spc40",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionPricePriority(C,W)",
+     "projectOf(W,K)",
+     "lateInterestPenaltyOrDamages(A,C,K)"
+    ],
+    "heads": [
+     "-coveredByConstructionPriority(A,W)"
+    ],
+    "note": "法释〔2020〕25号第40条：优先受偿范围依国务院有关行政主管部门关于建设工程价款范围的规定确定；承包人就逾期支付建设工程价款的利息、违约金、损害赔偿金等主张优先受偿的，人民法院不予支持（已逐字核对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c807-spc41",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "projectOf(W,K)",
+     "priorityNotExercisedInTime(C,W)"
+    ],
+    "heads": [
+     "-constructionPricePriority(C,W)"
+    ],
+    "note": "法释〔2020〕25号第41条：承包人应当在合理期限内行使建设工程价款优先受偿权，但最长不得超过十八个月，自发包人应当给付建设工程价款之日起算（已逐字核对；超期丧失为通说理解）",
+    "auth": "spc"
+   },
+   {
+    "key": "c807-spc42",
+    "srcs": [
+     "art807"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "projectOf(W,K)",
+     "priorityWaiverOrLimitAgreed(E,C,W)",
+     "~waiverHarmsConstructionWorkers(E,C,W)"
+    ],
+    "heads": [
+     "-constructionPricePriority(C,W)"
+    ],
+    "note": "法释〔2020〕25号第42条：约定放弃或者限制优先受偿权，损害建筑工人利益，发包人据此主张承包人不享有优先受偿权的，人民法院不予支持（已逐字核对）；未损害建筑工人利益的放弃约定可对抗承包人系该条反面推论",
+    "auth": "spc"
+   },
+   {
+    "key": "c808",
+    "srcs": [
+     "art808"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "matterOfConstructionContract(M,K)",
+     "-constructionChapterProvidesOn(M)"
+    ],
+    "heads": [
+     "applyWorkContractRules(M,K)"
+    ],
+    "note": "本章没有规定的，适用承揽合同的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c807-qual",
+    "c807-2",
+    "建设工程质量合格是优先受偿权的前提（法释〔2020〕25号第38、39条反面推论）"
+   ],
+   [
+    "c807-spc41",
+    "c807-2",
+    "超过合理期限（最长十八个月）未行使的，不再享有优先受偿"
+   ],
+   [
+    "c807-spc42",
+    "c807-2",
+    "未损害建筑工人利益的放弃或限制约定可对抗承包人"
+   ],
+   [
+    "c807-qual",
+    "c807-spc37",
+    "装饰装修工程同样以质量合格为前提（学理）"
+   ],
+   [
+    "c807-spc41",
+    "c807-spc37",
+    "装饰装修工程优先受偿权同受行使期限限制"
+   ],
+   [
+    "c807-spc42",
+    "c807-spc37",
+    "放弃约定同样适用于装饰装修工程优先受偿权"
+   ]
+  ],
+  "predicates": {
+   "transferWholeProjectDone": "承包人C已将其承包的建设工程转包（承包人，合同）",
+   "illegalSubcontractDone": "承包人C已将其承包的建设工程违法分包（承包人，合同）",
+   "employerSuppliesNonconformingToMandatoryStandard": "发包人E提供的主要建筑材料、建筑构配件和设备不符合强制性标准（发包人，合同）",
+   "employerFailsCooperationDuty": "发包人E不履行合同K项下的协助义务（发包人，合同）",
+   "contractorUnableToConstruct": "因发包人原因致使承包人C无法施工（承包人，合同）",
+   "completedWorkQualified": "合同解除时已经完成的建设工程W质量合格（工程）",
+   "completedWorkUnqualified": "合同解除时已经完成的建设工程W质量不合格（工程）",
+   "payCorrespondingPriceAsAgreed": "发包人E按照约定向承包人C支付已完成部分相应的工程价款（发包人，承包人，合同）",
+   "applyArt793MutatisMutandis": "对合同K已完成的不合格工程参照第793条（施工合同无效的折价补偿与修复）的规定处理（合同）",
+   "employerUnpaidAsAgreed": "发包人E未按照约定支付合同K的价款（发包人，合同）",
+   "demandPaymentInReasonableTime": "承包人C催告发包人E在合理期限内支付合同K的价款（承包人，发包人，合同）",
+   "employerStillUnpaidAfterDemand": "经承包人催告，发包人E逾期仍不支付合同K的价款（发包人，合同）",
+   "unsuitableForDiscountOrAuctionByNature": "根据建设工程W的性质不宜折价、拍卖（工程）",
+   "agreeDiscountOfProject": "承包人C与发包人E协议将工程W折价（承包人，发包人，工程）",
+   "requestCourtAuctionOfProject": "承包人C请求人民法院将工程W依法拍卖（承包人，工程）",
+   "constructionPricePriority": "承包人C的建设工程价款就工程W（或其承建部分）折价或者拍卖的价款优先受偿（承包人，工程）",
+   "contractedDirectlyWithEmployer": "承包人C与发包人E直接订立施工合同K（承包人，发包人，合同）",
+   "priorityEligibleContractor": "C是可以主张工程W价款优先受偿的承包人主体（承包人，工程）",
+   "competingMortgageOrOtherClaim": "R是在工程W上与之竞存的抵押权或者其他债权（权利，工程）",
+   "decorationWorkContract": "K是装饰装修工程合同（合同）",
+   "decorationWorkDiscountableOrAuctionable": "装饰装修工程W具备折价或者拍卖条件（工程）",
+   "builtPartQualityUnqualified": "承包人C承建的工程W（或其承建部分）质量不合格（承包人，工程）",
+   "lateInterestPenaltyOrDamages": "A是承包人C就合同K主张的逾期支付工程价款的利息、违约金、损害赔偿金等（款项，承包人，合同）",
+   "coveredByConstructionPriority": "款项A属于就工程W折价或拍卖价款优先受偿的范围（款项，工程）",
+   "priorityNotExercisedInTime": "承包人C未在合理期限内（最长十八个月，自发包人应当给付工程价款之日起算）行使工程W价款优先受偿权（承包人，工程）",
+   "priorityWaiverOrLimitAgreed": "发包人E与承包人C约定放弃或者限制工程W价款优先受偿权（发包人，承包人，工程）",
+   "waiverHarmsConstructionWorkers": "E与C放弃或限制工程W价款优先受偿权的约定损害建筑工人利益（发包人，承包人，工程）",
+   "matterOfConstructionContract": "事项M属于建设工程合同K所生法律关系中的事项（事项，合同）",
+   "constructionChapterProvidesOn": "民法典合同编第十八章（建设工程合同）对事项M有规定（事项）",
+   "applyWorkContractRules": "就建设工程合同K的事项M适用承揽合同的有关规定（事项，合同）"
+  }
+ },
+ "art:788": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为建设工程合同，其包括哪些类型",
+     "rules": [
+      "c788-1",
+      "c788-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承包人进行工程建设，发包人支付价款",
+     "rules": [
+      "c788-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "该合同为建设工程合同，进行建设的一方为承包人，支付价款的一方为发包人",
+     "rules": [
+      "c788-1"
+     ]
+    },
+    {
+     "text": "建设工程合同包括工程勘察、设计、施工合同",
+     "rules": [
+      "c788-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "建设工程合同在性质上属于特殊的承揽合同，本章没有规定的适用承揽合同的有关规定（第808条，见 card:g5525 c808）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c788-1",
+    "srcs": [
+     "art788-1"
+    ],
+    "body": [
+     "contract(K)",
+     "undertakesProjectConstruction(C,K)",
+     "paysPriceForProject(E,K)"
+    ],
+    "heads": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)"
+    ],
+    "note": "建设工程合同是承包人进行工程建设，发包人支付价款的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c788-2",
+    "srcs": [
+     "art788-2"
+    ],
+    "body": [
+     "contract(K)",
+     {
+      "or": [
+       "surveyContract(K)",
+       "designContract(K)",
+       "constructionWorkContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "constructionContract(K)"
+    ],
+    "note": "建设工程合同包括工程勘察、设计、施工合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "undertakesProjectConstruction": "C依合同K承担进行工程建设（勘察、设计、施工）的义务（承包人，合同）",
+   "paysPriceForProject": "E依合同K负担支付工程价款的义务（发包人，合同）",
+   "surveyContract": "K是建设工程勘察合同（合同）",
+   "designContract": "K是建设工程设计合同（合同）"
+  }
+ },
+ "art:789": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设工程合同的形式要求",
+     "rules": [
+      "c789"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同为建设工程合同",
+     "rules": [
+      "c789"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "建设工程合同应当采用书面形式（要式合同）",
+     "rules": [
+      "c789"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "未采用书面形式但一方已经履行主要义务、对方接受的，合同成立（第490条第2款，已在合同的订立章形式化）",
+     "rules": []
+    },
+    {
+     "text": "书面形式的含义见第469条第2、3款",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c789",
+    "srcs": [
+     "art789"
+    ],
+    "body": [
+     "constructionContract(K)"
+    ],
+    "heads": [
+     "writtenFormRequired(K)",
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "adoptWrittenForm(K)"
+     }
+    ],
+    "note": "建设工程合同应当采用书面形式",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "writtenFormRequired": "依法律规定合同K应当采用书面形式（合同）",
+   "adoptWrittenForm": "当事人就合同K采用书面形式订立（合同）"
+  }
+ },
+ "art:802": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "建设工程在合理使用期限内致人损害时承包人的赔偿责任",
+     "rules": [
+      "c802"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因承包人的原因，致使建设工程在合理使用期限内造成人身损害和财产损失",
+     "rules": [
+      "c802"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承包人应当承担赔偿责任",
+     "rules": [
+      "c802"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与第801条（质量不符合约定的无偿修理、返工改建与逾期违约责任）区分；未经验收擅自使用时地基基础和主体结构的责任见 card:g5499 c799-spc14b",
+     "rules": []
+    },
+    {
+     "text": "建筑物倒塌、塌陷致害的侵权责任另见第1252条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c802",
+    "srcs": [
+     "art802"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "projectOf(W,K)",
+     "projectDamageWithinReasonableUseLife(W,V)",
+     "attributableToContractor(C,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "V",
+      "content": "compensateLoss(C,V)"
+     }
+    ],
+    "note": "因承包人的原因致使建设工程在合理使用期限内造成人身损害和财产损失的，承包人应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "projectDamageWithinReasonableUseLife": "建设工程W在合理使用期限内造成V的人身损害或财产损失（工程，受害人）",
+   "attributableToContractor": "建设工程W的上述致害系因承包人C的原因所致（承包人，工程）"
+  }
+ },
+ "art:798": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "隐蔽工程隐蔽前的通知检查义务及发包人未及时检查的后果",
+     "rules": [
+      "c798-1",
+      "c798-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "隐蔽工程在隐蔽以前",
+     "rules": [
+      "c798-1"
+     ]
+    },
+    {
+     "text": "承包人已通知而发包人没有及时检查",
+     "rules": [
+      "c798-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承包人应当通知发包人检查",
+     "rules": [
+      "c798-1"
+     ]
+    },
+    {
+     "text": "发包人没有及时检查的，承包人可以顺延工程日期，并有权请求赔偿停工、窝工等损失",
+     "rules": [
+      "c798-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第803条为发包人未按约提供原材料、设备、场地、资金、技术资料时的同类救济（顺延工期、赔偿停工窝工损失）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c798-1",
+    "srcs": [
+     "art798"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "concealedWorkOf(X,K)",
+     "-concealed(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "notifyEmployerToInspect(C,E,X)"
+     }
+    ],
+    "note": "隐蔽工程在隐蔽以前，承包人应当通知发包人检查",
+    "auth": "npc"
+   },
+   {
+    "key": "c798-2",
+    "srcs": [
+     "art798"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "concealedWorkOf(X,K)",
+     "notifiedEmployerToInspect(C,E,X)",
+     "employerFailedToInspectTimely(E,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "extendConstructionPeriod(C,K)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "E",
+      "content": "claimStoppageAndIdleLosses(C,E,K)"
+     }
+    ],
+    "note": "发包人没有及时检查的，承包人可以顺延工程日期，并有权请求赔偿停工、窝工等损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concealedWorkOf": "X是建设工程合同K项下的隐蔽工程（隐蔽工程，合同）",
+   "concealed": "隐蔽工程X已经隐蔽（隐蔽工程）",
+   "notifyEmployerToInspect": "承包人C在隐蔽前通知发包人E检查隐蔽工程X（承包人，发包人，隐蔽工程）",
+   "notifiedEmployerToInspect": "承包人C已通知发包人E检查隐蔽工程X（承包人，发包人，隐蔽工程）",
+   "employerFailedToInspectTimely": "发包人E没有及时检查隐蔽工程X（发包人，隐蔽工程）",
+   "extendConstructionPeriod": "承包人C顺延合同K的工程日期（承包人，合同）",
+   "claimStoppageAndIdleLosses": "承包人C请求发包人E赔偿合同K项下停工、窝工等损失（承包人，发包人，合同）"
+  }
+ },
+ "art:794": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "勘察、设计合同一般包括哪些条款",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "勘察、设计合同的内容一般包括提交有关基础资料和概预算等文件的期限、质量要求、费用以及其他协作条件等条款（倡导性规定，不写规则）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "施工合同的一般条款见第795条（card:g5499，同为倡导性规定）；勘察、设计质量不合格或逾期提交文件的责任见第800条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:805": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "因发包人原因造成勘察、设计返工、停工或修改设计时的费用负担",
+     "rules": [
+      "c805"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "发包人变更计划、提供的资料不准确，或者未按照期限提供必需的勘察、设计工作条件，因而造成勘察、设计的返工、停工或者修改设计",
+     "rules": [
+      "c805"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "发包人应当按照勘察人、设计人实际消耗的工作量增付费用",
+     "rules": [
+      "c805"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "勘察、设计人自身原因致质量不合格或逾期的责任见第800条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c805",
+    "srcs": [
+     "art805"
+    ],
+    "body": [
+     "contract(K)",
+     {
+      "or": [
+       "surveyContract(K)",
+       "designContract(K)"
+      ]
+     },
+     "contractorOf(S,K)",
+     "employerOf(E,K)",
+     {
+      "or": [
+       "employerChangedPlan(E,K)",
+       "employerProvidedInaccurateData(E,K)",
+       "employerFailedToProvideSurveyDesignConditionsInTime(E,K)"
+      ]
+     },
+     "causedSurveyDesignReworkStoppageOrRedesign(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "S",
+      "content": "payAdditionalFeeByActualWorkload(E,S,K)"
+     }
+    ],
+    "note": "因发包人变更计划，提供的资料不准确，或者未按照期限提供必需的勘察、设计工作条件而造成勘察、设计的返工、停工或者修改设计，发包人应当按照勘察人、设计人实际消耗的工作量增付费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "employerChangedPlan": "发包人E变更合同K项下的计划（发包人，合同）",
+   "employerProvidedInaccurateData": "发包人E就合同K提供的资料不准确（发包人，合同）",
+   "employerFailedToProvideSurveyDesignConditionsInTime": "发包人E未按照期限提供合同K必需的勘察、设计工作条件（发包人，合同）",
+   "causedSurveyDesignReworkStoppageOrRedesign": "发包人E的上述原因造成合同K项下勘察、设计的返工、停工或者修改设计（发包人，合同）",
+   "payAdditionalFeeByActualWorkload": "发包人E按照勘察人、设计人S实际消耗的工作量增付合同K的费用（发包人，勘察设计人，合同）"
+  }
+ },
+ "art:804": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十八章　建设工程合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "因发包人原因致工程中途停建、缓建的责任",
+     "rules": [
+      "c804"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因发包人的原因致使工程中途停建、缓建",
+     "rules": [
+      "c804"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "发包人应当采取措施弥补或者减少损失",
+     "rules": [
+      "c804"
+     ]
+    },
+    {
+     "text": "发包人应当赔偿承包人因此造成的停工、窝工、倒运、机械设备调迁、材料和构件积压等损失和实际费用",
+     "rules": [
+      "c804"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第803条为未按约提供施工条件时的顺延工期与停工窝工损失；本条针对停建、缓建，赔偿范围更宽",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c804",
+    "srcs": [
+     "art804"
+    ],
+    "body": [
+     "constructionContract(K)",
+     "contractorOf(C,K)",
+     "employerOf(E,K)",
+     "suspendedOrPostponedByEmployer(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "takeMeasuresToReduceLoss(E,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "E",
+      "counterparty": "C",
+      "content": "compensateSuspensionLossesAndCosts(E,C,K)"
+     }
+    ],
+    "note": "因发包人的原因致使工程中途停建、缓建的，发包人应当采取措施弥补或者减少损失，赔偿承包人因此造成的停工、窝工、倒运、机械设备调迁、材料和构件积压等损失和实际费用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "suspendedOrPostponedByEmployer": "因发包人E的原因致使合同K项下工程中途停建、缓建（发包人，合同）",
+   "takeMeasuresToReduceLoss": "发包人E采取措施弥补或者减少合同K项下的损失（发包人，合同）",
+   "compensateSuspensionLossesAndCosts": "发包人E赔偿承包人C因停建缓建造成的停工、窝工、倒运、机械设备调迁、材料和构件积压等损失和实际费用（发包人，承包人，合同）"
+  }
+ }
+}

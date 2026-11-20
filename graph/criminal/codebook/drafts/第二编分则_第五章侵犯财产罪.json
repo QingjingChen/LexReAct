@@ -1,0 +1,1682 @@
+{
+ "art:265": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以牟利为目的盗接他人通信线路、复制他人电信码号，或者使用明知是盗接、复制的电信设备、设施的，如何定罪处罚",
+     "rules": [
+      "k265-1",
+      "k265-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为择一：①盗接他人通信线路；②复制他人电信码号；③使用电信设备、设施，且明知该设备、设施系盗接、复制而来",
+     "rules": [
+      "k265-conduct"
+     ]
+    },
+    {
+     "text": "主观须以牟利为目的（如出售、出租、非法经营通信业务获利），此为本条适用的必备要件",
+     "rules": [
+      "k265-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具有牟利目的（如单纯为自己使用而盗接线路）的，不依本条以盗窃罪论处（学理，法条以“以牟利为目的”限定）",
+     "rules": [
+      "k265-noprofit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "以盗窃罪定罪：本条系法律拟制，将上述电信侵害行为按盗窃罪评价",
+     "rules": [
+      "k265-1"
+     ]
+    },
+    {
+     "text": "依照刑法第264条（盗窃罪）的规定处罚，按数额、情节适用相应法定刑档次及罚金",
+     "rules": [
+      "k265-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条为援引第264条的拟制（转致）条款，定罪与量刑均适用盗窃罪的规定，不另设独立罪名与法定刑",
+     "rules": [
+      "k265-1",
+      "k265-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与直接窃取财物的盗窃不同：本条对象是通信线路、电信码号等电信资源，行为方式法定为盗接、复制、使用三种，且须以牟利为目的方可拟制为盗窃罪",
+     "rules": [
+      "k265-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k265-conduct",
+    "srcs": [
+     "art265"
+    ],
+    "body": [
+     {
+      "or": [
+       "illegallyTapsOthersCommunicationLine(P,X)",
+       "copiesOthersTelecomNumber(P,X)",
+       "usesTappedOrCopiedTelecomEquipment(P,X) knowsTappedOrCopiedTelecomEquipment(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "telecomTheftConduct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本条三种法定行为方式择一，使用型行为另须明知设备设施系盗接、复制而来"
+   },
+   {
+    "key": "k265-cond",
+    "srcs": [
+     "art265"
+    ],
+    "body": [
+     "telecomTheftConduct(P,X)",
+     "forProfitPurpose(P,X)"
+    ],
+    "heads": [
+     "telecomTheftConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "以牟利为目的实施盗接、复制或使用行为，具备本条适用条件"
+   },
+   {
+    "key": "k265-1",
+    "srcs": [
+     "art265"
+    ],
+    "body": [
+     "telecomTheftConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,theft)"
+    ],
+    "auth": "npc",
+    "note": "符合本条条件的行为，以盗窃罪（第264条）定罪，属法律拟制"
+   },
+   {
+    "key": "k265-2",
+    "srcs": [
+     "art265"
+    ],
+    "body": [
+     "telecomTheftConditions(P,X)"
+    ],
+    "heads": [
+     "applyArt264Penalty(P,X)"
+    ],
+    "auth": "npc",
+    "note": "依照刑法第264条盗窃罪的规定处罚"
+   },
+   {
+    "key": "k265-noprofit",
+    "srcs": [
+     "art265"
+    ],
+    "body": [
+     "telecomTheftConduct(P,X)",
+     "-forProfitPurpose(P,X)"
+    ],
+    "heads": [
+     "-telecomTheftConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本条以牟利为目的为限，单纯自用等无牟利目的的盗接、复制、使用不依本条拟制为盗窃罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k265-noprofit",
+    "k265-cond",
+    "推断：结论冲突（('telecomTheftConditions', '+')），k265-noprofit 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "illegallyTapsOthersCommunicationLine": "illegallyTapsOthersCommunicationLine(P,X)：P 通过行为 X 盗接他人通信线路",
+   "copiesOthersTelecomNumber": "copiesOthersTelecomNumber(P,X)：P 通过行为 X 复制他人电信码号",
+   "usesTappedOrCopiedTelecomEquipment": "usesTappedOrCopiedTelecomEquipment(P,X)：P 通过行为 X 使用系盗接、复制而来的电信设备、设施",
+   "knowsTappedOrCopiedTelecomEquipment": "knowsTappedOrCopiedTelecomEquipment(P,X)：P 明知行为 X 所使用的电信设备、设施是盗接、复制的",
+   "telecomTheftConduct": "telecomTheftConduct(P,X)：P 的行为 X 属于第265条列举的盗接通信线路、复制电信码号、使用明知盗接复制的电信设备设施三种行为之一",
+   "forProfitPurpose": "forProfitPurpose(P,X)：P 实施行为 X 以牟利为目的",
+   "telecomTheftConditions": "telecomTheftConditions(P,X)：P 的行为 X 具备第265条以牟利为目的侵害电信资源、依盗窃罪定罪处罚的全部条件",
+   "constitutes": "符合构成要件",
+   "applyArt264Penalty": "applyArt264Penalty(P,X)：对 P 就行为 X 依照刑法第264条（盗窃罪）的规定处罚"
+  }
+ },
+ "art:268": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "聚众哄抢公私财物的定罪与量刑（聚众哄抢罪）",
+     "rules": [
+      "k268-cond",
+      "k268-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观条件：聚众哄抢公私财物，且数额较大或者有其他严重情节",
+     "rules": [
+      "k268-cond"
+     ]
+    },
+    {
+     "text": "主体条件：只处罚首要分子和积极参加者（聚众型犯罪的处罚范围限缩）",
+     "rules": [
+      "k268-cond",
+      "k268-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "一般参加者（既非首要分子亦非积极参加者）不构成本罪，不受本条刑罚处罚",
+     "rules": [
+      "k268-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合构成条件的，成立聚众哄抢罪",
+     "rules": [
+      "k268-1"
+     ]
+    },
+    {
+     "text": "基本档：对首要分子和积极参加的，处三年以下有期徒刑、拘役或者管制，并处罚金",
+     "rules": [
+      "k268-1b"
+     ]
+    },
+    {
+     "text": "加重档：数额巨大或者有其他特别严重情节的，属加重情形，处三年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k268-2",
+      "k268-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备数额巨大或其他特别严重情节时，适用加重法定刑，排除基本档",
+     "rules": [
+      "k268-2b",
+      "k268-1b"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k268-cond",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "mobLootingAct(P,X)",
+     {
+      "or": [
+       "amountRelativelyLarge(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     },
+     {
+      "or": [
+       "ringleader(P,X)",
+       "activelyParticipatesIn(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "mobLootingConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "聚众哄抢公私财物、数额较大或有其他严重情节，且行为人系首要分子或积极参加者，具备本罪构成条件"
+   },
+   {
+    "key": "k268-1",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "mobLootingConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,mobLooting)"
+    ],
+    "auth": "npc",
+    "note": "具备第268条构成条件的，符合聚众哄抢罪（mobLooting）的构成要件"
+   },
+   {
+    "key": "k268-1b",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "constitutes(P,X,mobLooting)",
+     "mobLootingConditions(P,X)",
+     "~aggravatedMobLooting(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑、拘役或者管制（量刑常量 under3OrDetentionOrControl），并处罚金"
+   },
+   {
+    "key": "k268-2",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "mobLootingAct(P,X)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "activelyParticipatesIn(P,X)"
+      ]
+     },
+     {
+      "or": [
+       "amountHuge(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedMobLooting(P,X)",
+     "constitutes(P,X,mobLooting)"
+    ],
+    "auth": "npc",
+    "note": "聚众哄抢数额巨大或者有其他特别严重情节的，成立本罪的加重情形"
+   },
+   {
+    "key": "k268-2b",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "aggravatedMobLooting(P,X)",
+     "constitutes(P,X,mobLooting)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：处三年以上十年以下有期徒刑（量刑常量 from3to10），并处罚金"
+   },
+   {
+    "key": "k268-subject",
+    "srcs": [
+     "art268#1"
+    ],
+    "body": [
+     "mobLootingAct(P,X)",
+     "participatesIn(P,X)",
+     "-ringleader(P,X)",
+     "-activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,mobLooting)"
+    ],
+    "auth": "doctrine",
+    "note": "由“对首要分子和积极参加的”处罚反推：一般参加者不构成本罪，系学理上的处罚范围限缩"
+   }
+  ],
+  "overrides": [
+   [
+    "k268-subject",
+    "k268-1",
+    "推断：结论冲突（('constitutes', '+')），k268-subject 为例外或更具体"
+   ],
+   [
+    "k268-subject",
+    "k268-2",
+    "推断：结论冲突（('constitutes', '+')），k268-subject 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "mobLootingAct": "mobLootingAct(P,X)：P 通过行为 X 聚众哄抢公私财物（聚集多人、公然哄抢）",
+   "amountRelativelyLarge": "数额较大",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "mobLootingConditions": "mobLootingConditions(P,X)：P 的行为 X 具备刑法第268条聚众哄抢罪的客观、数额（情节）与主体条件",
+   "constitutes": "符合构成要件",
+   "aggravatedMobLooting": "aggravatedMobLooting(P,X)：P 的聚众哄抢行为 X 具备第268条后段加重情形（数额巨大或者有其他特别严重情节）",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "participatesIn": "participatesIn(P,X)：P 参与犯罪 X"
+  }
+ },
+ "art:272": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "公司、企业或者其他单位的工作人员利用职务便利挪用本单位资金，是否成立挪用资金罪；国有单位中从事公务的人员实施同一行为应否转依挪用公款罪处理，以及各档法定刑与公诉前退还的从宽",
+     "rules": [
+      "k272-1",
+      "k272-p2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为公司、企业或者其他单位的工作人员；利用职务上的便利；挪用本单位资金归个人使用或者借贷给他人",
+     "rules": [
+      "k272-cond"
+     ]
+    },
+    {
+     "text": "三种情形具备其一：①数额较大、超过三个月未还；②虽未超过三个月，但数额较大、进行营利活动；③进行非法活动",
+     "rules": [
+      "k272-cond"
+     ]
+    },
+    {
+     "text": "第2款主体之一：国有公司、企业或者其他国有单位中从事公务的人员",
+     "rules": [
+      "k272-p2subjA"
+     ]
+    },
+    {
+     "text": "第2款主体之二：国有公司、企业或者其他国有单位委派到非国有公司、企业以及其他单位从事公务的人员",
+     "rules": [
+      "k272-p2subjB"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有第一款行为，在提起公诉前将挪用的资金退还的，可以从轻或者减轻处罚",
+     "rules": [
+      "k272-3a"
+     ]
+    },
+    {
+     "text": "公诉前退还且犯罪较轻的，可以减轻或者免除处罚",
+     "rules": [
+      "k272-3b"
+     ]
+    },
+    {
+     "text": "笔记：单纯提出借用资金或者单纯接受挪用资金的（使用人未共谋、指使、参与策划），不构成本罪",
+     "rules": [
+      "k272-borrow",
+      "k272-receive"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立挪用资金罪（misappropriationOfFunds）",
+     "rules": [
+      "k272-1"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k272-s1"
+     ]
+    },
+    {
+     "text": "挪用本单位资金数额巨大的：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k272-s2"
+     ]
+    },
+    {
+     "text": "数额特别巨大的：处七年以上有期徒刑",
+     "rules": [
+      "k272-s3"
+     ]
+    },
+    {
+     "text": "第2款人员有前款行为的，依照第384条以挪用公款罪（misappropriationOfPublicFunds）定罪处罚，排除挪用资金罪的适用",
+     "rules": [
+      "k272-p2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "法定刑档次：数额特别巨大优先于数额巨大，数额巨大优先于基本档",
+     "rules": [
+      "k272-s3",
+      "k272-s2",
+      "k272-s1"
+     ]
+    },
+    {
+     "text": "第2款是身份上的特别规定，优先于第1款挪用资金罪的定罪与量刑",
+     "rules": [
+      "k272-p2",
+      "k272-1"
+     ]
+    },
+    {
+     "text": "公诉前退还中“犯罪较轻”的减轻或免除规定，优先于一般的从轻或减轻规定",
+     "rules": [
+      "k272-3b",
+      "k272-3a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：本罪重在“挪”，只要挪用行为完成，资金是否实际使用不影响犯罪成立",
+     "rules": [
+      "k272-nouse"
+     ]
+    },
+    {
+     "text": "笔记所引“数额巨大或者数额较大不退还处三年以上十年以下有期徒刑”系修正前旧条文；现行第272条为三年以下有期徒刑或拘役／三年以上七年以下／七年以上三档，应以法条原文为准",
+     "rules": [
+      "k272-s1",
+      "k272-s2",
+      "k272-s3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k272-cond",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "unit(U)",
+     "employeeOfUnit(P,U)",
+     "usesPosition(P,X)",
+     "misappropriatesUnitFunds(P,X,U)",
+     {
+      "or": [
+       "amountRelativelyLarge(X) notReturnedOverThreeMonths(X)",
+       "amountRelativelyLarge(X) usesFundsForProfitActivity(X)",
+       "usesFundsForIllegalActivity(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "misappropriationOfFundsConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "单位工作人员利用职务便利挪用本单位资金归个人使用或借贷给他人，并具备数额较大超三个月未还、数额较大进行营利活动、进行非法活动三种情形之一"
+   },
+   {
+    "key": "k272-1",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "misappropriationOfFundsConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfFunds)"
+    ],
+    "auth": "npc",
+    "note": "具备第272条第1款条件的，符合挪用资金罪（新常量 misappropriationOfFunds）的构成要件"
+   },
+   {
+    "key": "k272-s1",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfFunds)",
+     "~amountHuge(X)",
+     "~misappropriatedAmountEspeciallyHuge(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k272-s2",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfFunds)",
+     "amountHuge(X)",
+     "~misappropriatedAmountEspeciallyHuge(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "挪用本单位资金数额巨大的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k272-s3",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfFunds)",
+     "misappropriatedAmountEspeciallyHuge(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "数额特别巨大的，处七年以上有期徒刑"
+   },
+   {
+    "key": "k272-p2subjA",
+    "srcs": [
+     "art272#2"
+    ],
+    "body": [
+     "stateOwnedUnit(U)",
+     "publicAffairsIn(P,U)"
+    ],
+    "heads": [
+     "art272Para2Subject(P)"
+    ],
+    "auth": "npc",
+    "note": "第2款主体之一：国有公司、企业或者其他国有单位中从事公务的人员"
+   },
+   {
+    "key": "k272-p2subjB",
+    "srcs": [
+     "art272#2"
+    ],
+    "body": [
+     "stateOwnedUnit(U0)",
+     "delegatedBy(P,U0)",
+     "nonStateOwnedUnit(U)",
+     "publicAffairsIn(P,U)"
+    ],
+    "heads": [
+     "art272Para2Subject(P)"
+    ],
+    "auth": "npc",
+    "note": "第2款主体之二：国有单位委派到非国有公司、企业以及其他单位从事公务的人员"
+   },
+   {
+    "key": "k272-p2",
+    "srcs": [
+     "art272#2"
+    ],
+    "body": [
+     "art272Para2Subject(P)",
+     "misappropriationOfFundsConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfPublicFunds)",
+     "-constitutes(P,X,misappropriationOfFunds)",
+     "punishPerArt384(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款人员有前款行为的，依第384条以挪用公款罪（新常量 misappropriationOfPublicFunds）定罪处罚，不以挪用资金罪论"
+   },
+   {
+    "key": "k272-3a",
+    "srcs": [
+     "art272#3"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfFunds)",
+     "returnsMisappropriatedFundsBeforeProsecution(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighterOrReduced)"
+     }
+    ],
+    "auth": "npc",
+    "note": "有第一款行为，在提起公诉前将挪用的资金退还的，可以从轻或者减轻处罚"
+   },
+   {
+    "key": "k272-3b",
+    "srcs": [
+     "art272#3"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfFunds)",
+     "returnsMisappropriatedFundsBeforeProsecution(P,X)",
+     "minorCrime(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reducedOrExempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "公诉前退还且犯罪较轻的，可以减轻或者免除处罚"
+   },
+   {
+    "key": "k272-nouse",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "misappropriationOfFundsConditions(P,X)",
+     "fundsNotActuallyUsed(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfFunds)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记“只挪，用不用不要紧”：资金是否实际使用不影响本罪成立，条文只要求挪用行为"
+   },
+   {
+    "key": "k272-borrow",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "merelyRequestsToBorrowFunds(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,misappropriationOfFunds)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：单纯提出借用资金的使用人，不构成挪用资金罪（含共犯）"
+   },
+   {
+    "key": "k272-receive",
+    "srcs": [
+     "art272#1"
+    ],
+    "body": [
+     "merelyReceivesMisappropriatedFunds(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,misappropriationOfFunds)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：单纯接受挪用资金的使用人，不构成挪用资金罪（含共犯）"
+   }
+  ],
+  "overrides": [
+   [
+    "k272-p2",
+    "k272-1",
+    "推断：结论冲突（('constitutes', '+')），k272-p2 为例外或更具体"
+   ],
+   [
+    "k272-borrow",
+    "k272-1",
+    "推断：结论冲突（('constitutes', '+')），k272-borrow 为例外或更具体"
+   ],
+   [
+    "k272-receive",
+    "k272-1",
+    "推断：结论冲突（('constitutes', '+')），k272-receive 为例外或更具体"
+   ],
+   [
+    "k272-borrow",
+    "k272-p2",
+    "推断：结论冲突（('constitutes', '+')），k272-borrow 为例外或更具体"
+   ],
+   [
+    "k272-receive",
+    "k272-p2",
+    "推断：结论冲突（('constitutes', '+')），k272-receive 为例外或更具体"
+   ],
+   [
+    "k272-borrow",
+    "k272-nouse",
+    "推断：结论冲突（('constitutes', '+')），k272-borrow 为例外或更具体"
+   ],
+   [
+    "k272-receive",
+    "k272-nouse",
+    "推断：结论冲突（('constitutes', '+')），k272-receive 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "employeeOfUnit": "单位工作人员",
+   "usesPosition": "利用职务上的便利",
+   "misappropriatesUnitFunds": "misappropriatesUnitFunds(P,X,U)：P 通过行为 X 挪用本单位 U 的资金归个人使用或者借贷给他人",
+   "amountRelativelyLarge": "数额较大",
+   "notReturnedOverThreeMonths": "notReturnedOverThreeMonths(X)：行为 X 所挪用的资金超过三个月未还",
+   "usesFundsForProfitActivity": "usesFundsForProfitActivity(X)：行为 X 中挪用的资金被用于进行营利活动",
+   "usesFundsForIllegalActivity": "usesFundsForIllegalActivity(X)：行为 X 中挪用的资金被用于进行非法活动",
+   "misappropriationOfFundsConditions": "misappropriationOfFundsConditions(P,X)：P 的行为 X 具备刑法第272条第1款挪用资金罪的主体、职务便利、挪用行为与三种情形之一等条件",
+   "constitutes": "符合构成要件",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "misappropriatedAmountEspeciallyHuge": "misappropriatedAmountEspeciallyHuge(X)：行为 X 挪用本单位资金的数额特别巨大",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "sentenceFrom7Years": "sentenceFrom7Years(P,X)：对 P 就犯罪 X 处七年以上有期徒刑",
+   "stateOwnedUnit": "stateOwnedUnit(U)：U 是国有公司、国有企业或国有事业单位",
+   "publicAffairsIn": "publicAffairsIn(P,U)：P 在单位 U 中从事公务（具有管理性、职权性的公务活动）",
+   "art272Para2Subject": "art272Para2Subject(P)：P 属于刑法第272条第2款的主体（国有单位中从事公务的人员，或国有单位委派到非国有单位从事公务的人员）",
+   "delegatedBy": "delegatedBy(P,U0)：P 系由单位 U0 委派（派出）从事公务的人员",
+   "nonStateOwnedUnit": "nonStateOwnedUnit(U)：U 是非国有公司、企业、事业单位或社会团体",
+   "punishPerArt384": "punishPerArt384(P,X)：对 P 就行为 X 依照刑法第384条（挪用公款罪）的规定定罪处罚",
+   "returnsMisappropriatedFundsBeforeProsecution": "returnsMisappropriatedFundsBeforeProsecution(P,X)：P 在提起公诉前将行为 X 所挪用的资金退还",
+   "sentence": "量刑",
+   "minorCrime": "犯罪较轻",
+   "fundsNotActuallyUsed": "fundsNotActuallyUsed(X)：行为 X 所挪用的资金实际上尚未被使用",
+   "merelyRequestsToBorrowFunds": "merelyRequestsToBorrowFunds(P,X)：P 在事件 X 中仅单纯提出借用单位资金，未与挪用人共谋、指使或参与策划挪用",
+   "merelyReceivesMisappropriatedFunds": "merelyReceivesMisappropriatedFunds(P,X)：P 在事件 X 中仅单纯接受他人挪用的资金，未与挪用人共谋、指使或参与策划挪用"
+  }
+ },
+ "art:273": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "挪用救灾、抢险、防汛、优抚、扶贫、移民、救济款物，情节严重并致使国家和人民群众利益遭受重大损害的，直接责任人员是否构成挪用特定款物罪及如何量刑",
+     "rules": [
+      "k273-cond",
+      "k273-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象限于用于救灾、抢险、防汛、优抚、扶贫、移民、救济的七类特定款物，并有挪用（擅自改变用途、挪作他用）行为",
+     "rules": [
+      "k273-cond"
+     ]
+    },
+    {
+     "text": "须“情节严重”与“致使国家和人民群众利益遭受重大损害”同时具备，缺一不构成本罪",
+     "rules": [
+      "k273-cond"
+     ]
+    },
+    {
+     "text": "受处罚的主体是该挪用行为的直接责任人员",
+     "rules": [
+      "k273-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对直接责任人员以挪用特定款物罪论处，符合构成要件并负刑事责任",
+     "rules": [
+      "k273-1"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k273-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k273-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重的加重档排除基本档的适用",
+     "rules": [
+      "k273-agg",
+      "k273-basic"
+     ]
+    },
+    {
+     "text": "国家工作人员挪用特定款物归个人使用的，优先按挪用公款罪处理，排除本罪构成（学理及第384条第2款，本条未规定）",
+     "rules": [
+      "k273-personal",
+      "k273-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪的挪用是改变特定款物用途归单位（公用）使用，不以归个人使用为要件；国家工作人员利用职务便利挪归个人使用的，成立挪用公款罪并从重处罚，不成立本罪（学理区分，本条未写明）",
+     "rules": [
+      "k273-personal"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k273-cond",
+    "srcs": [
+     "art273#1"
+    ],
+    "body": [
+     "misappropriatesSpecificFunds(P,X)",
+     "objectOf(X,M)",
+     "specificFundsOrMaterials(M)",
+     "seriousCircumstances(X)",
+     "causesMajorHarmToStateAndPeopleInterest(X)"
+    ],
+    "heads": [
+     "misappropriationConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "挪用七类特定款物、情节严重且致使国家和人民群众利益遭受重大损害，具备本罪客观条件"
+   },
+   {
+    "key": "k273-1",
+    "srcs": [
+     "art273#1"
+    ],
+    "body": [
+     "misappropriationConditions(P,X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfSpecificFunds)",
+     "responsible(P,X,misappropriationOfSpecificFunds)"
+    ],
+    "auth": "npc",
+    "note": "对直接责任人员以挪用特定款物罪（常量 misappropriationOfSpecificFunds）论处，负刑事责任"
+   },
+   {
+    "key": "k273-basic",
+    "srcs": [
+     "art273#1"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfSpecificFunds)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention）"
+   },
+   {
+    "key": "k273-agg",
+    "srcs": [
+     "art273#1"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfSpecificFunds)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上七年以下有期徒刑（量刑方式常量 from3to7）"
+   },
+   {
+    "key": "k273-personal",
+    "srcs": [
+     "art273#1"
+    ],
+    "body": [
+     "misappropriatesSpecificFunds(P,X)",
+     "stateFunctionary(P)",
+     "forPersonalUse(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,misappropriationOfSpecificFunds)"
+    ],
+    "auth": "doctrine",
+    "note": "学理及第384条第2款：国家工作人员挪用特定款物归个人使用的，以挪用公款罪从重处罚，不成立本罪；本条原文未写明"
+   }
+  ],
+  "overrides": [
+   [
+    "k273-personal",
+    "k273-1",
+    "推断：结论冲突（('constitutes', '+')），k273-personal 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "misappropriatesSpecificFunds": "misappropriatesSpecificFunds(P,X)：P 通过行为 X 挪用特定款物（擅自改变用途、挪作他用）",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "specificFundsOrMaterials": "specificFundsOrMaterials(M)：M 是用于救灾、抢险、防汛、优抚、扶贫、移民、救济的款物（本罪对象）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "causesMajorHarmToStateAndPeopleInterest": "causesMajorHarmToStateAndPeopleInterest(X)：行为 X 致使国家和人民群众利益遭受重大损害",
+   "misappropriationConditions": "misappropriationConditions(P,X)：P 的行为 X 具备刑法第273条挪用特定款物罪的客观条件（特定款物、挪用行为、情节严重、致使国家和人民群众利益遭受重大损害）",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "stateFunctionary": "国家工作人员",
+   "forPersonalUse": "forPersonalUse(P,X)：P 通过行为 X 将所挪用款物归个人使用（含个人消费、借贷给他人等个人用途）"
+  }
+ },
+ "art:275": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "故意毁坏公私财物的行为是否构成故意毁坏财物罪，以及适用基本档还是加重档法定刑",
+     "rules": [
+      "k275-1",
+      "k275-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上实施毁坏（毁灭、损坏）行为，对象为公共财产或公民私人所有的财产；主观上具有毁坏财物的故意",
+     "rules": [
+      "k275-cond"
+     ]
+    },
+    {
+     "text": "基本档门槛：毁坏财物数额较大，或者有其他严重情节",
+     "rules": [
+      "k275-1"
+     ]
+    },
+    {
+     "text": "加重档情形：毁坏财物数额巨大，或者有其他特别严重情节",
+     "rules": [
+      "k275-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失毁坏公私财物的，不具备本罪的故意要件，不构成故意毁坏财物罪（学理）",
+     "rules": [
+      "k275-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者罚金",
+     "rules": [
+      "k275-1s"
+     ]
+    },
+    {
+     "text": "加重档：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k275-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "数额巨大或有其他特别严重情节的，适用加重档法定刑，排除基本档量刑",
+     "rules": [
+      "k275-2s",
+      "k275-1s"
+     ]
+    },
+    {
+     "text": "过失毁坏的排除规则优先于本罪构成条件规则",
+     "rules": [
+      "k275-neg",
+      "k275-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪属侵犯财产罪中的毁弃型犯罪，不以非法占有为目的，区别于盗窃、诈骗、抢夺等取得型财产犯罪（笔记体系定位）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k275-cond",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "destroysProperty(P,X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "publicProperty(M)",
+       "privateProperty(M)"
+      ]
+     },
+     "destructionIntent(P,X)"
+    ],
+    "heads": [
+     "propertyDestructionConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本罪构成条件：故意实施毁坏行为，对象为公私财物"
+   },
+   {
+    "key": "k275-1",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "propertyDestructionConditions(P,X)",
+     {
+      "or": [
+       "amountRelativelyLarge(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalPropertyDestruction)"
+    ],
+    "auth": "npc",
+    "note": "故意毁坏公私财物，数额较大或有其他严重情节的，符合故意毁坏财物罪（intentionalPropertyDestruction）的构成要件"
+   },
+   {
+    "key": "k275-2",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "propertyDestructionConditions(P,X)",
+     {
+      "or": [
+       "amountHuge(X)",
+       "otherParticularlySeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "destructionAggravated(P,X)"
+    ],
+    "auth": "npc",
+    "note": "数额巨大或有其他特别严重情节的，属本罪加重情形"
+   },
+   {
+    "key": "k275-1s",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "constitutes(P,X,intentionalPropertyDestruction)",
+     "~destructionAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrFine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档处三年以下有期徒刑、拘役或者罚金（量刑方式常量 under3OrDetentionOrFine）"
+   },
+   {
+    "key": "k275-2s",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "constitutes(P,X,intentionalPropertyDestruction)",
+     "destructionAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档处三年以上七年以下有期徒刑（量刑方式常量 from3to7）"
+   },
+   {
+    "key": "k275-neg",
+    "srcs": [
+     "art275#1"
+    ],
+    "body": [
+     "destroysProperty(P,X)",
+     "negligentDestruction(P,X)"
+    ],
+    "heads": [
+     "-propertyDestructionConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "法条限于“故意”毁坏，过失毁坏财物不构成本罪，系学理推论"
+   }
+  ],
+  "overrides": [
+   [
+    "k275-cond",
+    "k275-neg",
+    "推断：结论冲突（('propertyDestructionConditions', '+')），k275-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "destroysProperty": "destroysProperty(P,X)：P 通过行为 X 毁坏（毁灭、损坏）财物，使其价值或效用全部或部分丧失",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "publicProperty": "publicProperty(M)：M 属于本法（刑法）所称的公共财产",
+   "privateProperty": "privateProperty(M)：M 是私人（公民私人）所有的财产",
+   "destructionIntent": "destructionIntent(P,X)：P 对行为 X 毁坏财物具有故意",
+   "propertyDestructionConditions": "propertyDestructionConditions(P,X)：P 的行为 X 具备刑法第275条故意毁坏财物罪的主体、主观、行为与对象条件",
+   "amountRelativelyLarge": "数额较大",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "constitutes": "符合构成要件",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "otherParticularlySeriousCircumstance": "otherParticularlySeriousCircumstance(X)：行为 X 具有数额巨大以外的其他特别严重情节",
+   "destructionAggravated": "destructionAggravated(P,X)：P 的毁坏财物行为 X 具备第275条后段加重情形（数额巨大或有其他特别严重情节）",
+   "sentence": "量刑",
+   "negligentDestruction": "negligentDestruction(P,X)：P 系因过失毁坏财物，欠缺毁坏故意"
+  }
+ },
+ "art:276": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏生产经营罪的构成认定与法定刑档次（基本档／情节严重加重档）",
+     "rules": [
+      "k276-1",
+      "k276-basic",
+      "k276-agg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主观条件：由于泄愤报复或者其他个人目的",
+     "rules": [
+      "k276-cond"
+     ]
+    },
+    {
+     "text": "客观条件：毁坏机器设备、残害耕畜或者以其他方法破坏生产经营（三者具备其一）",
+     "rules": [
+      "k276-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有毁坏机器设备、残害耕畜等破坏行为，但欠缺泄愤报复或者其他个人目的的，不具备本罪构成条件（目的要件的反面推论，学理）",
+     "rules": [
+      "k276-purpose"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备上述主客观条件的，符合破坏生产经营罪的构成要件，负刑事责任",
+     "rules": [
+      "k276-1"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k276-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k276-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的，优先适用第二档法定刑，排除基本档的适用",
+     "rules": [
+      "k276-agg",
+      "k276-basic"
+     ]
+    },
+    {
+     "text": "目的要件欠缺的排除规则优先于构成条件肯定规则",
+     "rules": [
+      "k276-purpose",
+      "k276-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "体系定位：本罪属侵犯财产罪中的毁弃型犯罪，与单纯毁损财物不同，须以破坏生产经营活动为内容并出于个人目的（笔记体系说明，不单独形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k276-cond",
+    "srcs": [
+     "art276#1"
+    ],
+    "body": [
+     "forVentingSpiteRevengeOrOtherPersonalPurpose(P,X)",
+     {
+      "or": [
+       "destroysMachineryOrEquipment(P,X)",
+       "maimsFarmAnimals(P,X)",
+       "sabotagesProductionOrBusinessByOtherMeans(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "sabotageProductionConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "出于泄愤报复或其他个人目的，毁坏机器设备、残害耕畜或以其他方法破坏生产经营的，具备第276条第1款的构成条件"
+   },
+   {
+    "key": "k276-1",
+    "srcs": [
+     "art276#1"
+    ],
+    "body": [
+     "sabotageProductionConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,sabotageOfProductionAndBusiness)",
+     "responsible(P,X,sabotageOfProductionAndBusiness)"
+    ],
+    "auth": "npc",
+    "note": "具备第276条构成条件的，符合破坏生产经营罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k276-basic",
+    "srcs": [
+     "art276#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfProductionAndBusiness)",
+     "responsible(P,X,sabotageOfProductionAndBusiness)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档量刑：处三年以下有期徒刑、拘役或者管制（under3OrDetentionOrControl 表示该法定刑幅度）"
+   },
+   {
+    "key": "k276-agg",
+    "srcs": [
+     "art276#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfProductionAndBusiness)",
+     "responsible(P,X,sabotageOfProductionAndBusiness)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑（from3to7 表示该加重法定刑幅度）"
+   },
+   {
+    "key": "k276-purpose",
+    "srcs": [
+     "art276#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "destroysMachineryOrEquipment(P,X)",
+       "maimsFarmAnimals(P,X)",
+       "sabotagesProductionOrBusinessByOtherMeans(P,X)"
+      ]
+     },
+     "-forVentingSpiteRevengeOrOtherPersonalPurpose(P,X)"
+    ],
+    "heads": [
+     "-sabotageProductionConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理反面推论：泄愤报复或其他个人目的属本罪必备主观要件，欠缺该目的则不具备本罪构成条件"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forVentingSpiteRevengeOrOtherPersonalPurpose": "forVentingSpiteRevengeOrOtherPersonalPurpose(P,X)：P 实施行为 X 系由于泄愤报复或者其他个人目的",
+   "destroysMachineryOrEquipment": "destroysMachineryOrEquipment(P,X)：P 通过行为 X 毁坏机器设备",
+   "maimsFarmAnimals": "maimsFarmAnimals(P,X)：P 通过行为 X 残害耕畜",
+   "sabotagesProductionOrBusinessByOtherMeans": "sabotagesProductionOrBusinessByOtherMeans(P,X)：P 通过行为 X 以毁坏机器设备、残害耕畜以外的其他方法破坏生产经营",
+   "sabotageProductionConditions": "sabotageProductionConditions(P,X)：P 的行为 X 具备刑法第276条破坏生产经营罪的主观目的与客观行为条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:276-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以转移财产、逃匿等方法逃避支付或者有能力支付而不支付劳动者劳动报酬，是否构成拒不支付劳动报酬罪，如何量刑（含单位犯罪与公诉前支付并赔偿的从宽）",
+     "rules": [
+      "k276z1-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为方式：以转移财产、逃匿等方法逃避支付劳动者的劳动报酬，或者有能力支付而不支付劳动者的劳动报酬；数额较大；经政府有关部门责令支付仍不支付",
+     "rules": [
+      "k276z1-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有前两款行为，尚未造成严重后果，在提起公诉前支付劳动者的劳动报酬并依法承担相应赔偿责任的，可以减轻或者免除处罚",
+     "rules": [
+      "k276z1-lenient"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处或者单处罚金",
+     "rules": [
+      "k276z1-basic"
+     ]
+    },
+    {
+     "text": "加重档：造成严重后果的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k276z1-aggravated"
+     ]
+    },
+    {
+     "text": "单位犯本罪的，对单位判处罚金",
+     "rules": [
+      "k276z1-unit"
+     ]
+    },
+    {
+     "text": "单位犯罪中直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚",
+     "rules": [
+      "k276z1-unitPerson"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果的，适用第1款后段加重档，排除基本档",
+     "rules": [
+      "k276z1-aggravated",
+      "k276z1-basic"
+     ]
+    },
+    {
+     "text": "第3款减轻、免除处罚的特别规定优先于第1款的常规量刑",
+     "rules": [
+      "k276z1-lenient",
+      "k276z1-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "数额未达较大，或者未经政府有关部门责令支付（或经责令即支付）的欠薪，属民事劳动争议，不成立本罪",
+     "rules": [
+      "k276z1-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k276z1-cond",
+    "srcs": [
+     "art276-1#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "evadesPaymentByTransferOrAbsconding(P,X)",
+       "hasAbilityToPayButNotPay(P,X)"
+      ]
+     },
+     "amountRelativelyLarge(X)",
+     "orderedToPayByGovernmentDepartment(P,X)",
+     "stillNotPayAfterOrder(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,refusalToPayLaborRemuneration)"
+    ],
+    "auth": "npc",
+    "note": "以转移财产、逃匿等方法逃避支付或有能力支付而不支付劳动报酬，数额较大且经政府有关部门责令支付仍不支付的，符合拒不支付劳动报酬罪的构成要件"
+   },
+   {
+    "key": "k276z1-basic",
+    "srcs": [
+     "art276-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,refusalToPayLaborRemuneration)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "sentenceUnder3OrDetention(P,X)",
+     "fineCombinedOrIndependently(P,X)"
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役，并处或者单处罚金"
+   },
+   {
+    "key": "k276z1-aggravated",
+    "srcs": [
+     "art276-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,refusalToPayLaborRemuneration)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "sentence3To7WithFine(P,X)"
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k276z1-unit",
+    "srcs": [
+     "art276-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,refusalToPayLaborRemuneration)"
+    ],
+    "heads": [
+     "imposeFineOnUnit(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯拒不支付劳动报酬罪的，对单位判处罚金"
+   },
+   {
+    "key": "k276z1-unitPerson",
+    "srcs": [
+     "art276-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,refusalToPayLaborRemuneration)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "punishUnderPara1(P,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯罪中直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚"
+   },
+   {
+    "key": "k276z1-lenient",
+    "srcs": [
+     "art276-1#3"
+    ],
+    "body": [
+     "constitutes(P,X,refusalToPayLaborRemuneration)",
+     "~causesSeriousConsequence(X)",
+     "paysLaborRemunerationBeforeProsecution(P,X)",
+     "bearsCompensationLiabilityAccordingToLaw(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reducedOrExempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果，在提起公诉前支付劳动报酬并依法承担相应赔偿责任的，可以减轻或者免除处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "evadesPaymentByTransferOrAbsconding": "evadesPaymentByTransferOrAbsconding(P,X)：P 通过行为 X 以转移财产、逃匿等方法逃避支付劳动者的劳动报酬",
+   "hasAbilityToPayButNotPay": "hasAbilityToPayButNotPay(P,X)：P 有能力支付而通过行为 X 不支付劳动者的劳动报酬",
+   "amountRelativelyLarge": "数额较大",
+   "orderedToPayByGovernmentDepartment": "orderedToPayByGovernmentDepartment(P,X)：政府有关部门已就行为 X 责令 P 支付劳动者的劳动报酬",
+   "stillNotPayAfterOrder": "stillNotPayAfterOrder(P,X)：P 经政府有关部门责令支付后仍不支付劳动者的劳动报酬（行为 X）",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "fineCombinedOrIndependently": "fineCombinedOrIndependently(P,X)：对 P 就犯罪 X 并处或者单处罚金（罚金必须适用，可与自由刑并处，也可单独适用）",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "punishUnderPara1": "punishUnderPara1(P,X)：对 P 就行为 X 依照本条第一款的规定处罚",
+   "paysLaborRemunerationBeforeProsecution": "paysLaborRemunerationBeforeProsecution(P,X)：P 在提起公诉前就行为 X 支付了劳动者的劳动报酬",
+   "bearsCompensationLiabilityAccordingToLaw": "bearsCompensationLiabilityAccordingToLaw(P,X)：P 就行为 X 依法承担了相应的赔偿责任",
+   "sentence": "量刑"
+  }
+ }
+}

@@ -1,0 +1,2274 @@
+{
+ "art:102": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "勾结外国或者与境外机构、组织、个人相勾结，危害中华人民共和国主权、领土完整和安全的，是否构成背叛国家罪，如何处罚",
+     "rules": [
+      "k102-1",
+      "k102-2",
+      "k102-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观要件：有勾结外国的行为，且该行为危害中华人民共和国的主权、领土完整和安全（勾结＋危害国家安全，二者须同时具备）",
+     "rules": [
+      "k102-1"
+     ]
+    },
+    {
+     "text": "勾结对象扩展：与境外机构、组织、个人相勾结而实施危害我国主权、领土完整和安全的行为，同样成立本罪",
+     "rules": [
+      "k102-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述要件的，构成背叛国家罪，应负刑事责任",
+     "rules": [
+      "k102-1",
+      "k102-2"
+     ]
+    },
+    {
+     "text": "处无期徒刑或者十年以上有期徒刑（量刑方式常量 lifeOrFrom10）；第2款情形依照第1款的规定处罚，法定刑相同",
+     "rules": [
+      "k102-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款系对第1款处罚规定的援引：勾结对象为境外机构、组织、个人时，仍适用第1款“无期徒刑或者十年以上有期徒刑”的法定刑",
+     "rules": [
+      "k102-2",
+      "k102-pen"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体依学理限于中国公民（背叛本国），外国人、无国籍人不构成本罪；法条对此未明文规定",
+     "rules": [
+      "k102-subj"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k102-1",
+    "srcs": [
+     "art102#1"
+    ],
+    "body": [
+     "colludesWith(P,F,X)",
+     "foreignState(F)",
+     "endangersPrcSovereigntyTerritorySecurity(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,betrayalOfState)",
+     "responsible(P,X,betrayalOfState)"
+    ],
+    "auth": "npc",
+    "note": "勾结外国，危害中华人民共和国主权、领土完整和安全的，构成背叛国家罪并负刑事责任"
+   },
+   {
+    "key": "k102-2",
+    "srcs": [
+     "art102#2"
+    ],
+    "body": [
+     "colludesWith(P,O,X)",
+     "overseasInstitutionOrganizationOrIndividual(O)",
+     "endangersPrcSovereigntyTerritorySecurity(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,betrayalOfState)",
+     "responsible(P,X,betrayalOfState)"
+    ],
+    "auth": "npc",
+    "note": "与境外机构、组织、个人相勾结犯前款罪的，同样构成背叛国家罪，依照第1款的规定处罚"
+   },
+   {
+    "key": "k102-pen",
+    "srcs": [
+     "art102#1",
+     "art102#2"
+    ],
+    "body": [
+     "responsible(P,X,betrayalOfState)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrFrom10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对背叛国家罪处无期徒刑或者十年以上有期徒刑（lifeOrFrom10 表示“无期徒刑或者十年以上有期徒刑”），第2款情形亦同"
+   },
+   {
+    "key": "k102-subj",
+    "srcs": [
+     "art102#1"
+    ],
+    "body": [
+     "colludesWith(P,F,X)",
+     "endangersPrcSovereigntyTerritorySecurity(X)",
+     "-citizenOfPrc(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,betrayalOfState)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与备考通说：本罪主体限于中国公民，非中国公民不构成本罪；法条未明文规定主体身份，故按学理规则处理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "colludesWith": "勾结、伙同",
+   "foreignState": "foreignState(F)：F 是外国（外国国家、政府）",
+   "endangersPrcSovereigntyTerritorySecurity": "endangersPrcSovereigntyTerritorySecurity(X)：行为 X 危害中华人民共和国的主权、领土完整和安全",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "overseasInstitutionOrganizationOrIndividual": "overseasInstitutionOrganizationOrIndividual(O)：O 是境外机构、组织或者个人",
+   "sentence": "量刑",
+   "citizenOfPrc": "中华人民共和国公民（人P）"
+  }
+ },
+ "art:103": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织、策划、实施分裂国家、破坏国家统一的，构成分裂国家罪；煽动分裂国家、破坏国家统一的，构成煽动分裂国家罪（二者为第103条第1款、第2款规定的不同罪名）",
+     "rules": [
+      "k103-1-cond",
+      "k103-2-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "分裂国家罪按行为人在犯罪中的地位、作用分三档：①首要分子或者罪行重大；②积极参加；③其他参加（既非首要分子、罪行重大，也非积极参加的一般参加者）",
+     "rules": [
+      "k103-1a",
+      "k103-1b",
+      "k103-1c"
+     ]
+    },
+    {
+     "text": "煽动分裂国家罪分两档：①一般煽动者；②首要分子或者罪行重大",
+     "rules": [
+      "k103-2a",
+      "k103-2b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "分裂国家罪：对首要分子或者罪行重大的，处无期徒刑或者十年以上有期徒刑",
+     "rules": [
+      "k103-1a"
+     ]
+    },
+    {
+     "text": "分裂国家罪：对积极参加的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k103-1b"
+     ]
+    },
+    {
+     "text": "分裂国家罪：对其他参加的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（剥夺政治权利可独立适用）",
+     "rules": [
+      "k103-1c"
+     ]
+    },
+    {
+     "text": "煽动分裂国家罪：处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k103-2a"
+     ]
+    },
+    {
+     "text": "煽动分裂国家罪：首要分子或者罪行重大的，处五年以上有期徒刑",
+     "rules": [
+      "k103-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "同一犯罪中，首要分子或罪行重大的重档优先于积极参加档；积极参加档优先于其他参加档，不得重复适用轻档",
+     "rules": [
+      "k103-1a",
+      "k103-1b",
+      "k103-1c"
+     ]
+    },
+    {
+     "text": "煽动分裂国家罪中，首要分子或罪行重大的五年以上有期徒刑档优先于一般煽动者的轻档",
+     "rules": [
+      "k103-2b",
+      "k103-2a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第103条明文表述了犯罪客体：分裂国家罪、煽动分裂国家罪的客体是国家的统一（笔记：犯罪客体在刑法条文中的体现，属说明性内容）",
+     "rules": []
+    },
+    {
+     "text": "行为方式区分：组织、策划、实施分裂国家的是分裂国家罪；仅以煽动方式（鼓动他人）分裂国家的是煽动分裂国家罪，法定刑更轻",
+     "rules": [
+      "k103-1-cond",
+      "k103-2-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k103-1-cond",
+    "srcs": [
+     "art103#1"
+    ],
+    "body": [
+     "organizesPlansOrCarriesOutSplitting(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,splittingState)"
+    ],
+    "auth": "npc",
+    "note": "组织、策划、实施分裂国家、破坏国家统一的，符合分裂国家罪的构成要件"
+   },
+   {
+    "key": "k103-1a",
+    "srcs": [
+     "art103#1"
+    ],
+    "body": [
+     "constitutes(P,X,splittingState)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "majorGuilt(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrFrom10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "分裂国家罪的首要分子或罪行重大者，处无期徒刑或者十年以上有期徒刑（lifeOrFrom10）"
+   },
+   {
+    "key": "k103-1b",
+    "srcs": [
+     "art103#1"
+    ],
+    "body": [
+     "constitutes(P,X,splittingState)",
+     "activelyParticipatesIn(P,X)",
+     "~ringleader(P,X)",
+     "~majorGuilt(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "分裂国家罪的积极参加者，处三年以上十年以下有期徒刑（from3to10）"
+   },
+   {
+    "key": "k103-1c",
+    "srcs": [
+     "art103#1"
+    ],
+    "body": [
+     "constitutes(P,X,splittingState)",
+     "participatesIn(P,X)",
+     "~ringleader(P,X)",
+     "~majorGuilt(P,X)",
+     "~activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "分裂国家罪的其他参加者，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（under3OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k103-2-cond",
+    "srcs": [
+     "art103#2"
+    ],
+    "body": [
+     "incitesSplitting(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,incitingSplittingState)"
+    ],
+    "auth": "npc",
+    "note": "煽动分裂国家、破坏国家统一的，符合煽动分裂国家罪的构成要件"
+   },
+   {
+    "key": "k103-2a",
+    "srcs": [
+     "art103#2"
+    ],
+    "body": [
+     "constitutes(P,X,incitingSplittingState)",
+     "~ringleader(P,X)",
+     "~majorGuilt(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "煽动分裂国家罪一般情形，处五年以下有期徒刑、拘役、管制或者剥夺政治权利（under5OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k103-2b",
+    "srcs": [
+     "art103#2"
+    ],
+    "body": [
+     "constitutes(P,X,incitingSplittingState)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "majorGuilt(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "煽动分裂国家罪的首要分子或罪行重大者，处五年以上有期徒刑（from5）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "organizesPlansOrCarriesOutSplitting": "organizesPlansOrCarriesOutSplitting(P,X)：P 组织、策划、实施分裂国家、破坏国家统一的行为 X",
+   "constitutes": "符合构成要件",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "majorGuilt": "majorGuilt(P,X)：P 在犯罪 X 中罪行重大",
+   "sentence": "量刑",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "participatesIn": "participatesIn(P,X)：P 参与犯罪 X",
+   "incitesSplitting": "incitesSplitting(P,X)：P 实施煽动分裂国家、破坏国家统一的行为 X"
+  }
+ },
+ "art:104": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织、策划、实施武装叛乱或者武装暴乱的定性，以及按首要分子/罪行重大、积极参加、其他参加三档处罚",
+     "rules": [
+      "k104-1",
+      "k104-a",
+      "k104-b",
+      "k104-c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为为组织、策划、实施武装叛乱或者武装暴乱，成立武装叛乱、暴乱罪并负刑事责任",
+     "rules": [
+      "k104-1"
+     ]
+    },
+    {
+     "text": "第2款的行为方式为策动、胁迫、勾引、收买，对象限于国家机关工作人员、武装部队人员、人民警察、民兵，且系使其进行武装叛乱或者武装暴乱",
+     "rules": [
+      "k104-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "“其他参加的”指首要分子、罪行重大者、积极参加者以外的一般参加人员",
+     "rules": [
+      "k104-c"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对首要分子或者罪行重大的，处无期徒刑或者十年以上有期徒刑",
+     "rules": [
+      "k104-a"
+     ]
+    },
+    {
+     "text": "对积极参加的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k104-b"
+     ]
+    },
+    {
+     "text": "对其他参加的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k104-c"
+     ]
+    },
+    {
+     "text": "策动、胁迫、勾引、收买国家机关工作人员、武装部队人员、人民警察、民兵进行武装叛乱或者武装暴乱的，依照第1款相应档次从重处罚",
+     "rules": [
+      "k104-2h"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "首要分子或罪行重大、积极参加的档次优先适用，排除“其他参加的”轻档",
+     "rules": [
+      "k104-a",
+      "k104-b",
+      "k104-c"
+     ]
+    },
+    {
+     "text": "第2款不另设法定刑，而是援引第1款并从重处罚",
+     "rules": [
+      "k104-2h"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第2款是教唆行为的特别规定，与总则教唆犯规定存在法条竞合，依特别法条优先仅适用本款，不再另按总则教唆犯处理（笔记）",
+     "rules": [
+      "k104-compete"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k104-1",
+    "srcs": [
+     "art104#1"
+    ],
+    "body": [
+     "armedRebellionOrRiot(X)",
+     {
+      "or": [
+       "organizesCrime(P,X)",
+       "plansCrime(P,X)",
+       "implementsCrime(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,armedRebellionOrRiot)",
+     "responsible(P,X,armedRebellionOrRiot)"
+    ],
+    "auth": "npc",
+    "note": "组织、策划、实施武装叛乱或者武装暴乱的，符合武装叛乱、暴乱罪（armedRebellionOrRiot）构成要件并负刑事责任"
+   },
+   {
+    "key": "k104-a",
+    "srcs": [
+     "art104#1"
+    ],
+    "body": [
+     "constitutes(P,X,armedRebellionOrRiot)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "crimeOfMajorGravity(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrFrom10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对首要分子或者罪行重大的，处无期徒刑或者十年以上有期徒刑（量刑常量 lifeOrFrom10）"
+   },
+   {
+    "key": "k104-b",
+    "srcs": [
+     "art104#1"
+    ],
+    "body": [
+     "constitutes(P,X,armedRebellionOrRiot)",
+     "activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对积极参加的，处三年以上十年以下有期徒刑（量刑常量 from3to10）"
+   },
+   {
+    "key": "k104-c",
+    "srcs": [
+     "art104#1"
+    ],
+    "body": [
+     "constitutes(P,X,armedRebellionOrRiot)",
+     "participatesIn(P,X)",
+     "~ringleader(P,X)",
+     "~crimeOfMajorGravity(P,X)",
+     "~activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对其他参加的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑常量 under3OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k104-2",
+    "srcs": [
+     "art104#2"
+    ],
+    "body": [
+     "armedRebellionOrRiot(X)",
+     "instigatesCoercesLuresOrBribes(P,V,X)",
+     {
+      "or": [
+       "stateOrganStaff(V)",
+       "armedForcesPersonnel(V)",
+       "peoplePolice(V)",
+       "militiaMember(V)"
+      ]
+     }
+    ],
+    "heads": [
+     "instigatingArmedRebellion(P,X)",
+     "constitutes(P,X,armedRebellionOrRiot)",
+     "responsible(P,X,armedRebellionOrRiot)"
+    ],
+    "auth": "npc",
+    "note": "策动、胁迫、勾引、收买国家机关工作人员、武装部队人员、人民警察、民兵进行武装叛乱或者武装暴乱的，依第1款定罪负责"
+   },
+   {
+    "key": "k104-2h",
+    "srcs": [
+     "art104#2"
+    ],
+    "body": [
+     "instigatingArmedRebellion(P,X)",
+     "responsible(P,X,armedRebellionOrRiot)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款情形依照第1款相应档次的规定从重处罚"
+   },
+   {
+    "key": "k104-compete",
+    "srcs": [
+     "art104#2"
+    ],
+    "body": [
+     "instigatingArmedRebellion(P,X)"
+    ],
+    "heads": [
+     "excludesGeneralInstigatorRule(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：第104条第2款与总则教唆犯规定属法条竞合，特别法条优先，排除总则教唆犯规定的适用（学理/笔记，非法条明文）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "armedRebellionOrRiot": "armedRebellionOrRiot(X)：事件 X 是武装叛乱或者武装暴乱",
+   "organizesCrime": "organizesCrime(P,X)：P 组织犯罪事件 X",
+   "plansCrime": "plansCrime(P,X)：P 策划犯罪事件 X",
+   "implementsCrime": "implementsCrime(P,X)：P 实施犯罪事件 X",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "crimeOfMajorGravity": "crimeOfMajorGravity(P,X)：P 在犯罪事件 X 中罪行重大",
+   "sentence": "量刑",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "participatesIn": "participatesIn(P,X)：P 参与犯罪 X",
+   "instigatesCoercesLuresOrBribes": "instigatesCoercesLuresOrBribes(P,V,X)：P 策动、胁迫、勾引、收买 V 进行犯罪事件 X",
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "armedForcesPersonnel": "armedForcesPersonnel(V)：V 是武装部队人员",
+   "peoplePolice": "peoplePolice(V)：V 是人民警察",
+   "militiaMember": "militiaMember(V)：V 是民兵",
+   "instigatingArmedRebellion": "instigatingArmedRebellion(P,X)：P 的行为属于第104条第2款策动、胁迫、勾引、收买特定人员进行武装叛乱、武装暴乱的情形",
+   "excludesGeneralInstigatorRule": "excludesGeneralInstigatorRule(P,X)：对 P 就事件 X 排除刑法总则教唆犯规定的适用（法条竞合，特别法条优先）"
+  }
+ },
+ "art:105": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织、策划、实施颠覆国家政权、推翻社会主义制度，与以造谣、诽谤等方式煽动颠覆国家政权、推翻社会主义制度，分别构成颠覆国家政权罪与煽动颠覆国家政权罪，并按参与地位、罪行轻重分档量刑",
+     "rules": [
+      "k105-1c",
+      "k105-2c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款行为：组织、策划、实施颠覆国家政权、推翻社会主义制度（实行行为），成立颠覆国家政权罪",
+     "rules": [
+      "k105-1c"
+     ]
+    },
+    {
+     "text": "第2款行为：以造谣、诽谤或者其他方式煽动颠覆国家政权、推翻社会主义制度（煽动行为），成立煽动颠覆国家政权罪",
+     "rules": [
+      "k105-2c"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "煽动颠覆国家政权、推翻社会主义制度的首要分子或者罪行重大的，不适用基本档，改处五年以上有期徒刑",
+     "rules": [
+      "k105-2b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "颠覆国家政权罪：对首要分子或者罪行重大的，处无期徒刑或者十年以上有期徒刑",
+     "rules": [
+      "k105-1a"
+     ]
+    },
+    {
+     "text": "颠覆国家政权罪：对积极参加的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k105-1b"
+     ]
+    },
+    {
+     "text": "颠覆国家政权罪：对其他参加的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k105-1d"
+     ]
+    },
+    {
+     "text": "煽动颠覆国家政权罪：处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k105-2a"
+     ]
+    },
+    {
+     "text": "煽动颠覆国家政权罪：首要分子或者罪行重大的，处五年以上有期徒刑",
+     "rules": [
+      "k105-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款中“首要分子或者罪行重大”的加重档优先于基本档",
+     "rules": [
+      "k105-2b",
+      "k105-2a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款处罚的是组织、策划、实施颠覆的实行行为，第2款处罚的是煽动行为，罪名与法定刑均不同，不可混用",
+     "rules": [
+      "k105-1c",
+      "k105-2c"
+     ]
+    },
+    {
+     "text": "两罪均位于分则第一章，属危害国家安全犯罪（体系解释，本条未明文）",
+     "rules": [
+      "k105-ns"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k105-1c",
+    "srcs": [
+     "art105#1"
+    ],
+    "body": [
+     "organizesPlansOrImplementsSubversion(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,subversionOfStatePower)"
+    ],
+    "auth": "npc",
+    "note": "组织、策划、实施颠覆国家政权、推翻社会主义制度的，符合颠覆国家政权罪的构成要件"
+   },
+   {
+    "key": "k105-1a",
+    "srcs": [
+     "art105#1"
+    ],
+    "body": [
+     "constitutes(P,X,subversionOfStatePower)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrFrom10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "颠覆国家政权罪的首要分子或者罪行重大者，处无期徒刑或者十年以上有期徒刑（lifeOrFrom10 表示该选择性法定刑）"
+   },
+   {
+    "key": "k105-1b",
+    "srcs": [
+     "art105#1"
+    ],
+    "body": [
+     "constitutes(P,X,subversionOfStatePower)",
+     "activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "颠覆国家政权罪的积极参加者，处三年以上十年以下有期徒刑（from3to10）"
+   },
+   {
+    "key": "k105-1d",
+    "srcs": [
+     "art105#1"
+    ],
+    "body": [
+     "constitutes(P,X,subversionOfStatePower)",
+     "otherParticipationIn(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "颠覆国家政权罪的其他参加者，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（under3OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k105-2c",
+    "srcs": [
+     "art105#2"
+    ],
+    "body": [
+     "incitesSubversionByRumorOrSlander(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,incitingSubversionOfStatePower)"
+    ],
+    "auth": "npc",
+    "note": "以造谣、诽谤或者其他方式煽动颠覆国家政权、推翻社会主义制度的，符合煽动颠覆国家政权罪的构成要件"
+   },
+   {
+    "key": "k105-2a",
+    "srcs": [
+     "art105#2"
+    ],
+    "body": [
+     "constitutes(P,X,incitingSubversionOfStatePower)",
+     "~ringleader(P,X)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "煽动颠覆国家政权罪的基本档：处五年以下有期徒刑、拘役、管制或者剥夺政治权利（under5OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k105-2b",
+    "srcs": [
+     "art105#2"
+    ],
+    "body": [
+     "constitutes(P,X,incitingSubversionOfStatePower)",
+     {
+      "or": [
+       "ringleader(P,X)",
+       "seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "煽动颠覆国家政权罪的首要分子或者罪行重大者，处五年以上有期徒刑（from5）"
+   },
+   {
+    "key": "k105-ns",
+    "srcs": [
+     "art105"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,subversionOfStatePower)",
+       "constitutes(P,X,incitingSubversionOfStatePower)"
+      ]
+     }
+    ],
+    "heads": [
+     "endangersNationalSecurity(X)"
+    ],
+    "auth": "doctrine",
+    "note": "本条两罪属危害国家安全犯罪，系依分则第一章体系得出的学理结论，本条未明文规定"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "organizesPlansOrImplementsSubversion": "organizesPlansOrImplementsSubversion(P,X)：P 组织、策划、实施颠覆国家政权、推翻社会主义制度的行为 X",
+   "constitutes": "符合构成要件",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "otherParticipationIn": "otherParticipationIn(P,X)：P 属于犯罪 X 的其他参加者（非首要分子、非罪行重大、非积极参加）",
+   "incitesSubversionByRumorOrSlander": "incitesSubversionByRumorOrSlander(P,X)：P 以造谣、诽谤或者其他方式煽动颠覆国家政权、推翻社会主义制度的行为 X",
+   "endangersNationalSecurity": "endangersNationalSecurity(X)：犯罪X属于危害国家安全的犯罪"
+  }
+ },
+ "art:106": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "与境外机构、组织、个人相勾结，实施刑法第103条、第104条、第105条规定之罪的，如何处罚",
+     "rules": [
+      "k106-cond",
+      "k106-heavier"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上有勾结行为：行为人与境外的机构、组织或者个人相勾结（勾结对象须为境外主体）",
+     "rules": [
+      "k106-cond"
+     ]
+    },
+    {
+     "text": "所实施之罪限于本章第103条（分裂国家、煽动分裂国家）、第104条（武装叛乱、暴乱）、第105条（颠覆国家政权、煽动颠覆国家政权）规定之罪",
+     "rules": [
+      "k106-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "成立勾结境外实施上述危害国家安全犯罪的法定从重处罚情节",
+     "rules": [
+      "k106-cond"
+     ]
+    },
+    {
+     "text": "依照第103条、第104条、第105条各该条的规定定罪量刑（不另立罪名、不另设法定刑）",
+     "rules": [
+      "k106-basis"
+     ]
+    },
+    {
+     "text": "应当从重处罚",
+     "rules": [
+      "k106-heavier"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "从重处罚仍须在各该条规定的法定刑幅度以内进行，不得升格法定刑（学理说明）",
+     "rules": [
+      "k106-range"
+     ]
+    },
+    {
+     "text": "本条不适用于第102条背叛国家罪等本章其他条文；背叛国家罪本身即以勾结外国为构成要件，不再依本条重复从重",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k106-cond",
+    "srcs": [
+     "art106"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeUnderArts103To105(X)",
+     "colludesWith(P,O,X)",
+     "overseasEntity(O)"
+    ],
+    "heads": [
+     "collusionWithOverseasForSecurityCrime(P,X)"
+    ],
+    "auth": "npc",
+    "note": "与境外机构、组织、个人相勾结实施第103、104、105条之罪的，成立本条从重处罚情节"
+   },
+   {
+    "key": "k106-basis",
+    "srcs": [
+     "art106"
+    ],
+    "body": [
+     "collusionWithOverseasForSecurityCrime(P,X)",
+     "responsible(P,X,C)"
+    ],
+    "heads": [
+     "sentenceAccordingToRespectiveArticle(P,X)"
+    ],
+    "auth": "npc",
+    "note": "依照第103条、第104条、第105条各该条的规定处罚"
+   },
+   {
+    "key": "k106-heavier",
+    "srcs": [
+     "art106"
+    ],
+    "body": [
+     "collusionWithOverseasForSecurityCrime(P,X)",
+     "responsible(P,X,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对勾结境外实施上述危害国家安全犯罪的，应当从重处罚"
+   },
+   {
+    "key": "k106-range",
+    "srcs": [
+     "art106"
+    ],
+    "body": [
+     "collusionWithOverseasForSecurityCrime(P,X)",
+     "responsible(P,X,C)"
+    ],
+    "heads": [
+     "sentenceWithinStatutoryRange(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "从重处罚系在各该条法定刑幅度内从重，不得超出法定刑限度；法条未明写，属学理说明"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "crimeUnderArts103To105": "crimeUnderArts103To105(X)：犯罪 X 属于刑法第103条、第104条、第105条规定之罪（分裂国家、煽动分裂国家、武装叛乱暴乱、颠覆国家政权、煽动颠覆国家政权）",
+   "colludesWith": "勾结、伙同",
+   "overseasEntity": "overseasEntity(O)：O 是境外的机构、组织或者个人",
+   "collusionWithOverseasForSecurityCrime": "collusionWithOverseasForSecurityCrime(P,X)：P 与境外机构、组织、个人相勾结实施第103、104、105条之罪 X，具备第106条从重处罚情节",
+   "responsible": "负刑事责任",
+   "sentenceAccordingToRespectiveArticle": "sentenceAccordingToRespectiveArticle(P,X)：对 P 就犯罪 X 依照第103条、第104条、第105条各该条的规定定罪量刑",
+   "sentence": "量刑",
+   "sentenceWithinStatutoryRange": "sentenceWithinStatutoryRange(P,X)：在法定刑的限度以内对 P 就犯罪 X 判处刑罚"
+  }
+ },
+ "art:107": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "境内外机构、组织或者个人资助实施危害国家安全犯罪活动的，成立何罪、由谁承担刑事责任、如何量刑",
+     "rules": [
+      "k107-cond",
+      "k107-resp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "资助主体可以是境内外的机构、组织或者个人（不限于自然人）",
+     "rules": [
+      "k107-cond"
+     ]
+    },
+    {
+     "text": "被资助的犯罪限于本章第102条（背叛国家）、第103条（分裂国家、煽动分裂国家）、第104条（武装叛乱、暴乱）、第105条（颠覆国家政权、煽动颠覆国家政权）规定之罪；资助实施其他犯罪不成立本罪",
+     "rules": [
+      "k107-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "即使由单位（机构、组织）实施资助行为，也不实行单位犯罪双罚制，承担刑事责任的主体仍是直接责任人员（笔记）",
+     "rules": [
+      "k107-unit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "资助行为独立构成资助危害国家安全犯罪活动罪，对直接责任人员追究刑事责任",
+     "rules": [
+      "k107-cond",
+      "k107-resp"
+     ]
+    },
+    {
+     "text": "基本档：对直接责任人员处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k107-base"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上有期徒刑",
+     "rules": [
+      "k107-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的加重档优先适用，排除基本档量刑",
+     "rules": [
+      "k107-aggravated",
+      "k107-base"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是把资助（帮助）行为正犯化、独立成罪，资助人不按第102—105条之罪的共犯定罪处罚",
+     "rules": []
+    },
+    {
+     "text": "本罪的剥夺政治权利是与有期徒刑、拘役、管制并列的选择刑，可独立适用，不同于第56条的附加剥夺政治权利",
+     "rules": [
+      "k107-base"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k107-cond",
+    "srcs": [
+     "art107#1"
+    ],
+    "body": [
+     "domesticOrForeignEntityOrgOrIndividual(P)",
+     "fundsImplementationOf(P,X)",
+     "fundedCrimeUnderArts102To105(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,fundingEndangeringNationalSecurity)"
+    ],
+    "auth": "npc",
+    "note": "境内外机构、组织或者个人资助实施第102、103、104、105条规定之罪的，符合资助危害国家安全犯罪活动罪的构成要件"
+   },
+   {
+    "key": "k107-resp",
+    "srcs": [
+     "art107#1"
+    ],
+    "body": [
+     "constitutes(P,X,fundingEndangeringNationalSecurity)",
+     "directlyResponsiblePersonFor(D,X)"
+    ],
+    "heads": [
+     "responsible(D,X,fundingEndangeringNationalSecurity)"
+    ],
+    "auth": "npc",
+    "note": "本罪的刑事责任主体是资助行为的直接责任人员"
+   },
+   {
+    "key": "k107-unit",
+    "srcs": [
+     "art107#1"
+    ],
+    "body": [
+     "unit(U)",
+     "fundsImplementationOf(U,X)",
+     "fundedCrimeUnderArts102To105(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "-unitDoublePunishment(U,X)",
+     "responsible(P,X,fundingEndangeringNationalSecurity)"
+    ],
+    "auth": "doctrine",
+    "note": "依备考笔记：单位实施资助危害国家安全犯罪活动的，不适用双罚制、不处罚单位本身，仍只追究直接责任人员的刑事责任（法条仅规定处罚直接责任人员，排除双罚制属学理解释）"
+   },
+   {
+    "key": "k107-base",
+    "srcs": [
+     "art107#1"
+    ],
+    "body": [
+     "responsible(P,X,fundingEndangeringNationalSecurity)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对直接责任人员处五年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑方式常量 under5OrDetentionControlOrDeprivation 表示该四种选择刑）"
+   },
+   {
+    "key": "k107-aggravated",
+    "srcs": [
+     "art107#1"
+    ],
+    "body": [
+     "responsible(P,X,fundingEndangeringNationalSecurity)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fixedTerm5OrMore)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上有期徒刑（量刑方式常量 fixedTerm5OrMore 表示五年以上有期徒刑）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "domesticOrForeignEntityOrgOrIndividual": "domesticOrForeignEntityOrgOrIndividual(P)：P 是境内外的机构、组织或者个人",
+   "fundsImplementationOf": "fundsImplementationOf(P,X)：P 资助他人实施犯罪活动 X（提供资金、财物等资助行为）",
+   "fundedCrimeUnderArts102To105": "fundedCrimeUnderArts102To105(X)：X 属于刑法第102条、第103条、第104条、第105条规定之罪（背叛国家、分裂国家、煽动分裂国家、武装叛乱暴乱、颠覆国家政权、煽动颠覆国家政权）",
+   "constitutes": "符合构成要件",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "responsible": "负刑事责任",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitDoublePunishment": "unitDoublePunishment(U,X)：对单位 U 实施的犯罪 X 实行双罚制（既处罚单位又处罚直接责任人员）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:108": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "投敌叛变行为的定性及应适用的法定刑档次（基本档与加重档）",
+     "rules": [
+      "k108-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人实施投敌叛变行为（投奔敌方、敌对营垒并背叛国家），符合投敌叛变罪的构成要件，应负刑事责任",
+     "rules": [
+      "k108-1"
+     ]
+    },
+    {
+     "text": "加重情形有二：①情节严重；②带领武装部队人员、人民警察、民兵投敌叛变。二者具备其一即可",
+     "rules": [
+      "k108-agg"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "具有情节严重或者带领武装部队人员、人民警察、民兵投敌叛变情形的，不再适用三年以上十年以下有期徒刑的基本档",
+     "rules": [
+      "k108-basic",
+      "k108-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "投敌叛变的，处三年以上十年以下有期徒刑（量刑常量 from3to10）",
+     "rules": [
+      "k108-basic"
+     ]
+    },
+    {
+     "text": "情节严重或者带领武装部队人员、人民警察、民兵投敌叛变的，处十年以上有期徒刑或者无期徒刑（量刑常量 from10OrLife）",
+     "rules": [
+      "k108-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "加重档优先于基本档：具备第108条第1款后段情形的，排斥基本档法定刑",
+     "rules": [
+      "k108-agg",
+      "k108-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k108-1",
+    "srcs": [
+     "art108"
+    ],
+    "body": [
+     "crime(P,X)",
+     "defectToEnemy(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,defectionToEnemy)",
+     "responsible(P,X,defectionToEnemy)"
+    ],
+    "auth": "npc",
+    "note": "投敌叛变的，符合投敌叛变罪（罪名常量 defectionToEnemy）的构成要件并负刑事责任"
+   },
+   {
+    "key": "k108-basic",
+    "srcs": [
+     "art108"
+    ],
+    "body": [
+     "constitutes(P,X,defectionToEnemy)",
+     "responsible(P,X,defectionToEnemy)",
+     "~seriousCircumstances(X)",
+     "~leadsArmedPersonnelToDefect(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "投敌叛变的基本档：处三年以上十年以下有期徒刑（新增量刑常量 from3to10）"
+   },
+   {
+    "key": "k108-agg",
+    "srcs": [
+     "art108"
+    ],
+    "body": [
+     "constitutes(P,X,defectionToEnemy)",
+     "responsible(P,X,defectionToEnemy)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "leadsArmedPersonnelToDefect(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重或者带领武装部队人员、人民警察、民兵投敌叛变的，处十年以上有期徒刑或者无期徒刑（新增量刑常量 from10OrLife）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "defectToEnemy": "defectToEnemy(P,X)：P 通过行为 X 投敌叛变（投奔敌方或敌对营垒、背叛国家）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "leadsArmedPersonnelToDefect": "leadsArmedPersonnelToDefect(P,X)：P 在行为 X 中带领武装部队人员、人民警察或者民兵投敌叛变",
+   "sentence": "量刑"
+  }
+ },
+ "art:109": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "叛逃罪的成立条件与法定刑（含掌握国家秘密的国家工作人员叛逃的从重处罚）",
+     "rules": [
+      "k109-cond",
+      "k109-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：主体为国家机关工作人员，在履行公务期间擅离岗位，叛逃境外或者在境外叛逃的，成立叛逃罪",
+     "rules": [
+      "k109-cond"
+     ]
+    },
+    {
+     "text": "第2款：主体为掌握国家秘密的国家工作人员，叛逃境外或者在境外叛逃的，成立叛逃罪；条文未要求“履行公务期间擅离岗位”",
+     "rules": [
+      "k109-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节严重的，不适用第1款前段的基本法定刑，改按五年以上十年以下有期徒刑处罚",
+     "rules": [
+      "k109-agg",
+      "k109-base"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本犯：处五年以下有期徒刑、拘役、管制或者剥夺政治权利（法院择一适用，剥夺政治权利在此系独立适用）",
+     "rules": [
+      "k109-base"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k109-agg"
+     ]
+    },
+    {
+     "text": "掌握国家秘密的国家工作人员叛逃的，依照第1款的规定从重处罚（在第1款相应量刑档次内从重）",
+     "rules": [
+      "k109-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款为特别规定，其从重处罚的效果优先于第1款的一般量刑处理",
+     "rules": [
+      "k109-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款主体限于国家机关工作人员，第2款扩及一切掌握国家秘密的国家工作人员，且不要求履行公务期间擅离岗位",
+     "rules": [
+      "k109-cond",
+      "k109-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k109-cond",
+    "srcs": [
+     "art109#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "duringOfficialDuty(P)",
+     "unauthorizedLeavePost(P)",
+     {
+      "or": [
+       "defectsAbroad(P,X)",
+       "defectsWhileAbroad(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,defection)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员在履行公务期间擅离岗位、叛逃境外或在境外叛逃，符合叛逃罪构成要件"
+   },
+   {
+    "key": "k109-base",
+    "srcs": [
+     "art109#1"
+    ],
+    "body": [
+     "constitutes(P,X,defection)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,criminalDetention)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,control)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deprivationOfPoliticalRights)"
+     }
+    ],
+    "auth": "npc",
+    "note": "叛逃罪基本犯：处五年以下有期徒刑、拘役、管制或者剥夺政治权利，法院可择一"
+   },
+   {
+    "key": "k109-agg",
+    "srcs": [
+     "art109#1"
+    ],
+    "body": [
+     "constitutes(P,X,defection)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "叛逃情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k109-2",
+    "srcs": [
+     "art109#2"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "mastersStateSecrets(P)",
+     {
+      "or": [
+       "defectsAbroad(P,X)",
+       "defectsWhileAbroad(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,defection)"
+    ],
+    "auth": "npc",
+    "note": "掌握国家秘密的国家工作人员叛逃境外或在境外叛逃，亦符合叛逃罪构成要件"
+   },
+   {
+    "key": "k109-2b",
+    "srcs": [
+     "art109#2"
+    ],
+    "body": [
+     "constitutes(P,X,defection)",
+     "stateFunctionary(P)",
+     "mastersStateSecrets(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "掌握国家秘密的国家工作人员叛逃，依第1款规定的量刑档次从重处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "duringOfficialDuty": "duringOfficialDuty(P)：P 正处于履行公务期间",
+   "unauthorizedLeavePost": "unauthorizedLeavePost(P)：P 擅离（公务）岗位",
+   "defectsAbroad": "defectsAbroad(P,X)：P 由境内叛逃境外，构成犯罪事件 X",
+   "defectsWhileAbroad": "defectsWhileAbroad(P,X)：P 在境外叛逃，构成犯罪事件 X",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "stateFunctionary": "国家工作人员",
+   "mastersStateSecrets": "mastersStateSecrets(P)：P 掌握国家秘密"
+  }
+ },
+ "art:110": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "实施间谍行为并危害国家安全的，是否构成间谍罪（espionage）及适用哪一量刑档",
+     "rules": [
+      "k110-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "间谍行为限于：参加间谍组织；接受间谍组织及其代理人的任务；为敌人指示轰击目标（三者之一即可）",
+     "rules": [
+      "k110-cond"
+     ]
+    },
+    {
+     "text": "该间谍行为须危害国家安全",
+     "rules": [
+      "k110-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节较轻的，不适用基本档，改处三年以上十年以下有期徒刑",
+     "rules": [
+      "k110-light"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合间谍罪构成要件，负刑事责任",
+     "rules": [
+      "k110-1"
+     ]
+    },
+    {
+     "text": "基本档：处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k110-sent"
+     ]
+    },
+    {
+     "text": "情节较轻档：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k110-light"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节较轻的特别量刑档优先于十年以上有期徒刑或无期徒刑的基本档",
+     "rules": [
+      "k110-light",
+      "k110-sent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "情节较轻只影响量刑档次，不影响间谍罪的成立；缺少“危害国家安全”这一要件则不依本条定罪",
+     "rules": [
+      "k110-1",
+      "k110-light"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k110-cond",
+    "srcs": [
+     "art110#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     {
+      "or": [
+       "joinsEspionageOrganization(P,X)",
+       "acceptsTaskOfEspionageOrganizationOrAgent(P,X)",
+       "indicatesBombingTargetForEnemy(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "espionageAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "参加间谍组织、接受间谍组织及其代理人的任务、为敌人指示轰击目标，三者之一即为间谍行为"
+   },
+   {
+    "key": "k110-1",
+    "srcs": [
+     "art110#1"
+    ],
+    "body": [
+     "espionageAct(P,X)",
+     "endangersNationalSecurity(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,espionage)",
+     "responsible(P,X,espionage)"
+    ],
+    "auth": "npc",
+    "note": "实施法定间谍行为之一并危害国家安全的，构成间谍罪（新罪名常量 espionage），负刑事责任"
+   },
+   {
+    "key": "k110-sent",
+    "srcs": [
+     "art110#1"
+    ],
+    "body": [
+     "responsible(P,X,espionage)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处十年以上有期徒刑或者无期徒刑（新增量刑方式常量 from10OrLife 表示该选择刑幅度）"
+   },
+   {
+    "key": "k110-light",
+    "srcs": [
+     "art110#1"
+    ],
+    "body": [
+     "responsible(P,X,espionage)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的，处三年以上十年以下有期徒刑（新增量刑方式常量 from3to10）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "joinsEspionageOrganization": "joinsEspionageOrganization(P,X)：P 通过行为 X 参加间谍组织",
+   "acceptsTaskOfEspionageOrganizationOrAgent": "acceptsTaskOfEspionageOrganizationOrAgent(P,X)：P 通过行为 X 接受间谍组织及其代理人的任务",
+   "indicatesBombingTargetForEnemy": "indicatesBombingTargetForEnemy(P,X)：P 通过行为 X 为敌人指示轰击目标",
+   "espionageAct": "espionageAct(P,X)：P 实施的行为 X 属于刑法第110条列举的间谍行为",
+   "endangersNationalSecurity": "endangersNationalSecurity(X)：犯罪X属于危害国家安全的犯罪",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentence": "量刑"
+  }
+ },
+ "art:111": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "为境外的机构、组织、人员窃取、刺探、收买、非法提供国家秘密或者情报，是否构成为境外窃取、刺探、收买、非法提供国家秘密、情报罪，以及适用哪一量刑档次",
+     "rules": [
+      "k111-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为为窃取、刺探、收买或者非法提供；对象是国家秘密或者情报；且系为境外的机构、组织、人员实施，符合本罪构成要件",
+     "rules": [
+      "k111-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节特别严重的，不适用基本档，改处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k111-aggravated"
+     ]
+    },
+    {
+     "text": "情节较轻的，不适用基本档，改处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k111-light"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k111-basic"
+     ]
+    },
+    {
+     "text": "加重档：情节特别严重的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k111-aggravated"
+     ]
+    },
+    {
+     "text": "减轻档：情节较轻的，处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k111-light"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重、情节较轻两个特别量刑档优先于基本档适用",
+     "rules": [
+      "k111-aggravated",
+      "k111-light",
+      "k111-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪的成立以“为境外的机构、组织、人员”实施为必要，且对象限于国家秘密或者情报；缺少境外要素或对象不属国家秘密、情报的，不符合本罪构成要件",
+     "rules": [
+      "k111-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k111-cond",
+    "srcs": [
+     "art111"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "stealSpyBuyOrIllegallyProvide(P,X)",
+     "objectOf(X,M)",
+     "stateSecretOrIntelligence(M)",
+     "forOverseasRecipient(X,O)",
+     "overseasInstitutionOrgOrPerson(O)"
+    ],
+    "heads": [
+     "constitutes(P,X,stealingStateSecretsForOverseas)"
+    ],
+    "auth": "npc",
+    "note": "为境外机构、组织、人员窃取、刺探、收买、非法提供国家秘密或者情报的，符合本罪构成要件（罪名常量 stealingStateSecretsForOverseas）"
+   },
+   {
+    "key": "k111-basic",
+    "srcs": [
+     "art111"
+    ],
+    "body": [
+     "constitutes(P,X,stealingStateSecretsForOverseas)",
+     "~especiallySeriousCircumstances(X)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k111-aggravated",
+    "srcs": [
+     "art111"
+    ],
+    "body": [
+     "constitutes(P,X,stealingStateSecretsForOverseas)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑或者无期徒刑（量刑方式常量 from10OrLife 表示十年以上有期徒刑或者无期徒刑）"
+   },
+   {
+    "key": "k111-light",
+    "srcs": [
+     "art111"
+    ],
+    "body": [
+     "constitutes(P,X,stealingStateSecretsForOverseas)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionControlDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的，处五年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑方式常量 under5OrDetentionControlDeprivation 表示上述可选刑种）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "stealSpyBuyOrIllegallyProvide": "stealSpyBuyOrIllegallyProvide(P,X)：P 在行为 X 中实施窃取、刺探、收买或者非法提供的行为",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "stateSecretOrIntelligence": "stateSecretOrIntelligence(M)：M 是国家秘密或者情报",
+   "forOverseasRecipient": "forOverseasRecipient(X,O)：行为 X 系为境外主体 O 实施（境外机构、组织、人员为收受、服务对象）",
+   "overseasInstitutionOrgOrPerson": "overseasInstitutionOrgOrPerson(O)：O 是境外的机构、组织或者人员",
+   "constitutes": "符合构成要件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentence": "量刑"
+  }
+ },
+ "art:112": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时向敌人供给武器装备、军用物资的行为是否构成资敌罪，以及适用哪一量刑档次",
+     "rules": [
+      "k112-1",
+      "k112-basic",
+      "k112-light"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间要件为战时；行为要件为供给敌人武器装备或者军用物资以资敌",
+     "rules": [
+      "k112-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节较轻的，不适用基本量刑档次，改处三年以上十年以下有期徒刑",
+     "rules": [
+      "k112-light"
+     ]
+    },
+    {
+     "text": "非战时供给敌人武器装备、军用物资的，不构成本罪（战时是本罪的时间要件，学理说明）",
+     "rules": [
+      "k112-notWartime"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "战时资敌的，构成资敌罪（aidingEnemy），负刑事责任",
+     "rules": [
+      "k112-1"
+     ]
+    },
+    {
+     "text": "处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k112-basic"
+     ]
+    },
+    {
+     "text": "情节较轻的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k112-light"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节较轻的量刑档次优先于基本量刑档次；缺少战时要件时排除本罪的成立",
+     "rules": [
+      "k112-light",
+      "k112-basic",
+      "k112-notWartime",
+      "k112-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪的行为方式限于战时向敌人供给武器装备、军用物资，区别于间谍罪、为境外窃取情报等其他危害国家安全犯罪；本条为宣示性体系说明，不单独形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k112-cond",
+    "srcs": [
+     "art112"
+    ],
+    "body": [
+     "wartime(X)",
+     "suppliesToEnemy(P,X,M)",
+     {
+      "or": [
+       "weaponsAndEquipment(M)",
+       "militarySupplies(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "aidingEnemyConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "战时供给敌人武器装备或者军用物资资敌，具备本罪构成条件"
+   },
+   {
+    "key": "k112-1",
+    "srcs": [
+     "art112"
+    ],
+    "body": [
+     "aidingEnemyConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,aidingEnemy)",
+     "responsible(P,X,aidingEnemy)"
+    ],
+    "auth": "npc",
+    "note": "战时资敌符合资敌罪（新增罪名常量 aidingEnemy）的构成要件，负刑事责任"
+   },
+   {
+    "key": "k112-basic",
+    "srcs": [
+     "art112"
+    ],
+    "body": [
+     "constitutes(P,X,aidingEnemy)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时资敌处十年以上有期徒刑或者无期徒刑（新增量刑方式常量 from10OrLife＝十年以上有期徒刑或者无期徒刑）"
+   },
+   {
+    "key": "k112-light",
+    "srcs": [
+     "art112"
+    ],
+    "body": [
+     "constitutes(P,X,aidingEnemy)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的处三年以上十年以下有期徒刑（新增量刑方式常量 from3to10＝三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k112-notWartime",
+    "srcs": [
+     "art112"
+    ],
+    "body": [
+     "suppliesToEnemy(P,X,M)",
+     "-wartime(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,aidingEnemy)"
+    ],
+    "auth": "doctrine",
+    "note": "战时系本罪时间要件，非战时资敌不构成本罪；此为学理推论，法条未明文规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k112-notWartime",
+    "k112-1",
+    "推断：结论冲突（('constitutes', '+')），k112-notWartime 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "suppliesToEnemy": "suppliesToEnemy(P,X,M)：P 通过行为 X 向敌人供给财物 M（资敌）",
+   "weaponsAndEquipment": "weaponsAndEquipment(M)：M 是武器装备",
+   "militarySupplies": "militarySupplies(M)：M 是军用物资",
+   "aidingEnemyConditions": "aidingEnemyConditions(P,X)：P 的行为 X 具备资敌罪的构成条件（战时供给敌人武器装备、军用物资）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentence": "量刑"
+  }
+ },
+ "art:113": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "危害国家安全罪能否判处死刑、能否并处没收财产",
+     "rules": [
+      "k113-1",
+      "k113-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用死刑须为本章危害国家安全之罪，且对国家和人民危害特别严重、情节特别恶劣（两个条件同时具备）",
+     "rules": [
+      "k113-1"
+     ]
+    },
+    {
+     "text": "并处没收财产只要求犯本章（危害国家安全罪）之罪，不要求危害特别严重、情节特别恶劣",
+     "rules": [
+      "k113-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第103条第2款（煽动分裂国家）、第105条（颠覆国家政权、煽动颠覆国家政权）、第107条（资助危害国家安全犯罪活动）、第109条（叛逃）之罪除外，不得依本条判处死刑",
+     "rules": [
+      "k113-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合条件的，可以判处死刑（“可以”为授权性裁量，非应当）",
+     "rules": [
+      "k113-1"
+     ]
+    },
+    {
+     "text": "犯本章之罪的，可以并处没收财产（附加刑，与主刑并处，亦为裁量）",
+     "rules": [
+      "k113-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "死刑条款限于本章明文列举之外的罪名且须“危害特别严重＋情节特别恶劣”；没收财产条款覆盖本章全部罪名，二者适用范围与条件不同",
+     "rules": [
+      "k113-1",
+      "k113-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k113-1",
+    "srcs": [
+     "art113#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "endangersNationalSecurity(X)",
+     "especiallySeriousHarmToStateAndPeople(X)",
+     "especiallyHeinousCircumstances(X)",
+     "~art113ExcludedCrime(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathPenalty)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本章危害国家安全罪行中，除第103条第2款、第105条、第107条、第109条之罪外，对国家和人民危害特别严重、情节特别恶劣的，可以判处死刑（deathPenalty 为死刑量刑方式常量）"
+   },
+   {
+    "key": "k113-2",
+    "srcs": [
+     "art113#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "endangersNationalSecurity(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,confiscationOfProperty)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯本章危害国家安全之罪的，可以并处没收财产（confiscationOfProperty 为并处没收财产的量刑方式常量）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "endangersNationalSecurity": "endangersNationalSecurity(X)：犯罪X属于危害国家安全的犯罪",
+   "especiallySeriousHarmToStateAndPeople": "especiallySeriousHarmToStateAndPeople(X)：犯罪 X 对国家和人民危害特别严重",
+   "especiallyHeinousCircumstances": "especiallyHeinousCircumstances(X)：犯罪 X 情节特别恶劣",
+   "art113ExcludedCrime": "art113ExcludedCrime(X)：犯罪 X 属于刑法第113条第1款排除适用死刑的罪名，即第103条第2款、第105条、第107条、第109条规定之罪",
+   "sentence": "量刑"
+  }
+ }
+}

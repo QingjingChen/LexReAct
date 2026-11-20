@@ -1,0 +1,4711 @@
+{
+ "art:32": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑罚体系的分类：刑罚分为主刑和附加刑两类（第33条列举主刑、第34条列举附加刑）。本条为刑罚种类的宣示性、体系性规定，不直接设定权利义务或构成要件，故不形式化为规则。",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:33": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "某刑罚方法是否属于主刑：主刑种类由第33条第1款法定列举，限于管制、拘役、有期徒刑、无期徒刑、死刑五种",
+     "rules": [
+      "k33-control",
+      "k33-detention",
+      "k33-fixedTerm",
+      "k33-life",
+      "k33-death"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管制属于主刑",
+     "rules": [
+      "k33-control"
+     ]
+    },
+    {
+     "text": "拘役属于主刑",
+     "rules": [
+      "k33-detention"
+     ]
+    },
+    {
+     "text": "有期徒刑属于主刑",
+     "rules": [
+      "k33-fixedTerm"
+     ]
+    },
+    {
+     "text": "无期徒刑属于主刑",
+     "rules": [
+      "k33-life"
+     ]
+    },
+    {
+     "text": "死刑属于主刑",
+     "rules": [
+      "k33-death"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "主刑只能独立适用，不得作为附加刑附加适用（学理结论，本条仅列举种类而未明文规定）",
+     "rules": [
+      "k33-independent"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "主刑与附加刑相区别：罚金、剥夺政治权利、没收财产、驱逐出境属附加刑（第34条），不在本条列举之列；本条为刑罚种类的法定列举，不含量刑幅度与适用条件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k33-control",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "punishmentOfKind(X,control)"
+    ],
+    "heads": [
+     "principalPunishment(X)"
+    ],
+    "auth": "npc",
+    "note": "管制是主刑的一种"
+   },
+   {
+    "key": "k33-detention",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "punishmentOfKind(X,criminalDetention)"
+    ],
+    "heads": [
+     "principalPunishment(X)"
+    ],
+    "auth": "npc",
+    "note": "拘役是主刑的一种"
+   },
+   {
+    "key": "k33-fixedTerm",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "punishmentOfKind(X,fixedTermImprisonment)"
+    ],
+    "heads": [
+     "principalPunishment(X)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑是主刑的一种"
+   },
+   {
+    "key": "k33-life",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "punishmentOfKind(X,lifeImprisonment)"
+    ],
+    "heads": [
+     "principalPunishment(X)"
+    ],
+    "auth": "npc",
+    "note": "无期徒刑是主刑的一种"
+   },
+   {
+    "key": "k33-death",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "punishmentOfKind(X,deathPenalty)"
+    ],
+    "heads": [
+     "principalPunishment(X)"
+    ],
+    "auth": "npc",
+    "note": "死刑是主刑的一种"
+   },
+   {
+    "key": "k33-independent",
+    "srcs": [
+     "art33#1"
+    ],
+    "body": [
+     "principalPunishment(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyAsSupplementaryPunishment(X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理补充：主刑只能独立适用，不得附加适用；第33条仅列举种类，未明文规定该适用规则，故标为 doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "punishmentOfKind": "punishmentOfKind(X,T)：刑罚 X 属于刑罚种类 T（T 取 control 管制、criminalDetention 拘役、fixedTermImprisonment 有期徒刑、lifeImprisonment 无期徒刑、deathPenalty 死刑）",
+   "principalPunishment": "principalPunishment(X)：刑罚 X 属于主刑（管制、拘役、有期徒刑、无期徒刑、死刑）",
+   "applyAsSupplementaryPunishment": "applyAsSupplementaryPunishment(X)：将刑罚 X 作为附加刑附加适用"
+  }
+ },
+ "art:34": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "附加刑的法定种类有哪些；附加刑能否脱离主刑而独立适用",
+     "rules": [
+      "k34-1",
+      "k34-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "附加刑的种类由法律列举：罚金、剥夺政治权利、没收财产",
+     "rules": [
+      "k34-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "附加刑也可以独立适用，即可对犯罪人单独判处罚金、剥夺政治权利或没收财产，而不判处主刑",
+     "rules": [
+      "k34-2"
+     ]
+    },
+    {
+     "text": "附加刑通常附加于主刑一并适用（体系解释，是第2款“也可以独立适用”的前提，本条未明文规定）",
+     "rules": [
+      "k34-attach"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "主刑只能独立适用、不得附加适用；附加刑既可附加适用也可独立适用（第32、33条体系，本条未规定）",
+     "rules": []
+    },
+    {
+     "text": "对犯罪的外国人适用的驱逐出境属特殊附加刑，由第35条规定，不在本条列举的三类之内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k34-1",
+    "srcs": [
+     "art34#1"
+    ],
+    "body": [
+     "penalty(S)",
+     {
+      "or": [
+       "finePenalty(S)",
+       "deprivationOfPoliticalRightsPenalty(S)",
+       "confiscationOfPropertyPenalty(S)"
+      ]
+     }
+    ],
+    "heads": [
+     "supplementaryPunishment(S)"
+    ],
+    "auth": "npc",
+    "note": "罚金、剥夺政治权利、没收财产属于附加刑（第1款的法定列举）"
+   },
+   {
+    "key": "k34-2",
+    "srcs": [
+     "art34#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "supplementaryPunishment(S)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceIndependently(P,X,S)"
+     }
+    ],
+    "auth": "npc",
+    "note": "附加刑也可以独立适用，法院可单独判处该附加刑而不判处主刑"
+   },
+   {
+    "key": "k34-attach",
+    "srcs": [
+     "art34#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "supplementaryPunishment(S)",
+     "sentencedToPrincipal(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,S)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：附加刑本来的适用方式是附加于主刑，第2款“也可以独立适用”以此为前提，本条未明文规定附加适用"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "penalty": "penalty(S)：S 是一种刑罚方法",
+   "finePenalty": "finePenalty(S)：S 是罚金刑",
+   "deprivationOfPoliticalRightsPenalty": "deprivationOfPoliticalRightsPenalty(S)：S 是剥夺政治权利刑",
+   "confiscationOfPropertyPenalty": "confiscationOfPropertyPenalty(S)：S 是没收财产刑",
+   "supplementaryPunishment": "supplementaryPunishment(S)：S 属于附加刑",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "sentenceIndependently": "sentenceIndependently(P,X,S)：对P就犯罪X独立适用附加刑S（不判处主刑）",
+   "sentencedToPrincipal": "sentencedToPrincipal(P,X)：P 因犯罪X被判处主刑",
+   "sentence": "量刑"
+  }
+ },
+ "art:35": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对犯罪的外国人能否适用驱逐出境，以及可否独立适用或附加适用",
+     "rules": [
+      "k35-1",
+      "k35-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用对象限于犯罪的外国人：P 为外国人且实施了犯罪 X",
+     "rules": [
+      "k35-1",
+      "k35-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "可以独立适用驱逐出境（不判处主刑，单独判处驱逐出境）",
+     "rules": [
+      "k35-1"
+     ]
+    },
+    {
+     "text": "可以附加适用驱逐出境（在判处主刑之外附加驱逐出境）",
+     "rules": [
+      "k35-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "条文用“可以”而非“应当”，是否驱逐出境由法院裁量，不是必须适用；不判处驱逐出境并不违法",
+     "rules": [
+      "k35-1",
+      "k35-2"
+     ]
+    },
+    {
+     "text": "驱逐出境只针对犯罪的外国人，对中国公民不得适用（由适用对象作反面推论，属学理）",
+     "rules": [
+      "k35-cn"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k35-1",
+    "srcs": [
+     "art35"
+    ],
+    "body": [
+     "foreigner(P)",
+     "crime(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deportationIndependent)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯罪的外国人，法院可以独立适用驱逐出境（deportationIndependent 表示独立适用驱逐出境）；是“可以”而非“应当”"
+   },
+   {
+    "key": "k35-2",
+    "srcs": [
+     "art35"
+    ],
+    "body": [
+     "foreigner(P)",
+     "crime(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deportationAdditional)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯罪的外国人，法院可以附加适用驱逐出境（deportationAdditional 表示附加于主刑适用驱逐出境）；是“可以”而非“应当”"
+   },
+   {
+    "key": "k35-cn",
+    "srcs": [
+     "art35"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "crime(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deportationIndependent)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deportationAdditional)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "第35条仅规定外国人，反面推论：对中国公民不得独立或附加适用驱逐出境；法条未明文，属学理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "foreigner": "外国人（不具有中国国籍的人）",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "sentence": "量刑",
+   "citizenOfPrc": "中华人民共和国公民（人P）"
+  }
+ },
+ "art:36": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "犯罪行为致被害人经济损失的，除刑事处罚外是否判处赔偿经济损失",
+     "rules": [
+      "k36-1"
+     ]
+    },
+    {
+     "text": "民事赔偿与罚金、没收财产并存时的清偿顺序",
+     "rules": [
+      "k36-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在犯罪行为且犯罪分子依法负刑事责任，被害人因该犯罪行为遭受经济损失",
+     "rules": [
+      "k36-1"
+     ]
+    },
+    {
+     "text": "犯罪分子承担民事赔偿责任，同时被判处罚金而其财产不足以全部支付，或者被判处没收财产",
+     "rules": [
+      "k36-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对犯罪分子除依法给予刑事处罚外，并应根据情况判处赔偿经济损失",
+     "rules": [
+      "k36-1"
+     ]
+    },
+    {
+     "text": "财产不足以全部支付罚金或被判处没收财产的，应当先承担对被害人的民事赔偿责任",
+     "rules": [
+      "k36-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "对被害人的民事赔偿责任优先于罚金、没收财产的执行",
+     "rules": [
+      "k36-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "赔偿经济损失是刑事处罚之外的附加负担，不能以赔偿替代刑罚，也不因判处刑罚而免除赔偿",
+     "rules": [
+      "k36-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k36-1",
+    "srcs": [
+     "art36#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "responsible(P,X,C)",
+     "victimOf(V,X)",
+     "suffersEconomicLoss(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "orderCompensation(P,V,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯罪行为使被害人遭受经济损失的，除刑事处罚外，法院应根据情况判处犯罪分子赔偿经济损失"
+   },
+   {
+    "key": "k36-2",
+    "srcs": [
+     "art36#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "victimOf(V,X)",
+     "liableForCivilCompensation(P,V)",
+     {
+      "or": [
+       "sentencedToFine(P,X) propertyInsufficientToPayAll(P)",
+       "sentencedToConfiscation(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "compensateFirst(P,V)"
+     }
+    ],
+    "auth": "npc",
+    "note": "承担民事赔偿责任的犯罪分子同时被判处罚金而财产不足以全部支付，或者被判处没收财产的，应当先承担对被害人的民事赔偿责任"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "responsible": "负刑事责任",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "suffersEconomicLoss": "suffersEconomicLoss(V,X)：V 因犯罪行为 X 遭受经济损失",
+   "orderCompensation": "orderCompensation(P,V,X)：根据情况判处 P 就犯罪 X 赔偿 V 的经济损失",
+   "liableForCivilCompensation": "liableForCivilCompensation(P,V)：P 对 V 承担民事赔偿责任",
+   "sentencedToFine": "sentencedToFine(P,F)：P 被判处罚金 F",
+   "propertyInsufficientToPayAll": "propertyInsufficientToPayAll(P)：P 的财产不足以全部支付",
+   "sentencedToConfiscation": "sentencedToConfiscation(P,X)：P 因犯罪 X 被判处没收财产",
+   "compensateFirst": "compensateFirst(P,V)：P 先对 V 承担民事赔偿责任（优先于罚金、没收财产）"
+  }
+ },
+ "art:37": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "犯罪情节轻微不需要判处刑罚的，可否免予刑事处罚，免刑后如何处理",
+     "rules": [
+      "k37-cond",
+      "k37-exempt"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为已构成犯罪，且犯罪情节轻微、不需要判处刑罚",
+     "rules": [
+      "k37-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "具备上述条件的，可以免予刑事处罚（免除处罚是对刑罚处罚的免除，属例外处理）",
+     "rules": [
+      "k37-exempt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "法院“可以”而非“应当”免予刑事处罚，属裁量性免除",
+     "rules": [
+      "k37-exempt"
+     ]
+    },
+    {
+     "text": "免予刑事处罚的，可以根据案件不同情况予以训诫或者责令具结悔过、赔礼道歉、赔偿损失",
+     "rules": [
+      "k37-court"
+     ]
+    },
+    {
+     "text": "或者由主管部门予以行政处罚或者行政处分",
+     "rules": [
+      "k37-admin"
+     ]
+    },
+    {
+     "text": "免除处罚仍对犯罪分子作有罪宣告，只免除其刑罚处罚",
+     "rules": [
+      "k37-guilt"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "免予刑事处罚不等于无罪：以有罪宣告为前提；训诫、具结悔过、赔礼道歉、赔偿损失及行政处罚、行政处分均为非刑罚处理措施，不是刑罚",
+     "rules": [
+      "k37-guilt",
+      "k37-court",
+      "k37-admin"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k37-cond",
+    "srcs": [
+     "art37"
+    ],
+    "body": [
+     "crime(P,X)",
+     "lightCircumstances(X)",
+     "noNeedForPunishment(X)"
+    ],
+    "heads": [
+     "exemptableFromPunishment(P,X)"
+    ],
+    "auth": "npc",
+    "note": "犯罪情节轻微且不需要判处刑罚的，具备免予刑事处罚的条件"
+   },
+   {
+    "key": "k37-exempt",
+    "srcs": [
+     "art37"
+    ],
+    "body": [
+     "exemptableFromPunishment(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,exempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯罪情节轻微不需要判处刑罚的，可以免予刑事处罚"
+   },
+   {
+    "key": "k37-guilt",
+    "srcs": [
+     "art37"
+    ],
+    "body": [
+     "exemptableFromPunishment(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "convicted(P,X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "免除处罚是作有罪宣告但免除刑罚处罚，故仍成立定罪（据备考笔记的学理说明）"
+   },
+   {
+    "key": "k37-court",
+    "srcs": [
+     "art37"
+    ],
+    "body": [
+     "exemptableFromPunishment(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,admonition)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,repentanceStatement)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,apology)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,compensation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "免刑后可根据案件不同情况予以训诫或责令具结悔过、赔礼道歉、赔偿损失"
+   },
+   {
+    "key": "k37-admin",
+    "srcs": [
+     "art37"
+    ],
+    "body": [
+     "exemptableFromPunishment(P,X)",
+     "competentAuthority(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,administrativePenalty)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "nonPenalMeasure(P,X,administrativeSanction)"
+     }
+    ],
+    "auth": "npc",
+    "note": "免刑后也可由主管部门予以行政处罚或者行政处分"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "lightCircumstances": "犯罪情节较轻",
+   "noNeedForPunishment": "noNeedForPunishment(X)：犯罪事件 X 不需要判处刑罚",
+   "exemptableFromPunishment": "exemptableFromPunishment(P,X)：P 就犯罪 X 具备免予刑事处罚（免除处罚）的条件",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "convicted": "定罪",
+   "nonPenalMeasure": "nonPenalMeasure(P,X,M)：对 P 就犯罪 X 适用非刑罚处理措施 M（admonition=训诫、repentanceStatement=责令具结悔过、apology=赔礼道歉、compensation=赔偿损失、administrativePenalty=行政处罚、administrativeSanction=行政处分）",
+   "competentAuthority": "competentAuthority(A)：A 是有权给予行政处罚或行政处分的主管部门"
+  }
+ },
+ "art:37-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "因利用职业便利实施犯罪或实施违背职业要求的特定义务的犯罪被判处刑罚的，人民法院能否宣告职业禁止，以及禁止的期限与起算点",
+     "rules": [
+      "k37z1-cond",
+      "k37z1-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提条件：①因利用职业便利实施犯罪，或者实施违背职业要求的特定义务的犯罪；②被判处刑罚；③根据犯罪情况和预防再犯罪的需要，有禁止其从事相关职业的必要",
+     "rules": [
+      "k37z1-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "时间效力例外：2015年10月31日以前实施上述犯罪的，不适用修正后刑法第37条之一第1款（《刑法修正案(九)》时间效力解释）；其他法律、行政法规另有规定的，从其规定",
+     "rules": [
+      "k37z1-time"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "人民法院可以（裁量，非应当）禁止其从事相关职业，期限为三年至五年",
+     "rules": [
+      "k37z1-1"
+     ]
+    },
+    {
+     "text": "职业禁止的期限自刑罚执行完毕之日或者假释之日起计算，期限为三年至五年",
+     "rules": [
+      "k37z1-start"
+     ]
+    },
+    {
+     "text": "被禁止从事相关职业的人违反人民法院依第1款作出的决定的，由公安机关依法给予处罚",
+     "rules": [
+      "k37z1-2a"
+     ]
+    },
+    {
+     "text": "违反职业禁止决定情节严重的，依照第313条以拒不执行判决、裁定罪定罪处罚",
+     "rules": [
+      "k37z1-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "其他法律、行政法规对其从事相关职业另有禁止或者限制性规定的，从其规定，优先于本条的职业禁止",
+     "rules": [
+      "k37z1-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "职业禁止是非刑罚性的预防再犯罪措施，不同于刑罚、缓刑禁止令与剥夺政治权利；其起算点为刑罚执行完毕之日或假释之日，而非判决生效之日",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k37z1-cond",
+    "srcs": [
+     "art37-1#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "crimeByOccupationalConvenience(P,X)",
+       "crimeViolatingOccupationalDuty(P,X)"
+      ]
+     },
+     "sentencedToPunishment(P,X)",
+     "preventionOfReoffendingNeeded(P,X)"
+    ],
+    "heads": [
+     "occupationalBanConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "利用职业便利犯罪或违背职业要求的特定义务犯罪并被判处刑罚，且根据犯罪情况与预防再犯罪需要，具备宣告职业禁止的条件"
+   },
+   {
+    "key": "k37z1-1",
+    "srcs": [
+     "art37-1#1"
+    ],
+    "body": [
+     "occupationalBanConditions(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeOccupationalBan(P,X,threeToFiveYears)"
+     }
+    ],
+    "auth": "npc",
+    "note": "人民法院可以禁止其从事相关职业，期限三年至五年（常量 threeToFiveYears 表示三至五年）"
+   },
+   {
+    "key": "k37z1-start",
+    "srcs": [
+     "art37-1#1"
+    ],
+    "body": [
+     "occupationalBanDecision(P,X)"
+    ],
+    "heads": [
+     "banRunsFromCompletionOrParole(P,X)",
+     "banDurationThreeToFiveYears(P,X)"
+    ],
+    "auth": "npc",
+    "note": "职业禁止自刑罚执行完毕之日或者假释之日起算，期限为三年至五年"
+   },
+   {
+    "key": "k37z1-2a",
+    "srcs": [
+     "art37-1#2"
+    ],
+    "body": [
+     "occupationalBanDecision(P,X)",
+     "violatesOccupationalBan(P,X)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "policeOrgan",
+      "counterparty": null,
+      "content": "punishForViolationOfOccupationalBan(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "违反职业禁止决定的，由公安机关（常量 policeOrgan）依法给予处罚"
+   },
+   {
+    "key": "k37z1-2b",
+    "srcs": [
+     "art37-1#2"
+    ],
+    "body": [
+     "occupationalBanDecision(P,X)",
+     "violatesOccupationalBan(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "convicted(P,X,refusalToExecuteJudgmentOrRuling)"
+    ],
+    "auth": "npc",
+    "note": "违反职业禁止决定情节严重的，依第313条以拒不执行判决、裁定罪（常量 refusalToExecuteJudgmentOrRuling）定罪处罚"
+   },
+   {
+    "key": "k37z1-3",
+    "srcs": [
+     "art37-1#3"
+    ],
+    "body": [
+     "crime(P,X)",
+     "otherLawRestrictsOccupation(P,X)"
+    ],
+    "heads": [
+     "applyOtherLawOccupationalRestriction(P,X)"
+    ],
+    "auth": "npc",
+    "note": "其他法律、行政法规对从事相关职业另有禁止或限制性规定的，从其规定"
+   },
+   {
+    "key": "k37z1-time",
+    "srcs": [
+     "art37-1#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeBefore20151101(P,X)"
+    ],
+    "heads": [
+     "-occupationalBanConditions(P,X)"
+    ],
+    "auth": "spc",
+    "note": "2015年10月31日以前实施的该类犯罪不适用修正后第37条之一第1款；内容源自《刑法修正案(九)》时间效力司法解释（笔记转述），非法条明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k37z1-time",
+    "k37z1-cond",
+    "推断：结论冲突（('occupationalBanConditions', '+')），k37z1-time 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "crimeByOccupationalConvenience": "crimeByOccupationalConvenience(P,X)：P 利用职业便利实施犯罪 X",
+   "crimeViolatingOccupationalDuty": "crimeViolatingOccupationalDuty(P,X)：P 实施的犯罪 X 违背职业要求的特定义务",
+   "sentencedToPunishment": "sentencedToPunishment(P,X)：P 因犯罪 X 被判处刑罚",
+   "preventionOfReoffendingNeeded": "preventionOfReoffendingNeeded(P,X)：根据犯罪 X 的情况和预防 P 再犯罪的需要，有必要禁止其从事相关职业",
+   "occupationalBanConditions": "occupationalBanConditions(P,X)：对 P 就犯罪 X 具备宣告职业禁止的条件",
+   "imposeOccupationalBan": "imposeOccupationalBan(P,X,D)：人民法院禁止 P 因犯罪 X 自刑罚执行完毕之日或假释之日起从事相关职业，期限为 D",
+   "occupationalBanDecision": "occupationalBanDecision(P,X)：人民法院依第37条之一第1款对 P 就犯罪 X 作出禁止从事相关职业的决定",
+   "banRunsFromCompletionOrParole": "banRunsFromCompletionOrParole(P,X)：职业禁止期限自刑罚执行完毕之日或者假释之日起计算",
+   "banDurationThreeToFiveYears": "banDurationThreeToFiveYears(P,X)：职业禁止的期限为三年至五年",
+   "violatesOccupationalBan": "violatesOccupationalBan(P,X)：P 违反人民法院就犯罪 X 作出的职业禁止决定",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "punishForViolationOfOccupationalBan": "punishForViolationOfOccupationalBan(P,X)：公安机关依法对 P 违反就犯罪 X 所作职业禁止决定的行为给予处罚",
+   "convicted": "定罪",
+   "otherLawRestrictsOccupation": "otherLawRestrictsOccupation(P,X)：其他法律、行政法规对 P 因犯罪 X 所涉及的相关职业另有禁止或者限制性规定",
+   "applyOtherLawOccupationalRestriction": "applyOtherLawOccupationalRestriction(P,X)：对 P 从事相关职业适用其他法律、行政法规的禁止或限制性规定",
+   "crimeBefore20151101": "crimeBefore20151101(P,X)：P 的犯罪 X 发生在2015年10月31日以前（《刑法修正案(九)》施行前）"
+  }
+ },
+ "art:38": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "管制的期限幅度、可否同时宣告禁止令、执行方式（社区矫正）以及违反禁止令的处理",
+     "rules": [
+      "k38-1",
+      "k38-2",
+      "k38-3",
+      "k38-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：犯罪分子因犯罪被判处管制（主刑之一，不予关押，仅限制一定自由）",
+     "rules": [
+      "k38-nondetain"
+     ]
+    },
+    {
+     "text": "宣告禁止令以“根据犯罪情况”为裁量基础，由人民法院在判处管制时同时作出，效力限于管制执行期间",
+     "rules": [
+      "k38-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "数罪并罚时管制期限最高不能超过三年，突破本条二年的一般上限（第69条，本条未写明，据笔记）",
+     "rules": [
+      "k38-merge"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "管制的期限为三个月以上二年以下",
+     "rules": [
+      "k38-1"
+     ]
+    },
+    {
+     "text": "判处管制，可以根据犯罪情况同时禁止犯罪分子在执行期间从事特定活动、进入特定区域和场所、接触特定的人（禁止令）",
+     "rules": [
+      "k38-2"
+     ]
+    },
+    {
+     "text": "对判处管制的犯罪分子，依法实行社区矫正",
+     "rules": [
+      "k38-3"
+     ]
+    },
+    {
+     "text": "违反禁止令的，由公安机关依照《治安管理处罚法》的规定处罚",
+     "rules": [
+      "k38-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "数罪并罚的三年上限优先于本条第一款“二年以下”的一般期限",
+     "rules": [
+      "k38-merge",
+      "k38-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "管制不予关押、不羁押于特定设施场所，区别于拘役、有期徒刑；未被限制的权利仍享有，未附加剥夺政治权利的仍享有政治权利，劳动中同工同酬（第39条，本条未规定）",
+     "rules": [
+      "k38-nondetain"
+     ]
+    },
+    {
+     "text": "违反管制禁止令的后果是治安管理处罚，而非撤销缓刑、收监执行；管制刑期从判决执行之日起计算（第41条），均非本条内容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k38-1",
+    "srcs": [
+     "art38#1"
+    ],
+    "body": [
+     "sentencedToControl(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,control3mTo2y)"
+     }
+    ],
+    "auth": "npc",
+    "note": "管制期限为三个月以上二年以下；量刑幅度常量 control3mTo2y 表示管制三个月至二年"
+   },
+   {
+    "key": "k38-2",
+    "srcs": [
+     "art38#2"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "crimeCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeProhibitionOrder(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处管制时可根据犯罪情况同时宣告禁止令：禁止执行期间从事特定活动、进入特定区域场所、接触特定的人"
+   },
+   {
+    "key": "k38-3",
+    "srcs": [
+     "art38#3"
+    ],
+    "body": [
+     "sentencedToControl(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "communityCorrectionAgency",
+      "counterparty": null,
+      "content": "communityCorrection(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对判处管制的犯罪分子依法实行社区矫正；bearer 常量 communityCorrectionAgency 指社区矫正机构"
+   },
+   {
+    "key": "k38-4",
+    "srcs": [
+     "art38#4"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "prohibitionOrderIssued(P,X)",
+     "violatesProhibitionOrder(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "publicSecurityOrgan",
+      "counterparty": null,
+      "content": "punishUnderPublicSecurityAdministrationLaw(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "违反第二款禁止令的，由公安机关（常量 publicSecurityOrgan）依《治安管理处罚法》处罚"
+   },
+   {
+    "key": "k38-merge",
+    "srcs": [
+     "art38#1"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "combinedPunishmentForSeveralCrimes(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,controlUpTo3y)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "数罪并罚时管制最高不超过三年（源自第69条与备考笔记，本条未写明，故按学理处理）；controlUpTo3y 表示管制三个月至三年"
+   },
+   {
+    "key": "k38-nondetain",
+    "srcs": [
+     "art38"
+    ],
+    "body": [
+     "sentencedToControl(P,X)"
+    ],
+    "heads": [
+     "-detainedInCustody(P)"
+    ],
+    "auth": "doctrine",
+    "note": "管制是不予关押、仅限制一定自由的开放型主刑，此为管制的学理特征（笔记），本条条文未直接表述"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "sentence": "量刑",
+   "crimeCircumstances": "crimeCircumstances(X)：犯罪事件 X 的具体犯罪情况（宣告禁止令的裁量基础）",
+   "imposeProhibitionOrder": "imposeProhibitionOrder(P,X)：宣告禁止令，禁止 P 在管制执行期间从事特定活动、进入特定区域场所、接触特定的人",
+   "communityCorrection": "communityCorrection(P,X)：对被判处管制的 P 依法实行社区矫正",
+   "prohibitionOrderIssued": "prohibitionOrderIssued(P,X)：已对 P 就犯罪 X 宣告管制执行期间的禁止令",
+   "violatesProhibitionOrder": "violatesProhibitionOrder(P,X)：P 违反管制执行期间的禁止令",
+   "punishUnderPublicSecurityAdministrationLaw": "punishUnderPublicSecurityAdministrationLaw(P,X)：依照《治安管理处罚法》的规定处罚 P 违反禁止令的行为",
+   "combinedPunishmentForSeveralCrimes": "combinedPunishmentForSeveralCrimes(P)：对 P 所犯数罪实行数罪并罚",
+   "detainedInCustody": "detainedInCustody(P)：P 被关押、羁押于一定的设施或场所内"
+  }
+ },
+ "art:39": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被判处管制的犯罪分子在执行期间应遵守哪些法定义务，其劳动待遇如何",
+     "rules": [
+      "k39-cond",
+      "k39-1a",
+      "k39-1b",
+      "k39-1b-perm",
+      "k39-1c",
+      "k39-1d",
+      "k39-1e",
+      "k39-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：被判处管制且处于执行期间；管制不予关押，仅限制一定自由，罪犯必须遵守第39条各项规定",
+     "rules": [
+      "k39-cond"
+     ]
+    },
+    {
+     "text": "离开所居住的市、县或者迁居的，触发报经执行机关批准的义务",
+     "rules": [
+      "k39-1e"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经执行机关批准，不得行使言论、出版、集会、结社、游行、示威自由的权利",
+     "rules": [
+      "k39-1b"
+     ]
+    },
+    {
+     "text": "经执行机关批准的，可以行使上述自由权利（第2项“未经批准”的反面解释）",
+     "rules": [
+      "k39-1b-perm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当遵守法律、行政法规，服从监督",
+     "rules": [
+      "k39-1a"
+     ]
+    },
+    {
+     "text": "应当按照执行机关规定报告自己的活动情况",
+     "rules": [
+      "k39-1c"
+     ]
+    },
+    {
+     "text": "应当遵守执行机关关于会客的规定",
+     "rules": [
+      "k39-1d"
+     ]
+    },
+    {
+     "text": "离开所居住的市、县或者迁居，应当报经执行机关批准",
+     "rules": [
+      "k39-1e"
+     ]
+    },
+    {
+     "text": "被判处管制的犯罪分子在劳动中应当同工同酬，用工单位不得因其服刑身份而降低报酬",
+     "rules": [
+      "k39-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "经执行机关批准的情形优先于第2项的一般禁止",
+     "rules": [
+      "k39-1b-perm",
+      "k39-1b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "禁止令（禁止从事特定活动、进入特定区域场所、接触特定的人）由第38条规定，是法院判处管制时可以选择附加的禁令；本条各项义务是管制执行期间当然适用的法定义务，二者不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k39-cond",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "sentencedToControl(P)",
+     "duringControlExecution(P)"
+    ],
+    "heads": [
+     "controlObligationsApply(P)"
+    ],
+    "auth": "npc",
+    "note": "被判处管制的犯罪分子在执行期间，应当遵守第39条第1款各项规定"
+   },
+   {
+    "key": "k39-1a",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "abideLawsAndRegulations(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "submitToSupervision(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1项：遵守法律、行政法规，服从监督"
+   },
+   {
+    "key": "k39-1b",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)",
+     "~approvedByExecutionOrgan(P,politicalFreedoms)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exercisePoliticalFreedoms(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2项：未经执行机关批准，不得行使言论、出版、集会、结社、游行、示威自由的权利"
+   },
+   {
+    "key": "k39-1b-perm",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)",
+     "approvedByExecutionOrgan(P,politicalFreedoms)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exercisePoliticalFreedoms(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2项反面解释：经执行机关批准的，可以行使上述自由权利"
+   },
+   {
+    "key": "k39-1c",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)",
+     "executionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "reportActivities(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第3项：按照执行机关规定报告自己的活动情况"
+   },
+   {
+    "key": "k39-1d",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)",
+     "executionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "abideVisitorRules(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第4项：遵守执行机关关于会客的规定"
+   },
+   {
+    "key": "k39-1e",
+    "srcs": [
+     "art39#1"
+    ],
+    "body": [
+     "controlObligationsApply(P)",
+     "executionOrgan(O,P)",
+     {
+      "or": [
+       "leavesCityOrCounty(P)",
+       "relocatesResidence(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "obtainApproval(P,O,leaveOrRelocate)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第5项：离开所居住的市、县或者迁居，应当报经执行机关批准"
+   },
+   {
+    "key": "k39-2",
+    "srcs": [
+     "art39#2"
+    ],
+    "body": [
+     "sentencedToControl(P)",
+     "duringControlExecution(P)",
+     "worksFor(P,U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "P",
+      "content": "payEqualForEqualWork(U,P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款：被判处管制的犯罪分子在劳动中应当同工同酬，用工单位负有同等报酬义务"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "duringControlExecution": "duringControlExecution(P)：P 处于管制执行期间",
+   "controlObligationsApply": "controlObligationsApply(P)：P 须遵守第39条第1款规定的管制执行期间各项义务",
+   "abideLawsAndRegulations": "abideLawsAndRegulations(P)：P 遵守法律、行政法规",
+   "submitToSupervision": "submitToSupervision(P)：P服从监督",
+   "approvedByExecutionOrgan": "approvedByExecutionOrgan(P,A)：P 实施行为 A 已经执行机关批准（A 为行为常量，如 politicalFreedoms、leaveOrRelocate）",
+   "exercisePoliticalFreedoms": "exercisePoliticalFreedoms(P)：P 行使言论、出版、集会、结社、游行、示威自由的权利",
+   "executionOrgan": "executionOrgan(O,P)：O 是对 P 执行管制的执行机关",
+   "reportActivities": "reportActivities(P,O)：P 按照执行机关 O 的规定报告自己的活动情况",
+   "abideVisitorRules": "abideVisitorRules(P,O)：P 遵守执行机关 O 关于会客的规定",
+   "leavesCityOrCounty": "leavesCityOrCounty(P)：P 离开所居住的市、县",
+   "relocatesResidence": "relocatesResidence(P)：P 迁居",
+   "obtainApproval": "obtainApproval(P,O,A)：P 就行为 A 报经执行机关 O 批准",
+   "worksFor": "worksFor(P,U)：P 在单位 U 处参加劳动",
+   "payEqualForEqualWork": "payEqualForEqualWork(U,P)：U 对 P 在劳动中实行同工同酬"
+  },
+  "arity_conflict": "谓词 sentencedToControl 已有用法为 2 个参数，这里用了 1 个"
+ },
+ "art:40": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "管制期满时，由谁、向谁、以何种方式宣布解除管制",
+     "rules": [
+      "k40-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "犯罪分子被判处管制，且管制期限已满；义务主体为该刑罚的执行机关",
+     "rules": [
+      "k40-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "管制期满，执行机关应当立即向犯罪分子本人和其所在单位或者居住地的群众宣布解除管制",
+     "rules": [
+      "k40-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定执行机关的宣布（公示）义务，管制期满本身即刑罚执行完毕；与缓刑考验期满“原判刑罚不再执行”的效果不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k40-1",
+    "srcs": [
+     "art40#1"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "controlTermExpired(P,X)",
+     "executionOrgan(O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "announceLiftingControl(O,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被判处管制的犯罪分子管制期满，执行机关应即向本人及其所在单位或居住地群众宣布解除管制"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "controlTermExpired": "controlTermExpired(P,X)：P 因犯罪 X 被判处的管制期限已满",
+   "executionOrgan": "executionOrgan(O,P)：O 是对 P 执行管制的执行机关",
+   "announceLiftingControl": "announceLiftingControl(O,P,X)：O 立即向 P 本人及其所在单位或者居住地的群众宣布解除对 P 因犯罪 X 所判管制"
+  },
+  "arity_conflict": "谓词 executionOrgan 已有用法为 2 个参数，这里用了 1 个"
+ },
+ "art:41": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "管制的刑期从何时起算；判决执行以前先行羁押的时间如何折抵管制刑期",
+     "rules": [
+      "k41-start",
+      "k41-credit"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被判处管制，且判决已开始执行（罪犯送交执行机关）",
+     "rules": [
+      "k41-start"
+     ]
+    },
+    {
+     "text": "判决执行以前对犯罪分子先行羁押（如拘留、逮捕后羁押）",
+     "rules": [
+      "k41-credit"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "管制的刑期从判决执行之日起计算",
+     "rules": [
+      "k41-start"
+     ]
+    },
+    {
+     "text": "先行羁押一日折抵管制刑期二日",
+     "rules": [
+      "k41-credit"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "管制不予关押、仅限制一定自由，故折抵比例为羁押一日抵刑期二日，不同于拘役、有期徒刑的羁押一日折抵一日（第44条、第47条）；管制期限为3个月以上2年以下、数罪并罚最高不超过3年（第38条、第69条），均不在本条规定之列",
+     "rules": [
+      "k41-credit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k41-start",
+    "srcs": [
+     "art41"
+    ],
+    "body": [
+     "controlSentence(P,S)",
+     "judgmentExecutionStartDate(S,D)"
+    ],
+    "heads": [
+     "controlTermStartsFrom(S,D)"
+    ],
+    "auth": "npc",
+    "note": "管制的刑期从判决执行之日起计算"
+   },
+   {
+    "key": "k41-credit",
+    "srcs": [
+     "art41"
+    ],
+    "body": [
+     "controlSentence(P,S)",
+     "detainedBeforeExecution(P,S)"
+    ],
+    "heads": [
+     "creditTwoDaysPerDetentionDay(P,S)"
+    ],
+    "auth": "npc",
+    "note": "判决执行以前先行羁押的，羁押一日折抵管制刑期二日"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "controlSentence": "controlSentence(P,S)：人P被判处管制，S为该管制刑（刑期）",
+   "judgmentExecutionStartDate": "judgmentExecutionStartDate(S,D)：管制判决S开始执行之日为D",
+   "controlTermStartsFrom": "controlTermStartsFrom(S,D)：管制刑S的刑期自D日起计算",
+   "detainedBeforeExecution": "detainedBeforeExecution(P,X)：判决执行以前 P 因该案 X 已被先行羁押",
+   "creditTwoDaysPerDetentionDay": "creditTwoDaysPerDetentionDay(P,S)：对P先行羁押一日折抵管制刑S的刑期二日"
+  }
+ },
+ "art:42": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "拘役这一刑种的法定期限幅度如何确定",
+     "rules": [
+      "k42-range",
+      "k42-court"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对犯罪人依法判处拘役刑，需要确定其刑期长短",
+     "rules": [
+      "k42-range"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "拘役的期限为一个月以上六个月以下（含一个月、六个月本数）",
+     "rules": [
+      "k42-range"
+     ]
+    },
+    {
+     "text": "法院对犯罪人判处拘役时，应当在一个月以上六个月以下的幅度内量刑",
+     "rules": [
+      "k42-court"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k42-range",
+    "srcs": [
+     "art42#1"
+    ],
+    "body": [
+     "detentionSentence(P,X)",
+     "termOf(S,X)"
+    ],
+    "heads": [
+     "termBetweenOneAndSixMonths(S)"
+    ],
+    "auth": "npc",
+    "note": "拘役的期限为一个月以上六个月以下，属于拘役刑期的法定幅度"
+   },
+   {
+    "key": "k42-court",
+    "srcs": [
+     "art42#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "responsible(P,X,C)",
+     "detentionSentence(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,detentionOneToSixMonths)"
+     }
+    ],
+    "auth": "npc",
+    "note": "法院判处拘役应当在一个月以上六个月以下的法定幅度内量刑；detentionOneToSixMonths 表示期限为一至六个月的拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "detentionSentence": "detentionSentence(P,X)：P 因犯罪事件 X 被判处拘役",
+   "termOf": "termOf(S,X)：S 是对犯罪X所判处的刑期",
+   "termBetweenOneAndSixMonths": "termBetweenOneAndSixMonths(S)：刑期S为一个月以上六个月以下",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:43": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "拘役由谁执行、如何执行，服刑期间受刑人享有哪些待遇",
+     "rules": [
+      "k43-1",
+      "k43-2",
+      "k43-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用对象为被判处拘役的犯罪分子；回家、劳动报酬等待遇以拘役执行期间为前提",
+     "rules": [
+      "k43-1",
+      "k43-2",
+      "k43-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "被判处拘役的犯罪分子，由公安机关就近执行",
+     "rules": [
+      "k43-1"
+     ]
+    },
+    {
+     "text": "执行期间，被判处拘役的犯罪分子每月可以回家一天至两天",
+     "rules": [
+      "k43-2"
+     ]
+    },
+    {
+     "text": "执行期间参加劳动的，可以酌量发给报酬（非必须、非全额工资）",
+     "rules": [
+      "k43-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "拘役由公安机关就近执行，与有期徒刑、无期徒刑由监狱执行不同；每月可回家一至两天、参加劳动可酌量发给报酬，是拘役特有的待遇",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k43-1",
+    "srcs": [
+     "art43#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToCriminalDetention(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "publicSecurityOrgan",
+      "counterparty": null,
+      "content": "executeCriminalDetentionNearby(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被判处拘役的犯罪分子，由公安机关就近执行"
+   },
+   {
+    "key": "k43-2",
+    "srcs": [
+     "art43#2"
+    ],
+    "body": [
+     "sentencedToCriminalDetention(P,X)",
+     "duringExecution(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "goHomeOneOrTwoDaysPerMonth(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "拘役执行期间，犯罪分子每月可以回家一天至两天"
+   },
+   {
+    "key": "k43-3",
+    "srcs": [
+     "art43#2"
+    ],
+    "body": [
+     "sentencedToCriminalDetention(P,X)",
+     "duringExecution(P,X)",
+     "participatesInLabor(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "publicSecurityOrgan",
+      "counterparty": "P",
+      "content": "payDiscretionaryRemuneration(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "拘役执行期间参加劳动的，执行机关可以酌量发给报酬"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "sentencedToCriminalDetention": "sentencedToCriminalDetention(P,X)：P 因犯罪事件 X 被判处拘役",
+   "executeCriminalDetentionNearby": "executeCriminalDetentionNearby(P,X)：就近执行 P 因 X 被判处的拘役",
+   "duringExecution": "duringExecution(P,X)：P 因 X 所受刑罚正处于执行期间",
+   "goHomeOneOrTwoDaysPerMonth": "goHomeOneOrTwoDaysPerMonth(P,X)：P 每月回家一天至两天",
+   "participatesInLabor": "participatesInLabor(P,X)：P 在服刑期间参加劳动",
+   "payDiscretionaryRemuneration": "payDiscretionaryRemuneration(P,X)：对参加劳动的 P 酌量发给报酬"
+  }
+ },
+ "art:44": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "拘役刑期从何时起算，判决执行以前先行羁押的时间如何折抵刑期",
+     "rules": [
+      "k44-1",
+      "k44-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提：行为人因该犯罪被判处拘役",
+     "rules": [
+      "k44-1"
+     ]
+    },
+    {
+     "text": "折抵的前提：判决执行以前已被先行羁押（如刑事拘留、逮捕羁押）",
+     "rules": [
+      "k44-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "拘役的刑期，从判决执行之日起计算",
+     "rules": [
+      "k44-1"
+     ]
+    },
+    {
+     "text": "判决执行以前先行羁押的，羁押一日折抵刑期一日（1:1）",
+     "rules": [
+      "k44-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k44-1",
+    "srcs": [
+     "art44#1"
+    ],
+    "body": [
+     "detentionSentence(P,X)"
+    ],
+    "heads": [
+     "detentionTermStartsFromExecution(P,X)"
+    ],
+    "auth": "npc",
+    "note": "拘役刑期自判决执行之日起计算"
+   },
+   {
+    "key": "k44-2",
+    "srcs": [
+     "art44#1"
+    ],
+    "body": [
+     "detentionSentence(P,X)",
+     "preExecutionCustody(P,X)"
+    ],
+    "heads": [
+     "custodyOneDayOffsetsOneDay(P,X)"
+    ],
+    "auth": "npc",
+    "note": "判决执行以前先行羁押的，羁押一日折抵拘役刑期一日"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "detentionSentence": "detentionSentence(P,X)：P 因犯罪事件 X 被判处拘役",
+   "detentionTermStartsFromExecution": "detentionTermStartsFromExecution(P,X)：P 所受拘役的刑期从判决执行之日起计算",
+   "preExecutionCustody": "preExecutionCustody(P,X)：判决执行以前 P 因该案 X 被先行羁押",
+   "custodyOneDayOffsetsOneDay": "custodyOneDayOffsetsOneDay(P,X)：P 因案 X 先行羁押一日折抵拘役刑期一日"
+  }
+ },
+ "art:45": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "有期徒刑的刑期期限如何确定：一般期限及其例外",
+     "rules": [
+      "k45-range"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "所判处或决定的刑种为有期徒刑",
+     "rules": [
+      "k45-range"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依第50条由死刑缓期执行减为有期徒刑的，适用该条特别期限，不受本条一般期限限制",
+     "rules": [
+      "k45-exc50"
+     ]
+    },
+    {
+     "text": "依第69条数罪并罚决定执行有期徒刑的，适用该条特别规则，不受本条15年上限限制（并罚后最高不超过25年，见第69条）",
+     "rules": [
+      "k45-exc69"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有期徒刑的期限为六个月以上十五年以下",
+     "rules": [
+      "k45-range"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第50条（死缓减刑）、第69条（数罪并罚）属本条明文保留的特别规定，优先于第45条的一般期限",
+     "rules": [
+      "k45-exc50",
+      "k45-exc69"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "有期徒刑下限6个月与拘役上限6个月无缝对接；分则条文只写“处有期徒刑”而未标明最高刑时，默认上限为15年（备考笔记，非本条明文）",
+     "rules": []
+    },
+    {
+     "text": "剥夺自由、由监狱或其他执行场所执行、强制有劳动能力者参加劳动，以及刑期自判决执行之日起计算，分别属第46条、第47条内容，不在本条形式化范围",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k45-range",
+    "srcs": [
+     "art45"
+    ],
+    "body": [
+     "fixedTermImprisonment(T)",
+     "~commutedFromDeathReprieve(T)",
+     "~combinedPunishmentForMultipleCrimes(T)"
+    ],
+    "heads": [
+     "termWithin6MonthsTo15Years(T)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑的期限为六个月以上十五年以下，第50条、第69条另有规定的除外"
+   },
+   {
+    "key": "k45-exc50",
+    "srcs": [
+     "art45"
+    ],
+    "body": [
+     "fixedTermImprisonment(T)",
+     "commutedFromDeathReprieve(T)"
+    ],
+    "heads": [
+     "-termWithin6MonthsTo15Years(T)"
+    ],
+    "auth": "npc",
+    "note": "死缓依第50条减为有期徒刑的，其期限依该条特别规定，不适用本条一般期限"
+   },
+   {
+    "key": "k45-exc69",
+    "srcs": [
+     "art45"
+    ],
+    "body": [
+     "fixedTermImprisonment(T)",
+     "combinedPunishmentForMultipleCrimes(T)"
+    ],
+    "heads": [
+     "-termWithin6MonthsTo15Years(T)"
+    ],
+    "auth": "npc",
+    "note": "数罪并罚决定执行的有期徒刑依第69条确定，不适用本条15年上限（该条另设25年上限）"
+   }
+  ],
+  "overrides": [
+   [
+    "k45-exc50",
+    "k45-range",
+    "推断：结论冲突（('termWithin6MonthsTo15Years', '+')），k45-exc50 为例外或更具体"
+   ],
+   [
+    "k45-exc69",
+    "k45-range",
+    "推断：结论冲突（('termWithin6MonthsTo15Years', '+')），k45-exc69 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "fixedTermImprisonment": "fixedTermImprisonment(T)：T 是有期徒刑（所判处或决定的有期徒刑刑期）",
+   "commutedFromDeathReprieve": "commutedFromDeathReprieve(T)：T 系死刑缓期执行依第50条减为有期徒刑的刑期",
+   "combinedPunishmentForMultipleCrimes": "combinedPunishmentForMultipleCrimes(T)：T 系依第69条数罪并罚决定执行的有期徒刑刑期",
+   "termWithin6MonthsTo15Years": "termWithin6MonthsTo15Years(T)：T 的期限为六个月以上十五年以下"
+  }
+ },
+ "art:46": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被判处有期徒刑、无期徒刑的犯罪分子在何处执行刑罚，是否必须参加劳动、接受教育和改造",
+     "rules": [
+      "k46-place",
+      "k46-labor",
+      "k46-edu"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用对象：经定罪并被判处有期徒刑、无期徒刑的犯罪分子",
+     "rules": [
+      "k46-place"
+     ]
+    },
+    {
+     "text": "参加劳动、接受教育和改造的义务以罪犯有劳动能力为前提（“凡有劳动能力的”）",
+     "rules": [
+      "k46-labor",
+      "k46-edu"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "无劳动能力的罪犯，不承担参加劳动的义务（由“凡有劳动能力的”反面推得）",
+     "rules": [
+      "k46-nolabor"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有期徒刑、无期徒刑在监狱或者其他执行场所执行",
+     "rules": [
+      "k46-place"
+     ]
+    },
+    {
+     "text": "有劳动能力的，应当参加劳动",
+     "rules": [
+      "k46-labor"
+     ]
+    },
+    {
+     "text": "有劳动能力的，应当接受教育和改造",
+     "rules": [
+      "k46-edu"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无劳动能力的例外排除参加劳动义务，但不排除接受教育和改造",
+     "rules": [
+      "k46-nolabor",
+      "k46-labor"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k46-place",
+    "srcs": [
+     "art46#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "convicted(P,X,C)",
+     "sentencedToFixedTermOrLife(P,X)"
+    ],
+    "heads": [
+     "executedInPrisonOrOtherPlace(P,X)"
+    ],
+    "auth": "npc",
+    "note": "被判处有期徒刑、无期徒刑的犯罪分子，在监狱或者其他执行场所执行"
+   },
+   {
+    "key": "k46-labor",
+    "srcs": [
+     "art46#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTermOrLife(P,X)",
+     "hasLaborCapacity(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "participateInLabor(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "凡有劳动能力的服刑罪犯，都应当参加劳动"
+   },
+   {
+    "key": "k46-edu",
+    "srcs": [
+     "art46#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTermOrLife(P,X)",
+     "hasLaborCapacity(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "acceptEducationAndReform(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "服刑罪犯应当接受教育和改造"
+   },
+   {
+    "key": "k46-nolabor",
+    "srcs": [
+     "art46#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTermOrLife(P,X)",
+     "lacksLaborCapacity(P)"
+    ],
+    "heads": [
+     "exemptFromLaborObligation(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "由“凡有劳动能力的”限定反面推得：无劳动能力者免除参加劳动义务（学理推论）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "convicted": "定罪",
+   "sentencedToFixedTermOrLife": "sentencedToFixedTermOrLife(P,X)：P 因犯罪 X 被判处有期徒刑或者无期徒刑",
+   "executedInPrisonOrOtherPlace": "executedInPrisonOrOtherPlace(P,X)：P 因犯罪 X 所判刑罚在监狱或者其他执行场所执行",
+   "hasLaborCapacity": "hasLaborCapacity(P)：P 有劳动能力",
+   "participateInLabor": "participateInLabor(P,X)：P 就其服刑（犯罪 X）参加劳动",
+   "acceptEducationAndReform": "acceptEducationAndReform(P,X)：P 就其服刑（犯罪 X）接受教育和改造",
+   "lacksLaborCapacity": "lacksLaborCapacity(P)：P 无劳动能力",
+   "exemptFromLaborObligation": "exemptFromLaborObligation(P,X)：P 在服刑期间免除参加劳动的义务"
+  }
+ },
+ "art:47": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "有期徒刑的刑期从何时起算，判决执行以前先行羁押的期间如何折抵刑期",
+     "rules": [
+      "k47-1",
+      "k47-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：犯罪分子 P 因犯罪 X 被判处有期徒刑",
+     "rules": [
+      "k47-1"
+     ]
+    },
+    {
+     "text": "折抵前提：判决执行以前 P 已被先行羁押（如刑事拘留、逮捕后的羁押）",
+     "rules": [
+      "k47-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "有期徒刑的刑期，从判决执行之日起计算（而非判决作出或生效之日）",
+     "rules": [
+      "k47-1"
+     ]
+    },
+    {
+     "text": "判决执行以前先行羁押的，羁押一日折抵刑期一日（等量折抵）",
+     "rules": [
+      "k47-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "有期徒刑的期限（6个月以上15年以下，数罪并罚时最高不超过25年）、执行场所（监狱或其他执行场所）以及强制有劳动能力者参加劳动等内容，分别由第45条、第46条、第69条规定；本条仅解决刑期起算与先行羁押折抵，笔记中的上述特征不在本条形式化范围内",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k47-1",
+    "srcs": [
+     "art47"
+    ],
+    "body": [
+     "sentencedToFixedTerm(P,X)"
+    ],
+    "heads": [
+     "termStartsFromExecutionDate(P,X)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑的刑期从判决执行之日起计算"
+   },
+   {
+    "key": "k47-2",
+    "srcs": [
+     "art47"
+    ],
+    "body": [
+     "sentencedToFixedTerm(P,X)",
+     "detainedBeforeExecution(P,X)"
+    ],
+    "heads": [
+     "detentionDayOffsetsTermDay(P,X)"
+    ],
+    "auth": "npc",
+    "note": "判决执行以前先行羁押的，羁押一日折抵有期徒刑刑期一日"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToFixedTerm": "sentencedToFixedTerm(P,X)：P 因犯罪 X 被判处有期徒刑",
+   "termStartsFromExecutionDate": "termStartsFromExecutionDate(P,X)：P 就犯罪 X 所判有期徒刑的刑期自判决执行之日起计算",
+   "detainedBeforeExecution": "detainedBeforeExecution(P,X)：判决执行以前 P 因该案 X 已被先行羁押",
+   "detentionDayOffsetsTermDay": "detentionDayOffsetsTermDay(P,X)：P 就犯罪 X 判决执行前的羁押一日折抵有期徒刑刑期一日"
+  }
+ },
+ "art:48": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "死刑（含死刑缓期二年执行）的适用条件与判决、核准权限",
+     "rules": [
+      "k48-1",
+      "k48-2",
+      "k48-3",
+      "k48-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "死刑只适用于罪行极其严重的犯罪分子；罪行不极其严重的，不得判处死刑，也不得判处死缓",
+     "rules": [
+      "k48-1"
+     ]
+    },
+    {
+     "text": "适用死缓以“应当判处死刑”为前提，且不属于必须立即执行的情形",
+     "rules": [
+      "k48-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "应当判处死刑但不是必须立即执行的，可以判处死刑同时宣告缓期二年执行",
+     "rules": [
+      "k48-2"
+     ]
+    },
+    {
+     "text": "依法由最高人民法院判决的死刑案件，不必再报请最高人民法院核准",
+     "rules": [
+      "k48-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "死刑（立即执行）除依法由最高人民法院判决的以外，都应当报请最高人民法院核准",
+     "rules": [
+      "k48-3"
+     ]
+    },
+    {
+     "text": "死刑缓期执行的，可以由高级人民法院判决或者核准",
+     "rules": [
+      "k48-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "死缓的判决、核准适用高级人民法院的特别规定，排除死刑立即执行一律报请最高人民法院核准的要求",
+     "rules": [
+      "k48-4",
+      "k48-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "死缓不是独立刑种，而是死刑的执行制度，与第72条对拘役、三年以下有期徒刑宣告的缓刑性质不同；死缓考验期满后的减刑或执行死刑，依第50条处理（本行不挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k48-1",
+    "srcs": [
+     "art48#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "~extremelySeriousCrime(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,death)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathWithReprieve)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死刑只适用于罪行极其严重的犯罪分子；罪行不极其严重的不得判处死刑（death）或死缓（deathWithReprieve）"
+   },
+   {
+    "key": "k48-2",
+    "srcs": [
+     "art48#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "deathPenaltyDeserved(P,X)",
+     "~immediateExecutionNecessary(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathWithReprieve)"
+     }
+    ],
+    "auth": "npc",
+    "note": "应当判处死刑但不是必须立即执行的，可以判处死刑同时宣告缓期二年执行（deathWithReprieve＝死缓）"
+   },
+   {
+    "key": "k48-3",
+    "srcs": [
+     "art48#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "deathSentenceImposed(P,X)",
+     "~judgedBySupremePeopleCourt(X)",
+     "~deathWithReprieveImposed(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "supremePeopleCourt",
+      "content": "reportForApproval(P,X,death)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死刑除依法由最高人民法院判决的以外，都应当报请最高人民法院核准"
+   },
+   {
+    "key": "k48-4",
+    "srcs": [
+     "art48#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "deathWithReprieveImposed(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "highPeopleCourt",
+      "counterparty": null,
+      "content": "judgeOrApprove(P,X,deathWithReprieve)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死刑缓期执行的，可以由高级人民法院判决或者核准"
+   }
+  ],
+  "overrides": [
+   [
+    "k48-2",
+    "k48-1",
+    "推断：结论冲突（('sentence', 'FOR')），k48-2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "extremelySeriousCrime": "extremelySeriousCrime(X)：犯罪事件 X 的罪行极其严重",
+   "sentence": "量刑",
+   "deathPenaltyDeserved": "deathPenaltyDeserved(P,X)：对 P 所实施的犯罪 X 应当判处死刑",
+   "immediateExecutionNecessary": "immediateExecutionNecessary(P,X)：对 P 就犯罪 X 判处的死刑必须立即执行",
+   "deathSentenceImposed": "deathSentenceImposed(P,X)：已对 P 就犯罪 X 判处死刑（含立即执行与缓期二年执行）",
+   "judgedBySupremePeopleCourt": "judgedBySupremePeopleCourt(X)：案件 X 依法由最高人民法院判决",
+   "deathWithReprieveImposed": "deathWithReprieveImposed(P,X)：已对 P 就犯罪 X 判处死刑同时宣告缓期二年执行",
+   "reportForApproval": "reportForApproval(P,X,S)：就 P 的犯罪 X 所判处的刑罚 S 报请上级法院核准",
+   "judgeOrApprove": "judgeOrApprove(P,X,S)：对 P 的犯罪 X 所适用的刑罚 S 作出判决或者予以核准"
+  }
+ },
+ "art:49": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对犯罪时不满十八周岁的人、审判时怀孕的妇女、审判时已满七十五周岁的人，能否适用死刑",
+     "rules": [
+      "k49-1",
+      "k49-2",
+      "k49-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "犯罪的时候不满十八周岁：以实施犯罪行为时的实际年龄为准，审判时已成年不影响",
+     "rules": [
+      "k49-1"
+     ]
+    },
+    {
+     "text": "审判的时候怀孕的妇女：以审判时的状态为准",
+     "rules": [
+      "k49-2"
+     ]
+    },
+    {
+     "text": "审判的时候已满七十五周岁：以审判时的年龄为准",
+     "rules": [
+      "k49-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "审判时已满七十五周岁，但以特别残忍手段致人死亡的，不受不适用死刑的限制，可以判处死刑",
+     "rules": [
+      "k49-4"
+     ]
+    },
+    {
+     "text": "羁押期间怀孕而后自然流产或人工流产的，仍视为审判的时候怀孕的妇女（学理与司法解释通说，非法条明文）",
+     "rules": [
+      "k49-preg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "犯罪时不满十八周岁的人、审判时怀孕的妇女，一律不适用死刑，法院不得判处死刑",
+     "rules": [
+      "k49-1",
+      "k49-2"
+     ]
+    },
+    {
+     "text": "审判时已满七十五周岁的人，原则上不适用死刑，法院不得判处死刑",
+     "rules": [
+      "k49-3"
+     ]
+    },
+    {
+     "text": "“不适用死刑”既排除死刑立即执行，也排除死刑缓期二年执行（学理与司法解释）",
+     "rules": [
+      "k49-reprieve"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款但书（以特别残忍手段致人死亡）优先于同款“审判时已满七十五周岁不适用死刑”的原则",
+     "rules": [
+      "k49-4",
+      "k49-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "年龄节点区分：未成年人看“犯罪的时候”，怀孕与已满七十五周岁看“审判的时候”；前两类无任何例外，第七十五周岁一类有但书例外",
+     "rules": [
+      "k49-1",
+      "k49-2",
+      "k49-3",
+      "k49-4"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k49-1",
+    "srcs": [
+     "art49#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "under18AtCrime(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,death)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯罪的时候不满十八周岁的人不适用死刑（death=死刑，新增量刑方式常量）"
+   },
+   {
+    "key": "k49-2",
+    "srcs": [
+     "art49#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "pregnantAtTrial(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,death)"
+     }
+    ],
+    "auth": "npc",
+    "note": "审判的时候怀孕的妇女不适用死刑"
+   },
+   {
+    "key": "k49-3",
+    "srcs": [
+     "art49#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "age75PlusAtTrial(P)",
+     "~especiallyCruelMeansCausingDeath(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,death)"
+     }
+    ],
+    "auth": "npc",
+    "note": "审判的时候已满七十五周岁的人不适用死刑，但以特别残忍手段致人死亡的除外"
+   },
+   {
+    "key": "k49-4",
+    "srcs": [
+     "art49#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "age75PlusAtTrial(P)",
+     "especiallyCruelMeansCausingDeath(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,death)"
+     }
+    ],
+    "auth": "npc",
+    "note": "但书：审判时已满七十五周岁但以特别残忍手段致人死亡的，可以适用死刑"
+   },
+   {
+    "key": "k49-preg",
+    "srcs": [
+     "art49#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "pregnantDuringDetention(P)",
+     "miscarriageOrAbortionDuringDetention(P)"
+    ],
+    "heads": [
+     "pregnantAtTrial(P)"
+    ],
+    "auth": "doctrine",
+    "note": "羁押期间怀孕后流产的仍视为审判时怀孕的妇女，来自司法解释与学理通说，法条未明文"
+   },
+   {
+    "key": "k49-reprieve",
+    "srcs": [
+     "art49"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "under18AtCrime(P,X)",
+       "pregnantAtTrial(P)",
+       "age75PlusAtTrial(P) ~especiallyCruelMeansCausingDeath(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathWithReprieve)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理与司法解释：不适用死刑包括死缓（deathWithReprieve=死刑缓期二年执行，新增量刑方式常量），法条未明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k49-4",
+    "k49-1",
+    "推断：结论冲突（('sentence', 'FOR')），k49-4 为例外或更具体"
+   ],
+   [
+    "k49-4",
+    "k49-2",
+    "推断：结论冲突（('sentence', 'FOR')），k49-4 为例外或更具体"
+   ],
+   [
+    "k49-4",
+    "k49-3",
+    "推断：结论冲突（('sentence', 'FOR')），k49-4 为例外或更具体"
+   ],
+   [
+    "k49-4",
+    "k49-reprieve",
+    "推断：结论冲突（('sentence', 'PERM')），k49-4 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "under18AtCrime": "under18AtCrime(P,X)：P 实施犯罪 X 的时候不满十八周岁",
+   "sentence": "量刑",
+   "pregnantAtTrial": "pregnantAtTrial(P)：P 在审判的时候是怀孕的妇女",
+   "age75PlusAtTrial": "age75PlusAtTrial(P)：P 在审判的时候已满七十五周岁",
+   "especiallyCruelMeansCausingDeath": "especiallyCruelMeansCausingDeath(P,X)：P 在犯罪 X 中以特别残忍手段致人死亡",
+   "pregnantDuringDetention": "pregnantDuringDetention(P)：P 在羁押期间曾怀孕",
+   "miscarriageOrAbortionDuringDetention": "miscarriageOrAbortionDuringDetention(P)：P 在羁押期间自然流产或人工流产"
+  }
+ },
+ "art:50": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "死刑缓期执行考验期满后的处理：减为无期徒刑、减为二十五年有期徒刑、报请核准执行死刑，还是重新计算死缓期间",
+     "rules": [
+      "k50-1",
+      "k50-2",
+      "k50-3",
+      "k50-3b",
+      "k50-4a",
+      "k50-4b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提：因犯罪被判处死刑缓期二年执行；减为无期徒刑或二十五年有期徒刑均以二年缓期执行期间届满为条件",
+     "rules": [
+      "k50-1",
+      "k50-2"
+     ]
+    },
+    {
+     "text": "限制减刑的对象：被判死缓的累犯，以及因故意杀人、强奸、抢劫、绑架、放火、爆炸、投放危险物质或者有组织的暴力性犯罪被判死缓的犯罪分子",
+     "rules": [
+      "k50-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "死缓期间故意犯罪且情节恶劣的，不予减刑，报请最高人民法院核准后执行死刑",
+     "rules": [
+      "k50-3",
+      "k50-3b"
+     ]
+    },
+    {
+     "text": "死缓期间故意犯罪但未执行死刑的（如情节不恶劣或未获核准），原二年期间不作减刑处理，死缓期间重新计算",
+     "rules": [
+      "k50-4a"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "死缓期间没有故意犯罪的，二年期满以后减为无期徒刑",
+     "rules": [
+      "k50-1"
+     ]
+    },
+    {
+     "text": "死缓期间确有重大立功表现的，二年期满以后减为二十五年有期徒刑",
+     "rules": [
+      "k50-2"
+     ]
+    },
+    {
+     "text": "故意犯罪情节恶劣的，经最高人民法院核准后执行死刑",
+     "rules": [
+      "k50-3b"
+     ]
+    },
+    {
+     "text": "故意犯罪未执行死刑的，死刑缓期执行的期间重新计算，并报最高人民法院备案",
+     "rules": [
+      "k50-4a",
+      "k50-4b"
+     ]
+    },
+    {
+     "text": "对特定死缓犯，人民法院根据犯罪情节等情况可以在判处死缓的同时决定限制减刑（裁量性，非必须）",
+     "rules": [
+      "k50-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "确有重大立功表现的，优先适用减为二十五年有期徒刑，而非一般减为无期徒刑",
+     "rules": [
+      "k50-2",
+      "k50-1"
+     ]
+    },
+    {
+     "text": "时间效力：被判死缓的犯罪分子在死缓期间、且于2015年10月31日以前故意犯罪的，适用修正后刑法第50条第1款（须情节恶劣并经核准才执行死刑）",
+     "rules": [
+      "k50-time"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "限制减刑不等于不得减刑，只是限制其减刑后的实际执行刑期；其对象范围与不得假释的暴力性犯罪列举一致，但法律效果不同",
+     "rules": [
+      "k50-5"
+     ]
+    },
+    {
+     "text": "死缓期满减为无期徒刑或二十五年有期徒刑属于死缓的法定变更，与第78条的一般减刑（可以减刑）性质不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k50-1",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "reprievePeriodExpired(P,X)",
+     "~intentionalCrimeInReprieve(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,life)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死缓期间没有故意犯罪的，二年期满后减为无期徒刑（量刑方式常量 life=无期徒刑）"
+   },
+   {
+    "key": "k50-2",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "reprievePeriodExpired(P,X)",
+     "majorMeritoriousService(P)",
+     "~intentionalCrimeInReprieve(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,y25)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死缓期间确有重大立功表现的，二年期满后减为二十五年有期徒刑（y25=二十五年有期徒刑）"
+   },
+   {
+    "key": "k50-3",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "intentionalCrimeInReprieve(P)",
+     "heinousInReprieve(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "requestExecutionApproval(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死缓期间故意犯罪、情节恶劣的，应当报请最高人民法院核准执行死刑"
+   },
+   {
+    "key": "k50-3b",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "intentionalCrimeInReprieve(P)",
+     "heinousInReprieve(P)",
+     "supremeCourtApprovedExecution(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeDeathPenalty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "经最高人民法院核准后，对死缓期间故意犯罪情节恶劣者执行死刑"
+   },
+   {
+    "key": "k50-4a",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "intentionalCrimeInReprieve(P)",
+     "-deathPenaltyExecuted(P,X)"
+    ],
+    "heads": [
+     "reprievePeriodRestarted(P,X)"
+    ],
+    "auth": "npc",
+    "note": "故意犯罪但未执行死刑的，死刑缓期执行的二年期间重新计算"
+   },
+   {
+    "key": "k50-4b",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "intentionalCrimeInReprieve(P)",
+     "-deathPenaltyExecuted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fileWithSupremeCourt(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "故意犯罪未执行死刑而重新计算死缓期间的，应当报最高人民法院备案"
+   },
+   {
+    "key": "k50-5",
+    "srcs": [
+     "art50#2"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     {
+      "or": [
+       "recidivist(P,X)",
+       "violentListedCrime(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "restrictCommutation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对死缓累犯及因故意杀人、强奸、抢劫、绑架、放火、爆炸、投放危险物质或有组织的暴力性犯罪被判死缓者，法院根据犯罪情节等情况可以同时决定限制减刑"
+   },
+   {
+    "key": "k50-time",
+    "srcs": [
+     "art50#1"
+    ],
+    "body": [
+     "deathWithReprieve(P,X)",
+     "intentionalCrimeInReprieveBefore20151031(P,X)"
+    ],
+    "heads": [
+     "applyRevisedArt50Para1(P,X)"
+    ],
+    "auth": "spc",
+    "note": "来自《最高人民法院关于刑法修正案(九)时间效力问题的解释》：死缓期间于2015年10月31日以前故意犯罪的，适用修正后第50条第1款（须情节恶劣），故 auth 为 spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deathWithReprieve": "deathWithReprieve(P,X)：P 因犯罪 X 被判处死刑缓期二年执行",
+   "reprievePeriodExpired": "reprievePeriodExpired(P,X)：P 因犯罪 X 所判死刑缓期执行的二年期间已满",
+   "intentionalCrimeInReprieve": "intentionalCrimeInReprieve(P)：P 在死刑缓期执行期间故意犯罪",
+   "sentence": "量刑",
+   "majorMeritoriousService": "重大立功",
+   "heinousInReprieve": "heinousInReprieve(P)：P 在死刑缓期执行期间所犯故意犯罪情节恶劣",
+   "requestExecutionApproval": "requestExecutionApproval(P,X)：报请最高人民法院核准对 P 执行死刑",
+   "supremeCourtApprovedExecution": "supremeCourtApprovedExecution(P,X)：最高人民法院已核准对 P 因犯罪 X 执行死刑",
+   "executeDeathPenalty": "executeDeathPenalty(P,X)：对 P 执行死刑",
+   "deathPenaltyExecuted": "deathPenaltyExecuted(P,X)：对 P 因犯罪 X 已执行死刑",
+   "reprievePeriodRestarted": "reprievePeriodRestarted(P,X)：P 因犯罪 X 的死刑缓期执行期间重新计算",
+   "fileWithSupremeCourt": "fileWithSupremeCourt(P,X)：将 P 的死缓期间重新计算情况报最高人民法院备案",
+   "recidivist": "累犯",
+   "violentListedCrime": "故意杀人、强奸、抢劫等暴力性犯罪",
+   "restrictCommutation": "restrictCommutation(P,X)：对 P 决定限制减刑",
+   "intentionalCrimeInReprieveBefore20151031": "intentionalCrimeInReprieveBefore20151031(P,X)：P 在死刑缓期执行期间且于2015年10月31日以前故意犯罪",
+   "applyRevisedArt50Para1": "applyRevisedArt50Para1(P,X)：对 P 适用修正后刑法第50条第1款的规定处理"
+  }
+ },
+ "art:51": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "死刑缓期执行的期间从何时起算；死缓减为有期徒刑后，有期徒刑的刑期从何时起算",
+     "rules": [
+      "k51-1",
+      "k51-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "判决对犯罪人判处死刑缓期二年执行，且该判决已经确定（生效）",
+     "rules": [
+      "k51-1"
+     ]
+    },
+    {
+     "text": "死刑缓期执行依法减为有期徒刑，且死刑缓期执行期间已经期满",
+     "rules": [
+      "k51-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "（学理与执行实务）判决确定前的先行羁押日期，既不折抵死缓考验期，也不折抵减为有期徒刑后的刑期",
+     "rules": [
+      "k51-nocredit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "死刑缓期执行的期间，从判决确定之日起计算",
+     "rules": [
+      "k51-1"
+     ]
+    },
+    {
+     "text": "死刑缓期执行减为有期徒刑的刑期，从死刑缓期执行期满之日起计算",
+     "rules": [
+      "k51-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "管制、拘役、有期徒刑的刑期一般从判决执行之日起计算并折抵先行羁押；死缓考验期从判决确定之日起算，减为有期徒刑后从死缓期满之日起算，二者起算点与折抵规则均不同",
+     "rules": [
+      "k51-1",
+      "k51-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k51-1",
+    "srcs": [
+     "art51"
+    ],
+    "body": [
+     "deathWithReprieve(P,J)",
+     "judgmentFinalDate(J,D)"
+    ],
+    "heads": [
+     "reprievePeriodStart(P,D)"
+    ],
+    "auth": "npc",
+    "note": "死刑缓期执行的期间自判决确定之日D起计算"
+   },
+   {
+    "key": "k51-2",
+    "srcs": [
+     "art51"
+    ],
+    "body": [
+     "deathWithReprieve(P,J)",
+     "commutedToFixedTerm(P,J)",
+     "reprievePeriodEndDate(P,D)"
+    ],
+    "heads": [
+     "fixedTermStart(P,D)"
+    ],
+    "auth": "npc",
+    "note": "死缓减为有期徒刑的，有期徒刑刑期自死缓执行期满之日D起计算"
+   },
+   {
+    "key": "k51-nocredit",
+    "srcs": [
+     "art51"
+    ],
+    "body": [
+     "deathWithReprieve(P,J)",
+     "commutedToFixedTerm(P,J)",
+     "preTrialDetention(P,D)"
+    ],
+    "heads": [
+     "-creditDetentionToFixedTerm(P,D)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与执行实务：因起算点法定为判决确定之日／死缓期满之日，判决确定前的先行羁押不折抵死缓考验期与减刑后的有期徒刑刑期；本条未明文，属学理推论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deathWithReprieve": "deathWithReprieve(P,X)：P 因犯罪 X 被判处死刑缓期二年执行",
+   "judgmentFinalDate": "judgmentFinalDate(J,D)：判决J于D日确定（生效）",
+   "reprievePeriodStart": "reprievePeriodStart(P,D)：P的死刑缓期执行期间自D日起计算",
+   "commutedToFixedTerm": "commutedToFixedTerm(P,J)：依判决J对P的死刑缓期执行依法减为有期徒刑",
+   "reprievePeriodEndDate": "reprievePeriodEndDate(P,D)：P的死刑缓期执行期间于D日期满",
+   "fixedTermStart": "fixedTermStart(P,D)：P减为有期徒刑后的刑期自D日起计算",
+   "preTrialDetention": "preTrialDetention(P,D)：P在判决确定前于D日被先行羁押",
+   "creditDetentionToFixedTerm": "creditDetentionToFixedTerm(P,D)：P先行羁押的D日折抵减为有期徒刑后的刑期"
+  }
+ },
+ "art:52": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "判处罚金时，罚金数额依据什么确定",
+     "rules": [
+      "k52-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为构成犯罪并已被定罪，依法对犯罪人判处罚金",
+     "rules": [
+      "k52-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "人民法院应当根据犯罪情节（犯罪事实、性质、情节及危害程度等）决定罚金数额，不得任意裁量",
+     "rules": [
+      "k52-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条只规定罚金数额的裁量根据（犯罪情节），罚金的适用方式（并处、单处）及缴纳、减免由其他条文规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k52-1",
+    "srcs": [
+     "art52#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "convicted(P,X,C)",
+     "fineImposed(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineFineAmountByCircumstances(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处罚金的，法院应当根据犯罪情节决定罚金数额"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "convicted": "定罪",
+   "fineImposed": "fineImposed(P,X)：对P所犯之罪X判处罚金（罚金刑的适用）",
+   "determineFineAmountByCircumstances": "determineFineAmountByCircumstances(P,X)：根据犯罪情节决定对P的犯罪X所判罚金的数额"
+  }
+ },
+ "art:53": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "罚金的缴纳方式与期限、期满不缴纳的强制缴纳、不能全部缴纳时的随时追缴，以及缴纳确实困难时的延期、酌减或免除",
+     "rules": [
+      "k53-1",
+      "k53-2",
+      "k53-3",
+      "k53-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被判处罚金，且判决为该罚金指定了缴纳期限",
+     "rules": [
+      "k53-1"
+     ]
+    },
+    {
+     "text": "判决指定的缴纳期限届满而被执行人不缴纳罚金",
+     "rules": [
+      "k53-2"
+     ]
+    },
+    {
+     "text": "被执行人不能全部缴纳罚金，人民法院在任何时候发现其有可以执行的财产",
+     "rules": [
+      "k53-3"
+     ]
+    },
+    {
+     "text": "由于遭遇不能抗拒的灾祸等原因缴纳罚金确实有困难，并经人民法院裁定",
+     "rules": [
+      "k53-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "遭遇不能抗拒的灾祸等原因致缴纳确实有困难的，经人民法院裁定，可以延期缴纳、酌情减少或者免除，不受原判缴纳期限与全额缴纳的限制",
+     "rules": [
+      "k53-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "罚金应当在判决指定的期限内一次或者分期缴纳",
+     "rules": [
+      "k53-1"
+     ]
+    },
+    {
+     "text": "期满不缴纳的，人民法院强制缴纳",
+     "rules": [
+      "k53-2"
+     ]
+    },
+    {
+     "text": "不能全部缴纳的，人民法院发现可执行财产时应当随时追缴，不受时间限制",
+     "rules": [
+      "k53-3"
+     ]
+    },
+    {
+     "text": "经裁定可以延期缴纳、酌情减少或者免除罚金",
+     "rules": [
+      "k53-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款的延期、酌减、免除裁定优先于第1款按期缴纳义务及期满强制缴纳、随时追缴",
+     "rules": [
+      "k53-4",
+      "k53-1",
+      "k53-2",
+      "k53-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "强制缴纳针对期限届满而不缴纳；随时追缴针对客观上不能全部缴纳，且可在任何时候发现财产时进行",
+     "rules": [
+      "k53-2",
+      "k53-3"
+     ]
+    },
+    {
+     "text": "延期、减少、免除须以人民法院裁定为要件，灾祸与缴纳困难本身不自动免除罚金",
+     "rules": [
+      "k53-4"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k53-1",
+    "srcs": [
+     "art53#1"
+    ],
+    "body": [
+     "sentencedToFine(P,F)",
+     "judgmentSpecifiedPeriod(F,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "payFineInPeriod(P,F,T)"
+     }
+    ],
+    "auth": "npc",
+    "note": "罚金应在判决指定的期限内一次或者分期缴纳"
+   },
+   {
+    "key": "k53-2",
+    "srcs": [
+     "art53#1"
+    ],
+    "body": [
+     "sentencedToFine(P,F)",
+     "judgmentSpecifiedPeriod(F,T)",
+     "periodExpired(T)",
+     "failedToPayFine(P,F)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "P",
+      "content": "compelFinePayment(P,F)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判决指定期限届满不缴纳罚金的，人民法院强制缴纳"
+   },
+   {
+    "key": "k53-3",
+    "srcs": [
+     "art53#1"
+    ],
+    "body": [
+     "sentencedToFine(P,F)",
+     "unableToPayInFull(P,F)",
+     "discoversExecutableProperty(court,P,Pr)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "P",
+      "content": "recoverFineAtAnyTime(P,F,Pr)"
+     }
+    ],
+    "auth": "npc",
+    "note": "不能全部缴纳罚金的，法院任何时候发现可执行财产都应随时追缴"
+   },
+   {
+    "key": "k53-4",
+    "srcs": [
+     "art53#2"
+    ],
+    "body": [
+     "sentencedToFine(P,F)",
+     "encounteredIrresistibleDisaster(P)",
+     "genuineDifficultyInPayment(P,F)",
+     "courtRulingForFineRelief(P,F)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": "P",
+      "content": "deferReduceOrExemptFine(P,F)"
+     }
+    ],
+    "auth": "npc",
+    "note": "因不能抗拒的灾祸等原因缴纳确实有困难，经法院裁定可延期缴纳、酌情减少或免除"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToFine": "sentencedToFine(P,F)：P 被判处罚金 F",
+   "judgmentSpecifiedPeriod": "judgmentSpecifiedPeriod(F,T)：判决为罚金 F 指定了缴纳期限 T",
+   "payFineInPeriod": "payFineInPeriod(P,F,T)：P 在期限 T 内一次或者分期缴纳罚金 F",
+   "periodExpired": "periodExpired(T)：期限 T 已经届满",
+   "failedToPayFine": "failedToPayFine(P,F)：P 未缴纳罚金 F",
+   "compelFinePayment": "compelFinePayment(P,F)：对 P 强制缴纳罚金 F",
+   "unableToPayInFull": "unableToPayInFull(P,F)：P 不能全部缴纳罚金 F",
+   "discoversExecutableProperty": "discoversExecutableProperty(court,P,Pr)：人民法院发现被执行人 P 有可以执行的财产 Pr",
+   "recoverFineAtAnyTime": "recoverFineAtAnyTime(P,F,Pr)：就财产 Pr 随时追缴 P 未缴清的罚金 F",
+   "encounteredIrresistibleDisaster": "encounteredIrresistibleDisaster(P)：P 遭遇不能抗拒的灾祸等原因",
+   "genuineDifficultyInPayment": "genuineDifficultyInPayment(P,F)：P 缴纳罚金 F 确实有困难",
+   "courtRulingForFineRelief": "courtRulingForFineRelief(P,F)：人民法院就 P 的罚金 F 作出延期、减少或免除的裁定",
+   "deferReduceOrExemptFine": "deferReduceOrExemptFine(P,F)：对 P 的罚金 F 延期缴纳、酌情减少或者免除"
+  }
+ },
+ "art:54": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "剥夺政治权利的内容：被判处剥夺政治权利的人丧失哪些权利（选举权与被选举权、六项政治自由、担任国家机关职务、担任国有单位领导职务）",
+     "rules": [
+      "k54-1",
+      "k54-2",
+      "k54-3",
+      "k54-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提：P 被判处剥夺政治权利（附加适用或独立适用），本条只界定该刑罚所剥夺的权利范围",
+     "rules": [
+      "k54-1",
+      "k54-2",
+      "k54-3",
+      "k54-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "剥夺选举权和被选举权",
+     "rules": [
+      "k54-1"
+     ]
+    },
+    {
+     "text": "剥夺言论、出版、集会、结社、游行、示威自由的权利",
+     "rules": [
+      "k54-2"
+     ]
+    },
+    {
+     "text": "剥夺担任国家机关职务的权利（不限于领导职务）",
+     "rules": [
+      "k54-3"
+     ]
+    },
+    {
+     "text": "剥夺担任国有公司、企业、事业单位和人民团体领导职务的权利",
+     "rules": [
+      "k54-4"
+     ]
+    },
+    {
+     "text": "执行期间（笔记内容，实为第58条第2款）：应遵守法律、行政法规和国务院公安部门有关监督管理的规定，服从监督，并不得行使第54条规定的各项权利",
+     "rules": [
+      "k54-exec"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "国家机关职务：任何职务均被剥夺；国有公司、企业、事业单位和人民团体：仅剥夺领导职务，一般职务不在本条剥夺之列",
+     "rules": [
+      "k54-3",
+      "k54-4"
+     ]
+    },
+    {
+     "text": "本条是资格刑内容的界定条款，不涉及剥夺政治权利的适用对象、期限与刑期计算（分别见第56、55、57、58条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k54-1",
+    "srcs": [
+     "art54"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P)"
+    ],
+    "heads": [
+     "-enjoysRight(P,voteAndStandForElection)"
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利包括剥夺选举权和被选举权"
+   },
+   {
+    "key": "k54-2",
+    "srcs": [
+     "art54"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P)"
+    ],
+    "heads": [
+     "-enjoysRight(P,freedomOfSpeech)",
+     "-enjoysRight(P,freedomOfPress)",
+     "-enjoysRight(P,freedomOfAssembly)",
+     "-enjoysRight(P,freedomOfAssociation)",
+     "-enjoysRight(P,freedomOfProcession)",
+     "-enjoysRight(P,freedomOfDemonstration)"
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利包括剥夺言论、出版、集会、结社、游行、示威自由的权利"
+   },
+   {
+    "key": "k54-3",
+    "srcs": [
+     "art54"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P)"
+    ],
+    "heads": [
+     "-enjoysRight(P,holdStateOrganPosition)"
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利包括剥夺担任国家机关职务的权利，不限于领导职务"
+   },
+   {
+    "key": "k54-4",
+    "srcs": [
+     "art54"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P)"
+    ],
+    "heads": [
+     "-enjoysRight(P,holdLeadingPositionInStateOwnedUnit)"
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利包括剥夺担任国有公司、企业、事业单位和人民团体领导职务的权利，一般职务不在其列"
+   },
+   {
+    "key": "k54-exec",
+    "srcs": [
+     "art54"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P)",
+     "duringExecutionOfPenalty(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "abideByLawsAndSupervisionRegulations(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "submitToSupervision(P)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exerciseRightsUnderArt54(P)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "执行期间应遵守法律、行政法规和国务院公安部门监督管理规定、服从监督并不得行使第54条各项权利；该内容出自备考笔记（实为第58条第2款），本条未规定，故按学理/笔记处理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deprivationOfPoliticalRights": "deprivationOfPoliticalRights(P)：P 被判处剥夺政治权利（附加适用或独立适用）",
+   "enjoysRight": "enjoysRight(P,R)：P 享有权利 R（R 为权利常量：voteAndStandForElection 选举权和被选举权、freedomOfSpeech 言论自由、freedomOfPress 出版自由、freedomOfAssembly 集会自由、freedomOfAssociation 结社自由、freedomOfProcession 游行自由、freedomOfDemonstration 示威自由、holdStateOrganPosition 担任国家机关职务、holdLeadingPositionInStateOwnedUnit 担任国有公司企业事业单位和人民团体领导职务）",
+   "duringExecutionOfPenalty": "duringExecutionOfPenalty(P)：P 处于剥夺政治权利的执行期间",
+   "abideByLawsAndSupervisionRegulations": "abideByLawsAndSupervisionRegulations(P)：P 遵守法律、行政法规和国务院公安部门有关监督管理的规定",
+   "submitToSupervision": "submitToSupervision(P)：P服从监督",
+   "exerciseRightsUnderArt54": "exerciseRightsUnderArt54(P)：P 行使刑法第54条规定的各项政治权利"
+  }
+ },
+ "art:55": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "剥夺政治权利的期限如何确定：一般期限、判处管制附加剥夺政治权利时的期限与执行方式",
+     "rules": [
+      "k55-1",
+      "k55-2",
+      "k55-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对犯罪分子判处剥夺政治权利（独立适用或附加适用），且不属于本法第57条规定的情形",
+     "rules": [
+      "k55-1"
+     ]
+    },
+    {
+     "text": "判处管制并附加剥夺政治权利，且已确定管制期限",
+     "rules": [
+      "k55-2",
+      "k55-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本法第57条规定的情形（判处死刑、无期徒刑的剥夺政治权利终身等）除外，不适用一年以上五年以下的一般期限",
+     "rules": [
+      "k55-1"
+     ]
+    },
+    {
+     "text": "判处管制附加剥夺政治权利的，期限不受一年以上五年以下的限制，而与管制期限相等",
+     "rules": [
+      "k55-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "一般期限：剥夺政治权利的期限为一年以上五年以下",
+     "rules": [
+      "k55-1"
+     ]
+    },
+    {
+     "text": "判处管制附加剥夺政治权利的，剥夺政治权利的期限与管制的期限相等",
+     "rules": [
+      "k55-2"
+     ]
+    },
+    {
+     "text": "管制与附加的剥夺政治权利同时执行",
+     "rules": [
+      "k55-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第55条第2款（管制附加剥夺政治权利）是特别规定，优先于第1款的一般期限；第57条的终身剥夺政治权利亦排除第1款一般期限的适用",
+     "rules": [
+      "k55-2",
+      "k55-1"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k55-1",
+    "srcs": [
+     "art55#1"
+    ],
+    "body": [
+     "deprivationOfPoliticalRights(P,X)",
+     "~lifetimeDeprivationUnderArt57(P,X)",
+     "~sentencedToControl(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeDeprivationTerm(P,X,from1to5Years)"
+     }
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利的期限一般为一年以上五年以下（from1to5Years 表示一年以上五年以下），本法第57条规定的情形除外"
+   },
+   {
+    "key": "k55-2",
+    "srcs": [
+     "art55#2"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "deprivationOfPoliticalRights(P,X)",
+     "controlTerm(P,X,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeDeprivationTerm(P,X,T)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处管制附加剥夺政治权利的，剥夺政治权利的期限与管制期限T相等"
+   },
+   {
+    "key": "k55-3",
+    "srcs": [
+     "art55#2"
+    ],
+    "body": [
+     "sentencedToControl(P,X)",
+     "deprivationOfPoliticalRights(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeControlAndDeprivationSimultaneously(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处管制附加剥夺政治权利的，管制与剥夺政治权利同时执行"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deprivationOfPoliticalRights": "deprivationOfPoliticalRights(P)：P 被判处剥夺政治权利（附加适用或独立适用）",
+   "lifetimeDeprivationUnderArt57": "lifetimeDeprivationUnderArt57(P,X)：属于本法第57条规定的剥夺政治权利终身等情形",
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "imposeDeprivationTerm": "imposeDeprivationTerm(P,X,T)：对P就犯罪X判处期限为T的剥夺政治权利",
+   "controlTerm": "controlTerm(P,X,T)：P因犯罪X被判处的管制期限为T",
+   "executeControlAndDeprivationSimultaneously": "executeControlAndDeprivationSimultaneously(P,X)：对P就犯罪X所判管制与附加剥夺政治权利同时执行"
+  },
+  "arity_conflict": "谓词 deprivationOfPoliticalRights 已有用法为 1 个参数，这里用了 2 个"
+ },
+ "art:56": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "剥夺政治权利的适用对象与适用方式：对哪些犯罪分子应当附加、可以附加，以及能否独立适用",
+     "rules": [
+      "k56-1",
+      "k56-2",
+      "k56-3",
+      "k56-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "附加适用的两类对象：①危害国家安全的犯罪分子；②故意杀人、强奸、放火、爆炸、投毒、抢劫等严重破坏社会秩序的犯罪分子",
+     "rules": [
+      "k56-1",
+      "k56-2"
+     ]
+    },
+    {
+     "text": "独立适用的前提：刑法分则条文对该罪明文规定了可以独立适用剥夺政治权利",
+     "rules": [
+      "k56-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "刑法分则条文没有规定独立适用剥夺政治权利的，不得独立适用（第2款的反面解释，笔记）",
+     "rules": [
+      "k56-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对危害国家安全的犯罪分子，应当附加剥夺政治权利，法院无裁量余地",
+     "rules": [
+      "k56-1"
+     ]
+    },
+    {
+     "text": "对故意杀人、强奸、放火、爆炸、投毒、抢劫等严重破坏社会秩序的犯罪分子，可以附加剥夺政治权利，由法院裁量",
+     "rules": [
+      "k56-2"
+     ]
+    },
+    {
+     "text": "独立适用剥夺政治权利的，依照本法分则的规定；分则有规定的，可以独立适用",
+     "rules": [
+      "k56-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第56条第2款是引证条款：独立适用以分则明文规定为前提，分则无规定即排除独立适用",
+     "rules": [
+      "k56-3",
+      "k56-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "“应当附加”与“可以附加”不同：前者为义务性附加，后者为裁量性附加；附加适用与独立适用也不同，前者依总则第56条第1款，后者须依分则规定",
+     "rules": [
+      "k56-1",
+      "k56-2",
+      "k56-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k56-1",
+    "srcs": [
+     "art56#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "endangersNationalSecurity(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeAdditionalDeprivationOfPoliticalRights(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对危害国家安全的犯罪分子应当附加剥夺政治权利"
+   },
+   {
+    "key": "k56-2",
+    "srcs": [
+     "art56#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeSeriouslyDisruptingSocialOrder(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeAdditionalDeprivationOfPoliticalRights(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对故意杀人、强奸、放火、爆炸、投毒、抢劫等严重破坏社会秩序的犯罪分子可以附加剥夺政治权利"
+   },
+   {
+    "key": "k56-3",
+    "srcs": [
+     "art56#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "specificProvisionProvidesIndependentDeprivation(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeIndependentDeprivationOfPoliticalRights(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "独立适用剥夺政治权利的，依照分则规定；分则有明文规定的可以独立适用"
+   },
+   {
+    "key": "k56-4",
+    "srcs": [
+     "art56#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "-specificProvisionProvidesIndependentDeprivation(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeIndependentDeprivationOfPoliticalRights(P,X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "分则条文未规定独立适用剥夺政治权利的不得独立适用，系第56条第2款的反面解释，来自备考笔记而非法条明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k56-4",
+    "k56-3",
+    "推断：结论冲突（('imposeIndependentDeprivationOfPoliticalRights', 'PERM')），k56-4 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "endangersNationalSecurity": "endangersNationalSecurity(X)：犯罪X属于危害国家安全的犯罪",
+   "imposeAdditionalDeprivationOfPoliticalRights": "imposeAdditionalDeprivationOfPoliticalRights(P,X)：对犯罪人P就犯罪X附加适用剥夺政治权利",
+   "crimeSeriouslyDisruptingSocialOrder": "crimeSeriouslyDisruptingSocialOrder(X)：犯罪X属于故意杀人、强奸、放火、爆炸、投毒、抢劫等严重破坏社会秩序的犯罪",
+   "specificProvisionProvidesIndependentDeprivation": "specificProvisionProvidesIndependentDeprivation(X)：刑法分则对犯罪X规定了独立适用剥夺政治权利",
+   "imposeIndependentDeprivationOfPoliticalRights": "imposeIndependentDeprivationOfPoliticalRights(P,X)：对犯罪人P就犯罪X独立适用剥夺政治权利"
+  }
+ },
+ "art:57": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被判处死刑、无期徒刑的犯罪分子，附加剥夺政治权利的期限如何确定；主刑减为有期徒刑后该附加刑期限如何调整",
+     "rules": [
+      "k57-1",
+      "k57-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "犯罪分子因犯罪被判处死刑（含死刑缓期二年执行）或者无期徒刑",
+     "rules": [
+      "k57-1"
+     ]
+    },
+    {
+     "text": "死刑缓期执行减为有期徒刑，或者无期徒刑减为有期徒刑",
+     "rules": [
+      "k57-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当剥夺政治权利终身（必须附加，无裁量余地）",
+     "rules": [
+      "k57-1"
+     ]
+    },
+    {
+     "text": "减为有期徒刑时，应当把附加剥夺政治权利的期限改为三年以上十年以下",
+     "rules": [
+      "k57-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "主刑经减刑变为有期徒刑后，附加剥夺政治权利改为有期限（3—10年），不再适用终身剥夺",
+     "rules": [
+      "k57-2",
+      "k57-1"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k57-1",
+    "srcs": [
+     "art57#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "sentencedToDeath(P,X)",
+       "sentencedToLifeImprisonment(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deprivePoliticalRightsForLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被判处死刑（含死缓）、无期徒刑的，应当附加剥夺政治权利终身；量刑方式常量 deprivePoliticalRightsForLife 表示剥夺政治权利终身"
+   },
+   {
+    "key": "k57-2",
+    "srcs": [
+     "art57#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "deathWithReprieveCommutedToFixedTerm(P,X)",
+       "lifeImprisonmentCommutedToFixedTerm(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deprivePoliticalRights3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "死缓减为有期徒刑或无期徒刑减为有期徒刑时，应当把附加剥夺政治权利期限改为三年以上十年以下；常量 deprivePoliticalRights3to10 表示剥夺政治权利三年以上十年以下"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "sentencedToDeath": "sentencedToDeath(P,X)：P 因犯罪 X 被判处死刑（包括死刑缓期二年执行）",
+   "sentencedToLifeImprisonment": "sentencedToLifeImprisonment(P,X)：P 因犯罪 X 被判处无期徒刑",
+   "sentence": "量刑",
+   "deathWithReprieveCommutedToFixedTerm": "deathWithReprieveCommutedToFixedTerm(P,X)：P 因犯罪 X 所判死刑缓期执行已减为有期徒刑",
+   "lifeImprisonmentCommutedToFixedTerm": "lifeImprisonmentCommutedToFixedTerm(P,X)：P 因犯罪 X 所判无期徒刑已减为有期徒刑"
+  }
+ },
+ "art:58": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "附加剥夺政治权利的刑期从何时起算；主刑执行期间是否已被剥夺政治权利；执行期间负何种义务",
+     "rules": [
+      "k58-1a",
+      "k58-1b",
+      "k58-1c",
+      "k58-2a",
+      "k58-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因犯罪被附加判处剥夺政治权利，且徒刑、拘役已执行完毕",
+     "rules": [
+      "k58-1a"
+     ]
+    },
+    {
+     "text": "因犯罪被附加判处剥夺政治权利，且被假释",
+     "rules": [
+      "k58-1b"
+     ]
+    },
+    {
+     "text": "被附加剥夺政治权利的犯罪分子处于剥夺政治权利的执行期间（含主刑执行期间）",
+     "rules": [
+      "k58-1c",
+      "k58-2a",
+      "k58-2b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "附加剥夺政治权利的刑期，从徒刑、拘役执行完毕之日起计算",
+     "rules": [
+      "k58-1a"
+     ]
+    },
+    {
+     "text": "附加剥夺政治权利的刑期，从假释之日起计算",
+     "rules": [
+      "k58-1b"
+     ]
+    },
+    {
+     "text": "剥夺政治权利的效力当然施用于主刑执行期间，主刑执行期间亦属剥夺政治权利的执行期间",
+     "rules": [
+      "k58-1c"
+     ]
+    },
+    {
+     "text": "执行期间应当遵守法律、行政法规和国务院公安部门有关监督管理的规定，服从监督",
+     "rules": [
+      "k58-2a"
+     ]
+    },
+    {
+     "text": "执行期间不得行使刑法第五十四条规定的各项权利（选举权和被选举权，言论、出版、集会、结社、游行、示威自由的权利，担任国家机关职务的权利，担任国有公司、企业、事业单位和人民团体领导职务的权利）",
+     "rules": [
+      "k58-2b"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "刑期起算与效力期间相分离：刑期自主刑执行完毕之日或假释之日起算，主刑执行期间不计入附加剥夺政治权利的刑期，但该期间当然被剥夺政治权利并受执行期间的义务约束",
+     "rules": [
+      "k58-1a",
+      "k58-1b",
+      "k58-1c"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k58-1a",
+    "srcs": [
+     "art58#1"
+    ],
+    "body": [
+     "supplementaryDeprivationOfPoliticalRights(P,X)",
+     "fixedTermOrDetentionServedOut(P,X)"
+    ],
+    "heads": [
+     "deprivationTermFromServedOutDate(P,X)"
+    ],
+    "auth": "npc",
+    "note": "附加剥夺政治权利的刑期从徒刑、拘役执行完毕之日起计算"
+   },
+   {
+    "key": "k58-1b",
+    "srcs": [
+     "art58#1"
+    ],
+    "body": [
+     "supplementaryDeprivationOfPoliticalRights(P,X)",
+     "paroled(P,X)"
+    ],
+    "heads": [
+     "deprivationTermFromParoleDate(P,X)"
+    ],
+    "auth": "npc",
+    "note": "被假释的，附加剥夺政治权利的刑期从假释之日起计算"
+   },
+   {
+    "key": "k58-1c",
+    "srcs": [
+     "art58#1"
+    ],
+    "body": [
+     "supplementaryDeprivationOfPoliticalRights(P,X)",
+     "principalPunishmentBeingExecuted(P,X)"
+    ],
+    "heads": [
+     "politicalRightsDeprived(P,X)",
+     "deprivationBeingExecuted(P,X)"
+    ],
+    "auth": "npc",
+    "note": "剥夺政治权利的效力当然施用于主刑执行期间，该期间亦属剥夺政治权利的执行期间"
+   },
+   {
+    "key": "k58-2a",
+    "srcs": [
+     "art58#2"
+    ],
+    "body": [
+     "supplementaryDeprivationOfPoliticalRights(P,X)",
+     "deprivationBeingExecuted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "complyWithLawsAndSupervisionRules(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "submitToSupervision(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "执行期间应当遵守法律、行政法规和国务院公安部门有关监督管理的规定，服从监督"
+   },
+   {
+    "key": "k58-2b",
+    "srcs": [
+     "art58#2"
+    ],
+    "body": [
+     "supplementaryDeprivationOfPoliticalRights(P,X)",
+     "deprivationBeingExecuted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "exerciseArt54Rights(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "执行期间不得行使刑法第五十四条规定的各项权利"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "supplementaryDeprivationOfPoliticalRights": "supplementaryDeprivationOfPoliticalRights(P,X)：对P因犯罪X附加判处剥夺政治权利",
+   "fixedTermOrDetentionServedOut": "fixedTermOrDetentionServedOut(P,X)：P因犯罪X所判徒刑、拘役已执行完毕",
+   "deprivationTermFromServedOutDate": "deprivationTermFromServedOutDate(P,X)：附加剥夺政治权利的刑期自徒刑、拘役执行完毕之日起计算",
+   "paroled": "paroled(P,X)：P因犯罪X服刑期间被假释",
+   "deprivationTermFromParoleDate": "deprivationTermFromParoleDate(P,X)：附加剥夺政治权利的刑期自假释之日起计算",
+   "principalPunishmentBeingExecuted": "principalPunishmentBeingExecuted(P,X)：P因犯罪X所处主刑正在执行期间",
+   "politicalRightsDeprived": "politicalRightsDeprived(P,X)：P因犯罪X被剥夺政治权利，剥夺的效力及于该期间",
+   "deprivationBeingExecuted": "deprivationBeingExecuted(P,X)：对P的剥夺政治权利处于执行期间（含主刑执行期间）",
+   "complyWithLawsAndSupervisionRules": "complyWithLawsAndSupervisionRules(P)：P遵守法律、行政法规和国务院公安部门有关监督管理的规定",
+   "submitToSupervision": "submitToSupervision(P)：P服从监督",
+   "exerciseArt54Rights": "exerciseArt54Rights(P)：P行使刑法第五十四条规定的各项权利"
+  }
+ },
+ "art:59": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "没收财产刑的对象范围：只能没收犯罪分子个人所有的财产，并受家属财产与必需生活费用的限制",
+     "rules": [
+      "k59-scope",
+      "k59-family"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "没收财产的对象限于犯罪分子个人所有的财产（不含他人财产）",
+     "rules": [
+      "k59-scope"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "属于犯罪分子家属所有或者应有的财产，不属于可没收范围",
+     "rules": [
+      "k59-family"
+     ]
+    },
+    {
+     "text": "判处没收财产时，不得没收属于犯罪分子家属所有或者应有的财产",
+     "rules": [
+      "k59-family-for"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "可以没收犯罪分子个人所有财产的一部或者全部，由法院裁量",
+     "rules": [
+      "k59-part-or-all"
+     ]
+    },
+    {
+     "text": "没收全部财产的，应当对犯罪分子个人及其扶养的家属保留必需的生活费用",
+     "rules": [
+      "k59-reserve"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "家属所有或应有财产的排除，优先于“个人财产可没收一部或全部”的一般范围",
+     "rules": [
+      "k59-family",
+      "k59-part-or-all"
+     ]
+    },
+    {
+     "text": "没收全部财产时保留必需生活费用的义务，限制全部没收的裁量",
+     "rules": [
+      "k59-reserve"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "没收财产是附加刑，针对犯罪分子个人合法所有的财产；与追缴违法所得、没收违禁品和供犯罪所用本人财物（第64条）性质不同，本条不涉及",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k59-scope",
+    "srcs": [
+     "art59#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "property(M)",
+     "personallyOwnedBy(M,P)"
+    ],
+    "heads": [
+     "confiscable(M,X)"
+    ],
+    "auth": "npc",
+    "note": "没收财产是没收犯罪分子个人所有财产的一部或者全部，可没收范围以个人所有财产为限"
+   },
+   {
+    "key": "k59-part-or-all",
+    "srcs": [
+     "art59#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "confiscable(M,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscatePartOrAllOfPersonalProperty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "法院可以没收犯罪分子个人所有财产的一部或者全部"
+   },
+   {
+    "key": "k59-reserve",
+    "srcs": [
+     "art59#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "confiscationAll(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "reserveNecessaryLivingCosts(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "没收全部财产的，应当为犯罪分子个人及其扶养的家属保留必需的生活费用"
+   },
+   {
+    "key": "k59-family",
+    "srcs": [
+     "art59#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "property(M)",
+     {
+      "or": [
+       "ownedByFamilyOf(M,P)",
+       "dueToFamilyOf(M,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "-confiscable(M,X)"
+    ],
+    "auth": "npc",
+    "note": "属于犯罪分子家属所有或者应有的财产，排除在可没收财产范围之外"
+   },
+   {
+    "key": "k59-family-for",
+    "srcs": [
+     "art59#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "property(M)",
+     {
+      "or": [
+       "ownedByFamilyOf(M,P)",
+       "dueToFamilyOf(M,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscate(M,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处没收财产时，不得没收属于犯罪分子家属所有或者应有的财产"
+   }
+  ],
+  "overrides": [
+   [
+    "k59-family",
+    "k59-scope",
+    "推断：结论冲突（('confiscable', '+')），k59-family 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "property": "property(M)：M 是财产（财物）",
+   "personallyOwnedBy": "personallyOwnedBy(M,P)：M 属于犯罪分子 P 个人所有的财产",
+   "confiscable": "confiscable(M,X)：在案件 X 中 M 属于可以没收的财产",
+   "confiscatePartOrAllOfPersonalProperty": "confiscatePartOrAllOfPersonalProperty(P,X)：在案件 X 中没收犯罪分子 P 个人所有财产的一部或者全部",
+   "confiscationAll": "confiscationAll(P,X)：在案件 X 中对 P 判处没收其个人全部财产",
+   "reserveNecessaryLivingCosts": "reserveNecessaryLivingCosts(P,X)：在案件 X 中为犯罪分子 P 个人及其扶养的家属保留必需的生活费用",
+   "ownedByFamilyOf": "ownedByFamilyOf(M,P)：M 属于 P 的家属所有的财产",
+   "dueToFamilyOf": "dueToFamilyOf(M,P)：M 属于 P 的家属应有的财产（如共有财产中家属应得部分）",
+   "confiscate": "confiscate(M,X)：在案件 X 中没收财产 M"
+  }
+ },
+ "art:60": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "没收财产以前犯罪分子所负的正当债务，能否以被没收的财产偿还",
+     "rules": [
+      "k60-cond",
+      "k60-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "犯罪分子被判处没收财产；该债务是没收财产以前所负的正当债务；且需要以没收的财产偿还",
+     "rules": [
+      "k60-cond"
+     ]
+    },
+    {
+     "text": "须经债权人请求；债权人未请求的，不发生以没收财产偿还的义务",
+     "rules": [
+      "k60-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "没收财产以后所负的债务，或者赌债等非正当债务，不属于应以没收财产偿还的范围（学理）",
+     "rules": [
+      "k60-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备上述条件并经债权人请求的，应当以没收的财产偿还该正当债务（由执行没收的人民法院向债权人偿还）",
+     "rules": [
+      "k60-1"
+     ]
+    },
+    {
+     "text": "偿还以被没收财产的实际价值为限，不得超出该范围偿还（学理）",
+     "rules": [
+      "k60-limit"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "事后债务、非正当债务的排除认定优先于可偿还性的一般认定",
+     "rules": [
+      "k60-exc",
+      "k60-cond"
+     ]
+    },
+    {
+     "text": "偿还数额限制优先于一般偿还义务，超出没收财产价值部分不予偿还",
+     "rules": [
+      "k60-limit",
+      "k60-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条针对的是犯罪分子自己的正当债务以没收财产偿还，区别于第36条第2款民事赔偿优先于罚金、第64条对违法所得的追缴与退赔（本行未挂载相应条文，仅作体系说明）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k60-cond",
+    "srcs": [
+     "art60#1"
+    ],
+    "body": [
+     "sentencedToConfiscationOfProperty(P)",
+     "legitimateDebtIncurredBeforeConfiscation(D,P)",
+     "needsRepaymentFromConfiscatedProperty(D,P)"
+    ],
+    "heads": [
+     "repayableFromConfiscatedProperty(D,P)"
+    ],
+    "auth": "npc",
+    "note": "没收财产以前所负、需要以没收财产偿还的正当债务，属于应以没收财产偿还的债务"
+   },
+   {
+    "key": "k60-1",
+    "srcs": [
+     "art60#1"
+    ],
+    "body": [
+     "repayableFromConfiscatedProperty(D,P)",
+     "creditorOf(C,P,D)",
+     "requestsRepayment(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "C",
+      "content": "repayDebtFromConfiscatedProperty(P,D,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "经债权人请求，应当以没收的财产偿还犯罪分子没收前所负的正当债务，偿还由执行没收的法院实施"
+   },
+   {
+    "key": "k60-exc",
+    "srcs": [
+     "art60#1"
+    ],
+    "body": [
+     "sentencedToConfiscationOfProperty(P)",
+     {
+      "or": [
+       "debtIncurredAfterConfiscation(D,P)",
+       "illegitimateDebtOf(D,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "-repayableFromConfiscatedProperty(D,P)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与文义反面推论：没收财产以后所负债务或非正当债务（如赌债），不属于应以没收财产偿还的债务"
+   },
+   {
+    "key": "k60-limit",
+    "srcs": [
+     "art60#1"
+    ],
+    "body": [
+     "repayableFromConfiscatedProperty(D,P)",
+     "creditorOf(C,P,D)",
+     "requestsRepayment(C,D)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": "C",
+      "content": "repayBeyondConfiscatedValue(D,P)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理限制：偿还以被没收财产的实际价值为限，不得超出没收财产范围偿还"
+   }
+  ],
+  "overrides": [
+   [
+    "k60-cond",
+    "k60-exc",
+    "推断：结论冲突（('repayableFromConfiscatedProperty', '+')），k60-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "sentencedToConfiscationOfProperty": "sentencedToConfiscationOfProperty(P)：P 被判处没收财产",
+   "legitimateDebtIncurredBeforeConfiscation": "legitimateDebtIncurredBeforeConfiscation(D,P)：D 是 P 在没收财产以前所负的正当债务",
+   "needsRepaymentFromConfiscatedProperty": "needsRepaymentFromConfiscatedProperty(D,P)：债务 D 需要以对 P 没收的财产偿还",
+   "repayableFromConfiscatedProperty": "repayableFromConfiscatedProperty(D,P)：债务 D 属于应以没收财产偿还的正当债务",
+   "creditorOf": "creditorOf(C,P,D)：C 是 P 就债务 D 的债权人",
+   "requestsRepayment": "requestsRepayment(C,D)：债权人 C 请求偿还债务 D",
+   "repayDebtFromConfiscatedProperty": "repayDebtFromConfiscatedProperty(P,D,C)：以没收 P 的财产向债权人 C 偿还债务 D",
+   "debtIncurredAfterConfiscation": "debtIncurredAfterConfiscation(D,P)：债务 D 系 P 在没收财产以后所负",
+   "illegitimateDebtOf": "illegitimateDebtOf(D,P)：D 是 P 所负的非正当债务（如赌债、非法债务）",
+   "repayBeyondConfiscatedValue": "repayBeyondConfiscatedValue(D,P)：超出被没收财产实际价值偿还 P 的债务 D"
+  }
+ }
+}

@@ -1,0 +1,7993 @@
+{
+ "art:233": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "过失致人死亡如何定罪量刑；本法另有规定（其他犯罪构成已包含过失致死结果）时如何适用法律",
+     "rules": [
+      "k233-cond",
+      "k233-special"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "实施行为，主观为过失，且造成他人死亡结果的，成立过失致人死亡罪（标准的犯罪构成）",
+     "rules": [
+      "k233-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本法另有规定的，依照规定：其他法条为特别法条，本罪法条为一般法条，不以过失致人死亡罪论处",
+     "rules": [
+      "k233-special"
+     ]
+    },
+    {
+     "text": "失火罪、过失爆炸罪、过失投放危险物质罪、交通肇事罪、医疗事故罪、重大责任事故罪等构成要件已包含过失致人死亡结果，属本罪特别法条（业务过失致死相当于过失致人死亡的特别法）",
+     "rules": [
+      "k233-special-cases"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档（标准的犯罪构成）：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k233-basic"
+     ]
+    },
+    {
+     "text": "情节较轻的（派生的、减轻的犯罪构成）：处三年以下有期徒刑",
+     "rules": [
+      "k233-light"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "特别法优于一般法：本法另有规定时，排除第233条过失致人死亡罪的构成与法定刑，依该特别规定定罪处罚",
+     "rules": [
+      "k233-special",
+      "k233-special-cases"
+     ]
+    },
+    {
+     "text": "情节较轻档优先于基本档适用",
+     "rules": [
+      "k233-light"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与故意杀人罪（第232条）区别在于罪过形式：同为致人死亡，故意杀人法定最高刑为死刑，过失致人死亡法定最高刑仅七年有期徒刑，体现过失犯法定刑明显轻于故意犯",
+     "rules": []
+    },
+    {
+     "text": "医生打错针、发错药致人死亡，是医疗领域的过失致人死亡，依医疗事故罪等特别规定处理，不再另定本罪",
+     "rules": [
+      "k233-special-cases"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k233-cond",
+    "srcs": [
+     "art233#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "negligentCrime(X)",
+     "causesDeath(X)",
+     "~coveredBySpecialProvision(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,negligentHomicide)"
+    ],
+    "auth": "npc",
+    "note": "过失致人死亡的，成立过失致人死亡罪（标准的犯罪构成），但本法另有规定的除外"
+   },
+   {
+    "key": "k233-basic",
+    "srcs": [
+     "art233#1"
+    ],
+    "body": [
+     "constitutes(P,X,negligentHomicide)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失致人死亡的基本档：处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k233-light",
+    "srcs": [
+     "art233#1"
+    ],
+    "body": [
+     "constitutes(P,X,negligentHomicide)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的处三年以下有期徒刑，属笔记所称派生的（减轻的）犯罪构成"
+   },
+   {
+    "key": "k233-special",
+    "srcs": [
+     "art233#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "negligentCrime(X)",
+     "causesDeath(X)",
+     "coveredBySpecialProvision(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,negligentHomicide)",
+     "applyOtherProvisionOnNegligentDeath(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本法另有规定的依照规定：过失致死结果被特别法条涵盖时不成立本罪，依该特别规定定罪处罚"
+   },
+   {
+    "key": "k233-special-cases",
+    "srcs": [
+     "art233#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "negligentCrime(X)",
+     "causesDeath(X)",
+     {
+      "or": [
+       "constitutes(P,X,trafficAccident)",
+       "constitutes(P,X,negligentArson)",
+       "constitutes(P,X,negligentExplosion)",
+       "constitutes(P,X,negligentPoisoning)",
+       "constitutes(P,X,medicalMalpractice)",
+       "constitutes(P,X,majorLiabilityAccident)"
+      ]
+     }
+    ],
+    "heads": [
+     "coveredBySpecialProvision(X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记（学理）列举：交通肇事、失火、过失爆炸、过失投放危险物质、医疗事故、重大责任事故等罪构成要件已含过失致死结果，为本罪特别法条"
+   }
+  ],
+  "overrides": [
+   [
+    "k233-special",
+    "k233-cond",
+    "推断：结论冲突（('constitutes', '+')），k233-special 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "negligentCrime": "过失犯罪",
+   "causesDeath": "致人死亡",
+   "coveredBySpecialProvision": "coveredBySpecialProvision(X)：过失致人死亡的行为 X 已被本法其他特别法条规定的犯罪构成所涵盖（本法另有规定）",
+   "constitutes": "符合构成要件",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "sentenceUnder3Years": "sentenceUnder3Years(P,X)：对 P 就犯罪 X 处三年以下有期徒刑",
+   "applyOtherProvisionOnNegligentDeath": "applyOtherProvisionOnNegligentDeath(P,X)：对 P 就过失致人死亡行为 X 依照本法另有规定的特别法条定罪处罚，不以过失致人死亡罪论处"
+  }
+ },
+ "art:234-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织他人出卖人体器官，与未经同意摘取器官、强迫欺骗捐献器官、摘取尸体器官，分别成立何罪、如何处罚",
+     "rules": [
+      "k234z1-1",
+      "k234z1-2",
+      "k234z1-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "组织他人出卖人体器官的，成立组织出卖人体器官罪（第1款）",
+     "rules": [
+      "k234z1-1"
+     ]
+    },
+    {
+     "text": "第2款三种情形：未经本人同意摘取其器官；摘取不满十八周岁的人的器官；强迫、欺骗他人捐献器官",
+     "rules": [
+      "k234z1-2"
+     ]
+    },
+    {
+     "text": "第3款两种情形：违背本人生前意愿摘取其尸体器官；本人生前未表示同意，违反国家规定并违背其近亲属意愿摘取其尸体器官",
+     "rules": [
+      "k234z1-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "落入第2款情形的，不再以组织出卖人体器官罪论处，而依故意伤害罪、故意杀人罪定罪处罚（学理：转致规定排除本罪）",
+     "rules": [
+      "k234z1-2c"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑，并处罚金",
+     "rules": [
+      "k234z1-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k234z1-agg"
+     ]
+    },
+    {
+     "text": "第2款情形依照第234条、第232条的规定定罪处罚（转致）",
+     "rules": [
+      "k234z1-2"
+     ]
+    },
+    {
+     "text": "按行为人故意内容分别认定为故意伤害罪或故意杀人罪（学理）",
+     "rules": [
+      "k234z1-2a",
+      "k234z1-2b"
+     ]
+    },
+    {
+     "text": "第3款情形依照第302条的规定，以盗窃、侮辱、故意毁坏尸体罪定罪处罚",
+     "rules": [
+      "k234z1-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款转致规定优先于第1款：排除组织出卖人体器官罪的成立及其基本档、加重档刑罚",
+     "rules": [
+      "k234z1-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪以被组织者自愿出卖活体器官为前提；未经本人同意、对象为不满十八周岁的人、强迫欺骗捐献的，转为故意伤害罪或故意杀人罪；对象为尸体器官的，转为第302条之罪",
+     "rules": [
+      "k234z1-1",
+      "k234z1-2",
+      "k234z1-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k234z1-1",
+    "srcs": [
+     "art234-1#1"
+    ],
+    "body": [
+     "organizesOthersToSellOrgans(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,organizingSaleOfHumanOrgans)"
+    ],
+    "auth": "npc",
+    "note": "组织他人出卖人体器官的，符合组织出卖人体器官罪的构成要件"
+   },
+   {
+    "key": "k234z1-basic",
+    "srcs": [
+     "art234-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,organizingSaleOfHumanOrgans)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑（under5），并处罚金"
+   },
+   {
+    "key": "k234z1-agg",
+    "srcs": [
+     "art234-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,organizingSaleOfHumanOrgans)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOrConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上有期徒刑（新增量刑常量 from5），并处罚金或者没收财产"
+   },
+   {
+    "key": "k234z1-2",
+    "srcs": [
+     "art234-1#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "removesOrgan(P,X,V) withoutOwnConsent(X,V)",
+       "removesOrgan(P,X,V) under18(V)",
+       "forcesOrDeceivesDonation(P,X,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "punishUnderArts234And232(P,X)"
+    ],
+    "auth": "npc",
+    "note": "未经本人同意摘取器官、摘取不满十八周岁的人的器官、强迫欺骗他人捐献器官的，依第234条、第232条定罪处罚"
+   },
+   {
+    "key": "k234z1-2a",
+    "srcs": [
+     "art234-1#2"
+    ],
+    "body": [
+     "punishUnderArts234And232(P,X)",
+     "intentionallyInjures(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalInjury)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：具有伤害故意的，依第234条以故意伤害罪定罪处罚"
+   },
+   {
+    "key": "k234z1-2b",
+    "srcs": [
+     "art234-1#2"
+    ],
+    "body": [
+     "punishUnderArts234And232(P,X)",
+     "intentionallyKills(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalHomicide)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：具有杀人故意（如摘取器官致死）的，依第232条以故意杀人罪定罪处罚"
+   },
+   {
+    "key": "k234z1-2c",
+    "srcs": [
+     "art234-1#2"
+    ],
+    "body": [
+     "punishUnderArts234And232(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,organizingSaleOfHumanOrgans)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：第2款系转致规定，该情形不再以组织出卖人体器官罪论处"
+   },
+   {
+    "key": "k234z1-3",
+    "srcs": [
+     "art234-1#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "removesCorpseOrgan(P,X,V) againstLifetimeWill(X,V)",
+       "removesCorpseOrgan(P,X,V) noLifetimeConsent(X,V) violatesStateRegulations(X) againstCloseRelativesWill(X,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,theftInsultOrDestructionOfCorpse)"
+    ],
+    "auth": "npc",
+    "note": "违背本人生前意愿摘取尸体器官，或生前未表示同意、违反国家规定且违背近亲属意愿摘取尸体器官的，依第302条以盗窃、侮辱、故意毁坏尸体罪定罪处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k234z1-2c",
+    "k234z1-1",
+    "推断：结论冲突（('constitutes', '+')），k234z1-2c 为例外或更具体"
+   ],
+   [
+    "k234z1-2c",
+    "k234z1-2a",
+    "推断：结论冲突（('constitutes', '+')），k234z1-2c 为例外或更具体"
+   ],
+   [
+    "k234z1-2c",
+    "k234z1-2b",
+    "推断：结论冲突（('constitutes', '+')），k234z1-2c 为例外或更具体"
+   ],
+   [
+    "k234z1-2c",
+    "k234z1-3",
+    "推断：结论冲突（('constitutes', '-')），k234z1-2c 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "organizesOthersToSellOrgans": "organizesOthersToSellOrgans(P,X)：P 通过行为 X 组织他人出卖人体器官",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "imposeFineOrConfiscation": "imposeFineOrConfiscation(P,X)：对 P 就犯罪 X 并处罚金或者没收财产",
+   "removesOrgan": "removesOrgan(P,X,V)：P 通过行为 X 摘取 V 的人体（活体）器官",
+   "withoutOwnConsent": "withoutOwnConsent(X,V)：行为 X 未经 V 本人同意",
+   "under18": "不满十八周岁",
+   "forcesOrDeceivesDonation": "forcesOrDeceivesDonation(P,X,V)：P 通过行为 X 强迫、欺骗 V 捐献器官",
+   "punishUnderArts234And232": "punishUnderArts234And232(P,X)：对 P 就行为 X 依照刑法第234条、第232条的规定定罪处罚",
+   "intentionallyInjures": "故意伤害他人身体",
+   "intentionallyKills": "故意杀人",
+   "removesCorpseOrgan": "removesCorpseOrgan(P,X,V)：P 通过行为 X 摘取死者 V 的尸体器官",
+   "againstLifetimeWill": "againstLifetimeWill(X,V)：行为 X 违背 V 生前（捐献器官）的意愿",
+   "noLifetimeConsent": "noLifetimeConsent(X,V)：V 生前未就捐献器官表示同意",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "againstCloseRelativesWill": "againstCloseRelativesWill(X,V)：行为 X 违背 V 的近亲属的意愿"
+  }
+ },
+ "art:235": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "过失伤害他人致人重伤的定罪与量刑",
+     "rules": [
+      "k235-cond",
+      "k235-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人主观上为过失，客观上伤害他人身体并造成刑法第95条所称重伤（轻伤不成立本罪）",
+     "rules": [
+      "k235-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本法另有规定的（如交通肇事罪、失火罪、过失爆炸罪等含过失致人重伤的特别规定），依照该规定处理，不适用本条",
+     "rules": [
+      "k235-special"
+     ]
+    },
+    {
+     "text": "过失致人轻伤不构成犯罪，本罪以重伤为结果要件（学理）",
+     "rules": [
+      "k235-light"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成过失致人重伤罪，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k235-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“本法另有规定的，依照规定”：刑法其他特别条款优先于第235条适用",
+     "rules": [
+      "k235-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与故意伤害罪（第234条）的区别在于罪过形式为过失而非故意；与过失致人死亡罪（第233条）的区别在于结果为重伤而非死亡",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k235-cond",
+    "srcs": [
+     "art235#1"
+    ],
+    "body": [
+     "negligentlyInjures(P,X)",
+     "graveInjury(X)",
+     "~otherProvisionOfThisLawApplies(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,negligentInjury)"
+    ],
+    "auth": "npc",
+    "note": "过失伤害他人致人重伤的，符合过失致人重伤罪（negligentInjury）的构成要件，但本法另有规定的除外"
+   },
+   {
+    "key": "k235-pen",
+    "srcs": [
+     "art235#1"
+    ],
+    "body": [
+     "constitutes(P,X,negligentInjury)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失致人重伤的，处三年以下有期徒刑或者拘役（under3OrDetention）"
+   },
+   {
+    "key": "k235-special",
+    "srcs": [
+     "art235#1"
+    ],
+    "body": [
+     "negligentlyInjures(P,X)",
+     "graveInjury(X)",
+     "otherProvisionOfThisLawApplies(X)"
+    ],
+    "heads": [
+     "applyOtherProvisionOfThisLaw(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本法对过失致人重伤另有规定的，依照该特别规定定罪处罚"
+   },
+   {
+    "key": "k235-light",
+    "srcs": [
+     "art235#1"
+    ],
+    "body": [
+     "negligentlyInjures(P,X)",
+     "-graveInjury(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,negligentInjury)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪以重伤为结果要件，过失仅致轻伤的不构成过失致人重伤罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k235-light",
+    "k235-cond",
+    "推断：结论冲突（('constitutes', '+')），k235-light 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "negligentlyInjures": "negligentlyInjures(P,X)：P 因过失实施伤害他人身体的行为 X",
+   "graveInjury": "graveInjury(X)：伤害 X 属于刑法第95条所称重伤",
+   "otherProvisionOfThisLawApplies": "otherProvisionOfThisLawApplies(X)：刑法对行为 X（过失致人重伤）另有特别规定，如交通肇事罪、失火罪、过失爆炸罪等",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "applyOtherProvisionOfThisLaw": "applyOtherProvisionOfThisLaw(P,X)：对 P 就行为 X 依照刑法另有的特别规定定罪处罚"
+  }
+ },
+ "art:236": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、胁迫或者其他手段强奸妇女，是否构成强奸罪、适用何种法定刑",
+     "rules": [
+      "k236-1",
+      "k236-1p"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "基本犯：对象为妇女，手段为暴力、胁迫或者其他手段（违背妇女意志而强行性交）",
+     "rules": [
+      "k236-1"
+     ]
+    },
+    {
+     "text": "奸淫不满十四周岁的幼女的，以强奸论（不要求证明使用暴力、胁迫手段）",
+     "rules": [
+      "k236-2"
+     ]
+    },
+    {
+     "text": "加重情形（六项之一）：①情节恶劣；②强奸妇女、奸淫幼女多人；③在公共场所当众强奸妇女、奸淫幼女；④二人以上轮奸；⑤奸淫不满十周岁的幼女或者造成幼女伤害；⑥致使被害人重伤、死亡或者造成其他严重后果",
+     "rules": [
+      "k236-agg"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "具备第3款六项加重情形之一的，排除第1款基本法定刑，改适用十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k236-agg",
+      "k236-aggp"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本法定刑：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k236-1p"
+     ]
+    },
+    {
+     "text": "奸淫幼女的，从重处罚",
+     "rules": [
+      "k236-2p"
+     ]
+    },
+    {
+     "text": "加重法定刑：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k236-aggp"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第3款加重法定刑优先于第1款基本法定刑；奸淫幼女的从重处罚与加重档可并行评价",
+     "rules": [
+      "k236-aggp",
+      "k236-1p",
+      "k236-2p"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪客体是妇女的性权利（性自主权），条文通过对客观行为“强奸妇女”的表述反映客体（宣示性说明）",
+     "rules": []
+    },
+    {
+     "text": "“在公共场所当众强奸”属于以犯罪地点、方法为要素的法定加重情节，而非独立罪名",
+     "rules": [
+      "k236-agg"
+     ]
+    },
+    {
+     "text": "学理：幼女的同意无效，奸淫幼女不以违背其意志或使用暴力、胁迫为要件（法条未明写）",
+     "rules": [
+      "k236-2c"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k236-1",
+    "srcs": [
+     "art236#1"
+    ],
+    "body": [
+     "rapesWoman(P,X)",
+     "violenceOrCoercion(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,rape)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、胁迫或者其他手段强奸妇女的，符合强奸罪构成要件"
+   },
+   {
+    "key": "k236-1p",
+    "srcs": [
+     "art236#1"
+    ],
+    "body": [
+     "constitutes(P,X,rape)",
+     "responsible(P,X,rape)",
+     "~rapeAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "强奸罪基本档处三年以上十年以下有期徒刑（量刑方式常量 from3to10 指三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k236-2",
+    "srcs": [
+     "art236#2"
+    ],
+    "body": [
+     "hasSexualIntercourseWithGirl(P,X)",
+     "victimGirlUnder14(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,rape)"
+    ],
+    "auth": "npc",
+    "note": "奸淫不满十四周岁的幼女的，以强奸论"
+   },
+   {
+    "key": "k236-2p",
+    "srcs": [
+     "art236#2"
+    ],
+    "body": [
+     "hasSexualIntercourseWithGirl(P,X)",
+     "victimGirlUnder14(X)",
+     "responsible(P,X,rape)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "奸淫幼女的，在相应法定刑幅度内从重处罚"
+   },
+   {
+    "key": "k236-agg",
+    "srcs": [
+     "art236#3"
+    ],
+    "body": [
+     "constitutes(P,X,rape)",
+     {
+      "or": [
+       "heinous(X)",
+       "rapesMultipleVictims(X)",
+       "inPublicPlace(X) inPublicView(X)",
+       "gangRape(X)",
+       "victimGirlUnder10(X)",
+       "causesInjuryToGirl(X)",
+       "causesGraveInjuryOrDeath(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "rapeAggravated(P,X)"
+    ],
+    "auth": "npc",
+    "note": "强奸妇女、奸淫幼女具有第3款六项情形之一的，属加重情形"
+   },
+   {
+    "key": "k236-aggp",
+    "srcs": [
+     "art236#3"
+    ],
+    "body": [
+     "rapeAggravated(P,X)",
+     "responsible(P,X,rape)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10LifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档处十年以上有期徒刑、无期徒刑或者死刑（量刑方式常量 from10LifeOrDeath 指十年以上有期徒刑、无期徒刑或者死刑）"
+   },
+   {
+    "key": "k236-2c",
+    "srcs": [
+     "art236#2"
+    ],
+    "body": [
+     "hasSexualIntercourseWithGirl(P,X)",
+     "victimGirlUnder14(X)"
+    ],
+    "heads": [
+     "consentInvalid(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理补充：幼女的同意无效，奸淫幼女不以违背意志或使用暴力胁迫为要件，法条未明文规定"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "rapesWoman": "rapesWoman(P,X)：P 通过行为 X 强奸妇女（违背妇女意志强行性交）",
+   "violenceOrCoercion": "暴力、胁迫或其他方法",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "rapeAggravated": "rapeAggravated(P,X)：P 的强奸行为 X 具备刑法第236条第3款列举的加重情形之一",
+   "sentence": "量刑",
+   "hasSexualIntercourseWithGirl": "hasSexualIntercourseWithGirl(P,X)：P 通过行为 X 与幼女发生性交（奸淫幼女）",
+   "victimGirlUnder14": "victimGirlUnder14(X)：行为 X 的被害人是不满十四周岁的幼女",
+   "heinous": "情节恶劣",
+   "rapesMultipleVictims": "rapesMultipleVictims(X)：行为 X 系强奸妇女、奸淫幼女多人",
+   "inPublicPlace": "inPublicPlace(X)：行为 X 发生在公共场所",
+   "inPublicView": "inPublicView(X)：行为 X 系“当众”实施（在不特定人或者多人可以看见的场合）",
+   "gangRape": "gangRape(X)：行为 X 系二人以上轮奸",
+   "victimGirlUnder10": "victimGirlUnder10(X)：行为 X 系奸淫不满十周岁的幼女",
+   "causesInjuryToGirl": "causesInjuryToGirl(X)：行为 X 造成幼女伤害",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "causesOtherSeriousConsequence": "causesOtherSeriousConsequence(X)：行为 X 因而造成其他严重后果",
+   "consentInvalid": "consentInvalid(X)：行为 X 中被害人的同意在法律上无效（不构成有效同意）"
+  }
+ },
+ "art:236-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对已满十四周岁不满十六周岁的未成年女性负有监护、收养、看护、教育、医疗等特殊职责的人员，与其发生性关系，是否成立负有照护职责人员性侵罪及如何量刑",
+     "rules": [
+      "k236z1-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：对该未成年女性负有监护、收养、看护、教育、医疗等特殊职责的人员；对象：已满十四周岁不满十六周岁的未成年女性；行为：与该未成年女性发生性关系",
+     "rules": [
+      "k236z1-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "成立本罪的，处三年以下有期徒刑",
+     "rules": [
+      "k236z1-basic"
+     ]
+    },
+    {
+     "text": "情节恶劣的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k236z1-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有本条第1款行为，同时又构成刑法第236条之罪（强奸罪）的，依照处罚较重的规定定罪处罚，不再单独适用本条的法定刑",
+     "rules": [
+      "k236z1-concur"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪不以违背未成年女性意志为要件，且限于负有特殊职责的人员与已满十四周岁不满十六周岁的未成年女性；若以暴力、胁迫等手段违背意志奸淫，则同时构成强奸罪，从一重处断",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k236z1-cond",
+    "srcs": [
+     "art236-1#1"
+    ],
+    "body": [
+     "specialCustodyDuty(P,V)",
+     "minorFemaleAged14To16(V)",
+     "sexualIntercourseWith(P,V,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,sexualAssaultByCustodian)"
+    ],
+    "auth": "npc",
+    "note": "负有监护、收养、看护、教育、医疗等特殊职责的人员与已满十四不满十六周岁的未成年女性发生性关系，符合负有照护职责人员性侵罪（sexualAssaultByCustodian）的构成要件"
+   },
+   {
+    "key": "k236z1-basic",
+    "srcs": [
+     "art236-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,sexualAssaultByCustodian)",
+     "~heinous(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑（新增量刑常量 under3＝三年以下有期徒刑）"
+   },
+   {
+    "key": "k236z1-agg",
+    "srcs": [
+     "art236-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,sexualAssaultByCustodian)",
+     "heinous(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节恶劣的加重档：处三年以上十年以下有期徒刑（新增量刑常量 from3to10＝三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k236z1-concur",
+    "srcs": [
+     "art236-1#2"
+    ],
+    "body": [
+     "constitutes(P,X,sexualAssaultByCustodian)",
+     "constitutes(P,X,rape)",
+     "heavierPunishment(C,sexualAssaultByCustodian,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceAccordingToHeavierProvision(P,X,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "同时构成第236条强奸罪的，依照处罚较重的规定定罪处罚（从一重处断）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "specialCustodyDuty": "specialCustodyDuty(P,V)：P 对 V 负有监护、收养、看护、教育、医疗等特殊职责",
+   "minorFemaleAged14To16": "minorFemaleAged14To16(V)：V 是已满十四周岁不满十六周岁的未成年女性",
+   "sexualIntercourseWith": "sexualIntercourseWith(P,V,X)：P 通过行为 X 与 V 发生性关系",
+   "constitutes": "符合构成要件",
+   "heinous": "情节恶劣",
+   "sentence": "量刑",
+   "heavierPunishment": "heavierPunishment(C1,C2,X)：就行为 X 而言，罪名 C1 的处罚重于罪名 C2（竞合从一重的判断）",
+   "sentenceAccordingToHeavierProvision": "sentenceAccordingToHeavierProvision(P,X,C)：依照处罚较重的罪名 C 的规定对 P 就犯罪 X 判处刑罚"
+  }
+ },
+ "art:237": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "强制猥亵、侮辱罪的成立条件与法定刑档次；猥亵儿童罪的独立成立与加重处罚",
+     "rules": [
+      "k237-1c",
+      "k237-1",
+      "k237-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：以暴力、胁迫或者其他方法，强制猥亵他人或者侮辱妇女",
+     "rules": [
+      "k237-1c"
+     ]
+    },
+    {
+     "text": "第3款：猥亵儿童的，即成立猥亵儿童罪，不以暴力、胁迫或者其他强制方法为要件",
+     "rules": [
+      "k237-3"
+     ]
+    },
+    {
+     "text": "第2款加重情形：聚众犯前款罪，或者在公共场所当众犯前款罪，或者有其他恶劣情节",
+     "rules": [
+      "k237-2"
+     ]
+    },
+    {
+     "text": "第3款加重情形：①猥亵儿童多人或者多次；②聚众猥亵儿童，或者在公共场所当众猥亵儿童且情节恶劣；③造成儿童伤害或者其他严重后果；④猥亵手段恶劣或者有其他恶劣情节",
+     "rules": [
+      "k237-3a"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "强制猥亵、侮辱具有第2款加重情形的，不适用第1款“五年以下有期徒刑或者拘役”的基本档",
+     "rules": [
+      "k237-1s"
+     ]
+    },
+    {
+     "text": "猥亵儿童具有第3款四项加重情形之一的，不适用“五年以下有期徒刑”的基本档",
+     "rules": [
+      "k237-3s"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合第1款条件的，构成强制猥亵、侮辱罪",
+     "rules": [
+      "k237-1"
+     ]
+    },
+    {
+     "text": "强制猥亵、侮辱罪基本刑：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k237-1s"
+     ]
+    },
+    {
+     "text": "强制猥亵、侮辱罪加重刑（聚众、公共场所当众或其他恶劣情节）：处五年以上有期徒刑",
+     "rules": [
+      "k237-2s"
+     ]
+    },
+    {
+     "text": "猥亵儿童罪基本刑：处五年以下有期徒刑（不含拘役）",
+     "rules": [
+      "k237-3s"
+     ]
+    },
+    {
+     "text": "猥亵儿童罪加重刑（第3款四项情形之一）：处五年以上有期徒刑",
+     "rules": [
+      "k237-3as"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款加重档优先于第1款基本档；第3款加重档优先于第3款基本档",
+     "rules": [
+      "k237-2s",
+      "k237-3as"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "强制猥亵的对象是“他人”（不限性别），侮辱的对象限于妇女；两类行为均须以暴力、胁迫或者其他方法实施",
+     "rules": [
+      "k237-1c"
+     ]
+    },
+    {
+     "text": "猥亵儿童罪与强制猥亵罪的区别：对象为儿童，且不要求强制手段；猥亵儿童基本刑不含拘役，加重情形由第3款单独列举",
+     "rules": [
+      "k237-3",
+      "k237-3a"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k237-1c",
+    "srcs": [
+     "art237#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "violenceOrCoercion(P,X)",
+     {
+      "or": [
+       "forciblyIndecentAssault(P,X)",
+       "insultsWoman(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "forcibleIndecencyInsultConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款构成条件：以暴力、胁迫或者其他方法强制猥亵他人或者侮辱妇女"
+   },
+   {
+    "key": "k237-1",
+    "srcs": [
+     "art237#1"
+    ],
+    "body": [
+     "forcibleIndecencyInsultConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,forcibleIndecency)"
+    ],
+    "auth": "npc",
+    "note": "符合第1款条件的，构成强制猥亵、侮辱罪（罪名常量 forcibleIndecency）"
+   },
+   {
+    "key": "k237-1s",
+    "srcs": [
+     "art237#1"
+    ],
+    "body": [
+     "constitutes(P,X,forcibleIndecency)",
+     "responsible(P,X,forcibleIndecency)",
+     "~aggravatedForcibleIndecency(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fixedTermUnder5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档处五年以下有期徒刑或者拘役（fixedTermUnder5OrDetention），有第2款加重情形的除外"
+   },
+   {
+    "key": "k237-2",
+    "srcs": [
+     "art237#2"
+    ],
+    "body": [
+     "constitutes(P,X,forcibleIndecency)",
+     {
+      "or": [
+       "mobCrime(X)",
+       "inPublicPlace(X) inPublicView(X)",
+       "otherVileCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedForcibleIndecency(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款加重情形：聚众、在公共场所当众犯前款罪，或者有其他恶劣情节"
+   },
+   {
+    "key": "k237-2s",
+    "srcs": [
+     "art237#2"
+    ],
+    "body": [
+     "constitutes(P,X,forcibleIndecency)",
+     "aggravatedForcibleIndecency(P,X)",
+     "responsible(P,X,forcibleIndecency)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fixedTermFrom5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "具备第2款加重情形的，处五年以上有期徒刑（fixedTermFrom5）"
+   },
+   {
+    "key": "k237-3",
+    "srcs": [
+     "art237#3"
+    ],
+    "body": [
+     "act(P,X)",
+     "indecentAssaultOnChild(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,childIndecency)"
+    ],
+    "auth": "npc",
+    "note": "猥亵儿童的即构成猥亵儿童罪（childIndecency），条文未要求暴力、胁迫等强制方法"
+   },
+   {
+    "key": "k237-3s",
+    "srcs": [
+     "art237#3"
+    ],
+    "body": [
+     "constitutes(P,X,childIndecency)",
+     "responsible(P,X,childIndecency)",
+     "~aggravatedChildIndecency(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fixedTermUnder5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "猥亵儿童基本档处五年以下有期徒刑（fixedTermUnder5，不含拘役），有第3款四项加重情形之一的除外"
+   },
+   {
+    "key": "k237-3a",
+    "srcs": [
+     "art237#3"
+    ],
+    "body": [
+     "constitutes(P,X,childIndecency)",
+     {
+      "or": [
+       "childIndecencyMultipleVictimsOrTimes(X)",
+       "mobCrime(X)",
+       "inPublicPlace(X) inPublicView(X) heinous(X)",
+       "causesChildInjury(X)",
+       "otherSeriousConsequenceToChild(X)",
+       "vileIndecencyMeans(X)",
+       "otherVileCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedChildIndecency(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第3款四项加重情形：猥亵儿童多人或多次；聚众猥亵儿童或在公共场所当众猥亵儿童且情节恶劣；造成儿童伤害或其他严重后果；猥亵手段恶劣或有其他恶劣情节"
+   },
+   {
+    "key": "k237-3as",
+    "srcs": [
+     "art237#3"
+    ],
+    "body": [
+     "constitutes(P,X,childIndecency)",
+     "aggravatedChildIndecency(P,X)",
+     "responsible(P,X,childIndecency)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fixedTermFrom5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "猥亵儿童具备第3款加重情形之一的，处五年以上有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "violenceOrCoercion": "暴力、胁迫或其他方法",
+   "forciblyIndecentAssault": "forciblyIndecentAssault(P,X)：P 通过行为 X 强制猥亵他人（违背他人意志实施猥亵，对象不限性别）",
+   "insultsWoman": "insultsWoman(P,X)：P 通过行为 X 侮辱妇女（对象限于妇女）",
+   "forcibleIndecencyInsultConditions": "forcibleIndecencyInsultConditions(P,X)：P 的行为 X 具备第237条第1款强制猥亵、侮辱罪的构成条件（暴力、胁迫或其他方法＋强制猥亵他人或侮辱妇女）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "aggravatedForcibleIndecency": "aggravatedForcibleIndecency(P,X)：P 的强制猥亵、侮辱行为 X 具备第237条第2款的加重情形（聚众、公共场所当众或其他恶劣情节）",
+   "sentence": "量刑",
+   "mobCrime": "mobCrime(X)：X 属于聚众犯罪",
+   "inPublicPlace": "inPublicPlace(X)：行为 X 发生在公共场所",
+   "inPublicView": "inPublicView(X)：行为 X 系“当众”实施（在不特定人或者多人可以看见的场合）",
+   "otherVileCircumstance": "otherVileCircumstance(X)：行为 X 具有条文列举情形以外的其他恶劣情节",
+   "indecentAssaultOnChild": "indecentAssaultOnChild(P,X)：P 通过行为 X 猥亵儿童（对象为不满十四周岁的儿童）",
+   "aggravatedChildIndecency": "aggravatedChildIndecency(P,X)：P 的猥亵儿童行为 X 具备第237条第3款第（一）至（四）项加重情形之一",
+   "childIndecencyMultipleVictimsOrTimes": "childIndecencyMultipleVictimsOrTimes(X)：行为 X 系猥亵儿童多人或者多次",
+   "heinous": "情节恶劣",
+   "causesChildInjury": "causesChildInjury(X)：行为 X 造成儿童伤害",
+   "otherSeriousConsequenceToChild": "otherSeriousConsequenceToChild(X)：行为 X 造成儿童伤害以外的其他严重后果",
+   "vileIndecencyMeans": "vileIndecencyMeans(X)：行为 X 的猥亵手段恶劣"
+  }
+ },
+ "art:238": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "非法拘禁他人或以其他方法非法剥夺他人人身自由的定罪量刑，以及索债型扣押拘禁、使用暴力致人伤残死亡的转化处理",
+     "rules": [
+      "k238-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为要件：非法拘禁他人，或者以其他方法非法剥夺他人人身自由；本罪是行为犯，实施该行为即成立既遂，不要求发生结果",
+     "rules": [
+      "k238-1",
+      "k238-completion"
+     ]
+    },
+    {
+     "text": "为索取债务而非法扣押、拘禁他人的，仍成立非法拘禁罪，依前两款（基本档与结果加重档）处罚",
+     "rules": [
+      "k238-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非法拘禁中使用暴力致人伤残的，不再以非法拘禁罪论处，依第234条以故意伤害罪定罪处罚",
+     "rules": [
+      "k238-viol-injury"
+     ]
+    },
+    {
+     "text": "非法拘禁中使用暴力致人死亡的，不再以非法拘禁罪论处，依第232条以故意杀人罪定罪处罚",
+     "rules": [
+      "k238-viol-death"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本刑：处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k238-1s"
+     ]
+    },
+    {
+     "text": "具有殴打、侮辱情节的，从重处罚",
+     "rules": [
+      "k238-1h"
+     ]
+    },
+    {
+     "text": "犯本罪致人重伤的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k238-2a"
+     ]
+    },
+    {
+     "text": "犯本罪致人死亡的，处十年以上有期徒刑",
+     "rules": [
+      "k238-2b"
+     ]
+    },
+    {
+     "text": "国家机关工作人员利用职权犯本条前三款罪的，依前三款规定从重处罚",
+     "rules": [
+      "k238-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致人重伤、致人死亡的结果加重档优先于第1款基本档",
+     "rules": [
+      "k238-2a",
+      "k238-2b"
+     ]
+    },
+    {
+     "text": "使用暴力致人伤残、死亡的转化规定（第234条、第232条）优先于非法拘禁罪的成立与基本档、结果加重档",
+     "rules": [
+      "k238-viol-injury",
+      "k238-viol-death"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "拘禁行为本身（捆绑、关押、饥饿等）引起重伤、死亡的，适用非法拘禁罪结果加重档；另行使用暴力直接致人伤残、死亡的，转化为故意伤害罪、故意杀人罪",
+     "rules": [
+      "k238-2a",
+      "k238-2b",
+      "k238-viol-injury",
+      "k238-viol-death"
+     ]
+    },
+    {
+     "text": "为索取债务非法扣押、拘禁他人的，依非法拘禁罪处罚，而非以勒索财物为目的的绑架",
+     "rules": [
+      "k238-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k238-1",
+    "srcs": [
+     "art238#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "unlawfullyDetains(P,X,V)",
+       "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,unlawfulDetention)"
+    ],
+    "auth": "npc",
+    "note": "非法拘禁他人或者以其他方法非法剥夺他人人身自由的，符合非法拘禁罪（unlawfulDetention）的构成要件"
+   },
+   {
+    "key": "k238-completion",
+    "srcs": [
+     "art238#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "unlawfullyDetains(P,X,V)",
+       "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "crimeAccomplished(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记（学理）：非法拘禁罪是行为犯，只要实施非法拘禁或以其他方法非法剥夺人身自由的行为即达既遂"
+   },
+   {
+    "key": "k238-1s",
+    "srcs": [
+     "art238#1"
+    ],
+    "body": [
+     "constitutes(P,X,unlawfulDetention)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑、拘役、管制或者剥夺政治权利（自拟量刑方式常量 under3OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k238-1h",
+    "srcs": [
+     "art238#1"
+    ],
+    "body": [
+     "constitutes(P,X,unlawfulDetention)",
+     {
+      "or": [
+       "beatingCircumstance(X)",
+       "humiliationCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "非法拘禁具有殴打、侮辱情节的，从重处罚"
+   },
+   {
+    "key": "k238-2a",
+    "srcs": [
+     "art238#2"
+    ],
+    "body": [
+     "constitutes(P,X,unlawfulDetention)",
+     "causesGraveInjury(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯非法拘禁罪致人重伤的，处三年以上十年以下有期徒刑（自拟量刑方式常量 from3to10）"
+   },
+   {
+    "key": "k238-2b",
+    "srcs": [
+     "art238#2"
+    ],
+    "body": [
+     "constitutes(P,X,unlawfulDetention)",
+     "causesDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯非法拘禁罪致人死亡的，处十年以上有期徒刑"
+   },
+   {
+    "key": "k238-viol-injury",
+    "srcs": [
+     "art238#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "unlawfullyDetains(P,X,V)",
+       "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)"
+      ]
+     },
+     "usesViolenceInDetention(P,X)",
+     "causesDisability(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,unlawfulDetention)",
+     "convicted(P,X,intentionalInjury)"
+    ],
+    "auth": "npc",
+    "note": "非法拘禁中使用暴力致人伤残的，依第234条以故意伤害罪定罪处罚，不再以非法拘禁罪论处（体中改用底层拘禁事实，避免与自身否定的结论循环）"
+   },
+   {
+    "key": "k238-viol-death",
+    "srcs": [
+     "art238#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "unlawfullyDetains(P,X,V)",
+       "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)"
+      ]
+     },
+     "usesViolenceInDetention(P,X)",
+     "causesDeath(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,unlawfulDetention)",
+     "convicted(P,X,intentionalHomicide)"
+    ],
+    "auth": "npc",
+    "note": "非法拘禁中使用暴力致人死亡的，依第232条以故意杀人罪定罪处罚，不再以非法拘禁罪论处（体中改用底层拘禁事实，避免循环）"
+   },
+   {
+    "key": "k238-3",
+    "srcs": [
+     "art238#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "unlawfullyDetains(P,X,V)",
+       "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)"
+      ]
+     },
+     "forDebtCollection(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,unlawfulDetention)"
+    ],
+    "auth": "npc",
+    "note": "为索取债务非法扣押、拘禁他人的，成立非法拘禁罪，依前两款规定处罚"
+   },
+   {
+    "key": "k238-4",
+    "srcs": [
+     "art238#4"
+    ],
+    "body": [
+     "constitutes(P,X,unlawfulDetention)",
+     "stateOrganStaff(P)",
+     "usesOfficialPower(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员利用职权犯前三款罪的，依前三款规定从重处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k238-viol-injury",
+    "k238-1",
+    "推断：结论冲突（('constitutes', '+')），k238-viol-injury 为例外或更具体"
+   ],
+   [
+    "k238-viol-death",
+    "k238-1",
+    "推断：结论冲突（('constitutes', '+')），k238-viol-death 为例外或更具体"
+   ],
+   [
+    "k238-viol-injury",
+    "k238-3",
+    "推断：结论冲突（('constitutes', '-')），k238-viol-injury 为例外或更具体"
+   ],
+   [
+    "k238-viol-death",
+    "k238-3",
+    "推断：结论冲突（('constitutes', '-')），k238-viol-death 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "unlawfullyDetains": "unlawfullyDetains(P,X,V)：P 通过行为 X 非法拘禁、扣押他人 V，剥夺其人身自由",
+   "unlawfullyDeprivesFreedomByOtherMeans": "unlawfullyDeprivesFreedomByOtherMeans(P,X,V)：P 通过行为 X 以拘禁以外的其他方法非法剥夺 V 的人身自由",
+   "constitutes": "符合构成要件",
+   "crimeAccomplished": "crimeAccomplished(P,X)：P 的犯罪 X 已达既遂（完成形态）",
+   "sentence": "量刑",
+   "beatingCircumstance": "beatingCircumstance(X)：非法拘禁行为 X 具有殴打情节",
+   "humiliationCircumstance": "humiliationCircumstance(X)：非法拘禁行为 X 具有侮辱情节",
+   "causesGraveInjury": "causesGraveInjury(X)：拘禁行为 X 本身致人重伤",
+   "causesDeath": "致人死亡",
+   "usesViolenceInDetention": "usesViolenceInDetention(P,X)：P 在非法拘禁行为 X 中另行使用暴力",
+   "causesDisability": "causesDisability(X)：行为 X 致人伤残",
+   "convicted": "定罪",
+   "forDebtCollection": "forDebtCollection(P,X)：P 实施行为 X 是为索取债务",
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "usesOfficialPower": "usesOfficialPower(P,X)：P 利用职权实施行为 X"
+  }
+ },
+ "art:239": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以勒索财物为目的绑架他人，或者绑架他人作为人质的，成立绑架罪；应区分标准（基本）、减轻与加重三档犯罪构成适用法定刑",
+     "rules": [
+      "k239-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为条件（择一）：①以勒索财物为目的绑架他人；②绑架他人作为人质",
+     "rules": [
+      "k239-1"
+     ]
+    },
+    {
+     "text": "以勒索财物为目的偷盗婴幼儿的，视为绑架，依照第239条前两款的规定定罪处罚",
+     "rules": [
+      "k239-3"
+     ]
+    },
+    {
+     "text": "加重情形（择一）：犯绑架罪又杀害被绑架人，或者故意伤害被绑架人致人重伤、死亡",
+     "rules": [
+      "k239-agg"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节较轻的，属减轻的犯罪构成，不适用基本档法定刑",
+     "rules": [
+      "k239-light"
+     ]
+    },
+    {
+     "text": "具有第2款加重情形的，属加重的犯罪构成，排除基本档与情节较轻档",
+     "rules": [
+      "k239-agg",
+      "k239-agg-pen"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k239-basic"
+     ]
+    },
+    {
+     "text": "情节较轻：处五年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k239-light"
+     ]
+    },
+    {
+     "text": "加重档：处无期徒刑或者死刑，并处没收财产",
+     "rules": [
+      "k239-agg-pen"
+     ]
+    },
+    {
+     "text": "绑架并杀害被绑架人（或故意伤害致重伤、死亡）的，以绑架罪一罪定罪处罚，不与故意杀人罪等实行数罪并罚（笔记：数罪不并罚的特别规定）",
+     "rules": [
+      "k239-one"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节较轻档优先于基本档；第2款加重档优先于第1款基本档与情节较轻档",
+     "rules": [
+      "k239-light",
+      "k239-agg-pen",
+      "k239-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款前半段为绑架罪标准的犯罪构成，后半段“情节较轻”为减轻的犯罪构成，第2款为加重的犯罪构成（派生的犯罪构成）",
+     "rules": [
+      "k239-1",
+      "k239-light",
+      "k239-agg"
+     ]
+    },
+    {
+     "text": "笔记：甲罪+乙罪=甲罪的情形，通说不认为是结合犯（我国刑法尚无结合犯）；第239条第2款只是绑架罪与故意杀人行为的法定一罪处理，故仍定绑架罪一罪",
+     "rules": [
+      "k239-one"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k239-1",
+    "srcs": [
+     "art239#1"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "kidnapsForRansom(P,X)",
+       "kidnapsAsHostage(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,kidnapping)"
+    ],
+    "auth": "npc",
+    "note": "以勒索财物为目的绑架他人或绑架他人作为人质的，符合绑架罪的标准（基本）犯罪构成"
+   },
+   {
+    "key": "k239-basic",
+    "srcs": [
+     "art239#1"
+    ],
+    "body": [
+     "constitutes(P,X,kidnapping)",
+     "~lightCircumstances(X)",
+     "~aggravatedKidnapping(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOrConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处十年以上有期徒刑或者无期徒刑（from10OrLife），并处罚金或者没收财产"
+   },
+   {
+    "key": "k239-light",
+    "srcs": [
+     "art239#1"
+    ],
+    "body": [
+     "constitutes(P,X,kidnapping)",
+     "lightCircumstances(X)",
+     "~aggravatedKidnapping(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的（减轻的犯罪构成），处五年以上十年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k239-agg",
+    "srcs": [
+     "art239#2"
+    ],
+    "body": [
+     "constitutes(P,X,kidnapping)",
+     {
+      "or": [
+       "killsKidnappedPerson(P,X)",
+       "intentionallyInjuresKidnappedCausingGraveInjuryOrDeath(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedKidnapping(P,X)"
+    ],
+    "auth": "npc",
+    "note": "犯绑架罪又杀害被绑架人，或故意伤害被绑架人致人重伤、死亡的，属绑架罪加重的犯罪构成"
+   },
+   {
+    "key": "k239-agg-pen",
+    "srcs": [
+     "art239#2"
+    ],
+    "body": [
+     "aggravatedKidnapping(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrDeath)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：处无期徒刑或者死刑，并处没收财产"
+   },
+   {
+    "key": "k239-3",
+    "srcs": [
+     "art239#3"
+    ],
+    "body": [
+     "stealsInfantForRansom(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,kidnapping)"
+    ],
+    "auth": "npc",
+    "note": "以勒索财物为目的偷盗婴幼儿的，以绑架罪论处，依照前两款规定的法定刑处罚"
+   },
+   {
+    "key": "k239-one",
+    "srcs": [
+     "art239#2"
+    ],
+    "body": [
+     "aggravatedKidnapping(P,X)"
+    ],
+    "heads": [
+     "convicted(P,X,kidnapping)",
+     "-combinedPunishmentForSeveralCrimes(P)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记与学理：第2款系“数罪不并罚”的特别规定，绑架并杀害被绑架人的仅以绑架罪一罪定罪处罚，不与故意杀人罪并罚；通说不认为此属结合犯"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "kidnapsForRansom": "kidnapsForRansom(P,X)：P 通过行为 X 以勒索财物为目的绑架他人",
+   "kidnapsAsHostage": "kidnapsAsHostage(P,X)：P 通过行为 X 绑架他人作为人质",
+   "constitutes": "符合构成要件",
+   "lightCircumstances": "犯罪情节较轻",
+   "aggravatedKidnapping": "aggravatedKidnapping(P,X)：P 的绑架行为 X 具备刑法第239条第2款加重的犯罪构成",
+   "sentence": "量刑",
+   "imposeFineOrConfiscation": "imposeFineOrConfiscation(P,X)：对 P 就犯罪 X 并处罚金或者没收财产",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "killsKidnappedPerson": "killsKidnappedPerson(P,X)：P 在绑架犯罪 X 中杀害被绑架人",
+   "intentionallyInjuresKidnappedCausingGraveInjuryOrDeath": "intentionallyInjuresKidnappedCausingGraveInjuryOrDeath(P,X)：P 在绑架犯罪 X 中故意伤害被绑架人，致人重伤、死亡",
+   "imposeConfiscation": "imposeConfiscation(P,X)：对 P 就犯罪 X 并处没收财产",
+   "stealsInfantForRansom": "stealsInfantForRansom(P,X)：P 通过行为 X 以勒索财物为目的偷盗婴幼儿",
+   "convicted": "定罪",
+   "combinedPunishmentForSeveralCrimes": "combinedPunishmentForSeveralCrimes(P)：对 P 所犯数罪实行数罪并罚"
+  }
+ },
+ "art:240": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "拐卖妇女、儿童的定罪与三个法定刑档次（基本档、八项加重情形档、情节特别严重档）如何认定",
+     "rules": [
+      "k240-cond",
+      "k240-basic",
+      "k240-agg",
+      "k240-death"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "本罪是目的犯：须以出卖为目的，且有拐骗、绑架、收买、贩卖、接送、中转妇女、儿童的行为之一，即属“拐卖妇女、儿童”",
+     "rules": [
+      "k240-def"
+     ]
+    },
+    {
+     "text": "拐卖妇女、儿童的，构成拐卖妇女、儿童罪",
+     "rules": [
+      "k240-cond"
+     ]
+    },
+    {
+     "text": "八项加重情形：①拐卖集团首要分子；②拐卖三人以上；③奸淫被拐卖的妇女；④诱骗、强迫被拐卖妇女卖淫或将其卖给他人迫使卖淫；⑤以出卖为目的使用暴力、胁迫、麻醉方法绑架；⑥以出卖为目的偷盗婴幼儿；⑦造成被拐卖的妇女、儿童或其亲属重伤、死亡或其他严重后果；⑧将妇女、儿童卖往境外",
+     "rules": [
+      "k240-agg-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "欠缺出卖目的（如为自己收养、娶妻而收买、接送），不成立拐卖妇女、儿童罪（依第2款目的要件的反面推论）",
+     "rules": [
+      "k240-noSellPurpose"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k240-basic"
+     ]
+    },
+    {
+     "text": "有八项情形之一：处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k240-agg"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处死刑，并处没收财产",
+     "rules": [
+      "k240-death"
+     ]
+    },
+    {
+     "text": "拐卖妇女又奸淫被拐卖妇女的，以拐卖妇女、儿童罪一罪定罪处罚，不另定强奸罪、不实行数罪并罚（笔记：数罪不并罚的特别规定）",
+     "rules": [
+      "k240-oneCrime"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备八项加重情形之一，排除基本档；情节特别严重，排除十年以上有期徒刑或无期徒刑档",
+     "rules": [
+      "k240-agg",
+      "k240-death"
+     ]
+    },
+    {
+     "text": "出卖目的欠缺的认定优先于“拐卖”的定义性认定",
+     "rules": [
+      "k240-noSellPurpose",
+      "k240-def"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "出卖目的是本罪与收买被拐卖的妇女、儿童罪、绑架罪等的关键区分点；绑架、偷盗婴幼儿须“以出卖为目的”才落入本罪加重情形",
+     "rules": [
+      "k240-def",
+      "k240-noSellPurpose"
+     ]
+    },
+    {
+     "text": "奸淫被拐卖妇女在本条中被规定为加重情形而非独立强奸罪；有观点认为此为拐卖妇女、儿童罪与强奸罪的结合（甲罪+乙罪=甲罪），但通说否认我国刑法存在结合犯",
+     "rules": [
+      "k240-oneCrime"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k240-def",
+    "srcs": [
+     "art240#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "purposeOfSelling(P,X)",
+     "traffickingConduct(X)"
+    ],
+    "heads": [
+     "trafficsWomenOrChildren(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款定义：以出卖为目的，实施拐骗、绑架、收买、贩卖、接送、中转妇女、儿童行为之一的，是拐卖妇女、儿童"
+   },
+   {
+    "key": "k240-cond",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "trafficsWomenOrChildren(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,traffickingInWomenAndChildren)"
+    ],
+    "auth": "npc",
+    "note": "拐卖妇女、儿童的，符合拐卖妇女、儿童罪的构成要件"
+   },
+   {
+    "key": "k240-agg-cond",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "constitutes(P,X,traffickingInWomenAndChildren)",
+     {
+      "or": [
+       "ringleaderOfTraffickingGroup(P,X)",
+       "trafficsThreeOrMorePersons(X)",
+       "rapesTraffickedWoman(P,X)",
+       "luresForcesOrSellsTraffickedWomanForProstitution(P,X)",
+       "kidnapsByViolenceCoercionOrAnesthesiaForSelling(P,X)",
+       "stealsInfantForSelling(P,X)",
+       "causesSeriousConsequenceToTraffickedOrRelative(X)",
+       "sellsTraffickedPersonAbroad(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedTrafficking(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款第（一）至（八）项加重情形之一成立，即属本罪的加重情形"
+   },
+   {
+    "key": "k240-basic",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "constitutes(P,X,traffickingInWomenAndChildren)",
+     "~aggravatedTrafficking(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以上十年以下有期徒刑（量刑常量以from5to10表示该幅度），并处罚金"
+   },
+   {
+    "key": "k240-agg",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "constitutes(P,X,traffickingInWomenAndChildren)",
+     "aggravatedTrafficking(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineOrConfiscationOfProperty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "有八项情形之一的，处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产"
+   },
+   {
+    "key": "k240-death",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "constitutes(P,X,traffickingInWomenAndChildren)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathPenalty)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处死刑，并处没收财产"
+   },
+   {
+    "key": "k240-noSellPurpose",
+    "srcs": [
+     "art240#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "traffickingConduct(X)",
+     "-purposeOfSelling(P,X)"
+    ],
+    "heads": [
+     "-trafficsWomenOrChildren(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理反面推论：虽有拐骗、收买、接送等行为，但不能证成出卖目的（如为自己收养、娶妻），不成立拐卖妇女、儿童"
+   },
+   {
+    "key": "k240-oneCrime",
+    "srcs": [
+     "art240#1"
+    ],
+    "body": [
+     "trafficsWomenOrChildren(P,X)",
+     "rapesTraffickedWoman(P,X)"
+    ],
+    "heads": [
+     "convicted(P,X,traffickingInWomenAndChildren)",
+     "-combinedPunishmentForSeveralCrimes(P)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记与学理：奸淫被拐卖妇女已被第1款第（三）项作为加重情形评价，以本罪一罪定罪处罚，不与强奸罪数罪并罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "purposeOfSelling": "purposeOfSelling(P,X)：P 实施行为 X 以出卖为目的",
+   "traffickingConduct": "traffickingConduct(X)：行为 X 属于拐骗、绑架、收买、贩卖、接送、中转妇女、儿童的行为之一",
+   "trafficsWomenOrChildren": "trafficsWomenOrChildren(P,X)：P 通过行为 X 拐卖妇女、儿童（第240条第2款定义）",
+   "constitutes": "符合构成要件",
+   "ringleaderOfTraffickingGroup": "ringleaderOfTraffickingGroup(P,X)：P 是拐卖妇女、儿童集团的首要分子（第（一）项）",
+   "trafficsThreeOrMorePersons": "trafficsThreeOrMorePersons(X)：行为 X 拐卖妇女、儿童三人以上（第（二）项）",
+   "rapesTraffickedWoman": "rapesTraffickedWoman(P,X)：P 在行为 X 中奸淫被拐卖的妇女（第（三）项）",
+   "luresForcesOrSellsTraffickedWomanForProstitution": "luresForcesOrSellsTraffickedWomanForProstitution(P,X)：P 通过行为 X 诱骗、强迫被拐卖的妇女卖淫，或者将被拐卖的妇女卖给他人迫使其卖淫（第（四）项）",
+   "kidnapsByViolenceCoercionOrAnesthesiaForSelling": "kidnapsByViolenceCoercionOrAnesthesiaForSelling(P,X)：P 以出卖为目的，在行为 X 中使用暴力、胁迫或者麻醉方法绑架妇女、儿童（第（五）项）",
+   "stealsInfantForSelling": "stealsInfantForSelling(P,X)：P 以出卖为目的，通过行为 X 偷盗婴幼儿（第（六）项）",
+   "causesSeriousConsequenceToTraffickedOrRelative": "causesSeriousConsequenceToTraffickedOrRelative(X)：行为 X 造成被拐卖的妇女、儿童或者其亲属重伤、死亡或者其他严重后果（第（七）项）",
+   "sellsTraffickedPersonAbroad": "sellsTraffickedPersonAbroad(X)：行为 X 将妇女、儿童卖往境外（第（八）项）",
+   "aggravatedTrafficking": "aggravatedTrafficking(P,X)：P 的拐卖行为 X 具备第240条第1款第（一）至（八）项加重情形之一",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑",
+   "fineOrConfiscationOfProperty": "fineOrConfiscationOfProperty(P,X)：对 P 就犯罪 X 并处罚金或者没收财产（择一适用）",
+   "imposeConfiscation": "imposeConfiscation(P,X)：对 P 就犯罪 X 并处没收财产",
+   "convicted": "定罪",
+   "combinedPunishmentForSeveralCrimes": "combinedPunishmentForSeveralCrimes(P)：对 P 所犯数罪实行数罪并罚"
+  }
+ },
+ "art:241": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "收买被拐卖的妇女、儿童如何定罪处罚；收买后又实施强奸、伤害、侮辱、非法拘禁或者又出卖的，如何处理",
+     "rules": [
+      "k241-1",
+      "k241-1s",
+      "k241-4",
+      "k241-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上实施了收买被拐卖的妇女、儿童的行为，即构成收买被拐卖的妇女、儿童罪并负刑事责任",
+     "rules": [
+      "k241-1"
+     ]
+    },
+    {
+     "text": "行为对象须是被拐卖的妇女或者儿童；对象为儿童与为妇女时，第6款的从宽条件与幅度不同",
+     "rules": [
+      "k241-6a",
+      "k241-6b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "收买被拐卖的妇女、儿童又出卖的，依第240条以拐卖妇女、儿童罪定罪处罚；学理上作一罪处理，收买行为不再单独定罪",
+     "rules": [
+      "k241-5",
+      "k241-5b"
+     ]
+    },
+    {
+     "text": "对被买儿童没有虐待行为、不阻碍对其进行解救的，可以从轻处罚；按照被买妇女的意愿、不阻碍其返回原居住地的，可以从轻或者减轻处罚",
+     "rules": [
+      "k241-6a",
+      "k241-6b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本刑：处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k241-1s"
+     ]
+    },
+    {
+     "text": "收买被拐卖的妇女并强行与其发生性关系的，该行为依第236条以强奸罪定罪处罚",
+     "rules": [
+      "k241-2"
+     ]
+    },
+    {
+     "text": "收买后非法剥夺、限制被买人人身自由，或者有伤害、侮辱等犯罪行为的，该行为依刑法有关规定定罪处罚",
+     "rules": [
+      "k241-3"
+     ]
+    },
+    {
+     "text": "收买行为并有第2款、第3款犯罪行为的，与收买罪数罪并罚",
+     "rules": [
+      "k241-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第5款为特别处理规定：收买后又出卖的，排除按第1款收买罪单独定罪处罚",
+     "rules": [
+      "k241-5b",
+      "k241-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "收买后强奸、伤害、侮辱、非法拘禁等不被收买罪吸收，须数罪并罚；而收买后又出卖的，整体评价为拐卖妇女、儿童罪一罪",
+     "rules": [
+      "k241-4",
+      "k241-5"
+     ]
+    },
+    {
+     "text": "第6款是“可以”型从宽而非“应当”：儿童须同时具备无虐待与不阻碍解救；妇女须按其意愿且不阻碍返回原居住地，方可从轻（妇女还可减轻）",
+     "rules": [
+      "k241-6a",
+      "k241-6b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k241-1",
+    "srcs": [
+     "art241#1"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,buyingTraffickedWomenChildren)",
+     "responsible(P,X,buyingTraffickedWomenChildren)"
+    ],
+    "auth": "npc",
+    "note": "收买被拐卖的妇女、儿童的，构成收买被拐卖的妇女、儿童罪，负刑事责任"
+   },
+   {
+    "key": "k241-1s",
+    "srcs": [
+     "art241#1"
+    ],
+    "body": [
+     "responsible(P,X,buyingTraffickedWomenChildren)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本法定刑为三年以下有期徒刑、拘役或者管制（新增量刑方式常量 under3OrDetentionOrControl）"
+   },
+   {
+    "key": "k241-2",
+    "srcs": [
+     "art241#2"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "woman(V)",
+     "forcesSexWithBoughtWoman(P,V,Y)"
+    ],
+    "heads": [
+     "convictAndPunish(P,Y,rape)"
+    ],
+    "auth": "npc",
+    "note": "收买被拐卖的妇女又强行与其发生性关系的，该行为依第236条以强奸罪定罪处罚"
+   },
+   {
+    "key": "k241-3",
+    "srcs": [
+     "art241#3"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "crimeAgainstBoughtVictim(P,V,Y)",
+     "constitutes(P,Y,C)"
+    ],
+    "heads": [
+     "convictAndPunish(P,Y,C)"
+    ],
+    "auth": "npc",
+    "note": "收买后非法剥夺、限制被买人人身自由或有伤害、侮辱等犯罪行为的，该行为依刑法有关规定所成立之罪定罪处罚"
+   },
+   {
+    "key": "k241-4",
+    "srcs": [
+     "art241#4"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     {
+      "or": [
+       "forcesSexWithBoughtWoman(P,V,Y)",
+       "crimeAgainstBoughtVictim(P,V,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "decideExecutedPenaltyPerArt69(P,X,Y)"
+    ],
+    "auth": "npc",
+    "note": "收买行为并有第2款、第3款犯罪行为的，收买罪与该罪依第69条数罪并罚"
+   },
+   {
+    "key": "k241-5",
+    "srcs": [
+     "art241#5"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "resellsBoughtVictim(P,V,Y)"
+    ],
+    "heads": [
+     "convictAndPunish(P,Y,traffickingOfWomenChildren)"
+    ],
+    "auth": "npc",
+    "note": "收买被拐卖的妇女、儿童又出卖的，依第240条以拐卖妇女、儿童罪定罪处罚"
+   },
+   {
+    "key": "k241-5b",
+    "srcs": [
+     "art241#5"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "resellsBoughtVictim(P,V,Y)"
+    ],
+    "heads": [
+     "-responsible(P,X,buyingTraffickedWomenChildren)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：收买后又出卖的，整体以拐卖妇女、儿童罪一罪论处，收买行为不再单独定罪处罚（法条未明文，故标为学理）"
+   },
+   {
+    "key": "k241-6a",
+    "srcs": [
+     "art241#6"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "child(V)",
+     "noAbuseOfBoughtChild(P,V)",
+     "notObstructRescueOfChild(P,V)",
+     "responsible(P,X,buyingTraffickedWomenChildren)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighter)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对被买儿童没有虐待行为、不阻碍对其进行解救的，可以从轻处罚"
+   },
+   {
+    "key": "k241-6b",
+    "srcs": [
+     "art241#6"
+    ],
+    "body": [
+     "buysTraffickedWomanOrChild(P,X)",
+     "boughtVictimOf(V,X)",
+     "woman(V)",
+     "accordingToBoughtWomanWill(P,V)",
+     "notObstructReturnToOriginalResidence(P,V)",
+     "responsible(P,X,buyingTraffickedWomenChildren)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighterOrReduced)"
+     }
+    ],
+    "auth": "npc",
+    "note": "按照被买妇女的意愿、不阻碍其返回原居住地的，可以从轻或者减轻处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k241-5b",
+    "k241-1",
+    "推断：结论冲突（('responsible', '+')），k241-5b 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "buysTraffickedWomanOrChild": "buysTraffickedWomanOrChild(P,X)：P 通过行为 X 收买被拐卖的妇女、儿童",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "boughtVictimOf": "boughtVictimOf(V,X)：V 是收买行为 X 中被收买的妇女或者儿童",
+   "woman": "woman(V)：V 是妇女（女性被害人）",
+   "forcesSexWithBoughtWoman": "forcesSexWithBoughtWoman(P,V,Y)：P 通过行为 Y 强行与被收买妇女 V 发生性关系",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚",
+   "crimeAgainstBoughtVictim": "crimeAgainstBoughtVictim(P,V,Y)：P 通过行为 Y 对被收买的妇女、儿童 V 非法剥夺、限制人身自由，或者实施伤害、侮辱等犯罪行为",
+   "decideExecutedPenaltyPerArt69": "decideExecutedPenaltyPerArt69(P,X,Y)：把前罪 X 与后罪 Y 所判处的刑罚依照刑法第69条的规定决定执行的刑罚",
+   "resellsBoughtVictim": "resellsBoughtVictim(P,V,Y)：P 通过行为 Y 将其收买的妇女、儿童 V 又出卖",
+   "child": "child(V)：V 是儿童（被收买的儿童被害人）",
+   "noAbuseOfBoughtChild": "noAbuseOfBoughtChild(P,V)：P 对被买儿童 V 没有虐待行为",
+   "notObstructRescueOfChild": "notObstructRescueOfChild(P,V)：P 不阻碍对被买儿童 V 进行解救",
+   "accordingToBoughtWomanWill": "accordingToBoughtWomanWill(P,V)：P 的处置按照被买妇女 V 的意愿",
+   "notObstructReturnToOriginalResidence": "notObstructReturnToOriginalResidence(P,V)：P 不阻碍被买妇女 V 返回原居住地"
+  }
+ },
+ "art:242": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "阻碍国家机关工作人员解救被收买的妇女、儿童，如何定罪处罚（妨害公务罪与聚众阻碍解救被收买的妇女、儿童罪的区分）",
+     "rules": [
+      "k242-1",
+      "k242-2a"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象是国家机关工作人员解救被收买的妇女、儿童的职务活动；第1款要求以暴力、威胁方法阻碍",
+     "rules": [
+      "k242-1"
+     ]
+    },
+    {
+     "text": "第2款以“聚众”方式阻碍解救，并按首要分子与其他参与者分别处理；首要分子不以使用暴力、威胁为必要",
+     "rules": [
+      "k242-2a",
+      "k242-2c"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "聚众阻碍解救中的其他参与者未使用暴力、威胁方法的，不构成本罪，也不按妨害公务罪处罚（学理，法条未明文）",
+     "rules": [
+      "k242-nonviolent"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "以暴力、威胁方法阻碍解救被收买的妇女、儿童的，符合妨害公务罪构成要件，依照第277条定罪处罚",
+     "rules": [
+      "k242-1",
+      "k242-1p"
+     ]
+    },
+    {
+     "text": "聚众阻碍解救的首要分子，构成聚众阻碍解救被收买的妇女、儿童罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k242-2a",
+      "k242-2b"
+     ]
+    },
+    {
+     "text": "聚众阻碍解救的其他参与者使用暴力、威胁方法的，依照前款即第277条的规定处罚",
+     "rules": [
+      "k242-2c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "对聚众阻碍解救的首要分子，适用第2款前段的特别规定量刑，排除第1款转致第277条的处罚",
+     "rules": [
+      "k242-2b",
+      "k242-1p"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "一般以暴力、威胁阻碍解救的，按妨害公务罪处理；聚众阻碍解救的首要分子即使未使用暴力、威胁，也成立聚众阻碍解救被收买的妇女、儿童罪",
+     "rules": [
+      "k242-1",
+      "k242-2a"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k242-1",
+    "srcs": [
+     "art242#1"
+    ],
+    "body": [
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingOfficialDuty)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、威胁方法阻碍国家机关工作人员解救被收买的妇女、儿童，依第277条即妨害公务罪（obstructingOfficialDuty）的构成要件评价"
+   },
+   {
+    "key": "k242-1p",
+    "srcs": [
+     "art242#1"
+    ],
+    "body": [
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt277(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款：以暴力、威胁方法阻碍解救的，依照本法第277条的规定定罪处罚"
+   },
+   {
+    "key": "k242-2a",
+    "srcs": [
+     "art242#2"
+    ],
+    "body": [
+     "crowdObstructionOfRescue(P,X)",
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "ringleader(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,crowdObstructionOfRescueOfBoughtWomanOrChild)"
+    ],
+    "auth": "npc",
+    "note": "聚众阻碍解救被收买的妇女、儿童的首要分子，构成聚众阻碍解救被收买的妇女、儿童罪（crowdObstructionOfRescueOfBoughtWomanOrChild），不以暴力、威胁为要件"
+   },
+   {
+    "key": "k242-2b",
+    "srcs": [
+     "art242#2"
+    ],
+    "body": [
+     "crowdObstructionOfRescue(P,X)",
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "ringleader(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款前段：聚众阻碍解救的首要分子，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k242-2c",
+    "srcs": [
+     "art242#2"
+    ],
+    "body": [
+     "crowdObstructionOfRescue(P,X)",
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "participatesIn(P,X)",
+     "-ringleader(P,X)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt277(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款后段：聚众阻碍解救的其他参与者使用暴力、威胁方法的，依照前款（即第277条）的规定处罚"
+   },
+   {
+    "key": "k242-nonviolent",
+    "srcs": [
+     "art242#2"
+    ],
+    "body": [
+     "crowdObstructionOfRescue(P,X)",
+     "obstructsRescueOfBoughtWomanOrChild(P,X)",
+     "participatesIn(P,X)",
+     "-ringleader(P,X)",
+     "-usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,crowdObstructionOfRescueOfBoughtWomanOrChild)",
+     "-constitutes(P,X,obstructingOfficialDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "其他参与者未使用暴力、威胁方法的不成立犯罪，系从第2款后段反面推论的学理结论，法条未明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k242-nonviolent",
+    "k242-1",
+    "推断：结论冲突（('constitutes', '+')），k242-nonviolent 为例外或更具体"
+   ],
+   [
+    "k242-nonviolent",
+    "k242-2a",
+    "推断：结论冲突（('constitutes', '+')），k242-nonviolent 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "obstructsRescueOfBoughtWomanOrChild": "obstructsRescueOfBoughtWomanOrChild(P,X)：P 通过行为 X 阻碍国家机关工作人员解救被收买的妇女、儿童的职务活动",
+   "usesViolenceOrThreatMeans": "usesViolenceOrThreatMeans(P,X)：P 在行为 X 中以暴力、威胁手段实施",
+   "constitutes": "符合构成要件",
+   "punishPerArt277": "punishPerArt277(P,X)：依照刑法第277条（妨害公务罪）的规定对 P 就行为 X 定罪处罚",
+   "crowdObstructionOfRescue": "crowdObstructionOfRescue(P,X)：P 以聚众方式实施阻碍解救被收买的妇女、儿童的行为 X",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "participatesIn": "participatesIn(P,X)：P 参与犯罪 X"
+  }
+ },
+ "art:243": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "捏造事实诬告陷害他人、意图使他人受刑事追究的行为，是否构成诬告陷害罪",
+     "rules": [
+      "k243-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上捏造犯罪事实并告发特定的他人（诬告陷害），主观上意图使该他人受刑事追究，且情节严重",
+     "rules": [
+      "k243-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不是有意诬陷，而是错告，或者检举失实的，不适用第1款、第2款，不构成诬告陷害罪",
+     "rules": [
+      "k243-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k243-1a"
+     ]
+    },
+    {
+     "text": "造成严重后果的：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k243-1b"
+     ]
+    },
+    {
+     "text": "国家机关工作人员犯本罪的，从重处罚",
+     "rules": [
+      "k243-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果时适用加重档（三年以上十年以下），排除基本档",
+     "rules": [
+      "k243-1b",
+      "k243-1a"
+     ]
+    },
+    {
+     "text": "错告、检举失实的排除规定优先于入罪与从重处罚规定",
+     "rules": [
+      "k243-3",
+      "k243-cond",
+      "k243-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "诬告陷害与错告、检举失实的界限在于是否有意诬陷（捏造事实并意图使他人受刑事追究）；无诬陷故意的错告、失实检举不入罪",
+     "rules": [
+      "k243-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k243-cond",
+    "srcs": [
+     "art243#1"
+    ],
+    "body": [
+     "fabricatesFalseFacts(P,X)",
+     "falselyAccuses(P,X,V)",
+     "intentToCauseCriminalProsecution(P,V)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,falseAccusation)"
+    ],
+    "auth": "npc",
+    "note": "捏造事实诬告陷害特定他人、意图使其受刑事追究且情节严重的，符合诬告陷害罪构成要件"
+   },
+   {
+    "key": "k243-1a",
+    "srcs": [
+     "art243#1"
+    ],
+    "body": [
+     "constitutes(P,X,falseAccusation)",
+     "~seriousConsequenceCaused(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档量刑：三年以下有期徒刑、拘役或者管制（量刑方式常量 under3OrDetentionOrControl）"
+   },
+   {
+    "key": "k243-1b",
+    "srcs": [
+     "art243#1"
+    ],
+    "body": [
+     "constitutes(P,X,falseAccusation)",
+     "seriousConsequenceCaused(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的加重档：三年以上十年以下有期徒刑（量刑方式常量 from3to10）"
+   },
+   {
+    "key": "k243-2",
+    "srcs": [
+     "art243#2"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "constitutes(P,X,falseAccusation)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员犯诬告陷害罪的，从重处罚"
+   },
+   {
+    "key": "k243-3",
+    "srcs": [
+     "art243#3"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "noIntentToFrame(P,X)",
+     {
+      "or": [
+       "mistakenAccusation(P,X)",
+       "inaccurateReporting(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,falseAccusation)"
+    ],
+    "auth": "npc",
+    "note": "不是有意诬陷，而是错告或者检举失实的，不适用前两款，不构成诬告陷害罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k243-cond",
+    "k243-3",
+    "推断：结论冲突（('constitutes', '+')），k243-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "fabricatesFalseFacts": "fabricatesFalseFacts(P,X)：P 通过行为 X 捏造虚伪事实",
+   "falselyAccuses": "falselyAccuses(P,X,V)：P 通过行为 X 诬告陷害他人 V（向有关机关告发捏造的犯罪事实）",
+   "intentToCauseCriminalProsecution": "intentToCauseCriminalProsecution(P,V)：P 意图使他人 V 受刑事追究",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "seriousConsequenceCaused": "seriousConsequenceCaused(X)：行为 X 已经造成严重后果（如实际倾覆、毁坏、人身伤亡或重大财产损失）",
+   "sentence": "量刑",
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "noIntentToFrame": "noIntentToFrame(P,X)：P 实施行为 X 不是有意诬陷（无诬告陷害的故意）",
+   "mistakenAccusation": "mistakenAccusation(P,X)：P 的行为 X 属于错告（因认识错误而告发）",
+   "inaccurateReporting": "inaccurateReporting(P,X)：P 的行为 X 属于检举失实（检举内容与事实不符）"
+  }
+ },
+ "art:244": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、威胁或者限制人身自由的方法强迫他人劳动，是否成立强迫劳动罪（forcedLabor）及适用哪一档法定刑；明知他人强迫劳动而提供协助如何处罚；单位犯罪如何双罚",
+     "rules": [
+      "k244-1",
+      "k244-2",
+      "k244-basic",
+      "k244-aggravated",
+      "k244-3a",
+      "k244-3b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：强迫他人劳动，且手段为暴力、威胁或者限制人身自由（三者择一即可），成立强迫劳动罪并负刑事责任",
+     "rules": [
+      "k244-1"
+     ]
+    },
+    {
+     "text": "第2款：明知他人实施第1款的强迫劳动行为，为其招募、运送人员或者有其他协助强迫他人劳动的行为，本人亦按强迫劳动罪论处（协助行为被独立规定处罚）",
+     "rules": [
+      "k244-2"
+     ]
+    },
+    {
+     "text": "第3款：单位犯前两款罪的，对单位与其直接负责的主管人员、其他直接责任人员分别处理（双罚制）",
+     "rules": [
+      "k244-3a",
+      "k244-3b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处罚金（under3OrDetentionAndFine）",
+     "rules": [
+      "k244-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处三年以上十年以下有期徒刑，并处罚金（from3to10AndFine）",
+     "rules": [
+      "k244-aggravated"
+     ]
+    },
+    {
+     "text": "第2款协助行为、第3款单位犯罪中的责任人员，均依照第1款的两档法定刑处罚",
+     "rules": [
+      "k244-2",
+      "k244-3b",
+      "k244-basic",
+      "k244-aggravated"
+     ]
+    },
+    {
+     "text": "单位犯本罪的，对单位判处罚金",
+     "rules": [
+      "k244-3a"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的，适用第二档（三年以上十年以下有期徒刑并处罚金），排除基本档的适用",
+     "rules": [
+      "k244-aggravated",
+      "k244-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k244-1",
+    "srcs": [
+     "art244#1"
+    ],
+    "body": [
+     "forcesOthersToLabor(P,X)",
+     {
+      "or": [
+       "usesViolenceMethod(P,X)",
+       "usesThreatMethod(P,X)",
+       "restrictsPersonalFreedom(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,forcedLabor)",
+     "responsible(P,X,forcedLabor)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、威胁或者限制人身自由的方法强迫他人劳动的，符合强迫劳动罪（forcedLabor）构成要件并负刑事责任"
+   },
+   {
+    "key": "k244-2",
+    "srcs": [
+     "art244#2"
+    ],
+    "body": [
+     "constitutes(Q,Y,forcedLabor)",
+     "knowsOthersForcedLabor(P,Y)",
+     {
+      "or": [
+       "recruitsPersonnelForForcedLabor(P,X,Y)",
+       "transportsPersonnelForForcedLabor(P,X,Y)",
+       "otherAssistanceForForcedLabor(P,X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,forcedLabor)",
+     "responsible(P,X,forcedLabor)"
+    ],
+    "auth": "npc",
+    "note": "明知他人实施强迫劳动而为其招募、运送人员或者有其他协助行为的，依照第1款的规定处罚（罪名同为强迫劳动罪，量刑适用第1款两档）"
+   },
+   {
+    "key": "k244-basic",
+    "srcs": [
+     "art244#1",
+     "art244#2",
+     "art244#3"
+    ],
+    "body": [
+     "responsible(P,X,forcedLabor)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionAndFine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役，并处罚金（常量 under3OrDetentionAndFine 表示该组合刑）"
+   },
+   {
+    "key": "k244-aggravated",
+    "srcs": [
+     "art244#1",
+     "art244#2",
+     "art244#3"
+    ],
+    "body": [
+     "responsible(P,X,forcedLabor)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10AndFine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的：处三年以上十年以下有期徒刑，并处罚金（常量 from3to10AndFine 表示该组合刑）"
+   },
+   {
+    "key": "k244-3a",
+    "srcs": [
+     "art244#3"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,forcedLabor)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯强迫劳动罪（含第2款协助行为）的，对单位判处罚金"
+   },
+   {
+    "key": "k244-3b",
+    "srcs": [
+     "art244#3"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,forcedLabor)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "responsible(P,X,forcedLabor)"
+    ],
+    "auth": "npc",
+    "note": "单位犯本罪的，对其直接负责的主管人员和其他直接责任人员依照第1款的规定处罚（据此适用第1款两档法定刑）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forcesOthersToLabor": "forcesOthersToLabor(P,X)：主体 P（自然人或单位）通过行为 X 强迫他人劳动",
+   "usesViolenceMethod": "usesViolenceMethod(P,X)：P 在行为 X 中使用暴力方法",
+   "usesThreatMethod": "usesThreatMethod(P,X)：P 在行为 X 中使用威胁方法",
+   "restrictsPersonalFreedom": "restrictsPersonalFreedom(P,X)：P 在行为 X 中以限制他人人身自由的方法实施行为",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "knowsOthersForcedLabor": "knowsOthersForcedLabor(P,Y)：P 明知他人实施强迫劳动行为 Y",
+   "recruitsPersonnelForForcedLabor": "recruitsPersonnelForForcedLabor(P,X,Y)：P 通过行为 X 为他人的强迫劳动行为 Y 招募人员",
+   "transportsPersonnelForForcedLabor": "transportsPersonnelForForcedLabor(P,X,Y)：P 通过行为 X 为他人的强迫劳动行为 Y 运送人员",
+   "otherAssistanceForForcedLabor": "otherAssistanceForForcedLabor(P,X,Y)：P 通过行为 X 为他人的强迫劳动行为 Y 提供招募、运送以外的其他协助",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员"
+  }
+ },
+ "art:244-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反劳动管理法规，雇用未满十六周岁的未成年人从事超强度体力劳动、高空井下作业或危险环境下劳动，情节严重的，直接责任人员是否构成雇用童工从事危重劳动罪，如何量刑",
+     "rules": [
+      "k244z1-cond",
+      "k244z1-basic",
+      "k244z1-agg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提：违反劳动管理法规，雇用未满十六周岁的未成年人从事劳动；受处罚者为该行为的直接责任人员",
+     "rules": [
+      "k244z1-cond"
+     ]
+    },
+    {
+     "text": "劳动类型择一即可：超强度体力劳动；高空、井下作业；在爆炸性、易燃性、放射性、毒害性等危险环境下从事劳动",
+     "rules": [
+      "k244z1-cond"
+     ]
+    },
+    {
+     "text": "须情节严重，方构成本罪",
+     "rules": [
+      "k244z1-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节特别严重的，不适用基本档，改处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k244z1-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，直接责任人员构成雇用童工从事危重劳动罪",
+     "rules": [
+      "k244z1-cond"
+     ]
+    },
+    {
+     "text": "基本档：对直接责任人员处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k244z1-basic"
+     ]
+    },
+    {
+     "text": "加重档：情节特别严重的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k244z1-agg"
+     ]
+    },
+    {
+     "text": "有前款行为，造成事故又构成其他犯罪的，与本罪依数罪并罚的规定处罚",
+     "rules": [
+      "k244z1-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重的加重档优先于基本档适用",
+     "rules": [
+      "k244z1-agg",
+      "k244z1-basic"
+     ]
+    },
+    {
+     "text": "第2款明定数罪并罚，造成事故另构成他罪时不按从一重处断",
+     "rules": [
+      "k244z1-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪不以暴力、威胁或限制人身自由强迫劳动为要件，与强迫劳动罪不同；雇用童工从事一般劳动的，属劳动行政违法，不构成本罪（学理说明）",
+     "rules": []
+    },
+    {
+     "text": "与重大责任事故罪等事故类犯罪的关系：雇用童工从事危重劳动造成事故又构成其他犯罪的，两罪并罚",
+     "rules": [
+      "k244z1-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k244z1-cond",
+    "srcs": [
+     "art244-1#1"
+    ],
+    "body": [
+     "violatesLaborManagementRegulations(X)",
+     "employsMinorForLabor(P,X,V)",
+     "under16(V)",
+     {
+      "or": [
+       "overintensivePhysicalLabor(X)",
+       "highAltitudeOrUndergroundWork(X)",
+       "hazardousEnvironmentLabor(X)"
+      ]
+     },
+     "seriousCircumstances(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,employingChildLaborInHazardousWork)"
+    ],
+    "auth": "npc",
+    "note": "违反劳动管理法规雇用未满十六周岁未成年人从事三类危重劳动之一、情节严重的，直接责任人员构成雇用童工从事危重劳动罪"
+   },
+   {
+    "key": "k244z1-basic",
+    "srcs": [
+     "art244-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,employingChildLaborInHazardousWork)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（under3OrDetention），并处罚金"
+   },
+   {
+    "key": "k244z1-agg",
+    "srcs": [
+     "art244-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,employingChildLaborInHazardousWork)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上七年以下有期徒刑（from3to7），并处罚金"
+   },
+   {
+    "key": "k244z1-2",
+    "srcs": [
+     "art244-1#2"
+    ],
+    "body": [
+     "constitutes(P,X,employingChildLaborInHazardousWork)",
+     "causesAccident(X,A)",
+     "constitutes(P,A,C)",
+     "otherCrimeThan(C,employingChildLaborInHazardousWork)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideExecutedPenaltyPerArt69(P,X,A)"
+     }
+    ],
+    "auth": "npc",
+    "note": "有前款行为造成事故又构成其他犯罪的，依照数罪并罚的规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "violatesLaborManagementRegulations": "violatesLaborManagementRegulations(X)：行为 X 违反劳动管理法规",
+   "employsMinorForLabor": "employsMinorForLabor(P,X,V)：P 通过行为 X 雇用未成年人 V 从事劳动",
+   "under16": "under16(V)：V 未满十六周岁",
+   "overintensivePhysicalLabor": "overintensivePhysicalLabor(X)：行为 X 系使被雇用的童工从事超强度体力劳动",
+   "highAltitudeOrUndergroundWork": "highAltitudeOrUndergroundWork(X)：行为 X 系使被雇用的童工从事高空、井下作业",
+   "hazardousEnvironmentLabor": "hazardousEnvironmentLabor(X)：行为 X 系使被雇用的童工在爆炸性、易燃性、放射性、毒害性等危险环境下从事劳动",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "causesAccident": "causesAccident(X,A)：雇用童工从事危重劳动的行为 X 造成事故 A",
+   "otherCrimeThan": "otherCrimeThan(C1,C2)：C1 与 C2 是不同罪名",
+   "decideExecutedPenaltyPerArt69": "decideExecutedPenaltyPerArt69(P,X,Y)：把前罪 X 与后罪 Y 所判处的刑罚依照刑法第69条的规定决定执行的刑罚"
+  }
+ },
+ "art:245": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "非法侵入住宅罪的保护客体是住宅权（财产权）还是居住安宁（人身权利），直接决定一般侵入行为能否入罪：采住宅权说则侵入即侵害本条利益；采居住安宁说则须另有犯罪意图或令人不安、恐惧的举动",
+     "rules": [
+      "k245-peace"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "非法搜查他人身体、住宅的，构成非法搜查罪",
+     "rules": [
+      "k245-search"
+     ]
+    },
+    {
+     "text": "非法侵入他人住宅的，构成非法侵入住宅罪",
+     "rules": [
+      "k245-intrude"
+     ]
+    },
+    {
+     "text": "司法工作人员滥用职权犯非法搜查罪、非法侵入住宅罪的，属从重处罚情形",
+     "rules": [
+      "k245-aggravated"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "（学理）若以居住安宁为本罪客体，一般侵入不足以侵犯居住安宁，缺乏犯罪意图或其他令人不安、恐惧举动的，不构成非法侵入住宅罪",
+     "rules": [
+      "k245-peace"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "犯非法搜查罪、非法侵入住宅罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k245-pen"
+     ]
+    },
+    {
+     "text": "司法工作人员滥用职权犯前款罪的，从重处罚",
+     "rules": [
+      "k245-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "居住安宁说下的限缩解释优先于条文字面的入罪结论（学理观点，非条文规定）",
+     "rules": [
+      "k245-peace",
+      "k245-intrude"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "犯罪客体是刑法保护的社会利益，揭示条文目的宗旨，对构成要件解释与罪与非罪界限有指导作用（如第256条破坏选举罪只保护各级人民代表大会和国家机关领导人员的选举，不含公司厂长经理、村委会选举）——方法论说明，不单独形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k245-search",
+    "srcs": [
+     "art245#1"
+    ],
+    "body": [
+     "illegallySearchesBodyOrResidence(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalSearch)"
+    ],
+    "auth": "npc",
+    "note": "非法搜查他人身体、住宅的，符合非法搜查罪（illegalSearch）的构成要件"
+   },
+   {
+    "key": "k245-intrude",
+    "srcs": [
+     "art245#1"
+    ],
+    "body": [
+     "illegallyIntrudesIntoResidence(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalIntrusionIntoResidence)"
+    ],
+    "auth": "npc",
+    "note": "非法侵入他人住宅的，符合非法侵入住宅罪（illegalIntrusionIntoResidence）的构成要件"
+   },
+   {
+    "key": "k245-pen",
+    "srcs": [
+     "art245#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,illegalSearch)",
+       "constitutes(P,X,illegalIntrusionIntoResidence)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯非法搜查罪或非法侵入住宅罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k245-aggravated",
+    "srcs": [
+     "art245#2"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "abusesPower(P,X)",
+     {
+      "or": [
+       "constitutes(P,X,illegalSearch)",
+       "constitutes(P,X,illegalIntrusionIntoResidence)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "司法工作人员滥用职权犯前款罪的，从重处罚"
+   },
+   {
+    "key": "k245-peace",
+    "srcs": [
+     "art245#1"
+    ],
+    "body": [
+     "illegallyIntrudesIntoResidence(P,X)",
+     "residentialPeaceAsProtectedInterest(X)",
+     "~disturbingIntentOrConduct(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalIntrusionIntoResidence)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记学理观点：若本罪客体为居住安宁，一般侵入不足以侵犯居住安宁，须有犯罪意图或其他令人不安、恐惧的举动才构成犯罪；条文本身未设此限制"
+   }
+  ],
+  "overrides": [
+   [
+    "k245-peace",
+    "k245-search",
+    "推断：结论冲突（('constitutes', '+')），k245-peace 为例外或更具体"
+   ],
+   [
+    "k245-peace",
+    "k245-intrude",
+    "推断：结论冲突（('constitutes', '+')），k245-peace 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "illegallySearchesBodyOrResidence": "illegallySearchesBodyOrResidence(P,X)：P 通过行为 X 非法搜查他人身体、住宅",
+   "constitutes": "符合构成要件",
+   "illegallyIntrudesIntoResidence": "illegallyIntrudesIntoResidence(P,X)：P 通过行为 X 非法侵入他人住宅",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "sentence": "量刑",
+   "residentialPeaceAsProtectedInterest": "residentialPeaceAsProtectedInterest(X)：对行为 X 的评价采居住安宁说，即以公民居住安宁（人身权利）为非法侵入住宅罪的保护客体",
+   "disturbingIntentOrConduct": "disturbingIntentOrConduct(P,X)：P 侵入住宅时带有犯罪意图或者实施其他令人不安、恐惧的举动"
+  }
+ },
+ "art:246": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力或者其他方法公然侮辱他人，或者捏造事实诽谤他人，情节严重的，是否成立侮辱罪、诽谤罪，如何处刑",
+     "rules": [
+      "k246-insult",
+      "k246-defame",
+      "k246-penalty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "侮辱罪：以暴力或者其他方法公然侮辱他人（对象为特定他人，须公然进行）；诽谤罪：捏造事实诽谤他人（捏造并散布虚假事实损害特定他人名誉）",
+     "rules": [
+      "k246-insult",
+      "k246-defame"
+     ]
+    },
+    {
+     "text": "两罪均须“情节严重”，情节不严重的只属民事侵权或治安违法，不构成犯罪",
+     "rules": [
+      "k246-insult",
+      "k246-defame"
+     ]
+    },
+    {
+     "text": "通过信息网络实施第1款行为，被害人向人民法院告诉，但提供证据确有困难",
+     "rules": [
+      "k246-assist"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "侮辱罪、诽谤罪告诉的才处理（自诉为原则）",
+     "rules": [
+      "k246-complaint"
+     ]
+    },
+    {
+     "text": "但严重危害社会秩序和国家利益的除外，此时不受告诉才处理限制，可依法公诉",
+     "rules": [
+      "k246-exception"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "处三年以下有期徒刑、拘役、管制或者剥夺政治权利（剥夺政治权利可独立适用）",
+     "rules": [
+      "k246-penalty"
+     ]
+    },
+    {
+     "text": "网络侮辱、诽谤自诉案件中被害人举证确有困难的，人民法院可以要求公安机关提供协助",
+     "rules": [
+      "k246-assist"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“严重危害社会秩序和国家利益”的但书优先于告诉才处理的原则规定",
+     "rules": [
+      "k246-exception",
+      "k246-complaint"
+     ]
+    },
+    {
+     "text": "对2015年10月31日以前通过信息网络实施的侮辱、诽谤行为，被害人告诉但提供证据确有困难的，适用修正后第246条第3款（有利于被告人的从新）",
+     "rules": [
+      "k246-retro"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "侮辱不以捏造事实为必要，可以真实事实或暴力、言词公然贬损他人人格；诽谤必须捏造并散布虚假事实",
+     "rules": [
+      "k246-insult",
+      "k246-defame"
+     ]
+    },
+    {
+     "text": "公安机关协助取证只是法院的裁量性权力，不改变自诉性质，也不等于转为公诉",
+     "rules": [
+      "k246-assist",
+      "k246-complaint"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k246-insult",
+    "srcs": [
+     "art246#1"
+    ],
+    "body": [
+     "publiclyInsultsOther(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,insult)"
+    ],
+    "auth": "npc",
+    "note": "以暴力或者其他方法公然侮辱他人、情节严重的，符合侮辱罪构成要件（insult 为自拟罪名常量）"
+   },
+   {
+    "key": "k246-defame",
+    "srcs": [
+     "art246#1"
+    ],
+    "body": [
+     "fabricatesFactsToDefameOther(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,defamation)"
+    ],
+    "auth": "npc",
+    "note": "捏造事实诽谤他人、情节严重的，符合诽谤罪构成要件（defamation 为自拟罪名常量）"
+   },
+   {
+    "key": "k246-penalty",
+    "srcs": [
+     "art246#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,insult)",
+       "constitutes(P,X,defamation)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以下有期徒刑、拘役、管制或者剥夺政治权利；量刑方式常量 under3OrDetentionControlOrDeprivation 系自拟"
+   },
+   {
+    "key": "k246-complaint",
+    "srcs": [
+     "art246#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,insult)",
+       "constitutes(P,X,defamation)"
+      ]
+     },
+     "~seriouslyEndangersSocialOrderAndStateInterest(X)"
+    ],
+    "heads": [
+     "prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "npc",
+    "note": "侮辱罪、诽谤罪告诉的才处理，但严重危害社会秩序和国家利益的除外"
+   },
+   {
+    "key": "k246-exception",
+    "srcs": [
+     "art246#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,insult)",
+       "constitutes(P,X,defamation)"
+      ]
+     },
+     "seriouslyEndangersSocialOrderAndStateInterest(X)"
+    ],
+    "heads": [
+     "-prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "npc",
+    "note": "严重危害社会秩序和国家利益的侮辱、诽谤，不适用告诉才处理"
+   },
+   {
+    "key": "k246-assist",
+    "srcs": [
+     "art246#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,insult)",
+       "constitutes(P,X,defamation)"
+      ]
+     },
+     "viaInformationNetwork(P,X)",
+     "victimOf(V,X)",
+     "complain(V,X)",
+     "difficultyInProvidingEvidence(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "requirePoliceAssistance(court,V,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "网络侮辱、诽谤，被害人告诉但举证确有困难的，人民法院可以要求公安机关提供协助"
+   },
+   {
+    "key": "k246-retro",
+    "srcs": [
+     "art246#3"
+    ],
+    "body": [
+     "crimeBefore20151101(P,X)",
+     "viaInformationNetwork(P,X)",
+     {
+      "or": [
+       "constitutes(P,X,insult)",
+       "constitutes(P,X,defamation)"
+      ]
+     },
+     "victimOf(V,X)",
+     "complain(V,X)",
+     "difficultyInProvidingEvidence(V,X)"
+    ],
+    "heads": [
+     "applyRevisedArt246Para3(P,X)"
+    ],
+    "auth": "spc",
+    "note": "依《刑法修正案(九)》时间效力司法解释第4条（见笔记）：2015年10月31日以前的网络侮辱、诽谤，被害人告诉而举证困难的，适用修正后第246条第3款"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "publiclyInsultsOther": "publiclyInsultsOther(P,X)：P 通过行为 X 以暴力或者其他方法公然侮辱他人（对象为特定他人，且具公然性）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "fabricatesFactsToDefameOther": "fabricatesFactsToDefameOther(P,X)：P 通过行为 X 捏造事实诽谤他人（捏造并散布虚假事实，损害特定他人名誉）",
+   "sentence": "量刑",
+   "seriouslyEndangersSocialOrderAndStateInterest": "seriouslyEndangersSocialOrderAndStateInterest(X)：行为 X 严重危害社会秩序和国家利益",
+   "prosecutedOnlyUponComplaint": "告诉的才处理",
+   "viaInformationNetwork": "viaInformationNetwork(P,X)：P 通过信息网络实施行为 X",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "complain": "complain(A,X)：A 就犯罪 X 提出告诉（控告）",
+   "difficultyInProvidingEvidence": "difficultyInProvidingEvidence(V,X)：被害人 V 就行为 X 向人民法院提供证据确有困难",
+   "requirePoliceAssistance": "requirePoliceAssistance(Ct,V,X)：人民法院 Ct 要求公安机关就被害人 V 告诉的案件 X 提供协助（取证协助）",
+   "crimeBefore20151101": "crimeBefore20151101(P,X)：P 的犯罪 X 发生在2015年10月31日以前（《刑法修正案(九)》施行前）",
+   "applyRevisedArt246Para3": "applyRevisedArt246Para3(P,X)：对 P 就行为 X 适用修正后刑法第246条第3款的规定"
+  }
+ },
+ "art:247": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "司法工作人员刑讯逼供、暴力逼取证人证言的定罪量刑，以及致人伤残、死亡时的转化处理",
+     "rules": [
+      "k247-torture",
+      "k247-violence",
+      "k247-penalty",
+      "k247-injury",
+      "k247-death",
+      "k247-heavier"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体必须是司法工作人员（有侦查、检察、审判、监管职责的人员）",
+     "rules": [
+      "k247-torture",
+      "k247-violence"
+     ]
+    },
+    {
+     "text": "刑讯逼供的对象是犯罪嫌疑人、被告人，行为是以肉刑或变相肉刑逼取口供；暴力取证的对象是证人，行为是使用暴力逼取证言",
+     "rules": [
+      "k247-torture",
+      "k247-violence"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "致人伤残、死亡的，不再适用本条三年以下有期徒刑或者拘役的基本法定刑，而依第234条、第232条定罪从重处罚",
+     "rules": [
+      "k247-penalty",
+      "k247-injury",
+      "k247-death",
+      "k247-heavier"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "司法工作人员对犯罪嫌疑人、被告人实行刑讯逼供的，符合刑讯逼供罪的构成要件",
+     "rules": [
+      "k247-torture"
+     ]
+    },
+    {
+     "text": "司法工作人员使用暴力逼取证人证言的，符合暴力取证罪的构成要件",
+     "rules": [
+      "k247-violence"
+     ]
+    },
+    {
+     "text": "成立刑讯逼供罪或暴力取证罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k247-penalty"
+     ]
+    },
+    {
+     "text": "刑讯逼供、暴力取证致人伤残的，依照第234条以故意伤害罪定罪",
+     "rules": [
+      "k247-injury"
+     ]
+    },
+    {
+     "text": "刑讯逼供、暴力取证致人死亡的，依照第232条以故意杀人罪定罪",
+     "rules": [
+      "k247-death"
+     ]
+    },
+    {
+     "text": "转化依故意伤害罪、故意杀人罪定罪的，应当从重处罚",
+     "rules": [
+      "k247-heavier"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致人伤残、死亡时，第234条、第232条的定罪从重规定优先于本条前段的基本法定刑（转化犯）",
+     "rules": [
+      "k247-injury",
+      "k247-death",
+      "k247-heavier"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "刑讯逼供罪与暴力取证罪的区别在于对象与逼取内容：前者针对犯罪嫌疑人、被告人逼取口供，后者针对证人以暴力逼取证言；二者法定刑相同",
+     "rules": [
+      "k247-torture",
+      "k247-violence"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k247-torture",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "extortsConfessionByTorture(P,X)",
+     "victimOf(V,X)",
+     "criminalSuspectOrDefendant(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,tortureToExtractConfession)"
+    ],
+    "auth": "npc",
+    "note": "司法工作人员对犯罪嫌疑人、被告人实行刑讯逼供，符合刑讯逼供罪构成要件"
+   },
+   {
+    "key": "k247-violence",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "extortsWitnessTestimonyByViolence(P,X)",
+     "victimOf(V,X)",
+     "witness(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,violentEvidenceCollection)"
+    ],
+    "auth": "npc",
+    "note": "司法工作人员使用暴力逼取证人证言，符合暴力取证罪构成要件"
+   },
+   {
+    "key": "k247-penalty",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,tortureToExtractConfession)",
+       "constitutes(P,X,violentEvidenceCollection)"
+      ]
+     },
+     "~causesDisability(X)",
+     "~causesDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "成立刑讯逼供罪或暴力取证罪的，处三年以下有期徒刑或者拘役（under3OrDetention 即三年以下有期徒刑或者拘役）；致人伤残、死亡的除外"
+   },
+   {
+    "key": "k247-injury",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     {
+      "or": [
+       "extortsConfessionByTorture(P,X)",
+       "extortsWitnessTestimonyByViolence(P,X)"
+      ]
+     },
+     "causesDisability(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalInjury)"
+    ],
+    "auth": "npc",
+    "note": "刑讯逼供、暴力取证致人伤残的，依照第234条以故意伤害罪定罪（转化犯）"
+   },
+   {
+    "key": "k247-death",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     {
+      "or": [
+       "extortsConfessionByTorture(P,X)",
+       "extortsWitnessTestimonyByViolence(P,X)"
+      ]
+     },
+     "causesDeath(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalHomicide)"
+    ],
+    "auth": "npc",
+    "note": "刑讯逼供、暴力取证致人死亡的，依照第232条以故意杀人罪定罪（转化犯）"
+   },
+   {
+    "key": "k247-heavier",
+    "srcs": [
+     "art247#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     {
+      "or": [
+       "extortsConfessionByTorture(P,X)",
+       "extortsWitnessTestimonyByViolence(P,X)"
+      ]
+     },
+     {
+      "or": [
+       "causesDisability(X)",
+       "causesDeath(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致人伤残、死亡而依第234条、第232条定罪的，应当从重处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员",
+   "extortsConfessionByTorture": "extortsConfessionByTorture(P,X)：P 通过行为 X 对犯罪嫌疑人、被告人实行刑讯逼供（以肉刑或变相肉刑逼取口供）",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "criminalSuspectOrDefendant": "criminalSuspectOrDefendant(V)：V 是犯罪嫌疑人或者被告人",
+   "constitutes": "符合构成要件",
+   "extortsWitnessTestimonyByViolence": "extortsWitnessTestimonyByViolence(P,X)：P 通过行为 X 使用暴力逼取证人证言",
+   "witness": "witness(V)：V 是证人",
+   "causesDisability": "causesDisability(X)：行为 X 致人伤残",
+   "causesDeath": "致人死亡",
+   "sentence": "量刑"
+  }
+ },
+ "art:248": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "监管人员殴打、体罚虐待被监管人的定罪与量刑（虐待被监管人罪，abuseOfDetainee）",
+     "rules": [
+      "k248-cond",
+      "k248-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是监狱、拘留所、看守所等监管机构的监管人员，对象是该机构的被监管人，行为是殴打或者体罚虐待",
+     "rules": [
+      "k248-cond"
+     ]
+    },
+    {
+     "text": "须情节严重，才成立虐待被监管人罪",
+     "rules": [
+      "k248-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "致人伤残的，不再以虐待被监管人罪论处，依刑法第234条以故意伤害罪定罪",
+     "rules": [
+      "k248-injury"
+     ]
+    },
+    {
+     "text": "致人死亡的，不再以虐待被监管人罪论处，依刑法第232条以故意杀人罪定罪",
+     "rules": [
+      "k248-homicide"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k248-1s"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k248-2"
+     ]
+    },
+    {
+     "text": "致人伤残、死亡而转化为故意伤害罪、故意杀人罪的，依各该条规定定罪并从重处罚",
+     "rules": [
+      "k248-heavier"
+     ]
+    },
+    {
+     "text": "监管人员指使被监管人殴打或者体罚虐待其他被监管人的，视为其本人的虐待被监管人行为，依前款规定处罚（同样按情节严重、特别严重分档，致人伤残死亡的转化从重）",
+     "rules": [
+      "k248-instigate"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致人伤残、死亡的转化犯规定优先于虐待被监管人罪的基本档与加重档",
+     "rules": [
+      "k248-injury",
+      "k248-homicide"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k248-cond",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "custodialInstitution(U)",
+     "custodialStaffOf(P,U)",
+     "personUnderSupervisionOf(V,U)",
+     "act(P,X)",
+     "victimOf(V,X)",
+     {
+      "or": [
+       "beatsOthers(P,X)",
+       "physicallyAbusesOrMaltreats(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "abuseOfDetaineeAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "监管机构的监管人员殴打或者体罚虐待被监管人的行为，属本条行为要件"
+   },
+   {
+    "key": "k248-1",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "abuseOfDetaineeAct(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfDetainee)"
+    ],
+    "auth": "npc",
+    "note": "殴打、体罚虐待被监管人情节严重的，符合虐待被监管人罪（abuseOfDetainee）的构成要件"
+   },
+   {
+    "key": "k248-1s",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfDetainee)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役（under3OrDetention）"
+   },
+   {
+    "key": "k248-2",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfDetainee)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上十年以下有期徒刑（from3to10）"
+   },
+   {
+    "key": "k248-injury",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "abuseOfDetaineeAct(P,X)",
+     "causesDisability(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalInjury)"
+    ],
+    "auth": "npc",
+    "note": "致人伤残的，依刑法第234条以故意伤害罪定罪（转化犯）"
+   },
+   {
+    "key": "k248-homicide",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "abuseOfDetaineeAct(P,X)",
+     "causesDeath(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalHomicide)"
+    ],
+    "auth": "npc",
+    "note": "致人死亡的，依刑法第232条以故意杀人罪定罪（转化犯）"
+   },
+   {
+    "key": "k248-heavier",
+    "srcs": [
+     "art248#1"
+    ],
+    "body": [
+     "abuseOfDetaineeAct(P,X)",
+     {
+      "or": [
+       "causesDisability(X) constitutes(P,X,intentionalInjury)",
+       "causesDeath(X) constitutes(P,X,intentionalHomicide)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "转化为故意伤害罪、故意杀人罪的，依各该条规定处罚并从重"
+   },
+   {
+    "key": "k248-instigate",
+    "srcs": [
+     "art248#2"
+    ],
+    "body": [
+     "custodialInstitution(U)",
+     "custodialStaffOf(P,U)",
+     "instigatesDetaineeToAbuse(P,X)"
+    ],
+    "heads": [
+     "abuseOfDetaineeAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "监管人员指使被监管人殴打或者体罚虐待其他被监管人的，视为其本人的虐待被监管人行为，依前款规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "custodialInstitution": "custodialInstitution(U)：U 是监狱、拘留所、看守所等监管机构",
+   "custodialStaffOf": "custodialStaffOf(P,U)：P 是监管机构 U 的监管人员",
+   "personUnderSupervisionOf": "personUnderSupervisionOf(V,U)：V 是监管机构 U 的被监管人",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "beatsOthers": "beatsOthers(P,X)：P 在行为 X 中殴打他人",
+   "physicallyAbusesOrMaltreats": "physicallyAbusesOrMaltreats(P,X)：P 通过行为 X 对他人进行体罚虐待",
+   "abuseOfDetaineeAct": "abuseOfDetaineeAct(P,X)：P 的行为 X 具备第248条殴打、体罚虐待被监管人的主体、对象与行为要件（含指使被监管人实施的情形）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "causesDisability": "causesDisability(X)：行为 X 致人伤残",
+   "causesDeath": "致人死亡",
+   "instigatesDetaineeToAbuse": "instigatesDetaineeToAbuse(P,X)：P 通过行为 X 指使被监管人殴打或者体罚虐待其他被监管人"
+  }
+ },
+ "art:249": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "煽动民族仇恨、民族歧视的行为是否构成犯罪，以及按情节严重／特别严重适用哪一量刑档",
+     "rules": [
+      "k249-crime",
+      "k249-basic",
+      "k249-aggravated"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上实施煽动民族仇恨、民族歧视的行为，且情节严重（情节严重是本罪入罪的罪量要件），成立煽动民族仇恨、民族歧视罪并负刑事责任",
+     "rules": [
+      "k249-crime"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "煽动民族仇恨、民族歧视但情节未达严重的，不符合本罪构成要件，不负刑事责任",
+     "rules": [
+      "k249-notCrime"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k249-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k249-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时优先适用加重档（三年以上十年以下有期徒刑），排除基本档的适用",
+     "rules": [
+      "k249-aggravated",
+      "k249-basic"
+     ]
+    },
+    {
+     "text": "情节不严重的除外规则优先于入罪规则",
+     "rules": [
+      "k249-notCrime",
+      "k249-crime"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪煽动的内容是民族仇恨、民族歧视，与煽动分裂国家、破坏国家统一（第103条第2款）在煽动内容与侵害法益上不同；本条仅规定煽动行为，不以实际发生民族冲突为要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k249-crime",
+    "srcs": [
+     "art249#1"
+    ],
+    "body": [
+     "incitesEthnicHatredOrDiscrimination(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,incitingEthnicHatredDiscrimination)",
+     "responsible(P,X,incitingEthnicHatredDiscrimination)"
+    ],
+    "auth": "npc",
+    "note": "煽动民族仇恨、民族歧视且情节严重的，符合煽动民族仇恨、民族歧视罪构成要件并负刑事责任（罪名常量 incitingEthnicHatredDiscrimination）"
+   },
+   {
+    "key": "k249-notCrime",
+    "srcs": [
+     "art249#1"
+    ],
+    "body": [
+     "incitesEthnicHatredOrDiscrimination(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,incitingEthnicHatredDiscrimination)",
+     "-responsible(P,X,incitingEthnicHatredDiscrimination)"
+    ],
+    "auth": "npc",
+    "note": "本条以“情节严重”为入罪要件，情节未达严重者不构成本罪、不负刑事责任"
+   },
+   {
+    "key": "k249-basic",
+    "srcs": [
+     "art249#1"
+    ],
+    "body": [
+     "constitutes(P,X,incitingEthnicHatredDiscrimination)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑方式常量 under3OrDetentionControlOrDeprivation 表示该四种选择刑）"
+   },
+   {
+    "key": "k249-aggravated",
+    "srcs": [
+     "art249#1"
+    ],
+    "body": [
+     "constitutes(P,X,incitingEthnicHatredDiscrimination)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上十年以下有期徒刑（量刑方式常量 from3to10）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "incitesEthnicHatredOrDiscrimination": "incitesEthnicHatredOrDiscrimination(P,X)：P 通过行为 X 煽动民族仇恨、民族歧视",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:250": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在出版物中刊载歧视、侮辱少数民族的内容，情节恶劣并造成严重后果的，直接责任人员是否构成出版歧视、侮辱少数民族作品罪，如何处罚",
+     "rules": [
+      "k250-cond",
+      "k250-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为：在出版物中刊载歧视、侮辱少数民族的内容；情节要件：情节恶劣；结果要件：造成严重后果；主体要件：对该刊载行为直接负责的人员",
+     "rules": [
+      "k250-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽在出版物中刊载歧视、侮辱少数民族内容，但情节不恶劣或者未造成严重后果的，不符合本罪构成要件",
+     "rules": [
+      "k250-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合条件的直接责任人员成立出版歧视、侮辱少数民族作品罪，负刑事责任",
+     "rules": [
+      "k250-resp"
+     ]
+    },
+    {
+     "text": "对直接责任人员处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k250-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪处罚对象限于对刊载歧视、侮辱少数民族内容直接负责的人员，不及于出版单位的其他一般工作人员",
+     "rules": [
+      "k250-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k250-cond",
+    "srcs": [
+     "art250"
+    ],
+    "body": [
+     "publishesDiscriminatoryInsultingContent(P,X)",
+     "heinous(X)",
+     "causesSeriousConsequence(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,publishingDiscriminatoryWork)"
+    ],
+    "auth": "npc",
+    "note": "在出版物中刊载歧视、侮辱少数民族内容，情节恶劣、造成严重后果的，直接责任人员符合出版歧视、侮辱少数民族作品罪的构成要件"
+   },
+   {
+    "key": "k250-neg",
+    "srcs": [
+     "art250"
+    ],
+    "body": [
+     "publishesDiscriminatoryInsultingContent(P,X)",
+     {
+      "or": [
+       "-heinous(X)",
+       "-causesSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,publishingDiscriminatoryWork)"
+    ],
+    "auth": "doctrine",
+    "note": "情节恶劣与造成严重后果系本罪法定要件，缺其一即不构成本罪（由条文要件反面推论，属学理表述）"
+   },
+   {
+    "key": "k250-resp",
+    "srcs": [
+     "art250"
+    ],
+    "body": [
+     "constitutes(P,X,publishingDiscriminatoryWork)"
+    ],
+    "heads": [
+     "responsible(P,X,publishingDiscriminatoryWork)"
+    ],
+    "auth": "npc",
+    "note": "符合本罪构成要件的直接责任人员负刑事责任"
+   },
+   {
+    "key": "k250-pen",
+    "srcs": [
+     "art250"
+    ],
+    "body": [
+     "constitutes(P,X,publishingDiscriminatoryWork)",
+     "responsible(P,X,publishingDiscriminatoryWork)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对直接责任人员处三年以下有期徒刑、拘役或者管制（量刑方式常量 under3OrDetentionOrControl）"
+   }
+  ],
+  "overrides": [
+   [
+    "k250-neg",
+    "k250-cond",
+    "推断：结论冲突（('constitutes', '+')），k250-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "publishesDiscriminatoryInsultingContent": "publishesDiscriminatoryInsultingContent(P,X)：P 通过行为 X 在出版物中刊载歧视、侮辱少数民族的内容",
+   "heinous": "情节恶劣",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:251": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员非法剥夺公民宗教信仰自由或者侵犯少数民族风俗习惯，情节严重的，是否构成犯罪、构成何罪",
+     "rules": [
+      "k251-1",
+      "k251-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "特殊主体：国家机关工作人员（非国家机关工作人员不能构成本条之罪）",
+     "rules": [
+      "k251-1",
+      "k251-2"
+     ]
+    },
+    {
+     "text": "行为：非法剥夺公民的宗教信仰自由，或者侵犯少数民族风俗习惯",
+     "rules": [
+      "k251-1",
+      "k251-2"
+     ]
+    },
+    {
+     "text": "情节严重（本罪的情节要件）",
+     "rules": [
+      "k251-1",
+      "k251-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "主体不是国家机关工作人员，或者情节未达严重的，不构成本条之罪，只作一般违法违纪处理（学理）",
+     "rules": [
+      "k251-n1",
+      "k251-n2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "非法剥夺公民宗教信仰自由、情节严重的，构成非法剥夺公民宗教信仰自由罪",
+     "rules": [
+      "k251-1"
+     ]
+    },
+    {
+     "text": "侵犯少数民族风俗习惯、情节严重的，构成侵犯少数民族风俗习惯罪",
+     "rules": [
+      "k251-2"
+     ]
+    },
+    {
+     "text": "处二年以下有期徒刑或者拘役（量刑方式常量 under2OrDetention）",
+     "rules": [
+      "k251-p1",
+      "k251-p2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条规定两个独立罪名，依行为是剥夺宗教信仰自由还是侵犯少数民族风俗习惯分别认定，不适用重罪吸收",
+     "rules": [
+      "k251-1",
+      "k251-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k251-1",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "illegallyDeprivesReligiousFreedom(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalDeprivationOfReligiousFreedom)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员非法剥夺公民宗教信仰自由，情节严重的，符合非法剥夺公民宗教信仰自由罪的构成要件"
+   },
+   {
+    "key": "k251-2",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "infringesEthnicCustoms(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,infringementOfEthnicCustoms)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员侵犯少数民族风俗习惯，情节严重的，符合侵犯少数民族风俗习惯罪的构成要件"
+   },
+   {
+    "key": "k251-p1",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalDeprivationOfReligiousFreedom)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对非法剥夺公民宗教信仰自由罪处二年以下有期徒刑或者拘役（under2OrDetention 表示二年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k251-p2",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "constitutes(P,X,infringementOfEthnicCustoms)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对侵犯少数民族风俗习惯罪处二年以下有期徒刑或者拘役（under2OrDetention 表示二年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k251-n1",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "illegallyDeprivesReligiousFreedom(P,X)",
+     {
+      "or": [
+       "-stateOrganStaff(P)",
+       "-seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalDeprivationOfReligiousFreedom)"
+    ],
+    "auth": "doctrine",
+    "note": "主体不适格或情节未达严重的，不成立非法剥夺公民宗教信仰自由罪；系依本条主体与情节要件所作的学理反面推论"
+   },
+   {
+    "key": "k251-n2",
+    "srcs": [
+     "art251#1"
+    ],
+    "body": [
+     "infringesEthnicCustoms(P,X)",
+     {
+      "or": [
+       "-stateOrganStaff(P)",
+       "-seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,infringementOfEthnicCustoms)"
+    ],
+    "auth": "doctrine",
+    "note": "主体不适格或情节未达严重的，不成立侵犯少数民族风俗习惯罪；系依本条主体与情节要件所作的学理反面推论"
+   }
+  ],
+  "overrides": [
+   [
+    "k251-n1",
+    "k251-1",
+    "推断：结论冲突（('constitutes', '+')），k251-n1 为例外或更具体"
+   ],
+   [
+    "k251-n2",
+    "k251-1",
+    "推断：结论冲突（('constitutes', '+')），k251-n2 为例外或更具体"
+   ],
+   [
+    "k251-n1",
+    "k251-2",
+    "推断：结论冲突（('constitutes', '+')），k251-n1 为例外或更具体"
+   ],
+   [
+    "k251-n2",
+    "k251-2",
+    "推断：结论冲突（('constitutes', '+')），k251-n2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "illegallyDeprivesReligiousFreedom": "illegallyDeprivesReligiousFreedom(P,X)：P 通过行为 X 非法剥夺公民的宗教信仰自由",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "infringesEthnicCustoms": "infringesEthnicCustoms(P,X)：P 通过行为 X 侵犯少数民族的风俗习惯",
+   "sentence": "量刑"
+  }
+ },
+ "art:252": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "隐匿、毁弃或者非法开拆他人信件的行为是否构成侵犯通信自由罪",
+     "rules": [
+      "k252-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象为他人信件，行为方式为隐匿、毁弃或者非法开拆三者之一即可",
+     "rules": [
+      "k252-cond"
+     ]
+    },
+    {
+     "text": "该行为侵犯公民通信自由权利，且情节严重",
+     "rules": [
+      "k252-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成侵犯通信自由罪的，处一年以下有期徒刑或者拘役",
+     "rules": [
+      "k252-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪主体为一般主体、对象限于他人信件；情节不严重的，不以本罪论处（说明性区分，本行未挂载相应条文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k252-cond",
+    "srcs": [
+     "art252#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "concealsOthersLetter(P,X)",
+       "destroysOthersLetter(P,X)",
+       "illegallyOpensOthersLetter(P,X)"
+      ]
+     },
+     "infringesCommunicationFreedom(X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,infringementOfCommunicationFreedom)"
+    ],
+    "auth": "npc",
+    "note": "隐匿、毁弃或者非法开拆他人信件，侵犯公民通信自由权利，情节严重的，符合侵犯通信自由罪的构成要件"
+   },
+   {
+    "key": "k252-pen",
+    "srcs": [
+     "art252#1"
+    ],
+    "body": [
+     "constitutes(P,X,infringementOfCommunicationFreedom)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under1YearOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成侵犯通信自由罪的，处一年以下有期徒刑或者拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concealsOthersLetter": "concealsOthersLetter(P,X)：P 通过行为 X 隐匿他人信件",
+   "destroysOthersLetter": "destroysOthersLetter(P,X)：P 通过行为 X 毁弃他人信件",
+   "illegallyOpensOthersLetter": "illegallyOpensOthersLetter(P,X)：P 通过行为 X 非法开拆他人信件",
+   "infringesCommunicationFreedom": "infringesCommunicationFreedom(X)：行为 X 侵犯公民通信自由权利",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑"
+  }
+ },
+ "art:253": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "邮政工作人员私自开拆或者隐匿、毁弃邮件、电报的定罪与法定刑",
+     "rules": [
+      "k253-1",
+      "k253-1s"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为邮政工作人员（特殊主体）；行为为私自开拆或者隐匿、毁弃邮件、电报",
+     "rules": [
+      "k253-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "犯前款罪而窃取财物的，属转化犯，不再以本罪定罪，改依盗窃罪处理",
+     "rules": [
+      "k253-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成本罪的，处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k253-1s"
+     ]
+    },
+    {
+     "text": "犯本罪而窃取财物的，依照刑法第264条盗窃罪的规定定罪，并从重处罚",
+     "rules": [
+      "k253-2",
+      "k253-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款是就窃取财物情形的特别（转化）规定，优先于第1款的本罪认定与法定刑",
+     "rules": [
+      "k253-2",
+      "k253-2s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第2款属引证罪状：引用分则第264条说明定罪处罚，本身不设立独立罪名（笔记）",
+     "rules": [
+      "k253-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k253-1",
+    "srcs": [
+     "art253#1"
+    ],
+    "body": [
+     "postalStaff(P)",
+     "privatelyOpensConcealsOrDestroysMail(P,X)",
+     "~stealsPropertyInAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,unauthorizedOpeningConcealingDestroyingMail)"
+    ],
+    "auth": "npc",
+    "note": "邮政工作人员私自开拆或者隐匿、毁弃邮件、电报的，构成私自开拆、隐匿、毁弃邮件、电报罪（罪名常量 unauthorizedOpeningConcealingDestroyingMail）"
+   },
+   {
+    "key": "k253-1s",
+    "srcs": [
+     "art253#1"
+    ],
+    "body": [
+     "constitutes(P,X,unauthorizedOpeningConcealingDestroyingMail)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder2YearsOrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本罪法定刑为二年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k253-2",
+    "srcs": [
+     "art253#2"
+    ],
+    "body": [
+     "postalStaff(P)",
+     "privatelyOpensConcealsOrDestroysMail(P,X)",
+     "stealsPropertyInAct(P,X)"
+    ],
+    "heads": [
+     "convicted(P,X,theft)",
+     "-convicted(P,X,unauthorizedOpeningConcealingDestroyingMail)"
+    ],
+    "auth": "npc",
+    "note": "犯前款罪而窃取财物的，依照第264条以盗窃罪定罪（引证罪状、转化犯）"
+   },
+   {
+    "key": "k253-2s",
+    "srcs": [
+     "art253#2"
+    ],
+    "body": [
+     "postalStaff(P)",
+     "privatelyOpensConcealsOrDestroysMail(P,X)",
+     "stealsPropertyInAct(P,X)",
+     "convicted(P,X,theft)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyArt264Penalty(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "窃取财物的，依第264条盗窃罪的法定刑处罚，并应当从重处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "postalStaff": "postalStaff(P)：P 是邮政工作人员（本罪特殊主体）",
+   "privatelyOpensConcealsOrDestroysMail": "privatelyOpensConcealsOrDestroysMail(P,X)：P 通过行为 X 私自开拆或者隐匿、毁弃邮件、电报",
+   "stealsPropertyInAct": "stealsPropertyInAct(P,X)：P 在私自开拆、隐匿、毁弃邮件、电报的行为 X 中窃取财物",
+   "constitutes": "符合构成要件",
+   "sentenceUnder2YearsOrDetention": "sentenceUnder2YearsOrDetention(P,X)：对 P 就犯罪 X 处二年以下有期徒刑或者拘役",
+   "convicted": "定罪",
+   "applyArt264Penalty": "applyArt264Penalty(P,X)：对 P 就行为 X 依照刑法第264条（盗窃罪）的规定处罚",
+   "sentence": "量刑"
+  }
+ },
+ "art:253-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反国家有关规定出售、提供公民个人信息，或者窃取、以其他方法非法获取公民个人信息，情节严重的，是否构成侵犯公民个人信息罪",
+     "rules": [
+      "k253z1-sale",
+      "k253z1-obtain",
+      "k253z1-duty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "“违反国家有关规定”指违反法律、行政法规、部门规章中有关公民个人信息保护的规定（司法解释性补充）",
+     "rules": [
+      "k253z1-state"
+     ]
+    },
+    {
+     "text": "出售、提供型：违反国家有关规定，向他人出售或者提供公民个人信息，情节严重（含情节特别严重）",
+     "rules": [
+      "k253z1-sale"
+     ]
+    },
+    {
+     "text": "履职、服务型：违反国家有关规定，将在履行职责或者提供服务过程中获得的公民个人信息出售或者提供给他人",
+     "rules": [
+      "k253z1-duty"
+     ]
+    },
+    {
+     "text": "非法获取型：窃取或者以其他方法非法获取公民个人信息；因第3款转致“依照第一款的规定处罚”，同样以情节严重为入罪门槛",
+     "rules": [
+      "k253z1-obtain"
+     ]
+    },
+    {
+     "text": "单位实施前三款行为并构成犯罪的，成立本罪的单位犯罪",
+     "rules": [
+      "k253z1-unit"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "单位犯罪只对单位判处罚金，不对单位适用有期徒刑、拘役等自由刑（自由刑档仅适用于自然人）",
+     "rules": [
+      "k253z1-unitFine",
+      "k253z1-basic",
+      "k253z1-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重：处三年以下有期徒刑或者拘役，并处或者单处罚金",
+     "rules": [
+      "k253z1-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重：处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k253z1-agg"
+     ]
+    },
+    {
+     "text": "出售、提供履职或服务过程中获得的个人信息，依前款规定从重处罚（在相应量刑档内从重）",
+     "rules": [
+      "k253z1-dutyHeavier"
+     ]
+    },
+    {
+     "text": "单位犯罪对单位判处罚金",
+     "rules": [
+      "k253z1-unitFine"
+     ]
+    },
+    {
+     "text": "对单位直接负责的主管人员和其他直接责任人员，依照各该款（第1—3款相应量刑档）的规定处罚",
+     "rules": [
+      "k253z1-unitPerson"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重的加重档排除情节严重的基本档",
+     "rules": [
+      "k253z1-agg",
+      "k253z1-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第2款不是独立罪名，只是第1款的法定从重处罚情形；第3款是独立的行为类型（非法获取），但法定刑转致第1款",
+     "rules": [
+      "k253z1-duty",
+      "k253z1-dutyHeavier",
+      "k253z1-obtain"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k253z1-state",
+    "srcs": [
+     "art253-1#1"
+    ],
+    "body": [
+     "violatesPersonalInfoProtectionRules(X)"
+    ],
+    "heads": [
+     "violatesRelevantStateProvisions(X)"
+    ],
+    "auth": "spc",
+    "note": "“国家有关规定”包括法律、行政法规、部门规章中有关公民个人信息保护的规定（2017年两高侵犯公民个人信息解释第2条，属解释性补充）"
+   },
+   {
+    "key": "k253z1-sale",
+    "srcs": [
+     "art253-1#1"
+    ],
+    "body": [
+     "violatesRelevantStateProvisions(X)",
+     "sellsOrProvidesCitizensPersonalInfo(P,X)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,infringingCitizensPersonalInfo)"
+    ],
+    "auth": "npc",
+    "note": "违反国家有关规定向他人出售或提供公民个人信息，情节严重的，构成侵犯公民个人信息罪"
+   },
+   {
+    "key": "k253z1-duty",
+    "srcs": [
+     "art253-1#2"
+    ],
+    "body": [
+     "violatesRelevantStateProvisions(X)",
+     "sellsOrProvidesCitizensPersonalInfo(P,X)",
+     "personalInfoObtainedInDutyOrService(P,X)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,infringingCitizensPersonalInfo)",
+     "dutyServiceAggravated(P,X)"
+    ],
+    "auth": "npc",
+    "note": "出售、提供履行职责或提供服务过程中获得的公民个人信息，构成本罪并属第2款从重情形"
+   },
+   {
+    "key": "k253z1-obtain",
+    "srcs": [
+     "art253-1#3"
+    ],
+    "body": [
+     "stealsOrIllegallyObtainsPersonalInfo(P,X)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,infringingCitizensPersonalInfo)"
+    ],
+    "auth": "npc",
+    "note": "窃取或以其他方法非法获取公民个人信息，依第一款规定处罚，故以情节严重为入罪门槛"
+   },
+   {
+    "key": "k253z1-basic",
+    "srcs": [
+     "art253-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,infringingCitizensPersonalInfo)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)",
+     "~unit(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineJointOrSole)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重档：三年以下有期徒刑或者拘役（under3OrDetention），并处或者单处罚金（fineJointOrSole）；单位不适用自由刑"
+   },
+   {
+    "key": "k253z1-agg",
+    "srcs": [
+     "art253-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,infringingCitizensPersonalInfo)",
+     "especiallySeriousCircumstances(X)",
+     "~unit(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineJoint)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重档：三年以上七年以下有期徒刑（from3to7），并处罚金（fineJoint）"
+   },
+   {
+    "key": "k253z1-dutyHeavier",
+    "srcs": [
+     "art253-1#2"
+    ],
+    "body": [
+     "dutyServiceAggravated(P,X)",
+     "constitutes(P,X,infringingCitizensPersonalInfo)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "履职、服务型出售提供个人信息，依照前款规定从重处罚"
+   },
+   {
+    "key": "k253z1-unit",
+    "srcs": [
+     "art253-1#4"
+    ],
+    "body": [
+     "unit(U)",
+     "constitutes(U,X,infringingCitizensPersonalInfo)"
+    ],
+    "heads": [
+     "unitCrime(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯前三款罪的，成立侵犯公民个人信息罪的单位犯罪（罪名由 constitutes 中的 infringingCitizensPersonalInfo 标明）"
+   },
+   {
+    "key": "k253z1-unitFine",
+    "srcs": [
+     "art253-1#4"
+    ],
+    "body": [
+     "unit(U)",
+     "unitCrime(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(U,X,fineOnly)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪对单位判处罚金（fineOnly，单处罚金，不适用自由刑）"
+   },
+   {
+    "key": "k253z1-unitPerson",
+    "srcs": [
+     "art253-1#4"
+    ],
+    "body": [
+     "unit(U)",
+     "unitCrime(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,perRespectiveParagraph)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员，依照各该款规定处罚（perRespectiveParagraph，即第1—3款相应量刑档）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "violatesPersonalInfoProtectionRules": "violatesPersonalInfoProtectionRules(X)：行为X违反法律、行政法规、部门规章中有关公民个人信息保护的规定",
+   "violatesRelevantStateProvisions": "violatesRelevantStateProvisions(X)：行为X违反国家有关规定（公民个人信息保护方面的国家规定）",
+   "sellsOrProvidesCitizensPersonalInfo": "sellsOrProvidesCitizensPersonalInfo(P,X)：主体P（自然人或单位）通过行为X向他人出售或者提供公民个人信息",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "constitutes": "符合构成要件",
+   "personalInfoObtainedInDutyOrService": "personalInfoObtainedInDutyOrService(P,X)：行为X所出售、提供的公民个人信息系P在履行职责或者提供服务过程中获得",
+   "dutyServiceAggravated": "dutyServiceAggravated(P,X)：P的行为X属于第253条之一第2款规定的从重处罚情形",
+   "stealsOrIllegallyObtainsPersonalInfo": "stealsOrIllegallyObtainsPersonalInfo(P,X)：主体P（自然人或单位）通过行为X窃取或者以其他方法非法获取公民个人信息",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "sentence": "量刑",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员"
+  }
+ },
+ "art:254": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员滥用职权、假公济私，对控告人、申诉人、批评人、举报人实行报复陷害的，是否构成报复陷害罪并如何处刑",
+     "rules": [
+      "k254-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；行为上滥用职权、假公济私；对象限于控告人、申诉人、批评人、举报人；对该对象实行报复陷害",
+     "rules": [
+      "k254-cond"
+     ]
+    },
+    {
+     "text": "具备上述条件的，符合报复陷害罪的构成要件，负刑事责任",
+     "rules": [
+      "k254-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "行为人不具有国家机关工作人员身份的，即使实施报复陷害行为，也不构成本罪（学理对特殊主体的反面解释）",
+     "rules": [
+      "k254-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k254-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处二年以上七年以下有期徒刑",
+     "rules": [
+      "k254-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用加重档，排除基本档的适用",
+     "rules": [
+      "k254-agg",
+      "k254-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "体系定位：属分则侵犯公民人身权利、民主权利罪中侵害民主权利的犯罪（笔记）",
+     "rules": []
+    },
+    {
+     "text": "与诬告陷害罪的区别：本罪为特殊主体，须滥用职权、假公济私，且对象限于控告人、申诉人、批评人、举报人（学理）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k254-cond",
+    "srcs": [
+     "art254#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "abusesPower(P,X)",
+     "usesPublicOfficeForPrivateEnds(P,X)",
+     "victimOf(V,X)",
+     "complainantAppellantCriticOrReporter(V)",
+     "retaliatesAndFrames(P,X,V)"
+    ],
+    "heads": [
+     "retaliationFramingConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "报复陷害罪的主体、滥用职权假公济私、特定对象与报复陷害行为条件"
+   },
+   {
+    "key": "k254-1",
+    "srcs": [
+     "art254#1"
+    ],
+    "body": [
+     "retaliationFramingConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,retaliatoryFraming)",
+     "responsible(P,X,retaliatoryFraming)"
+    ],
+    "auth": "npc",
+    "note": "具备第254条条件的，构成报复陷害罪并负刑事责任"
+   },
+   {
+    "key": "k254-basic",
+    "srcs": [
+     "art254#1"
+    ],
+    "body": [
+     "constitutes(P,X,retaliatoryFraming)",
+     "responsible(P,X,retaliatoryFraming)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档处二年以下有期徒刑或者拘役（under2OrDetention 为该量刑方式常量）"
+   },
+   {
+    "key": "k254-agg",
+    "srcs": [
+     "art254#1"
+    ],
+    "body": [
+     "constitutes(P,X,retaliatoryFraming)",
+     "responsible(P,X,retaliatoryFraming)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from2to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的处二年以上七年以下有期徒刑（from2to7 为该量刑方式常量）"
+   },
+   {
+    "key": "k254-subject",
+    "srcs": [
+     "art254#1"
+    ],
+    "body": [
+     "retaliatesAndFrames(P,X,V)",
+     "victimOf(V,X)",
+     "-stateOrganStaff(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,retaliatoryFraming)"
+    ],
+    "auth": "doctrine",
+    "note": "非国家机关工作人员不构成本罪，系对特殊主体要件的反面解释，法条未明文规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k254-subject",
+    "k254-1",
+    "推断：结论冲突（('constitutes', '+')），k254-subject 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "usesPublicOfficeForPrivateEnds": "usesPublicOfficeForPrivateEnds(P,X)：P 在行为 X 中假公济私（借公务之名行私利之实）",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "complainantAppellantCriticOrReporter": "complainantAppellantCriticOrReporter(V)：V 是控告人、申诉人、批评人或者举报人",
+   "retaliatesAndFrames": "retaliatesAndFrames(P,X,V)：P 通过行为 X 对 V 实行报复陷害",
+   "retaliationFramingConditions": "retaliationFramingConditions(P,X)：P 的行为 X 具备刑法第254条报复陷害罪的主体、行为与对象条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:255": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "公司、企业、事业单位、机关、团体的领导人，对依法履行职责、抵制违反会计法、统计法行为的会计、统计人员实行打击报复，情节恶劣的，是否构成打击报复会计、统计人员罪",
+     "rules": [
+      "k255-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：公司、企业、事业单位、机关、团体的领导人（特殊主体，一般职工不能单独构成本罪）",
+     "rules": [
+      "k255-1"
+     ]
+    },
+    {
+     "text": "对象：依法履行职责、抵制违反会计法、统计法行为的会计人员、统计人员",
+     "rules": [
+      "k255-1"
+     ]
+    },
+    {
+     "text": "行为与情节：对上述会计、统计人员实行打击报复（如降职、辞退、调离、扣发薪酬等），且情节恶劣",
+     "rules": [
+      "k255-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "打击报复情节不恶劣的，不符合本罪构成要件，不构成本罪（学理：情节恶劣为构成要件要素）",
+     "rules": [
+      "k255-noHeinous"
+     ]
+    },
+    {
+     "text": "报复对象不是会计、统计人员，或者该人员并非依法履行职责、抵制违反会计法统计法行为（如其本身违法失职而被处理）的，不构成本罪（学理）",
+     "rules": [
+      "k255-object"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成打击报复会计、统计人员罪，负刑事责任",
+     "rules": [
+      "k255-1"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役（under3OrDetention）",
+     "rules": [
+      "k255-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节恶劣与对象适格均属构成要件，欠缺其一即排除本罪成立，优先于入罪规则",
+     "rules": [
+      "k255-noHeinous",
+      "k255-object"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与报复陷害罪（第254条）区别：本罪主体是公司、企业、事业单位、机关、团体的领导人，对象限于依法履行职责、抵制违反会计法统计法行为的会计、统计人员，不以国家机关工作人员滥用职权、假公济私为要件；法定刑为三年以下有期徒刑或者拘役",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k255-1",
+    "srcs": [
+     "art255"
+    ],
+    "body": [
+     "unit(U)",
+     "leaderOfUnit(P,U)",
+     "accountingOrStatisticalPersonnel(V)",
+     "lawfullyPerformsDuty(V)",
+     "resistsViolationOfAccountingOrStatisticsLaw(V)",
+     "retaliatesAgainst(P,V,X)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,retaliationAgainstAccountantOrStatistician)",
+     "responsible(P,X,retaliationAgainstAccountantOrStatistician)"
+    ],
+    "auth": "npc",
+    "note": "单位领导人对依法履行职责、抵制违反会计法统计法行为的会计、统计人员打击报复且情节恶劣的，构成打击报复会计、统计人员罪并负刑事责任"
+   },
+   {
+    "key": "k255-pen",
+    "srcs": [
+     "art255"
+    ],
+    "body": [
+     "responsible(P,X,retaliationAgainstAccountantOrStatistician)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本罪法定刑为三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention）"
+   },
+   {
+    "key": "k255-noHeinous",
+    "srcs": [
+     "art255"
+    ],
+    "body": [
+     "retaliatesAgainst(P,V,X)",
+     "-heinous(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,retaliationAgainstAccountantOrStatistician)"
+    ],
+    "auth": "doctrine",
+    "note": "情节不恶劣的不构成本罪；系从法条“情节恶劣的”要件反推，属学理说明"
+   },
+   {
+    "key": "k255-object",
+    "srcs": [
+     "art255"
+    ],
+    "body": [
+     "retaliatesAgainst(P,V,X)",
+     {
+      "or": [
+       "-accountingOrStatisticalPersonnel(V)",
+       "-lawfullyPerformsDuty(V)",
+       "-resistsViolationOfAccountingOrStatisticsLaw(V)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,retaliationAgainstAccountantOrStatistician)"
+    ],
+    "auth": "doctrine",
+    "note": "对象不是依法履行职责、抵制违反会计法统计法行为的会计、统计人员的，不构成本罪；系构成要件反推，属学理说明"
+   }
+  ],
+  "overrides": [
+   [
+    "k255-noHeinous",
+    "k255-1",
+    "推断：结论冲突（('constitutes', '+')），k255-noHeinous 为例外或更具体"
+   ],
+   [
+    "k255-object",
+    "k255-1",
+    "推断：结论冲突（('constitutes', '+')），k255-object 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "leaderOfUnit": "leaderOfUnit(P,U)：P 是单位 U（公司、企业、事业单位、机关、团体）的领导人",
+   "accountingOrStatisticalPersonnel": "accountingOrStatisticalPersonnel(V)：V 是会计人员或者统计人员",
+   "lawfullyPerformsDuty": "lawfullyPerformsDuty(V)：V 依法履行其会计、统计职责",
+   "resistsViolationOfAccountingOrStatisticsLaw": "resistsViolationOfAccountingOrStatisticsLaw(V)：V 抵制违反会计法、统计法的行为",
+   "retaliatesAgainst": "retaliatesAgainst(P,V,X)：P 通过行为 X 对 V 实行打击报复",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:256": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在选举各级人民代表大会代表和国家机关领导人员时，以暴力、威胁、欺骗、贿赂、伪造选举文件、虚报选举票数等手段破坏选举或者妨害选民、代表自由行使选举权和被选举权，情节严重的，构成破坏选举罪并负刑事责任",
+     "rules": [
+      "k256-1",
+      "k256-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "选举场合：限于各级人民代表大会代表和国家机关领导人员的选举（本条保护的是公民宪法上的选举权与被选举权）",
+     "rules": [
+      "k256-scope"
+     ]
+    },
+    {
+     "text": "手段：暴力、威胁、欺骗、贿赂、伪造选举文件、虚报选举票数等破坏选举的手段，具备其一即可",
+     "rules": [
+      "k256-means"
+     ]
+    },
+    {
+     "text": "行为与情节：在上述选举中破坏选举或者妨害选民、代表自由行使选举权和被选举权，且情节严重",
+     "rules": [
+      "k256-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "公司企业厂长经理、农村村主任、村委会等选举不属于本条保护的选举，破坏此类选举不构成破坏选举罪（笔记：犯罪客体的解释机能）",
+     "rules": [
+      "k256-excl"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成破坏选举罪的，负刑事责任",
+     "rules": [
+      "k256-2"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑、拘役或者剥夺政治权利",
+     "rules": [
+      "k256-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "关于选举范围的客体限缩解释优先：非人大代表、国家机关领导人员的选举被排除在本条保护范围之外",
+     "rules": [
+      "k256-excl",
+      "k256-scope"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪与破坏村民自治组织、企业内部选举的行为相区别：后者未纳入刑法第256条保护范围，视情形可能构成其他犯罪或仅属民事、行政违法",
+     "rules": [
+      "k256-excl"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k256-scope",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "electionEvent(E)",
+     "electionOfPeopleCongressDeputiesOrStateOrganLeaders(E)"
+    ],
+    "heads": [
+     "protectedElection(E)"
+    ],
+    "auth": "npc",
+    "note": "本条所称选举限于各级人民代表大会代表和国家机关领导人员的选举"
+   },
+   {
+    "key": "k256-means",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "usesViolenceMethod(P,X)",
+       "usesThreatMethod(P,X)",
+       "deceives(P,X)",
+       "bribes(P,X)",
+       "forgesElectionDocument(P,X)",
+       "falselyReportsVoteCount(P,X)",
+       "otherElectionSabotageMeans(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "electionSabotageMeans(P,X)"
+    ],
+    "auth": "npc",
+    "note": "破坏选举的手段：暴力、威胁、欺骗、贿赂、伪造选举文件、虚报选举票数等，择一即可"
+   },
+   {
+    "key": "k256-cond",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "act(P,X)",
+     "actInElection(X,E)",
+     "protectedElection(E)",
+     "electionSabotageMeans(P,X)",
+     "sabotagesElectionOrHindersVotingRights(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "electionSabotageConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "在受保护的选举中以法定手段破坏选举或妨害选民、代表自由行使选举权和被选举权，情节严重的，具备本罪构成条件"
+   },
+   {
+    "key": "k256-1",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "electionSabotageConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,sabotageOfElection)"
+    ],
+    "auth": "npc",
+    "note": "具备第256条构成条件的行为符合破坏选举罪的构成要件"
+   },
+   {
+    "key": "k256-2",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfElection)"
+    ],
+    "heads": [
+     "responsible(P,X,sabotageOfElection)"
+    ],
+    "auth": "npc",
+    "note": "构成破坏选举罪的，负刑事责任"
+   },
+   {
+    "key": "k256-pen",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "responsible(P,X,sabotageOfElection)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3DetentionOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以下有期徒刑、拘役或者剥夺政治权利（量刑方式常量 under3DetentionOrDeprivation）"
+   },
+   {
+    "key": "k256-excl",
+    "srcs": [
+     "art256"
+    ],
+    "body": [
+     "act(P,X)",
+     "actInElection(X,E)",
+     "electionEvent(E)",
+     "electionOfCompanyManagerOrVillageCommittee(E)"
+    ],
+    "heads": [
+     "-protectedElection(E)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记（犯罪客体的解释机能）：公司企业厂长经理、村主任村委会等选举不在本条保护范围，破坏之不构成破坏选举罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k256-excl",
+    "k256-scope",
+    "推断：结论冲突（('protectedElection', '+')），k256-excl 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "electionEvent": "electionEvent(E)：E 是选举活动（选举事件）",
+   "electionOfPeopleCongressDeputiesOrStateOrganLeaders": "electionOfPeopleCongressDeputiesOrStateOrganLeaders(E)：E 是各级人民代表大会代表或者国家机关领导人员的选举",
+   "protectedElection": "protectedElection(E)：E 属于刑法第256条保护的选举",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "usesViolenceMethod": "usesViolenceMethod(P,X)：P 在行为 X 中使用暴力方法",
+   "usesThreatMethod": "usesThreatMethod(P,X)：P 在行为 X 中使用威胁方法",
+   "deceives": "虚构事实或隐瞒真相",
+   "bribes": "bribes(P,X)：P 通过行为 X 实施贿赂（给予财物等收买）",
+   "forgesElectionDocument": "forgesElectionDocument(P,X)：P 通过行为 X 伪造选举文件",
+   "falselyReportsVoteCount": "falselyReportsVoteCount(P,X)：P 通过行为 X 虚报选举票数",
+   "otherElectionSabotageMeans": "otherElectionSabotageMeans(P,X)：P 通过行为 X 采用与列举手段相当的其他破坏选举手段",
+   "electionSabotageMeans": "electionSabotageMeans(P,X)：P 在行为 X 中采用暴力、威胁、欺骗、贿赂、伪造选举文件、虚报选举票数等破坏选举的手段",
+   "actInElection": "actInElection(X,E)：行为 X 实施于选举 E 的过程中",
+   "sabotagesElectionOrHindersVotingRights": "sabotagesElectionOrHindersVotingRights(P,X)：P 通过行为 X 破坏选举或者妨害选民、代表自由行使选举权和被选举权",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "electionSabotageConditions": "electionSabotageConditions(P,X)：P 的行为 X 具备刑法第256条破坏选举罪的构成条件（选举场合、手段、行为与情节严重）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "electionOfCompanyManagerOrVillageCommittee": "electionOfCompanyManagerOrVillageCommittee(E)：E 是公司企业厂长经理、农村村主任、村民委员会等不属于各级人大代表和国家机关领导人员的选举"
+  }
+ },
+ "art:257": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力干涉他人婚姻自由的定罪量刑、致被害人死亡的结果加重，以及告诉才处理的适用范围",
+     "rules": [
+      "k257-cond",
+      "k257-basic",
+      "k257-death",
+      "k257-complaint"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "以暴力方法干涉他人婚姻自由（结婚、离婚自由）的，符合暴力干涉婚姻自由罪的构成要件",
+     "rules": [
+      "k257-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "告诉才处理只限于第一款之罪；致使被害人死亡的第二款之罪不受告诉才处理限制，属公诉案件",
+     "rules": [
+      "k257-complaint",
+      "k257-death"
+     ]
+    },
+    {
+     "text": "暴力干涉过程中故意杀害被害人的，超出本罪范围，不认定本罪，以故意杀人罪论处",
+     "rules": [
+      "k257-kill"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本犯：处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k257-basic"
+     ]
+    },
+    {
+     "text": "犯本罪致使被害人死亡的，处二年以上七年以下有期徒刑（结果加重犯）",
+     "rules": [
+      "k257-death"
+     ]
+    },
+    {
+     "text": "第一款罪，告诉的才处理",
+     "rules": [
+      "k257-complaint"
+     ]
+    },
+    {
+     "text": "被害人因不堪忍受暴力干涉而自杀身亡的，亦属“致使被害人死亡”",
+     "rules": [
+      "k257-suicide"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致被害人死亡的加重档优先于基本档法定刑，并排除告诉才处理的适用",
+     "rules": [
+      "k257-death",
+      "k257-complaint"
+     ]
+    },
+    {
+     "text": "故意杀害被害人的，故意杀人罪的评价优先于本罪",
+     "rules": [
+      "k257-kill"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪与故意杀人罪的界限：本罪的暴力不以剥夺生命为内容，致死为加重结果；若行为人故意杀害被害人，则直接成立故意杀人罪",
+     "rules": [
+      "k257-kill",
+      "k257-death"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k257-cond",
+    "srcs": [
+     "art257#1"
+    ],
+    "body": [
+     "violentlyInterferesWithMarriageFreedom(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,violentInterferenceWithMarriage)"
+    ],
+    "auth": "npc",
+    "note": "以暴力干涉他人婚姻自由的，成立暴力干涉婚姻自由罪（罪名常量 violentInterferenceWithMarriage）"
+   },
+   {
+    "key": "k257-basic",
+    "srcs": [
+     "art257#1"
+    ],
+    "body": [
+     "constitutes(P,X,violentInterferenceWithMarriage)",
+     "responsible(P,X,violentInterferenceWithMarriage)",
+     "~causesVictimDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本犯处二年以下有期徒刑或者拘役（量刑方式常量 under2OrDetention）"
+   },
+   {
+    "key": "k257-death",
+    "srcs": [
+     "art257#2"
+    ],
+    "body": [
+     "constitutes(P,X,violentInterferenceWithMarriage)",
+     "responsible(P,X,violentInterferenceWithMarriage)",
+     "causesVictimDeath(X)",
+     "~intentionallyKills(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from2to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯本罪致使被害人死亡的，处二年以上七年以下有期徒刑（量刑方式常量 from2to7）"
+   },
+   {
+    "key": "k257-complaint",
+    "srcs": [
+     "art257#3"
+    ],
+    "body": [
+     "constitutes(P,X,violentInterferenceWithMarriage)",
+     "~causesVictimDeath(X)"
+    ],
+    "heads": [
+     "prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第一款之罪告诉的才处理；致被害人死亡的第二款之罪不在此限"
+   },
+   {
+    "key": "k257-suicide",
+    "srcs": [
+     "art257#2"
+    ],
+    "body": [
+     "violentlyInterferesWithMarriageFreedom(P,X)",
+     "victimOf(V,X)",
+     "victimSuicideFromInterference(V,X)"
+    ],
+    "heads": [
+     "causesVictimDeath(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与实务通说：被害人因不堪忍受暴力干涉而自杀身亡，也认定为“致使被害人死亡”"
+   },
+   {
+    "key": "k257-kill",
+    "srcs": [
+     "art257#1",
+     "art257#2"
+    ],
+    "body": [
+     "violentlyInterferesWithMarriageFreedom(P,X)",
+     "victimOf(V,X)",
+     "intentionallyKills(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,violentInterferenceWithMarriage)",
+     "constitutes(P,X,intentionalHomicide)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：暴力干涉中故意杀害被害人的，超出本罪构成，应以故意杀人罪论处，而非本罪的结果加重犯"
+   }
+  ],
+  "overrides": [
+   [
+    "k257-kill",
+    "k257-cond",
+    "推断：结论冲突（('constitutes', '+')），k257-kill 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "violentlyInterferesWithMarriageFreedom": "violentlyInterferesWithMarriageFreedom(P,X)：P 通过行为 X 以暴力干涉他人的婚姻自由（结婚、离婚自由）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesVictimDeath": "causesVictimDeath(X)：行为 X 致使被害人死亡（本罪的结果加重情形）",
+   "sentence": "量刑",
+   "intentionallyKills": "故意杀人",
+   "prosecutedOnlyUponComplaint": "告诉的才处理",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "victimSuicideFromInterference": "victimSuicideFromInterference(V,X)：被害人 V 因不堪忍受行为 X 的暴力干涉而自杀身亡"
+  }
+ },
+ "art:258": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "有配偶而重婚，或明知他人有配偶而与之结婚，是否成立重婚罪（bigamy）及如何量刑",
+     "rules": [
+      "k258-1",
+      "k258-2",
+      "k258-penalty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "类型一（重婚者）：本人有配偶（前婚为合法有效的婚姻关系），又与他人结婚",
+     "rules": [
+      "k258-1"
+     ]
+    },
+    {
+     "text": "类型二（相婚者）：本人与他人结婚，该他人有配偶，且本人明知对方有配偶；“明知”是本类型的必备主观要件",
+     "rules": [
+      "k258-2"
+     ]
+    },
+    {
+     "text": "有配偶者与他人以夫妻名义共同生活（事实重婚），实务与学理上亦认为符合重婚罪构成要件（法条未明文，属解释论）",
+     "rules": [
+      "k258-fact"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本人无配偶，且不知对方有配偶而与之结婚的，欠缺明知，不成立重婚罪（学理）",
+     "rules": [
+      "k258-noknow"
+     ]
+    },
+    {
+     "text": "因被强迫、包办婚姻或婚后受虐待外逃、被拐卖等处境而重婚的，实务上一般不以重婚罪论处（学理与实务，法条未明文）",
+     "rules": [
+      "k258-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立重婚罪的，处二年以下有期徒刑或者拘役（量刑方式常量 under2OrDetention）",
+     "rules": [
+      "k258-penalty"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "相婚者不明知对方有配偶时，排除依第258条第二种行为类型作出的构成要件认定",
+     "rules": [
+      "k258-noknow"
+     ]
+    },
+    {
+     "text": "被迫、受虐待外逃等特殊处境的重婚，排除重婚罪构成要件的认定",
+     "rules": [
+      "k258-exc"
+     ]
+    },
+    {
+     "text": "未以夫妻名义共同生活的婚外同居，排除事实重婚的认定",
+     "rules": [
+      "k258-affair"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "单纯通奸或不以夫妻名义的婚外同居，不构成重婚罪，与事实重婚相区别（学理）",
+     "rules": [
+      "k258-affair"
+     ]
+    },
+    {
+     "text": "明知对方是现役军人的配偶而与之同居或结婚，属破坏军婚罪的特别规定（第259条），本行不予形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k258-1",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "hasSpouse(P)",
+     "remarries(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,bigamy)"
+    ],
+    "auth": "npc",
+    "note": "有配偶而重婚的，符合重婚罪（bigamy）构成要件"
+   },
+   {
+    "key": "k258-2",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "marriesWith(P,Q,X)",
+     "hasSpouse(Q)",
+     "knowsOtherHasSpouse(P,Q)"
+    ],
+    "heads": [
+     "constitutes(P,X,bigamy)"
+    ],
+    "auth": "npc",
+    "note": "明知他人有配偶而与之结婚的，符合重婚罪构成要件"
+   },
+   {
+    "key": "k258-penalty",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "constitutes(P,X,bigamy)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "重婚罪处二年以下有期徒刑或者拘役；under2OrDetention 为本行新增量刑方式常量，指二年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k258-fact",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "hasSpouse(P)",
+     "cohabitsAsSpouses(P,Q,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,bigamy)"
+    ],
+    "auth": "doctrine",
+    "note": "有配偶者与他人以夫妻名义共同生活的事实重婚亦构成本罪，系学理与实务解释，法条未明文"
+   },
+   {
+    "key": "k258-noknow",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "marriesWith(P,Q,X)",
+     "hasSpouse(Q)",
+     "-knowsOtherHasSpouse(P,Q)",
+     "-hasSpouse(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,bigamy)"
+    ],
+    "auth": "doctrine",
+    "note": "本人无配偶且不知对方有配偶而结婚，欠缺“明知”，不成立重婚罪；系学理对法条主观要件的反面推论"
+   },
+   {
+    "key": "k258-exc",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "hasSpouse(P)",
+     "remarries(P,X)",
+     "compelledOrAbuseFleeingRemarriage(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,bigamy)"
+    ],
+    "auth": "doctrine",
+    "note": "因被强迫、包办婚姻、受虐待外逃或被拐卖等处境而重婚，实务一般不以重婚罪论处；法条未明文，属学理与实务见解"
+   },
+   {
+    "key": "k258-affair",
+    "srcs": [
+     "art258#1"
+    ],
+    "body": [
+     "hasSpouse(P)",
+     "extramaritalCohabitationWithoutSpouseName(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,bigamy)"
+    ],
+    "auth": "doctrine",
+    "note": "通奸或不以夫妻名义的婚外同居不构成重婚罪，系学理对“结婚”“重婚”的限缩解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k258-noknow",
+    "k258-1",
+    "推断：结论冲突（('constitutes', '+')），k258-noknow 为例外或更具体"
+   ],
+   [
+    "k258-exc",
+    "k258-1",
+    "推断：结论冲突（('constitutes', '+')），k258-exc 为例外或更具体"
+   ],
+   [
+    "k258-affair",
+    "k258-1",
+    "推断：结论冲突（('constitutes', '+')），k258-affair 为例外或更具体"
+   ],
+   [
+    "k258-noknow",
+    "k258-2",
+    "推断：结论冲突（('constitutes', '+')），k258-noknow 为例外或更具体"
+   ],
+   [
+    "k258-exc",
+    "k258-2",
+    "推断：结论冲突（('constitutes', '+')），k258-exc 为例外或更具体"
+   ],
+   [
+    "k258-affair",
+    "k258-2",
+    "推断：结论冲突（('constitutes', '+')），k258-affair 为例外或更具体"
+   ],
+   [
+    "k258-noknow",
+    "k258-fact",
+    "推断：结论冲突（('constitutes', '+')），k258-noknow 为例外或更具体"
+   ],
+   [
+    "k258-exc",
+    "k258-fact",
+    "推断：结论冲突（('constitutes', '+')），k258-exc 为例外或更具体"
+   ],
+   [
+    "k258-affair",
+    "k258-fact",
+    "推断：结论冲突（('constitutes', '+')），k258-affair 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "hasSpouse": "hasSpouse(P)：P 有配偶（存在合法有效的婚姻关系）",
+   "remarries": "remarries(P,X)：P 通过行为 X 在有配偶的情况下又与他人结婚（重婚）",
+   "constitutes": "符合构成要件",
+   "marriesWith": "marriesWith(P,S)：P 与 S 结婚",
+   "knowsOtherHasSpouse": "knowsOtherHasSpouse(P,Q)：P 明知 Q 有配偶",
+   "sentence": "量刑",
+   "cohabitsAsSpouses": "cohabitsAsSpouses(P,Q,X)：P 通过行为 X 与 Q 以夫妻名义共同生活（事实上的重婚）",
+   "compelledOrAbuseFleeingRemarriage": "compelledOrAbuseFleeingRemarriage(P,X)：P 的重婚行为 X 系因被强迫、包办婚姻、婚后受虐待外逃或被拐卖等处境而实施",
+   "extramaritalCohabitationWithoutSpouseName": "extramaritalCohabitationWithoutSpouseName(P,X)：P 通过行为 X 实施通奸或不以夫妻名义的婚外同居"
+  }
+ },
+ "art:259": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "明知是现役军人的配偶而与之同居或者结婚的，是否构成破坏军婚罪；利用职权、从属关系以胁迫手段奸淫现役军人妻子的，如何定罪处罚",
+     "rules": [
+      "k259-1",
+      "k259-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：对象是现役军人的配偶，行为人明知该配偶身份，并与之同居或者结婚（二者择一即可）",
+     "rules": [
+      "k259-1"
+     ]
+    },
+    {
+     "text": "第2款：对象是现役军人的妻子，行为人利用职权、从属关系，以胁迫手段对其奸淫",
+     "rules": [
+      "k259-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "现役军人的配偶本人不以破坏军婚罪论处（必要参与的对向犯，通说；符合条件时可能另构成重婚罪）",
+     "rules": [
+      "k259-spouse"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成破坏军婚罪，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k259-1s"
+     ]
+    },
+    {
+     "text": "第2款情形符合强奸罪构成要件，依照刑法第236条的规定定罪处罚",
+     "rules": [
+      "k259-2",
+      "k259-2s"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1款不要求以夫妻名义共同生活，同居即可；对象为现役军人的配偶，男女均可，且须明知其身份",
+     "rules": [
+      "k259-1"
+     ]
+    },
+    {
+     "text": "第2款对象限于现役军人的妻子，须利用职权、从属关系并以胁迫手段奸淫，成立强奸罪而非破坏军婚罪",
+     "rules": [
+      "k259-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k259-1",
+    "srcs": [
+     "art259#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,S)",
+     "spouseOf(S,M)",
+     "activeDutyMilitaryPerson(M)",
+     "knowsMilitarySpouseStatus(P,S)",
+     {
+      "or": [
+       "cohabitsWith(P,S)",
+       "marriesWith(P,S)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,underminingMilitaryMarriage)"
+    ],
+    "auth": "npc",
+    "note": "明知是现役军人的配偶而与之同居或者结婚的，符合破坏军婚罪（underminingMilitaryMarriage）的构成要件"
+   },
+   {
+    "key": "k259-1s",
+    "srcs": [
+     "art259#1"
+    ],
+    "body": [
+     "constitutes(P,X,underminingMilitaryMarriage)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "破坏军婚罪处三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention 即“三年以下有期徒刑或者拘役”）"
+   },
+   {
+    "key": "k259-2",
+    "srcs": [
+     "art259#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,W)",
+     "wifeOf(W,M)",
+     "activeDutyMilitaryPerson(M)",
+     "usesAuthorityOrSubordination(P,X)",
+     "coercesSexualIntercourseWith(P,X,W)"
+    ],
+    "heads": [
+     "art259Para2Conditions(P,X)",
+     "constitutes(P,X,rape)"
+    ],
+    "auth": "npc",
+    "note": "利用职权、从属关系以胁迫手段奸淫现役军人妻子的，具备第2款条件并符合强奸罪构成要件"
+   },
+   {
+    "key": "k259-2s",
+    "srcs": [
+     "art259#2"
+    ],
+    "body": [
+     "art259Para2Conditions(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt236(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款情形依照刑法第236条（强奸罪）的规定定罪处罚"
+   },
+   {
+    "key": "k259-spouse",
+    "srcs": [
+     "art259#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,S)",
+     "spouseOf(P,M)",
+     "activeDutyMilitaryPerson(M)",
+     {
+      "or": [
+       "cohabitsWith(P,S)",
+       "marriesWith(P,S)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,underminingMilitaryMarriage)"
+    ],
+    "auth": "doctrine",
+    "note": "法条未明文，依通说（对向犯之必要参与方不罚）：现役军人的配偶本人不构成破坏军婚罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k259-spouse",
+    "k259-1",
+    "推断：结论冲突（('constitutes', '+')），k259-spouse 为例外或更具体"
+   ],
+   [
+    "k259-spouse",
+    "k259-2",
+    "推断：结论冲突（('constitutes', '+')），k259-spouse 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "spouseOf": "spouseOf(S,M)：S 是 M 的配偶",
+   "activeDutyMilitaryPerson": "activeDutyMilitaryPerson(M)：M 是现役军人",
+   "knowsMilitarySpouseStatus": "knowsMilitarySpouseStatus(P,S)：P 明知 S 是现役军人的配偶",
+   "cohabitsWith": "cohabitsWith(P,S)：P 与 S 同居",
+   "marriesWith": "marriesWith(P,S)：P 与 S 结婚",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "wifeOf": "wifeOf(W,M)：W 是 M 的妻子",
+   "usesAuthorityOrSubordination": "usesAuthorityOrSubordination(P,X)：P 在行为 X 中利用职权、从属关系",
+   "coercesSexualIntercourseWith": "coercesSexualIntercourseWith(P,X,W)：P 通过行为 X 以胁迫手段奸淫 W",
+   "art259Para2Conditions": "art259Para2Conditions(P,X)：P 的行为 X 具备刑法第259条第2款的适用条件（利用职权、从属关系，以胁迫手段奸淫现役军人的妻子）",
+   "punishPerArt236": "punishPerArt236(P,X)：依照刑法第236条的规定对 P 就行为 X 定罪处罚"
+  },
+  "arity_conflict": "谓词 marriesWith 已有用法为 3 个参数，这里用了 2 个"
+ },
+ "art:260": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "虐待家庭成员的行为是否构成虐待罪，适用何种法定刑，以及是否属于告诉才处理的自诉案件",
+     "rules": [
+      "k260-1",
+      "k260-1s",
+      "k260-2",
+      "k260-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上虐待共同生活的家庭成员（肉体摧残或精神折磨），且情节恶劣的，构成虐待罪（abuse）",
+     "rules": [
+      "k260-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第1款之罪原则上告诉才处理；但被害人没有能力告诉，或者因受到强制、威吓无法告诉的，不受告诉才处理的限制（转为公诉）",
+     "rules": [
+      "k260-3exc"
+     ]
+    },
+    {
+     "text": "致使被害人重伤、死亡的第2款之罪不属于“第一款罪”，不适用告诉才处理",
+     "rules": [
+      "k260-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本犯：处二年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k260-1s"
+     ]
+    },
+    {
+     "text": "结果加重犯：犯前款罪致使被害人重伤、死亡的，处二年以上七年以下有期徒刑",
+     "rules": [
+      "k260-2"
+     ]
+    },
+    {
+     "text": "第1款之罪，告诉的才处理",
+     "rules": [
+      "k260-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致被害人重伤、死亡的，优先适用第2款加重法定刑，不再适用第1款基本刑",
+     "rules": [
+      "k260-2",
+      "k260-1s"
+     ]
+    },
+    {
+     "text": "对2015年10月31日以前实施的第1款虐待行为，被害人没有能力告诉或因受强制、威吓无法告诉的，溯及适用修正后第260条第3款，不受告诉才处理限制",
+     "rules": [
+      "k260-time"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款以“情节恶劣”为入罪要件的基本犯，第2款以致被害人重伤、死亡为加重结果的结果加重犯，二者法定刑与追诉方式不同",
+     "rules": [
+      "k260-1s",
+      "k260-2",
+      "k260-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k260-1",
+    "srcs": [
+     "art260#1"
+    ],
+    "body": [
+     "abusesFamilyMember(P,X)",
+     "victimOf(V,X)",
+     "familyMemberOf(V,P)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuse)"
+    ],
+    "auth": "npc",
+    "note": "虐待家庭成员且情节恶劣的，符合虐待罪（常量 abuse）的构成要件"
+   },
+   {
+    "key": "k260-1s",
+    "srcs": [
+     "art260#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuse)",
+     "~causesGraveInjuryOrDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under2OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本犯处二年以下有期徒刑、拘役或者管制（量刑常量 under2OrDetentionOrControl）"
+   },
+   {
+    "key": "k260-2",
+    "srcs": [
+     "art260#2"
+    ],
+    "body": [
+     "constitutes(P,X,abuse)",
+     "causesGraveInjuryOrDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from2to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "虐待致被害人重伤、死亡的，处二年以上七年以下有期徒刑（量刑常量 from2to7）"
+   },
+   {
+    "key": "k260-3",
+    "srcs": [
+     "art260#3",
+     "art260#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuse)",
+     "victimOf(V,X)",
+     "~causesGraveInjuryOrDeath(X)",
+     "~victimLacksCapacityToComplain(V,X)",
+     "~unableToComplainDueToCoercionOrIntimidation(V,X)"
+    ],
+    "heads": [
+     "prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款之罪告诉的才处理；致重伤死亡的第2款之罪及被害人无法告诉的情形除外"
+   },
+   {
+    "key": "k260-3exc",
+    "srcs": [
+     "art260#3"
+    ],
+    "body": [
+     "constitutes(P,X,abuse)",
+     "victimOf(V,X)",
+     {
+      "or": [
+       "victimLacksCapacityToComplain(V,X)",
+       "unableToComplainDueToCoercionOrIntimidation(V,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "npc",
+    "note": "但书：被害人没有能力告诉，或因受到强制、威吓无法告诉的，不适用告诉才处理"
+   },
+   {
+    "key": "k260-time",
+    "srcs": [
+     "art260#3"
+    ],
+    "body": [
+     "abusesFamilyMember(P,X)",
+     "crimeBefore20151101(P,X)",
+     "victimOf(V,X)",
+     {
+      "or": [
+       "victimLacksCapacityToComplain(V,X)",
+       "unableToComplainDueToCoercionOrIntimidation(V,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyRevisedArt260Para3(P,X)",
+     "-prosecutedOnlyUponComplaint(P,X)"
+    ],
+    "auth": "spc",
+    "note": "笔记所载《刑法修正案(九)》时间效力司法解释：2015年10月31日以前的第1款虐待行为，被害人无能力告诉或受强制威吓无法告诉的，适用修正后第260条第3款"
+   }
+  ],
+  "overrides": [
+   [
+    "k260-3exc",
+    "k260-3",
+    "推断：结论冲突（('prosecutedOnlyUponComplaint', '+')），k260-3exc 为例外或更具体"
+   ],
+   [
+    "k260-time",
+    "k260-3",
+    "推断：结论冲突（('prosecutedOnlyUponComplaint', '+')），k260-time 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "abusesFamilyMember": "abusesFamilyMember(P,X)：P 通过行为 X 虐待家庭成员（肉体摧残或精神折磨）",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "familyMemberOf": "familyMemberOf(V,P)：V 是 P 的家庭成员",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "sentence": "量刑",
+   "victimLacksCapacityToComplain": "victimLacksCapacityToComplain(V,X)：被害人 V 没有能力就犯罪 X 提出告诉",
+   "unableToComplainDueToCoercionOrIntimidation": "unableToComplainDueToCoercionOrIntimidation(V,X)：被害人 V 因受强制、威吓而无法就犯罪 X 告诉",
+   "prosecutedOnlyUponComplaint": "告诉的才处理",
+   "crimeBefore20151101": "crimeBefore20151101(P,X)：P 的犯罪 X 发生在2015年10月31日以前（《刑法修正案(九)》施行前）",
+   "applyRevisedArt260Para3": "applyRevisedArt260Para3(P,X)：对 P 就行为 X 适用修正后《刑法》第260条第3款的规定"
+  }
+ },
+ "art:260-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对未成年人、老年人、患病的人、残疾人等负有监护、看护职责的人，虐待被监护、看护人且情节恶劣的，是否构成虐待被监护、看护人罪",
+     "rules": [
+      "k260z1-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：对被监护、看护人负有监护、看护职责的人（含单位）；对象：未成年人、老年人、患病的人、残疾人等被监护、看护的人；行为：虐待；情节：情节恶劣",
+     "rules": [
+      "k260z1-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成虐待被监护、看护人罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k260z1-1b"
+     ]
+    },
+    {
+     "text": "单位犯本罪的，对单位判处罚金",
+     "rules": [
+      "k260z1-2"
+     ]
+    },
+    {
+     "text": "单位犯本罪的，对其直接负责的主管人员和其他直接责任人员，依照第1款（三年以下有期徒刑或者拘役）处罚",
+     "rules": [
+      "k260z1-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有第1款虐待行为，同时构成其他犯罪（如故意伤害、故意杀人等）的，依照处罚较重的规定定罪处罚，不再适用本罪法定刑",
+     "rules": [
+      "k260z1-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪与第260条虐待罪不同：主体不限于共同生活的家庭成员，而是负有监护、看护职责的人（可由单位构成），对象为被监护、看护的未成年人、老年人、患病的人、残疾人等；以情节恶劣为入罪要件，且不适用虐待罪的告诉才处理规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k260z1-1",
+    "srcs": [
+     "art260-1#1"
+    ],
+    "body": [
+     "abuseAct(P,X,V)",
+     "guardianshipOrCareDuty(P,V)",
+     "vulnerablePerson(V)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfWard)"
+    ],
+    "auth": "npc",
+    "note": "负有监护、看护职责的人虐待被监护、看护的未成年人、老年人、患病的人、残疾人等，情节恶劣的，构成虐待被监护、看护人罪（abuseOfWard）"
+   },
+   {
+    "key": "k260z1-1b",
+    "srcs": [
+     "art260-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfWard)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本罪法定刑为三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention）"
+   },
+   {
+    "key": "k260z1-2",
+    "srcs": [
+     "art260-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,abuseOfWard)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯虐待被监护、看护人罪的，对单位判处罚金"
+   },
+   {
+    "key": "k260z1-2b",
+    "srcs": [
+     "art260-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,abuseOfWard)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishUnderPara1(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪中直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚（双罚制）"
+   },
+   {
+    "key": "k260z1-3",
+    "srcs": [
+     "art260-1#3"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfWard)",
+     "constitutes(P,X,C)",
+     "otherCrimeThan(abuseOfWard,C)",
+     "heavierPunishmentThan(C,abuseOfWard)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "convictAndPunish(P,X,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "有第1款虐待行为同时构成其他犯罪的，依照处罚较重的规定定罪处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "abuseAct": "abuseAct(P,X,V)：P 通过行为 X 虐待被监护、看护人 V",
+   "guardianshipOrCareDuty": "guardianshipOrCareDuty(P,V)：P 对 V 负有监护、看护职责",
+   "vulnerablePerson": "vulnerablePerson(V)：V 是未成年人、老年人、患病的人、残疾人等被监护、看护的人",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "punishUnderPara1": "punishUnderPara1(P,X)：对 P 就行为 X 依照本条第一款的规定处罚",
+   "otherCrimeThan": "otherCrimeThan(C1,C2)：C1 与 C2 是不同罪名",
+   "heavierPunishmentThan": "heavierPunishmentThan(C1,C2)：罪名 C1 的法定处罚重于罪名 C2（C1 与 C2 为不同罪名）",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚"
+  }
+ },
+ "art:261": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对年老、年幼、患病或者其他没有独立生活能力的人，负有扶养义务而拒绝扶养、情节恶劣的，是否构成遗弃罪，如何处刑",
+     "rules": [
+      "k261-cond",
+      "k261-basic",
+      "k261-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：被害人是年老、年幼、患病或者其他没有独立生活能力的人",
+     "rules": [
+      "k261-cond"
+     ]
+    },
+    {
+     "text": "主体与行为条件：行为人对该被害人负有扶养义务，却以不作为方式拒绝扶养（有能力履行而不履行）",
+     "rules": [
+      "k261-cond"
+     ]
+    },
+    {
+     "text": "扶养义务的来源：既包括婚姻家庭法上的扶养、抚养、赡养义务，也包括基于合同、职务业务或先行行为等产生的照护义务（学理补充）",
+     "rules": [
+      "k261-duty"
+     ]
+    },
+    {
+     "text": "情节条件：拒绝扶养须达到“情节恶劣”，如致被害人生活无着、流离失所、健康严重受损等",
+     "rules": [
+      "k261-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "拒绝扶养但情节不恶劣的，不构成遗弃罪，只作民事扶养纠纷或道德、行政层面处理（构成要件的反面推论）",
+     "rules": [
+      "k261-notHeinous"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件且情节恶劣的，成立遗弃罪，负刑事责任",
+     "rules": [
+      "k261-basic"
+     ]
+    },
+    {
+     "text": "法定刑：处五年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k261-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "以拒绝扶养（遗弃）方式追求或放任被害人死亡，且发生死亡结果的，按不作为的故意杀人罪论处，排除遗弃罪的适用（学理与实务处理）",
+     "rules": [
+      "k261-homicide"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "遗弃罪与虐待罪的区别：遗弃罪是拒不履行扶养义务的纯正不作为，虐待罪是对共同生活的家庭成员经常性肉体、精神折磨摧残；二者竞合时按行为性质与处罚较重者处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k261-cond",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "victimOf(V,X)",
+     "lacksIndependentLivingCapacity(V)",
+     "hasSupportDutyTo(P,V)",
+     "refusesSupport(P,X)"
+    ],
+    "heads": [
+     "abandonmentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "遗弃罪的对象（无独立生活能力人）、主体（负扶养义务者）与拒绝扶养行为的构成条件"
+   },
+   {
+    "key": "k261-duty",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "victimOf(V,X)",
+     {
+      "or": [
+       "supportDutyByFamilyLaw(P,V)",
+       "supportDutyByContractOrPriorAct(P,V)"
+      ]
+     }
+    ],
+    "heads": [
+     "hasSupportDutyTo(P,V)"
+    ],
+    "auth": "doctrine",
+    "note": "学理补充：扶养义务可源于婚姻家庭法，也可源于合同、职务业务或先行行为等"
+   },
+   {
+    "key": "k261-basic",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "abandonmentConditions(P,X)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abandonment)",
+     "responsible(P,X,abandonment)"
+    ],
+    "auth": "npc",
+    "note": "负有扶养义务而拒绝扶养无独立生活能力人，情节恶劣的，构成遗弃罪（abandonment）并负刑事责任"
+   },
+   {
+    "key": "k261-pen",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "constitutes(P,X,abandonment)",
+     "responsible(P,X,abandonment)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "遗弃罪的法定刑为五年以下有期徒刑、拘役或者管制（量刑方式常量 under5OrDetentionOrControl）"
+   },
+   {
+    "key": "k261-notHeinous",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "abandonmentConditions(P,X)",
+     "-heinous(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abandonment)"
+    ],
+    "auth": "doctrine",
+    "note": "学理上的反面推论：情节不恶劣的拒绝扶养不构成遗弃罪，属民事扶养争议"
+   },
+   {
+    "key": "k261-homicide",
+    "srcs": [
+     "art261#1"
+    ],
+    "body": [
+     "abandonmentConditions(P,X)",
+     "killIntent(P,X)",
+     "causesDeath(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalHomicide)",
+     "responsible(P,X,intentionalHomicide)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与实务：以遗弃方式故意（含放任）致被害人死亡的，成立不作为故意杀人罪，而非遗弃罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k261-notHeinous",
+    "k261-basic",
+    "推断：结论冲突（('constitutes', '+')），k261-notHeinous 为例外或更具体"
+   ],
+   [
+    "k261-homicide",
+    "k261-notHeinous",
+    "推断：结论冲突（('constitutes', '-')），k261-homicide 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "lacksIndependentLivingCapacity": "lacksIndependentLivingCapacity(V)：V 是年老、年幼、患病或者其他没有独立生活能力的人",
+   "hasSupportDutyTo": "hasSupportDutyTo(P,V)：P 对 V 负有扶养（抚养、赡养、扶养）义务",
+   "refusesSupport": "refusesSupport(P,X)：P 通过行为 X（不作为）拒绝履行扶养义务",
+   "abandonmentConditions": "abandonmentConditions(P,X)：P 的行为 X 具备刑法第261条遗弃罪的对象、主体与拒绝扶养行为条件",
+   "supportDutyByFamilyLaw": "supportDutyByFamilyLaw(P,V)：P 对 V 的扶养义务源于婚姻家庭法上的抚养、赡养、扶养关系",
+   "supportDutyByContractOrPriorAct": "supportDutyByContractOrPriorAct(P,V)：P 对 V 的照护义务源于合同、职务业务或先行行为等",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "killIntent": "killIntent(P,X)：P 在行为 X 中具有致被害人死亡的故意（希望或放任死亡结果）",
+   "causesDeath": "致人死亡"
+  }
+ },
+ "art:262": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "拐骗不满十四周岁的未成年人，使其脱离家庭或者监护人的，是否构成拐骗儿童罪，如何处罚",
+     "rules": [
+      "k262-cond",
+      "k262-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：被拐骗者是不满十四周岁的未成年人（儿童）；行为条件：实施拐骗行为；结果条件：使该儿童脱离家庭或者监护人",
+     "rules": [
+      "k262-cond"
+     ]
+    },
+    {
+     "text": "“拐骗”的手段：以欺骗、利诱或者其他方法（如暗中带走）使儿童脱离家庭或监护人，不以暴力、胁迫为必要（学理理解）",
+     "rules": [
+      "k262-means"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "以出卖为目的拐骗儿童的，不依本条以拐骗儿童罪论处，而应认定为拐卖儿童罪（学理与第240条的体系解释）",
+     "rules": [
+      "k262-sale"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成拐骗儿童罪的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k262-pen"
+     ]
+    },
+    {
+     "text": "儿童实际脱离家庭或者监护人的控制，即为本罪既遂（学理）",
+     "rules": [
+      "k262-completed"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "存在出卖目的时，排除拐骗儿童罪的认定，优先按拐卖儿童罪处理",
+     "rules": [
+      "k262-sale",
+      "k262-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与拐卖儿童罪的区分在于是否具有出卖目的：无出卖目的而拐骗儿童自养、供役使等，成立拐骗儿童罪；有出卖目的的，成立拐卖儿童罪",
+     "rules": [
+      "k262-sale"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k262-cond",
+    "srcs": [
+     "art262#1"
+    ],
+    "body": [
+     "abductsChild(P,X,V)",
+     "under14(V)",
+     "detachedFromFamilyOrGuardian(X,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,childAbduction)"
+    ],
+    "auth": "npc",
+    "note": "拐骗不满十四周岁的未成年人脱离家庭或者监护人的，符合拐骗儿童罪的构成要件"
+   },
+   {
+    "key": "k262-pen",
+    "srcs": [
+     "art262#1"
+    ],
+    "body": [
+     "constitutes(P,X,childAbduction)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成拐骗儿童罪的，处五年以下有期徒刑或者拘役（under5OrDetention 表示五年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k262-means",
+    "srcs": [
+     "art262#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "under14(V)",
+     "detachedFromFamilyOrGuardian(X,V)",
+     {
+      "or": [
+       "deceives(P,X)",
+       "enticesByBenefit(P,X)",
+       "otherMeansOfAbduction(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "abductsChild(P,X,V)"
+    ],
+    "auth": "doctrine",
+    "note": "法条未细化“拐骗”手段，学理认为包括欺骗、利诱或其他使儿童脱离家庭、监护人的方法"
+   },
+   {
+    "key": "k262-completed",
+    "srcs": [
+     "art262#1"
+    ],
+    "body": [
+     "abductsChild(P,X,V)",
+     "under14(V)",
+     "detachedFromFamilyOrGuardian(X,V)"
+    ],
+    "heads": [
+     "crimeAccomplished(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：使儿童实际脱离家庭或监护人的控制即为本罪既遂，条文未明文规定既遂标准"
+   },
+   {
+    "key": "k262-sale",
+    "srcs": [
+     "art262#1"
+    ],
+    "body": [
+     "abductsChild(P,X,V)",
+     "under14(V)",
+     "purposeOfSale(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,childAbduction)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：以出卖为目的拐骗儿童的，应认定拐卖儿童罪（第240条），排除本条拐骗儿童罪的适用"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "abductsChild": "abductsChild(P,X,V)：P 通过行为 X 拐骗未成年人 V",
+   "under14": "under14(V)：V 不满十四周岁",
+   "detachedFromFamilyOrGuardian": "detachedFromFamilyOrGuardian(X,V)：行为 X 使 V 脱离家庭或者监护人（脱离其实际控制）",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "deceives": "虚构事实或隐瞒真相",
+   "enticesByBenefit": "enticesByBenefit(P,X)：P 通过行为 X 以给予利益、许诺好处等方式利诱他人",
+   "otherMeansOfAbduction": "otherMeansOfAbduction(P,X)：P 通过行为 X 以欺骗、利诱以外的其他方法（如暗中带走）使儿童脱离家庭或监护人",
+   "crimeAccomplished": "crimeAccomplished(P,X)：P 的犯罪 X 已达既遂（完成形态）",
+   "purposeOfSale": "purposeOfSale(P,X)：P 实施行为 X 以出卖（贩卖被害人）为目的"
+  }
+ },
+ "art:262-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、胁迫手段组织残疾人或者不满十四周岁的未成年人乞讨，是否构成组织残疾人、儿童乞讨罪及如何量刑",
+     "rules": [
+      "k262z1-charge"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为条件：组织他人乞讨；对象条件：被组织者是残疾人或者不满十四周岁的未成年人；手段条件：以暴力、胁迫手段实施组织行为",
+     "rules": [
+      "k262z1-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "具备上述条件的，成立组织残疾人、儿童乞讨罪，负刑事责任",
+     "rules": [
+      "k262z1-charge"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k262z1-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k262z1-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用加重档，排除基本档法定刑",
+     "rules": [
+      "k262z1-aggr",
+      "k262z1-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象限于残疾人与不满十四周岁的未成年人，且手段限于暴力、胁迫；不具备对象或手段条件的，不依本条定罪",
+     "rules": [
+      "k262z1-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k262z1-cond",
+    "srcs": [
+     "art262-1#1"
+    ],
+    "body": [
+     "organizesBegging(P,X)",
+     "victimOf(V,X)",
+     "disabledOrUnder14(V)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     "organizingBeggingConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "组织乞讨行为＋对象为残疾人或不满十四周岁未成年人＋暴力、胁迫手段，具备本罪构成条件"
+   },
+   {
+    "key": "k262z1-charge",
+    "srcs": [
+     "art262-1#1"
+    ],
+    "body": [
+     "organizingBeggingConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,organizingBegging)",
+     "responsible(P,X,organizingBegging)"
+    ],
+    "auth": "npc",
+    "note": "具备本条条件的，符合组织残疾人、儿童乞讨罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k262z1-basic",
+    "srcs": [
+     "art262-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,organizingBegging)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：三年以下有期徒刑或者拘役（under3OrDetention），并处罚金"
+   },
+   {
+    "key": "k262z1-aggr",
+    "srcs": [
+     "art262-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,organizingBegging)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的加重档：三年以上七年以下有期徒刑（from3to7），并处罚金"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "organizesBegging": "organizesBegging(P,X)：P 通过行为 X 组织他人乞讨",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "disabledOrUnder14": "disabledOrUnder14(V)：V 是残疾人或者不满十四周岁的未成年人",
+   "usesViolenceOrThreatMeans": "usesViolenceOrThreatMeans(P,X)：P 在行为 X 中以暴力、威胁手段实施",
+   "organizingBeggingConditions": "organizingBeggingConditions(P,X)：P 的行为 X 具备刑法第262条之一第1款组织残疾人、儿童乞讨罪的构成条件（组织乞讨、特定对象、暴力胁迫手段）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金"
+  }
+ },
+ "art:262-2": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织未成年人进行盗窃、诈骗、抢夺、敲诈勒索等违反治安管理活动的定罪与法定刑档次",
+     "rules": [
+      "k262z2-crime",
+      "k262z2-basic",
+      "k262z2-aggravated"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观条件：组织不满十八周岁的未成年人进行盗窃、诈骗、抢夺、敲诈勒索等违反治安管理活动；主体为组织者（一般主体）",
+     "rules": [
+      "k262z2-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "所组织的活动本身已构成犯罪的，应按所组织之罪的共犯（组织、教唆）处理，不成立本罪（学理限定：本罪限于尚不构成犯罪的违反治安管理活动）",
+     "rules": [
+      "k262z2-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，成立组织未成年人进行违反治安管理活动罪，组织者负刑事责任",
+     "rules": [
+      "k262z2-crime"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k262z2-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k262z2-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的，优先适用加重档，排除基本档",
+     "rules": [
+      "k262z2-aggravated",
+      "k262z2-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪处罚的是组织者，被组织的未成年人不因被组织而成立本罪；与组织、教唆未成年人犯罪的区别在于所组织的活动是否已达到犯罪程度",
+     "rules": [
+      "k262z2-cond",
+      "k262z2-limit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k262z2-cond",
+    "srcs": [
+     "art262-2#1"
+    ],
+    "body": [
+     "organizesPersonActivity(P,X,V)",
+     "under18(V)",
+     "publicSecurityViolatingActivity(X)"
+    ],
+    "heads": [
+     "organizingMinorsViolationConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "组织不满十八周岁的未成年人进行盗窃、诈骗、抢夺、敲诈勒索等违反治安管理活动，具备本罪构成条件"
+   },
+   {
+    "key": "k262z2-crime",
+    "srcs": [
+     "art262-2#1"
+    ],
+    "body": [
+     "organizingMinorsViolationConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,organizingMinorsToViolatePublicSecurity)",
+     "responsible(P,X,organizingMinorsToViolatePublicSecurity)"
+    ],
+    "auth": "npc",
+    "note": "具备本罪构成条件的，成立组织未成年人进行违反治安管理活动罪并负刑事责任"
+   },
+   {
+    "key": "k262z2-basic",
+    "srcs": [
+     "art262-2#1"
+    ],
+    "body": [
+     "organizingMinorsViolationConditions(P,X)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k262z2-aggravated",
+    "srcs": [
+     "art262-2#1"
+    ],
+    "body": [
+     "organizingMinorsViolationConditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To7WithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k262z2-limit",
+    "srcs": [
+     "art262-2#1"
+    ],
+    "body": [
+     "organizesPersonActivity(P,X,V)",
+     "under18(V)",
+     "organizedActivityConstitutesCrime(X)"
+    ],
+    "heads": [
+     "-organizingMinorsViolationConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理限定：所组织的活动已构成犯罪的，按该罪共犯处理，不成立本罪（法条仅规定“违反治安管理活动”）"
+   }
+  ],
+  "overrides": [
+   [
+    "k262z2-limit",
+    "k262z2-cond",
+    "推断：结论冲突（('organizingMinorsViolationConditions', '+')），k262z2-limit 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "organizesPersonActivity": "organizesPersonActivity(P,X,V)：P 通过行为 X 组织 V 进行一定活动（组织、策划、指挥、招募、安排等）",
+   "under18": "不满十八周岁",
+   "publicSecurityViolatingActivity": "publicSecurityViolatingActivity(X)：行为 X 所组织的活动属于盗窃、诈骗、抢夺、敲诈勒索等违反治安管理的活动（尚不构成犯罪）",
+   "organizingMinorsViolationConditions": "organizingMinorsViolationConditions(P,X)：P 的行为 X 具备刑法第262条之二组织未成年人进行违反治安管理活动罪的构成条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "organizedActivityConstitutesCrime": "organizedActivityConstitutesCrime(X)：行为 X 所组织的活动本身已构成犯罪（如盗窃、诈骗、抢夺、敲诈勒索罪）"
+  }
+ }
+}

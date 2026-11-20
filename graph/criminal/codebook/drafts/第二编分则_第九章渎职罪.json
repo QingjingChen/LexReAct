@@ -1,0 +1,4992 @@
+{
+ "art:397": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员滥用职权或者玩忽职守，致使公共财产、国家和人民利益遭受重大损失的，如何定罪量刑",
+     "rules": [
+      "k397-abuse",
+      "k397-neglect"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；行为为滥用职权（违法行使、超越职权）或者玩忽职守（严重不负责任，不履行或不正确履行职责）；结果为致使公共财产、国家和人民利益遭受重大损失",
+     "rules": [
+      "k397-abuse",
+      "k397-neglect"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本法另有规定的，依照规定：如第400条第2款失职致使在押人员脱逃罪、第412条第2款商检失职罪等特别法条，排除第397条的适用",
+     "rules": [
+      "k397-special"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本情形：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k397-1"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k397-1b"
+     ]
+    },
+    {
+     "text": "徇私舞弊犯前款罪的：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k397-2"
+     ]
+    },
+    {
+     "text": "徇私舞弊犯前款罪且情节特别严重的：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k397-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "徇私舞弊的第2款较重法定刑优先于第1款普通法定刑（同一行为因徇私动机适用较重法定刑）",
+     "rules": [
+      "k397-2",
+      "k397-2b"
+     ]
+    },
+    {
+     "text": "本法另有规定的特别法条优先于第397条的滥用职权罪、玩忽职守罪（法条竞合，特别法条优先）",
+     "rules": [
+      "k397-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "徇私舞弊是犯罪动机而非犯罪成立的构成要件要素，不影响滥用职权罪、玩忽职守罪的成立，只提高法定刑；实践中动机是否恶劣还可作酌定从重、从轻的理由",
+     "rules": [
+      "k397-2"
+     ]
+    },
+    {
+     "text": "滥用职权与玩忽职守同条并列，前者为故意、后者为过失；与第400条第2款、第412条第2款等属法条竞合，依特别规定定罪处罚",
+     "rules": [
+      "k397-abuse",
+      "k397-neglect",
+      "k397-special"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k397-abuse",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "abusesPower(P,X)",
+     "causesMajorLossToPublicPropertyStateAndPeople(X)",
+     "~specialDerelictionProvision(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfPower)",
+     "responsible(P,X,abuseOfPower)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员滥用职权致使公共财产、国家和人民利益遭受重大损失的，构成滥用职权罪（abuseOfPower）并负刑事责任"
+   },
+   {
+    "key": "k397-neglect",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "neglectsDuty(P,X)",
+     "causesMajorLossToPublicPropertyStateAndPeople(X)",
+     "~specialDerelictionProvision(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionOfDuty)",
+     "responsible(P,X,derelictionOfDuty)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员玩忽职守致使公共财产、国家和人民利益遭受重大损失的，构成玩忽职守罪（derelictionOfDuty）并负刑事责任"
+   },
+   {
+    "key": "k397-1",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,abuseOfPower)",
+       "constitutes(P,X,derelictionOfDuty)"
+      ]
+     },
+     "~especiallySeriousCircumstances(X)",
+     "~favoritism(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k397-1b",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,abuseOfPower)",
+       "constitutes(P,X,derelictionOfDuty)"
+      ]
+     },
+     "especiallySeriousCircumstances(X)",
+     "~favoritism(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款情节特别严重的：处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k397-2",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,abuseOfPower)",
+       "constitutes(P,X,derelictionOfDuty)"
+      ]
+     },
+     "favoritism(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊犯前款罪的：处五年以下有期徒刑或者拘役（徇私系犯罪动机，据以提高法定刑）"
+   },
+   {
+    "key": "k397-2b",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,abuseOfPower)",
+       "constitutes(P,X,derelictionOfDuty)"
+      ]
+     },
+     "favoritism(P,X)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊犯前款罪且情节特别严重的：处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k397-special",
+    "srcs": [
+     "art397"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     {
+      "or": [
+       "abusesPower(P,X)",
+       "neglectsDuty(P,X)"
+      ]
+     },
+     "causesMajorLossToPublicPropertyStateAndPeople(X)",
+     "specialDerelictionProvision(X)"
+    ],
+    "heads": [
+     "applyOtherProvisionOfThisLaw(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本法另有规定的依照规定（如第400条第2款失职致使在押人员脱逃罪、第412条第2款商检失职罪等特别法条优先）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "causesMajorLossToPublicPropertyStateAndPeople": "causesMajorLossToPublicPropertyStateAndPeople(X)：行为 X 致使公共财产、国家和人民利益遭受重大损失",
+   "specialDerelictionProvision": "specialDerelictionProvision(X)：本法对行为 X 所涉滥用职权、玩忽职守另有特别规定（如第400条第2款、第412条第2款等），应依该特别规定定罪处罚",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "neglectsDuty": "neglectsDuty(P,X)：P 在行为 X 中玩忽职守（严重不负责任，不履行或者不正确履行职责）",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "applyOtherProvisionOfThisLaw": "applyOtherProvisionOfThisLaw(P,X)：对 P 就行为 X 依照刑法另有的特别规定定罪处罚"
+  }
+ },
+ "art:398": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "泄露国家秘密行为的入罪条件与量刑档次；国家机关工作人员与非国家机关工作人员的处理差异",
+     "rules": [
+      "k398-cond",
+      "k398-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "国家机关工作人员违反保守国家秘密法的规定，故意或者过失泄露国家秘密，情节严重的，具备本罪构成条件",
+     "rules": [
+      "k398-cond"
+     ]
+    },
+    {
+     "text": "非国家机关工作人员违反保密法规定故意或过失泄露国家秘密、情节严重的，同样具备本罪构成条件（本罪为一般主体）",
+     "rules": [
+      "k398-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "泄露国家秘密但情节不严重的，不具备本罪构成条件，不依本条定罪处罚",
+     "rules": [
+      "k398-notSerious"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "故意泄露国家秘密的，符合故意泄露国家秘密罪的构成要件；过失泄露的，符合过失泄露国家秘密罪的构成要件（罪名依法条与学理、司法解释确定）",
+     "rules": [
+      "k398-intent",
+      "k398-negligent"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k398-p1basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k398-p1aggr"
+     ]
+    },
+    {
+     "text": "非国家机关工作人员犯本罪的，依照第1款的规定酌情处罚",
+     "rules": [
+      "k398-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时优先适用第1款后段的加重档，不再适用三年以下有期徒刑或拘役的基本档",
+     "rules": [
+      "k398-p1aggr"
+     ]
+    },
+    {
+     "text": "对非国家机关工作人员，第2款“依照前款酌情处罚”的规定优先于第1款的一般量刑表述",
+     "rules": [
+      "k398-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体不限于国家机关工作人员：非国家机关工作人员也可成立本罪，只在量刑上依第2款酌情处罚，故体系上归入一般主体之罪",
+     "rules": [
+      "k398-2",
+      "k398-2b"
+     ]
+    },
+    {
+     "text": "故意与过失均可成立本条之罪，但分别对应故意泄露国家秘密罪与过失泄露国家秘密罪两个罪名，不可混同",
+     "rules": [
+      "k398-intent",
+      "k398-negligent"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k398-cond",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "violatesStateSecretsProtectionLaw(X)",
+     "leaksStateSecretInAct(P,X)",
+     {
+      "or": [
+       "intentionalCrime(X)",
+       "negligentCrime(X)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "disclosureOfStateSecretsConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员违反保密法规定、故意或过失泄露国家秘密且情节严重的，具备第398条第1款的构成条件"
+   },
+   {
+    "key": "k398-2",
+    "srcs": [
+     "art398#2"
+    ],
+    "body": [
+     "violatesStateSecretsProtectionLaw(X)",
+     "leaksStateSecretInAct(P,X)",
+     {
+      "or": [
+       "intentionalCrime(X)",
+       "negligentCrime(X)"
+      ]
+     },
+     "seriousCircumstances(X)",
+     "-stateOrganStaff(P)"
+    ],
+    "heads": [
+     "disclosureOfStateSecretsConditions(P,X)",
+     "nonStateOrganStaffDisclosure(P,X)"
+    ],
+    "auth": "npc",
+    "note": "非国家机关工作人员实施前款行为的，同样具备本罪构成条件，并标记为第2款情形"
+   },
+   {
+    "key": "k398-notSerious",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "leaksStateSecretInAct(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-disclosureOfStateSecretsConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "情节严重是本条入罪门槛，情节不严重的不具备本罪构成条件"
+   },
+   {
+    "key": "k398-intent",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "disclosureOfStateSecretsConditions(P,X)",
+     "intentionalCrime(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalDisclosureOfStateSecrets)"
+    ],
+    "auth": "doctrine",
+    "note": "故意泄露国家秘密的成立故意泄露国家秘密罪；罪名系学理与司法解释的概括，法条未直接写明罪名"
+   },
+   {
+    "key": "k398-negligent",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "disclosureOfStateSecretsConditions(P,X)",
+     "negligentCrime(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,negligentDisclosureOfStateSecrets)"
+    ],
+    "auth": "doctrine",
+    "note": "过失泄露国家秘密的成立过失泄露国家秘密罪；罪名系学理与司法解释的概括，法条未直接写明罪名"
+   },
+   {
+    "key": "k398-p1basic",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "disclosureOfStateSecretsConditions(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k398-p1aggr",
+    "srcs": [
+     "art398#1"
+    ],
+    "body": [
+     "disclosureOfStateSecretsConditions(P,X)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k398-2b",
+    "srcs": [
+     "art398#2"
+    ],
+    "body": [
+     "nonStateOrganStaffDisclosure(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt398(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "非国家机关工作人员犯本罪的，依照第1款的规定酌情处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k398-notSerious",
+    "k398-cond",
+    "推断：结论冲突（('disclosureOfStateSecretsConditions', '+')），k398-notSerious 为例外或更具体"
+   ],
+   [
+    "k398-notSerious",
+    "k398-2",
+    "推断：结论冲突（('disclosureOfStateSecretsConditions', '+')），k398-notSerious 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "violatesStateSecretsProtectionLaw": "violatesStateSecretsProtectionLaw(X)：行为X违反保守国家秘密法的规定",
+   "leaksStateSecretInAct": "leaksStateSecretInAct(P,X)：P 通过行为 X 泄露的信息属于国家秘密",
+   "intentionalCrime": "故意犯罪",
+   "negligentCrime": "过失犯罪",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "disclosureOfStateSecretsConditions": "disclosureOfStateSecretsConditions(P,X)：P的行为X具备刑法第398条泄露国家秘密犯罪的构成条件（违反保密法规定、故意或过失泄露国家秘密、情节严重）",
+   "nonStateOrganStaffDisclosure": "nonStateOrganStaffDisclosure(P,X)：P系非国家机关工作人员，其行为X具备第398条第1款之罪的构成条件（第2款情形）",
+   "constitutes": "符合构成要件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "punishPerArt398": "punishPerArt398(P,X)：依照刑法第398条的规定对 P 就行为 X 定罪处罚"
+  }
+ },
+ "art:399": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "司法工作人员枉法追诉、枉法裁判、执行判决裁定中失职或滥用职权的定罪与量刑，以及收受贿赂时的择一重处罚",
+     "rules": [
+      "k399-1",
+      "k399-2",
+      "k399-3a",
+      "k399-3b",
+      "k399-4a",
+      "k399-4b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：主体为司法工作人员，徇私枉法、徇情枉法，实施下列行为之一——对明知是无罪的人使他受追诉；对明知是有罪的人故意包庇不使他受追诉；在刑事审判活动中故意违背事实和法律作枉法裁判",
+     "rules": [
+      "k399-1"
+     ]
+    },
+    {
+     "text": "第2款：司法工作人员在民事、行政审判活动中故意违背事实和法律作枉法裁判，且情节严重",
+     "rules": [
+      "k399-2"
+     ]
+    },
+    {
+     "text": "第3款：司法工作人员在执行判决、裁定活动中，不依法采取诉讼保全措施、不履行法定执行职责，或者违法采取诉讼保全措施、强制执行措施，致使当事人或者其他人的利益遭受重大损失（含特别重大损失）",
+     "rules": [
+      "k399-3cond"
+     ]
+    },
+    {
+     "text": "第3款行为出于严重不负责任（失职型）的，成立执行判决、裁定失职罪；出于滥用职权（故意型）的，成立执行判决、裁定滥用职权罪",
+     "rules": [
+      "k399-3a",
+      "k399-3b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "徇私枉法：处五年以下有期徒刑或者拘役；情节严重的，处五年以上十年以下有期徒刑；情节特别严重的，处十年以上有期徒刑",
+     "rules": [
+      "k399-1s1",
+      "k399-1s2",
+      "k399-1s3"
+     ]
+    },
+    {
+     "text": "民事、行政枉法裁判：情节严重的，处五年以下有期徒刑或者拘役；情节特别严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k399-2s1",
+      "k399-2s2"
+     ]
+    },
+    {
+     "text": "执行判决、裁定失职或滥用职权：致使当事人或其他人利益遭受重大损失的，处五年以下有期徒刑或者拘役；遭受特别重大损失的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k399-3s1",
+      "k399-3s2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第4款：司法工作人员收受贿赂而实施前三款行为，同时又构成第385条受贿罪的，依照处罚较重的规定定罪处罚，不实行数罪并罚",
+     "rules": [
+      "k399-4a",
+      "k399-4b"
+     ]
+    },
+    {
+     "text": "各款内部量刑档次按情节（损失）严重程度递进适用，重档排除轻档",
+     "rules": [
+      "k399-1s2",
+      "k399-1s3",
+      "k399-2s2",
+      "k399-3s2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款限于刑事追诉与刑事审判活动，且不以情节严重为入罪要件；第2款为民事、行政审判活动中的枉法裁判，须情节严重才构成犯罪",
+     "rules": [
+      "k399-1",
+      "k399-2"
+     ]
+    },
+    {
+     "text": "第3款不是枉法裁判，而是执行判决、裁定环节的失职或滥用职权，以当事人或其他人利益遭受重大损失为结果要件",
+     "rules": [
+      "k399-3cond",
+      "k399-3a",
+      "k399-3b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k399-1",
+    "srcs": [
+     "art399#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "favoritism(P,X)",
+     {
+      "or": [
+       "prosecutesKnownInnocent(P,X)",
+       "shieldsKnownGuiltyFromProsecution(P,X)",
+       "pervertsLawInCriminalTrial(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,pervertingJusticeForPersonalGain)"
+    ],
+    "auth": "npc",
+    "note": "司法工作人员徇私徇情枉法追诉或刑事审判枉法裁判，符合徇私枉法罪构成要件（罪名常量依罪名规定自拟）"
+   },
+   {
+    "key": "k399-1s1",
+    "srcs": [
+     "art399#1"
+    ],
+    "body": [
+     "constitutes(P,X,pervertingJusticeForPersonalGain)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私枉法基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k399-1s2",
+    "srcs": [
+     "art399#1"
+    ],
+    "body": [
+     "constitutes(P,X,pervertingJusticeForPersonalGain)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5To10Years)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私枉法情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k399-1s3",
+    "srcs": [
+     "art399#1"
+    ],
+    "body": [
+     "constitutes(P,X,pervertingJusticeForPersonalGain)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私枉法情节特别严重的，处十年以上有期徒刑"
+   },
+   {
+    "key": "k399-2",
+    "srcs": [
+     "art399#2"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "pervertsLawInCivilAdminTrial(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,civilAdminPervertingJudgment)"
+    ],
+    "auth": "npc",
+    "note": "民事、行政审判活动中故意违背事实和法律枉法裁判，情节严重的，符合民事、行政枉法裁判罪构成要件"
+   },
+   {
+    "key": "k399-2s1",
+    "srcs": [
+     "art399#2"
+    ],
+    "body": [
+     "constitutes(P,X,civilAdminPervertingJudgment)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "民事、行政枉法裁判情节严重的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k399-2s2",
+    "srcs": [
+     "art399#2"
+    ],
+    "body": [
+     "constitutes(P,X,civilAdminPervertingJudgment)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5To10Years)"
+     }
+    ],
+    "auth": "npc",
+    "note": "民事、行政枉法裁判情节特别严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k399-3cond",
+    "srcs": [
+     "art399#3"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "inExecutionOfJudgment(P,X)",
+     {
+      "or": [
+       "failsToTakePreservationOrPerformExecutionDuty(P,X)",
+       "unlawfullyTakesPreservationOrEnforcementMeasures(P,X)"
+      ]
+     },
+     {
+      "or": [
+       "causesMajorLossToPartyOrOther(X)",
+       "causesEspeciallyMajorLossToPartyOrOther(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "executionMisconductConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第3款客观条件：执行判决、裁定活动中不依法保全、不履行执行职责或违法保全、强制执行，致当事人或其他人利益重大损失"
+   },
+   {
+    "key": "k399-3a",
+    "srcs": [
+     "art399#3"
+    ],
+    "body": [
+     "executionMisconductConditions(P,X)",
+     "seriouslyIrresponsible(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionInExecutionOfJudgment)"
+    ],
+    "auth": "npc",
+    "note": "严重不负责任（失职）型，符合执行判决、裁定失职罪构成要件"
+   },
+   {
+    "key": "k399-3b",
+    "srcs": [
+     "art399#3"
+    ],
+    "body": [
+     "executionMisconductConditions(P,X)",
+     "abusesPower(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfPowerInExecutionOfJudgment)"
+    ],
+    "auth": "npc",
+    "note": "滥用职权型，符合执行判决、裁定滥用职权罪构成要件"
+   },
+   {
+    "key": "k399-3s1",
+    "srcs": [
+     "art399#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,derelictionInExecutionOfJudgment)",
+       "constitutes(P,X,abuseOfPowerInExecutionOfJudgment)"
+      ]
+     },
+     "causesMajorLossToPartyOrOther(X)",
+     "~causesEspeciallyMajorLossToPartyOrOther(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使当事人或其他人利益遭受重大损失的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k399-3s2",
+    "srcs": [
+     "art399#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,derelictionInExecutionOfJudgment)",
+       "constitutes(P,X,abuseOfPowerInExecutionOfJudgment)"
+      ]
+     },
+     "causesEspeciallyMajorLossToPartyOrOther(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5To10Years)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使当事人或其他人利益遭受特别重大损失的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k399-4a",
+    "srcs": [
+     "art399#4"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "constitutes(P,X,C)",
+     "art399Para1To3Crime(C)",
+     "constitutes(P,Y,bribeTaking)",
+     "bribeRelatedTo(P,Y,X)",
+     "heavierPunishment(C,bribeTaking,X)"
+    ],
+    "heads": [
+     "convicted(P,X,C)",
+     "-convicted(P,Y,bribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "收受贿赂又有前三款行为且同时构成受贿罪，前三款之罪处罚较重的，依该罪定罪处罚，不再以受贿罪定罪（不并罚）"
+   },
+   {
+    "key": "k399-4b",
+    "srcs": [
+     "art399#4"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "constitutes(P,X,C)",
+     "art399Para1To3Crime(C)",
+     "constitutes(P,Y,bribeTaking)",
+     "bribeRelatedTo(P,Y,X)",
+     "heavierPunishment(bribeTaking,C,X)"
+    ],
+    "heads": [
+     "convicted(P,Y,bribeTaking)",
+     "-convicted(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "收受贿赂又有前三款行为且同时构成受贿罪，受贿罪处罚较重的，依受贿罪定罪处罚，不再以前三款之罪定罪（不并罚）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "prosecutesKnownInnocent": "prosecutesKnownInnocent(P,X)：P 通过行为 X 对明知是无罪的人而使他受追诉",
+   "shieldsKnownGuiltyFromProsecution": "shieldsKnownGuiltyFromProsecution(P,X)：P 通过行为 X 对明知是有罪的人故意包庇，不使他受追诉",
+   "pervertsLawInCriminalTrial": "pervertsLawInCriminalTrial(P,X)：P 在刑事审判活动中通过行为 X 故意违背事实和法律作枉法裁判",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "pervertsLawInCivilAdminTrial": "pervertsLawInCivilAdminTrial(P,X)：P 在民事、行政审判活动中通过行为 X 故意违背事实和法律作枉法裁判",
+   "inExecutionOfJudgment": "inExecutionOfJudgment(P,X)：P 的行为 X 发生在执行判决、裁定活动中",
+   "failsToTakePreservationOrPerformExecutionDuty": "failsToTakePreservationOrPerformExecutionDuty(P,X)：P 通过行为 X 不依法采取诉讼保全措施或者不履行法定执行职责",
+   "unlawfullyTakesPreservationOrEnforcementMeasures": "unlawfullyTakesPreservationOrEnforcementMeasures(P,X)：P 通过行为 X 违法采取诉讼保全措施、强制执行措施",
+   "causesMajorLossToPartyOrOther": "causesMajorLossToPartyOrOther(X)：行为 X 致使当事人或者其他人的利益遭受重大损失",
+   "causesEspeciallyMajorLossToPartyOrOther": "causesEspeciallyMajorLossToPartyOrOther(X)：行为 X 致使当事人或者其他人的利益遭受特别重大损失",
+   "executionMisconductConditions": "executionMisconductConditions(P,X)：P 的行为 X 具备第399条第3款执行判决、裁定活动中违法行为与重大损失结果的客观条件",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "art399Para1To3Crime": "art399Para1To3Crime(C)：C 属于刑法第399条前三款规定之罪（徇私枉法罪、民事行政枉法裁判罪、执行判决裁定失职罪、执行判决裁定滥用职权罪）",
+   "bribeRelatedTo": "bribeRelatedTo(P,Y,X)：P 的收受贿赂行为 Y 与其枉法、失职或滥用职权行为 X 相关联（因收受贿赂而实施前三款行为）",
+   "heavierPunishment": "heavierPunishment(C1,C2,X)：就行为 X 而言，罪名 C1 的处罚重于罪名 C2（竞合从一重的判断）",
+   "convicted": "定罪"
+  }
+ },
+ "art:399-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "依法承担仲裁职责的人员在仲裁活动中故意违背事实和法律作枉法裁决、情节严重的，是否构成枉法仲裁罪以及如何量刑",
+     "rules": [
+      "k399z1-cond",
+      "k399z1-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为依法承担仲裁职责的人员；场合为仲裁活动中；行为与主观为故意违背事实和法律作枉法裁决",
+     "rules": [
+      "k399z1-cond"
+     ]
+    },
+    {
+     "text": "须情节严重，方构成枉法仲裁罪（情节严重是入罪要件）",
+     "rules": [
+      "k399z1-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因过失（认识错误、业务水平不足）导致裁决违背事实和法律的，欠缺故意，不构成枉法仲裁罪（学理说明）",
+     "rules": [
+      "k399z1-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k399z1-1s"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k399z1-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重的加重档优先于情节严重的基本档量刑",
+     "rules": [
+      "k399z1-2s",
+      "k399z1-1s"
+     ]
+    },
+    {
+     "text": "过失裁决错误排除枉法仲裁罪的成立",
+     "rules": [
+      "k399z1-neg",
+      "k399z1-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体是仲裁人员，与司法工作人员在刑事审判中徇私枉法、在民事行政审判中枉法裁判（第399条）的主体和场合不同；本条仅规定枉法仲裁，不涉及司法工作人员的枉法裁判",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k399z1-cond",
+    "srcs": [
+     "art399-1#1"
+    ],
+    "body": [
+     "arbitrationDutyPerson(P)",
+     "inArbitrationActivity(X)",
+     "pervertingArbitrationAct(P,X)"
+    ],
+    "heads": [
+     "arbitrationPerversionConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "依法承担仲裁职责的人员在仲裁活动中故意违背事实和法律作枉法裁决，具备本罪的主体、场合、行为与故意条件"
+   },
+   {
+    "key": "k399z1-1",
+    "srcs": [
+     "art399-1#1"
+    ],
+    "body": [
+     "arbitrationPerversionConditions(P,X)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,pervertingArbitration)"
+    ],
+    "auth": "npc",
+    "note": "枉法仲裁情节严重的，构成枉法仲裁罪"
+   },
+   {
+    "key": "k399z1-1s",
+    "srcs": [
+     "art399-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,pervertingArbitration)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k399z1-2s",
+    "srcs": [
+     "art399-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,pervertingArbitration)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k399z1-neg",
+    "srcs": [
+     "art399-1#1"
+    ],
+    "body": [
+     "arbitrationDutyPerson(P)",
+     "inArbitrationActivity(X)",
+     "negligentArbitrationError(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,pervertingArbitration)"
+    ],
+    "auth": "doctrine",
+    "note": "法条要求“故意”违背事实和法律，故过失造成裁决错误不构成本罪；此为学理推论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "arbitrationDutyPerson": "arbitrationDutyPerson(P)：P 是依法承担仲裁职责的人员（仲裁员等本罪特殊主体）",
+   "inArbitrationActivity": "inArbitrationActivity(X)：行为 X 发生在仲裁活动中",
+   "pervertingArbitrationAct": "pervertingArbitrationAct(P,X)：P 通过行为 X 故意违背事实和法律作枉法裁决",
+   "arbitrationPerversionConditions": "arbitrationPerversionConditions(P,X)：P 的行为 X 具备刑法第399条之一枉法仲裁罪的主体、场合、行为与故意条件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "negligentArbitrationError": "negligentArbitrationError(P,X)：P 在仲裁行为 X 中因过失（认识错误、业务水平不足等）致裁决违背事实和法律，欠缺枉法裁决的故意"
+  }
+ },
+ "art:400": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "司法工作人员私放在押人员，或者因严重不负责任致使在押人员脱逃，如何定罪与量刑",
+     "rules": [
+      "k400-1a",
+      "k400-2a"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为司法工作人员；对象为在押（被关押、羁押）的犯罪嫌疑人、被告人或者罪犯",
+     "rules": [
+      "k400-1a",
+      "k400-2a"
+     ]
+    },
+    {
+     "text": "第1款：司法工作人员私放在押的犯罪嫌疑人、被告人或者罪犯，构成私放在押人员罪",
+     "rules": [
+      "k400-1a"
+     ]
+    },
+    {
+     "text": "第2款：司法工作人员由于严重不负责任，致使在押的犯罪嫌疑人、被告人或者罪犯脱逃，并造成严重后果，构成失职致使在押人员脱逃罪",
+     "rules": [
+      "k400-2a"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "失职致使在押人员脱逃但未造成严重后果的，不构成第2款之罪（结果要件欠缺）",
+     "rules": [
+      "k400-2no"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "私放在押人员，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k400-1b"
+     ]
+    },
+    {
+     "text": "私放在押人员情节严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k400-1c"
+     ]
+    },
+    {
+     "text": "私放在押人员情节特别严重的，处十年以上有期徒刑",
+     "rules": [
+      "k400-1d"
+     ]
+    },
+    {
+     "text": "失职致使在押人员脱逃造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k400-2b"
+     ]
+    },
+    {
+     "text": "失职致使在押人员脱逃造成特别严重后果的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k400-2c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第400条第2款失职致使在押人员脱逃罪与第397条玩忽职守罪属法条竞合，依特别法条即第400条第2款定罪处罚",
+     "rules": [
+      "k400-conc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是故意私放（私自释放、放纵脱离羁押），不以严重后果为要件；第2款是过失失职，须有在押人员脱逃的结果并造成严重后果",
+     "rules": [
+      "k400-1a",
+      "k400-2a"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k400-1a",
+    "srcs": [
+     "art400#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "privatelyReleasesDetainee(P,X,V)",
+     "detainedInCustody(V)",
+     {
+      "or": [
+       "criminalSuspectOrDefendant(V)",
+       "convictedCriminal(V)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,privatelyReleasingDetainee)"
+    ],
+    "auth": "npc",
+    "note": "司法工作人员私放在押的犯罪嫌疑人、被告人或者罪犯，符合私放在押人员罪（privatelyReleasingDetainee）的构成要件"
+   },
+   {
+    "key": "k400-1b",
+    "srcs": [
+     "art400#1"
+    ],
+    "body": [
+     "constitutes(P,X,privatelyReleasingDetainee)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "私放在押人员的基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k400-1c",
+    "srcs": [
+     "art400#1"
+    ],
+    "body": [
+     "constitutes(P,X,privatelyReleasingDetainee)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "私放在押人员情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k400-1d",
+    "srcs": [
+     "art400#1"
+    ],
+    "body": [
+     "constitutes(P,X,privatelyReleasingDetainee)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "私放在押人员情节特别严重的，处十年以上有期徒刑"
+   },
+   {
+    "key": "k400-2a",
+    "srcs": [
+     "art400#2"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "seriouslyIrresponsible(P,X)",
+     "detainedInCustody(V)",
+     {
+      "or": [
+       "criminalSuspectOrDefendant(V)",
+       "convictedCriminal(V)"
+      ]
+     },
+     "causesDetaineeEscape(X,V)",
+     {
+      "or": [
+       "causesSeriousConsequence(X)",
+       "causesEspeciallySeriousConsequences(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionCausingDetaineeEscape)"
+    ],
+    "auth": "npc",
+    "note": "司法工作人员严重不负责任致使在押人员脱逃并造成严重后果，符合失职致使在押人员脱逃罪（derelictionCausingDetaineeEscape）的构成要件"
+   },
+   {
+    "key": "k400-2no",
+    "srcs": [
+     "art400#2"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "seriouslyIrresponsible(P,X)",
+     "causesDetaineeEscape(X,V)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,derelictionCausingDetaineeEscape)"
+    ],
+    "auth": "doctrine",
+    "note": "由第2款“造成严重后果”的结果要件反面推得：未造成严重后果不构成本罪（学理推论）"
+   },
+   {
+    "key": "k400-2b",
+    "srcs": [
+     "art400#2"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionCausingDetaineeEscape)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "失职致使在押人员脱逃造成严重后果的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k400-2c",
+    "srcs": [
+     "art400#2"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionCausingDetaineeEscape)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "失职致使在押人员脱逃造成特别严重后果的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k400-conc",
+    "srcs": [
+     "art400#2"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionCausingDetaineeEscape)",
+     "constitutes(P,X,derelictionOfDuty)"
+    ],
+    "heads": [
+     "convictAndPunish(P,X,derelictionCausingDetaineeEscape)",
+     "-convictAndPunish(P,X,derelictionOfDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "据笔记：第400条第2款与第397条玩忽职守罪（derelictionOfDuty）系法条竞合，特别法条优先，依第400条第2款定罪处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k400-2no",
+    "k400-1a",
+    "推断：结论冲突（('constitutes', '+')），k400-2no 为例外或更具体"
+   ],
+   [
+    "k400-2no",
+    "k400-2a",
+    "推断：结论冲突（('constitutes', '+')），k400-2no 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员",
+   "privatelyReleasesDetainee": "privatelyReleasesDetainee(P,X,V)：P 通过行为 X 私自释放（放纵脱离羁押）在押人员 V",
+   "detainedInCustody": "detainedInCustody(P)：P 被关押、羁押于一定的设施或场所内",
+   "criminalSuspectOrDefendant": "criminalSuspectOrDefendant(V)：V 是犯罪嫌疑人或者被告人",
+   "convictedCriminal": "convictedCriminal(P)：P 是罪犯（已被生效裁判确定有罪的人）",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "sentence": "量刑",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "causesDetaineeEscape": "causesDetaineeEscape(X,V)：失职行为 X 致使在押人员 V 脱逃（因果关系）",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚"
+  }
+ },
+ "art:401": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "司法工作人员徇私舞弊，对不符合减刑、假释、暂予监外执行条件的罪犯予以减刑、假释或者暂予监外执行的，构成徇私舞弊减刑、假释、暂予监外执行罪并负刑事责任",
+     "rules": [
+      "k401-cond",
+      "k401-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为司法工作人员；主观上徇私舞弊；对象为不符合减刑、假释、暂予监外执行条件的罪犯；客观上对该罪犯予以减刑、假释或者暂予监外执行（三种行为之一即可）",
+     "rules": [
+      "k401-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成徇私舞弊减刑、假释、暂予监外执行罪（illegalCommutationParoleOrTemporaryOutsideExecution），负刑事责任",
+     "rules": [
+      "k401-1"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k401-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k401-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用加重档，排除基本档量刑",
+     "rules": [
+      "k401-aggravated",
+      "k401-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k401-cond",
+    "srcs": [
+     "art401#1"
+    ],
+    "body": [
+     "judicialStaff(P)",
+     "favoritism(P,X)",
+     "convictedCriminal(V)",
+     "ineligibleForCommutationParoleOrTemporaryOutsideExecution(V)",
+     "grantsCommutationParoleOrTemporaryOutsideExecution(P,X,V)"
+    ],
+    "heads": [
+     "illegalCommutationParoleConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本罪的主体（司法工作人员）、徇私舞弊、对象（不符合减刑假释暂予监外执行条件的罪犯）与行为要件"
+   },
+   {
+    "key": "k401-1",
+    "srcs": [
+     "art401#1"
+    ],
+    "body": [
+     "illegalCommutationParoleConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalCommutationParoleOrTemporaryOutsideExecution)",
+     "responsible(P,X,illegalCommutationParoleOrTemporaryOutsideExecution)"
+    ],
+    "auth": "npc",
+    "note": "具备本罪构成要件的，构成徇私舞弊减刑、假释、暂予监外执行罪并负刑事责任（罪名常量自拟）"
+   },
+   {
+    "key": "k401-basic",
+    "srcs": [
+     "art401#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalCommutationParoleOrTemporaryOutsideExecution)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（under3OrDetention）"
+   },
+   {
+    "key": "k401-aggravated",
+    "srcs": [
+     "art401#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalCommutationParoleOrTemporaryOutsideExecution)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑（from3to7）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "convictedCriminal": "convictedCriminal(P)：P 是罪犯（已被生效裁判确定有罪的人）",
+   "ineligibleForCommutationParoleOrTemporaryOutsideExecution": "ineligibleForCommutationParoleOrTemporaryOutsideExecution(V)：罪犯 V 不符合减刑、假释、暂予监外执行的法定条件",
+   "grantsCommutationParoleOrTemporaryOutsideExecution": "grantsCommutationParoleOrTemporaryOutsideExecution(P,X,V)：P 通过行为 X 对罪犯 V 予以减刑、假释或者暂予监外执行",
+   "illegalCommutationParoleConditions": "illegalCommutationParoleConditions(P,X)：P 的行为 X 具备刑法第401条徇私舞弊减刑、假释、暂予监外执行罪的主体、徇私舞弊、对象与行为条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:402": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "行政执法人员徇私舞弊，对依法应当移交司法机关追究刑事责任的不移交，情节严重的，构成徇私舞弊不移交刑事案件罪",
+     "rules": [
+      "k402-cond",
+      "k402-crime"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为特殊主体：行政执法人员",
+     "rules": [
+      "k402-cond"
+     ]
+    },
+    {
+     "text": "行为：徇私舞弊，对自己依法应当移交司法机关追究刑事责任的案件不移交",
+     "rules": [
+      "k402-cond"
+     ]
+    },
+    {
+     "text": "入罪门槛为情节严重；造成严重后果的当然属于情节严重（学理推论）",
+     "rules": [
+      "k402-crime",
+      "k402-serious"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k402-basic"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k402-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果的加重档优先于仅情节严重的基本档",
+     "rules": [
+      "k402-agg",
+      "k402-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k402-cond",
+    "srcs": [
+     "art402#1"
+    ],
+    "body": [
+     "administrativeLawEnforcementPerson(P)",
+     "act(P,X)",
+     "favoritism(P,X)",
+     "shouldTransferToJudicialOrgan(P,Y)",
+     "failsToTransfer(P,X,Y)"
+    ],
+    "heads": [
+     "nonTransferConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本罪客观与主体条件：行政执法人员徇私舞弊，对依法应当移交司法机关追究刑事责任的案件不移交"
+   },
+   {
+    "key": "k402-crime",
+    "srcs": [
+     "art402#1"
+    ],
+    "body": [
+     "nonTransferConditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,favoritismNonTransferOfCriminalCase)"
+    ],
+    "auth": "spc",
+    "note": "具备上述条件且情节严重的，符合徇私舞弊不移交刑事案件罪的构成要件；罪名依两高关于执行刑法确定罪名的规定，法条本身只规定条件与法定刑"
+   },
+   {
+    "key": "k402-serious",
+    "srcs": [
+     "art402#1"
+    ],
+    "body": [
+     "nonTransferConditions(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "seriousCircumstances(X)"
+    ],
+    "auth": "doctrine",
+    "note": "造成严重后果的当然满足“情节严重”，系学理推论，法条未明文"
+   },
+   {
+    "key": "k402-basic",
+    "srcs": [
+     "art402#1"
+    ],
+    "body": [
+     "nonTransferConditions(P,X)",
+     "seriousCircumstances(X)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k402-agg",
+    "srcs": [
+     "art402#1"
+    ],
+    "body": [
+     "nonTransferConditions(P,X)",
+     "seriousCircumstances(X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以上七年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "administrativeLawEnforcementPerson": "administrativeLawEnforcementPerson(P)：P 是行政执法人员（本罪特殊主体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "shouldTransferToJudicialOrgan": "shouldTransferToJudicialOrgan(P,Y)：P 依法应当将案件 Y 移交司法机关追究刑事责任",
+   "failsToTransfer": "failsToTransfer(P,X,Y)：P 通过行为 X 对案件 Y 不移交司法机关",
+   "nonTransferConditions": "nonTransferConditions(P,X)：P 的行为 X 具备刑法第402条徇私舞弊不移交刑事案件的主体、徇私舞弊与不移交行为条件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑"
+  }
+ },
+ "art:403": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家有关主管部门的国家机关工作人员徇私舞弊、滥用职权，违法批准或登记公司设立、登记申请或者股票、债券发行、上市申请，致使公共财产、国家和人民利益遭受重大损失的，是否构成滥用管理公司、证券职权罪",
+     "rules": [
+      "k403-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体与行为：国家有关主管部门的国家机关工作人员，徇私舞弊、滥用职权，对不符合法律规定条件的公司设立、登记申请或者股票、债券发行、上市申请予以批准或者登记",
+     "rules": [
+      "k403-cond"
+     ]
+    },
+    {
+     "text": "结果要件：致使公共财产、国家和人民利益遭受重大损失（本罪为结果犯）",
+     "rules": [
+      "k403-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成滥用管理公司、证券职权罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k403-cond",
+      "k403-pen"
+     ]
+    },
+    {
+     "text": "上级部门强令登记机关及其工作人员实施前款行为的，对该上级部门直接负责的主管人员以本罪追究刑事责任",
+     "rules": [
+      "k403-2"
+     ]
+    },
+    {
+     "text": "对上级部门直接负责的主管人员，依照前款规定处罚，即处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k403-2pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪是徇私舞弊型滥用职权渎职犯罪的特别规定，行为符合本罪构成时，排除刑法第397条滥用职权罪一般规定的适用（学理说明，第397条未挂载）",
+     "rules": [
+      "k403-special"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k403-cond",
+    "srcs": [
+     "art403#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "staffOfCompetentAuthorityForCompanyOrSecurities(P)",
+     "favoritism(P,X)",
+     "abusesPower(P,X)",
+     "approvesOrRegistersUnqualifiedApplication(P,X)",
+     "unqualifiedCompanyOrSecuritiesApplication(X)",
+     "causesMajorLossToPublicPropertyStateAndPeople(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfCompanyAndSecuritiesAdministration)"
+    ],
+    "auth": "npc",
+    "note": "特殊主体徇私舞弊、滥用职权违法批准或登记不合格公司、证券申请并致重大损失的，符合滥用管理公司、证券职权罪（罪名常量 abuseOfCompanyAndSecuritiesAdministration）的构成要件"
+   },
+   {
+    "key": "k403-pen",
+    "srcs": [
+     "art403#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfCompanyAndSecuritiesAdministration)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k403-2",
+    "srcs": [
+     "art403#2"
+    ],
+    "body": [
+     "stateOrgan(U)",
+     "registrationOrgan(D)",
+     "superiorDepartmentOf(U,D)",
+     "ordersRegistrationOrganToCommitAct(U,X)",
+     "directlyResponsibleManager(P,U)"
+    ],
+    "heads": [
+     "responsible(P,X,abuseOfCompanyAndSecuritiesAdministration)"
+    ],
+    "auth": "npc",
+    "note": "上级部门强令登记机关及其工作人员实施第1款行为的，对该上级部门直接负责的主管人员以本罪追究刑事责任"
+   },
+   {
+    "key": "k403-2pen",
+    "srcs": [
+     "art403#2"
+    ],
+    "body": [
+     "ordersRegistrationOrganToCommitAct(U,X)",
+     "directlyResponsibleManager(P,U)",
+     "responsible(P,X,abuseOfCompanyAndSecuritiesAdministration)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对上级部门直接负责的主管人员依照前款规定处罚，即处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k403-special",
+    "srcs": [
+     "art403"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfCompanyAndSecuritiesAdministration)"
+    ],
+    "heads": [
+     "excludesGeneralAbuseOfPowerRule(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪相对于第397条滥用职权罪为特别法条，符合本罪构成即排除一般滥用职权罪的适用（法条竞合，学理补充，第397条未挂载）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "staffOfCompetentAuthorityForCompanyOrSecurities": "staffOfCompetentAuthorityForCompanyOrSecurities(P)：P 是国家有关主管部门（负责公司设立登记、股票债券发行上市审核批准）的国家机关工作人员",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "approvesOrRegistersUnqualifiedApplication": "approvesOrRegistersUnqualifiedApplication(P,X)：P 通过行为 X 对不符合法律规定条件的公司设立、登记申请或者股票、债券发行、上市申请予以批准或者登记",
+   "unqualifiedCompanyOrSecuritiesApplication": "unqualifiedCompanyOrSecuritiesApplication(X)：行为 X 所涉申请系不符合法律规定条件的公司设立、登记申请或者股票、债券发行、上市申请",
+   "causesMajorLossToPublicPropertyStateAndPeople": "causesMajorLossToPublicPropertyStateAndPeople(X)：行为 X 致使公共财产、国家和人民利益遭受重大损失",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "registrationOrgan": "registrationOrgan(D)：D 是登记机关（公司登记或者股票、债券发行上市登记的主管登记机关）",
+   "superiorDepartmentOf": "superiorDepartmentOf(U,D)：U 是登记机关 D 的上级部门",
+   "ordersRegistrationOrganToCommitAct": "ordersRegistrationOrganToCommitAct(U,X)：上级部门 U 强令登记机关及其工作人员实施刑法第403条第1款的行为 X",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "responsible": "负刑事责任",
+   "excludesGeneralAbuseOfPowerRule": "excludesGeneralAbuseOfPowerRule(P,X)：对 P 就行为 X 排除刑法第397条滥用职权罪一般规定的适用，依第403条特别规定定罪处罚"
+  }
+ },
+ "art:404": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "税务机关工作人员徇私舞弊，不征或者少征应征税款，致使国家税收遭受重大损失的，如何定罪量刑",
+     "rules": [
+      "k404-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为税务机关的工作人员；行为上徇私舞弊，不征或者少征应征税款；结果上致使国家税收遭受重大损失",
+     "rules": [
+      "k404-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成徇私舞弊不征、少征税款罪，负刑事责任；致使国家税收遭受重大损失的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k404-cond",
+      "k404-basic"
+     ]
+    },
+    {
+     "text": "造成特别重大损失的，处五年以上有期徒刑",
+     "rules": [
+      "k404-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别重大损失时，适用五年以上有期徒刑的加重档，排除五年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k404-agg",
+      "k404-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪为身份犯，行为人不具有税务机关工作人员身份的，不构成本罪（学理说明）",
+     "rules": [
+      "k404-subject"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k404-cond",
+    "srcs": [
+     "art404"
+    ],
+    "body": [
+     "taxAuthorityStaff(P)",
+     "act(P,X)",
+     "favoritism(P,X)",
+     "failsToLevyOrUnderleviesTax(P,X)",
+     "causesMajorLossToStateTaxRevenue(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,favoritismInTaxLevy)",
+     "responsible(P,X,favoritismInTaxLevy)"
+    ],
+    "auth": "npc",
+    "note": "税务机关工作人员徇私舞弊不征或少征应征税款，致使国家税收遭受重大损失的，构成徇私舞弊不征、少征税款罪并负刑事责任"
+   },
+   {
+    "key": "k404-basic",
+    "srcs": [
+     "art404"
+    ],
+    "body": [
+     "constitutes(P,X,favoritismInTaxLevy)",
+     "causesMajorLossToStateTaxRevenue(X)",
+     "~causesEspeciallyMajorLossToStateTaxRevenue(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家税收遭受重大损失的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k404-agg",
+    "srcs": [
+     "art404"
+    ],
+    "body": [
+     "constitutes(P,X,favoritismInTaxLevy)",
+     "causesEspeciallyMajorLossToStateTaxRevenue(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别重大损失的，处五年以上有期徒刑"
+   },
+   {
+    "key": "k404-subject",
+    "srcs": [
+     "art404"
+    ],
+    "body": [
+     "act(P,X)",
+     "-taxAuthorityStaff(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,favoritismInTaxLevy)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪主体限于税务机关工作人员，无此身份者不构成本罪（学理对身份犯要件的反面说明）"
+   }
+  ],
+  "overrides": [
+   [
+    "k404-cond",
+    "k404-subject",
+    "推断：结论冲突（('constitutes', '+')），k404-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "taxAuthorityStaff": "taxAuthorityStaff(P)：P 是税务机关的工作人员",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "failsToLevyOrUnderleviesTax": "failsToLevyOrUnderleviesTax(P,X)：P 通过行为 X 不征或者少征应征税款",
+   "causesMajorLossToStateTaxRevenue": "causesMajorLossToStateTaxRevenue(X)：行为 X 致使国家税收遭受重大损失",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesEspeciallyMajorLossToStateTaxRevenue": "causesEspeciallyMajorLossToStateTaxRevenue(X)：行为 X 致使国家税收遭受特别重大损失",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑"
+  }
+ },
+ "art:405": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "税务机关工作人员在办理发售发票、抵扣税款、出口退税工作中徇私舞弊，致使国家利益遭受重大损失，以及其他国家机关工作人员违法提供出口退税凭证徇私舞弊致国家利益重大损失的定罪与处罚",
+     "rules": [
+      "k405-1",
+      "k405-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：主体为税务机关的工作人员；行为发生在办理发售发票、抵扣税款、出口退税工作中；违反法律、行政法规的规定；徇私舞弊；致使国家利益遭受重大损失（罪名常量 favoritismInInvoiceTaxRefund＝徇私舞弊发售发票、抵扣税款、出口退税罪）",
+     "rules": [
+      "k405-1"
+     ]
+    },
+    {
+     "text": "第2款：主体为税务机关工作人员以外的其他国家机关工作人员；行为发生在提供出口货物报关单、出口收汇核销单等出口退税凭证的工作中；违反国家规定；徇私舞弊；致使国家利益遭受重大损失（罪名常量 illegalProvisionOfExportTaxRefundVouchers＝违法提供出口退税凭证罪）",
+     "rules": [
+      "k405-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第1款基本档：致使国家利益遭受重大损失的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k405-1b"
+     ]
+    },
+    {
+     "text": "第1款加重档：致使国家利益遭受特别重大损失的，处五年以上有期徒刑",
+     "rules": [
+      "k405-1a"
+     ]
+    },
+    {
+     "text": "第2款：其他国家机关工作人员违法提供出口退税凭证徇私舞弊致国家利益重大损失的，依照第1款的规定处罚（重大损失处五年以下有期徒刑或拘役，特别重大损失处五年以上有期徒刑）",
+     "rules": [
+      "k405-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "国家利益遭受特别重大损失时，优先适用第1款后段的加重档，不再适用基本档",
+     "rules": [
+      "k405-1a",
+      "k405-1b"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k405-1",
+    "srcs": [
+     "art405#1"
+    ],
+    "body": [
+     "taxAuthorityStaff(P)",
+     "inInvoiceIssuanceTaxDeductionOrExportRefundWork(X)",
+     "violatesLawOrAdministrativeRegulation(X)",
+     "favoritism(P,X)",
+     "causesMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,favoritismInInvoiceTaxRefund)"
+    ],
+    "auth": "npc",
+    "note": "税务机关工作人员在办理发售发票、抵扣税款、出口退税工作中违反法律、行政法规徇私舞弊，致使国家利益遭受重大损失的，构成徇私舞弊发售发票、抵扣税款、出口退税罪"
+   },
+   {
+    "key": "k405-1b",
+    "srcs": [
+     "art405#1"
+    ],
+    "body": [
+     "constitutes(P,X,favoritismInInvoiceTaxRefund)",
+     "causesMajorLossToStateInterest(X)",
+     "~causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家利益遭受重大损失的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k405-1a",
+    "srcs": [
+     "art405#1"
+    ],
+    "body": [
+     "constitutes(P,X,favoritismInInvoiceTaxRefund)",
+     "causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家利益遭受特别重大损失的，处五年以上有期徒刑"
+   },
+   {
+    "key": "k405-2",
+    "srcs": [
+     "art405#2"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "~taxAuthorityStaff(P)",
+     "inProvidingExportTaxRefundVoucherWork(X)",
+     "violatesStateRegulations(X)",
+     "favoritism(P,X)",
+     "causesMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalProvisionOfExportTaxRefundVouchers)"
+    ],
+    "auth": "npc",
+    "note": "其他国家机关工作人员在提供出口货物报关单、出口收汇核销单等出口退税凭证工作中违反国家规定徇私舞弊，致使国家利益遭受重大损失的，构成违法提供出口退税凭证罪"
+   },
+   {
+    "key": "k405-2s",
+    "srcs": [
+     "art405#2"
+    ],
+    "body": [
+     "constitutes(P,X,illegalProvisionOfExportTaxRefundVouchers)",
+     "causesMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishUnderPara1(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款之罪依照第1款的规定处罚，即按重大损失、特别重大损失分别适用五年以下有期徒刑或拘役、五年以上有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "taxAuthorityStaff": "taxAuthorityStaff(P)：P 是税务机关的工作人员",
+   "inInvoiceIssuanceTaxDeductionOrExportRefundWork": "inInvoiceIssuanceTaxDeductionOrExportRefundWork(X)：行为 X 发生在办理发售发票、抵扣税款、出口退税工作中",
+   "violatesLawOrAdministrativeRegulation": "violatesLawOrAdministrativeRegulation(X)：行为 X 违反法律、行政法规的规定",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "causesMajorLossToStateInterest": "causesMajorLossToStateInterest(X)：行为 X 致使国家利益遭受重大损失",
+   "constitutes": "符合构成要件",
+   "causesEspeciallyMajorLossToStateInterest": "causesEspeciallyMajorLossToStateInterest(X)：行为 X 致使国家利益遭受特别重大损失",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑",
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "inProvidingExportTaxRefundVoucherWork": "inProvidingExportTaxRefundVoucherWork(X)：行为 X 发生在提供出口货物报关单、出口收汇核销单等出口退税凭证的工作中",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "punishUnderPara1": "punishUnderPara1(P,X)：对 P 就行为 X 依照本条第一款的规定处罚"
+  }
+ },
+ "art:406": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员在签订、履行合同过程中因严重不负责任被诈骗，致使国家利益遭受重大损失的，是否构成签订、履行合同失职被骗罪，并按损失程度适用哪一量刑档",
+     "rules": [
+      "k406-crime"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；场合为签订、履行合同过程中；行为为严重不负责任（失职）而被诈骗",
+     "rules": [
+      "k406-cond"
+     ]
+    },
+    {
+     "text": "结果要件：失职被骗致使国家利益遭受重大损失（含特别重大损失）",
+     "rules": [
+      "k406-crime"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "致使国家利益遭受重大损失的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k406-1"
+     ]
+    },
+    {
+     "text": "致使国家利益遭受特别重大损失的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k406-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "损失达到特别重大程度的，适用加重档，排除基本档",
+     "rules": [
+      "k406-2",
+      "k406-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体限于国家机关工作人员，且系失职（过失）被骗，与诈骗人不成立共犯；国有公司、企业、事业单位直接负责的主管人员失职被骗的，属刑法第167条之罪，不适用本条",
+     "rules": [
+      "k406-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k406-cond",
+    "srcs": [
+     "art406"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "inContractSigningOrPerformance(P,X)",
+     "seriouslyIrresponsible(P,X)",
+     "defraudedInContract(P,X)"
+    ],
+    "heads": [
+     "contractFraudDerelictionAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本罪主体（国家机关工作人员）、场合（签订、履行合同过程中）与行为（严重不负责任被诈骗）条件"
+   },
+   {
+    "key": "k406-crime",
+    "srcs": [
+     "art406"
+    ],
+    "body": [
+     "contractFraudDerelictionAct(P,X)",
+     {
+      "or": [
+       "causesMajorLossToStateInterest(X)",
+       "causesEspeciallyMajorLossToStateInterest(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionInContract)",
+     "responsible(P,X,derelictionInContract)"
+    ],
+    "auth": "npc",
+    "note": "失职被骗致使国家利益遭受重大损失或特别重大损失的，构成签订、履行合同失职被骗罪（新罪名常量 derelictionInContract），负刑事责任"
+   },
+   {
+    "key": "k406-1",
+    "srcs": [
+     "art406"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionInContract)",
+     "causesMajorLossToStateInterest(X)",
+     "~causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家利益遭受重大损失的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k406-2",
+    "srcs": [
+     "art406"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionInContract)",
+     "causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家利益遭受特别重大损失的，处三年以上七年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "inContractSigningOrPerformance": "inContractSigningOrPerformance(X)：行为X发生在签订、履行合同过程中",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "defraudedInContract": "defraudedInContract(P,X)：P 在签订、履行合同中因严重不负责任而被诈骗",
+   "contractFraudDerelictionAct": "contractFraudDerelictionAct(P,X)：P 的行为 X 具备本罪的主体与失职被骗行为条件",
+   "causesMajorLossToStateInterest": "causesMajorLossToStateInterest(X)：行为 X 致使国家利益遭受重大损失",
+   "causesEspeciallyMajorLossToStateInterest": "causesEspeciallyMajorLossToStateInterest(X)：行为 X 致使国家利益遭受特别重大损失",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑"
+  }
+ },
+ "art:407": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "林业主管部门的工作人员违法发放林木采伐许可证，情节严重、致使森林遭受严重破坏的，是否构成违法发放林木采伐许可证罪并负刑事责任",
+     "rules": [
+      "k407-cond",
+      "k407-resp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "特殊主体：林业主管部门的工作人员；且发放许可证的行为违反森林法的规定",
+     "rules": [
+      "k407-act"
+     ]
+    },
+    {
+     "text": "行为方式择一：①超过批准的年采伐限额发放林木采伐许可证；②违反规定滥发林木采伐许可证",
+     "rules": [
+      "k407-act"
+     ]
+    },
+    {
+     "text": "情节严重，并且致使森林遭受严重破坏（结果要件，二者须同时具备）",
+     "rules": [
+      "k407-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有违法发证行为，但未致使森林遭受严重破坏的，不构成本罪（结果要件欠缺，学理说明）",
+     "rules": [
+      "k407-noResult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成违法发放林木采伐许可证罪，负刑事责任",
+     "rules": [
+      "k407-resp"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k407-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "结果要件欠缺的排除规则优先于本罪的入罪规则",
+     "rules": [
+      "k407-noResult",
+      "k407-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是渎职型犯罪，处罚的是违法发放采伐许可证的行为，与盗伐林木罪、滥伐林木罪（直接实施采伐）不同；本罪法定刑仅为三年以下有期徒刑或者拘役，不含罚金",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k407-act",
+    "srcs": [
+     "art407"
+    ],
+    "body": [
+     "forestryAuthorityStaff(P)",
+     "violatesForestLaw(P,X)",
+     {
+      "or": [
+       "issuesFellingLicenseBeyondQuota(P,X)",
+       "abusivelyIssuesFellingLicense(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "illegalFellingLicenseIssuanceAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "林业主管部门工作人员违反森林法，超年采伐限额发证或违规滥发林木采伐许可证的行为要件"
+   },
+   {
+    "key": "k407-cond",
+    "srcs": [
+     "art407"
+    ],
+    "body": [
+     "illegalFellingLicenseIssuanceAct(P,X)",
+     "seriousCircumstances(X)",
+     "causesSeriousForestDestruction(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalIssuanceOfFellingLicense)"
+    ],
+    "auth": "npc",
+    "note": "违法发证情节严重且致使森林遭受严重破坏的，符合违法发放林木采伐许可证罪构成要件"
+   },
+   {
+    "key": "k407-resp",
+    "srcs": [
+     "art407"
+    ],
+    "body": [
+     "constitutes(P,X,illegalIssuanceOfFellingLicense)"
+    ],
+    "heads": [
+     "responsible(P,X,illegalIssuanceOfFellingLicense)"
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，就该违法发证行为负刑事责任"
+   },
+   {
+    "key": "k407-pen",
+    "srcs": [
+     "art407"
+    ],
+    "body": [
+     "responsible(P,X,illegalIssuanceOfFellingLicense)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以下有期徒刑或者拘役（under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k407-noResult",
+    "srcs": [
+     "art407"
+    ],
+    "body": [
+     "illegalFellingLicenseIssuanceAct(P,X)",
+     "-causesSeriousForestDestruction(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalIssuanceOfFellingLicense)"
+    ],
+    "auth": "doctrine",
+    "note": "未致使森林遭受严重破坏的不构成本罪，系从法条结果要件推出的学理说明"
+   }
+  ],
+  "overrides": [
+   [
+    "k407-cond",
+    "k407-noResult",
+    "推断：结论冲突（('constitutes', '+')），k407-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "forestryAuthorityStaff": "forestryAuthorityStaff(P)：P 是林业主管部门的工作人员（本罪特殊主体）",
+   "violatesForestLaw": "violatesForestLaw(P,X)：P 的行为 X 违反森林法的规定",
+   "issuesFellingLicenseBeyondQuota": "issuesFellingLicenseBeyondQuota(P,X)：P 通过行为 X 超过批准的年采伐限额发放林木采伐许可证",
+   "abusivelyIssuesFellingLicense": "abusivelyIssuesFellingLicense(P,X)：P 通过行为 X 违反规定滥发林木采伐许可证",
+   "illegalFellingLicenseIssuanceAct": "illegalFellingLicenseIssuanceAct(P,X)：P 的行为 X 具备本罪主体、违反森林法与违法发放林木采伐许可证的行为要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "causesSeriousForestDestruction": "causesSeriousForestDestruction(X)：行为 X 致使森林遭受严重破坏",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:408": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "负有环境保护监督管理职责的国家机关工作人员严重不负责任，导致重大环境污染事故并造成严重后果的，是否成立环境监管失职罪及如何处罚",
+     "rules": [
+      "k408-cond",
+      "k408-1",
+      "k408-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为负有环境保护监督管理职责的国家机关工作人员；客观上严重不负责任（失职），导致发生重大环境污染事故，并致使公私财产遭受重大损失或者造成人身伤亡的严重后果（二者具其一即可，失职与事故、后果之间须有因果关系）",
+     "rules": [
+      "k408-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成环境监管失职罪（environmentalSupervisionDereliction）",
+     "rules": [
+      "k408-1"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k408-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k408-cond",
+    "srcs": [
+     "art408#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "environmentalSupervisionDuty(P)",
+     "seriouslyIrresponsible(P,X)",
+     "causesMajorEnvironmentalPollutionAccident(X)",
+     {
+      "or": [
+       "majorPropertyLoss(X)",
+       "causesPersonalCasualty(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "art408Conditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第408条环境监管失职罪的主体、失职行为、重大环境污染事故与重大财产损失或人身伤亡后果条件"
+   },
+   {
+    "key": "k408-1",
+    "srcs": [
+     "art408#1"
+    ],
+    "body": [
+     "art408Conditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,environmentalSupervisionDereliction)"
+    ],
+    "auth": "npc",
+    "note": "具备第408条条件的，符合环境监管失职罪构成要件（新罪名常量 environmentalSupervisionDereliction）"
+   },
+   {
+    "key": "k408-2",
+    "srcs": [
+     "art408#1"
+    ],
+    "body": [
+     "art408Conditions(P,X)",
+     "constitutes(P,X,environmentalSupervisionDereliction)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "环境监管失职罪处三年以下有期徒刑或者拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "environmentalSupervisionDuty": "environmentalSupervisionDuty(P)：P 负有环境保护监督管理职责（本罪特殊主体的职责要件）",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "causesMajorEnvironmentalPollutionAccident": "causesMajorEnvironmentalPollutionAccident(X)：行为 X 造成重大环境污染事故",
+   "majorPropertyLoss": "公私财产遭受重大损失",
+   "causesPersonalCasualty": "causesPersonalCasualty(X)：行为（事故）X 造成人身伤亡的严重后果",
+   "art408Conditions": "art408Conditions(P,X)：P 的行为 X 具备刑法第408条环境监管失职罪的主体、严重不负责任、重大环境污染事故及重大财产损失或人身伤亡后果条件",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:408-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "负有食品药品安全监督管理职责的国家机关工作人员滥用职权或者玩忽职守，是否构成食品、药品监管渎职罪，以及如何适用两档法定刑",
+     "rules": [
+      "k408z1-basic",
+      "k408z1-p1",
+      "k408z1-p2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：负有食品、药品安全监督管理职责的国家机关工作人员（特殊主体）",
+     "rules": [
+      "k408z1-subject"
+     ]
+    },
+    {
+     "text": "行为：滥用职权或者玩忽职守，并具备下列情形之一——①瞒报、谎报食品安全事故、药品安全事件；②对发现的严重食品药品安全违法行为未按规定查处；③在药品和特殊食品审批审评中对不符合条件的申请准予许可；④依法应当移交司法机关追究刑事责任而不移交；⑤其他滥用职权或者玩忽职守行为",
+     "rules": [
+      "k408z1-conduct"
+     ]
+    },
+    {
+     "text": "结果或情节：造成严重后果或者有其他严重情节（造成特别严重后果、有其他特别严重情节的当然满足入罪门槛）",
+     "rules": [
+      "k408z1-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "造成特别严重后果或者有其他特别严重情节的，排除五年以下有期徒刑或者拘役的基本档，改按加重档处刑",
+     "rules": [
+      "k408z1-p1",
+      "k408z1-p2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述主体、行为与结果（情节）条件的，构成食品、药品监管渎职罪，负刑事责任",
+     "rules": [
+      "k408z1-basic"
+     ]
+    },
+    {
+     "text": "基本档：造成严重后果或者有其他严重情节的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k408z1-p1"
+     ]
+    },
+    {
+     "text": "加重档：造成特别严重后果或者有其他特别严重情节的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k408z1-p2"
+     ]
+    },
+    {
+     "text": "徇私舞弊犯本罪的，从重处罚（第2款）",
+     "rules": [
+      "k408z1-favor"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "加重档（特别严重后果／其他特别严重情节）优先于基本档适用",
+     "rules": [
+      "k408z1-p2",
+      "k408z1-p1"
+     ]
+    },
+    {
+     "text": "本罪是滥用职权罪、玩忽职守罪的特别规定，法条竞合时优先适用本条，不再以普通渎职罪论处（学理）",
+     "rules": [
+      "k408z1-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与滥用职权罪、玩忽职守罪的区别：本罪主体限于负有食品药品安全监督管理职责的国家机关工作人员，行为限于本条列举的监管渎职情形",
+     "rules": [
+      "k408z1-special"
+     ]
+    },
+    {
+     "text": "本条经《刑法修正案（十一）》修改：主体扩及负有药品安全监督管理职责的人员，行为由概括规定改为五项列举，入罪不以发生重大食品安全事故为必要，有其他严重情节即可",
+     "rules": [
+      "k408z1-conduct",
+      "k408z1-basic"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k408z1-subject",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "hasFoodDrugSafetySupervisionDuty(P)"
+    ],
+    "heads": [
+     "foodDrugRegulatoryDerelictionSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "本罪主体是负有食品药品安全监督管理职责的国家机关工作人员"
+   },
+   {
+    "key": "k408z1-conduct",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "foodDrugRegulatoryDerelictionSubject(P)",
+     {
+      "or": [
+       "abusesPower(P,X)",
+       "neglectsDuty(P,X)"
+      ]
+     },
+     {
+      "or": [
+       "concealsOrFalselyReportsFoodDrugSafetyIncident(P,X)",
+       "failsToInvestigateSeriousFoodDrugViolation(P,X)",
+       "grantsLicenseToUnqualifiedApplication(P,X)",
+       "failsToTransferCaseToJudicialOrgan(P,X)",
+       "otherAbuseOrNeglectOfDuty(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "foodDrugRegulatoryDerelictionAct(P,X)"
+    ],
+    "auth": "npc",
+    "note": "滥用职权或者玩忽职守，且具有第（一）至（五）项情形之一的，属本罪的监管渎职行为"
+   },
+   {
+    "key": "k408z1-basic",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "foodDrugRegulatoryDerelictionAct(P,X)",
+     {
+      "or": [
+       "causesSeriousConsequence(X)",
+       "otherSeriousCircumstance(X)",
+       "causesEspeciallySeriousConsequences(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,foodDrugRegulatoryDereliction)",
+     "responsible(P,X,foodDrugRegulatoryDereliction)"
+    ],
+    "auth": "npc",
+    "note": "监管渎职行为造成严重后果或者有其他严重情节的，构成食品、药品监管渎职罪并负刑事责任（特别严重后果、特别严重情节当然满足入罪门槛）"
+   },
+   {
+    "key": "k408z1-p1",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,foodDrugRegulatoryDereliction)",
+     {
+      "or": [
+       "causesSeriousConsequence(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     },
+     "~causesEspeciallySeriousConsequences(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役（under5OrDetention 表示五年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k408z1-p2",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,foodDrugRegulatoryDereliction)",
+     {
+      "or": [
+       "causesEspeciallySeriousConsequences(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：造成特别严重后果或者有其他特别严重情节的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k408z1-favor",
+    "srcs": [
+     "art408-1#2"
+    ],
+    "body": [
+     "constitutes(P,X,foodDrugRegulatoryDereliction)",
+     "favoritism(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊犯本罪的，从重处罚"
+   },
+   {
+    "key": "k408z1-special",
+    "srcs": [
+     "art408-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,foodDrugRegulatoryDereliction)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abuseOfPower)",
+     "-constitutes(P,X,derelictionOfDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪为第397条滥用职权罪（abuseOfPower）、玩忽职守罪（derelictionOfDuty）的特别规定，法条竞合时依特别法条优先，不再以普通渎职罪论处"
+   }
+  ],
+  "overrides": [
+   [
+    "k408z1-special",
+    "k408z1-basic",
+    "推断：结论冲突（('constitutes', '+')），k408z1-special 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "hasFoodDrugSafetySupervisionDuty": "hasFoodDrugSafetySupervisionDuty(P)：P 负有食品、药品安全监督管理职责",
+   "foodDrugRegulatoryDerelictionSubject": "foodDrugRegulatoryDerelictionSubject(P)：P 具备刑法第408条之一食品、药品监管渎职罪的特殊主体身份",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "neglectsDuty": "neglectsDuty(P,X)：P 在行为 X 中玩忽职守（严重不负责任，不履行或者不正确履行职责）",
+   "concealsOrFalselyReportsFoodDrugSafetyIncident": "concealsOrFalselyReportsFoodDrugSafetyIncident(P,X)：P 通过行为 X 瞒报、谎报食品安全事故、药品安全事件（第（一）项）",
+   "failsToInvestigateSeriousFoodDrugViolation": "failsToInvestigateSeriousFoodDrugViolation(P,X)：P 通过行为 X 对发现的严重食品药品安全违法行为未按规定查处（第（二）项）",
+   "grantsLicenseToUnqualifiedApplication": "grantsLicenseToUnqualifiedApplication(P,X)：P 在药品和特殊食品审批审评过程中通过行为 X 对不符合条件的申请准予许可（第（三）项）",
+   "failsToTransferCaseToJudicialOrgan": "failsToTransferCaseToJudicialOrgan(P,X)：P 通过行为 X 对依法应当移交司法机关追究刑事责任的案件不移交（第（四）项）",
+   "otherAbuseOrNeglectOfDuty": "otherAbuseOrNeglectOfDuty(P,X)：P 的行为 X 属于前四项以外的其他滥用职权或者玩忽职守行为（第（五）项兜底）",
+   "foodDrugRegulatoryDerelictionAct": "foodDrugRegulatoryDerelictionAct(P,X)：P 的行为 X 属于第408条之一第1款列举的滥用职权或者玩忽职守的监管渎职行为",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊"
+  }
+ },
+ "art:409": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "从事传染病防治的政府卫生行政部门工作人员严重不负责任，导致传染病传播或者流行、情节严重的，是否构成传染病防治失职罪并如何处罚",
+     "rules": [
+      "k409-cond",
+      "k409-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体特殊：必须是从事传染病防治的政府卫生行政部门的工作人员",
+     "rules": [
+      "k409-cond"
+     ]
+    },
+    {
+     "text": "行为：在传染病防治工作中严重不负责任（失职）",
+     "rules": [
+      "k409-cond"
+     ]
+    },
+    {
+     "text": "结果：导致传染病传播或者流行（二者之一即可），且情节严重",
+     "rules": [
+      "k409-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成传染病防治失职罪，负刑事责任",
+     "rules": [
+      "k409-cond"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k409-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪是身份犯＋结果犯：主体限于从事传染病防治的政府卫生行政部门工作人员，且须实际导致传染病传播或流行并情节严重；一般主体违反传染病防治法引起传播或有传播严重危险的，不属本条评价范围",
+     "rules": [
+      "k409-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k409-cond",
+    "srcs": [
+     "art409#1"
+    ],
+    "body": [
+     "infectiousDiseasePreventionHealthOfficial(P)",
+     "act(P,X)",
+     "seriouslyIrresponsible(P,X)",
+     {
+      "or": [
+       "causesInfectiousDiseaseSpread(X)",
+       "causesInfectiousDiseaseEpidemic(X)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionInInfectiousDiseasePrevention)",
+     "responsible(P,X,derelictionInInfectiousDiseasePrevention)"
+    ],
+    "auth": "npc",
+    "note": "从事传染病防治的政府卫生行政部门工作人员严重不负责任，导致传染病传播或流行、情节严重的，构成传染病防治失职罪并负刑事责任"
+   },
+   {
+    "key": "k409-pen",
+    "srcs": [
+     "art409#1"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionInInfectiousDiseasePrevention)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对传染病防治失职罪处三年以下有期徒刑或者拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "infectiousDiseasePreventionHealthOfficial": "infectiousDiseasePreventionHealthOfficial(P)：P 是从事传染病防治的政府卫生行政部门的工作人员（刑法第409条特殊主体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "causesInfectiousDiseaseSpread": "causesInfectiousDiseaseSpread(X)：失职行为 X 导致传染病传播",
+   "causesInfectiousDiseaseEpidemic": "causesInfectiousDiseaseEpidemic(X)：失职行为 X 导致传染病流行",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:410": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员徇私舞弊、违反土地管理法规滥用职权，非法批准征收、征用、占用土地或者非法低价出让国有土地使用权，情节严重的，构成何罪、如何处刑",
+     "rules": [
+      "k410-approval",
+      "k410-transfer"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；行为须徇私舞弊、违反土地管理法规并滥用职权",
+     "rules": [
+      "k410-approval",
+      "k410-transfer"
+     ]
+    },
+    {
+     "text": "行为方式择一即可：非法批准征收、征用、占用土地，或者非法低价出让国有土地使用权",
+     "rules": [
+      "k410-approval",
+      "k410-transfer"
+     ]
+    },
+    {
+     "text": "须达到“情节严重”才成立犯罪",
+     "rules": [
+      "k410-approval",
+      "k410-transfer"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "非法批准征收、征用、占用土地情节严重的，符合非法批准征收、征用、占用土地罪的构成要件，负刑事责任",
+     "rules": [
+      "k410-approval"
+     ]
+    },
+    {
+     "text": "非法低价出让国有土地使用权情节严重的，符合非法低价出让国有土地使用权罪的构成要件，负刑事责任",
+     "rules": [
+      "k410-transfer"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k410-basic"
+     ]
+    },
+    {
+     "text": "加重档：致使国家或者集体利益遭受特别重大损失的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k410-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备“致使国家或者集体利益遭受特别重大损失”的加重结果时，适用加重档，排除基本档",
+     "rules": [
+      "k410-aggravated",
+      "k410-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k410-approval",
+    "srcs": [
+     "art410"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "favoritism(P,X)",
+     "violatesLandManagementRegulations(P,X)",
+     "abusesPower(P,X)",
+     "illegallyApprovesLandRequisitionOrOccupation(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalApprovalOfLandRequisitionOccupation)",
+     "responsible(P,X,illegalApprovalOfLandRequisitionOccupation)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员徇私舞弊、违反土地管理法规滥用职权非法批准征收、征用、占用土地，情节严重的，构成非法批准征收、征用、占用土地罪并负刑事责任"
+   },
+   {
+    "key": "k410-transfer",
+    "srcs": [
+     "art410"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "favoritism(P,X)",
+     "violatesLandManagementRegulations(P,X)",
+     "abusesPower(P,X)",
+     "illegallyTransfersStateLandUseRightAtLowPrice(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalLowPriceTransferOfStateLandUseRight)",
+     "responsible(P,X,illegalLowPriceTransferOfStateLandUseRight)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员徇私舞弊、违反土地管理法规滥用职权非法低价出让国有土地使用权，情节严重的，构成非法低价出让国有土地使用权罪并负刑事责任"
+   },
+   {
+    "key": "k410-basic",
+    "srcs": [
+     "art410"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,illegalApprovalOfLandRequisitionOccupation)",
+       "constitutes(P,X,illegalLowPriceTransferOfStateLandUseRight)"
+      ]
+     },
+     "~causesEspeciallyMajorLossToStateOrCollectiveInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役（under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k410-aggravated",
+    "srcs": [
+     "art410"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,illegalApprovalOfLandRequisitionOccupation)",
+       "constitutes(P,X,illegalLowPriceTransferOfStateLandUseRight)"
+      ]
+     },
+     "causesEspeciallyMajorLossToStateOrCollectiveInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使国家或者集体利益遭受特别重大损失的，处三年以上七年以下有期徒刑（from3to7 表示三年以上七年以下有期徒刑）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "violatesLandManagementRegulations": "violatesLandManagementRegulations(P,X)：P 在行为 X 中违反土地管理法规",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "illegallyApprovesLandRequisitionOrOccupation": "illegallyApprovesLandRequisitionOrOccupation(P,X)：P 通过行为 X 非法批准征收、征用、占用土地",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "illegallyTransfersStateLandUseRightAtLowPrice": "illegallyTransfersStateLandUseRightAtLowPrice(P,X)：P 通过行为 X 非法低价出让国有土地使用权",
+   "causesEspeciallyMajorLossToStateOrCollectiveInterest": "causesEspeciallyMajorLossToStateOrCollectiveInterest(X)：行为 X 致使国家或者集体利益遭受特别重大损失",
+   "sentence": "量刑"
+  }
+ },
+ "art:411": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "海关工作人员徇私舞弊、放纵走私，情节严重的，是否构成放纵走私罪以及如何量刑",
+     "rules": [
+      "k411-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为海关工作人员；客观上徇私舞弊，对明知的走私行为不予查缉、予以放行放纵；且情节严重（本罪以情节严重为入罪要件）",
+     "rules": [
+      "k411-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "放纵走私情节尚未达到严重程度的，不符合本罪构成要件，不以放纵走私罪论处（可依法给予行政处分）",
+     "rules": [
+      "k411-notserious"
+     ]
+    },
+    {
+     "text": "海关工作人员事前与走私分子通谋而放纵走私的，按走私罪共犯处理，不再以放纵走私罪论处",
+     "rules": [
+      "k411-conspiracy"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k411-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处五年以上有期徒刑",
+     "rules": [
+      "k411-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时适用加重档，排除五年以下有期徒刑或拘役的基本档",
+     "rules": [
+      "k411-agg",
+      "k411-basic"
+     ]
+    },
+    {
+     "text": "事前通谋情形优先按走私共犯评价，排除本罪构成要件的适用",
+     "rules": [
+      "k411-conspiracy",
+      "k411-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与走私罪共犯的区分：无通谋而单纯徇私放纵的，成立放纵走私罪；事前通谋、参与走私的，成立走私罪共犯",
+     "rules": [
+      "k411-conspiracy"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k411-cond",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "customsStaff(P)",
+     "act(P,X)",
+     "favoritism(P,X)",
+     "connivesSmuggling(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,connivingSmuggling)"
+    ],
+    "auth": "npc",
+    "note": "海关工作人员徇私舞弊放纵走私且情节严重的，符合放纵走私罪构成要件"
+   },
+   {
+    "key": "k411-basic",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "constitutes(P,X,connivingSmuggling)",
+     "responsible(P,X,connivingSmuggling)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k411-agg",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "constitutes(P,X,connivingSmuggling)",
+     "responsible(P,X,connivingSmuggling)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处五年以上有期徒刑"
+   },
+   {
+    "key": "k411-notserious",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "customsStaff(P)",
+     "act(P,X)",
+     "connivesSmuggling(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,connivingSmuggling)"
+    ],
+    "auth": "doctrine",
+    "note": "情节严重是本罪入罪要件，未达情节严重的不构成放纵走私罪（由构成要件反面推论，条文未明文）"
+   },
+   {
+    "key": "k411-conspiracy",
+    "srcs": [
+     "art411"
+    ],
+    "body": [
+     "customsStaff(P)",
+     "act(P,X)",
+     "connivesSmuggling(P,X)",
+     "smuggler(S)",
+     "priorConspiracy(P,S)"
+    ],
+    "heads": [
+     "-constitutes(P,X,connivingSmuggling)"
+    ],
+    "auth": "doctrine",
+    "note": "事前与走私罪犯通谋而放纵走私的，依走私罪共犯论处，排除本罪（学理及第156条精神，本条未明文）"
+   }
+  ],
+  "overrides": [
+   [
+    "k411-cond",
+    "k411-notserious",
+    "推断：结论冲突（('constitutes', '+')），k411-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "customsStaff": "customsStaff(P)：P 是海关工作人员（本罪特殊主体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "connivesSmuggling": "connivesSmuggling(P,X)：P 通过行为 X 放纵走私，即对明知的走私行为不予查缉、放行或提供便利使其逃避查处",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑",
+   "smuggler": "smuggler(S)：S 是走私罪犯（实施走私犯罪的人）",
+   "priorConspiracy": "priorConspiracy(P,V)：P 与犯罪的人 V 就其犯罪事前通谋"
+  }
+ },
+ "art:412": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家商检部门、商检机构的工作人员徇私舞弊伪造检验结果，或者严重不负责任造成国家利益重大损失的，如何定罪处刑",
+     "rules": [
+      "k412-1",
+      "k412-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家商检部门、商检机构的工作人员（第2款“前款所列人员”与此相同）",
+     "rules": [
+      "k412-1",
+      "k412-2"
+     ]
+    },
+    {
+     "text": "第1款：徇私舞弊，伪造检验结果（故意型渎职）",
+     "rules": [
+      "k412-1"
+     ]
+    },
+    {
+     "text": "第2款：严重不负责任，对应当检验的物品不检验，或者延误检验出证、错误出证，并致使国家利益遭受重大损失",
+     "rules": [
+      "k412-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第1款基本档：构成商检徇私舞弊罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k412-1a"
+     ]
+    },
+    {
+     "text": "第1款后段：造成严重后果的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k412-1b"
+     ]
+    },
+    {
+     "text": "第2款：构成商检失职罪，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k412-2a"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果时，第1款后段加重档优先于前段基本档",
+     "rules": [
+      "k412-1b",
+      "k412-1a"
+     ]
+    },
+    {
+     "text": "商检失职罪与玩忽职守罪属法条竞合，第412条第2款为特别规定，依本款定罪，不再以玩忽职守罪论处",
+     "rules": [
+      "k412-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是故意徇私舞弊伪造检验结果，不以损失结果为要件；第2款是严重不负责任的失职（不检验、延误出证、错误出证），须致使国家利益遭受重大损失",
+     "rules": [
+      "k412-1",
+      "k412-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k412-1",
+    "srcs": [
+     "art412#1"
+    ],
+    "body": [
+     "commodityInspectionStaff(P)",
+     "favoritism(P,X)",
+     "forgesInspectionResult(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,commodityInspectionFavoritismFraud)"
+    ],
+    "auth": "npc",
+    "note": "国家商检部门、商检机构工作人员徇私舞弊、伪造检验结果的，符合商检徇私舞弊罪（常量 commodityInspectionFavoritismFraud）的构成要件"
+   },
+   {
+    "key": "k412-1a",
+    "srcs": [
+     "art412#1"
+    ],
+    "body": [
+     "constitutes(P,X,commodityInspectionFavoritismFraud)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "商检徇私舞弊罪基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k412-1b",
+    "srcs": [
+     "art412#1"
+    ],
+    "body": [
+     "constitutes(P,X,commodityInspectionFavoritismFraud)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊伪造检验结果造成严重后果的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k412-2",
+    "srcs": [
+     "art412#2"
+    ],
+    "body": [
+     "commodityInspectionStaff(P)",
+     "seriouslyIrresponsible(P,X)",
+     {
+      "or": [
+       "failsToInspectRequiredGoods(P,X)",
+       "delaysInspectionOrCertification(P,X)",
+       "erroneouslyIssuesInspectionCertificate(P,X)"
+      ]
+     },
+     "causesMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,commodityInspectionDereliction)"
+    ],
+    "auth": "npc",
+    "note": "商检工作人员严重不负责任，对应当检验的物品不检验或延误检验出证、错误出证，致使国家利益遭受重大损失的，符合商检失职罪（常量 commodityInspectionDereliction）的构成要件"
+   },
+   {
+    "key": "k412-2a",
+    "srcs": [
+     "art412#2"
+    ],
+    "body": [
+     "constitutes(P,X,commodityInspectionDereliction)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "商检失职罪：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k412-special",
+    "srcs": [
+     "art412#2"
+    ],
+    "body": [
+     "constitutes(P,X,commodityInspectionDereliction)"
+    ],
+    "heads": [
+     "-constitutes(P,X,derelictionOfDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记（法条竞合）：第412条第2款商检失职罪是第397条玩忽职守罪（常量 derelictionOfDuty）的特别规定，依特别法条定罪，不再认定玩忽职守罪；此竞合结论来自学理与笔记，非法条明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k412-special",
+    "k412-1",
+    "推断：结论冲突（('constitutes', '+')），k412-special 为例外或更具体"
+   ],
+   [
+    "k412-special",
+    "k412-2",
+    "推断：结论冲突（('constitutes', '+')），k412-special 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "commodityInspectionStaff": "commodityInspectionStaff(P)：P 是国家商检部门、商检机构的工作人员（第412条特殊主体，含第2款“前款所列人员”）",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "forgesInspectionResult": "forgesInspectionResult(P,X)：P 通过行为 X 伪造检验结果",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "failsToInspectRequiredGoods": "failsToInspectRequiredGoods(P,X)：P 通过行为 X（不作为）对应当检验的物品不检验",
+   "delaysInspectionOrCertification": "delaysInspectionOrCertification(P,X)：P 通过行为 X 延误检验出证",
+   "erroneouslyIssuesInspectionCertificate": "erroneouslyIssuesInspectionCertificate(P,X)：P 通过行为 X 错误出证",
+   "causesMajorLossToStateInterest": "causesMajorLossToStateInterest(X)：行为 X 致使国家利益遭受重大损失",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:413": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "动植物检疫机关的检疫人员徇私舞弊伪造检疫结果，或者严重不负责任不检疫、延误检疫出证、错误出证的定罪与量刑",
+     "rules": [
+      "k413-1",
+      "k413-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款主体为动植物检疫机关的检疫人员，须徇私舞弊并伪造检疫结果（故意犯罪，不以造成损失为要件）",
+     "rules": [
+      "k413-1"
+     ]
+    },
+    {
+     "text": "第2款主体同为上述检疫人员，须严重不负责任，对应当检疫的检疫物不检疫，或者延误检疫出证、错误出证，并致使国家利益遭受重大损失",
+     "rules": [
+      "k413-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "徇私舞弊伪造检疫结果的，构成动植物检疫徇私舞弊罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k413-1",
+      "k413-1s"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k413-1a"
+     ]
+    },
+    {
+     "text": "严重不负责任致使国家利益遭受重大损失的，构成动植物检疫失职罪，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k413-2",
+      "k413-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果时，第1款后段加重法定刑优先于前段基本法定刑",
+     "rules": [
+      "k413-1a",
+      "k413-1s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是故意型徇私舞弊（伪造检疫结果），行为一经实施即成立；第2款是过失型失职（不检疫、延误或错误出证），以致使国家利益遭受重大损失为结果要件",
+     "rules": [
+      "k413-1",
+      "k413-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k413-1",
+    "srcs": [
+     "art413#1"
+    ],
+    "body": [
+     "animalPlantQuarantineOfficer(P)",
+     "act(P,X)",
+     "favoritism(P,X)",
+     "fabricatesQuarantineResult(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,animalPlantQuarantineFavoritism)"
+    ],
+    "auth": "npc",
+    "note": "动植物检疫机关检疫人员徇私舞弊、伪造检疫结果，符合动植物检疫徇私舞弊罪（animalPlantQuarantineFavoritism）的构成要件"
+   },
+   {
+    "key": "k413-1s",
+    "srcs": [
+     "art413#1"
+    ],
+    "body": [
+     "constitutes(P,X,animalPlantQuarantineFavoritism)",
+     "~causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊伪造检疫结果的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k413-1a",
+    "srcs": [
+     "art413#1"
+    ],
+    "body": [
+     "constitutes(P,X,animalPlantQuarantineFavoritism)",
+     "causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k413-2",
+    "srcs": [
+     "art413#2"
+    ],
+    "body": [
+     "animalPlantQuarantineOfficer(P)",
+     "act(P,X)",
+     "seriouslyIrresponsible(P,X)",
+     {
+      "or": [
+       "failsToQuarantineRequiredObject(P,X)",
+       "delaysOrErroneouslyIssuesQuarantineCertificate(P,X)"
+      ]
+     },
+     "causesMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,animalPlantQuarantineDereliction)"
+    ],
+    "auth": "npc",
+    "note": "检疫人员严重不负责任，对应当检疫的检疫物不检疫或延误检疫出证、错误出证，致使国家利益遭受重大损失，符合动植物检疫失职罪（animalPlantQuarantineDereliction）的构成要件"
+   },
+   {
+    "key": "k413-2s",
+    "srcs": [
+     "art413#2"
+    ],
+    "body": [
+     "constitutes(P,X,animalPlantQuarantineDereliction)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "动植物检疫失职的，处三年以下有期徒刑或者拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "animalPlantQuarantineOfficer": "animalPlantQuarantineOfficer(P)：P 是动植物检疫机关的检疫人员（第413条特殊主体，第2款“前款所列人员”同此）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "fabricatesQuarantineResult": "fabricatesQuarantineResult(P,X)：P 通过行为 X 伪造动植物检疫结果",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequences": "causesSeriousConsequences(X)：事件 X 造成严重后果",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "failsToQuarantineRequiredObject": "failsToQuarantineRequiredObject(P,X)：P 通过行为 X 对应当检疫的检疫物不予检疫",
+   "delaysOrErroneouslyIssuesQuarantineCertificate": "delaysOrErroneouslyIssuesQuarantineCertificate(P,X)：P 通过行为 X 延误检疫出证或者错误出证",
+   "causesMajorLossToStateInterest": "causesMajorLossToStateInterest(X)：行为 X 致使国家利益遭受重大损失",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:414": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对生产、销售伪劣商品犯罪行为负有追究责任的国家机关工作人员，徇私舞弊不履行追究职责，情节严重的定罪与量刑",
+     "rules": [
+      "k414-basic",
+      "k414-penalty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：对生产、销售伪劣商品犯罪行为负有法律规定追究职责的国家机关工作人员；客观：徇私舞弊，以不作为方式不履行法律规定的追究职责（放纵他人的制售伪劣商品犯罪行为）",
+     "rules": [
+      "k414-cond"
+     ]
+    },
+    {
+     "text": "情节严重（依两高办理生产、销售伪劣商品刑事案件解释）：放纵生产、销售假药或有毒、有害食品犯罪行为；放纵依法可能判处2年有期徒刑以上刑罚的制售伪劣商品犯罪行为；对3个以上有制售伪劣商品犯罪行为的单位或个人不履行追究职责；致使国家和人民利益遭受重大损失或造成恶劣影响",
+     "rules": [
+      "k414-serious"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节未达严重程度的，不构成本罪（罪与非罪的界限）",
+     "rules": [
+      "k414-notcrime"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，构成放纵制售伪劣商品犯罪行为罪",
+     "rules": [
+      "k414-basic"
+     ]
+    },
+    {
+     "text": "处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k414-penalty"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k414-cond",
+    "srcs": [
+     "art414#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "dutyToProsecuteFakeGoodsCrime(P,Y)",
+     "crime(Q,Y)",
+     "crimeOfArts140To148(Y,C)",
+     "failsToProsecute(P,X,Y)",
+     "favoritism(P,X)"
+    ],
+    "heads": [
+     "indulgenceOfFakeGoodsCrimeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本罪主体、徇私舞弊与不履行法律规定追究职责（不作为）的客观条件，放纵对象为他人第140—148条制售伪劣商品犯罪行为"
+   },
+   {
+    "key": "k414-serious",
+    "srcs": [
+     "art414#1"
+    ],
+    "body": [
+     "indulgenceOfFakeGoodsCrimeConditions(P,X)",
+     {
+      "or": [
+       "indulgesFakeDrugOrToxicFoodCrime(X)",
+       "indulgedCrimeMayBeSentenced2YearsOrMore(X)",
+       "failsToProsecuteThreeOrMoreOffenders(X)",
+       "causesMajorHarmToStateAndPeopleInterest(X)",
+       "causesBadImpact(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "seriousCircumstances(X)"
+    ],
+    "auth": "spc",
+    "note": "“情节严重”的四项认定标准，来自两高关于办理生产、销售伪劣商品刑事案件的司法解释（笔记引用），非本条明文列举"
+   },
+   {
+    "key": "k414-basic",
+    "srcs": [
+     "art414#1"
+    ],
+    "body": [
+     "indulgenceOfFakeGoodsCrimeConditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,indulgingFakeGoodsCrime)"
+    ],
+    "auth": "npc",
+    "note": "徇私舞弊不履行追究职责且情节严重的，符合放纵制售伪劣商品犯罪行为罪的构成要件"
+   },
+   {
+    "key": "k414-penalty",
+    "srcs": [
+     "art414#1"
+    ],
+    "body": [
+     "constitutes(P,X,indulgingFakeGoodsCrime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k414-notcrime",
+    "srcs": [
+     "art414#1"
+    ],
+    "body": [
+     "indulgenceOfFakeGoodsCrimeConditions(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,indulgingFakeGoodsCrime)"
+    ],
+    "auth": "doctrine",
+    "note": "依笔记“罪与非罪”对情节严重要件作反面解释：未达情节严重的不构成本罪，法条未明文规定该否定结论"
+   }
+  ],
+  "overrides": [
+   [
+    "k414-notcrime",
+    "k414-basic",
+    "推断：结论冲突（('constitutes', '+')），k414-notcrime 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "dutyToProsecuteFakeGoodsCrime": "dutyToProsecuteFakeGoodsCrime(P,Y)：P 作为国家机关工作人员，对生产、销售伪劣商品犯罪行为 Y 负有法律规定的追究职责",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "crimeOfArts140To148": "crimeOfArts140To148(X,C)：犯罪事件 X 属于刑法分则第三章第一节第140条至第148条规定之罪（生产、销售伪劣商品罪），其所对应的“各该条”罪名为 C",
+   "failsToProsecute": "failsToProsecute(P,X,Y)：P 通过不作为 X 对犯罪行为 Y 不履行法律规定的追究职责（放纵）",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "indulgenceOfFakeGoodsCrimeConditions": "indulgenceOfFakeGoodsCrimeConditions(P,X)：P 的行为 X 具备刑法第414条放纵制售伪劣商品犯罪行为罪的主体、徇私舞弊与不履行追究职责（不作为）条件",
+   "indulgesFakeDrugOrToxicFoodCrime": "indulgesFakeDrugOrToxicFoodCrime(X)：行为 X 放纵的是生产、销售假药或者有毒、有害食品的犯罪行为",
+   "indulgedCrimeMayBeSentenced2YearsOrMore": "indulgedCrimeMayBeSentenced2YearsOrMore(X)：行为 X 所放纵的生产、销售伪劣商品犯罪行为依法可能判处二年有期徒刑以上刑罚",
+   "failsToProsecuteThreeOrMoreOffenders": "failsToProsecuteThreeOrMoreOffenders(X)：行为 X 对三个以上有生产、销售伪劣商品犯罪行为的单位或者个人不履行追究职责",
+   "causesMajorHarmToStateAndPeopleInterest": "causesMajorHarmToStateAndPeopleInterest(X)：行为 X 致使国家和人民群众利益遭受重大损害",
+   "causesBadImpact": "causesBadImpact(X)：行为 X 造成恶劣影响",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役"
+  }
+ },
+ "art:415": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "负责办理出入境证件的国家机关工作人员为明知是企图偷越国（边）境的人员办证，或者边防、海关等国家机关工作人员对明知是偷越国（边）境的人员予以放行，构成何罪、如何量刑",
+     "rules": [
+      "k415-issue",
+      "k415-pass"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "办理型：主体是负责办理护照、签证以及其他出入境证件的国家机关工作人员；对象是企图偷越国（边）境的人员；主观上明知；客观上予以办理出入境证件——构成办理偷越国（边）境人员出入境证件罪，负刑事责任",
+     "rules": [
+      "k415-issue"
+     ]
+    },
+    {
+     "text": "放行型：主体是边防、海关等国家机关工作人员；对象是偷越国（边）境的人员；主观上明知；客观上予以放行——构成放行偷越国（边）境人员罪，负刑事责任",
+     "rules": [
+      "k415-pass"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪为故意犯罪，以“明知”为要件；因审查疏漏等过失而办证、放行的，不构成本罪（学理）",
+     "rules": [
+      "k415-noknow-issue",
+      "k415-noknow-pass"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k415-pen-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k415-pen-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的加重档优先适用，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k415-pen-aggravated",
+      "k415-pen-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与组织他人偷越国（边）境罪、运送他人偷越国（边）境罪相区别：本罪主体限于负责办证或边防、海关等国家机关工作人员，行为方式是利用职务为偷越者办理出入境证件或者予以放行",
+     "rules": [
+      "k415-issue",
+      "k415-pass"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k415-issue",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     "exitEntryDocumentIssuingStaff(P)",
+     "issuesExitEntryDocumentTo(P,X,V)",
+     "attemptsIllegalBorderCrossing(V)",
+     "knowsAttemptedBorderCrossing(P,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,issuingExitEntryDocumentsToBorderCrosser)",
+     "responsible(P,X,issuingExitEntryDocumentsToBorderCrosser)"
+    ],
+    "auth": "npc",
+    "note": "负责办证的国家机关工作人员明知是企图偷越国（边）境的人员而予以办理出入境证件，构成办理偷越国（边）境人员出入境证件罪并负刑事责任"
+   },
+   {
+    "key": "k415-pass",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     "borderControlOrCustomsStaff(P)",
+     "allowsBorderPass(P,X,V)",
+     "illegalBorderCrosser(V)",
+     "knowsIllegalBorderCrosser(P,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,releasingIllegalBorderCrosser)",
+     "responsible(P,X,releasingIllegalBorderCrosser)"
+    ],
+    "auth": "npc",
+    "note": "边防、海关等国家机关工作人员明知是偷越国（边）境的人员而予以放行，构成放行偷越国（边）境人员罪并负刑事责任"
+   },
+   {
+    "key": "k415-noknow-issue",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     "exitEntryDocumentIssuingStaff(P)",
+     "issuesExitEntryDocumentTo(P,X,V)",
+     "-knowsAttemptedBorderCrossing(P,V)"
+    ],
+    "heads": [
+     "-constitutes(P,X,issuingExitEntryDocumentsToBorderCrosser)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪须明知对方系企图偷越国（边）境的人员，过失办证不构成本罪"
+   },
+   {
+    "key": "k415-noknow-pass",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     "borderControlOrCustomsStaff(P)",
+     "allowsBorderPass(P,X,V)",
+     "-knowsIllegalBorderCrosser(P,V)"
+    ],
+    "heads": [
+     "-constitutes(P,X,releasingIllegalBorderCrosser)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：放行型亦以明知为要件，过失放行不构成本罪"
+   },
+   {
+    "key": "k415-pen-basic",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "responsible(P,X,issuingExitEntryDocumentsToBorderCrosser)",
+       "responsible(P,X,releasingIllegalBorderCrosser)"
+      ]
+     },
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "两罪基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k415-pen-aggravated",
+    "srcs": [
+     "art415#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "responsible(P,X,issuingExitEntryDocumentsToBorderCrosser)",
+       "responsible(P,X,releasingIllegalBorderCrosser)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑"
+   }
+  ],
+  "overrides": [
+   [
+    "k415-noknow-issue",
+    "k415-issue",
+    "推断：结论冲突（('constitutes', '+')），k415-noknow-issue 为例外或更具体"
+   ],
+   [
+    "k415-noknow-pass",
+    "k415-issue",
+    "推断：结论冲突（('constitutes', '+')），k415-noknow-pass 为例外或更具体"
+   ],
+   [
+    "k415-noknow-issue",
+    "k415-pass",
+    "推断：结论冲突（('constitutes', '+')），k415-noknow-issue 为例外或更具体"
+   ],
+   [
+    "k415-noknow-pass",
+    "k415-pass",
+    "推断：结论冲突（('constitutes', '+')），k415-noknow-pass 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "exitEntryDocumentIssuingStaff": "exitEntryDocumentIssuingStaff(P)：P 是负责办理护照、签证以及其他出入境证件的国家机关工作人员",
+   "issuesExitEntryDocumentTo": "issuesExitEntryDocumentTo(P,X,V)：P 通过行为 X 为 V 办理护照、签证等出入境证件",
+   "attemptsIllegalBorderCrossing": "attemptsIllegalBorderCrossing(V)：V 是企图偷越国（边）境的人员",
+   "knowsAttemptedBorderCrossing": "knowsAttemptedBorderCrossing(P,V)：P 明知 V 是企图偷越国（边）境的人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "borderControlOrCustomsStaff": "borderControlOrCustomsStaff(P)：P 是边防、海关等国家机关工作人员",
+   "allowsBorderPass": "allowsBorderPass(P,X,V)：P 通过行为 X 对 V 予以放行（准许其出入境通行）",
+   "illegalBorderCrosser": "illegalBorderCrosser(V)：V 是偷越国（边）境的人员",
+   "knowsIllegalBorderCrosser": "knowsIllegalBorderCrosser(P,V)：P 明知 V 是偷越国（边）境的人员",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑"
+  }
+ },
+ "art:416": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对被拐卖、绑架的妇女、儿童负有解救职责的国家机关工作人员，不解救或者利用职务阻碍解救的定罪与量刑",
+     "rules": [
+      "k416-1",
+      "k416-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为对被拐卖、绑架的妇女、儿童负有解救职责的国家机关工作人员（特殊主体），对象限于被拐卖、绑架的妇女、儿童",
+     "rules": [
+      "k416-1",
+      "k416-2"
+     ]
+    },
+    {
+     "text": "第1款：接到被拐卖、绑架的妇女、儿童及其家属的解救要求或者他人举报后，对被害人不进行解救（不作为）",
+     "rules": [
+      "k416-1"
+     ]
+    },
+    {
+     "text": "第2款：利用职务阻碍解救（作为），不以接到解救要求、举报为前提，也不要求造成严重后果",
+     "rules": [
+      "k416-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第2款情节较轻的，适用二年以下有期徒刑或者拘役的轻档，排除二年以上七年以下有期徒刑的基本档",
+     "rules": [
+      "k416-2t"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "第1款不进行解救并造成严重后果的，构成不解救被拐卖、绑架妇女、儿童罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k416-1",
+      "k416-1s"
+     ]
+    },
+    {
+     "text": "第2款利用职务阻碍解救的，构成阻碍解救被拐卖、绑架妇女、儿童罪，处二年以上七年以下有期徒刑",
+     "rules": [
+      "k416-2",
+      "k416-2s"
+     ]
+    },
+    {
+     "text": "第2款情节较轻的，处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k416-2t"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "阻碍解救行为情节较轻时，轻档量刑优先于基本档量刑",
+     "rules": [
+      "k416-2t",
+      "k416-2s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是不作为犯，以“造成严重后果”为构成要件；第2款是利用职务的作为犯，不要求造成严重后果，法定刑更重",
+     "rules": [
+      "k416-1",
+      "k416-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k416-1",
+    "srcs": [
+     "art416#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "rescueDutyFor(P,V)",
+     "traffickedOrKidnappedWomanOrChild(V)",
+     "receivesRescueRequestOrReport(P,V)",
+     "failsToRescue(P,X,V)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,failureToRescueTraffickedWomanOrChild)"
+    ],
+    "auth": "npc",
+    "note": "负有解救职责的国家机关工作人员接到解救要求或举报后不解救、造成严重后果的，符合不解救被拐卖、绑架妇女、儿童罪（failureToRescueTraffickedWomanOrChild）的构成要件"
+   },
+   {
+    "key": "k416-1s",
+    "srcs": [
+     "art416#1"
+    ],
+    "body": [
+     "constitutes(P,X,failureToRescueTraffickedWomanOrChild)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款之罪处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k416-2",
+    "srcs": [
+     "art416#2"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "rescueDutyFor(P,V)",
+     "traffickedOrKidnappedWomanOrChild(V)",
+     "obstructsRescueByOffice(P,X,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingRescueOfTraffickedWomanOrChild)"
+    ],
+    "auth": "npc",
+    "note": "负有解救职责的国家机关工作人员利用职务阻碍解救的，符合阻碍解救被拐卖、绑架妇女、儿童罪（obstructingRescueOfTraffickedWomanOrChild）的构成要件，不要求造成严重后果"
+   },
+   {
+    "key": "k416-2s",
+    "srcs": [
+     "art416#2"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingRescueOfTraffickedWomanOrChild)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom2To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款之罪的基本档：处二年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k416-2t",
+    "srcs": [
+     "art416#2"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingRescueOfTraffickedWomanOrChild)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder2YearsOrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款情节较轻的，处二年以下有期徒刑或者拘役"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "rescueDutyFor": "rescueDutyFor(P,V)：P 是对被拐卖、绑架的妇女、儿童 V 负有解救职责的国家机关工作人员",
+   "traffickedOrKidnappedWomanOrChild": "traffickedOrKidnappedWomanOrChild(V)：V 是被拐卖、绑架的妇女、儿童",
+   "receivesRescueRequestOrReport": "receivesRescueRequestOrReport(P,V)：P 接到被害人 V 及其家属的解救要求或者其他人关于 V 的举报",
+   "failsToRescue": "failsToRescue(P,X,V)：P 通过不作为的行为 X 对被拐卖、绑架的妇女、儿童 V 不进行解救",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "obstructsRescueByOffice": "obstructsRescueByOffice(P,X,V)：P 利用职务通过行为 X 阻碍对被拐卖、绑架的妇女、儿童 V 的解救",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentenceFrom2To7Years": "sentenceFrom2To7Years(P,X)：对 P 就犯罪 X 处二年以上七年以下有期徒刑",
+   "sentenceUnder2YearsOrDetention": "sentenceUnder2YearsOrDetention(P,X)：对 P 就犯罪 X 处二年以下有期徒刑或者拘役"
+  }
+ },
+ "art:417": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "有查禁犯罪活动职责的国家机关工作人员向犯罪分子通风报信、提供便利，帮助其逃避处罚，是否构成帮助犯罪分子逃避处罚罪及如何处刑",
+     "rules": [
+      "k417-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体特殊：必须是有查禁犯罪活动职责的国家机关工作人员（如公安、检察、审判、监管等负有查禁职责的人员）",
+     "rules": [
+      "k417-cond"
+     ]
+    },
+    {
+     "text": "行为与对象：向犯罪分子（犯罪的人）通风报信或者提供便利，从而帮助其逃避处罚；两种行为方式具备其一即可",
+     "rules": [
+      "k417-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k417-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k417-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用加重档，排除三年以下有期徒刑或拘役的基本档",
+     "rules": [
+      "k417-aggravated",
+      "k417-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与窝藏、包庇罪（第310条）的界限：本罪主体限于有查禁犯罪活动职责的国家机关工作人员，行为表现为通风报信、提供便利帮助逃避处罚；具备该特殊身份与职责时，依本条特别规定论处（学理）",
+     "rules": [
+      "k417-special"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k417-cond",
+    "srcs": [
+     "art417"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "hasDutyToProhibitCrime(P)",
+     "act(P,X)",
+     "criminalPerson(V)",
+     {
+      "or": [
+       "tipOffToCriminal(P,X,V)",
+       "providesConvenienceToCriminal(P,X,V)"
+      ]
+     },
+     "helpsEvadePunishment(P,X,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,helpingCriminalEvadePunishment)"
+    ],
+    "auth": "npc",
+    "note": "有查禁犯罪活动职责的国家机关工作人员向犯罪分子通风报信或提供便利、帮助其逃避处罚的，构成帮助犯罪分子逃避处罚罪（罪名常量 helpingCriminalEvadePunishment）"
+   },
+   {
+    "key": "k417-basic",
+    "srcs": [
+     "art417"
+    ],
+    "body": [
+     "constitutes(P,X,helpingCriminalEvadePunishment)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k417-aggravated",
+    "srcs": [
+     "art417"
+    ],
+    "body": [
+     "constitutes(P,X,helpingCriminalEvadePunishment)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k417-special",
+    "srcs": [
+     "art417"
+    ],
+    "body": [
+     "harboringOrShieldingConditions(P,X)",
+     "stateOrganStaff(P)",
+     "hasDutyToProhibitCrime(P)"
+    ],
+    "heads": [
+     "constitutes(P,X,helpingCriminalEvadePunishment)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：行为虽具窝藏、包庇性质，但行为人系有查禁犯罪活动职责的国家机关工作人员时，依本条特别规定以帮助犯罪分子逃避处罚罪论处，不再适用第310条窝藏、包庇罪"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "hasDutyToProhibitCrime": "hasDutyToProhibitCrime(P)：P 负有查禁犯罪活动的职责",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "criminalPerson": "criminalPerson(V)：V 是犯罪的人（已实施犯罪的人，含犯罪嫌疑人、被告人、罪犯）",
+   "tipOffToCriminal": "tipOffToCriminal(P,X,V)：P 通过行为 X 向犯罪分子 V 通风报信（透露查禁、追诉等消息）",
+   "providesConvenienceToCriminal": "providesConvenienceToCriminal(P,X,V)：P 通过行为 X 为犯罪分子 V 逃避处罚提供便利",
+   "helpsEvadePunishment": "helpsEvadePunishment(P,X,V)：P 的行为 X 起到帮助犯罪分子 V 逃避处罚的作用",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "harboringOrShieldingConditions": "harboringOrShieldingConditions(P,X)：P 的行为 X 具备刑法第310条第1款窝藏、包庇罪的主体、对象、明知与行为条件"
+  }
+ },
+ "art:418": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员在招收公务员、学生工作中徇私舞弊，情节严重的，是否构成招收公务员、学生徇私舞弊罪",
+     "rules": [
+      "k418-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；行为发生于招收公务员、学生工作中；实施徇私舞弊行为；且情节严重",
+     "rules": [
+      "k418-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有徇私舞弊但情节不严重的，不构成本罪（学理：情节严重系入罪门槛，可另予行政处分）",
+     "rules": [
+      "k418-minor"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合本罪构成要件，负刑事责任（罪名常量 favoritismInRecruitingCivilServantsOrStudents＝招收公务员、学生徇私舞弊罪）",
+     "rules": [
+      "k418-1"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k418-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪主体限于国家机关工作人员，场合限于招收公务员、学生的工作；其他场合或其他主体的徇私舞弊不依本罪处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k418-1",
+    "srcs": [
+     "art418#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "act(P,X)",
+     "recruitmentWork(X)",
+     "favoritism(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,favoritismInRecruitingCivilServantsOrStudents)",
+     "responsible(P,X,favoritismInRecruitingCivilServantsOrStudents)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员在招收公务员、学生工作中徇私舞弊，情节严重的，构成招收公务员、学生徇私舞弊罪并负刑事责任"
+   },
+   {
+    "key": "k418-2",
+    "srcs": [
+     "art418#1"
+    ],
+    "body": [
+     "constitutes(P,X,favoritismInRecruitingCivilServantsOrStudents)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k418-minor",
+    "srcs": [
+     "art418#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "act(P,X)",
+     "recruitmentWork(X)",
+     "favoritism(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,favoritismInRecruitingCivilServantsOrStudents)"
+    ],
+    "auth": "doctrine",
+    "note": "情节不严重的不构成本罪；系从“情节严重”入罪要件反推的学理结论，法条未明文规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k418-minor",
+    "k418-1",
+    "推断：结论冲突（('constitutes', '+')），k418-minor 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "recruitmentWork": "recruitmentWork(X)：行为 X 发生在招收公务员、学生的工作中",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:419": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关工作人员严重不负责任，造成珍贵文物损毁或者流失，后果严重的，是否构成失职造成珍贵文物损毁、流失罪并负刑事责任",
+     "rules": [
+      "k419-cond",
+      "k419-resp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家机关工作人员；客观上严重不负责任（失职）；行为造成珍贵文物损毁或者流失；且后果严重",
+     "rules": [
+      "k419-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成失职造成珍贵文物损毁、流失罪，负刑事责任",
+     "rules": [
+      "k419-cond",
+      "k419-resp"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k419-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本罪是失职（过失）型犯罪；行为人故意损毁珍贵文物的，应按故意损毁文物罪处理，排除本条适用",
+     "rules": [
+      "k419-intent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与故意损毁文物罪的区别：本罪以严重不负责任的失职为前提，对文物损毁、流失结果为过失；若对珍贵文物损毁具有故意，则不成立本罪",
+     "rules": [
+      "k419-intent"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k419-cond",
+    "srcs": [
+     "art419#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "act(P,X)",
+     "seriouslyIrresponsible(P,X)",
+     "preciousCulturalRelic(M)",
+     "causesPreciousCulturalRelicDamageOrLoss(X,M)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionCausingDamageOrLossOfPreciousCulturalRelic)"
+    ],
+    "auth": "npc",
+    "note": "国家机关工作人员严重不负责任，造成珍贵文物损毁或者流失、后果严重的，符合失职造成珍贵文物损毁、流失罪（新罪名常量 derelictionCausingDamageOrLossOfPreciousCulturalRelic）的构成要件"
+   },
+   {
+    "key": "k419-resp",
+    "srcs": [
+     "art419#1"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionCausingDamageOrLossOfPreciousCulturalRelic)"
+    ],
+    "heads": [
+     "responsible(P,X,derelictionCausingDamageOrLossOfPreciousCulturalRelic)"
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，就该失职行为负刑事责任"
+   },
+   {
+    "key": "k419-pen",
+    "srcs": [
+     "art419#1"
+    ],
+    "body": [
+     "responsible(P,X,derelictionCausingDamageOrLossOfPreciousCulturalRelic)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "法定刑为三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k419-intent",
+    "srcs": [
+     "art419#1"
+    ],
+    "body": [
+     "stateOrganStaff(P)",
+     "act(P,X)",
+     "preciousCulturalRelic(M)",
+     "objectOf(X,M)",
+     "damages(P,X)",
+     "damageIntent(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,derelictionCausingDamageOrLossOfPreciousCulturalRelic)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：本罪为失职（过失）犯罪，行为人故意损毁珍贵文物的应认定故意损毁文物罪，不构成本条之罪；法条未明文，故标为 doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "k419-intent",
+    "k419-cond",
+    "推断：结论冲突（('constitutes', '+')），k419-intent 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrganStaff": "stateOrganStaff(P)：P 是国家机关工作人员",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "seriouslyIrresponsible": "seriouslyIrresponsible(P,X)：P 在行为 X 中严重不负责任（失职）",
+   "preciousCulturalRelic": "preciousCulturalRelic(M)：M 是珍贵文物",
+   "causesPreciousCulturalRelicDamageOrLoss": "causesPreciousCulturalRelicDamageOrLoss(X,M)：行为（失职）X 造成珍贵文物 M 损毁或者流失",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "damages": "damages(P,X)：P 通过行为 X 实施损毁（损坏、毁灭、使价值或效用丧失）行为",
+   "damageIntent": "damageIntent(P,X)：P 对行为 X 的损毁具有故意"
+  }
+ }
+}

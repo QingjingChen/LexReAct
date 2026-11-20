@@ -1,0 +1,2275 @@
+{
+ "art:714": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "承租人的保管义务及保管不善的责任",
+     "rules": [
+      "c714-keep",
+      "c714-comp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因承租人保管不善造成租赁物毁损、灭失",
+     "rules": [
+      "c714-comp"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人应当妥善保管租赁物",
+     "rules": [
+      "c714-keep"
+     ]
+    },
+    {
+     "text": "保管不善致毁损、灭失的，承租人应当承担赔偿责任",
+     "rules": [
+      "c714-comp"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "不可归责于承租人致毁损灭失的减免租金与解除见第729条（art:729 行）；转租时第三人造成损失由承租人赔偿见第716条（card:g5260 行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c714-keep",
+    "srcs": [
+     "art714"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "keepLeasedThingSafely(Te,T)"
+     }
+    ],
+    "note": "承租人应当妥善保管租赁物",
+    "auth": "npc"
+   },
+   {
+    "key": "c714-comp",
+    "srcs": [
+     "art714"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "damagedOrLostByPoorCustody(Te,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "compensateLeasedThingLoss(Te,O,T)"
+     }
+    ],
+    "note": "因保管不善造成租赁物毁损、灭失的，承租人应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "keepLeasedThingSafely": "承租人Te妥善保管租赁物T（承租人，租赁物）",
+   "damagedOrLostByPoorCustody": "因承租人Te保管不善造成租赁物T毁损、灭失（承租人，租赁物）",
+   "compensateLeasedThingLoss": "承租人Te就租赁物T的损失向出租人O承担赔偿责任（承租人，出租人，租赁物）"
+  }
+ },
+ "card:g5389": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租金支付期限、欠付租金时出租人的解除，以及租赁物非因承租人原因无法使用时承租人的解除",
+     "rules": [
+      "c721-1",
+      "c721-short",
+      "c721-long",
+      "c721-rest",
+      "c722-demand",
+      "c722-term",
+      "c724"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租金支付期限没有约定或约定不明确，依第510条仍不能确定",
+     "rules": [
+      "c721-short",
+      "c721-long",
+      "c721-rest"
+     ]
+    },
+    {
+     "text": "承租人无正当理由未支付或者迟延支付租金；经催告后逾期仍不支付",
+     "rules": [
+      "c722-demand",
+      "c722-term"
+     ]
+    },
+    {
+     "text": "租赁物被依法查封、扣押，权属有争议，或具有违反法律、行政法规关于使用条件的强制性规定情形，非因承租人原因致使租赁物无法使用",
+     "rules": [
+      "c724"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "承租人有正当理由的，出租人不得据第722条催告解除；租赁物无法使用系因承租人原因的，承租人不得据第724条解除",
+     "rules": [
+      "c722-demand",
+      "c722-term",
+      "c724"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承租人应当按照约定的期限支付租金",
+     "rules": [
+      "c721-1"
+     ]
+    },
+    {
+     "text": "法定补充：租期不满一年的，在期满时支付；一年以上的，每届满一年时支付，剩余期限不满一年的，在期满时支付",
+     "rules": [
+      "c721-short",
+      "c721-long",
+      "c721-rest"
+     ]
+    },
+    {
+     "text": "出租人可以请求承租人在合理期限内支付；逾期不支付的，出租人可以解除合同",
+     "rules": [
+      "c722-demand",
+      "c722-term"
+     ]
+    },
+    {
+     "text": "承租人可以解除合同",
+     "rules": [
+      "c724"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定的支付期限优先；无约定或约定不明且依第510条仍不能确定时，才适用第721条的法定补充期限",
+     "rules": [
+      "c721-1",
+      "c721-short",
+      "c721-long",
+      "c721-rest"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本行笔记讲的是融资租赁承租人的租金义务（租赁物有瑕疵不得拒付、承担租金风险，第十五章），与本章一般租赁不同：一般租赁中租赁物非因承租人原因毁损灭失的，承租人可请求减免租金（第729条，art:729 行 c729-rent）",
+     "rules": []
+    },
+    {
+     "text": "第三人主张权利致不能使用收益的减免租金见第723条（card:g5284 行 c723-1）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c721-1",
+    "srcs": [
+     "art721"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "~unclearTerm(L,rentPaymentTime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "payRentAtAgreedTime(Te,O,L)"
+     }
+    ],
+    "note": "承租人应当按照约定的期限支付租金（常量 rentPaymentTime 指租金支付期限）",
+    "auth": "npc"
+   },
+   {
+    "key": "c721-short",
+    "srcs": [
+     "art721"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "unclearTerm(L,rentPaymentTime)",
+     "notDeterminableUnderArt510(rentPaymentTime,L)",
+     "leaseTermUnderOneYear(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "payRentAtLeaseExpiry(Te,O,L)"
+     }
+    ],
+    "note": "支付期限无约定或约定不明，依第510条仍不能确定，租赁期限不满一年的，应当在租赁期限届满时支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c721-long",
+    "srcs": [
+     "art721"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "unclearTerm(L,rentPaymentTime)",
+     "notDeterminableUnderArt510(rentPaymentTime,L)",
+     "leaseTermOneYearOrMore(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "payRentAtEachFullYear(Te,O,L)"
+     }
+    ],
+    "note": "同上，租赁期限一年以上的，应当在每届满一年时支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c721-rest",
+    "srcs": [
+     "art721"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "unclearTerm(L,rentPaymentTime)",
+     "notDeterminableUnderArt510(rentPaymentTime,L)",
+     "leaseTermOneYearOrMore(L)",
+     "remainingTermUnderOneYear(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "payRentAtLeaseExpiry(Te,O,L)"
+     }
+    ],
+    "note": "租赁期限一年以上，剩余期限不满一年的，该剩余期限的租金应当在租赁期限届满时支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c722-demand",
+    "srcs": [
+     "art722"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "rentUnpaidOrDelayed(Te,L)",
+     "~justifiedReasonForNonPayment(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "demandRentInReasonablePeriod(O,Te,L)"
+     }
+    ],
+    "note": "承租人无正当理由未支付或者迟延支付租金的，出租人可以请求承租人在合理期限内支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c722-term",
+    "srcs": [
+     "art722"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "rentUnpaidOrDelayed(Te,L)",
+     "~justifiedReasonForNonPayment(Te,L)",
+     "rentDemandedInReasonablePeriod(O,Te,L)",
+     "rentUnpaidAfterDemandPeriod(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "terminateContract(O,L)"
+     }
+    ],
+    "note": "经出租人请求在合理期限内支付，承租人逾期不支付的，出租人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c724",
+    "srcs": [
+     "art724"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     {
+      "or": [
+       "seizedOrDetainedByAuthority(T)",
+       "disputedOwnership(T)",
+       "violatesMandatoryUseConditions(T)"
+      ]
+     },
+     "leasedThingUnusable(T)",
+     "~unusableDueToTenant(Te,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "terminateContract(Te,L)"
+     }
+    ],
+    "note": "租赁物被司法机关或行政机关依法查封、扣押，权属有争议，或具有违反法律、行政法规关于使用条件的强制性规定情形，非因承租人原因致使租赁物无法使用的，承租人可以解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "payRentAtAgreedTime": "承租人Te按照租赁合同L约定的期限向出租人O支付租金（承租人，出租人，租赁合同）",
+   "leaseTermUnderOneYear": "租赁合同L的租赁期限不满一年（租赁合同）",
+   "leaseTermOneYearOrMore": "租赁合同L的租赁期限一年以上（租赁合同）",
+   "remainingTermUnderOneYear": "租赁合同L按整年计付后剩余期限不满一年（租赁合同）",
+   "payRentAtLeaseExpiry": "承租人Te在租赁合同L的租赁期限届满时向出租人O支付（相应）租金（承租人，出租人，租赁合同）",
+   "payRentAtEachFullYear": "承租人Te在租赁合同L每届满一年时向出租人O支付租金（承租人，出租人，租赁合同）",
+   "rentUnpaidOrDelayed": "承租人Te未支付或者迟延支付租赁合同L的租金（承租人，租赁合同）",
+   "justifiedReasonForNonPayment": "承租人Te未付或迟付租赁合同L的租金有正当理由（承租人，租赁合同）",
+   "demandRentInReasonablePeriod": "出租人O请求承租人Te在合理期限内支付租赁合同L的租金（出租人，承租人，租赁合同）",
+   "rentDemandedInReasonablePeriod": "出租人O已请求承租人Te在合理期限内支付租赁合同L的租金（出租人，承租人，租赁合同）",
+   "rentUnpaidAfterDemandPeriod": "承租人Te在出租人请求的合理期限届满后仍未支付租赁合同L的租金（承租人，租赁合同）",
+   "seizedOrDetainedByAuthority": "租赁物T被司法机关或者行政机关依法查封、扣押（租赁物）",
+   "violatesMandatoryUseConditions": "租赁物T具有违反法律、行政法规关于使用条件的强制性规定的情形（租赁物）",
+   "leasedThingUnusable": "租赁物T无法使用（租赁物）",
+   "unusableDueToTenant": "租赁物T无法使用系因承租人Te的原因所致（承租人，租赁物）"
+  }
+ },
+ "art:712": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁物的维修义务由谁承担",
+     "rules": [
+      "c712-duty",
+      "c712-obl"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租赁合同存续，租赁物需要维修",
+     "rules": [
+      "c712-duty",
+      "c712-obl"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的除外",
+     "rules": [
+      "c712-duty"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人应当履行租赁物的维修义务",
+     "rules": [
+      "c712-duty",
+      "c712-obl"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "维修请求、承租人自行维修、减租延期及因承租人过错致需维修时出租人免除维修义务，见第713条（card:g5284 行 c713-*）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c712-duty",
+    "srcs": [
+     "art712"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "~agreedOtherwiseOnRepair(L)"
+    ],
+    "heads": [
+     "landlordBearsRepairDuty(O,L)"
+    ],
+    "note": "出租人负担租赁物的维修义务，但当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c712-obl",
+    "srcs": [
+     "art712"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordBearsRepairDuty(O,L)",
+     "needsRepair(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "repairLeasedThing(O,T)"
+     }
+    ],
+    "note": "负担维修义务的出租人，在租赁物需要维修时应当履行维修义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreedOtherwiseOnRepair": "当事人就租赁合同L中租赁物的维修义务另有约定（租赁合同）",
+   "landlordBearsRepairDuty": "出租人O就租赁合同L负担租赁物维修义务（出租人，租赁合同）",
+   "needsRepair": "租赁物T需要维修（租赁物）",
+   "repairLeasedThing": "出租人O维修租赁物T（出租人，租赁物）"
+  }
+ },
+ "art:709": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "承租人应当如何使用租赁物",
+     "rules": [
+      "c709-1",
+      "c709-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对使用方法有约定的，按约定的方法使用",
+     "rules": [
+      "c709-1"
+     ]
+    },
+    {
+     "text": "使用方法没有约定或者约定不明确，依第510条仍不能确定的，根据租赁物的性质使用",
+     "rules": [
+      "c709-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人负有按约定方法或依租赁物性质使用租赁物的义务",
+     "rules": [
+      "c709-1",
+      "c709-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定的使用方法优先；只有无约定或约定不明且依第510条补充仍不能确定时，才按租赁物性质使用",
+     "rules": [
+      "c709-1",
+      "c709-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "合理使用致损耗不担责见第710条（art:710 行 c710）；违反使用方法致损失的解除与赔偿见第711条（art:711 行 c711）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c709-1",
+    "srcs": [
+     "art709"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "~unclearTerm(L,useMethod)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "usePerAgreedMethod(Te,T)"
+     }
+    ],
+    "note": "承租人应当按照约定的方法使用租赁物（使用方法无约定或约定不明确的除外；常量 useMethod 指租赁物使用方法）",
+    "auth": "npc"
+   },
+   {
+    "key": "c709-2",
+    "srcs": [
+     "art709"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "unclearTerm(L,useMethod)",
+     "notDeterminableUnderArt510(useMethod,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "usePerNature(Te,T)"
+     }
+    ],
+    "note": "使用方法没有约定或约定不明确，依第510条仍不能确定的，应当根据租赁物的性质使用",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usePerAgreedMethod": "承租人Te按照约定的方法使用租赁物T（承租人，租赁物）",
+   "usePerNature": "承租人Te根据租赁物T的性质使用租赁物（承租人，租赁物）"
+  }
+ },
+ "art:729": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁物非因承租人原因毁损、灭失时承租人的租金减免与解除",
+     "rules": [
+      "c729-rent",
+      "c729-term"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因不可归责于承租人的事由，租赁物部分或者全部毁损、灭失",
+     "rules": [
+      "c729-rent"
+     ]
+    },
+    {
+     "text": "因租赁物部分或者全部毁损、灭失，致使不能实现合同目的",
+     "rules": [
+      "c729-term"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人可以请求减少租金或者不支付租金",
+     "rules": [
+      "c729-rent"
+     ]
+    },
+    {
+     "text": "不能实现合同目的的，承租人可以解除合同",
+     "rules": [
+      "c729-term"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第二分句文义上未重复“不可归责于承租人”的限定，形式化依原文；因承租人保管不善致毁损灭失的赔偿责任见第714条（art:714 行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c729-rent",
+    "srcs": [
+     "art729"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "leasedThingDamagedOrLost(T)",
+     "causeNotAttributableToTenant(Te,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "requestRentReductionOrExemption(Te,O,L)"
+     }
+    ],
+    "note": "因不可归责于承租人的事由致租赁物部分或全部毁损、灭失的，承租人可以请求减少租金或者不支付租金",
+    "auth": "npc"
+   },
+   {
+    "key": "c729-term",
+    "srcs": [
+     "art729"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "leasedThingDamagedOrLost(T)",
+     "lossFrustratesLeasePurpose(T,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "terminateContract(Te,L)"
+     }
+    ],
+    "note": "因租赁物部分或全部毁损、灭失致使不能实现合同目的的，承租人可以解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "leasedThingDamagedOrLost": "租赁物T部分或者全部毁损、灭失（租赁物）",
+   "causeNotAttributableToTenant": "租赁物T的毁损、灭失系因不可归责于承租人Te的事由（承租人，租赁物）",
+   "requestRentReductionOrExemption": "承租人Te请求出租人O就租赁合同L减少租金或者不支付租金（承租人，出租人，租赁合同）",
+   "lossFrustratesLeasePurpose": "租赁物T的毁损、灭失致使不能实现租赁合同L的目的（租赁物，租赁合同）"
+  }
+ },
+ "art:710": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "承租人正常使用造成租赁物损耗是否担责",
+     "rules": [
+      "c710"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承租人按约定方法或根据租赁物性质使用租赁物，且因此致租赁物受到损耗",
+     "rules": [
+      "c710"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人对该损耗不承担赔偿责任",
+     "rules": [
+      "c710"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "未按约定方法或租赁物性质使用致损失的，适用第711条（art:711 行 c711-term、c711-comp）；保管不善致毁损灭失的，适用第714条（art:714 行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c710",
+    "srcs": [
+     "art710"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     {
+      "or": [
+       "usedPerAgreedMethod(Te,T)",
+       "usedPerNature(Te,T)"
+      ]
+     },
+     "wearFromUse(T,L)"
+    ],
+    "heads": [
+     "-tenantLiableForWear(Te,T)"
+    ],
+    "note": "承租人按照约定的方法或者根据租赁物的性质使用租赁物，致使租赁物受到损耗的，不承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usedPerAgreedMethod": "承租人Te已按照约定的方法使用租赁物T（承租人，租赁物）",
+   "usedPerNature": "承租人Te已根据租赁物T的性质使用租赁物（承租人，租赁物）",
+   "wearFromUse": "租赁物T在租赁合同L履行中因使用受到损耗（租赁物，租赁合同）",
+   "tenantLiableForWear": "承租人Te对租赁物T因使用产生的损耗承担赔偿责任（承租人，租赁物）"
+  }
+ },
+ "card:g2034": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖不破租赁：租赁物所有权变动对租赁合同效力的影响及其例外",
+     "rules": [
+      "c725-spc14"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租赁物在承租人按照租赁合同占有期限内发生所有权变动（基础规则 c725）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "司法解释：城镇房屋在出租前已设立抵押权、因抵押权人实现抵押权发生所有权变动的，或出租前已被人民法院依法查封的，或当事人另有约定的，承租人不得请求受让人继续履行原租赁合同",
+     "rules": [
+      "c725-spc14"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "原则上不影响租赁合同的效力，租赁合同对新所有人有效（基础规则 c725）",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "司法解释第14条的例外优先于第725条的一般规则（基础规则 c725）",
+     "rules": [
+      "c725-spc14"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第725条正文已有基础规则 c725，不重写；第725条同时挂在 card:g5260 行",
+     "rules": []
+    },
+    {
+     "text": "先租后抵（抵押前已出租并转移占有）的，原租赁关系不受抵押权影响，见第405条基础规则 c405；笔记所述“物权优先于债权”“追及力”“排他性”为物权总论内容，不在本行写规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c725-spc14",
+    "srcs": [
+     "art725"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "houseLease(L)",
+     "tenantPossessesUnderLease(L)",
+     "ownershipChanged(T)",
+     {
+      "or": [
+       "mortgagedBeforeLease(T,L) ownershipChangedByMortgageRealization(T)",
+       "seizedByCourtBeforeLease(T,L)",
+       "agreedOtherwiseOnLeaseSurvival(L)"
+      ]
+     }
+    ],
+    "heads": [
+     "-leaseBindsNewOwner(L)"
+    ],
+    "note": "《最高人民法院关于审理城镇房屋租赁合同纠纷案件具体应用法律若干问题的解释》（法释〔2009〕11号，2020年修正）第14条：租赁房屋在承租人按照租赁合同占有期限内发生所有权变动，承租人请求受让人继续履行原租赁合同的应予支持，但房屋在出租前已设立抵押权、因抵押权人实现抵押权发生所有权变动的，房屋在出租前已被人民法院依法查封的，或者当事人另有约定的除外。条文经最高法公报检索摘要核对，未逐字核对全文",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c725-spc14",
+    "c725",
+    "司法解释第14条规定的城镇房屋“买卖破租赁”例外排除第725条的一般规则"
+   ]
+  ],
+  "predicates": {
+   "mortgagedBeforeLease": "房屋T在租赁合同L订立（出租）前已设立抵押权（房屋，租赁合同）",
+   "ownershipChangedByMortgageRealization": "房屋T的所有权因抵押权人实现抵押权而发生变动（房屋）",
+   "seizedByCourtBeforeLease": "房屋T在租赁合同L订立（出租）前已被人民法院依法查封（房屋，租赁合同）",
+   "agreedOtherwiseOnLeaseSurvival": "当事人就所有权变动后租赁合同L是否继续履行另有约定（租赁合同）"
+  }
+ },
+ "art:731": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁物危及承租人安全或健康时承租人的解除权",
+     "rules": [
+      "c731"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租赁物危及承租人的安全或者健康",
+     "rules": [
+      "c731"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "承租人可以随时解除合同；即使订立合同时明知租赁物质量不合格，亦不影响该解除权",
+     "rules": [
+      "c731"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "“明知质量不合格”不构成排除事由，故规则体中不设该例外",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c731",
+    "srcs": [
+     "art731"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "endangersTenantSafetyOrHealth(T,Te)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "terminateContractAtAnyTime(Te,L)"
+     }
+    ],
+    "note": "租赁物危及承租人安全或健康的，即使承租人订立合同时明知该租赁物质量不合格，承租人仍然可以随时解除合同",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "endangersTenantSafetyOrHealth": "租赁物T危及承租人Te的安全或者健康（租赁物，承租人）"
+  }
+ },
+ "card:g5284": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁合同中出租人的交付、适租、维修义务，第三人主张权利时的救济，以及承租人期满返还义务",
+     "rules": [
+      "c708-deliver",
+      "c708-fit",
+      "c713-request",
+      "c713-self",
+      "c713-cost",
+      "c713-rent",
+      "c713-2",
+      "c723-1",
+      "c723-2",
+      "c733-return",
+      "c733-state"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租赁物需要维修，出租人负担维修义务",
+     "rules": [
+      "c713-request"
+     ]
+    },
+    {
+     "text": "出租人未履行维修义务",
+     "rules": [
+      "c713-self",
+      "c713-cost"
+     ]
+    },
+    {
+     "text": "因维修租赁物影响承租人使用",
+     "rules": [
+      "c713-rent"
+     ]
+    },
+    {
+     "text": "因第三人主张权利，致使承租人不能对租赁物使用、收益",
+     "rules": [
+      "c723-1"
+     ]
+    },
+    {
+     "text": "租赁期限届满",
+     "rules": [
+      "c733-return",
+      "c733-state"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因承租人的过错致使租赁物需要维修的，出租人不承担第713条第1款规定的维修义务",
+     "rules": [
+      "c713-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "出租人应当按照约定交付租赁物，并在租赁期限内保持其符合约定的用途",
+     "rules": [
+      "c708-deliver",
+      "c708-fit"
+     ]
+    },
+    {
+     "text": "承租人可以请求出租人在合理期限内维修；出租人未维修的，承租人可以自行维修，费用由出租人负担",
+     "rules": [
+      "c713-request",
+      "c713-self",
+      "c713-cost"
+     ]
+    },
+    {
+     "text": "因维修影响承租人使用的，应当相应减少租金或者延长租期",
+     "rules": [
+      "c713-rent"
+     ]
+    },
+    {
+     "text": "第三人主张权利致不能使用收益的，承租人可以请求减少租金或者不支付租金；承租人应当及时通知出租人",
+     "rules": [
+      "c723-1",
+      "c723-2"
+     ]
+    },
+    {
+     "text": "租赁期限届满，承租人应当返还租赁物，且返还时应符合按约定或依性质使用后的状态",
+     "rules": [
+      "c733-return",
+      "c733-state"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第713条第2款（承租人过错致需维修）排除出租人的维修义务，优先于第712条的一般维修义务",
+     "rules": [
+      "c713-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "出租人维修义务的一般规定（含“另有约定的除外”）见第712条（art:712 行 c712-duty、c712-obl）",
+     "rules": []
+    },
+    {
+     "text": "笔记所列瑕疵担保义务、承租人不得擅自改善或增设他物等，分别见第723、724、731、715条等，第715条不在本行挂载法条内，未写规则",
+     "rules": []
+    },
+    {
+     "text": "第733条原文以“租赁期限届满”为条件；合同解除等其他终止情形下的返还义务属学理扩展，未写规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c708-deliver",
+    "srcs": [
+     "art708"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "deliverLeasedThingAsAgreed(O,Te,T)"
+     }
+    ],
+    "note": "出租人应当按照约定将租赁物交付承租人",
+    "auth": "npc"
+   },
+   {
+    "key": "c708-fit",
+    "srcs": [
+     "art708"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "keepFitForAgreedUseDuringTerm(O,T,L)"
+     }
+    ],
+    "note": "出租人应当在租赁期限内保持租赁物符合约定的用途",
+    "auth": "npc"
+   },
+   {
+    "key": "c713-request",
+    "srcs": [
+     "art713-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "needsRepair(T)",
+     "landlordBearsRepairDuty(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "requestRepairInReasonableTime(Te,O,T)"
+     }
+    ],
+    "note": "承租人在租赁物需要维修时可以请求出租人在合理期限内维修",
+    "auth": "npc"
+   },
+   {
+    "key": "c713-self",
+    "srcs": [
+     "art713-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordBearsRepairDuty(O,L)",
+     "landlordFailedToRepair(O,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "repairByTenant(Te,T)"
+     }
+    ],
+    "note": "出租人未履行维修义务的，承租人可以自行维修",
+    "auth": "npc"
+   },
+   {
+    "key": "c713-cost",
+    "srcs": [
+     "art713-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordBearsRepairDuty(O,L)",
+     "landlordFailedToRepair(O,T)",
+     "repairedByTenant(Te,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "bearRepairCost(O,Te,T)"
+     }
+    ],
+    "note": "承租人因出租人未履行维修义务而自行维修的，维修费用由出租人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c713-rent",
+    "srcs": [
+     "art713-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordBearsRepairDuty(O,L)",
+     "repairAffectsTenantUse(T,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "reduceRentOrExtendTerm(O,Te,L)"
+     }
+    ],
+    "note": "因维修租赁物影响承租人使用的，应当相应减少租金或者延长租期（条文未明示主体，按其效果由出租人承担）",
+    "auth": "npc"
+   },
+   {
+    "key": "c713-2",
+    "srcs": [
+     "art713-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "repairNeedCausedByTenantFault(Te,T)"
+    ],
+    "heads": [
+     "-landlordBearsRepairDuty(O,L)"
+    ],
+    "note": "因承租人的过错致使租赁物需要维修的，出租人不承担前款规定的维修义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c723-1",
+    "srcs": [
+     "art723-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "thirdPartyClaimPreventsUseAndProfit(T,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "requestRentReductionOrExemption(Te,O,L)"
+     }
+    ],
+    "note": "因第三人主张权利，致使承租人不能对租赁物使用、收益的，承租人可以请求减少租金或者不支付租金",
+    "auth": "npc"
+   },
+   {
+    "key": "c723-2",
+    "srcs": [
+     "art723-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "thirdPartyAssertsRightOver(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "notifyLandlordOfThirdPartyClaim(Te,O,T)"
+     }
+    ],
+    "note": "第三人主张权利的，承租人应当及时通知出租人",
+    "auth": "npc"
+   },
+   {
+    "key": "c733-return",
+    "srcs": [
+     "art733"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "leaseTermExpired(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "returnLeasedThing(Te,O,T)"
+     }
+    ],
+    "note": "租赁期限届满，承租人应当返还租赁物",
+    "auth": "npc"
+   },
+   {
+    "key": "c733-state",
+    "srcs": [
+     "art733"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "leaseTermExpired(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "returnInStateAfterProperUse(Te,O,T)"
+     }
+    ],
+    "note": "返还的租赁物应当符合按照约定或者根据租赁物的性质使用后的状态",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c713-2",
+    "c712-duty",
+    "第713条第2款：因承租人过错致需维修的，出租人不承担维修义务，排除第712条的一般维修义务"
+   ]
+  ],
+  "predicates": {
+   "deliverLeasedThingAsAgreed": "出租人O按照约定将租赁物T交付承租人Te（出租人，承租人，租赁物）",
+   "keepFitForAgreedUseDuringTerm": "出租人O在租赁合同L的租赁期限内保持租赁物T符合约定的用途（出租人，租赁物，租赁合同）",
+   "requestRepairInReasonableTime": "承租人Te请求出租人O在合理期限内维修租赁物T（承租人，出租人，租赁物）",
+   "landlordFailedToRepair": "出租人O未履行对租赁物T的维修义务（出租人，租赁物）",
+   "repairByTenant": "承租人Te自行维修租赁物T（承租人，租赁物）",
+   "repairedByTenant": "承租人Te已自行维修租赁物T（承租人，租赁物）",
+   "bearRepairCost": "出租人O负担承租人Te维修租赁物T的费用（出租人，承租人，租赁物）",
+   "repairAffectsTenantUse": "因维修租赁物T影响承租人依租赁合同L的使用（租赁物，租赁合同）",
+   "reduceRentOrExtendTerm": "出租人O就租赁合同L相应减少承租人Te的租金或者延长租期（出租人，承租人，租赁合同）",
+   "repairNeedCausedByTenantFault": "因承租人Te的过错致使租赁物T需要维修（承租人，租赁物）",
+   "thirdPartyClaimPreventsUseAndProfit": "因第三人主张权利，致使承租人不能依租赁合同L对租赁物T使用、收益（租赁物，租赁合同）",
+   "thirdPartyAssertsRightOver": "第三人X对租赁物T主张权利（第三人，租赁物）",
+   "notifyLandlordOfThirdPartyClaim": "承租人Te就第三人对租赁物T主张权利及时通知出租人O（承租人，出租人，租赁物）",
+   "returnLeasedThing": "承租人Te向出租人O返还租赁物T（承租人，出租人，租赁物）",
+   "returnInStateAfterProperUse": "承租人Te返还的租赁物T符合按照约定或者根据租赁物性质使用后的状态（承租人，出租人，租赁物）"
+  }
+ },
+ "art:711": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "承租人违反使用方法致租赁物损失时出租人的救济",
+     "rules": [
+      "c711-term",
+      "c711-comp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承租人未按照约定的方法或者未根据租赁物的性质使用租赁物，致使租赁物受到损失",
+     "rules": [
+      "c711-term",
+      "c711-comp"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "出租人可以解除合同",
+     "rules": [
+      "c711-term"
+     ]
+    },
+    {
+     "text": "出租人可以请求赔偿损失",
+     "rules": [
+      "c711-comp"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "合理使用致损耗不担责见第710条（art:710 行 c710）；使用方法的确定见第709条（art:709 行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c711-term",
+    "srcs": [
+     "art711"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "improperUseOfLeasedThing(Te,T)",
+     "leasedThingDamagedByUse(T,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "terminateContract(O,L)"
+     }
+    ],
+    "note": "承租人未按约定方法或未根据租赁物性质使用致租赁物受到损失的，出租人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c711-comp",
+    "srcs": [
+     "art711"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "landlordOf(O,L)",
+     "improperUseOfLeasedThing(Te,T)",
+     "leasedThingDamagedByUse(T,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "claimCompensationForLeasedThingLoss(O,Te,T)"
+     }
+    ],
+    "note": "同上情形，出租人可以请求承租人赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "improperUseOfLeasedThing": "承租人Te未按照约定的方法或者未根据租赁物T的性质使用租赁物（承租人，租赁物）",
+   "leasedThingDamagedByUse": "租赁物T在租赁合同L履行中因承租人的使用受到损失（租赁物，租赁合同）",
+   "claimCompensationForLeasedThingLoss": "出租人O请求承租人Te赔偿租赁物T的损失（出租人，承租人，租赁物）"
+  }
+ },
+ "art:720": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁期限内占有、使用租赁物所得收益的归属",
+     "rules": [
+      "c720"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "在租赁期限内因占有、使用租赁物获得收益",
+     "rules": [
+      "c720"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的除外",
+     "rules": [
+      "c720"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "收益归承租人所有",
+     "rules": [
+      "c720"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为租赁合同的特别规定，区别于第321条孳息归属的一般规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c720",
+    "srcs": [
+     "art720"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "incomeFromLeasedThing(I,T,L)",
+     "~agreedOtherwiseOnLeaseIncome(L)"
+    ],
+    "heads": [
+     "belongsTo(I,Te)"
+    ],
+    "note": "在租赁期限内因占有、使用租赁物获得的收益，归承租人所有，但当事人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "incomeFromLeasedThing": "I是在租赁合同L的租赁期限内因占有、使用租赁物T获得的收益（收益，租赁物，租赁合同）",
+   "agreedOtherwiseOnLeaseIncome": "当事人就租赁合同L租赁期内收益的归属另有约定（租赁合同）"
+  }
+ },
+ "card:g5276": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁期限的上限、续订、登记备案、书面形式与不定期租赁",
+     "rules": [
+      "c705-1",
+      "c705-renew",
+      "c705-2",
+      "c706",
+      "c707-1",
+      "c707-2",
+      "c730-1",
+      "c730-2",
+      "c730-notice-o",
+      "c730-notice-te"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "约定租赁期限超过二十年；续订时自续订之日起约定的期限超过二十年",
+     "rules": [
+      "c705-1",
+      "c705-2"
+     ]
+    },
+    {
+     "text": "租赁期限六个月以上；未采用书面形式且无法确定租赁期限",
+     "rules": [
+      "c707-1",
+      "c707-2"
+     ]
+    },
+    {
+     "text": "对租赁期限没有约定或约定不明确，依第510条仍不能确定",
+     "rules": [
+      "c730-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "租赁期限超过二十年的，超过部分无效",
+     "rules": [
+      "c705-1"
+     ]
+    },
+    {
+     "text": "期限届满，当事人可以续订租赁合同；续订的约定期限自续订之日起不得超过二十年，超过部分无效",
+     "rules": [
+      "c705-renew",
+      "c705-2"
+     ]
+    },
+    {
+     "text": "未依法律、行政法规办理租赁合同登记备案手续的，不影响合同效力",
+     "rules": [
+      "c706"
+     ]
+    },
+    {
+     "text": "租赁期限六个月以上的，应当采用书面形式；未采用书面形式、无法确定租赁期限的，视为不定期租赁",
+     "rules": [
+      "c707-1",
+      "c707-2"
+     ]
+    },
+    {
+     "text": "期限无约定或约定不明且依第510条仍不能确定的，视为不定期租赁",
+     "rules": [
+      "c730-1"
+     ]
+    },
+    {
+     "text": "不定期租赁的当事人可以随时解除合同，但应当在合理期限之前通知对方",
+     "rules": [
+      "c730-2",
+      "c730-notice-o",
+      "c730-notice-te"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第707条同时挂在 card:g5260 行，仅在本行形式化",
+     "rules": []
+    },
+    {
+     "text": "笔记所列第三种不定期租赁（期满后承租人继续使用、出租人无异议，原合同继续有效但期限为不定期）出自第734条第1款，不在本行挂载法条内，未写规则",
+     "rules": []
+    },
+    {
+     "text": "笔记称“出租人解除合同应当在合理期限之前通知承租人”，第730条原文为“应当在合理期限之前通知对方”，双方均负通知义务",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c705-1",
+    "srcs": [
+     "art705-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "agreedLeaseTermExceeds20Years(L)"
+    ],
+    "heads": [
+     "excessLeaseTermVoid(L)"
+    ],
+    "note": "租赁期限不得超过二十年；超过二十年的，超过部分无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c705-renew",
+    "srcs": [
+     "art705-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "leaseTermExpired(L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "renewLease(O,Te,L)"
+     }
+    ],
+    "note": "租赁期限届满，当事人可以续订租赁合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c705-2",
+    "srcs": [
+     "art705-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "leaseRenewed(L)",
+     "renewedTermExceeds20YearsFromRenewal(L)"
+    ],
+    "heads": [
+     "excessLeaseTermVoid(L)"
+    ],
+    "note": "续订的，约定的租赁期限自续订之日起不得超过二十年，超过部分无效（第705条第1款效果之适用）",
+    "auth": "npc"
+   },
+   {
+    "key": "c706",
+    "srcs": [
+     "art706"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "registrationFilingRequiredByLaw(L)",
+     "-leaseRegistrationFiled(L)"
+    ],
+    "heads": [
+     "validityUnaffectedByNonRegistration(L)"
+    ],
+    "note": "当事人未依照法律、行政法规规定办理租赁合同登记备案手续的，不影响合同的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c707-1",
+    "srcs": [
+     "art707"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "leaseTermAtLeast6Months(L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "writtenForm(L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "writtenForm(L)"
+     }
+    ],
+    "note": "租赁期限六个月以上的，应当采用书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c707-2",
+    "srcs": [
+     "art707"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "-writtenForm(L)",
+     "leaseTermUndeterminable(L)"
+    ],
+    "heads": [
+     "indefiniteLease(L)"
+    ],
+    "note": "当事人未采用书面形式，无法确定租赁期限的，视为不定期租赁",
+    "auth": "npc"
+   },
+   {
+    "key": "c730-1",
+    "srcs": [
+     "art730"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "unclearTerm(L,leaseTerm)",
+     "notDeterminableUnderArt510(leaseTerm,L)"
+    ],
+    "heads": [
+     "indefiniteLease(L)"
+    ],
+    "note": "对租赁期限没有约定或约定不明确，依第510条仍不能确定的，视为不定期租赁（常量 leaseTerm 指租赁期限）",
+    "auth": "npc"
+   },
+   {
+    "key": "c730-2",
+    "srcs": [
+     "art730"
+    ],
+    "body": [
+     "indefiniteLease(L)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "terminateContractAtAnyTime(O,L)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "terminateContractAtAnyTime(Te,L)"
+     }
+    ],
+    "note": "不定期租赁的当事人可以随时解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c730-notice-o",
+    "srcs": [
+     "art730"
+    ],
+    "body": [
+     "indefiniteLease(L)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "terminateContract(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "notifyTerminationInAdvance(O,Te,L)"
+     }
+    ],
+    "note": "出租人解除不定期租赁的，应当在合理期限之前通知承租人",
+    "auth": "npc"
+   },
+   {
+    "key": "c730-notice-te",
+    "srcs": [
+     "art730"
+    ],
+    "body": [
+     "indefiniteLease(L)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "terminateContract(Te,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "notifyTerminationInAdvance(Te,O,L)"
+     }
+    ],
+    "note": "承租人解除不定期租赁的，应当在合理期限之前通知出租人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreedLeaseTermExceeds20Years": "租赁合同L约定的租赁期限超过二十年（租赁合同）",
+   "excessLeaseTermVoid": "租赁合同L约定的租赁期限超过二十年的部分无效（租赁合同）",
+   "leaseTermExpired": "租赁合同L的租赁期限届满（租赁合同）",
+   "renewLease": "当事人O与Te续订租赁合同L（出租人，承租人，租赁合同）",
+   "leaseRenewed": "租赁合同L已在期限届满后续订（租赁合同）",
+   "renewedTermExceeds20YearsFromRenewal": "续订的租赁合同L约定的租赁期限自续订之日起超过二十年（租赁合同）",
+   "registrationFilingRequiredByLaw": "法律、行政法规规定租赁合同L应当办理登记备案手续（租赁合同）",
+   "leaseRegistrationFiled": "租赁合同L已办理登记备案手续（租赁合同）",
+   "validityUnaffectedByNonRegistration": "租赁合同L的效力不因未办理登记备案手续而受影响（租赁合同）",
+   "leaseTermAtLeast6Months": "租赁合同L的租赁期限在六个月以上（租赁合同）",
+   "leaseTermUndeterminable": "无法确定租赁合同L的租赁期限（租赁合同）",
+   "indefiniteLease": "租赁合同L为（视为）不定期租赁（租赁合同）"
+  }
+ },
+ "card:g5260": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十四章　租赁合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "租赁合同的概念与内容、转租规则、侵害优先购买权的责任、承租人死亡后的租赁承受",
+     "rules": [
+      "c703",
+      "c716-perm",
+      "c716-continue",
+      "c716-damage",
+      "c716-2",
+      "c717",
+      "c718",
+      "c728-comp",
+      "c728-validity",
+      "c732"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "租赁合同：出租人将租赁物交付承租人使用、收益，承租人支付租金",
+     "rules": [
+      "c703"
+     ]
+    },
+    {
+     "text": "承租人经出租人同意转租；出租人知道或应当知道转租而六个月内未提出异议的，视为同意",
+     "rules": [
+      "c716-perm",
+      "c718"
+     ]
+    },
+    {
+     "text": "转租期限超过承租人剩余租赁期限",
+     "rules": [
+      "c717"
+     ]
+    },
+    {
+     "text": "出租人出卖租赁房屋时未通知承租人或有其他妨害承租人行使优先购买权的情形",
+     "rules": [
+      "c728-comp",
+      "c728-validity"
+     ]
+    },
+    {
+     "text": "承租人在房屋租赁期限内死亡，有生前共同居住的人或共同经营人",
+     "rules": [
+      "c732"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "转租期限超过剩余租赁期限的部分对出租人无约束力，但出租人与承租人另有约定的除外",
+     "rules": [
+      "c717"
+     ]
+    },
+    {
+     "text": "侵害优先购买权的，出租人与第三人订立的房屋买卖合同的效力不受影响",
+     "rules": [
+      "c728-validity"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "合法转租的，原租赁合同继续有效；第三人造成租赁物损失的，承租人应当赔偿",
+     "rules": [
+      "c716-continue",
+      "c716-damage"
+     ]
+    },
+    {
+     "text": "未经同意转租的，出租人可以解除合同",
+     "rules": [
+      "c716-2"
+     ]
+    },
+    {
+     "text": "超过部分的转租约定对出租人不具有法律约束力",
+     "rules": [
+      "c717"
+     ]
+    },
+    {
+     "text": "承租人可以请求出租人承担赔偿责任",
+     "rules": [
+      "c728-comp"
+     ]
+    },
+    {
+     "text": "共同居住人或共同经营人可以按照原租赁合同租赁该房屋",
+     "rules": [
+      "c732"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第718条拟制同意后，第716条第2款的未经同意转租解除权即不成立（以 ~landlordConsentedToSublease 表达）",
+     "rules": [
+      "c716-2",
+      "c718"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第704条“租赁合同的内容一般包括……”为提示性条款，不写规则",
+     "rules": []
+    },
+    {
+     "text": "第707条同时挂在 card:g5276 行，见该行 c707-1、c707-2",
+     "rules": []
+    },
+    {
+     "text": "第725条（买卖不破租赁）已有基础规则 c725，不重写；其司法解释例外见 card:g2034 行",
+     "rules": []
+    },
+    {
+     "text": "承租人优先购买权本身（第726条）已有基础规则 c726、c726-notify、c726-2；第728条以其存在为前提，故沿用其两项除外",
+     "rules": []
+    },
+    {
+     "text": "笔记中的一房数租履行顺序（《城镇房屋租赁合同解释》第5条，笔记写作旧第6条）、“买卖破租赁”、优先承租权等不属于本行挂载条文，未写规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c703",
+    "srcs": [
+     "art703"
+    ],
+    "body": [
+     "contract(K)",
+     "deliversThingForUseAndProfit(O,Te,T,K)",
+     "paysRentUnder(Te,O,K)"
+    ],
+    "heads": [
+     "leaseOf(K,T)",
+     "landlordOf(O,K)",
+     "tenantOf(Te,K)"
+    ],
+    "note": "租赁合同是出租人将租赁物交付承租人使用、收益，承租人支付租金的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c716-perm",
+    "srcs": [
+     "art716-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordConsentedToSublease(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "subleaseToThirdParty(Te,T,L)"
+     }
+    ],
+    "note": "承租人经出租人同意，可以将租赁物转租给第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c716-continue",
+    "srcs": [
+     "art716-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "tenantOf(Te,L)",
+     "subleaseContractOf(K2,Sub,Te)",
+     "subleaseUnder(K2,L)"
+    ],
+    "heads": [
+     "leaseContinuesInForce(L)"
+    ],
+    "note": "承租人转租的，承租人与出租人之间的租赁合同继续有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c716-damage",
+    "srcs": [
+     "art716-1"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "subleaseContractOf(K2,Sub,Te)",
+     "subleaseUnder(K2,L)",
+     "subTenantCausedLoss(Sub,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "compensateLeasedThingLoss(Te,O,T)"
+     }
+    ],
+    "note": "承租人转租的，第三人（次承租人）造成租赁物损失的，承租人应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c716-2",
+    "srcs": [
+     "art716-2"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "subleaseContractOf(K2,Sub,Te)",
+     "subleaseUnder(K2,L)",
+     "~landlordConsentedToSublease(O,L)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "Te",
+      "content": "terminateContract(O,L)"
+     }
+    ],
+    "note": "承租人未经出租人同意转租的，出租人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c717",
+    "srcs": [
+     "art717"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordConsentedToSublease(O,L)",
+     "subleaseContractOf(K2,Sub,Te)",
+     "subleaseUnder(K2,L)",
+     "subleaseTermExceedsRemainingTerm(K2,L)",
+     "~agreedOtherwiseOnExcessSubleaseTerm(L)"
+    ],
+    "heads": [
+     "excessSubleaseTermNotBindingOnLessor(K2,O)"
+    ],
+    "note": "经同意转租，转租期限超过承租人剩余租赁期限的，超过部分的约定对出租人不具有法律约束力，但出租人与承租人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c718",
+    "srcs": [
+     "art718"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "subleaseContractOf(K2,Sub,Te)",
+     "subleaseUnder(K2,L)",
+     "landlordKnewOrShouldKnowSublease(O,K2)",
+     "noObjectionWithin6Months(O,K2)"
+    ],
+    "heads": [
+     "landlordConsentedToSublease(O,L)"
+    ],
+    "note": "出租人知道或者应当知道承租人转租，但是在六个月内未提出异议的，视为出租人同意转租",
+    "auth": "npc"
+   },
+   {
+    "key": "c728-comp",
+    "srcs": [
+     "art728"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "houseLease(L)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "landlordSells(T,Y)",
+     {
+      "or": [
+       "landlordFailedToNotifySale(O,Te,T)",
+       "otherObstructionOfPreemption(O,Te,T)"
+      ]
+     },
+     "~coOwnerExercisesPreemption(T)",
+     "~saleToCloseRelative(T,Y)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "Te",
+      "counterparty": "O",
+      "content": "claimPreemptionInfringementDamages(Te,O,T)"
+     }
+    ],
+    "note": "出租人未通知承租人或者有其他妨害承租人行使优先购买权情形的，承租人可以请求出租人承担赔偿责任；以承租人享有优先购买权为前提，故沿用第726条的两项除外（按份共有人行使优先购买权、出卖给近亲属）",
+    "auth": "npc"
+   },
+   {
+    "key": "c728-validity",
+    "srcs": [
+     "art728"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "houseLease(L)",
+     "landlordOf(O,L)",
+     "tenantOf(Te,L)",
+     "sale(KS,O,Y,T)",
+     {
+      "or": [
+       "landlordFailedToNotifySale(O,Te,T)",
+       "otherObstructionOfPreemption(O,Te,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "saleValidityUnaffectedByPreemptionInfringement(KS)"
+    ],
+    "note": "但是，出租人与第三人订立的房屋买卖合同的效力不受影响",
+    "auth": "npc"
+   },
+   {
+    "key": "c732",
+    "srcs": [
+     "art732"
+    ],
+    "body": [
+     "leaseOf(L,T)",
+     "houseLease(L)",
+     "tenantOf(Te,L)",
+     "diedDuringLeaseTerm(Te,L)",
+     {
+      "or": [
+       "cohabitedWithTenant(P,Te)",
+       "coOperatorWithTenant(P,Te)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "leaseOnOriginalTerms(P,L)"
+     }
+    ],
+    "note": "承租人在房屋租赁期限内死亡的，与其生前共同居住的人或者共同经营人可以按照原租赁合同租赁该房屋",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deliversThingForUseAndProfit": "合同K约定O将物T交付Te使用、收益（出租方，承租方，物，合同）",
+   "paysRentUnder": "合同K约定Te向O支付租金（承租方，出租方，合同）",
+   "landlordConsentedToSublease": "出租人O同意（含视为同意）承租人就租赁合同L转租（出租人，租赁合同）",
+   "subleaseToThirdParty": "承租人Te将租赁合同L项下的租赁物T转租给第三人（承租人，租赁物，租赁合同）",
+   "subleaseUnder": "转租合同K2系就租赁合同L项下的租赁物订立（转租合同，租赁合同）",
+   "leaseContinuesInForce": "出租人与承租人之间的租赁合同L继续有效（租赁合同）",
+   "subTenantCausedLoss": "次承租人Sub造成租赁物T损失（次承租人，租赁物）",
+   "subleaseTermExceedsRemainingTerm": "转租合同K2的转租期限超过承租人在租赁合同L中的剩余租赁期限（转租合同，租赁合同）",
+   "agreedOtherwiseOnExcessSubleaseTerm": "出租人与承租人就租赁合同L项下超过剩余期限的转租另有约定（租赁合同）",
+   "excessSubleaseTermNotBindingOnLessor": "转租合同K2中超过承租人剩余租赁期限部分的约定对出租人O不具有法律约束力（转租合同，出租人）",
+   "landlordKnewOrShouldKnowSublease": "出租人O知道或者应当知道转租K2（出租人，转租合同）",
+   "noObjectionWithin6Months": "出租人O自知道或应当知道转租K2起六个月内未提出异议（出租人，转租合同）",
+   "landlordFailedToNotifySale": "出租人O出卖租赁房屋T未通知承租人Te（出租人，承租人，房屋）",
+   "otherObstructionOfPreemption": "出租人O有其他妨害承租人Te就房屋T行使优先购买权的情形（出租人，承租人，房屋）",
+   "claimPreemptionInfringementDamages": "承租人Te请求出租人O就妨害其对房屋T的优先购买权承担赔偿责任（承租人，出租人，房屋）",
+   "saleValidityUnaffectedByPreemptionInfringement": "房屋买卖合同KS的效力不因侵害承租人优先购买权而受影响（买卖合同）",
+   "diedDuringLeaseTerm": "承租人Te在房屋租赁合同L的租赁期限内死亡（承租人，租赁合同）",
+   "cohabitedWithTenant": "P是与承租人Te生前共同居住的人（共同居住人，承租人）",
+   "coOperatorWithTenant": "P是承租人Te生前的共同经营人（共同经营人，承租人）",
+   "leaseOnOriginalTerms": "P按照原租赁合同L租赁该房屋（承受人，租赁合同）"
+  }
+ }
+}

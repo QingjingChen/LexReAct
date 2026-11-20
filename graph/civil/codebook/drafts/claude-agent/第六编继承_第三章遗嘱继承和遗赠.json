@@ -1,0 +1,1114 @@
+{
+ "art:1137": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "录音录像遗嘱的形式要件",
+     "rules": [
+      "c1137-form"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "两个以上见证人在场见证；遗嘱人和见证人在录音录像中记录其姓名或者肖像，以及年、月、日",
+     "rules": [
+      "c1137-form"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具备录音录像遗嘱形式要件的，遗嘱无效（学理通说，法条未明文）",
+     "rules": [
+      "c1137-void"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合形式要件的录音录像遗嘱形式有效",
+     "rules": [
+      "c1137-form"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "见证人资格见第1140条（card:g7149 c1140-1）；危急情况下的口头遗嘱见第1138条（card:g7149 c1138-form），危急消除后能以录音录像形式立遗嘱的，口头遗嘱无效",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1137-form",
+    "srcs": [
+     "art1137"
+    ],
+    "body": [
+     "audioVideoWill(W)",
+     "twoOrMoreQualifiedWitnessesPresent(W)",
+     "namesOrImagesRecorded(W)",
+     "datedYMD(W)"
+    ],
+    "heads": [
+     "willFormMet(W)"
+    ],
+    "note": "录音录像遗嘱应当有两个以上见证人在场见证，遗嘱人和见证人应当在录音录像中记录其姓名或者肖像，以及年、月、日",
+    "auth": "npc"
+   },
+   {
+    "key": "c1137-void",
+    "srcs": [
+     "art1137"
+    ],
+    "body": [
+     "audioVideoWill(W)",
+     "willOf(W,D)",
+     "~willFormMet(W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "学理通说：不符合法定形式要件的录音录像遗嘱不发生遗嘱效力；民法典未明文规定此效果",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "audioVideoWill": "W是录音录像遗嘱",
+   "namesOrImagesRecorded": "遗嘱人和见证人在录音录像遗嘱W中记录了其姓名或者肖像"
+  }
+ },
+ "art:1144": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "附义务的遗嘱继承或遗赠，继承人、受遗赠人不履行义务的后果",
+     "rules": [
+      "c1144-1",
+      "c1144-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "遗嘱继承或者遗赠附有义务",
+     "rules": [
+      "c1144-1"
+     ]
+    },
+    {
+     "text": "没有正当理由不履行义务，经利害关系人或者有关组织请求",
+     "rules": [
+      "c1144-2"
+     ]
+    },
+    {
+     "text": "司法解释要求义务能够履行，请求人为受益人或者其他继承人（继承编解释一第29条）",
+     "rules": [
+      "c1144-spc29"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有正当理由不履行的，不得取消",
+     "rules": [
+      "c1144-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "继承人或者受遗赠人应当履行所附义务",
+     "rules": [
+      "c1144-1"
+     ]
+    },
+    {
+     "text": "人民法院可以取消其接受附义务部分遗产的权利",
+     "rules": [
+      "c1144-2",
+      "c1144-spc29"
+     ]
+    },
+    {
+     "text": "取消后，由提出请求的继承人或者受益人负责按遗嘱人的意愿履行义务，接受遗产（继承编解释一第29条）",
+     "rules": [
+      "c1144-spc29b"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "取消的只是附义务部分遗产的权利，不同于第1125条丧失继承权；也不同于遗赠扶养协议（第1158条）的对待给付关系",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1144-1",
+    "srcs": [
+     "art1144"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "burdenAttached(W,H)",
+     {
+      "or": [
+       "testamentaryHeirOf(H,D)",
+       "legateeOf(H,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "performWillBurden(H,W)"
+     }
+    ],
+    "note": "遗嘱继承或者遗赠附有义务的，继承人或者受遗赠人应当履行义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1144-2",
+    "srcs": [
+     "art1144"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "burdenAttached(W,H)",
+     "failedWillBurden(H,W)",
+     "~justifiedNonPerformance(H,W)",
+     "burdenCancellationRequested(R,H,W)",
+     {
+      "or": [
+       "interestedParty(R,D)",
+       "relevantOrg(R)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": "H",
+      "content": "cancelBurdenedShare(H,W)"
+     }
+    ],
+    "note": "没有正当理由不履行义务的，经利害关系人或者有关组织请求，人民法院可以取消其接受附义务部分遗产的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1144-spc29",
+    "srcs": [
+     "art1144"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "burdenAttached(W,H)",
+     "burdenPerformable(W,H)",
+     "failedWillBurden(H,W)",
+     "~justifiedNonPerformance(H,W)",
+     "burdenCancellationRequested(R,H,W)",
+     {
+      "or": [
+       "burdenBeneficiary(R,W)",
+       "heirCandidate(R,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": "H",
+      "content": "cancelBurdenedShare(H,W)"
+     }
+    ],
+    "note": "继承编解释（一）第29条：义务能够履行而无正当理由不履行，经受益人或者其他继承人请求，人民法院可以取消其接受附义务部分遗产的权利",
+    "auth": "spc"
+   },
+   {
+    "key": "c1144-spc29b",
+    "srcs": [
+     "art1144"
+    ],
+    "body": [
+     "burdenedShareCancelled(H,W)",
+     "burdenCancellationRequested(R,H,W)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "performWillBurden(R,W)"
+     },
+     "receivesBurdenedShare(R,W)"
+    ],
+    "note": "继承编解释（一）第29条：取消后，由提出请求的继承人或者受益人负责按遗嘱人的意愿履行义务，接受遗产",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "burdenAttached": "遗嘱W对继承人或受遗赠人H的遗产附有义务（遗嘱，义务人）",
+   "performWillBurden": "履行遗嘱W所附的义务（义务人，遗嘱）",
+   "failedWillBurden": "H未履行遗嘱W所附义务（义务人，遗嘱）",
+   "justifiedNonPerformance": "H不履行遗嘱W所附义务有正当理由（义务人，遗嘱）",
+   "burdenCancellationRequested": "R请求人民法院取消H接受遗嘱W附义务部分遗产的权利（请求人，义务人，遗嘱）",
+   "cancelBurdenedShare": "取消H接受遗嘱W中附义务部分遗产的权利（义务人，遗嘱）",
+   "burdenPerformable": "遗嘱W对H所附义务能够履行（遗嘱，义务人）",
+   "burdenBeneficiary": "R是遗嘱W所附义务的受益人（受益人，遗嘱）",
+   "burdenedShareCancelled": "H接受遗嘱W附义务部分遗产的权利已被人民法院取消（义务人，遗嘱）",
+   "receivesBurdenedShare": "R接受遗嘱W中附义务部分的遗产（请求人，遗嘱）"
+  }
+ },
+ "art:1133": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "自然人可以通过遗嘱作出哪些处分",
+     "rules": [
+      "c1133-1",
+      "c1133-2",
+      "c1133-3",
+      "c1133-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "自然人依照本法规定立遗嘱，处分的须是个人财产",
+     "rules": [
+      "c1133-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "遗嘱处分了国家、集体或者他人财产的，该部分遗嘱无效（继承编解释一第26条）",
+     "rules": [
+      "c1133-spc26"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "可以立遗嘱处分个人财产，并可以指定遗嘱执行人",
+     "rules": [
+      "c1133-1"
+     ]
+    },
+    {
+     "text": "可以立遗嘱将个人财产指定由法定继承人中的一人或者数人继承（遗嘱继承）",
+     "rules": [
+      "c1133-2",
+      "c1133-heir"
+     ]
+    },
+    {
+     "text": "可以立遗嘱将个人财产赠与国家、集体或者法定继承人以外的组织、个人（遗赠）",
+     "rules": [
+      "c1133-3",
+      "c1133-legatee"
+     ]
+    },
+    {
+     "text": "可以依法设立遗嘱信托",
+     "rules": [
+      "c1133-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "遗嘱继承人限于法定继承人范围之内；受遗赠人为法定继承人以外的主体（含国家、集体）。“遗嘱继承人/受遗赠人”的身份划分为学理归纳，标为 doctrine",
+     "rules": [
+      "c1133-heir",
+      "c1133-legatee"
+     ]
+    },
+    {
+     "text": "遗嘱的形式要件见第1134—1139条，遗嘱的撤回、变更见 card:g7149 c1142-1 及基础规则 c1142-2、c1142-3，遗嘱无效见第1143条基础规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1133-1",
+    "srcs": [
+     "art1133-1"
+    ],
+    "body": [
+     "naturalPerson(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "disposePersonalPropertyByWill(D)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "appointWillExecutor(D)"
+     }
+    ],
+    "note": "自然人可以依照本法规定立遗嘱处分个人财产，并可以指定遗嘱执行人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1133-2",
+    "srcs": [
+     "art1133-2"
+    ],
+    "body": [
+     "naturalPerson(D)",
+     "heirCandidate(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "H",
+      "content": "designateHeirByWill(D,H)"
+     }
+    ],
+    "note": "自然人可以立遗嘱将个人财产指定由法定继承人中的一人或者数人继承",
+    "auth": "npc"
+   },
+   {
+    "key": "c1133-3",
+    "srcs": [
+     "art1133-3"
+    ],
+    "body": [
+     "naturalPerson(D)",
+     {
+      "or": [
+       "state(R)",
+       "collectiveOrg(R)",
+       "organization(R)",
+       "naturalPerson(R)"
+      ]
+     },
+     "~heirCandidate(R,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "bequeathTo(D,R)"
+     }
+    ],
+    "note": "自然人可以立遗嘱将个人财产赠与国家、集体或者法定继承人以外的组织、个人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1133-4",
+    "srcs": [
+     "art1133-4"
+    ],
+    "body": [
+     "naturalPerson(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "establishTestamentaryTrust(D)"
+     }
+    ],
+    "note": "自然人可以依法设立遗嘱信托",
+    "auth": "npc"
+   },
+   {
+    "key": "c1133-heir",
+    "srcs": [
+     "art1133-2"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "willGives(W,H,X)",
+     "heirCandidate(H,D)"
+    ],
+    "heads": [
+     "testamentaryHeirOf(H,D)"
+    ],
+    "note": "遗嘱将个人财产指定由法定继承人继承的，该人为遗嘱继承人（学理归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1133-legatee",
+    "srcs": [
+     "art1133-3"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "willGives(W,R,X)",
+     "~heirCandidate(R,D)"
+    ],
+    "heads": [
+     "legateeOf(R,D)"
+    ],
+    "note": "遗嘱将个人财产赠与法定继承人以外的国家、集体、组织或个人的，为遗赠，该人为受遗赠人（学理归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1133-spc26",
+    "srcs": [
+     "art1133-1"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "willGives(W,H,X)",
+     "notPropertyOfTestator(X,D)"
+    ],
+    "heads": [
+     "willVoidAsTo(W,X)"
+    ],
+    "note": "继承编解释（一）第26条：遗嘱人以遗嘱处分了国家、集体或者他人财产的，应当认定该部分遗嘱无效",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "disposePersonalPropertyByWill": "立遗嘱处分个人财产（遗嘱人）",
+   "appointWillExecutor": "指定遗嘱执行人（遗嘱人）",
+   "designateHeirByWill": "立遗嘱指定法定继承人H继承个人财产（遗嘱人，继承人）",
+   "state": "R是国家",
+   "collectiveOrg": "R是集体（集体所有制组织）",
+   "bequeathTo": "立遗嘱将个人财产赠与R（遗赠）（遗嘱人，受遗赠人）",
+   "establishTestamentaryTrust": "依法设立遗嘱信托（遗嘱人）",
+   "willGives": "遗嘱W将财产X指定给H继承或赠与H（遗嘱，受益人，财产）",
+   "testamentaryHeirOf": "H是被继承人D的遗嘱继承人（继承人，被继承人）",
+   "legateeOf": "R是遗赠人D的受遗赠人（受遗赠人，遗赠人）",
+   "notPropertyOfTestator": "财产X属于国家、集体或者他人，不是遗嘱人D的个人财产（财产，遗嘱人）",
+   "willVoidAsTo": "遗嘱W中涉及财产X的部分无效（遗嘱，财产）"
+  }
+ },
+ "card:g7149": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "打印遗嘱、口头遗嘱的形式要件与口头遗嘱的失效",
+     "rules": [
+      "c1136-form",
+      "c1138-perm",
+      "c1138-form",
+      "c1138-lapse"
+     ]
+    },
+    {
+     "text": "谁不能作为遗嘱见证人",
+     "rules": [
+      "c1140-1"
+     ]
+    },
+    {
+     "text": "遗嘱必须为缺乏劳动能力又没有生活来源的继承人保留必要份额",
+     "rules": [
+      "c1141",
+      "c1141-spc25"
+     ]
+    },
+    {
+     "text": "遗嘱的撤回、变更",
+     "rules": [
+      "c1142-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "打印遗嘱：两个以上见证人在场见证，遗嘱人和见证人在每一页签名并注明年、月、日",
+     "rules": [
+      "c1136-form"
+     ]
+    },
+    {
+     "text": "口头遗嘱：限于危急情况，须两个以上见证人在场见证",
+     "rules": [
+      "c1138-perm",
+      "c1138-form"
+     ]
+    },
+    {
+     "text": "不能作见证人：无民事行为能力人、限制民事行为能力人及其他不具有见证能力的人；继承人、受遗赠人；与继承人、受遗赠人有利害关系的人",
+     "rules": [
+      "c1140-1"
+     ]
+    },
+    {
+     "text": "继承人、受遗赠人的债权人、债务人，共同经营的合伙人，视为有利害关系（继承编解释一第24条）",
+     "rules": [
+      "c1140-spc24"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "危急情况消除后，遗嘱人能够以书面或者录音录像形式立遗嘱的，所立口头遗嘱无效",
+     "rules": [
+      "c1138-lapse"
+     ]
+    },
+    {
+     "text": "打印遗嘱、口头遗嘱不具备形式要件的无效（学理通说）",
+     "rules": [
+      "c1136-void",
+      "c1138-void"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "遗嘱应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产份额",
+     "rules": [
+      "c1141"
+     ]
+    },
+    {
+     "text": "遗嘱未保留的，遗产处理时应当先为该继承人留下必要遗产，剩余部分才参照遗嘱处理；是否缺乏劳动能力又没有生活来源，按遗嘱生效时的具体情况确定（继承编解释一第25条）",
+     "rules": [
+      "c1141-spc25"
+     ]
+    },
+    {
+     "text": "遗嘱人可以撤回、变更自己所立的遗嘱",
+     "rules": [
+      "c1142-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "口头遗嘱在危急情况消除且能以书面或录音录像形式立遗嘱时无效，即使当初形式合格",
+     "rules": [
+      "c1138-lapse"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1142条第2款（相反行为视为撤回）、第3款（数份遗嘱相抵触以最后的为准）已有基础规则 c1142-2、c1142-3，本行不重复形式化",
+     "rules": []
+    },
+    {
+     "text": "遗嘱继承须有合法有效的遗嘱、无遗赠扶养协议、遗嘱继承人未丧失或放弃继承权（笔记），对应基础规则 c1123-will、c-will-effective，以及第四章 card:g7086 c1154-lapse",
+     "rules": []
+    },
+    {
+     "text": "第1159条分割遗产时为缺乏劳动能力又没有生活来源的继承人保留必要遗产，针对清偿债务情形（见 card:g7245 c1159-2）；本条针对遗嘱处分",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1136-form",
+    "srcs": [
+     "art1136"
+    ],
+    "body": [
+     "printedWill(W)",
+     "twoOrMoreQualifiedWitnessesPresent(W)",
+     "eachPageSignedAndDatedByTestatorAndWitnesses(W)"
+    ],
+    "heads": [
+     "willFormMet(W)"
+    ],
+    "note": "打印遗嘱应当有两个以上见证人在场见证；遗嘱人和见证人应当在遗嘱每一页签名，注明年、月、日",
+    "auth": "npc"
+   },
+   {
+    "key": "c1136-void",
+    "srcs": [
+     "art1136"
+    ],
+    "body": [
+     "printedWill(W)",
+     "willOf(W,D)",
+     "~willFormMet(W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "学理通说：不符合法定形式要件的打印遗嘱不发生遗嘱效力；民法典未明文规定此效果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1138-perm",
+    "srcs": [
+     "art1138"
+    ],
+    "body": [
+     "naturalPerson(D)",
+     "inEmergency(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "makeOralWill(D)"
+     }
+    ],
+    "note": "遗嘱人在危急情况下，可以立口头遗嘱",
+    "auth": "npc"
+   },
+   {
+    "key": "c1138-form",
+    "srcs": [
+     "art1138"
+    ],
+    "body": [
+     "oralWill(W)",
+     "willOf(W,D)",
+     "madeInEmergency(W)",
+     "twoOrMoreQualifiedWitnessesPresent(W)"
+    ],
+    "heads": [
+     "willFormMet(W)"
+    ],
+    "note": "口头遗嘱须在危急情况下订立，并应当有两个以上见证人在场见证",
+    "auth": "npc"
+   },
+   {
+    "key": "c1138-void",
+    "srcs": [
+     "art1138"
+    ],
+    "body": [
+     "oralWill(W)",
+     "willOf(W,D)",
+     "~willFormMet(W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "学理通说：非危急情况或无两个以上见证人见证的口头遗嘱不发生效力；民法典未明文规定此效果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1138-lapse",
+    "srcs": [
+     "art1138"
+    ],
+    "body": [
+     "oralWill(W)",
+     "willOf(W,D)",
+     "emergencyEnded(W)",
+     "ableToMakeWrittenOrAVWill(D)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "危急情况消除后，遗嘱人能够以书面或者录音录像形式立遗嘱的，所立的口头遗嘱无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c1140-1",
+    "srcs": [
+     "art1140"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "witnessOf(X,W)",
+     {
+      "or": [
+       "noCapacity(X)",
+       "limitedCapacity(X)",
+       "lacksWitnessingAbility(X)",
+       "heirCandidate(X,D)",
+       "legateeOf(X,D)",
+       "interestedInHeirOrLegatee(X,W)"
+      ]
+     }
+    ],
+    "heads": [
+     "ineligibleWitness(X,W)"
+    ],
+    "note": "无民事行为能力人、限制民事行为能力人以及其他不具有见证能力的人，继承人、受遗赠人，与继承人、受遗赠人有利害关系的人，不能作为遗嘱见证人；其见证不计入法定见证人人数",
+    "auth": "npc"
+   },
+   {
+    "key": "c1140-spc24",
+    "srcs": [
+     "art1140"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "witnessOf(X,W)",
+     {
+      "or": [
+       "creditorOrDebtorOfHeirOrLegatee(X,W)",
+       "copartnerOfHeirOrLegatee(X,W)"
+      ]
+     }
+    ],
+    "heads": [
+     "interestedInHeirOrLegatee(X,W)"
+    ],
+    "note": "继承编解释（一）第24条：继承人、受遗赠人的债权人、债务人，共同经营的合伙人，也应当视为与继承人、受遗赠人有利害关系，不能作为遗嘱见证人",
+    "auth": "spc"
+   },
+   {
+    "key": "c1141",
+    "srcs": [
+     "art1141"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "heirCandidate(H,D)",
+     "lacksWorkAbility(H)",
+     "noLivelihood(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "H",
+      "content": "reserveNecessaryShareInWill(W,H)"
+     }
+    ],
+    "note": "遗嘱应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产份额",
+    "auth": "npc"
+   },
+   {
+    "key": "c1141-spc25",
+    "srcs": [
+     "art1141"
+    ],
+    "body": [
+     "willOf(W,D)",
+     "estateOf(E,D)",
+     "heirCandidate(H,D)",
+     "lacksWorkAbility(H)",
+     "noLivelihood(H)",
+     "~necessaryShareReserved(W,H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "setAsideNecessaryShareFirst(H,E)"
+     }
+    ],
+    "note": "继承编解释（一）第25条：遗嘱未保留的，遗产处理时应当为该继承人留下必要的遗产，剩余部分才可参照遗嘱处理；是否缺乏劳动能力又没有生活来源按遗嘱生效时的情况确定",
+    "auth": "spc"
+   },
+   {
+    "key": "c1142-1",
+    "srcs": [
+     "art1142-1"
+    ],
+    "body": [
+     "willOf(W,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "revokeOrAmendWill(D,W)"
+     }
+    ],
+    "note": "遗嘱人可以撤回、变更自己所立的遗嘱",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "printedWill": "W是打印遗嘱",
+   "eachPageSignedAndDatedByTestatorAndWitnesses": "遗嘱人和见证人在遗嘱W每一页签名并注明年、月、日",
+   "inEmergency": "D处于危急情况",
+   "makeOralWill": "立口头遗嘱（遗嘱人）",
+   "oralWill": "W是口头遗嘱",
+   "madeInEmergency": "遗嘱W是在危急情况下订立的",
+   "emergencyEnded": "订立口头遗嘱W时的危急情况已经消除",
+   "ableToMakeWrittenOrAVWill": "遗嘱人D能够以书面或者录音录像形式立遗嘱",
+   "witnessOf": "X是遗嘱W的见证人（见证人，遗嘱）",
+   "lacksWitnessingAbility": "X不具有见证能力",
+   "interestedInHeirOrLegatee": "见证人X与遗嘱W涉及的继承人、受遗赠人有利害关系（见证人，遗嘱）",
+   "ineligibleWitness": "X不能作为遗嘱W的见证人（见证人，遗嘱）",
+   "creditorOrDebtorOfHeirOrLegatee": "X是遗嘱W涉及的继承人、受遗赠人的债权人或债务人（见证人，遗嘱）",
+   "copartnerOfHeirOrLegatee": "X是遗嘱W涉及的继承人、受遗赠人共同经营的合伙人（见证人，遗嘱）",
+   "reserveNecessaryShareInWill": "在遗嘱W中为继承人H保留必要的遗产份额（遗嘱，继承人）",
+   "necessaryShareReserved": "遗嘱W已为继承人H保留必要的遗产份额（遗嘱，继承人）",
+   "setAsideNecessaryShareFirst": "处理遗产E时先为继承人H留下必要的遗产，剩余部分再参照遗嘱处理（继承人，遗产）",
+   "revokeOrAmendWill": "撤回、变更遗嘱W（遗嘱人，遗嘱）"
+  }
+ },
+ "art:1135": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "代书遗嘱的形式要件",
+     "rules": [
+      "c1135-form"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "两个以上见证人在场见证，由其中一人代书，遗嘱人、代书人和其他见证人签名，注明年、月、日",
+     "rules": [
+      "c1135-form"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具备代书遗嘱形式要件的，遗嘱无效（学理通说，法条未明文）",
+     "rules": [
+      "c1135-void"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合形式要件的代书遗嘱形式有效",
+     "rules": [
+      "c1135-form"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "见证人须具备第1140条规定的资格；不适格见证人不计入“两个以上见证人”（见 card:g7149 c1140-1、c1140-spc24）",
+     "rules": []
+    },
+    {
+     "text": "代书人本身须是见证人之一，与自书遗嘱（第1134条，须亲笔）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1135-form",
+    "srcs": [
+     "art1135"
+    ],
+    "body": [
+     "scribedWill(W)",
+     "twoOrMoreQualifiedWitnessesPresent(W)",
+     "scribedByOneWitness(W)",
+     "signedByTestatorScribeAndWitnesses(W)",
+     "datedYMD(W)"
+    ],
+    "heads": [
+     "willFormMet(W)"
+    ],
+    "note": "代书遗嘱应当有两个以上见证人在场见证，由其中一人代书，并由遗嘱人、代书人和其他见证人签名，注明年、月、日",
+    "auth": "npc"
+   },
+   {
+    "key": "c1135-void",
+    "srcs": [
+     "art1135"
+    ],
+    "body": [
+     "scribedWill(W)",
+     "willOf(W,D)",
+     "~willFormMet(W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "学理通说：不符合法定形式要件的代书遗嘱不发生遗嘱效力；民法典未明文规定此效果",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "scribedWill": "W是代书遗嘱",
+   "twoOrMoreQualifiedWitnessesPresent": "遗嘱W有两个以上符合第1140条资格的见证人在场见证",
+   "scribedByOneWitness": "遗嘱W由见证人中的一人代书",
+   "signedByTestatorScribeAndWitnesses": "遗嘱W由遗嘱人、代书人和其他见证人签名"
+  }
+ },
+ "art:1134": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第三章　遗嘱继承和遗赠"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "自书遗嘱的形式要件",
+     "rules": [
+      "c1134-form"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "遗嘱人亲笔书写全文、签名，并注明年、月、日",
+     "rules": [
+      "c1134-form"
+     ]
+    },
+    {
+     "text": "遗书中涉及死后个人财产处分的内容，确为死者真实意思表示，有本人签名并注明年、月、日，又无相反证据的，可以按自书遗嘱对待（继承编解释一第27条）",
+     "rules": [
+      "c1134-spc27"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具备自书遗嘱形式要件的，遗嘱不成立/无效（学理通说，法条未明文）",
+     "rules": [
+      "c1134-void"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合形式要件的自书遗嘱形式有效；自书遗嘱无须见证人",
+     "rules": [
+      "c1134-form"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "代书遗嘱（第1135条）须两个以上见证人并由其中一人代书；打印遗嘱（第1136条）须见证人并每页签名",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1134-form",
+    "srcs": [
+     "art1134"
+    ],
+    "body": [
+     "holographicWill(W)",
+     "handwrittenByTestator(W)",
+     "signedByTestator(W)",
+     "datedYMD(W)"
+    ],
+    "heads": [
+     "willFormMet(W)"
+    ],
+    "note": "自书遗嘱由遗嘱人亲笔书写，签名，注明年、月、日",
+    "auth": "npc"
+   },
+   {
+    "key": "c1134-void",
+    "srcs": [
+     "art1134"
+    ],
+    "body": [
+     "holographicWill(W)",
+     "willOf(W,D)",
+     "~willFormMet(W)"
+    ],
+    "heads": [
+     "willVoid(W)"
+    ],
+    "note": "学理通说：遗嘱为要式行为，不符合法定形式要件的自书遗嘱不发生遗嘱效力；民法典未明文规定此效果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1134-spc27",
+    "srcs": [
+     "art1134"
+    ],
+    "body": [
+     "posthumousNote(N,D)",
+     "disposesPropertyAfterDeath(N)",
+     "trueIntentOfDeceased(N,D)",
+     "signedByTestator(N)",
+     "datedYMD(N)",
+     "~contraryEvidence(N)"
+    ],
+    "heads": [
+     "holographicWill(N)",
+     "willOf(N,D)",
+     "willFormMet(N)"
+    ],
+    "note": "继承编解释（一）第27条：遗书涉及死后个人财产处分，确为真实意思表示，有本人签名并注明年月日，又无相反证据的，可以按自书遗嘱对待",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "holographicWill": "W是自书遗嘱",
+   "handwrittenByTestator": "遗嘱W由遗嘱人亲笔书写",
+   "signedByTestator": "遗嘱W有遗嘱人签名",
+   "datedYMD": "遗嘱W注明（或记录）了年、月、日",
+   "willFormMet": "遗嘱W符合其所采形式的法定形式要件",
+   "posthumousNote": "N是自然人D生前所写的遗书（遗书，死者）",
+   "disposesPropertyAfterDeath": "文书N涉及死后个人财产的处分",
+   "trueIntentOfDeceased": "文书N确为D的真实意思表示（文书，死者）",
+   "contraryEvidence": "存在推翻文书N真实性的相反证据"
+  }
+ }
+}

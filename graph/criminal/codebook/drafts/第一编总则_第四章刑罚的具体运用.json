@@ -1,0 +1,4160 @@
+{
+ "art:61": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对犯罪分子决定刑罚时，应以什么为事实根据、依照什么规定判处",
+     "rules": [
+      "k61-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "量刑的事实根据：犯罪的事实、犯罪的性质、情节和对于社会的危害程度",
+     "rules": [
+      "k61-basis"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "人民法院决定刑罚，应当以犯罪事实、性质、情节及社会危害程度为根据，依照本法有关规定判处",
+     "rules": [
+      "k61-1"
+     ]
+    },
+    {
+     "text": "对未成年罪犯量刑，仍依照第61条，并应充分考虑其实施犯罪的动机和目的、犯罪时的年龄、是否初次犯罪、犯罪后的悔罪表现、个人成长经历和一贯表现等因素（司法解释）",
+     "rules": [
+      "k61-juv"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "未成年罪犯量刑的特别考虑因素是在第61条一般根据之上的叠加要求，不排斥第61条的适用",
+     "rules": [
+      "k61-juv",
+      "k61-1"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k61-basis",
+    "srcs": [
+     "art61#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeFacts(X)",
+     "crimeNature(X)",
+     "crimeCircumstances(X)",
+     "degreeOfSocialHarm(X)"
+    ],
+    "heads": [
+     "sentencingBasis(P,X)"
+    ],
+    "auth": "npc",
+    "note": "量刑的事实根据由犯罪的事实、性质、情节和对于社会的危害程度构成"
+   },
+   {
+    "key": "k61-1",
+    "srcs": [
+     "art61#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "responsible(P,X,C)",
+     "sentencingBasis(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceAccordingToArt61(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯罪分子决定刑罚，应当根据犯罪事实、性质、情节和社会危害程度，依照本法有关规定判处"
+   },
+   {
+    "key": "k61-juv",
+    "srcs": [
+     "art61#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "responsible(P,X,C)",
+     "under18AtCrime(P,X)",
+     "sentencingBasis(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceWithJuvenileFactors(P,X)"
+     }
+    ],
+    "auth": "spc",
+    "note": "依审理未成年人刑事案件司法解释（笔记所载），对未成年罪犯量刑应依照第61条并充分考虑动机目的、犯罪时年龄、是否初犯、悔罪表现、成长经历和一贯表现；第61条原文未列举这些因素"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "crimeFacts": "crimeFacts(X)：犯罪事件 X 的犯罪事实（量刑应根据的事实）",
+   "crimeNature": "crimeNature(X)：犯罪事件 X 的犯罪性质",
+   "crimeCircumstances": "crimeCircumstances(X)：犯罪事件 X 的具体犯罪情况（宣告禁止令的裁量基础）",
+   "degreeOfSocialHarm": "degreeOfSocialHarm(X)：犯罪事件 X 对于社会的危害程度",
+   "sentencingBasis": "sentencingBasis(P,X)：对 P 就犯罪 X 量刑的事实根据（事实、性质、情节、社会危害程度）已确定",
+   "responsible": "负刑事责任",
+   "sentenceAccordingToArt61": "sentenceAccordingToArt61(P,X)：人民法院根据犯罪事实、性质、情节和社会危害程度，依照本法有关规定对 P 就犯罪 X 判处刑罚",
+   "under18AtCrime": "under18AtCrime(P,X)：P 实施犯罪 X 的时候不满十八周岁",
+   "sentenceWithJuvenileFactors": "sentenceWithJuvenileFactors(P,X)：人民法院对未成年罪犯 P 就犯罪 X 量刑时，充分考虑其犯罪动机和目的、犯罪时年龄、是否初次犯罪、犯罪后悔罪表现、个人成长经历和一贯表现等因素"
+  }
+ },
+ "art:62": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "犯罪分子具有本法规定的从重、从轻处罚情节时，量刑应当在什么幅度内进行",
+     "rules": [
+      "k62-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "犯罪分子实施了犯罪，且具有本法（总则或分则）明文规定的从重处罚情节或者从轻处罚情节",
+     "rules": [
+      "k62-1",
+      "k62-heavier",
+      "k62-lighter"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当在法定刑的限度以内判处刑罚：既不得低于该罪相应量刑档次的法定最低刑，也不得高于法定最高刑",
+     "rules": [
+      "k62-1",
+      "k62-limit"
+     ]
+    },
+    {
+     "text": "从重处罚：依本法相应规定，在法定刑幅度内判处较重的刑罚（本条只限定其幅度）",
+     "rules": [
+      "k62-heavier"
+     ]
+    },
+    {
+     "text": "从轻处罚：依本法相应规定，在法定刑幅度内判处较轻的刑罚（本条只限定其幅度）",
+     "rules": [
+      "k62-lighter"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "从轻处罚≠减轻处罚：从轻仍在法定刑幅度之内选择较轻刑罚；要在法定最低刑以下判处刑罚属减轻处罚，须另有第63条的依据，不能仅凭从轻情节（学理）",
+     "rules": [
+      "k62-limit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k62-1",
+    "srcs": [
+     "art62#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "statutoryHeavierCircumstance(P,X)",
+       "statutoryLighterCircumstance(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceWithinStatutoryRange(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "具有本法规定的从重、从轻处罚情节的，应当在法定刑的限度以内判处刑罚"
+   },
+   {
+    "key": "k62-heavier",
+    "srcs": [
+     "art62#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "statutoryHeavierCircumstance(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：从重的依据来自本法相应量刑情节规定，本条仅限定其须在法定刑幅度内判处较重刑罚"
+   },
+   {
+    "key": "k62-lighter",
+    "srcs": [
+     "art62#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "statutoryLighterCircumstance(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighter)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：从轻的依据来自本法相应量刑情节规定，本条仅限定其须在法定刑幅度内判处较轻刑罚"
+   },
+   {
+    "key": "k62-limit",
+    "srcs": [
+     "art62#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "statutoryHeavierCircumstance(P,X)",
+       "statutoryLighterCircumstance(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceOutsideStatutoryRange(P,X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理：不得突破法定刑幅度，从轻不得低于法定最低刑、从重不得高于法定最高刑；低于法定最低刑须依第63条减轻处罚的规定"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "statutoryHeavierCircumstance": "statutoryHeavierCircumstance(P,X)：P 就犯罪 X 具有本法明文规定的从重处罚情节",
+   "statutoryLighterCircumstance": "statutoryLighterCircumstance(P,X)：P 就犯罪 X 具有本法明文规定的从轻处罚情节",
+   "sentenceWithinStatutoryRange": "sentenceWithinStatutoryRange(P,X)：在法定刑的限度以内对 P 就犯罪 X 判处刑罚",
+   "sentence": "量刑",
+   "sentenceOutsideStatutoryRange": "sentenceOutsideStatutoryRange(P,X)：超出法定刑限度（低于法定最低刑或高于法定最高刑）对 P 就犯罪 X 判处刑罚"
+  }
+ },
+ "art:63": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "减轻处罚的适用：具有法定减轻处罚情节，或虽无该情节但案件有特殊情况并经最高人民法院核准时，如何在法定刑以下判处刑罚",
+     "rules": [
+      "k63-1",
+      "k63-range",
+      "k63-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法定减轻（一般减轻）：犯罪分子具有本法规定的减轻处罚情节",
+     "rules": [
+      "k63-1"
+     ]
+    },
+    {
+     "text": "酌定减轻（特殊减轻）：虽不具有本法规定的减轻处罚情节，但根据案件的特殊情况，并经最高人民法院核准",
+     "rules": [
+      "k63-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具有法定减轻处罚情节的，只能在法定刑幅度内量刑；唯有案件存在特殊情况且经最高人民法院核准，才可以例外地在法定刑以下判处刑罚",
+     "rules": [
+      "k63-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具有法定减轻处罚情节的，应当在法定刑以下判处刑罚（应当减轻，非裁量）",
+     "rules": [
+      "k63-1"
+     ]
+    },
+    {
+     "text": "本法对该罪规定有数个量刑幅度的，应当在法定量刑幅度的下一个量刑幅度内判处刑罚，不得跨越至更低幅度",
+     "rules": [
+      "k63-range"
+     ]
+    },
+    {
+     "text": "无减轻情节但案件有特殊情况并经最高人民法院核准的，可以在法定刑以下判处刑罚（裁量性减轻）",
+     "rules": [
+      "k63-2"
+     ]
+    },
+    {
+     "text": "笔记：减轻处罚（含法定减轻与酌定减轻）的基本适用规则是必须判处低于法定最低刑的刑罚",
+     "rules": [
+      "k63-below"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有数个量刑幅度时，“下一个量刑幅度内判处”的限制优先于一般的“在法定刑以下判处”规则",
+     "rules": [
+      "k63-range",
+      "k63-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "减轻处罚须低于法定最低刑（有数个幅度时降至下一幅度），与在法定量刑幅度内判处较轻刑罚的从轻处罚不同",
+     "rules": [
+      "k63-below"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k63-1",
+    "srcs": [
+     "art63#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "statutoryMitigatingCircumstance(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reduced)"
+     }
+    ],
+    "auth": "npc",
+    "note": "具有本法规定的减轻处罚情节的，应当在法定刑以下判处刑罚（reduced 即减轻、在法定刑以下量刑）"
+   },
+   {
+    "key": "k63-range",
+    "srcs": [
+     "art63#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "statutoryMitigatingCircumstance(P,X)",
+     "multipleSentencingRanges(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,nextLowerRange)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本法规定有数个量刑幅度的，应当在法定量刑幅度的下一个量刑幅度内判处刑罚（nextLowerRange 表示降至下一个量刑幅度）"
+   },
+   {
+    "key": "k63-2",
+    "srcs": [
+     "art63#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "-statutoryMitigatingCircumstance(P,X)",
+     "specialCaseCircumstances(X)",
+     "approvedBySupremePeopleCourt(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reduced)"
+     }
+    ],
+    "auth": "npc",
+    "note": "虽不具有法定减轻处罚情节，但根据案件特殊情况经最高人民法院核准，也可以在法定刑以下判处刑罚"
+   },
+   {
+    "key": "k63-below",
+    "srcs": [
+     "art63"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "statutoryMitigatingCircumstance(P,X)",
+       "specialCaseCircumstances(X) approvedBySupremePeopleCourt(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,belowStatutoryMinimum)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "笔记归纳：减轻处罚必须判处低于法定最低刑的刑罚（belowStatutoryMinimum）；法条仅写“法定刑以下”，此最低刑标准来自学理与备考笔记"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "statutoryMitigatingCircumstance": "statutoryMitigatingCircumstance(P,X)：P 就犯罪 X 具有本法（刑法）规定的减轻处罚情节",
+   "sentence": "量刑",
+   "multipleSentencingRanges": "multipleSentencingRanges(X)：本法对犯罪 X 规定有数个量刑幅度",
+   "specialCaseCircumstances": "specialCaseCircumstances(X)：案件 X 具有可以据以酌定减轻处罚的特殊情况",
+   "approvedBySupremePeopleCourt": "approvedBySupremePeopleCourt(P,X)：对 P 就犯罪 X 在法定刑以下判处刑罚已经最高人民法院核准"
+  }
+ },
+ "art:64": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "涉案财物如何处理：犯罪分子违法所得、被害人合法财产、违禁品与供犯罪所用的本人财物，以及没收的财物和罚金的归属",
+     "rules": [
+      "k64-recover",
+      "k64-return",
+      "k64-contraband",
+      "k64-instrument",
+      "k64-treasury",
+      "k64-ban"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "违法所得：P 实施犯罪 X，M 属于 P 因该犯罪违法所得的财物（一切财物，不限于原物）",
+     "rules": [
+      "k64-recover"
+     ]
+    },
+    {
+     "text": "被害人合法财产：X 有被害人 V，M 属于 V 的合法财产",
+     "rules": [
+      "k64-return"
+     ]
+    },
+    {
+     "text": "违禁品：M 是案件 X 中涉案的违禁品（不问归属，一律没收）",
+     "rules": [
+      "k64-contraband"
+     ]
+    },
+    {
+     "text": "犯罪工具：M 供犯罪 X 所用，且属于犯罪分子 P 本人所有",
+     "rules": [
+      "k64-instrument"
+     ]
+    },
+    {
+     "text": "上缴国库的对象：依法被没收的财物 M，或者依法判处的罚金款项 M",
+     "rules": [
+      "k64-treasury",
+      "k64-ban"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "供犯罪所用但并非犯罪分子本人所有的财物（如善意第三人的财物），不属于本条应当没收的范围",
+     "rules": [
+      "k64-thirdparty"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "犯罪分子违法所得的一切财物，应当予以追缴或者责令退赔",
+     "rules": [
+      "k64-recover"
+     ]
+    },
+    {
+     "text": "对被害人的合法财产，应当及时返还",
+     "rules": [
+      "k64-return"
+     ]
+    },
+    {
+     "text": "违禁品应当予以没收",
+     "rules": [
+      "k64-contraband"
+     ]
+    },
+    {
+     "text": "供犯罪所用的本人财物应当予以没收",
+     "rules": [
+      "k64-instrument"
+     ]
+    },
+    {
+     "text": "没收的财物和罚金，一律上缴国库",
+     "rules": [
+      "k64-treasury"
+     ]
+    },
+    {
+     "text": "对没收的财物和罚金，不得挪用、不得自行处理",
+     "rules": [
+      "k64-ban"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "犯罪工具须为“本人财物”；非本人所有不予没收的限制，优先于没收犯罪工具的一般规则",
+     "rules": [
+      "k64-thirdparty",
+      "k64-instrument"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条的追缴、责令退赔、返还、没收涉案财物属于涉案财物处理措施，不是刑罚；与没收财产刑（附加刑，没收犯罪分子个人合法财产）性质不同",
+     "rules": []
+    },
+    {
+     "text": "违法所得中属于被害人合法财产的部分应及时返还被害人，不上缴国库；只有没收的财物和罚金才一律上缴国库",
+     "rules": [
+      "k64-return",
+      "k64-treasury"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k64-recover",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "illegalProceedsOf(M,P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "recoverOrOrderRestitution(M,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯罪分子违法所得的一切财物，应当予以追缴或者责令退赔"
+   },
+   {
+    "key": "k64-return",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "victimOf(V,X)",
+     "lawfulPropertyOf(M,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "promptlyReturn(M,V)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对被害人的合法财产，应当及时返还"
+   },
+   {
+    "key": "k64-contraband",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "involvedInCase(M,X)",
+     "contraband(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscate(M,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "案件中的违禁品应当予以没收"
+   },
+   {
+    "key": "k64-instrument",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "usedInCrime(M,X)",
+     "personallyOwnedBy(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscate(M,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "供犯罪所用的本人财物应当予以没收"
+   },
+   {
+    "key": "k64-treasury",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "confiscatedProperty(M)",
+       "fineMoney(M)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "turnOverToStateTreasury(M)"
+     }
+    ],
+    "auth": "npc",
+    "note": "没收的财物和罚金一律上缴国库（义务主体为办案机关，此处以 court 表示）"
+   },
+   {
+    "key": "k64-ban",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "confiscatedProperty(M)",
+       "fineMoney(M)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "misappropriate(M)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "selfDispose(M)"
+     }
+    ],
+    "auth": "npc",
+    "note": "没收的财物和罚金不得挪用、不得自行处理"
+   },
+   {
+    "key": "k64-thirdparty",
+    "srcs": [
+     "art64#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "usedInCrime(M,X)",
+     "-personallyOwnedBy(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscate(M,X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "条文限于“本人财物”，故供犯罪所用但非犯罪分子本人所有（如善意第三人）的财物不予没收；此限制系学理与司法解释的展开"
+   }
+  ],
+  "overrides": [
+   [
+    "k64-thirdparty",
+    "k64-contraband",
+    "推断：结论冲突（('confiscate', 'OBL')），k64-thirdparty 为例外或更具体"
+   ],
+   [
+    "k64-thirdparty",
+    "k64-instrument",
+    "推断：结论冲突（('confiscate', 'OBL')），k64-thirdparty 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "illegalProceedsOf": "illegalProceedsOf(M,P,X)：M 是 P 因犯罪 X 违法所得的财物",
+   "recoverOrOrderRestitution": "recoverOrOrderRestitution(M,P,X)：对 P 因犯罪 X 违法所得的财物 M 予以追缴或者责令退赔",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "lawfulPropertyOf": "lawfulPropertyOf(M,V)：M 是 V 的合法财产",
+   "promptlyReturn": "promptlyReturn(M,V)：将财物 M 及时返还被害人 V",
+   "involvedInCase": "involvedInCase(M,X)：M 是犯罪案件 X 中涉案（查获）的财物",
+   "contraband": "contraband(M)：M 是违禁品",
+   "confiscate": "confiscate(M,X)：在案件 X 中没收财产 M",
+   "usedInCrime": "usedInCrime(M,X)：M 是供犯罪 X 所用的财物（犯罪工具）",
+   "personallyOwnedBy": "personallyOwnedBy(M,P)：M 属于犯罪分子 P 个人所有的财产",
+   "confiscatedProperty": "confiscatedProperty(M)：M 是依法被没收的财物",
+   "fineMoney": "fineMoney(M)：M 是依法判处的罚金款项",
+   "turnOverToStateTreasury": "turnOverToStateTreasury(M)：将财物或罚金 M 上缴国库",
+   "misappropriate": "misappropriate(M)：挪用财物或罚金 M",
+   "selfDispose": "selfDispose(M)：自行处理（擅自处置）财物或罚金 M"
+  }
+ },
+ "art:69": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "判决宣告以前一人犯数罪的，如何决定执行的刑罚（数罪并罚的方法与各刑种上限）",
+     "rules": [
+      "k69-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：判决宣告以前一人犯数罪，且数罪中未判处死刑、无期徒刑（限制加重原则的适用条件）",
+     "rules": [
+      "k69-1",
+      "k69-exc"
+     ]
+    },
+    {
+     "text": "时间效力：对2015年10月31日以前一人犯数罪，数罪中有有期徒刑和拘役、有期徒刑和管制或者拘役和管制的，并罚适用修正后第69条第2款",
+     "rules": [
+      "k69-time"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "数罪中判处死刑或者无期徒刑的，不适用限制加重；学理上采吸收原则，只执行死刑或无期徒刑（附加刑仍须执行）",
+     "rules": [
+      "k69-exc",
+      "k69-absorb"
+     ]
+    },
+    {
+     "text": "数罪中有判处有期徒刑和拘役的，执行有期徒刑，拘役被吸收不再执行",
+     "rules": [
+      "k69-2a"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当在总和刑期以下、数刑中最高刑期以上，酌情决定执行的刑期",
+     "rules": [
+      "k69-1"
+     ]
+    },
+    {
+     "text": "管制并罚最高不能超过三年",
+     "rules": [
+      "k69-control"
+     ]
+    },
+    {
+     "text": "拘役并罚最高不能超过一年",
+     "rules": [
+      "k69-detention"
+     ]
+    },
+    {
+     "text": "有期徒刑总和刑期不满三十五年的，并罚最高不能超过二十年",
+     "rules": [
+      "k69-fixed20"
+     ]
+    },
+    {
+     "text": "有期徒刑总和刑期在三十五年以上的，并罚最高不能超过二十五年",
+     "rules": [
+      "k69-fixed25"
+     ]
+    },
+    {
+     "text": "数罪中有有期徒刑和管制，或者拘役和管制的，有期徒刑、拘役执行完毕后，管制仍须执行（并科）",
+     "rules": [
+      "k69-2b"
+     ]
+    },
+    {
+     "text": "数罪中有判处附加刑的，附加刑仍须执行",
+     "rules": [
+      "k69-3a"
+     ]
+    },
+    {
+     "text": "附加刑种类相同的，合并执行",
+     "rules": [
+      "k69-3b"
+     ]
+    },
+    {
+     "text": "附加刑种类不同的，分别执行",
+     "rules": [
+      "k69-3c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "我国数罪并罚采折中原则：以限制加重为主，吸收原则（死刑、无期徒刑吸收其他主刑；有期徒刑吸收拘役）与并科原则（管制、附加刑仍须执行）为补充；各刑种的法定上限优先于限制加重的酌定幅度",
+     "rules": [
+      "k69-1",
+      "k69-absorb",
+      "k69-2a",
+      "k69-2b",
+      "k69-3a",
+      "k69-control",
+      "k69-detention",
+      "k69-fixed20",
+      "k69-fixed25"
+     ]
+    },
+    {
+     "text": "跨法适用：2015年10月31日以前的数罪，有期徒刑与拘役、管制的并罚一律适用修正后第69条第2款",
+     "rules": [
+      "k69-time"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是判决宣告以前犯数罪的并罚方法；判决宣告后、刑罚执行完毕以前发现漏罪的，依第70条“先并后减”（已执行刑期计入新判决决定的刑期），又犯新罪的依第71条“先减后并”（该两条未挂载于本行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k69-1",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "~deathOrLifeSentenceAmongCrimes(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideExecutedTermBetweenHighestAndSum(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第1款：判决宣告前一人犯数罪，除死刑、无期徒刑外，应在总和刑期以下、数刑中最高刑期以上酌情决定执行的刑期（限制加重）"
+   },
+   {
+    "key": "k69-exc",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     {
+      "or": [
+       "sentencedToDeath(P,X)",
+       "sentencedToLifeImprisonment(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "deathOrLifeSentenceAmongCrimes(P)"
+    ],
+    "auth": "npc",
+    "note": "数罪中判处死刑或者无期徒刑的，属于第69条第1款“除判处死刑和无期徒刑的以外”的除外情形"
+   },
+   {
+    "key": "k69-absorb",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "deathOrLifeSentenceAmongCrimes(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeOnlyDeathOrLifeImprisonment(P)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "学理（笔记）：死刑、无期徒刑采吸收原则，只执行死刑或无期徒刑，其他主刑不再执行；条文仅以除外方式表述"
+   },
+   {
+    "key": "k69-control",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "sentencedToControl(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "setCombinedControlTermAboveThreeYears(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第1款：数罪并罚时管制最高不能超过三年"
+   },
+   {
+    "key": "k69-detention",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "sentencedToCriminalDetention(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "setCombinedDetentionTermAboveOneYear(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第1款：数罪并罚时拘役最高不能超过一年"
+   },
+   {
+    "key": "k69-fixed20",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "aggregateFixedTermUnder35Years(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "setCombinedFixedTermAboveTwentyYears(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第1款：有期徒刑总和刑期不满三十五年的，并罚后最高不能超过二十年"
+   },
+   {
+    "key": "k69-fixed25",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "aggregateFixedTermAtLeast35Years(P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "setCombinedFixedTermAboveTwentyFiveYears(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第1款：有期徒刑总和刑期在三十五年以上的，并罚后最高不能超过二十五年"
+   },
+   {
+    "key": "k69-2a",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "sentencedToFixedTerm(P,X)",
+     "sentencedToCriminalDetention(P,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeOnlyFixedTerm(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第2款前段：数罪中有判处有期徒刑和拘役的，执行有期徒刑（吸收原则，拘役不再执行）"
+   },
+   {
+    "key": "k69-2b",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "sentencedToControl(P,Z)",
+     {
+      "or": [
+       "sentencedToFixedTerm(P,X)",
+       "sentencedToCriminalDetention(P,X)"
+      ]
+     },
+     "fixedTermOrDetentionServedOut(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeControlAfterPrincipalTerm(P,Z)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第2款后段：数罪中有有期徒刑和管制或拘役和管制的，有期徒刑、拘役执行完毕后管制仍须执行（并科原则）"
+   },
+   {
+    "key": "k69-3a",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "supplementaryPunishmentImposed(P,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeSupplementaryPunishment(P,S)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第3款：数罪中有判处附加刑的，附加刑仍须执行，不被主刑吸收"
+   },
+   {
+    "key": "k69-3b",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "supplementaryPunishmentImposed(P,S1)",
+     "supplementaryPunishmentImposed(P,S2)",
+     "sameSupplementaryKind(S1,S2)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeSupplementaryJointly(P,S1,S2)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第3款：数罪所判附加刑种类相同的，合并执行"
+   },
+   {
+    "key": "k69-3c",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "supplementaryPunishmentImposed(P,S1)",
+     "supplementaryPunishmentImposed(P,S2)",
+     "-sameSupplementaryKind(S1,S2)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeSupplementarySeparately(P,S1,S2)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第69条第3款：数罪所判附加刑种类不同的，分别执行"
+   },
+   {
+    "key": "k69-time",
+    "srcs": [
+     "art69"
+    ],
+    "body": [
+     "multipleCrimesBeforeJudgmentDeclared(P)",
+     "crimeBefore20151101(P,X)",
+     {
+      "or": [
+       "sentencedToFixedTerm(P,X) sentencedToCriminalDetention(P,Y)",
+       "sentencedToFixedTerm(P,X) sentencedToControl(P,Y)",
+       "sentencedToCriminalDetention(P,X) sentencedToControl(P,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyRevisedArt69Para2(P)"
+    ],
+    "auth": "spc",
+    "note": "据笔记所引《刑法修正案(九)时间效力问题的解释》：2015年10月31日以前一人犯数罪，涉有期徒刑与拘役、管制组合的并罚，适用修正后第69条第2款"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "multipleCrimesBeforeJudgmentDeclared": "multipleCrimesBeforeJudgmentDeclared(P)：P 在判决宣告以前一人犯数罪（数罪均未经判决）",
+   "deathOrLifeSentenceAmongCrimes": "deathOrLifeSentenceAmongCrimes(P)：P 的数罪中判处了死刑或者无期徒刑",
+   "decideExecutedTermBetweenHighestAndSum": "decideExecutedTermBetweenHighestAndSum(P)：在总和刑期以下、数刑中最高刑期以上酌情决定对 P 执行的刑期",
+   "sentencedToDeath": "sentencedToDeath(P,X)：P 因犯罪 X 被判处死刑（包括死刑缓期二年执行）",
+   "sentencedToLifeImprisonment": "sentencedToLifeImprisonment(P,X)：P 因犯罪 X 被判处无期徒刑",
+   "executeOnlyDeathOrLifeImprisonment": "executeOnlyDeathOrLifeImprisonment(P)：对 P 只执行死刑或无期徒刑，其他主刑被吸收不再执行",
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "setCombinedControlTermAboveThreeYears": "setCombinedControlTermAboveThreeYears(P)：对 P 并罚决定执行的管制刑期超过三年",
+   "sentencedToCriminalDetention": "sentencedToCriminalDetention(P,X)：P 因犯罪事件 X 被判处拘役",
+   "setCombinedDetentionTermAboveOneYear": "setCombinedDetentionTermAboveOneYear(P)：对 P 并罚决定执行的拘役刑期超过一年",
+   "aggregateFixedTermUnder35Years": "aggregateFixedTermUnder35Years(P)：P 数罪所判有期徒刑的总和刑期不满三十五年",
+   "setCombinedFixedTermAboveTwentyYears": "setCombinedFixedTermAboveTwentyYears(P)：对 P 并罚决定执行的有期徒刑刑期超过二十年",
+   "aggregateFixedTermAtLeast35Years": "aggregateFixedTermAtLeast35Years(P)：P 数罪所判有期徒刑的总和刑期在三十五年以上",
+   "setCombinedFixedTermAboveTwentyFiveYears": "setCombinedFixedTermAboveTwentyFiveYears(P)：对 P 并罚决定执行的有期徒刑刑期超过二十五年",
+   "sentencedToFixedTerm": "sentencedToFixedTerm(P,X)：P 因犯罪 X 被判处有期徒刑",
+   "executeOnlyFixedTerm": "executeOnlyFixedTerm(P)：对 P 只执行有期徒刑，所判拘役被吸收不再执行",
+   "fixedTermOrDetentionServedOut": "fixedTermOrDetentionServedOut(P,X)：P因犯罪X所判徒刑、拘役已执行完毕",
+   "executeControlAfterPrincipalTerm": "executeControlAfterPrincipalTerm(P,Z)：在有期徒刑、拘役执行完毕后继续对 P 执行就犯罪 Z 所判管制",
+   "supplementaryPunishmentImposed": "supplementaryPunishmentImposed(P,S)：P 的数罪中判处了附加刑 S",
+   "executeSupplementaryPunishment": "executeSupplementaryPunishment(P,S)：对 P 所判附加刑 S 仍予执行",
+   "sameSupplementaryKind": "sameSupplementaryKind(S1,S2)：附加刑 S1 与 S2 种类相同",
+   "executeSupplementaryJointly": "executeSupplementaryJointly(P,S1,S2)：对 P 所判同种附加刑 S1、S2 合并执行",
+   "executeSupplementarySeparately": "executeSupplementarySeparately(P,S1,S2)：对 P 所判不同种附加刑 S1、S2 分别执行",
+   "crimeBefore20151101": "crimeBefore20151101(P,X)：P 的犯罪 X 发生在2015年10月31日以前（《刑法修正案(九)》施行前）",
+   "applyRevisedArt69Para2": "applyRevisedArt69Para2(P)：对 P 的数罪并罚适用修正后《刑法》第69条第2款的规定"
+  }
+ },
+ "art:70": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "判决宣告后、刑罚执行完毕前发现被判刑人在判决宣告以前还有未判决的其他罪（漏罪），应如何判决、并罚并折抵已执行刑期",
+     "rules": [
+      "k70-cond",
+      "k70-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件：前罪判决已经宣告，且所判刑罚尚未执行完毕；对象条件：在此期间发现犯罪分子在前罪判决宣告以前还实施了其他犯罪，且该罪尚未判决",
+     "rules": [
+      "k70-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "前罪刑罚已执行完毕后才发现判决宣告前的漏罪，不适用本条的并罚与刑期折抵，应对漏罪单独定罪处罚（学理）",
+     "rules": [
+      "k70-late"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当对新发现的罪作出判决",
+     "rules": [
+      "k70-1"
+     ]
+    },
+    {
+     "text": "把前后两个判决所判处的刑罚，依照第69条的规定决定执行的刑罚，即对漏罪实行数罪并罚",
+     "rules": [
+      "k70-2",
+      "k70-2b"
+     ]
+    },
+    {
+     "text": "已经执行的刑期，应当计算在新判决决定的刑期以内",
+     "rules": [
+      "k70-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "刑罚执行完毕后才发现漏罪的，排除本条漏罪并罚规则的适用",
+     "rules": [
+      "k70-late"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "漏罪适用“先并后减”：先按第69条把前后两判决的刑罚合并决定执行刑期，再扣除已执行部分；与刑罚执行期间又犯新罪的“先减后并”不同（学理）",
+     "rules": [
+      "k70-method"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k70-cond",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "judgmentPronouncedFor(P,X)",
+     "penaltyNotYetFullyExecuted(P,X)",
+     "crime(P,Y)",
+     "discoveredCrime(P,Y)",
+     "committedBeforeJudgment(Y,X)",
+     "notYetJudged(Y)"
+    ],
+    "heads": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "auth": "npc",
+    "note": "判决宣告以后、刑罚执行完毕以前，发现被判刑人在判决宣告以前还有其他罪没有判决的，构成漏罪并罚情形"
+   },
+   {
+    "key": "k70-1",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "judgeNewlyDiscoveredCrime(P,Y)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对新发现的漏罪应当作出判决"
+   },
+   {
+    "key": "k70-2",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "heads": [
+     "combinedPunishmentForSeveralCrimes(P)"
+    ],
+    "auth": "npc",
+    "note": "漏罪与前罪实行数罪并罚"
+   },
+   {
+    "key": "k70-2b",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decidePenaltyUnderArt69(P,X,Y)"
+     }
+    ],
+    "auth": "npc",
+    "note": "应当把前后两个判决所判处的刑罚依照第69条的规定决定执行的刑罚"
+   },
+   {
+    "key": "k70-3",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "countExecutedTermInNewTerm(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "已经执行的刑期应当计算在新判决决定的刑期以内"
+   },
+   {
+    "key": "k70-method",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "omittedCrimeSituation(P,X,Y)"
+    ],
+    "heads": [
+     "combineFirstThenDeduct(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理概括：漏罪并罚方法为“先并后减”，区别于新罪的“先减后并”；法条未使用该表述"
+   },
+   {
+    "key": "k70-late",
+    "srcs": [
+     "art70#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "judgmentPronouncedFor(P,X)",
+     "penaltyFullyExecuted(P,X)",
+     "crime(P,Y)",
+     "discoveredCrime(P,Y)",
+     "committedBeforeJudgment(Y,X)",
+     "notYetJudged(Y)"
+    ],
+    "heads": [
+     "-omittedCrimeSituation(P,X,Y)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：前罪刑罚执行完毕后才发现漏罪，不符合本条时间条件，不并罚也不折抵，对漏罪单独定罪处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k70-late",
+    "k70-cond",
+    "推断：结论冲突（('omittedCrimeSituation', '+')），k70-late 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "judgmentPronouncedFor": "judgmentPronouncedFor(P,X)：对 P 就犯罪 X 的判决已经宣告",
+   "penaltyNotYetFullyExecuted": "penaltyNotYetFullyExecuted(P,X)：P 因犯罪 X 所判刑罚尚未执行完毕",
+   "discoveredCrime": "discoveredCrime(P,Y)：发现 P 实施了犯罪 Y",
+   "committedBeforeJudgment": "committedBeforeJudgment(X2,X1)：犯罪 X2 实施于前罪 X1 判决宣告以前（漏罪）",
+   "notYetJudged": "notYetJudged(Y)：犯罪 Y 尚未被判决",
+   "omittedCrimeSituation": "omittedCrimeSituation(P,X,Y)：P 就前罪 X 判决宣告后、刑罚执行完毕前，被发现判决宣告前还有未判决的漏罪 Y",
+   "judgeNewlyDiscoveredCrime": "judgeNewlyDiscoveredCrime(P,Y)：对新发现的漏罪 Y 作出判决",
+   "combinedPunishmentForSeveralCrimes": "combinedPunishmentForSeveralCrimes(P)：对 P 所犯数罪实行数罪并罚",
+   "decidePenaltyUnderArt69": "decidePenaltyUnderArt69(P,X,Y)：把前罪 X 与漏罪 Y 两个判决所判处的刑罚依第69条决定执行的刑罚",
+   "countExecutedTermInNewTerm": "countExecutedTermInNewTerm(P,X)：将 P 因前罪 X 已经执行的刑期计算在新判决决定的刑期以内",
+   "combineFirstThenDeduct": "combineFirstThenDeduct(P,X)：对 P 采用“先并后减”的并罚方法（先合并决定执行刑期，再扣除已执行刑期）",
+   "penaltyFullyExecuted": "penaltyFullyExecuted(P,X)：P 因犯罪 X 所判刑罚已经执行完毕"
+  }
+ },
+ "art:71": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "判决宣告以后、刑罚执行完毕以前又犯新罪的，如何与前罪并罚（新罪的并罚基础与方法）",
+     "rules": [
+      "k71-cond",
+      "k71-combine"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前罪已被判刑且判决已宣告，刑罚尚未执行完毕，犯罪分子在此期间又实施新的犯罪",
+     "rules": [
+      "k71-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "判决宣告以前实施的漏罪不属于本条“又犯罪”，不适用本条的并罚基础（体系上应依第70条先并后减）",
+     "rules": [
+      "k71-omitted"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当对新犯的罪作出判决",
+     "rules": [
+      "k71-judge"
+     ]
+    },
+    {
+     "text": "把前罪没有执行的刑罚与后罪所判处的刑罚，依照第69条的规定决定执行的刑罚",
+     "rules": [
+      "k71-combine"
+     ]
+    },
+    {
+     "text": "学理概括为“先减后并”：先减去前罪已执行的刑期，仅以剩余刑罚与后罪刑罚并罚，已执行部分不再计入并罚基础",
+     "rules": [
+      "k71-method",
+      "k71-credit"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "本条只确定并罚的基础刑（前罪剩余刑＋后罪宣告刑），具体决定执行刑罚的方法（限制加重、吸收等）依第69条",
+     "rules": [
+      "k71-combine"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "新罪与漏罪的区分以犯罪行为发生在判决宣告之后还是之前为标准：新罪适用本条“先减后并”，漏罪适用第70条“先并后减”",
+     "rules": [
+      "k71-omitted",
+      "k71-method"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k71-cond",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X1)",
+     "judgmentPronounced(P,X1)",
+     "penaltyNotFullyExecuted(P,X1)",
+     "crime(P,X2)",
+     "committedAfterJudgmentBeforeCompletion(X2,X1)"
+    ],
+    "heads": [
+     "newCrimeBeforeCompletion(P,X1,X2)"
+    ],
+    "auth": "npc",
+    "note": "判决宣告以后、刑罚执行完毕以前，被判刑的犯罪分子又犯新罪"
+   },
+   {
+    "key": "k71-judge",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "newCrimeBeforeCompletion(P,X1,X2)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "judgeNewCrime(P,X2)"
+     }
+    ],
+    "auth": "npc",
+    "note": "应当对新犯的罪作出判决"
+   },
+   {
+    "key": "k71-combine",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "newCrimeBeforeCompletion(P,X1,X2)",
+     "remainingPenalty(P,X1,S1)",
+     "imposedPenalty(P,X2,S2)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideExecutedPenaltyByArt69(P,S1,S2)"
+     }
+    ],
+    "auth": "npc",
+    "note": "把前罪没有执行的刑罚与后罪所判处的刑罚，依第69条决定执行的刑罚"
+   },
+   {
+    "key": "k71-method",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "newCrimeBeforeCompletion(P,X1,X2)"
+    ],
+    "heads": [
+     "applyReduceThenCombine(P,X1,X2)"
+    ],
+    "auth": "doctrine",
+    "note": "学理将本条“前罪未执行的刑罚＋后罪宣告刑”的并罚概括为“先减后并”，条文本身未用该术语"
+   },
+   {
+    "key": "k71-credit",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "newCrimeBeforeCompletion(P,X1,X2)",
+     "executedPartOfPenalty(P,X1,E)"
+    ],
+    "heads": [
+     "-countInCombinedPenalty(P,E)"
+    ],
+    "auth": "doctrine",
+    "note": "学理说明：先减后并意味着前罪已执行的刑期已从并罚基础中扣除，不再计入新决定的执行刑"
+   },
+   {
+    "key": "k71-omitted",
+    "srcs": [
+     "art71#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X1)",
+     "judgmentPronounced(P,X1)",
+     "crime(P,X2)",
+     "committedBeforeJudgment(X2,X1)"
+    ],
+    "heads": [
+     "-newCrimeBeforeCompletion(P,X1,X2)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：判决宣告以前的漏罪不是本条的“又犯罪”，应依第70条先并后减"
+   }
+  ],
+  "overrides": [
+   [
+    "k71-omitted",
+    "k71-cond",
+    "推断：结论冲突（('newCrimeBeforeCompletion', '+')），k71-omitted 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "sentencedToPunishment": "sentencedToPunishment(P,X)：P 因犯罪 X 被判处刑罚",
+   "judgmentPronounced": "judgmentPronounced(P,X)：对 P 就犯罪 X 的判决已经宣告",
+   "penaltyNotFullyExecuted": "penaltyNotFullyExecuted(P,X)：P 因犯罪 X 所判刑罚尚未执行完毕",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "committedAfterJudgmentBeforeCompletion": "committedAfterJudgmentBeforeCompletion(X2,X1)：犯罪 X2 实施于前罪 X1 判决宣告以后、刑罚执行完毕以前",
+   "newCrimeBeforeCompletion": "newCrimeBeforeCompletion(P,X1,X2)：P 在前罪 X1 判决宣告后、刑罚执行完毕前又犯新罪 X2（第71条情形）",
+   "judgeNewCrime": "judgeNewCrime(P,X2)：对 P 新犯的罪 X2 作出判决",
+   "remainingPenalty": "remainingPenalty(P,X,S)：P 因犯罪 X 所判刑罚中尚未执行的剩余刑罚为 S",
+   "imposedPenalty": "imposedPenalty(P,X,S)：对 P 就犯罪 X 判处的刑罚为 S",
+   "decideExecutedPenaltyByArt69": "decideExecutedPenaltyByArt69(P,S1,S2)：依刑法第69条将前罪未执行的刑罚 S1 与后罪所判刑罚 S2 并罚，决定 P 应执行的刑罚",
+   "applyReduceThenCombine": "applyReduceThenCombine(P,X1,X2)：对 P 的前罪 X1 与新罪 X2 采用“先减后并”的并罚方法",
+   "executedPartOfPenalty": "executedPartOfPenalty(P,X,E)：P 因犯罪 X 所判刑罚中已经执行的部分（刑期）为 E",
+   "countInCombinedPenalty": "countInCombinedPenalty(P,S)：刑罚（刑期）S 计入对 P 数罪并罚的基础刑",
+   "committedBeforeJudgment": "committedBeforeJudgment(X2,X1)：犯罪 X2 实施于前罪 X1 判决宣告以前（漏罪）"
+  }
+ },
+ "art:73": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "宣告缓刑时，拘役与有期徒刑的缓刑考验期限幅度如何确定、从何日起算",
+     "rules": [
+      "k73-1min",
+      "k73-1max",
+      "k73-2min",
+      "k73-2max",
+      "k73-3start"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：因犯罪被判处拘役或有期徒刑并宣告缓刑；考验期限以原判刑期为计算基准",
+     "rules": [
+      "k73-1min",
+      "k73-2min"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：拘役的缓刑考验期限不能少于二个月；原判刑期不足二个月时，下限为二个月",
+     "rules": [
+      "k73-1floor"
+     ]
+    },
+    {
+     "text": "但书：有期徒刑的缓刑考验期限不能少于一年；原判刑期不足一年时，下限为一年",
+     "rules": [
+      "k73-2floor"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "拘役的缓刑考验期限为原判刑期以上、一年以下",
+     "rules": [
+      "k73-1min",
+      "k73-1max"
+     ]
+    },
+    {
+     "text": "有期徒刑的缓刑考验期限为原判刑期以上、五年以下",
+     "rules": [
+      "k73-2min",
+      "k73-2max"
+     ]
+    },
+    {
+     "text": "法院应在上述下限与上限之间确定具体的缓刑考验期限（由幅度规定归纳的量刑义务）",
+     "rules": [
+      "k73-set"
+     ]
+    },
+    {
+     "text": "缓刑考验期限从判决确定之日起计算",
+     "rules": [
+      "k73-3start"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "但书的最低期限优先于“以原判刑期为下限”的一般规则",
+     "rules": [
+      "k73-1floor",
+      "k73-2floor"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k73-1min",
+    "srcs": [
+     "art73#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToCriminalDetention(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)"
+    ],
+    "heads": [
+     "probationTestPeriodMin(P,X,S)"
+    ],
+    "auth": "npc",
+    "note": "拘役的缓刑考验期限以原判刑期为下限"
+   },
+   {
+    "key": "k73-1max",
+    "srcs": [
+     "art73#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToCriminalDetention(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)"
+    ],
+    "heads": [
+     "probationTestPeriodMax(P,X,oneYear)"
+    ],
+    "auth": "npc",
+    "note": "拘役的缓刑考验期限上限为一年"
+   },
+   {
+    "key": "k73-1floor",
+    "srcs": [
+     "art73#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToCriminalDetention(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)",
+     "shorterThan(S,twoMonths)"
+    ],
+    "heads": [
+     "probationTestPeriodMin(P,X,twoMonths)"
+    ],
+    "auth": "npc",
+    "note": "但书：拘役缓刑考验期限不能少于二个月，原判刑期不足二个月时下限为二个月"
+   },
+   {
+    "key": "k73-2min",
+    "srcs": [
+     "art73#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTerm(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)"
+    ],
+    "heads": [
+     "probationTestPeriodMin(P,X,S)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑的缓刑考验期限以原判刑期为下限"
+   },
+   {
+    "key": "k73-2max",
+    "srcs": [
+     "art73#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTerm(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)"
+    ],
+    "heads": [
+     "probationTestPeriodMax(P,X,fiveYears)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑的缓刑考验期限上限为五年"
+   },
+   {
+    "key": "k73-2floor",
+    "srcs": [
+     "art73#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "sentencedToFixedTerm(P,X)",
+     "probationDeclared(P,X)",
+     "termOf(S,X)",
+     "shorterThan(S,oneYear)"
+    ],
+    "heads": [
+     "probationTestPeriodMin(P,X,oneYear)"
+    ],
+    "auth": "npc",
+    "note": "但书：有期徒刑缓刑考验期限不能少于一年，原判刑期不足一年时下限为一年"
+   },
+   {
+    "key": "k73-set",
+    "srcs": [
+     "art73#1",
+     "art73#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "probationDeclared(P,X)",
+     "probationTestPeriodMin(P,X,L)",
+     "probationTestPeriodMax(P,X,U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fixProbationTestPeriodWithin(P,X,L,U)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "由第1、2款幅度规定归纳出的法院量刑义务：应在下限与上限之间确定考验期限（学理归纳，法条未直接表述为义务）"
+   },
+   {
+    "key": "k73-3start",
+    "srcs": [
+     "art73#3"
+    ],
+    "body": [
+     "crime(P,X)",
+     "probationDeclared(P,X)",
+     "judgmentOf(J,X)",
+     "judgmentFinalDate(J,D)"
+    ],
+    "heads": [
+     "probationTestPeriodStartsFrom(P,X,D)"
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期限从判决确定之日起计算"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "sentencedToCriminalDetention": "sentencedToCriminalDetention(P,X)：P 因犯罪事件 X 被判处拘役",
+   "probationDeclared": "probationDeclared(P,X)：P 因犯罪 X 被宣告缓刑",
+   "termOf": "termOf(S,X)：S 是对犯罪X所判处的刑期",
+   "probationTestPeriodMin": "probationTestPeriodMin(P,X,L)：P 因犯罪 X 的缓刑考验期限下限为 L",
+   "probationTestPeriodMax": "probationTestPeriodMax(P,X,U)：P 因犯罪 X 的缓刑考验期限上限为 U",
+   "shorterThan": "shorterThan(A,B)：期间 A 短于期间 B",
+   "sentencedToFixedTerm": "sentencedToFixedTerm(P,X)：P 因犯罪 X 被判处有期徒刑",
+   "fixProbationTestPeriodWithin": "fixProbationTestPeriodWithin(P,X,L,U)：法院在下限 L 与上限 U 之间确定 P 因犯罪 X 的缓刑考验期限",
+   "judgmentOf": "judgmentOf(J,X)：J 是对犯罪事件 X 作出的判决",
+   "judgmentFinalDate": "judgmentFinalDate(J,D)：判决J于D日确定（生效）",
+   "probationTestPeriodStartsFrom": "probationTestPeriodStartsFrom(P,X,D)：P 因犯罪 X 的缓刑考验期限自 D 日起计算"
+  }
+ },
+ "art:75": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被宣告缓刑的犯罪分子在缓刑考验期内应当遵守哪些规定",
+     "rules": [
+      "k75-1",
+      "k75-2",
+      "k75-3",
+      "k75-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：P 因犯罪 X 被宣告缓刑，O 为对 P 进行考察的考察机关",
+     "rules": [
+      "k75-1",
+      "k75-2",
+      "k75-3",
+      "k75-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "遵守法律、行政法规，服从监督",
+     "rules": [
+      "k75-1"
+     ]
+    },
+    {
+     "text": "按照考察机关的规定报告自己的活动情况",
+     "rules": [
+      "k75-2"
+     ]
+    },
+    {
+     "text": "遵守考察机关关于会客的规定",
+     "rules": [
+      "k75-3"
+     ]
+    },
+    {
+     "text": "离开所居住的市、县或者迁居，应当报经考察机关批准",
+     "rules": [
+      "k75-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k75-1",
+    "srcs": [
+     "art75#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationInspectionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "abideLawsAndRegulations(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "submitToSupervision(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被宣告缓刑的犯罪分子应当遵守法律、行政法规，服从监督（第75条第1款第1项）"
+   },
+   {
+    "key": "k75-2",
+    "srcs": [
+     "art75#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationInspectionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "reportActivities(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被宣告缓刑的犯罪分子应当按照考察机关的规定报告自己的活动情况（第75条第1款第2项）"
+   },
+   {
+    "key": "k75-3",
+    "srcs": [
+     "art75#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationInspectionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "abideVisitorRules(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被宣告缓刑的犯罪分子应当遵守考察机关关于会客的规定（第75条第1款第3项）"
+   },
+   {
+    "key": "k75-4",
+    "srcs": [
+     "art75#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationInspectionOrgan(O,P)",
+     {
+      "or": [
+       "leavesCityOrCounty(P)",
+       "relocatesResidence(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "obtainApproval(P,O,leaveOrRelocate)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被宣告缓刑的犯罪分子离开所居住的市、县或者迁居，应当报经考察机关批准（第75条第1款第4项）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "probationDeclared": "probationDeclared(P,X)：P 因犯罪 X 被宣告缓刑",
+   "probationInspectionOrgan": "probationInspectionOrgan(O,P)：O 是对被宣告缓刑的 P 进行考察的考察机关",
+   "abideLawsAndRegulations": "abideLawsAndRegulations(P)：P 遵守法律、行政法规",
+   "submitToSupervision": "submitToSupervision(P)：P服从监督",
+   "reportActivities": "reportActivities(P,O)：P 按照执行机关 O 的规定报告自己的活动情况",
+   "abideVisitorRules": "abideVisitorRules(P,O)：P 遵守执行机关 O 关于会客的规定",
+   "leavesCityOrCounty": "leavesCityOrCounty(P)：P 离开所居住的市、县",
+   "relocatesResidence": "relocatesResidence(P)：P 迁居",
+   "obtainApproval": "obtainApproval(P,O,A)：P 就行为 A 报经执行机关 O 批准"
+  }
+ },
+ "art:76": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "宣告缓刑的犯罪分子在考验期内如何考察，考验期满原判刑罚是否不再执行",
+     "rules": [
+      "k76-cc",
+      "k76-noexec"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对犯罪分子因犯罪X宣告缓刑，且处于缓刑考验期限内",
+     "rules": [
+      "k76-cc"
+     ]
+    },
+    {
+     "text": "缓刑考验期满，且没有刑法第77条规定的情形",
+     "rules": [
+      "k76-noexec"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "考验期内再犯新罪、发现漏罪，或违反法律、行政法规、国务院有关部门关于缓刑的监督管理规定，或违反人民法院判决中的禁止令且情节严重的，属第77条情形，不发生原判刑罚不再执行的效果（第77条情形依笔记归纳）",
+     "rules": [
+      "k76-art77"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "在缓刑考验期限内，依法对缓刑犯实行社区矫正，由社区矫正机构负责考察",
+     "rules": [
+      "k76-cc"
+     ]
+    },
+    {
+     "text": "缓刑考验期满，原判的刑罚不再执行",
+     "rules": [
+      "k76-noexec"
+     ]
+    },
+    {
+     "text": "对原判刑罚不再执行，应当公开予以宣告",
+     "rules": [
+      "k76-announce"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "缓刑考验期满只是原判刑罚“不再执行”，有罪判决本身仍然有效，不同于假释考验期满视为刑罚执行完毕",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k76-cc",
+    "srcs": [
+     "art76"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "duringProbationTestPeriod(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "communityCorrectionOrgan",
+      "counterparty": null,
+      "content": "communityCorrection(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对宣告缓刑的犯罪分子，在缓刑考验期限内依法实行社区矫正（考察机关为社区矫正机构，见笔记）"
+   },
+   {
+    "key": "k76-noexec",
+    "srcs": [
+     "art76"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationTestPeriodExpired(P,X)",
+     "~circumstanceUnderArt77(P,X)"
+    ],
+    "heads": [
+     "originalSentenceNotExecuted(P,X)"
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期满且无第77条情形的，原判的刑罚不再执行"
+   },
+   {
+    "key": "k76-announce",
+    "srcs": [
+     "art76"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "probationTestPeriodExpired(P,X)",
+     "originalSentenceNotExecuted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "publicAnnounceNonExecution(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "原判刑罚不再执行的，应当公开予以宣告"
+   },
+   {
+    "key": "k76-art77",
+    "srcs": [
+     "art76"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "duringProbationTestPeriod(P,X)",
+     {
+      "or": [
+       "commitsNewCrimeDuringProbation(P,X)",
+       "discoveredOmittedCrime(P,X)",
+       "seriousViolationOfSupervisionRules(P,X)",
+       "seriousViolationOfProhibitionOrder(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "circumstanceUnderArt77(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "第77条情形的具体内容由笔记归纳（再犯新罪、发现漏罪、违反监督管理规定或禁止令且情节严重），第76条本身未列举，故按学理说明处理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "probationDeclared": "probationDeclared(P,X)：P 因犯罪 X 被宣告缓刑",
+   "duringProbationTestPeriod": "duringProbationTestPeriod(P,X)：P 处于犯罪 X 的缓刑考验期限内",
+   "communityCorrection": "communityCorrection(P,X)：对被判处管制的 P 依法实行社区矫正",
+   "probationTestPeriodExpired": "probationTestPeriodExpired(P,X)：P 因犯罪 X 的缓刑考验期限已满",
+   "circumstanceUnderArt77": "circumstanceUnderArt77(P,X)：P 在缓刑考验期内具有刑法第77条规定的情形",
+   "originalSentenceNotExecuted": "originalSentenceNotExecuted(P,X)：对 P 因犯罪 X 所判的原判刑罚不再执行",
+   "publicAnnounceNonExecution": "publicAnnounceNonExecution(P,X)：公开宣告对 P 因犯罪 X 的原判刑罚不再执行",
+   "commitsNewCrimeDuringProbation": "commitsNewCrimeDuringProbation(P,X)：P 在犯罪 X 的缓刑考验期限内再犯新罪",
+   "discoveredOmittedCrime": "discoveredOmittedCrime(P,X)：发现 P 在犯罪 X 缓刑宣告以前还有其他罪没有判决（漏罪）",
+   "seriousViolationOfSupervisionRules": "seriousViolationOfSupervisionRules(P,X)：P 在缓刑考验期内违反法律、行政法规或者国务院有关部门关于缓刑的监督管理规定，情节严重",
+   "seriousViolationOfProhibitionOrder": "seriousViolationOfProhibitionOrder(P,X)：P 在缓刑考验期内违反人民法院判决中的禁止令，情节严重"
+  }
+ },
+ "art:77": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被宣告缓刑的犯罪分子在缓刑考验期限内出现法定情形时，是否撤销缓刑以及撤销后如何处理（数罪并罚抑或执行原判刑罚）",
+     "rules": [
+      "k77-1",
+      "k77-2",
+      "k77-3",
+      "k77-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "共同前提：因犯罪被宣告缓刑，且处于该缓刑的考验期限内（第76条考察的内容即是否具有第77条规定的情形）",
+     "rules": [
+      "k77-1",
+      "k77-2",
+      "k77-3",
+      "k77-4"
+     ]
+    },
+    {
+     "text": "第1款情形一：在缓刑考验期限内又犯新罪",
+     "rules": [
+      "k77-1"
+     ]
+    },
+    {
+     "text": "第1款情形二：在缓刑考验期限内发现判决宣告以前还有其他罪没有判决（漏罪）",
+     "rules": [
+      "k77-2"
+     ]
+    },
+    {
+     "text": "第2款情形一：在缓刑考验期限内违反法律、行政法规或者国务院有关部门关于缓刑的监督管理规定，且情节严重",
+     "rules": [
+      "k77-3"
+     ]
+    },
+    {
+     "text": "第2款情形二：在缓刑考验期限内违反人民法院判决中的禁止令，且情节严重",
+     "rules": [
+      "k77-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "犯新罪或发现漏罪的，应当撤销缓刑，对新犯的罪或新发现的罪作出判决，并把前罪与后罪所判处的刑罚依照第69条决定执行的刑罚",
+     "rules": [
+      "k77-1",
+      "k77-2"
+     ]
+    },
+    {
+     "text": "违反缓刑监督管理规定或判决中的禁止令且情节严重的，应当撤销缓刑，执行原判刑罚",
+     "rules": [
+      "k77-3",
+      "k77-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1款撤销缓刑后的刑罚决定，指引适用第69条数罪并罚的规定（本条不另定并罚方法）",
+     "rules": [
+      "k77-1",
+      "k77-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款（犯新罪、发现漏罪）不以“情节严重”为要件；第2款（违反监督管理规定或禁止令）必须情节严重才撤销缓刑",
+     "rules": [
+      "k77-1",
+      "k77-2",
+      "k77-3",
+      "k77-4"
+     ]
+    },
+    {
+     "text": "缓刑考验期满且无第77条情形的，原判刑罚不再执行并公开宣告（第76条）；战时缓刑中犯罪军人确有立功表现的，可以撤销原判刑罚、不以犯罪论处（第449条）——均非本条规定，本条只处理撤销缓刑的失败后果",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k77-1",
+    "srcs": [
+     "art77#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "inProbationTestPeriod(P,X)",
+     "newCrimeInTestPeriod(P,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeProbation(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "judgeNewOrOmittedCrime(P,Y)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideExecutedPenaltyPerArt69(P,X,Y)"
+     }
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期内犯新罪的，应当撤销缓刑，对新罪作出判决，并依第69条对前罪后罪数罪并罚决定执行的刑罚"
+   },
+   {
+    "key": "k77-2",
+    "srcs": [
+     "art77#1"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "inProbationTestPeriod(P,X)",
+     "omittedCrimeFoundInTestPeriod(P,Y)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeProbation(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "judgeNewOrOmittedCrime(P,Y)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideExecutedPenaltyPerArt69(P,X,Y)"
+     }
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期内发现判决宣告以前还有漏罪未判决的，应当撤销缓刑，对漏罪作出判决，并依第69条数罪并罚决定执行的刑罚"
+   },
+   {
+    "key": "k77-3",
+    "srcs": [
+     "art77#2"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "inProbationTestPeriod(P,X)",
+     "violatesProbationSupervisionRules(P,V)",
+     "seriousCircumstances(V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeProbation(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeOriginalPenalty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期内违反法律、行政法规或国务院有关部门关于缓刑的监督管理规定，情节严重的，应当撤销缓刑，执行原判刑罚"
+   },
+   {
+    "key": "k77-4",
+    "srcs": [
+     "art77#2"
+    ],
+    "body": [
+     "probationDeclared(P,X)",
+     "inProbationTestPeriod(P,X)",
+     "violatesProhibitionOrderInJudgment(P,V)",
+     "seriousCircumstances(V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeProbation(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "executeOriginalPenalty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "缓刑考验期内违反人民法院判决中的禁止令，情节严重的，应当撤销缓刑，执行原判刑罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "probationDeclared": "probationDeclared(P,X)：P 因犯罪 X 被宣告缓刑",
+   "inProbationTestPeriod": "inProbationTestPeriod(P,X)：P 处于因犯罪 X 所受缓刑的考验期限内",
+   "newCrimeInTestPeriod": "newCrimeInTestPeriod(P,Y)：P 在缓刑考验期限内又犯新罪 Y",
+   "revokeProbation": "revokeProbation(P,X)：撤销对 P 因犯罪 X 宣告的缓刑",
+   "judgeNewOrOmittedCrime": "judgeNewOrOmittedCrime(P,Y)：对 P 新犯的罪或者新发现的罪 Y 作出判决",
+   "decideExecutedPenaltyPerArt69": "decideExecutedPenaltyPerArt69(P,X,Y)：把前罪 X 与后罪 Y 所判处的刑罚依照刑法第69条的规定决定执行的刑罚",
+   "omittedCrimeFoundInTestPeriod": "omittedCrimeFoundInTestPeriod(P,Y)：在缓刑考验期限内发现 P 在判决宣告以前还有其他罪 Y 没有判决（漏罪）",
+   "violatesProbationSupervisionRules": "violatesProbationSupervisionRules(P,V)：P 实施行为 V，违反法律、行政法规或者国务院有关部门关于缓刑的监督管理规定",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "executeOriginalPenalty": "executeOriginalPenalty(P,X)：对 P 执行因犯罪 X 原判的刑罚",
+   "violatesProhibitionOrderInJudgment": "violatesProhibitionOrderInJudgment(P,V)：P 实施行为 V，违反人民法院缓刑判决中的禁止令"
+  }
+ },
+ "art:78": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "服刑期间能否减刑：减刑的对象条件、实质条件（可以减刑与应当减刑），以及减刑后实际执行刑期的法定下限",
+     "rules": [
+      "k78-object",
+      "k78-can",
+      "k78-must",
+      "k78-limit-1",
+      "k78-limit-2",
+      "k78-limit-3a",
+      "k78-limit-3b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：被判处管制、拘役、有期徒刑、无期徒刑的犯罪分子，且处于刑罚执行期间",
+     "rules": [
+      "k78-object"
+     ]
+    },
+    {
+     "text": "可以减刑的实质条件：认真遵守监规、接受教育改造、确有悔改表现（三者同时具备），或者有立功表现（择一即可）",
+     "rules": [
+      "k78-can"
+     ]
+    },
+    {
+     "text": "应当减刑的实质条件：有下列重大立功表现之一",
+     "rules": [
+      "k78-must"
+     ]
+    },
+    {
+     "text": "重大立功表现（一）：阻止他人重大犯罪活动",
+     "rules": [
+      "k78-m1"
+     ]
+    },
+    {
+     "text": "重大立功表现（二）：检举监狱内外重大犯罪活动，经查证属实",
+     "rules": [
+      "k78-m2"
+     ]
+    },
+    {
+     "text": "重大立功表现（三）：有发明创造或者重大技术革新",
+     "rules": [
+      "k78-m3"
+     ]
+    },
+    {
+     "text": "重大立功表现（四）：在日常生产、生活中舍己救人",
+     "rules": [
+      "k78-m4"
+     ]
+    },
+    {
+     "text": "重大立功表现（五）：在抗御自然灾害或者排除重大事故中有突出表现",
+     "rules": [
+      "k78-m5"
+     ]
+    },
+    {
+     "text": "重大立功表现（六）：对国家和社会有其他重大贡献",
+     "rules": [
+      "k78-m6"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "死刑缓期执行期满依法减为无期徒刑或有期徒刑、因主刑刑种性质改变引起的附加刑相应改变、罚金刑的酌情减少或免除，均不属于第78条减刑制度的范围（笔记）",
+     "rules": [
+      "k78-exclude"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备对象条件与“悔改或立功”实质条件的，人民法院可以减刑（裁量）",
+     "rules": [
+      "k78-can"
+     ]
+    },
+    {
+     "text": "有重大立功表现之一的，人民法院应当减刑",
+     "rules": [
+      "k78-must"
+     ]
+    },
+    {
+     "text": "限度一：判处管制、拘役、有期徒刑的，减刑后实际执行的刑期不能少于原判刑期的二分之一",
+     "rules": [
+      "k78-limit-1"
+     ]
+    },
+    {
+     "text": "限度二：判处无期徒刑的，减刑后实际执行的刑期不能少于十三年",
+     "rules": [
+      "k78-limit-2"
+     ]
+    },
+    {
+     "text": "限度三之一：依第50条第2款被限制减刑的死缓犯，缓期期满依法减为无期徒刑的，减刑后实际执行不能少于二十五年",
+     "rules": [
+      "k78-limit-3a"
+     ]
+    },
+    {
+     "text": "限度三之二：依第50条第2款被限制减刑的死缓犯，缓期期满依法减为二十五年有期徒刑的，减刑后实际执行不能少于二十年",
+     "rules": [
+      "k78-limit-3b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有重大立功表现时，应当减刑的规定优先于可以减刑的裁量性规定",
+     "rules": [
+      "k78-must",
+      "k78-can"
+     ]
+    },
+    {
+     "text": "不属于第78条减刑范围的情形，排除减刑对象条件的认定",
+     "rules": [
+      "k78-exclude",
+      "k78-object"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "“确有悔改表现”须与认真遵守监规、接受教育改造结合认定；立功表现则可单独构成可以减刑的实质条件；重大立功则升格为应当减刑",
+     "rules": [
+      "k78-can",
+      "k78-must"
+     ]
+    },
+    {
+     "text": "第2款的刑期下限是对减刑幅度的限制，而非减刑的实质条件；限制减刑的死缓犯适用更长的下限（25年／20年）",
+     "rules": [
+      "k78-limit-1",
+      "k78-limit-2",
+      "k78-limit-3a",
+      "k78-limit-3b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k78-object",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     {
+      "or": [
+       "sentencedToControl(P,X)",
+       "sentencedToCriminalDetention(P,X)",
+       "sentencedToFixedTerm(P,X)",
+       "sentencedToLifeImprisonment(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "commutationObjectCondition(P,X)"
+    ],
+    "auth": "npc",
+    "note": "减刑的对象条件：被判处管制、拘役、有期徒刑、无期徒刑且处于执行期间"
+   },
+   {
+    "key": "k78-can",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "commutationObjectCondition(P,X)",
+     "duringExecution(P,X)",
+     {
+      "or": [
+       "abidesPrisonRules(P) acceptEducationAndReform(P,X) showsRepentance(P)",
+       "meritoriousService(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commute(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "认真遵守监规、接受教育改造、确有悔改表现，或者有立功表现的，可以减刑"
+   },
+   {
+    "key": "k78-must",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "commutationObjectCondition(P,X)",
+     "duringExecution(P,X)",
+     "majorMeritoriousService(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commute(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "有法定重大立功表现之一的，应当减刑"
+   },
+   {
+    "key": "k78-m1",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "preventsOthersMajorCrime(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "阻止他人重大犯罪活动的，属于重大立功表现"
+   },
+   {
+    "key": "k78-m2",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "reportsMajorCrimeVerified(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "检举监狱内外重大犯罪活动经查证属实的，属于重大立功表现"
+   },
+   {
+    "key": "k78-m3",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "hasInventionOrMajorTechnicalInnovation(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "有发明创造或者重大技术革新的，属于重大立功表现"
+   },
+   {
+    "key": "k78-m4",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "selfSacrificingRescue(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "在日常生产、生活中舍己救人的，属于重大立功表现"
+   },
+   {
+    "key": "k78-m5",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "outstandingPerformanceInDisasterOrAccident(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "在抗御自然灾害或者排除重大事故中有突出表现的，属于重大立功表现"
+   },
+   {
+    "key": "k78-m6",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     "duringExecution(P,X)",
+     "otherMajorContributionToStateAndSociety(P)"
+    ],
+    "heads": [
+     "majorMeritoriousService(P)"
+    ],
+    "auth": "npc",
+    "note": "对国家和社会有其他重大贡献的，属于重大立功表现"
+   },
+   {
+    "key": "k78-limit-1",
+    "srcs": [
+     "art78#2"
+    ],
+    "body": [
+     "commutationDecided(P,X)",
+     {
+      "or": [
+       "sentencedToControl(P,X)",
+       "sentencedToCriminalDetention(P,X)",
+       "sentencedToFixedTerm(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commuteBelowHalfOfOriginal(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处管制、拘役、有期徒刑的，减刑后实际执行刑期不得少于原判刑期的二分之一"
+   },
+   {
+    "key": "k78-limit-2",
+    "srcs": [
+     "art78#2"
+    ],
+    "body": [
+     "commutationDecided(P,X)",
+     "sentencedToLifeImprisonment(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commuteBelowThirteenYears(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "判处无期徒刑的，减刑后实际执行刑期不得少于十三年"
+   },
+   {
+    "key": "k78-limit-3a",
+    "srcs": [
+     "art78#2"
+    ],
+    "body": [
+     "commutationDecided(P,X)",
+     "deathWithReprieve(P,X)",
+     "restrictCommutation(P,X)",
+     "reprievePeriodExpired(P,X)",
+     "deathWithReprieveCommutedToLife(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commuteBelowTwentyFiveYears(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "依第50条第2款限制减刑的死缓犯，期满减为无期徒刑后再减刑，实际执行不得少于二十五年"
+   },
+   {
+    "key": "k78-limit-3b",
+    "srcs": [
+     "art78#2"
+    ],
+    "body": [
+     "commutationDecided(P,X)",
+     "deathWithReprieve(P,X)",
+     "restrictCommutation(P,X)",
+     "reprievePeriodExpired(P,X)",
+     "commutedToTwentyFiveYearsFixedTerm(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commuteBelowTwentyYears(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "依第50条第2款限制减刑的死缓犯，期满减为二十五年有期徒刑后再减刑，实际执行不得少于二十年"
+   },
+   {
+    "key": "k78-exclude",
+    "srcs": [
+     "art78#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "commutationOfDeathReprieve(P,X)",
+       "consequentialChangeOfSupplementaryPunishment(P,X)",
+       "discretionaryFineReductionOrExemption(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-commutationObjectCondition(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "死缓期满依法减刑、附加刑随主刑改变的相应调整、罚金刑酌情减少或免除，不属于第78条减刑范围（来自备考笔记的体系解释，法条未明文）"
+   }
+  ],
+  "overrides": [
+   [
+    "k78-object",
+    "k78-exclude",
+    "推断：结论冲突（('commutationObjectCondition', '+')），k78-object 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "duringExecution": "duringExecution(P,X)：P 因 X 所受刑罚正处于执行期间",
+   "sentencedToControl": "sentencedToControl(P,X)：P因犯罪X被判处管制",
+   "sentencedToCriminalDetention": "sentencedToCriminalDetention(P,X)：P 因犯罪事件 X 被判处拘役",
+   "sentencedToFixedTerm": "sentencedToFixedTerm(P,X)：P 因犯罪 X 被判处有期徒刑",
+   "sentencedToLifeImprisonment": "sentencedToLifeImprisonment(P,X)：P 因犯罪 X 被判处无期徒刑",
+   "commutationObjectCondition": "commutationObjectCondition(P,X)：对 P 因犯罪 X 所判刑罚具备第78条减刑的对象条件",
+   "abidesPrisonRules": "认真遵守监规",
+   "acceptEducationAndReform": "acceptEducationAndReform(P,X)：P 就其服刑（犯罪 X）接受教育和改造",
+   "showsRepentance": "有悔罪表现",
+   "meritoriousService": "立功",
+   "commute": "commute(P,X)：对 P 因犯罪 X 所判刑罚予以减刑",
+   "majorMeritoriousService": "重大立功",
+   "preventsOthersMajorCrime": "preventsOthersMajorCrime(P)：P 阻止他人重大犯罪活动",
+   "reportsMajorCrimeVerified": "reportsMajorCrimeVerified(P)：P 检举监狱内外重大犯罪活动，经查证属实",
+   "hasInventionOrMajorTechnicalInnovation": "hasInventionOrMajorTechnicalInnovation(P)：P 有发明创造或者重大技术革新",
+   "selfSacrificingRescue": "selfSacrificingRescue(P)：P 在日常生产、生活中舍己救人",
+   "outstandingPerformanceInDisasterOrAccident": "outstandingPerformanceInDisasterOrAccident(P)：P 在抗御自然灾害或者排除重大事故中有突出表现",
+   "otherMajorContributionToStateAndSociety": "otherMajorContributionToStateAndSociety(P)：P 对国家和社会有其他重大贡献",
+   "commutationDecided": "commutationDecided(P,X)：人民法院已对 P 因犯罪 X 所判刑罚作出减刑裁定",
+   "commuteBelowHalfOfOriginal": "commuteBelowHalfOfOriginal(P,X)：减刑使 P 因犯罪 X 实际执行的刑期少于原判刑期的二分之一",
+   "commuteBelowThirteenYears": "commuteBelowThirteenYears(P,X)：减刑使 P 因犯罪 X（无期徒刑）实际执行的刑期少于十三年",
+   "deathWithReprieve": "deathWithReprieve(P,X)：P 因犯罪 X 被判处死刑缓期二年执行",
+   "restrictCommutation": "restrictCommutation(P,X)：对 P 决定限制减刑",
+   "reprievePeriodExpired": "reprievePeriodExpired(P,X)：P 因犯罪 X 所判死刑缓期执行的二年期间已满",
+   "deathWithReprieveCommutedToLife": "deathWithReprieveCommutedToLife(P,X)：P 因犯罪 X 所判死刑缓期执行于期满后依法减为无期徒刑",
+   "commuteBelowTwentyFiveYears": "commuteBelowTwentyFiveYears(P,X)：减刑使 P 因犯罪 X 实际执行的刑期少于二十五年",
+   "commutedToTwentyFiveYearsFixedTerm": "commutedToTwentyFiveYearsFixedTerm(P,X)：P 因犯罪 X 所判死刑缓期执行于期满后依法减为二十五年有期徒刑",
+   "commuteBelowTwentyYears": "commuteBelowTwentyYears(P,X)：减刑使 P 因犯罪 X 实际执行的刑期少于二十年",
+   "commutationOfDeathReprieve": "commutationOfDeathReprieve(P,X)：X 系 P 的死刑缓期执行期满依法减为无期徒刑或有期徒刑（属死缓制度本身）",
+   "consequentialChangeOfSupplementaryPunishment": "consequentialChangeOfSupplementaryPunishment(P,X)：X 系因 P 主刑刑种性质改变而引起的附加刑相应改变",
+   "discretionaryFineReductionOrExemption": "discretionaryFineReductionOrExemption(P,X)：X 系对 P 所判罚金刑的酌情减少或者免除"
+  }
+ },
+ "art:79": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "减刑的决定权在中级以上人民法院，须经“执行机关提出减刑建议书—法院组成合议庭审理—裁定减刑”的法定程序",
+     "rules": [
+      "k79-1",
+      "k79-2",
+      "k79-3",
+      "k79-proc"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "减刑对象是正在服刑的犯罪分子，且确有悔改或者立功事实（二者居其一即可）",
+     "rules": [
+      "k79-3"
+     ]
+    },
+    {
+     "text": "受理减刑的法院限于中级以上人民法院（笔记强调管辖级别）",
+     "rules": [
+      "k79-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非经法定程序不得减刑：未经建议书、合议庭审理与裁定的，法院不得减刑",
+     "rules": [
+      "k79-forb"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "由执行机关向中级以上人民法院提出减刑建议书",
+     "rules": [
+      "k79-1"
+     ]
+    },
+    {
+     "text": "人民法院应当组成合议庭进行审理",
+     "rules": [
+      "k79-2"
+     ]
+    },
+    {
+     "text": "对确有悔改或者立功事实的，人民法院裁定予以减刑",
+     "rules": [
+      "k79-3"
+     ]
+    },
+    {
+     "text": "执行机关建议书＋合议庭审理＋减刑裁定，即属经过法定减刑程序（学理归纳）",
+     "rules": [
+      "k79-proc"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k79-1",
+    "srcs": [
+     "art79#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X)",
+     "executionOrganForPenalty(O,P)",
+     "intermediateOrAboveCourt(court)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "court",
+      "content": "submitCommutationProposal(O,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯罪分子的减刑，由执行机关向中级以上人民法院提出减刑建议书"
+   },
+   {
+    "key": "k79-2",
+    "srcs": [
+     "art79#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X)",
+     "commutationProposalSubmitted(O,P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "formCollegialPanelAndHear(court,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "收到减刑建议书后，人民法院应当组成合议庭进行审理"
+   },
+   {
+    "key": "k79-3",
+    "srcs": [
+     "art79#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X)",
+     "commutationProposalSubmitted(O,P,X)",
+     "collegialPanelHearingHeld(court,P,X)",
+     {
+      "or": [
+       "showsRepentance(P)",
+       "meritoriousService(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "ruleCommutation(court,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "经合议庭审理，对确有悔改或者立功事实的，人民法院裁定予以减刑"
+   },
+   {
+    "key": "k79-proc",
+    "srcs": [
+     "art79#1"
+    ],
+    "body": [
+     "commutationProposalSubmitted(O,P,X)",
+     "collegialPanelHearingHeld(court,P,X)",
+     "commutationRulingMade(court,P,X)"
+    ],
+    "heads": [
+     "statutoryCommutationProcedureCompleted(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理归纳：建议书、合议庭审理、减刑裁定三环节齐备，即为第79条所称法定减刑程序"
+   },
+   {
+    "key": "k79-forb",
+    "srcs": [
+     "art79#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X)",
+     "~statutoryCommutationProcedureCompleted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commutePenalty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "非经法定程序不得减刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToPunishment": "sentencedToPunishment(P,X)：P 因犯罪 X 被判处刑罚",
+   "executionOrganForPenalty": "executionOrganForPenalty(O,P)：O 是对犯罪分子 P 执行刑罚的执行机关",
+   "intermediateOrAboveCourt": "intermediateOrAboveCourt(Ct)：Ct 是中级以上人民法院",
+   "submitCommutationProposal": "submitCommutationProposal(O,P,X)：执行机关 O 就 P 因犯罪 X 所服刑罚向法院提出减刑建议书",
+   "commutationProposalSubmitted": "commutationProposalSubmitted(O,P,X)：执行机关 O 已就 P 因犯罪 X 所服刑罚提出减刑建议书",
+   "formCollegialPanelAndHear": "formCollegialPanelAndHear(Ct,P,X)：法院 Ct 组成合议庭审理对 P 因犯罪 X 所服刑罚的减刑案件",
+   "collegialPanelHearingHeld": "collegialPanelHearingHeld(Ct,P,X)：法院 Ct 已组成合议庭审理该减刑案件",
+   "showsRepentance": "有悔罪表现",
+   "meritoriousService": "立功",
+   "ruleCommutation": "ruleCommutation(Ct,P,X)：法院 Ct 裁定对 P 因犯罪 X 所服刑罚予以减刑",
+   "commutationRulingMade": "commutationRulingMade(Ct,P,X)：法院 Ct 已就 P 因犯罪 X 所服刑罚作出减刑裁定",
+   "statutoryCommutationProcedureCompleted": "statutoryCommutationProcedureCompleted(P,X)：对 P 因犯罪 X 所服刑罚的减刑已经过法定程序",
+   "commutePenalty": "commutePenalty(P,X)：对 P 因犯罪 X 所服刑罚予以减刑"
+  }
+ },
+ "art:80": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "无期徒刑减为有期徒刑后，减刑后的有期徒刑刑期从何时起算",
+     "rules": [
+      "k80-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提：P因犯罪X所判无期徒刑已被裁定减为有期徒刑，且该减刑裁定作出之日为D",
+     "rules": [
+      "k80-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "减刑前先行羁押的日期以及已执行的无期徒刑期间，不折抵减刑后的有期徒刑刑期（法条未明文，系学理与执行实务的当然结论）",
+     "rules": [
+      "k80-nocredit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "无期徒刑减为有期徒刑的刑期，从裁定减刑之日起计算",
+     "rules": [
+      "k80-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与有期徒刑刑期自判决执行之日起计算、先行羁押一日折抵一日不同；也与死缓减为有期徒刑自死刑缓期执行期满之日起计算不同：本条起算点是裁定减刑之日",
+     "rules": [
+      "k80-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k80-1",
+    "srcs": [
+     "art80#1"
+    ],
+    "body": [
+     "lifeImprisonmentCommutedToFixedTerm(P,X)",
+     "commutationRulingDate(P,X,D)"
+    ],
+    "heads": [
+     "commutedFromLifeTermStart(P,D)"
+    ],
+    "auth": "npc",
+    "note": "无期徒刑减为有期徒刑的刑期，从裁定减刑之日起计算"
+   },
+   {
+    "key": "k80-nocredit",
+    "srcs": [
+     "art80#1"
+    ],
+    "body": [
+     "lifeImprisonmentCommutedToFixedTerm(P,X)"
+    ],
+    "heads": [
+     "-custodyCreditedToCommutedTerm(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "刑期既自裁定减刑之日起算，则减刑前的羁押与已执行期间不折抵减刑后刑期；法条未明文，属学理推论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lifeImprisonmentCommutedToFixedTerm": "lifeImprisonmentCommutedToFixedTerm(P,X)：P 因犯罪 X 所判无期徒刑已减为有期徒刑",
+   "commutationRulingDate": "commutationRulingDate(P,X,D)：对P因犯罪X所判无期徒刑裁定减刑之日为D",
+   "commutedFromLifeTermStart": "commutedFromLifeTermStart(P,D)：P的无期徒刑减为有期徒刑后的刑期自D日起计算",
+   "custodyCreditedToCommutedTerm": "custodyCreditedToCommutedTerm(P,X)：P因犯罪X在无期徒刑减为有期徒刑前的先行羁押或已执行期间折抵减刑后的有期徒刑刑期"
+  }
+ },
+ "art:82": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "假释的程序控制：假释准用第79条减刑程序，非经法定程序不得假释",
+     "rules": [
+      "k82-for"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象是犯罪分子（已被判处刑罚、正在服刑）；对其假释依照第79条规定的程序进行——由执行机关向中级以上人民法院提出假释建议书，法院组成合议庭审理，确有悔改或立功事实的裁定假释（纯程序性准用，不单独形式化）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "已经过法定程序（执行机关提请假释建议书、中级以上人民法院组成合议庭审理并裁定）的，不受本条禁止的限制",
+     "rules": [
+      "k82-for"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "非经法定程序不得假释：未经第79条法定程序，人民法院不得对犯罪分子裁定假释",
+     "rules": [
+      "k82-for"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第81条规定假释的实质条件（已执行刑期、认真遵守监规接受教育改造、确有悔改表现、没有再犯罪危险等）及不得假释的情形，本条只规定程序要件；实质条件与法定程序须同时具备，缺一不可",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k82-for",
+    "srcs": [
+     "art82#1"
+    ],
+    "body": [
+     "sentencedToPunishment(P,X)",
+     "paroleCase(P,X)",
+     "~statutoryParoleProcedureFollowed(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantParole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "假释准用第79条程序，非经该法定程序人民法院不得对犯罪分子P因犯罪X所判刑罚裁定假释"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sentencedToPunishment": "sentencedToPunishment(P,X)：P 因犯罪 X 被判处刑罚",
+   "paroleCase": "paroleCase(P,X)：对犯罪分子 P 因犯罪 X 所判刑罚提请假释、尚待依法定程序审理裁定的案件",
+   "statutoryParoleProcedureFollowed": "statutoryParoleProcedureFollowed(P,X)：对 P 因犯罪 X 的假释已经过法定程序（准用第79条：执行机关提出假释建议书，报请中级以上人民法院组成合议庭审理并作出裁定）",
+   "grantParole": "grantParole(P,X)：对 P 因犯罪 X 所判刑罚裁定予以假释"
+  }
+ },
+ "art:83": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "假释考验期限的长短如何确定，以及从何时起算",
+     "rules": [
+      "k83-1",
+      "k83-2",
+      "k83-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：犯罪分子P因犯罪X被判处有期徒刑或无期徒刑，并在服刑期间被假释",
+     "rules": [
+      "k83-1",
+      "k83-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "有期徒刑的假释考验期限，为没有执行完毕的刑期（剩余刑期）",
+     "rules": [
+      "k83-1"
+     ]
+    },
+    {
+     "text": "无期徒刑的假释考验期限为十年",
+     "rules": [
+      "k83-2"
+     ]
+    },
+    {
+     "text": "假释考验期限从假释之日起计算",
+     "rules": [
+      "k83-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k83-1",
+    "srcs": [
+     "art83#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "sentencedToFixedTerm(P,X)",
+     "unexecutedTerm(X,T)"
+    ],
+    "heads": [
+     "paroleProbationTerm(P,X,T)"
+    ],
+    "auth": "npc",
+    "note": "有期徒刑假释的考验期限等于尚未执行完毕的刑期"
+   },
+   {
+    "key": "k83-2",
+    "srcs": [
+     "art83#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "sentencedToLifeImprisonment(P,X)"
+    ],
+    "heads": [
+     "paroleProbationTerm(P,X,y10)"
+    ],
+    "auth": "npc",
+    "note": "无期徒刑假释的考验期限固定为十年"
+   },
+   {
+    "key": "k83-3",
+    "srcs": [
+     "art83#2"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "paroleDate(P,X,D)"
+    ],
+    "heads": [
+     "paroleProbationStartsFrom(P,X,D)"
+    ],
+    "auth": "npc",
+    "note": "假释考验期限自假释之日起计算"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "paroled": "paroled(P,X)：P因犯罪X服刑期间被假释",
+   "sentencedToFixedTerm": "sentencedToFixedTerm(P,X)：P 因犯罪 X 被判处有期徒刑",
+   "unexecutedTerm": "unexecutedTerm(X,T)：犯罪X所判有期徒刑尚未执行完毕的刑期（剩余刑期）为T",
+   "paroleProbationTerm": "paroleProbationTerm(P,X,T)：P因犯罪X被假释的考验期限为T",
+   "sentencedToLifeImprisonment": "sentencedToLifeImprisonment(P,X)：P 因犯罪 X 被判处无期徒刑",
+   "paroleDate": "paroleDate(P,X,D)：P因犯罪X被假释之日为D",
+   "paroleProbationStartsFrom": "paroleProbationStartsFrom(P,X,D)：P因犯罪X的假释考验期限自假释之日D起计算"
+  }
+ },
+ "art:84": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "被宣告假释的犯罪分子在假释考验期内应当遵守哪些监督管理规定",
+     "rules": [
+      "k84-1",
+      "k84-2",
+      "k84-3",
+      "k84-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：P 因犯罪 X 被宣告假释（处于假释考验期内）；涉及报告、会客、外出迁居批准的事项，还须确定对 P 进行监督的监督机关 O",
+     "rules": [
+      "k84-1",
+      "k84-2",
+      "k84-3",
+      "k84-4"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第（一）项：应当遵守法律、行政法规，服从监督",
+     "rules": [
+      "k84-1"
+     ]
+    },
+    {
+     "text": "第（二）项：应当按照监督机关的规定报告自己的活动情况",
+     "rules": [
+      "k84-2"
+     ]
+    },
+    {
+     "text": "第（三）项：应当遵守监督机关关于会客的规定",
+     "rules": [
+      "k84-3"
+     ]
+    },
+    {
+     "text": "第（四）项：离开所居住的市、县或者迁居，应当报经监督机关批准（二者具备其一即须报批）",
+     "rules": [
+      "k84-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是假释期间的监督管理义务，与管制执行期间的义务（第39条）、缓刑考验期内的义务相区别；违反本条规定的后果（情节严重的撤销假释）由第86条规定，本行不挂载、不形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k84-1",
+    "srcs": [
+     "art84#1"
+    ],
+    "body": [
+     "paroled(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "abideLawsAndRegulations(P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "submitToSupervision(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第84条第1款第（一）项：被宣告假释的犯罪分子应当遵守法律、行政法规，服从监督"
+   },
+   {
+    "key": "k84-2",
+    "srcs": [
+     "art84#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "supervisionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "reportActivities(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第84条第1款第（二）项：应当按照监督机关 O 的规定报告自己的活动情况"
+   },
+   {
+    "key": "k84-3",
+    "srcs": [
+     "art84#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "supervisionOrgan(O,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "abideVisitorRules(P,O)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第84条第1款第（三）项：应当遵守监督机关 O 关于会客的规定"
+   },
+   {
+    "key": "k84-4",
+    "srcs": [
+     "art84#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "supervisionOrgan(O,P)",
+     {
+      "or": [
+       "leavesCityOrCounty(P)",
+       "relocatesResidence(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "obtainApproval(P,O,leaveOrRelocate)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第84条第1款第（四）项：离开所居住的市、县或者迁居（leaveOrRelocate），应当报经监督机关批准"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "paroled": "paroled(P,X)：P因犯罪X服刑期间被假释",
+   "abideLawsAndRegulations": "abideLawsAndRegulations(P)：P 遵守法律、行政法规",
+   "submitToSupervision": "submitToSupervision(P)：P服从监督",
+   "supervisionOrgan": "supervisionOrgan(O,P)：O 是对被宣告假释的犯罪分子 P 进行监督的监督机关（区别于管制执行机关）",
+   "reportActivities": "reportActivities(P,O)：P 按照执行机关 O 的规定报告自己的活动情况",
+   "abideVisitorRules": "abideVisitorRules(P,O)：P 遵守执行机关 O 关于会客的规定",
+   "leavesCityOrCounty": "leavesCityOrCounty(P)：P 离开所居住的市、县",
+   "relocatesResidence": "relocatesResidence(P)：P 迁居",
+   "obtainApproval": "obtainApproval(P,O,A)：P 就行为 A 报经执行机关 O 批准"
+  }
+ },
+ "art:85": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "假释考验期内的考察（社区矫正）与考验期满的法律效果",
+     "rules": [
+      "k85-1",
+      "k85-2",
+      "k85-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：被假释的犯罪分子；期间条件：处于假释考验期限内",
+     "rules": [
+      "k85-1"
+     ]
+    },
+    {
+     "text": "视为执行完毕的条件：假释考验期满，且没有第86条规定的情形",
+     "rules": [
+      "k85-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有第86条情形的（考验期内再犯新罪、发现漏罪，或违反法律、行政法规、国务院有关部门关于假释的监督管理规定），不适用“考验期满视为原判刑罚执行完毕”，应撤销假释，依数罪并罚处理或收监执行未执行完毕的刑罚（第86条）",
+     "rules": [
+      "k85-2",
+      "k85-86"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对假释的犯罪分子，在假释考验期限内依法实行社区矫正（由社区矫正机构负责）",
+     "rules": [
+      "k85-1"
+     ]
+    },
+    {
+     "text": "考验期满且无第86条情形的，就认为原判刑罚已经执行完毕",
+     "rules": [
+      "k85-2"
+     ]
+    },
+    {
+     "text": "对原判刑罚已经执行完毕的结果，应当公开予以宣告",
+     "rules": [
+      "k85-3"
+     ]
+    },
+    {
+     "text": "考察内容：主要考察其在假释考验期限内是否具有第86条规定的情形（笔记归纳）",
+     "rules": [
+      "k85-inspect"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "社区矫正既适用于被判处管制的犯罪分子（第38条），也适用于假释犯；本条的社区矫正限于假释考验期限内，期满后原判刑罚视为执行完毕，不同于管制期满的解除管制宣告",
+     "rules": [
+      "k85-1",
+      "k85-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k85-1",
+    "srcs": [
+     "art85#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "duringParoleProbation(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "communityCorrectionOrgan",
+      "counterparty": null,
+      "content": "communityCorrectionDuringParole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对假释的犯罪分子，在假释考验期限内依法实行社区矫正"
+   },
+   {
+    "key": "k85-2",
+    "srcs": [
+     "art85#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "paroleProbationExpired(P,X)",
+     "~art86Circumstance(P,X)"
+    ],
+    "heads": [
+     "originalSentenceDeemedExecuted(P,X)"
+    ],
+    "auth": "npc",
+    "note": "假释考验期满且无第86条情形的，认为原判刑罚已经执行完毕"
+   },
+   {
+    "key": "k85-3",
+    "srcs": [
+     "art85#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "originalSentenceDeemedExecuted(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "communityCorrectionOrgan",
+      "counterparty": null,
+      "content": "publiclyAnnounceSentenceCompleted(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对视为原判刑罚执行完毕的结果，应当公开予以宣告"
+   },
+   {
+    "key": "k85-inspect",
+    "srcs": [
+     "art85#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "duringParoleProbation(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "communityCorrectionOrgan",
+      "counterparty": null,
+      "content": "inspectArt86Circumstances(P,X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "考察内容为是否具有第86条规定的情形；法条未明文规定考察职责，系依笔记所作学理归纳"
+   },
+   {
+    "key": "k85-86",
+    "srcs": [
+     "art85#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     {
+      "or": [
+       "newCrimeDuringParole(P,X)",
+       "undiscoveredCrimeFoundDuringParole(P,X)",
+       "violatesParoleSupervisionRules(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "art86Circumstance(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "第86条情形的具体内容（再犯新罪、发现漏罪、违反假释监督管理规定）来自笔记对第86条的归纳，本条未列举"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "paroled": "paroled(P,X)：P因犯罪X服刑期间被假释",
+   "duringParoleProbation": "duringParoleProbation(P,X)：P 因犯罪 X 被假释后处于假释考验期限内",
+   "communityCorrectionDuringParole": "communityCorrectionDuringParole(P,X)：对假释的 P（因犯罪 X）在假释考验期限内依法实行社区矫正",
+   "paroleProbationExpired": "paroleProbationExpired(P,X)：P 因犯罪 X 的假释考验期限已届满",
+   "art86Circumstance": "art86Circumstance(P,X)：P 就犯罪 X 的假释存在刑法第86条规定的情形",
+   "originalSentenceDeemedExecuted": "originalSentenceDeemedExecuted(P,X)：认为 P 因犯罪 X 所受原判刑罚已经执行完毕",
+   "publiclyAnnounceSentenceCompleted": "publiclyAnnounceSentenceCompleted(P,X)：公开宣告 P 因犯罪 X 的原判刑罚已经执行完毕",
+   "inspectArt86Circumstances": "inspectArt86Circumstances(P,X)：考察 P 在假释考验期限内是否具有第86条规定的情形",
+   "newCrimeDuringParole": "newCrimeDuringParole(P,X)：P 在假释考验期限内再犯新罪",
+   "undiscoveredCrimeFoundDuringParole": "undiscoveredCrimeFoundDuringParole(P,X)：在假释考验期限内发现 P 在判决宣告以前还有其他罪没有判决（漏罪）",
+   "violatesParoleSupervisionRules": "violatesParoleSupervisionRules(P,X)：P 在因犯罪 X 的假释考验期限内，有违反法律、行政法规或者国务院有关部门关于假释的监督管理规定的行为"
+  }
+ },
+ "art:86": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "假释考验期限内出现犯新罪、发现漏罪或者违反假释监督管理规定的情形时，是否撤销假释以及如何处理（数罪并罚抑或收监执行余刑）",
+     "rules": [
+      "k86-1",
+      "k86-2",
+      "k86-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被假释的犯罪分子在假释考验期限内犯新罪",
+     "rules": [
+      "k86-1"
+     ]
+    },
+    {
+     "text": "在假释考验期限内，发现被假释的犯罪分子在判决宣告以前还有其他罪没有判决（漏罪）",
+     "rules": [
+      "k86-2"
+     ]
+    },
+    {
+     "text": "在假释考验期限内，有违反法律、行政法规或者国务院有关部门关于假释的监督管理规定的行为，且尚未构成新的犯罪",
+     "rules": [
+      "k86-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "违规行为尚未构成新的犯罪的，不实行数罪并罚，只依法定程序撤销假释、收监执行未执行完毕的刑罚",
+     "rules": [
+      "k86-3"
+     ]
+    },
+    {
+     "text": "没有第86条规定情形的，假释考验期满即认为原判刑罚已经执行完毕（第85条及笔记，本条的反面推论）",
+     "rules": [
+      "k86-expire"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "犯新罪的，应当撤销假释，依照第71条实行数罪并罚",
+     "rules": [
+      "k86-1"
+     ]
+    },
+    {
+     "text": "发现漏罪的，应当撤销假释，依照第70条实行数罪并罚",
+     "rules": [
+      "k86-2"
+     ]
+    },
+    {
+     "text": "违反假释监督管理规定尚未构成新罪的，应当依照法定程序撤销假释，收监执行未执行完毕的刑罚",
+     "rules": [
+      "k86-3"
+     ]
+    },
+    {
+     "text": "无第86条情形而考验期满的，视为原判刑罚已经执行完毕，并公开予以宣告（第85条，笔记）",
+     "rules": [
+      "k86-expire"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "考验期内犯新罪或发现漏罪的，优先适用撤销假释并数罪并罚，不得按考验期满认为原判刑罚执行完毕",
+     "rules": [
+      "k86-1",
+      "k86-2",
+      "k86-expire"
+     ]
+    },
+    {
+     "text": "考验期内违反监督管理规定的，优先撤销假释收监执行余刑，不得认为原判刑罚执行完毕",
+     "rules": [
+      "k86-3",
+      "k86-expire"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款犯新罪依第71条“先减后并”（以未执行完毕的刑期与新罪刑罚并罚）；第2款漏罪依第70条“先并后减”（与原判刑罚并罚后扣除已执行刑期）；第3款违规不构成犯罪的不并罚，仅收监执行余刑",
+     "rules": [
+      "k86-1",
+      "k86-2",
+      "k86-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k86-1",
+    "srcs": [
+     "art86#1"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "commitsNewCrimeDuringParoleProbation(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeParole(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "combinedPunishmentUnderArt71(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "假释考验期内犯新罪的，应当撤销假释并依第71条数罪并罚"
+   },
+   {
+    "key": "k86-2",
+    "srcs": [
+     "art86#2"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "omittedCrimeBeforeJudgmentDiscovered(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeParole(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "combinedPunishmentUnderArt70(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "假释考验期内发现判决宣告以前还有漏罪未判决的，应当撤销假释并依第70条数罪并罚"
+   },
+   {
+    "key": "k86-3",
+    "srcs": [
+     "art86#3"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "violatesParoleSupervisionRules(P,X)",
+     "notYetConstitutesNewCrime(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeParole(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "reimprisonToExecuteRemainingSentence(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "考验期内违反法律、行政法规或国务院有关部门假释监督管理规定但尚未构成新罪的，依法定程序撤销假释、收监执行未执行完毕的刑罚"
+   },
+   {
+    "key": "k86-expire",
+    "srcs": [
+     "art86"
+    ],
+    "body": [
+     "paroled(P,X)",
+     "paroleProbationExpired(P,X)",
+     "~commitsNewCrimeDuringParoleProbation(P,X)",
+     "~omittedCrimeBeforeJudgmentDiscovered(P,X)",
+     "~violatesParoleSupervisionRules(P,X)"
+    ],
+    "heads": [
+     "originalSentenceDeemedExecuted(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "无第86条情形而考验期满的，认为原判刑罚已执行完毕并公开宣告；该内容出自第85条与备考笔记，非本条明文，故标为学理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "paroled": "paroled(P,X)：P因犯罪X服刑期间被假释",
+   "commitsNewCrimeDuringParoleProbation": "commitsNewCrimeDuringParoleProbation(P,X)：P 因犯罪 X 被假释后，在假释考验期限内又犯新罪",
+   "revokeParole": "revokeParole(P,X)：撤销对 P 因犯罪 X 所作的假释（第3款须依法定程序进行）",
+   "combinedPunishmentUnderArt71": "combinedPunishmentUnderArt71(P,X)：依照刑法第71条对 P 实行数罪并罚（先减后并）",
+   "omittedCrimeBeforeJudgmentDiscovered": "omittedCrimeBeforeJudgmentDiscovered(P,X)：在 P 因犯罪 X 的假释考验期限内，发现其在判决宣告以前还有其他罪没有判决（漏罪）",
+   "combinedPunishmentUnderArt70": "combinedPunishmentUnderArt70(P,X)：依照刑法第70条对 P 实行数罪并罚（先并后减）",
+   "violatesParoleSupervisionRules": "violatesParoleSupervisionRules(P,X)：P 在因犯罪 X 的假释考验期限内，有违反法律、行政法规或者国务院有关部门关于假释的监督管理规定的行为",
+   "notYetConstitutesNewCrime": "notYetConstitutesNewCrime(P,X)：P 在假释考验期内的违规行为尚未构成新的犯罪",
+   "reimprisonToExecuteRemainingSentence": "reimprisonToExecuteRemainingSentence(P,X)：将 P 收监执行其因犯罪 X 尚未执行完毕的刑罚",
+   "paroleProbationExpired": "paroleProbationExpired(P,X)：P 因犯罪 X 的假释考验期限已届满",
+   "originalSentenceDeemedExecuted": "originalSentenceDeemedExecuted(P,X)：认为 P 因犯罪 X 所受原判刑罚已经执行完毕"
+  }
+ },
+ "art:89": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "追诉期限从何时起算：一般自犯罪之日，连续犯、继续犯自犯罪行为终了之日；追诉期限内又犯罪的，前罪自犯后罪之日重新起算",
+     "rules": [
+      "k89-1",
+      "k89-2",
+      "k89-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "“犯罪之日”应理解为犯罪成立之日",
+     "rules": [
+      "k89-day"
+     ]
+    },
+    {
+     "text": "犯罪行为有连续或者继续状态（连续犯、继续犯）的，以犯罪行为终了之日为起算点，如非法拘禁自被害人获释之日起算",
+     "rules": [
+      "k89-2"
+     ]
+    },
+    {
+     "text": "时效中断的条件：在前罪追诉期限以内又犯新罪，不论新罪性质和刑罚轻重如何",
+     "rules": [
+      "k89-3",
+      "k89-3b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "犯罪行为有连续或者继续状态的，不从犯罪之日起计算，而从犯罪行为终了之日起计算",
+     "rules": [
+      "k89-2"
+     ]
+    },
+    {
+     "text": "在追诉期限以内又犯罪的，前罪追诉期限不再按原起算点计算，改从犯后罪之日起计算",
+     "rules": [
+      "k89-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "追诉期限从犯罪之日（犯罪成立之日）起计算",
+     "rules": [
+      "k89-1"
+     ]
+    },
+    {
+     "text": "前罪已经过的时效期间归于无效，前罪追诉期限从犯后罪之日起重新计算（前后罪分别计算）",
+     "rules": [
+      "k89-3",
+      "k89-3b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "连续、继续状态的特别起算规则优先于“从犯罪之日起计算”的一般规则；时效中断的重新计算规则优先于原起算规则",
+     "rules": [
+      "k89-2",
+      "k89-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "一般犯罪的不法状态持续（如盗窃后持有赃物五年）与追诉时效起算无关，仍自犯罪成立之日起算；只有继续犯、连续犯才推后起算点",
+     "rules": [
+      "k89-state",
+      "k89-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k89-day",
+    "srcs": [
+     "art89#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeEstablishedDate(X,D)"
+    ],
+    "heads": [
+     "crimeDate(X,D)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：第89条第1款的“犯罪之日”应理解为犯罪成立之日"
+   },
+   {
+    "key": "k89-1",
+    "srcs": [
+     "art89#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crimeDate(X,D)",
+     "~continuousOrContinuingCrime(X)"
+    ],
+    "heads": [
+     "prosecutionLimitationStartsFrom(X,D)"
+    ],
+    "auth": "npc",
+    "note": "追诉期限从犯罪之日起计算"
+   },
+   {
+    "key": "k89-2",
+    "srcs": [
+     "art89#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "continuousOrContinuingCrime(X)",
+     "criminalActEndedDate(X,D)"
+    ],
+    "heads": [
+     "prosecutionLimitationStartsFrom(X,D)"
+    ],
+    "auth": "npc",
+    "note": "犯罪行为有连续或者继续状态的，追诉期限从犯罪行为终了之日起计算"
+   },
+   {
+    "key": "k89-3",
+    "srcs": [
+     "art89#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crime(P,Y)",
+     "newCrimeWithinLimitation(P,X,Y)",
+     "crimeDate(Y,D)"
+    ],
+    "heads": [
+     "prosecutionLimitationStartsFrom(X,D)"
+    ],
+    "auth": "npc",
+    "note": "在追诉期限以内又犯罪的，前罪追诉期限从犯后罪之日起计算（时效中断）"
+   },
+   {
+    "key": "k89-3b",
+    "srcs": [
+     "art89#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "crime(P,Y)",
+     "newCrimeWithinLimitation(P,X,Y)"
+    ],
+    "heads": [
+     "priorLimitationPeriodInvalid(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：只要在追诉期限内又犯罪，不论新罪性质和刑罚轻重，前罪已经过的时效期间均归于无效，前后罪分别计算"
+   },
+   {
+    "key": "k89-state",
+    "srcs": [
+     "art89#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "unlawfulStateContinues(X)",
+     "~continuousOrContinuingCrime(X)",
+     "crimeDate(X,D)"
+    ],
+    "heads": [
+     "prosecutionLimitationStartsFrom(X,D)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记：一般犯罪（如盗窃后持有赃物）不法状态持续不影响起算，仍自犯罪成立之日起算"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "crimeEstablishedDate": "crimeEstablishedDate(X,D)：犯罪 X 成立之日为 D 日",
+   "crimeDate": "crimeDate(X,D)：犯罪 X 的“犯罪之日”为 D 日",
+   "continuousOrContinuingCrime": "continuousOrContinuingCrime(X)：犯罪行为 X 有连续或者继续状态（连续犯、继续犯）",
+   "prosecutionLimitationStartsFrom": "prosecutionLimitationStartsFrom(X,D)：犯罪 X 的追诉期限自 D 日起计算",
+   "criminalActEndedDate": "criminalActEndedDate(X,D)：犯罪行为 X 终了之日为 D 日",
+   "newCrimeWithinLimitation": "newCrimeWithinLimitation(P,X,Y)：P 在前罪 X 的追诉期限以内又犯后罪 Y",
+   "priorLimitationPeriodInvalid": "priorLimitationPeriodInvalid(P,X)：P 就前罪 X 已经过的追诉时效期间归于无效（时效中断）",
+   "unlawfulStateContinues": "unlawfulStateContinues(X)：犯罪 X 造成的不法状态处于持续中（如持有赃物）"
+  }
+ }
+}

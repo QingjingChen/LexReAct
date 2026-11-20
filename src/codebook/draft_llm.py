@@ -460,11 +460,16 @@ def main():
     ap.add_argument('--workers', type=int, default=4)
     ap.add_argument('--redo', action='store_true', help='重新起草已通过的行')
     ap.add_argument('--version', help='另起一版（如用另一个模型），草稿存入 drafts/<version>/，词表只在本版内累积')
+    ap.add_argument('--skip', nargs='+', help='跳过这些版本（drafts/<名>/）已通过的行')
     a = ap.parse_args()
     DOM.update(civil_domain() if a.law == 'civil' else criminal_domain())
+    skip = set()
+    for v in a.skip or []:                       # 其他版本已通过的行不再起草（如 claude-agent 版）
+        skip |= set(load_drafts(DOM['drafts'] / v))
     if a.version:
         DOM['drafts'] = DOM['drafts'] / a.version
     rows = [r for r in json.load(open(DOM['rows'], encoding='utf-8')) if not r['rules'] and r['articles']]   # 未挂载法条的卡片无从起草
+    rows = [r for r in rows if r['id'] not in skip]
     akey = (lambda x: x) if a.law == 'civil' else (lambda x: tuple(int(t) for t in x.split('-')))
     if a.all:
         groups = collections.OrderedDict()

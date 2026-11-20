@@ -1,0 +1,1247 @@
+{
+ "art:1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "第1条规定刑法的立法目的与依据：为了惩罚犯罪、保护人民，根据宪法，结合我国同犯罪作斗争的具体经验及实际情况制定本法。属宣示性、宗旨性条款，不含构成要件与法律效果，不形式化为规则。",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:2": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法的任务：用刑罚同一切犯罪行为作斗争，保卫国家安全、人民民主专政政权和社会主义制度，保护国有财产、劳动群众集体所有财产和公民私人所有财产，保护公民人身权利、民主权利和其他权利，维护社会秩序、经济秩序，保障社会主义建设事业顺利进行（第2条为宣示性、任务性规定，不产生可操作的构成要件或法律效果，不形式化为规则）",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "刑法特征之调整范围的广泛性：由第2条的任务与第13条的犯罪定义可见，刑法保护的利益覆盖国家安全、公共安全、经济秩序直至公民人身、财产权利，而民法、经济法、行政法通常只调整社会生活某一方面或某一层面的利益与关系（笔记，仅为体系理解，不形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:4": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法适用平等原则（第4条）：对任何人犯罪，在适用法律上一律平等，不允许任何人有超越法律的特权。属宣示性基本原则，不单独产生可操作的构成要件或法律效果",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "平等适用于定罪、量刑、行刑三个环节：不论社会地位高低、民族、种族、性别、职业、宗教信仰、财产状况，均按刑法规定的同一标准处理，不允许歧视或优待（笔记阐释，非条文列举）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是“适用法律平等”（司法平等），不含立法平等；对未成年人、又聋又哑的人、盲人等依法从宽，是法律统一规定的差别处理，不属超越法律的特权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:5": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "罪责刑相适应原则（罪刑等价主义、罪刑相均衡原则）：刑罚的轻重，应当与犯罪分子所犯罪行和承担的刑事责任相适应。本条为刑法基本原则，属宣示性、原则性规定，不单独形式化为可废止规则，仅作为量刑规则（从重、从轻、减轻、免除等）的解释与适用基准。",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第5条把“刑事责任”与“罪行（犯罪行为）”“刑罚”并列，量刑不仅取决于客观罪行轻重，还须考虑行为人应承担的刑事责任大小（如责任能力、主观恶性、自首立功等责任要素）。",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:6": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法的空间效力——属地管辖：哪些犯罪适用我国刑法",
+     "rules": [
+      "k6-1",
+      "k6-2",
+      "k6-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "在中华人民共和国领域内（领陆、领水、领空）犯罪的，原则上适用本法",
+     "rules": [
+      "k6-1"
+     ]
+    },
+    {
+     "text": "犯罪的行为或者结果有一项发生在我国领域内的，就认为是在我国领域内犯罪（遍在说，不要求行为与结果均在境内）",
+     "rules": [
+      "k6-3"
+     ]
+    },
+    {
+     "text": "在我国船舶或者航空器内犯罪的，无论该船舶、航空器位于何处，也适用本法（旗国主义，拟制领土）",
+     "rules": [
+      "k6-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律有特别规定的除外，不适用本法",
+     "rules": [
+      "k6-1"
+     ]
+    },
+    {
+     "text": "学理与体系上，“法律有特别规定”主要指享有外交特权和豁免权的外国人（通过外交途径解决）、民族自治地方的变通或补充规定、港澳台地区适用当地刑法等情形",
+     "rules": [
+      "k6-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用本法，即依我国刑法定罪量刑",
+     "rules": [
+      "k6-1",
+      "k6-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k6-1",
+    "srcs": [
+     "art6#1"
+    ],
+    "body": [
+     "crimeInTerritory(P,X)",
+     "~specialLegalProvision(X)"
+    ],
+    "heads": [
+     "appliesCriminalLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "在我国领域内犯罪的，除法律有特别规定的以外，都适用本法"
+   },
+   {
+    "key": "k6-2",
+    "srcs": [
+     "art6#2"
+    ],
+    "body": [
+     "crimeOnChineseShipOrAircraft(P,X)"
+    ],
+    "heads": [
+     "appliesCriminalLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "在我国船舶或者航空器内犯罪的，也适用本法（拟制领土）"
+   },
+   {
+    "key": "k6-3",
+    "srcs": [
+     "art6#3"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "actInTerritory(X)",
+       "resultInTerritory(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "crimeInTerritory(P,X)"
+    ],
+    "auth": "npc",
+    "note": "犯罪行为或结果有一项发生在我国领域内的，即认为是在我国领域内犯罪"
+   },
+   {
+    "key": "k6-exc",
+    "srcs": [
+     "art6#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "diplomaticImmunity(P)",
+       "ethnicAutonomousVariation(X)",
+       "specialAdministrativeRegion(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "specialLegalProvision(X)"
+    ],
+    "auth": "doctrine",
+    "note": "对第1款“法律有特别规定”的学理展开：外交豁免、民族自治地方变通规定、港澳台适用当地刑法等，本条未列举"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crimeInTerritory": "crimeInTerritory(P,X)：P 的犯罪 X 属于在中华人民共和国领域内犯罪",
+   "specialLegalProvision": "specialLegalProvision(X)：对犯罪事件 X 法律有特别规定（不适用本法）",
+   "appliesCriminalLaw": "对案件 X 适用中华人民共和国刑法",
+   "crimeOnChineseShipOrAircraft": "crimeOnChineseShipOrAircraft(P,X)：P 的犯罪 X 发生在中华人民共和国船舶或者航空器内",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "actInTerritory": "actInTerritory(X)：犯罪行为发生在中华人民共和国领域内",
+   "resultInTerritory": "resultInTerritory(X)：犯罪结果发生在中华人民共和国领域内",
+   "diplomaticImmunity": "diplomaticImmunity(P)：P 是享有外交特权和豁免权的外国人",
+   "ethnicAutonomousVariation": "ethnicAutonomousVariation(X)：犯罪事件 X 属于民族自治地方依法制定的变通或补充规定的适用范围",
+   "specialAdministrativeRegion": "specialAdministrativeRegion(X)：犯罪事件 X 发生在香港、澳门特别行政区或台湾地区，适用当地刑法"
+  }
+ },
+ "art:7": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "属人管辖：中国公民（含国家工作人员、军人）在我国领域外犯本法规定之罪，我国刑法是否适用、是否追究",
+     "rules": [
+      "k7-1",
+      "k7-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般主体：行为人是中华人民共和国公民，在我国领域外实施的行为符合本法规定的犯罪构成",
+     "rules": [
+      "k7-1"
+     ]
+    },
+    {
+     "text": "特殊主体：行为人是中华人民共和国国家工作人员或军人，在我国领域外犯本法规定之罪",
+     "rules": [
+      "k7-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：按本法规定的法定最高刑为三年以下有期徒刑的，可以不予追究（追诉裁量，且不适用于国家工作人员和军人）",
+     "rules": [
+      "k7-1b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "中国公民域外犯罪，适用本法（我国刑法具有适用效力）",
+     "rules": [
+      "k7-1"
+     ]
+    },
+    {
+     "text": "国家工作人员和军人域外犯罪，一律适用本法，不受最高刑三年以下但书的限制",
+     "rules": [
+      "k7-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款是关于国家工作人员、军人的特别规定，排除第1款但书的适用",
+     "rules": [
+      "k7-2",
+      "k7-1b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "“可以不予追究”是司法机关的追诉裁量，并非我国刑法不适用；即使不予追究，本法对该行为的适用效力仍然存在",
+     "rules": [
+      "k7-1b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k7-1",
+    "srcs": [
+     "art7#1"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "commitsCrimeOutsidePrcTerritory(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "criminalJurisdiction(P,X)"
+    ],
+    "auth": "npc",
+    "note": "中国公民在我国领域外犯本法规定之罪的，适用本法（属人管辖）"
+   },
+   {
+    "key": "k7-1b",
+    "srcs": [
+     "art7#1"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "commitsCrimeOutsidePrcTerritory(P,X)",
+     "constitutes(P,X,C)",
+     "maxStatutoryPenalty(C,S)",
+     "upTo3YearsFixedTerm(S)",
+     "~stateFunctionary(P)",
+     "~militaryPersonnel(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "notPursue(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "但书：法定最高刑为三年以下有期徒刑的，可以不予追究（裁量性不追诉，非排除本法适用）"
+   },
+   {
+    "key": "k7-2",
+    "srcs": [
+     "art7#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateFunctionary(P)",
+       "militaryPersonnel(P)"
+      ]
+     },
+     "commitsCrimeOutsidePrcTerritory(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "criminalJurisdiction(P,X)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员和军人在我国领域外犯本法规定之罪的，一律适用本法，无但书例外"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "citizenOfPrc": "中华人民共和国公民（人P）",
+   "commitsCrimeOutsidePrcTerritory": "P在中华人民共和国领域外实施犯罪行为X",
+   "constitutes": "符合构成要件",
+   "criminalJurisdiction": "我国刑法对P的行为X具有适用效力（适用本法）",
+   "maxStatutoryPenalty": "法定最高刑",
+   "upTo3YearsFixedTerm": "刑罚幅度S为三年以下有期徒刑",
+   "stateFunctionary": "国家工作人员",
+   "militaryPersonnel": "军人（人P）",
+   "notPursue": "不予追究P就行为X的刑事责任"
+  }
+ },
+ "art:8": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "外国人在我国领域外对我国国家或公民犯罪，能否适用我国刑法（保护管辖）",
+     "rules": [
+      "k8-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为外国人，行为发生在中华人民共和国领域外，且犯罪侵害中华人民共和国国家或者公民",
+     "rules": [
+      "k8-cond"
+     ]
+    },
+    {
+     "text": "刑度条件：按我国刑法规定该罪（相应量刑档次）的法定最低刑为三年以上有期徒刑；此处指法定最低刑，而非实际宣告刑",
+     "rules": [
+      "k8-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：按照犯罪地的法律不受处罚的除外（双重犯罪原则），此时不适用我国刑法",
+     "rules": [
+      "k8-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "满足上述条件的，可以适用我国刑法（“可以”而非“应当”，属裁量性管辖）",
+     "rules": [
+      "k8-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是保护管辖，针对外国人域外侵害我国国家或公民；与属人管辖（我国公民域外犯罪）、普遍管辖（国际条约罪行）在主体、法益与限制条件上均不同",
+     "rules": []
+    },
+    {
+     "text": "保护管辖受“最低刑三年以上”与“犯罪地法律亦处罚”双重限制，缺一不可；仅满足其一不得适用我国刑法",
+     "rules": [
+      "k8-cond",
+      "k8-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k8-cond",
+    "srcs": [
+     "art8#1"
+    ],
+    "body": [
+     "foreigner(P)",
+     "crimeOutsidePRCTerritory(P,X)",
+     "againstPRCStateOrCitizen(X)",
+     "constitutes(P,X,C)",
+     "minStatutoryPenalty3YearsOrMore(X,C)"
+    ],
+    "heads": [
+     "protectiveJurisdiction(P,X)"
+    ],
+    "auth": "npc",
+    "note": "外国人在我国领域外对我国国家或公民犯罪，且按本法该罪法定最低刑为三年以上有期徒刑的，具备保护管辖条件"
+   },
+   {
+    "key": "k8-1",
+    "srcs": [
+     "art8#1"
+    ],
+    "body": [
+     "protectiveJurisdiction(P,X)",
+     "~notPunishableUnderLexLoci(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyPRCCriminalLaw(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "具备保护管辖条件的可以适用我国刑法，但按犯罪地法律不受处罚的除外"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "foreigner": "外国人（不具有中国国籍的人）",
+   "crimeOutsidePRCTerritory": "在中华人民共和国领域外犯罪（P人，X犯罪事件）",
+   "againstPRCStateOrCitizen": "犯罪侵害中华人民共和国国家或者公民",
+   "constitutes": "符合构成要件",
+   "minStatutoryPenalty3YearsOrMore": "按本法规定该罪相应量刑档次的法定最低刑为三年以上有期徒刑",
+   "protectiveJurisdiction": "具备保护管辖的适用条件",
+   "notPunishableUnderLexLoci": "按照犯罪地的法律不受处罚",
+   "applyPRCCriminalLaw": "适用中华人民共和国刑法追究该犯罪"
+  }
+ },
+ "art:9": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对我国缔结或参加的国际条约所规定的罪行，我国行使刑事管辖权时能否适用我国刑法（普遍管辖原则）",
+     "rules": [
+      "k9-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "①该罪行由我国缔结或者参加的国际条约所规定；②行为符合该罪的构成要件；③对该罪行行使管辖属于我国所承担条约义务的范围",
+     "rules": [
+      "k9-jur",
+      "k9-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "超出我国所承担条约义务范围的，不能依本条（普遍管辖）适用我国刑法",
+     "rules": [
+      "k9-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "我国有权在所承担条约义务的范围内，对条约规定的罪行行使刑事管辖权",
+     "rules": [
+      "k9-jur"
+     ]
+    },
+    {
+     "text": "我国行使刑事管辖权的，适用本法（定罪量刑依我国刑法，而非直接适用国际条约）",
+     "rules": [
+      "k9-1"
+     ]
+    },
+    {
+     "text": "普遍管辖不以犯罪发生在我国领域内、犯罪人或被害人为我国公民等联系为前提（学理）",
+     "rules": [
+      "k9-nolink"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与第6条属地管辖、第7条属人管辖、第8条保护管辖不同：本条以国际条约义务为管辖根据，不要求犯罪地或国籍上的联系",
+     "rules": [
+      "k9-nolink"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k9-jur",
+    "srcs": [
+     "art9#1"
+    ],
+    "body": [
+     "treatyConcludedOrAccededByPrc(T)",
+     "treatyPrescribesCrime(T,C)",
+     "constitutes(P,X,C)",
+     "withinTreatyObligationScope(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "prc",
+      "counterparty": null,
+      "content": "exerciseCriminalJurisdiction(prc,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对我国缔结或参加的国际条约规定的罪行，在所承担条约义务范围内，我国有权行使刑事管辖权"
+   },
+   {
+    "key": "k9-1",
+    "srcs": [
+     "art9#1"
+    ],
+    "body": [
+     "treatyConcludedOrAccededByPrc(T)",
+     "treatyPrescribesCrime(T,C)",
+     "constitutes(P,X,C)",
+     "withinTreatyObligationScope(X,T)",
+     "prcExercisesCriminalJurisdiction(X)"
+    ],
+    "heads": [
+     "appliesCriminalLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "对条约规定的罪行，我国在条约义务范围内行使刑事管辖权的，适用我国刑法"
+   },
+   {
+    "key": "k9-nolink",
+    "srcs": [
+     "art9#1"
+    ],
+    "body": [
+     "treatyConcludedOrAccededByPrc(T)",
+     "treatyPrescribesCrime(T,C)",
+     "constitutes(P,X,C)",
+     "withinTreatyObligationScope(X,T)",
+     "~territorialOrNationalityLink(X)"
+    ],
+    "heads": [
+     "universalJurisdiction(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理（普遍管辖原则）：即使案件与我国无属地、属人或保护管辖的联系，仍可依本条确立管辖并适用我国刑法；条文本身未明文表述此点"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "treatyConcludedOrAccededByPrc": "T 是我国缔结或者参加的国际条约",
+   "treatyPrescribesCrime": "条约 T 规定了罪行 C",
+   "constitutes": "符合构成要件",
+   "withinTreatyObligationScope": "对案件 X 行使管辖属于我国依条约 T 所承担义务的范围",
+   "exerciseCriminalJurisdiction": "行使刑事管辖权",
+   "prcExercisesCriminalJurisdiction": "我国对案件 X 实际行使刑事管辖权",
+   "appliesCriminalLaw": "对案件 X 适用中华人民共和国刑法",
+   "territorialOrNationalityLink": "案件 X 与我国存在属地、属人或保护管辖意义上的联系（犯罪地在我国领域内、犯罪人或被害人为我国公民等）",
+   "universalJurisdiction": "对 P 实施的案件 X 依普遍管辖原则确立我国刑事管辖"
+  }
+ },
+ "art:10": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "我国刑法对外国刑事判决采消极承认态度：外国确定的刑事判决不制约我国刑罚权的实现",
+     "rules": [
+      "k10-neg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "在中华人民共和国领域外犯罪，且依照我国刑法应当负刑事责任",
+     "rules": [
+      "k10-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：在外国已经受过刑罚处罚的，可以免除或者减轻处罚（是“可以”而非“应当”，且只影响处罚，不影响追诉）",
+     "rules": [
+      "k10-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "虽然经过外国审判，仍然可以依照我国刑法追究",
+     "rules": [
+      "k10-1"
+     ]
+    },
+    {
+     "text": "外国审判（外国刑事判决）本身不排除我国依本法追究的可能",
+     "rules": [
+      "k10-neg"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "经过外国审判≠不再追诉；已受外国刑罚处罚≠免除处罚，只是可以免除或减轻",
+     "rules": [
+      "k10-1",
+      "k10-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k10-1",
+    "srcs": [
+     "art10"
+    ],
+    "body": [
+     "crimeOutsidePRCTerritory(P,X)",
+     "responsible(P,X,C)",
+     "triedByForeignCourt(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "prosecuteUnderPRCLaw(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "领域外犯罪依本法应负刑事责任的，虽经外国审判，仍可以依本法追究"
+   },
+   {
+    "key": "k10-2",
+    "srcs": [
+     "art10"
+    ],
+    "body": [
+     "crimeOutsidePRCTerritory(P,X)",
+     "responsible(P,X,C)",
+     "punishedAbroad(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reducedOrExempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "但书：在外国已经受过刑罚处罚的，可以免除或者减轻处罚"
+   },
+   {
+    "key": "k10-neg",
+    "srcs": [
+     "art10"
+    ],
+    "body": [
+     "crimeOutsidePRCTerritory(P,X)",
+     "responsible(P,X,C)",
+     "triedByForeignCourt(P,X)"
+    ],
+    "heads": [
+     "-foreignJudgmentBinding(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "消极承认：外国刑事判决不约束我国刑罚权的实现（据第10条与备考笔记的学理概括）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crimeOutsidePRCTerritory": "在中华人民共和国领域外犯罪（P人，X犯罪事件）",
+   "responsible": "负刑事责任",
+   "triedByForeignCourt": "已经过外国审判（P人，X犯罪事件）",
+   "prosecuteUnderPRCLaw": "依照我国刑法追究刑事责任（P人，X犯罪事件）",
+   "punishedAbroad": "在外国已经受过刑罚处罚（P人，X犯罪事件）",
+   "sentence": "量刑",
+   "foreignJudgmentBinding": "外国刑事判决约束我国刑罚权的实现（P人，X犯罪事件）"
+  }
+ },
+ "art:11": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "享有外交特权和豁免权的外国人犯罪，其刑事责任如何处理",
+     "rules": [
+      "k11-cond",
+      "k11-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是外国人，且享有外交特权和豁免权；其行为符合我国刑法规定的某罪构成要件",
+     "rules": [
+      "k11-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条是属地原则的特别例外：不由我国司法机关按刑事程序追诉、定罪判刑（学理与笔记，条文只规定“通过外交途径解决”）",
+     "rules": [
+      "k11-exc"
+     ]
+    },
+    {
+     "text": "派遣国明示放弃豁免的，不再属于通过外交途径解决的案件，可适用我国刑法（学理）",
+     "rules": [
+      "k11-waive"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "其刑事责任通过外交途径解决（如宣布为不受欢迎的人、限期离境、要求派遣国召回或自行追诉）",
+     "rules": [
+      "k11-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第11条属于第6条属地原则中“法律有特别规定”的情形，优先于属地原则的一般规定适用",
+     "rules": [
+      "k11-cond",
+      "k11-exc"
+     ]
+    },
+    {
+     "text": "豁免被放弃时，排除外交途径处理的规则",
+     "rules": [
+      "k11-waive"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "外交豁免排除的是我国的刑事管辖权，并非否认行为构成犯罪或不负刑事责任；与一般外国人在我国领域内犯罪适用我国刑法相区别",
+     "rules": [
+      "k11-exc"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k11-cond",
+    "srcs": [
+     "art11"
+    ],
+    "body": [
+     "foreigner(P)",
+     "enjoysDiplomaticPrivilegesAndImmunities(P)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "diplomaticImmunityCase(P,X)"
+    ],
+    "auth": "npc",
+    "note": "享有外交特权和豁免权的外国人实施符合我国刑法构成要件的行为，属于通过外交途径解决刑事责任的案件"
+   },
+   {
+    "key": "k11-1",
+    "srcs": [
+     "art11"
+    ],
+    "body": [
+     "diplomaticImmunityCase(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "resolveThroughDiplomaticChannels(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "此类外国人的刑事责任通过外交途径解决"
+   },
+   {
+    "key": "k11-exc",
+    "srcs": [
+     "art11"
+    ],
+    "body": [
+     "diplomaticImmunityCase(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "-convicted(P,X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与笔记：本条是属地原则的特别例外，我国司法机关不予定罪判刑，但并非否认犯罪成立"
+   },
+   {
+    "key": "k11-waive",
+    "srcs": [
+     "art11"
+    ],
+    "body": [
+     "foreigner(P)",
+     "enjoysDiplomaticPrivilegesAndImmunities(P)",
+     "constitutes(P,X,C)",
+     "sendingStateWaivesImmunity(P)"
+    ],
+    "heads": [
+     "-diplomaticImmunityCase(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：派遣国放弃豁免的，不再通过外交途径解决，可适用我国刑法；条文未明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k11-waive",
+    "k11-cond",
+    "推断：结论冲突（('diplomaticImmunityCase', '+')），k11-waive 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "foreigner": "外国人（不具有中国国籍的人）",
+   "enjoysDiplomaticPrivilegesAndImmunities": "享有外交特权和豁免权",
+   "constitutes": "符合构成要件",
+   "diplomaticImmunityCase": "属于刑事责任通过外交途径解决的案件（人，事件）",
+   "resolveThroughDiplomaticChannels": "通过外交途径解决刑事责任（人，事件）",
+   "convicted": "定罪",
+   "sendingStateWaivesImmunity": "派遣国放弃对该人的外交豁免"
+  }
+ },
+ "art:12": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法的时间效力（溯及力）：中华人民共和国成立以后、本法施行以前实施的行为，适用行为时的旧法还是适用本法——我国采从旧兼从轻原则",
+     "rules": [
+      "k12-old-notcrime",
+      "k12-old-crime",
+      "k12-lighter"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用前提：行为发生在中华人民共和国成立以后、本法施行以前，且该案未经审判或者判决尚未确定（未决案件）",
+     "rules": [
+      "k12-scope"
+     ]
+    },
+    {
+     "text": "从旧（一）：当时的法律不认为是犯罪的，适用当时的法律，不依本法追究",
+     "rules": [
+      "k12-old-notcrime"
+     ]
+    },
+    {
+     "text": "从旧（二）：当时的法律认为是犯罪，且依本法总则第四章第八节（追诉时效）的规定应当追诉的，按照当时的法律追究刑事责任",
+     "rules": [
+      "k12-old-crime"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "从轻：本法不认为是犯罪，或者本法处刑较轻的，适用本法，排除旧法的适用",
+     "rules": [
+      "k12-lighter"
+     ]
+    },
+    {
+     "text": "“处刑较轻”是指本法对该种犯罪规定的法定刑比修订前刑法轻，而非个案宣告刑较轻",
+     "rules": [
+      "k12-lighter-meaning"
+     ]
+    },
+    {
+     "text": "既判力例外：本法施行以前依照当时的法律已经作出的生效判决，继续有效，不因本法从轻而失效或改判",
+     "rules": [
+      "k12-final-judgment"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "司法解释溯及力（从新）：解释实施前的行为，行为时没有相关司法解释，且解释施行后案件尚未处理或者正在处理的，依照该新解释办理",
+     "rules": [
+      "k12-ji-new"
+     ]
+    },
+    {
+     "text": "司法解释溯及力（从旧）：解释实施前的行为，行为时已有相关司法解释的，依照行为时的司法解释办理",
+     "rules": [
+      "k12-ji-old"
+     ]
+    },
+    {
+     "text": "司法解释溯及力（从轻）：适用新的司法解释对犯罪嫌疑人、被告人有利的，适用新的司法解释",
+     "rules": [
+      "k12-ji-lighter"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "从旧兼从轻是罪刑法定原则派生的要求之一，具有普遍效力（原则性说明，不单独形式化）",
+     "rules": []
+    },
+    {
+     "text": "从轻规定优先于从旧规定；已生效判决的既判力优先于溯及适用规则",
+     "rules": [
+      "k12-lighter",
+      "k12-final-judgment"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "刑法本身的溯及力一律从旧兼从轻；司法解释的溯及力则区分：行为时无解释的从新，行为时已有解释的从旧兼从轻",
+     "rules": [
+      "k12-ji-new",
+      "k12-ji-old",
+      "k12-ji-lighter"
+     ]
+    },
+    {
+     "text": "从旧兼从轻只解决未决案件的法律适用；已依当时法律作出的生效判决继续有效，不属本条溯及力问题",
+     "rules": [
+      "k12-scope",
+      "k12-final-judgment"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k12-scope",
+    "srcs": [
+     "art12#1"
+    ],
+    "body": [
+     "actAfterFoundingBeforeCode(X)",
+     "notTriedOrJudgmentNotFinal(X)"
+    ],
+    "heads": [
+     "fromOldAndLighter(X)"
+    ],
+    "auth": "doctrine",
+    "note": "从旧兼从轻只适用于本法施行前实施、未经审判或判决尚未确定的行为（“未经审判或判决尚未确定”来自备考笔记的体系解释）"
+   },
+   {
+    "key": "k12-old-notcrime",
+    "srcs": [
+     "art12#1"
+    ],
+    "body": [
+     "actAfterFoundingBeforeCode(X)",
+     "oldLawNotCrime(X)"
+    ],
+    "heads": [
+     "applyOldLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "当时的法律不认为是犯罪的，适用当时的法律"
+   },
+   {
+    "key": "k12-old-crime",
+    "srcs": [
+     "art12#1"
+    ],
+    "body": [
+     "actAfterFoundingBeforeCode(X)",
+     "oldLawCrime(X)",
+     "prosecutableUnderLimitation(X)"
+    ],
+    "heads": [
+     "applyOldLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "当时法律认为是犯罪且依本法总则第四章第八节应当追诉的，按当时的法律追究刑事责任（从旧）"
+   },
+   {
+    "key": "k12-lighter",
+    "srcs": [
+     "art12#1"
+    ],
+    "body": [
+     "actAfterFoundingBeforeCode(X)",
+     "oldLawCrime(X)",
+     "prosecutableUnderLimitation(X)",
+     {
+      "or": [
+       "newLawNotCrime(X)",
+       "newLawLighterPenalty(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyNewLaw(X)",
+     "-applyOldLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "但本法不认为是犯罪或者处刑较轻的，适用本法（从轻），排除旧法"
+   },
+   {
+    "key": "k12-lighter-meaning",
+    "srcs": [
+     "art12#1"
+    ],
+    "body": [
+     "actAfterFoundingBeforeCode(X)",
+     "statutoryPenaltyLighterThanOldLaw(X)"
+    ],
+    "heads": [
+     "newLawLighterPenalty(X)"
+    ],
+    "auth": "doctrine",
+    "note": "“处刑较轻”指本法对该罪规定的法定刑比修订前刑法轻（笔记的学理解释，非条文明文）"
+   },
+   {
+    "key": "k12-final-judgment",
+    "srcs": [
+     "art12#2"
+    ],
+    "body": [
+     "finalJudgmentBeforeCode(J,X)"
+    ],
+    "heads": [
+     "judgmentRemainsValid(J)",
+     "-applyNewLaw(X)"
+    ],
+    "auth": "npc",
+    "note": "本法施行以前依当时法律已作出的生效判决继续有效，不因本法从轻而重新适用本法"
+   },
+   {
+    "key": "k12-ji-new",
+    "srcs": [
+     "art12"
+    ],
+    "body": [
+     "actBeforeInterpretation(X,I)",
+     "noInterpretationAtAct(X)",
+     "caseUnprocessedOrPending(X)"
+    ],
+    "heads": [
+     "applyInterpretation(X,I)"
+    ],
+    "auth": "spc",
+    "note": "行为时无相关司法解释、新解释施行后案件尚未处理或正在处理的，依新解释办理（从新）；源自刑事司法解释时间效力规定，附于本条体系"
+   },
+   {
+    "key": "k12-ji-old",
+    "srcs": [
+     "art12"
+    ],
+    "body": [
+     "actBeforeInterpretation(X,I)",
+     "interpretationAtAct(X,IOld)"
+    ],
+    "heads": [
+     "applyInterpretation(X,IOld)",
+     "-applyInterpretation(X,I)"
+    ],
+    "auth": "spc",
+    "note": "行为时已有相关司法解释的，依行为时的司法解释办理（从旧）；源自刑事司法解释时间效力规定"
+   },
+   {
+    "key": "k12-ji-lighter",
+    "srcs": [
+     "art12"
+    ],
+    "body": [
+     "actBeforeInterpretation(X,I)",
+     "interpretationAtAct(X,IOld)",
+     "newInterpretationFavorable(X,I)"
+    ],
+    "heads": [
+     "applyInterpretation(X,I)",
+     "-applyInterpretation(X,IOld)"
+    ],
+    "auth": "spc",
+    "note": "但适用新司法解释对犯罪嫌疑人、被告人有利的，适用新解释（从轻）；源自刑事司法解释时间效力规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k12-lighter",
+    "k12-old-notcrime",
+    "推断：结论冲突（('applyOldLaw', '+')），k12-lighter 为例外或更具体"
+   ],
+   [
+    "k12-lighter",
+    "k12-old-crime",
+    "推断：结论冲突（('applyOldLaw', '+')），k12-lighter 为例外或更具体"
+   ],
+   [
+    "k12-lighter",
+    "k12-final-judgment",
+    "推断：结论冲突（('applyNewLaw', '+')），k12-lighter 为例外或更具体"
+   ],
+   [
+    "k12-ji-new",
+    "k12-ji-old",
+    "推断：结论冲突（('applyInterpretation', '+')），k12-ji-new 为例外或更具体"
+   ],
+   [
+    "k12-ji-lighter",
+    "k12-ji-old",
+    "推断：结论冲突（('applyInterpretation', '+')），k12-ji-lighter 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "actAfterFoundingBeforeCode": "行为发生在中华人民共和国成立以后、本法施行以前",
+   "notTriedOrJudgmentNotFinal": "该案未经审判或者判决尚未确定",
+   "fromOldAndLighter": "对该行为适用从旧兼从轻原则处理",
+   "oldLawNotCrime": "行为当时的法律不认为是犯罪",
+   "applyOldLaw": "适用行为当时的法律（旧法）",
+   "oldLawCrime": "行为当时的法律认为是犯罪",
+   "prosecutableUnderLimitation": "依照本法总则第四章第八节（追诉时效）的规定应当追诉",
+   "newLawNotCrime": "本法不认为是犯罪",
+   "newLawLighterPenalty": "本法处刑较轻",
+   "applyNewLaw": "适用本法（新法）",
+   "statutoryPenaltyLighterThanOldLaw": "本法对该种犯罪规定的法定刑比修订前刑法轻",
+   "finalJudgmentBeforeCode": "本法施行以前依照当时的法律对该行为已经作出的生效判决（判决J，行为X）",
+   "judgmentRemainsValid": "该生效判决继续有效",
+   "actBeforeInterpretation": "行为发生在司法解释I实施之前（行为X，解释I）",
+   "noInterpretationAtAct": "行为时没有相关司法解释",
+   "caseUnprocessedOrPending": "司法解释施行后案件尚未处理或者正在处理",
+   "applyInterpretation": "依照司法解释I的规定办理（行为X，解释I）",
+   "interpretationAtAct": "行为时已有相关司法解释IOld（行为X，旧解释IOld）",
+   "newInterpretationFavorable": "适用新司法解释I对犯罪嫌疑人、被告人有利"
+  }
+ }
+}

@@ -1,0 +1,611 @@
+{
+ "art:1131": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第二章　法定继承"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "继承人以外的人能否分得遗产（酌给遗产）",
+     "rules": [
+      "c1131-elig",
+      "c1131-perm"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "继承人以外的依靠被继承人扶养的人，或者继承人以外的对被继承人扶养较多的人",
+     "rules": [
+      "c1131-elig"
+     ]
+    },
+    {
+     "text": "被收养人对养父母尽了赡养义务，同时又对生父母扶养较多的，可分得生父母适当的遗产（继承编解释一第10条）",
+     "rules": [
+      "c1131-spc10"
+     ]
+    },
+    {
+     "text": "丧失继承权者的晚辈直系血亲不得代位继承，但其缺乏劳动能力又没有生活来源或者对被继承人尽赡养义务较多的，可以适当分给遗产（继承编解释一第17条）",
+     "rules": [
+      "c1131-spc17"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "可以分给适当的遗产",
+     "rules": [
+      "c1131-perm"
+     ]
+    },
+    {
+     "text": "按具体情况，所分遗产可以多于或者少于继承人（继承编解释一第20条）",
+     "rules": [
+      "c1131-spc20"
+     ]
+    },
+    {
+     "text": "其取得遗产的权利受到侵犯时，有权以独立的诉讼主体资格起诉（继承编解释一第21条）",
+     "rules": [
+      "c1131-spc21"
+     ]
+    },
+    {
+     "text": "遗产因无人继承又无人受遗赠归国家或集体所有制组织所有时，此类人提出取得遗产诉讼请求的，人民法院应当视情况适当分给（继承编解释一第41条）",
+     "rules": [
+      "c1131-spc41"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "酌给遗产请求人不是继承人，不参加法定继承顺序，也不适用第1130条的均等原则；与第1130条第3款“尽主要扶养义务的继承人多分”不同",
+     "rules": []
+    },
+    {
+     "text": "无人继承又无人受遗赠遗产的归属见本编第四章 card:g7086 规则 c1160-state / c1160-coll",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1131-elig",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     {
+      "or": [
+       "dependentOnDeceased(P,D)",
+       "supportedDeceasedConsiderably(P,D)"
+      ]
+     },
+     "~heirCandidate(P,D)"
+    ],
+    "heads": [
+     "eligibleForDiscretionaryShare(P,E)"
+    ],
+    "note": "继承人以外的依靠被继承人扶养的人，或者继承人以外的对被继承人扶养较多的人，属于可以分给适当遗产的人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1131-perm",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "eligibleForDiscretionaryShare(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": "P",
+      "content": "allotAppropriateShare(P,E)"
+     }
+    ],
+    "note": "对上述人员，可以分给适当的遗产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1131-spc10",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "adoptedChild(C,A)",
+     "supportDutyPerformed(C,A)",
+     "biologicalParent(B,C)",
+     "supportedDeceasedConsiderably(C,B)",
+     "estateOf(E,B)"
+    ],
+    "heads": [
+     "eligibleForDiscretionaryShare(C,E)"
+    ],
+    "note": "继承编解释（一）第10条：被收养人对养父母尽了赡养义务，同时又对生父母扶养较多的，除继承养父母遗产外，还可依第1131条分得生父母适当的遗产",
+    "auth": "spc"
+   },
+   {
+    "key": "c1131-spc17",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "childOf(C,D)",
+     "disinherited(C,D)",
+     "lineaDescendant(G,C)",
+     {
+      "or": [
+       "lacksWorkAbility(G) noLivelihood(G)",
+       "supportedDeceasedConsiderably(G,D)"
+      ]
+     }
+    ],
+    "heads": [
+     "eligibleForDiscretionaryShare(G,E)"
+    ],
+    "note": "继承编解释（一）第17条：继承人丧失继承权的，其晚辈直系血亲不得代位继承；该代位继承人缺乏劳动能力又没有生活来源，或者对被继承人尽赡养义务较多的，可以适当分给遗产",
+    "auth": "spc"
+   },
+   {
+    "key": "c1131-spc20",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "eligibleForDiscretionaryShare(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": "P",
+      "content": "allotMoreOrLessThanHeirs(P,E)"
+     }
+    ],
+    "note": "继承编解释（一）第20条：分给他们遗产时，按具体情况可以多于或者少于继承人",
+    "auth": "spc"
+   },
+   {
+    "key": "c1131-spc21",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "eligibleForDiscretionaryShare(P,E)",
+     "discretionaryShareInfringed(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "sueAsIndependentParty(P,E)"
+     }
+    ],
+    "note": "继承编解释（一）第21条：其依法取得遗产的权利受到侵犯时，本人有权以独立的诉讼主体资格向人民法院提起诉讼",
+    "auth": "spc"
+   },
+   {
+    "key": "c1131-spc41",
+    "srcs": [
+     "art1131"
+    ],
+    "body": [
+     "eligibleForDiscretionaryShare(P,E)",
+     "escheatedAsUnclaimed(E)",
+     "claimedDiscretionaryShare(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "P",
+      "content": "allotAppropriateShare(P,E)"
+     }
+    ],
+    "note": "继承编解释（一）第41条：遗产因无人继承又无人受遗赠归国家或集体所有制组织所有时，可以分给适当遗产的人提出取得遗产诉讼请求的，人民法院应当视情况适当分给遗产",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "dependentOnDeceased": "P依靠被继承人D扶养（人，被继承人）",
+   "supportedDeceasedConsiderably": "P对被继承人D扶养（赡养）较多（人，被继承人）",
+   "eligibleForDiscretionaryShare": "P属于第1131条可以分给遗产E适当份额的继承人以外的人（人，遗产）",
+   "allotAppropriateShare": "分给P遗产E中适当的份额（人，遗产）",
+   "supportDutyPerformed": "C对A尽了赡养（扶养）义务（人，对象）",
+   "allotMoreOrLessThanHeirs": "分给P的遗产E份额可以多于或者少于继承人（人，遗产）",
+   "discretionaryShareInfringed": "P依法取得遗产E的权利受到侵犯（人，遗产）",
+   "sueAsIndependentParty": "以独立的诉讼主体资格就遗产E提起诉讼（原告，遗产）",
+   "escheatedAsUnclaimed": "遗产E因无人继承又无人受遗赠归国家或者集体所有制组织所有（遗产）",
+   "claimedDiscretionaryShare": "P提出取得遗产E的诉讼请求（人，遗产）"
+  }
+ },
+ "art:1130": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第二章　法定继承"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "法定继承中同一顺序继承人的遗产份额如何确定，何时可以不均等",
+     "rules": [
+      "c1130-1",
+      "c1130-2",
+      "c1130-3",
+      "c1130-4",
+      "c1130-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般情形：法定继承的同一顺序继承人份额一般应当均等",
+     "rules": [
+      "c1130-1"
+     ]
+    },
+    {
+     "text": "尽了主要扶养义务的认定：对被继承人生活提供了主要经济来源，或者在劳务等方面给予了主要扶助",
+     "rules": [
+      "c1130-spc19"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "生活有特殊困难又缺乏劳动能力的继承人，分配遗产时应当予以照顾",
+     "rules": [
+      "c1130-2"
+     ]
+    },
+    {
+     "text": "对被继承人尽了主要扶养义务或者与被继承人共同生活的继承人，可以多分",
+     "rules": [
+      "c1130-3"
+     ]
+    },
+    {
+     "text": "有扶养能力和扶养条件而不尽扶养义务的继承人，应当不分或者少分",
+     "rules": [
+      "c1130-4"
+     ]
+    },
+    {
+     "text": "继承人协商同意的，也可以不均等",
+     "rules": [
+      "c1130-5"
+     ]
+    },
+    {
+     "text": "代位继承人缺乏劳动能力又没有生活来源，或者对被继承人尽过主要赡养义务的，可以多分（继承编解释一第16条）",
+     "rules": [
+      "c1130-spc16"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "存在照顾、多分、不分少分或协商不均等事由的，排除均等分配",
+     "rules": [
+      "c1130-1",
+      "c1130-2",
+      "c1130-3",
+      "c1130-4",
+      "c1130-5"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "继承人愿意尽扶养义务，但被继承人因有固定收入和劳动能力明确表示不要求扶养的，一般不应因此影响其继承份额，即不得据此不分或少分（继承编解释一第22条），优先于第4款",
+     "rules": [
+      "c1130-spc22",
+      "c1130-4"
+     ]
+    },
+    {
+     "text": "有扶养能力和条件的继承人虽与被继承人共同生活，但对需要扶养的被继承人不尽扶养义务的，可以少分或者不分（继承编解释一第23条），共同生活本身不当然导致多分",
+     "rules": [
+      "c1130-spc23"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条只适用于法定继承；遗嘱继承依遗嘱确定份额。第1131条酌给遗产的对象是继承人以外的人",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1130-1",
+    "srcs": [
+     "art1130-1"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "byIntestacy(E)",
+     "~unequalShareGround(E)"
+    ],
+    "heads": [
+     "equalSharesAmongSameOrder(E)"
+    ],
+    "note": "同一顺序继承人继承遗产的份额，一般应当均等",
+    "auth": "npc"
+   },
+   {
+    "key": "c1130-2",
+    "srcs": [
+     "art1130-2"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsIntestate(H,E)",
+     "specialLivingHardship(H)",
+     "lacksWorkAbility(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "giveCareInDistribution(H,E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "对生活有特殊困难又缺乏劳动能力的继承人，分配遗产时应当予以照顾",
+    "auth": "npc"
+   },
+   {
+    "key": "c1130-3",
+    "srcs": [
+     "art1130-3"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsIntestate(H,E)",
+     {
+      "or": [
+       "mainSupportProvided(H,D)",
+       "livedWithDeceased(H,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "allotMore(H,E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "对被继承人尽了主要扶养义务或者与被继承人共同生活的继承人，分配遗产时可以多分",
+    "auth": "npc"
+   },
+   {
+    "key": "c1130-4",
+    "srcs": [
+     "art1130-4"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsIntestate(H,E)",
+     "ableToSupport(H,D)",
+     "failedSupportDuty(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "allotNoneOrLess(H,E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "有扶养能力和有扶养条件的继承人，不尽扶养义务的，分配遗产时应当不分或者少分",
+    "auth": "npc"
+   },
+   {
+    "key": "c1130-5",
+    "srcs": [
+     "art1130-5"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "byIntestacy(E)",
+     "heirsAgreedUnequalShares(E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "distributeUnequally(E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "继承人协商同意的，也可以不均等",
+    "auth": "npc"
+   },
+   {
+    "key": "c1130-spc19",
+    "srcs": [
+     "art1130-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "providedMainEconomicSource(H,D)",
+       "providedMainLabourAssistance(H,D)"
+      ]
+     }
+    ],
+    "heads": [
+     "mainSupportProvided(H,D)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉继承编的解释（一）》（法释〔2020〕23号）第19条：提供主要经济来源或在劳务等方面给予主要扶助的，认定为尽了主要扶养义务",
+    "auth": "spc"
+   },
+   {
+    "key": "c1130-spc16",
+    "srcs": [
+     "art1130-3"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsBySubrogation(G,E)",
+     {
+      "or": [
+       "lacksWorkAbility(G) noLivelihood(G)",
+       "mainSupportProvided(G,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": "G",
+      "content": "allotMore(G,E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "继承编解释（一）第16条：代位继承人缺乏劳动能力又没有生活来源，或者对被继承人尽过主要赡养义务的，分配遗产时可以多分",
+    "auth": "spc"
+   },
+   {
+    "key": "c1130-spc22",
+    "srcs": [
+     "art1130-4"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsIntestate(H,E)",
+     "ableToSupport(H,D)",
+     "willingToSupport(H,D)",
+     "deceasedDeclinedSupport(D,H)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "allotNoneOrLess(H,E)"
+     }
+    ],
+    "note": "继承编解释（一）第22条：继承人愿尽扶养义务，但被继承人因有固定收入和劳动能力明确表示不要求其扶养的，分配遗产时一般不应因此影响其继承份额",
+    "auth": "spc"
+   },
+   {
+    "key": "c1130-spc23",
+    "srcs": [
+     "art1130-4"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "inheritsIntestate(H,E)",
+     "ableToSupport(H,D)",
+     "livedWithDeceased(H,D)",
+     "deceasedNeededSupport(D)",
+     "failedSupportDuty(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "allotNoneOrLess(H,E)"
+     },
+     "unequalShareGround(E)"
+    ],
+    "note": "继承编解释（一）第23条：有扶养能力和条件的继承人虽与被继承人共同生活，但对需要扶养的被继承人不尽扶养义务的，可以少分或者不分",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1130-spc22",
+    "c1130-4",
+    "被继承人因有固定收入和劳动能力明确表示不要求扶养的，继承人未尽扶养不构成第4款的不尽扶养义务，一般不影响份额（继承编解释一第22条）"
+   ]
+  ],
+  "predicates": {
+   "unequalShareGround": "遗产E的法定继承存在第1130条第2至5款规定的不均等分配事由（遗产）",
+   "equalSharesAmongSameOrder": "遗产E由同一顺序法定继承人均等分配（遗产）",
+   "specialLivingHardship": "生活有特殊困难（继承人）",
+   "lacksWorkAbility": "缺乏劳动能力（人）",
+   "noLivelihood": "没有生活来源（人）",
+   "giveCareInDistribution": "分配遗产E时对继承人H予以照顾（继承人，遗产）",
+   "mainSupportProvided": "H对被继承人D尽了主要扶养（赡养）义务（继承人，被继承人）",
+   "livedWithDeceased": "H与被继承人D共同生活（继承人，被继承人）",
+   "allotMore": "分配遗产E时对H多分（分得人，遗产）",
+   "ableToSupport": "H对被继承人D有扶养能力和扶养条件（继承人，被继承人）",
+   "failedSupportDuty": "H对被继承人D不尽扶养义务（继承人，被继承人）",
+   "allotNoneOrLess": "分配遗产E时对H不分或者少分（继承人，遗产）",
+   "heirsAgreedUnequalShares": "继承人协商同意遗产E不均等分配（遗产）",
+   "distributeUnequally": "不均等分配遗产E（遗产）",
+   "providedMainEconomicSource": "H对D的生活提供了主要经济来源（扶养人，被扶养人）",
+   "providedMainLabourAssistance": "H在劳务等方面对D给予了主要扶助（扶养人，被扶养人）",
+   "willingToSupport": "H愿意对D尽扶养义务（继承人，被继承人）",
+   "deceasedDeclinedSupport": "被继承人D因有固定收入和劳动能力，明确表示不要求H扶养（被继承人，继承人）",
+   "deceasedNeededSupport": "被继承人D需要扶养（被继承人）"
+  }
+ },
+ "art:1126": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第二章　法定继承"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "继承权是否因性别而有差别",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "继承权男女平等：宣示性原则，不单独形式化；各顺序法定继承人的认定（第1127条）、代位继承（第1128条）、份额分配（第1130条）均不区分性别",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为原则性规定；具体继承资格与份额规则见第1127、1128、1130条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ }
+}

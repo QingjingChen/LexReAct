@@ -1,0 +1,7803 @@
+{
+ "art:114": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "放火、决水、爆炸、投放毒害性/放射性/传染病病原体等物质或者以其他危险方法危害公共安全，尚未造成严重后果的，成立何罪、如何量刑（第114条危险犯的基本犯法定刑：三年以上十年以下有期徒刑）",
+     "rules": [
+      "k114-cond",
+      "k114-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为类型限于放火、决水、爆炸、投放毒害性、放射性、传染病病原体等物质，或者以其他危险方法实施",
+     "rules": [
+      "k114-acts"
+     ]
+    },
+    {
+     "text": "行为须危害公共安全（危及不特定多数人的生命、健康或重大公私财产安全），且尚未造成严重后果",
+     "rules": [
+      "k114-cond"
+     ]
+    },
+    {
+     "text": "本条为危险犯：行为已造成危害公共安全的具体危险，即属既遂，不以发生实害结果为必要（学理与笔记）",
+     "rules": [
+      "k114-completion"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失实施放火、决水、爆炸、投放危险物质等行为的，不成立第114条之罪（属失火罪、过失爆炸罪等过失危害公共安全犯罪，依第115条第2款处理）——学理",
+     "rules": [
+      "k114-negligent"
+     ]
+    },
+    {
+     "text": "“其他危险方法”须与放火、决水、爆炸、投放危险物质的危险性相当；不具有相当性的，不成立以危险方法危害公共安全罪——学理",
+     "rules": [
+      "k114-equiv"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依行为方式分别符合放火罪、决水罪、爆炸罪、投放危险物质罪、以危险方法危害公共安全罪的构成要件",
+     "rules": [
+      "k114-arson",
+      "k114-flood",
+      "k114-explosion",
+      "k114-poison",
+      "k114-other"
+     ]
+    },
+    {
+     "text": "尚未造成严重后果的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k114-pen"
+     ]
+    },
+    {
+     "text": "已着手实行但尚未产生危害公共安全的具体危险的，成立犯罪未遂，不按本条既遂处理——学理",
+     "rules": [
+      "k114-attempt"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "过失犯罪规定排除第114条故意危险犯构成条件的认定",
+     "rules": [
+      "k114-negligent",
+      "k114-cond"
+     ]
+    },
+    {
+     "text": "危险方法相当性限制排除以危险方法危害公共安全罪的成立",
+     "rules": [
+      "k114-equiv",
+      "k114-other"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第114条（危险犯）是放火、决水、爆炸、投放危险物质等罪的基本犯；造成致人重伤、死亡或公私财产重大损失等严重后果的，属第115条结果加重犯，不适用本条法定刑（笔记观点）",
+     "rules": [
+      "k114-cond",
+      "k114-completion"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k114-acts",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     {
+      "or": [
+       "arsonAct(P,X)",
+       "floodingAct(P,X)",
+       "explosionAct(P,X)",
+       "poisoningAct(P,X)",
+       "otherDangerousMethodAct(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "art114Act(P,X)"
+    ],
+    "auth": "npc",
+    "note": "本条行为类型：放火、决水、爆炸、投放毒害性放射性传染病病原体等物质或者其他危险方法"
+   },
+   {
+    "key": "k114-cond",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Act(P,X)",
+     "endangersPublicSecurity(X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "art114Conditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "以上述危险方法危害公共安全且尚未造成严重后果的，具备第114条的构成条件"
+   },
+   {
+    "key": "k114-arson",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "arsonAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,arson)"
+    ],
+    "auth": "npc",
+    "note": "放火危害公共安全尚未造成严重后果的，符合放火罪构成要件"
+   },
+   {
+    "key": "k114-flood",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "floodingAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,flooding)"
+    ],
+    "auth": "npc",
+    "note": "决水危害公共安全尚未造成严重后果的，符合决水罪（新增罪名常量 flooding）构成要件"
+   },
+   {
+    "key": "k114-explosion",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "explosionAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,explosion)"
+    ],
+    "auth": "npc",
+    "note": "爆炸危害公共安全尚未造成严重后果的，符合爆炸罪构成要件"
+   },
+   {
+    "key": "k114-poison",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "poisoningAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,poisoning)"
+    ],
+    "auth": "npc",
+    "note": "投放毒害性、放射性、传染病病原体等物质危害公共安全尚未造成严重后果的，符合投放危险物质罪构成要件"
+   },
+   {
+    "key": "k114-other",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "otherDangerousMethodAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,endangeringPublicSecurityByDangerousMeans)"
+    ],
+    "auth": "npc",
+    "note": "以其他危险方法危害公共安全尚未造成严重后果的，符合以危险方法危害公共安全罪（新增罪名常量）构成要件"
+   },
+   {
+    "key": "k114-pen",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     {
+      "or": [
+       "constitutes(P,X,arson)",
+       "constitutes(P,X,flooding)",
+       "constitutes(P,X,explosion)",
+       "constitutes(P,X,poisoning)",
+       "constitutes(P,X,endangeringPublicSecurityByDangerousMeans)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果的，处三年以上十年以下有期徒刑（新增量刑常量 from3to10 表示三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k114-completion",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Conditions(P,X)",
+     "concretePublicDanger(X)"
+    ],
+    "heads": [
+     "crimeAccomplished(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与笔记：第114条为危险犯，属放火等罪的基本犯，产生危害公共安全的具体危险即既遂，第115条为结果加重犯"
+   },
+   {
+    "key": "k114-attempt",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Act(P,X)",
+     "commencedExecution(P,X)",
+     "-concretePublicDanger(X)"
+    ],
+    "heads": [
+     "attempt(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：已着手实行但尚未产生危害公共安全具体危险的，成立未遂，不按本条既遂量刑"
+   },
+   {
+    "key": "k114-negligent",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "art114Act(P,X)",
+     "negligentCrime(X)"
+    ],
+    "heads": [
+     "-art114Conditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本条各罪为故意犯罪，过失引起火灾、爆炸等应依第115条第2款过失犯罪处理，不成立本条之罪"
+   },
+   {
+    "key": "k114-equiv",
+    "srcs": [
+     "art114#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "otherDangerousMethodAct(P,X)",
+     "-equivalentDangerousness(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,endangeringPublicSecurityByDangerousMeans)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：其他危险方法须与放火、决水、爆炸、投放危险物质危险性相当，否则不成立以危险方法危害公共安全罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k114-cond",
+    "k114-negligent",
+    "推断：结论冲突（('art114Conditions', '+')），k114-cond 为例外或更具体"
+   ],
+   [
+    "k114-equiv",
+    "k114-arson",
+    "推断：结论冲突（('constitutes', '+')），k114-equiv 为例外或更具体"
+   ],
+   [
+    "k114-equiv",
+    "k114-flood",
+    "推断：结论冲突（('constitutes', '+')），k114-equiv 为例外或更具体"
+   ],
+   [
+    "k114-equiv",
+    "k114-explosion",
+    "推断：结论冲突（('constitutes', '+')），k114-equiv 为例外或更具体"
+   ],
+   [
+    "k114-equiv",
+    "k114-poison",
+    "推断：结论冲突（('constitutes', '+')），k114-equiv 为例外或更具体"
+   ],
+   [
+    "k114-equiv",
+    "k114-other",
+    "推断：结论冲突（('constitutes', '+')），k114-equiv 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "arsonAct": "arsonAct(P,X)：P 实施放火行为 X",
+   "floodingAct": "floodingAct(P,X)：P 实施决水行为 X",
+   "explosionAct": "explosionAct(P,X)：P 实施爆炸行为 X",
+   "poisoningAct": "poisoningAct(P,X)：P 实施投放毒害性、放射性、传染病病原体等物质的行为 X",
+   "otherDangerousMethodAct": "otherDangerousMethodAct(P,X)：P 以放火、决水、爆炸、投放危险物质以外的其他危险方法实施行为 X",
+   "art114Act": "art114Act(P,X)：P 实施的行为 X 属于刑法第114条列举的危险方法行为",
+   "endangersPublicSecurity": "endangersPublicSecurity(X)：行为 X 危害公共安全",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "art114Conditions": "art114Conditions(P,X)：P 的行为 X 具备刑法第114条的构成条件（危险方法危害公共安全且尚未造成严重后果）",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "concretePublicDanger": "concretePublicDanger(X)：行为 X 已造成危害公共安全的具体（现实）危险",
+   "crimeAccomplished": "crimeAccomplished(P,X)：P 的犯罪 X 已达既遂（完成形态）",
+   "commencedExecution": "已着手实行",
+   "attempt": "犯罪未遂",
+   "negligentCrime": "过失犯罪",
+   "equivalentDangerousness": "equivalentDangerousness(X)：行为 X 的危险性与放火、决水、爆炸、投放危险物质相当"
+  }
+ },
+ "art:115": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "故意放火、决水、爆炸、投放毒害性/放射性/传染病病原体等物质或以其他危险方法危害公共安全，致人重伤、死亡或使公私财产遭受重大损失的，如何定罪量刑（第115条第1款）",
+     "rules": [
+      "k115-1",
+      "k115-1s"
+     ]
+    },
+    {
+     "text": "过失犯前款罪（失火、过失决水、过失爆炸、过失投放危险物质、过失以危险方法危害公共安全）造成上述实害结果的，如何定罪量刑（第115条第2款）",
+     "rules": [
+      "k115-2",
+      "k115-2s",
+      "k115-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为类型：放火、决水、爆炸、投放毒害性、放射性、传染病病原体等物质，或者以其他危险方法危害公共安全；行为类型决定具体罪名",
+     "rules": [
+      "k115-1",
+      "k115-2"
+     ]
+    },
+    {
+     "text": "结果要件：致人重伤、死亡，或者使公私财产遭受重大损失（择一即可）；无此实害结果的，只可能成立第114条危险犯",
+     "rules": [
+      "k115-1",
+      "k115-2"
+     ]
+    },
+    {
+     "text": "主观要件：第1款为故意（含放火罪、决水罪、爆炸罪、投放危险物质罪、以危险方法危害公共安全罪）；第2款为过失，且过失犯以实害结果发生为必要",
+     "rules": [
+      "k115-1",
+      "k115-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失犯前款罪但情节较轻的，处三年以下有期徒刑或者拘役，不适用三年以上七年以下有期徒刑的一般档",
+     "rules": [
+      "k115-2b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "故意犯且致人重伤、死亡或公私财产重大损失的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k115-1s"
+     ]
+    },
+    {
+     "text": "过失犯前款罪的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k115-2s"
+     ]
+    },
+    {
+     "text": "过失犯情节较轻的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k115-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款后段“情节较轻”的减轻档优先于第2款前段过失犯的一般档（3—7年）",
+     "rules": [
+      "k115-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "学理（笔记）：第114条危险犯是放火、决水、爆炸、投放危险物质等罪的基本犯，第115条的实害结果是结果加重犯，而非基本犯",
+     "rules": [
+      "k115-doct"
+     ]
+    },
+    {
+     "text": "过失犯的法定刑明显轻于故意犯：同为造成火灾，放火罪为十年以上有期徒刑、无期徒刑或死刑，失火罪为3—7年，情节较轻的为三年以下有期徒刑或拘役",
+     "rules": [
+      "k115-1s",
+      "k115-2s"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k115-1",
+    "srcs": [
+     "art115#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "intentionalCrime(X)",
+     "dangerousActOfKind(X,C)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "majorPropertyLoss(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "故意实施放火、决水、爆炸、投放危险物质或其他危险方法行为并致人重伤、死亡或公私财产重大损失的，符合相应故意危害公共安全犯罪（C为arson、flooding、explosion、poisoning、otherDangerousMethod）的构成要件"
+   },
+   {
+    "key": "k115-1s",
+    "srcs": [
+     "art115#1"
+    ],
+    "body": [
+     "constitutes(P,X,C)",
+     "intentionalCrime(X)",
+     "dangerousActOfKind(X,C)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "majorPropertyLoss(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款法定刑：处十年以上有期徒刑、无期徒刑或者死刑（量刑方式常量from10OrLifeOrDeath）"
+   },
+   {
+    "key": "k115-2",
+    "srcs": [
+     "art115#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "negligentCrime(X)",
+     "negligentDangerousActOfKind(X,C)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "majorPropertyLoss(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪并造成重伤、死亡或公私财产重大损失的，符合相应过失危害公共安全犯罪（C为negligentArson失火罪、negligentFlooding、negligentExplosion、negligentPoisoning、negligentOtherDangerousMethod）的构成要件"
+   },
+   {
+    "key": "k115-2s",
+    "srcs": [
+     "art115#2"
+    ],
+    "body": [
+     "constitutes(P,X,C)",
+     "negligentCrime(X)",
+     "negligentDangerousActOfKind(X,C)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪的，处三年以上七年以下有期徒刑（量刑方式常量from3to7）；情节较轻的除外"
+   },
+   {
+    "key": "k115-2b",
+    "srcs": [
+     "art115#2"
+    ],
+    "body": [
+     "constitutes(P,X,C)",
+     "negligentCrime(X)",
+     "negligentDangerousActOfKind(X,C)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪情节较轻的，处三年以下有期徒刑或者拘役（量刑方式常量under3OrDetention）"
+   },
+   {
+    "key": "k115-doct",
+    "srcs": [
+     "art115#1"
+    ],
+    "body": [
+     "dangerousActOfKind(X,C)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "majorPropertyLoss(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "resultAggravatedOffense(X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "学理说明（来自备考笔记，法条未明文）：第114条危险犯为基本犯，第115条致重伤、死亡或重大财产损失为该罪的结果加重犯"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "intentionalCrime": "故意犯罪",
+   "dangerousActOfKind": "dangerousActOfKind(X,C)：X 属于第115条第1款列举的故意危害公共安全危险行为，且该行为类型对应罪名 C（放火→arson、决水→flooding、爆炸→explosion、投放毒害性/放射性/传染病病原体等物质→poisoning、其他危险方法→otherDangerousMethod）",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "majorPropertyLoss": "公私财产遭受重大损失",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "negligentCrime": "过失犯罪",
+   "negligentDangerousActOfKind": "negligentDangerousActOfKind(X,C)：X 属于过失实施第115条第1款所列危险行为，且对应过失罪名 C（失火→negligentArson、过失决水→negligentFlooding、过失爆炸→negligentExplosion、过失投放危险物质→negligentPoisoning、过失以危险方法危害公共安全→negligentOtherDangerousMethod）",
+   "lightCircumstances": "犯罪情节较轻",
+   "resultAggravatedOffense": "resultAggravatedOffense(X,C)：犯罪 X 属于罪名 C 的结果加重犯（以第114条危险犯为基本犯，第115条实害结果为加重结果）"
+  }
+ },
+ "art:116": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏火车、汽车、电车、船只、航空器的行为是否构成破坏交通工具罪，以及是否成立既遂",
+     "rules": [
+      "k116-cond",
+      "k116-completed"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象须为法定的交通工具：火车、汽车、电车、船只、航空器；行为须为破坏行为，且足以使该交通工具发生倾覆、毁坏的危险（具体危险犯）",
+     "rules": [
+      "k116-cond"
+     ]
+    },
+    {
+     "text": "学理与备考笔记：所破坏的交通工具须处于正在使用（运行中或已交付使用待用）状态，破坏未投入使用或已报废的交通工具不危及公共安全，不构成本罪",
+     "rules": [
+      "k116-inUse"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "尚未造成严重后果的，才适用本款的三年以上十年以下有期徒刑；已造成严重后果的，不适用本款（另依加重规定处理，本行未挂载）",
+     "rules": [
+      "k116-1",
+      "k116-sent"
+     ]
+    },
+    {
+     "text": "破坏的对象不是火车、汽车、电车、船只、航空器的（如自行车、畜力车），不构成破坏交通工具罪",
+     "rules": [
+      "k116-object"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合构成要件的，成立破坏交通工具罪，负刑事责任",
+     "rules": [
+      "k116-1"
+     ]
+    },
+    {
+     "text": "尚未造成严重后果的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k116-sent"
+     ]
+    },
+    {
+     "text": "笔记（危险犯）：只要破坏行为足以使交通工具发生倾覆、毁坏危险，即使尚未实际发生倾覆、毁坏的严重后果，也成立本罪既遂",
+     "rules": [
+      "k116-completed"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "对象不适格或交通工具不在使用状态的排除规则，优先于本罪构成要件的一般判断",
+     "rules": [
+      "k116-object",
+      "k116-inUse"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象是交通工具本身；破坏轨道、桥梁、隧道、公路、机场、航道、灯塔、标志等交通设施的，属于破坏交通设施罪（第117条），不在本条范围",
+     "rules": []
+    },
+    {
+     "text": "本罪与放火罪、爆炸罪、决水罪、投放危险物质罪、破坏电力设备罪同属危险犯，以现实危险的发生为既遂标准，而非以实害结果为标准",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k116-cond",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "sabotageAct(X)",
+     "objectOf(X,V)",
+     "transportVehicle(V)",
+     "sufficientToCauseOverturnOrDestruction(X,V)"
+    ],
+    "heads": [
+     "constitutes(P,X,destroyingTransportVehicle)"
+    ],
+    "auth": "npc",
+    "note": "破坏火车、汽车、电车、船只、航空器，足以使其发生倾覆、毁坏危险的，符合破坏交通工具罪构成要件"
+   },
+   {
+    "key": "k116-1",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "constitutes(P,X,destroyingTransportVehicle)",
+     "~seriousConsequenceCaused(X)"
+    ],
+    "heads": [
+     "responsible(P,X,destroyingTransportVehicle)"
+    ],
+    "auth": "npc",
+    "note": "破坏交通工具足以发生倾覆、毁坏危险，尚未造成严重后果的，负破坏交通工具罪的刑事责任"
+   },
+   {
+    "key": "k116-sent",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "responsible(P,X,destroyingTransportVehicle)",
+     "~seriousConsequenceCaused(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果的，处三年以上十年以下有期徒刑（量刑方式常量 from3to10 表示三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k116-completed",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "constitutes(P,X,destroyingTransportVehicle)"
+    ],
+    "heads": [
+     "completedCrime(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记与学理：本罪为危险犯，足以发生倾覆、毁坏危险即既遂，不以实际发生倾覆、毁坏结果为必要"
+   },
+   {
+    "key": "k116-object",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "sabotageAct(X)",
+     "objectOf(X,V)",
+     "-transportVehicle(V)"
+    ],
+    "heads": [
+     "-constitutes(P,X,destroyingTransportVehicle)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：破坏对象不属于法定交通工具的，不符合本罪构成要件"
+   },
+   {
+    "key": "k116-inUse",
+    "srcs": [
+     "art116#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "sabotageAct(X)",
+     "objectOf(X,V)",
+     "transportVehicle(V)",
+     "-inUse(V)"
+    ],
+    "heads": [
+     "-constitutes(P,X,destroyingTransportVehicle)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：交通工具未处于正在使用状态（未交付使用或已报废），破坏行为不危及公共安全，不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k116-object",
+    "k116-cond",
+    "推断：结论冲突（('constitutes', '+')），k116-object 为例外或更具体"
+   ],
+   [
+    "k116-inUse",
+    "k116-cond",
+    "推断：结论冲突（('constitutes', '+')），k116-inUse 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "sabotageAct": "sabotageAct(X)：X 是破坏（毁损、拆卸、使功能丧失等）行为",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "transportVehicle": "transportVehicle(V)：V 是火车、汽车、电车、船只、航空器等刑法第116条列举的交通工具",
+   "sufficientToCauseOverturnOrDestruction": "sufficientToCauseOverturnOrDestruction(X,V)：行为 X 足以使交通工具 V 发生倾覆、毁坏的危险",
+   "constitutes": "符合构成要件",
+   "seriousConsequenceCaused": "seriousConsequenceCaused(X)：行为 X 已经造成严重后果（如实际倾覆、毁坏、人身伤亡或重大财产损失）",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "completedCrime": "completedCrime(P,X)：P 的犯罪 X 成立既遂",
+   "inUse": "inUse(V)：交通工具 V 处于正在使用状态（运行中或已交付使用待用）"
+  }
+ },
+ "art:117": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏轨道、桥梁等交通设施的行为是否构成破坏交通设施罪，尚未造成严重后果时如何处刑",
+     "rules": [
+      "k117-cond",
+      "k117-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象为轨道、桥梁、隧道、公路、机场、航道、灯塔、标志等交通设施，或者进行其他破坏（交通设施）活动",
+     "rules": [
+      "k117-cond"
+     ]
+    },
+    {
+     "text": "破坏行为足以使火车、汽车、电车、船只、航空器发生倾覆、毁坏危险；本罪为具体危险犯，危险出现即成立，不要求实际倾覆、毁坏",
+     "rules": [
+      "k117-cond",
+      "k117-danger"
+     ]
+    },
+    {
+     "text": "所破坏的交通设施须处于正在使用（关涉公共交通安全）的状态，破坏未投入使用或已废弃的设施不足以危害公共安全（学理）",
+     "rules": [
+      "k117-inUse"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "尚未造成严重后果的，按本条基本犯负刑事责任并适用基本法定刑",
+     "rules": [
+      "k117-resp",
+      "k117-pen"
+     ]
+    },
+    {
+     "text": "破坏行为不足以使交通工具发生倾覆、毁坏危险的，不构成本罪（可能成立故意毁坏财物等罪）（学理）",
+     "rules": [
+      "k117-danger"
+     ]
+    },
+    {
+     "text": "已致人重伤、死亡或者使公私财产遭受重大损失等严重后果的，超出本条范围，应依第119条第1款加重处罚（学理指引）",
+     "rules": [
+      "k117-serious"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备破坏行为与倾覆、毁坏危险的，符合破坏交通设施罪构成要件",
+     "rules": [
+      "k117-cond"
+     ]
+    },
+    {
+     "text": "尚未造成严重后果的，就破坏交通设施罪负刑事责任",
+     "rules": [
+      "k117-resp"
+     ]
+    },
+    {
+     "text": "处三年以上十年以下有期徒刑",
+     "rules": [
+      "k117-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "危险不具备或设施非正在使用的例外规则，排除本罪构成要件的成立",
+     "rules": [
+      "k117-danger",
+      "k117-inUse"
+     ]
+    },
+    {
+     "text": "已造成严重后果的，排除第117条基本法定刑与基本犯责任，转由第119条第1款处理",
+     "rules": [
+      "k117-serious"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象是交通设施（轨道、桥梁、隧道、公路、机场、航道、灯塔、标志等）；破坏火车、汽车、电车、船只、航空器本身的，成立第116条破坏交通工具罪",
+     "rules": [
+      "k117-cond"
+     ]
+    },
+    {
+     "text": "与故意毁坏财物罪的界限在于破坏行为是否足以危害公共交通安全（具体危险）",
+     "rules": [
+      "k117-danger",
+      "k117-inUse"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k117-cond",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     {
+      "or": [
+       "destroysTrafficFacility(P,X)",
+       "otherSabotageActivity(P,X)"
+      ]
+     },
+     "sufficientToCauseOverturnOrDestructionDanger(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,sabotageOfTransportFacilities)"
+    ],
+    "auth": "npc",
+    "note": "破坏轨道、桥梁、隧道、公路、机场、航道、灯塔、标志或进行其他破坏活动，足以使火车、汽车、电车、船只、航空器发生倾覆、毁坏危险的，符合破坏交通设施罪构成要件"
+   },
+   {
+    "key": "k117-resp",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfTransportFacilities)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "responsible(P,X,sabotageOfTransportFacilities)"
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果的，就破坏交通设施罪负刑事责任"
+   },
+   {
+    "key": "k117-pen",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "responsible(P,X,sabotageOfTransportFacilities)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以上十年以下有期徒刑（新增量刑方式常量 from3to10 表示三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k117-danger",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "destroysTrafficFacility(P,X)",
+     "-sufficientToCauseOverturnOrDestructionDanger(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,sabotageOfTransportFacilities)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪为具体危险犯，破坏行为不足以使交通工具发生倾覆、毁坏危险的，不构成本罪"
+   },
+   {
+    "key": "k117-inUse",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "destroysTrafficFacility(P,X)",
+     "-trafficFacilityInUse(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,sabotageOfTransportFacilities)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：破坏尚未投入使用或已废弃的交通设施，不足以危害公共安全，不构成本罪"
+   },
+   {
+    "key": "k117-serious",
+    "srcs": [
+     "art117#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "majorPropertyLoss(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "causesSeriousConsequence(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：致人重伤、死亡或公私财产重大损失等属“造成严重后果”，此时不适用第117条基本犯，应依第119条第1款加重处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k117-danger",
+    "k117-cond",
+    "推断：结论冲突（('constitutes', '+')），k117-danger 为例外或更具体"
+   ],
+   [
+    "k117-inUse",
+    "k117-cond",
+    "推断：结论冲突（('constitutes', '+')），k117-inUse 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "destroysTrafficFacility": "destroysTrafficFacility(P,X)：P 通过行为 X 破坏轨道、桥梁、隧道、公路、机场、航道、灯塔、标志等交通设施",
+   "otherSabotageActivity": "otherSabotageActivity(P,X)：P 通过行为 X 进行其他破坏交通设施的活动",
+   "sufficientToCauseOverturnOrDestructionDanger": "sufficientToCauseOverturnOrDestructionDanger(X)：行为 X 足以使火车、汽车、电车、船只、航空器发生倾覆、毁坏危险",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "trafficFacilityInUse": "trafficFacilityInUse(X)：行为 X 所破坏的交通设施正在使用中，关涉公共交通安全",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "majorPropertyLoss": "公私财产遭受重大损失"
+  }
+ },
+ "art:118": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏电力、燃气或者其他易燃易爆设备，危害公共安全但尚未造成严重后果的，如何定罪量刑",
+     "rules": [
+      "k118-basic",
+      "k118-resp",
+      "k118-sentence"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象为电力、燃气或者其他易燃易爆设备，行为方式为破坏",
+     "rules": [
+      "k118-basic"
+     ]
+    },
+    {
+     "text": "破坏行为须危害公共安全（对不特定多数人的生命、健康或重大公私财产形成现实危险）",
+     "rules": [
+      "k118-basic",
+      "k118-danger"
+     ]
+    },
+    {
+     "text": "尚未造成严重后果（已造成严重后果的属第119条加重情形，不适用本条法定刑）",
+     "rules": [
+      "k118-basic",
+      "k118-sentence"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "破坏行为不足以危害公共安全的，不成立本条之罪（学理：本罪为具体危险犯，可能仅成立故意毁坏财物罪、盗窃罪等）",
+     "rules": [
+      "k118-danger"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合破坏电力设备罪、破坏易燃易爆设备罪（第118条）的构成要件",
+     "rules": [
+      "k118-basic"
+     ]
+    },
+    {
+     "text": "行为人负刑事责任",
+     "rules": [
+      "k118-resp"
+     ]
+    },
+    {
+     "text": "处三年以上十年以下有期徒刑",
+     "rules": [
+      "k118-sentence"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "欠缺危害公共安全的具体危险时，排除本条基本犯的构成",
+     "rules": [
+      "k118-danger"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k118-basic",
+    "srcs": [
+     "art118"
+    ],
+    "body": [
+     "destroyPowerGasOrFlammableExplosiveEquipment(P,X)",
+     "endangersPublicSecurity(X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,destroyingPowerOrFlammableExplosiveEquipment)"
+    ],
+    "auth": "npc",
+    "note": "破坏电力、燃气或其他易燃易爆设备，危害公共安全，尚未造成严重后果的，符合第118条之罪（destroyingPowerOrFlammableExplosiveEquipment 指破坏电力设备罪、破坏易燃易爆设备罪）的构成要件"
+   },
+   {
+    "key": "k118-resp",
+    "srcs": [
+     "art118"
+    ],
+    "body": [
+     "constitutes(P,X,destroyingPowerOrFlammableExplosiveEquipment)"
+    ],
+    "heads": [
+     "responsible(P,X,destroyingPowerOrFlammableExplosiveEquipment)"
+    ],
+    "auth": "npc",
+    "note": "符合第118条构成要件的，负刑事责任"
+   },
+   {
+    "key": "k118-sentence",
+    "srcs": [
+     "art118"
+    ],
+    "body": [
+     "responsible(P,X,destroyingPowerOrFlammableExplosiveEquipment)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果的，处三年以上十年以下有期徒刑（from3to10 为新增量刑方式常量：三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k118-danger",
+    "srcs": [
+     "art118"
+    ],
+    "body": [
+     "destroyPowerGasOrFlammableExplosiveEquipment(P,X)",
+     "-endangersPublicSecurity(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,destroyingPowerOrFlammableExplosiveEquipment)"
+    ],
+    "auth": "doctrine",
+    "note": "学理补充：本罪为具体危险犯，破坏行为不足以危害公共安全的不成立本罪，仅可能构成侵犯财产等其他犯罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k118-danger",
+    "k118-basic",
+    "推断：结论冲突（('constitutes', '+')），k118-danger 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "destroyPowerGasOrFlammableExplosiveEquipment": "destroyPowerGasOrFlammableExplosiveEquipment(P,X)：P 通过行为 X 破坏电力、燃气或者其他易燃易爆设备",
+   "endangersPublicSecurity": "endangersPublicSecurity(X)：行为 X 危害公共安全",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:119": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "故意破坏交通工具、交通设施、电力设备、燃气设备、易燃易爆设备并造成严重后果的定罪与量刑",
+     "rules": [
+      "k119-1cond",
+      "k119-1",
+      "k119-1s"
+     ]
+    },
+    {
+     "text": "过失损坏上述交通工具、设备并造成严重后果的定罪与量刑",
+     "rules": [
+      "k119-2cond",
+      "k119-2",
+      "k119-2s",
+      "k119-2light"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象为交通工具、交通设施、电力设备、燃气设备、易燃易爆设备，行为为破坏（损坏），且已造成严重后果；第1款为故意，第2款为过失",
+     "rules": [
+      "k119-1cond",
+      "k119-2cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失犯前款罪，情节较轻的，处三年以下有期徒刑或者拘役，不适用三年以上七年以下有期徒刑",
+     "rules": [
+      "k119-2light"
+     ]
+    },
+    {
+     "text": "故意破坏但未造成严重后果的，不适用第119条第1款的实害犯法定刑，而依第116条至第118条的危险犯规定处理（学理）",
+     "rules": [
+      "k119-noResult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "故意破坏并造成严重后果的，按所破坏对象成立相应罪名（破坏交通工具罪、破坏交通设施罪、破坏电力设备罪、破坏燃气设备罪、破坏易燃易爆设备罪），负刑事责任，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k119-1",
+      "k119-1s"
+     ]
+    },
+    {
+     "text": "过失损坏并造成严重后果的，成立相应的过失损坏型犯罪，负刑事责任，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k119-2",
+      "k119-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "过失犯中“情节较轻”的量刑档优先于三年以上七年以下有期徒刑的基本档",
+     "rules": [
+      "k119-2light",
+      "k119-2s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款为故意破坏的实害（结果加重）犯，第2款为过失犯；二者以罪过形式区分，罪名与法定刑均不同，过失犯以造成严重后果为必备要件",
+     "rules": [
+      "k119-1",
+      "k119-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k119-1cond",
+    "srcs": [
+     "art119#1"
+    ],
+    "body": [
+     "destroysTransportOrEnergyEquipment(P,X)",
+     "intentionalCrime(X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "art119Para1Conditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款的适用条件：故意破坏交通工具、交通设施、电力设备、燃气设备、易燃易爆设备并造成严重后果"
+   },
+   {
+    "key": "k119-1",
+    "srcs": [
+     "art119#1"
+    ],
+    "body": [
+     "art119Para1Conditions(P,X)",
+     "correspondingArt119Crime(X,C)"
+    ],
+    "heads": [
+     "constitutes(P,X,C)",
+     "responsible(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "按所破坏对象成立相应罪名并负刑事责任：destructionOfTransportVehicle=破坏交通工具罪、destructionOfTransportFacility=破坏交通设施罪、destructionOfElectricPowerEquipment=破坏电力设备罪、destructionOfGasEquipment=破坏燃气设备罪、destructionOfFlammableExplosiveEquipment=破坏易燃易爆设备罪"
+   },
+   {
+    "key": "k119-1s",
+    "srcs": [
+     "art119#1"
+    ],
+    "body": [
+     "art119Para1Conditions(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10LifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处十年以上有期徒刑、无期徒刑或者死刑（量刑方式常量 from10LifeOrDeath 表示该法定刑幅度）"
+   },
+   {
+    "key": "k119-2cond",
+    "srcs": [
+     "art119#2",
+     "art119#1"
+    ],
+    "body": [
+     "destroysTransportOrEnergyEquipment(P,X)",
+     "negligentCrime(X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "art119Para2Conditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款“过失犯前款罪”的适用条件：过失损坏前款所列交通工具、设备并造成严重后果"
+   },
+   {
+    "key": "k119-2",
+    "srcs": [
+     "art119#2"
+    ],
+    "body": [
+     "art119Para2Conditions(P,X)",
+     "correspondingArt119NegligentCrime(X,C)"
+    ],
+    "heads": [
+     "constitutes(P,X,C)",
+     "responsible(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "成立相应过失犯罪并负刑事责任：negligentDestructionOfTransportVehicle=过失损坏交通工具罪、negligentDestructionOfTransportFacility=过失损坏交通设施罪、negligentDestructionOfElectricPowerEquipment=过失损坏电力设备罪、negligentDestructionOfFlammableExplosiveEquipment=过失损坏易燃易爆设备罪（含燃气设备）"
+   },
+   {
+    "key": "k119-2s",
+    "srcs": [
+     "art119#2"
+    ],
+    "body": [
+     "art119Para2Conditions(P,X)",
+     "constitutes(P,X,C)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪的，处三年以上七年以下有期徒刑（from3to7 表示三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k119-2light",
+    "srcs": [
+     "art119#2"
+    ],
+    "body": [
+     "art119Para2Conditions(P,X)",
+     "constitutes(P,X,C)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪且情节较轻的，处三年以下有期徒刑或者拘役（upTo3YearsOrDetention 表示该法定刑幅度）"
+   },
+   {
+    "key": "k119-noResult",
+    "srcs": [
+     "art119#1"
+    ],
+    "body": [
+     "destroysTransportOrEnergyEquipment(P,X)",
+     "intentionalCrime(X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-art119Para1Conditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：第119条第1款是第116—118条危险犯的结果加重（实害）规定，未造成严重后果的故意破坏行为不依本款处理，仍按危险犯条款定罪量刑"
+   }
+  ],
+  "overrides": [
+   [
+    "k119-noResult",
+    "k119-1cond",
+    "推断：结论冲突（('art119Para1Conditions', '+')），k119-noResult 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "destroysTransportOrEnergyEquipment": "destroysTransportOrEnergyEquipment(P,X)：P 通过行为 X 破坏（损坏）交通工具、交通设施、电力设备、燃气设备、易燃易爆设备",
+   "intentionalCrime": "故意犯罪",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "art119Para1Conditions": "art119Para1Conditions(P,X)：P 的行为 X 具备刑法第119条第1款的适用条件（故意破坏特定交通工具、设备并造成严重后果）",
+   "correspondingArt119Crime": "correspondingArt119Crime(X,C)：C 是与行为 X 所破坏对象相对应的第119条第1款故意犯罪罪名",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "negligentCrime": "过失犯罪",
+   "art119Para2Conditions": "art119Para2Conditions(P,X)：P 的行为 X 具备刑法第119条第2款的适用条件（过失损坏前款所列交通工具、设备并造成严重后果）",
+   "correspondingArt119NegligentCrime": "correspondingArt119NegligentCrime(X,C)：C 是与行为 X 所损坏对象相对应的第119条第2款过失犯罪罪名",
+   "lightCircumstances": "犯罪情节较轻"
+  }
+ },
+ "art:120": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "组织、领导、参加恐怖活动组织的定罪与三档法定刑，以及犯本罪又实施杀人、爆炸、绑架等犯罪时如何处罚",
+     "rules": [
+      "k120-lead",
+      "k120-active",
+      "k120-other",
+      "k120-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象是恐怖活动组织；行为人为组织、领导者（首要分子），成立组织、领导、参加恐怖组织罪",
+     "rules": [
+      "k120-lead"
+     ]
+    },
+    {
+     "text": "积极参加恐怖活动组织的，成立本罪（积极参加者一档）",
+     "rules": [
+      "k120-active"
+     ]
+    },
+    {
+     "text": "其他参加恐怖活动组织的（非组织领导者、非积极参加者），成立本罪（其他参加者一档）",
+     "rules": [
+      "k120-other"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "组织、领导恐怖活动组织：处十年以上有期徒刑或者无期徒刑，并处没收财产（必并）",
+     "rules": [
+      "k120-lead-pen"
+     ]
+    },
+    {
+     "text": "积极参加：处三年以上十年以下有期徒刑，并处罚金（必并）",
+     "rules": [
+      "k120-active-pen"
+     ]
+    },
+    {
+     "text": "其他参加：处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k120-other-pen"
+     ]
+    },
+    {
+     "text": "其他参加的，可以并处罚金（得并，由法院裁量）",
+     "rules": [
+      "k120-other-fine"
+     ]
+    },
+    {
+     "text": "犯本罪并实施杀人、爆炸、绑架等犯罪的，依照数罪并罚的规定处罚",
+     "rules": [
+      "k120-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "组织、领导、参加恐怖组织的行为本身独立成罪，与其后实施的杀人、爆炸、绑架等具体犯罪分别定罪，依数罪并罚处理，不按牵连犯从一重处断",
+     "rules": [
+      "k120-2"
+     ]
+    },
+    {
+     "text": "三档刑罚按行为人在恐怖活动组织中的地位、作用（组织领导／积极参加／其他参加）区分，而非按组织所实施恐怖活动的后果区分",
+     "rules": [
+      "k120-lead-pen",
+      "k120-active-pen",
+      "k120-other-pen"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120-lead",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "organizesOrLeadsGroupForCrime(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "auth": "npc",
+    "note": "组织、领导恐怖活动组织的，符合组织、领导、参加恐怖组织罪（terroristOrganizationCrime）的构成要件"
+   },
+   {
+    "key": "k120-lead-pen",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "organizesOrLeadsGroupForCrime(P,X)",
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "confiscatePartOrAllOfPersonalProperty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "组织、领导者处十年以上有期徒刑或者无期徒刑（新增量刑常量 from10OrLife），并处没收财产"
+   },
+   {
+    "key": "k120-active",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "activelyParticipatesIn(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "auth": "npc",
+    "note": "积极参加恐怖活动组织的，符合本罪构成要件"
+   },
+   {
+    "key": "k120-active-pen",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "activelyParticipatesIn(P,X)",
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineImposed(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "积极参加者处三年以上十年以下有期徒刑（新增量刑常量 from3to10），并处罚金"
+   },
+   {
+    "key": "k120-other",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "otherParticipationIn(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "auth": "npc",
+    "note": "其他参加恐怖活动组织的，符合本罪构成要件"
+   },
+   {
+    "key": "k120-other-pen",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "otherParticipationIn(P,X)",
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "其他参加者处三年以下有期徒刑、拘役、管制或者剥夺政治权利（新增量刑常量 under3OrDetentionControlOrDeprivation）"
+   },
+   {
+    "key": "k120-other-fine",
+    "srcs": [
+     "art120#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "terroristOrganization(G)",
+     "terroristOrgCrimeOf(X,G)",
+     "otherParticipationIn(P,X)",
+     "constitutes(P,X,terroristOrganizationCrime)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineImposed(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对其他参加者可以并处罚金，属法院裁量的得并科"
+   },
+   {
+    "key": "k120-2",
+    "srcs": [
+     "art120#2"
+    ],
+    "body": [
+     "constitutes(P,X,terroristOrganizationCrime)",
+     "crime(P,Y)",
+     "separateCrimeCommitted(Y,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "combinedPunishmentForSeveralCrimes(P)"
+     }
+    ],
+    "auth": "npc",
+    "note": "犯本罪并另行实施杀人、爆炸、绑架等犯罪的，依照数罪并罚的规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "terroristOrganization": "terroristOrganization(G)：G 是恐怖活动组织",
+   "terroristOrgCrimeOf": "terroristOrgCrimeOf(X,G)：犯罪事件 X 是针对恐怖活动组织 G 的组织、领导或者参加行为",
+   "organizesOrLeadsGroupForCrime": "organizesOrLeadsGroupForCrime(P,X)：P 组织、领导犯罪集团进行犯罪活动 X",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑",
+   "confiscatePartOrAllOfPersonalProperty": "confiscatePartOrAllOfPersonalProperty(P,X)：在案件 X 中没收犯罪分子 P 个人所有财产的一部或者全部",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "fineImposed": "fineImposed(P,X)：对P所犯之罪X判处罚金（罚金刑的适用）",
+   "otherParticipationIn": "otherParticipationIn(P,X)：P 属于犯罪 X 的其他参加者（非首要分子、非罪行重大、非积极参加）",
+   "separateCrimeCommitted": "separateCrimeCommitted(Y,X)：Y 是行为人在恐怖组织犯罪 X 之外另行实施的杀人、爆炸、绑架等独立犯罪事件（Y 与 X 不同）",
+   "combinedPunishmentForSeveralCrimes": "combinedPunishmentForSeveralCrimes(P)：对 P 所犯数罪实行数罪并罚"
+  }
+ },
+ "art:120-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "资助恐怖活动组织、实施恐怖活动的个人或者恐怖活动培训，以及为恐怖活动招募、运送人员，是否构成帮助恐怖活动罪（第120条之一）",
+     "rules": [
+      "k120z1-1",
+      "k120z1-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：资助行为，对象限于恐怖活动组织、实施恐怖活动的个人、恐怖活动培训（三者具备其一即可）",
+     "rules": [
+      "k120z1-1"
+     ]
+    },
+    {
+     "text": "第2款：为恐怖活动组织、实施恐怖活动或者恐怖活动培训招募、运送人员",
+     "rules": [
+      "k120z1-2"
+     ]
+    },
+    {
+     "text": "第3款：单位实施前两款行为的，成立本罪的单位犯罪",
+     "rules": [
+      "k120z1-3c"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本刑档：处五年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金",
+     "rules": [
+      "k120z1-1s"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k120z1-1a"
+     ]
+    },
+    {
+     "text": "第2款的招募、运送人员行为与第1款同罪同刑，依照第1款的规定处罚",
+     "rules": [
+      "k120z1-2"
+     ]
+    },
+    {
+     "text": "单位犯本罪的，对单位判处罚金",
+     "rules": [
+      "k120z1-3u"
+     ]
+    },
+    {
+     "text": "对单位直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚（适用第1款两个刑档）",
+     "rules": [
+      "k120z1-3p"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用加重刑档，排除基本刑档的适用",
+     "rules": [
+      "k120z1-1a",
+      "k120z1-1s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "非法从事资金支付结算业务或者非法买卖外汇，构成非法经营罪同时又构成帮助恐怖活动罪（或第191条洗钱罪）的，属竞合，依照处罚较重的规定定罪处罚，不数罪并罚",
+     "rules": [
+      "k120z1-concurA",
+      "k120z1-concurB"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120z1-1",
+    "srcs": [
+     "art120-1#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     {
+      "or": [
+       "fundsTerroristOrganization(P,X)",
+       "fundsTerroristIndividual(P,X)",
+       "fundsTerroristTraining(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,aidingTerroristActivities)"
+    ],
+    "auth": "npc",
+    "note": "资助恐怖活动组织、实施恐怖活动的个人或者恐怖活动培训的，符合帮助恐怖活动罪（常量 aidingTerroristActivities）的构成要件"
+   },
+   {
+    "key": "k120z1-1s",
+    "srcs": [
+     "art120-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,aidingTerroristActivities)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo5DetentionControlOrDeprivation)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本刑档：五年以下有期徒刑、拘役、管制或者剥夺政治权利（常量 upTo5DetentionControlOrDeprivation），并处罚金（常量 fine）"
+   },
+   {
+    "key": "k120z1-1a",
+    "srcs": [
+     "art120-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,aidingTerroristActivities)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineOrConfiscation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的加重刑档：五年以上有期徒刑（常量 from5），并处罚金或者没收财产（常量 fineOrConfiscation）"
+   },
+   {
+    "key": "k120z1-2",
+    "srcs": [
+     "art120-1#2"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "recruitsOrTransportsPersonnelForTerrorism(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,aidingTerroristActivities)"
+    ],
+    "auth": "npc",
+    "note": "为恐怖活动组织、实施恐怖活动或者恐怖活动培训招募、运送人员的，同构成本罪，依照第1款的两个刑档处罚"
+   },
+   {
+    "key": "k120z1-3c",
+    "srcs": [
+     "art120-1#3"
+    ],
+    "body": [
+     "unit(U)",
+     "performsAct(U,X)",
+     {
+      "or": [
+       "fundsTerroristOrganization(U,X)",
+       "fundsTerroristIndividual(U,X)",
+       "fundsTerroristTraining(U,X)",
+       "recruitsOrTransportsPersonnelForTerrorism(U,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,aidingTerroristActivities)"
+    ],
+    "auth": "npc",
+    "note": "单位实施第1、2款行为的，成立单位犯罪，且该行为符合帮助恐怖活动罪的构成要件"
+   },
+   {
+    "key": "k120z1-3u",
+    "srcs": [
+     "art120-1#3"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,aidingTerroristActivities)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(U,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯本罪的，对单位判处罚金"
+   },
+   {
+    "key": "k120z1-3p",
+    "srcs": [
+     "art120-1#3"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,aidingTerroristActivities)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,aidingTerroristActivities)"
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员依照第1款的规定处罚，故其亦符合本罪构成要件并适用第1款量刑规则"
+   },
+   {
+    "key": "k120z1-concurA",
+    "srcs": [
+     "art120-1"
+    ],
+    "body": [
+     "constitutes(P,X,aidingTerroristActivities)",
+     "constitutes(P,X,illegalBusinessOperation)",
+     "heavierPunishment(illegalBusinessOperation,X,aidingTerroristActivities)"
+    ],
+    "heads": [
+     "convicted(P,X,illegalBusinessOperation)",
+     "-convicted(P,X,aidingTerroristActivities)"
+    ],
+    "auth": "spc",
+    "note": "笔记所引司法解释（非法从事资金支付结算业务、非法买卖外汇）：同时构成非法经营罪（常量 illegalBusinessOperation）与本罪的，从一重处断；非法经营罪处罚较重的按非法经营罪定罪处罚，洗钱罪（第191条）同理"
+   },
+   {
+    "key": "k120z1-concurB",
+    "srcs": [
+     "art120-1"
+    ],
+    "body": [
+     "constitutes(P,X,aidingTerroristActivities)",
+     "constitutes(P,X,illegalBusinessOperation)",
+     "heavierPunishment(aidingTerroristActivities,X,illegalBusinessOperation)"
+    ],
+    "heads": [
+     "convicted(P,X,aidingTerroristActivities)",
+     "-convicted(P,X,illegalBusinessOperation)"
+    ],
+    "auth": "spc",
+    "note": "同一竞合规则的反向适用：帮助恐怖活动罪处罚较重的，按帮助恐怖活动罪定罪处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "fundsTerroristOrganization": "fundsTerroristOrganization(P,X)：P 通过行为 X 资助恐怖活动组织",
+   "fundsTerroristIndividual": "fundsTerroristIndividual(P,X)：P 通过行为 X 资助实施恐怖活动的个人",
+   "fundsTerroristTraining": "fundsTerroristTraining(P,X)：P 通过行为 X 资助恐怖活动培训",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "recruitsOrTransportsPersonnelForTerrorism": "recruitsOrTransportsPersonnelForTerrorism(P,X)：P 通过行为 X 为恐怖活动组织、实施恐怖活动或者恐怖活动培训招募、运送人员",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "heavierPunishment": "heavierPunishment(C1,C2,X)：就行为 X 而言，罪名 C1 的处罚重于罪名 C2（竞合从一重的判断）",
+   "convicted": "定罪"
+  }
+ },
+ "art:120-2": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "准备实施恐怖活动罪的成立与法定刑档次（第120条之二）",
+     "rules": [
+      "k120z2-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "为实施恐怖活动准备凶器、危险物品或者其他工具",
+     "rules": [
+      "k120z2-cond"
+     ]
+    },
+    {
+     "text": "组织恐怖活动培训或者积极参加恐怖活动培训",
+     "rules": [
+      "k120z2-cond"
+     ]
+    },
+    {
+     "text": "为实施恐怖活动与境外恐怖活动组织或者人员联络",
+     "rules": [
+      "k120z2-cond"
+     ]
+    },
+    {
+     "text": "为实施恐怖活动进行策划或者其他准备",
+     "rules": [
+      "k120z2-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "有前款行为，同时构成其他犯罪的，依照处罚较重的规定定罪处罚（择一重罪，不并罚）",
+     "rules": [
+      "k120z2-conc",
+      "k120z2-conc-pen"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑、拘役、管制或者剥夺政治权利（择一），并处罚金",
+     "rules": [
+      "k120z2-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k120z2-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重档优先于基本档适用",
+     "rules": [
+      "k120z2-aggravated"
+     ]
+    },
+    {
+     "text": "同时构成其他犯罪且该罪处罚较重的，重罪规定优先于本条基本档、加重档",
+     "rules": [
+      "k120z2-conc",
+      "k120z2-conc-pen"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "预备行为实行化：本条将恐怖活动的预备行为规定为独立犯罪，直接依本条定罪量刑，不再按总则预备犯从宽处理（学理）",
+     "rules": [
+      "k120z2-prep"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120z2-cond",
+    "srcs": [
+     "art120-2#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     {
+      "or": [
+       "preparesWeaponsOrToolsForTerrorism(P,X)",
+       "organizesTerrorTraining(P,X)",
+       "activelyParticipatesInTerrorTraining(P,X)",
+       "contactsOverseasTerroristOrgOrPersonnel(P,X)",
+       "plansOrOtherPreparationForTerrorism(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,preparingTerroristActivity)"
+    ],
+    "auth": "npc",
+    "note": "具备第1款四项情形之一，符合准备实施恐怖活动罪的构成要件"
+   },
+   {
+    "key": "k120z2-basic",
+    "srcs": [
+     "art120-2#1"
+    ],
+    "body": [
+     "constitutes(P,X,preparingTerroristActivity)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineImposed(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑（under5 表示该档，亦可择一判处拘役、管制或者剥夺政治权利），并处罚金"
+   },
+   {
+    "key": "k120z2-aggravated",
+    "srcs": [
+     "art120-2#1"
+    ],
+    "body": [
+     "constitutes(P,X,preparingTerroristActivity)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineOrConfiscationOfProperty(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上有期徒刑（from5），并处罚金或者没收财产"
+   },
+   {
+    "key": "k120z2-conc",
+    "srcs": [
+     "art120-2#2"
+    ],
+    "body": [
+     "constitutes(P,X,preparingTerroristActivity)",
+     "constitutes(P,X,C)",
+     "heavierPunishmentThan(C,preparingTerroristActivity)"
+    ],
+    "heads": [
+     "convicted(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "有前款行为同时构成其他犯罪且该罪处罚较重的，依处罚较重的规定定罪"
+   },
+   {
+    "key": "k120z2-conc-pen",
+    "srcs": [
+     "art120-2#2"
+    ],
+    "body": [
+     "convicted(P,X,C)",
+     "constitutes(P,X,C)",
+     "heavierPunishmentThan(C,preparingTerroristActivity)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceAccordingToHeavierProvision(P,X,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "依处罚较重的规定对行为人量刑，不再适用本条的法定刑"
+   },
+   {
+    "key": "k120z2-prep",
+    "srcs": [
+     "art120-2#1"
+    ],
+    "body": [
+     "constitutes(P,X,preparingTerroristActivity)"
+    ],
+    "heads": [
+     "-preparation(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本条系预备行为实行化，该准备行为已被规定为独立犯罪，不再认定为总则意义上的犯罪预备"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "preparesWeaponsOrToolsForTerrorism": "preparesWeaponsOrToolsForTerrorism(P,X)：P 通过行为 X 为实施恐怖活动准备凶器、危险物品或者其他工具",
+   "organizesTerrorTraining": "organizesTerrorTraining(P,X)：P 通过行为 X 组织恐怖活动培训",
+   "activelyParticipatesInTerrorTraining": "activelyParticipatesInTerrorTraining(P,X)：P 通过行为 X 积极参加恐怖活动培训",
+   "contactsOverseasTerroristOrgOrPersonnel": "contactsOverseasTerroristOrgOrPersonnel(P,X)：P 通过行为 X 为实施恐怖活动与境外恐怖活动组织或者人员联络",
+   "plansOrOtherPreparationForTerrorism": "plansOrOtherPreparationForTerrorism(P,X)：P 通过行为 X 为实施恐怖活动进行策划或者其他准备",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "fineImposed": "fineImposed(P,X)：对P所犯之罪X判处罚金（罚金刑的适用）",
+   "fineOrConfiscationOfProperty": "fineOrConfiscationOfProperty(P,X)：对 P 就犯罪 X 并处罚金或者没收财产（择一适用）",
+   "heavierPunishmentThan": "heavierPunishmentThan(C1,C2)：罪名 C1 的法定处罚重于罪名 C2（C1 与 C2 为不同罪名）",
+   "convicted": "定罪",
+   "sentenceAccordingToHeavierProvision": "sentenceAccordingToHeavierProvision(P,X,C)：依照处罚较重的罪名 C 的规定对 P 就犯罪 X 判处刑罚",
+   "preparation": "犯罪预备"
+  }
+ },
+ "art:120-3": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以制作、散发宣扬恐怖主义、极端主义的物品，或者以讲授、发布信息等方式宣扬恐怖主义、极端主义，或者煽动实施恐怖活动的，构成宣扬恐怖主义、极端主义、煽动实施恐怖活动罪",
+     "rules": [
+      "k120z3-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为三选一：①制作、散发宣扬恐怖主义、极端主义的图书、音频视频资料或者其他物品；②通过讲授、发布信息等方式宣扬恐怖主义、极端主义；③煽动实施恐怖活动。只要实施其中一种即符合本罪构成要件，不要求实际发生恐怖活动",
+     "rules": [
+      "k120z3-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金（罚金为必并处）",
+     "rules": [
+      "k120z3-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上有期徒刑，并处罚金或者没收财产（财产刑二者择一，必并处）",
+     "rules": [
+      "k120z3-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“情节严重”是加重法定刑情节，具备该情节时排除基本档，适用五年以上有期徒刑档",
+     "rules": [
+      "k120z3-aggr",
+      "k120z3-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是选择性罪名：宣扬恐怖主义、极端主义的行为与煽动实施恐怖活动的行为分别对应“宣扬恐怖主义、极端主义罪”与“煽动实施恐怖活动罪”，兼有二者不数罪并罚",
+     "rules": [
+      "k120z3-cond"
+     ]
+    },
+    {
+     "text": "本罪处罚的是宣扬、煽动这类言论、宣传性行为，区别于第120条之二准备实施恐怖活动罪的准备行为（本行未挂载该条，仅作体系提示）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120z3-cond",
+    "srcs": [
+     "art120-3#1"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "producesOrDistributesAdvocacyMaterials(P,X)",
+       "advocatesByTeachingOrPublishing(P,X)",
+       "incitesTerroristActivity(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,advocatingTerrorismExtremism)"
+    ],
+    "auth": "npc",
+    "note": "制作散发宣扬恐怖主义、极端主义物品，或讲授、发布信息等方式宣扬，或煽动实施恐怖活动，符合本罪构成要件（罪名常量 advocatingTerrorismExtremism=宣扬恐怖主义、极端主义、煽动实施恐怖活动罪）"
+   },
+   {
+    "key": "k120z3-basic",
+    "srcs": [
+     "art120-3#1"
+    ],
+    "body": [
+     "constitutes(P,X,advocatingTerrorismExtremism)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo5OrDetentionControlOrDeprivation)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：五年以下有期徒刑、拘役、管制或者剥夺政治权利，并处罚金（新增量刑常量 upTo5OrDetentionControlOrDeprivation=五年以下有期徒刑、拘役、管制或剥夺政治权利；fine=罚金）"
+   },
+   {
+    "key": "k120z3-aggr",
+    "srcs": [
+     "art120-3#1"
+    ],
+    "body": [
+     "constitutes(P,X,advocatingTerrorismExtremism)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineOrConfiscation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的：五年以上有期徒刑，并处罚金或者没收财产（新增量刑常量 from5=五年以上有期徒刑；fineOrConfiscation=并处罚金或者没收财产，二者择一）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "producesOrDistributesAdvocacyMaterials": "producesOrDistributesAdvocacyMaterials(P,X)：P 通过行为 X 制作、散发宣扬恐怖主义、极端主义的图书、音频视频资料或者其他物品",
+   "advocatesByTeachingOrPublishing": "advocatesByTeachingOrPublishing(P,X)：P 通过讲授、发布信息等方式（行为 X）宣扬恐怖主义、极端主义",
+   "incitesTerroristActivity": "incitesTerroristActivity(P,X)：P 通过行为 X 煽动实施恐怖活动",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:120-4": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "利用极端主义煽动、胁迫群众破坏国家法律确立的婚姻、司法、教育、社会管理等制度实施的，构成利用极端主义破坏法律实施罪，并按情节分档量刑",
+     "rules": [
+      "k120z4-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观要件：以极端主义为工具，煽动或者胁迫群众，破坏国家法律确立的婚姻、司法、教育、社会管理等制度的实施（手段行为为煽动或胁迫，二者择一即可）",
+     "rules": [
+      "k120z4-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者管制，并处罚金",
+     "rules": [
+      "k120z4-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k120z4-serious"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处七年以上有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k120z4-especially"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重属加重构成，优先于基本档适用；情节特别严重优先于情节严重档",
+     "rules": [
+      "k120z4-serious",
+      "k120z4-especially"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪须“利用极端主义”并“煽动、胁迫群众”去破坏国家法律确立的制度实施；仅宣扬极端主义或煽动实施恐怖活动而未破坏上述制度实施的，不成立本罪（体系性说明，本行未挂载相应条文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120z4-1",
+    "srcs": [
+     "art120-4#1"
+    ],
+    "body": [
+     "usesExtremism(P,X)",
+     {
+      "or": [
+       "instigatesMasses(P,X)",
+       "coercesMasses(P,X)"
+      ]
+     },
+     "underminesStateLegalSystemImplementation(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,underminingLawImplementationByExtremism)",
+     "responsible(P,X,underminingLawImplementationByExtremism)"
+    ],
+    "auth": "npc",
+    "note": "利用极端主义煽动、胁迫群众破坏国家法律确立的婚姻、司法、教育、社会管理等制度实施的，符合利用极端主义破坏法律实施罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k120z4-basic",
+    "srcs": [
+     "art120-4#1"
+    ],
+    "body": [
+     "constitutes(P,X,underminingLawImplementationByExtremism)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑、拘役或者管制（量刑常量 under3OrDetentionOrControl），并处罚金"
+   },
+   {
+    "key": "k120z4-serious",
+    "srcs": [
+     "art120-4#1"
+    ],
+    "body": [
+     "constitutes(P,X,underminingLawImplementationByExtremism)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑（量刑常量 from3to7），并处罚金"
+   },
+   {
+    "key": "k120z4-especially",
+    "srcs": [
+     "art120-4#1"
+    ],
+    "body": [
+     "constitutes(P,X,underminingLawImplementationByExtremism)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from7)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOrConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处七年以上有期徒刑（量刑常量 from7），并处罚金或者没收财产"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "usesExtremism": "usesExtremism(P,X)：P 在行为 X 中利用极端主义",
+   "instigatesMasses": "instigatesMasses(P,X)：P 通过行为 X 煽动群众",
+   "coercesMasses": "coercesMasses(P,X)：P 通过行为 X 胁迫群众",
+   "underminesStateLegalSystemImplementation": "underminesStateLegalSystemImplementation(X)：行为 X 破坏国家法律确立的婚姻、司法、教育、社会管理等制度的实施",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "imposeFineOrConfiscation": "imposeFineOrConfiscation(P,X)：对 P 就犯罪 X 并处罚金或者没收财产"
+  }
+ },
+ "art:120-5": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、胁迫等方式强制他人在公共场所穿着、佩戴宣扬恐怖主义、极端主义服饰、标志的，是否构成强制穿戴宣扬恐怖主义、极端主义服饰、标志罪，如何处刑",
+     "rules": [
+      "k120z5-basic",
+      "k120z5-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为：以暴力、胁迫等方式（手段行为）强制他人穿着、佩戴；被强制者实际穿着、佩戴的是宣扬恐怖主义、极端主义的服饰、标志；行为发生在公共场所",
+     "rules": [
+      "k120z5-basic"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述构成要件的，成立强制穿戴宣扬恐怖主义、极端主义服饰、标志罪，负刑事责任",
+     "rules": [
+      "k120z5-basic"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑、拘役或者管制，并处罚金（罚金为必并科）",
+     "rules": [
+      "k120z5-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k120z5-basic",
+    "srcs": [
+     "art120-5#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "violenceOrCoercion(P,X)",
+     "forcesOtherToWearOrDisplay(P,V,X)",
+     "inPublicPlace(X)",
+     "terrorismExtremismApparelOrSymbol(M)",
+     "wearsOrDisplays(V,M)"
+    ],
+    "heads": [
+     "constitutes(P,X,forcingTerroristExtremistAttire)",
+     "responsible(P,X,forcingTerroristExtremistAttire)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、胁迫等方式强制他人在公共场所穿着、佩戴宣扬恐怖主义、极端主义服饰、标志的，符合本罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k120z5-pen",
+    "srcs": [
+     "art120-5#1"
+    ],
+    "body": [
+     "responsible(P,X,forcingTerroristExtremistAttire)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,mandatoryFine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以下有期徒刑、拘役或者管制（under3OrDetentionOrControl），并处罚金（mandatoryFine）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "violenceOrCoercion": "暴力、胁迫或其他方法",
+   "forcesOtherToWearOrDisplay": "forcesOtherToWearOrDisplay(P,V,X)：P 通过行为 X 强制他人 V 穿着、佩戴（服饰、标志）",
+   "inPublicPlace": "inPublicPlace(X)：行为 X 发生在公共场所",
+   "terrorismExtremismApparelOrSymbol": "terrorismExtremismApparelOrSymbol(M)：M 是宣扬恐怖主义、极端主义的服饰、标志",
+   "wearsOrDisplays": "wearsOrDisplays(V,M)：V 穿着、佩戴 M",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:120-6": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "明知是宣扬恐怖主义、极端主义的图书、音频视频资料或者其他物品而非法持有，情节严重的，是否构成非法持有宣扬恐怖主义、极端主义物品罪",
+     "rules": [
+      "k120z6-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：所持有的是宣扬恐怖主义、极端主义的图书、音频视频资料或者其他物品；行为条件：非法持有；主观条件：明知物品的上述性质",
+     "rules": [
+      "k120z6-1"
+     ]
+    },
+    {
+     "text": "情节严重是本罪的入罪要件",
+     "rules": [
+      "k120z6-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽明知而非法持有，但情节不严重的，不构成本罪（学理：情节严重为构成要件要素）",
+     "rules": [
+      "k120z6-notSerious"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成非法持有宣扬恐怖主义、极端主义物品罪，负刑事责任",
+     "rules": [
+      "k120z6-1"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k120z6-main"
+     ]
+    },
+    {
+     "text": "并处或者单处罚金",
+     "rules": [
+      "k120z6-fine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节不严重的排除规则优先于入罪规则：欠缺情节严重要件即不成立本罪",
+     "rules": [
+      "k120z6-notSerious",
+      "k120z6-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是持有型犯罪，只要求非法持有并情节严重，不要求行为人自己实施宣扬、散发、传播行为",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k120z6-1",
+    "srcs": [
+     "art120-6#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,M)",
+     "terrorismExtremismMaterial(M)",
+     "illegallyHolds(P,M)",
+     "knowsMaterialNature(P,M)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalPossessionOfTerrorismExtremismMaterials)",
+     "responsible(P,X,illegalPossessionOfTerrorismExtremismMaterials)"
+    ],
+    "auth": "npc",
+    "note": "明知是宣扬恐怖主义、极端主义的物品而非法持有、情节严重的，构成本罪并负刑事责任"
+   },
+   {
+    "key": "k120z6-notSerious",
+    "srcs": [
+     "art120-6#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,M)",
+     "terrorismExtremismMaterial(M)",
+     "illegallyHolds(P,M)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalPossessionOfTerrorismExtremismMaterials)"
+    ],
+    "auth": "doctrine",
+    "note": "情节严重系本罪构成要件，情节不严重不构成本罪（由条文入罪门槛推出的学理结论）"
+   },
+   {
+    "key": "k120z6-main",
+    "srcs": [
+     "art120-6#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalPossessionOfTerrorismExtremismMaterials)",
+     "responsible(P,X,illegalPossessionOfTerrorismExtremismMaterials)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "主刑为三年以下有期徒刑、拘役或者管制（under3OrDetentionOrControl 表示该主刑幅度）"
+   },
+   {
+    "key": "k120z6-fine",
+    "srcs": [
+     "art120-6#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalPossessionOfTerrorismExtremismMaterials)",
+     "responsible(P,X,illegalPossessionOfTerrorismExtremismMaterials)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineConcurrentlyOrAlone)"
+     }
+    ],
+    "auth": "npc",
+    "note": "罚金必须适用：或者并处，或者单处（fineConcurrentlyOrAlone 表示并处或单处罚金）"
+   }
+  ],
+  "overrides": [
+   [
+    "k120z6-notSerious",
+    "k120z6-1",
+    "推断：结论冲突（('constitutes', '+')），k120z6-notSerious 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "terrorismExtremismMaterial": "terrorismExtremismMaterial(M)：M 是宣扬恐怖主义、极端主义的图书、音频视频资料或者其他物品",
+   "illegallyHolds": "illegallyHolds(P,M)：P 非法持有物品 M",
+   "knowsMaterialNature": "knowsMaterialNature(P,M)：P 明知 M 是宣扬恐怖主义、极端主义的物品",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ },
+ "art:121": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、胁迫或者其他方法劫持航空器，是否构成劫持航空器罪并负刑事责任",
+     "rules": [
+      "k121-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象为航空器；手段为暴力、胁迫或者其他方法；行为为劫持（非法控制）航空器",
+     "rules": [
+      "k121-1"
+     ]
+    },
+    {
+     "text": "加重结果：致人重伤、死亡，或者使航空器遭受严重破坏",
+     "rules": [
+      "k121-aggCond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "具备致人重伤、死亡或使航空器遭受严重破坏的加重结果时，不再适用十年以上有期徒刑或无期徒刑的基本刑",
+     "rules": [
+      "k121-basic",
+      "k121-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合劫持航空器罪的构成要件，负刑事责任",
+     "rules": [
+      "k121-1"
+     ]
+    },
+    {
+     "text": "基本刑：处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k121-basic"
+     ]
+    },
+    {
+     "text": "致人重伤、死亡或者使航空器遭受严重破坏的，处死刑",
+     "rules": [
+      "k121-aggCond",
+      "k121-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "加重结果情形优先适用死刑规定，排除基本刑档次的适用",
+     "rules": [
+      "k121-agg",
+      "k121-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪加重情形“处死刑”属绝对确定的法定刑，在我国现行刑法中为数不多，应予记忆（笔记）",
+     "rules": [
+      "k121-agg"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k121-1",
+    "srcs": [
+     "art121#1"
+    ],
+    "body": [
+     "hijacksAircraft(P,X)",
+     "violenceOrCoercion(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,hijackingAircraft)",
+     "responsible(P,X,hijackingAircraft)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、胁迫或者其他方法劫持航空器的，符合劫持航空器罪构成要件并负刑事责任（hijackingAircraft 为新增罪名常量：劫持航空器罪）"
+   },
+   {
+    "key": "k121-aggCond",
+    "srcs": [
+     "art121#1"
+    ],
+    "body": [
+     "hijacksAircraft(P,X)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "aircraftSeriouslyDamaged(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedHijackingResult(P,X)"
+    ],
+    "auth": "npc",
+    "note": "劫持航空器致人重伤、死亡或者使航空器遭受严重破坏的，属于本罪的加重结果情形"
+   },
+   {
+    "key": "k121-basic",
+    "srcs": [
+     "art121#1"
+    ],
+    "body": [
+     "constitutes(P,X,hijackingAircraft)",
+     "responsible(P,X,hijackingAircraft)",
+     "~aggravatedHijackingResult(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "无加重结果的，处十年以上有期徒刑或者无期徒刑（新增量刑方式常量 from10OrLife＝十年以上有期徒刑或者无期徒刑）"
+   },
+   {
+    "key": "k121-agg",
+    "srcs": [
+     "art121#1"
+    ],
+    "body": [
+     "constitutes(P,X,hijackingAircraft)",
+     "responsible(P,X,hijackingAircraft)",
+     "aggravatedHijackingResult(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,deathPenalty)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致人重伤、死亡或者使航空器遭受严重破坏的，处死刑（deathPenalty 作量刑方式常量＝死刑；此为绝对确定的法定刑，笔记强调）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "hijacksAircraft": "hijacksAircraft(P,X)：P 通过行为 X 劫持航空器",
+   "violenceOrCoercion": "暴力、胁迫或其他方法",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "aircraftSeriouslyDamaged": "aircraftSeriouslyDamaged(X)：行为 X 使航空器遭受严重破坏",
+   "aggravatedHijackingResult": "aggravatedHijackingResult(P,X)：P 的劫持航空器行为 X 具备第121条的加重结果（致人重伤、死亡或使航空器遭受严重破坏）",
+   "sentence": "量刑"
+  }
+ },
+ "art:122": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、胁迫或者其他方法劫持船只、汽车的，是否构成劫持船只、汽车罪",
+     "rules": [
+      "k122-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象为船只、汽车；手段为暴力、胁迫或者其他方法；行为为劫持（强行控制船只、汽车的航行或行驶）",
+     "rules": [
+      "k122-basic"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本犯：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k122-basic-sent"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k122-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果时，加重法定刑优先于基本法定刑适用",
+     "rules": [
+      "k122-agg",
+      "k122-basic-sent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "劫持对象为航空器的，不成立本罪，应依第121条劫持航空器罪处理（学理区分，本条未明文）",
+     "rules": [
+      "k122-aircraft"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k122-basic",
+    "srcs": [
+     "art122#1"
+    ],
+    "body": [
+     "hijacksVesselOrVehicle(P,X)",
+     "violenceOrCoercion(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,hijackingVesselOrVehicle)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、胁迫或者其他方法劫持船只、汽车，符合劫持船只、汽车罪的构成要件"
+   },
+   {
+    "key": "k122-basic-sent",
+    "srcs": [
+     "art122#1"
+    ],
+    "body": [
+     "constitutes(P,X,hijackingVesselOrVehicle)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "未造成严重后果的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k122-agg",
+    "srcs": [
+     "art122#1"
+    ],
+    "body": [
+     "constitutes(P,X,hijackingVesselOrVehicle)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处十年以上有期徒刑或者无期徒刑（量刑方式常量 from10OrLife 表示十年以上有期徒刑或者无期徒刑）"
+   },
+   {
+    "key": "k122-aircraft",
+    "srcs": [
+     "art122#1"
+    ],
+    "body": [
+     "hijacksAircraft(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,hijackingVesselOrVehicle)"
+    ],
+    "auth": "doctrine",
+    "note": "本条对象限于船只、汽车，劫持航空器不成立本罪而适用第121条，系学理与体系解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k122-basic",
+    "k122-aircraft",
+    "推断：结论冲突（('constitutes', '+')），k122-basic 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "hijacksVesselOrVehicle": "hijacksVesselOrVehicle(P,X)：P 通过行为 X 劫持船只、汽车（强行控制其航行、行驶）",
+   "violenceOrCoercion": "暴力、胁迫或其他方法",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentence": "量刑",
+   "hijacksAircraft": "hijacksAircraft(P,X)：P 通过行为 X 劫持航空器"
+  }
+ },
+ "art:123": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对飞行中的航空器上的人员使用暴力、危及飞行安全的，成立暴力危及飞行安全罪，并按是否造成严重后果分档量刑",
+     "rules": [
+      "k123-const",
+      "k123-basic",
+      "k123-aggravated"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象与时空条件：暴力针对飞行中航空器上的人员（机组人员、乘客等）；行为条件：使用暴力；危险条件：危及飞行安全",
+     "rules": [
+      "k123-const"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "航空器并非处于飞行中（如停放、检修状态）的，不构成本罪，视情形按故意伤害等罪处理（学理）",
+     "rules": [
+      "k123-notInFlight"
+     ]
+    },
+    {
+     "text": "虽对机上人员使用暴力，但未危及飞行安全的，不构成本罪（学理）",
+     "rules": [
+      "k123-noDanger"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "尚未造成严重后果的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k123-basic"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处五年以上有期徒刑",
+     "rules": [
+      "k123-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果时适用五年以上有期徒刑的加重档，排除五年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k123-aggravated",
+      "k123-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪不以劫持航空器为目的，与劫持航空器罪相区别；造成严重后果只是本罪的量刑加重情节，不另行定罪",
+     "rules": [
+      "k123-const",
+      "k123-aggravated"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k123-const",
+    "srcs": [
+     "art123#1"
+    ],
+    "body": [
+     "usesViolenceAgainstPersonOnAircraft(P,X)",
+     "aircraftInFlight(X)",
+     "endangersFlightSafety(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,violenceEndangeringFlightSafety)"
+    ],
+    "auth": "npc",
+    "note": "对飞行中航空器上的人员使用暴力并危及飞行安全，符合暴力危及飞行安全罪（常量 violenceEndangeringFlightSafety）的构成要件"
+   },
+   {
+    "key": "k123-basic",
+    "srcs": [
+     "art123#1"
+    ],
+    "body": [
+     "constitutes(P,X,violenceEndangeringFlightSafety)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "尚未造成严重后果的，处五年以下有期徒刑或者拘役（新增量刑方式常量 under5OrDetention＝五年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k123-aggravated",
+    "srcs": [
+     "art123#1"
+    ],
+    "body": [
+     "constitutes(P,X,violenceEndangeringFlightSafety)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处五年以上有期徒刑（新增量刑方式常量 from5＝五年以上有期徒刑）"
+   },
+   {
+    "key": "k123-notInFlight",
+    "srcs": [
+     "art123#1"
+    ],
+    "body": [
+     "usesViolenceAgainstPersonOnAircraft(P,X)",
+     "-aircraftInFlight(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,violenceEndangeringFlightSafety)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：航空器未处于飞行中，欠缺本罪的时空（对象）条件，不成立暴力危及飞行安全罪"
+   },
+   {
+    "key": "k123-noDanger",
+    "srcs": [
+     "art123#1"
+    ],
+    "body": [
+     "usesViolenceAgainstPersonOnAircraft(P,X)",
+     "aircraftInFlight(X)",
+     "-endangersFlightSafety(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,violenceEndangeringFlightSafety)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪为具体危险犯，暴力未危及飞行安全的不成立本罪，可按故意伤害等罪处理"
+   }
+  ],
+  "overrides": [
+   [
+    "k123-notInFlight",
+    "k123-const",
+    "推断：结论冲突（('constitutes', '+')），k123-notInFlight 为例外或更具体"
+   ],
+   [
+    "k123-noDanger",
+    "k123-const",
+    "推断：结论冲突（('constitutes', '+')），k123-noDanger 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "usesViolenceAgainstPersonOnAircraft": "usesViolenceAgainstPersonOnAircraft(P,X)：P 在行为 X 中对航空器上的人员（机组人员、乘客等）使用暴力",
+   "aircraftInFlight": "aircraftInFlight(X)：行为 X 所涉航空器处于飞行中",
+   "endangersFlightSafety": "endangersFlightSafety(X)：行为 X 危及飞行安全",
+   "constitutes": "符合构成要件",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentence": "量刑"
+  }
+ },
+ "art:124": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏广播电视设施、公用电信设施的行为是否危害公共安全，行为人出于故意还是过失，以及应适用哪一量刑档次",
+     "rules": [
+      "k124-1",
+      "k124-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "故意破坏广播电视设施、公用电信设施，危害公共安全的，构成破坏广播电视设施、公用电信设施罪",
+     "rules": [
+      "k124-1"
+     ]
+    },
+    {
+     "text": "过失实施前款行为（疏忽大意未预见或轻信能够避免危害结果），危害公共安全的，构成过失损坏广播电视设施、公用电信设施罪",
+     "rules": [
+      "k124-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失犯本罪且情节较轻的，不适用三年以上七年以下有期徒刑，改处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k124-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "故意破坏广播电视设施、公用电信设施危害公共安全的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k124-1s"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处七年以上有期徒刑",
+     "rules": [
+      "k124-2"
+     ]
+    },
+    {
+     "text": "过失犯前款罪的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k124-3s"
+     ]
+    },
+    {
+     "text": "过失犯前款罪情节较轻的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k124-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果的加重档（七年以上）优先于故意犯罪的基本档（三年以上七年以下）",
+     "rules": [
+      "k124-2",
+      "k124-1s"
+     ]
+    },
+    {
+     "text": "过失且情节较轻的减轻档优先于过失犯罪的基本档",
+     "rules": [
+      "k124-4",
+      "k124-3s"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k124-1",
+    "srcs": [
+     "art124#1"
+    ],
+    "body": [
+     "destroysBroadcastTelevisionOrPublicTelecomFacilities(P,X)",
+     "endangersPublicSecurity(X)",
+     "knowsHarmfulResult(P,X)",
+     "hopesOrAllowsResult(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,destroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "responsible(P,X,destroyingBroadcastTelevisionOrPublicTelecomFacilities)"
+    ],
+    "auth": "npc",
+    "note": "故意破坏广播电视设施、公用电信设施并危害公共安全的，符合破坏广播电视设施、公用电信设施罪的构成要件，负刑事责任（故意内容依刑法第14条明知并希望或放任）"
+   },
+   {
+    "key": "k124-1s",
+    "srcs": [
+     "art124#1"
+    ],
+    "body": [
+     "constitutes(P,X,destroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以上七年以下有期徒刑（新增量刑常量 from3to7＝三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k124-2",
+    "srcs": [
+     "art124#1"
+    ],
+    "body": [
+     "constitutes(P,X,destroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的加重档：处七年以上有期徒刑（新增量刑常量 from7＝七年以上有期徒刑）"
+   },
+   {
+    "key": "k124-3",
+    "srcs": [
+     "art124#2"
+    ],
+    "body": [
+     "destroysBroadcastTelevisionOrPublicTelecomFacilities(P,X)",
+     "endangersPublicSecurity(X)",
+     {
+      "or": [
+       "failedToForeseeDueToCarelessness(P,X)",
+       "lightlyBelievedCouldAvoid(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,negligentDestroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "responsible(P,X,negligentDestroyingBroadcastTelevisionOrPublicTelecomFacilities)"
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪的，构成过失损坏广播电视设施、公用电信设施罪（过失依疏忽大意或过于自信判断）"
+   },
+   {
+    "key": "k124-3s",
+    "srcs": [
+     "art124#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentDestroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯本罪的基本档：处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k124-4",
+    "srcs": [
+     "art124#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentDestroyingBroadcastTelevisionOrPublicTelecomFacilities)",
+     "lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯本罪情节较轻的：处三年以下有期徒刑或者拘役（新增量刑常量 under3OrDetention＝三年以下有期徒刑或者拘役）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "destroysBroadcastTelevisionOrPublicTelecomFacilities": "destroysBroadcastTelevisionOrPublicTelecomFacilities(P,X)：P 实施破坏（损坏）广播电视设施、公用电信设施的行为 X",
+   "endangersPublicSecurity": "endangersPublicSecurity(X)：行为 X 危害公共安全",
+   "knowsHarmfulResult": "knowsHarmfulResult(P,X)：P 明知自己的行为 X 会发生危害社会的结果（认识因素）",
+   "hopesOrAllowsResult": "hopesOrAllowsResult(P,X)：P 希望或者放任行为 X 的危害社会结果发生（意志因素，含直接故意与间接故意）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentence": "量刑",
+   "failedToForeseeDueToCarelessness": "failedToForeseeDueToCarelessness(P,X)：P 因疏忽大意而没有预见行为 X 的危害结果",
+   "lightlyBelievedCouldAvoid": "lightlyBelievedCouldAvoid(P,X)：P 轻信能够避免行为 X 的危害结果",
+   "lightCircumstances": "犯罪情节较轻"
+  }
+ },
+ "art:125": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "非法制造、买卖、运输、邮寄、储存枪支、弹药、爆炸物罪与非法制造、买卖、运输、储存危险物质罪的成立、法定刑档次及单位犯罪的处罚",
+     "rules": [
+      "k125-1",
+      "k125-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：非法制造、买卖、运输、邮寄、储存枪支、弹药、爆炸物，行为方式与对象具备其一即成立本罪",
+     "rules": [
+      "k125-1"
+     ]
+    },
+    {
+     "text": "第2款：非法制造、买卖、运输、储存毒害性、放射性、传染病病原体等物质，且危害公共安全",
+     "rules": [
+      "k125-2"
+     ]
+    },
+    {
+     "text": "单位实施第1款行为的，成立单位犯罪",
+     "rules": [
+      "k125-3a"
+     ]
+    },
+    {
+     "text": "单位实施第2款行为并危害公共安全的，成立单位犯罪",
+     "rules": [
+      "k125-3b"
+     ]
+    },
+    {
+     "text": "单位犯罪中被处罚的自然人限于直接负责的主管人员和其他直接责任人员",
+     "rules": [
+      "k125-3p"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节严重的，不适用三年以上十年以下有期徒刑的基本档，改处十年以上有期徒刑、无期徒刑或者死刑（第2款之罪同样适用）",
+     "rules": [
+      "k125-agg",
+      "k125-2agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "第1款基本档：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k125-1s"
+     ]
+    },
+    {
+     "text": "第1款加重档（情节严重）：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k125-agg"
+     ]
+    },
+    {
+     "text": "第2款之罪依照前款规定处罚：基本档三年以上十年以下有期徒刑",
+     "rules": [
+      "k125-2s"
+     ]
+    },
+    {
+     "text": "第2款之罪情节严重的，依前款加重档处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k125-2agg"
+     ]
+    },
+    {
+     "text": "单位犯前两款罪的，对单位判处罚金",
+     "rules": [
+      "k125-3u"
+     ]
+    },
+    {
+     "text": "并对单位直接负责的主管人员和其他直接责任人员，依照第一款的规定处罚",
+     "rules": [
+      "k125-3p"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款“依照前款的规定处罚”、第3款“依照第一款的规定处罚”，法定刑均准用第1款的两档刑罚",
+     "rules": [
+      "k125-2s",
+      "k125-2agg",
+      "k125-3p"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款对象为枪支、弹药、爆炸物，行为方式含“邮寄”；第2款对象为毒害性、放射性、传染病病原体等物质，行为方式不含“邮寄”，且须危害公共安全",
+     "rules": [
+      "k125-1",
+      "k125-2"
+     ]
+    },
+    {
+     "text": "单位犯罪采双罚制：对单位只判罚金，对直接责任人员依第一款判处自由刑至死刑，不对责任人员并处罚金",
+     "rules": [
+      "k125-3u",
+      "k125-3p"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k125-1",
+    "srcs": [
+     "art125#1"
+    ],
+    "body": [
+     "illegalGunAmmoExplosiveAct(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalGunsAmmunitionExplosives)"
+    ],
+    "auth": "npc",
+    "note": "非法制造、买卖、运输、邮寄、储存枪支、弹药、爆炸物的，符合该款之罪的构成要件"
+   },
+   {
+    "key": "k125-1s",
+    "srcs": [
+     "art125#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalGunsAmmunitionExplosives)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以上十年以下有期徒刑（from3to10 表示三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k125-agg",
+    "srcs": [
+     "art125#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalGunsAmmunitionExplosives)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处十年以上有期徒刑、无期徒刑或者死刑（from10OrLifeOrDeath 为该三种刑罚的选择适用）"
+   },
+   {
+    "key": "k125-2",
+    "srcs": [
+     "art125#2"
+    ],
+    "body": [
+     "illegalDangerousSubstanceAct(P,X)",
+     "endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalDangerousSubstances)"
+    ],
+    "auth": "npc",
+    "note": "非法制造、买卖、运输、储存毒害性、放射性、传染病病原体等物质，危害公共安全的，符合非法制造、买卖、运输、储存危险物质罪的构成要件"
+   },
+   {
+    "key": "k125-2s",
+    "srcs": [
+     "art125#2"
+    ],
+    "body": [
+     "constitutes(P,X,illegalDangerousSubstances)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款之罪依照前款规定处罚：基本档三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k125-2agg",
+    "srcs": [
+     "art125#2"
+    ],
+    "body": [
+     "constitutes(P,X,illegalDangerousSubstances)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款之罪情节严重的，依照前款加重档处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k125-3a",
+    "srcs": [
+     "art125#3"
+    ],
+    "body": [
+     "unit(U)",
+     "illegalGunAmmoExplosiveAct(U,X)"
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "art125Crime(X)"
+    ],
+    "auth": "npc",
+    "note": "单位实施第1款行为的，成立本条之罪的单位犯罪"
+   },
+   {
+    "key": "k125-3b",
+    "srcs": [
+     "art125#3"
+    ],
+    "body": [
+     "unit(U)",
+     "illegalDangerousSubstanceAct(U,X)",
+     "endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "art125Crime(X)"
+    ],
+    "auth": "npc",
+    "note": "单位实施第2款行为并危害公共安全的，成立本条之罪的单位犯罪"
+   },
+   {
+    "key": "k125-3u",
+    "srcs": [
+     "art125#3"
+    ],
+    "body": [
+     "unit(U)",
+     "unitCrime(U,X)",
+     "art125Crime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯前两款罪的，对单位判处罚金"
+   },
+   {
+    "key": "k125-3p",
+    "srcs": [
+     "art125#3"
+    ],
+    "body": [
+     "unit(U)",
+     "unitCrime(U,X)",
+     "art125Crime(X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,perArt125Para1)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员，依照第一款的规定处罚（perArt125Para1 指第1款两档法定刑）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "illegalGunAmmoExplosiveAct": "illegalGunAmmoExplosiveAct(P,X)：主体 P（自然人或单位）通过行为 X 非法制造、买卖、运输、邮寄、储存枪支、弹药、爆炸物（行为方式与对象具备其一即可）",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "illegalDangerousSubstanceAct": "illegalDangerousSubstanceAct(P,X)：主体 P（自然人或单位）通过行为 X 非法制造、买卖、运输、储存毒害性、放射性、传染病病原体等物质",
+   "endangersPublicSafety": "endangersPublicSafety(X)：行为 X 危及公共安全",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "art125Crime": "art125Crime(X)：犯罪事件 X 属于刑法第125条第1款或第2款规定之罪",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员"
+  }
+ },
+ "art:126": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "依法被指定、确定的枪支制造企业、销售企业违规制造、销售枪支的定罪与处罚（违规制造、销售枪支罪，单位犯罪、双罚制）",
+     "rules": [
+      "k126-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体条件：必须是依法被指定、确定的枪支制造企业、销售企业（特殊主体，单位犯罪）；客观上违反枪支管理规定",
+     "rules": [
+      "k126-cond"
+     ]
+    },
+    {
+     "text": "行为条件（三择一）：①以非法销售为目的，超过限额或者不按照规定的品种制造、配售枪支；②以非法销售为目的，制造无号、重号、假号的枪支；③非法销售枪支或者在境内销售为出口制造的枪支",
+     "rules": [
+      "k126-cond"
+     ]
+    },
+    {
+     "text": "目的条件：第①②项须以非法销售为目的，第③项（非法销售、境内销售出口枪支）本身即销售行为，不另要求该目的",
+     "rules": [
+      "k126-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节严重的，升档处五年以上十年以下有期徒刑；情节特别严重的，再升档处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k126-serious",
+      "k126-especial"
+     ]
+    },
+    {
+     "text": "非依法被指定、确定的枪支制造、销售企业（一般单位或个人）实施制造、买卖枪支行为的，不构成本罪，依第125条非法制造、买卖枪支罪处理（学理）",
+     "rules": [
+      "k126-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "双罚制之一：对单位判处罚金",
+     "rules": [
+      "k126-fine"
+     ]
+    },
+    {
+     "text": "双罚制之二：对单位直接负责的主管人员和其他直接责任人员追究刑事责任",
+     "rules": [
+      "k126-person"
+     ]
+    },
+    {
+     "text": "基本刑：对直接责任人员处五年以下有期徒刑",
+     "rules": [
+      "k126-basic"
+     ]
+    },
+    {
+     "text": "情节严重：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k126-serious"
+     ]
+    },
+    {
+     "text": "情节特别严重：处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k126-especial"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重的加重量刑档次优先于基本档次适用，不重复适用基本刑",
+     "rules": [
+      "k126-serious",
+      "k126-especial",
+      "k126-basic"
+     ]
+    },
+    {
+     "text": "主体不适格的排除规则优先于本罪成立规则",
+     "rules": [
+      "k126-subject",
+      "k126-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第125条非法制造、买卖枪支罪的区别：本罪主体限于依法被指定、确定的枪支制造、销售企业，且系违反枪支管理规定的违规制造、配售、销售行为；一般主体非法制造、买卖枪支的适用第125条",
+     "rules": [
+      "k126-subject",
+      "k126-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k126-cond",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "designatedGunEnterprise(U)",
+     "commitsHarmfulAct(U,X)",
+     "violatesGunManagementRules(X)",
+     {
+      "or": [
+       "illegalSalePurpose(X) manufactureOrAllocateBeyondQuotaOrWrongType(X)",
+       "illegalSalePurpose(X) manufactureUnnumberedDuplicateOrFakeNumberedGuns(X)",
+       "illegallySellGuns(X)",
+       "sellExportGunsDomestically(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,illegalGunManufactureSale)"
+    ],
+    "auth": "npc",
+    "note": "依法被指定、确定的枪支制造、销售企业违反枪支管理规定，实施第（一）（二）（三）项行为之一的，成立单位犯罪，符合违规制造、销售枪支罪（常量 illegalGunManufactureSale）的构成要件"
+   },
+   {
+    "key": "k126-person",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,illegalGunManufactureSale)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "responsible(P,X,illegalGunManufactureSale)"
+    ],
+    "auth": "npc",
+    "note": "双罚制：单位构成本罪的，其直接负责的主管人员和其他直接责任人员负刑事责任"
+   },
+   {
+    "key": "k126-fine",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,illegalGunManufactureSale)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(U,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对成立本罪的单位判处罚金（新增量刑方式常量 fine＝罚金）"
+   },
+   {
+    "key": "k126-basic",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "responsible(P,X,illegalGunManufactureSale)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：对直接责任人员处五年以下有期徒刑（under5 在此表示法条的“五年以下有期徒刑”）"
+   },
+   {
+    "key": "k126-serious",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "responsible(P,X,illegalGunManufactureSale)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上十年以下有期徒刑（from5to10 在此表示法条的“五年以上十年以下”）"
+   },
+   {
+    "key": "k126-especial",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "responsible(P,X,illegalGunManufactureSale)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑或者无期徒刑（新增量刑方式常量 from10OrLife＝十年以上有期徒刑或者无期徒刑，本罪不含死刑）"
+   },
+   {
+    "key": "k126-subject",
+    "srcs": [
+     "art126#1"
+    ],
+    "body": [
+     "commitsHarmfulAct(U,X)",
+     "gunManufactureOrSaleAct(X)",
+     "-designatedGunEnterprise(U)"
+    ],
+    "heads": [
+     "-constitutes(U,X,illegalGunManufactureSale)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：本罪为特殊主体犯罪，非依法被指定、确定的枪支制造、销售企业实施制造、买卖枪支行为的，不成立本罪，应按第125条非法制造、买卖枪支罪处理"
+   }
+  ],
+  "overrides": [
+   [
+    "k126-cond",
+    "k126-subject",
+    "推断：结论冲突（('constitutes', '+')），k126-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "designatedGunEnterprise": "designatedGunEnterprise(U)：U 是依法被指定、确定的枪支制造企业或者销售企业",
+   "commitsHarmfulAct": "commitsHarmfulAct(U,X)：单位 U 实施了危害社会的行为 X",
+   "violatesGunManagementRules": "violatesGunManagementRules(X)：行为 X 违反枪支管理规定",
+   "illegalSalePurpose": "illegalSalePurpose(X)：实施行为 X 以非法销售为目的",
+   "manufactureOrAllocateBeyondQuotaOrWrongType": "manufactureOrAllocateBeyondQuotaOrWrongType(X)：行为 X 系超过限额或者不按照规定的品种制造、配售枪支",
+   "manufactureUnnumberedDuplicateOrFakeNumberedGuns": "manufactureUnnumberedDuplicateOrFakeNumberedGuns(X)：行为 X 系制造无号、重号、假号的枪支",
+   "illegallySellGuns": "illegallySellGuns(X)：行为 X 系非法销售枪支",
+   "sellExportGunsDomestically": "sellExportGunsDomestically(X)：行为 X 系在境内销售为出口制造的枪支",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "constitutes": "符合构成要件",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "gunManufactureOrSaleAct": "gunManufactureOrSaleAct(X)：行为 X 属于制造、配售或者销售（买卖）枪支的行为"
+  }
+ },
+ "art:127": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "盗窃、抢夺或抢劫枪支、弹药、爆炸物、危险物质的定罪与法定刑档次；误盗枪支时客体错误的处理",
+     "rules": [
+      "k127-1",
+      "k127-2a"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "以盗窃或抢夺方式取得枪支、弹药、爆炸物，即成立本罪，不以“危害公共安全”为要件",
+     "rules": [
+      "k127-1"
+     ]
+    },
+    {
+     "text": "盗窃、抢夺毒害性、放射性、传染病病原体等危险物质，须危害公共安全才成立本罪",
+     "rules": [
+      "k127-1b"
+     ]
+    },
+    {
+     "text": "抢劫枪支、弹药、爆炸物；或抢劫毒害性、放射性、传染病病原体等危险物质并危害公共安全",
+     "rules": [
+      "k127-2a"
+     ]
+    },
+    {
+     "text": "盗窃、抢夺国家机关、军警人员、民兵的枪支、弹药、爆炸物，属第2款加重情形",
+     "rules": [
+      "k127-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "客体错误：行为人仅有盗窃普通财物的故意而误盗枪支（如窃取提包内藏手枪），对误盗枪支不承担故意罪责，不成立盗窃枪支罪，仅在盗窃罪限度内成立盗窃罪",
+     "rules": [
+      "k127-err"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k127-1s"
+     ]
+    },
+    {
+     "text": "情节严重的：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k127-1sAggr"
+     ]
+    },
+    {
+     "text": "抢劫型，以及盗窃、抢夺国家机关、军警人员、民兵枪支弹药爆炸物型：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k127-2s"
+     ]
+    },
+    {
+     "text": "误盗枪支后无合法根据持有该枪的，可另成立非法持有枪支罪",
+     "rules": [
+      "k127-hold"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款加重情形的法定刑优先于第1款基本档与“情节严重”档",
+     "rules": [
+      "k127-2s"
+     ]
+    },
+    {
+     "text": "客体错误规则排除盗窃、抢夺枪支罪的构成及其加重情形的适用",
+     "rules": [
+      "k127-err"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "枪支、弹药、爆炸物的客体是公共安全，普通财物的客体是财产权；对象错误跨越不同犯罪构成时属客体错误，阻却对错误事实的故意罪责，而非单纯的具体对象错误",
+     "rules": [
+      "k127-err"
+     ]
+    },
+    {
+     "text": "同为盗窃、抢夺，对象是枪支弹药爆炸物时不要求危害公共安全，对象是毒害性、放射性、传染病病原体等危险物质时须危害公共安全",
+     "rules": [
+      "k127-1",
+      "k127-1b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k127-1",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     "gunAmmunitionExplosive(M)"
+    ],
+    "heads": [
+     "constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)"
+    ],
+    "auth": "npc",
+    "note": "盗窃、抢夺枪支、弹药、爆炸物的，构成盗窃、抢夺枪支、弹药、爆炸物、危险物质罪，不要求危害公共安全"
+   },
+   {
+    "key": "k127-1b",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     "dangerousSubstance(M)",
+     "endangersPublicSecurity(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)"
+    ],
+    "auth": "npc",
+    "note": "盗窃、抢夺毒害性、放射性、传染病病原体等物质且危害公共安全的，构成同一罪名"
+   },
+   {
+    "key": "k127-2a",
+    "srcs": [
+     "art127#2"
+    ],
+    "body": [
+     "robs(P,X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "gunAmmunitionExplosive(M)",
+       "dangerousSubstance(M) endangersPublicSecurity(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,robberyGunsAmmunitionExplosives)"
+    ],
+    "auth": "npc",
+    "note": "抢劫枪支、弹药、爆炸物，或抢劫危险物质危害公共安全的，构成抢劫枪支、弹药、爆炸物、危险物质罪"
+   },
+   {
+    "key": "k127-2b",
+    "srcs": [
+     "art127#2"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     "gunAmmunitionExplosive(M)",
+     "heldByStateOrganMilitaryPoliceOrMilitia(M)"
+    ],
+    "heads": [
+     "constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)",
+     "aggravatedTheftSnatchingOfStateGuns(P,X)"
+    ],
+    "auth": "npc",
+    "note": "盗窃、抢夺国家机关、军警人员、民兵的枪支、弹药、爆炸物，仍属本罪但为第2款加重情形"
+   },
+   {
+    "key": "k127-1s",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)",
+     "~seriousCircumstances(X)",
+     "~aggravatedTheftSnatchingOfStateGuns(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档处三年以上十年以下有期徒刑（from3to10 为新增量刑方式常量）"
+   },
+   {
+    "key": "k127-1sAggr",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)",
+     "seriousCircumstances(X)",
+     "~aggravatedTheftSnatchingOfStateGuns(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10LifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的处十年以上有期徒刑、无期徒刑或者死刑（from10LifeOrDeath 为新增量刑方式常量）"
+   },
+   {
+    "key": "k127-2s",
+    "srcs": [
+     "art127#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,robberyGunsAmmunitionExplosives)",
+       "aggravatedTheftSnatchingOfStateGuns(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10LifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "抢劫型及盗窃、抢夺国家机关军警民兵枪支弹药爆炸物型，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k127-err",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     "gunAmmunitionExplosive(M)",
+     "intentOnlyAsToOrdinaryProperty(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,theftSnatchingGunsAmmunitionExplosives)",
+     "-aggravatedTheftSnatchingOfStateGuns(P,X)",
+     "constitutes(P,X,theft)"
+    ],
+    "auth": "doctrine",
+    "note": "客体错误阻却对误盗枪支的故意罪责，仅成立盗窃罪；来自备考笔记与学理，法条未明文规定"
+   },
+   {
+    "key": "k127-hold",
+    "srcs": [
+     "art127#1"
+    ],
+    "body": [
+     "unlawfulPossessionAct(P,Y)",
+     "objectOf(Y,M)",
+     "gun(M)"
+    ],
+    "heads": [
+     "constitutes(P,Y,illegalPossessionOfGuns)"
+    ],
+    "auth": "doctrine",
+    "note": "误盗枪支后无合法根据持有该枪的，可成立非法持有枪支罪；来自笔记与学理，非本条明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k127-err",
+    "k127-1",
+    "推断：结论冲突（('constitutes', '+')），k127-err 为例外或更具体"
+   ],
+   [
+    "k127-err",
+    "k127-1b",
+    "推断：结论冲突（('constitutes', '+')），k127-err 为例外或更具体"
+   ],
+   [
+    "k127-err",
+    "k127-2a",
+    "推断：结论冲突（('constitutes', '+')），k127-err 为例外或更具体"
+   ],
+   [
+    "k127-err",
+    "k127-2b",
+    "推断：结论冲突（('constitutes', '+')），k127-err 为例外或更具体"
+   ],
+   [
+    "k127-err",
+    "k127-hold",
+    "推断：结论冲突（('constitutes', '-')），k127-err 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "theftOrSnatching": "theftOrSnatching(P,X)：P 以盗窃或抢夺方式实施行为 X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "gunAmmunitionExplosive": "gunAmmunitionExplosive(M)：M 是枪支、弹药或者爆炸物",
+   "constitutes": "符合构成要件",
+   "dangerousSubstance": "dangerousSubstance(M)：M 是爆炸性、易燃性、放射性、毒害性、腐蚀性物品（危险物品）",
+   "endangersPublicSecurity": "endangersPublicSecurity(X)：行为 X 危害公共安全",
+   "robs": "robs(P,X)：P 以暴力、胁迫或其他方法抢劫，实施行为 X",
+   "heldByStateOrganMilitaryPoliceOrMilitia": "heldByStateOrganMilitaryPoliceOrMilitia(M)：M 属于国家机关、军警人员或者民兵所有（持有）的枪支、弹药、爆炸物",
+   "aggravatedTheftSnatchingOfStateGuns": "aggravatedTheftSnatchingOfStateGuns(P,X)：P 的行为 X 属于第127条第2款盗窃、抢夺国家机关、军警人员、民兵枪支弹药爆炸物的加重情形",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "intentOnlyAsToOrdinaryProperty": "intentOnlyAsToOrdinaryProperty(P,X)：P 实施行为 X 时仅有盗窃普通财物的故意，对所窃枪支等对象缺乏认识（客体错误）",
+   "unlawfulPossessionAct": "unlawfulPossessionAct(P,Y)：P 无合法根据地持有、私藏物品（行为 Y）",
+   "gun": "gun(M)：M 是枪支"
+  }
+ },
+ "art:128": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反枪支管理规定非法持有、私藏枪支、弹药，以及依法配备公务用枪／依法配置枪支的人员非法出租、出借枪支的定罪与法定刑档次",
+     "rules": [
+      "k128-1",
+      "k128-2",
+      "k128-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：违反枪支管理规定，非法持有、私藏枪支、弹药，即构成非法持有、私藏枪支、弹药罪（不以情节严重为成立要件）",
+     "rules": [
+      "k128-1"
+     ]
+    },
+    {
+     "text": "第2款：主体是依法配备公务用枪的人员，实施非法出租、出借枪支行为即构成非法出租、出借枪支罪，不要求造成严重后果",
+     "rules": [
+      "k128-2"
+     ]
+    },
+    {
+     "text": "第3款：主体是依法配置枪支的人员，非法出租、出借枪支并造成严重后果，才构成非法出租、出借枪支罪",
+     "rules": [
+      "k128-3"
+     ]
+    },
+    {
+     "text": "第4款：单位实施第2款、第3款行为（配备公务用枪的单位非法出租出借，或配置枪支的单位非法出租出借并造成严重后果），成立单位犯罪，实行双罚制",
+     "rules": [
+      "k128-4unit",
+      "k128-4fine",
+      "k128-4person"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依法配置枪支的人员非法出租、出借枪支但未造成严重后果的，不构成非法出租、出借枪支罪（由第3款反对解释得出，学理）",
+     "rules": [
+      "k128-3neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k128-s1"
+     ]
+    },
+    {
+     "text": "情节严重的：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k128-s2"
+     ]
+    },
+    {
+     "text": "第1款之罪与第2款、第3款之罪，均依照第1款的规定处罚",
+     "rules": [
+      "k128-pen-apply"
+     ]
+    },
+    {
+     "text": "单位犯第2款、第3款罪的，对其直接负责的主管人员和其他直接责任人员依照第1款的规定处罚",
+     "rules": [
+      "k128-4person"
+     ]
+    },
+    {
+     "text": "单位犯第2款、第3款罪的，对单位判处罚金",
+     "rules": [
+      "k128-4fine"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的加重档排除三年以下的基本档",
+     "rules": [
+      "k128-s2",
+      "k128-s1"
+     ]
+    },
+    {
+     "text": "第3款就依法配置枪支人员设“造成严重后果”要件，属特别规定，不得仅依第2款入罪",
+     "rules": [
+      "k128-3neg",
+      "k128-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "非法持有、私藏枪支弹药（第1款）与非法出租、出借枪支（第2、3款）是不同罪名；公务用枪的非法出租出借为行为犯，配置枪支的非法出租出借为结果犯",
+     "rules": [
+      "k128-1",
+      "k128-2",
+      "k128-3"
+     ]
+    },
+    {
+     "text": "盗窃他人皮箱后发现其中有枪支而加以藏匿：作为盗窃结果行为的藏匿另触犯本条之罪，与盗窃罪成立牵连犯（处断的一罪，来自备考笔记）",
+     "rules": [
+      "k128-ql"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k128-1",
+    "srcs": [
+     "art128#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "violatesGunManagementRegulations(X)",
+     "illegallyPossessesOrHidesGunOrAmmunition(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalPossessionOfGuns)"
+    ],
+    "auth": "npc",
+    "note": "违反枪支管理规定非法持有、私藏枪支、弹药的，构成非法持有、私藏枪支、弹药罪（illegalPossessionOfGuns）"
+   },
+   {
+    "key": "k128-2",
+    "srcs": [
+     "art128#2"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "lawfullyIssuedServiceGunPerson(P)",
+     "illegallyRentsOrLendsGun(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalRentingLendingOfGuns)"
+    ],
+    "auth": "npc",
+    "note": "依法配备公务用枪的人员非法出租、出借枪支即构成非法出租、出借枪支罪（illegalRentingLendingOfGuns），不要求严重后果"
+   },
+   {
+    "key": "k128-3",
+    "srcs": [
+     "art128#3"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "lawfullyAllocatedGunPerson(P)",
+     "illegallyRentsOrLendsGun(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalRentingLendingOfGuns)"
+    ],
+    "auth": "npc",
+    "note": "依法配置枪支的人员非法出租、出借枪支并造成严重后果的，构成非法出租、出借枪支罪"
+   },
+   {
+    "key": "k128-3neg",
+    "srcs": [
+     "art128#3"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "lawfullyAllocatedGunPerson(P)",
+     "illegallyRentsOrLendsGun(P,X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalRentingLendingOfGuns)"
+    ],
+    "auth": "doctrine",
+    "note": "依法配置枪支人员非法出租出借未造成严重后果不构成本罪，系第3款“造成严重后果”要件的反对解释，条文未明文，属学理"
+   },
+   {
+    "key": "k128-4unit",
+    "srcs": [
+     "art128#4"
+    ],
+    "body": [
+     "unit(U)",
+     "commitsHarmfulAct(U,X)",
+     "illegallyRentsOrLendsGun(U,X)",
+     {
+      "or": [
+       "lawfullyIssuedServiceGunPerson(U)",
+       "lawfullyAllocatedGunPerson(U) causesSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "unitCrime(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位实施第2款、第3款的非法出租、出借枪支行为，成立非法出租、出借枪支罪的单位犯罪"
+   },
+   {
+    "key": "k128-4fine",
+    "srcs": [
+     "art128#4"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "illegallyRentsOrLendsGun(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(U,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯第2款、第3款罪的，对单位判处罚金（新增量刑方式常量 fine=罚金）"
+   },
+   {
+    "key": "k128-4person",
+    "srcs": [
+     "art128#4"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "illegallyRentsOrLendsGun(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyArt128Para1Penalty(P,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯第2款、第3款罪的，对其直接负责的主管人员和其他直接责任人员依照第1款的规定处罚"
+   },
+   {
+    "key": "k128-pen-apply",
+    "srcs": [
+     "art128#1",
+     "art128#2",
+     "art128#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "constitutes(P,X,illegalPossessionOfGuns)",
+       "constitutes(P,X,illegalRentingLendingOfGuns)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyArt128Para1Penalty(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款之罪与第2款、第3款之罪，均依照第1款规定的法定刑处罚"
+   },
+   {
+    "key": "k128-s1",
+    "srcs": [
+     "art128#1"
+    ],
+    "body": [
+     "applyArt128Para1Penalty(P,X)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑、拘役或者管制（新增量刑方式常量 under3OrDetentionOrControl）"
+   },
+   {
+    "key": "k128-s2",
+    "srcs": [
+     "art128#1"
+    ],
+    "body": [
+     "applyArt128Para1Penalty(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑（新增量刑方式常量 from3to7）"
+   },
+   {
+    "key": "k128-ql",
+    "srcs": [
+     "art128#1"
+    ],
+    "body": [
+     "crime(P,X1)",
+     "constitutes(P,X1,theft)",
+     "crime(P,X2)",
+     "constitutes(P,X2,illegalPossessionOfGuns)",
+     "concealsGunFoundInStolenProperty(P,X1,X2)"
+    ],
+    "heads": [
+     "implicatedOffense(X1,X2)"
+    ],
+    "auth": "doctrine",
+    "note": "盗窃后发现枪支而藏匿，结果行为触犯本条之罪，与盗窃罪成立牵连犯；此为笔记中的处断的一罪示例，非条文明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k128-3neg",
+    "k128-1",
+    "推断：结论冲突（('constitutes', '+')），k128-3neg 为例外或更具体"
+   ],
+   [
+    "k128-3neg",
+    "k128-2",
+    "推断：结论冲突（('constitutes', '+')），k128-3neg 为例外或更具体"
+   ],
+   [
+    "k128-3neg",
+    "k128-3",
+    "推断：结论冲突（('constitutes', '+')），k128-3neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "violatesGunManagementRegulations": "violatesGunManagementRegulations(X)：行为X违反枪支管理规定",
+   "illegallyPossessesOrHidesGunOrAmmunition": "illegallyPossessesOrHidesGunOrAmmunition(P,X)：P通过行为X非法持有、私藏枪支、弹药",
+   "constitutes": "符合构成要件",
+   "lawfullyIssuedServiceGunPerson": "lawfullyIssuedServiceGunPerson(P)：P（自然人或单位）是依法配备公务用枪的主体",
+   "illegallyRentsOrLendsGun": "illegallyRentsOrLendsGun(P,X)：P（自然人或单位）通过行为X非法出租、出借枪支",
+   "lawfullyAllocatedGunPerson": "lawfullyAllocatedGunPerson(P)：P（自然人或单位）是依法配置枪支的主体",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "commitsHarmfulAct": "commitsHarmfulAct(U,X)：单位 U 实施了危害社会的行为 X",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "sentence": "量刑",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "applyArt128Para1Penalty": "applyArt128Para1Penalty(P,X)：对P就行为X依照刑法第128条第1款的规定处罚",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "concealsGunFoundInStolenProperty": "concealsGunFoundInStolenProperty(P,X1,X2)：P在盗窃X1所得财物中发现枪支，并通过行为X2加以藏匿",
+   "implicatedOffense": "implicatedOffense(X1,X2)：行为X1与X2之间具有牵连关系，成立牵连犯（处断的一罪）"
+  }
+ },
+ "art:129": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "依法配备公务用枪的人员丢失枪支后不及时报告，并造成严重后果的，是否构成丢失枪支不报罪",
+     "rules": [
+      "k129-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为特殊主体：依法配备公务用枪的人员（依法配置民用枪支的人员不属之）",
+     "rules": [
+      "k129-cond"
+     ]
+    },
+    {
+     "text": "行为：丢失所配备的公务用枪后不及时报告（纯正不作为）",
+     "rules": [
+      "k129-cond"
+     ]
+    },
+    {
+     "text": "结果：造成严重后果（本罪为结果犯，须有严重后果发生）",
+     "rules": [
+      "k129-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "丢失枪支但未造成严重后果的，不构成丢失枪支不报罪（学理：结果要件欠缺）",
+     "rules": [
+      "k129-noResult"
+     ]
+    },
+    {
+     "text": "丢失枪支后及时报告的，即使发生严重后果也不构成本罪（学理：不作为要件欠缺）",
+     "rules": [
+      "k129-timely"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述要件的，构成丢失枪支不报罪，负刑事责任",
+     "rules": [
+      "k129-cond"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役（upTo3YearsOrDetention）",
+     "rules": [
+      "k129-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k129-cond",
+    "srcs": [
+     "art129"
+    ],
+    "body": [
+     "lawfullyEquippedWithServiceFirearm(P)",
+     "losesFirearm(P,X)",
+     "failsToReportPromptly(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,losingFirearmWithoutReporting)",
+     "responsible(P,X,losingFirearmWithoutReporting)"
+    ],
+    "auth": "npc",
+    "note": "依法配备公务用枪的人员丢失枪支不及时报告、造成严重后果的，构成丢失枪支不报罪并负刑事责任"
+   },
+   {
+    "key": "k129-pen",
+    "srcs": [
+     "art129"
+    ],
+    "body": [
+     "constitutes(P,X,losingFirearmWithoutReporting)",
+     "responsible(P,X,losingFirearmWithoutReporting)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本罪法定刑为三年以下有期徒刑或者拘役（量刑方式常量 upTo3YearsOrDetention）"
+   },
+   {
+    "key": "k129-noResult",
+    "srcs": [
+     "art129"
+    ],
+    "body": [
+     "lawfullyEquippedWithServiceFirearm(P)",
+     "losesFirearm(P,X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,losingFirearmWithoutReporting)"
+    ],
+    "auth": "doctrine",
+    "note": "未造成严重后果的不构成本罪，系学理对法条结果要件的反面解释"
+   },
+   {
+    "key": "k129-timely",
+    "srcs": [
+     "art129"
+    ],
+    "body": [
+     "lawfullyEquippedWithServiceFirearm(P)",
+     "losesFirearm(P,X)",
+     "reportedPromptly(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,losingFirearmWithoutReporting)"
+    ],
+    "auth": "doctrine",
+    "note": "丢失后及时报告的欠缺不作为要件，不构成本罪，系学理反面解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k129-noResult",
+    "k129-cond",
+    "推断：结论冲突（('constitutes', '+')），k129-noResult 为例外或更具体"
+   ],
+   [
+    "k129-timely",
+    "k129-cond",
+    "推断：结论冲突（('constitutes', '+')），k129-timely 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "lawfullyEquippedWithServiceFirearm": "lawfullyEquippedWithServiceFirearm(P)：P 是依法配备公务用枪的人员",
+   "losesFirearm": "losesFirearm(P,X)：P 在事件 X 中丢失其依法配备的公务用枪",
+   "failsToReportPromptly": "failsToReportPromptly(P,F)：P 对设施 F 的危险不及时报告",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "reportedPromptly": "reportedPromptly(P,X)：P 就丢失枪支事件 X 及时报告"
+  }
+ },
+ "art:130": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "非法携带枪支、弹药、管制刀具或者危险物品进入公共场所、公共交通工具，危及公共安全且情节严重的，是否构成非法携带枪支、弹药、管制刀具、危险物品危及公共安全罪",
+     "rules": [
+      "k130-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "携带对象限于枪支、弹药、管制刀具，或者爆炸性、易燃性、放射性、毒害性、腐蚀性物品",
+     "rules": [
+      "k130-obj"
+     ]
+    },
+    {
+     "text": "行为地点：携带上述物品进入公共场所或者公共交通工具（二者具其一即可）",
+     "rules": [
+      "k130-place"
+     ]
+    },
+    {
+     "text": "行为须为“非法”携带（违反枪支弹药、管制刀具及危险物品管理规定），且危及公共安全（具体危险）、情节严重；“情节严重”是本罪入罪要件而非法定刑加重情节",
+     "rules": [
+      "k130-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依法配备、持有并经许可携带（如执勤民警依法佩枪、经许可押运危险物品）不属于“非法携带”，不构成本罪（学理对“非法”要件的解释）",
+     "rules": [
+      "k130-lawful"
+     ]
+    },
+    {
+     "text": "虽非法携带进入公共场所或公共交通工具，但未危及公共安全的，欠缺具体危险要件，不构成本罪（构成要件的反面推论）",
+     "rules": [
+      "k130-nodanger"
+     ]
+    },
+    {
+     "text": "情节不严重的，不构成本罪，可依枪支弹药、危险物品管理规定给予行政处罚（构成要件的反面推论）",
+     "rules": [
+      "k130-noserious"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述要件的，成立非法携带枪支、弹药、管制刀具、危险物品危及公共安全罪",
+     "rules": [
+      "k130-basic"
+     ]
+    },
+    {
+     "text": "构成本罪的，依法负刑事责任",
+     "rules": [
+      "k130-resp"
+     ]
+    },
+    {
+     "text": "法定刑：处三年以下有期徒刑、拘役或者管制（法院在三种主刑中择一适用）",
+     "rules": [
+      "k130-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "“非法携带”要件被否定（合法携带）时，优先排除本罪成立",
+     "rules": [
+      "k130-lawful"
+     ]
+    },
+    {
+     "text": "欠缺“危及公共安全”或“情节严重”要件时，优先排除本罪成立",
+     "rules": [
+      "k130-nodanger",
+      "k130-noserious"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与非法持有、私藏枪支、弹药罪（第128条）的区别：本罪要求携带进入公共场所或公共交通工具、危及公共安全且情节严重；单纯持有、私藏不成立本罪",
+     "rules": []
+    },
+    {
+     "text": "与非法制造、买卖、运输、邮寄、储存枪支、弹药、爆炸物罪（第125条）的区别：本罪是携带进入特定公共场所的具体危险犯，法定刑显著较轻",
+     "rules": []
+    },
+    {
+     "text": "与危险物品肇事罪（第136条）的区别：本罪不以发生重大事故、造成严重后果为要件，属危险犯；后者为结果犯",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k130-obj",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "gun(M)",
+       "ammunition(M)",
+       "controlledKnife(M)",
+       "explosiveItem(M)",
+       "flammableItem(M)",
+       "radioactiveItem(M)",
+       "toxicItem(M)",
+       "corrosiveItem(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "prohibitedCarryItem(M)"
+    ],
+    "auth": "npc",
+    "note": "本罪对象为枪支、弹药、管制刀具或者爆炸性、易燃性、放射性、毒害性、腐蚀性物品"
+   },
+   {
+    "key": "k130-place",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "entersPublicPlace(P,X)",
+       "entersPublicTransport(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "entersPublicPlaceOrTransport(P,X)"
+    ],
+    "auth": "npc",
+    "note": "进入公共场所或者公共交通工具，二者择一即满足地点要件"
+   },
+   {
+    "key": "k130-basic",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "illegallyCarries(P,X,M)",
+     "prohibitedCarryItem(M)",
+     "entersPublicPlaceOrTransport(P,X)",
+     "endangersPublicSafety(X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "auth": "npc",
+    "note": "非法携带法定物品进入公共场所或公共交通工具，危及公共安全、情节严重的，构成本罪"
+   },
+   {
+    "key": "k130-resp",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "heads": [
+     "responsible(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "auth": "npc",
+    "note": "构成本罪的依法负刑事责任（条文规定法定刑，蕴含刑事责任）"
+   },
+   {
+    "key": "k130-pen",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "responsible(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsFixedTermDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处三年以下有期徒刑、拘役或者管制；量刑方式常量 upTo3YearsFixedTermDetentionOrControl 表示该法定刑幅度内择一判处"
+   },
+   {
+    "key": "k130-lawful",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "carries(P,X,M)",
+     "lawfulCarrying(P,X,M)"
+    ],
+    "heads": [
+     "-illegallyCarries(P,X,M)"
+    ],
+    "auth": "doctrine",
+    "note": "依法配备、持有并经许可携带的不属于“非法携带”，系学理对“非法”要件的解释，法条未明文列举"
+   },
+   {
+    "key": "k130-nodanger",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "carries(P,X,M)",
+     "prohibitedCarryItem(M)",
+     "entersPublicPlaceOrTransport(P,X)",
+     "-endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "auth": "doctrine",
+    "note": "未危及公共安全的不构成本罪，系“危及公共安全”要件的反面推论（学理）"
+   },
+   {
+    "key": "k130-noserious",
+    "srcs": [
+     "art130#1"
+    ],
+    "body": [
+     "carries(P,X,M)",
+     "prohibitedCarryItem(M)",
+     "entersPublicPlaceOrTransport(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalCarryingEndangeringPublicSafety)"
+    ],
+    "auth": "doctrine",
+    "note": "情节不严重的不构成本罪，系“情节严重”入罪要件的反面推论（学理）"
+   }
+  ],
+  "overrides": [
+   [
+    "k130-nodanger",
+    "k130-basic",
+    "推断：结论冲突（('constitutes', '+')），k130-nodanger 为例外或更具体"
+   ],
+   [
+    "k130-noserious",
+    "k130-basic",
+    "推断：结论冲突（('constitutes', '+')），k130-noserious 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "gun": "gun(M)：M 是枪支",
+   "ammunition": "ammunition(M)：M 是弹药",
+   "controlledKnife": "controlledKnife(M)：M 是管制刀具",
+   "explosiveItem": "explosiveItem(M)：M 是爆炸性物品",
+   "flammableItem": "flammableItem(M)：M 是易燃性物品",
+   "radioactiveItem": "radioactiveItem(M)：M 是放射性物品",
+   "toxicItem": "toxicItem(M)：M 是毒害性物品",
+   "corrosiveItem": "corrosiveItem(M)：M 是腐蚀性物品",
+   "prohibitedCarryItem": "prohibitedCarryItem(M)：M 属于第130条列举的禁止非法携带的物品",
+   "entersPublicPlace": "entersPublicPlace(P,X)：P 通过行为 X 进入公共场所",
+   "entersPublicTransport": "entersPublicTransport(P,X)：P 通过行为 X 进入公共交通工具",
+   "entersPublicPlaceOrTransport": "entersPublicPlaceOrTransport(P,X)：P 通过行为 X 进入公共场所或者公共交通工具",
+   "illegallyCarries": "illegallyCarries(P,X,M)：P 通过行为 X 非法携带物品 M（违反枪支弹药、管制刀具、危险物品管理规定）",
+   "endangersPublicSafety": "endangersPublicSafety(X)：行为 X 危及公共安全",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "carries": "carries(P,X,M)：P 通过行为 X 携带物品 M",
+   "lawfulCarrying": "lawfulCarrying(P,X,M)：P 依法配备、持有并经许可携带 M（如执勤民警依法佩枪、经许可押运危险物品）"
+  }
+ },
+ "art:131": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "航空人员违反规章制度致重大飞行事故的定罪与法定刑档次（重大飞行事故罪）",
+     "rules": [
+      "k131-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为航空人员（特殊主体）；行为违反规章制度；因该违规行为致使发生重大飞行事故，并造成严重后果；成立本罪构成要件，应负刑事责任",
+     "rules": [
+      "k131-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：致重大飞行事故、造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k131-basic"
+     ]
+    },
+    {
+     "text": "加重档：造成飞机坠毁或者人员死亡的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k131-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "出现飞机坠毁或人员死亡结果时，适用加重档，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k131-aggravated",
+      "k131-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪为过失犯罪：航空人员对重大飞行事故及严重后果持过失心态；若故意造成飞机坠毁、人员伤亡，则不属本罪，应按破坏交通工具等故意犯罪处理（学理）",
+     "rules": [
+      "k131-negligence"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k131-cond",
+    "srcs": [
+     "art131#1"
+    ],
+    "body": [
+     "aviationPersonnel(P)",
+     "violatesAviationRules(P,X)",
+     "causesMajorFlightAccident(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,majorFlightAccident)",
+     "responsible(P,X,majorFlightAccident)"
+    ],
+    "auth": "npc",
+    "note": "航空人员违反规章制度，致使发生重大飞行事故、造成严重后果的，符合重大飞行事故罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k131-basic",
+    "srcs": [
+     "art131#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorFlightAccident)",
+     "~aircraftCrash(X)",
+     "~causesDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k131-aggravated",
+    "srcs": [
+     "art131#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorFlightAccident)",
+     {
+      "or": [
+       "aircraftCrash(X)",
+       "causesDeath(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：造成飞机坠毁或者人员死亡的，处三年以上七年以下有期徒刑（量刑方式常量 from3to7 表示三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k131-negligence",
+    "srcs": [
+     "art131#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorFlightAccident)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪属过失犯罪，条文未明文写出罪过形式，系学理与体系解释（业务过失危害公共安全犯罪）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "aviationPersonnel": "aviationPersonnel(P)：P 是航空人员（空勤、地面保障等负有航空安全职责的人员，本罪特殊主体）",
+   "violatesAviationRules": "violatesAviationRules(P,X)：P 在行为（事件）X 中违反航空管理的规章制度",
+   "causesMajorFlightAccident": "causesMajorFlightAccident(P,X)：P 的违规行为 X 致使发生重大飞行事故（违规与事故间有因果关系）",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "aircraftCrash": "aircraftCrash(X)：事故 X 造成飞机坠毁",
+   "causesDeath": "致人死亡",
+   "sentence": "量刑",
+   "negligentCrime": "过失犯罪"
+  }
+ },
+ "art:132": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "铁路职工违反规章制度，致使发生铁路运营安全事故并造成严重后果的，是否构成铁路运营安全事故罪及适用哪一量刑档次",
+     "rules": [
+      "k132-1",
+      "k132-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为铁路职工；实施违反规章制度的行为；该行为致使发生铁路运营安全事故（行为与事故间有因果关系）",
+     "rules": [
+      "k132-cond"
+     ]
+    },
+    {
+     "text": "造成严重后果的，构成铁路运营安全事故罪，负刑事责任（基本档）",
+     "rules": [
+      "k132-1"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，构成铁路运营安全事故罪，负刑事责任（加重档）",
+     "rules": [
+      "k132-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽违反规章制度并发生铁路运营安全事故，但未造成严重后果的，不构成本罪（结果要件，学理）",
+     "rules": [
+      "k132-noResult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k132-1s"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k132-2s"
+     ]
+    },
+    {
+     "text": "本罪为过失犯罪：违反规章制度可以是明知故犯，但对运营安全事故及严重后果须为过失（学理）",
+     "rules": [
+      "k132-neg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别严重后果时，优先适用三年以上七年以下的加重档，排除基本档",
+     "rules": [
+      "k132-2",
+      "k132-2s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "铁路职工违反铁路规章制度、致使发生铁路运营安全事故的，依本条特别规定认定为铁路运营安全事故罪，而非交通肇事罪（学理）",
+     "rules": [
+      "k132-dist"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k132-cond",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "railwayEmployee(P)",
+     "act(P,X)",
+     "violatesRulesAndRegulations(P,X)",
+     "causesRailwayOperationSafetyAccident(P,X)"
+    ],
+    "heads": [
+     "railwayOperationAccidentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "主体（铁路职工）、行为（违反规章制度）、结果原因（致使发生铁路运营安全事故）三项基础条件"
+   },
+   {
+    "key": "k132-1",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "railwayOperationAccidentConditions(P,X)",
+     "causesSeriousConsequences(X)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,railwayOperationSafetyAccident)",
+     "responsible(P,X,railwayOperationSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "铁路职工违规致铁路运营安全事故、造成严重后果的，构成铁路运营安全事故罪并负刑事责任"
+   },
+   {
+    "key": "k132-1s",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "constitutes(P,X,railwayOperationSafetyAccident)",
+     "causesSeriousConsequences(X)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以下有期徒刑或者拘役（upTo3YearsOrDetention 为新增量刑方式常量）"
+   },
+   {
+    "key": "k132-2",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "railwayOperationAccidentConditions(P,X)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,railwayOperationSafetyAccident)",
+     "responsible(P,X,railwayOperationSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的，仍构成铁路运营安全事故罪，进入加重档"
+   },
+   {
+    "key": "k132-2s",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "constitutes(P,X,railwayOperationSafetyAccident)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的，处三年以上七年以下有期徒刑（from3to7 为新增量刑方式常量）"
+   },
+   {
+    "key": "k132-noResult",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "railwayOperationAccidentConditions(P,X)",
+     "-causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,railwayOperationSafetyAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "未造成严重后果的不构成本罪，系由本条结果要件反推，法条未明文规定，属学理"
+   },
+   {
+    "key": "k132-neg",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "constitutes(P,X,railwayOperationSafetyAccident)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪属过失犯罪（对事故及严重后果为过失），法条未明文写明罪过形式，属学理"
+   },
+   {
+    "key": "k132-dist",
+    "srcs": [
+     "art132"
+    ],
+    "body": [
+     "railwayOperationAccidentConditions(P,X)",
+     "causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,trafficAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "铁路职工违规致铁路运营安全事故的，按本条特别规定处理而不认定交通肇事罪，属学理上的法条竞合说明"
+   }
+  ],
+  "overrides": [
+   [
+    "k132-noResult",
+    "k132-1",
+    "推断：结论冲突（('constitutes', '+')），k132-noResult 为例外或更具体"
+   ],
+   [
+    "k132-1",
+    "k132-dist",
+    "推断：结论冲突（('constitutes', '+')），k132-1 为例外或更具体"
+   ],
+   [
+    "k132-2",
+    "k132-dist",
+    "推断：结论冲突（('constitutes', '+')），k132-2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "railwayEmployee": "railwayEmployee(P)：P 是铁路职工",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "violatesRulesAndRegulations": "violatesRulesAndRegulations(P,X)：P 在行为 X 中违反（铁路运营安全）规章制度",
+   "causesRailwayOperationSafetyAccident": "causesRailwayOperationSafetyAccident(P,X)：P 的行为 X 致使发生铁路运营安全事故",
+   "railwayOperationAccidentConditions": "railwayOperationAccidentConditions(P,X)：P 的行为 X 具备铁路运营安全事故罪的主体、违规行为与事故因果条件",
+   "causesSeriousConsequences": "causesSeriousConsequences(X)：事件 X 造成严重后果",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "negligentCrime": "过失犯罪"
+  }
+ },
+ "art:133-2": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "妨害安全驾驶罪的成立与处罚：乘客对行驶中公共交通工具驾驶人员施暴、抢控操纵装置，以及驾驶人员擅离职守互殴、殴打他人",
+     "rules": [
+      "k133z2-1",
+      "k133z2-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "乘客型：对行驶中的公共交通工具的驾驶人员使用暴力，或者抢控驾驶操纵装置，干扰公共交通工具正常行驶，危及公共安全的，构成妨害安全驾驶罪",
+     "rules": [
+      "k133z2-1"
+     ]
+    },
+    {
+     "text": "驾驶人员型：前款规定的驾驶人员在行驶的公共交通工具上擅离职守，与他人互殴或者殴打他人，危及公共安全的，同样构成妨害安全驾驶罪",
+     "rules": [
+      "k133z2-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪是具体危险犯，行为未危及公共安全的，不构成妨害安全驾驶罪（法条“危及公共安全”要件的反面推论，学理）",
+     "rules": [
+      "k133z2-noDanger"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "两款行为法定刑相同：处一年以下有期徒刑、拘役或者管制，并处或者单处罚金",
+     "rules": [
+      "k133z2-1s"
+     ]
+    },
+    {
+     "text": "有前两款行为同时构成其他犯罪的，依照处罚较重的规定定罪处罚（从一重）",
+     "rules": [
+      "k133z2-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第3款“从一重罪定罪处罚”优先于第1款法定刑的适用，不再按本罪较轻法定刑量刑",
+     "rules": [
+      "k133z2-3",
+      "k133z2-1s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "一个行为同时触犯妨害安全驾驶罪与交通肇事罪、故意伤害罪、故意杀人罪、故意毁坏财物罪、以危险方法危害公共安全罪等，属想象竞合犯；因本罪法定刑较轻，一般依上述重罪定罪处罚",
+     "rules": [
+      "k133z2-concurrence",
+      "k133z2-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k133z2-1",
+    "srcs": [
+     "art133-2#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "publicTransportInMotion(X)",
+     "publicTransportDriver(V)",
+     {
+      "or": [
+       "usesViolenceAgainst(P,V)",
+       "seizesDrivingControl(P,X)"
+      ]
+     },
+     "interferesNormalDriving(X)",
+     "endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingSafeDriving)"
+    ],
+    "auth": "npc",
+    "note": "对行驶中公共交通工具驾驶人员使用暴力或抢控驾驶操纵装置，干扰正常行驶、危及公共安全的，符合妨害安全驾驶罪构成要件"
+   },
+   {
+    "key": "k133z2-2",
+    "srcs": [
+     "art133-2#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "publicTransportDriver(P)",
+     "publicTransportInMotion(X)",
+     "onPublicTransport(X)",
+     "unauthorizedLeavePost(P)",
+     {
+      "or": [
+       "mutualFighting(P,X)",
+       "beatsOthers(P,X)"
+      ]
+     },
+     "endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingSafeDriving)"
+    ],
+    "auth": "npc",
+    "note": "驾驶人员在行驶的公共交通工具上擅离职守、与他人互殴或殴打他人，危及公共安全的，亦符合妨害安全驾驶罪构成要件"
+   },
+   {
+    "key": "k133z2-1s",
+    "srcs": [
+     "art133-2#1",
+     "art133-2#2"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingSafeDriving)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under1YearOrDetentionOrControl)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fineAdditionallyOrIndependently)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处一年以下有期徒刑、拘役或者管制（under1YearOrDetentionOrControl），并处或者单处罚金（fineAdditionallyOrIndependently）；第2款依前款规定处罚"
+   },
+   {
+    "key": "k133z2-3",
+    "srcs": [
+     "art133-2#3"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingSafeDriving)",
+     "constitutes(P,X,C)",
+     "heavierPenaltyThan(C,obstructingSafeDriving)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "convictAndPunish(P,X,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "前两款行为同时构成其他犯罪的，依照处罚较重的规定定罪处罚"
+   },
+   {
+    "key": "k133z2-noDanger",
+    "srcs": [
+     "art133-2#1",
+     "art133-2#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "publicTransportInMotion(X)",
+     "-endangersPublicSafety(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,obstructingSafeDriving)"
+    ],
+    "auth": "doctrine",
+    "note": "未危及公共安全的，欠缺具体危险要件，不构成本罪；系“危及公共安全”要件的反面推论，属学理"
+   },
+   {
+    "key": "k133z2-concurrence",
+    "srcs": [
+     "art133-2#3"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingSafeDriving)",
+     "constitutes(P,X,C)",
+     "otherCrimeThan(C,obstructingSafeDriving)"
+    ],
+    "heads": [
+     "idealConcurrence(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记与学理：一行为同时触犯本罪与交通肇事罪、故意伤害罪、故意杀人罪、故意毁坏财物罪、以危险方法危害公共安全罪等，属想象竞合犯，从一重处罚"
+   }
+  ],
+  "overrides": [
+   [
+    "k133z2-noDanger",
+    "k133z2-1",
+    "推断：结论冲突（('constitutes', '+')），k133z2-noDanger 为例外或更具体"
+   ],
+   [
+    "k133z2-noDanger",
+    "k133z2-2",
+    "推断：结论冲突（('constitutes', '+')），k133z2-noDanger 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "publicTransportInMotion": "publicTransportInMotion(X)：行为 X 涉及（针对或发生于）行驶中的公共交通工具",
+   "publicTransportDriver": "publicTransportDriver(P)：P 是公共交通工具的驾驶人员",
+   "usesViolenceAgainst": "usesViolenceAgainst(P,V)：P 对 V 使用暴力",
+   "seizesDrivingControl": "seizesDrivingControl(P,X)：P 在行为 X 中抢控公共交通工具的驾驶操纵装置",
+   "interferesNormalDriving": "interferesNormalDriving(X)：行为 X 干扰公共交通工具正常行驶",
+   "endangersPublicSafety": "endangersPublicSafety(X)：行为 X 危及公共安全",
+   "constitutes": "符合构成要件",
+   "onPublicTransport": "在公共交通工具上",
+   "unauthorizedLeavePost": "unauthorizedLeavePost(P)：P 擅离（公务）岗位",
+   "mutualFighting": "mutualFighting(P,X)：P 在行为 X 中与他人互殴",
+   "beatsOthers": "beatsOthers(P,X)：P 在行为 X 中殴打他人",
+   "sentence": "量刑",
+   "heavierPenaltyThan": "heavierPenaltyThan(C1,C2)：罪名 C1 的处罚规定重于罪名 C2",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚",
+   "otherCrimeThan": "otherCrimeThan(C1,C2)：C1 与 C2 是不同罪名",
+   "idealConcurrence": "idealConcurrence(P,X)：P 的行为 X 属于想象竞合（一行为触犯数罪名）"
+  }
+ },
+ "art:134": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在生产、作业中违反有关安全管理的规定，因而发生重大伤亡事故或造成其他严重后果的，是否成立重大责任事故罪及如何量刑（第134条第1款）",
+     "rules": [
+      "k134-1cond",
+      "k134-1s",
+      "k134-1b"
+     ]
+    },
+    {
+     "text": "强令他人违章冒险作业，或者明知存在重大事故隐患而不排除仍冒险组织作业，因而发生重大伤亡事故或造成其他严重后果的，是否成立强令、组织他人违章冒险作业罪及如何量刑（第134条第2款）",
+     "rules": [
+      "k134-2cond",
+      "k134-2s",
+      "k134-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：行为发生在生产、作业中，违反有关安全管理的规定，因而发生重大伤亡事故或者造成其他严重后果（对结果为过失）",
+     "rules": [
+      "k134-1cond"
+     ]
+    },
+    {
+     "text": "第2款：强令他人违章冒险作业；或者明知存在重大事故隐患而不排除，仍冒险组织作业；并因而发生重大伤亡事故或者造成其他严重后果",
+     "rules": [
+      "k134-2cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第1款基本刑：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k134-1s"
+     ]
+    },
+    {
+     "text": "第1款情节特别恶劣：处三年以上七年以下有期徒刑",
+     "rules": [
+      "k134-1b"
+     ]
+    },
+    {
+     "text": "第2款基本刑：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k134-2s"
+     ]
+    },
+    {
+     "text": "第2款情节特别恶劣：处五年以上有期徒刑",
+     "rules": [
+      "k134-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别恶劣的加重法定刑优先于基本法定刑适用",
+     "rules": [
+      "k134-1b",
+      "k134-2b"
+     ]
+    },
+    {
+     "text": "法条竞合：第134条第1款重大责任事故罪与第233条过失致人死亡罪（及第115条失火罪、第133条交通肇事罪）系特别法条与普通法条的竞合，依特别法条即重大责任事故罪定罪，不再以过失致人死亡罪定罪",
+     "rules": [
+      "k134-lex"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1款是生产、作业中违反安全管理规定的事故型犯罪；第2款是强令他人违章冒险作业、或明知重大隐患不排除仍冒险组织作业，行为不法更重，法定刑更高",
+     "rules": [
+      "k134-1cond",
+      "k134-2cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k134-1cond",
+    "srcs": [
+     "art134#1"
+    ],
+    "body": [
+     "inProductionOrOperation(P,X)",
+     "violatesSafetyManagementRules(P,X)",
+     {
+      "or": [
+       "causesMajorCasualtyAccident(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,majorLiabilityAccident)"
+    ],
+    "auth": "npc",
+    "note": "生产、作业中违反安全管理规定，因而发生重大伤亡事故或造成其他严重后果的，符合重大责任事故罪（majorLiabilityAccident）构成要件"
+   },
+   {
+    "key": "k134-1s",
+    "srcs": [
+     "art134#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorLiabilityAccident)",
+     "~especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "重大责任事故罪基本刑：三年以下有期徒刑或者拘役（under3OrDetention）"
+   },
+   {
+    "key": "k134-1b",
+    "srcs": [
+     "art134#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorLiabilityAccident)",
+     "especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "重大责任事故罪情节特别恶劣的，处三年以上七年以下有期徒刑（from3to7）"
+   },
+   {
+    "key": "k134-2cond",
+    "srcs": [
+     "art134#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "forcesOthersRiskyOperation(P,X)",
+       "knowsMajorHazardNotEliminated(P,X) recklesslyOrganizesOperation(P,X)"
+      ]
+     },
+     {
+      "or": [
+       "causesMajorCasualtyAccident(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,forcingRiskyOperation)"
+    ],
+    "auth": "npc",
+    "note": "强令他人违章冒险作业，或明知重大事故隐患不排除仍冒险组织作业，因而发生重大伤亡事故或造成其他严重后果的，符合强令、组织他人违章冒险作业罪（forcingRiskyOperation）构成要件"
+   },
+   {
+    "key": "k134-2s",
+    "srcs": [
+     "art134#2"
+    ],
+    "body": [
+     "constitutes(P,X,forcingRiskyOperation)",
+     "~especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "强令、组织他人违章冒险作业罪基本刑：五年以下有期徒刑或者拘役（under5OrDetention）"
+   },
+   {
+    "key": "k134-2b",
+    "srcs": [
+     "art134#2"
+    ],
+    "body": [
+     "constitutes(P,X,forcingRiskyOperation)",
+     "especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5Plus)"
+     }
+    ],
+    "auth": "npc",
+    "note": "强令、组织他人违章冒险作业罪情节特别恶劣的，处五年以上有期徒刑（from5Plus）"
+   },
+   {
+    "key": "k134-lex",
+    "srcs": [
+     "art134#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorLiabilityAccident)",
+     "constitutes(P,X,negligentHomicide)"
+    ],
+    "heads": [
+     "-convicted(P,X,negligentHomicide)"
+    ],
+    "auth": "doctrine",
+    "note": "法条竞合：同一行为同时符合重大责任事故罪与过失致人死亡罪（negligentHomicide）时，依特别法条定罪，不以过失致人死亡罪定罪；该竞合关系来自备考笔记与学理，法条未明文规定"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "inProductionOrOperation": "inProductionOrOperation(P,X)：P 的行为 X 发生在生产、作业过程中",
+   "violatesSafetyManagementRules": "violatesSafetyManagementRules(P,X)：P 在生产、作业中违反有关安全管理的规定",
+   "causesMajorCasualtyAccident": "causesMajorCasualtyAccident(X)：事件 X 致使发生重大伤亡事故",
+   "causesOtherSeriousConsequence": "causesOtherSeriousConsequence(X)：行为 X 因而造成其他严重后果",
+   "constitutes": "符合构成要件",
+   "especiallyHeinousCircumstances": "especiallyHeinousCircumstances(X)：犯罪 X 情节特别恶劣",
+   "sentence": "量刑",
+   "forcesOthersRiskyOperation": "forcesOthersRiskyOperation(P,X)：P 通过行为 X 强令他人违章冒险作业",
+   "knowsMajorHazardNotEliminated": "knowsMajorHazardNotEliminated(P,X)：P 明知存在重大事故隐患而不排除",
+   "recklesslyOrganizesOperation": "recklesslyOrganizesOperation(P,X)：P 仍冒险组织作业（行为 X）",
+   "convicted": "定罪"
+  }
+ },
+ "art:134-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在生产、作业中违反有关安全管理的规定，实施法定三类危险作业行为之一，且具有发生重大伤亡事故或者其他严重后果的现实危险的，是否构成危险作业罪",
+     "rules": [
+      "k134z1-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提条件：行为发生在生产、作业中，违反有关安全管理的规定，并具有发生重大伤亡事故或者其他严重后果的现实危险（具体危险犯，不要求实害结果发生）",
+     "rules": [
+      "k134z1-1"
+     ]
+    },
+    {
+     "text": "情形一：关闭、破坏直接关系生产安全的监控、报警、防护、救生设备、设施，或者篡改、隐瞒、销毁其相关数据、信息",
+     "rules": [
+      "k134z1-a"
+     ]
+    },
+    {
+     "text": "情形二：因存在重大事故隐患被依法责令停产停业、停止施工、停止使用有关设备、设施、场所或者立即采取排除危险的整改措施，而拒不执行",
+     "rules": [
+      "k134z1-b"
+     ]
+    },
+    {
+     "text": "情形三：涉及安全生产的事项未经依法批准或者许可，擅自从事矿山开采、金属冶炼、建筑施工以及危险物品生产、经营、储存等高度危险的生产作业活动",
+     "rules": [
+      "k134z1-c"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，成立危险作业罪，负刑事责任",
+     "rules": [
+      "k134z1-2"
+     ]
+    },
+    {
+     "text": "处一年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k134z1-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪为危险犯，只要求具有发生重大伤亡事故或其他严重后果的现实危险；若已实际造成重大伤亡事故或其他严重后果，则应按重大责任事故罪等实害犯处理（体系性说明，本条未规定）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k134z1-1",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "inProductionOrOperation(X)",
+     "violatesSafetyManagementRules(P,X)",
+     "dangerousOperationCircumstance(P,X)",
+     "realDangerOfMajorCasualtyOrOtherSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,dangerousOperation)"
+    ],
+    "auth": "npc",
+    "note": "生产、作业中违反安全管理规定，有法定三类情形之一且具有发生重大伤亡事故或其他严重后果的现实危险的，符合危险作业罪（dangerousOperation）构成要件"
+   },
+   {
+    "key": "k134z1-a",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "inProductionOrOperation(X)",
+     "safetyDeviceOrFacility(E)",
+     "directlyRelatedToProductionSafety(E)",
+     {
+      "or": [
+       "closesOrDestroys(P,E)",
+       "tamperConcealOrDestroysRelatedData(P,E)"
+      ]
+     }
+    ],
+    "heads": [
+     "dangerousOperationCircumstance(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1项：关闭、破坏直接关系生产安全的监控、报警、防护、救生设备设施，或篡改、隐瞒、销毁其相关数据、信息"
+   },
+   {
+    "key": "k134z1-b",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "inProductionOrOperation(X)",
+     "majorAccidentHiddenDanger(X)",
+     "lawfullyOrderedToSuspendOrRectify(P,X)",
+     "refusesToExecuteOrder(P,X)"
+    ],
+    "heads": [
+     "dangerousOperationCircumstance(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2项：因重大事故隐患被依法责令停产停业、停止施工、停止使用设备设施场所或立即采取排除危险的整改措施而拒不执行"
+   },
+   {
+    "key": "k134z1-c",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "inProductionOrOperation(X)",
+     "matterRequiringSafetyApproval(X)",
+     "lacksLawfulApprovalOrLicense(X)",
+     "engagesInHighlyDangerousProductionActivity(P,X)"
+    ],
+    "heads": [
+     "dangerousOperationCircumstance(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第3项：涉及安全生产的事项未经依法批准或许可，擅自从事矿山开采、金属冶炼、建筑施工及危险物品生产、经营、储存等高度危险生产作业活动"
+   },
+   {
+    "key": "k134z1-2",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,dangerousOperation)"
+    ],
+    "heads": [
+     "responsible(P,X,dangerousOperation)"
+    ],
+    "auth": "npc",
+    "note": "符合危险作业罪构成要件的，负刑事责任"
+   },
+   {
+    "key": "k134z1-3",
+    "srcs": [
+     "art134-1#1"
+    ],
+    "body": [
+     "responsible(P,X,dangerousOperation)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under1OrDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "处一年以下有期徒刑、拘役或者管制（量刑方式常量 under1OrDetentionOrControl）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "inProductionOrOperation": "inProductionOrOperation(P,X)：P 的行为 X 发生在生产、作业过程中",
+   "violatesSafetyManagementRules": "violatesSafetyManagementRules(P,X)：P 在生产、作业中违反有关安全管理的规定",
+   "dangerousOperationCircumstance": "dangerousOperationCircumstance(P,X)：P 的行为 X 属于刑法第134条之一第1款第1至3项列举的危险作业情形之一",
+   "realDangerOfMajorCasualtyOrOtherSeriousConsequence": "realDangerOfMajorCasualtyOrOtherSeriousConsequence(X)：行为 X 具有发生重大伤亡事故或者其他严重后果的现实危险",
+   "constitutes": "符合构成要件",
+   "safetyDeviceOrFacility": "safetyDeviceOrFacility(E)：E 是监控、报警、防护、救生设备或设施",
+   "directlyRelatedToProductionSafety": "directlyRelatedToProductionSafety(E)：E 直接关系生产安全",
+   "closesOrDestroys": "closesOrDestroys(P,E)：P 关闭、破坏设备设施 E",
+   "tamperConcealOrDestroysRelatedData": "tamperConcealOrDestroysRelatedData(P,E)：P 篡改、隐瞒、销毁设备设施 E 的相关数据、信息",
+   "majorAccidentHiddenDanger": "majorAccidentHiddenDanger(X)：行为 X 所涉生产作业中存在重大事故隐患",
+   "lawfullyOrderedToSuspendOrRectify": "lawfullyOrderedToSuspendOrRectify(P,X)：P 因事件 X 被依法责令停产停业、停止施工、停止使用有关设备设施场所或者立即采取排除危险的整改措施",
+   "refusesToExecuteOrder": "refusesToExecuteOrder(P,X)：P 对就事件 X 作出的责令停产停业、停止施工、停止使用或整改措施的命令拒不执行",
+   "matterRequiringSafetyApproval": "matterRequiringSafetyApproval(X)：事件 X 属于涉及安全生产、依法须经批准或者许可的事项",
+   "lacksLawfulApprovalOrLicense": "lacksLawfulApprovalOrLicense(X)：事件 X 未经依法批准或者许可",
+   "engagesInHighlyDangerousProductionActivity": "engagesInHighlyDangerousProductionActivity(P,X)：P 擅自从事矿山开采、金属冶炼、建筑施工以及危险物品生产、经营、储存等高度危险的生产作业活动 X",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  },
+  "arity_conflict": "谓词 inProductionOrOperation 已有用法为 2 个参数，这里用了 1 个"
+ },
+ "art:135": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "安全生产设施或者安全生产条件不符合国家规定，因而发生重大伤亡事故或者造成其他严重后果的，直接负责的主管人员和其他直接责任人员是否构成重大劳动安全事故罪及其刑罚",
+     "rules": [
+      "k135-cond",
+      "k135-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观前提：安全生产设施或者安全生产条件不符合国家规定",
+     "rules": [
+      "k135-cond"
+     ]
+    },
+    {
+     "text": "结果与因果关系：因该不符合国家规定而发生重大伤亡事故，或者造成其他严重后果（二者居一即可，须有因果关系）",
+     "rules": [
+      "k135-cond"
+     ]
+    },
+    {
+     "text": "主体：发生事故的生产经营单位中直接负责的主管人员和其他直接责任人员",
+     "rules": [
+      "k135-1",
+      "k135-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "对该事故所涉安全生产设施、条件不负有管理职责的一般从业人员，不构成本罪（学理）",
+     "rules": [
+      "k135-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对直接负责的主管人员和其他直接责任人员，以重大劳动安全事故罪论处，负刑事责任",
+     "rules": [
+      "k135-1"
+     ]
+    },
+    {
+     "text": "基本刑：处三年以下有期徒刑或者拘役（量刑常量 under3OrDetention）",
+     "rules": [
+      "k135-base"
+     ]
+    },
+    {
+     "text": "情节特别恶劣的，处三年以上七年以下有期徒刑（量刑常量 from3to7）",
+     "rules": [
+      "k135-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别恶劣时适用加重档（三年以上七年以下有期徒刑），排除基本档的适用",
+     "rules": [
+      "k135-agg",
+      "k135-base"
+     ]
+    },
+    {
+     "text": "主体不适格的排除规则优先于入罪规则",
+     "rules": [
+      "k135-subject",
+      "k135-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与重大责任事故罪（第134条）的区别：本罪着眼于安全生产设施、条件本身不符合国家规定的静态隐患（多为管理失职、不作为），后者着眼于生产、作业中违反安全管理规定的具体行为",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k135-cond",
+    "srcs": [
+     "art135#1"
+    ],
+    "body": [
+     "safetyFacilitiesOrConditionsNonCompliant(X)",
+     {
+      "or": [
+       "majorCasualtyAccident(X)",
+       "otherSeriousConsequence(X)"
+      ]
+     },
+     "causedByNonCompliance(X)"
+    ],
+    "heads": [
+     "laborSafetyAccidentConditions(X)"
+    ],
+    "auth": "npc",
+    "note": "安全生产设施或条件不符合国家规定，因而发生重大伤亡事故或造成其他严重后果，具备本罪客观条件"
+   },
+   {
+    "key": "k135-1",
+    "srcs": [
+     "art135#1"
+    ],
+    "body": [
+     "laborSafetyAccidentConditions(X)",
+     "accidentUnitOf(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,majorLaborSafetyAccident)",
+     "responsible(P,X,majorLaborSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "对直接负责的主管人员和其他直接责任人员，认定构成重大劳动安全事故罪并负刑事责任"
+   },
+   {
+    "key": "k135-base",
+    "srcs": [
+     "art135#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorLaborSafetyAccident)",
+     "~especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（under3OrDetention 为新增量刑常量）"
+   },
+   {
+    "key": "k135-agg",
+    "srcs": [
+     "art135#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorLaborSafetyAccident)",
+     "especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别恶劣的，处三年以上七年以下有期徒刑（from3to7 为新增量刑常量）"
+   },
+   {
+    "key": "k135-subject",
+    "srcs": [
+     "art135#1"
+    ],
+    "body": [
+     "laborSafetyAccidentConditions(X)",
+     "performsAct(P,X)",
+     "noSafetyManagementDuty(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,majorLaborSafetyAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪主体限于对安全生产设施、条件负有职责的主管人员和直接责任人员，无此职责的一般从业人员不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k135-subject",
+    "k135-1",
+    "推断：结论冲突（('constitutes', '+')），k135-subject 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "safetyFacilitiesOrConditionsNonCompliant": "safetyFacilitiesOrConditionsNonCompliant(X)：事故 X 所涉安全生产设施或者安全生产条件不符合国家规定",
+   "majorCasualtyAccident": "majorCasualtyAccident(X)：事件 X 属于重大伤亡事故",
+   "otherSeriousConsequence": "otherSeriousConsequence(X)：事件 X 造成重大伤亡以外的其他严重后果",
+   "causedByNonCompliance": "causedByNonCompliance(X)：事故 X 的重大伤亡或其他严重后果系因安全生产设施、条件不符合国家规定而引起（因果关系）",
+   "laborSafetyAccidentConditions": "laborSafetyAccidentConditions(X)：事件 X 具备第135条重大劳动安全事故罪的客观条件",
+   "accidentUnitOf": "accidentUnitOf(U,X)：U 是发生劳动安全事故 X 的生产经营单位",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallyHeinousCircumstances": "especiallyHeinousCircumstances(X)：犯罪 X 情节特别恶劣",
+   "sentence": "量刑",
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "noSafetyManagementDuty": "noSafetyManagementDuty(P,X)：P 对事故 X 所涉安全生产设施、条件不负有管理、维护等职责"
+  }
+ },
+ "art:135-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "举办大型群众性活动违反安全管理规定，因而发生重大伤亡事故或者造成其他严重后果的，直接负责的主管人员和其他直接责任人员是否构成大型群众性活动重大安全事故罪",
+     "rules": [
+      "k135z1-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观条件：举办的是大型群众性活动；举办中违反安全管理规定；因该违规而发生重大伤亡事故或者造成其他严重后果（违规与事故后果之间须有因果关系）",
+     "rules": [
+      "k135z1-cond"
+     ]
+    },
+    {
+     "text": "主体条件：只处罚对该活动直接负责的主管人员和其他直接责任人员，不处罚单位本身，也不处罚一般参加者",
+     "rules": [
+      "k135z1-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节特别恶劣的，不适用三年以下有期徒刑或者拘役的基本量刑档",
+     "rules": [
+      "k135z1-sent",
+      "k135z1-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合条件的，构成大型群众性活动重大安全事故罪，负刑事责任",
+     "rules": [
+      "k135z1-basic"
+     ]
+    },
+    {
+     "text": "基本刑：对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k135z1-sent"
+     ]
+    },
+    {
+     "text": "加重刑：情节特别恶劣的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k135z1-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别恶劣时，加重档（三年以上七年以下有期徒刑）优先于基本档（三年以下有期徒刑或者拘役）",
+     "rules": [
+      "k135z1-agg",
+      "k135z1-sent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪限于“举办大型群众性活动”场合违反安全管理规定；生产、作业中违反安全管理规定造成重大伤亡的，属第134条重大责任事故罪；明知设施有危险而不采取措施的，可能构成第135条重大劳动安全事故罪或第138条教育设施重大安全事故罪",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k135z1-cond",
+    "srcs": [
+     "art135-1#1"
+    ],
+    "body": [
+     "largeMassActivity(A)",
+     "holdsMassActivity(P,A)",
+     "violatesSafetyManagementRules(P,A)",
+     "accidentInActivity(X,A)",
+     "accidentCausedByViolation(X,A)",
+     {
+      "or": [
+       "majorCasualtyAccident(X)",
+       "otherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "massActivityAccidentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "举办大型群众性活动违反安全管理规定，因而发生重大伤亡事故或者造成其他严重后果，具备本罪客观条件"
+   },
+   {
+    "key": "k135z1-basic",
+    "srcs": [
+     "art135-1#1"
+    ],
+    "body": [
+     "massActivityAccidentConditions(P,X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,majorSafetyAccidentInMassActivity)",
+     "responsible(P,X,majorSafetyAccidentInMassActivity)"
+    ],
+    "auth": "npc",
+    "note": "对直接负责的主管人员和其他直接责任人员，认定构成大型群众性活动重大安全事故罪并负刑事责任"
+   },
+   {
+    "key": "k135z1-sent",
+    "srcs": [
+     "art135-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorSafetyAccidentInMassActivity)",
+     "~especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本量刑档：处三年以下有期徒刑或者拘役（under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k135z1-agg",
+    "srcs": [
+     "art135-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,majorSafetyAccidentInMassActivity)",
+     "especiallyHeinousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别恶劣的，处三年以上七年以下有期徒刑（from3to7 表示三年以上七年以下有期徒刑）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "largeMassActivity": "largeMassActivity(A)：A 是大型群众性活动",
+   "holdsMassActivity": "holdsMassActivity(P,A)：P 举办（组织、承办）大型群众性活动 A",
+   "violatesSafetyManagementRules": "violatesSafetyManagementRules(P,X)：P 在生产、作业中违反有关安全管理的规定",
+   "accidentInActivity": "accidentInActivity(X,A)：事故事件 X 发生于活动 A 的举办过程中",
+   "accidentCausedByViolation": "accidentCausedByViolation(X,A)：事故 X 系举办活动 A 时违反安全管理规定所引起（因果关系）",
+   "majorCasualtyAccident": "majorCasualtyAccident(X)：事件 X 属于重大伤亡事故",
+   "otherSeriousConsequence": "otherSeriousConsequence(X)：事件 X 造成重大伤亡以外的其他严重后果",
+   "massActivityAccidentConditions": "massActivityAccidentConditions(P,X)：P 就事件 X 具备大型群众性活动重大安全事故罪的客观条件",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallyHeinousCircumstances": "especiallyHeinousCircumstances(X)：犯罪 X 情节特别恶劣",
+   "sentence": "量刑"
+  }
+ },
+ "art:136": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反爆炸性、易燃性、放射性、毒害性、腐蚀性物品的管理规定，在生产、储存、运输、使用中发生重大事故造成严重后果的，构成危险物品肇事罪并负刑事责任",
+     "rules": [
+      "k136-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象是爆炸性、易燃性、放射性、毒害性、腐蚀性物品；行为违反该类物品的管理规定；事故发生在生产、储存、运输、使用过程中；发生重大事故并造成严重后果",
+     "rules": [
+      "k136-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，成立危险物品肇事罪（dangerousGoodsAccident），负刑事责任",
+     "rules": [
+      "k136-1"
+     ]
+    },
+    {
+     "text": "造成严重后果的，处三年以下有期徒刑或者拘役（基本档）",
+     "rules": [
+      "k136-basic"
+     ]
+    },
+    {
+     "text": "后果特别严重的，处三年以上七年以下有期徒刑（加重档）",
+     "rules": [
+      "k136-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "后果特别严重时适用加重法定刑档，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k136-agg",
+      "k136-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对重大事故及严重后果的主观心态是过失（违反管理规定可能是明知故犯，但对事故后果为过失）；故意以危险物品造成事故的，成立爆炸罪、投放危险物质罪等故意犯罪，而非本罪",
+     "rules": [
+      "k136-negligence"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k136-cond",
+    "srcs": [
+     "art136"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "dangerousSubstance(M)",
+     "objectOf(X,M)",
+     "violatesDangerousGoodsManagementRules(X)",
+     "inProductionStorageTransportOrUse(X)",
+     "majorAccident(X)",
+     "seriousConsequence(X)"
+    ],
+    "heads": [
+     "dangerousGoodsAccidentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "危险物品肇事罪的构成条件：违反危险物品管理规定，在生产、储存、运输、使用中发生重大事故，造成严重后果"
+   },
+   {
+    "key": "k136-1",
+    "srcs": [
+     "art136"
+    ],
+    "body": [
+     "dangerousGoodsAccidentConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,dangerousGoodsAccident)",
+     "responsible(P,X,dangerousGoodsAccident)"
+    ],
+    "auth": "npc",
+    "note": "具备第136条条件的，符合危险物品肇事罪（自拟罪名常量 dangerousGoodsAccident）构成要件并负刑事责任"
+   },
+   {
+    "key": "k136-basic",
+    "srcs": [
+     "art136"
+    ],
+    "body": [
+     "constitutes(P,X,dangerousGoodsAccident)",
+     "~especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以下有期徒刑或者拘役（新增量刑方式常量 under3OrDetention＝三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k136-agg",
+    "srcs": [
+     "art136"
+    ],
+    "body": [
+     "constitutes(P,X,dangerousGoodsAccident)",
+     "especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "后果特别严重的，处三年以上七年以下有期徒刑（新增量刑方式常量 from3to7＝三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k136-negligence",
+    "srcs": [
+     "art136"
+    ],
+    "body": [
+     "constitutes(P,X,dangerousGoodsAccident)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪是过失犯罪，行为人对重大事故及严重后果持过失心态；条文未明文表述罪过形式，故标注为 doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "dangerousSubstance": "dangerousSubstance(M)：M 是爆炸性、易燃性、放射性、毒害性、腐蚀性物品（危险物品）",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "violatesDangerousGoodsManagementRules": "violatesDangerousGoodsManagementRules(X)：行为 X 违反爆炸性、易燃性、放射性、毒害性、腐蚀性物品的管理规定",
+   "inProductionStorageTransportOrUse": "inProductionStorageTransportOrUse(X)：事故 X 发生在危险物品的生产、储存、运输、使用过程中",
+   "majorAccident": "发生重大事故",
+   "seriousConsequence": "seriousConsequence(X)：事故 X 造成严重后果",
+   "dangerousGoodsAccidentConditions": "dangerousGoodsAccidentConditions(P,X)：P 的行为 X 具备刑法第136条危险物品肇事罪的构成条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousConsequence": "especiallySeriousConsequence(X)：事件 X 的后果特别严重",
+   "sentence": "量刑",
+   "negligentCrime": "过失犯罪"
+  }
+ },
+ "art:137": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "建设单位、设计单位、施工单位、工程监理单位违反国家规定降低工程质量标准，造成重大安全事故的，直接责任人员构成工程重大安全事故罪并如何量刑",
+     "rules": [
+      "k137-cond",
+      "k137-1",
+      "k137-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体条件：限于建设单位、设计单位、施工单位、工程监理单位（单位实施，但刑罚落在直接责任人员身上）",
+     "rules": [
+      "k137-cond"
+     ]
+    },
+    {
+     "text": "客观条件：违反国家规定，降低工程质量标准，并造成重大安全事故；处罚对象为该单位的直接责任人员",
+     "rules": [
+      "k137-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽违反国家规定降低工程质量标准，但未造成重大安全事故的，不构成本罪（结果犯，学理归纳）",
+     "rules": [
+      "k137-noacc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本刑：对直接责任人员处五年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k137-1"
+     ]
+    },
+    {
+     "text": "加重刑：后果特别严重的，处五年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k137-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "后果特别严重的加重法定刑优先于基本法定刑适用",
+     "rules": [
+      "k137-2",
+      "k137-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪虽由单位实施，但采单罚制：只处罚直接责任人员，不对单位判处罚金（学理归纳）",
+     "rules": [
+      "k137-unit"
+     ]
+    },
+    {
+     "text": "与重大责任事故罪的区别：本罪主体限于建设、设计、施工、工程监理四类单位，行为是违反国家规定降低工程质量标准，且以造成重大安全事故为要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k137-cond",
+    "srcs": [
+     "art137#1"
+    ],
+    "body": [
+     "projectUnitOf(U,X)",
+     {
+      "or": [
+       "constructionUnit(U)",
+       "designUnit(U)",
+       "builderUnit(U)",
+       "projectSupervisionUnit(U)"
+      ]
+     },
+     "violatesStateRegulations(X)",
+     "lowersProjectQualityStandard(U,X)",
+     "causesMajorSafetyAccident(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,engineeringMajorSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "建设、设计、施工、工程监理单位违反国家规定降低工程质量标准造成重大安全事故的，其直接责任人员符合工程重大安全事故罪构成要件"
+   },
+   {
+    "key": "k137-1",
+    "srcs": [
+     "art137#1"
+    ],
+    "body": [
+     "constitutes(P,X,engineeringMajorSafetyAccident)",
+     "~especiallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本刑：处五年以下有期徒刑或者拘役（under5OrDetention），并处罚金（fine）"
+   },
+   {
+    "key": "k137-2",
+    "srcs": [
+     "art137#1"
+    ],
+    "body": [
+     "constitutes(P,X,engineeringMajorSafetyAccident)",
+     "especiallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10Inclusive)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "后果特别严重的，处五年以上十年以下有期徒刑（from5to10Inclusive，含十年），并处罚金"
+   },
+   {
+    "key": "k137-noacc",
+    "srcs": [
+     "art137#1"
+    ],
+    "body": [
+     "projectUnitOf(U,X)",
+     "lowersProjectQualityStandard(U,X)",
+     "directlyResponsiblePersonFor(P,X)",
+     "-causesMajorSafetyAccident(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,engineeringMajorSafetyAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪为结果犯，未造成重大安全事故的不成立本罪；此结论系由条文结果要件所作的学理归纳"
+   },
+   {
+    "key": "k137-unit",
+    "srcs": [
+     "art137#1"
+    ],
+    "body": [
+     "projectUnitOf(U,X)",
+     "constitutes(P,X,engineeringMajorSafetyAccident)"
+    ],
+    "heads": [
+     "-unitDoublePunishment(U,X)"
+    ],
+    "auth": "doctrine",
+    "note": "条文仅规定处罚直接责任人员，未规定对单位判处罚金，故属单罚制而非双罚制；系学理归纳"
+   }
+  ],
+  "overrides": [
+   [
+    "k137-noacc",
+    "k137-cond",
+    "推断：结论冲突（('constitutes', '+')），k137-noacc 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "projectUnitOf": "projectUnitOf(U,X)：U 是实施工程事件（犯罪）X 的建设、设计、施工或者工程监理单位",
+   "constructionUnit": "constructionUnit(U)：U 是建设单位",
+   "designUnit": "designUnit(U)：U 是设计单位",
+   "builderUnit": "builderUnit(U)：U 是施工单位",
+   "projectSupervisionUnit": "projectSupervisionUnit(U)：U 是工程监理单位",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "lowersProjectQualityStandard": "lowersProjectQualityStandard(U,X)：U 在工程事件 X 中降低工程质量标准",
+   "causesMajorSafetyAccident": "causesMajorSafetyAccident(X)：事件 X 造成重大安全事故",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "especiallySeriousConsequences": "especiallySeriousConsequences(X)：犯罪事件 X 的后果特别严重",
+   "sentence": "量刑",
+   "unitDoublePunishment": "unitDoublePunishment(U,X)：对单位 U 实施的犯罪 X 实行双罚制（既处罚单位又处罚直接责任人员）"
+  }
+ },
+ "art:138": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "明知校舍或者教育教学设施有危险而不采取措施或不及时报告，致使发生重大伤亡事故的，直接责任人员是否构成教育设施重大安全事故罪并负刑事责任",
+     "rules": [
+      "k138-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象与认识：校舍或者教育教学设施存在危险，行为人明知该危险；行为：不采取措施或者不及时报告（二者择一即可）；结果：致使发生重大伤亡事故",
+     "rules": [
+      "k138-cond"
+     ]
+    },
+    {
+     "text": "主体：只对事故负有职责的直接责任人员追究刑事责任（特殊主体）",
+     "rules": [
+      "k138-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪为结果犯，未致使发生重大伤亡事故的，不构成本罪（学理说明）",
+     "rules": [
+      "k138-noResult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：对直接责任人员处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k138-basic"
+     ]
+    },
+    {
+     "text": "后果特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k138-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "后果特别严重的加重档优先适用，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k138-aggr",
+      "k138-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪的不作为形态是“不采取措施”与“不及时报告”的选择关系，只要明知危险而具备其一且发生重大伤亡事故即可；对危险须为明知，对伤亡结果则为过失",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k138-cond",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "schoolBuildingOrEducationalFacility(F)",
+     "facilityHasDanger(F)",
+     "facilityInvolvedIn(X,F)",
+     "knowsFacilityDanger(P,F)",
+     {
+      "or": [
+       "failsToTakeMeasures(P,F)",
+       "failsToReportPromptly(P,F)"
+      ]
+     },
+     "causesMajorCasualtyAccident(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "educationalFacilityAccidentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "明知校舍或教育教学设施有危险而不采取措施或不及时报告，致使发生重大伤亡事故，且行为人系直接责任人员，具备本罪构成条件"
+   },
+   {
+    "key": "k138-1",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "educationalFacilityAccidentConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,educationalFacilityMajorSafetyAccident)",
+     "responsible(P,X,educationalFacilityMajorSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "符合第138条构成条件的，成立教育设施重大安全事故罪并负刑事责任"
+   },
+   {
+    "key": "k138-noResult",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "schoolBuildingOrEducationalFacility(F)",
+     "facilityInvolvedIn(X,F)",
+     "knowsFacilityDanger(P,F)",
+     "-causesMajorCasualtyAccident(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,educationalFacilityMajorSafetyAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪属结果犯，未发生重大伤亡事故的不构成本罪；此点系由“致使发生重大伤亡事故”推出的学理说明"
+   },
+   {
+    "key": "k138-basic",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "constitutes(P,X,educationalFacilityMajorSafetyAccident)",
+     "~especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本法定刑：处三年以下有期徒刑或者拘役（量刑方式常量 under3OrDetention）"
+   },
+   {
+    "key": "k138-aggr",
+    "srcs": [
+     "art138"
+    ],
+    "body": [
+     "constitutes(P,X,educationalFacilityMajorSafetyAccident)",
+     "especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "后果特别严重的，处三年以上七年以下有期徒刑（量刑方式常量 from3to7）"
+   }
+  ],
+  "overrides": [
+   [
+    "k138-noResult",
+    "k138-1",
+    "推断：结论冲突（('constitutes', '+')），k138-noResult 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "schoolBuildingOrEducationalFacility": "schoolBuildingOrEducationalFacility(F)：F 是校舍或者教育教学设施",
+   "facilityHasDanger": "facilityHasDanger(F)：设施 F 存在危险",
+   "facilityInvolvedIn": "facilityInvolvedIn(X,F)：F 是事件（事故）X 所涉及的校舍或教育教学设施",
+   "knowsFacilityDanger": "knowsFacilityDanger(P,F)：P 明知设施 F 有危险",
+   "failsToTakeMeasures": "failsToTakeMeasures(P,F)：P 对设施 F 的危险不采取措施",
+   "failsToReportPromptly": "failsToReportPromptly(P,F)：P 对设施 F 的危险不及时报告",
+   "causesMajorCasualtyAccident": "causesMajorCasualtyAccident(X)：事件 X 致使发生重大伤亡事故",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "educationalFacilityAccidentConditions": "educationalFacilityAccidentConditions(P,X)：P 就事件 X 具备刑法第138条教育设施重大安全事故罪的构成条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousConsequence": "especiallySeriousConsequence(X)：事件 X 的后果特别严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:139": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反消防管理法规、经消防监督机构通知采取改正措施而拒绝执行并造成严重后果的直接责任人员，是否构成消防责任事故罪及适用哪一量刑档",
+     "rules": [
+      "k139-cond",
+      "k139-basic",
+      "k139-aggr"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观前提：违反消防管理法规；经消防监督机构通知采取改正措施而拒绝执行；造成严重后果；处罚对象为该事故的直接责任人员",
+     "rules": [
+      "k139-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪为结果犯，未造成严重后果的，不成立消防责任事故罪（学理）",
+     "rules": [
+      "k139-noResult"
+     ]
+    },
+    {
+     "text": "经消防监督机构通知后已执行改正措施的，缺少“拒绝执行”要件，不成立本罪（学理）",
+     "rules": [
+      "k139-complied"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，对直接责任人员以消防责任事故罪追究刑事责任",
+     "rules": [
+      "k139-cond"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k139-basic"
+     ]
+    },
+    {
+     "text": "加重档：后果特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k139-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "后果特别严重时适用加重档，排除基本档",
+     "rules": [
+      "k139-aggr",
+      "k139-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与失火罪的区别：本罪以违反消防管理法规且经通知拒不执行改正措施为前提，属不作为型的消防管理责任事故；失火罪是过失直接引起火灾",
+     "rules": []
+    },
+    {
+     "text": "本条只处罚直接责任人员，不对单位判处刑罚",
+     "rules": [
+      "k139-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k139-cond",
+    "srcs": [
+     "art139#1"
+    ],
+    "body": [
+     "violatesFireManagementRegulations(P,X)",
+     "fireSupervisionOrgan(O)",
+     "notifiedToTakeCorrectionMeasures(O,P,X)",
+     "refusesToExecuteCorrection(P,X)",
+     "causesSeriousConsequence(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,fireLiabilityAccident)",
+     "responsible(P,X,fireLiabilityAccident)"
+    ],
+    "auth": "npc",
+    "note": "违反消防管理法规、经消防监督机构通知采取改正措施而拒绝执行、造成严重后果的直接责任人员，构成消防责任事故罪（常量 fireLiabilityAccident）并负刑事责任"
+   },
+   {
+    "key": "k139-basic",
+    "srcs": [
+     "art139#1"
+    ],
+    "body": [
+     "constitutes(P,X,fireLiabilityAccident)",
+     "~especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役（量刑方式常量 upTo3YearsOrDetention）"
+   },
+   {
+    "key": "k139-aggr",
+    "srcs": [
+     "art139#1"
+    ],
+    "body": [
+     "constitutes(P,X,fireLiabilityAccident)",
+     "especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "后果特别严重的，处三年以上七年以下有期徒刑（量刑方式常量 from3to7）"
+   },
+   {
+    "key": "k139-noResult",
+    "srcs": [
+     "art139#1"
+    ],
+    "body": [
+     "violatesFireManagementRegulations(P,X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,fireLiabilityAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪为结果犯，未造成严重后果不构成犯罪，条文“造成严重后果的”系构成要件"
+   },
+   {
+    "key": "k139-complied",
+    "srcs": [
+     "art139#1"
+    ],
+    "body": [
+     "violatesFireManagementRegulations(P,X)",
+     "notifiedToTakeCorrectionMeasures(O,P,X)",
+     "executedCorrectionMeasures(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,fireLiabilityAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：经通知后已执行改正措施，缺少“拒绝执行”这一要件，不成立本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k139-noResult",
+    "k139-cond",
+    "推断：结论冲突（('constitutes', '+')），k139-noResult 为例外或更具体"
+   ],
+   [
+    "k139-complied",
+    "k139-cond",
+    "推断：结论冲突（('constitutes', '+')），k139-complied 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "violatesFireManagementRegulations": "violatesFireManagementRegulations(P,X)：P 在事件 X 中违反消防管理法规",
+   "fireSupervisionOrgan": "fireSupervisionOrgan(O)：O 是消防监督机构",
+   "notifiedToTakeCorrectionMeasures": "notifiedToTakeCorrectionMeasures(O,P,X)：消防监督机构 O 就事件 X 通知 P 采取改正措施",
+   "refusesToExecuteCorrection": "refusesToExecuteCorrection(P,X)：P 对就事件 X 所受改正措施通知拒绝执行",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousConsequence": "especiallySeriousConsequence(X)：事件 X 的后果特别严重",
+   "sentence": "量刑",
+   "executedCorrectionMeasures": "executedCorrectionMeasures(P,X)：P 就事件 X 已按通知执行改正措施"
+  }
+ },
+ "art:139-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "安全事故发生后，负有报告职责的人员不报或者谎报事故情况、贻误事故抢救的，是否构成不报、谎报安全事故罪，以及如何量刑",
+     "rules": [
+      "k139z1-const"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提条件：安全事故已经发生（事故发生在前，不报、谎报行为在后）",
+     "rules": [
+      "k139z1-cond"
+     ]
+    },
+    {
+     "text": "主体条件：对该安全事故负有报告职责的人员（特殊主体）",
+     "rules": [
+      "k139z1-cond"
+     ]
+    },
+    {
+     "text": "行为条件：不报或者谎报事故情况，二者居其一即可（选择性行为）",
+     "rules": [
+      "k139z1-cond"
+     ]
+    },
+    {
+     "text": "结果与情节条件：贻误事故抢救，且情节严重（情节严重是入罪门槛）",
+     "rules": [
+      "k139z1-cond",
+      "k139z1-const"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有不报、谎报行为但未达“情节严重”程度的，不符合本罪构成要件（由入罪门槛反面推论，属学理）",
+     "rules": [
+      "k139z1-nocrime"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合构成要件的，成立不报、谎报安全事故罪，负刑事责任",
+     "rules": [
+      "k139z1-const"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k139z1-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k139z1-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重的，优先适用加重法定刑档，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k139z1-aggravated",
+      "k139z1-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k139z1-cond",
+    "srcs": [
+     "art139-1#1"
+    ],
+    "body": [
+     "safetyAccident(A)",
+     "accidentOccurredBefore(A,X)",
+     "hasReportingDuty(P,A)",
+     "act(P,X)",
+     {
+      "or": [
+       "failsToReport(P,A)",
+       "falselyReports(P,A)"
+      ]
+     },
+     "delaysRescue(X,A)"
+    ],
+    "heads": [
+     "accidentReportBreach(P,X,A)"
+    ],
+    "auth": "npc",
+    "note": "安全事故发生后，负有报告职责的人员不报或者谎报事故情况、贻误事故抢救，具备本罪的客观与主体条件"
+   },
+   {
+    "key": "k139z1-const",
+    "srcs": [
+     "art139-1#1"
+    ],
+    "body": [
+     "accidentReportBreach(P,X,A)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,failureToReportSafetyAccident)",
+     "responsible(P,X,failureToReportSafetyAccident)"
+    ],
+    "auth": "npc",
+    "note": "情节严重的成立不报、谎报安全事故罪并负刑事责任（罪名常量 failureToReportSafetyAccident＝不报、谎报安全事故罪；情节特别严重系加重情形）"
+   },
+   {
+    "key": "k139z1-basic",
+    "srcs": [
+     "art139-1#1"
+    ],
+    "body": [
+     "responsible(P,X,failureToReportSafetyAccident)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,upTo3YearsOrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役（量刑方式常量 upTo3YearsOrDetention＝三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k139z1-aggravated",
+    "srcs": [
+     "art139-1#1"
+    ],
+    "body": [
+     "responsible(P,X,failureToReportSafetyAccident)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3To7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处三年以上七年以下有期徒刑（量刑方式常量 from3To7＝三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k139z1-nocrime",
+    "srcs": [
+     "art139-1#1"
+    ],
+    "body": [
+     "accidentReportBreach(P,X,A)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,failureToReportSafetyAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "未达“情节严重”门槛的不构成本罪，系由法条入罪门槛所作的反面推论，属学理"
+   }
+  ],
+  "overrides": [
+   [
+    "k139z1-nocrime",
+    "k139z1-const",
+    "推断：结论冲突（('constitutes', '+')），k139z1-nocrime 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "safetyAccident": "safetyAccident(A)：A 是安全事故",
+   "accidentOccurredBefore": "accidentOccurredBefore(A,X)：安全事故 A 发生在行为 X 之前（“安全事故发生后”）",
+   "hasReportingDuty": "hasReportingDuty(P,A)：P 是对安全事故 A 负有报告职责的人员",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "failsToReport": "failsToReport(P,A)：P 不报安全事故 A 的情况",
+   "falselyReports": "falselyReports(P,A)：P 谎报安全事故 A 的情况",
+   "delaysRescue": "delaysRescue(X,A)：行为 X 贻误安全事故 A 的抢救",
+   "accidentReportBreach": "accidentReportBreach(P,X,A)：P 在安全事故 A 发生后通过行为 X 不报或谎报事故情况、贻误抢救，具备本罪主体与客观条件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑"
+  }
+ }
+}

@@ -1,0 +1,3446 @@
+{
+ "art:383": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "对犯贪污罪的，根据情节轻重分别适用第383条第1款三项量刑档次；并解决多次贪污的数额累计、公诉前悔罪退赃的从宽以及死缓终身监禁的适用",
+     "rules": [
+      "k383-t1",
+      "k383-t2",
+      "k383-t3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第一项情形：贪污数额较大或者有其他较重情节",
+     "rules": [
+      "k383-t1"
+     ]
+    },
+    {
+     "text": "第二项情形：贪污数额巨大或者有其他严重情节",
+     "rules": [
+      "k383-t2"
+     ]
+    },
+    {
+     "text": "第三项情形：贪污数额特别巨大或者有其他特别严重情节",
+     "rules": [
+      "k383-t3"
+     ]
+    },
+    {
+     "text": "第三项中的加重情形：数额特别巨大，并使国家和人民利益遭受特别重大损失",
+     "rules": [
+      "k383-1d"
+     ]
+    },
+    {
+     "text": "多次贪污未经处理的，按照累计贪污数额处罚",
+     "rules": [
+      "k383-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "犯第一款罪，在提起公诉前如实供述自己罪行、真诚悔罪、积极退赃，避免、减少损害结果发生，属第一项情形的，可以从轻、减轻或者免除处罚",
+     "rules": [
+      "k383-3a"
+     ]
+    },
+    {
+     "text": "上述悔罪退赃情形属第二项、第三项情形的，只能从轻处罚（不得减轻、免除）",
+     "rules": [
+      "k383-3b"
+     ]
+    },
+    {
+     "text": "2015年10月31日以前实施贪污行为，依修正前刑法判处死刑缓期执行足以罚当其罪的，不适用修正后第383条第4款的终身监禁",
+     "rules": [
+      "k383-4-time-excl"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "第一项：处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k383-1a"
+     ]
+    },
+    {
+     "text": "第二项：处三年以上十年以下有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k383-1b"
+     ]
+    },
+    {
+     "text": "第三项：处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k383-1c"
+     ]
+    },
+    {
+     "text": "数额特别巨大并使国家和人民利益遭受特别重大损失的：处无期徒刑或者死刑，并处没收财产",
+     "rules": [
+      "k383-1d"
+     ]
+    },
+    {
+     "text": "有第三项情形被判处死刑缓期执行的，人民法院根据犯罪情节等情况可以同时决定：死缓二年期满依法减为无期徒刑后，终身监禁",
+     "rules": [
+      "k383-4a"
+     ]
+    },
+    {
+     "text": "一经决定终身监禁，不得减刑、不得假释",
+     "rules": [
+      "k383-4b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "三项档次逐级递进：数额巨大或情节严重的排除第一项，数额特别巨大或情节特别严重的排除第二项；数额特别巨大且致国家和人民利益特别重大损失的，优先适用无期徒刑或死刑档",
+     "rules": [
+      "k383-t2",
+      "k383-t3",
+      "k383-1d"
+     ]
+    },
+    {
+     "text": "2015年10月31日以前实施贪污、受贿行为，罪行极其严重，依修正前刑法判死缓不能体现罪刑相适应，而依修正后刑法判死缓并决定终身监禁可以罚当其罪的，适用修正后第383条第4款（从旧兼从轻的例外，司法解释时间效力规定）",
+     "rules": [
+      "k383-4-time"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "终身监禁（不得减刑、假释）不同于第50条第2款的死缓限制减刑：后者仅限制减刑幅度，前者彻底排除减刑与假释",
+     "rules": [
+      "k383-4b"
+     ]
+    },
+    {
+     "text": "国有公司、企业等国有单位中从事公务的人员，以及国有单位委派到非国有单位从事公务的人员实施侵占本单位财物行为的，依第271条第2款转致适用第382条、第383条以贪污罪定罪处罚（转致条文不在本行挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k383-t1",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "convicted(P,X,corruption)",
+     {
+      "or": [
+       "amountRelativelyLarge(X)",
+       "relativelySeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "corruptionTier1(P,X)"
+    ],
+    "auth": "npc",
+    "note": "贪污数额较大或者有其他较重情节的，属第383条第1款第一项情形"
+   },
+   {
+    "key": "k383-t2",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "convicted(P,X,corruption)",
+     {
+      "or": [
+       "amountHuge(X)",
+       "seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "corruptionTier2(P,X)"
+    ],
+    "auth": "npc",
+    "note": "贪污数额巨大或者有其他严重情节的，属第二项情形"
+   },
+   {
+    "key": "k383-t3",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "convicted(P,X,corruption)",
+     {
+      "or": [
+       "corruptionAmountEspeciallyHuge(X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "corruptionTier3(P,X)"
+    ],
+    "auth": "npc",
+    "note": "贪污数额特别巨大或者有其他特别严重情节的，属第三项情形"
+   },
+   {
+    "key": "k383-1a",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "corruptionTier1(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第一项情形处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k383-1b",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "corruptionTier2(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOrConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第二项情形处三年以上十年以下有期徒刑，并处罚金或者没收财产"
+   },
+   {
+    "key": "k383-1c",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "corruptionTier3(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOrConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第三项情形处十年以上有期徒刑或者无期徒刑，并处罚金或者没收财产"
+   },
+   {
+    "key": "k383-1d",
+    "srcs": [
+     "art383#1"
+    ],
+    "body": [
+     "corruptionTier3(P,X)",
+     "corruptionAmountEspeciallyHuge(X)",
+     "causesEspeciallyMajorLossToPublicPropertyStateAndPeople(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lifeOrDeath)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeConfiscation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "数额特别巨大并使国家和人民利益遭受特别重大损失的，处无期徒刑或者死刑，并处没收财产"
+   },
+   {
+    "key": "k383-2",
+    "srcs": [
+     "art383#2"
+    ],
+    "body": [
+     "convicted(P,X,corruption)",
+     "multipleUnprocessedCorruption(P,X)"
+    ],
+    "heads": [
+     "calculateByAccumulatedCorruptionAmount(X)"
+    ],
+    "auth": "npc",
+    "note": "多次贪污未经处理的，按照累计贪污数额确定处罚依据"
+   },
+   {
+    "key": "k383-3a",
+    "srcs": [
+     "art383#3"
+    ],
+    "body": [
+     "corruptionTier1(P,X)",
+     "confessesTruthfully(P,X)",
+     "showsRepentance(P)",
+     "activelyRestitutesBeforeProsecution(P,X)",
+     "reducesDamageResult(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighterReducedOrExempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "公诉前如实供述、真诚悔罪、积极退赃并避免减少损害结果，属第一项情形的可以从轻、减轻或者免除处罚"
+   },
+   {
+    "key": "k383-3b",
+    "srcs": [
+     "art383#3"
+    ],
+    "body": [
+     {
+      "or": [
+       "corruptionTier2(P,X)",
+       "corruptionTier3(P,X)"
+      ]
+     },
+     "confessesTruthfully(P,X)",
+     "showsRepentance(P)",
+     "activelyRestitutesBeforeProsecution(P,X)",
+     "reducesDamageResult(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,lighter)"
+     }
+    ],
+    "auth": "npc",
+    "note": "同样悔罪退赃情形，属第二项、第三项情形的仅可以从轻处罚"
+   },
+   {
+    "key": "k383-4a",
+    "srcs": [
+     "art383#4"
+    ],
+    "body": [
+     "corruptionTier3(P,X)",
+     "deathWithReprieve(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideLifeImprisonment(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第三项情形被判死缓的，法院根据犯罪情节等可以同时决定死缓期满减为无期徒刑后终身监禁"
+   },
+   {
+    "key": "k383-4b",
+    "srcs": [
+     "art383#4"
+    ],
+    "body": [
+     "lifeImprisonmentDecided(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "commute(P,X)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantParole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "已决定终身监禁的，不得减刑、不得假释"
+   },
+   {
+    "key": "k383-4-time",
+    "srcs": [
+     "art383#4"
+    ],
+    "body": [
+     "crimeBefore20151101(P,X)",
+     "extremelySeriousCrime(X)",
+     "oldReprieveInsufficient(P,X)",
+     "lifeImprisonmentProportionate(P,X)"
+    ],
+    "heads": [
+     "applyRevisedArt383Para4(P,X)"
+    ],
+    "auth": "spc",
+    "note": "2015年10月31日前的贪污行为，旧法死缓不足以罚当其罪而新法死缓加终身监禁可以罚当其罪的，适用修正后第383条第4款（时间效力司法解释第8条）"
+   },
+   {
+    "key": "k383-4-time-excl",
+    "srcs": [
+     "art383#4"
+    ],
+    "body": [
+     "crimeBefore20151101(P,X)",
+     "oldReprieveSufficient(P,X)"
+    ],
+    "heads": [
+     "-applyRevisedArt383Para4(P,X)"
+    ],
+    "auth": "spc",
+    "note": "依修正前刑法判处死缓足以罚当其罪的，不适用修正后第383条第4款（时间效力司法解释第8条后段）"
+   }
+  ],
+  "overrides": [
+   [
+    "k383-4-time",
+    "k383-4-time-excl",
+    "推断：结论冲突（('applyRevisedArt383Para4', '+')），k383-4-time 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "convicted": "定罪",
+   "amountRelativelyLarge": "数额较大",
+   "relativelySeriousCircumstance": "relativelySeriousCircumstance(X)：行为 X 情节较重（本罪入罪门槛）",
+   "corruptionTier1": "corruptionTier1(P,X)：P 的贪污犯罪 X 属刑法第383条第1款第一项情形（数额较大或有其他较重情节）",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "corruptionTier2": "corruptionTier2(P,X)：P 的贪污犯罪 X 属第383条第1款第二项情形（数额巨大或有其他严重情节）",
+   "corruptionAmountEspeciallyHuge": "corruptionAmountEspeciallyHuge(X)：行为 X 的贪污数额特别巨大",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "corruptionTier3": "corruptionTier3(P,X)：P 的贪污犯罪 X 属第383条第1款第三项情形（数额特别巨大或有其他特别严重情节）",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "imposeFineOrConfiscation": "imposeFineOrConfiscation(P,X)：对 P 就犯罪 X 并处罚金或者没收财产",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑",
+   "causesEspeciallyMajorLossToPublicPropertyStateAndPeople": "causesEspeciallyMajorLossToPublicPropertyStateAndPeople(X)：行为 X 致使公共财产、国家和人民利益遭受特别重大损失",
+   "sentence": "量刑",
+   "imposeConfiscation": "imposeConfiscation(P,X)：对 P 就犯罪 X 并处没收财产",
+   "multipleUnprocessedCorruption": "multipleUnprocessedCorruption(P,X)：P 多次贪污未经处理，X 为该多次贪污行为的整体",
+   "calculateByAccumulatedCorruptionAmount": "calculateByAccumulatedCorruptionAmount(X)：对行为 X 按照累计贪污数额确定处罚依据",
+   "confessesTruthfully": "如实供述自己的罪行",
+   "showsRepentance": "有悔罪表现",
+   "activelyRestitutesBeforeProsecution": "activelyRestitutesBeforeProsecution(P,X)：P 在提起公诉前就行为 X 积极退赃退赔",
+   "reducesDamageResult": "reducesDamageResult(X)：因退赃退赔使行为 X 的损害结果减少",
+   "deathWithReprieve": "deathWithReprieve(P,X)：P 因犯罪 X 被判处死刑缓期二年执行",
+   "decideLifeImprisonment": "decideLifeImprisonment(P,X)：人民法院决定 P 因犯罪 X 的死刑缓期执行二年期满依法减为无期徒刑后终身监禁",
+   "lifeImprisonmentDecided": "lifeImprisonmentDecided(P,X)：人民法院已就 P 因犯罪 X 所判死缓作出终身监禁的决定",
+   "commute": "commute(P,X)：对 P 因犯罪 X 所判刑罚予以减刑",
+   "grantParole": "grantParole(P,X)：对 P 因犯罪 X 所判刑罚裁定予以假释",
+   "crimeBefore20151101": "crimeBefore20151101(P,X)：P 的犯罪 X 发生在2015年10月31日以前（《刑法修正案(九)》施行前）",
+   "extremelySeriousCrime": "extremelySeriousCrime(X)：犯罪事件 X 的罪行极其严重",
+   "oldReprieveInsufficient": "oldReprieveInsufficient(P,X)：依修正前刑法对 P 就行为 X 判处死刑缓期执行不能体现罪刑相适应原则（不足以罚当其罪）",
+   "lifeImprisonmentProportionate": "lifeImprisonmentProportionate(P,X)：依修正后刑法判处死缓并决定终身监禁、不得减刑假释，对 P 就行为 X 可以罚当其罪",
+   "applyRevisedArt383Para4": "applyRevisedArt383Para4(P,X)：对 P 就行为 X 适用修正后刑法第383条第4款（终身监禁）的规定",
+   "oldReprieveSufficient": "oldReprieveSufficient(P,X)：依修正前刑法对 P 就行为 X 判处死刑缓期执行足以罚当其罪"
+  }
+ },
+ "art:384": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家工作人员利用职务便利挪用公款归个人使用，是否构成挪用公款罪及适用哪一量刑档次",
+     "rules": [
+      "k384-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家工作人员，利用职务上的便利，挪用公款归个人使用",
+     "rules": [
+      "k384-1"
+     ]
+    },
+    {
+     "text": "三种情形择一即可：①进行非法活动（不要求数额较大）；②数额较大、进行营利活动；③数额较大、超过三个月未还",
+     "rules": [
+      "k384-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "挪用公款数额巨大不退还的，排除基本档与“情节严重”档，改处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k384-huge"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成挪用公款罪，基本档处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k384-1",
+      "k384-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上有期徒刑",
+     "rules": [
+      "k384-serious"
+     ]
+    },
+    {
+     "text": "数额巨大不退还的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k384-huge"
+     ]
+    },
+    {
+     "text": "“不退还”指挪用公款后因客观原因在一审宣判前不能归还（笔记）",
+     "rules": [
+      "k384-notreturn"
+     ]
+    },
+    {
+     "text": "挪用救灾、抢险、防汛、优抚、扶贫、移民、救济款物归个人使用的，从重处罚",
+     "rules": [
+      "k384-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "数额巨大不退还＞情节严重＞基本档：加重情形优先于普通情形适用",
+     "rules": [
+      "k384-huge",
+      "k384-serious",
+      "k384-basic"
+     ]
+    },
+    {
+     "text": "特定款物挪用归个人使用的从重，是在所适用法定刑幅度内从重，不改变档次",
+     "rules": [
+      "k384-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "国有公司、企业等国有单位中从事公务的人员，以及国有单位委派到非国有单位从事公务的人员挪用本单位资金的，依第384条挪用公款罪定罪处罚（笔记引第272条第2款的准用，本行未挂载该款）",
+     "rules": [
+      "k384-quasi"
+     ]
+    },
+    {
+     "text": "“不退还”是因客观原因一审宣判前不能归还，与主观上拒不退还不同",
+     "rules": [
+      "k384-notreturn"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k384-1",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "usesPosition(P,X)",
+     "misappropriatesPublicFunds(P,X)",
+     "forPersonalUse(P,X)",
+     {
+      "or": [
+       "usesFundsForIllegalActivity(X)",
+       "amountRelativelyLarge(X) usesFundsForProfitActivity(X)",
+       "amountRelativelyLarge(X) notReturnedOverThreeMonths(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfPublicFunds)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员利用职务便利挪用公款归个人使用，进行非法活动，或数额较大进行营利活动，或数额较大超过三个月未还的，构成挪用公款罪"
+   },
+   {
+    "key": "k384-basic",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfPublicFunds)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "挪用公款罪基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k384-serious",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfPublicFunds)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上有期徒刑"
+   },
+   {
+    "key": "k384-huge",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfPublicFunds)",
+     "amountHuge(X)",
+     "notReturnedBeforeFirstInstanceJudgment(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "挪用公款数额巨大不退还的，处十年以上有期徒刑或者无期徒刑"
+   },
+   {
+    "key": "k384-notreturn",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "misappropriatesPublicFunds(P,X)",
+     "objectiveInabilityToReturnBeforeJudgment(P,X)"
+    ],
+    "heads": [
+     "notReturnedBeforeFirstInstanceJudgment(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记（解释性说明）：“不退还”指挪用公款后因客观原因在一审宣判前不能归还，区别于主观拒不退还；条文本身未定义，故标为学理"
+   },
+   {
+    "key": "k384-2",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "constitutes(P,X,misappropriationOfPublicFunds)",
+     "objectOf(X,M)",
+     "specificFundsOrMaterials(M)",
+     "forPersonalUse(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第384条第2款：挪用救灾、抢险、防汛、优抚、扶贫、移民、救济款物归个人使用的，从重处罚"
+   },
+   {
+    "key": "k384-quasi",
+    "srcs": [
+     "art384"
+    ],
+    "body": [
+     "art272Para2Subject(P)",
+     "misappropriatesUnitFunds(P,X,U)"
+    ],
+    "heads": [
+     "constitutes(P,X,misappropriationOfPublicFunds)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记引第272条第2款的准用：国有单位中从事公务的人员及国有单位委派到非国有单位从事公务的人员挪用本单位资金的，依第384条定罪处罚；该款未挂载于本行，故标为学理"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "usesPosition": "利用职务上的便利",
+   "misappropriatesPublicFunds": "misappropriatesPublicFunds(P,X)：P 通过行为 X 挪用公款（擅自将公款移作个人使用）",
+   "forPersonalUse": "forPersonalUse(P,X)：P 通过行为 X 将所挪用款物归个人使用（含个人消费、借贷给他人等个人用途）",
+   "usesFundsForIllegalActivity": "usesFundsForIllegalActivity(X)：行为 X 中挪用的资金被用于进行非法活动",
+   "amountRelativelyLarge": "数额较大",
+   "usesFundsForProfitActivity": "usesFundsForProfitActivity(X)：行为 X 中挪用的资金被用于进行营利活动",
+   "notReturnedOverThreeMonths": "notReturnedOverThreeMonths(X)：行为 X 所挪用的资金超过三个月未还",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "notReturnedBeforeFirstInstanceJudgment": "notReturnedBeforeFirstInstanceJudgment(P,X)：P 就挪用公款行为 X 属于第384条的“不退还”，即因客观原因在一审宣判前不能归还",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑",
+   "objectiveInabilityToReturnBeforeJudgment": "objectiveInabilityToReturnBeforeJudgment(P,X)：P 因客观原因在一审宣判前无能力归还行为 X 所挪用的公款",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "specificFundsOrMaterials": "specificFundsOrMaterials(M)：M 是用于救灾、抢险、防汛、优抚、扶贫、移民、救济的款物（本罪对象）",
+   "sentence": "量刑",
+   "art272Para2Subject": "art272Para2Subject(P)：P 属于刑法第272条第2款的主体（国有单位中从事公务的人员，或国有单位委派到非国有单位从事公务的人员）",
+   "misappropriatesUnitFunds": "misappropriatesUnitFunds(P,X,U)：P 通过行为 X 挪用本单位 U 的资金归个人使用或者借贷给他人"
+  }
+ },
+ "art:386": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "受贿罪如何处罚：依受贿所得数额及情节准用第383条，索贿的从重",
+     "rules": [
+      "k386-1",
+      "k386-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为构成受贿罪，且以受贿所得数额及情节作为量刑的事实依据",
+     "rules": [
+      "k386-1"
+     ]
+    },
+    {
+     "text": "受贿行为具有索贿（索取他人财物）情节",
+     "rules": [
+      "k386-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对犯受贿罪的，根据受贿所得数额及情节，依照本法第383条（贪污罪的处罚规定）处罚",
+     "rules": [
+      "k386-1"
+     ]
+    },
+    {
+     "text": "索贿的从重处罚",
+     "rules": [
+      "k386-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "索贿从重是在依第383条确定的相应量刑档次内从重，不得超出法定刑限度升格处刑（学理，本条未明文）",
+     "rules": [
+      "k386-limit"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "受贿罪与贪污罪共用第383条的数额、情节档次与法定刑，但“索贿从重”是受贿罪特有的量刑情节",
+     "rules": [
+      "k386-1",
+      "k386-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k386-1",
+    "srcs": [
+     "art386"
+    ],
+    "body": [
+     "crime(P,X)",
+     "constitutes(P,X,bribeTaking)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt383(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对犯受贿罪的，根据受贿所得数额及情节，依照本法第383条的规定处罚"
+   },
+   {
+    "key": "k386-2",
+    "srcs": [
+     "art386"
+    ],
+    "body": [
+     "constitutes(P,X,bribeTaking)",
+     "solicitsProperty(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "索贿的从重处罚"
+   },
+   {
+    "key": "k386-limit",
+    "srcs": [
+     "art386"
+    ],
+    "body": [
+     "constitutes(P,X,bribeTaking)",
+     "solicitsProperty(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceOutsideStatutoryRange(P,X)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "索贿从重只能在依第383条确定的法定刑幅度内进行，不得超出法定刑限度；此为从重处罚一般原理（学理），本条未明文"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "constitutes": "符合构成要件",
+   "punishPerArt383": "punishPerArt383(P,X)：对 P 就受贿犯罪 X 根据受贿所得数额及情节，依照刑法第383条的规定处罚",
+   "solicitsProperty": "索取他人财物",
+   "sentence": "量刑",
+   "sentenceOutsideStatutoryRange": "sentenceOutsideStatutoryRange(P,X)：超出法定刑限度（低于法定最低刑或高于法定最高刑）对 P 就犯罪 X 判处刑罚"
+  }
+ },
+ "art:387": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家机关、国有公司、企业、事业单位、人民团体索取或非法收受他人财物为他人谋利，是否成立单位受贿罪（unitBribeTaking）及如何处罚",
+     "rules": [
+      "k387-subj",
+      "k387-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体限于国家机关、国有公司、国有企业、国有事业单位、人民团体（国有单位主体）",
+     "rules": [
+      "k387-subj"
+     ]
+    },
+    {
+     "text": "行为条件：索取他人财物或者非法收受他人财物，并为他人谋取利益，且情节严重",
+     "rules": [
+      "k387-1"
+     ]
+    },
+    {
+     "text": "拟制情形：上述单位在经济往来中，在帐外暗中收受各种名义的回扣、手续费的，以受贿论",
+     "rules": [
+      "k387-2"
+     ]
+    },
+    {
+     "text": "以受贿论的情形依照第1款规定处罚，仍须达到情节严重才成立单位受贿罪",
+     "rules": [
+      "k387-2b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "双罚制之一：对单位判处罚金",
+     "rules": [
+      "k387-fine"
+     ]
+    },
+    {
+     "text": "双罚制之二：对直接负责的主管人员和其他直接责任人员，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k387-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，对直接负责的主管人员和其他直接责任人员处三年以上十年以下有期徒刑",
+     "rules": [
+      "k387-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时适用加重档（三年以上十年以下），排除三年以下有期徒刑或拘役的基本档",
+     "rules": [
+      "k387-aggr",
+      "k387-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体是国有单位，收受的回扣、手续费归单位帐外暗中占有；若归个人所有，则属自然人受贿罪（第385条、第163条），不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k387-subj",
+    "srcs": [
+     "art387#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateOrgan(U)",
+       "stateOwnedUnit(U)",
+       "peopleOrganization(U)"
+      ]
+     }
+    ],
+    "heads": [
+     "unitBribeTakingSubject(U)"
+    ],
+    "auth": "npc",
+    "note": "本罪主体限于国家机关、国有公司企业事业单位、人民团体"
+   },
+   {
+    "key": "k387-1",
+    "srcs": [
+     "art387#1"
+    ],
+    "body": [
+     "unitBribeTakingSubject(U)",
+     {
+      "or": [
+       "solicitsProperty(U,X)",
+       "acceptsProperty(U,X)"
+      ]
+     },
+     "seeksBenefitForGiver(U,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(U,X,unitBribeTaking)",
+     "unitCrimeName(X,unitBribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "国有单位索取或非法收受他人财物、为他人谋取利益且情节严重的，成立单位受贿罪"
+   },
+   {
+    "key": "k387-2",
+    "srcs": [
+     "art387#2"
+    ],
+    "body": [
+     "unitBribeTakingSubject(U)",
+     "inEconomicExchange(X)",
+     "receivesKickbackOrFee(U,X)",
+     "offBookSecretReceipt(U,X)"
+    ],
+    "heads": [
+     "deemedUnitBribeTaking(U,X)"
+    ],
+    "auth": "npc",
+    "note": "在经济往来中帐外暗中收受各种名义回扣、手续费的，以受贿论"
+   },
+   {
+    "key": "k387-2b",
+    "srcs": [
+     "art387#2",
+     "art387#1"
+    ],
+    "body": [
+     "deemedUnitBribeTaking(U,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(U,X,unitBribeTaking)",
+     "unitCrimeName(X,unitBribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "以受贿论的情形准用第1款处罚，故仍以情节严重为入罪门槛"
+   },
+   {
+    "key": "k387-fine",
+    "srcs": [
+     "art387#1"
+    ],
+    "body": [
+     "constitutes(U,X,unitBribeTaking)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "成立单位受贿罪的，对单位判处罚金"
+   },
+   {
+    "key": "k387-basic",
+    "srcs": [
+     "art387#1"
+    ],
+    "body": [
+     "constitutes(U,X,unitBribeTaking)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k387-aggr",
+    "srcs": [
+     "art387#1"
+    ],
+    "body": [
+     "constitutes(U,X,unitBribeTaking)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，对直接负责的主管人员和其他直接责任人员处三年以上十年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "stateOwnedUnit": "stateOwnedUnit(U)：U 是国有公司、国有企业或国有事业单位",
+   "peopleOrganization": "peopleOrganization(U)：U 是人民团体",
+   "unitBribeTakingSubject": "unitBribeTakingSubject(U)：U 属于刑法第387条第1款所列单位（国家机关、国有公司、国有企业、国有事业单位、人民团体）",
+   "solicitsProperty": "索取他人财物",
+   "acceptsProperty": "非法收受他人财物",
+   "seeksBenefitForGiver": "为他人谋取利益",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "inEconomicExchange": "inEconomicExchange(X)：行为 X 发生在经济往来中",
+   "receivesKickbackOrFee": "receivesKickbackOrFee(P,X)：P 通过行为 X 收受各种名义的回扣、手续费",
+   "offBookSecretReceipt": "offBookSecretReceipt(U,X)：单位 U 通过行为 X 在帐外暗中收受财物（回扣、手续费等）",
+   "deemedUnitBribeTaking": "deemedUnitBribeTaking(U,X)：U 的行为 X 依第387条第2款以受贿论，依第1款规定处罚",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑"
+  }
+ },
+ "art:388": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家工作人员利用本人职权或地位形成的便利条件，通过其他国家工作人员职务上的行为为请托人谋利并索取、收受财物的，是否以受贿论处（斡旋受贿／间接受贿）",
+     "rules": [
+      "k388-cond",
+      "k388-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家工作人员；利用本人职权或者地位形成的便利条件；通过其他国家工作人员职务上的行为；为请托人谋取不正当利益；索取请托人财物或者收受请托人财物",
+     "rules": [
+      "k388-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "为请托人谋取的是正当利益的，欠缺“不正当利益”要件，不成立本条斡旋受贿（学理）",
+     "rules": [
+      "k388-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "以受贿论处，即视为符合受贿罪的构成要件",
+     "rules": [
+      "k388-1"
+     ]
+    },
+    {
+     "text": "依受贿罪追究刑事责任（具体量刑依受贿罪的规定，本条未另设法定刑）",
+     "rules": [
+      "k388-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "与直接受贿的区别：本条并非利用本人职务上的便利直接为请托人办事，而是利用本人职权或地位形成的便利条件，通过其他国家工作人员的职务行为实现，且以为请托人谋取不正当利益为要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k388-cond",
+    "srcs": [
+     "art388#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "usesConvenienceOfAuthorityOrStatus(P,X)",
+     "throughOtherFunctionaryOfficialAct(P,X,Q)",
+     "seeksImproperBenefitForPetitioner(P,X,V)",
+     "solicitsOrAcceptsPetitionerProperty(P,X,V)"
+    ],
+    "heads": [
+     "indirectBribeTakingConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "斡旋受贿的主体、便利条件、中介职务行为、不正当利益与索取收受财物五项条件"
+   },
+   {
+    "key": "k388-1",
+    "srcs": [
+     "art388#1"
+    ],
+    "body": [
+     "indirectBribeTakingConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,bribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "具备斡旋受贿条件的，以受贿论处"
+   },
+   {
+    "key": "k388-2",
+    "srcs": [
+     "art388#1"
+    ],
+    "body": [
+     "indirectBribeTakingConditions(P,X)"
+    ],
+    "heads": [
+     "responsible(P,X,bribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "以受贿论处，依受贿罪负刑事责任（本条未规定独立法定刑）"
+   },
+   {
+    "key": "k388-exc",
+    "srcs": [
+     "art388#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "usesConvenienceOfAuthorityOrStatus(P,X)",
+     "throughOtherFunctionaryOfficialAct(P,X,Q)",
+     "seeksLegitimateBenefitForPetitioner(P,X,V)",
+     "solicitsOrAcceptsPetitionerProperty(P,X,V)"
+    ],
+    "heads": [
+     "-indirectBribeTakingConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "为请托人谋取正当利益的，不符合本条“不正当利益”要件，不成立斡旋受贿；此限制来自学理，法条未明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k388-exc",
+    "k388-cond",
+    "推断：结论冲突（('indirectBribeTakingConditions', '+')），k388-exc 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "usesConvenienceOfAuthorityOrStatus": "usesConvenienceOfAuthorityOrStatus(P,X)：P 在行为 X 中利用本人职权或者地位形成的便利条件",
+   "throughOtherFunctionaryOfficialAct": "throughOtherFunctionaryOfficialAct(P,X,Q)：P 通过行为 X 借助其他国家工作人员 Q 职务上的行为",
+   "seeksImproperBenefitForPetitioner": "seeksImproperBenefitForPetitioner(P,X,V)：P 通过行为 X 为请托人 V 谋取不正当利益",
+   "solicitsOrAcceptsPetitionerProperty": "solicitsOrAcceptsPetitionerProperty(P,X,V)：P 通过行为 X 向请托人 V 索取财物或者收受其财物",
+   "indirectBribeTakingConditions": "indirectBribeTakingConditions(P,X)：P 的行为 X 具备刑法第388条斡旋受贿的全部条件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seeksLegitimateBenefitForPetitioner": "seeksLegitimateBenefitForPetitioner(P,X,V)：P 通过行为 X 为请托人 V 谋取的是正当利益"
+  }
+ },
+ "art:388-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家工作人员的近亲属或者其他关系密切的人，以及离职的国家工作人员及其近亲属、关系密切人，利用该（原）职权、地位形成的影响力为请托人谋取不正当利益并索取、收受请托人财物，数额较大或者有其他较重情节的，是否构成利用影响力受贿罪",
+     "rules": [
+      "k388z1-cond",
+      "k388z1-2",
+      "k388z1-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款主体：国家工作人员的近亲属，或者其他与该国家工作人员关系密切的人（本人不是利用自己职权的在职国家工作人员）",
+     "rules": [
+      "k388z1-cond"
+     ]
+    },
+    {
+     "text": "行为路径二选一：①通过该国家工作人员职务上的行为；②利用该国家工作人员职权或者地位形成的便利条件，通过其他国家工作人员职务上的行为",
+     "rules": [
+      "k388z1-cond"
+     ]
+    },
+    {
+     "text": "为请托人谋取不正当利益，并索取请托人财物或者收受请托人财物",
+     "rules": [
+      "k388z1-cond"
+     ]
+    },
+    {
+     "text": "入罪门槛：数额较大或者有其他较重情节（数额巨大、特别巨大或情节严重、特别严重的当然满足该门槛）",
+     "rules": [
+      "k388z1-1"
+     ]
+    },
+    {
+     "text": "第2款主体与影响力来源：离职的国家工作人员本人、其近亲属以及其他与其关系密切的人，利用该离职国家工作人员原职权或者地位形成的便利条件，通过其他国家工作人员职务上的行为实施前款行为",
+     "rules": [
+      "k388z1-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成利用影响力受贿罪（influenceBribeTaking），负刑事责任",
+     "rules": [
+      "k388z1-1"
+     ]
+    },
+    {
+     "text": "第一档：数额较大或者有其他较重情节的，处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k388z1-t1"
+     ]
+    },
+    {
+     "text": "第二档：数额巨大或者有其他严重情节的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k388z1-t2"
+     ]
+    },
+    {
+     "text": "第三档：数额特别巨大或者有其他特别严重情节的，处七年以上有期徒刑，并处罚金或者没收财产",
+     "rules": [
+      "k388z1-t3"
+     ]
+    },
+    {
+     "text": "第2款情形依照前款的规定定罪处罚，即适用同一犯罪构成与上述三档法定刑",
+     "rules": [
+      "k388z1-2",
+      "k388z1-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "三档法定刑按数额、情节递进，符合高档次的排除低档次的适用",
+     "rules": [
+      "k388z1-t1",
+      "k388z1-t2",
+      "k388z1-t3"
+     ]
+    },
+    {
+     "text": "第2款是准用条款，其定罪与量刑均回到第1款的规定",
+     "rules": [
+      "k388z1-2",
+      "k388z1-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与受贿罪（第385条）、斡旋受贿（第388条）的区别：后两者主体是在职国家工作人员本人，利用的是本人职权或本人职权地位形成的便利条件；本条主体是近亲属等关系密切人以及离职的国家工作人员及其近亲属、关系密切人（说明性，涉及本行未挂载条文）",
+     "rules": []
+    },
+    {
+     "text": "离职的国家工作人员本人利用原职权或者地位形成的便利条件实施前款行为的，仍依本条定罪处罚，而不成立受贿罪",
+     "rules": [
+      "k388z1-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k388z1-cond",
+    "srcs": [
+     "art388-1#1"
+    ],
+    "body": [
+     "stateFunctionary(F)",
+     {
+      "or": [
+       "closeRelativeOf(P,F)",
+       "closelyRelatedTo(P,F)"
+      ]
+     },
+     {
+      "or": [
+       "throughOfficialActOf(P,X,F)",
+       "usesInfluenceOf(P,X,F) throughOtherFunctionaryAct(P,X)"
+      ]
+     },
+     "petitioner(T,X)",
+     "seeksImproperBenefitFor(P,X,T)",
+     {
+      "or": [
+       "solicitsProperty(P,X)",
+       "acceptsProperty(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "influenceBribeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款：近亲属或关系密切人通过该国家工作人员职务行为，或利用其职权地位便利通过其他国家工作人员职务行为，为请托人谋取不正当利益并索取、收受请托人财物"
+   },
+   {
+    "key": "k388z1-2",
+    "srcs": [
+     "art388-1#2"
+    ],
+    "body": [
+     "formerStateFunctionary(F)",
+     {
+      "or": [
+       "formerStateFunctionary(P)",
+       "closeRelativeOf(P,F)",
+       "closelyRelatedTo(P,F)"
+      ]
+     },
+     "usesFormerInfluenceOf(P,X,F)",
+     "throughOtherFunctionaryAct(P,X)",
+     "petitioner(T,X)",
+     "seeksImproperBenefitFor(P,X,T)",
+     {
+      "or": [
+       "solicitsProperty(P,X)",
+       "acceptsProperty(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "influenceBribeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款：离职的国家工作人员本人或其近亲属、其他关系密切人，利用其原职权或地位形成的便利条件实施前款行为的，同样具备本罪构成条件，依前款定罪处罚"
+   },
+   {
+    "key": "k388z1-1",
+    "srcs": [
+     "art388-1#1"
+    ],
+    "body": [
+     "influenceBribeConditions(P,X)",
+     {
+      "or": [
+       "amountRelativelyLarge(X)",
+       "otherRelativelySeriousCircumstance(X)",
+       "amountHuge(X)",
+       "otherSeriousCircumstance(X)",
+       "bribeAmountEspeciallyHuge(X)",
+       "bribeOtherEspeciallySeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,influenceBribeTaking)",
+     "responsible(P,X,influenceBribeTaking)"
+    ],
+    "auth": "npc",
+    "note": "数额较大或有其他较重情节（巨大、特别巨大等更高档次当然包含在内）即构成利用影响力受贿罪，负刑事责任"
+   },
+   {
+    "key": "k388z1-t1",
+    "srcs": [
+     "art388-1#1"
+    ],
+    "body": [
+     "influenceBribeConditions(P,X)",
+     {
+      "or": [
+       "amountRelativelyLarge(X)",
+       "otherRelativelySeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "sentenceUnder3OrDetentionWithFine(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第一档：数额较大或者有其他较重情节的，处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k388z1-t2",
+    "srcs": [
+     "art388-1#1"
+    ],
+    "body": [
+     "influenceBribeConditions(P,X)",
+     {
+      "or": [
+       "amountHuge(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "sentence3To7WithFine(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第二档：数额巨大或者有其他严重情节的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k388z1-t3",
+    "srcs": [
+     "art388-1#1"
+    ],
+    "body": [
+     "influenceBribeConditions(P,X)",
+     {
+      "or": [
+       "bribeAmountEspeciallyHuge(X)",
+       "bribeOtherEspeciallySeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "sentenceFrom7YearsWithFineOrConfiscation(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第三档：数额特别巨大或者有其他特别严重情节的，处七年以上有期徒刑，并处罚金或者没收财产"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "closeRelativeOf": "closeRelativeOf(R,V)：R 是 V 的近亲属",
+   "closelyRelatedTo": "closelyRelatedTo(P,F)：P 是与国家工作人员（或离职的国家工作人员）F 关系密切的人（近亲属以外）",
+   "throughOfficialActOf": "throughOfficialActOf(P,X,F)：P 通过行为 X 借助国家工作人员 F 职务上的行为（为请托人谋利）",
+   "usesInfluenceOf": "usesInfluenceOf(P,X,F)：P 通过行为 X 利用国家工作人员 F 职权或者地位形成的便利条件",
+   "throughOtherFunctionaryAct": "throughOtherFunctionaryAct(P,X)：P 通过行为 X 借助其他国家工作人员职务上的行为（为请托人谋利）",
+   "petitioner": "petitioner(T,X)：T 是行为 X 中的请托人",
+   "seeksImproperBenefitFor": "seeksImproperBenefitFor(P,X,T)：P 通过行为 X 为请托人 T 谋取不正当利益",
+   "solicitsProperty": "索取他人财物",
+   "acceptsProperty": "非法收受他人财物",
+   "influenceBribeConditions": "influenceBribeConditions(P,X)：P 的行为 X 具备刑法第388条之一利用影响力受贿罪的主体、影响力来源、谋利与索取收受财物条件",
+   "formerStateFunctionary": "formerStateFunctionary(F)：F 是离职的国家工作人员",
+   "usesFormerInfluenceOf": "usesFormerInfluenceOf(P,X,F)：P 通过行为 X 利用离职的国家工作人员 F 原职权或者地位形成的便利条件",
+   "amountRelativelyLarge": "数额较大",
+   "otherRelativelySeriousCircumstance": "otherRelativelySeriousCircumstance(X)：行为 X 具有数额较大以外的其他较重情节",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "bribeAmountEspeciallyHuge": "bribeAmountEspeciallyHuge(X)：行为 X 索取、收受财物的数额特别巨大",
+   "bribeOtherEspeciallySeriousCircumstance": "bribeOtherEspeciallySeriousCircumstance(X)：行为 X 具有数额特别巨大以外的其他特别严重情节",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "sentenceFrom7YearsWithFineOrConfiscation": "sentenceFrom7YearsWithFineOrConfiscation(P,X)：对 P 就犯罪 X 处七年以上有期徒刑，并处罚金或者没收财产"
+  }
+ },
+ "art:390-1": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "为谋取不正当利益向“有影响力的人”行贿，是否成立对有影响力的人行贿罪，以及适用哪一量刑档次",
+     "rules": [
+      "k390z1-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "为谋取不正当利益，向国家工作人员的近亲属或者其他与该国家工作人员关系密切的人给予财物（行贿）",
+     "rules": [
+      "k390z1-basic",
+      "k390z1-obj1"
+     ]
+    },
+    {
+     "text": "行贿对象也可以是离职的国家工作人员本人",
+     "rules": [
+      "k390z1-obj2"
+     ]
+    },
+    {
+     "text": "行贿对象还包括离职的国家工作人员的近亲属以及其他与其关系密切的人",
+     "rules": [
+      "k390z1-obj3"
+     ]
+    },
+    {
+     "text": "单位实施上述行贿行为的，成立对有影响力的人行贿罪的单位犯罪",
+     "rules": [
+      "k390z1-unit"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "单位犯罪中，对直接负责的主管人员和其他直接责任人员只依第2款处三年以下有期徒刑或者拘役并处罚金，不适用第1款的情节严重、特别严重加重档",
+     "rules": [
+      "k390z1-unit-person"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k390z1-p1"
+     ]
+    },
+    {
+     "text": "情节严重的，或者使国家利益遭受重大损失的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k390z1-p2"
+     ]
+    },
+    {
+     "text": "情节特别严重的，或者使国家利益遭受特别重大损失的，处七年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k390z1-p3"
+     ]
+    },
+    {
+     "text": "单位犯罪的，对单位判处罚金（双罚制）",
+     "rules": [
+      "k390z1-unit-fine"
+     ]
+    },
+    {
+     "text": "单位犯罪中，对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k390z1-unit-person"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节（特别）严重或使国家利益遭受（特别）重大损失的加重档，优先于基本档；特别严重档优先于严重档",
+     "rules": [
+      "k390z1-p2",
+      "k390z1-p3"
+     ]
+    },
+    {
+     "text": "第2款是单位犯罪责任人员量刑的特别规定，优先于第1款各档",
+     "rules": [
+      "k390z1-unit-person"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象限于国家工作人员的近亲属等“有影响力的人”及离职国家工作人员一方，而非在职国家工作人员本人；向国家工作人员本人行贿成立行贿罪，不适用本条",
+     "rules": [
+      "k390z1-obj1",
+      "k390z1-obj2",
+      "k390z1-obj3"
+     ]
+    },
+    {
+     "text": "本罪与利用影响力受贿罪（第388条之一）互为对向犯，本条只规定行贿一方的刑事责任",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k390z1-obj1",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "stateFunctionary(F)",
+     {
+      "or": [
+       "closeRelativeOf(V,F)",
+       "closeRelationshipWith(V,F)"
+      ]
+     }
+    ],
+    "heads": [
+     "influentialPerson(V)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员的近亲属或者其他与其关系密切的人，属于本罪的行贿对象（有影响力的人）"
+   },
+   {
+    "key": "k390z1-obj2",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "formerStateFunctionary(V)"
+    ],
+    "heads": [
+     "influentialPerson(V)"
+    ],
+    "auth": "npc",
+    "note": "离职的国家工作人员本人也是本罪的行贿对象"
+   },
+   {
+    "key": "k390z1-obj3",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "formerStateFunctionary(F)",
+     {
+      "or": [
+       "closeRelativeOf(V,F)",
+       "closeRelationshipWith(V,F)"
+      ]
+     }
+    ],
+    "heads": [
+     "influentialPerson(V)"
+    ],
+    "auth": "npc",
+    "note": "离职的国家工作人员的近亲属以及其他与其关系密切的人，也是本罪的行贿对象"
+   },
+   {
+    "key": "k390z1-basic",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "givesPropertyTo(P,X,V)",
+     "seeksImproperBenefit(P,X)",
+     "influentialPerson(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,bribeGivingToInfluentialPerson)"
+    ],
+    "auth": "npc",
+    "note": "为谋取不正当利益向有影响力的人给予财物的，符合对有影响力的人行贿罪的构成要件"
+   },
+   {
+    "key": "k390z1-p1",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,bribeGivingToInfluentialPerson)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)",
+     "~causesMajorLossToStateInterest(X)",
+     "~causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k390z1-p2",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,bribeGivingToInfluentialPerson)",
+     {
+      "or": [
+       "seriousCircumstances(X)",
+       "causesMajorLossToStateInterest(X)"
+      ]
+     },
+     "~especiallySeriousCircumstances(X)",
+     "~causesEspeciallyMajorLossToStateInterest(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To7WithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重或者使国家利益遭受重大损失的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k390z1-p3",
+    "srcs": [
+     "art390-1#1"
+    ],
+    "body": [
+     "constitutes(P,X,bribeGivingToInfluentialPerson)",
+     {
+      "or": [
+       "especiallySeriousCircumstances(X)",
+       "causesEspeciallyMajorLossToStateInterest(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom7To10YearsWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重或者使国家利益遭受特别重大损失的，处七年以上十年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k390z1-unit",
+    "srcs": [
+     "art390-1#2"
+    ],
+    "body": [
+     "unit(U)",
+     "givesPropertyTo(U,X,V)",
+     "seeksImproperBenefit(U,X)",
+     "influentialPerson(V)"
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,bribeGivingToInfluentialPerson)"
+    ],
+    "auth": "npc",
+    "note": "单位犯前款罪的，成立对有影响力的人行贿罪的单位犯罪"
+   },
+   {
+    "key": "k390z1-unit-fine",
+    "srcs": [
+     "art390-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,bribeGivingToInfluentialPerson)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪的，对单位判处罚金"
+   },
+   {
+    "key": "k390z1-unit-person",
+    "srcs": [
+     "art390-1#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,bribeGivingToInfluentialPerson)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪中，对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役，并处罚金"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "closeRelativeOf": "closeRelativeOf(R,V)：R 是 V 的近亲属",
+   "closeRelationshipWith": "closeRelationshipWith(V,F)：V 是与 F 关系密切的人（近亲属以外具有密切关系、可施加影响的人）",
+   "influentialPerson": "influentialPerson(V)：V 属于第390条之一的行贿对象，即国家工作人员的近亲属或其他关系密切的人，或者离职的国家工作人员及其近亲属、其他关系密切的人（有影响力的人）",
+   "formerStateFunctionary": "formerStateFunctionary(F)：F 是离职的国家工作人员",
+   "givesPropertyTo": "givesPropertyTo(P,X,V)：P 通过行为 X 给予 V 财物（行贿的交付行为）",
+   "seeksImproperBenefit": "为谋取不正当利益",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "causesMajorLossToStateInterest": "causesMajorLossToStateInterest(X)：行为 X 致使国家利益遭受重大损失",
+   "causesEspeciallyMajorLossToStateInterest": "causesEspeciallyMajorLossToStateInterest(X)：行为 X 致使国家利益遭受特别重大损失",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "sentenceFrom7To10YearsWithFine": "sentenceFrom7To10YearsWithFine(P,X)：对 P 就犯罪 X 处七年以上十年以下有期徒刑，并处罚金",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员"
+  }
+ },
+ "art:391": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "为谋取不正当利益给予国家机关、国有公司、企业、事业单位、人民团体以财物，或者在经济往来中违反国家规定给予各种名义的回扣、手续费的，是否构成对单位行贿罪（bribeGivingToUnit）",
+     "rules": [
+      "k391-1",
+      "k391-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受贿方须为单位：国家机关、国有公司、国有企业、国有事业单位、人民团体",
+     "rules": [
+      "k391-unit"
+     ]
+    },
+    {
+     "text": "行为类型一：为谋取不正当利益，给予上述单位以财物",
+     "rules": [
+      "k391-1"
+     ]
+    },
+    {
+     "text": "行为类型二：在经济往来中，违反国家规定，给予上述单位各种名义的回扣、手续费（条文未要求“为谋取不正当利益”目的）",
+     "rules": [
+      "k391-2"
+     ]
+    },
+    {
+     "text": "单位可以成为本罪主体，单位实施前款行为的成立单位犯罪",
+     "rules": [
+      "k391-u1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k391-p1"
+     ]
+    },
+    {
+     "text": "情节严重的：处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k391-p2"
+     ]
+    },
+    {
+     "text": "单位犯罪的，对单位判处罚金",
+     "rules": [
+      "k391-u2"
+     ]
+    },
+    {
+     "text": "单位犯罪的，对其直接负责的主管人员和其他直接责任人员依照第1款的规定处罚",
+     "rules": [
+      "k391-u3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的适用第二档法定刑，排除基本档的适用",
+     "rules": [
+      "k391-p2",
+      "k391-p1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪受贿方限于国家机关、国有公司企业事业单位、人民团体等单位；向国家工作人员个人行贿的，属行贿罪（第389条），不适用本条",
+     "rules": [
+      "k391-unit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k391-unit",
+    "srcs": [
+     "art391#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateOrgan(U)",
+       "stateOwnedUnit(U)",
+       "peopleOrganization(U)"
+      ]
+     }
+    ],
+    "heads": [
+     "bribeRecipientUnit(U)"
+    ],
+    "auth": "npc",
+    "note": "本条受贿方限于国家机关、国有公司、国有企业、国有事业单位、人民团体等单位"
+   },
+   {
+    "key": "k391-1",
+    "srcs": [
+     "art391#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "seeksImproperBenefit(P,X)",
+     "givesPropertyTo(P,X,U)",
+     "bribeRecipientUnit(U)"
+    ],
+    "heads": [
+     "constitutes(P,X,bribeGivingToUnit)"
+    ],
+    "auth": "npc",
+    "note": "为谋取不正当利益给予国家机关、国有公司企业事业单位、人民团体以财物的，构成对单位行贿罪（罪名常量 bribeGivingToUnit）"
+   },
+   {
+    "key": "k391-2",
+    "srcs": [
+     "art391#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "inEconomicExchange(X)",
+     "violatesStateRegulations(X)",
+     "givesKickbackOrFee(P,X,U)",
+     "bribeRecipientUnit(U)"
+    ],
+    "heads": [
+     "constitutes(P,X,bribeGivingToUnit)"
+    ],
+    "auth": "npc",
+    "note": "经济往来中违反国家规定给予单位各种名义回扣、手续费的，亦构成本罪，条文未要求谋取不正当利益目的"
+   },
+   {
+    "key": "k391-p1",
+    "srcs": [
+     "art391#1"
+    ],
+    "body": [
+     "constitutes(P,X,bribeGivingToUnit)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k391-p2",
+    "srcs": [
+     "art391#1"
+    ],
+    "body": [
+     "constitutes(P,X,bribeGivingToUnit)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To7WithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的：三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k391-u1",
+    "srcs": [
+     "art391#2"
+    ],
+    "body": [
+     "unit(U)",
+     "act(U,X)",
+     "constitutes(U,X,bribeGivingToUnit)"
+    ],
+    "heads": [
+     "unitCrime(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯前款罪的，成立对单位行贿罪的单位犯罪"
+   },
+   {
+    "key": "k391-u2",
+    "srcs": [
+     "art391#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,bribeGivingToUnit)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪的，对单位判处罚金"
+   },
+   {
+    "key": "k391-u3",
+    "srcs": [
+     "art391#2"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "constitutes(U,X,bribeGivingToUnit)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt391Para1(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "stateOwnedUnit": "stateOwnedUnit(U)：U 是国有公司、国有企业或国有事业单位",
+   "peopleOrganization": "peopleOrganization(U)：U 是人民团体",
+   "bribeRecipientUnit": "bribeRecipientUnit(U)：U 是刑法第391条对单位行贿罪的受贿单位（国家机关、国有公司、国有企业、国有事业单位、人民团体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "seeksImproperBenefit": "为谋取不正当利益",
+   "givesPropertyTo": "givesPropertyTo(P,X,V)：P 通过行为 X 给予 V 财物（行贿的交付行为）",
+   "constitutes": "符合构成要件",
+   "inEconomicExchange": "inEconomicExchange(X)：行为 X 发生在经济往来中",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "givesKickbackOrFee": "givesKickbackOrFee(P,X,U)：P 通过行为 X 给予单位 U 各种名义的回扣、手续费",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "punishPerArt391Para1": "情节严重的三年以上七年以下有期徒刑并处罚金）"
+  }
+ },
+ "art:392": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "向国家工作人员介绍贿赂的行为是否构成介绍贿赂罪，以及在何条件下从宽处罚",
+     "rules": [
+      "k392-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上在行贿人与国家工作人员之间沟通、撮合，介绍贿赂；且情节严重（介绍贿赂罪以“情节严重”为入罪门槛）",
+     "rules": [
+      "k392-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "介绍人与行贿人或受贿人一方通谋、参与实施行贿或受贿的，应以行贿罪或受贿罪的共犯论处，不成立介绍贿赂罪（学理）",
+     "rules": [
+      "k392-accomplice"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成介绍贿赂罪的，负刑事责任，处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k392-1",
+      "k392-sentence"
+     ]
+    },
+    {
+     "text": "介绍贿赂人在被追诉前主动交待介绍贿赂行为的，可以减轻处罚或者免除处罚",
+     "rules": [
+      "k392-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款“被追诉前主动交待”是特别从宽规定，可突破第1款法定刑幅度予以减轻或免除处罚",
+     "rules": [
+      "k392-2",
+      "k392-sentence"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "介绍贿赂人居于第三方中间人地位；若与一方形成共同故意并参与实行，则属行贿罪或受贿罪共犯，而非本罪（学理）",
+     "rules": [
+      "k392-accomplice"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k392-1",
+    "srcs": [
+     "art392#1"
+    ],
+    "body": [
+     "introducesBriberyTo(P,X,F)",
+     "stateFunctionary(F)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,introducingBribery)",
+     "responsible(P,X,introducingBribery)"
+    ],
+    "auth": "npc",
+    "note": "向国家工作人员介绍贿赂、情节严重的，构成介绍贿赂罪并负刑事责任"
+   },
+   {
+    "key": "k392-sentence",
+    "srcs": [
+     "art392#1"
+    ],
+    "body": [
+     "responsible(P,X,introducingBribery)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "介绍贿赂罪处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k392-2",
+    "srcs": [
+     "art392#2"
+    ],
+    "body": [
+     "constitutes(P,X,introducingBribery)",
+     "confessesBeforeProsecution(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,reducedOrExempt)"
+     }
+    ],
+    "auth": "npc",
+    "note": "介绍贿赂人在被追诉前主动交待介绍贿赂行为的，可以减轻处罚或者免除处罚"
+   },
+   {
+    "key": "k392-accomplice",
+    "srcs": [
+     "art392#1"
+    ],
+    "body": [
+     "introducesBriberyTo(P,X,F)",
+     "stateFunctionary(F)",
+     "colludesWithBribeParty(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,introducingBribery)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与体系解释：介绍人与行贿或受贿一方通谋并参与实行的，以行贿罪或受贿罪共犯论处，不成立介绍贿赂罪；法条未明文，故标为学理"
+   }
+  ],
+  "overrides": [
+   [
+    "k392-accomplice",
+    "k392-1",
+    "推断：结论冲突（('constitutes', '+')），k392-accomplice 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "introducesBriberyTo": "introducesBriberyTo(P,X,F)：P 通过行为 X 在行贿人与国家工作人员 F 之间沟通、撮合，向 F 介绍贿赂（罪名常量 introducingBribery=介绍贿赂罪）",
+   "stateFunctionary": "国家工作人员",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "confessesBeforeProsecution": "被追诉前主动交待",
+   "sentence": "量刑",
+   "colludesWithBribeParty": "colludesWithBribeParty(P,X)：P 在行为 X 中与行贿人或受贿人一方通谋，并参与实施其行贿或受贿行为"
+  }
+ },
+ "art:393": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "单位行贿应认定为单位行贿罪（处罚单位并处罚责任人员），还是因违法所得归个人所有而依行贿罪处理",
+     "rules": [
+      "k393-cond",
+      "k393-unit",
+      "k393-personal"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体是单位；行为是为谋取不正当利益而行贿，或者违反国家规定给予国家工作人员回扣、手续费；且情节严重",
+     "rules": [
+      "k393-cond"
+     ]
+    },
+    {
+     "text": "受刑罚处罚的自然人限于单位中直接负责的主管人员和其他直接责任人员",
+     "rules": [
+      "k393-person-basic",
+      "k393-person-aggravated"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因行贿取得的违法所得归个人所有的，不按单位行贿罪处理，依照第389条、第390条以行贿罪定罪处罚",
+     "rules": [
+      "k393-personal"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合条件的，成立单位行贿罪的单位犯罪",
+     "rules": [
+      "k393-unit"
+     ]
+    },
+    {
+     "text": "对单位判处罚金",
+     "rules": [
+      "k393-fine"
+     ]
+    },
+    {
+     "text": "对直接负责的主管人员和其他直接责任人员，处三年以下有期徒刑或者拘役，并处罚金",
+     "rules": [
+      "k393-person-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，对直接负责的主管人员和其他直接责任人员处三年以上十年以下有期徒刑，并处罚金",
+     "rules": [
+      "k393-person-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "违法所得归个人所有时，第389条、第390条的行贿罪规定优先，排除本条单位行贿罪及其刑罚的适用",
+     "rules": [
+      "k393-personal"
+     ]
+    },
+    {
+     "text": "情节特别严重的加重档优先于三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k393-person-aggravated",
+      "k393-person-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "单位行贿罪要求以单位名义、为单位谋取不正当利益且违法所得归单位；违法所得归个人所有的属名为单位实为个人行贿，按行贿罪论处",
+     "rules": [
+      "k393-unit",
+      "k393-personal"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k393-cond",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unit(U)",
+     "act(U,X)",
+     {
+      "or": [
+       "seeksImproperBenefit(U,X) bribes(U,X)",
+       "violatesStateRegulations(X) givesKickbackOrFeeToStateFunctionary(U,X)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "unitBribeConditions(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位为谋取不正当利益行贿，或者违反国家规定给予国家工作人员回扣、手续费，情节严重的，具备单位行贿罪条件"
+   },
+   {
+    "key": "k393-unit",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unitBribeConditions(U,X)"
+    ],
+    "heads": [
+     "constitutes(U,X,unitBribeGiving)"
+    ],
+    "auth": "npc",
+    "note": "具备第393条条件的，单位U的行为X符合单位行贿罪（unitBribeGiving）的构成要件"
+   },
+   {
+    "key": "k393-fine",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unitBribeConditions(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位判处罚金"
+   },
+   {
+    "key": "k393-person-basic",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unitBribeConditions(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionWithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对直接负责的主管人员和其他直接责任人员，处三年以下有期徒刑或者拘役，并处罚金"
+   },
+   {
+    "key": "k393-person-aggravated",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unitBribeConditions(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10WithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，对直接负责的主管人员和其他直接责任人员处三年以上十年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k393-personal",
+    "srcs": [
+     "art393"
+    ],
+    "body": [
+     "unit(U)",
+     "act(U,X)",
+     "bribes(U,X)",
+     "illegalProceedsOf(M,U,X)",
+     "personallyOwnedBy(M,P)"
+    ],
+    "heads": [
+     "convictAndPunish(P,X,bribeGiving)"
+    ],
+    "auth": "npc",
+    "note": "因行贿取得的违法所得归个人所有的，依照第389条、第390条以行贿罪对该个人定罪处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "seeksImproperBenefit": "为谋取不正当利益",
+   "bribes": "bribes(P,X)：P 通过行为 X 实施贿赂（给予财物等收买）",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "givesKickbackOrFeeToStateFunctionary": "givesKickbackOrFeeToStateFunctionary(P,X)：P（单位）通过行为 X 给予国家工作人员回扣、手续费",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "unitBribeConditions": "unitBribeConditions(U,X)：单位 U 的行为 X 具备刑法第393条单位行贿罪的主体、行为（为谋取不正当利益行贿或违反国家规定给予国家工作人员回扣、手续费）与情节严重条件",
+   "constitutes": "符合构成要件",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3OrDetentionWithFine": "sentenceUnder3OrDetentionWithFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役，并处罚金",
+   "sentence3To10WithFine": "sentence3To10WithFine(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑，并处罚金",
+   "illegalProceedsOf": "illegalProceedsOf(M,P,X)：M 是 P 因犯罪 X 违法所得的财物",
+   "personallyOwnedBy": "personallyOwnedBy(M,P)：M 属于犯罪分子 P 个人所有的财产",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚"
+  }
+ },
+ "art:394": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家工作人员在国内公务活动或者对外交往中接受礼物，依照国家规定应当交公而不交公、数额较大的，以贪污罪论处，依第382条、第383条定罪处罚",
+     "rules": [
+      "k394-1",
+      "k394-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体须为国家工作人员，且系在国内公务活动或者对外交往中接受礼物（行为X为接受礼物的行为）",
+     "rules": [
+      "k394-cond"
+     ]
+    },
+    {
+     "text": "所接受的礼物依照国家规定应当交公而行为人不交公，且数额较大",
+     "rules": [
+      "k394-cond",
+      "k394-obl"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "已将礼物交公，或者数额未达较大的，不成立本条以贪污罪论处的构成条件（反面推论）",
+     "rules": [
+      "k394-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依照国家规定应当交公的，行为人负有交公义务",
+     "rules": [
+      "k394-obl"
+     ]
+    },
+    {
+     "text": "具备本条条件的，其行为符合贪污罪的构成要件（法律拟制以贪污罪论）",
+     "rules": [
+      "k394-1"
+     ]
+    },
+    {
+     "text": "对行为人依照刑法第382条、第383条（贪污罪及其量刑档次）的规定定罪处罚",
+     "rules": [
+      "k394-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "已交公或数额未达较大的排除规则，优先于本条构成条件的认定规则",
+     "rules": [
+      "k394-neg",
+      "k394-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条与受贿罪的界限：本条是公务活动、对外交往中依国家规定应交公的礼物不交公，侵害的是公共财物所有权，故拟制为贪污；若系利用职务便利索取或收受他人财物并为他人谋取利益，则属受贿（第385条），不属本条范围（体系说明，本行未挂载相应条文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k394-cond",
+    "srcs": [
+     "art394#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "acceptsGift(P,X)",
+     {
+      "or": [
+       "inDomesticOfficialActivity(X)",
+       "inForeignExchangeActivity(X)"
+      ]
+     },
+     "shouldTurnOverGiftPerStateRules(P,X)",
+     "notTurnedOverGift(P,X)",
+     "amountRelativelyLarge(X)"
+    ],
+    "heads": [
+     "giftEmbezzlementConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员在国内公务活动或对外交往中接受礼物，依国家规定应交公而不交公、数额较大的，具备第394条以贪污罪论处的条件"
+   },
+   {
+    "key": "k394-obl",
+    "srcs": [
+     "art394#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "acceptsGift(P,X)",
+     {
+      "or": [
+       "inDomesticOfficialActivity(X)",
+       "inForeignExchangeActivity(X)"
+      ]
+     },
+     "shouldTurnOverGiftPerStateRules(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "turnOverGift(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "依照国家规定应当交公的礼物，行为人负有交公义务"
+   },
+   {
+    "key": "k394-1",
+    "srcs": [
+     "art394#1"
+    ],
+    "body": [
+     "giftEmbezzlementConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,corruption)"
+    ],
+    "auth": "npc",
+    "note": "具备本条条件的接受礼物不交公行为，以贪污罪论（符合贪污罪构成要件）"
+   },
+   {
+    "key": "k394-2",
+    "srcs": [
+     "art394#1"
+    ],
+    "body": [
+     "giftEmbezzlementConditions(P,X)",
+     "constitutes(P,X,corruption)"
+    ],
+    "heads": [
+     "convictAndPunish(P,X,corruption)"
+    ],
+    "auth": "npc",
+    "note": "依照刑法第382条、第383条的规定定罪处罚"
+   },
+   {
+    "key": "k394-neg",
+    "srcs": [
+     "art394#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "acceptsGift(P,X)",
+     {
+      "or": [
+       "turnedOverGift(P,X)",
+       "-amountRelativelyLarge(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-giftEmbezzlementConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "已交公或数额未达较大的，不成立本条以贪污罪论处的条件（由条文要件反面推论，学理）"
+   }
+  ],
+  "overrides": [
+   [
+    "k394-cond",
+    "k394-neg",
+    "推断：结论冲突（('giftEmbezzlementConditions', '+')），k394-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "acceptsGift": "acceptsGift(P,X)：P 通过行为 X 接受礼物",
+   "inDomesticOfficialActivity": "inDomesticOfficialActivity(X)：行为 X 发生于国内公务活动中",
+   "inForeignExchangeActivity": "inForeignExchangeActivity(X)：行为 X 发生于对外交往中",
+   "shouldTurnOverGiftPerStateRules": "shouldTurnOverGiftPerStateRules(P,X)：P 就行为 X 所接受的礼物依照国家规定应当交公",
+   "notTurnedOverGift": "notTurnedOverGift(P,X)：P 对行为 X 中接受的应当交公的礼物不交公",
+   "amountRelativelyLarge": "数额较大",
+   "giftEmbezzlementConditions": "giftEmbezzlementConditions(P,X)：P 的行为 X 具备刑法第394条接受礼物不交公以贪污罪论处的主体、场合、应交公而不交公及数额较大条件",
+   "turnOverGift": "turnOverGift(P,X)：P 将行为 X 中接受的礼物交公",
+   "constitutes": "符合构成要件",
+   "convictAndPunish": "convictAndPunish(P,X,C)：对 P 就行为 X 依罪名 C 的规定定罪处罚",
+   "turnedOverGift": "turnedOverGift(P,X)：P 已将行为 X 中接受的礼物交公"
+  }
+ },
+ "art:395": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "国家工作人员的财产、支出明显超过合法收入，差额巨大而不能说明来源的，是否构成巨额财产来源不明罪",
+     "rules": [
+      "k395-1"
+     ]
+    },
+    {
+     "text": "国家工作人员对境外存款隐瞒不报的申报义务违反与刑事责任",
+     "rules": [
+      "k395-declare",
+      "k395-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为国家工作人员；其财产、支出明显超过合法收入，差额巨大或者特别巨大",
+     "rules": [
+      "k395-1"
+     ]
+    },
+    {
+     "text": "经责令说明来源后不能说明来源（拒不说明、无法说明或说明不实）",
+     "rules": [
+      "k395-order",
+      "k395-1"
+     ]
+    },
+    {
+     "text": "境外存款数额较大且隐瞒不报",
+     "rules": [
+      "k395-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "隐瞒境外存款情节较轻的，不予处刑，由所在单位或者上级主管机关酌情给予行政处分",
+     "rules": [
+      "k395-2admin"
+     ]
+    },
+    {
+     "text": "差额部分的来源已查明系贪污、受贿等犯罪所得的，按相应犯罪处理，不成立巨额财产来源不明罪（学理与实务）",
+     "rules": [
+      "k395-distinguish"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "差额巨大的，可以责令该国家工作人员说明财产来源",
+     "rules": [
+      "k395-order"
+     ]
+    },
+    {
+     "text": "不能说明来源的，差额部分以非法所得论",
+     "rules": [
+      "k395-deem"
+     ]
+    },
+    {
+     "text": "差额巨大的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k395-s1"
+     ]
+    },
+    {
+     "text": "差额特别巨大的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k395-s2"
+     ]
+    },
+    {
+     "text": "财产的差额部分予以追缴",
+     "rules": [
+      "k395-recover"
+     ]
+    },
+    {
+     "text": "国家工作人员在境外的存款，应当依照国家规定申报",
+     "rules": [
+      "k395-declare"
+     ]
+    },
+    {
+     "text": "隐瞒境外存款数额较大的，处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k395-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "差额特别巨大的加重刑档优先于五年以下的基本刑档",
+     "rules": [
+      "k395-s2",
+      "k395-s1"
+     ]
+    },
+    {
+     "text": "情节较轻时，行政处分的规定优先于处刑规定",
+     "rules": [
+      "k395-2admin",
+      "k395-2s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪与贪污、受贿等罪的区别在于差额来源是否查明：来源查明即依相应犯罪定罪，本罪为兜底",
+     "rules": [
+      "k395-distinguish"
+     ]
+    },
+    {
+     "text": "第1款巨额财产来源不明罪（hugePropertyOfUnidentifiedSource）与第2款隐瞒境外存款罪（concealmentOfOverseasDeposits）是两个独立罪名：前者针对财产差额不能说明来源，后者针对境外存款申报义务的违反",
+     "rules": [
+      "k395-1",
+      "k395-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k395-order",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "propertyExpenditureObviouslyExceedsIncome(P,X)",
+     {
+      "or": [
+       "differenceHuge(X)",
+       "differenceEspeciallyHuge(X)"
+      ]
+     },
+     "judicialOrgan(O)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "orderExplainSource(O,P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "财产、支出明显超过合法收入且差额巨大的，办案司法机关可以责令该国家工作人员说明来源"
+   },
+   {
+    "key": "k395-deem",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "propertyExpenditureObviouslyExceedsIncome(P,X)",
+     {
+      "or": [
+       "differenceHuge(X)",
+       "differenceEspeciallyHuge(X)"
+      ]
+     },
+     "orderedToExplainSource(P,X)",
+     "cannotExplainSource(P,X)",
+     "differencePartOf(M,X)"
+    ],
+    "heads": [
+     "deemedIllegalGains(M,X)"
+    ],
+    "auth": "npc",
+    "note": "不能说明来源的，财产的差额部分以非法所得论"
+   },
+   {
+    "key": "k395-1",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "propertyExpenditureObviouslyExceedsIncome(P,X)",
+     {
+      "or": [
+       "differenceHuge(X)",
+       "differenceEspeciallyHuge(X)"
+      ]
+     },
+     "orderedToExplainSource(P,X)",
+     "cannotExplainSource(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,hugePropertyOfUnidentifiedSource)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员财产、支出明显超过合法收入，差额巨大，经责令说明而不能说明来源的，符合巨额财产来源不明罪的构成要件"
+   },
+   {
+    "key": "k395-s1",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "constitutes(P,X,hugePropertyOfUnidentifiedSource)",
+     "differenceHuge(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "差额巨大的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k395-s2",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "constitutes(P,X,hugePropertyOfUnidentifiedSource)",
+     "differenceEspeciallyHuge(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "差额特别巨大的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k395-recover",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "differencePartOf(M,X)",
+     "deemedIllegalGains(M,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "recoverDifference(M,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "财产的差额部分予以追缴，不受量刑档次影响"
+   },
+   {
+    "key": "k395-declare",
+    "srcs": [
+     "art395#2"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "overseasDepositOf(M,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "declareOverseasDeposit(P,M)"
+     }
+    ],
+    "auth": "npc",
+    "note": "国家工作人员在境外的存款，应当依照国家规定申报"
+   },
+   {
+    "key": "k395-2",
+    "srcs": [
+     "art395#2"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "overseasDepositOf(M,P)",
+     "depositAmountRelativelyLarge(M)",
+     "concealsDeposit(P,X,M)"
+    ],
+    "heads": [
+     "constitutes(P,X,concealmentOfOverseasDeposits)"
+    ],
+    "auth": "npc",
+    "note": "国家工作人员境外存款数额较大、隐瞒不报的，符合隐瞒境外存款罪的构成要件"
+   },
+   {
+    "key": "k395-2s",
+    "srcs": [
+     "art395#2"
+    ],
+    "body": [
+     "constitutes(P,X,concealmentOfOverseasDeposits)",
+     "~lightCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder2YearsOrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "隐瞒境外存款数额较大的，处二年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k395-2admin",
+    "srcs": [
+     "art395#2"
+    ],
+    "body": [
+     "constitutes(P,X,concealmentOfOverseasDeposits)",
+     "lightCircumstances(X)",
+     {
+      "or": [
+       "employerUnitOf(U,P)",
+       "superiorCompetentOrganOf(U,P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "U",
+      "counterparty": "P",
+      "content": "nonPenalMeasure(P,X,administrativeSanction)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节较轻的，由其所在单位或者上级主管机关酌情给予行政处分"
+   },
+   {
+    "key": "k395-distinguish",
+    "srcs": [
+     "art395#1"
+    ],
+    "body": [
+     "stateFunctionary(P)",
+     "propertyExpenditureObviouslyExceedsIncome(P,X)",
+     "differencePartOf(M,X)",
+     "sourceProvenAsCrimeProceeds(M,Y)"
+    ],
+    "heads": [
+     "-constitutes(P,X,hugePropertyOfUnidentifiedSource)"
+    ],
+    "auth": "doctrine",
+    "note": "差额来源已查明为贪污、受贿等犯罪所得的，依相应犯罪定罪，不成立巨额财产来源不明罪；此为本罪兜底性的学理与实务解释，法条未明文"
+   }
+  ],
+  "overrides": [
+   [
+    "k395-distinguish",
+    "k395-1",
+    "推断：结论冲突（('constitutes', '+')），k395-distinguish 为例外或更具体"
+   ],
+   [
+    "k395-distinguish",
+    "k395-2",
+    "推断：结论冲突（('constitutes', '+')），k395-distinguish 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateFunctionary": "国家工作人员",
+   "propertyExpenditureObviouslyExceedsIncome": "propertyExpenditureObviouslyExceedsIncome(P,X)：事件 X 中 P 的财产、支出明显超过其合法收入",
+   "differenceHuge": "differenceHuge(X)：事件 X 中财产、支出超过合法收入的差额巨大",
+   "differenceEspeciallyHuge": "differenceEspeciallyHuge(X)：事件 X 中财产、支出超过合法收入的差额特别巨大",
+   "judicialOrgan": "judicialOrgan(O)：O 是办理该案件的司法机关（侦查、检察、审判机关）",
+   "orderExplainSource": "orderExplainSource(O,P,X)：O 就事件 X 责令 P 说明财产差额来源",
+   "orderedToExplainSource": "orderedToExplainSource(P,X)：已就事件 X 责令 P 说明财产差额的来源",
+   "cannotExplainSource": "cannotExplainSource(P,X)：P 就事件 X 不能说明财产差额来源（拒不说明、无法说明或说明不实）",
+   "differencePartOf": "differencePartOf(M,X)：M 是事件 X 中财产、支出超过合法收入的差额部分",
+   "deemedIllegalGains": "deemedIllegalGains(M,X)：事件 X 中差额部分 M 以非法所得论",
+   "constitutes": "符合构成要件",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "recoverDifference": "recoverDifference(M,X)：对事件 X 中财产的差额部分 M 予以追缴",
+   "overseasDepositOf": "overseasDepositOf(M,P)：M 是 P 在境外的存款",
+   "declareOverseasDeposit": "declareOverseasDeposit(P,M)：P 依照国家规定申报其境外存款 M",
+   "depositAmountRelativelyLarge": "depositAmountRelativelyLarge(M)：境外存款 M 的数额较大",
+   "concealsDeposit": "concealsDeposit(P,X,M)：P 通过行为 X 隐瞒境外存款 M 不报",
+   "lightCircumstances": "犯罪情节较轻",
+   "sentenceUnder2YearsOrDetention": "sentenceUnder2YearsOrDetention(P,X)：对 P 就犯罪 X 处二年以下有期徒刑或者拘役",
+   "employerUnitOf": "employerUnitOf(U,P)：U 是 P 所在的单位",
+   "superiorCompetentOrganOf": "superiorCompetentOrganOf(U,P)：U 是 P 的上级主管机关",
+   "nonPenalMeasure": "nonPenalMeasure(P,X,M)：对 P 就犯罪 X 适用非刑罚处理措施 M（admonition=训诫、repentanceStatement=责令具结悔过、apology=赔礼道歉、compensation=赔偿损失、administrativePenalty=行政处罚、administrativeSanction=行政处分）",
+   "sourceProvenAsCrimeProceeds": "sourceProvenAsCrimeProceeds(M,Y)：查明财物 M 系犯罪事件 Y（如贪污、受贿）的所得"
+  }
+ },
+ "art:396": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "单位违反国家规定，以单位名义将国有资产（或应上缴国家的罚没财物）集体私分给个人，成立私分国有资产罪／私分罚没财物罪，只处罚直接负责的主管人员和其他直接责任人员",
+     "rules": [
+      "k396-crime",
+      "k396-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款主体限于国家机关、国有公司、企业、事业单位、人民团体",
+     "rules": [
+      "k396-unit"
+     ]
+    },
+    {
+     "text": "第1款客观要件：违反国家规定（刑法第96条），以单位名义将国有资产集体私分给个人，且数额较大",
+     "rules": [
+      "k396-crime"
+     ]
+    },
+    {
+     "text": "第2款主体为司法机关、行政执法机关，对象为应当上缴国家的罚没财物，行为为违反国家规定以单位名义集体私分给个人（本款未设数额较大的门槛）",
+     "rules": [
+      "k396-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "数额较大的，对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役，并处或者单处罚金",
+     "rules": [
+      "k396-1"
+     ]
+    },
+    {
+     "text": "数额巨大的，处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k396-1b"
+     ]
+    },
+    {
+     "text": "司法机关、行政执法机关私分应上缴国家的罚没财物的，对直接负责的主管人员和其他直接责任人员依照第1款的规定处罚",
+     "rules": [
+      "k396-2p"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "数额巨大时适用第1款后段加重档，排除前段基本档",
+     "rules": [
+      "k396-1b",
+      "k396-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪属单位犯罪的单罚制：犯罪主体是单位，但只处罚直接负责的主管人员和其他直接责任人员，不对单位判处罚金；与贪污罪的区别在于是否以单位名义、面向职工集体公开私分，而非个人秘密侵吞（学理说明，法条未明文）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k396-unit",
+    "srcs": [
+     "art396#1"
+    ],
+    "body": [
+     "unit(U)",
+     {
+      "or": [
+       "stateOrgan(U)",
+       "stateOwnedUnit(U)",
+       "publicInstitution(U)",
+       "peopleOrganization(U)"
+      ]
+     }
+    ],
+    "heads": [
+     "art396Para1Unit(U)"
+    ],
+    "auth": "npc",
+    "note": "第1款主体为国家机关、国有公司、企业、事业单位、人民团体"
+   },
+   {
+    "key": "k396-crime",
+    "srcs": [
+     "art396#1"
+    ],
+    "body": [
+     "art396Para1Unit(U)",
+     "violatesStateRegulations(X)",
+     "collectivelyDividesStateAssets(U,X)",
+     "objectOf(X,M)",
+     "stateOwnedProperty(M)",
+     "amountRelativelyLarge(X)"
+    ],
+    "heads": [
+     "art396Para1Crime(U,X)",
+     "unitCrimeName(X,privateDivisionOfStateAssets)"
+    ],
+    "auth": "npc",
+    "note": "违反国家规定以单位名义将国有资产集体私分给个人、数额较大的，单位成立私分国有资产罪（罪名常量 privateDivisionOfStateAssets）"
+   },
+   {
+    "key": "k396-1",
+    "srcs": [
+     "art396#1"
+    ],
+    "body": [
+     "art396Para1Crime(U,X)",
+     "amountRelativelyLarge(X)",
+     "~amountHuge(X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "fineJointlyOrSolely(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "数额较大的，对直接负责的主管人员和其他直接责任人员处三年以下有期徒刑或者拘役，并处或者单处罚金"
+   },
+   {
+    "key": "k396-1b",
+    "srcs": [
+     "art396#1"
+    ],
+    "body": [
+     "art396Para1Crime(U,X)",
+     "amountHuge(X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "数额巨大的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k396-2",
+    "srcs": [
+     "art396#2"
+    ],
+    "body": [
+     "judicialOrAdministrativeEnforcementOrgan(U)",
+     "violatesStateRegulations(X)",
+     "collectivelyDividesFinesAndConfiscatedProperty(U,X)",
+     "objectOf(X,M)",
+     "finesAndConfiscatedPropertyPayableToState(M)"
+    ],
+    "heads": [
+     "art396Para2Crime(U,X)",
+     "unitCrimeName(X,privateDivisionOfFinesAndConfiscatedProperty)"
+    ],
+    "auth": "npc",
+    "note": "司法机关、行政执法机关违反国家规定，以单位名义将应上缴国家的罚没财物集体私分给个人的，成立私分罚没财物罪（常量 privateDivisionOfFinesAndConfiscatedProperty）"
+   },
+   {
+    "key": "k396-2p",
+    "srcs": [
+     "art396#2"
+    ],
+    "body": [
+     "art396Para2Crime(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishUnderPara1(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款情形对其直接负责的主管人员和其他直接责任人员依照第1款的规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "stateOwnedUnit": "stateOwnedUnit(U)：U 是国有公司、国有企业或国有事业单位",
+   "publicInstitution": "publicInstitution(U)：U 是事业单位",
+   "peopleOrganization": "peopleOrganization(U)：U 是人民团体",
+   "art396Para1Unit": "art396Para1Unit(U)：U 属于刑法第396条第1款的主体，即国家机关、国有公司、企业、事业单位、人民团体",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "collectivelyDividesStateAssets": "collectivelyDividesStateAssets(U,X)：单位 U 通过行为 X 以单位名义将国有资产集体私分给个人",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "stateOwnedProperty": "stateOwnedProperty(M)：M 是国有财产",
+   "amountRelativelyLarge": "数额较大",
+   "art396Para1Crime": "art396Para1Crime(U,X)：单位 U 的行为 X 具备刑法第396条第1款私分国有资产罪的单位犯罪构成条件",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "amountHuge": "amountHuge(X)：行为 X 涉及的数额巨大",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "fineJointlyOrSolely": "fineJointlyOrSolely(P,X)：对 P 就犯罪 X 并处或者单处罚金",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "imposeFine": "imposeFine(P,X)：对 P 就犯罪 X 并处罚金",
+   "judicialOrAdministrativeEnforcementOrgan": "judicialOrAdministrativeEnforcementOrgan(U)：U 是司法机关或者行政执法机关（第396条第2款主体）",
+   "collectivelyDividesFinesAndConfiscatedProperty": "collectivelyDividesFinesAndConfiscatedProperty(U,X)：单位 U 通过行为 X 以单位名义将应当上缴国家的罚没财物集体私分给个人",
+   "finesAndConfiscatedPropertyPayableToState": "finesAndConfiscatedPropertyPayableToState(M)：M 是应当上缴国家的罚没财物（罚金、没收的财物等）",
+   "art396Para2Crime": "art396Para2Crime(U,X)：单位 U 的行为 X 具备刑法第396条第2款私分罚没财物罪的单位犯罪构成条件",
+   "punishUnderPara1": "punishUnderPara1(P,X)：对 P 就行为 X 依照本条第一款的规定处罚"
+  }
+ }
+}

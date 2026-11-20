@@ -1,0 +1,1732 @@
+{
+ "art:90": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "民族自治地方不能全部适用刑法时，能否变通或补充适用，由谁、依何程序作出",
+     "rules": [
+      "k90-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "前提条件：该民族自治地方不能全部适用本法规定；制定主体限于自治区或者省的人民代表大会（不含自治州、自治县人大）",
+     "rules": [
+      "k90-1"
+     ]
+    },
+    {
+     "text": "内容限制：变通或补充规定须根据当地民族的政治、经济、文化的特点，并符合本法规定的基本原则",
+     "rules": [
+      "k90-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未经全国人民代表大会常务委员会批准，不得施行变通或者补充规定（由“报请批准施行”反面推得）",
+     "rules": [
+      "k90-5"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "可以由自治区或者省的人民代表大会制定变通或者补充的规定",
+     "rules": [
+      "k90-1"
+     ]
+    },
+    {
+     "text": "制定后应当报请全国人民代表大会常务委员会批准施行",
+     "rules": [
+      "k90-3"
+     ]
+    },
+    {
+     "text": "经全国人民代表大会常务委员会批准的变通、补充规定施行（生效）",
+     "rules": [
+      "k90-4"
+     ]
+    },
+    {
+     "text": "经批准施行的变通、补充规定适用于该民族自治地方内的犯罪事件，该事件不再全部适用本法规定（体系推论）",
+     "rules": [
+      "k90-6"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "变通、补充规定是对本法适用的特别安排，仅在该民族自治地方范围内、经批准后优先于本法一般规定适用",
+     "rules": [
+      "k90-6"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是授权性、程序性安排：变通不得违背刑法基本原则，且须报批，不同于一般地方立法；亦不同于港澳台适用当地刑法的问题",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k90-1",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "ethnicAutonomousArea(A)",
+     "cannotFullyApplyCriminalLaw(A)",
+     "peopleCongressOfAutonomousRegionOrProvince(O,A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "enactVariationOrSupplement(O,A)"
+     }
+    ],
+    "auth": "npc",
+    "note": "民族自治地方不能全部适用本法规定的，可以由自治区或者省的人民代表大会制定变通或者补充的规定"
+   },
+   {
+    "key": "k90-2",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "variationOrSupplementProvision(R,A)",
+     "enactedBy(O,R)",
+     "peopleCongressOfAutonomousRegionOrProvince(O,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "baseOnEthnicFeaturesAndBasicPrinciples(R,A)"
+     }
+    ],
+    "auth": "npc",
+    "note": "制定变通或补充规定须根据当地民族的政治、经济、文化特点和本法规定的基本原则"
+   },
+   {
+    "key": "k90-3",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "variationOrSupplementProvision(R,A)",
+     "enactedBy(O,R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "submitToNPCSCForApproval(O,R)"
+     }
+    ],
+    "auth": "npc",
+    "note": "变通或补充规定应报请全国人民代表大会常务委员会批准施行"
+   },
+   {
+    "key": "k90-4",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "variationOrSupplementProvision(R,A)",
+     "approvedByNPCSC(R)"
+    ],
+    "heads": [
+     "variationProvisionInForce(R)"
+    ],
+    "auth": "npc",
+    "note": "经全国人大常委会批准后，变通或补充规定施行生效"
+   },
+   {
+    "key": "k90-5",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "variationOrSupplementProvision(R,A)",
+     "enactedBy(O,R)",
+     "~approvedByNPCSC(R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "implementVariationProvision(O,R)"
+     }
+    ],
+    "auth": "doctrine",
+    "note": "未报经全国人大常委会批准不得施行，系由“报请批准施行”的报批要求反面推得"
+   },
+   {
+    "key": "k90-6",
+    "srcs": [
+     "art90#1"
+    ],
+    "body": [
+     "variationProvisionInForce(R)",
+     "variationOrSupplementProvision(R,A)",
+     "crimeInArea(X,A)"
+    ],
+    "heads": [
+     "ethnicAutonomousVariation(X)",
+     "-fullyAppliesCriminalLaw(X)"
+    ],
+    "auth": "doctrine",
+    "note": "经批准施行的变通、补充规定适用于该民族自治地方的犯罪事件，不再全部适用本法，属体系推论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "ethnicAutonomousArea": "ethnicAutonomousArea(A)：A 是民族自治地方",
+   "cannotFullyApplyCriminalLaw": "cannotFullyApplyCriminalLaw(A)：民族自治地方 A 不能全部适用本法（刑法）规定",
+   "peopleCongressOfAutonomousRegionOrProvince": "peopleCongressOfAutonomousRegionOrProvince(O,A)：O 是有权就民族自治地方 A 制定变通或补充规定的自治区或者省的人民代表大会",
+   "enactVariationOrSupplement": "enactVariationOrSupplement(O,A)：O 针对民族自治地方 A 制定变通或者补充的规定",
+   "variationOrSupplementProvision": "variationOrSupplementProvision(R,A)：R 是针对民族自治地方 A 制定的变通或者补充规定",
+   "enactedBy": "enactedBy(O,R)：规定 R 由机关 O 制定",
+   "baseOnEthnicFeaturesAndBasicPrinciples": "baseOnEthnicFeaturesAndBasicPrinciples(R,A)：规定 R 根据当地民族的政治、经济、文化特点和本法规定的基本原则制定",
+   "submitToNPCSCForApproval": "submitToNPCSCForApproval(O,R)：O 将规定 R 报请全国人民代表大会常务委员会批准",
+   "approvedByNPCSC": "approvedByNPCSC(R)：规定 R 已经全国人民代表大会常务委员会批准",
+   "variationProvisionInForce": "variationProvisionInForce(R)：变通或补充规定 R 经批准施行、具有效力",
+   "implementVariationProvision": "implementVariationProvision(O,R)：O 施行变通或者补充规定 R",
+   "crimeInArea": "crimeInArea(X,A)：犯罪事件 X 发生（应适用刑法）于民族自治地方 A",
+   "ethnicAutonomousVariation": "ethnicAutonomousVariation(X)：犯罪事件 X 属于民族自治地方依法制定的变通或补充规定的适用范围",
+   "fullyAppliesCriminalLaw": "fullyAppliesCriminalLaw(X)：对犯罪事件 X 全部适用本法（刑法）规定"
+  }
+ },
+ "art:91": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "本法所称“公共财产”的范围如何界定（第91条属于刑法对术语的专条立法解释）",
+     "rules": [
+      "k91-1",
+      "k91-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款列举：①国有财产；②劳动群众集体所有的财产；③用于扶贫和其他公益事业的社会捐助或者专项基金的财产",
+     "rules": [
+      "k91-1"
+     ]
+    },
+    {
+     "text": "第2款拟制条件：财产本为私人财产，且处于国家机关、国有公司、企业、集体企业和人民团体的管理、使用或者运输之中",
+     "rules": [
+      "k91-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "属于第1款三类财产之一的，即为本法所称公共财产",
+     "rules": [
+      "k91-1"
+     ]
+    },
+    {
+     "text": "符合第2款条件的私人财产，以公共财产论（法律拟制，在刑法上按公共财产保护）",
+     "rules": [
+      "k91-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第91条与第92条至第99条同属刑法总则对“公共财产”“公民私人所有的财产”“国家工作人员”等术语的专条立法解释，本身不是罪刑规范；第2款只是刑法上的拟制，不改变财产的所有权归属",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k91-1",
+    "srcs": [
+     "art91#1"
+    ],
+    "body": [
+     "property(M)",
+     {
+      "or": [
+       "stateOwnedProperty(M)",
+       "collectivelyOwnedProperty(M)",
+       "povertyReliefOrPublicWelfareDonationOrFundProperty(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "publicProperty(M)"
+    ],
+    "auth": "npc",
+    "note": "国有财产、劳动群众集体所有的财产、用于扶贫和其他公益事业的社会捐助或专项基金的财产，均为本法所称公共财产"
+   },
+   {
+    "key": "k91-2",
+    "srcs": [
+     "art91#2"
+    ],
+    "body": [
+     "privateProperty(M)",
+     "managedUsedOrTransportedBy(M,U)",
+     "art91PublicUnit(U)"
+    ],
+    "heads": [
+     "publicProperty(M)"
+    ],
+    "auth": "npc",
+    "note": "在国家机关、国有公司、企业、集体企业和人民团体管理、使用或者运输中的私人财产，以公共财产论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "property": "property(M)：M 是财产（财物）",
+   "stateOwnedProperty": "stateOwnedProperty(M)：M 是国有财产",
+   "collectivelyOwnedProperty": "collectivelyOwnedProperty(M)：M 是劳动群众集体所有的财产",
+   "povertyReliefOrPublicWelfareDonationOrFundProperty": "povertyReliefOrPublicWelfareDonationOrFundProperty(M)：M 是用于扶贫和其他公益事业的社会捐助或者专项基金的财产",
+   "publicProperty": "publicProperty(M)：M 属于本法（刑法）所称的公共财产",
+   "privateProperty": "privateProperty(M)：M 是私人（公民私人）所有的财产",
+   "managedUsedOrTransportedBy": "managedUsedOrTransportedBy(M,U)：财产 M 处于单位 U 的管理、使用或者运输之中",
+   "art91PublicUnit": "art91PublicUnit(U)：U 属于第91条第2款所列单位，即国家机关、国有公司、企业、集体企业或者人民团体"
+  }
+ },
+ "art:92": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法上“公民私人所有的财产”的范围如何界定（第92条为立法解释性定义条款）",
+     "rules": [
+      "k92-1",
+      "k92-2",
+      "k92-3",
+      "k92-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "公民的合法收入、储蓄、房屋和其他生活资料，属于公民私人所有的财产",
+     "rules": [
+      "k92-1"
+     ]
+    },
+    {
+     "text": "依法归个人、家庭所有的生产资料，属于公民私人所有的财产",
+     "rules": [
+      "k92-2"
+     ]
+    },
+    {
+     "text": "个体户和私营企业的合法财产，属于公民私人所有的财产",
+     "rules": [
+      "k92-3"
+     ]
+    },
+    {
+     "text": "依法归个人所有的股份、股票、债券和其他财产，属于公民私人所有的财产",
+     "rules": [
+      "k92-4"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本条限于“合法”收入与“合法”财产；违法所得（如犯罪所得财物）不属于本条界定的公民私人所有财产（学理）",
+     "rules": [
+      "k92-illegal"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述四类情形之一的，认定为刑法所称公民私人所有的财产",
+     "rules": [
+      "k92-1",
+      "k92-2",
+      "k92-3",
+      "k92-4"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k92-1",
+    "srcs": [
+     "art92#1"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     {
+      "or": [
+       "lawfulIncomeOf(M,P)",
+       "savingsOf(M,P)",
+       "houseOf(M,P)",
+       "livingMeansOf(M,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "privatePropertyOf(M,P)"
+    ],
+    "auth": "npc",
+    "note": "公民的合法收入、储蓄、房屋和其他生活资料属于公民私人所有的财产"
+   },
+   {
+    "key": "k92-2",
+    "srcs": [
+     "art92#1"
+    ],
+    "body": [
+     "productionMeans(M)",
+     "lawfullyOwnedByIndividualOrFamily(M,P)"
+    ],
+    "heads": [
+     "privatePropertyOf(M,P)"
+    ],
+    "auth": "npc",
+    "note": "依法归个人、家庭所有的生产资料属于公民私人所有的财产"
+   },
+   {
+    "key": "k92-3",
+    "srcs": [
+     "art92#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "individualBusiness(P)",
+       "privateEnterprise(P)"
+      ]
+     },
+     "lawfulPropertyOf(M,P)"
+    ],
+    "heads": [
+     "privatePropertyOf(M,P)"
+    ],
+    "auth": "npc",
+    "note": "个体户和私营企业的合法财产属于公民私人所有的财产"
+   },
+   {
+    "key": "k92-4",
+    "srcs": [
+     "art92#1"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "lawfullyOwnedByIndividual(M,P)",
+     {
+      "or": [
+       "sharesOf(M,P)",
+       "stocksOf(M,P)",
+       "bondsOf(M,P)",
+       "otherPropertyOf(M,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "privatePropertyOf(M,P)"
+    ],
+    "auth": "npc",
+    "note": "依法归个人所有的股份、股票、债券和其他财产属于公民私人所有的财产"
+   },
+   {
+    "key": "k92-illegal",
+    "srcs": [
+     "art92#1"
+    ],
+    "body": [
+     "property(M)",
+     "illegalProceedsOf(M,P,X)"
+    ],
+    "heads": [
+     "-privatePropertyOf(M,P)"
+    ],
+    "auth": "doctrine",
+    "note": "第92条强调“合法”，违法所得不属于本条界定的公民私人所有财产（学理推论，法条未明文）"
+   }
+  ],
+  "overrides": [
+   [
+    "k92-illegal",
+    "k92-1",
+    "推断：结论冲突（('privatePropertyOf', '+')），k92-illegal 为例外或更具体"
+   ],
+   [
+    "k92-illegal",
+    "k92-2",
+    "推断：结论冲突（('privatePropertyOf', '+')），k92-illegal 为例外或更具体"
+   ],
+   [
+    "k92-illegal",
+    "k92-3",
+    "推断：结论冲突（('privatePropertyOf', '+')），k92-illegal 为例外或更具体"
+   ],
+   [
+    "k92-illegal",
+    "k92-4",
+    "推断：结论冲突（('privatePropertyOf', '+')），k92-illegal 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "citizenOfPrc": "中华人民共和国公民（人P）",
+   "lawfulIncomeOf": "lawfulIncomeOf(M,P)：M 是 P 的合法收入",
+   "savingsOf": "savingsOf(M,P)：M 是 P 的储蓄",
+   "houseOf": "houseOf(M,P)：M 是 P 的房屋",
+   "livingMeansOf": "livingMeansOf(M,P)：M 是 P 的其他生活资料",
+   "privatePropertyOf": "privatePropertyOf(M,P)：M 属于刑法第92条所称公民私人所有的财产（P 为个人、家庭、个体户、私营企业等私人主体）",
+   "productionMeans": "productionMeans(M)：M 是生产资料",
+   "lawfullyOwnedByIndividualOrFamily": "lawfullyOwnedByIndividualOrFamily(M,P)：M 依法归个人或者家庭 P 所有",
+   "individualBusiness": "individualBusiness(P)：P 是个体户",
+   "privateEnterprise": "privateEnterprise(P)：P 是私营企业",
+   "lawfulPropertyOf": "lawfulPropertyOf(M,V)：M 是 V 的合法财产",
+   "lawfullyOwnedByIndividual": "lawfullyOwnedByIndividual(M,P)：M 依法归个人 P 所有",
+   "sharesOf": "sharesOf(M,P)：M 是 P 持有的股份",
+   "stocksOf": "stocksOf(M,P)：M 是 P 持有的股票",
+   "bondsOf": "bondsOf(M,P)：M 是 P 持有的债券",
+   "otherPropertyOf": "otherPropertyOf(M,P)：M 是 P 的其他财产",
+   "property": "property(M)：M 是财产（财物）",
+   "illegalProceedsOf": "illegalProceedsOf(M,P,X)：M 是 P 因犯罪 X 违法所得的财物"
+  }
+ },
+ "art:93": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法上“国家工作人员”的范围如何认定（贪污、受贿、挪用公款等身份犯的主体资格）",
+     "rules": [
+      "k93-1",
+      "k93-2a",
+      "k93-2b",
+      "k93-2c"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "国家机关中从事公务的人员，是国家工作人员（第1款，本义的国家工作人员）",
+     "rules": [
+      "k93-1"
+     ]
+    },
+    {
+     "text": "国有公司、企业、事业单位、人民团体中从事公务的人员，以国家工作人员论",
+     "rules": [
+      "k93-2a"
+     ]
+    },
+    {
+     "text": "国家机关、国有公司、企业、事业单位委派到非国有公司、企业、事业单位、社会团体从事公务的人员，以国家工作人员论（委派主体限于国家机关与国有单位，不含人民团体）",
+     "rules": [
+      "k93-2b"
+     ]
+    },
+    {
+     "text": "其他依照法律从事公务的人员，以国家工作人员论",
+     "rules": [
+      "k93-2c"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽在国家机关或国有单位工作，但仅从事劳务、不具有公务（管理、职权）性质的，不属于国家工作人员（学理：以“从事公务”为核心特征）",
+     "rules": [
+      "k93-labor"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "村民委员会等村基层组织人员协助人民政府从事行政管理工作时，属于“其他依照法律从事公务的人员”，以国家工作人员论（笔记提及的2000年4月全国人大常委会关于第93条第2款的立法解释）",
+     "rules": [
+      "k93-village"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款是“以国家工作人员论”的扩张（准国家工作人员），与第1款结论相同，均得出 stateFunctionary(P)",
+     "rules": [
+      "k93-1",
+      "k93-2a",
+      "k93-2b",
+      "k93-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "认定关键是“从事公务”而非单位性质或编制身份：国有单位中的劳务人员不是国家工作人员；受国有单位委派到非国有单位从事公务的，仍是国家工作人员",
+     "rules": [
+      "k93-labor",
+      "k93-2b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k93-1",
+    "srcs": [
+     "art93#1"
+    ],
+    "body": [
+     "stateOrgan(U)",
+     "publicAffairsIn(P,U)"
+    ],
+    "heads": [
+     "stateFunctionary(P)"
+    ],
+    "auth": "npc",
+    "note": "国家机关中从事公务的人员是国家工作人员"
+   },
+   {
+    "key": "k93-2a",
+    "srcs": [
+     "art93#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateOwnedUnit(U)",
+       "peopleOrganization(U)"
+      ]
+     },
+     "publicAffairsIn(P,U)"
+    ],
+    "heads": [
+     "stateFunctionary(P)"
+    ],
+    "auth": "npc",
+    "note": "国有公司、企业、事业单位、人民团体中从事公务的人员，以国家工作人员论"
+   },
+   {
+    "key": "k93-2b",
+    "srcs": [
+     "art93#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateOrgan(U0)",
+       "stateOwnedUnit(U0)"
+      ]
+     },
+     "delegatedBy(P,U0)",
+     "nonStateOwnedUnit(U)",
+     "publicAffairsIn(P,U)"
+    ],
+    "heads": [
+     "stateFunctionary(P)"
+    ],
+    "auth": "npc",
+    "note": "国家机关、国有公司、企业、事业单位委派到非国有单位从事公务的人员，以国家工作人员论"
+   },
+   {
+    "key": "k93-2c",
+    "srcs": [
+     "art93#2"
+    ],
+    "body": [
+     "otherPublicAffairsByLaw(P)"
+    ],
+    "heads": [
+     "stateFunctionary(P)"
+    ],
+    "auth": "npc",
+    "note": "其他依照法律从事公务的人员，以国家工作人员论"
+   },
+   {
+    "key": "k93-labor",
+    "srcs": [
+     "art93#1",
+     "art93#2"
+    ],
+    "body": [
+     "unit(U)",
+     "performsLaborOnlyIn(P,U)"
+    ],
+    "heads": [
+     "-stateFunctionary(P)"
+    ],
+    "auth": "doctrine",
+    "note": "仅从事劳务而不从事公务的人员不是国家工作人员；法条未明写，系“从事公务”这一核心特征的学理推论"
+   },
+   {
+    "key": "k93-village",
+    "srcs": [
+     "art93#2"
+    ],
+    "body": [
+     "villageGrassrootsOrganizationMember(P)",
+     "assistsGovernmentInAdministrativeWork(P)"
+    ],
+    "heads": [
+     "stateFunctionary(P)"
+    ],
+    "auth": "doctrine",
+    "note": "村基层组织人员协助政府从事行政管理工作属“其他依照法律从事公务的人员”；内容来自笔记提及的2000年全国人大常委会立法解释，非法条原文"
+   }
+  ],
+  "overrides": [
+   [
+    "k93-2b",
+    "k93-labor",
+    "推断：结论冲突（('stateFunctionary', '+')），k93-2b 为例外或更具体"
+   ],
+   [
+    "k93-labor",
+    "k93-2c",
+    "推断：结论冲突（('stateFunctionary', '+')），k93-labor 为例外或更具体"
+   ],
+   [
+    "k93-labor",
+    "k93-village",
+    "推断：结论冲突（('stateFunctionary', '-')），k93-labor 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "publicAffairsIn": "publicAffairsIn(P,U)：P 在单位 U 中从事公务（具有管理性、职权性的公务活动）",
+   "stateFunctionary": "国家工作人员",
+   "stateOwnedUnit": "stateOwnedUnit(U)：U 是国有公司、国有企业或国有事业单位",
+   "peopleOrganization": "peopleOrganization(U)：U 是人民团体",
+   "delegatedBy": "delegatedBy(P,U0)：P 系由单位 U0 委派（派出）从事公务的人员",
+   "nonStateOwnedUnit": "nonStateOwnedUnit(U)：U 是非国有公司、企业、事业单位或社会团体",
+   "otherPublicAffairsByLaw": "otherPublicAffairsByLaw(P)：P 属于其他依照法律从事公务的人员",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "performsLaborOnlyIn": "performsLaborOnlyIn(P,U)：P 在单位 U 中仅从事劳务性工作，不从事公务",
+   "villageGrassrootsOrganizationMember": "villageGrassrootsOrganizationMember(P)：P 是村民委员会等村（基层）组织人员",
+   "assistsGovernmentInAdministrativeWork": "assistsGovernmentInAdministrativeWork(P)：P 协助人民政府从事行政管理工作"
+  }
+ },
+ "art:94": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法上“司法工作人员”的范围如何认定（第94条为立法定义）",
+     "rules": [
+      "k94-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体须为工作人员，并且具有侦查、检察、审判、监管职责中的任一职责",
+     "rules": [
+      "k94-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不具有侦查、检察、审判、监管任何一项职责的工作人员，不属于司法工作人员（由定义文义反推）",
+     "rules": [
+      "k94-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具有侦查、检察、审判、监管职责的工作人员，即本法所称司法工作人员",
+     "rules": [
+      "k94-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "认定标准是“职责”而非身份或编制；司法工作人员范围窄于国家机关工作人员，后者不当然属于司法工作人员",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k94-1",
+    "srcs": [
+     "art94#1"
+    ],
+    "body": [
+     "staff(P)",
+     {
+      "or": [
+       "hasInvestigationDuty(P)",
+       "hasProcuratorialDuty(P)",
+       "hasAdjudicationDuty(P)",
+       "hasCustodialSupervisionDuty(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "judicialStaff(P)"
+    ],
+    "auth": "npc",
+    "note": "有侦查、检察、审判、监管职责的工作人员，是本法所称司法工作人员"
+   },
+   {
+    "key": "k94-neg",
+    "srcs": [
+     "art94#1"
+    ],
+    "body": [
+     "staff(P)",
+     "-hasInvestigationDuty(P)",
+     "-hasProcuratorialDuty(P)",
+     "-hasAdjudicationDuty(P)",
+     "-hasCustodialSupervisionDuty(P)"
+    ],
+    "heads": [
+     "-judicialStaff(P)"
+    ],
+    "auth": "doctrine",
+    "note": "四项职责均不具备的工作人员不是司法工作人员；系由第94条定义文义反推，法条未明文规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k94-neg",
+    "k94-1",
+    "推断：结论冲突（('judicialStaff', '+')），k94-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "staff": "staff(P)：P 是（在国家机关等单位从事公务的）工作人员",
+   "hasInvestigationDuty": "hasInvestigationDuty(P)：P 具有侦查职责",
+   "hasProcuratorialDuty": "hasProcuratorialDuty(P)：P 具有检察职责",
+   "hasAdjudicationDuty": "hasAdjudicationDuty(P)：P 具有审判职责",
+   "hasCustodialSupervisionDuty": "hasCustodialSupervisionDuty(P)：P 具有监管（羁押、看管、执行监管）职责",
+   "judicialStaff": "judicialStaff(P)：P 是刑法所称司法工作人员"
+  }
+ },
+ "art:95": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法上“重伤”的认定：伤害具有第95条所列三种情形之一的，即为重伤（立法定义条款）",
+     "rules": [
+      "k95-1",
+      "k95-2",
+      "k95-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "情形一：使人肢体残废或者毁人容貌",
+     "rules": [
+      "k95-1"
+     ]
+    },
+    {
+     "text": "情形二：使人丧失听觉、视觉或者其他器官机能",
+     "rules": [
+      "k95-2"
+     ]
+    },
+    {
+     "text": "情形三：其他对于人身健康有重大伤害的（兜底情形）",
+     "rules": [
+      "k95-3"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "三种情形系选择关系，伤害具备其一即认定为刑法所称重伤",
+     "rules": [
+      "k95-1",
+      "k95-2",
+      "k95-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是术语的立法解释，本身不设定罪名与法定刑，须与故意伤害（致人重伤）、过失致人重伤等具体条文结合适用；重伤与否通常经法定鉴定程序确认",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k95-1",
+    "srcs": [
+     "art95#1"
+    ],
+    "body": [
+     "injuryEvent(X)",
+     "causesLimbDisabilityOrDisfigurement(X)"
+    ],
+    "heads": [
+     "graveInjury(X)"
+    ],
+    "auth": "npc",
+    "note": "使人肢体残废或者毁人容貌的伤害，属于重伤"
+   },
+   {
+    "key": "k95-2",
+    "srcs": [
+     "art95#1"
+    ],
+    "body": [
+     "injuryEvent(X)",
+     "lossOfHearingVisionOrOtherOrganFunction(X)"
+    ],
+    "heads": [
+     "graveInjury(X)"
+    ],
+    "auth": "npc",
+    "note": "使人丧失听觉、视觉或者其他器官机能的伤害，属于重伤"
+   },
+   {
+    "key": "k95-3",
+    "srcs": [
+     "art95#1"
+    ],
+    "body": [
+     "injuryEvent(X)",
+     "otherMajorHarmToPhysicalHealth(X)"
+    ],
+    "heads": [
+     "graveInjury(X)"
+    ],
+    "auth": "npc",
+    "note": "其他对于人身健康有重大伤害的，属于重伤（兜底情形）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "injuryEvent": "injuryEvent(X)：X 是对他人人身健康造成伤害的事件（伤害）",
+   "causesLimbDisabilityOrDisfigurement": "causesLimbDisabilityOrDisfigurement(X)：伤害 X 使人肢体残废或者毁人容貌",
+   "graveInjury": "graveInjury(X)：伤害 X 属于刑法第95条所称重伤",
+   "lossOfHearingVisionOrOtherOrganFunction": "lossOfHearingVisionOrOtherOrganFunction(X)：伤害 X 使人丧失听觉、视觉或者其他器官机能",
+   "otherMajorHarmToPhysicalHealth": "otherMajorHarmToPhysicalHealth(X)：伤害 X 属于其他对于人身健康有重大伤害的情形"
+  }
+ },
+ "art:96": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "行为是否属于刑法所称“违反国家规定”（空白罪状、非法经营等罪的前置违法性判断）",
+     "rules": [
+      "k96-def"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "违反的对象须为：全国人民代表大会及其常务委员会制定的法律和决定；国务院制定的行政法规；国务院规定的行政措施；国务院发布的决定和命令（四者居其一即可）",
+     "rules": [
+      "k96-def"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "仅违反地方性法规、地方政府规章或者国务院部委规章等不属于上述层级文件的，不认定为“违反国家规定”（本条未明文，系学理与最高人民法院相关通知的限缩解释）",
+     "rules": [
+      "k96-limit"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述任一情形的，该行为即属于本法所称“违反国家规定”",
+     "rules": [
+      "k96-def"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "“国家规定”限于全国人大及其常委会与国务院两个层级的规范性文件；部门规章、地方立法原则上不在其列，但部门规章经国务院批准或者以国务院办公厅名义转发、且不与上位法冲突的，实践中可视为国家规定（学理与最高法院通知，非本条明文）",
+     "rules": [
+      "k96-limit"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k96-def",
+    "srcs": [
+     "art96#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "violatesNpcLawOrDecision(X)",
+       "violatesStateCouncilAdministrativeRegulation(X)",
+       "violatesStateCouncilAdministrativeMeasure(X)",
+       "violatesStateCouncilDecisionOrOrder(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "violatesStateRegulations(X)"
+    ],
+    "auth": "npc",
+    "note": "第96条第1款的定义：违反全国人大及其常委会的法律和决定，或国务院的行政法规、行政措施、决定和命令，即属“违反国家规定”"
+   },
+   {
+    "key": "k96-limit",
+    "srcs": [
+     "art96#1"
+    ],
+    "body": [
+     "onlyViolatesLocalOrDepartmentalRule(X)"
+    ],
+    "heads": [
+     "-violatesStateRegulations(X)"
+    ],
+    "auth": "doctrine",
+    "note": "本条未明文的限缩：仅违反地方性法规、地方政府规章或国务院部委规章的，不属于“违反国家规定”（学理及最高人民法院有关通知）"
+   }
+  ],
+  "overrides": [
+   [
+    "k96-limit",
+    "k96-def",
+    "推断：结论冲突（('violatesStateRegulations', '+')），k96-limit 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "violatesNpcLawOrDecision": "violatesNpcLawOrDecision(X)：行为 X 违反全国人民代表大会及其常务委员会制定的法律和决定",
+   "violatesStateCouncilAdministrativeRegulation": "violatesStateCouncilAdministrativeRegulation(X)：行为 X 违反国务院制定的行政法规",
+   "violatesStateCouncilAdministrativeMeasure": "violatesStateCouncilAdministrativeMeasure(X)：行为 X 违反国务院规定的行政措施",
+   "violatesStateCouncilDecisionOrOrder": "violatesStateCouncilDecisionOrOrder(X)：行为 X 违反国务院发布的决定和命令",
+   "violatesStateRegulations": "violatesStateRegulations(X)：行为（事件）X 违反刑法第96条所称的“国家规定”",
+   "onlyViolatesLocalOrDepartmentalRule": "onlyViolatesLocalOrDepartmentalRule(X)：行为 X 仅违反地方性法规、地方政府规章或国务院部委规章等不属于第96条列举层级的规范性文件"
+  }
+ },
+ "art:97": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "本法所称“首要分子”的含义与范围：包括犯罪集团的首要分子和聚众犯罪中的首要分子",
+     "rules": [
+      "k97-groupDef",
+      "k97-mobDef"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "①犯罪存在于犯罪集团实施的犯罪或者聚众犯罪之中；②行为人在其中起组织、策划、指挥作用",
+     "rules": [
+      "k97-groupDef",
+      "k97-mobDef"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "聚众犯罪中的首要分子未必都是主犯：刑法仅处罚首要分子、不成立共同犯罪时，不发生主犯与从犯之分",
+     "rules": [
+      "k97-mob"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "在犯罪集团所实施的犯罪中起组织、策划、指挥作用的，认定为该犯罪的首要分子",
+     "rules": [
+      "k97-groupDef"
+     ]
+    },
+    {
+     "text": "在聚众犯罪中起组织、策划、指挥作用的，认定为该犯罪的首要分子",
+     "rules": [
+      "k97-mobDef"
+     ]
+    },
+    {
+     "text": "犯罪集团的首要分子都是主犯（结合第26条第3款，按集团所犯全部罪行处罚）",
+     "rules": [
+      "k97-group"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "主犯VS首要分子：首要分子是按组织、策划、指挥作用认定的特殊身份，犯罪集团首要分子必然是主犯，聚众犯罪首要分子则未必是主犯，二者不能等同",
+     "rules": [
+      "k97-group",
+      "k97-mob"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k97-groupDef",
+    "srcs": [
+     "art97#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "criminalGroup(G)",
+     "crimeOfGroup(X,G)",
+     "organizesPlansOrDirects(P,X)"
+    ],
+    "heads": [
+     "ringleader(P,X)"
+    ],
+    "auth": "npc",
+    "note": "在犯罪集团所实施的犯罪中起组织、策划、指挥作用的犯罪分子，是本法所称首要分子"
+   },
+   {
+    "key": "k97-mobDef",
+    "srcs": [
+     "art97#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "mobCrime(X)",
+     "organizesPlansOrDirects(P,X)"
+    ],
+    "heads": [
+     "ringleader(P,X)"
+    ],
+    "auth": "npc",
+    "note": "在聚众犯罪中起组织、策划、指挥作用的犯罪分子，是本法所称首要分子"
+   },
+   {
+    "key": "k97-group",
+    "srcs": [
+     "art97#1"
+    ],
+    "body": [
+     "ringleader(P,X)",
+     "criminalGroup(G)",
+     "crimeOfGroup(X,G)"
+    ],
+    "heads": [
+     "principalOffender(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "犯罪集团的首要分子都是主犯；本条未直接规定，系笔记结合第26条的体系解释"
+   },
+   {
+    "key": "k97-mob",
+    "srcs": [
+     "art97#1"
+    ],
+    "body": [
+     "ringleader(P,X)",
+     "mobCrime(X)",
+     "~jointCrime(X)"
+    ],
+    "heads": [
+     "-principalOffender(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "聚众犯罪中的首要分子未必都是主犯：不成立共同犯罪（仅处罚首要分子）时不认定主犯；本条未规定，来自笔记与学理"
+   }
+  ],
+  "overrides": [
+   [
+    "k97-mob",
+    "k97-group",
+    "推断：结论冲突（('principalOffender', '+')），k97-mob 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "criminalGroup": "criminalGroup(G)：G 是犯罪集团",
+   "crimeOfGroup": "crimeOfGroup(X,G)：犯罪 X 是犯罪集团 G 所实施的犯罪",
+   "organizesPlansOrDirects": "organizesPlansOrDirects(P,X)：P 在犯罪 X 中起组织、策划、指挥作用",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "mobCrime": "mobCrime(X)：X 属于聚众犯罪",
+   "principalOffender": "principalOffender(P,X)：P 就犯罪 X 是主犯",
+   "jointCrime": "jointCrime(X)：X 属于共同犯罪"
+  }
+ },
+ "art:98": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "“告诉才处理”的含义：以被害人本人告诉为追诉条件；被害人无法告诉时谁可代为告诉",
+     "rules": [
+      "k98-def"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "该犯罪依法属于告诉才处理之罪，且 V 为该犯罪的被害人",
+     "rules": [
+      "k98-def",
+      "k98-victim"
+     ]
+    },
+    {
+     "text": "被害人因受强制、威吓而无法告诉（代为告诉的前提）",
+     "rules": [
+      "k98-exc",
+      "k98-spp",
+      "k98-relative"
+     ]
+    },
+    {
+     "text": "代为告诉人须为被害人的近亲属（近亲属代为告诉的身份条件）",
+     "rules": [
+      "k98-relative"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "被害人因受强制、威吓无法告诉的，不限于被害人本人告诉，构成对“仅被害人告诉”的例外",
+     "rules": [
+      "k98-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "告诉才处理，是指被害人告诉才处理：原则上只有被害人本人可以告诉",
+     "rules": [
+      "k98-def"
+     ]
+    },
+    {
+     "text": "被害人有权就该犯罪提出告诉",
+     "rules": [
+      "k98-victim"
+     ]
+    },
+    {
+     "text": "被害人因受强制、威吓无法告诉的，人民检察院也可以告诉",
+     "rules": [
+      "k98-spp"
+     ]
+    },
+    {
+     "text": "被害人因受强制、威吓无法告诉的，被害人的近亲属也可以告诉",
+     "rules": [
+      "k98-relative"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "被害人因受强制、威吓无法告诉时，代为告诉的规定优先于“仅被害人告诉”的一般界定",
+     "rules": [
+      "k98-exc",
+      "k98-def"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k98-def",
+    "srcs": [
+     "art98#1"
+    ],
+    "body": [
+     "prosecutedOnlyUponComplaint(P,X)",
+     "victimOf(V,X)",
+     "~unableToComplainDueToCoercionOrIntimidation(V,X)"
+    ],
+    "heads": [
+     "onlyVictimMayComplain(V,X)"
+    ],
+    "auth": "npc",
+    "note": "定义：告诉才处理指被害人告诉才处理，原则上仅被害人本人可告诉"
+   },
+   {
+    "key": "k98-victim",
+    "srcs": [
+     "art98#1"
+    ],
+    "body": [
+     "prosecutedOnlyUponComplaint(P,X)",
+     "victimOf(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": null,
+      "content": "complain(V,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "告诉才处理之罪，被害人本人享有告诉权（由“被害人告诉才处理”的界定得出）"
+   },
+   {
+    "key": "k98-exc",
+    "srcs": [
+     "art98#1"
+    ],
+    "body": [
+     "prosecutedOnlyUponComplaint(P,X)",
+     "victimOf(V,X)",
+     "unableToComplainDueToCoercionOrIntimidation(V,X)"
+    ],
+    "heads": [
+     "-onlyVictimMayComplain(V,X)"
+    ],
+    "auth": "npc",
+    "note": "被害人因受强制、威吓无法告诉的，排除“仅被害人本人可告诉”的限制"
+   },
+   {
+    "key": "k98-spp",
+    "srcs": [
+     "art98#1"
+    ],
+    "body": [
+     "prosecutedOnlyUponComplaint(P,X)",
+     "victimOf(V,X)",
+     "unableToComplainDueToCoercionOrIntimidation(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "procuratorate",
+      "counterparty": null,
+      "content": "complain(procuratorate,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被害人因受强制、威吓无法告诉的，人民检察院也可以告诉"
+   },
+   {
+    "key": "k98-relative",
+    "srcs": [
+     "art98#1"
+    ],
+    "body": [
+     "prosecutedOnlyUponComplaint(P,X)",
+     "victimOf(V,X)",
+     "unableToComplainDueToCoercionOrIntimidation(V,X)",
+     "closeRelativeOf(R,V)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "complain(R,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "被害人因受强制、威吓无法告诉的，其近亲属也可以告诉"
+   }
+  ],
+  "overrides": [
+   [
+    "k98-exc",
+    "k98-def",
+    "推断：结论冲突（('onlyVictimMayComplain', '+')），k98-exc 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "prosecutedOnlyUponComplaint": "告诉的才处理",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "unableToComplainDueToCoercionOrIntimidation": "unableToComplainDueToCoercionOrIntimidation(V,X)：被害人 V 因受强制、威吓而无法就犯罪 X 告诉",
+   "onlyVictimMayComplain": "onlyVictimMayComplain(V,X)：对犯罪 X 只能由被害人 V 本人告诉才处理",
+   "complain": "complain(A,X)：A 就犯罪 X 提出告诉（控告）",
+   "closeRelativeOf": "closeRelativeOf(R,V)：R 是 V 的近亲属"
+  }
+ },
+ "art:99": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法条文中“以上、以下、以内”的用语是否包括本数（基准数）",
+     "rules": [
+      "k99-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "适用对象限于本法（刑法）所使用的“以上”“以下”“以内”三类数量表述",
+     "rules": [
+      "k99-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "本法所称以上、以下、以内，均包括本数（如“三年以上十年以下”含三年与十年）",
+     "rules": [
+      "k99-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第99条与第91条至第98条同属刑法内部的术语专条解释，性质上是立法解释，效力高于司法解释与学理解释；本条只解决用语含义，不直接设定罪刑",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k99-1",
+    "srcs": [
+     "art99#1"
+    ],
+    "body": [
+     "termOfThisLaw(T)",
+     {
+      "or": [
+       "aboveTerm(T)",
+       "belowTerm(T)",
+       "withinTerm(T)"
+      ]
+     }
+    ],
+    "heads": [
+     "includesBaseNumber(T)"
+    ],
+    "auth": "npc",
+    "note": "本法所称“以上”“以下”“以内”包括本数，属立法解释性的构成性定义规则"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "termOfThisLaw": "termOfThisLaw(T)：T 是本法（刑法）条文所使用的数量表述用语",
+   "aboveTerm": "aboveTerm(T)：T 为“以上”的表述",
+   "belowTerm": "belowTerm(T)：T 为“以下”的表述",
+   "withinTerm": "withinTerm(T)：T 为“以内”的表述",
+   "includesBaseNumber": "includesBaseNumber(T)：表述 T 所指的数量范围包括本数（基准数、端点数）"
+  }
+ },
+ "art:100": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "依法受过刑事处罚的人在入伍、就业时是否负有如实报告前科的义务；未成年人轻罪是否免除该义务",
+     "rules": [
+      "k100-1",
+      "k100-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：依法受过刑事处罚的人；时点：入伍、就业的时候；报告对象：入伍、就业的有关单位",
+     "rules": [
+      "k100-1",
+      "k100-obl"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "犯罪的时候不满十八周岁、被判处五年有期徒刑以下刑罚的人，免除第1款的报告义务（未成年犯轻罪前科报告义务免除）",
+     "rules": [
+      "k100-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当如实向有关单位报告自己曾受过刑事处罚",
+     "rules": [
+      "k100-obl"
+     ]
+    },
+    {
+     "text": "不得隐瞒曾受刑事处罚的事实",
+     "rules": [
+      "k100-for"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款为第1款的例外，符合未成年＋五年有期徒刑以下条件时优先适用，排除报告义务及不得隐瞒的禁令",
+     "rules": [
+      "k100-2",
+      "k100-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "免除报告义务只是免除入伍、就业时的如实报告负担，并不消灭前科本身，也不影响司法机关依法查询（与刑事诉讼法犯罪记录封存制度配套）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k100-1",
+    "srcs": [
+     "art100#1"
+    ],
+    "body": [
+     "receivedCriminalPunishment(P,X)",
+     "enlistingOrSeekingEmployment(P)"
+    ],
+    "heads": [
+     "criminalRecordReportObligation(P,X)"
+    ],
+    "auth": "npc",
+    "note": "依法受过刑事处罚的人，在入伍、就业的时候负有前科报告义务"
+   },
+   {
+    "key": "k100-obl",
+    "srcs": [
+     "art100#1"
+    ],
+    "body": [
+     "criminalRecordReportObligation(P,X)",
+     "relevantUnit(U,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "U",
+      "content": "reportCriminalRecordTruthfully(P,U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "负有报告义务的人应当如实向有关单位报告自己曾因犯罪X受过刑事处罚"
+   },
+   {
+    "key": "k100-for",
+    "srcs": [
+     "art100#1"
+    ],
+    "body": [
+     "criminalRecordReportObligation(P,X)",
+     "relevantUnit(U,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "U",
+      "content": "concealCriminalRecord(P,U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "负有报告义务的人不得向有关单位隐瞒曾受刑事处罚的事实"
+   },
+   {
+    "key": "k100-2",
+    "srcs": [
+     "art100#2"
+    ],
+    "body": [
+     "receivedCriminalPunishment(P,X)",
+     "under18AtCrime(P,X)",
+     "sentencedToFiveYearsOrLess(P,X)"
+    ],
+    "heads": [
+     "-criminalRecordReportObligation(P,X)"
+    ],
+    "auth": "npc",
+    "note": "犯罪时不满十八周岁且被判处五年有期徒刑以下刑罚的，免除前科报告义务"
+   }
+  ],
+  "overrides": [
+   [
+    "k100-2",
+    "k100-1",
+    "推断：结论冲突（('criminalRecordReportObligation', '+')），k100-2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "receivedCriminalPunishment": "receivedCriminalPunishment(P,X)：P 因犯罪 X 依法受过刑事处罚",
+   "enlistingOrSeekingEmployment": "enlistingOrSeekingEmployment(P)：P 正处于入伍或者就业（求职、录用）的时候",
+   "criminalRecordReportObligation": "criminalRecordReportObligation(P,X)：P 就其因犯罪 X 所受刑事处罚负有前科报告义务",
+   "relevantUnit": "relevantUnit(U,P)：U 是 P 入伍、就业时应向其报告前科的有关单位",
+   "reportCriminalRecordTruthfully": "reportCriminalRecordTruthfully(P,U,X)：P 如实向单位 U 报告自己曾因犯罪 X 受过刑事处罚",
+   "concealCriminalRecord": "concealCriminalRecord(P,U,X)：P 向单位 U 隐瞒自己曾因犯罪 X 受过刑事处罚的事实",
+   "under18AtCrime": "under18AtCrime(P,X)：P 实施犯罪 X 的时候不满十八周岁",
+   "sentencedToFiveYearsOrLess": "sentencedToFiveYearsOrLess(P,X)：P 因犯罪 X 被判处五年有期徒刑以下刑罚（含五年有期徒刑及更轻刑罚）"
+  }
+ },
+ "art:101": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "刑法总则对刑法以外其他规定有刑罚的法律（单行刑法、附属刑法）是否适用",
+     "rules": [
+      "k101-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象是本法（刑法）以外其他有刑罚规定的法律",
+     "rules": [
+      "k101-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：其他法律有特别规定的除外，该特别事项依其他法律的特别规定处理，不适用刑法总则",
+     "rules": [
+      "k101-exc",
+      "k101-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "本法总则适用于其他有刑罚规定的法律，即其他法律未作特别规定的事项，一律适用刑法总则关于犯罪、刑事责任与刑罚的一般规定",
+     "rules": [
+      "k101-1"
+     ]
+    },
+    {
+     "text": "其他法律有特别规定时，排除刑法总则对该事项的适用",
+     "rules": [
+      "k101-exc"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "其他法律的特别规定优先于刑法总则（特别规定优于一般规定）",
+     "rules": [
+      "k101-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条是刑法总则对其他刑罚法律的效力范围条款（普遍适用＋特别规定除外），不同于第12条的溯及力问题，也不同于民族自治地方依法制定变通、补充规定的情形",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k101-1",
+    "srcs": [
+     "art101#1"
+    ],
+    "body": [
+     "otherLawWithPenalProvisions(L)",
+     "~otherLawHasSpecialProvision(L)"
+    ],
+    "heads": [
+     "appliesGeneralProvisionsTo(L)"
+    ],
+    "auth": "npc",
+    "note": "本法总则适用于其他有刑罚规定的法律，但其他法律有特别规定的除外"
+   },
+   {
+    "key": "k101-exc",
+    "srcs": [
+     "art101#1"
+    ],
+    "body": [
+     "otherLawWithPenalProvisions(L)",
+     "otherLawHasSpecialProvision(L)"
+    ],
+    "heads": [
+     "-appliesGeneralProvisionsTo(L)"
+    ],
+    "auth": "npc",
+    "note": "但书：其他法律有特别规定的，就该特别事项排除刑法总则的适用"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "otherLawWithPenalProvisions": "otherLawWithPenalProvisions(L)：L 是本法（刑法）以外其他有刑罚规定的法律",
+   "otherLawHasSpecialProvision": "otherLawHasSpecialProvision(L)：法律 L 就相关事项有排除刑法总则适用的特别规定",
+   "appliesGeneralProvisionsTo": "appliesGeneralProvisionsTo(L)：本法（刑法）总则适用于法律 L"
+  }
+ }
+}

@@ -1,0 +1,1498 @@
+{
+ "art:1072": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "继父母子女之间的关系",
+     "rules": [
+      "c1072-1",
+      "c1072-2",
+      "c1072-spc54"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "继父母与继子女",
+     "rules": [
+      "c1072-1"
+     ]
+    },
+    {
+     "text": "继子女受继父或继母抚养教育",
+     "rules": [
+      "c1072-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "继父母与继子女间，不得虐待或者歧视",
+     "rules": [
+      "c1072-1"
+     ]
+    },
+    {
+     "text": "形成抚养教育关系的继父母子女间的权利义务，适用父母子女关系的规定",
+     "rules": [
+      "c1072-2"
+     ]
+    },
+    {
+     "text": "司法解释：生父（母）与继母（父）离婚时，继父或继母不同意继续抚养曾受其抚养教育的继子女的，仍应由生父或生母抚养",
+     "rules": [
+      "c1072-spc54"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "未形成抚养教育关系的继父母子女仅为姻亲，不发生父母子女间的权利义务；继承中“有扶养关系的继父母子女”见第1127条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1072-1",
+    "srcs": [
+     "art1072-1"
+    ],
+    "body": [
+     "stepparentChild(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "abuseOrDiscriminate(P,C)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "abuseOrDiscriminate(C,P)"
+     }
+    ],
+    "note": "继父母与继子女间，不得虐待或者歧视",
+    "auth": "npc"
+   },
+   {
+    "key": "c1072-2",
+    "srcs": [
+     "art1072-2"
+    ],
+    "body": [
+     "stepparentChild(P,C)",
+     "raisedAndEducatedBy(C,P)"
+    ],
+    "heads": [
+     "parentOf(P,C)",
+     "childOf(C,P)",
+     "stepparentWithSupport(P,C)",
+     "stepchildWithSupport(C,P)"
+    ],
+    "note": "继父或者继母和受其抚养教育的继子女间的权利义务关系，适用本法关于父母子女关系的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1072-spc54",
+    "srcs": [
+     "art1072-2"
+    ],
+    "body": [
+     "stepparentChild(P,C)",
+     "raisedAndEducatedBy(C,P)",
+     "biologicalParent(B,C)",
+     "marriageDissolved(B,P)",
+     "stepparentRefusesContinuedRaising(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "C",
+      "content": "directlyRaise(B,C)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第54条：生父与继母离婚或者生母与继父离婚时，对曾受其抚养教育的继子女，继父或者继母不同意继续抚养的，仍应由生父或者生母抚养",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stepparentChild": "P是C的继父或继母（继父母，继子女）",
+   "abuseOrDiscriminate": "X对Y加以虐待或者歧视（行为人，对象）",
+   "raisedAndEducatedBy": "继子女C受继父或继母P抚养教育（继子女，继父母）",
+   "stepparentRefusesContinuedRaising": "继父或继母P不同意继续抚养继子女C",
+   "directlyRaise": "父或母P直接抚养子女C（父或母，子女）"
+  }
+ },
+ "art:1068": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "父母对未成年子女的教育、保护权利义务及子女致害时父母的责任",
+     "rules": [
+      "c1068-right",
+      "c1068-duty",
+      "c1068-tort"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "父母与未成年子女",
+     "rules": [
+      "c1068-right",
+      "c1068-duty"
+     ]
+    },
+    {
+     "text": "未成年子女造成他人损害",
+     "rules": [
+      "c1068-tort"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "父母有教育、保护未成年子女的权利和义务",
+     "rules": [
+      "c1068-right",
+      "c1068-duty"
+     ]
+    },
+    {
+     "text": "未成年子女造成他人损害的，父母应当依法承担民事责任",
+     "rules": [
+      "c1068-tort"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "“依法”指监护人责任规则（第1188、1189条），包括尽到监护职责可减轻、子女有财产时先从其财产支付等",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1068-right",
+    "srcs": [
+     "art1068"
+    ],
+    "body": [
+     "parentOf(P,C)",
+     "minor(C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "educateAndProtect(P,C)"
+     }
+    ],
+    "note": "父母有教育、保护未成年子女的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1068-duty",
+    "srcs": [
+     "art1068"
+    ],
+    "body": [
+     "parentOf(P,C)",
+     "minor(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "educateAndProtect(P,C)"
+     }
+    ],
+    "note": "父母有教育、保护未成年子女的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1068-tort",
+    "srcs": [
+     "art1068"
+    ],
+    "body": [
+     "parentOf(P,C)",
+     "minor(C)",
+     "causesDamage(C,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "bearCivilLiability(P,V)"
+     }
+    ],
+    "note": "未成年子女造成他人损害的，父母应当依法承担民事责任（具体依第1188、1189条）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "educateAndProtect": "P对未成年子女C进行教育、保护（父或母，子女）"
+  }
+ },
+ "art:1073": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "亲子关系确认与否认之诉的主体与条件",
+     "rules": [
+      "c1073-1",
+      "c1073-2",
+      "c1073-spc39"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对亲子关系有异议且有正当理由",
+     "rules": [
+      "c1073-1",
+      "c1073-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "父或者母可以向人民法院提起诉讼，请求确认或者否认亲子关系",
+     "rules": [
+      "c1073-1"
+     ]
+    },
+    {
+     "text": "成年子女可以向人民法院提起诉讼，请求确认亲子关系",
+     "rules": [
+      "c1073-2"
+     ]
+    },
+    {
+     "text": "司法解释：起诉方已提供必要证据，另一方没有相反证据又拒绝做亲子鉴定的，人民法院可以认定起诉方的主张成立",
+     "rules": [
+      "c1073-spc39"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "成年子女只能请求确认亲子关系，条文未赋予其请求否认亲子关系的诉权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1073-1",
+    "srcs": [
+     "art1073-1"
+    ],
+    "body": [
+     "allegedParentOf(P,C)",
+     "disputesParentage(P,C)",
+     "legitimateReasonForParentageDispute(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "sueToConfirmOrDenyParentage(P,C)"
+     }
+    ],
+    "note": "对亲子关系有异议且有正当理由的，父或者母可以向人民法院提起诉讼，请求确认或者否认亲子关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1073-2",
+    "srcs": [
+     "art1073-2"
+    ],
+    "body": [
+     "adult(C)",
+     "allegedParentOf(P,C)",
+     "disputesParentage(C,P)",
+     "legitimateReasonForParentageDispute(C,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "sueToConfirmParentage(C,P)"
+     }
+    ],
+    "note": "对亲子关系有异议且有正当理由的，成年子女可以向人民法院提起诉讼，请求确认亲子关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1073-spc39",
+    "srcs": [
+     "art1073-1",
+     "art1073-2"
+    ],
+    "body": [
+     "parentageSuitFiled(X,Y)",
+     "providedNecessaryEvidence(X,Y)",
+     "opponentRefusesParentageTest(X,Y)",
+     "~opponentHasContraryEvidence(X,Y)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "findParentageClaimEstablished(X,Y)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第39条：起诉请求否认或确认亲子关系并已提供必要证据，另一方没有相反证据又拒绝做亲子鉴定的，人民法院可以认定起诉一方的主张成立",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "allegedParentOf": "P是与C的亲子关系存在争议的（主张或被认为的）父或母（父或母，子女）",
+   "disputesParentage": "X对X与Y之间的亲子关系有异议（异议人，相对方）",
+   "legitimateReasonForParentageDispute": "X对与Y的亲子关系的异议有正当理由",
+   "sueToConfirmOrDenyParentage": "P向人民法院起诉请求确认或者否认与C的亲子关系",
+   "sueToConfirmParentage": "成年子女C向人民法院起诉请求确认与P的亲子关系",
+   "parentageSuitFiled": "X已就与Y的亲子关系提起确认或否认之诉（起诉人，相对方）",
+   "providedNecessaryEvidence": "起诉人X已就与Y的亲子关系主张提供必要证据",
+   "opponentRefusesParentageTest": "亲子关系诉讼（X诉，涉Y）中的另一方拒绝做亲子鉴定",
+   "opponentHasContraryEvidence": "亲子关系诉讼（X诉，涉Y）中的另一方有相反证据",
+   "findParentageClaimEstablished": "人民法院认定起诉人X关于与Y亲子关系的主张成立"
+  }
+ },
+ "art:1074": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "祖孙之间的抚养、赡养义务",
+     "rules": [
+      "c1074-1",
+      "c1074-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "祖父母、外祖父母有负担能力；孙子女、外孙子女未成年且其父母已经死亡或者无力抚养",
+     "rules": [
+      "c1074-1"
+     ]
+    },
+    {
+     "text": "孙子女、外孙子女有负担能力；祖父母、外祖父母的子女已经死亡或者无力赡养",
+     "rules": [
+      "c1074-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "祖父母、外祖父母对未成年孙子女、外孙子女有抚养的义务",
+     "rules": [
+      "c1074-1"
+     ]
+    },
+    {
+     "text": "孙子女、外孙子女对祖父母、外祖父母有赡养的义务",
+     "rules": [
+      "c1074-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "祖孙间的抚养、赡养义务是补充性的，以父母或子女死亡或无力抚养、赡养为前提",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1074-1",
+    "srcs": [
+     "art1074-1"
+    ],
+    "body": [
+     "grandparentOf(G,C)",
+     "ableToBear(G)",
+     "minor(C)",
+     "parentsDeadOrUnableToRaise(C)"
+    ],
+    "heads": [
+     "owesMaintenance(G,C)",
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "raiseChild(G,C)"
+     }
+    ],
+    "note": "有负担能力的祖父母、外祖父母，对于父母已经死亡或者父母无力抚养的未成年孙子女、外孙子女，有抚养的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1074-2",
+    "srcs": [
+     "art1074-2"
+    ],
+    "body": [
+     "grandparentOf(G,C)",
+     "ableToBear(C)",
+     "childrenDeadOrUnableToSupport(G)"
+    ],
+    "heads": [
+     "owesMaintenance(C,G)",
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "G",
+      "content": "supportElder(C,G)"
+     }
+    ],
+    "note": "有负担能力的孙子女、外孙子女，对于子女已经死亡或者子女无力赡养的祖父母、外祖父母，有赡养的义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "ableToBear": "X有负担能力",
+   "parentsDeadOrUnableToRaise": "C的父母已经死亡或者父母无力抚养",
+   "childrenDeadOrUnableToSupport": "G的子女已经死亡或者子女无力赡养",
+   "raiseChild": "X抚养未成年人Y（抚养人，被抚养人）",
+   "supportElder": "X赡养Y（赡养人，被赡养人）"
+  }
+ },
+ "art:1058": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻对未成年子女抚养、教育和保护的权利义务",
+     "rules": [
+      "c1058-right",
+      "c1058-duty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为夫妻，子女未成年",
+     "rules": [
+      "c1058-right",
+      "c1058-duty"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻双方平等享有对未成年子女抚养、教育和保护的权利",
+     "rules": [
+      "c1058-right"
+     ]
+    },
+    {
+     "text": "夫妻双方共同承担对未成年子女抚养、教育和保护的义务",
+     "rules": [
+      "c1058-duty"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "总则第26条第1款（c26-1）已规定父母对未成年子女的抚养、教育和保护义务；本条强调夫妻双方平等、共同；父母对子女的抚养义务、教育保护权利义务一般规定见第1067、1068条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1058-right",
+    "srcs": [
+     "art1058"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "childOf(C,A)",
+     "minor(C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "raiseEducateProtect(A,C)"
+     }
+    ],
+    "note": "夫妻双方平等享有对未成年子女抚养、教育和保护的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1058-duty",
+    "srcs": [
+     "art1058"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "childOf(C,A)",
+     "minor(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "raiseEducateProtect(A,C)"
+     }
+    ],
+    "note": "夫妻双方共同承担对未成年子女抚养、教育和保护的义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1059": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻间的相互扶养义务及扶养费请求权",
+     "rules": [
+      "c1059-1",
+      "c1059-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为夫妻",
+     "rules": [
+      "c1059-1"
+     ]
+    },
+    {
+     "text": "一方需要扶养，另一方不履行扶养义务",
+     "rules": [
+      "c1059-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻有相互扶养的义务",
+     "rules": [
+      "c1059-1"
+     ]
+    },
+    {
+     "text": "需要扶养的一方有要求对方给付扶养费的权利",
+     "rules": [
+      "c1059-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "离婚时的经济帮助（第1090条）不是夫妻扶养义务的延续",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1059-1",
+    "srcs": [
+     "art1059-1"
+    ],
+    "body": [
+     "spouseOf(A,B)"
+    ],
+    "heads": [
+     "owesMaintenance(A,B)",
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "supportSpouse(A,B)"
+     }
+    ],
+    "note": "夫妻有相互扶养的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1059-2",
+    "srcs": [
+     "art1059-2"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "needsSupport(A)",
+     "failsToSupport(B,A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimSpousalSupportPayment(A,B)"
+     }
+    ],
+    "note": "需要扶养的一方，在另一方不履行扶养义务时，有要求其给付扶养费的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "supportSpouse": "A扶养配偶B",
+   "needsSupport": "A需要扶养",
+   "failsToSupport": "B不履行对A的扶养义务（义务人，权利人）",
+   "claimSpousalSupportPayment": "A要求配偶B给付扶养费"
+  }
+ },
+ "art:1075": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "兄弟姐妹之间的扶养义务",
+     "rules": [
+      "c1075-1",
+      "c1075-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "兄、姐有负担能力；弟、妹未成年且父母已经死亡或者父母无力抚养",
+     "rules": [
+      "c1075-1"
+     ]
+    },
+    {
+     "text": "弟、妹由兄、姐扶养长大且有负担能力；兄、姐缺乏劳动能力又缺乏生活来源",
+     "rules": [
+      "c1075-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "兄、姐对未成年弟、妹有扶养的义务",
+     "rules": [
+      "c1075-1"
+     ]
+    },
+    {
+     "text": "弟、妹对兄、姐有扶养的义务",
+     "rules": [
+      "c1075-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "弟、妹的扶养义务以“由兄、姐扶养长大”为前提，未由兄姐扶养长大的不负此义务",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1075-1",
+    "srcs": [
+     "art1075-1"
+    ],
+    "body": [
+     "olderSiblingOf(S,Y)",
+     "ableToBear(S)",
+     "minor(Y)",
+     "parentsDeadOrUnableToRaise(Y)"
+    ],
+    "heads": [
+     "owesMaintenance(S,Y)",
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "Y",
+      "content": "supportSibling(S,Y)"
+     }
+    ],
+    "note": "有负担能力的兄、姐，对于父母已经死亡或者父母无力抚养的未成年弟、妹，有扶养的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1075-2",
+    "srcs": [
+     "art1075-2"
+    ],
+    "body": [
+     "olderSiblingOf(S,Y)",
+     "raisedBySibling(Y,S)",
+     "ableToBear(Y)",
+     "lacksLaborCapacityAndLivelihood(S)"
+    ],
+    "heads": [
+     "owesMaintenance(Y,S)",
+     {
+      "type": "OBL",
+      "bearer": "Y",
+      "counterparty": "S",
+      "content": "supportSibling(Y,S)"
+     }
+    ],
+    "note": "由兄、姐扶养长大的有负担能力的弟、妹，对于缺乏劳动能力又缺乏生活来源的兄、姐，有扶养的义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "supportSibling": "X扶养兄弟姐妹Y（扶养人，被扶养人）",
+   "raisedBySibling": "弟、妹Y由兄、姐S扶养长大",
+   "lacksLaborCapacityAndLivelihood": "S缺乏劳动能力又缺乏生活来源"
+  }
+ },
+ "art:1055": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻在婚姻家庭中的地位",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻在婚姻家庭中地位平等（宣示性原则，不单独形式化；具体化见第1056–1062条等）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1056": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻各自的姓名权",
+     "rules": [
+      "c1056"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为夫妻",
+     "rules": [
+      "c1056"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻双方都有各自使用自己姓名的权利",
+     "rules": [
+      "c1056"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "一般姓名权见第1012条；本条强调婚姻不改变各自姓名",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1056",
+    "srcs": [
+     "art1056"
+    ],
+    "body": [
+     "spouseOf(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "useOwnName(A)"
+     }
+    ],
+    "note": "夫妻双方都有各自使用自己姓名的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "useOwnName": "A使用自己的姓名"
+  }
+ },
+ "art:1060": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻日常家事代理：一方因家庭日常生活需要实施的行为是否对双方生效",
+     "rules": [
+      "c1060-1",
+      "c1060-2",
+      "c1060-restrict",
+      "c1060-opp"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "夫妻一方因家庭日常生活需要而实施民事法律行为",
+     "rules": [
+      "c1060-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但是夫妻一方与相对人另有约定的除外",
+     "rules": [
+      "c1060-1"
+     ]
+    },
+    {
+     "text": "夫妻之间对一方可以实施的民事法律行为范围的限制，可以对抗知情的相对人（反面解释）",
+     "rules": [
+      "c1060-opp",
+      "c1060-restrict"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该行为对夫妻双方发生效力",
+     "rules": [
+      "c1060-1"
+     ]
+    },
+    {
+     "text": "夫妻之间的内部限制不得对抗善意相对人",
+     "rules": [
+      "c1060-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "内部限制可对抗非善意相对人时，排除对双方生效的效果",
+     "rules": [
+      "c1060-restrict"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "日常家事所负债务为共同债务见第1064条第1款（c1064-daily）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1060-1",
+    "srcs": [
+     "art1060-1"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "actOf(J,A)",
+     "forDailyHouseholdNeeds(J)",
+     "~agreedOtherwiseWithCounterparty(J)"
+    ],
+    "heads": [
+     "bindsSpouse(J,B)"
+    ],
+    "note": "夫妻一方因家庭日常生活需要而实施的民事法律行为，对夫妻双方发生效力，但是夫妻一方与相对人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1060-2",
+    "srcs": [
+     "art1060-2"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "actOf(J,A)",
+     "spousalActRestrictionCovers(J)",
+     "counterpartyOfAct(Q,J)",
+     "goodFaithAsToSpousalRestriction(Q,J)"
+    ],
+    "heads": [
+     "-restrictionOpposable(J,Q)"
+    ],
+    "note": "夫妻之间对一方可以实施的民事法律行为范围的限制，不得对抗善意相对人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1060-opp",
+    "srcs": [
+     "art1060-2"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "actOf(J,A)",
+     "spousalActRestrictionCovers(J)",
+     "counterpartyOfAct(Q,J)",
+     "knewSpousalRestriction(Q,J)"
+    ],
+    "heads": [
+     "restrictionOpposable(J,Q)"
+    ],
+    "note": "第1060条第2款的反面解释（学理）：相对人知道该内部限制的，限制可以对抗该相对人",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1060-restrict",
+    "srcs": [
+     "art1060-1",
+     "art1060-2"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "actOf(J,A)",
+     "counterpartyOfAct(Q,J)",
+     "restrictionOpposable(J,Q)"
+    ],
+    "heads": [
+     "-bindsSpouse(J,B)"
+    ],
+    "note": "学理：内部限制可对抗相对人的，该超出限制的行为不因日常家事代理而对另一方发生效力",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1060-restrict",
+    "c1060-1",
+    "可对抗相对人的内部限制排除日常家事代理的效果"
+   ]
+  ],
+  "predicates": {
+   "bindsSpouse": "民事法律行为J对配偶B发生效力（即对夫妻双方发生效力）（行为，另一方配偶）",
+   "agreedOtherwiseWithCounterparty": "实施行为J的夫妻一方与相对人另有约定（如约定只约束行为人本人）（行为）",
+   "spousalActRestrictionCovers": "夫妻之间对一方可以实施的民事法律行为范围的限制涵盖行为J（行为）",
+   "goodFaithAsToSpousalRestriction": "相对人Q不知道且不应当知道夫妻之间对行为J的内部限制（相对人，行为）",
+   "knewSpousalRestriction": "相对人Q知道或者应当知道夫妻之间对行为J的内部限制（相对人，行为）",
+   "restrictionOpposable": "夫妻之间的内部限制就行为J可以对抗相对人Q（行为，相对人）"
+  }
+ },
+ "art:1061": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻相互继承遗产的权利",
+     "rules": [
+      "c1061"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为夫妻",
+     "rules": [
+      "c1061"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻有相互继承遗产的权利",
+     "rules": [
+      "c1061"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "配偶为第一顺序法定继承人见第1127条；继承权丧失见第1125条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1061",
+    "srcs": [
+     "art1061"
+    ],
+    "body": [
+     "spouseOf(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "inheritFrom(A,B)"
+     }
+    ],
+    "note": "夫妻有相互继承遗产的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "inheritFrom": "A继承B的遗产（继承人，被继承人）"
+  }
+ },
+ "art:1057": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻的人身自由权",
+     "rules": [
+      "c1057-1",
+      "c1057-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为夫妻",
+     "rules": [
+      "c1057-1",
+      "c1057-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "夫妻双方都有参加生产、工作、学习和社会活动的自由",
+     "rules": [
+      "c1057-1"
+     ]
+    },
+    {
+     "text": "一方不得对另一方加以限制或者干涉",
+     "rules": [
+      "c1057-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "c1057-1",
+    "srcs": [
+     "art1057"
+    ],
+    "body": [
+     "spouseOf(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "participateInSocialLife(A)"
+     }
+    ],
+    "note": "夫妻双方都有参加生产、工作、学习和社会活动的自由",
+    "auth": "npc"
+   },
+   {
+    "key": "c1057-2",
+    "srcs": [
+     "art1057"
+    ],
+    "body": [
+     "spouseOf(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "restrictOrInterfere(B,A)"
+     }
+    ],
+    "note": "一方不得对另一方参加生产、工作、学习和社会活动加以限制或者干涉",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "participateInSocialLife": "A参加生产、工作、学习和社会活动",
+   "restrictOrInterfere": "B对A参加生产、工作、学习和社会活动加以限制或者干涉（行为人，被干涉的配偶）"
+  }
+ },
+ "art:1070": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "父母子女相互继承遗产的权利",
+     "rules": [
+      "c1070"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "双方为父母子女关系",
+     "rules": [
+      "c1070"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "父母和子女有相互继承遗产的权利",
+     "rules": [
+      "c1070"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "父母、子女的范围（含养父母子女、有扶养关系的继父母子女）见第1127条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1070",
+    "srcs": [
+     "art1070"
+    ],
+    "body": [
+     {
+      "or": [
+       "parentOf(A,B)",
+       "childOf(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "inheritFrom(A,B)"
+     }
+    ],
+    "note": "父母和子女有相互继承遗产的权利",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {}
+ },
+ "art:1071": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第三章　家庭关系"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "非婚生子女的法律地位与生父母的抚养费负担",
+     "rules": [
+      "c1071-equal",
+      "c1071-forbid",
+      "c1071-2",
+      "c1071-indep"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "子女为非婚生子女",
+     "rules": [
+      "c1071-equal",
+      "c1071-forbid"
+     ]
+    },
+    {
+     "text": "生父或生母不直接抚养；子女未成年或为不能独立生活的成年子女",
+     "rules": [
+      "c1071-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "非婚生子女享有与婚生子女同等的权利",
+     "rules": [
+      "c1071-equal"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得加以危害和歧视",
+     "rules": [
+      "c1071-forbid"
+     ]
+    },
+    {
+     "text": "不直接抚养的生父或生母应当负担抚养费",
+     "rules": [
+      "c1071-2"
+     ]
+    },
+    {
+     "text": "司法解释：“不能独立生活的成年子女”指尚在校接受高中及以下学历教育，或丧失、部分丧失劳动能力等非因主观原因而无法维持正常生活的成年子女",
+     "rules": [
+      "c1071-indep"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "婚生子女的抚养费请求见第1067条；离婚后的抚养费见第1085条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1071-equal",
+    "srcs": [
+     "art1071-1"
+    ],
+    "body": [
+     "bornOutOfWedlock(C)"
+    ],
+    "heads": [
+     "sameRightsAsMaritalChild(C)"
+    ],
+    "note": "非婚生子女享有与婚生子女同等的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1071-forbid",
+    "srcs": [
+     "art1071-1"
+    ],
+    "body": [
+     "bornOutOfWedlock(C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "anyone",
+      "counterparty": "C",
+      "content": "endangerOrDiscriminate(C)"
+     }
+    ],
+    "note": "任何组织或者个人不得对非婚生子女加以危害和歧视",
+    "auth": "npc"
+   },
+   {
+    "key": "c1071-2",
+    "srcs": [
+     "art1071-2"
+    ],
+    "body": [
+     "bornOutOfWedlock(C)",
+     "biologicalParent(P,C)",
+     "notDirectlyRaising(P,C)",
+     {
+      "or": [
+       "minor(C)",
+       "adultUnableToLiveIndependently(C)"
+      ]
+     }
+    ],
+    "heads": [
+     "owesMaintenance(P,C)",
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "payChildSupport(P,C)"
+     }
+    ],
+    "note": "不直接抚养非婚生子女的生父或者生母，应当负担未成年子女或者不能独立生活的成年子女的抚养费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1071-indep",
+    "srcs": [
+     "art1071-2"
+    ],
+    "body": [
+     "adult(C)",
+     {
+      "or": [
+       "inHighSchoolOrBelowEducation(C)",
+       "involuntarilyUnableToMaintainLife(C)"
+      ]
+     }
+    ],
+    "heads": [
+     "adultUnableToLiveIndependently(C)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》（法释〔2020〕22号）第41条：尚在校接受高中及其以下学历教育，或者丧失、部分丧失劳动能力等非因主观原因而无法维持正常生活的成年子女，可以认定为“不能独立生活的成年子女”",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "bornOutOfWedlock": "C是非婚生子女",
+   "sameRightsAsMaritalChild": "C享有与婚生子女同等的权利",
+   "endangerOrDiscriminate": "对子女C加以危害和歧视（被害子女）",
+   "notDirectlyRaising": "父或母P不直接抚养子女C（父或母，子女）",
+   "adultUnableToLiveIndependently": "C是不能独立生活的成年子女",
+   "payChildSupport": "P负担子女C的抚养费（父或母，子女）",
+   "inHighSchoolOrBelowEducation": "C尚在校接受高中及其以下学历教育",
+   "involuntarilyUnableToMaintainLife": "C因丧失、部分丧失劳动能力等非因主观原因而无法维持正常生活"
+  }
+ }
+}

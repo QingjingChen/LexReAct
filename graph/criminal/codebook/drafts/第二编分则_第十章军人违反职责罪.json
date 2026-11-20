@@ -1,0 +1,6133 @@
+{
+ "art:420": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人违反职责罪的概念与成立条件（本章类罪名的定义）",
+     "rules": [
+      "k420-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体必须是军人（特殊主体）",
+     "rules": [
+      "k420-1",
+      "k420-subj"
+     ]
+    },
+    {
+     "text": "客观上违反军人职责，危害国家军事利益",
+     "rules": [
+      "k420-1"
+     ]
+    },
+    {
+     "text": "依照法律应当受刑罚处罚，即须有法律对该行为规定刑罚（罪刑法定的要求）",
+     "rules": [
+      "k420-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非军人实施的行为，即使危害国家军事利益，也不成立军人违反职责罪（可依其他罪名处理）",
+     "rules": [
+      "k420-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "同时具备军人主体、违反职责、危害国家军事利益、依法应受刑罚处罚四项条件的行为，属于军人违反职责罪",
+     "rules": [
+      "k420-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是定义性（类罪名）条款，只界定“军人违反职责罪”这一类犯罪的共同要件，本身不规定具体罪名与法定刑；定罪量刑须依本章第421条以下的具体条文，不能直接援引本条判刑",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k420-1",
+    "srcs": [
+     "art420#1"
+    ],
+    "body": [
+     "militaryPersonnel(P)",
+     "act(P,X)",
+     "violatesMilitaryDuty(P,X)",
+     "harmsNationalMilitaryInterest(X)",
+     "punishableByLaw(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,militaryDutyViolation)"
+    ],
+    "auth": "npc",
+    "note": "军人违反职责、危害国家军事利益且依法应受刑罚处罚的行为，符合军人违反职责罪（类罪名，常量 militaryDutyViolation）的构成要件"
+   },
+   {
+    "key": "k420-subj",
+    "srcs": [
+     "art420#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,militaryDutyViolation)"
+    ],
+    "auth": "doctrine",
+    "note": "由本条“军人违反职责”的主体要素反推：非军人的行为不符合军人违反职责罪的构成要件（体系解释，法条未直接明文表述）"
+   }
+  ],
+  "overrides": [
+   [
+    "k420-subj",
+    "k420-1",
+    "推断：结论冲突（('constitutes', '+')），k420-subj 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "militaryPersonnel": "军人（人P）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "violatesMilitaryDuty": "violatesMilitaryDuty(P,X)：P 通过行为 X 违反其军人职责",
+   "harmsNationalMilitaryInterest": "harmsNationalMilitaryInterest(X)：行为 X 危害国家军事利益",
+   "punishableByLaw": "punishableByLaw(X)：行为X依照法律应当受刑罚处罚",
+   "constitutes": "符合构成要件"
+  }
+ },
+ "art:421": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时违抗命令的行为是否构成战时违抗命令罪，以及适用基本法定刑还是加重法定刑",
+     "rules": [
+      "k421-cond",
+      "k421-basic",
+      "k421-agg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件为战时；行为为违抗命令；且对作战造成危害（结果要件），三者齐备才符合本罪构成要件",
+     "rules": [
+      "k421-cond"
+     ]
+    },
+    {
+     "text": "主体限于军人（军人违反职责罪的体系要求）；非军人违抗命令不构成本罪（学理）",
+     "rules": [
+      "k421-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "违抗命令但未对作战造成危害的，不构成本罪（本罪为结果犯，学理）",
+     "rules": [
+      "k421-noharm"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本刑：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k421-basic"
+     ]
+    },
+    {
+     "text": "致使战斗、战役遭受重大损失的：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k421-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致使战斗、战役遭受重大损失的加重情形，优先适用加重法定刑，排除基本法定刑",
+     "rules": [
+      "k421-agg",
+      "k421-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k421-cond",
+    "srcs": [
+     "art421#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "disobeysMilitaryOrder(P,X)",
+     "harmsCombatOperations(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,disobeyingOrdersInWartime)"
+    ],
+    "auth": "npc",
+    "note": "战时违抗命令并对作战造成危害的，符合战时违抗命令罪（罪名常量 disobeyingOrdersInWartime）的构成要件"
+   },
+   {
+    "key": "k421-basic",
+    "srcs": [
+     "art421#1"
+    ],
+    "body": [
+     "constitutes(P,X,disobeyingOrdersInWartime)",
+     "~causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时违抗命令对作战造成危害的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k421-agg",
+    "srcs": [
+     "art421#1"
+    ],
+    "body": [
+     "constitutes(P,X,disobeyingOrdersInWartime)",
+     "causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使战斗、战役遭受重大损失的，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k421-noharm",
+    "srcs": [
+     "art421#1"
+    ],
+    "body": [
+     "disobeysMilitaryOrder(P,X)",
+     "-harmsCombatOperations(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,disobeyingOrdersInWartime)"
+    ],
+    "auth": "doctrine",
+    "note": "法条以“对作战造成危害”为要件，故未造成危害的不构成本罪；此结果犯解读来自学理"
+   },
+   {
+    "key": "k421-subject",
+    "srcs": [
+     "art421#1"
+    ],
+    "body": [
+     "disobeysMilitaryOrder(P,X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,disobeyingOrdersInWartime)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪属军人违反职责罪，主体限于军人（体系解释，非本条明文），非军人不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k421-noharm",
+    "k421-cond",
+    "推断：结论冲突（('constitutes', '+')），k421-noharm 为例外或更具体"
+   ],
+   [
+    "k421-cond",
+    "k421-subject",
+    "推断：结论冲突（('constitutes', '+')），k421-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "disobeysMilitaryOrder": "disobeysMilitaryOrder(P,X)：P 通过行为 X 违抗（作战）命令",
+   "harmsCombatOperations": "harmsCombatOperations(X)：行为 X 对作战造成危害",
+   "constitutes": "符合构成要件",
+   "causesMajorLossToBattleOrCampaign": "causesMajorLossToBattleOrCampaign(X)：行为 X 致使战斗、战役遭受重大损失",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:422": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "故意隐瞒、谎报军情或者拒传、假传军令，对作战造成危害的定罪与量刑（隐瞒、谎报军情罪／拒传、假传军令罪）",
+     "rules": [
+      "k422-cond",
+      "k422-charge-info",
+      "k422-charge-order",
+      "k422-basic",
+      "k422-aggr"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为要件：故意隐瞒军情、谎报军情，或者拒传军令、假传军令，四种行为方式具备其一即可；主观上须为故意",
+     "rules": [
+      "k422-cond"
+     ]
+    },
+    {
+     "text": "结果要件：对作战造成危害（不要求已发生重大损失）",
+     "rules": [
+      "k422-cond"
+     ]
+    },
+    {
+     "text": "主体要件：本罪属军人违反职责罪，主体限于军人（体系解释，本条未明文）",
+     "rules": [
+      "k422-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非军人实施隐瞒、谎报军情或拒传、假传军令行为的，不构成本罪（可能构成其他犯罪）",
+     "rules": [
+      "k422-subject"
+     ]
+    },
+    {
+     "text": "未对作战造成危害的，不成立本罪基本犯",
+     "rules": [
+      "k422-cond"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依行为方式分别定罪：隐瞒、谎报军情的，构成隐瞒、谎报军情罪；拒传、假传军令的，构成拒传、假传军令罪，均负刑事责任",
+     "rules": [
+      "k422-charge-info",
+      "k422-charge-order"
+     ]
+    },
+    {
+     "text": "基本犯：对作战造成危害的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k422-basic"
+     ]
+    },
+    {
+     "text": "结果加重：致使战斗、战役遭受重大损失的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k422-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致使战斗、战役遭受重大损失的加重法定刑优先于基本法定刑；主体不适格的排除规则优先于构成要件规则",
+     "rules": [
+      "k422-aggr",
+      "k422-basic",
+      "k422-subject"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是故意犯罪且以对作战造成危害为要件，过失延误报告、传达或虽有隐瞒谎报但未危害作战的，不成立本罪；本罪针对军情报告与军令传达，区别于战时造谣惑众等扰乱军心的犯罪",
+     "rules": [
+      "k422-cond",
+      "k422-subject"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k422-cond",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "concealsOrFalselyReportsMilitaryInfo(P,X)",
+       "refusesOrFalselyTransmitsMilitaryOrder(P,X)"
+      ]
+     },
+     "harmsMilitaryOperation(X)"
+    ],
+    "heads": [
+     "militaryInfoOrOrderCrimeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "故意隐瞒、谎报军情或者拒传、假传军令，且对作战造成危害的，具备第422条基本构成条件"
+   },
+   {
+    "key": "k422-subject",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "concealsOrFalselyReportsMilitaryInfo(P,X)",
+       "refusesOrFalselyTransmitsMilitaryOrder(P,X)"
+      ]
+     },
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-militaryInfoOrOrderCrimeConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "本条位于军人违反职责罪章，主体限于军人（第450条），非军人不构成本罪；此为体系解释，本条未明文规定"
+   },
+   {
+    "key": "k422-charge-info",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "militaryInfoOrOrderCrimeConditions(P,X)",
+     "concealsOrFalselyReportsMilitaryInfo(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,concealingOrFalselyReportingMilitaryInfo)",
+     "responsible(P,X,concealingOrFalselyReportingMilitaryInfo)"
+    ],
+    "auth": "spc",
+    "note": "隐瞒、谎报军情的，以隐瞒、谎报军情罪定罪并负刑事责任（罪名常量 concealingOrFalselyReportingMilitaryInfo 依两高罪名规定）"
+   },
+   {
+    "key": "k422-charge-order",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "militaryInfoOrOrderCrimeConditions(P,X)",
+     "refusesOrFalselyTransmitsMilitaryOrder(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,refusingOrFalselyTransmittingMilitaryOrder)",
+     "responsible(P,X,refusingOrFalselyTransmittingMilitaryOrder)"
+    ],
+    "auth": "spc",
+    "note": "拒传、假传军令的，以拒传、假传军令罪定罪并负刑事责任（罪名常量 refusingOrFalselyTransmittingMilitaryOrder 依两高罪名规定）"
+   },
+   {
+    "key": "k422-basic",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "militaryInfoOrOrderCrimeConditions(P,X)",
+     "~causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对作战造成危害的，处三年以上十年以下有期徒刑（量刑方式常量 from3to10 表示三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k422-aggr",
+    "srcs": [
+     "art422"
+    ],
+    "body": [
+     "militaryInfoOrOrderCrimeConditions(P,X)",
+     "causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使战斗、战役遭受重大损失的，处十年以上有期徒刑、无期徒刑或者死刑（量刑方式常量 from10OrLifeOrDeath 表示该择一法定刑幅度）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "concealsOrFalselyReportsMilitaryInfo": "concealsOrFalselyReportsMilitaryInfo(P,X)：P 通过行为 X 故意隐瞒军情（隐匿不报）或者谎报军情（作虚假报告）",
+   "refusesOrFalselyTransmitsMilitaryOrder": "refusesOrFalselyTransmitsMilitaryOrder(P,X)：P 通过行为 X 故意拒绝传达军令或者虚假传达军令",
+   "harmsMilitaryOperation": "harmsMilitaryOperation(X)：行为 X 对作战造成危害",
+   "militaryInfoOrOrderCrimeConditions": "militaryInfoOrOrderCrimeConditions(P,X)：P 的行为 X 具备刑法第422条基本犯的构成条件（故意隐瞒、谎报军情或拒传、假传军令，且对作战造成危害）",
+   "militaryPersonnel": "军人（人P）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesMajorLossToBattleOrCampaign": "causesMajorLossToBattleOrCampaign(X)：行为 X 致使战斗、战役遭受重大损失",
+   "sentence": "量刑"
+  }
+ },
+ "art:423": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人在战场上贪生怕死、自动放下武器投降敌人，是否构成投降罪，以及适用哪一量刑档次",
+     "rules": [
+      "k423-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为军人；场合为战场上；主观上出于贪生怕死；客观上自动放下武器投降敌人（罪名常量 surrenderToEnemy=投降罪）",
+     "rules": [
+      "k423-cond"
+     ]
+    },
+    {
+     "text": "投降行为情节严重的，属第1款后段加重情形",
+     "rules": [
+      "k423-serious"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本情形：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k423-basic"
+     ]
+    },
+    {
+     "text": "情节严重的：处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k423-serious-pen"
+     ]
+    },
+    {
+     "text": "投降后为敌人效劳的：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k423-serve"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "投降后为敌人效劳的，优先适用第2款的最重法定刑，不再适用第1款基本档与情节严重档",
+     "rules": [
+      "k423-serve",
+      "k423-basic",
+      "k423-serious-pen"
+     ]
+    },
+    {
+     "text": "情节严重的，适用第1款后段加重档，排除基本档",
+     "rules": [
+      "k423-serious-pen",
+      "k423-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本条限于战场上自动放下武器投降敌人；非战场投奔敌方或背叛国家的投敌叛变，依刑法其他条文处理，不适用本条（体系性说明，本行不形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k423-cond",
+    "srcs": [
+     "art423#1"
+    ],
+    "body": [
+     "militaryPersonnel(P)",
+     "onBattlefield(X)",
+     "cowardlyMotive(P,X)",
+     "voluntarilyLaysDownArmsAndSurrenders(P,X)"
+    ],
+    "heads": [
+     "surrenderToEnemyConditions(P,X)",
+     "constitutes(P,X,surrenderToEnemy)"
+    ],
+    "auth": "npc",
+    "note": "军人在战场上贪生怕死、自动放下武器投降敌人，符合投降罪构成要件"
+   },
+   {
+    "key": "k423-basic",
+    "srcs": [
+     "art423#1"
+    ],
+    "body": [
+     "surrenderToEnemyConditions(P,X)",
+     "~aggravatedSurrender(P,X)",
+     "~servesEnemyAfterSurrender(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "投降罪基本情形处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k423-serious",
+    "srcs": [
+     "art423#1"
+    ],
+    "body": [
+     "surrenderToEnemyConditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "aggravatedSurrender(P,X)"
+    ],
+    "auth": "npc",
+    "note": "投降行为情节严重的，属第1款后段加重情形"
+   },
+   {
+    "key": "k423-serious-pen",
+    "srcs": [
+     "art423#1"
+    ],
+    "body": [
+     "aggravatedSurrender(P,X)",
+     "~servesEnemyAfterSurrender(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的处十年以上有期徒刑或者无期徒刑"
+   },
+   {
+    "key": "k423-serve",
+    "srcs": [
+     "art423#2"
+    ],
+    "body": [
+     "surrenderToEnemyConditions(P,X)",
+     "servesEnemyAfterSurrender(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "投降后为敌人效劳的，处十年以上有期徒刑、无期徒刑或者死刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "militaryPersonnel": "军人（人P）",
+   "onBattlefield": "onBattlefield(X)：行为 X 发生在战场上（作战地域、战斗进行之中）",
+   "cowardlyMotive": "cowardlyMotive(P,X)：P 实施行为X出于贪生怕死的动机",
+   "voluntarilyLaysDownArmsAndSurrenders": "voluntarilyLaysDownArmsAndSurrenders(P,X)：P 通过行为X自动（非被迫）放下武器投降敌人",
+   "surrenderToEnemyConditions": "surrenderToEnemyConditions(P,X)：P 的行为X具备刑法第423条投降罪的主体、场合、主观与客观构成条件",
+   "constitutes": "符合构成要件",
+   "aggravatedSurrender": "aggravatedSurrender(P,X)：P 的投降行为X情节严重，属第423条第1款后段加重情形",
+   "servesEnemyAfterSurrender": "servesEnemyAfterSurrender(P,X)：P 在投降后为敌人效劳（第423条第2款情形）",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑"
+  }
+ },
+ "art:424": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时临阵脱逃行为的定罪与量刑档次（基本档／情节严重／致使战斗、战役遭受重大损失）",
+     "rules": [
+      "k424-1",
+      "k424-base",
+      "k424-aggr",
+      "k424-loss"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件：行为发生于战时（战时的界定依刑法第451条，本条未展开）",
+     "rules": [
+      "k424-1"
+     ]
+    },
+    {
+     "text": "行为条件：临阵脱逃，即在面临战斗、执行作战任务之际擅自逃离战斗岗位或部队",
+     "rules": [
+      "k424-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪属军人违反职责罪，主体须为军人（第450条）；非军人实施战时脱逃行为不构成本罪",
+     "rules": [
+      "k424-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "战时临阵脱逃的，构成战时临阵脱逃罪",
+     "rules": [
+      "k424-1"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑",
+     "rules": [
+      "k424-base"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k424-aggr"
+     ]
+    },
+    {
+     "text": "致使战斗、战役遭受重大损失的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k424-loss"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "三档法定刑递进适用：致使战斗、战役遭受重大损失的最重档优先于情节严重档，情节严重档优先于基本档",
+     "rules": [
+      "k424-loss",
+      "k424-aggr",
+      "k424-base"
+     ]
+    },
+    {
+     "text": "主体不适格（非军人）时排除本罪构成",
+     "rules": [
+      "k424-subject",
+      "k424-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与逃离部队罪（第435条）的区别：本罪须同时具备“战时”与“临阵”两项限制；平时逃离部队，或战时但非临阵状态下逃离部队，只能依第435条处理",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k424-1",
+    "srcs": [
+     "art424#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "desertsInFaceOfEnemy(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeDesertion)"
+    ],
+    "auth": "npc",
+    "note": "战时临阵脱逃的，符合战时临阵脱逃罪（wartimeDesertion）的构成要件"
+   },
+   {
+    "key": "k424-base",
+    "srcs": [
+     "art424#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeDesertion)",
+     "~seriousCircumstances(X)",
+     "~causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：战时临阵脱逃的，处三年以下有期徒刑"
+   },
+   {
+    "key": "k424-aggr",
+    "srcs": [
+     "art424#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeDesertion)",
+     "seriousCircumstances(X)",
+     "~causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k424-loss",
+    "srcs": [
+     "art424#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeDesertion)",
+     "causesMajorLossToBattleOrCampaign(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致使战斗、战役遭受重大损失的，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k424-subject",
+    "srcs": [
+     "art424#1"
+    ],
+    "body": [
+     "desertsInFaceOfEnemy(P,X)",
+     "wartime(X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeDesertion)"
+    ],
+    "auth": "doctrine",
+    "note": "本条未明写主体，依本章军人违反职责罪的主体规定（第450条）及体系解释，非军人不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k424-subject",
+    "k424-1",
+    "推断：结论冲突（('constitutes', '+')），k424-subject 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "desertsInFaceOfEnemy": "desertsInFaceOfEnemy(P,X)：P 通过行为 X 临阵脱逃，即在面临战斗、执行作战任务之际擅自逃离战斗岗位或所属部队",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "causesMajorLossToBattleOrCampaign": "causesMajorLossToBattleOrCampaign(X)：行为 X 致使战斗、战役遭受重大损失",
+   "sentenceUnder3Years": "sentenceUnder3Years(P,X)：对 P 就犯罪 X 处三年以下有期徒刑",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:425": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "指挥人员和值班、值勤人员擅离职守或者玩忽职守并造成严重后果的，构成擅离、玩忽军事职守罪，应负刑事责任",
+     "rules": [
+      "k425-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体限于指挥人员和值班、值勤人员；行为为擅离职守或者玩忽职守（二者择一）；须造成严重后果",
+     "rules": [
+      "k425-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k425-basic"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k425-aggravated"
+     ]
+    },
+    {
+     "text": "战时犯前款罪的，处五年以上有期徒刑",
+     "rules": [
+      "k425-wartime"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别严重后果时排除基本档；战时犯本罪时第2款优先于第1款的基本档与加重档",
+     "rules": [
+      "k425-aggravated",
+      "k425-wartime"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：本条第2款的“战时”是分则把特定时间规定为法定刑升格要素的典型例子（与“在公共场所当众强奸”“入户抢劫”“在公共场所或交通要道聚众斗殴”并列），属犯罪客观方面的时间要素，而非独立罪名",
+     "rules": [
+      "k425-wartime"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k425-cond",
+    "srcs": [
+     "art425#1"
+    ],
+    "body": [
+     "commandOrDutyPersonnel(P)",
+     "act(P,X)",
+     {
+      "or": [
+       "unauthorizedLeavePost(P)",
+       "neglectsDuty(P,X)"
+      ]
+     },
+     "causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,derelictionOfMilitaryDuty)",
+     "responsible(P,X,derelictionOfMilitaryDuty)"
+    ],
+    "auth": "npc",
+    "note": "指挥人员、值班值勤人员擅离职守或玩忽职守造成严重后果，符合擅离、玩忽军事职守罪（新常量 derelictionOfMilitaryDuty）构成要件并负刑事责任"
+   },
+   {
+    "key": "k425-basic",
+    "srcs": [
+     "art425#1"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionOfMilitaryDuty)",
+     "causesSeriousConsequences(X)",
+     "~causesEspeciallySeriousConsequences(X)",
+     "~wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k425-aggravated",
+    "srcs": [
+     "art425#1"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionOfMilitaryDuty)",
+     "causesEspeciallySeriousConsequences(X)",
+     "~wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的加重档：处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k425-wartime",
+    "srcs": [
+     "art425#2"
+    ],
+    "body": [
+     "constitutes(P,X,derelictionOfMilitaryDuty)",
+     "wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时犯前款罪的，处五年以上有期徒刑；“战时”为分则规定的特定时间要素"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commandOrDutyPersonnel": "commandOrDutyPersonnel(P)：P 是军队中的指挥人员或者值班、值勤人员（刑法第425条的特殊主体）",
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "unauthorizedLeavePost": "unauthorizedLeavePost(P)：P 擅离（公务）岗位",
+   "neglectsDuty": "neglectsDuty(P,X)：P 在行为 X 中玩忽职守（严重不负责任，不履行或者不正确履行职责）",
+   "causesSeriousConsequences": "causesSeriousConsequences(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑"
+  }
+ },
+ "art:426": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、威胁方法阻碍指挥人员或者值班、值勤人员执行职务的，构成阻碍执行军事职务罪，应负刑事责任",
+     "rules": [
+      "k426-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象条件：被阻碍者是指挥人员或者值班、值勤人员，且正在依法执行职务；手段条件：以暴力、威胁方法实施阻碍",
+     "rules": [
+      "k426-cond"
+     ]
+    },
+    {
+     "text": "主体条件：本罪属军人违反职责罪，行为主体为军人（依刑法第450条及体系解释，本条未明文规定）",
+     "rules": [
+      "k426-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未使用暴力、威胁方法（如吵闹、纠缠、消极阻挡）而阻碍执行职务的，不符合本罪手段要件，不构成本罪",
+     "rules": [
+      "k426-noviolence"
+     ]
+    },
+    {
+     "text": "非军人以暴力、威胁方法阻碍指挥人员或值班、值勤人员执行职务的，不构成本罪，可依妨害公务罪等处理",
+     "rules": [
+      "k426-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k426-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k426-serious"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k426-especially"
+     ]
+    },
+    {
+     "text": "战时犯本罪的，从重处罚",
+     "rules": [
+      "k426-wartime"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "量刑档次择一适用：情节特别严重优先于情节严重，情节严重优先于基本档；战时从重是在所适用档次内从重",
+     "rules": [
+      "k426-especially",
+      "k426-serious",
+      "k426-basic",
+      "k426-wartime"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与妨害公务罪（第277条）的区分：本罪主体为军人，对象限于指挥人员或值班、值勤人员，属特别规定；不符合本罪主体或手段要件的，回归一般规定评价",
+     "rules": [
+      "k426-cond",
+      "k426-subject",
+      "k426-noviolence"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k426-cond",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "obstructsDutyOf(P,X,V)",
+     "commandOrDutyOfficer(V)",
+     "lawfullyPerformingDuty(V,X)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingMilitaryDuty)",
+     "responsible(P,X,obstructingMilitaryDuty)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、威胁方法阻碍正在依法执行职务的指挥人员或值班、值勤人员，符合阻碍执行军事职务罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k426-basic",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryDuty)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k426-serious",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryDuty)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k426-especially",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryDuty)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑或者无期徒刑"
+   },
+   {
+    "key": "k426-wartime",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryDuty)",
+     "wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时阻碍执行军事职务的，从重处罚"
+   },
+   {
+    "key": "k426-subject",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "obstructsDutyOf(P,X,V)",
+     "commandOrDutyOfficer(V)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,obstructingMilitaryDuty)",
+     "-responsible(P,X,obstructingMilitaryDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "本条未明文规定主体，依军人违反职责罪章（第450条）及学理，非军人不构成本罪，可按妨害公务罪等处理"
+   },
+   {
+    "key": "k426-noviolence",
+    "srcs": [
+     "art426#1"
+    ],
+    "body": [
+     "obstructsDutyOf(P,X,V)",
+     "commandOrDutyOfficer(V)",
+     "obstructsWithoutViolenceOrThreat(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,obstructingMilitaryDuty)",
+     "-responsible(P,X,obstructingMilitaryDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "手段要件的反面解释（学理）：未使用暴力、威胁方法的阻碍不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k426-subject",
+    "k426-cond",
+    "推断：结论冲突（('constitutes', '+')），k426-subject 为例外或更具体"
+   ],
+   [
+    "k426-noviolence",
+    "k426-cond",
+    "推断：结论冲突（('constitutes', '+')），k426-noviolence 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "obstructsDutyOf": "obstructsDutyOf(P,X,V)：P 通过行为 X 阻碍 V 执行职务、履行职责",
+   "commandOrDutyOfficer": "commandOrDutyOfficer(V)：V 是军队中的指挥人员或者值班、值勤人员（本罪的侵害对象）",
+   "lawfullyPerformingDuty": "lawfullyPerformingDuty(V,X)：V 在事件 X 中正在依法执行职务（含代表职务、红十字会职责）",
+   "usesViolenceOrThreatMeans": "usesViolenceOrThreatMeans(P,X)：P 在行为 X 中以暴力、威胁手段实施",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "sentence": "量刑",
+   "militaryPersonnel": "军人（人P）",
+   "obstructsWithoutViolenceOrThreat": "obstructsWithoutViolenceOrThreat(P,X)：P 的阻碍行为 X 未使用暴力、威胁方法（如吵闹、纠缠、消极阻挡）"
+  }
+ },
+ "art:427": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "滥用职权指使部属进行违反职责的活动并造成严重后果，是否构成指使部属进行违反职责的活动罪、如何量刑",
+     "rules": [
+      "k427-1",
+      "k427-pen1",
+      "k427-pen2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体：对部属享有指挥、领导职权的军人（法条未明文，依军人违反职责罪章及“部属”用语作体系解释）",
+     "rules": [
+      "k427-subject"
+     ]
+    },
+    {
+     "text": "行为：滥用职权，指使部属进行违反职责的活动",
+     "rules": [
+      "k427-1"
+     ]
+    },
+    {
+     "text": "结果：造成严重后果（本罪为结果犯）",
+     "rules": [
+      "k427-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未造成严重后果的，不构成本罪，只按违纪处理",
+     "rules": [
+      "k427-noresult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合构成要件，成立指使部属进行违反职责的活动罪，负刑事责任",
+     "rules": [
+      "k427-1"
+     ]
+    },
+    {
+     "text": "基本档：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k427-pen1"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k427-pen2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时，加重档（五年以上十年以下有期徒刑）优先于基本档适用",
+     "rules": [
+      "k427-pen2",
+      "k427-pen1"
+     ]
+    },
+    {
+     "text": "结果要件欠缺的出罪判断优先于入罪判断",
+     "rules": [
+      "k427-noresult",
+      "k427-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "说明性比较：本罪主体限于有部属的军人，行为为指使部属进行违反职责的活动，属军人违反职责罪中的特别规定，与普通滥用职权犯罪相区别（本行未挂载相应条文，故不形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k427-subject",
+    "srcs": [
+     "art427#1"
+    ],
+    "body": [
+     "militaryPersonnel(P)",
+     "commanderOfSubordinates(P)"
+    ],
+    "heads": [
+     "art427Subject(P)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪主体为对部属享有指挥、领导职权的军人；法条未明文规定主体，系依军人违反职责罪章与“部属”用语所作的体系解释"
+   },
+   {
+    "key": "k427-1",
+    "srcs": [
+     "art427#1"
+    ],
+    "body": [
+     "art427Subject(P)",
+     "abusesPower(P,X)",
+     "instigatesSubordinateToViolateDuty(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,instigatingSubordinateToViolateDuty)",
+     "responsible(P,X,instigatingSubordinateToViolateDuty)"
+    ],
+    "auth": "npc",
+    "note": "滥用职权指使部属进行违反职责的活动并造成严重后果的，成立指使部属进行违反职责的活动罪（罪名常量 instigatingSubordinateToViolateDuty），负刑事责任"
+   },
+   {
+    "key": "k427-pen1",
+    "srcs": [
+     "art427#1"
+    ],
+    "body": [
+     "constitutes(P,X,instigatingSubordinateToViolateDuty)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k427-pen2",
+    "srcs": [
+     "art427#1"
+    ],
+    "body": [
+     "constitutes(P,X,instigatingSubordinateToViolateDuty)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k427-noresult",
+    "srcs": [
+     "art427#1"
+    ],
+    "body": [
+     "art427Subject(P)",
+     "instigatesSubordinateToViolateDuty(P,X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,instigatingSubordinateToViolateDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "“造成严重后果”是结果要件，未造成严重后果的不构成本罪（对法条入罪条件的反对解释，属违纪问题）"
+   }
+  ],
+  "overrides": [
+   [
+    "k427-noresult",
+    "k427-1",
+    "推断：结论冲突（('constitutes', '+')），k427-noresult 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "militaryPersonnel": "军人（人P）",
+   "commanderOfSubordinates": "commanderOfSubordinates(P)：P 是对部属享有指挥、领导职权的军人（有部属的军队指挥、领导人员）",
+   "art427Subject": "art427Subject(P)：P 具备刑法第427条指使部属进行违反职责的活动罪的主体资格",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "instigatesSubordinateToViolateDuty": "instigatesSubordinateToViolateDuty(P,X)：P 通过行为 X 指使其部属进行违反职责的活动",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑"
+  }
+ },
+ "art:428": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "指挥人员违抗命令、临阵畏缩、作战消极并造成严重后果的，是否构成违抗作战命令罪，以及适用哪一量刑档次",
+     "rules": [
+      "k428-cond",
+      "k428-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为指挥人员；客观上违抗（作战）命令、临阵畏缩、作战消极；并造成严重后果",
+     "rules": [
+      "k428-cond"
+     ]
+    },
+    {
+     "text": "具备上述要件的，符合违抗作战命令罪的构成要件",
+     "rules": [
+      "k428-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未造成严重后果的，不构成本罪，属军纪处分问题（学理）",
+     "rules": [
+      "k428-noresult"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本犯：处五年以下有期徒刑",
+     "rules": [
+      "k428-basic"
+     ]
+    },
+    {
+     "text": "加重情形：致使战斗、战役遭受重大损失，或者有其他特别严重情节",
+     "rules": [
+      "k428-agg-cond"
+     ]
+    },
+    {
+     "text": "加重犯：处五年以上有期徒刑",
+     "rules": [
+      "k428-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备加重情形的，排除基本档，适用五年以上有期徒刑",
+     "rules": [
+      "k428-agg",
+      "k428-basic"
+     ]
+    },
+    {
+     "text": "未造成严重后果的认定优先于构成条件的成立",
+     "rules": [
+      "k428-noresult",
+      "k428-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体限于指挥人员，行为须表现为临阵畏缩、作战消极的违抗命令，且以造成严重后果为要件，区别于一般军人战时违抗命令的情形",
+     "rules": [
+      "k428-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k428-cond",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "commander(P)",
+     "disobeysCombatOrder(P,X)",
+     "shrinksBeforeBattle(P,X)",
+     "passiveInCombat(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "disobeyCombatOrderConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "指挥人员违抗命令、临阵畏缩、作战消极，造成严重后果的，具备本罪构成条件"
+   },
+   {
+    "key": "k428-1",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "disobeyCombatOrderConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,disobedienceOfCombatOrder)"
+    ],
+    "auth": "npc",
+    "note": "符合第428条构成条件的，成立违抗作战命令罪（新罪名常量 disobedienceOfCombatOrder）"
+   },
+   {
+    "key": "k428-noresult",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "commander(P)",
+     "disobeysCombatOrder(P,X)",
+     "shrinksBeforeBattle(P,X)",
+     "passiveInCombat(P,X)",
+     "-causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "-disobeyCombatOrderConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪为结果犯，未造成严重后果的不构成本罪，仅作军纪处理"
+   },
+   {
+    "key": "k428-basic",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "constitutes(P,X,disobedienceOfCombatOrder)",
+     "~combatOrderAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本犯处五年以下有期徒刑"
+   },
+   {
+    "key": "k428-agg-cond",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "disobeyCombatOrderConditions(P,X)",
+     {
+      "or": [
+       "causesMajorLossToBattleOrCampaign(X)",
+       "otherEspeciallySeriousCircumstanceOfCombat(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "combatOrderAggravated(P,X)"
+    ],
+    "auth": "npc",
+    "note": "致使战斗、战役遭受重大损失或者有其他特别严重情节的，属本罪加重情形"
+   },
+   {
+    "key": "k428-agg",
+    "srcs": [
+     "art428"
+    ],
+    "body": [
+     "constitutes(P,X,disobedienceOfCombatOrder)",
+     "combatOrderAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重情形处五年以上有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "commander": "commander(P)：P 是（作战）指挥人员，本罪特殊主体",
+   "disobeysCombatOrder": "disobeysCombatOrder(P,X)：P 通过行为 X 违抗（作战）命令",
+   "shrinksBeforeBattle": "shrinksBeforeBattle(P,X)：P 在行为 X 中临阵畏缩",
+   "passiveInCombat": "passiveInCombat(P,X)：P 在行为 X 中作战消极",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "disobeyCombatOrderConditions": "disobeyCombatOrderConditions(P,X)：P 的行为 X 具备刑法第428条违抗作战命令罪的主体、行为与严重后果条件",
+   "constitutes": "符合构成要件",
+   "combatOrderAggravated": "combatOrderAggravated(P,X)：P 的违抗作战命令行为 X 具备第428条后段加重情形",
+   "sentenceUnder5Years": "sentenceUnder5Years(P,X)：对 P 就犯罪 X 处五年以下有期徒刑",
+   "causesMajorLossToBattleOrCampaign": "causesMajorLossToBattleOrCampaign(X)：行为 X 致使战斗、战役遭受重大损失",
+   "otherEspeciallySeriousCircumstanceOfCombat": "otherEspeciallySeriousCircumstanceOfCombat(X)：行为 X 具有致使战斗、战役遭受重大损失以外的其他特别严重情节",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑"
+  }
+ },
+ "art:429": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战场上明知友邻部队处境危急请求救援，能救援而不救援并致其遭受重大损失，指挥人员是否构成拒不救援友邻部队罪",
+     "rules": [
+      "k429-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观与主观条件：行为发生在战场上；友邻部队处境危急并请求救援；行为人明知该危急处境与救援请求；能救援而不救援（不作为）；致使友邻部队遭受重大损失",
+     "rules": [
+      "k429-cond"
+     ]
+    },
+    {
+     "text": "主体条件：行为人须为指挥人员（特殊主体），一般军人不构成本罪",
+     "rules": [
+      "k429-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "客观上无救援能力（不能救援）而未救援的，欠缺“能救援而不救援”要件，不构成本罪（学理）",
+     "rules": [
+      "k429-noability"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的指挥人员构成拒不救援友邻部队罪，负刑事责任",
+     "rules": [
+      "k429-1"
+     ]
+    },
+    {
+     "text": "对指挥人员处五年以下有期徒刑",
+     "rules": [
+      "k429-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无救援能力的例外优先于本罪构成条件的认定",
+     "rules": [
+      "k429-noability",
+      "k429-cond"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k429-cond",
+    "srcs": [
+     "art429#1"
+    ],
+    "body": [
+     "onBattlefield(X)",
+     "friendlyUnitInCriticalSituation(X,U)",
+     "requestsRescue(U,P)",
+     "knowsCriticalSituationAndRequest(P,X)",
+     "ableToRescue(P,X)",
+     "refusesRescueToFriendlyUnit(P,X)",
+     "causesMajorLossToFriendlyUnit(X,U)"
+    ],
+    "heads": [
+     "refusalRescueConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "战场上明知友邻部队处境危急请求救援、能救援而不救援并致其重大损失，具备本罪客观与主观条件"
+   },
+   {
+    "key": "k429-1",
+    "srcs": [
+     "art429#1"
+    ],
+    "body": [
+     "refusalRescueConditions(P,X)",
+     "commander(P)"
+    ],
+    "heads": [
+     "constitutes(P,X,refusingRescueOfFriendlyUnit)",
+     "responsible(P,X,refusingRescueOfFriendlyUnit)"
+    ],
+    "auth": "npc",
+    "note": "具备上述条件的指挥人员构成拒不救援友邻部队罪，负刑事责任"
+   },
+   {
+    "key": "k429-pen",
+    "srcs": [
+     "art429#1"
+    ],
+    "body": [
+     "constitutes(P,X,refusingRescueOfFriendlyUnit)",
+     "commander(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对指挥人员处五年以下有期徒刑"
+   },
+   {
+    "key": "k429-noability",
+    "srcs": [
+     "art429#1"
+    ],
+    "body": [
+     "refusesRescueToFriendlyUnit(P,X)",
+     "unableToRescue(P,X)"
+    ],
+    "heads": [
+     "-refusalRescueConditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：客观上不能救援的，不符合“能救援而不救援”的要件，排除本罪构成条件的成立"
+   }
+  ],
+  "overrides": [
+   [
+    "k429-cond",
+    "k429-noability",
+    "推断：结论冲突（('refusalRescueConditions', '+')），k429-cond 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "onBattlefield": "onBattlefield(X)：行为 X 发生在战场上（作战地域、战斗进行之中）",
+   "friendlyUnitInCriticalSituation": "friendlyUnitInCriticalSituation(X,U)：事件X中友邻部队U处境危急",
+   "requestsRescue": "requestsRescue(U,P)：友邻部队U向P请求救援",
+   "knowsCriticalSituationAndRequest": "knowsCriticalSituationAndRequest(P,X)：P明知友邻部队处境危急并请求救援",
+   "ableToRescue": "ableToRescue(P,X)：P在事件X中具有实施救援的能力（能救援）",
+   "refusesRescueToFriendlyUnit": "refusesRescueToFriendlyUnit(P,X)：P通过行为X（不作为）对请求救援的友邻部队不予救援",
+   "causesMajorLossToFriendlyUnit": "causesMajorLossToFriendlyUnit(X,U)：不救援行为X致使友邻部队U遭受重大损失",
+   "refusalRescueConditions": "refusalRescueConditions(P,X)：P的行为X具备刑法第429条拒不救援友邻部队罪的场合、明知、能救援而不救援及重大损失条件",
+   "commander": "commander(P)：P 是（作战）指挥人员，本罪特殊主体",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "unableToRescue": "unableToRescue(P,X)：P在事件X中客观上无救援能力（不能救援）"
+  }
+ },
+ "art:430": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人叛逃行为的定罪与量刑档次（基本档、情节严重、特别严重）",
+     "rules": [
+      "k430-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为军人（本章军人违反职责罪）；在履行公务期间擅离岗位；叛逃境外或者在境外叛逃；危害国家军事利益",
+     "rules": [
+      "k430-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成军人叛逃罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k430-base"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上有期徒刑",
+     "rules": [
+      "k430-serious"
+     ]
+    },
+    {
+     "text": "驾驶航空器、舰船叛逃，或者有其他特别严重情节的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k430-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "驾驶航空器、舰船叛逃或有其他特别严重情节的，优先适用第2款加重档，排除第1款基本档与情节严重档；情节严重时优先适用五年以上有期徒刑档，排除基本档",
+     "rules": [
+      "k430-aggravated",
+      "k430-serious"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第109条叛逃罪的区别：本罪主体为军人，须发生在履行公务期间并擅离岗位，且危害的是国家军事利益；本条未挂载第109条，仅作体系提示",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k430-cond",
+    "srcs": [
+     "art430#1"
+    ],
+    "body": [
+     "militaryPersonnel(P)",
+     "duringOfficialDuty(P)",
+     "unauthorizedLeavePost(P)",
+     {
+      "or": [
+       "defectsAbroad(P,X)",
+       "defectsWhileAbroad(P,X)"
+      ]
+     },
+     "harmsStateMilitaryInterest(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,militaryDefection)"
+    ],
+    "auth": "npc",
+    "note": "军人在履行公务期间擅离岗位，叛逃境外或者在境外叛逃，危害国家军事利益的，符合军人叛逃罪（militaryDefection）的构成要件；主体为军人系本章（军人违反职责罪）的当然要求"
+   },
+   {
+    "key": "k430-base",
+    "srcs": [
+     "art430#1"
+    ],
+    "body": [
+     "constitutes(P,X,militaryDefection)",
+     "~seriousCircumstances(X)",
+     "~defectsByPilotingAircraftOrVessel(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "军人叛逃罪基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k430-serious",
+    "srcs": [
+     "art430#1"
+    ],
+    "body": [
+     "constitutes(P,X,militaryDefection)",
+     "seriousCircumstances(X)",
+     "~defectsByPilotingAircraftOrVessel(P,X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上有期徒刑"
+   },
+   {
+    "key": "k430-aggravated",
+    "srcs": [
+     "art430#2"
+    ],
+    "body": [
+     "constitutes(P,X,militaryDefection)",
+     {
+      "or": [
+       "defectsByPilotingAircraftOrVessel(P,X)",
+       "especiallySeriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "驾驶航空器、舰船叛逃或者有其他特别严重情节的，处十年以上有期徒刑、无期徒刑或者死刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "militaryPersonnel": "军人（人P）",
+   "duringOfficialDuty": "duringOfficialDuty(P)：P 正处于履行公务期间",
+   "unauthorizedLeavePost": "unauthorizedLeavePost(P)：P 擅离（公务）岗位",
+   "defectsAbroad": "defectsAbroad(P,X)：P 由境内叛逃境外，构成犯罪事件 X",
+   "defectsWhileAbroad": "defectsWhileAbroad(P,X)：P 在境外叛逃，构成犯罪事件 X",
+   "harmsStateMilitaryInterest": "harmsStateMilitaryInterest(X)：叛逃行为 X 危害国家军事利益",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "defectsByPilotingAircraftOrVessel": "defectsByPilotingAircraftOrVessel(P,X)：P 驾驶航空器、舰船实施叛逃行为 X（第430条第2款加重情形）",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑"
+  }
+ },
+ "art:431": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人以窃取、刺探、收买方法非法获取军事秘密，或者为境外机构、组织、人员窃取、刺探、收买、非法提供军事秘密的定罪与量刑",
+     "rules": [
+      "k431-1",
+      "k431-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：行为方式为窃取、刺探、收买三者之一，对象是军事秘密，且获取具有非法性（无合法权限或依据而取得）",
+     "rules": [
+      "k431-1"
+     ]
+    },
+    {
+     "text": "第2款：为境外的机构、组织、人员实施窃取、刺探、收买或者非法提供军事秘密；行为方式多出“非法提供”，故合法掌握军事秘密后向境外非法提供的亦可成立",
+     "rules": [
+      "k431-2"
+     ]
+    },
+    {
+     "text": "本条属军人违反职责罪，主体限于军人（第450条）；非军人实施上述行为不构成本条之罪（体系解释，非本条明文）",
+     "rules": [
+      "k431-subj",
+      "k431-subj2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第1款情节严重、情节特别严重的，不适用五年以下有期徒刑的基本档",
+     "rules": [
+      "k431-1a",
+      "k431-1b"
+     ]
+    },
+    {
+     "text": "第2款情节严重的，不适用五年以上十年以下有期徒刑的基本档",
+     "rules": [
+      "k431-2a"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "第1款基本档：处五年以下有期徒刑",
+     "rules": [
+      "k431-1s"
+     ]
+    },
+    {
+     "text": "第1款情节严重：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k431-1a"
+     ]
+    },
+    {
+     "text": "第1款情节特别严重：处十年以上有期徒刑",
+     "rules": [
+      "k431-1b"
+     ]
+    },
+    {
+     "text": "第2款基本档（不以情节严重为入罪门槛）：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k431-2s"
+     ]
+    },
+    {
+     "text": "第2款情节严重：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k431-2a"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "为境外机构、组织、人员窃取、刺探、收买军事秘密的，优先适用第2款，不再按第1款非法获取军事秘密罪定罪处刑",
+     "rules": [
+      "k431-2",
+      "k431-1"
+     ]
+    },
+    {
+     "text": "同一款内，情节严重、情节特别严重的加重档优先于基本档",
+     "rules": [
+      "k431-1a",
+      "k431-1b",
+      "k431-2a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "两款区别：是否为境外机构、组织、人员实施；第2款行为方式含“非法提供”，法定刑显著更重且最高可判死刑",
+     "rules": [
+      "k431-1",
+      "k431-2"
+     ]
+    },
+    {
+     "text": "军事秘密属于国家秘密，非军人非法获取军事秘密的，可能构成非法获取国家秘密罪（第282条），而非本条之罪",
+     "rules": [
+      "k431-subj",
+      "k431-subj2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k431-1",
+    "srcs": [
+     "art431#1"
+    ],
+    "body": [
+     "stealsSpiesOrBuys(P,X)",
+     "objectOf(X,M)",
+     "militarySecret(M)",
+     "illegallyObtains(P,M)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalObtainingOfMilitarySecrets)"
+    ],
+    "auth": "npc",
+    "note": "以窃取、刺探、收买方法非法获取军事秘密的，符合非法获取军事秘密罪的构成要件（罪名常量 illegalObtainingOfMilitarySecrets）"
+   },
+   {
+    "key": "k431-1s",
+    "srcs": [
+     "art431#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalObtainingOfMilitarySecrets)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款基本档：处五年以下有期徒刑"
+   },
+   {
+    "key": "k431-1a",
+    "srcs": [
+     "art431#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalObtainingOfMilitarySecrets)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k431-1b",
+    "srcs": [
+     "art431#1"
+    ],
+    "body": [
+     "constitutes(P,X,illegalObtainingOfMilitarySecrets)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款情节特别严重的，处十年以上有期徒刑"
+   },
+   {
+    "key": "k431-2",
+    "srcs": [
+     "art431#2"
+    ],
+    "body": [
+     "stealSpyBuyOrIllegallyProvide(P,X)",
+     "objectOf(X,M)",
+     "militarySecret(M)",
+     "forOverseasRecipient(X,O)",
+     "overseasInstitutionOrgOrPerson(O)"
+    ],
+    "heads": [
+     "constitutes(P,X,overseasMilitarySecretsCrime)"
+    ],
+    "auth": "npc",
+    "note": "为境外机构、组织、人员窃取、刺探、收买、非法提供军事秘密的，符合为境外窃取、刺探、收买、非法提供军事秘密罪的构成要件（罪名常量 overseasMilitarySecretsCrime）"
+   },
+   {
+    "key": "k431-2s",
+    "srcs": [
+     "art431#2"
+    ],
+    "body": [
+     "constitutes(P,X,overseasMilitarySecretsCrime)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款基本档：处五年以上十年以下有期徒刑，不以情节严重为入罪门槛"
+   },
+   {
+    "key": "k431-2a",
+    "srcs": [
+     "art431#2"
+    ],
+    "body": [
+     "constitutes(P,X,overseasMilitarySecretsCrime)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款情节严重的，处十年以上有期徒刑、无期徒刑或者死刑（量刑方式常量 from10OrLifeOrDeath 表示三者的择一幅度）"
+   },
+   {
+    "key": "k431-subj",
+    "srcs": [
+     "art431#1"
+    ],
+    "body": [
+     "stealsSpiesOrBuys(P,X)",
+     "objectOf(X,M)",
+     "militarySecret(M)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,illegalObtainingOfMilitarySecrets)"
+    ],
+    "auth": "doctrine",
+    "note": "本条位于军人违反职责罪一章，主体依第450条限于军人；非军人不构成本条第1款之罪（体系解释，本条未明文规定主体）"
+   },
+   {
+    "key": "k431-subj2",
+    "srcs": [
+     "art431#2"
+    ],
+    "body": [
+     "stealSpyBuyOrIllegallyProvide(P,X)",
+     "objectOf(X,M)",
+     "militarySecret(M)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,overseasMilitarySecretsCrime)"
+    ],
+    "auth": "doctrine",
+    "note": "非军人不构成本条第2款之罪，其行为可能另构成第282条等罪（体系解释，本条未明文规定主体）"
+   }
+  ],
+  "overrides": [
+   [
+    "k431-1",
+    "k431-subj",
+    "推断：结论冲突（('constitutes', '+')），k431-1 为例外或更具体"
+   ],
+   [
+    "k431-1",
+    "k431-subj2",
+    "推断：结论冲突（('constitutes', '+')），k431-1 为例外或更具体"
+   ],
+   [
+    "k431-2",
+    "k431-subj",
+    "推断：结论冲突（('constitutes', '+')），k431-2 为例外或更具体"
+   ],
+   [
+    "k431-2",
+    "k431-subj2",
+    "推断：结论冲突（('constitutes', '+')），k431-2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "stealsSpiesOrBuys": "stealsSpiesOrBuys(P,X)：P 通过行为 X 采用窃取、刺探、收买的方法（第282条第1款的行为方式）",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "militarySecret": "militarySecret(M)：M 是军事秘密（关系国防和军事利益、依规定确定密级和保密期限的事项）",
+   "illegallyObtains": "illegallyObtains(P,M)：P 无合法权限或依据而取得（非法获取）物品、信息 M",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence": "量刑",
+   "stealSpyBuyOrIllegallyProvide": "stealSpyBuyOrIllegallyProvide(P,X)：P 在行为 X 中实施窃取、刺探、收买或者非法提供的行为",
+   "forOverseasRecipient": "forOverseasRecipient(X,O)：行为 X 系为境外主体 O 实施（境外机构、组织、人员为收受、服务对象）",
+   "overseasInstitutionOrgOrPerson": "overseasInstitutionOrgOrPerson(O)：O 是境外的机构、组织或者人员",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:432": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反保守国家秘密法规，故意或者过失泄露军事秘密、情节严重的，是否构成泄露军事秘密罪，并按平时/战时、情节严重/特别严重适用哪一档法定刑",
+     "rules": [
+      "k432-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "构成要件：①违反保守国家秘密法规；②泄露军事秘密；③主观上出于故意或者过失（二者均可）；④情节严重",
+     "rules": [
+      "k432-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "平时犯本罪、情节严重的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k432-1"
+     ]
+    },
+    {
+     "text": "平时犯本罪、情节特别严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k432-2"
+     ]
+    },
+    {
+     "text": "战时犯本罪的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k432-3"
+     ]
+    },
+    {
+     "text": "战时犯本罪且情节特别严重的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k432-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "战时犯本罪的，优先适用第2款的战时法定刑，排除第1款平时法定刑",
+     "rules": [
+      "k432-3",
+      "k432-4",
+      "k432-1",
+      "k432-2"
+     ]
+    },
+    {
+     "text": "情节特别严重的，适用加重档，排除同一条款中情节严重的基准档",
+     "rules": [
+      "k432-2",
+      "k432-1",
+      "k432-4",
+      "k432-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪故意与过失均可成立，不以故意为限；但须达到“情节严重”，未达情节严重的不构成本罪",
+     "rules": [
+      "k432-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k432-cond",
+    "srcs": [
+     "art432#1"
+    ],
+    "body": [
+     "violatesStateSecretsProtectionLaw(X)",
+     "divulgesMilitarySecret(P,X)",
+     {
+      "or": [
+       "intentionalDisclosureOfMilitarySecret(P,X)",
+       "negligentDisclosureOfMilitarySecret(P,X)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,divulgingMilitarySecrets)"
+    ],
+    "auth": "npc",
+    "note": "违反保守国家秘密法规，故意或过失泄露军事秘密、情节严重的，构成泄露军事秘密罪（罪名常量 divulgingMilitarySecrets）"
+   },
+   {
+    "key": "k432-1",
+    "srcs": [
+     "art432#1"
+    ],
+    "body": [
+     "constitutes(P,X,divulgingMilitarySecrets)",
+     "responsible(P,X,divulgingMilitarySecrets)",
+     "~wartime(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "平时犯本罪、情节严重的，处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k432-2",
+    "srcs": [
+     "art432#1"
+    ],
+    "body": [
+     "constitutes(P,X,divulgingMilitarySecrets)",
+     "responsible(P,X,divulgingMilitarySecrets)",
+     "especiallySeriousCircumstances(X)",
+     "~wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "平时犯本罪、情节特别严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k432-3",
+    "srcs": [
+     "art432#2"
+    ],
+    "body": [
+     "constitutes(P,X,divulgingMilitarySecrets)",
+     "responsible(P,X,divulgingMilitarySecrets)",
+     "wartime(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时犯前款罪的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k432-4",
+    "srcs": [
+     "art432#2"
+    ],
+    "body": [
+     "constitutes(P,X,divulgingMilitarySecrets)",
+     "responsible(P,X,divulgingMilitarySecrets)",
+     "wartime(X)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时犯本罪且情节特别严重的，处十年以上有期徒刑或者无期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "violatesStateSecretsProtectionLaw": "violatesStateSecretsProtectionLaw(X)：行为X违反保守国家秘密法的规定",
+   "divulgesMilitarySecret": "divulgesMilitarySecret(P,X)：P 通过行为 X 泄露军事秘密（使不应知悉者知悉或使军事秘密超出限定的接触范围）",
+   "intentionalDisclosureOfMilitarySecret": "intentionalDisclosureOfMilitarySecret(P,X)：P 对行为 X 中军事秘密的泄露出于故意",
+   "negligentDisclosureOfMilitarySecret": "negligentDisclosureOfMilitarySecret(P,X)：P 对行为 X 中军事秘密的泄露出于过失",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentence": "量刑",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑"
+  }
+ },
+ "art:433": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时造谣惑众、动摇军心的，是否构成战时造谣惑众罪并负刑事责任，以及适用哪一量刑档次",
+     "rules": [
+      "k433-cond",
+      "k433-liab"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间要件：行为发生于战时；行为要件：造谣惑众（捏造、散布谣言迷惑军人、群众）；结果要件：动摇军心",
+     "rules": [
+      "k433-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "构成战时造谣惑众罪的，负刑事责任",
+     "rules": [
+      "k433-liab"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑",
+     "rules": [
+      "k433-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k433-serious"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k433-especially"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重的加重档优先于基本档；情节特别严重档优先于情节严重档",
+     "rules": [
+      "k433-serious",
+      "k433-especially"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪以“战时”为时间要件，并须实际动摇军心；非战时造谣惑众，或虽有造谣行为但未动摇军心的，不符合本罪构成要件",
+     "rules": [
+      "k433-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k433-cond",
+    "srcs": [
+     "art433"
+    ],
+    "body": [
+     "wartime(X)",
+     "spreadsRumorsToMisleadTroops(P,X)",
+     "disturbsMilitaryMorale(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeRumorMongering)"
+    ],
+    "auth": "npc",
+    "note": "战时造谣惑众、动摇军心的，符合战时造谣惑众罪（wartimeRumorMongering）的构成要件"
+   },
+   {
+    "key": "k433-liab",
+    "srcs": [
+     "art433"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRumorMongering)"
+    ],
+    "heads": [
+     "responsible(P,X,wartimeRumorMongering)"
+    ],
+    "auth": "npc",
+    "note": "符合本罪构成要件的，就战时造谣惑众罪负刑事责任"
+   },
+   {
+    "key": "k433-basic",
+    "srcs": [
+     "art433"
+    ],
+    "body": [
+     "responsible(P,X,wartimeRumorMongering)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑"
+   },
+   {
+    "key": "k433-serious",
+    "srcs": [
+     "art433"
+    ],
+    "body": [
+     "responsible(P,X,wartimeRumorMongering)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k433-especially",
+    "srcs": [
+     "art433"
+    ],
+    "body": [
+     "responsible(P,X,wartimeRumorMongering)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLife(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑或者无期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "spreadsRumorsToMisleadTroops": "spreadsRumorsToMisleadTroops(P,X)：P 通过行为 X 造谣惑众（捏造、散布谣言以迷惑军人、群众）",
+   "disturbsMilitaryMorale": "disturbsMilitaryMorale(X)：行为 X 扰乱军心（动摇部队士气、影响军心稳定）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3Years": "sentenceUnder3Years(P,X)：对 P 就犯罪 X 处三年以下有期徒刑",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "sentenceFrom10OrLife": "sentenceFrom10OrLife(P,X)：对 P 就犯罪 X 处十年以上有期徒刑或者无期徒刑"
+  }
+ },
+ "art:434": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时自伤身体、逃避军事义务的，构成战时自伤罪，并按情节是否严重适用不同量刑档次",
+     "rules": [
+      "k434-cond",
+      "k434-basic",
+      "k434-agg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件：战时；行为条件：自伤自己的身体；目的条件：逃避军事义务",
+     "rules": [
+      "k434-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪属军人违反职责罪，主体限于军人；非军人自伤身体不构成本罪（体系解释，条文未明示）",
+     "rules": [
+      "k434-subject"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成战时自伤罪，负刑事责任",
+     "rules": [
+      "k434-cond"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑",
+     "rules": [
+      "k434-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k434-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的，排除基本档，适用三年以上七年以下有期徒刑的加重档",
+     "rules": [
+      "k434-agg",
+      "k434-basic"
+     ]
+    },
+    {
+     "text": "主体不适格（非军人）的，排除本罪构成",
+     "rules": [
+      "k434-subject",
+      "k434-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "自伤须以逃避军事义务为目的；平时自伤或虽在战时但无逃避军事义务目的的自伤，不构成本罪",
+     "rules": [
+      "k434-cond"
+     ]
+    },
+    {
+     "text": "本罪是伤害自己身体，与故意伤害他人身体的故意伤害罪不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k434-cond",
+    "srcs": [
+     "art434#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "selfInjuresBody(P,X)",
+     "purposeOfEvadingMilitaryDuty(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeSelfInjury)",
+     "responsible(P,X,wartimeSelfInjury)"
+    ],
+    "auth": "npc",
+    "note": "战时自伤身体、逃避军事义务的，符合战时自伤罪构成要件并负刑事责任"
+   },
+   {
+    "key": "k434-basic",
+    "srcs": [
+     "art434#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeSelfInjury)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时自伤罪基本档：处三年以下有期徒刑"
+   },
+   {
+    "key": "k434-agg",
+    "srcs": [
+     "art434#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeSelfInjury)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k434-subject",
+    "srcs": [
+     "art434#1"
+    ],
+    "body": [
+     "selfInjuresBody(P,X)",
+     "wartime(X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeSelfInjury)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪主体限于军人（依军人违反职责罪一章的体系解释，第434条本身未明示），非军人不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k434-subject",
+    "k434-cond",
+    "推断：结论冲突（('constitutes', '+')），k434-subject 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "selfInjuresBody": "selfInjuresBody(P,X)：P 通过行为 X 自伤自己的身体（自己实施或指使他人伤害自己身体）",
+   "purposeOfEvadingMilitaryDuty": "purposeOfEvadingMilitaryDuty(P,X)：P 实施行为 X 以逃避军事义务为目的",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3Years": "sentenceUnder3Years(P,X)：对 P 就犯罪 X 处三年以下有期徒刑",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:435": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人违反兵役法规逃离部队、情节严重的，是否构成逃离部队罪，以及平时与战时如何量刑",
+     "rules": [
+      "k435-cond",
+      "k435-1",
+      "k435-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观要件：违反兵役法规，逃离部队（擅自离开所在部队、脱离军人职责），且情节严重",
+     "rules": [
+      "k435-cond"
+     ]
+    },
+    {
+     "text": "主体要件：本罪为军人违反职责罪，行为人须为军人（现役军人及执行军事任务的预备役人员等），非军人不构成本罪",
+     "rules": [
+      "k435-subj"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "逃离部队但情节未达严重的，不构成犯罪，按军纪处理",
+     "rules": [
+      "k435-minor"
+     ]
+    },
+    {
+     "text": "行为人不具有军人身份的，不成立逃离部队罪",
+     "rules": [
+      "k435-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成逃离部队罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k435-1"
+     ]
+    },
+    {
+     "text": "战时犯逃离部队罪的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k435-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "战时逃离部队属加重情形，第2款法定刑优先于第1款适用",
+     "rules": [
+      "k435-2",
+      "k435-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第376条战时拒绝、逃避征召或者军事训练罪、拒绝、逃避服役罪的区别：后者是预备役人员、应征公民拒不履行兵役义务，本罪是已入伍的军人擅自逃离部队",
+     "rules": []
+    },
+    {
+     "text": "与投敌叛变罪、军人叛逃罪的区别：本罪仅为脱离部队，不具有投奔敌方或叛逃境外的性质",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k435-cond",
+    "srcs": [
+     "art435#1"
+    ],
+    "body": [
+     "violatesMilitaryServiceRegulations(X)",
+     "desertsFromTroops(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,desertion)"
+    ],
+    "auth": "npc",
+    "note": "违反兵役法规、逃离部队且情节严重的，符合逃离部队罪的构成要件"
+   },
+   {
+    "key": "k435-subj",
+    "srcs": [
+     "art435#1"
+    ],
+    "body": [
+     "desertsFromTroops(P,X)",
+     "-militaryPerson(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,desertion)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪主体限于军人（现役军人及执行军事任务的预备役人员等），非军人不构成本罪；主体要件来自本章军人违反职责罪的规定与学理，非本条明文"
+   },
+   {
+    "key": "k435-minor",
+    "srcs": [
+     "art435#1"
+    ],
+    "body": [
+     "desertsFromTroops(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,desertion)"
+    ],
+    "auth": "npc",
+    "note": "情节严重是入罪要件，逃离部队情节未达严重的不构成本罪（第1款的反面推论）"
+   },
+   {
+    "key": "k435-1",
+    "srcs": [
+     "art435#1"
+    ],
+    "body": [
+     "constitutes(P,X,desertion)",
+     "~wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成逃离部队罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k435-2",
+    "srcs": [
+     "art435#2"
+    ],
+    "body": [
+     "constitutes(P,X,desertion)",
+     "wartime(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时犯逃离部队罪的，处三年以上七年以下有期徒刑"
+   }
+  ],
+  "overrides": [
+   [
+    "k435-subj",
+    "k435-cond",
+    "推断：结论冲突（('constitutes', '+')），k435-subj 为例外或更具体"
+   ],
+   [
+    "k435-minor",
+    "k435-cond",
+    "推断：结论冲突（('constitutes', '+')），k435-minor 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "violatesMilitaryServiceRegulations": "violatesMilitaryServiceRegulations(X)：行为 X 违反兵役法规（兵役法及有关服役、请假、归队等规定）",
+   "desertsFromTroops": "desertsFromTroops(P,X)：P 通过行为 X 逃离部队（擅自离开所在部队、脱离军人职责）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "militaryPerson": "militaryPerson(P)：P 是军人（中国人民解放军现役军官、士兵、文职干部及具有军籍的学员，武警部队现役人员等）",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑"
+  }
+ },
+ "art:436": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反武器装备使用规定因而发生责任事故的，是否构成武器装备肇事罪，以及适用基本档还是加重档法定刑",
+     "rules": [
+      "k436-1",
+      "k436-basic",
+      "k436-agg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为对象是武器装备，行为人违反武器装备使用（操作、管理）规定",
+     "rules": [
+      "k436-cond"
+     ]
+    },
+    {
+     "text": "违规情节严重，因而发生责任事故（违规与事故之间有因果关系），并致人重伤、死亡或者造成其他严重后果",
+     "rules": [
+      "k436-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪属军人违反职责罪，主体限于军人；非军人违反武器装备使用规定造成事故的，不构成本罪（依第十章体系及第450条，本条未明文）",
+     "rules": [
+      "k436-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成武器装备肇事罪，负刑事责任；处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k436-1",
+      "k436-basic"
+     ]
+    },
+    {
+     "text": "后果特别严重的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k436-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "后果特别严重时，加重档（三年以上七年以下有期徒刑）优先，排除基本档（三年以下有期徒刑或者拘役）的适用",
+     "rules": [
+      "k436-agg",
+      "k436-basic"
+     ]
+    },
+    {
+     "text": "主体不适格（非军人）的排除规则优先于本罪构成规则",
+     "rules": [
+      "k436-subj",
+      "k436-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪与重大责任事故罪、过失致人死亡罪等的区别：本罪违反的是武器装备使用规定，对象为武器装备，主体为军人，事故发生于武器装备使用过程中的责任事故",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k436-cond",
+    "srcs": [
+     "art436"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "objectOf(X,M)",
+     "weaponsAndEquipment(M)",
+     "violatesWeaponUseRules(P,X)",
+     "seriousCircumstances(X)",
+     "responsibilityAccidentDueToViolation(X)",
+     {
+      "or": [
+       "causesGraveInjuryOrDeath(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "weaponEquipmentAccidentConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "违反武器装备使用规定、情节严重、因而发生责任事故并致人重伤死亡或其他严重后果，具备本罪客观条件"
+   },
+   {
+    "key": "k436-1",
+    "srcs": [
+     "art436"
+    ],
+    "body": [
+     "weaponEquipmentAccidentConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,weaponEquipmentAccident)",
+     "responsible(P,X,weaponEquipmentAccident)"
+    ],
+    "auth": "npc",
+    "note": "具备第436条条件的，构成武器装备肇事罪（罪名常量 weaponEquipmentAccident）并负刑事责任"
+   },
+   {
+    "key": "k436-basic",
+    "srcs": [
+     "art436"
+    ],
+    "body": [
+     "responsible(P,X,weaponEquipmentAccident)",
+     "weaponEquipmentAccidentConditions(P,X)",
+     "~especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k436-agg",
+    "srcs": [
+     "art436"
+    ],
+    "body": [
+     "responsible(P,X,weaponEquipmentAccident)",
+     "weaponEquipmentAccidentConditions(P,X)",
+     "especiallySeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "后果特别严重的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k436-subj",
+    "srcs": [
+     "art436"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,weaponEquipmentAccident)"
+    ],
+    "auth": "doctrine",
+    "note": "本条位于第十章军人违反职责罪，主体限于军人（第450条），非军人不构成本罪；本条原文未明文，属体系解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k436-subj",
+    "k436-1",
+    "推断：结论冲突（('constitutes', '+')），k436-subj 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "weaponsAndEquipment": "weaponsAndEquipment(M)：M 是武器装备",
+   "violatesWeaponUseRules": "violatesWeaponUseRules(P,X)：P 通过行为 X 违反武器装备使用（操作、管理）规定",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "responsibilityAccidentDueToViolation": "responsibilityAccidentDueToViolation(X)：行为 X 因违反武器装备使用规定而发生责任事故（违规与事故间具有因果关系）",
+   "causesGraveInjuryOrDeath": "致人重伤或者死亡",
+   "causesOtherSeriousConsequence": "causesOtherSeriousConsequence(X)：行为 X 因而造成其他严重后果",
+   "weaponEquipmentAccidentConditions": "weaponEquipmentAccidentConditions(P,X)：P 的行为 X 具备刑法第436条武器装备肇事罪的客观条件（武器装备对象、违反使用规定、情节严重、发生责任事故并致人重伤死亡或其他严重后果）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "especiallySeriousConsequence": "especiallySeriousConsequence(X)：事件 X 的后果特别严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:437": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反武器装备管理规定擅自改变武器装备编配用途，是否构成擅自改变武器装备编配用途罪及适用哪一量刑档",
+     "rules": [
+      "k437-1",
+      "k437-2",
+      "k437-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观条件：违反武器装备管理规定（空白罪状，依有关武器装备管理法规确定），擅自改变武器装备的编配用途，并造成严重后果",
+     "rules": [
+      "k437-1"
+     ]
+    },
+    {
+     "text": "主体条件：本罪属军人违反职责罪，主体限于军人（本条未明文，依第450条及体系解释）；非军人不构成本罪",
+     "rules": [
+      "k437-subject"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k437-2"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k437-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别严重后果时适用加重档，排除基本档的适用",
+     "rules": [
+      "k437-3",
+      "k437-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪只是擅自改变武器装备的编配用途，并无非法占有目的；若以窃取、抢夺等方式非法占有武器装备，则属他罪（体系性说明，本行不形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k437-1",
+    "srcs": [
+     "art437#1"
+    ],
+    "body": [
+     "violatesWeaponEquipmentManagementRules(X)",
+     "unauthorizedChangesWeaponAllocationUse(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,unauthorizedChangeOfWeaponAllocationUse)"
+    ],
+    "auth": "npc",
+    "note": "违反武器装备管理规定擅自改变编配用途并造成严重后果，符合擅自改变武器装备编配用途罪构成要件（罪名常量 unauthorizedChangeOfWeaponAllocationUse）"
+   },
+   {
+    "key": "k437-2",
+    "srcs": [
+     "art437#1"
+    ],
+    "body": [
+     "constitutes(P,X,unauthorizedChangeOfWeaponAllocationUse)",
+     "causesSeriousConsequence(X)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k437-3",
+    "srcs": [
+     "art437#1"
+    ],
+    "body": [
+     "constitutes(P,X,unauthorizedChangeOfWeaponAllocationUse)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k437-subject",
+    "srcs": [
+     "art437#1"
+    ],
+    "body": [
+     "unauthorizedChangesWeaponAllocationUse(P,X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,unauthorizedChangeOfWeaponAllocationUse)"
+    ],
+    "auth": "doctrine",
+    "note": "本条未明文规定主体，依军人违反职责罪章（第450条）及学理，非军人不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k437-1",
+    "k437-subject",
+    "推断：结论冲突（('constitutes', '+')），k437-1 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "violatesWeaponEquipmentManagementRules": "violatesWeaponEquipmentManagementRules(X)：行为 X 违反武器装备管理规定",
+   "unauthorizedChangesWeaponAllocationUse": "unauthorizedChangesWeaponAllocationUse(P,X)：P 通过行为 X 擅自改变武器装备的编配用途",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:438": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "盗窃、抢夺武器装备或者军用物资的定罪与三个量刑档次的适用",
+     "rules": [
+      "k438-cond",
+      "k438-1",
+      "k438-2",
+      "k438-3"
+     ]
+    },
+    {
+     "text": "盗窃、抢夺的对象为枪支、弹药、爆炸物时，应依本条第2款转致适用第127条，而非本条第1款",
+     "rules": [
+      "k438-p2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为为盗窃或者抢夺，对象是武器装备或者军用物资（二者具其一即可）",
+     "rules": [
+      "k438-cond"
+     ]
+    },
+    {
+     "text": "本罪属军人违反职责罪，主体限于军人；非军人盗窃、抢夺武器装备、军用物资的不成立本罪（主体要件来自本章适用范围，本条未明文）",
+     "rules": [
+      "k438-subj"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "盗窃、抢夺枪支、弹药、爆炸物的，依照本法第127条的规定处罚（特别转致，排除本条第1款各档）",
+     "rules": [
+      "k438-p2"
+     ]
+    },
+    {
+     "text": "行为人不具有军人身份的，排除本罪构成，视对象与情节依第127条或普通盗窃、抢夺罪处理（学理与本章体系）",
+     "rules": [
+      "k438-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k438-1"
+     ]
+    },
+    {
+     "text": "情节严重的：处五年以上十年以下有期徒刑",
+     "rules": [
+      "k438-2"
+     ]
+    },
+    {
+     "text": "情节特别严重的：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k438-3"
+     ]
+    },
+    {
+     "text": "对象为枪支、弹药、爆炸物的，依第127条的规定定罪处罚",
+     "rules": [
+      "k438-p2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重的加重档优先于基本档；情节特别严重档优先于情节严重档",
+     "rules": [
+      "k438-2",
+      "k438-3",
+      "k438-1"
+     ]
+    },
+    {
+     "text": "第2款关于枪支、弹药、爆炸物的转致规定优先于第1款各量刑档",
+     "rules": [
+      "k438-p2",
+      "k438-1",
+      "k438-2",
+      "k438-3"
+     ]
+    },
+    {
+     "text": "主体不适格（非军人）的排除规则优先于本罪构成条件规则",
+     "rules": [
+      "k438-subj",
+      "k438-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第127条盗窃、抢夺枪支、弹药、爆炸物罪的区分：对象为枪支弹药爆炸物时不论主体一律依第127条；本条第1款针对武器装备、军用物资且主体为军人",
+     "rules": [
+      "k438-p2",
+      "k438-subj"
+     ]
+    },
+    {
+     "text": "与普通盗窃罪、抢夺罪的区分：本罪以武器装备、军用物资为对象，侵害军事利益，须军人主体；不满足者回归普通财产犯罪或第127条",
+     "rules": [
+      "k438-cond",
+      "k438-subj"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k438-cond",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "weaponsAndEquipment(M)",
+       "militarySupplies(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,theftSnatchingOfWeaponsOrSupplies)"
+    ],
+    "auth": "npc",
+    "note": "盗窃、抢夺武器装备或者军用物资的，符合盗窃、抢夺武器装备、军用物资罪的构成要件"
+   },
+   {
+    "key": "k438-1",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "constitutes(P,X,theftSnatchingOfWeaponsOrSupplies)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k438-2",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "constitutes(P,X,theftSnatchingOfWeaponsOrSupplies)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k438-3",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "constitutes(P,X,theftSnatchingOfWeaponsOrSupplies)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k438-p2",
+    "srcs": [
+     "art438#2"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     "gunAmmunitionExplosive(M)"
+    ],
+    "heads": [
+     "punishPerArt127(P,X)"
+    ],
+    "auth": "npc",
+    "note": "盗窃、抢夺枪支、弹药、爆炸物的，依照本法第127条的规定处罚（转致适用）"
+   },
+   {
+    "key": "k438-subj",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "theftOrSnatching(P,X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "weaponsAndEquipment(M)",
+       "militarySupplies(M)"
+      ]
+     },
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,theftSnatchingOfWeaponsOrSupplies)"
+    ],
+    "auth": "doctrine",
+    "note": "本条位于军人违反职责罪一章，主体限于军人，非军人不构成本罪；该主体要件非本条明文，属体系与学理补充"
+   }
+  ],
+  "overrides": [
+   [
+    "k438-subj",
+    "k438-cond",
+    "推断：结论冲突（('constitutes', '+')），k438-subj 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "theftOrSnatching": "theftOrSnatching(P,X)：P 以盗窃或抢夺方式实施行为 X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "weaponsAndEquipment": "weaponsAndEquipment(M)：M 是武器装备",
+   "militarySupplies": "militarySupplies(M)：M 是军用物资",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑",
+   "gunAmmunitionExplosive": "gunAmmunitionExplosive(M)：M 是枪支、弹药或者爆炸物",
+   "punishPerArt127": "punishPerArt127(P,X)：对 P 就行为 X 依照刑法第127条（盗窃、抢夺枪支、弹药、爆炸物罪等）的规定定罪处罚",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:439": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "非法出卖、转让军队武器装备的，构成非法出卖、转让军队武器装备罪，应负刑事责任",
+     "rules": [
+      "k439-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "对象须为军队的武器装备；行为须为非法（擅自）出卖或者转让，二者具备其一即可",
+     "rules": [
+      "k439-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本犯：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k439-basic"
+     ]
+    },
+    {
+     "text": "出卖、转让大量武器装备，或者有其他特别严重情节的，属加重情形",
+     "rules": [
+      "k439-agg-cond"
+     ]
+    },
+    {
+     "text": "加重情形：处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k439-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备大量武器装备或其他特别严重情节时，适用加重法定刑，排除基本档",
+     "rules": [
+      "k439-agg",
+      "k439-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪属军人违反职责罪，对象限于军队武器装备；与第125条非法买卖枪支、弹药、爆炸物罪的对象、主体不同（主体范围依第450条确定，本行未挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k439-1",
+    "srcs": [
+     "art439"
+    ],
+    "body": [
+     "unauthorizedSellsOrTransfers(P,X,M)",
+     "militaryWeaponsAndEquipment(M)"
+    ],
+    "heads": [
+     "constitutes(P,X,illegalSaleOrTransferOfMilitaryWeapons)",
+     "responsible(P,X,illegalSaleOrTransferOfMilitaryWeapons)"
+    ],
+    "auth": "npc",
+    "note": "非法出卖、转让军队武器装备的，构成非法出卖、转让军队武器装备罪（罪名常量 illegalSaleOrTransferOfMilitaryWeapons）并负刑事责任"
+   },
+   {
+    "key": "k439-basic",
+    "srcs": [
+     "art439"
+    ],
+    "body": [
+     "constitutes(P,X,illegalSaleOrTransferOfMilitaryWeapons)",
+     "~aggravatedIllegalWeaponSale(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k439-agg-cond",
+    "srcs": [
+     "art439"
+    ],
+    "body": [
+     "constitutes(P,X,illegalSaleOrTransferOfMilitaryWeapons)",
+     {
+      "or": [
+       "largeQuantityOfWeaponsSoldOrTransferred(X)",
+       "otherEspeciallySeriousCircumstanceOfWeaponSale(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedIllegalWeaponSale(P,X)"
+    ],
+    "auth": "npc",
+    "note": "出卖、转让大量武器装备或者有其他特别严重情节的，属本罪加重情形"
+   },
+   {
+    "key": "k439-agg",
+    "srcs": [
+     "art439"
+    ],
+    "body": [
+     "aggravatedIllegalWeaponSale(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：处十年以上有期徒刑、无期徒刑或者死刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unauthorizedSellsOrTransfers": "unauthorizedSellsOrTransfers(P,X,M)：P 通过行为 X 擅自出卖、转让物品 M",
+   "militaryWeaponsAndEquipment": "militaryWeaponsAndEquipment(M)：M 是军队的武器装备",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "aggravatedIllegalWeaponSale": "aggravatedIllegalWeaponSale(P,X)：P 的非法出卖、转让军队武器装备行为 X 具备第439条后段加重情形",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "largeQuantityOfWeaponsSoldOrTransferred": "largeQuantityOfWeaponsSoldOrTransferred(X)：行为 X 出卖、转让的武器装备数量大量",
+   "otherEspeciallySeriousCircumstanceOfWeaponSale": "otherEspeciallySeriousCircumstanceOfWeaponSale(X)：行为 X 具有出卖、转让大量武器装备以外的其他特别严重情节",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑"
+  }
+ },
+ "art:440": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违抗命令、遗弃武器装备罪的成立条件与两个法定刑档次的适用",
+     "rules": [
+      "k440-1",
+      "k440-basic",
+      "k440-heavy"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上须有违抗命令的行为，并因违抗命令而遗弃武器装备（本罪属军人违反职责罪，主体为军人）",
+     "rules": [
+      "k440-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "并无违抗命令，仅系遗失、丢弃武器装备的，不符合本罪构成要件（学理）",
+     "rules": [
+      "k440-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "违抗命令、遗弃武器装备的，构成本罪，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k440-1",
+      "k440-basic"
+     ]
+    },
+    {
+     "text": "遗弃重要或者大量武器装备，或者有其他严重情节的，属加重情形，处五年以上有期徒刑",
+     "rules": [
+      "k440-aggr",
+      "k440-heavy"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备遗弃重要、大量武器装备或其他严重情节时，优先适用五年以上有期徒刑档，排除基本档",
+     "rules": [
+      "k440-heavy",
+      "k440-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪以“违抗命令”为前提，区别于一般的武器装备保管失职或丢失枪支不报等行为；重要武器装备、大量遗弃与其他严重情节只是量刑加重事由，不影响定罪",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k440-1",
+    "srcs": [
+     "art440#1"
+    ],
+    "body": [
+     "disobeysOrder(P,X)",
+     "abandonsWeaponsAndEquipment(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,disobeyingOrderAbandoningWeapons)"
+    ],
+    "auth": "npc",
+    "note": "违抗命令而遗弃武器装备的，符合违抗命令、遗弃武器装备罪（罪名常量 disobeyingOrderAbandoningWeapons）的构成要件"
+   },
+   {
+    "key": "k440-aggr",
+    "srcs": [
+     "art440#1"
+    ],
+    "body": [
+     "constitutes(P,X,disobeyingOrderAbandoningWeapons)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "importantWeaponsAndEquipment(M)",
+       "abandonedInLargeQuantity(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedAbandoningWeapons(P,X)"
+    ],
+    "auth": "npc",
+    "note": "遗弃重要武器装备、遗弃大量武器装备或者有其他严重情节的，属第440条第1款后段的加重情形"
+   },
+   {
+    "key": "k440-basic",
+    "srcs": [
+     "art440#1"
+    ],
+    "body": [
+     "constitutes(P,X,disobeyingOrderAbandoningWeapons)",
+     "~aggravatedAbandoningWeapons(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役（量刑方式常量 under5OrDetention＝五年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k440-heavy",
+    "srcs": [
+     "art440#1"
+    ],
+    "body": [
+     "constitutes(P,X,disobeyingOrderAbandoningWeapons)",
+     "aggravatedAbandoningWeapons(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：遗弃重要或大量武器装备或有其他严重情节的，处五年以上有期徒刑（量刑方式常量 from5＝五年以上有期徒刑）"
+   },
+   {
+    "key": "k440-neg",
+    "srcs": [
+     "art440#1"
+    ],
+    "body": [
+     "abandonsWeaponsAndEquipment(P,X)",
+     "-disobeysOrder(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,disobeyingOrderAbandoningWeapons)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本罪以违抗命令为前提，无违抗命令而遗失、丢弃武器装备的不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k440-neg",
+    "k440-1",
+    "推断：结论冲突（('constitutes', '+')），k440-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "disobeysOrder": "disobeysOrder(P,X)：P 在行为 X 中违抗（上级、指挥人员的）命令",
+   "abandonsWeaponsAndEquipment": "abandonsWeaponsAndEquipment(P,X)：P 通过行为 X 遗弃武器装备（弃置不顾、丢弃所配备或保管的武器装备）",
+   "constitutes": "符合构成要件",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "importantWeaponsAndEquipment": "importantWeaponsAndEquipment(M)：M 属于重要的武器装备",
+   "abandonedInLargeQuantity": "abandonedInLargeQuantity(X)：行为 X 所遗弃的武器装备数量大量",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "aggravatedAbandoningWeapons": "aggravatedAbandoningWeapons(P,X)：P 的违抗命令、遗弃武器装备行为 X 具备第440条第1款后段的加重情形（遗弃重要或大量武器装备，或有其他严重情节）",
+   "sentence": "量刑"
+  }
+ },
+ "art:441": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "遗失武器装备是否构成遗失武器装备罪，以及如何处罚",
+     "rules": [
+      "k441-cond",
+      "k441-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上遗失武器装备，且不及时报告或者有其他严重情节（二者择一即可）",
+     "rules": [
+      "k441-cond"
+     ]
+    },
+    {
+     "text": "主体为军人（本章军人违反职责罪的体系及第450条），非军人遗失武器装备不构成本罪",
+     "rules": [
+      "k441-subject"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "遗失武器装备后及时报告，且无其他严重情节的，不构成本罪",
+     "rules": [
+      "k441-cond"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成遗失武器装备罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k441-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "主体不适格（非军人）的排除规则优先于本罪构成规则",
+     "rules": [
+      "k441-subject"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第129条丢失枪支不报罪相区别：本罪对象是武器装备、主体是军人，且不以造成严重后果为要件，不及时报告或有其他严重情节即可",
+     "rules": [
+      "k441-cond",
+      "k441-subject"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k441-cond",
+    "srcs": [
+     "art441"
+    ],
+    "body": [
+     "losesWeaponOrEquipment(P,X)",
+     {
+      "or": [
+       "~reportedPromptly(P,X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,lossOfWeaponEquipment)"
+    ],
+    "auth": "npc",
+    "note": "遗失武器装备，不及时报告（除非已及时报告）或者有其他严重情节的，符合遗失武器装备罪的构成要件"
+   },
+   {
+    "key": "k441-pen",
+    "srcs": [
+     "art441"
+    ],
+    "body": [
+     "constitutes(P,X,lossOfWeaponEquipment)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成遗失武器装备罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k441-subject",
+    "srcs": [
+     "art441"
+    ],
+    "body": [
+     "losesWeaponOrEquipment(P,X)",
+     "-militaryPerson(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,lossOfWeaponEquipment)"
+    ],
+    "auth": "doctrine",
+    "note": "本条位于军人违反职责罪一章，主体限于军人（第450条），非军人遗失武器装备不构成本罪；此为体系解释，非第441条明文"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "losesWeaponOrEquipment": "losesWeaponOrEquipment(P,X)：P 通过事件 X 遗失其配备、保管、使用的武器装备",
+   "reportedPromptly": "reportedPromptly(P,X)：P 就丢失枪支事件 X 及时报告",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "militaryPerson": "militaryPerson(P)：P 是军人（中国人民解放军现役军官、士兵、文职干部及具有军籍的学员，武警部队现役人员等）"
+  }
+ },
+ "art:442": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "违反规定擅自出卖、转让军队房地产，情节严重的，直接责任人员构成擅自出卖、转让军队房地产罪",
+     "rules": [
+      "k442-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "违反有关规定；未经批准擅自出卖或者转让；对象是军队房地产；情节严重；受处罚者为该行为的直接责任人员",
+     "rules": [
+      "k442-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：对直接责任人员处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k442-basic"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k442-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节特别严重时适用加重档，排除三年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k442-aggravated",
+      "k442-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k442-cond",
+    "srcs": [
+     "art442"
+    ],
+    "body": [
+     "violatesRelevantProvisions(P,X)",
+     "unauthorizedSellsOrTransfers(P,X,M)",
+     "militaryRealEstate(M)",
+     "seriousCircumstances(X)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,unauthorizedSaleOrTransferOfMilitaryRealEstate)"
+    ],
+    "auth": "npc",
+    "note": "违反规定擅自出卖、转让军队房地产且情节严重的，直接责任人员的行为符合擅自出卖、转让军队房地产罪（罪名常量 unauthorizedSaleOrTransferOfMilitaryRealEstate）的构成要件"
+   },
+   {
+    "key": "k442-basic",
+    "srcs": [
+     "art442"
+    ],
+    "body": [
+     "constitutes(P,X,unauthorizedSaleOrTransferOfMilitaryRealEstate)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，对直接责任人员处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k442-aggravated",
+    "srcs": [
+     "art442"
+    ],
+    "body": [
+     "constitutes(P,X,unauthorizedSaleOrTransferOfMilitaryRealEstate)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，对直接责任人员处三年以上十年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "violatesRelevantProvisions": "violatesRelevantProvisions(P,X)：P 实施行为 X 违反有关规定",
+   "unauthorizedSellsOrTransfers": "unauthorizedSellsOrTransfers(P,X,M)：P 通过行为 X 擅自出卖、转让物品 M",
+   "militaryRealEstate": "militaryRealEstate(M)：M 是军队房地产（军队所有、使用的房屋、土地等不动产）",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "constitutes": "符合构成要件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑"
+  }
+ },
+ "art:443": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人滥用职权虐待部属，情节恶劣并致人重伤或者造成其他严重后果的，是否构成虐待部属罪、如何量刑",
+     "rules": [
+      "k443-cond",
+      "k443-basic",
+      "k443-death"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为现役军人（对部属有领导、管理职权的上级），滥用职权虐待部属，且情节恶劣",
+     "rules": [
+      "k443-cond"
+     ]
+    },
+    {
+     "text": "结果要件：致人重伤或者造成其他严重后果（基本犯）；致人死亡（加重犯）",
+     "rules": [
+      "k443-basic",
+      "k443-death"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽虐待部属但既未致人重伤、也无其他严重后果、未致人死亡的，不符合本条结果要件，不构成虐待部属罪（依军纪或其他规定处理）",
+     "rules": [
+      "k443-noresult"
+     ]
+    },
+    {
+     "text": "行为人对部属死亡具有故意（借虐待之名杀害部属）的，应以故意杀人罪论处，不适用虐待部属罪致人死亡的加重规定",
+     "rules": [
+      "k443-kill"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成虐待部属罪，负刑事责任，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k443-basic",
+      "k443-basic-pen"
+     ]
+    },
+    {
+     "text": "虐待部属致人死亡的，仍构成虐待部属罪，处五年以上有期徒刑",
+     "rules": [
+      "k443-death",
+      "k443-death-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "致人死亡的加重量刑规定优先于基本档（五年以下有期徒刑或者拘役）的量刑规定",
+     "rules": [
+      "k443-death-pen"
+     ]
+    },
+    {
+     "text": "故意杀害部属时，故意杀人罪的认定优先于虐待部属罪致人死亡的加重认定",
+     "rules": [
+      "k443-kill"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪主体是军人上级、对象是部属，行为须以滥用职权为方式；与虐待家庭成员罪、虐待被监护看护人罪在主体、对象与职权要素上不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k443-cond",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "activeDutyMilitaryPerson(P)",
+     "abusesPower(P,X)",
+     "abusesSubordinate(P,X)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "abuseOfSubordinateConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "现役军人滥用职权虐待部属、情节恶劣的，具备虐待部属罪的主体、行为与情节条件"
+   },
+   {
+    "key": "k443-basic",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "abuseOfSubordinateConditions(P,X)",
+     {
+      "or": [
+       "causesSubordinateGraveInjury(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfSubordinate)",
+     "responsible(P,X,abuseOfSubordinate)"
+    ],
+    "auth": "npc",
+    "note": "滥用职权虐待部属、情节恶劣，致人重伤或者造成其他严重后果的，构成虐待部属罪并负刑事责任"
+   },
+   {
+    "key": "k443-basic-pen",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "responsible(P,X,abuseOfSubordinate)",
+     {
+      "or": [
+       "causesSubordinateGraveInjury(X)",
+       "causesOtherSeriousConsequence(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本犯处五年以下有期徒刑或者拘役（under5 表示五年以下有期徒刑档，含拘役的选择）"
+   },
+   {
+    "key": "k443-death",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "abuseOfSubordinateConditions(P,X)",
+     "causesVictimDeath(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfSubordinate)",
+     "responsible(P,X,abuseOfSubordinate)"
+    ],
+    "auth": "npc",
+    "note": "滥用职权虐待部属致人死亡的，构成虐待部属罪的结果加重情形"
+   },
+   {
+    "key": "k443-death-pen",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "responsible(P,X,abuseOfSubordinate)",
+     "causesVictimDeath(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "致人死亡的处五年以上有期徒刑（from5 表示五年以上有期徒刑）"
+   },
+   {
+    "key": "k443-noresult",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "abuseOfSubordinateConditions(P,X)",
+     "-causesSubordinateGraveInjury(X)",
+     "-causesOtherSeriousConsequence(X)",
+     "-causesVictimDeath(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abuseOfSubordinate)"
+    ],
+    "auth": "doctrine",
+    "note": "欠缺致人重伤、其他严重后果或致人死亡结果的，不构成本罪；系依条文结果要件所作反面推论，法条未明文规定"
+   },
+   {
+    "key": "k443-kill",
+    "srcs": [
+     "art443#1"
+    ],
+    "body": [
+     "abuseOfSubordinateConditions(P,X)",
+     "causesVictimDeath(X)",
+     "killIntent(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,intentionalHomicide)",
+     "responsible(P,X,intentionalHomicide)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：本条“致人死亡”限于虐待行为过失或间接引起死亡，对死亡有故意的应认定故意杀人罪，法条未明文规定"
+   }
+  ],
+  "overrides": [
+   [
+    "k443-noresult",
+    "k443-basic",
+    "推断：结论冲突（('constitutes', '+')），k443-noresult 为例外或更具体"
+   ],
+   [
+    "k443-noresult",
+    "k443-death",
+    "推断：结论冲突（('constitutes', '+')），k443-noresult 为例外或更具体"
+   ],
+   [
+    "k443-noresult",
+    "k443-kill",
+    "推断：结论冲突（('constitutes', '-')），k443-noresult 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "activeDutyMilitaryPerson": "activeDutyMilitaryPerson(M)：M 是现役军人",
+   "abusesPower": "abusesPower(P,X)：P 在行为 X 中滥用职权",
+   "abusesSubordinate": "abusesSubordinate(P,X)：P 通过行为 X 虐待其部属（军队中隶属于其领导、管理的下级人员）",
+   "heinous": "情节恶劣",
+   "abuseOfSubordinateConditions": "abuseOfSubordinateConditions(P,X)：P 的行为 X 具备刑法第443条虐待部属罪的主体（军人上级）、滥用职权虐待部属行为与情节恶劣条件",
+   "causesSubordinateGraveInjury": "causesSubordinateGraveInjury(X)：虐待部属行为 X 致人重伤",
+   "causesOtherSeriousConsequence": "causesOtherSeriousConsequence(X)：行为 X 因而造成其他严重后果",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "causesVictimDeath": "causesVictimDeath(X)：行为 X 致使被害人死亡（本罪的结果加重情形）",
+   "killIntent": "killIntent(P,X)：P 在行为 X 中具有致被害人死亡的故意（希望或放任死亡结果）"
+  }
+ },
+ "art:444": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在战场上故意遗弃伤病军人、情节恶劣的，直接责任人员是否构成遗弃伤病军人罪，如何处刑",
+     "rules": [
+      "k444-1",
+      "k444-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "地点：行为发生在战场上；对象：伤病军人；行为：遗弃（弃置不顾、不予救护后送）；主观：故意；情节恶劣",
+     "rules": [
+      "k444-1"
+     ]
+    },
+    {
+     "text": "处罚主体限于对遗弃行为直接负责的责任人员",
+     "rules": [
+      "k444-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "不在战场上遗弃伤病军人的，不符合本罪地点要件，不构成遗弃伤病军人罪（可能成立其他犯罪）",
+     "rules": [
+      "k444-nb"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述要件的，构成遗弃伤病军人罪",
+     "rules": [
+      "k444-1"
+     ]
+    },
+    {
+     "text": "对直接责任人员处五年以下有期徒刑",
+     "rules": [
+      "k444-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本罪不同于第261条遗弃罪：对象为战场上的伤病军人，主体为直接责任人员，场合限于战场，法定刑为五年以下有期徒刑",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k444-1",
+    "srcs": [
+     "art444#1"
+    ],
+    "body": [
+     "onBattlefield(X)",
+     "woundedOrSickMilitaryPerson(V)",
+     "abandonsWoundedOrSickMilitaryPerson(P,X,V)",
+     "abandonmentIntent(P,X)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abandonmentOfWoundedSoldier)"
+    ],
+    "auth": "npc",
+    "note": "在战场上故意遗弃伤病军人且情节恶劣的，符合遗弃伤病军人罪的构成要件"
+   },
+   {
+    "key": "k444-2",
+    "srcs": [
+     "art444#1"
+    ],
+    "body": [
+     "constitutes(P,X,abandonmentOfWoundedSoldier)",
+     "directlyResponsiblePersonFor(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对遗弃伤病军人罪的直接责任人员处五年以下有期徒刑"
+   },
+   {
+    "key": "k444-nb",
+    "srcs": [
+     "art444#1"
+    ],
+    "body": [
+     "abandonsWoundedOrSickMilitaryPerson(P,X,V)",
+     "-onBattlefield(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abandonmentOfWoundedSoldier)"
+    ],
+    "auth": "doctrine",
+    "note": "战场是本罪的地点要件，非战场场合的遗弃不构成本罪（学理说明）"
+   }
+  ],
+  "overrides": [
+   [
+    "k444-nb",
+    "k444-1",
+    "推断：结论冲突（('constitutes', '+')），k444-nb 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "onBattlefield": "onBattlefield(X)：行为 X 发生在战场上（作战地域、战斗进行之中）",
+   "woundedOrSickMilitaryPerson": "woundedOrSickMilitaryPerson(V)：V 是伤病军人",
+   "abandonsWoundedOrSickMilitaryPerson": "abandonsWoundedOrSickMilitaryPerson(P,X,V)：P 通过行为 X 遗弃伤病军人 V（弃置不顾、不予救护或后送）",
+   "abandonmentIntent": "abandonmentIntent(P,X)：P 对行为 X 中遗弃伤病军人具有故意",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "directlyResponsiblePersonFor": "directlyResponsiblePersonFor(P,X)：P 是行为（事件）X 的直接责任人员",
+   "sentence": "量刑"
+  }
+ },
+ "art:445": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时在救护治疗职位上，有条件救治而拒不救治危重伤病军人的，是否构成战时拒不救治伤病军人罪，以及适用基本档还是加重档法定刑",
+     "rules": [
+      "k445-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "构成条件：①时间为战时；②主体在救护治疗职位上（负有救护治疗职责的军人或其他人员）；③对象为危重伤病军人；④有条件救治；⑤拒不救治（不作为）",
+     "rules": [
+      "k445-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "造成伤病军人重残、死亡或者有其他严重情节的，成立加重情形，排除基本档法定刑",
+     "rules": [
+      "k445-agg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k445-basic-pen"
+     ]
+    },
+    {
+     "text": "加重档：造成伤病军人重残、死亡或者有其他严重情节的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k445-agg-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备重残、死亡或其他严重情节时，加重档量刑优先于基本档量刑",
+     "rules": [
+      "k445-agg-pen",
+      "k445-basic-pen"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k445-cond",
+    "srcs": [
+     "art445#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "onMedicalTreatmentPost(P,X)",
+     "criticallyIllOrWoundedSoldier(V)",
+     "victimOf(V,X)",
+     "hasConditionsToTreat(P,V)",
+     "refusesToTreat(P,X,V)"
+    ],
+    "heads": [
+     "wartimeRefusalToTreatConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "战时、在救护治疗职位上、对象为危重伤病军人、有条件救治而拒不救治，具备本罪构成条件"
+   },
+   {
+    "key": "k445-basic",
+    "srcs": [
+     "art445#1"
+    ],
+    "body": [
+     "wartimeRefusalToTreatConditions(P,X)",
+     "~wartimeRefusalToTreatAggravated(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeRefusalToTreatWoundedSoldier)"
+    ],
+    "auth": "npc",
+    "note": "具备上述条件的，符合战时拒不救治伤病军人罪（wartimeRefusalToTreatWoundedSoldier）的构成要件"
+   },
+   {
+    "key": "k445-agg",
+    "srcs": [
+     "art445#1"
+    ],
+    "body": [
+     "wartimeRefusalToTreatConditions(P,X)",
+     {
+      "or": [
+       "causesSevereDisability(X)",
+       "causesDeath(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "wartimeRefusalToTreatAggravated(P,X)",
+     "constitutes(P,X,wartimeRefusalToTreatWoundedSoldier)"
+    ],
+    "auth": "npc",
+    "note": "造成伤病军人重残、死亡或者有其他严重情节的，成立本罪的加重情形"
+   },
+   {
+    "key": "k445-basic-pen",
+    "srcs": [
+     "art445#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRefusalToTreatWoundedSoldier)",
+     "~wartimeRefusalToTreatAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役（under5 表示五年以下有期徒刑这一档，含拘役的选择）"
+   },
+   {
+    "key": "k445-agg-pen",
+    "srcs": [
+     "art445#1"
+    ],
+    "body": [
+     "wartimeRefusalToTreatAggravated(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "加重档：造成重残、死亡或有其他严重情节的，处五年以上十年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "onMedicalTreatmentPost": "onMedicalTreatmentPost(P,X)：P 在行为 X 时处于救护治疗职位上（负有救护治疗职责）",
+   "criticallyIllOrWoundedSoldier": "criticallyIllOrWoundedSoldier(V)：V 是危重伤病军人",
+   "victimOf": "victimOf(V,X)：V 是犯罪事件 X 的被害人",
+   "hasConditionsToTreat": "hasConditionsToTreat(P,V)：P 具备救治伤病军人 V 的条件（医疗能力、器械药品、时间空间等）",
+   "refusesToTreat": "refusesToTreat(P,X,V)：P 通过行为 X（不作为）拒不救治危重伤病军人 V",
+   "wartimeRefusalToTreatConditions": "wartimeRefusalToTreatConditions(P,X)：P 的行为 X 具备刑法第445条第1款战时拒不救治伤病军人罪的构成条件",
+   "wartimeRefusalToTreatAggravated": "wartimeRefusalToTreatAggravated(P,X)：P 的拒不救治行为 X 造成伤病军人重残、死亡或有其他严重情节，属第445条第1款后段加重情形",
+   "constitutes": "符合构成要件",
+   "causesSevereDisability": "causesSevereDisability(X)：行为 X 造成伤病军人重残",
+   "causesDeath": "致人死亡",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "sentence": "量刑"
+  }
+ },
+ "art:446": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时在军事行动地区残害无辜居民或者掠夺无辜居民财物的，构成战时残害居民、掠夺居民财物罪",
+     "rules": [
+      "k446-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件为战时，地点条件为军事行动地区；行为为残害无辜居民或者掠夺无辜居民财物，二者具备其一即可（选择性罪名）",
+     "rules": [
+      "k446-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "基本档：处五年以下有期徒刑",
+     "rules": [
+      "k446-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k446-serious"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k446-especially"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重的加重档排除基本档及较轻档的适用",
+     "rules": [
+      "k446-serious",
+      "k446-especially"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k446-cond",
+    "srcs": [
+     "art446"
+    ],
+    "body": [
+     "wartime(X)",
+     "inMilitaryOperationArea(X)",
+     {
+      "or": [
+       "harmsInnocentResidents(P,X)",
+       "plundersInnocentResidentsProperty(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeHarmOrPlunderOfResidents)"
+    ],
+    "auth": "npc",
+    "note": "战时在军事行动地区残害无辜居民或掠夺无辜居民财物，符合战时残害居民、掠夺居民财物罪（wartimeHarmOrPlunderOfResidents）的构成要件"
+   },
+   {
+    "key": "k446-basic",
+    "srcs": [
+     "art446"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeHarmOrPlunderOfResidents)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档处五年以下有期徒刑（under5 指五年以下这一档）"
+   },
+   {
+    "key": "k446-serious",
+    "srcs": [
+     "art446"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeHarmOrPlunderOfResidents)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k446-especially",
+    "srcs": [
+     "art446"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeHarmOrPlunderOfResidents)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLifeOrDeath)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑（from10OrLifeOrDeath 为该择一量刑档）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "inMilitaryOperationArea": "inMilitaryOperationArea(X)：行为（犯罪事件）X 发生在军事行动地区",
+   "harmsInnocentResidents": "harmsInnocentResidents(P,X)：P 通过行为 X 残害无辜居民（杀害、伤害、虐待等）",
+   "plundersInnocentResidentsProperty": "plundersInnocentResidentsProperty(P,X)：P 通过行为 X 掠夺无辜居民的财物",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重"
+  }
+ },
+ "art:447": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "私自放走俘虏的行为是否构成私放俘虏罪，以及应适用五年以下还是五年以上有期徒刑的量刑档次",
+     "rules": [
+      "k447-1",
+      "k447-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观行为：未经批准擅自释放俘虏，使其脱离我方控制（私放俘虏）",
+     "rules": [
+      "k447-1"
+     ]
+    },
+    {
+     "text": "加重情形：私放重要俘虏、私放俘虏多人，或者有其他严重情节（三者具备其一即可）",
+     "rules": [
+      "k447-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本罪属军人违反职责罪，主体限于军人；非军人私放俘虏不以本罪论（条文未明文，依本章体系解释）",
+     "rules": [
+      "k447-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "私放俘虏的，构成私放俘虏罪，处五年以下有期徒刑",
+     "rules": [
+      "k447-1",
+      "k447-2"
+     ]
+    },
+    {
+     "text": "私放重要俘虏、私放俘虏多人或者有其他严重情节的，处五年以上有期徒刑",
+     "rules": [
+      "k447-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "具备加重情形时，排除五年以下有期徒刑的基本档，适用五年以上有期徒刑",
+     "rules": [
+      "k447-4",
+      "k447-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象是战争中被俘的敌方人员（俘虏），与私放在押人员罪（对象为刑事在押的罪犯、被告人、犯罪嫌疑人）不同",
+     "rules": [
+      "k447-1"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k447-1",
+    "srcs": [
+     "art447"
+    ],
+    "body": [
+     "privatelyReleasesCaptive(P,X,V)",
+     "captive(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,privatelyReleasingCaptives)"
+    ],
+    "auth": "npc",
+    "note": "私放俘虏的，符合私放俘虏罪（新罪名常量 privatelyReleasingCaptives）的构成要件"
+   },
+   {
+    "key": "k447-2",
+    "srcs": [
+     "art447"
+    ],
+    "body": [
+     "constitutes(P,X,privatelyReleasingCaptives)",
+     "~aggravatedPrivatelyReleasingCaptives(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "无加重情形的私放俘虏，处五年以下有期徒刑（量刑方式沿用 under5 表示五年以下档）"
+   },
+   {
+    "key": "k447-3",
+    "srcs": [
+     "art447"
+    ],
+    "body": [
+     "privatelyReleasesCaptive(P,X,V)",
+     {
+      "or": [
+       "importantCaptive(V)",
+       "multipleCaptivesReleased(X)",
+       "otherSeriousCircumstance(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "aggravatedPrivatelyReleasingCaptives(P,X)"
+    ],
+    "auth": "npc",
+    "note": "私放重要俘虏、私放俘虏多人或者有其他严重情节的，属本条后段加重情形"
+   },
+   {
+    "key": "k447-4",
+    "srcs": [
+     "art447"
+    ],
+    "body": [
+     "constitutes(P,X,privatelyReleasingCaptives)",
+     "aggravatedPrivatelyReleasingCaptives(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5)"
+     }
+    ],
+    "auth": "npc",
+    "note": "具备加重情形的私放俘虏，处五年以上有期徒刑（新增量刑常量 from5 表示五年以上有期徒刑）"
+   },
+   {
+    "key": "k447-subj",
+    "srcs": [
+     "art447"
+    ],
+    "body": [
+     "privatelyReleasesCaptive(P,X,V)",
+     "-militaryPerson(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,privatelyReleasingCaptives)"
+    ],
+    "auth": "doctrine",
+    "note": "条文未明文规定主体，依军人违反职责罪一章的体系解释，非军人不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k447-subj",
+    "k447-1",
+    "推断：结论冲突（('constitutes', '+')），k447-subj 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "privatelyReleasesCaptive": "privatelyReleasesCaptive(P,X,V)：P 通过行为 X 私自（未经批准）释放俘虏 V，使其脱离控制",
+   "captive": "captive(V)：V 是俘虏（战争或武装冲突中被我方俘获的敌方人员）",
+   "constitutes": "符合构成要件",
+   "aggravatedPrivatelyReleasingCaptives": "aggravatedPrivatelyReleasingCaptives(P,X)：P 的私放俘虏行为 X 具备第447条后段加重情形（重要俘虏、多人或其他严重情节）",
+   "sentence": "量刑",
+   "importantCaptive": "importantCaptive(V)：V 是重要俘虏（掌握重要情报、担任重要职务等具有重要价值的俘虏）",
+   "multipleCaptivesReleased": "multipleCaptivesReleased(X)：行为 X 私放俘虏多人",
+   "otherSeriousCircumstance": "otherSeriousCircumstance(X)：行为 X 具有其他情节严重的情形",
+   "militaryPerson": "militaryPerson(P)：P 是军人（中国人民解放军现役军官、士兵、文职干部及具有军籍的学员，武警部队现役人员等）"
+  }
+ },
+ "art:448": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "虐待俘虏、情节恶劣的，是否构成虐待俘虏罪以及如何处刑",
+     "rules": [
+      "k448-cond",
+      "k448-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观上实施了虐待俘虏的行为，即对被俘获的敌方人员施以肉体摧残、精神折磨等虐待",
+     "rules": [
+      "k448-cond"
+     ]
+    },
+    {
+     "text": "须情节恶劣（手段残忍、多次虐待、造成严重后果等），情节恶劣是本罪的成立要件",
+     "rules": [
+      "k448-cond",
+      "k448-notVile"
+     ]
+    },
+    {
+     "text": "本罪属军人违反职责罪，主体限于军人（法条未明文，依本章体系与学理）",
+     "rules": [
+      "k448-subj"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "虽有虐待俘虏行为但情节不恶劣的，不构成虐待俘虏罪",
+     "rules": [
+      "k448-notVile"
+     ]
+    },
+    {
+     "text": "非军人虐待俘虏的，不构成虐待俘虏罪（可依故意伤害等罪另行处理）",
+     "rules": [
+      "k448-subj"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成虐待俘虏罪并负刑事责任的，处三年以下有期徒刑",
+     "rules": [
+      "k448-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "主体不适格、情节不恶劣的排除规则优先于基本构成规则",
+     "rules": [
+      "k448-subj",
+      "k448-notVile",
+      "k448-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象限于俘虏，区别于虐待罪（家庭成员）与虐待被监护、看护人罪；虐待致人重伤、死亡的，按故意伤害罪、故意杀人罪处理（学理，本条未规定）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k448-cond",
+    "srcs": [
+     "art448#1"
+    ],
+    "body": [
+     "abusesCaptive(P,X)",
+     "heinous(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,abuseOfCaptive)"
+    ],
+    "auth": "npc",
+    "note": "虐待俘虏且情节恶劣的，符合虐待俘虏罪（abuseOfCaptive）的构成要件"
+   },
+   {
+    "key": "k448-pen",
+    "srcs": [
+     "art448#1"
+    ],
+    "body": [
+     "constitutes(P,X,abuseOfCaptive)",
+     "responsible(P,X,abuseOfCaptive)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3)"
+     }
+    ],
+    "auth": "npc",
+    "note": "虐待俘虏情节恶劣的，处三年以下有期徒刑（under3 表示三年以下有期徒刑）"
+   },
+   {
+    "key": "k448-notVile",
+    "srcs": [
+     "art448#1"
+    ],
+    "body": [
+     "abusesCaptive(P,X)",
+     "-heinous(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abuseOfCaptive)"
+    ],
+    "auth": "doctrine",
+    "note": "情节恶劣系明文要件，未达情节恶劣的不构成本罪（要件反面推论，学理）"
+   },
+   {
+    "key": "k448-subj",
+    "srcs": [
+     "art448"
+    ],
+    "body": [
+     "abusesCaptive(P,X)",
+     "-militaryPersonnel(P)"
+    ],
+    "heads": [
+     "-constitutes(P,X,abuseOfCaptive)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪位于军人违反职责罪一章，主体限于军人；法条未明文，依体系与学理补充"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "abusesCaptive": "abusesCaptive(P,X)：P 通过行为 X 虐待俘虏（对被俘获的敌方人员实施肉体摧残、精神折磨等）",
+   "heinous": "情节恶劣",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentence": "量刑",
+   "militaryPersonnel": "军人（人P）"
+  }
+ },
+ "art:449": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时对被宣告缓刑的犯罪军人，可否允许戴罪立功，并在确有立功表现时撤销原判刑罚、不以犯罪论处（战时缓刑）",
+     "rules": [
+      "k449-cond",
+      "k449-1",
+      "k449-2",
+      "k449-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件：犯罪发生于战时；主体条件：行为人是军人且已被判刑（犯罪军人）",
+     "rules": [
+      "k449-cond"
+     ]
+    },
+    {
+     "text": "刑度与缓刑条件：被判处三年以下有期徒刑、没有现实危险，并已宣告缓刑",
+     "rules": [
+      "k449-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合战时缓刑条件的，允许该犯罪军人戴罪立功",
+     "rules": [
+      "k449-1"
+     ]
+    },
+    {
+     "text": "确有立功表现时，人民法院可以（裁量，非应当）撤销原判刑罚",
+     "rules": [
+      "k449-2"
+     ]
+    },
+    {
+     "text": "原判刑罚被撤销的，不以犯罪论处（不作犯罪评价）",
+     "rules": [
+      "k449-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "战时缓刑的效果是撤销原判刑罚、不以犯罪论处，区别于一般缓刑考验期满仅“原判刑罚不再执行”而犯罪评价仍存",
+     "rules": [
+      "k449-3"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k449-cond",
+    "srcs": [
+     "art449#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "militaryPersonnel(P)",
+     "wartime(X)",
+     "imposedPenalty(P,X,S)",
+     "upTo3YearsFixedTerm(S)",
+     "noRealDanger(P,X)",
+     "probationDeclared(P,X)"
+    ],
+    "heads": [
+     "wartimeProbation(P,X)"
+    ],
+    "auth": "npc",
+    "note": "战时对被判处三年以下有期徒刑、没有现实危险而宣告缓刑的犯罪军人，成立战时缓刑（戴罪立功）的适用条件"
+   },
+   {
+    "key": "k449-1",
+    "srcs": [
+     "art449#1"
+    ],
+    "body": [
+     "wartimeProbation(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "expiateCrimeByMeritoriousService(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "符合战时缓刑条件的，允许犯罪军人戴罪立功"
+   },
+   {
+    "key": "k449-2",
+    "srcs": [
+     "art449#1"
+    ],
+    "body": [
+     "wartimeProbation(P,X)",
+     "meritoriousService(P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "revokeOriginalSentence(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "确有立功表现时，人民法院可以撤销原判刑罚（“可以”为裁量性授权）"
+   },
+   {
+    "key": "k449-3",
+    "srcs": [
+     "art449#1"
+    ],
+    "body": [
+     "wartimeProbation(P,X)",
+     "meritoriousService(P)",
+     "originalSentenceRevoked(P,X)"
+    ],
+    "heads": [
+     "-treatedAsCrime(P,X)"
+    ],
+    "auth": "npc",
+    "note": "原判刑罚经撤销的，对该军人不以犯罪论处"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "militaryPersonnel": "军人（人P）",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "imposedPenalty": "imposedPenalty(P,X,S)：对 P 就犯罪 X 判处的刑罚为 S",
+   "upTo3YearsFixedTerm": "刑罚幅度S为三年以下有期徒刑",
+   "noRealDanger": "noRealDanger(P,X)：对 P 因犯罪 X 宣告缓刑没有现实危险",
+   "probationDeclared": "probationDeclared(P,X)：P 因犯罪 X 被宣告缓刑",
+   "wartimeProbation": "wartimeProbation(P,X)：P 因犯罪 X 具备刑法第449条战时缓刑（戴罪立功）的适用条件",
+   "expiateCrimeByMeritoriousService": "expiateCrimeByMeritoriousService(P,X)：P 就犯罪 X 戴罪立功（在服役中带罪立功）",
+   "meritoriousService": "立功",
+   "revokeOriginalSentence": "revokeOriginalSentence(P,X)：撤销对 P 因犯罪 X 所判的原判刑罚",
+   "originalSentenceRevoked": "originalSentenceRevoked(P,X)：对 P 因犯罪 X 所判的原判刑罚已被撤销",
+   "treatedAsCrime": "treatedAsCrime(P,X)：对 P 的行为 X 以犯罪论处（作犯罪评价）"
+  }
+ },
+ "art:450": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人违反职责罪一章（第450条）的主体适用范围：哪些人员适用本章",
+     "rules": [
+      "k450-1",
+      "k450-2",
+      "k450-3",
+      "k450-4",
+      "k450-5"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "中国人民解放军的现役军官、文职干部、士兵及具有军籍的学员，属于本章主体",
+     "rules": [
+      "k450-1"
+     ]
+    },
+    {
+     "text": "中国人民武装警察部队的现役警官、文职干部、士兵及具有军籍的学员，属于本章主体",
+     "rules": [
+      "k450-2"
+     ]
+    },
+    {
+     "text": "军队文职人员属于本章主体（不以具有军籍为要件）",
+     "rules": [
+      "k450-3"
+     ]
+    },
+    {
+     "text": "预备役人员正在执行军事任务的，属于本章主体",
+     "rules": [
+      "k450-4"
+     ]
+    },
+    {
+     "text": "其他人员（如军队职工、参战民兵民工等）正在执行军事任务的，属于本章主体",
+     "rules": [
+      "k450-5"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "预备役人员未执行军事任务的，不适用本章，按普通主体处理（学理说明，法条以“执行军事任务”为限定）",
+     "rules": [
+      "k450-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "具备上述身份的，本章军人违反职责罪的规定对其适用",
+     "rules": [
+      "k450-1",
+      "k450-2",
+      "k450-3",
+      "k450-4",
+      "k450-5"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "现役军官（警官）、文职干部、士兵、具有军籍的学员须结合所属部队（解放军或武警部队）认定；文职人员与执行军事任务的预备役人员、其他人员则不以军籍为要件，后者以“执行军事任务”为限",
+     "rules": [
+      "k450-1",
+      "k450-2",
+      "k450-3",
+      "k450-4",
+      "k450-5",
+      "k450-neg"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k450-1",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "belongsToPla(P)",
+     {
+      "or": [
+       "activeDutyOfficer(P)",
+       "civilianCadre(P)",
+       "soldier(P)",
+       "militaryEnrolledStudent(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "解放军的现役军官、文职干部、士兵及具有军籍的学员适用本章"
+   },
+   {
+    "key": "k450-2",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "belongsToArmedPolice(P)",
+     {
+      "or": [
+       "activeDutyPoliceOfficer(P)",
+       "civilianCadre(P)",
+       "soldier(P)",
+       "militaryEnrolledStudent(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "武警部队的现役警官、文职干部、士兵及具有军籍的学员适用本章"
+   },
+   {
+    "key": "k450-3",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "militaryCivilianStaff(P)"
+    ],
+    "heads": [
+     "militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "军队文职人员适用本章"
+   },
+   {
+    "key": "k450-4",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "reservist(P)",
+     "performingMilitaryTask(P)"
+    ],
+    "heads": [
+     "militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "执行军事任务的预备役人员适用本章"
+   },
+   {
+    "key": "k450-5",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "otherMilitaryTaskPersonnel(P)",
+     "performingMilitaryTask(P)"
+    ],
+    "heads": [
+     "militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "npc",
+    "note": "执行军事任务的其他人员适用本章"
+   },
+   {
+    "key": "k450-neg",
+    "srcs": [
+     "art450#1"
+    ],
+    "body": [
+     "reservist(P)",
+     "-performingMilitaryTask(P)"
+    ],
+    "heads": [
+     "-militaryDutyCrimeSubject(P)"
+    ],
+    "auth": "doctrine",
+    "note": "预备役人员未执行军事任务的不属于本章主体，系对法条“执行军事任务”限定的学理反面说明"
+   }
+  ],
+  "overrides": [
+   [
+    "k450-neg",
+    "k450-1",
+    "推断：结论冲突（('militaryDutyCrimeSubject', '+')），k450-neg 为例外或更具体"
+   ],
+   [
+    "k450-neg",
+    "k450-2",
+    "推断：结论冲突（('militaryDutyCrimeSubject', '+')），k450-neg 为例外或更具体"
+   ],
+   [
+    "k450-neg",
+    "k450-3",
+    "推断：结论冲突（('militaryDutyCrimeSubject', '+')），k450-neg 为例外或更具体"
+   ],
+   [
+    "k450-neg",
+    "k450-4",
+    "推断：结论冲突（('militaryDutyCrimeSubject', '+')），k450-neg 为例外或更具体"
+   ],
+   [
+    "k450-neg",
+    "k450-5",
+    "推断：结论冲突（('militaryDutyCrimeSubject', '+')），k450-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "belongsToPla": "belongsToPla(P)：P 属于中国人民解放军",
+   "activeDutyOfficer": "activeDutyOfficer(P)：P 是现役军官",
+   "civilianCadre": "civilianCadre(P)：P 是（解放军或武警部队的）文职干部",
+   "soldier": "soldier(P)：P 是士兵",
+   "militaryEnrolledStudent": "militaryEnrolledStudent(P)：P 是具有军籍的学员",
+   "militaryDutyCrimeSubject": "militaryDutyCrimeSubject(P)：P 属于刑法军人违反职责罪一章（第450条）的适用主体范围",
+   "belongsToArmedPolice": "belongsToArmedPolice(P)：P 属于中国人民武装警察部队",
+   "activeDutyPoliceOfficer": "activeDutyPoliceOfficer(P)：P 是现役警官",
+   "militaryCivilianStaff": "militaryCivilianStaff(P)：P 是军队文职人员",
+   "reservist": "reservist(P)：P 是预备役人员（第376条第1款的特殊主体）",
+   "performingMilitaryTask": "performingMilitaryTask(P)：P 正在执行军事任务",
+   "otherMilitaryTaskPersonnel": "otherMilitaryTaskPersonnel(P)：P 属于第450条所称“其他人员”（如军队职工、参战民兵民工等）"
+  }
+ },
+ "art:451": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "军人违反职责罪中“战时”的认定：既包括真实战争状态情形，也包括法律拟制的战时情形",
+     "rules": [
+      "k451-1",
+      "k451-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "战时的法定情形（择一即可）：国家宣布进入战争状态；部队受领作战任务；遭敌突然袭击",
+     "rules": [
+      "k451-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "具备上述情形之一的，即属本章所称“战时”，相关犯罪按战时条款评价",
+     "rules": [
+      "k451-1"
+     ]
+    },
+    {
+     "text": "部队执行戒严任务或者处置突发性暴力事件时，以战时论（法律拟制，虽无战争状态亦按战时处理）",
+     "rules": [
+      "k451-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "“本章”指刑法分则第十章军人违反职责罪；第1款是战时的定义，第2款是“以战时论”的拟制，二者结论相同但事实基础不同",
+     "rules": [
+      "k451-1",
+      "k451-2"
+     ]
+    },
+    {
+     "text": "本条只界定“战时”这一时间要素，本身不设定罪名与刑罚，须与具体战时犯罪条款结合适用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k451-1",
+    "srcs": [
+     "art451#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "stateDeclaresWarState(X)",
+       "unitReceivesCombatMission(X)",
+       "suddenEnemyAttack(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "wartime(X)"
+    ],
+    "auth": "npc",
+    "note": "国家宣布进入战争状态、部队受领作战任务或遭敌突然袭击时，为本章所称战时"
+   },
+   {
+    "key": "k451-2",
+    "srcs": [
+     "art451#2"
+    ],
+    "body": [
+     {
+      "or": [
+       "unitPerformsMartialLawMission(X)",
+       "unitHandlesSuddenViolentIncident(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "wartime(X)"
+    ],
+    "auth": "npc",
+    "note": "部队执行戒严任务或处置突发性暴力事件时，以战时论"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "stateDeclaresWarState": "stateDeclaresWarState(X)：事件 X 发生于国家宣布进入战争状态之时（期间）",
+   "unitReceivesCombatMission": "unitReceivesCombatMission(X)：事件 X 发生于部队受领作战任务之时（期间）",
+   "suddenEnemyAttack": "suddenEnemyAttack(X)：事件 X 发生于部队遭敌突然袭击之时（期间）",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "unitPerformsMartialLawMission": "unitPerformsMartialLawMission(X)：事件 X 发生于部队执行戒严任务之时（期间）",
+   "unitHandlesSuddenViolentIncident": "unitHandlesSuddenViolentIncident(X)：事件 X 发生于部队处置突发性暴力事件之时（期间）"
+  }
+ },
+ "art:452": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "1997年修订刑法的施行日期，以及原全国人大常委会制定的单行刑法（附件一、附件二）的存废与适用",
+     "rules": [
+      "k452-1",
+      "k452-2",
+      "k452-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "附件一所列全国人大常委会制定的条例、补充规定和决定，且已纳入本法或者已不适用",
+     "rules": [
+      "k452-2"
+     ]
+    },
+    {
+     "text": "附件二所列全国人大常委会制定的补充规定和决定",
+     "rules": [
+      "k452-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "附件二文件虽整体保留，但其中有关刑事责任的规定已纳入本法，自本法施行之日起不再依原规定适用，而适用本法规定",
+     "rules": [
+      "k452-3b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "本法自1997年10月1日起施行",
+     "rules": [
+      "k452-1"
+     ]
+    },
+    {
+     "text": "附件一文件（如《惩治军人违反职责罪暂行条例》等15件单行刑法）自本法施行之日即1997年10月1日起予以废止",
+     "rules": [
+      "k452-2"
+     ]
+    },
+    {
+     "text": "附件二文件予以保留；保留文件的规定原则上继续有效，其中有关行政处罚和行政措施的规定明文继续有效",
+     "rules": [
+      "k452-3",
+      "k452-part",
+      "k452-3a"
+     ]
+    },
+    {
+     "text": "附件二中有关刑事责任的规定视为已纳入本法，自1997年10月1日起对该类事项适用本法",
+     "rules": [
+      "k452-3b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "就附件二中的刑事责任规定，适用本法的规定优先于“保留文件规定继续有效”的一般推论",
+     "rules": [
+      "k452-3b",
+      "k452-part"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "失效方式上，本条第2款属明示废止：由立法机关明文宣布某些法律自何日起失效；不同于因新法施行而当然失效的默示废止",
+     "rules": [
+      "k452-express",
+      "k452-2"
+     ]
+    },
+    {
+     "text": "附件一是“废止”，附件二是“保留”：保留文件中行政处罚、行政措施部分继续有效，刑事责任部分则改依本法，二者不可混同",
+     "rules": [
+      "k452-2",
+      "k452-3",
+      "k452-3a",
+      "k452-3b"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k452-1",
+    "srcs": [
+     "art452#1"
+    ],
+    "body": [
+     "criminalCode(L)"
+    ],
+    "heads": [
+     "effectiveFrom(L,d19971001)"
+    ],
+    "auth": "npc",
+    "note": "本法（1997年修订的刑法）自1997年10月1日起施行"
+   },
+   {
+    "key": "k452-2",
+    "srcs": [
+     "art452#2"
+    ],
+    "body": [
+     "listedInAnnexOne(R)",
+     "npcStandingCommitteeEnactment(R)",
+     {
+      "or": [
+       "incorporatedIntoCode(R)",
+       "noLongerApplicable(R)"
+      ]
+     },
+     "criminalCode(L)",
+     "effectiveFrom(L,D)"
+    ],
+    "heads": [
+     "repealed(R)",
+     "repealedFrom(R,D)"
+    ],
+    "auth": "npc",
+    "note": "附件一所列全国人大常委会制定的条例、补充规定和决定，已纳入本法或已不适用的，自本法施行之日起予以废止"
+   },
+   {
+    "key": "k452-3",
+    "srcs": [
+     "art452#3"
+    ],
+    "body": [
+     "listedInAnnexTwo(R)",
+     "npcStandingCommitteeEnactment(R)"
+    ],
+    "heads": [
+     "retained(R)",
+     "remainsInForce(R)"
+    ],
+    "auth": "npc",
+    "note": "附件二所列全国人大常委会制定的补充规定和决定予以保留"
+   },
+   {
+    "key": "k452-part",
+    "srcs": [
+     "art452#3"
+    ],
+    "body": [
+     "remainsInForce(R)",
+     "provisionOf(P,R)"
+    ],
+    "heads": [
+     "remainsInForce(P)"
+    ],
+    "auth": "doctrine",
+    "note": "体系推论（学理）：予以保留的文件，其各项规定原则上继续有效，但刑事责任部分另有本款后段的特别处理"
+   },
+   {
+    "key": "k452-3a",
+    "srcs": [
+     "art452#3"
+    ],
+    "body": [
+     "retained(R)",
+     "provisionOf(P,R)",
+     "administrativePenaltyOrMeasureProvision(P)"
+    ],
+    "heads": [
+     "remainsInForce(P)"
+    ],
+    "auth": "npc",
+    "note": "附件二保留文件中有关行政处罚和行政措施的规定继续有效"
+   },
+   {
+    "key": "k452-3b",
+    "srcs": [
+     "art452#3"
+    ],
+    "body": [
+     "retained(R)",
+     "provisionOf(P,R)",
+     "criminalLiabilityProvision(P)",
+     "criminalCode(L)",
+     "effectiveFrom(L,D)"
+    ],
+    "heads": [
+     "incorporatedIntoCode(P)",
+     "-remainsInForce(P)",
+     "applyCriminalCodeFrom(P,D)"
+    ],
+    "auth": "npc",
+    "note": "附件二中有关刑事责任的规定已纳入本法，自本法施行之日起适用本法规定，原刑事责任条款不再继续适用"
+   },
+   {
+    "key": "k452-express",
+    "srcs": [
+     "art452#2"
+    ],
+    "body": [
+     "repealed(R)",
+     "repealedFrom(R,D)"
+    ],
+    "heads": [
+     "expressRepeal(R)"
+    ],
+    "auth": "doctrine",
+    "note": "笔记学理：立法机关明文宣布某法律自某日起失效，属明示废止（如附件一15件单行刑法自1997年10月1日废止）"
+   }
+  ],
+  "overrides": [
+   [
+    "k452-3b",
+    "k452-3",
+    "推断：结论冲突（('remainsInForce', '+')），k452-3b 为例外或更具体"
+   ],
+   [
+    "k452-3b",
+    "k452-part",
+    "推断：结论冲突（('remainsInForce', '+')），k452-3b 为例外或更具体"
+   ],
+   [
+    "k452-3b",
+    "k452-3a",
+    "推断：结论冲突（('remainsInForce', '+')），k452-3b 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "criminalCode": "criminalCode(L)：L 是《中华人民共和国刑法》（本法，1997年修订）",
+   "effectiveFrom": "effectiveFrom(L,D)：法律 L 自 D 日起施行（生效）",
+   "listedInAnnexOne": "listedInAnnexOne(R)：R 列于刑法附件一",
+   "npcStandingCommitteeEnactment": "npcStandingCommitteeEnactment(R)：R 是全国人民代表大会常务委员会制定的条例、补充规定或者决定（单行刑法文件）",
+   "incorporatedIntoCode": "incorporatedIntoCode(R)：文件或其规定 R 的内容已纳入本法（刑法）",
+   "noLongerApplicable": "noLongerApplicable(R)：文件 R 已不适用",
+   "repealed": "repealed(R)：文件 R 予以废止（失效）",
+   "repealedFrom": "repealedFrom(R,D)：文件 R 自 D 日起废止",
+   "listedInAnnexTwo": "listedInAnnexTwo(R)：R 列于刑法附件二",
+   "retained": "retained(R)：文件 R 予以保留",
+   "remainsInForce": "remainsInForce(X)：文件或规定 X 继续有效（可继续适用）",
+   "provisionOf": "provisionOf(P,R)：P 是法律文件 R 中的某项规定（组成部分）",
+   "administrativePenaltyOrMeasureProvision": "administrativePenaltyOrMeasureProvision(P)：P 是有关行政处罚、行政措施的规定",
+   "criminalLiabilityProvision": "criminalLiabilityProvision(P)：P 是有关刑事责任的规定",
+   "applyCriminalCodeFrom": "applyCriminalCodeFrom(P,D)：对规定 P 所涉刑事责任事项，自 D 日起适用本法（刑法）的规定",
+   "expressRepeal": "expressRepeal(R)：文件 R 的失效方式为明示废止（立法机关明文宣布自某日起失效）"
+  }
+ }
+}

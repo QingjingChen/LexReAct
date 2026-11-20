@@ -1,0 +1,1742 @@
+{
+ "card:g7245": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第四章　遗产的处理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "遗产分割如何协商与解决争议",
+     "rules": [
+      "c1132-agree",
+      "c1132-fail"
+     ]
+    },
+    {
+     "text": "遗产管理人的产生、职责、责任与报酬",
+     "rules": [
+      "c1145-exec",
+      "c1145-elect",
+      "c1145-elected",
+      "c1145-joint",
+      "c1145-none",
+      "c1146",
+      "c1147",
+      "c1148-1",
+      "c1148-2",
+      "c1149"
+     ]
+    },
+    {
+     "text": "遗产的确定（析产）与分割方法",
+     "rules": [
+      "c1153-1",
+      "c1153-2",
+      "c1153-other",
+      "c1155-1",
+      "c1155-2",
+      "c1156-1",
+      "c1156-2"
+     ]
+    },
+    {
+     "text": "被继承人税款和债务的清偿",
+     "rules": [
+      "c1159-1",
+      "c1159-2",
+      "c1161-1",
+      "c1161-vol",
+      "c1161-2",
+      "c1162",
+      "c1163-1",
+      "c1163-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "遗产分割的时间、办法和份额由继承人协商确定；协商不成的，可以调解或起诉",
+     "rules": [
+      "c1132-agree",
+      "c1132-fail"
+     ]
+    },
+    {
+     "text": "遗产管理人：遗嘱执行人；无遗嘱执行人的由继承人及时推选；未推选的由继承人共同担任；没有继承人或继承人均放弃继承的，由被继承人生前住所地的民政部门或者村民委员会担任",
+     "rules": [
+      "c1145-exec",
+      "c1145-elect",
+      "c1145-elected",
+      "c1145-joint",
+      "c1145-none"
+     ]
+    },
+    {
+     "text": "对遗产管理人的确定有争议的，利害关系人可以申请人民法院指定",
+     "rules": [
+      "c1146"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "夫妻共同财产先分出一半归配偶，但有约定的除外",
+     "rules": [
+      "c1153-1"
+     ]
+    },
+    {
+     "text": "继承人对超过遗产实际价值部分自愿偿还的，不受限定继承的限制",
+     "rules": [
+      "c1161-vol"
+     ]
+    },
+    {
+     "text": "放弃继承的，对被继承人的税款和债务可以不负清偿责任",
+     "rules": [
+      "c1161-2"
+     ]
+    },
+    {
+     "text": "胎儿娩出时是死体的，保留的份额按照法定继承办理",
+     "rules": [
+      "c1155-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "遗产管理人应当履行清理遗产并制作清单、报告、防止毁损灭失、处理债权债务、分割遗产及其他必要行为等职责",
+     "rules": [
+      "c1147"
+     ]
+    },
+    {
+     "text": "遗产管理人应当依法履行职责；因故意或者重大过失造成继承人、受遗赠人、债权人损害的，应当承担民事责任",
+     "rules": [
+      "c1148-1",
+      "c1148-2"
+     ]
+    },
+    {
+     "text": "遗产管理人可以依照法律规定或者按照约定获得报酬",
+     "rules": [
+      "c1149"
+     ]
+    },
+    {
+     "text": "遗产在家庭共有财产之中的，先分出他人的财产；与其他共有人的共有财产同理（笔记、学理）",
+     "rules": [
+      "c1153-2",
+      "c1153-other"
+     ]
+    },
+    {
+     "text": "遗产分割时应当保留胎儿的继承份额；应保留而未保留的，从继承人所继承的遗产中扣回；胎儿出生后死亡的，保留份额由其继承人继承（继承编解释一第31条）",
+     "rules": [
+      "c1155-1",
+      "c1155-spc31a",
+      "c1155-spc31b"
+     ]
+    },
+    {
+     "text": "遗产分割应当有利于生产和生活需要，不损害遗产效用；不宜分割的，可以折价、适当补偿或者共有；分割房屋、生产资料和特定职业所需财产时兼顾使用效益与实际需要（继承编解释一第42条）",
+     "rules": [
+      "c1156-1",
+      "c1156-2",
+      "c1156-spc42"
+     ]
+    },
+    {
+     "text": "继承人以所得遗产实际价值为限清偿被继承人依法应当缴纳的税款和债务",
+     "rules": [
+      "c1161-1"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "分割遗产应当先清偿税款和债务，但是应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产（必留份优先于债务清偿）",
+     "rules": [
+      "c1159-1",
+      "c1159-2"
+     ]
+    },
+    {
+     "text": "执行遗赠不得妨碍清偿遗赠人依法应当缴纳的税款和债务（清偿债务优先于执行遗赠）",
+     "rules": [
+      "c1162"
+     ]
+    },
+    {
+     "text": "既有法定继承又有遗嘱继承、遗赠的，先由法定继承人清偿；超过法定继承遗产实际价值部分，由遗嘱继承人和受遗赠人按比例以所得遗产清偿",
+     "rules": [
+      "c1163-1",
+      "c1163-2"
+     ]
+    },
+    {
+     "text": "遗嘱执行人优先担任遗产管理人；推选、共同担任、民政部门或村委会担任依次补充",
+     "rules": [
+      "c1145-exec",
+      "c1145-elected",
+      "c1145-joint",
+      "c1145-none"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1160条（无人继承遗产归属）同时挂在本行，已在 card:g7086 形式化为 c1160-state、c1160-coll，本行不重复",
+     "rules": []
+    },
+    {
+     "text": "第1159条必留份针对清偿债务；第1141条必留份针对遗嘱处分（见 card:g7149 c1141）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1132-agree",
+    "srcs": [
+     "art1132"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "partitionAgreedByHeirs(E)"
+    ],
+    "heads": [
+     "partitionPerAgreement(E)"
+    ],
+    "note": "继承人应当协商处理继承问题；遗产分割的时间、办法和份额，由继承人协商确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1132-fail",
+    "srcs": [
+     "art1132"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "heirCandidate(H,D)",
+     "partitionNegotiationFailed(E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "seekPeoplesMediation(H,E)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "suePartition(H,E)"
+     }
+    ],
+    "note": "协商不成的，可以由人民调解委员会调解或者向人民法院提起诉讼",
+    "auth": "npc"
+   },
+   {
+    "key": "c1145-exec",
+    "srcs": [
+     "art1145"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "willExecutorOf(X,D)"
+    ],
+    "heads": [
+     "estateAdministratorOf(X,D)",
+     "hasWillExecutor(D)"
+    ],
+    "note": "继承开始后，遗嘱执行人为遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1145-elect",
+    "srcs": [
+     "art1145"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "heirCandidate(H,D)",
+     "~hasWillExecutor(D)",
+     "~renounced(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "electAdministratorPromptly(H,D)"
+     }
+    ],
+    "note": "没有遗嘱执行人的，继承人应当及时推选遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1145-elected",
+    "srcs": [
+     "art1145"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "electedByHeirs(X,D)",
+     "~hasWillExecutor(D)"
+    ],
+    "heads": [
+     "estateAdministratorOf(X,D)",
+     "administratorElected(D)"
+    ],
+    "note": "继承人推选的人为遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1145-joint",
+    "srcs": [
+     "art1145"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "heirCandidate(H,D)",
+     "~renounced(H,D)",
+     "~hasWillExecutor(D)",
+     "~administratorElected(D)"
+    ],
+    "heads": [
+     "estateAdministratorOf(H,D)"
+    ],
+    "note": "继承人未推选的，由继承人共同担任遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1145-none",
+    "srcs": [
+     "art1145"
+    ],
+    "body": [
+     "successionStarted(D)",
+     {
+      "or": [
+       "noHeir(D)",
+       "allHeirsRenounced(D)"
+      ]
+     },
+     {
+      "or": [
+       "domicileCivilAffairsDept(O,D)",
+       "domicileVillageCommittee(O,D)"
+      ]
+     },
+     "~hasWillExecutor(D)"
+    ],
+    "heads": [
+     "estateAdministratorOf(O,D)"
+    ],
+    "note": "没有继承人或者继承人均放弃继承的，由被继承人生前住所地的民政部门或者村民委员会担任遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1146",
+    "srcs": [
+     "art1146"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "administratorDisputed(D)",
+     "interestedParty(P,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyAdministratorDesignation(P,D)"
+     }
+    ],
+    "note": "对遗产管理人的确定有争议的，利害关系人可以向人民法院申请指定遗产管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1147",
+    "srcs": [
+     "art1147"
+    ],
+    "body": [
+     "estateAdministratorOf(R,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "inventoryEstate(R,D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "reportEstateToHeirs(R,D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "preventEstateLoss(R,D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "handleDeceasedClaimsAndDebts(R,D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "partitionPerWillOrLaw(R,D)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "otherNecessaryAdminActs(R,D)"
+     }
+    ],
+    "note": "遗产管理人应当清理遗产并制作清单、向继承人报告、防止遗产毁损灭失、处理债权债务、按照遗嘱或依法分割遗产、实施其他必要行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c1148-1",
+    "srcs": [
+     "art1148"
+    ],
+    "body": [
+     "estateAdministratorOf(R,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "performAdminDutiesLawfully(R,D)"
+     }
+    ],
+    "note": "遗产管理人应当依法履行职责",
+    "auth": "npc"
+   },
+   {
+    "key": "c1148-2",
+    "srcs": [
+     "art1148"
+    ],
+    "body": [
+     "estateAdministratorOf(R,D)",
+     "damagedByAdministrator(V,R,D)",
+     {
+      "or": [
+       "heirCandidate(V,D)",
+       "legateeOf(V,D)",
+       "creditorOfDeceased(V,D)"
+      ]
+     },
+     {
+      "or": [
+       "intentional(R,V)",
+       "grossNegligence(R,V)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "V",
+      "content": "bearCivilLiability(R,V)"
+     }
+    ],
+    "note": "遗产管理人因故意或者重大过失造成继承人、受遗赠人、债权人损害的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1149",
+    "srcs": [
+     "art1149"
+    ],
+    "body": [
+     "estateAdministratorOf(R,D)",
+     {
+      "or": [
+       "remunerationProvidedByLaw(R,D)",
+       "adminRemunerationAgreed(R,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "receiveAdminRemuneration(R,D)"
+     }
+    ],
+    "note": "遗产管理人可以依照法律规定或者按照约定获得报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c1153-1",
+    "srcs": [
+     "art1153-1"
+    ],
+    "body": [
+     "maritalCommonProperty(X,D,S)",
+     "dead(D)",
+     "~maritalPropertyAgreement(D,S)"
+    ],
+    "heads": [
+     "ownedBySpouseHalf(X,S)",
+     "halfIsEstate(X,D)",
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "S",
+      "content": "separateSpouseHalf(X,S)"
+     }
+    ],
+    "note": "夫妻共同所有的财产，除有约定的外，遗产分割时，应当先将共同所有的财产的一半分出为配偶所有，其余的为被继承人的遗产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1153-2",
+    "srcs": [
+     "art1153-2"
+    ],
+    "body": [
+     "familyCommonProperty(X,D)",
+     "dead(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "separateOthersProperty(X,D)"
+     }
+    ],
+    "note": "遗产在家庭共有财产之中的，遗产分割时，应当先分出他人的财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1153-other",
+    "srcs": [
+     "art1153-2"
+    ],
+    "body": [
+     "coOwnedWithOthers(X,D)",
+     "dead(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "separateOthersProperty(X,D)"
+     }
+    ],
+    "note": "笔记（学理）：遗产与合伙财产等其他共有财产的区分，同样先分出他人的财产，剩余的为遗产；法条仅规定夫妻共同财产与家庭共有财产",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1155-1",
+    "srcs": [
+     "art1155"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "fetus(F)",
+     "prospectiveHeirFetus(F,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "F",
+      "content": "reserveFetusShare(F,E)"
+     }
+    ],
+    "note": "遗产分割时，应当保留胎儿的继承份额",
+    "auth": "npc"
+   },
+   {
+    "key": "c1155-2",
+    "srcs": [
+     "art1155"
+    ],
+    "body": [
+     "reservedFetusShare(S,F)",
+     "stillborn(F)"
+    ],
+    "heads": [
+     "byIntestacy(S)"
+    ],
+    "note": "胎儿娩出时是死体的，保留的份额按照法定继承办理（继承编解释一第31条：由被继承人的继承人继承）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1155-spc31a",
+    "srcs": [
+     "art1155"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "fetus(F)",
+     "prospectiveHeirFetus(F,D)",
+     "fetusShareNotReserved(F,E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "F",
+      "content": "recoupFetusShareFromHeirs(F,E)"
+     }
+    ],
+    "note": "继承编解释（一）第31条第1款：应当为胎儿保留的遗产份额没有保留的，应从继承人所继承的遗产中扣回",
+    "auth": "spc"
+   },
+   {
+    "key": "c1155-spc31b",
+    "srcs": [
+     "art1155"
+    ],
+    "body": [
+     "reservedFetusShare(S,F)",
+     "born(F)",
+     "died(F)"
+    ],
+    "heads": [
+     "inheritedByHeirsOf(S,F)"
+    ],
+    "note": "继承编解释（一）第31条第2款：为胎儿保留的遗产份额，如胎儿出生后死亡的，由其继承人继承",
+    "auth": "spc"
+   },
+   {
+    "key": "c1156-1",
+    "srcs": [
+     "art1156-1"
+    ],
+    "body": [
+     "estateOf(E,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "partitionPreservingUtility(E)"
+     }
+    ],
+    "note": "遗产分割应当有利于生产和生活需要，不损害遗产的效用",
+    "auth": "npc"
+   },
+   {
+    "key": "c1156-2",
+    "srcs": [
+     "art1156-2"
+    ],
+    "body": [
+     "estateOf(X,D)",
+     "unsuitableForPartition(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "handleByValuationCompensationOrCoOwnership(X)"
+     }
+    ],
+    "note": "不宜分割的遗产，可以采取折价、适当补偿或者共有等方法处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1156-spc42",
+    "srcs": [
+     "art1156-1"
+    ],
+    "body": [
+     "estateOf(X,D)",
+     {
+      "or": [
+       "house(X)",
+       "productionMeans(X)",
+       "professionSpecificProperty(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "partitionByUseEfficiencyAndNeeds(X)"
+     }
+    ],
+    "note": "继承编解释（一）第42条：人民法院分割遗产中的房屋、生产资料和特定职业所需要的财产时，应当依据有利于发挥其使用效益和继承人的实际需要，兼顾各继承人的利益进行处理",
+    "auth": "spc"
+   },
+   {
+    "key": "c1159-1",
+    "srcs": [
+     "art1159"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "owesTaxOrDebt(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "payDeceasedTaxAndDebtsFromEstate(E)"
+     }
+    ],
+    "note": "分割遗产，应当清偿被继承人依法应当缴纳的税款和债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1159-2",
+    "srcs": [
+     "art1159"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "heirCandidate(H,D)",
+     "lacksWorkAbility(H)",
+     "noLivelihood(H)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "estateDistributor",
+      "counterparty": "H",
+      "content": "reserveNecessaryEstate(H,E)"
+     }
+    ],
+    "note": "但是，应当为缺乏劳动能力又没有生活来源的继承人保留必要的遗产（即使遗产不足清偿债务）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1161-1",
+    "srcs": [
+     "art1161-1"
+    ],
+    "body": [
+     "successionStarted(D)",
+     "heirCandidate(H,D)",
+     "~renounced(H,D)",
+     "owesTaxOrDebt(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "payDeceasedDebtsUpToEstateValue(H,D)"
+     },
+     "-liableBeyondEstateValue(H,D)"
+    ],
+    "note": "继承人以所得遗产实际价值为限清偿被继承人依法应当缴纳的税款和债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1161-vol",
+    "srcs": [
+     "art1161-1"
+    ],
+    "body": [
+     "heirCandidate(H,D)",
+     "voluntarilyPaidExcess(H,D)"
+    ],
+    "heads": [
+     "excessPaymentValid(H,D)"
+    ],
+    "note": "超过遗产实际价值部分，继承人自愿偿还的不在此限（不得以超出限额为由请求返还）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1161-2",
+    "srcs": [
+     "art1161-2"
+    ],
+    "body": [
+     "heirCandidate(H,D)",
+     "renounced(H,D)",
+     "owesTaxOrDebt(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "notPayDeceasedDebts(H,D)"
+     }
+    ],
+    "note": "继承人放弃继承的，对被继承人依法应当缴纳的税款和债务可以不负清偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1162",
+    "srcs": [
+     "art1162"
+    ],
+    "body": [
+     "legateeOf(L,D)",
+     "owesTaxOrDebt(D)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "estateDistributor",
+      "counterparty": null,
+      "content": "executeBequestImpairingDebtPayment(L,D)"
+     }
+    ],
+    "note": "执行遗赠不得妨碍清偿遗赠人依法应当缴纳的税款和债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1163-1",
+    "srcs": [
+     "art1163"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "mixedSuccession(D)",
+     "inheritsIntestate(H,E)",
+     "owesTaxOrDebt(D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "payDebtsFromIntestateShareFirst(H,D)"
+     }
+    ],
+    "note": "既有法定继承又有遗嘱继承、遗赠的，由法定继承人清偿被继承人依法应当缴纳的税款和债务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1163-2",
+    "srcs": [
+     "art1163"
+    ],
+    "body": [
+     "mixedSuccession(D)",
+     "debtsExceedIntestateEstate(D)",
+     {
+      "or": [
+       "testamentaryHeirOf(H,D)",
+       "legateeOf(H,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "payExcessDebtsProRata(H,D)"
+     }
+    ],
+    "note": "超过法定继承遗产实际价值部分，由遗嘱继承人和受遗赠人按比例以所得遗产清偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "partitionAgreedByHeirs": "继承人已协商确定遗产E分割的时间、办法和份额",
+   "partitionPerAgreement": "遗产E按继承人协商确定的时间、办法和份额分割",
+   "partitionNegotiationFailed": "继承人就遗产E的分割协商不成",
+   "seekPeoplesMediation": "请求人民调解委员会调解遗产E的分割（继承人，遗产）",
+   "suePartition": "就遗产E的分割向人民法院提起诉讼（继承人，遗产）",
+   "willExecutorOf": "X是被继承人D的遗嘱执行人（执行人，被继承人）",
+   "hasWillExecutor": "被继承人D有遗嘱执行人",
+   "electAdministratorPromptly": "及时推选被继承人D的遗产管理人（继承人，被继承人）",
+   "electedByHeirs": "X由继承人推选为D的遗产管理人（被推选人，被继承人）",
+   "administratorElected": "继承人已推选被继承人D的遗产管理人",
+   "noHeir": "被继承人D没有继承人",
+   "allHeirsRenounced": "被继承人D的继承人均放弃继承",
+   "domicileCivilAffairsDept": "O是被继承人D生前住所地的民政部门（机关，被继承人）",
+   "domicileVillageCommittee": "O是被继承人D生前住所地的村民委员会（组织，被继承人）",
+   "administratorDisputed": "对被继承人D的遗产管理人的确定有争议",
+   "applyAdministratorDesignation": "向人民法院申请指定被继承人D的遗产管理人（申请人，被继承人）",
+   "inventoryEstate": "清理遗产并制作遗产清单（管理人，被继承人）",
+   "reportEstateToHeirs": "向继承人报告遗产情况（管理人，被继承人）",
+   "preventEstateLoss": "采取必要措施防止遗产毁损、灭失（管理人，被继承人）",
+   "handleDeceasedClaimsAndDebts": "处理被继承人的债权债务（管理人，被继承人）",
+   "partitionPerWillOrLaw": "按照遗嘱或者依照法律规定分割遗产（管理人，被继承人）",
+   "otherNecessaryAdminActs": "实施与管理遗产有关的其他必要行为（管理人，被继承人）",
+   "performAdminDutiesLawfully": "依法履行遗产管理人职责（管理人，被继承人）",
+   "damagedByAdministrator": "V因遗产管理人R管理D的遗产而受到损害（受害人，管理人，被继承人）",
+   "creditorOfDeceased": "V是被继承人D的债权人（债权人，被继承人）",
+   "remunerationProvidedByLaw": "法律规定遗产管理人R就D的遗产管理可获报酬（管理人，被继承人）",
+   "adminRemunerationAgreed": "约定遗产管理人R就D的遗产管理获得报酬（管理人，被继承人）",
+   "receiveAdminRemuneration": "获得遗产管理报酬（管理人，被继承人）",
+   "maritalCommonProperty": "X是被继承人D与配偶S的夫妻共同财产（财产，被继承人，配偶）",
+   "maritalPropertyAgreement": "D与配偶S对夫妻财产归属另有约定（被继承人，配偶）",
+   "ownedBySpouseHalf": "财产X的一半归配偶S所有（财产，配偶）",
+   "halfIsEstate": "财产X分出配偶一半后的其余部分为D的遗产（财产，被继承人）",
+   "separateSpouseHalf": "遗产分割时先将共同财产X的一半分出归配偶S（财产，配偶）",
+   "familyCommonProperty": "被继承人D的遗产在家庭共有财产X之中（财产，被继承人）",
+   "separateOthersProperty": "遗产分割时先从共有财产X中分出他人的财产（财产，被继承人）",
+   "coOwnedWithOthers": "被继承人D的遗产在其与合伙人等他人的其他共有财产X之中（财产，被继承人）",
+   "prospectiveHeirFetus": "胎儿F出生后将为被继承人D的继承人（胎儿，被继承人）",
+   "reserveFetusShare": "遗产分割时为胎儿F保留继承份额（胎儿，遗产）",
+   "reservedFetusShare": "S是为胎儿F保留的遗产份额（份额，胎儿）",
+   "fetusShareNotReserved": "分割遗产E时应当为胎儿F保留的份额没有保留（胎儿，遗产）",
+   "recoupFetusShareFromHeirs": "从继承人所继承的遗产E中扣回胎儿F的份额（胎儿，遗产）",
+   "inheritedByHeirsOf": "份额S由F的继承人继承（份额，胎儿）",
+   "partitionPreservingUtility": "以有利于生产和生活需要、不损害遗产效用的方式分割遗产E",
+   "unsuitableForPartition": "遗产X不宜分割",
+   "handleByValuationCompensationOrCoOwnership": "对遗产X采取折价、适当补偿或者共有等方法处理",
+   "house": "X是房屋",
+   "productionMeans": "X是生产资料",
+   "professionSpecificProperty": "X是特定职业所需要的财产",
+   "partitionByUseEfficiencyAndNeeds": "依据有利于发挥使用效益和继承人实际需要、兼顾各继承人利益分割财产X",
+   "owesTaxOrDebt": "被继承人D有依法应当缴纳的税款或债务",
+   "payDeceasedTaxAndDebtsFromEstate": "以遗产E清偿被继承人依法应当缴纳的税款和债务",
+   "reserveNecessaryEstate": "分割遗产E时为继承人H保留必要的遗产（继承人，遗产）",
+   "payDeceasedDebtsUpToEstateValue": "以所得遗产实际价值为限清偿被继承人D的税款和债务（继承人，被继承人）",
+   "liableBeyondEstateValue": "H对D的税款和债务负有超过所得遗产实际价值的清偿责任（继承人，被继承人）",
+   "voluntarilyPaidExcess": "H自愿偿还了超过所得遗产实际价值部分的D的税款和债务（继承人，被继承人）",
+   "excessPaymentValid": "H对超出遗产实际价值部分的自愿清偿有效，不得请求返还（继承人，被继承人）",
+   "notPayDeceasedDebts": "不负清偿被继承人D税款和债务的责任（继承人，被继承人）",
+   "executeBequestImpairingDebtPayment": "以妨碍清偿遗赠人D税款和债务的方式向受遗赠人L执行遗赠（受遗赠人，遗赠人）",
+   "mixedSuccession": "被继承人D的遗产既有法定继承又有遗嘱继承、遗赠",
+   "payDebtsFromIntestateShareFirst": "法定继承人H以所得法定继承遗产先行清偿D的税款和债务（继承人，被继承人）",
+   "debtsExceedIntestateEstate": "D的税款和债务超过法定继承遗产实际价值",
+   "payExcessDebtsProRata": "对超过法定继承遗产实际价值部分，按比例以所得遗产清偿（遗嘱继承人或受遗赠人，被继承人）"
+  }
+ },
+ "art:1157": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第四章　遗产的处理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "夫妻一方死亡后另一方再婚，能否处分所继承的财产",
+     "rules": [
+      "c1157",
+      "c1157-noint"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "夫妻一方死亡，另一方再婚，所涉财产为其继承所得",
+     "rules": [
+      "c1157"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "再婚的生存配偶有权处分所继承的财产",
+     "rules": [
+      "c1157"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得干涉",
+     "rules": [
+      "c1157-noint"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条保护的是生存配偶已继承取得的财产；生存配偶在夫妻共同财产中本来的一半份额属其自有财产（第1153条，见 card:g7245 c1153-1），不属继承所得",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1157",
+    "srcs": [
+     "art1157"
+    ],
+    "body": [
+     "spouseOf(S,D)",
+     "dead(D)",
+     "acquiredBySuccession(S,X,D)",
+     "spouseRemarried(S)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "disposeInheritedProperty(S,X)"
+     }
+    ],
+    "note": "夫妻一方死亡后另一方再婚的，有权处分所继承的财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1157-noint",
+    "srcs": [
+     "art1157"
+    ],
+    "body": [
+     "spouseOf(S,D)",
+     "dead(D)",
+     "acquiredBySuccession(S,X,D)",
+     "spouseRemarried(S)",
+     {
+      "or": [
+       "naturalPerson(O)",
+       "organization(O)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "S",
+      "content": "interfereInAffair(O,S,X)"
+     }
+    ],
+    "note": "任何组织或者个人不得干涉其处分所继承的财产",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "disposeInheritedProperty": "处分其继承所得的财产X（生存配偶，财产）"
+  }
+ },
+ "card:g7086": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第四章　遗产的处理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "继承人于遗产分割前死亡时其应继份额的归属（转继承）",
+     "rules": [
+      "c1152"
+     ]
+    },
+    {
+     "text": "哪些情形下遗产中的有关部分按照法定继承办理",
+     "rules": [
+      "c1154-lapse",
+      "c1154-void",
+      "c1154-undisposed"
+     ]
+    },
+    {
+     "text": "无人继承又无人受遗赠的遗产归属",
+     "rules": [
+      "c1160-state",
+      "c1160-coll"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "转继承：继承开始后、遗产分割前继承人死亡，且未放弃继承",
+     "rules": [
+      "c1152"
+     ]
+    },
+    {
+     "text": "受遗赠人表示接受遗赠后、遗产分割前死亡的，接受遗赠的权利转移给其继承人（继承编解释一第38条）",
+     "rules": [
+      "c1152-spc38"
+     ]
+    },
+    {
+     "text": "遗嘱继承人放弃继承或受遗赠人放弃受遗赠；丧失继承权或受遗赠权；先于遗嘱人死亡或者终止",
+     "rules": [
+      "c1154-lapse"
+     ]
+    },
+    {
+     "text": "遗嘱无效部分所涉及的遗产",
+     "rules": [
+      "c1154-void"
+     ]
+    },
+    {
+     "text": "遗嘱未处分的遗产",
+     "rules": [
+      "c1154-undisposed"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "转继承：遗嘱另有安排的除外",
+     "rules": [
+      "c1152"
+     ]
+    },
+    {
+     "text": "有遗赠扶养协议处分该遗产的，按协议办理（第1123条），不转入法定继承",
+     "rules": [
+      "c1154-lapse",
+      "c1154-void",
+      "c1154-undisposed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "该继承人应当继承的遗产转给其继承人",
+     "rules": [
+      "c1152"
+     ]
+    },
+    {
+     "text": "遗产中的有关部分按照法定继承办理，不再按遗嘱处理",
+     "rules": [
+      "c1154-lapse",
+      "c1154-void",
+      "c1154-undisposed"
+     ]
+    },
+    {
+     "text": "遗嘱继承人依遗嘱取得遗产后，仍有权依照第1130条取得遗嘱未处分的遗产（继承编解释一第4条）",
+     "rules": [
+      "c1154-spc4"
+     ]
+    },
+    {
+     "text": "无人继承又无人受遗赠的遗产归国家所有，用于公益事业；死者生前是集体所有制组织成员的，归所在集体所有制组织所有",
+     "rules": [
+      "c1160-state",
+      "c1160-coll"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1154条所列情形排除基础规则 c-will-effective 对相关遗产的遗嘱效力推定，使其不再按遗嘱办理",
+     "rules": [
+      "c1154-lapse",
+      "c1154-void"
+     ]
+    },
+    {
+     "text": "死者生前是集体所有制组织成员的，归集体所有制组织，优先于归国家所有",
+     "rules": [
+      "c1160-coll"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "转继承（第1152条）：继承人后于被继承人死亡、于分割前死亡，由其全部继承人承受，适用于法定和遗嘱继承；代位继承（第1128条）：子女或兄弟姐妹先于被继承人死亡，仅适用于法定继承",
+     "rules": []
+    },
+    {
+     "text": "第1160条同时挂在 card:g7245，在本行形式化；可以分给适当遗产的人仍可请求酌给，见 art:1131 c1131-spc41",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1152",
+    "srcs": [
+     "art1152"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "successionStarted(D)",
+     {
+      "or": [
+       "inheritsIntestate(H,E)",
+       "inheritsByWill(H,E)"
+      ]
+     },
+     "diedBeforePartition(H,E)",
+     "~renounced(H,D)",
+     "~willProvidesOtherwise(H,E)"
+    ],
+    "heads": [
+     "shareTransfersToHeirsOf(H,E)"
+    ],
+    "note": "继承开始后，继承人于遗产分割前死亡，并没有放弃继承的，该继承人应当继承的遗产转给其继承人，但是遗嘱另有安排的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1152-spc38",
+    "srcs": [
+     "art1152"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "legateeOf(L,D)",
+     "acceptedBequest(L,D)",
+     "diedBeforePartition(L,E)"
+    ],
+    "heads": [
+     "bequestRightTransfersToHeirsOf(L,E)"
+    ],
+    "note": "继承编解释（一）第38条：继承开始后，受遗赠人表示接受遗赠，并于遗产分割前死亡的，其接受遗赠的权利转移给他的继承人",
+    "auth": "spc"
+   },
+   {
+    "key": "c1154-lapse",
+    "srcs": [
+     "art1154"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "willOf(W,D)",
+     "willGives(W,H,E)",
+     {
+      "or": [
+       "renounced(H,D)",
+       "renouncedBequest(H,D)",
+       "disinherited(H,D)",
+       "lostBequestRight(H,D)",
+       "predeceased(H,D)",
+       "terminatedBeforeTestator(H,D)"
+      ]
+     },
+     "~supportAgreementCovers(E)"
+    ],
+    "heads": [
+     "-effectiveWillCovers(E)",
+     "byIntestacy(E)"
+    ],
+    "note": "遗嘱继承人放弃继承或受遗赠人放弃受遗赠，遗嘱继承人丧失继承权或受遗赠人丧失受遗赠权，遗嘱继承人、受遗赠人先于遗嘱人死亡或者终止的，遗产中的有关部分按照法定继承办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1154-void",
+    "srcs": [
+     "art1154"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "willOf(W,D)",
+     "willGives(W,H,E)",
+     {
+      "or": [
+       "willVoid(W)",
+       "willVoidAsTo(W,E)"
+      ]
+     },
+     "~supportAgreementCovers(E)"
+    ],
+    "heads": [
+     "-effectiveWillCovers(E)",
+     "byIntestacy(E)"
+    ],
+    "note": "遗嘱无效部分所涉及的遗产，按照法定继承办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1154-undisposed",
+    "srcs": [
+     "art1154"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "undisposedByWill(E)",
+     "~supportAgreementCovers(E)"
+    ],
+    "heads": [
+     "byIntestacy(E)"
+    ],
+    "note": "遗嘱未处分的遗产，按照法定继承办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1154-spc4",
+    "srcs": [
+     "art1154"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "undisposedByWill(E)",
+     "testamentaryHeirOf(H,D)",
+     "heirCandidate(H,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": null,
+      "content": "inheritByLaw(H,E)"
+     }
+    ],
+    "note": "继承编解释（一）第4条：遗嘱继承人依遗嘱取得遗产后，仍有权依照民法典第1130条的规定取得遗嘱未处分的遗产",
+    "auth": "spc"
+   },
+   {
+    "key": "c1160-state",
+    "srcs": [
+     "art1160"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "noHeirOrLegatee(E)"
+    ],
+    "heads": [
+     "vestsInState(E)",
+     {
+      "type": "OBL",
+      "bearer": "state",
+      "counterparty": null,
+      "content": "useForPublicWelfare(E)"
+     }
+    ],
+    "note": "无人继承又无人受遗赠的遗产，归国家所有，用于公益事业",
+    "auth": "npc"
+   },
+   {
+    "key": "c1160-coll",
+    "srcs": [
+     "art1160"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "noHeirOrLegatee(E)",
+     "memberOfCollectiveOrg(D,O)"
+    ],
+    "heads": [
+     "vestsInCollectiveOrg(E,O)",
+     "-vestsInState(E)"
+    ],
+    "note": "死者生前是集体所有制组织成员的，归所在集体所有制组织所有",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1154-lapse",
+    "c-will-effective",
+    "遗嘱受益人放弃、丧失权利或先死亡的，有关部分不再按遗嘱处理"
+   ],
+   [
+    "c1154-void",
+    "c-will-effective",
+    "遗嘱无效部分所涉遗产不再按遗嘱处理"
+   ],
+   [
+    "c1160-coll",
+    "c1160-state",
+    "死者生前是集体所有制组织成员的，归所在集体所有制组织所有，不归国家"
+   ]
+  ],
+  "predicates": {
+   "inheritsByWill": "H依遗嘱继承遗产E（继承人，遗产）",
+   "diedBeforePartition": "H在继承开始后、遗产E分割前死亡（继承人或受遗赠人，遗产）",
+   "willProvidesOtherwise": "遗嘱对H应继承的遗产E另有安排（继承人，遗产）",
+   "shareTransfersToHeirsOf": "H应当继承的遗产E转给H的继承人（转继承）（被转继承人，遗产）",
+   "acceptedBequest": "受遗赠人L已表示接受D的遗赠（受遗赠人，遗赠人）",
+   "bequestRightTransfersToHeirsOf": "L接受遗赠的权利转移给L的继承人（受遗赠人，遗产）",
+   "renouncedBequest": "受遗赠人H放弃受遗赠（受遗赠人，遗赠人）",
+   "lostBequestRight": "受遗赠人H丧失受遗赠权（受遗赠人，遗赠人）",
+   "terminatedBeforeTestator": "受益组织H先于遗嘱人D终止（组织，遗嘱人）",
+   "undisposedByWill": "遗产E未被遗嘱处分",
+   "noHeirOrLegatee": "遗产E无人继承又无人受遗赠",
+   "vestsInState": "遗产E归国家所有",
+   "useForPublicWelfare": "将遗产E用于公益事业",
+   "memberOfCollectiveOrg": "死者D生前是集体所有制组织O的成员（死者，组织）",
+   "vestsInCollectiveOrg": "遗产E归集体所有制组织O所有（遗产，组织）"
+  }
+ },
+ "art:1151": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第四章　遗产的处理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "存有遗产的人的保管义务及禁止侵吞争抢遗产",
+     "rules": [
+      "c1151-1",
+      "c1151-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存有遗产的人（不限于继承人）",
+     "rules": [
+      "c1151-1"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "存有遗产的人应当妥善保管遗产",
+     "rules": [
+      "c1151-1"
+     ]
+    },
+    {
+     "text": "任何组织或者个人不得侵吞或者争抢遗产",
+     "rules": [
+      "c1151-2"
+     ]
+    },
+    {
+     "text": "对故意隐匿、侵吞或者争抢遗产的继承人，人民法院可以酌情减少其应继承的遗产（继承编解释一第43条）",
+     "rules": [
+      "c1151-spc43"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "隐匿、侵吞、争抢遗产只可酌减份额，不当然导致丧失继承权；丧失继承权限于第1125条情形",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1151-1",
+    "srcs": [
+     "art1151"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "holdsEstate(P,E)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "safekeepEstate(P,E)"
+     }
+    ],
+    "note": "存有遗产的人，应当妥善保管遗产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1151-2",
+    "srcs": [
+     "art1151"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     {
+      "or": [
+       "naturalPerson(X)",
+       "organization(X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "misappropriateOrSeizeEstate(X,E)"
+     }
+    ],
+    "note": "任何组织或者个人不得侵吞或者争抢遗产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1151-spc43",
+    "srcs": [
+     "art1151"
+    ],
+    "body": [
+     "estateOf(E,D)",
+     "heirCandidate(H,D)",
+     {
+      "or": [
+       "concealedEstate(H,E)",
+       "misappropriatedEstate(H,E)",
+       "seizedEstate(H,E)"
+      ]
+     },
+     "intentional(H,E)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": "H",
+      "content": "reduceInheritedShare(H,E)"
+     }
+    ],
+    "note": "继承编解释（一）第43条：人民法院对故意隐匿、侵吞或者争抢遗产的继承人，可以酌情减少其应继承的遗产",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "holdsEstate": "P存有遗产E（保管人，遗产）",
+   "safekeepEstate": "妥善保管遗产E（保管人，遗产）",
+   "misappropriateOrSeizeEstate": "侵吞或者争抢遗产E（行为人，遗产）",
+   "concealedEstate": "H隐匿遗产E（继承人，遗产）",
+   "misappropriatedEstate": "H侵吞遗产E（继承人，遗产）",
+   "seizedEstate": "H争抢遗产E（继承人，遗产）",
+   "reduceInheritedShare": "酌情减少H应继承的遗产E份额（继承人，遗产）"
+  }
+ },
+ "art:1158": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第六编　继承",
+   "第四章　遗产的处理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "遗赠扶养协议的订立主体与双方权利义务",
+     "rules": [
+      "c1158-1",
+      "c1158-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "自然人与继承人以外的组织或者个人签订",
+     "rules": [
+      "c1158-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "扶养人无正当理由不履行导致协议解除的，不能享有受遗赠的权利，其支付的供养费用一般不予补偿（继承编解释一第40条）",
+     "rules": [
+      "c1158-spc40a"
+     ]
+    },
+    {
+     "text": "遗赠人无正当理由不履行导致协议解除的，应当偿还扶养人已支付的供养费用（继承编解释一第40条）",
+     "rules": [
+      "c1158-spc40b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "扶养人承担该自然人生养死葬的义务，享有受遗赠的权利",
+     "rules": [
+      "c1158-2"
+     ]
+    },
+    {
+     "text": "协议处分的遗产按协议办理（第1123条，基础规则 c1123-agreement）",
+     "rules": [
+      "c1158-cover"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "遗赠扶养协议与遗嘱没有抵触的，遗产分别按协议和遗嘱处理；有抵触的按协议处理，与协议抵触的遗嘱全部或者部分无效（继承编解释一第3条）",
+     "rules": [
+      "c1158-spc3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "遗赠扶养协议为双方、有偿合同，扶养人不得为法定继承人，也不包括国家；遗赠为单方、无偿行为，受遗赠人可以是国家（笔记）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1158-1",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "naturalPerson(D)",
+     {
+      "or": [
+       "organization(P)",
+       "naturalPerson(P)"
+      ]
+     },
+     "~heirCandidate(P,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "P",
+      "content": "concludeSupportBequestAgreement(D,P)"
+     }
+    ],
+    "note": "自然人可以与继承人以外的组织或者个人签订遗赠扶养协议",
+    "auth": "npc"
+   },
+   {
+    "key": "c1158-2",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "supportBequestAgreement(A,D,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "D",
+      "content": "provideLifelongSupportAndBurial(P,D)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "D",
+      "content": "receiveBequestUnderAgreement(P,A)"
+     }
+    ],
+    "note": "按照协议，该组织或者个人承担该自然人生养死葬的义务，享有受遗赠的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1158-cover",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "supportBequestAgreement(A,D,P)",
+     "agreementCoversProperty(A,E)",
+     "estateOf(E,D)"
+    ],
+    "heads": [
+     "supportAgreementCovers(E)"
+    ],
+    "note": "学理衔接：遗赠扶养协议所约定遗赠的遗产，属第1123条“有遗赠扶养协议的，按照协议办理”的范围",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1158-spc3",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "supportBequestAgreement(A,D,P)",
+     "agreementCoversProperty(A,E)",
+     "willOf(W,D)",
+     "willGives(W,H,E)"
+    ],
+    "heads": [
+     "willVoidAsTo(W,E)"
+    ],
+    "note": "继承编解释（一）第3条：遗赠扶养协议与遗嘱有抵触的，按协议处理，与协议抵触的遗嘱全部或者部分无效",
+    "auth": "spc"
+   },
+   {
+    "key": "c1158-spc40a",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "supportBequestAgreement(A,D,P)",
+     "agreementCoversProperty(A,E)",
+     "agreementRescinded(A)",
+     "unjustifiedNonPerformanceBy(P,A)"
+    ],
+    "heads": [
+     "-supportAgreementCovers(E)",
+     {
+      "type": "PERM",
+      "bearer": "D",
+      "counterparty": "P",
+      "content": "refuseCompensatingSupportCosts(D,P)"
+     }
+    ],
+    "note": "继承编解释（一）第40条：扶养人无正当理由不履行导致协议解除的，不能享有受遗赠的权利，其支付的供养费用一般不予补偿",
+    "auth": "spc"
+   },
+   {
+    "key": "c1158-spc40b",
+    "srcs": [
+     "art1158"
+    ],
+    "body": [
+     "supportBequestAgreement(A,D,P)",
+     "agreementRescinded(A)",
+     "unjustifiedNonPerformanceBy(D,A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "P",
+      "content": "repaySupportCosts(D,P)"
+     }
+    ],
+    "note": "继承编解释（一）第40条：遗赠人无正当理由不履行导致协议解除的，应当偿还扶养人已支付的供养费用",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1158-spc40a",
+    "c1158-cover",
+    "扶养人无正当理由不履行致协议解除的，不能享有受遗赠的权利，遗产不再按协议办理"
+   ]
+  ],
+  "predicates": {
+   "concludeSupportBequestAgreement": "与P签订遗赠扶养协议（遗赠人，扶养人）",
+   "supportBequestAgreement": "A是自然人D与扶养人P签订的遗赠扶养协议（协议，遗赠人，扶养人）",
+   "provideLifelongSupportAndBurial": "承担对D生养死葬的义务（扶养人，遗赠人）",
+   "receiveBequestUnderAgreement": "依遗赠扶养协议A受遗赠（扶养人，协议）",
+   "agreementCoversProperty": "遗赠扶养协议A约定遗赠财产E（协议，财产）",
+   "agreementRescinded": "遗赠扶养协议A已解除",
+   "unjustifiedNonPerformanceBy": "X无正当理由不履行遗赠扶养协议A导致其解除（当事人，协议）",
+   "refuseCompensatingSupportCosts": "对扶养人P已支付的供养费用一般不予补偿（遗赠人，扶养人）",
+   "repaySupportCosts": "偿还扶养人P已支付的供养费用（遗赠人，扶养人）"
+  }
+ }
+}

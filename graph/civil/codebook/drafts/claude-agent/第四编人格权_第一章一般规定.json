@@ -1,0 +1,798 @@
+{
+ "card:g6049": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第四编　人格权",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "人格权的范围（具体人格权与一般人格权益）；人格权能否放弃、转让、继承；姓名、名称、肖像等能否许可他人使用",
+     "rules": [
+      "c990-1",
+      "c990-2",
+      "c992",
+      "c993"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "人格权是民事主体享有的生命权、身体权、健康权、姓名权、名称权、肖像权、名誉权、荣誉权、隐私权等权利（开放列举）",
+     "rules": [
+      "c990-1"
+     ]
+    },
+    {
+     "text": "姓名、名称、肖像等可许可他人使用的人格要素",
+     "rules": [
+      "c993"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依照法律规定或者根据其性质不得许可的，不得许可他人使用",
+     "rules": [
+      "c993"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "自然人还享有基于人身自由、人格尊严产生的其他人格权益（一般人格权）",
+     "rules": [
+      "c990-2"
+     ]
+    },
+    {
+     "text": "人格权不得放弃、转让或者继承",
+     "rules": [
+      "c992"
+     ]
+    },
+    {
+     "text": "民事主体可以将自己的姓名、名称、肖像等许可他人使用",
+     "rules": [
+      "c993"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "各类主体具体享有哪些人格权见第110条（c110-1 自然人、c110-2 法人和非法人组织）；第990条第2款的其他人格权益仅限自然人",
+     "rules": []
+    },
+    {
+     "text": "第993条的许可使用不是人格权转让，与第992条不冲突：权利本身仍归权利人，只许可他人使用其姓名、名称、肖像等",
+     "rules": []
+    },
+    {
+     "text": "第1000条同时挂在本行与 card:g6063，规则只在 card:g6063 写为 c1000-1、c1000-2、c1000-cost",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c990-1",
+    "srcs": [
+     "art990-1"
+    ],
+    "body": [
+     "enjoyRight(P,R)",
+     "enumeratedPersonalityRight(R)"
+    ],
+    "heads": [
+     "personalityRight(R)"
+    ],
+    "note": "民事主体享有的生命权、身体权、健康权、姓名权、名称权、肖像权、名誉权、荣誉权、隐私权等权利是人格权（“等”为开放列举）",
+    "auth": "npc"
+   },
+   {
+    "key": "c990-2",
+    "srcs": [
+     "art990-2"
+    ],
+    "body": [
+     "naturalPerson(P)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "enjoyOtherPersonalityInterest(P)"
+     }
+    ],
+    "note": "除前款规定的人格权外，自然人享有基于人身自由、人格尊严产生的其他人格权益",
+    "auth": "npc"
+   },
+   {
+    "key": "c992",
+    "srcs": [
+     "art992"
+    ],
+    "body": [
+     "enjoyRight(P,R)",
+     "personalityRight(R)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "waivePersonalityRight(P,R)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "transferPersonalityRight(P,R)"
+     },
+     "-heritableRight(P,R)"
+    ],
+    "note": "人格权不得放弃、转让或者继承",
+    "auth": "npc"
+   },
+   {
+    "key": "c993",
+    "srcs": [
+     "art993"
+    ],
+    "body": [
+     "civilSubject(P)",
+     "enjoyRight(P,R)",
+     "licensableAttribute(R)",
+     "~licenseBarredByLawOrNature(P,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "licenseUseToOthers(P,R)"
+     }
+    ],
+    "note": "民事主体可以将自己的姓名、名称、肖像等许可他人使用，但是依照法律规定或者根据其性质不得许可的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "personalityRight": "R是人格权（权利常量，同 enjoyRight 的常量）",
+   "enjoyOtherPersonalityInterest": "自然人P享有基于人身自由、人格尊严产生的其他人格权益（一般人格权）",
+   "waivePersonalityRight": "P放弃其人格权R",
+   "transferPersonalityRight": "P转让其人格权R",
+   "heritableRight": "P的权利R可以被继承",
+   "licensableAttribute": "R对应的人格要素属于姓名(name)、名称(entityName)、肖像(portrait)等可以许可他人使用的类别",
+   "licenseBarredByLawOrNature": "依照法律规定或者根据其性质，P的人格要素R不得许可他人使用",
+   "licenseUseToOthers": "P将其姓名、名称、肖像等人格要素R许可他人使用",
+   "enumeratedPersonalityRight": "R是第990条第1款列举或其“等”所含的人格权：life、body、health、name、entityName、portrait、reputation、honor、privacy 等"
+  }
+ },
+ "card:g6063": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第四编　人格权",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "人格权（含死者人格利益）受侵害时谁可请求、请求什么、是否受诉讼时效限制；违约侵害人格权时精神损害赔偿；人格权侵害禁令；合理使用；责任认定与执行",
+     "rules": [
+      "c995-1",
+      "c995-limit",
+      "c994-1",
+      "c994-2",
+      "c997",
+      "c998",
+      "c999-1",
+      "c999-2",
+      "c1000-1",
+      "c1000-2",
+      "c1000-cost"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "人格权受到侵害的，受害人有权依照本法和其他法律的规定请求行为人承担民事责任（构成要件依侵权责任编等规定）",
+     "rules": [
+      "c995-1"
+     ]
+    },
+    {
+     "text": "死者的姓名、肖像、名誉、荣誉、隐私、遗体等受侵害：配偶、子女、父母有权请求；死者没有配偶、子女且父母已经死亡的，其他近亲属有权请求",
+     "rules": [
+      "c994-1",
+      "c994-2"
+     ]
+    },
+    {
+     "text": "有证据证明行为人正在实施或即将实施侵害其人格权的违法行为，不及时制止将受难以弥补的损害的，有权依法申请法院责令停止有关行为",
+     "rules": [
+      "c997"
+     ]
+    },
+    {
+     "text": "为公共利益实施新闻报道、舆论监督等行为，可以合理使用姓名、名称、肖像、个人信息等",
+     "rules": [
+      "c999-1",
+      "c999-excl"
+     ]
+    },
+    {
+     "text": "一方违约损害对方人格权并造成严重精神损害，受损害方选择违约责任的，不影响请求精神损害赔偿（第996条已写为侵权责任编第二章的 c996，此处不重写）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合理使用不构成侵权；但使用不合理侵害人格权的，应当依法承担民事责任",
+     "rules": [
+      "c999-excl",
+      "c999-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "停止侵害、排除妨碍、消除危险、消除影响、恢复名誉、赔礼道歉请求权不适用诉讼时效",
+     "rules": [
+      "c995-limit"
+     ]
+    },
+    {
+     "text": "侵害生命权、身体权、健康权以外人格权的，认定民事责任应考虑双方职业、影响范围、过错程度及行为目的、方式、后果",
+     "rules": [
+      "c998"
+     ]
+    },
+    {
+     "text": "消除影响、恢复名誉、赔礼道歉等责任应与行为具体方式和影响范围相当",
+     "rules": [
+      "c1000-1"
+     ]
+    },
+    {
+     "text": "拒不承担的，法院可以在报刊、网络等媒体发布公告或公布生效裁判文书等方式执行，费用由行为人负担",
+     "rules": [
+      "c1000-2",
+      "c1000-cost"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "合理使用（第999条）排除过错责任（第1165条第1款）下的侵权责任，但仅限于合理范围（学理推论）",
+     "rules": [
+      "c999-excl"
+     ]
+    },
+    {
+     "text": "第995条第2句是对第196条的补充：在停止侵害、排除妨碍、消除危险之外，将消除影响、恢复名誉、赔礼道歉也列为不适用诉讼时效",
+     "rules": [
+      "c995-limit"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第995条是指引性规范：是否承担责任及承担方式依侵权责任编（第1165、1166、1167条）、第179条等确定；损害赔偿请求权（含精神损害赔偿）不在第995条第2句之列，仍适用诉讼时效（笔记，条文反面推论，未写成规则）",
+     "rules": []
+    },
+    {
+     "text": "第996条已由侵权责任编第二章（损害赔偿）中的 c996 形式化（breachHarmsPersonalityRight/electedBreachLiability → claimMentalDamageCompensation），本行不重写；精神损害赔偿的一般依据见第1183条 c1183-1",
+     "rules": []
+    },
+    {
+     "text": "第1000条同时挂在 card:g6049，规则只在本行写（c1000-1、c1000-2、c1000-cost）；该类责任方式仅适用于人身权侵害，见第179条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c994-1",
+    "srcs": [
+     "art994"
+    ],
+    "body": [
+     "deceased(D)",
+     "deceasedPersonalityInterestInfringed(A,D,X)",
+     {
+      "or": [
+       "spouseOf(C,D)",
+       "childOf(C,D)",
+       "parentOf(C,D)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "claimCivilLiability(C,A,X)"
+     }
+    ],
+    "note": "死者的姓名、肖像、名誉、荣誉、隐私、遗体等受到侵害的，其配偶、子女、父母有权依法请求行为人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c994-2",
+    "srcs": [
+     "art994"
+    ],
+    "body": [
+     "deceased(D)",
+     "deceasedPersonalityInterestInfringed(A,D,X)",
+     "closeRelativeOf(C,D)",
+     "noFirstTierRelatives(D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "claimCivilLiability(C,A,X)"
+     }
+    ],
+    "note": "死者没有配偶、子女且父母已经死亡的，其他近亲属有权依法请求行为人承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c995-1",
+    "srcs": [
+     "art995"
+    ],
+    "body": [
+     "infringesPersonalityRight(A,V,R,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimCivilLiability(V,A,X)"
+     }
+    ],
+    "note": "人格权受到侵害的，受害人有权依照本法和其他法律的规定请求行为人承担民事责任（具体要件依侵权责任编等）",
+    "auth": "npc"
+   },
+   {
+    "key": "c995-limit",
+    "srcs": [
+     "art995"
+    ],
+    "body": [
+     "claim(C)",
+     "personalityProtectiveClaim(C)"
+    ],
+    "heads": [
+     "exemptFromLimitation(C)"
+    ],
+    "note": "受害人的停止侵害、排除妨碍、消除危险、消除影响、恢复名誉、赔礼道歉请求权，不适用诉讼时效的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c997",
+    "srcs": [
+     "art997"
+    ],
+    "body": [
+     "evidenceOfOngoingOrImminentInfringement(V,A,X)",
+     "irreparableHarmIfNotStopped(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "applyPersonalityInjunction(V,A,X)"
+     }
+    ],
+    "note": "有证据证明行为人正在实施或即将实施侵害其人格权的违法行为，不及时制止将受难以弥补损害的，有权依法申请法院责令行为人停止有关行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c998",
+    "srcs": [
+     "art998"
+    ],
+    "body": [
+     "infringesPersonalityRight(A,V,R,X)",
+     "nonPhysicalPersonalityRight(R)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "considerStatutoryFactors998(A,V,X)"
+     }
+    ],
+    "note": "认定侵害生命权、身体权、健康权以外人格权的民事责任，应考虑双方职业、影响范围、过错程度及行为目的、方式、后果等因素",
+    "auth": "npc"
+   },
+   {
+    "key": "c999-1",
+    "srcs": [
+     "art999"
+    ],
+    "body": [
+     "publicInterestReportingOrSupervision(A,X)",
+     "reasonableUseOfIdentifiers(A,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "useIdentifiers(A,V,X)"
+     }
+    ],
+    "note": "为公共利益实施新闻报道、舆论监督等行为的，可以合理使用民事主体的姓名、名称、肖像、个人信息等",
+    "auth": "npc"
+   },
+   {
+    "key": "c999-excl",
+    "srcs": [
+     "art999"
+    ],
+    "body": [
+     "publicInterestReportingOrSupervision(A,X)",
+     "reasonableUseOfIdentifiers(A,V,X)"
+    ],
+    "heads": [
+     "-liable(A,V,X)"
+    ],
+    "note": "学理：合理使用为合法行为，不构成侵权（笔记“合理使用不构成侵权”；条文“可以合理使用”的推论）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c999-2",
+    "srcs": [
+     "art999"
+    ],
+    "body": [
+     "publicInterestReportingOrSupervision(A,X)",
+     "unreasonableUseOfIdentifiers(A,V,X)",
+     "infringesPersonalityRight(A,V,R,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "bearCivilLiability(A,V)"
+     }
+    ],
+    "note": "使用不合理侵害民事主体人格权的，应当依法承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1000-1",
+    "srcs": [
+     "art1000-1"
+    ],
+    "body": [
+     "infringesPersonalityRight(A,V,R,X)",
+     "reputationalRemedyImposed(A,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "proportionRemedyToActAndScope(A,X)"
+     }
+    ],
+    "note": "因侵害人格权承担消除影响、恢复名誉、赔礼道歉等民事责任的，应当与行为的具体方式和造成的影响范围相当",
+    "auth": "npc"
+   },
+   {
+    "key": "c1000-2",
+    "srcs": [
+     "art1000-2"
+    ],
+    "body": [
+     "reputationalRemedyImposed(A,V,X)",
+     "refusesReputationalRemedy(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "enforceByPublication(A,X)"
+     }
+    ],
+    "note": "行为人拒不承担的，人民法院可以采取在报刊、网络等媒体上发布公告或者公布生效裁判文书等方式执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c1000-cost",
+    "srcs": [
+     "art1000-2"
+    ],
+    "body": [
+     "reputationalRemedyImposed(A,V,X)",
+     "refusesReputationalRemedy(A,X)",
+     "enforcedByPublication(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "bearEnforcementCost(A,X)"
+     }
+    ],
+    "note": "以公告、公布裁判文书等方式执行产生的费用由行为人负担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c999-excl",
+    "c1165-1",
+    "为公共利益合理使用他人姓名、肖像、个人信息等不构成侵权（第999条）"
+   ]
+  ],
+  "predicates": {
+   "deceasedPersonalityInterestInfringed": "A侵害死者D的姓名、肖像、名誉、荣誉、隐私、遗体等（行为人，死者，事件）",
+   "noFirstTierRelatives": "死者D没有配偶、子女且父母已经死亡",
+   "claimCivilLiability": "C请求A就事件X承担民事责任（请求人，行为人，事件）",
+   "infringesPersonalityRight": "A侵害V的人格权R，形成侵权事件X（行为人，受害人，人格权，事件）",
+   "personalityProtectiveClaim": "C是受害人因人格权受侵害提出的停止侵害、排除妨碍、消除危险、消除影响、恢复名誉、赔礼道歉请求权",
+   "evidenceOfOngoingOrImminentInfringement": "V有证据证明A正在实施或者即将实施侵害其人格权的违法行为X（申请人，行为人，行为）",
+   "irreparableHarmIfNotStopped": "不及时制止行为X将使V的合法权益受到难以弥补的损害",
+   "applyPersonalityInjunction": "V依法向人民法院申请采取责令A停止有关行为X的措施（人格权侵害禁令）",
+   "nonPhysicalPersonalityRight": "R是生命权、身体权、健康权以外的人格权（如姓名、名称、肖像、名誉、荣誉、隐私权）",
+   "considerStatutoryFactors998": "认定A就X对V的民事责任时考虑行为人和受害人的职业、影响范围、过错程度，以及行为的目的、方式、后果等因素",
+   "publicInterestReportingOrSupervision": "A为公共利益实施新闻报道、舆论监督等行为X",
+   "reasonableUseOfIdentifiers": "A在行为X中合理使用V的姓名、名称、肖像、个人信息等",
+   "unreasonableUseOfIdentifiers": "A在行为X中不合理使用V的姓名、名称、肖像、个人信息等",
+   "useIdentifiers": "A在行为X中使用V的姓名、名称、肖像、个人信息等",
+   "reputationalRemedyImposed": "A因侵害V的人格权（事件X）承担消除影响、恢复名誉、赔礼道歉等民事责任",
+   "proportionRemedyToActAndScope": "使A的消除影响、恢复名誉、赔礼道歉等责任与行为具体方式和造成的影响范围相当",
+   "refusesReputationalRemedy": "A拒不承担消除影响、恢复名誉、赔礼道歉等民事责任",
+   "enforceByPublication": "以在报刊、网络等媒体上发布公告或者公布生效裁判文书等方式执行",
+   "enforcedByPublication": "已以发布公告或公布生效裁判文书等方式执行",
+   "bearEnforcementCost": "负担上述执行方式产生的费用"
+  }
+ },
+ "art:991": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第四编　人格权",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "人格权受法律保护，他人负有不得侵害的义务",
+     "rules": [
+      "c991"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "民事主体享有人格权",
+     "rules": [
+      "c991"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "任何组织或者个人不得侵害民事主体的人格权",
+     "rules": [
+      "c991"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "违反本条义务的后果：受害人依第995条（card:g6063 c995-1）请求承担民事责任，构成要件依侵权责任编第1165条等；合理使用见第999条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c991",
+    "srcs": [
+     "art991"
+    ],
+    "body": [
+     "enjoyRight(P,R)",
+     "personalityRight(R)",
+     "organizationOrIndividual(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "X",
+      "counterparty": "P",
+      "content": "infringePersonalityRightOf(X,P,R)"
+     }
+    ],
+    "note": "民事主体的人格权受法律保护，任何组织或者个人不得侵害",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "infringePersonalityRightOf": "X侵害P的人格权R（行为人，权利人，人格权）"
+  }
+ },
+ "art:1001": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第四编　人格权",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "因婚姻家庭关系等产生的身份权利如何保护，能否参照人格权保护规定",
+     "rules": [
+      "c1001-1",
+      "c1001-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "自然人因婚姻家庭关系等产生的身份权利",
+     "rules": [
+      "c1001-1",
+      "c1001-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第一编、第五编和其他法律没有规定的，才可以根据其性质参照适用人格权编",
+     "rules": [
+      "c1001-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "适用本法第一编、第五编和其他法律的相关规定",
+     "rules": [
+      "c1001-1"
+     ]
+    },
+    {
+     "text": "没有规定的，可以根据其性质参照适用本编人格权保护的有关规定",
+     "rules": [
+      "c1001-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第一编、第五编和其他法律的相关规定优先；人格权编规定只是补充参照",
+     "rules": [
+      "c1001-1",
+      "c1001-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "身份权利不是人格权，不直接适用人格权编；参照适用须与该身份权利的性质相容",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1001-1",
+    "srcs": [
+     "art1001"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "familyIdentityRight(P,R)",
+     "~noProvisionForIdentityRight(R)"
+    ],
+    "heads": [
+     "protectIdentityRightByBooks1And5AndOtherLaws(R)"
+    ],
+    "note": "对自然人因婚姻家庭关系等产生的身份权利的保护，适用本法第一编、第五编和其他法律的相关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1001-2",
+    "srcs": [
+     "art1001"
+    ],
+    "body": [
+     "naturalPerson(P)",
+     "familyIdentityRight(P,R)",
+     "noProvisionForIdentityRight(R)",
+     "analogyCompatibleByNature(R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyPersonalityProvisionsByAnalogy(R)"
+     }
+    ],
+    "note": "没有规定的，可以根据其性质参照适用本编人格权保护的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "familyIdentityRight": "R是自然人P因婚姻家庭关系等产生的身份权利（如配偶、亲子、亲属间的身份权利）",
+   "noProvisionForIdentityRight": "本法第一编、第五编和其他法律对身份权利R的该项保护没有相关规定",
+   "protectIdentityRightByBooks1And5AndOtherLaws": "对身份权利R的保护适用本法第一编、第五编和其他法律的相关规定",
+   "analogyCompatibleByNature": "根据身份权利R的性质，可以参照适用人格权保护的有关规定",
+   "applyPersonalityProvisionsByAnalogy": "参照适用人格权编人格权保护的有关规定保护身份权利R"
+  }
+ },
+ "art:989": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第四编　人格权",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "人格权编的调整对象",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "本编调整因人格权的享有和保护产生的民事关系（宣示性条款，不写规则）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "人格权受侵害后的损害赔偿责任构成另依侵权责任编（第1165条等）；人格权的享有见第990条（card:g6049），保护见第991、995条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ }
+}

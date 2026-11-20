@@ -1,0 +1,2217 @@
+{
+ "card:g5223": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "保证方式如何认定（一般保证/连带责任保证），最高额保证与保证期间如何确定",
+     "rules": [
+      "c686-default",
+      "c687-def",
+      "c690-def",
+      "c692-agreed",
+      "c692-6m"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "约定债务人不能履行债务时由保证人承担保证责任的，为一般保证",
+     "rules": [
+      "c687-def"
+     ]
+    },
+    {
+     "text": "保证合同对保证方式没有约定或者约定不明确的，按照一般保证承担保证责任",
+     "rules": [
+      "c686-default"
+     ]
+    },
+    {
+     "text": "司法解释：约定保证人在债务人不能履行或无力偿还时才承担责任等，具有债务人应当先承担责任的意思表示的，认定为一般保证",
+     "rules": [
+      "c687-spc25"
+     ]
+    },
+    {
+     "text": "保证人与债权人可以协商订立最高额保证合同，在最高债权额限度内就一定期间连续发生的债权提供保证",
+     "rules": [
+      "c690-def"
+     ]
+    },
+    {
+     "text": "债权人与保证人可以约定保证期间",
+     "rules": [
+      "c692-agreed"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "约定的保证期间早于主债务履行期限或者与之同时届满的，视为没有约定",
+     "rules": [
+      "c692-deem"
+     ]
+    },
+    {
+     "text": "司法解释：约定保证责任“直至主债务本息还清时为止”等，视为约定不明，保证期间为主债务履行期限届满之日起六个月",
+     "rules": [
+      "c692-spc32"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "保证期间是确定保证人承担保证责任的期间，不发生中止、中断和延长",
+     "rules": [
+      "c692-fix"
+     ]
+    },
+    {
+     "text": "没有约定或者约定不明确（含视为没有约定）的，保证期间为主债务履行期限届满之日起六个月",
+     "rules": [
+      "c692-6m",
+      "c692-start"
+     ]
+    },
+    {
+     "text": "主债务履行期限没有约定或者约定不明确的，保证期间自债权人请求债务人履行债务的宽限期届满之日起计算",
+     "rules": [
+      "c692-3"
+     ]
+    },
+    {
+     "text": "最高额保证除适用本章规定外，参照适用物权编最高额抵押权的有关规定",
+     "rules": [
+      "c690-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "主债务履行期限不明时，宽限期届满之日的起算规则排除以主债务履行期限届满之日起算的规则",
+     "rules": [
+      "c692-start",
+      "c692-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第686条第1款（保证方式包括一般保证和连带责任保证）为分类性规定，不单独形式化；第684条保证合同一般内容为倡导性规定",
+     "rules": []
+    },
+    {
+     "text": "一般保证人的先诉抗辩权（第687条第2款）在 card:g5230 中形式化；连带责任保证（第688条）在 card:g5237 中形式化",
+     "rules": []
+    },
+    {
+     "text": "最高额保证的保证期间计算另见担保制度解释第30条（有约定从约定；无约定时自债权确定之日或最后到期债权履行期限届满之日起算），此处未形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c686-default",
+    "srcs": [
+     "art686-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "noOrUnclearGuaranteeMode(K)"
+    ],
+    "heads": [
+     "generalGuarantee(K)"
+    ],
+    "note": "当事人在保证合同中对保证方式没有约定或者约定不明确的，按照一般保证承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c687-def",
+    "srcs": [
+     "art687-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "agreedLiableWhenDebtorUnable(K)"
+    ],
+    "heads": [
+     "generalGuarantee(K)"
+    ],
+    "note": "当事人在保证合同中约定，债务人不能履行债务时，由保证人承担保证责任的，为一般保证",
+    "auth": "npc"
+   },
+   {
+    "key": "c687-spc25",
+    "srcs": [
+     "art687-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "agreedDebtorFirstIntent(K)"
+    ],
+    "heads": [
+     "generalGuarantee(K)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第25条第1款：约定保证人在债务人不能履行债务或者无力偿还债务时才承担保证责任等类似内容，具有债务人应当先承担责任的意思表示的，认定为一般保证",
+    "auth": "spc"
+   },
+   {
+    "key": "c690-def",
+    "srcs": [
+     "art690-1"
+    ],
+    "body": [
+     "maxAmountGuaranteeAgreement(K,G,C)"
+    ],
+    "heads": [
+     "guaranteeContract(K)",
+     "maxAmountGuarantee(K)",
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "concludeMaxAmountGuarantee(G,C,K)"
+     }
+    ],
+    "note": "保证人与债权人可以协商订立最高额保证的合同，约定在最高债权额限度内就一定期间连续发生的债权提供保证",
+    "auth": "npc"
+   },
+   {
+    "key": "c690-2",
+    "srcs": [
+     "art690-2"
+    ],
+    "body": [
+     "maxAmountGuarantee(K)"
+    ],
+    "heads": [
+     "applyMaxAmountMortgageRulesToGuarantee(K)"
+    ],
+    "note": "最高额保证除适用本章规定外，参照适用本法第二编最高额抵押权的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-fix",
+    "srcs": [
+     "art692-1"
+    ],
+    "body": [
+     "guaranteePeriodOf(P,G,D)"
+    ],
+    "heads": [
+     "-periodSuspended(P)",
+     "-periodInterrupted(P)",
+     "-periodExtended(P)"
+    ],
+    "note": "保证期间是确定保证人承担保证责任的期间，不发生中止、中断和延长",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-agreed",
+    "srcs": [
+     "art692-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedGuaranteePeriod(G,D,P)",
+     "~agreedPeriodNotLaterThanMainDebt(P,D)"
+    ],
+    "heads": [
+     "guaranteePeriodOf(P,G,D)"
+    ],
+    "note": "债权人与保证人可以约定保证期间；约定有效时以约定期间为保证期间",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-deem",
+    "srcs": [
+     "art692-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedGuaranteePeriod(G,D,P)",
+     "agreedPeriodNotLaterThanMainDebt(P,D)"
+    ],
+    "heads": [
+     "deemedNoAgreedGuaranteePeriod(G,D)"
+    ],
+    "note": "约定的保证期间早于主债务履行期限或者与主债务履行期限同时届满的，视为没有约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-6m",
+    "srcs": [
+     "art692-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     {
+      "or": [
+       "noOrUnclearGuaranteePeriod(G,D)",
+       "deemedNoAgreedGuaranteePeriod(G,D)"
+      ]
+     }
+    ],
+    "heads": [
+     "sixMonthGuaranteePeriod(G,D)"
+    ],
+    "note": "没有约定或者约定不明确的，保证期间为主债务履行期限届满之日起六个月",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-start",
+    "srcs": [
+     "art692-2"
+    ],
+    "body": [
+     "sixMonthGuaranteePeriod(G,D)",
+     "maturityTimeOf(D,T)",
+     "~noOrUnclearMainDebtTerm(D)"
+    ],
+    "heads": [
+     "guaranteePeriodStartsFrom(G,D,T)"
+    ],
+    "note": "法定六个月保证期间自主债务履行期限届满之日起算",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-3",
+    "srcs": [
+     "art692-3"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "noOrUnclearMainDebtTerm(D)",
+     "graceExpiryAfterDemand(C,D,T)"
+    ],
+    "heads": [
+     "guaranteePeriodStartsFrom(G,D,T)"
+    ],
+    "note": "债权人与债务人对主债务履行期限没有约定或者约定不明确的，保证期间自债权人请求债务人履行债务的宽限期届满之日起计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c692-spc32",
+    "srcs": [
+     "art692-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedUntilFullRepayment(G,D)"
+    ],
+    "heads": [
+     "noOrUnclearGuaranteePeriod(G,D)"
+    ],
+    "note": "担保制度解释第32条：保证合同约定保证人承担保证责任直至主债务本息还清时为止等类似内容的，视为约定不明，保证期间为主债务履行期限届满之日起六个月",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "noOrUnclearGuaranteeMode": "保证合同K对保证方式没有约定或者约定不明确（保证合同）",
+   "generalGuarantee": "保证合同K为一般保证（保证合同）",
+   "agreedLiableWhenDebtorUnable": "保证合同K约定债务人不能履行债务时由保证人承担保证责任（保证合同）",
+   "agreedDebtorFirstIntent": "保证合同K约定保证人在债务人不能履行或无力偿还债务时才承担责任等，具有债务人应当先承担责任的意思表示（保证合同）",
+   "maxAmountGuaranteeAgreement": "保证人G与债权人C协商约定在最高债权额限度内就一定期间连续发生的债权提供保证（合同K，保证人，债权人）",
+   "maxAmountGuarantee": "保证合同K为最高额保证（保证合同）",
+   "concludeMaxAmountGuarantee": "保证人G与债权人C订立最高额保证合同K（保证人，债权人，合同）",
+   "applyMaxAmountMortgageRulesToGuarantee": "对最高额保证K参照适用物权编最高额抵押权的有关规定（保证合同）",
+   "guaranteePeriodOf": "P是保证人G就主债务D承担保证责任的保证期间（期间，保证人，主债务）",
+   "agreedGuaranteePeriod": "债权人与保证人G就主债务D约定了保证期间P（保证人，主债务，期间）",
+   "agreedPeriodNotLaterThanMainDebt": "约定的保证期间P早于主债务D的履行期限或者与之同时届满（期间，主债务）",
+   "deemedNoAgreedGuaranteePeriod": "保证人G就主债务D的保证期间视为没有约定（保证人，主债务）",
+   "noOrUnclearGuaranteePeriod": "保证人G就主债务D的保证期间没有约定或者约定不明确（保证人，主债务）",
+   "sixMonthGuaranteePeriod": "保证人G就主债务D的保证期间为法定六个月（保证人，主债务）",
+   "noOrUnclearMainDebtTerm": "债权人与债务人对主债务D的履行期限没有约定或者约定不明确（主债务）",
+   "guaranteePeriodStartsFrom": "保证人G就主债务D的保证期间自T起算（保证人，主债务，起算日）",
+   "graceExpiryAfterDemand": "T是债权人C请求债务人履行主债务D所给宽限期的届满之日（债权人，主债务，日期）",
+   "agreedUntilFullRepayment": "保证合同约定保证人G承担保证责任直至主债务D本息还清时为止等类似内容（保证人，主债务）"
+  }
+ },
+ "art:693": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "债权人未在保证期间内依法行使权利的后果",
+     "rules": [
+      "c693-1",
+      "c693-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般保证：债权人未在保证期间对债务人提起诉讼或者申请仲裁",
+     "rules": [
+      "c693-1"
+     ]
+    },
+    {
+     "text": "连带责任保证：债权人未在保证期间请求保证人承担保证责任",
+     "rules": [
+      "c693-2"
+     ]
+    },
+    {
+     "text": "司法解释：一般保证的债权人取得对债务人赋予强制执行效力的公证债权文书后，在保证期间内申请强制执行的，视同已在保证期间内行使权利",
+     "rules": [
+      "c693-spc27"
+     ]
+    },
+    {
+     "text": "司法解释：连带责任保证的债权人在保证期间内起诉或申请仲裁后撤回，但起诉状副本或仲裁申请书副本已送达保证人的，认定已在保证期间内向保证人行使权利",
+     "rules": [
+      "c693-spc31b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "保证人不再承担保证责任（保证责任消灭）",
+     "rules": [
+      "c693-1",
+      "c693-2"
+     ]
+    },
+    {
+     "text": "司法解释：一般保证的债权人在保证期间内起诉或申请仲裁后又撤回，且在保证期间届满前未再行起诉或申请仲裁的，保证人不再承担保证责任",
+     "rules": [
+      "c693-spc31a"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "保证期间经过的免责效果排除第681条保证人承担保证责任的一般规则",
+     "rules": [
+      "c693-1",
+      "c693-2",
+      "c693-spc31a"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "保证期间为除斥性质的期间，不发生中止、中断和延长（第692条，card:g5223）；与保证债务的诉讼时效（第694条）相区别",
+     "rules": []
+    },
+    {
+     "text": "担保制度解释第34条第2款：保证责任消灭后保证人在催款通知书上签字等，不使保证责任复活，除非债权人证明成立了新的保证合同；第33条：保证合同无效时债权人未在保证期间内行使权利，保证人不承担赔偿责任（均未形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c693-1",
+    "srcs": [
+     "art693-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "guaranteePeriodExpired(G,D)",
+     "~suedDebtorWithinGuaranteePeriod(C,D)"
+    ],
+    "heads": [
+     "-securityLiabilityOf(G,D)"
+    ],
+    "note": "一般保证的债权人未在保证期间对债务人提起诉讼或者申请仲裁的，保证人不再承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c693-2",
+    "srcs": [
+     "art693-2"
+    ],
+    "body": [
+     "jointLiabilityGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "guaranteePeriodExpired(G,D)",
+     "~requestedSuretyWithinPeriod(C,G,D)"
+    ],
+    "heads": [
+     "-securityLiabilityOf(G,D)"
+    ],
+    "note": "连带责任保证的债权人未在保证期间请求保证人承担保证责任的，保证人不再承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c693-spc27",
+    "srcs": [
+     "art693-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "notarizedEnforcementAppliedWithinPeriod(C,D)"
+    ],
+    "heads": [
+     "suedDebtorWithinGuaranteePeriod(C,D)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第27条：一般保证的债权人取得对债务人赋予强制执行效力的公证债权文书后，在保证期间内向人民法院申请强制执行，保证人以未在保证期间内起诉或仲裁为由主张不承担保证责任的，不予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c693-spc31a",
+    "srcs": [
+     "art693-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "guaranteePeriodExpired(G,D)",
+     "suitAgainstDebtorWithdrawnNotRefiled(C,D)"
+    ],
+    "heads": [
+     "-securityLiabilityOf(G,D)"
+    ],
+    "note": "担保制度解释第31条第1款：一般保证的债权人在保证期间内对债务人起诉或申请仲裁后又撤回，在保证期间届满前未再行起诉或申请仲裁，保证人主张不再承担保证责任的，应予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c693-spc31b",
+    "srcs": [
+     "art693-2"
+    ],
+    "body": [
+     "jointLiabilityGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "suitAgainstGuarantorWithdrawnAfterService(C,G,D)"
+    ],
+    "heads": [
+     "requestedSuretyWithinPeriod(C,G,D)"
+    ],
+    "note": "担保制度解释第31条第2款：连带责任保证的债权人在保证期间内对保证人起诉或申请仲裁后又撤回，起诉状副本或者仲裁申请书副本已经送达保证人的，认定已在保证期间内向保证人行使了权利",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c693-1",
+    "c681-liab",
+    "保证期间经过、债权人未依法行使权利的，保证人不再承担保证责任"
+   ],
+   [
+    "c693-2",
+    "c681-liab",
+    "保证期间经过、债权人未依法行使权利的，保证人不再承担保证责任"
+   ],
+   [
+    "c693-spc31a",
+    "c681-liab",
+    "撤诉后未在保证期间内再行起诉，保证责任消灭（司法解释）"
+   ]
+  ],
+  "predicates": {
+   "guaranteePeriodExpired": "保证人G就主债务D的保证期间已经届满（保证人，主债务）",
+   "notarizedEnforcementAppliedWithinPeriod": "一般保证的债权人C取得对债务人赋予强制执行效力的公证债权文书后，在保证期间内就主债务D向人民法院申请强制执行（债权人，主债务）",
+   "suitAgainstDebtorWithdrawnNotRefiled": "一般保证的债权人C在保证期间内对债务人起诉或申请仲裁后又撤回，且在保证期间届满前未再行起诉或申请仲裁（债权人，主债务）",
+   "suitAgainstGuarantorWithdrawnAfterService": "连带责任保证的债权人C在保证期间内对保证人G起诉或申请仲裁后撤回，但起诉状副本或仲裁申请书副本已送达保证人（债权人，保证人，主债务）"
+  }
+ },
+ "art:689": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "保证人能否要求债务人提供反担保",
+     "rules": [
+      "c689"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "存在保证关系（保证人为债务人的债务向债权人提供保证）",
+     "rules": [
+      "c689"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "保证人可以要求债务人提供反担保（授权性规定，非义务）",
+     "rules": [
+      "c689"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "反担保的一般规定见第387条第2款（第三人为债务人向债权人提供担保的，可以要求债务人提供反担保；反担保适用民法典和其他法律的规定），已在物权编形式化（c387-*）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c689",
+    "srcs": [
+     "art689"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "B",
+      "content": "requestCounterSecurity(G,B,D)"
+     }
+    ],
+    "note": "保证人可以要求债务人提供反担保",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "requestCounterSecurity": "保证人G要求债务人B就主债务D的保证提供反担保（保证人，债务人，主债务）"
+  }
+ },
+ "card:g5182": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "保证的从属性：主合同无效、主合同变更、债权转让、债务转移对保证责任的影响",
+     "rules": [
+      "c682-acc",
+      "c682-void",
+      "c695-reduce",
+      "c695-increase",
+      "c696-1",
+      "c696-2",
+      "c697-1"
+     ]
+    },
+    {
+     "text": "保证范围、保证人的抗辩与拒绝权、承担责任后的追偿",
+     "rules": [
+      "c691-1",
+      "c701-1",
+      "c702",
+      "c700-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保证合同是主债权债务合同的从合同",
+     "rules": [
+      "c682-acc",
+      "c682-guarantor"
+     ]
+    },
+    {
+     "text": "保证合同被确认无效后，债务人、保证人、债权人有过错",
+     "rules": [
+      "c682-2"
+     ]
+    },
+    {
+     "text": "债权人和债务人未经保证人书面同意协商变更主债务内容（减轻或加重）或者变更履行期限",
+     "rules": [
+      "c695-reduce",
+      "c695-increase",
+      "c695-2"
+     ]
+    },
+    {
+     "text": "债权人转让全部或者部分债权：是否通知保证人；保证人与债权人是否约定禁止债权转让且未经其书面同意",
+     "rules": [
+      "c696-1",
+      "c696-follow",
+      "c696-2"
+     ]
+    },
+    {
+     "text": "债权人未经保证人书面同意，允许债务人转移全部或者部分债务；第三人加入债务",
+     "rules": [
+      "c697-1",
+      "c697-2"
+     ]
+    },
+    {
+     "text": "保证人已承担保证责任",
+     "rules": [
+      "c700-1"
+     ]
+    },
+    {
+     "text": "债务人对债权人享有抗辩，或享有抵销权、撤销权",
+     "rules": [
+      "c701-1",
+      "c702"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "主合同无效则保证合同无效，但是法律另有规定的除外",
+     "rules": [
+      "c682-void"
+     ]
+    },
+    {
+     "text": "保证范围：当事人另有约定的，按照其约定",
+     "rules": [
+      "c691-2"
+     ]
+    },
+    {
+     "text": "债务转移致保证人免责，但是债权人和保证人另有约定的除外",
+     "rules": [
+      "c697-1"
+     ]
+    },
+    {
+     "text": "追偿权：当事人另有约定的除外；且不得损害债权人的利益",
+     "rules": [
+      "c700-1",
+      "c700-2"
+     ]
+    },
+    {
+     "text": "债务人放弃抗辩的，保证人仍有权向债权人主张抗辩",
+     "rules": [
+      "c701-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "主债权债务合同无效的，保证合同无效；保证合同被确认无效后，有过错的各方根据其过错各自承担相应的民事责任",
+     "rules": [
+      "c682-void",
+      "c682-2"
+     ]
+    },
+    {
+     "text": "司法解释：约定担保合同效力独立于主合同或对主合同无效后果承担担保责任的，该独立性约定无效（金融机构独立保函除外）",
+     "rules": [
+      "c682-spc2"
+     ]
+    },
+    {
+     "text": "司法解释：保证合同无效时保证人赔偿责任的上限——主合同有效：双方均有过错≤债务人不能清偿部分的1/2，仅保证人有过错对不能清偿部分负责，仅债权人有过错不负责；主合同无效致保证合同无效：保证人无过错不负责，有过错≤1/3",
+     "rules": [
+      "c682-spc17a",
+      "c682-spc17b",
+      "c682-spc17c",
+      "c682-spc17d",
+      "c682-spc17e"
+     ]
+    },
+    {
+     "text": "保证范围包括主债权及其利息、违约金、损害赔偿金和实现债权的费用",
+     "rules": [
+      "c691-1"
+     ]
+    },
+    {
+     "text": "减轻债务的，保证人仍对变更后的债务承担保证责任；加重债务的，对加重部分不承担保证责任；变更履行期限未经书面同意的，保证期间不受影响",
+     "rules": [
+      "c695-reduce",
+      "c695-increase",
+      "c695-2"
+     ]
+    },
+    {
+     "text": "债权转让未通知保证人的，对保证人不发生效力；约定禁止转让而未经书面同意转让的，保证人对受让人不再承担保证责任",
+     "rules": [
+      "c696-1",
+      "c696-2"
+     ]
+    },
+    {
+     "text": "保证人对未经其同意转移的债务不再承担保证责任；第三人加入债务的，保证责任不受影响",
+     "rules": [
+      "c697-1",
+      "c697-2"
+     ]
+    },
+    {
+     "text": "保证人在其承担保证责任的范围内有权向债务人追偿，享有债权人对债务人的权利，但不得损害债权人的利益",
+     "rules": [
+      "c700-1",
+      "c700-2"
+     ]
+    },
+    {
+     "text": "保证人可以主张债务人对债权人的抗辩",
+     "rules": [
+      "c701-1"
+     ]
+    },
+    {
+     "text": "债务人享有抵销权或撤销权的，保证人可以在相应范围内拒绝承担保证责任",
+     "rules": [
+      "c702"
+     ]
+    },
+    {
+     "text": "司法解释：保证人知道或应当知道主债权诉讼时效期间届满仍提供保证或承担保证责任的，不得再以时效届满为由拒绝承担保证责任",
+     "rules": [
+      "c701-spc35"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "免责规则（加重部分、未经同意的债务转移）排除第681条保证人承担保证责任的一般规则",
+     "rules": [
+      "c695-increase",
+      "c697-1"
+     ]
+    },
+    {
+     "text": "约定禁止转让且未经书面同意的，排除保证随债权转让给受让人的规则",
+     "rules": [
+      "c696-2",
+      "c696-follow"
+     ]
+    },
+    {
+     "text": "司法解释：超出债务人责任范围的约定保证范围不予支持，排除按约定确定范围的规则",
+     "rules": [
+      "c691-spc3",
+      "c691-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第686条保证方式见 card:g5223；第687条一般保证与先诉抗辩权见 card:g5223/g5230；第688条连带责任保证见 card:g5237；第698条债权人怠于执行时保证人免责见 card:g5230（c698）",
+     "rules": []
+    },
+    {
+     "text": "免责的债务承担（第697条第1款）与并存的债务承担/债务加入（第697条第2款）效果相反；人保与物保之间的追偿另见第392条与担保制度解释第13、18条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c682-acc",
+    "srcs": [
+     "art682-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "mainContractOf(M,K)"
+    ],
+    "heads": [
+     "accessoryContractOf(K,M)"
+    ],
+    "note": "保证合同是主债权债务合同的从合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c682-guarantor",
+    "srcs": [
+     "art682-1"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)"
+    ],
+    "heads": [
+     "guarantorOf(G,K)"
+    ],
+    "note": "保证合同中的保证人即该担保合同的担保人（衔接第682条第2款与第388条的谓词）",
+    "auth": "npc"
+   },
+   {
+    "key": "c682-void",
+    "srcs": [
+     "art682-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "accessoryContractOf(K,M)",
+     "void(M)",
+     "~lawProvidesOtherwiseOnAccessoryInvalidity(K)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "主债权债务合同无效的，保证合同无效，但是法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c682-2",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "fault(P,K)",
+     {
+      "or": [
+       "debtorIn(P,M)",
+       "creditorIn(P,M)",
+       "guarantorOf(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearLiabilityAccordingToFault(P,K)"
+     }
+    ],
+    "note": "保证合同被确认无效后，债务人、保证人、债权人有过错的，应当根据其过错各自承担相应的民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c682-spc2",
+    "srcs": [
+     "art682-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "agreedIndependenceFromMainContract(K)",
+     "~independentGuaranteeByFinancialInstitution(K)"
+    ],
+    "heads": [
+     "independenceClauseVoid(K)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第2条：约定担保合同效力独立于主合同，或约定担保人对主合同无效的法律后果承担担保责任的，该有关担保独立性的约定无效；主合同有效的不影响担保合同效力，主合同无效的担保合同无效（法律另有规定除外）；金融机构开立的独立保函适用独立保函司法解释",
+    "auth": "spc"
+   },
+   {
+    "key": "c682-spc17a",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "~void(M)",
+     "fault(C,K)",
+     "fault(G,K)"
+    ],
+    "heads": [
+     "compensationCapOf(G,K,halfOfUnpaid)"
+    ],
+    "note": "担保制度解释第17条第1款第1项：主合同有效而第三人提供的担保合同无效，债权人与担保人均有过错的，担保人的赔偿责任不应超过债务人不能清偿部分的二分之一",
+    "auth": "spc"
+   },
+   {
+    "key": "c682-spc17b",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "~void(M)",
+     "fault(G,K)",
+     "~fault(C,K)"
+    ],
+    "heads": [
+     "compensationCapOf(G,K,allOfUnpaid)"
+    ],
+    "note": "担保制度解释第17条第1款第2项：担保人有过错而债权人无过错的，担保人对债务人不能清偿的部分承担赔偿责任",
+    "auth": "spc"
+   },
+   {
+    "key": "c682-spc17c",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "~void(M)",
+     "fault(C,K)",
+     "~fault(G,K)"
+    ],
+    "heads": [
+     "-guarantorCompensationLiable(G,K)"
+    ],
+    "note": "担保制度解释第17条第1款第3项：债权人有过错而担保人无过错的，担保人不承担赔偿责任",
+    "auth": "spc"
+   },
+   {
+    "key": "c682-spc17d",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "void(M)",
+     "~fault(G,K)"
+    ],
+    "heads": [
+     "-guarantorCompensationLiable(G,K)"
+    ],
+    "note": "担保制度解释第17条第2款前段：主合同无效导致第三人提供的担保合同无效，担保人无过错的，不承担赔偿责任",
+    "auth": "spc"
+   },
+   {
+    "key": "c682-spc17e",
+    "srcs": [
+     "art682-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "confirmedVoid(K)",
+     "mainContractOf(M,K)",
+     "void(M)",
+     "fault(G,K)"
+    ],
+    "heads": [
+     "compensationCapOf(G,K,oneThirdOfUnpaid)"
+    ],
+    "note": "担保制度解释第17条第2款后段：主合同无效导致担保合同无效，担保人有过错的，其赔偿责任不应超过债务人不能清偿部分的三分之一",
+    "auth": "spc"
+   },
+   {
+    "key": "c691-1",
+    "srcs": [
+     "art691"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtItemOf(X,D)",
+     "~agreedGuaranteeScope(G,D)"
+    ],
+    "heads": [
+     "suretyScopeIncludes(G,D,X)"
+    ],
+    "note": "保证的范围包括主债权及其利息、违约金、损害赔偿金和实现债权的费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c691-2",
+    "srcs": [
+     "art691"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedGuaranteeScope(G,D)",
+     "agreedScopeItem(G,D,X)"
+    ],
+    "heads": [
+     "suretyScopeIncludes(G,D,X)"
+    ],
+    "note": "当事人另有约定的，按照其约定确定保证范围",
+    "auth": "npc"
+   },
+   {
+    "key": "c691-spc3",
+    "srcs": [
+     "art691"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedScopeItem(G,D,X)",
+     "exceedsDebtorLiability(X,D)"
+    ],
+    "heads": [
+     "-suretyScopeIncludes(G,D,X)"
+    ],
+    "note": "担保制度解释第3条第1款：约定专门的违约责任或约定的担保责任范围超出债务人应当承担的责任范围，担保人主张仅在债务人应当承担的责任范围内承担责任的，人民法院应予支持（以保证人主张为前提）",
+    "auth": "spc"
+   },
+   {
+    "key": "c695-reduce",
+    "srcs": [
+     "art695-1"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "mainDebtModified(C,B,D,D2)",
+     "reducesDebt(D2,D)",
+     "~writtenConsentToModification(G,D2)"
+    ],
+    "heads": [
+     "suretyFor(G,D2,C)"
+    ],
+    "note": "债权人和债务人未经保证人书面同意协商变更主债权债务合同内容，减轻债务的，保证人仍对变更后的债务承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c695-increase",
+    "srcs": [
+     "art695-1"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "mainDebtModified(C,B,D,D2)",
+     "increasedPart(I,D2,D)",
+     "~writtenConsentToModification(G,D2)"
+    ],
+    "heads": [
+     "-securityLiabilityOf(G,I)"
+    ],
+    "note": "加重债务的，保证人对加重的部分不承担保证责任（对原债务部分仍承担）",
+    "auth": "npc"
+   },
+   {
+    "key": "c695-2",
+    "srcs": [
+     "art695-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "performanceTermModified(C,B,D)",
+     "~writtenConsentToTermChange(G,D)"
+    ],
+    "heads": [
+     "guaranteePeriodUnaffected(G,D)"
+    ],
+    "note": "债权人和债务人变更主债权债务合同的履行期限，未经保证人书面同意的，保证期间不受影响",
+    "auth": "npc"
+   },
+   {
+    "key": "c696-1",
+    "srcs": [
+     "art696-1"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "claimAssignedTo(C,T,D)",
+     "~guarantorNotifiedOfAssignment(G,D)"
+    ],
+    "heads": [
+     "-assignmentBindsGuarantor(G,D)"
+    ],
+    "note": "债权人转让全部或者部分债权，未通知保证人的，该转让对保证人不发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c696-follow",
+    "srcs": [
+     "art696-1"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "claimAssignedTo(C,T,D)",
+     "guarantorNotifiedOfAssignment(G,D)"
+    ],
+    "heads": [
+     "suretyFor(G,D,T)"
+    ],
+    "note": "学理/笔记：已通知保证人的债权转让，保证作为从权利随之移转（参照第547条），保证人在原保证担保范围内对受让人继续承担保证责任；本条第1款未明文规定此积极效果",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c696-2",
+    "srcs": [
+     "art696-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "agreedNoAssignmentWithGuarantor(G,C,D)",
+     "claimAssignedTo(C,T,D)",
+     "~writtenConsentToAssignment(G,D)"
+    ],
+    "heads": [
+     "-suretyFor(G,D,T)"
+    ],
+    "note": "保证人与债权人约定禁止债权转让，债权人未经保证人书面同意转让债权的，保证人对受让人不再承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c697-1",
+    "srcs": [
+     "art697-1"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "creditorPermitsDebtTransfer(C,B,D,D2)",
+     "~writtenConsentToDebtTransfer(G,D2)",
+     "~agreedOtherwiseOnDebtTransfer(C,G,D)"
+    ],
+    "heads": [
+     "-securityLiabilityOf(G,D2)"
+    ],
+    "note": "债权人未经保证人书面同意，允许债务人转移全部或者部分债务，保证人对未经其同意转移的债务不再承担保证责任，但是债权人和保证人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c697-2",
+    "srcs": [
+     "art697-2"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtJoined(T,D)"
+    ],
+    "heads": [
+     "guaranteeUnaffectedByJoinder(G,D)"
+    ],
+    "note": "第三人加入债务的，保证人的保证责任不受影响",
+    "auth": "npc"
+   },
+   {
+    "key": "c700-1",
+    "srcs": [
+     "art700"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "securityLiabilityBorne(G,D)",
+     "debtorOf(B,D)",
+     "otherThan(G,B)",
+     "~agreedOtherwiseOnRecourse(G,B,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "B",
+      "content": "recourse(G,B,D)"
+     },
+     "subrogatedToCreditorRights(G,D)"
+    ],
+    "note": "保证人承担保证责任后，除当事人另有约定外，有权在其承担保证责任的范围内向债务人追偿，享有债权人对债务人的权利；担保制度解释第3条第2款另限追偿不超出债务人应承担的责任范围（未形式化）",
+    "auth": "npc"
+   },
+   {
+    "key": "c700-2",
+    "srcs": [
+     "art700"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "subrogatedToCreditorRights(G,D)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "harmCreditorInterest(G,D)"
+     }
+    ],
+    "note": "保证人行使追偿权、享有债权人权利时，不得损害债权人的利益",
+    "auth": "npc"
+   },
+   {
+    "key": "c701-1",
+    "srcs": [
+     "art701"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "debtorDefenseAgainstCreditor(B,C,D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "assertDebtorDefense(G,C,D)"
+     }
+    ],
+    "note": "保证人可以主张债务人对债权人的抗辩",
+    "auth": "npc"
+   },
+   {
+    "key": "c701-2",
+    "srcs": [
+     "art701"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     "debtorDefenseAgainstCreditor(B,C,D)",
+     "debtorWaivedDefense(B,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "assertDebtorDefense(G,C,D)"
+     }
+    ],
+    "note": "债务人放弃抗辩的，保证人仍有权向债权人主张抗辩",
+    "auth": "npc"
+   },
+   {
+    "key": "c701-spc35",
+    "srcs": [
+     "art701"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "guaranteedKnowingMainLimitationExpired(G,D)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "refuseByMainDebtLimitation(G,C,D)"
+     }
+    ],
+    "note": "担保制度解释第35条前段：保证人知道或者应当知道主债权诉讼时效期间届满仍然提供保证或者承担保证责任，又以诉讼时效期间届满为由拒绝承担保证责任或请求返还财产的，不予支持；后段（此时向债务人追偿不予支持，债务人放弃时效抗辩的除外）未形式化",
+    "auth": "spc"
+   },
+   {
+    "key": "c702",
+    "srcs": [
+     "art702"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "debtorOf(B,D)",
+     {
+      "or": [
+       "setoffRightAgainstCreditor(B,C,D)",
+       "revocationRightAgainstCreditor(B,C,D)"
+      ]
+     },
+     "debtorRightScope(B,D,S)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "refuseSuretyInScope(G,C,D,S)"
+     }
+    ],
+    "note": "债务人对债权人享有抵销权或者撤销权的，保证人可以在相应范围内拒绝承担保证责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c695-increase",
+    "c681-liab",
+    "主合同未经保证人书面同意加重债务的，保证人对加重部分不承担保证责任"
+   ],
+   [
+    "c697-1",
+    "c681-liab",
+    "未经保证人书面同意的债务转移，保证人对转移部分不再承担保证责任"
+   ],
+   [
+    "c696-2",
+    "c696-follow",
+    "约定禁止债权转让且未经保证人书面同意转让的，保证不随债权移转于受让人"
+   ],
+   [
+    "c691-spc3",
+    "c691-2",
+    "约定保证范围超出债务人应承担的责任范围的部分，保证人可主张不承担（司法解释第3条）"
+   ]
+  ],
+  "predicates": {
+   "agreedIndependenceFromMainContract": "担保合同K约定其效力独立于主合同，或约定担保人对主合同无效的法律后果承担担保责任（担保合同）",
+   "independentGuaranteeByFinancialInstitution": "K是金融机构开立的独立保函（文件）",
+   "independenceClauseVoid": "担保合同K中有关担保独立性的约定无效（担保合同）",
+   "compensationCapOf": "保证合同无效后，保证人G的赔偿责任以X为上限（常量 halfOfUnpaid 债务人不能清偿部分的二分之一，oneThirdOfUnpaid 三分之一，allOfUnpaid 不能清偿的全部）（保证人，保证合同，上限）",
+   "guarantorCompensationLiable": "保证合同K无效后，保证人G应承担赔偿责任（保证人，保证合同）",
+   "debtItemOf": "X是主债权D本身或其利息、违约金、损害赔偿金、实现债权的费用（项目，主债权）",
+   "agreedGuaranteeScope": "当事人对保证人G就主债务D的保证范围另有约定（保证人，主债务）",
+   "agreedScopeItem": "当事人约定保证人G就主债务D的保证范围包括项目X（保证人，主债务，项目）",
+   "suretyScopeIncludes": "保证人G就主债务D的保证范围包括项目X（保证人，主债务，项目）",
+   "exceedsDebtorLiability": "约定的保证范围项目X超出债务人就主债务D应当承担的责任范围（含就担保责任约定的专门违约责任）（项目，主债务）",
+   "mainDebtModified": "债权人C与债务人B协商变更主债权债务合同内容，主债务D变更为D2（债权人，债务人，原债务，变更后债务）",
+   "reducesDebt": "变更后的债务D2较原债务D减轻（变更后债务，原债务）",
+   "increasedPart": "I是变更后的债务D2较原债务D加重的部分（加重部分，变更后债务，原债务）",
+   "writtenConsentToModification": "保证人G书面同意主债务变更为D2（保证人，变更后债务）",
+   "performanceTermModified": "债权人C与债务人B变更主债务D的履行期限（债权人，债务人，主债务）",
+   "writtenConsentToTermChange": "保证人G书面同意主债务D履行期限的变更（保证人，主债务）",
+   "guaranteePeriodUnaffected": "保证人G就主债务D的保证期间不受履行期限变更的影响（保证人，主债务）",
+   "claimAssignedTo": "债权人C将对主债务D的全部或部分债权转让给受让人T（让与人，受让人，债权）",
+   "guarantorNotifiedOfAssignment": "债权转让已通知保证人G（保证人，被转让债权）",
+   "assignmentBindsGuarantor": "债权D的转让对保证人G发生效力（保证人，债权）",
+   "agreedNoAssignmentWithGuarantor": "保证人G与债权人C约定禁止转让主债权D（保证人，债权人，债权）",
+   "writtenConsentToAssignment": "保证人G书面同意债权D的转让（保证人，债权）",
+   "agreedOtherwiseOnDebtTransfer": "债权人C与保证人G就债务D转移后的保证责任另有约定（债权人，保证人，主债务）",
+   "guaranteeUnaffectedByJoinder": "第三人加入债务D的，保证人G的保证责任不受影响（保证人，主债务）",
+   "agreedOtherwiseOnRecourse": "保证人G与债务人B就追偿另有约定（保证人，债务人，主债务）",
+   "debtorDefenseAgainstCreditor": "债务人B就主债务D对债权人C享有抗辩（债务人，债权人，主债务）",
+   "assertDebtorDefense": "保证人G向债权人C主张债务人就主债务D对债权人的抗辩（保证人，债权人，主债务）",
+   "debtorWaivedDefense": "债务人B放弃其就主债务D对债权人的抗辩（债务人，主债务）",
+   "guaranteedKnowingMainLimitationExpired": "保证人G知道或者应当知道主债权D诉讼时效期间届满，仍然提供保证或者承担保证责任（保证人，主债务）",
+   "refuseByMainDebtLimitation": "保证人G以主债权D诉讼时效期间届满为由拒绝向债权人C承担保证责任或请求返还财产（保证人，债权人，主债务）",
+   "setoffRightAgainstCreditor": "债务人B对债权人C享有可对主债务D行使的抵销权（债务人，债权人，主债务）",
+   "revocationRightAgainstCreditor": "债务人B对与债权人C之间就主债务D的法律行为享有撤销权（债务人，债权人，主债务）",
+   "debtorRightScope": "债务人B的抵销权或撤销权所及于主债务D的范围为S（债务人，主债务，范围）",
+   "refuseSuretyInScope": "保证人G在范围S内拒绝向债权人C就主债务D承担保证责任（保证人，债权人，主债务，范围）"
+  }
+ },
+ "card:g5183": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "保证合同如何成立（定义、形式、单方书面保证），谁不得为保证人",
+     "rules": [
+      "c681-def",
+      "c685-2",
+      "c683-1",
+      "c683-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保证人与债权人约定：债务人不履行到期债务或者发生约定情形时，由保证人履行债务或者承担责任（为保障债权实现）",
+     "rules": [
+      "c681-def",
+      "c681-surety"
+     ]
+    },
+    {
+     "text": "保证合同可以是单独订立的书面合同，也可以是主债权债务合同中的保证条款",
+     "rules": [
+      "c685-1"
+     ]
+    },
+    {
+     "text": "第三人单方以书面形式向债权人作出保证，债权人接收且未提出异议的，保证合同成立",
+     "rules": [
+      "c685-2"
+     ]
+    },
+    {
+     "text": "司法解释：第三人提供差额补足、流动性支持等承诺文件，具有提供担保的意思表示的，依照保证的规定处理",
+     "rules": [
+      "c685-spc36"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "机关法人不得为保证人，但经国务院批准为使用外国政府或者国际经济组织贷款进行转贷的除外",
+     "rules": [
+      "c683-1",
+      "c683-spc5"
+     ]
+    },
+    {
+     "text": "以公益为目的的非营利法人、非法人组织不得为保证人（无但书）",
+     "rules": [
+      "c683-2",
+      "c683-spc6"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立保证合同，保证人就主债务向债权人提供保证；债务人不履行到期债务或者发生约定情形时，保证人承担保证责任",
+     "rules": [
+      "c681-def",
+      "c681-surety",
+      "c681-liab"
+     ]
+    },
+    {
+     "text": "司法解释：机关法人（未经国务院批准转贷）、以公益为目的的非营利法人或非法人组织提供保证的，保证合同无效",
+     "rules": [
+      "c683-spc5",
+      "c683-spc6"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第684条列举保证合同的一般内容（主债权种类、数额，履行期限，保证方式、范围、期间），属倡导性条款，欠缺某项不影响成立，不单独形式化",
+     "rules": []
+    },
+    {
+     "text": "第686条保证方式（未约定或约定不明按一般保证）在 card:g5223 中形式化（c686-*），此处不重复",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c681-def",
+    "srcs": [
+     "art681"
+    ],
+    "body": [
+     "guarantorCreditorAgreement(K,G,C,D)"
+    ],
+    "heads": [
+     "guaranteeContract(K)",
+     "guaranteeContractFor(K,G,D,C)"
+    ],
+    "note": "保证人与债权人约定，债务人不履行到期债务或发生约定情形时由保证人履行债务或承担责任的合同，为保证合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c681-surety",
+    "srcs": [
+     "art681"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)"
+    ],
+    "heads": [
+     "suretyFor(G,D,C)",
+     "securityProviderOf(G,D)"
+    ],
+    "note": "依保证合同，保证人就主债务向债权人提供人的担保",
+    "auth": "npc"
+   },
+   {
+    "key": "c681-liab",
+    "srcs": [
+     "art681"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "securityRealizationGround(D)"
+    ],
+    "heads": [
+     "securityLiabilityOf(G,D)"
+    ],
+    "note": "债务人不履行到期债务或者发生当事人约定的情形时，保证人履行债务或者承担责任；本章各免责规则以 overrides 排除本条",
+    "auth": "npc"
+   },
+   {
+    "key": "c683-1",
+    "srcs": [
+     "art683-1"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "organLegalPerson(G)",
+     "~approvedForForeignLoanOnLending(G,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "actAsGuarantor(G,K)"
+     }
+    ],
+    "note": "机关法人不得为保证人，但是经国务院批准为使用外国政府或者国际经济组织贷款进行转贷的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c683-2",
+    "srcs": [
+     "art683-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     {
+      "or": [
+       "nonProfitLegalPerson(G)",
+       "unincorporatedOrganization(G)"
+      ]
+     },
+     "publicWelfarePurpose(G)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "actAsGuarantor(G,K)"
+     }
+    ],
+    "note": "以公益为目的的非营利法人、非法人组织不得为保证人",
+    "auth": "npc"
+   },
+   {
+    "key": "c683-spc5",
+    "srcs": [
+     "art683-1"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     "organLegalPerson(G)",
+     "~approvedForForeignLoanOnLending(G,K)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第5条第1款：机关法人提供担保的，人民法院应当认定担保合同无效，但经国务院批准转贷的除外（该条第2款居委会、村委会担保另有规则，未形式化）",
+    "auth": "spc"
+   },
+   {
+    "key": "c683-spc6",
+    "srcs": [
+     "art683-2"
+    ],
+    "body": [
+     "guaranteeContractFor(K,G,D,C)",
+     {
+      "or": [
+       "nonProfitLegalPerson(G)",
+       "unincorporatedOrganization(G)"
+      ]
+     },
+     "publicWelfarePurpose(G)"
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "担保制度解释第6条第1款：以公益为目的的非营利性学校、幼儿园、医疗机构、养老机构等提供担保的，担保合同无效；该条两项除外情形（所有权保留、以公益设施以外财产设立担保物权）均针对物保，不适用于保证",
+    "auth": "spc"
+   },
+   {
+    "key": "c685-1",
+    "srcs": [
+     "art685-1"
+    ],
+    "body": [
+     "guarantorCreditorAgreement(K,G,C,D)",
+     {
+      "or": [
+       "separateWrittenGuaranteeContract(K)",
+       "guaranteeClauseInMainContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "guaranteeFormSatisfied(K)"
+    ],
+    "note": "保证合同可以是单独订立的书面合同，也可以是主债权债务合同中的保证条款",
+    "auth": "npc"
+   },
+   {
+    "key": "c685-2",
+    "srcs": [
+     "art685-2"
+    ],
+    "body": [
+     "unilateralWrittenGuarantee(G,C,D,K)",
+     "creditorReceived(C,K)",
+     "~creditorObjected(C,K)"
+    ],
+    "heads": [
+     "guaranteeContract(K)",
+     "guaranteeContractFor(K,G,D,C)"
+    ],
+    "note": "第三人单方以书面形式向债权人作出保证，债权人接收且未提出异议的，保证合同成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c685-spc36",
+    "srcs": [
+     "art685-2"
+    ],
+    "body": [
+     "creditEnhancementWithGuaranteeIntent(G,C,D,K)"
+    ],
+    "heads": [
+     "guaranteeContract(K)",
+     "guaranteeContractFor(K,G,D,C)"
+    ],
+    "note": "担保制度解释第36条第1款：第三人向债权人提供差额补足、流动性支持等承诺文件作为增信措施，具有提供担保的意思表示的，依照保证的有关规定处理（同条第2—4款债务加入及均不构成的情形未形式化）",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "guarantorCreditorAgreement": "保证人G与债权人C约定，当债务人不履行到期债务D或者发生当事人约定的情形时，由G履行债务或者承担责任（合同K，保证人，债权人，主债务）",
+   "guaranteeContract": "K是保证合同（合同）",
+   "guaranteeContractFor": "保证合同K中，保证人G就主债务D向债权人C提供保证（保证合同，保证人，主债务，债权人）",
+   "approvedForForeignLoanOnLending": "机关法人G经国务院批准，为使用外国政府或者国际经济组织贷款进行转贷而提供保证K（保证人，保证合同）",
+   "actAsGuarantor": "G作为保证合同K的保证人（保证人，保证合同）",
+   "publicWelfarePurpose": "组织G以公益为目的（组织）",
+   "separateWrittenGuaranteeContract": "保证合同K是单独订立的书面合同（保证合同）",
+   "guaranteeClauseInMainContract": "保证合同K表现为主债权债务合同中的保证条款（保证合同）",
+   "guaranteeFormSatisfied": "保证合同K符合第685条规定的形式（保证合同）",
+   "unilateralWrittenGuarantee": "第三人G单方以书面形式K向债权人C就主债务D作出保证（保证人，债权人，主债务，书面保证）",
+   "creditorReceived": "债权人C接收了书面文件K（债权人，文件）",
+   "creditorObjected": "债权人C对书面文件K提出异议（债权人，文件）",
+   "creditEnhancementWithGuaranteeIntent": "第三人G向债权人C就债务D提供差额补足、流动性支持等增信承诺文件K，且具有提供担保的意思表示（第三人，债权人，债务，文件）"
+  }
+ },
+ "card:g5230": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "一般保证人的先诉抗辩权：何时可拒绝承担保证责任，何时被排除；一般保证债务的诉讼时效起算；债权人怠于执行时保证人免责",
+     "rules": [
+      "c687-2",
+      "c687-exc",
+      "c694-1",
+      "c698"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一般保证；主合同纠纷未经审判或者仲裁，并就债务人财产依法强制执行仍不能履行债务之前",
+     "rules": [
+      "c687-2"
+     ]
+    },
+    {
+     "text": "一般保证人在主债务履行期限届满后向债权人提供债务人可供执行财产的真实情况，债权人放弃或者怠于行使权利致使该财产不能被执行",
+     "rules": [
+      "c698"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "先诉抗辩权的除外情形：（一）债务人下落不明，且无财产可供执行；（二）人民法院已经受理债务人破产案件；（三）债权人有证据证明债务人的财产不足以履行全部债务或者丧失履行债务能力；（四）保证人书面表示放弃该权利",
+     "rules": [
+      "c687-exc"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "一般保证人有权拒绝向债权人承担保证责任（先诉抗辩权）",
+     "rules": [
+      "c687-2"
+     ]
+    },
+    {
+     "text": "司法解释：一般保证中债权人未就主合同纠纷起诉或申请仲裁、仅起诉一般保证人的，人民法院应当驳回起诉",
+     "rules": [
+      "c687-spc26"
+     ]
+    },
+    {
+     "text": "一般保证的债权人在保证期间届满前对债务人提起诉讼或者申请仲裁的，从保证人先诉抗辩权消灭之日起计算保证债务的诉讼时效",
+     "rules": [
+      "c694-1"
+     ]
+    },
+    {
+     "text": "司法解释：先诉抗辩权消灭之日——终结本次执行等裁定送达债权人之日；法院收到申请执行书满一年未作出该裁定的，自满一年之日（保证人证明债务人仍有可供执行财产的除外）；债权人证明存在第687条第2款但书情形的，自其知道或应当知道该情形之日起算时效",
+     "rules": [
+      "c694-spc28a",
+      "c694-spc28b",
+      "c694-spc28c"
+     ]
+    },
+    {
+     "text": "保证人在其提供可供执行财产的价值范围内不再承担保证责任",
+     "rules": [
+      "c698"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第687条第2款但书情形排除先诉抗辩权",
+     "rules": [
+      "c687-exc",
+      "c687-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记所列除外情形①“债务人住所变更，致使债权人要求其履行债务发生重大困难”是原《担保法》第17条的表述；《民法典》第687条第2款第（一）项已改为“债务人下落不明，且无财产可供执行”，以法典为准",
+     "rules": []
+    },
+    {
+     "text": "连带责任保证人不享有先诉抗辩权（第688条，card:g5237）；保证期间的确定（第692条）见 card:g5223；保证人援引债务人抗辩（第701条）见 card:g5182",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c687-2",
+    "srcs": [
+     "art687-2"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "~mainDisputeAdjudicatedAndEnforcementFailed(D)",
+     "~priorEnforcementDefenseExcluded(G,D)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "refuseBeforeEnforcement(G,C,D)"
+     }
+    ],
+    "note": "一般保证的保证人在主合同纠纷未经审判或者仲裁，并就债务人财产依法强制执行仍不能履行债务前，有权拒绝向债权人承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c687-exc",
+    "srcs": [
+     "art687-2"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "debtorOf(B,D)",
+     {
+      "or": [
+       "debtorWhereaboutsUnknown(B) noEnforceableProperty(B)",
+       "bankruptcyCaseAccepted(B)",
+       "creditorProvesDebtorInsufficientOrIncapable(C,B)",
+       "waivedPriorEnforcementDefenseInWriting(G,D)"
+      ]
+     }
+    ],
+    "heads": [
+     "priorEnforcementDefenseExcluded(G,D)"
+    ],
+    "note": "但书四项：债务人下落不明且无财产可供执行；法院已受理债务人破产案件；债权人有证据证明债务人财产不足以履行全部债务或丧失履行能力；保证人书面放弃先诉抗辩权",
+    "auth": "npc"
+   },
+   {
+    "key": "c687-spc26",
+    "srcs": [
+     "art687-2"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "suedOnlyGeneralGuarantor(C,G,D)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": "C",
+      "content": "dismissSuitAgainstGuarantor(C,G,D)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第26条第1款：债权人未就主合同纠纷提起诉讼或者申请仲裁，仅起诉一般保证人的，人民法院应当驳回起诉（第2款一并起诉时判决主文须写明补充责任、第3款保全限制未形式化）",
+    "auth": "spc"
+   },
+   {
+    "key": "c694-1",
+    "srcs": [
+     "art694-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "suretyClaimOf(R,C,G,D)",
+     "suedDebtorWithinGuaranteePeriod(C,D)",
+     "priorEnforcementDefenseEndsAt(G,D,T)"
+    ],
+    "heads": [
+     "limitationStartsFrom(R,T)"
+    ],
+    "note": "一般保证的债权人在保证期间届满前对债务人提起诉讼或者申请仲裁的，从保证人拒绝承担保证责任的权利消灭之日起，开始计算保证债务的诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c694-spc28a",
+    "srcs": [
+     "art694-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "enforcementTerminationRulingServed(C,D,T)"
+    ],
+    "heads": [
+     "priorEnforcementDefenseEndsAt(G,D,T)"
+    ],
+    "note": "担保制度解释第28条第1款第1项：人民法院作出终结本次执行程序裁定，或依民事诉讼法规定作出终结执行裁定的，自裁定送达债权人之日起计算保证债务诉讼时效",
+    "auth": "spc"
+   },
+   {
+    "key": "c694-spc28b",
+    "srcs": [
+     "art694-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "noRulingWithinOneYearOfApplication(C,D,T)",
+     "~guarantorProvesDebtorHasEnforceableAssets(G,D)"
+    ],
+    "heads": [
+     "priorEnforcementDefenseEndsAt(G,D,T)"
+    ],
+    "note": "担保制度解释第28条第1款第2项：法院自收到申请执行书之日起一年内未作出前项裁定的，自收到申请执行书满一年之日起计算，但保证人有证据证明债务人仍有财产可供执行的除外",
+    "auth": "spc"
+   },
+   {
+    "key": "c694-spc28c",
+    "srcs": [
+     "art694-1"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "suretyClaimOf(R,C,G,D)",
+     "suedDebtorWithinGuaranteePeriod(C,D)",
+     "priorEnforcementDefenseExcluded(G,D)",
+     "creditorKnewExclusionGround(C,D,T)"
+    ],
+    "heads": [
+     "limitationStartsFrom(R,T)"
+    ],
+    "note": "担保制度解释第28条第2款：债权人在保证期间届满前对债务人起诉或申请仲裁，并举证证明存在第687条第2款但书情形的，保证债务诉讼时效自债权人知道或者应当知道该情形之日起计算",
+    "auth": "spc"
+   },
+   {
+    "key": "c698",
+    "srcs": [
+     "art698"
+    ],
+    "body": [
+     "generalGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "providedEnforceableAssetInfoAfterMaturity(G,C,D,A)",
+     "creditorWaivedOrNeglectedSoUnenforceable(C,A)",
+     "assetValue(A,S)"
+    ],
+    "heads": [
+     "securityLiabilityExemptInScope(G,D,S)"
+    ],
+    "note": "一般保证人在主债务履行期限届满后提供债务人可供执行财产的真实情况，债权人放弃或者怠于行使权利致使该财产不能被执行的，保证人在其提供可供执行财产的价值范围内不再承担保证责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c687-exc",
+    "c687-2",
+    "第687条第2款但书：出现四项情形之一时，一般保证人不得主张先诉抗辩权（已以 ~priorEnforcementDefenseExcluded 体现，此处显式声明）"
+   ]
+  ],
+  "predicates": {
+   "mainDisputeAdjudicatedAndEnforcementFailed": "主合同纠纷已经审判或者仲裁，并就债务人财产依法强制执行仍不能履行主债务D（主债务）",
+   "priorEnforcementDefenseExcluded": "保证人G就主债务D的先诉抗辩权因第687条第2款但书情形被排除（保证人，主债务）",
+   "refuseBeforeEnforcement": "一般保证人G在主合同纠纷经审判或仲裁并就债务人财产强制执行仍不能履行前，拒绝向债权人C就主债务D承担保证责任（先诉抗辩权）（保证人，债权人，主债务）",
+   "debtorWhereaboutsUnknown": "债务人B下落不明（债务人）",
+   "noEnforceableProperty": "债务人B无财产可供执行（债务人）",
+   "bankruptcyCaseAccepted": "人民法院已经受理债务人B的破产案件（债务人）",
+   "creditorProvesDebtorInsufficientOrIncapable": "债权人C有证据证明债务人B的财产不足以履行全部债务或者丧失履行债务能力（债权人，债务人）",
+   "waivedPriorEnforcementDefenseInWriting": "保证人G书面表示放弃就主债务D的先诉抗辩权（保证人，主债务）",
+   "suedOnlyGeneralGuarantor": "债权人C未就主合同纠纷提起诉讼或者申请仲裁，仅起诉一般保证人G（债权人，保证人，主债务）",
+   "dismissSuitAgainstGuarantor": "人民法院驳回债权人C仅针对一般保证人G就主债务D提起的起诉（债权人，保证人，主债务）",
+   "suedDebtorWithinGuaranteePeriod": "一般保证的债权人C在保证期间届满前就主债务D对债务人提起诉讼或者申请仲裁（债权人，主债务）",
+   "priorEnforcementDefenseEndsAt": "保证人G就主债务D拒绝承担保证责任的权利（先诉抗辩权）于T消灭（保证人，主债务，日期）",
+   "enforcementTerminationRulingServed": "就债权人C申请强制执行债务人财产（主债务D），人民法院作出终结本次执行程序裁定或终结执行裁定，并于T送达债权人（债权人，主债务，日期）",
+   "noRulingWithinOneYearOfApplication": "人民法院自收到债权人C就主债务D的申请执行书之日起一年内未作出终结执行类裁定，T为收到申请执行书满一年之日（债权人，主债务，日期）",
+   "guarantorProvesDebtorHasEnforceableAssets": "保证人G有证据证明主债务D的债务人仍有财产可供执行（保证人，主债务）",
+   "creditorKnewExclusionGround": "债权人C于T知道或者应当知道存在第687条第2款但书情形（债权人，主债务，日期）",
+   "providedEnforceableAssetInfoAfterMaturity": "一般保证人G在主债务D履行期限届满后，向债权人C提供债务人可供执行财产A的真实情况（保证人，债权人，主债务，财产）",
+   "creditorWaivedOrNeglectedSoUnenforceable": "债权人C放弃或者怠于行使权利，致使财产A不能被执行（债权人，财产）",
+   "assetValue": "财产A的价值为S（财产，价值）"
+  }
+ },
+ "card:g5237": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十三章　保证合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "何为连带责任保证，债权人可以向谁请求，保证债务诉讼时效何时起算，共同保证如何承担",
+     "rules": [
+      "c688-def",
+      "c688-2",
+      "c694-2",
+      "c699-1",
+      "c699-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保证合同约定保证人和债务人对债务承担连带责任的，为连带责任保证",
+     "rules": [
+      "c688-def"
+     ]
+    },
+    {
+     "text": "司法解释：约定保证人在债务人不履行或未偿还债务时即承担责任、无条件承担责任等，不具有债务人应当先承担责任的意思表示的，认定为连带责任保证",
+     "rules": [
+      "c688-spc25"
+     ]
+    },
+    {
+     "text": "债务人不履行到期债务或者发生当事人约定的情形",
+     "rules": [
+      "c688-2"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "债权人可以请求债务人履行债务，也可以请求保证人在其保证范围内承担保证责任（连带责任保证人无先诉抗辩权）",
+     "rules": [
+      "c688-2"
+     ]
+    },
+    {
+     "text": "连带责任保证的债权人在保证期间届满前请求保证人承担保证责任的，保证债务的诉讼时效自请求之日起计算",
+     "rules": [
+      "c694-2"
+     ]
+    },
+    {
+     "text": "同一债务有两个以上保证人的，按约定的保证份额承担保证责任；没有约定份额的，债权人可以请求任何一个保证人在其保证范围内承担保证责任",
+     "rules": [
+      "c699-1",
+      "c699-2"
+     ]
+    },
+    {
+     "text": "司法解释：保证人之间相互有追偿权，债权人未在保证期间内向部分保证人行使权利，致其他保证人承担责任后丧失追偿权的，其他保证人在不能追偿的范围内免除保证责任",
+     "rules": [
+      "c699-spc29"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "有约定保证份额时按份承担；无约定时债权人可选择任一保证人请求（两规则以是否约定份额互斥）",
+     "rules": [
+      "c699-1",
+      "c699-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与一般保证（第687条，card:g5223/g5230）相区别：连带责任保证人不享有先诉抗辩权；保证方式无约定或约定不明时推定为一般保证（c686-default）",
+     "rules": []
+    },
+    {
+     "text": "最高额保证（第690条）与保证期间（第692条）已在 card:g5223 形式化（c690-*、c692-*）；一般保证的诉讼时效起算（第694条第1款）在 card:g5230",
+     "rules": []
+    },
+    {
+     "text": "担保制度解释第29条第1款：债权人向部分保证人行使权利，不视为已向其他保证人行使权利（系对“请求保证人”逐人认定的说明，未单独形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c688-def",
+    "srcs": [
+     "art688-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "agreedJointLiabilityWithDebtor(K)"
+    ],
+    "heads": [
+     "jointLiabilityGuarantee(K)"
+    ],
+    "note": "当事人在保证合同中约定保证人和债务人对债务承担连带责任的，为连带责任保证",
+    "auth": "npc"
+   },
+   {
+    "key": "c688-spc25",
+    "srcs": [
+     "art688-1"
+    ],
+    "body": [
+     "guaranteeContract(K)",
+     "agreedLiableOnNonPerformanceOrUnconditional(K)"
+    ],
+    "heads": [
+     "jointLiabilityGuarantee(K)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉有关担保制度的解释》第25条第2款：约定保证人在债务人不履行债务或者未偿还债务时即承担保证责任、无条件承担保证责任等类似内容，不具有债务人应当先承担责任的意思表示的，认定为连带责任保证",
+    "auth": "spc"
+   },
+   {
+    "key": "c688-2",
+    "srcs": [
+     "art688-2"
+    ],
+    "body": [
+     "jointLiabilityGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "debtorOf(B,D)",
+     "securityRealizationGround(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "B",
+      "content": "demandPerformance(C,B,D)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "G",
+      "content": "requestSuretyPerformance(C,G,D)"
+     }
+    ],
+    "note": "连带责任保证的债务人不履行到期债务或者发生当事人约定的情形时，债权人可以请求债务人履行债务，也可以请求保证人在其保证范围内承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c694-2",
+    "srcs": [
+     "art694-2"
+    ],
+    "body": [
+     "jointLiabilityGuarantee(K)",
+     "guaranteeContractFor(K,G,D,C)",
+     "suretyClaimOf(R,C,G,D)",
+     "requestedSuretyWithinPeriod(C,G,D)",
+     "suretyRequestDate(C,G,D,T)"
+    ],
+    "heads": [
+     "limitationStartsFrom(R,T)"
+    ],
+    "note": "连带责任保证的债权人在保证期间届满前请求保证人承担保证责任的，从债权人请求保证人承担保证责任之日起，开始计算保证债务的诉讼时效",
+    "auth": "npc"
+   },
+   {
+    "key": "c699-1",
+    "srcs": [
+     "art699"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "suretyFor(H,D,C)",
+     "otherThan(G,H)",
+     "agreedGuaranteeShare(G,D,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "C",
+      "content": "bearSuretyLiabilityInShare(G,D,S)"
+     }
+    ],
+    "note": "同一债务有两个以上保证人的，保证人应当按照保证合同约定的保证份额承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c699-2",
+    "srcs": [
+     "art699"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "suretyFor(H,D,C)",
+     "otherThan(G,H)",
+     "~guaranteeSharesAgreed(D)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "G",
+      "content": "requestSuretyPerformance(C,G,D)"
+     }
+    ],
+    "note": "没有约定保证份额的，债权人可以请求任何一个保证人在其保证范围内承担保证责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c699-spc29",
+    "srcs": [
+     "art699"
+    ],
+    "body": [
+     "suretyFor(G,D,C)",
+     "suretyFor(H,D,C)",
+     "otherThan(G,H)",
+     "mutualRecourseAmongGuarantors(G,H,D)",
+     "lostRecourseDueToCreditorLapse(G,H,D,S)"
+    ],
+    "heads": [
+     "securityLiabilityExemptInScope(G,D,S)"
+    ],
+    "note": "担保制度解释第29条第2款：保证人之间相互有追偿权，债权人未在保证期间内依法向部分保证人行使权利，导致其他保证人承担保证责任后丧失追偿权的，其他保证人可主张在其不能追偿的范围内免除保证责任",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreedJointLiabilityWithDebtor": "保证合同K约定保证人和债务人对债务承担连带责任（保证合同）",
+   "jointLiabilityGuarantee": "保证合同K为连带责任保证（保证合同）",
+   "agreedLiableOnNonPerformanceOrUnconditional": "保证合同K约定保证人在债务人不履行或未偿还债务时即承担责任、无条件承担责任等，不具有债务人应当先承担责任的意思表示（保证合同）",
+   "suretyClaimOf": "R是债权人C对保证人G就主债务D享有的保证债权（请求权，债权人，保证人，主债务）",
+   "requestedSuretyWithinPeriod": "债权人C在保证期间届满前请求保证人G就主债务D承担保证责任（债权人，保证人，主债务）",
+   "suretyRequestDate": "T是债权人C请求保证人G就主债务D承担保证责任之日（债权人，保证人，主债务，日期）",
+   "agreedGuaranteeShare": "保证合同约定保证人G对主债务D的保证份额为S（保证人，主债务，份额）",
+   "bearSuretyLiabilityInShare": "保证人G按照约定份额S就主债务D承担保证责任（保证人，主债务，份额）",
+   "guaranteeSharesAgreed": "同一主债务D的数个保证人约定了保证份额（主债务）",
+   "mutualRecourseAmongGuarantors": "同一主债务D的保证人G与H之间相互有追偿权（保证人，保证人，主债务）",
+   "lostRecourseDueToCreditorLapse": "因债权人未在保证期间内依法向保证人H行使权利，保证人G承担责任后在范围S内丧失对H的追偿权（保证人，其他保证人，主债务，范围）"
+  }
+ }
+}

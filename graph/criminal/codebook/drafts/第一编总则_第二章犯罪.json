@@ -1,0 +1,1272 @@
+{
+ "art:13": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "犯罪的概念：我国采形式与实质相统一的犯罪定义——危害社会且依照法律应受刑罚处罚的行为才是犯罪",
+     "rules": [
+      "k13-def"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "实质特征：行为危害社会（危害国家主权、领土完整和安全，分裂国家、颠覆人民民主专政政权和推翻社会主义制度，破坏社会秩序和经济秩序，侵犯国有财产、劳动群众集体所有财产、公民私人所有财产，侵犯公民人身权利、民主权利和其他权利等）",
+     "rules": [
+      "k13-def"
+     ]
+    },
+    {
+     "text": "形式特征：依照法律应当受刑罚处罚（刑事违法性与应受刑罚惩罚性）",
+     "rules": [
+      "k13-def"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "但书：情节显著轻微危害不大的，不认为是犯罪（定量要求，排除犯罪的成立）",
+     "rules": [
+      "k13-proviso"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "同时具备危害社会性与依法应受刑罚处罚性、且不属但书情形的行为，都是犯罪",
+     "rules": [
+      "k13-def"
+     ]
+    },
+    {
+     "text": "行为形式上符合分则某罪的构成要件，但情节显著轻微危害不大的，不认为是犯罪，因而不负刑事责任、不予定罪（如已满14不满16周岁的人强拿硬要少量财物，形式上符合抢劫特征）",
+     "rules": [
+      "k13-proviso-resp"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "但书优先于犯罪定义的一般规定：即使形式上符合犯罪特征，情节显著轻微危害不大的仍排除犯罪，赋予司法机关酌情出罪的权力，避免拘泥法律形式作出刻板判决",
+     "rules": [
+      "k13-proviso",
+      "k13-def"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第13条是对分则各具体犯罪共同特征的高度概括，兼具定性（危害性、违法性）与定量（但书）要求；与分则中盗窃、诈骗、抢夺、敲诈勒索、故意毁坏财物的“数额较大”，侮辱、诽谤的“情节严重”，寻衅滋事、遗弃、虐待的“情节恶劣”，以及经济犯罪的数额限制相呼应，我国犯罪构成门槛较高",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k13-def",
+    "srcs": [
+     "art13#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "sociallyHarmful(X)",
+     "punishableByLaw(X)",
+     "~obviouslyMinorCircumstancesAndLittleHarm(X)"
+    ],
+    "heads": [
+     "crime(P,X)"
+    ],
+    "auth": "npc",
+    "note": "危害社会、依照法律应当受刑罚处罚的行为都是犯罪，但情节显著轻微危害不大的除外"
+   },
+   {
+    "key": "k13-proviso",
+    "srcs": [
+     "art13#1"
+    ],
+    "body": [
+     "performsAct(P,X)",
+     "obviouslyMinorCircumstancesAndLittleHarm(X)"
+    ],
+    "heads": [
+     "-crime(P,X)"
+    ],
+    "auth": "npc",
+    "note": "但书：情节显著轻微危害不大的，不认为是犯罪"
+   },
+   {
+    "key": "k13-proviso-resp",
+    "srcs": [
+     "art13#1"
+    ],
+    "body": [
+     "constitutes(P,X,C)",
+     "obviouslyMinorCircumstancesAndLittleHarm(X)"
+    ],
+    "heads": [
+     "-crime(P,X)",
+     "-responsible(P,X,C)",
+     "-convicted(P,X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "形式上符合分则构成要件但情节显著轻微危害不大的，依但书出罪，不负刑事责任、不予定罪；出罪与不定罪的后果系由但书“不认为是犯罪”推得（学理与笔记：14—16周岁强拿硬要少量财物例）"
+   }
+  ],
+  "overrides": [
+   [
+    "k13-proviso",
+    "k13-def",
+    "推断：结论冲突（('crime', '+')），k13-proviso 为例外或更具体"
+   ],
+   [
+    "k13-def",
+    "k13-proviso-resp",
+    "推断：结论冲突（('crime', '+')），k13-def 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "performsAct": "performsAct(P,X)：人P实施了行为（事件）X",
+   "sociallyHarmful": "sociallyHarmful(X)：行为X危害社会（危害国家主权、领土完整和安全，分裂国家、颠覆人民民主专政政权和推翻社会主义制度，破坏社会秩序和经济秩序，侵犯国有财产、劳动群众集体所有财产、公民私人所有财产，侵犯公民人身权利、民主权利和其他权利等）",
+   "punishableByLaw": "punishableByLaw(X)：行为X依照法律应当受刑罚处罚",
+   "obviouslyMinorCircumstancesAndLittleHarm": "obviouslyMinorCircumstancesAndLittleHarm(X)：行为X情节显著轻微危害不大（第13条但书情形）",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "convicted": "定罪"
+  }
+ },
+ "art:14": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "行为是否成立故意犯罪，以及故意犯罪是否应负刑事责任",
+     "rules": [
+      "k14-def",
+      "k14-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "认识因素：明知自己的行为会发生危害社会的结果；意志因素：希望或者放任该结果发生；并且因而构成犯罪",
+     "rules": [
+      "k14-def"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "同时具备上述认识因素与意志因素并构成犯罪的，是故意犯罪（包括直接故意与间接故意）",
+     "rules": [
+      "k14-def"
+     ]
+    },
+    {
+     "text": "故意犯罪，应当负刑事责任",
+     "rules": [
+      "k14-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条是故意犯罪（罪过形式）的定义，不是犯罪概念的定义；笔记所引俄罗斯联邦刑法第14条“以刑罚相威胁所禁止的有罪过地实施的危害社会的行为”属于犯罪的形式与实质结合定义，与我国刑法第14条不同，仅作比较法参考，不产生规则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k14-def",
+    "srcs": [
+     "art14#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "knowsHarmfulResult(P,X)",
+     "hopesOrAllowsResult(P,X)"
+    ],
+    "heads": [
+     "intentionalCrime(X)"
+    ],
+    "auth": "npc",
+    "note": "明知行为会发生危害社会的结果并希望或放任该结果发生因而构成犯罪的，是故意犯罪"
+   },
+   {
+    "key": "k14-2",
+    "srcs": [
+     "art14#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "intentionalCrime(X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "responsible(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "故意犯罪应当负刑事责任，即对符合构成要件的故意犯罪成立刑事责任"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "knowsHarmfulResult": "knowsHarmfulResult(P,X)：P 明知自己的行为 X 会发生危害社会的结果（认识因素）",
+   "hopesOrAllowsResult": "hopesOrAllowsResult(P,X)：P 希望或者放任行为 X 的危害社会结果发生（意志因素，含直接故意与间接故意）",
+   "intentionalCrime": "故意犯罪",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任"
+  }
+ },
+ "art:15": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "过失犯罪（疏忽大意的过失与过于自信的过失）如何认定，以及过失行为在什么范围内负刑事责任",
+     "rules": [
+      "k15-1",
+      "k15-2",
+      "k15-3",
+      "k15-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人应当预见自己的行为可能发生危害社会的结果（有预见义务且有预见可能性）",
+     "rules": [
+      "k15-1"
+     ]
+    },
+    {
+     "text": "因为疏忽大意而没有预见——疏忽大意的过失",
+     "rules": [
+      "k15-1"
+     ]
+    },
+    {
+     "text": "已经预见而轻信能够避免——过于自信的过失",
+     "rules": [
+      "k15-2"
+     ]
+    },
+    {
+     "text": "以致发生这种危害社会的结果：过失犯罪以危害结果实际发生为成立要件",
+     "rules": [
+      "k15-1",
+      "k15-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失行为，法律没有规定为犯罪的，不负刑事责任（过失犯罪以法律有规定为限）",
+     "rules": [
+      "k15-4"
+     ]
+    },
+    {
+     "text": "损害由不能预见的原因引起（意外事件），行为人不应当预见，不成立过失犯罪",
+     "rules": [
+      "k15-accident"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述两种过失形态之一并发生危害结果的，是过失犯罪",
+     "rules": [
+      "k15-1",
+      "k15-2"
+     ]
+    },
+    {
+     "text": "过失犯罪，法律有规定的才负刑事责任",
+     "rules": [
+      "k15-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款“法律有规定的才负刑事责任”是限定：法律无处罚过失的规定时，排除刑事责任的成立",
+     "rules": [
+      "k15-4",
+      "k15-3"
+     ]
+    },
+    {
+     "text": "无预见可能性时排除疏忽大意过失的认定",
+     "rules": [
+      "k15-accident",
+      "k15-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "疏忽大意的过失（应当预见而未预见）与过于自信的过失（已预见但轻信能避免）的区别在于对危害结果有无认识",
+     "rules": [
+      "k15-1",
+      "k15-2"
+     ]
+    },
+    {
+     "text": "过于自信的过失与间接故意：前者轻信能够避免、反对结果发生，后者放任结果发生；本条只规定过失形态",
+     "rules": [
+      "k15-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k15-1",
+    "srcs": [
+     "art15#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "shouldForeseeHarmfulResult(P,X)",
+     "failedToForeseeDueToCarelessness(P,X)",
+     "harmfulResultOccurred(X)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "npc",
+    "note": "应当预见而因疏忽大意没有预见，以致发生危害社会结果的，是过失犯罪（疏忽大意的过失）"
+   },
+   {
+    "key": "k15-2",
+    "srcs": [
+     "art15#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "foresawHarmfulResult(P,X)",
+     "lightlyBelievedCouldAvoid(P,X)",
+     "harmfulResultOccurred(X)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "npc",
+    "note": "已经预见而轻信能够避免，以致发生危害社会结果的，是过失犯罪（过于自信的过失）"
+   },
+   {
+    "key": "k15-3",
+    "srcs": [
+     "art15#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "negligentCrime(X)",
+     "constitutes(P,X,C)",
+     "lawProvidesNegligentLiability(C)"
+    ],
+    "heads": [
+     "responsible(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "过失犯罪，法律有规定的才负刑事责任"
+   },
+   {
+    "key": "k15-4",
+    "srcs": [
+     "art15#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "negligentCrime(X)",
+     "constitutes(P,X,C)",
+     "-lawProvidesNegligentLiability(C)"
+    ],
+    "heads": [
+     "-responsible(P,X,C)"
+    ],
+    "auth": "npc",
+    "note": "第2款的反面解释：法律未规定处罚该过失行为的，不负刑事责任"
+   },
+   {
+    "key": "k15-accident",
+    "srcs": [
+     "art15#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "harmfulResultOccurred(X)",
+     "-shouldForeseeHarmfulResult(P,X)"
+    ],
+    "heads": [
+     "-negligentCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理（意外事件，参见第16条）：损害由不能预见的原因引起、行为人不应当预见的，欠缺预见可能性，不成立过失犯罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k15-accident",
+    "k15-1",
+    "推断：结论冲突（('negligentCrime', '+')），k15-accident 为例外或更具体"
+   ],
+   [
+    "k15-accident",
+    "k15-2",
+    "推断：结论冲突（('negligentCrime', '+')），k15-accident 为例外或更具体"
+   ],
+   [
+    "k15-4",
+    "k15-3",
+    "推断：结论冲突（('responsible', '+')），k15-4 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "shouldForeseeHarmfulResult": "shouldForeseeHarmfulResult(P,X)：P 应当预见自己的行为 X 可能发生危害社会的结果（有预见义务与预见可能性）",
+   "failedToForeseeDueToCarelessness": "failedToForeseeDueToCarelessness(P,X)：P 因疏忽大意而没有预见行为 X 的危害结果",
+   "harmfulResultOccurred": "harmfulResultOccurred(X)：行为 X 实际发生了危害社会的结果",
+   "negligentCrime": "过失犯罪",
+   "foresawHarmfulResult": "foresawHarmfulResult(P,X)：P 已经预见行为 X 可能发生危害社会的结果",
+   "lightlyBelievedCouldAvoid": "lightlyBelievedCouldAvoid(P,X)：P 轻信能够避免行为 X 的危害结果",
+   "constitutes": "符合构成要件",
+   "lawProvidesNegligentLiability": "lawProvidesNegligentLiability(C)：法律对罪名 C 的过失形态规定了刑事责任",
+   "responsible": "负刑事责任"
+  }
+ },
+ "art:16": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "行为客观上造成损害结果，但行为人无故意也无过失时，是否成立犯罪、是否负刑事责任（无罪过事件）",
+     "rules": [
+      "k16-1",
+      "k16-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "无罪过事件的三项条件：客观上造成了损害结果；不是出于行为人的故意或者过失；损害由不能抗拒或者不能预见的原因所引起",
+     "rules": [
+      "k16-accident",
+      "k16-force"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "损害由不能预见的原因引起的，是意外事件，属无罪过事件",
+     "rules": [
+      "k16-accident"
+     ]
+    },
+    {
+     "text": "损害由不能抗拒的原因引起的，是不可抗力，属无罪过事件",
+     "rules": [
+      "k16-force"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "意外事件与不可抗力均为无罪过事件，不是犯罪",
+     "rules": [
+      "k16-1"
+     ]
+    },
+    {
+     "text": "既不成立犯罪，也就不负刑事责任（由“不是犯罪”推出的体系结论）",
+     "rules": [
+      "k16-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "应当预见而因疏忽大意没有预见的，成立疏忽大意的过失（过失犯罪），排除意外事件的认定",
+     "rules": [
+      "k16-negligence"
+     ]
+    },
+    {
+     "text": "本条体现主观罪过责任原则、主客观相统一，摒弃结果责任、禁止客观归罪（宣示性说明，不单独形成规则）",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "意外事件与疏忽大意过失的界限：对损害结果能否预见、应否预见——不能预见的为意外事件，应当预见而未预见的为过失犯罪",
+     "rules": [
+      "k16-negligence",
+      "k16-accident"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k16-accident",
+    "srcs": [
+     "art16"
+    ],
+    "body": [
+     "act(P,X)",
+     "causedDamage(X)",
+     "-intentionalCrime(X)",
+     "-negligentCrime(X)",
+     "unforeseeableCause(X)"
+    ],
+    "heads": [
+     "accidentEvent(P,X)"
+    ],
+    "auth": "npc",
+    "note": "客观造成损害但非故意非过失、由不能预见的原因引起的，是意外事件"
+   },
+   {
+    "key": "k16-force",
+    "srcs": [
+     "art16"
+    ],
+    "body": [
+     "act(P,X)",
+     "causedDamage(X)",
+     "-intentionalCrime(X)",
+     "-negligentCrime(X)",
+     "irresistibleCause(X)"
+    ],
+    "heads": [
+     "forceMajeureEvent(P,X)"
+    ],
+    "auth": "npc",
+    "note": "客观造成损害但非故意非过失、由不能抗拒的原因引起的，是不可抗力"
+   },
+   {
+    "key": "k16-1",
+    "srcs": [
+     "art16"
+    ],
+    "body": [
+     "act(P,X)",
+     {
+      "or": [
+       "accidentEvent(P,X)",
+       "forceMajeureEvent(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "noFaultEvent(P,X)",
+     "-crime(P,X)"
+    ],
+    "auth": "npc",
+    "note": "意外事件或不可抗力属无罪过事件，不是犯罪"
+   },
+   {
+    "key": "k16-2",
+    "srcs": [
+     "art16"
+    ],
+    "body": [
+     "noFaultEvent(P,X)",
+     "constitutes(P,X,C)"
+    ],
+    "heads": [
+     "-responsible(P,X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "条文仅规定“不是犯罪”，不负刑事责任系由此推出的体系结论（主观罪过责任原则）"
+   },
+   {
+    "key": "k16-negligence",
+    "srcs": [
+     "art16"
+    ],
+    "body": [
+     "act(P,X)",
+     "causedDamage(X)",
+     "shouldHaveForeseen(P,X)",
+     "failedToForesee(P,X)"
+    ],
+    "heads": [
+     "negligentCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "应当预见而因疏忽大意未预见的，属疏忽大意的过失而非意外事件，系学理对第16条“不能预见”的反面解释"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "causedDamage": "造成损害",
+   "intentionalCrime": "故意犯罪",
+   "negligentCrime": "过失犯罪",
+   "unforeseeableCause": "unforeseeableCause(X)：行为 X 的损害由不能预见的原因所引起",
+   "accidentEvent": "accidentEvent(P,X)：P 的行为 X 属于意外事件",
+   "irresistibleCause": "irresistibleCause(X)：行为 X 的损害由不能抗拒的原因所引起",
+   "forceMajeureEvent": "forceMajeureEvent(P,X)：P 的行为 X 属于不可抗力事件",
+   "noFaultEvent": "noFaultEvent(P,X)：P 的行为 X 属于无罪过事件",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "shouldHaveForeseen": "shouldHaveForeseen(P,X)：P 对行为 X 的损害结果应当预见",
+   "failedToForesee": "failedToForesee(P,X)：P 因疏忽大意而没有预见行为 X 的损害结果"
+  }
+ },
+ "art:25": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "二人以上共同实施犯罪，是否成立共同犯罪（共犯）",
+     "rules": [
+      "k25-def",
+      "k25-neg"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "共同犯罪的成立要件：主体为二人以上、主观上有共同犯罪故意、客观上共同实施故意犯罪行为",
+     "rules": [
+      "k25-def"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "二人以上共同过失犯罪的，不以共同犯罪论处",
+     "rules": [
+      "k25-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同过失犯罪中应当负刑事责任的人，按照他们各自所犯的罪分别处罚（不适用共犯的处罚原则）",
+     "rules": [
+      "k25-sep"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第2款关于共同过失的排除规定，优先于第1款共同犯罪的一般定义",
+     "rules": [
+      "k25-neg",
+      "k25-def"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "缺乏共同故意（如一方故意一方过失、无意思联络的同时犯）不成立共同犯罪——系第1款“共同故意”要件的学理反面推论",
+     "rules": [
+      "k25-doct"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k25-def",
+    "srcs": [
+     "art25#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "twoOrMoreActors(X)",
+     "jointIntent(X)",
+     "intentionalCrime(X)"
+    ],
+    "heads": [
+     "jointCrime(X)"
+    ],
+    "auth": "npc",
+    "note": "共同犯罪是指二人以上共同故意犯罪"
+   },
+   {
+    "key": "k25-neg",
+    "srcs": [
+     "art25#2"
+    ],
+    "body": [
+     "twoOrMoreActors(X)",
+     "jointNegligence(X)",
+     "negligentCrime(X)"
+    ],
+    "heads": [
+     "-jointCrime(X)"
+    ],
+    "auth": "npc",
+    "note": "二人以上共同过失犯罪，不以共同犯罪论处"
+   },
+   {
+    "key": "k25-sep",
+    "srcs": [
+     "art25#2"
+    ],
+    "body": [
+     "crime(P,X)",
+     "twoOrMoreActors(X)",
+     "jointNegligence(X)",
+     "negligentCrime(X)",
+     "responsible(P,X,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceSeparately(P,X,C)"
+     }
+    ],
+    "auth": "npc",
+    "note": "共同过失犯罪中应当负刑事责任的，按照他们所犯的罪分别处罚"
+   },
+   {
+    "key": "k25-doct",
+    "srcs": [
+     "art25#1"
+    ],
+    "body": [
+     "twoOrMoreActors(X)",
+     "-jointIntent(X)"
+    ],
+    "heads": [
+     "-jointCrime(X)"
+    ],
+    "auth": "doctrine",
+    "note": "学理推论：无共同故意（一方故意一方过失、同时犯等）不成立共同犯罪，条文未明文，系第1款要件的反面解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k25-def",
+    "k25-neg",
+    "推断：结论冲突（('jointCrime', '+')），k25-def 为例外或更具体"
+   ],
+   [
+    "k25-def",
+    "k25-doct",
+    "推断：结论冲突（('jointCrime', '+')），k25-def 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "twoOrMoreActors": "twoOrMoreActors(X)：事件X由二人以上共同实施",
+   "jointIntent": "jointIntent(X)：事件X的行为人之间具有共同犯罪故意",
+   "intentionalCrime": "故意犯罪",
+   "jointCrime": "jointCrime(X)：X 属于共同犯罪",
+   "jointNegligence": "jointNegligence(X)：事件X的行为人系共同过失",
+   "negligentCrime": "过失犯罪",
+   "responsible": "负刑事责任",
+   "sentenceSeparately": "sentenceSeparately(P,X,C)：对P按其所犯的罪C分别定罪处罚（不适用共犯处罚原则）"
+  }
+ },
+ "art:26": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "主犯的认定标准及主犯承担刑事责任的范围（集团首要分子与其他主犯的区别）",
+     "rules": [
+      "k26-def",
+      "k26-3",
+      "k26-4"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主犯：组织、领导犯罪集团进行犯罪活动的，或者在共同犯罪中起主要作用的，是主犯",
+     "rules": [
+      "k26-def"
+     ]
+    },
+    {
+     "text": "犯罪集团：三人以上为共同实施犯罪而组成的较为固定的犯罪组织",
+     "rules": [
+      "k26-group"
+     ]
+    },
+    {
+     "text": "属于犯罪集团首要分子的，认定为集团首要分子身份（第3款的适用对象）",
+     "rules": [
+      "k26-ring"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "犯罪集团首要分子以外的主犯，才按其参与的或者组织、指挥的全部犯罪处罚",
+     "rules": [
+      "k26-4"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对组织、领导犯罪集团的首要分子，按照集团所犯的全部罪行处罚（笔记重点：第26条第3款）",
+     "rules": [
+      "k26-3"
+     ]
+    },
+    {
+     "text": "对第3款规定以外的主犯，应当按照其所参与的或者组织、指挥的全部犯罪处罚",
+     "rules": [
+      "k26-4"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第3款优先于第4款：首要分子按集团全部罪行负责，第4款只适用于第3款以外的主犯",
+     "rules": [
+      "k26-3",
+      "k26-4"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "主犯≠首要分子：犯罪集团首要分子当然是主犯，但主犯还包括在一般共同犯罪中起主要作用者；处罚范围亦不同（集团全部罪行 vs 本人参与或组织、指挥的全部犯罪）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k26-def",
+    "srcs": [
+     "art26#1"
+    ],
+    "body": [
+     "crime(P,X)",
+     "jointCrime(X)",
+     {
+      "or": [
+       "organizesOrLeadsGroupForCrime(P,X)",
+       "playsMainRole(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "principalOffender(P,X)"
+    ],
+    "auth": "npc",
+    "note": "组织、领导犯罪集团进行犯罪活动或在共同犯罪中起主要作用的，是主犯"
+   },
+   {
+    "key": "k26-group",
+    "srcs": [
+     "art26#2"
+    ],
+    "body": [
+     "criminalOrganization(G)",
+     "memberCountAtLeastThree(G)",
+     "formedForJointCrime(G)",
+     "relativelyFixed(G)"
+    ],
+    "heads": [
+     "criminalGroup(G)"
+    ],
+    "auth": "npc",
+    "note": "三人以上为共同实施犯罪而组成的较为固定的犯罪组织，是犯罪集团"
+   },
+   {
+    "key": "k26-ring",
+    "srcs": [
+     "art26#3"
+    ],
+    "body": [
+     "ringleaderOfCriminalGroup(P,G)"
+    ],
+    "heads": [
+     "groupRingleader(P)"
+    ],
+    "auth": "npc",
+    "note": "组织、领导犯罪集团的首要分子具有集团首要分子身份，适用第3款的处罚范围"
+   },
+   {
+    "key": "k26-3",
+    "srcs": [
+     "art26#3"
+    ],
+    "body": [
+     "criminalGroup(G)",
+     "ringleaderOfCriminalGroup(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishForAllGroupCrimes(P,G)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对组织、领导犯罪集团的首要分子，按照集团所犯的全部罪行处罚"
+   },
+   {
+    "key": "k26-4",
+    "srcs": [
+     "art26#4"
+    ],
+    "body": [
+     "principalOffender(P,X)",
+     "crime(P,X)",
+     {
+      "or": [
+       "participatesIn(P,X)",
+       "organizesOrDirects(P,X)"
+      ]
+     },
+     "~groupRingleader(P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishForParticipatedOrDirectedCrimes(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第3款以外的主犯，按照其所参与的或者组织、指挥的全部犯罪处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "jointCrime": "jointCrime(X)：X 属于共同犯罪",
+   "organizesOrLeadsGroupForCrime": "organizesOrLeadsGroupForCrime(P,X)：P 组织、领导犯罪集团进行犯罪活动 X",
+   "playsMainRole": "playsMainRole(P,X)：P 在共同犯罪 X 中起主要作用",
+   "principalOffender": "principalOffender(P,X)：P 就犯罪 X 是主犯",
+   "criminalOrganization": "criminalOrganization(G)：G 是犯罪组织",
+   "memberCountAtLeastThree": "memberCountAtLeastThree(G)：G 的成员为三人以上",
+   "formedForJointCrime": "formedForJointCrime(G)：G 为共同实施犯罪而组成",
+   "relativelyFixed": "relativelyFixed(G)：G 的组织较为固定",
+   "criminalGroup": "criminalGroup(G)：G 是犯罪集团",
+   "ringleaderOfCriminalGroup": "犯罪集团的首要分子",
+   "groupRingleader": "groupRingleader(P)：P 是犯罪集团的首要分子（组织、领导者）",
+   "punishForAllGroupCrimes": "punishForAllGroupCrimes(P,G)：按照犯罪集团 G 所犯的全部罪行对 P 处罚",
+   "participatesIn": "participatesIn(P,X)：P 参与犯罪 X",
+   "organizesOrDirects": "organizesOrDirects(P,X)：P 组织、指挥犯罪 X",
+   "punishForParticipatedOrDirectedCrimes": "punishForParticipatedOrDirectedCrimes(P,X)：按照 P 所参与的或者组织、指挥的全部犯罪 X 处罚"
+  }
+ },
+ "art:30": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "公司、企业、事业单位、机关、团体实施危害社会的行为，能否成立单位犯罪并由单位负刑事责任",
+     "rules": [
+      "k30-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体条件：限于公司、企业、事业单位、机关、团体（单位）",
+     "rules": [
+      "k30-unit"
+     ]
+    },
+    {
+     "text": "行为与法定条件：单位实施了危害社会的行为，该行为符合某罪构成要件，且法律明文规定为单位犯罪",
+     "rules": [
+      "k30-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律未将该行为规定为单位犯罪的，即使符合罪名构成要件，也不成立单位犯罪、单位不负刑事责任（只能追究相关自然人）",
+     "rules": [
+      "k30-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "成立单位犯罪的，单位应当负刑事责任",
+     "rules": [
+      "k30-1"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k30-unit",
+    "srcs": [
+     "art30#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "company(U)",
+       "enterprise(U)",
+       "publicInstitution(U)",
+       "stateOrgan(U)",
+       "socialOrganization(U)"
+      ]
+     }
+    ],
+    "heads": [
+     "unit(U)"
+    ],
+    "auth": "npc",
+    "note": "单位犯罪的主体限于公司、企业、事业单位、机关、团体"
+   },
+   {
+    "key": "k30-1",
+    "srcs": [
+     "art30#1"
+    ],
+    "body": [
+     "unit(U)",
+     "commitsHarmfulAct(U,X)",
+     "constitutes(U,X,C)",
+     "lawPrescribesUnitCrime(X)"
+    ],
+    "heads": [
+     "unitCrime(U,X,C)",
+     "responsible(U,X,C)"
+    ],
+    "auth": "npc",
+    "note": "单位实施危害社会的行为，法律规定为单位犯罪的，成立单位犯罪并负刑事责任"
+   },
+   {
+    "key": "k30-neg",
+    "srcs": [
+     "art30#1"
+    ],
+    "body": [
+     "unit(U)",
+     "commitsHarmfulAct(U,X)",
+     "constitutes(U,X,C)",
+     "-lawPrescribesUnitCrime(X)"
+    ],
+    "heads": [
+     "-unitCrime(U,X,C)",
+     "-responsible(U,X,C)"
+    ],
+    "auth": "doctrine",
+    "note": "学理与罪刑法定原则的反面推论：法律未规定为单位犯罪的，不成立单位犯罪，单位不负刑事责任，只追究相关自然人"
+   }
+  ],
+  "overrides": [
+   [
+    "k30-neg",
+    "k30-1",
+    "推断：结论冲突（('unitCrime', '+')），k30-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "company": "company(U)：U 是公司",
+   "enterprise": "enterprise(U)：U 是企业",
+   "publicInstitution": "publicInstitution(U)：U 是事业单位",
+   "stateOrgan": "stateOrgan(U)：U 是机关",
+   "socialOrganization": "socialOrganization(U)：U 是团体",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "commitsHarmfulAct": "commitsHarmfulAct(U,X)：单位 U 实施了危害社会的行为 X",
+   "constitutes": "符合构成要件",
+   "lawPrescribesUnitCrime": "lawPrescribesUnitCrime(X)：法律明文规定行为 X 为单位犯罪",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "responsible": "负刑事责任"
+  },
+  "arity_conflict": "谓词 unitCrime 已有用法为 2 个参数，这里用了 3 个"
+ },
+ "art:31": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "单位犯罪的处罚模式：是否对单位与责任人员一并处罚（两罚制），以及分则或其他法律另有规定时如何适用",
+     "rules": [
+      "k31-unit",
+      "k31-persons",
+      "k31-special"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "成立单位犯罪：单位U实施了犯罪事件X",
+     "rules": [
+      "k31-unit",
+      "k31-persons"
+     ]
+    },
+    {
+     "text": "被处罚的自然人限于该单位中直接负责的主管人员或者其他直接责任人员",
+     "rules": [
+      "k31-persons"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "本法分则和其他法律对单位犯罪处罚另有规定的，依照该规定（如只处罚责任人员的单罚制）",
+     "rules": [
+      "k31-special"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对单位判处罚金",
+     "rules": [
+      "k31-unit"
+     ]
+    },
+    {
+     "text": "对直接负责的主管人员和其他直接责任人员判处刑罚",
+     "rules": [
+      "k31-persons"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "分则或其他法律的特别规定优先于第31条的两罚原则",
+     "rules": [
+      "k31-special"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "两罚是原则：既对单位判处罚金，又对责任人员判处刑罚；单罚是例外，须有分则或其他法律明文规定",
+     "rules": [
+      "k31-unit",
+      "k31-persons",
+      "k31-special"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k31-unit",
+    "srcs": [
+     "art31"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "~specialProvisionOnUnitCrimePunishment(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(U,X,fine)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯罪的，对单位判处罚金（量刑方式常量 fine 表示罚金）；分则或其他法律另有规定的除外"
+   },
+   {
+    "key": "k31-persons",
+    "srcs": [
+     "art31"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "~specialProvisionOnUnitCrimePunishment(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,criminalPunishment)"
+     }
+    ],
+    "auth": "npc",
+    "note": "并对单位中直接负责的主管人员和其他直接责任人员判处刑罚（criminalPunishment 表示依分则相应规定的刑罚）"
+   },
+   {
+    "key": "k31-special",
+    "srcs": [
+     "art31"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "specialProvisionOnUnitCrimePunishment(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applySpecialProvisionOnUnitCrime(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "本法分则和其他法律另有规定的，依照该特别规定处罚单位犯罪（如单罚制）"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "specialProvisionOnUnitCrimePunishment": "specialProvisionOnUnitCrimePunishment(X)：本法分则或其他法律对犯罪事件X的单位犯罪处罚另有规定",
+   "sentence": "量刑",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "applySpecialProvisionOnUnitCrime": "applySpecialProvisionOnUnitCrime(U,X)：依分则或其他法律的特别规定处罚单位U的犯罪X"
+  }
+ }
+}

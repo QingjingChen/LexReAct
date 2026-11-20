@@ -86,6 +86,13 @@ def draft_risk(rid, d, arts, notes_path=None):
         text = ''.join(CC.text_of(f'art{x}') for x in arts if isinstance(x, int)) if arts else ''
         if BUT.search(text) and not d.get('overrides') and not d['nl'].get('exceptions') and not d['nl'].get('priority'):
             out += '⚠ 重点核对：条文有“但是／除外”，草稿未写例外或优先关系\n'
+    if d.get('recovered'):
+        inf = [o for o in d.get('overrides') or [] if str(o[2]).startswith('推断')]
+        out += ('⚠ 本行草稿从审核表恢复（原草稿文件在重启中丢失）：同一条法条内的优先关系审核表未输出、无法恢复，'
+                + (f'现有 {len(inf)} 条为程序按结论冲突推断（例外或更具体的规则优先），请核对方向并补全遗漏的优先关系\n' if inf
+                   else '本行未推断出优先关系，请核对是否需要\n'))
+    if d.get('arity_conflict'):
+        out += f'⚠ 谓词参数个数与其他行不一致：{d["arity_conflict"]}\n'
     return out
 
 
@@ -434,6 +441,10 @@ def main():
     rules, overrides = all_rules()
     drafts = load_drafts()
     xc = load_crosscheck(DRAFTS.parent, 'civil')
+    vr = DRAFTS.parent / 'vocab_recovered.json'      # 从 agent 起草记录中恢复的谓词释义（qwen 版词表在重启中丢失）
+    if vr.exists():
+        for p, g in json.load(open(vr, encoding='utf-8')).items():
+            E.GLOSS.setdefault(p, g)
     for rid, d in drafts.items():
         for r in d['rules']:
             rules[r['key']] = draft_rule(r)

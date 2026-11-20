@@ -1,0 +1,825 @@
+{
+ "art:1166": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "无过错责任：法律规定不问过错应承担侵权责任的情形",
+     "rules": [
+      "c1166"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人造成他人民事权益损害（加害行为、损害、因果关系），且法律明确规定该情形不论有无过错均应承担侵权责任",
+     "rules": [
+      "c1166"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "具体构成与免责、减责事由依各该特别规定（如第1237条以下高度危险责任、第1245条以下饲养动物损害责任）",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "行为人依照该法律规定承担侵权责任，不以过错为要件",
+     "rules": [
+      "c1166"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "区别于第1165条第1款过错责任与第2款过错推定（基础规则 c1165-1、c1165-2）：过错推定可以举证无过错免责，无过错责任不因证明无过错而免责",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1166",
+    "srcs": [
+     "art1166"
+    ],
+    "body": [
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "causation(X)",
+     "strictLiabilityByLaw(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)"
+    ],
+    "note": "行为人造成他人民事权益损害，不论有无过错，法律规定应当承担侵权责任的，依照其规定承担侵权责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "strictLiabilityByLaw": "法律规定损害X所涉情形不论行为人有无过错都应承担侵权责任（无过错责任）（损害）"
+  }
+ },
+ "art:1167": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "侵权行为危及人身、财产安全时被侵权人的预防性请求权",
+     "rules": [
+      "c1167"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "侵权行为危及他人人身、财产安全",
+     "rules": [
+      "c1167"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "被侵权人有权请求侵权人承担停止侵害、排除妨碍、消除危险等侵权责任",
+     "rules": [
+      "c1167"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为预防性责任，条文未以实际损害为要件；损害赔偿依第1165条、第1166条及第二章",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1167",
+    "srcs": [
+     "art1167"
+    ],
+    "body": [
+     "endangersPersonOrProperty(A,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "requestStopRemoveEliminate(V,A,X)"
+     }
+    ],
+    "note": "侵权行为危及他人人身、财产安全的，被侵权人有权请求侵权人承担停止侵害、排除妨碍、消除危险等侵权责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "endangersPersonOrProperty": "A的侵权行为X危及V的人身、财产安全（侵权人，被侵权人，行为）",
+   "requestStopRemoveEliminate": "被侵权人V请求侵权人A就侵权行为X承担停止侵害、排除妨碍、消除危险等侵权责任（被侵权人，侵权人，行为）"
+  }
+ },
+ "art:1164": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "侵权责任编的调整对象",
+     "rules": []
+    }
+   ],
+   "conditions": [],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "侵权责任编调整因侵害民事权益产生的民事关系（宣示性条款，不形式化）",
+     "rules": []
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "具体归责规则见第1165条（过错、过错推定，已在基础规则 c1165-1、c1165-2 形式化）与第1166条（无过错责任）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g0638": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "受害人过错对侵权责任的影响：过失相抵（减轻）与受害人故意（免责）",
+     "rules": [
+      "c1173",
+      "c1174"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被侵权人对同一损害的发生或者扩大有过错",
+     "rules": [
+      "c1173"
+     ]
+    },
+    {
+     "text": "损害是因受害人故意造成的",
+     "rules": [
+      "c1174"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "饲养动物损害责任对受害人故意另有规定（第1245条可以不承担或减轻、第1246条只可减轻、第1247条不得免减），不适用第1174条的一概免责",
+     "rules": [
+      "c1174-special",
+      "c1174"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "可以减轻侵权人的责任（不免除）",
+     "rules": [
+      "c1173"
+     ]
+    },
+    {
+     "text": "行为人不承担责任",
+     "rules": [
+      "c1174"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "受害人故意的免责排除第1165条过错责任、过错推定和第1166条无过错责任下的责任成立",
+     "rules": [
+      "c1174"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1172条（分别侵权按份责任）见 card:g7513 规则 c1172-share、c1172-equal，本行不重复形式化",
+     "rules": []
+    },
+    {
+     "text": "第1175条第三人原因见 card:g7572（规则在 card:g0609 c1175-1、c1175-2）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1173",
+    "srcs": [
+     "art1173"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "fault(V,X)"
+    ],
+    "heads": [
+     "liabilityMayBeReduced(A,X)"
+    ],
+    "note": "被侵权人对同一损害的发生或者扩大有过错的，可以减轻侵权人的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1174",
+    "srcs": [
+     "art1174"
+    ],
+    "body": [
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "victimIntent(V,X)",
+     "~victimIntentGovernedBySpecialRule(X)"
+    ],
+    "heads": [
+     "-liable(A,V,X)"
+    ],
+    "note": "损害是因受害人故意造成的，行为人不承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1174-special",
+    "srcs": [
+     "art1174"
+    ],
+    "body": [
+     "animalDamage(An,V,X)"
+    ],
+    "heads": [
+     "victimIntentGovernedBySpecialRule(X)"
+    ],
+    "note": "学理（笔记 g0638“除了饲养动物受害人故意是减轻责任，其它都是免责”）：饲养动物损害责任就受害人故意另有第1245—1247条特别规定，排除第1174条的一般免责",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1174",
+    "c1165-1",
+    "受害人故意造成损害的，行为人不承担责任"
+   ],
+   [
+    "c1174",
+    "c1165-2",
+    "受害人故意造成损害的，过错推定责任亦免除"
+   ],
+   [
+    "c1174",
+    "c1166",
+    "无过错责任原则下受害人故意仍为免责事由（法律另有规定的除外）"
+   ]
+  ],
+  "predicates": {
+   "victimIntentGovernedBySpecialRule": "法律就损害X中受害人故意的效果另有特别规定（如饲养动物损害责任），不适用第1174条一般免责（损害）"
+  }
+ },
+ "card:g7572": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "损害因第三人造成时的责任主体",
+     "rules": []
+    }
+   ],
+   "conditions": [
+    {
+     "text": "损害是因第三人造成的（笔记：损害完全由第三人过错造成）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有不真正连带或补充责任安排的（如第1198条第2款、第1201条、第1233条、第1250条），依特别规定",
+     "rules": []
+    }
+   ],
+   "effects": [
+    {
+     "text": "第三人应当承担侵权责任；被诉的行为人不承担责任——第1175条已在 card:g0609 形式化为 c1175-1、c1175-2，本行不重复，只补充其与第1165条的优先关系",
+     "rules": []
+    }
+   ],
+   "priority": [
+    {
+     "text": "第三人原因免责（c1175-2）优先于第1165条过错责任、过错推定（c1165-1、c1165-2）；不对第1166条无过错责任声明优先，因环境污染、饲养动物等无过错责任中第三人过错不当然免责",
+     "rules": []
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "区别于第593条合同法上第三人原因违约：违约方仍须向对方承担违约责任（LEGO 卡片所述为合同规则，与本条无关）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [],
+  "overrides": [
+   [
+    "c1175-2",
+    "c1165-1",
+    "第1175条：损害因第三人造成的，由第三人承担侵权责任，被诉行为人不承担"
+   ],
+   [
+    "c1175-2",
+    "c1165-2",
+    "第1175条：损害因第三人造成的，排除过错推定责任"
+   ]
+  ],
+  "predicates": {}
+ },
+ "card:g7513": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第一章　一般规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "数人侵权的类型（共同侵权、教唆帮助、共同危险、无意思联络的分别侵权）及其责任形态（连带或按份）",
+     "rules": [
+      "c1168",
+      "c1169-1",
+      "c1169-2",
+      "c1170-unknown",
+      "c1171",
+      "c1172-share",
+      "c1172-equal"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "共同侵权：二人以上共同实施侵权行为造成他人损害；学理上要求主体复数、意思联络（共同故意、共同过失或故意与过失混合）、损害单一",
+     "rules": [
+      "c1168",
+      "c1168-def"
+     ]
+    },
+    {
+     "text": "教唆、帮助他人实施侵权行为",
+     "rules": [
+      "c1169-1",
+      "c1169-2"
+     ]
+    },
+    {
+     "text": "共同危险行为：二人以上实施危及他人人身、财产安全的行为，其中一人或数人的行为造成损害",
+     "rules": [
+      "c1170-known",
+      "c1170-unknown"
+     ]
+    },
+    {
+     "text": "无意思联络的分别侵权：二人以上分别实施侵权行为造成同一损害",
+     "rules": [
+      "c1171",
+      "c1172-share",
+      "c1172-equal"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "被教唆、帮助者为无民事行为能力人或限制民事行为能力人的，不适用第1169条第1款的连带责任，改依第2款",
+     "rules": [
+      "c1169-1",
+      "c1169-2"
+     ]
+    },
+    {
+     "text": "共同危险行为中能够确定具体侵权人的，由该侵权人担责，其他行为人不承担连带责任",
+     "rules": [
+      "c1170-known",
+      "c1170-excl"
+     ]
+    },
+    {
+     "text": "分别侵权中并非每人的行为都足以造成全部损害的，不承担连带责任而按份承担",
+     "rules": [
+      "c1172-share",
+      "c1172-equal"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同侵权人承担连带责任",
+     "rules": [
+      "c1168"
+     ]
+    },
+    {
+     "text": "教唆人、帮助人与行为人承担连带责任",
+     "rules": [
+      "c1169-1"
+     ]
+    },
+    {
+     "text": "教唆、帮助无/限制民事行为能力人的，教唆人、帮助人承担侵权责任；其不得以不知道且不应当知道行为人欠缺行为能力为由抗辩（侵权编解释一第11条）",
+     "rules": [
+      "c1169-2",
+      "c1169-spc11"
+     ]
+    },
+    {
+     "text": "该无/限制民事行为能力人的监护人未尽监护职责的，承担相应的责任；被侵权人合并请求时，监护人在未尽职责范围内与教唆人、帮助人共同承担，先行支付后可就超过自己相应责任部分追偿（侵权编解释一第12条）",
+     "rules": [
+      "c1169-2g",
+      "c1169-spc12",
+      "c1169-spc12r"
+     ]
+    },
+    {
+     "text": "共同危险行为：能确定具体侵权人的由侵权人担责；不能确定的，行为人承担连带责任",
+     "rules": [
+      "c1170-known",
+      "c1170-unknown"
+     ]
+    },
+    {
+     "text": "每人行为都足以造成全部损害的，行为人承担连带责任",
+     "rules": [
+      "c1171"
+     ]
+    },
+    {
+     "text": "能够确定责任大小的各自承担相应责任；难以确定的平均承担",
+     "rules": [
+      "c1172-share",
+      "c1172-equal"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1169条第2款（被教唆帮助者欠缺行为能力）为第1款的特别规定",
+     "rules": [
+      "c1169-1",
+      "c1169-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "共同侵权有意思联络；共同危险行为各行为独立但均具致害危险且实际侵权人不明；无意思联络分别侵权各行为结合造成同一损害",
+     "rules": []
+    },
+    {
+     "text": "连带责任的对外请求与内部份额、追偿依第178条（card:g0589 c178-1、c178-share、c178-equal、c178-recourse）",
+     "rules": []
+    },
+    {
+     "text": "第1172条同时挂在 card:g0638，仅在本行形式化（c1172-share、c1172-equal）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1168-def",
+    "srcs": [
+     "art1168"
+    ],
+    "body": [
+     "tortActorOf(A,X)",
+     "multipleTortActors(X)",
+     "commonFaultAmongActors(X)"
+    ],
+    "heads": [
+     "jointTortParticipant(A,X)"
+    ],
+    "note": "学理（笔记 g7513 数人侵权·共同侵权构成要件）：主体复数且具有共同故意、共同过失或故意过失混合的意思联络，即构成共同侵权",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1168",
+    "srcs": [
+     "art1168"
+    ],
+    "body": [
+     "jointTortParticipant(A,X)",
+     "damage(V,X)"
+    ],
+    "heads": [
+     "liable(A,V,X)",
+     "tortJointLiability(A,V,X)"
+    ],
+    "note": "二人以上共同实施侵权行为，造成他人损害的，应当承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1169-1",
+    "srcs": [
+     "art1169-1"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     "liable(A,V,X)",
+     "~noCapacity(A)",
+     "~limitedCapacity(A)"
+    ],
+    "heads": [
+     "liable(B,V,X)",
+     "tortJointLiability(B,V,X)",
+     "tortJointLiability(A,V,X)"
+    ],
+    "note": "教唆、帮助他人实施侵权行为的，应当与行为人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1169-2",
+    "srcs": [
+     "art1169-2"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     {
+      "or": [
+       "noCapacity(A)",
+       "limitedCapacity(A)"
+      ]
+     },
+     "harmfulAct(A,V,X)",
+     "damage(V,X)"
+    ],
+    "heads": [
+     "liable(B,V,X)"
+    ],
+    "note": "教唆、帮助无民事行为能力人、限制民事行为能力人实施侵权行为的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1169-2g",
+    "srcs": [
+     "art1169-2"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     {
+      "or": [
+       "noCapacity(A)",
+       "limitedCapacity(A)"
+      ]
+     },
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "guardianOf(G,A)",
+     "-guardianDutyFulfilled(G,A)"
+    ],
+    "heads": [
+     "correspondingLiability(G,V,X)"
+    ],
+    "note": "该无民事行为能力人、限制民事行为能力人的监护人未尽到监护职责的，应当承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1169-spc11",
+    "srcs": [
+     "art1169-2"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     {
+      "or": [
+       "noCapacity(A)",
+       "limitedCapacity(A)"
+      ]
+     },
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "unawareOfActorIncapacity(B,A)"
+    ],
+    "heads": [
+     "liable(B,V,X)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉侵权责任编的解释（一）》（法释〔2024〕12号）第11条：教唆人、帮助人以不知道且不应当知道行为人为无/限制民事行为能力人为由主张不担责或仅与监护人承担连带责任的，不予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c1169-spc12",
+    "srcs": [
+     "art1169-2"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     "liable(B,V,X)",
+     "guardianOf(G,A)",
+     "correspondingLiability(G,V,X)"
+    ],
+    "heads": [
+     "liableTogetherWithinFaultScope(G,B,X)"
+    ],
+    "note": "侵权编解释（一）第12条：被侵权人合并请求时，教唆人、帮助人承担侵权责任，监护人在未尽到监护职责的范围内与其共同承担责任，各主体实际支付总额不超出被侵权人应受偿的损失",
+    "auth": "spc"
+   },
+   {
+    "key": "c1169-spc12r",
+    "srcs": [
+     "art1169-2"
+    ],
+    "body": [
+     "instigatesOrAids(B,A,X)",
+     "guardianOf(G,A)",
+     "liableTogetherWithinFaultScope(G,B,X)",
+     "paidBeyondOwnShare(G,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "B",
+      "content": "recourse(G,B,X)"
+     }
+    ],
+    "note": "侵权编解释（一）第12条：监护人先行支付赔偿费用后，就超过自己相应责任的部分向教唆人、帮助人追偿的，人民法院应予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c1170-known",
+    "srcs": [
+     "art1170"
+    ],
+    "body": [
+     "multipleEndangeringActs(X)",
+     "damage(V,X)",
+     "identifiedTortfeasor(T,X)"
+    ],
+    "heads": [
+     "liable(T,V,X)"
+    ],
+    "note": "二人以上实施危及他人人身、财产安全的行为造成损害，能够确定具体侵权人的，由侵权人承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1170-excl",
+    "srcs": [
+     "art1170"
+    ],
+    "body": [
+     "endangeringActParticipant(A,X)",
+     "damage(V,X)",
+     "identifiedTortfeasor(T,X)",
+     "otherThan(A,T)"
+    ],
+    "heads": [
+     "-tortJointLiability(A,V,X)"
+    ],
+    "note": "学理：能确定具体侵权人的，其余危险行为人不依共同危险行为承担连带责任（由第1170条“由侵权人承担责任”推出）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1170-unknown",
+    "srcs": [
+     "art1170"
+    ],
+    "body": [
+     "endangeringActParticipant(A,X)",
+     "multipleEndangeringActs(X)",
+     "damage(V,X)",
+     "~tortfeasorIdentified(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)",
+     "tortJointLiability(A,V,X)"
+    ],
+    "note": "不能确定具体侵权人的，实施危险行为的行为人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1171",
+    "srcs": [
+     "art1171"
+    ],
+    "body": [
+     "separateTortActor(A,X)",
+     "damage(V,X)",
+     "eachSufficientForWholeDamage(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)",
+     "tortJointLiability(A,V,X)"
+    ],
+    "note": "二人以上分别实施侵权行为造成同一损害，每个人的侵权行为都足以造成全部损害的，行为人承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1172-share",
+    "srcs": [
+     "art1172"
+    ],
+    "body": [
+     "separateTortActor(A,X)",
+     "damage(V,X)",
+     "~eachSufficientForWholeDamage(X)",
+     "liabilitySizeDeterminable(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)",
+     "bearLiabilityByShare(A,X)"
+    ],
+    "note": "二人以上分别实施侵权行为造成同一损害，能够确定责任大小的，各自承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1172-equal",
+    "srcs": [
+     "art1172"
+    ],
+    "body": [
+     "separateTortActor(A,X)",
+     "damage(V,X)",
+     "~eachSufficientForWholeDamage(X)",
+     "liabilitySizeHardToDetermine(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)",
+     "bearLiabilityEqually(A,X)"
+    ],
+    "note": "难以确定责任大小的，平均承担责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1170-excl",
+    "c1170-unknown",
+    "能确定具体侵权人时排除共同危险行为人的连带责任"
+   ]
+  ],
+  "predicates": {
+   "tortActorOf": "A是造成损害X的侵权行为的行为人之一（行为人，损害）",
+   "multipleTortActors": "造成损害X的侵权行为人为二人以上（损害）",
+   "commonFaultAmongActors": "造成损害X的数行为人之间具有共同故意、共同过失或故意与过失混合的意思联络（损害）",
+   "jointTortParticipant": "A是二人以上共同实施、造成损害X的共同侵权行为的行为人（行为人，损害）",
+   "tortJointLiability": "A就损害X对被侵权人V承担连带责任（责任人，被侵权人，损害）",
+   "instigatesOrAids": "B教唆或者帮助A实施造成损害X的侵权行为（教唆人或帮助人，行为人，损害）",
+   "unawareOfActorIncapacity": "教唆人、帮助人B不知道且不应当知道行为人A为无民事行为能力人或限制民事行为能力人（教唆帮助人，行为人）",
+   "liableTogetherWithinFaultScope": "P在其过错（未尽职责）范围内与Q共同承担损害X的赔偿责任，各主体实际支付总额不超出被侵权人应受偿的损失（共同承担者，主责任人，损害）",
+   "paidBeyondOwnShare": "P已先行支付的赔偿费用超过其就损害X应承担的相应责任（支付人，损害）",
+   "multipleEndangeringActs": "二人以上实施了危及他人人身、财产安全的行为，其中一人或数人的行为造成损害X（损害）",
+   "endangeringActParticipant": "A是就损害X实施了危及他人人身、财产安全的行为的行为人之一（行为人，损害）",
+   "separateTortActor": "A分别（无意思联络）实施侵权行为，与他人的行为造成同一损害X（行为人，损害）",
+   "eachSufficientForWholeDamage": "就损害X，每个分别侵权人的侵权行为都足以造成全部损害（损害）"
+  }
+ }
+}

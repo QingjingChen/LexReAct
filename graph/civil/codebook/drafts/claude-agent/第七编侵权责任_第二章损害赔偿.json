@@ -1,0 +1,1019 @@
+{
+ "card:g7418": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "侵害人身权益或具有人身意义的特定物时的精神损害赔偿请求权",
+     "rules": [
+      "c1183-1",
+      "c1183-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "侵害自然人人身权益，造成严重精神损害（轻微、一般精神损害不予赔偿）",
+     "rules": [
+      "c1183-1"
+     ]
+    },
+    {
+     "text": "因故意或者重大过失侵害自然人具有人身意义的特定物，造成严重精神损害",
+     "rules": [
+      "c1183-2"
+     ]
+    },
+    {
+     "text": "非法使被监护人脱离监护，导致父母子女关系或其他近亲属关系受到严重损害的，认定为严重精神损害（侵权编解释一第2条）",
+     "rules": [
+      "c1183-spc2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "侵害特定物仅出于一般过失的，不得依第2款请求精神损害赔偿",
+     "rules": [
+      "c1183-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "被侵权人有权请求精神损害赔偿",
+     "rules": [
+      "c1183-1",
+      "c1183-2"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1179条（人身损害的财产性赔偿项目）同时挂在 card:g7473，仅在该行形式化（c1179-1 等）",
+     "rules": []
+    },
+    {
+     "text": "违约损害人格权的精神损害赔偿见 card:g7489 c996；笔记中一般侵权构成要件（加害行为、损害、因果关系、过错）见基础规则 c1165-1",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1183-1",
+    "srcs": [
+     "art1183-1"
+    ],
+    "body": [
+     "naturalPerson(V)",
+     "infringesPersonalRightsOf(A,V,X)",
+     "seriousMentalDamage(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimMentalDamageCompensation(V,A,X)"
+     }
+    ],
+    "note": "侵害自然人人身权益造成严重精神损害的，被侵权人有权请求精神损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1183-2",
+    "srcs": [
+     "art1183-2"
+    ],
+    "body": [
+     "naturalPerson(V)",
+     "damagesPersonallySignificantObject(A,V,X)",
+     {
+      "or": [
+       "intentional(A,X)",
+       "grossNegligence(A,X)"
+      ]
+     },
+     "seriousMentalDamage(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimMentalDamageCompensation(V,A,X)"
+     }
+    ],
+    "note": "因故意或者重大过失侵害自然人具有人身意义的特定物造成严重精神损害的，被侵权人有权请求精神损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1183-spc2",
+    "srcs": [
+     "art1183-1"
+    ],
+    "body": [
+     "illegallySeparatesWardFromGuardianship(A,W,X)",
+     "kinshipSeriouslyHarmed(V,W,X)"
+    ],
+    "heads": [
+     "infringesPersonalRightsOf(A,V,X)",
+     "seriousMentalDamage(V,X)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉侵权责任编的解释（一）》（法释〔2024〕12号）第2条：非法使被监护人脱离监护，导致父母子女关系或者其他近亲属关系受到严重损害的，应当认定为第1183条第1款规定的严重精神损害",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "infringesPersonalRightsOf": "A侵害自然人V的人身权益（人格权或身份权益），形成损害事件X（侵权人，被侵权人，损害）",
+   "seriousMentalDamage": "V因损害事件X遭受严重精神损害（受害人，损害）",
+   "claimMentalDamageCompensation": "V请求A就X赔偿精神损害（请求人，被请求人，损害或合同）",
+   "damagesPersonallySignificantObject": "A侵害自然人V具有人身意义的特定物（侵权人，被侵权人，损害）",
+   "illegallySeparatesWardFromGuardianship": "A非法使被监护人W脱离监护（行为人，被监护人，损害事件）",
+   "kinshipSeriouslyHarmed": "因事件X，V与被监护人W之间的父母子女关系或其他近亲属关系受到严重损害（受害人，被监护人，损害事件）"
+  }
+ },
+ "card:g7399": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "双方均无过错时依法分担损失（公平分担规则）",
+     "rules": [
+      "c1186"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "受害人和行为人对损害的发生都没有过错，且有法律规定的具体分担情形（如第182条第2款、第183条、第1190条第1款、第1254条第1款等）",
+     "rules": [
+      "c1186"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "笔记：损害属于适用无过错责任原则的情形时，不适用分担规则，行为人依法承担责任",
+     "rules": [
+      "c1186-strict"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "依照法律的规定由双方分担损失；笔记：不必平均，综合考虑受害人损害、双方财产状况等因素",
+     "rules": [
+      "c1186"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无过错责任排除分担规则",
+     "rules": [
+      "c1186-strict"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：分担损失不是侵权责任；与过失相抵（第1173条，card:g0638 c1173）、见义勇为适当补偿（第183条）不同",
+     "rules": []
+    },
+    {
+     "text": "笔记所述无过错责任的特征见 art:1166 c1166；第1186条亦挂在 card:g7473，仅在本行形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1186",
+    "srcs": [
+     "art1186"
+    ],
+    "body": [
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "-fault(A,X)",
+     "-fault(V,X)",
+     "lawProvidesLossSharing(X)"
+    ],
+    "heads": [
+     "lossSharedByLaw(A,V,X)"
+    ],
+    "note": "受害人和行为人对损害的发生都没有过错的，依照法律的规定由双方分担损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c1186-strict",
+    "srcs": [
+     "art1186"
+    ],
+    "body": [
+     "harmfulAct(A,V,X)",
+     "damage(V,X)",
+     "strictLiabilityByLaw(X)"
+    ],
+    "heads": [
+     "-lossSharedByLaw(A,V,X)"
+    ],
+    "note": "学理（笔记 g7473“法定分担损失规则”条件(2)）：损害不属于适用无过错责任原则的情形，方可分担损失",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [
+   [
+    "c1186-strict",
+    "c1186",
+    "适用无过错责任的，由行为人承担侵权责任，不适用分担损失"
+   ]
+  ],
+  "predicates": {
+   "lawProvidesLossSharing": "法律对损害X规定了由双方分担损失（或适当补偿）的具体情形（损害）",
+   "lossSharedByLaw": "依照法律规定由行为人A与受害人V分担损害X的损失（行为人，受害人，损害）"
+  }
+ },
+ "card:g7473": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "侵权损害赔偿的范围与计算：人身损害赔偿、死亡时的请求权人、人身权益致财产损失、财产损失计算、惩罚性赔偿",
+     "rules": [
+      "c1179-1",
+      "c1181-1",
+      "c1182-1",
+      "c1184",
+      "c1185"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "侵害他人造成人身损害；另造成残疾或死亡的",
+     "rules": [
+      "c1179-1",
+      "c1179-disab",
+      "c1179-death"
+     ]
+    },
+    {
+     "text": "被侵权人死亡，或者被侵权人为组织且已分立、合并",
+     "rules": [
+      "c1181-1",
+      "c1181-1org",
+      "c1181-2"
+     ]
+    },
+    {
+     "text": "侵害他人人身权益造成财产损失",
+     "rules": [
+      "c1182-1",
+      "c1182-2"
+     ]
+    },
+    {
+     "text": "侵害他人财产",
+     "rules": [
+      "c1184"
+     ]
+    },
+    {
+     "text": "惩罚性赔偿：故意侵害知识产权且情节严重；明知产品缺陷仍生产销售或未依第1206条采取有效补救措施，造成死亡或健康严重损害；违反法律规定故意污染环境、破坏生态造成严重后果",
+     "rules": [
+      "c1185",
+      "c1207-knew",
+      "c1207-noremedy",
+      "c1232"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "支付医疗费、丧葬费等合理费用的人请求赔偿，但侵权人已经支付该费用的除外",
+     "rules": [
+      "c1181-2"
+     ]
+    },
+    {
+     "text": "受损失与获利均难以确定且协商不一致、已起诉的，由法院根据实际情况确定赔偿数额",
+     "rules": [
+      "c1182-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当赔偿医疗费、护理费、交通费、营养费、住院伙食补助费等治疗和康复合理费用及误工减少的收入；残疾的另赔辅助器具费和残疾赔偿金；死亡的另赔丧葬费和死亡赔偿金",
+     "rules": [
+      "c1179-1",
+      "c1179-disab",
+      "c1179-death"
+     ]
+    },
+    {
+     "text": "被侵权人死亡的，其近亲属有权请求侵权人承担侵权责任；组织分立、合并的，承继权利的组织有权请求",
+     "rules": [
+      "c1181-1",
+      "c1181-1org"
+     ]
+    },
+    {
+     "text": "支付合理费用的人有权请求侵权人赔偿该费用",
+     "rules": [
+      "c1181-2"
+     ]
+    },
+    {
+     "text": "按照被侵权人受到的损失或者侵权人获得的利益赔偿；难以确定且协商不成起诉的，由人民法院确定数额",
+     "rules": [
+      "c1182-1",
+      "c1182-2"
+     ]
+    },
+    {
+     "text": "财产损失按损失发生时的市场价格或其他合理方式计算",
+     "rules": [
+      "c1184"
+     ]
+    },
+    {
+     "text": "被侵权人有权请求相应的惩罚性赔偿",
+     "rules": [
+      "c1185",
+      "c1207-knew",
+      "c1207-noremedy",
+      "c1232"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1186条公平分担损失见 card:g7399 c1186；精神损害赔偿第1183条见 card:g7418；第1180条同命同价见 art:1180",
+     "rules": []
+    },
+    {
+     "text": "笔记：丧葬费和死亡赔偿金并非死者遗留的个人财产（不属遗产）",
+     "rules": []
+    },
+    {
+     "text": "第1179条亦挂在 card:g7418，第1181、1185条亦挂在 card:g7489，均仅在本行形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1179-1",
+    "srcs": [
+     "art1179"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "personalInjury(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "compensateTreatmentCostsAndLostIncome(A,V,X)"
+     }
+    ],
+    "note": "侵害他人造成人身损害的，应当赔偿医疗费、护理费、交通费、营养费、住院伙食补助费等为治疗和康复支出的合理费用，以及因误工减少的收入",
+    "auth": "npc"
+   },
+   {
+    "key": "c1179-disab",
+    "srcs": [
+     "art1179"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "personalInjury(V,X)",
+     "disabilityCaused(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "compensateAssistiveDeviceAndDisability(A,V,X)"
+     }
+    ],
+    "note": "造成残疾的，还应当赔偿辅助器具费和残疾赔偿金",
+    "auth": "npc"
+   },
+   {
+    "key": "c1179-death",
+    "srcs": [
+     "art1179"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "personalInjury(V,X)",
+     "deathCaused(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "compensateFuneralAndDeath(A,V,X)"
+     }
+    ],
+    "note": "造成死亡的，还应当赔偿丧葬费和死亡赔偿金（请求权人依第1181条）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1181-1",
+    "srcs": [
+     "art1181-1"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "deathCaused(V,X)",
+     "nearRelativeOf(R,V)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "A",
+      "content": "claimTortLiability(R,A,X)"
+     }
+    ],
+    "note": "被侵权人死亡的，其近亲属有权请求侵权人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1181-1org",
+    "srcs": [
+     "art1181-1"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "organization(V)",
+     "orgDividedOrMerged(V)",
+     "succeedsToRightsOf(S,V)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "A",
+      "content": "claimTortLiability(S,A,X)"
+     }
+    ],
+    "note": "被侵权人为组织，该组织分立、合并的，承继权利的组织有权请求侵权人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1181-2",
+    "srcs": [
+     "art1181-2"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "deathCaused(V,X)",
+     "paidReasonableExpenses(P,V,X)",
+     "~tortfeasorPaidExpenses(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "claimExpenseReimbursement(P,A,X)"
+     }
+    ],
+    "note": "被侵权人死亡的，支付医疗费、丧葬费等合理费用的人有权请求侵权人赔偿费用，但侵权人已经支付该费用的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1182-1",
+    "srcs": [
+     "art1182"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "propertyLossFromPersonalRightInfringement(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "compensateByLossOrGain(A,V,X)"
+     }
+    ],
+    "note": "侵害他人人身权益造成财产损失的，按照被侵权人因此受到的损失或者侵权人因此获得的利益赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1182-2",
+    "srcs": [
+     "art1182"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "propertyLossFromPersonalRightInfringement(V,X)",
+     "lossAndGainHardToDetermine(X)",
+     "compensationNegotiationFailed(A,V,X)",
+     "suitFiled(V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineCompensationAmount(X)"
+     }
+    ],
+    "note": "损失及获益难以确定，双方就赔偿数额协商不一致，向人民法院起诉的，由人民法院根据实际情况确定赔偿数额",
+    "auth": "npc"
+   },
+   {
+    "key": "c1184",
+    "srcs": [
+     "art1184"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "propertyInfringed(V,X)"
+    ],
+    "heads": [
+     "lossValuedAtMarketPriceOrReasonableMethod(X)"
+    ],
+    "note": "侵害他人财产的，财产损失按照损失发生时的市场价格或者其他合理方式计算",
+    "auth": "npc"
+   },
+   {
+    "key": "c1185",
+    "srcs": [
+     "art1185"
+    ],
+    "body": [
+     "infringesIpOf(A,V,X)",
+     "intentional(A,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimPunitiveDamages(V,A,X)"
+     }
+    ],
+    "note": "故意侵害他人知识产权，情节严重的，被侵权人有权请求相应的惩罚性赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1207-knew",
+    "srcs": [
+     "art1207"
+    ],
+    "body": [
+     "defectiveProduct(Pr)",
+     "damagedBy(V,X,Pr)",
+     "producesOrSellsKnowingDefect(M,Pr)",
+     {
+      "or": [
+       "deathCaused(V,X)",
+       "seriousHealthDamage(V,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "M",
+      "content": "claimPunitiveDamages(V,M,X)"
+     }
+    ],
+    "note": "明知产品存在缺陷仍然生产、销售，造成他人死亡或者健康严重损害的，被侵权人有权请求相应的惩罚性赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1207-noremedy",
+    "srcs": [
+     "art1207"
+    ],
+    "body": [
+     "defectiveProduct(Pr)",
+     "damagedBy(V,X,Pr)",
+     "noEffectiveRemedialMeasures(M,Pr)",
+     {
+      "or": [
+       "deathCaused(V,X)",
+       "seriousHealthDamage(V,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "M",
+      "content": "claimPunitiveDamages(V,M,X)"
+     }
+    ],
+    "note": "生产者、销售者没有依据第1206条采取有效补救措施，造成他人死亡或者健康严重损害的，被侵权人有权请求相应的惩罚性赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1232",
+    "srcs": [
+     "art1232"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "intentionalIllegalPollutionOrEcoDamage(A,X)",
+     "seriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimPunitiveDamages(V,A,X)"
+     }
+    ],
+    "note": "侵权人违反法律规定故意污染环境、破坏生态造成严重后果的，被侵权人有权请求相应的惩罚性赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "personalInjury": "V因侵权事件X遭受人身损害（生命、身体、健康受损）（受害人，损害）",
+   "compensateTreatmentCostsAndLostIncome": "A赔偿V的医疗费、护理费、交通费、营养费、住院伙食补助费等治疗和康复合理费用及误工减少的收入（赔偿人，受害人，损害）",
+   "disabilityCaused": "侵权事件X造成V残疾（受害人，损害）",
+   "compensateAssistiveDeviceAndDisability": "A赔偿V的辅助器具费和残疾赔偿金（赔偿人，受害人，损害）",
+   "deathCaused": "侵权事件X造成V死亡（受害人，损害）",
+   "compensateFuneralAndDeath": "A赔偿V死亡所生丧葬费和死亡赔偿金（赔偿人，死者，损害）",
+   "nearRelativeOf": "R是V的近亲属（配偶、父母、子女、兄弟姐妹、祖父母、外祖父母、孙子女、外孙子女）（近亲属，本人）",
+   "orgDividedOrMerged": "被侵权组织V已分立或合并（组织）",
+   "succeedsToRightsOf": "组织S承继被侵权组织V的权利（承继组织，原组织）",
+   "paidReasonableExpenses": "P支付了死亡被侵权人V的医疗费、丧葬费等合理费用（支付人，死者，损害）",
+   "tortfeasorPaidExpenses": "侵权人A已经支付了就损害X发生的该等合理费用（侵权人，损害）",
+   "claimExpenseReimbursement": "P请求A赔偿其就损害X垫付的合理费用（请求人，侵权人，损害）",
+   "propertyLossFromPersonalRightInfringement": "V因人身权益被侵害（损害事件X）而受到财产损失（受害人，损害）",
+   "compensateByLossOrGain": "A按照V因此受到的损失或者A因此获得的利益赔偿（赔偿人，受害人，损害）",
+   "lossAndGainHardToDetermine": "就损害X，被侵权人受到的损失和侵权人获得的利益均难以确定（损害）",
+   "compensationNegotiationFailed": "A与V就损害X的赔偿数额协商不一致（侵权人，被侵权人，损害）",
+   "suitFiled": "V就X向人民法院提起诉讼（原告，纠纷）",
+   "determineCompensationAmount": "根据实际情况确定损害X的赔偿数额（损害）",
+   "propertyInfringed": "V的财产因侵权事件X受到侵害（受害人，损害）",
+   "lossValuedAtMarketPriceOrReasonableMethod": "损害X中的财产损失按损失发生时的市场价格或者其他合理方式计算（损害）",
+   "infringesIpOf": "A侵害V的知识产权（侵权人，权利人，损害）",
+   "seriousCircumstances": "侵权行为X情节严重（损害）",
+   "claimPunitiveDamages": "V请求A就X承担相应的惩罚性赔偿（被侵权人，侵权人，损害）",
+   "producesOrSellsKnowingDefect": "M明知产品Pr存在缺陷仍然生产或销售（生产者或销售者，产品）",
+   "noEffectiveRemedialMeasures": "M未依第1206条对投入流通后发现缺陷的产品Pr采取停止销售、警示、召回等有效补救措施（生产者或销售者，产品）",
+   "seriousHealthDamage": "侵权事件X造成V健康严重损害（受害人，损害）",
+   "intentionalIllegalPollutionOrEcoDamage": "A违反法律规定故意污染环境、破坏生态（侵权人，损害）",
+   "seriousConsequences": "侵权事件X造成严重后果（损害）"
+  }
+ },
+ "art:1187": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "赔偿费用的支付方式",
+     "rules": [
+      "c1187-agree",
+      "c1187-lump",
+      "c1187-inst"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "损害发生后，当事人就支付方式协商；协商不一致",
+     "rules": [
+      "c1187-agree",
+      "c1187-lump"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "一次性支付确有困难的，可以分期支付",
+     "rules": [
+      "c1187-inst"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "当事人可以协商赔偿费用的支付方式",
+     "rules": [
+      "c1187-agree"
+     ]
+    },
+    {
+     "text": "协商不一致的，赔偿费用应当一次性支付",
+     "rules": [
+      "c1187-lump"
+     ]
+    },
+    {
+     "text": "一次性支付确有困难的可以分期支付，但被侵权人有权请求提供相应的担保",
+     "rules": [
+      "c1187-inst",
+      "c1187-sec"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "一次性支付确有困难时分期支付排除一次性支付义务",
+     "rules": [
+      "c1187-inst",
+      "c1187-lump"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "c1187-agree",
+    "srcs": [
+     "art1187"
+    ],
+    "body": [
+     "liable(A,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "negotiatePaymentMethod(A,V,X)"
+     }
+    ],
+    "note": "损害发生后，当事人可以协商赔偿费用的支付方式",
+    "auth": "npc"
+   },
+   {
+    "key": "c1187-lump",
+    "srcs": [
+     "art1187"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "paymentMethodNegotiationFailed(A,V,X)",
+     "~lumpSumGenuinelyDifficult(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "payCompensationLumpSum(A,V,X)"
+     }
+    ],
+    "note": "协商不一致的，赔偿费用应当一次性支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c1187-inst",
+    "srcs": [
+     "art1187"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "paymentMethodNegotiationFailed(A,V,X)",
+     "lumpSumGenuinelyDifficult(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "payCompensationInInstallments(A,V,X)"
+     }
+    ],
+    "note": "一次性支付确有困难的，可以分期支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c1187-sec",
+    "srcs": [
+     "art1187"
+    ],
+    "body": [
+     "liable(A,V,X)",
+     "paymentMethodNegotiationFailed(A,V,X)",
+     "lumpSumGenuinelyDifficult(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "requestSecurityForInstallments(V,A,X)"
+     }
+    ],
+    "note": "分期支付的，被侵权人有权请求提供相应的担保",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "negotiatePaymentMethod": "A与V协商损害X赔偿费用的支付方式（赔偿义务人，被侵权人，损害）",
+   "paymentMethodNegotiationFailed": "A与V就损害X赔偿费用的支付方式协商不一致（赔偿义务人，被侵权人，损害）",
+   "lumpSumGenuinelyDifficult": "A一次性支付损害X的赔偿费用确有困难（赔偿义务人，损害）",
+   "payCompensationLumpSum": "A一次性向V支付损害X的赔偿费用（赔偿义务人，被侵权人，损害）",
+   "payCompensationInInstallments": "A分期向V支付损害X的赔偿费用（赔偿义务人，被侵权人，损害）",
+   "requestSecurityForInstallments": "V请求A就分期支付的赔偿费用提供相应的担保（被侵权人，赔偿义务人，损害）"
+  }
+ },
+ "card:g7489": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "违约损害人格权造成严重精神损害时，选择违约责任不影响请求精神损害赔偿",
+     "rules": [
+      "c996"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方违约行为损害对方人格权并造成严重精神损害，受损害方选择请求承担违约责任",
+     "rules": [
+      "c996"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "受损害方仍可请求精神损害赔偿（突破违约责任中不赔精神损害的一般理解）",
+     "rules": [
+      "c996"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1183条精神损害赔偿（侵害人身权益、侵害具有人身意义的特定物）见 card:g7418 c1183-1、c1183-2",
+     "rules": []
+    },
+    {
+     "text": "第1181条（死亡时近亲属、合理费用支付人的请求权）见 card:g7473 c1181-1、c1181-1org、c1181-2；第1185条知识产权惩罚性赔偿见 card:g7473 c1185",
+     "rules": []
+    },
+    {
+     "text": "责任竞合的选择权见第186条（card:g4852 c186-elect）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c996",
+    "srcs": [
+     "art996"
+    ],
+    "body": [
+     "breachHarmsPersonalityRight(A,V,K)",
+     "seriousMentalDamage(V,K)",
+     "electedBreachLiability(V,A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "A",
+      "content": "claimMentalDamageCompensation(V,A,K)"
+     }
+    ],
+    "note": "因当事人一方的违约行为，损害对方人格权并造成严重精神损害，受损害方选择请求其承担违约责任的，不影响受损害方请求精神损害赔偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "breachHarmsPersonalityRight": "合同K一方A的违约行为损害对方V的人格权（违约方，受损害方，合同）"
+  }
+ },
+ "art:1180": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第二章　损害赔偿"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "同一侵权行为造成多人死亡时死亡赔偿金的确定",
+     "rules": [
+      "c1180"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "因同一侵权行为造成多人死亡",
+     "rules": [
+      "c1180"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "可以（非应当）以相同数额确定死亡赔偿金",
+     "rules": [
+      "c1180"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "死亡赔偿金的赔偿义务见第1179条（card:g7473 c1179-death）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1180",
+    "srcs": [
+     "art1180"
+    ],
+    "body": [
+     "sameTortCausesMultipleDeaths(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineDeathCompensationEqually(X)"
+     }
+    ],
+    "note": "因同一侵权行为造成多人死亡的，可以以相同数额确定死亡赔偿金",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "sameTortCausesMultipleDeaths": "同一侵权行为X造成多人死亡（侵权行为）",
+   "determineDeathCompensationEqually": "对侵权行为X造成的多名死者以相同数额确定死亡赔偿金（侵权行为）"
+  }
+ }
+}

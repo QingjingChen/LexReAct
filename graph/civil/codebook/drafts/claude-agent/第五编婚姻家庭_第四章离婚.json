@@ -1,0 +1,2289 @@
+{
+ "card:g6793": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "离婚后子女抚养费的负担、确定与增加",
+     "rules": [
+      "c1085-owe",
+      "c1085-pay",
+      "c1085-agree",
+      "c1085-court",
+      "c1085-2",
+      "c1085-spc58",
+      "c1085-spc53a",
+      "c1085-spc53b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "离婚后子女由一方直接抚养",
+     "rules": [
+      "c1085-owe",
+      "c1085-pay"
+     ]
+    },
+    {
+     "text": "子女在必要时提出超过原定数额的合理要求",
+     "rules": [
+      "c1085-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "司法解释：抚养费一般给付至子女十八周岁；十六周岁以上不满十八周岁、以其劳动收入为主要生活来源并能维持当地一般生活水平的，父母可以停止给付",
+     "rules": [
+      "c1085-spc53a",
+      "c1085-spc53b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "另一方应当负担部分或者全部抚养费",
+     "rules": [
+      "c1085-owe",
+      "c1085-pay"
+     ]
+    },
+    {
+     "text": "负担费用的多少和期限的长短由双方协议；协议不成的，由人民法院判决",
+     "rules": [
+      "c1085-agree",
+      "c1085-court"
+     ]
+    },
+    {
+     "text": "协议或者判决不妨碍子女在必要时向父母任何一方提出超过原定数额的合理要求",
+     "rules": [
+      "c1085-2"
+     ]
+    },
+    {
+     "text": "司法解释：原定数额不足以维持当地实际生活水平、因患病上学实际需要超过原定数额或有其他正当理由，子女要求有负担能力的父或母增加抚养费的，应予支持",
+     "rules": [
+      "c1085-spc58"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "司法解释第53条的停止给付情形排除一般的抚养费负担",
+     "rules": [
+      "c1085-spc53a",
+      "c1085-spc53b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1084、1086条（离婚后亲子关系、直接抚养方确定、探望权）在 card:g6786 中形式化，本行沿用其 directCustodian 等谓词",
+     "rules": []
+    },
+    {
+     "text": "非婚生子女的抚养费见第1071条第2款（c1071-2）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1085-owe",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "directCustodian(Q,C)"
+    ],
+    "heads": [
+     "owesMaintenance(P,C)"
+    ],
+    "note": "离婚后，子女由一方直接抚养的，另一方应当负担抚养费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1085-pay",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "owesMaintenance(P,C)",
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "directCustodian(Q,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "payChildSupport(P,C)"
+     }
+    ],
+    "note": "另一方应当负担部分或者全部抚养费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1085-agree",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "directCustodian(Q,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "agreeChildSupportAmountAndTerm(P,Q,C)"
+     }
+    ],
+    "note": "负担费用的多少和期限的长短，由双方协议",
+    "auth": "npc"
+   },
+   {
+    "key": "c1085-court",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "childSupportAgreementFailed(P,Q,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideChildSupport(P,C)"
+     }
+    ],
+    "note": "抚养费的数额和期限协议不成的，由人民法院判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1085-2",
+    "srcs": [
+     "art1085-2"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childSupportFixedByAgreementOrJudgment(C)",
+     "necessaryReasonableIncreaseRequest(C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "requestIncreasedChildSupport(C,P)"
+     }
+    ],
+    "note": "前款规定的协议或者判决，不妨碍子女在必要时向父母任何一方提出超过协议或者判决原定数额的合理要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c1085-spc58",
+    "srcs": [
+     "art1085-2"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "ableToBear(P)",
+     "requestedIncreasedChildSupport(C,P)",
+     {
+      "or": [
+       "supportInsufficientForLocalLiving(C)",
+       "illnessOrSchoolingNeedsExceedAmount(C)",
+       "otherJustificationForIncrease(C)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantIncreasedChildSupport(C,P)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第58条：原定抚养费数额不足以维持当地实际生活水平、因子女患病上学实际需要已超过原定数额、或有其他正当理由应当增加的，子女要求有负担能力的父或母增加抚养费，人民法院应予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c1085-spc53a",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "age18plus(C)",
+     "~adultUnableToLiveIndependently(C)"
+    ],
+    "heads": [
+     "-owesMaintenance(P,C)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第53条第1款：抚养费的给付期限，一般至子女十八周岁为止（不能独立生活的成年子女除外，参见第41条）",
+    "auth": "spc"
+   },
+   {
+    "key": "c1085-spc53b",
+    "srcs": [
+     "art1085-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "age16plus(C)",
+     "minor(C)",
+     "ownLabourIncomeMainSource(C)",
+     "maintainsLocalGeneralLivingStandard(C)"
+    ],
+    "heads": [
+     "-owesMaintenance(P,C)",
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "stopPayingChildSupport(P,C)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第53条第2款：十六周岁以上不满十八周岁，以其劳动收入为主要生活来源，并能维持当地一般生活水平的，父母可以停止给付抚养费",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1085-spc53a",
+    "c1085-owe",
+    "抚养费一般给付至子女十八周岁"
+   ],
+   [
+    "c1085-spc53b",
+    "c1085-owe",
+    "已能以自己劳动收入维持当地一般生活水平的，可停止给付"
+   ]
+  ],
+  "predicates": {
+   "agreeChildSupportAmountAndTerm": "父母P、Q协议确定子女C抚养费的数额和期限",
+   "childSupportAgreementFailed": "父母P、Q就子女C抚养费的数额和期限协议不成",
+   "decideChildSupport": "人民法院判决P对子女C负担的抚养费数额和期限",
+   "childSupportFixedByAgreementOrJudgment": "子女C的抚养费已由协议或者判决确定",
+   "necessaryReasonableIncreaseRequest": "子女C在必要时提出超过原定数额的合理要求",
+   "requestIncreasedChildSupport": "子女C请求父或母P给付超过原定数额的抚养费",
+   "requestedIncreasedChildSupport": "子女C已请求父或母P增加抚养费",
+   "supportInsufficientForLocalLiving": "子女C的原定抚养费数额不足以维持当地实际生活水平",
+   "illnessOrSchoolingNeedsExceedAmount": "因子女C患病、上学，实际需要已超过原定数额",
+   "otherJustificationForIncrease": "有其他正当理由应当增加子女C的抚养费",
+   "grantIncreasedChildSupport": "人民法院支持子女C要求父或母P增加抚养费的请求",
+   "maintainsLocalGeneralLivingStandard": "C能维持当地一般生活水平",
+   "stopPayingChildSupport": "父或母P停止给付子女C的抚养费"
+  }
+ },
+ "card:g6809": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "离婚时的家务劳动补偿",
+     "rules": [
+      "c1088-1",
+      "c1088-court"
+     ]
+    },
+    {
+     "text": "离婚时的经济帮助",
+     "rules": [
+      "c1090-1",
+      "c1090-court",
+      "c1090-hardship"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "一方因抚育子女、照料老年人、协助另一方工作等负担较多义务",
+     "rules": [
+      "c1088-1"
+     ]
+    },
+    {
+     "text": "离婚时一方生活困难，另一方有负担能力",
+     "rules": [
+      "c1090-1"
+     ]
+    },
+    {
+     "text": "学理（笔记）：生活困难指依靠个人财产和离婚时分得的财产无法维持当地基本生活水平，离婚后没有住处的也属于；须困难存在于离婚时",
+     "rules": [
+      "c1090-hardship"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "负担较多义务的一方离婚时有权请求补偿，另一方应当给予补偿",
+     "rules": [
+      "c1088-1"
+     ]
+    },
+    {
+     "text": "有负担能力的另一方应当给予适当帮助",
+     "rules": [
+      "c1090-1"
+     ]
+    },
+    {
+     "text": "具体办法由双方协议；协议不成的，由人民法院判决",
+     "rules": [
+      "c1088-court",
+      "c1090-court"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "经济帮助不以过错或贡献为前提，也不是夫妻扶养义务的延续（第1059条）；补偿以负担较多家庭义务为前提；损害赔偿以法定过错为前提（第1091条）",
+     "rules": []
+    },
+    {
+     "text": "第1088条在本行形式化；card:g6820 只作引用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1088-1",
+    "srcs": [
+     "art1088"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "atDivorce(A,B)",
+     "boreMoreFamilyDuties(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimDivorceCompensation(A,B)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "payDivorceCompensation(B,A)"
+     }
+    ],
+    "note": "夫妻一方因抚育子女、照料老年人、协助另一方工作等负担较多义务的，离婚时有权向另一方请求补偿，另一方应当给予补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1088-court",
+    "srcs": [
+     "art1088"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "atDivorce(A,B)",
+     "boreMoreFamilyDuties(A,B)",
+     "compensationAgreementFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideDivorceCompensation(A,B)"
+     }
+    ],
+    "note": "补偿的具体办法由双方协议；协议不成的，由人民法院判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1090-1",
+    "srcs": [
+     "art1090"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "atDivorce(A,B)",
+     "livingDifficultyAtDivorce(A)",
+     "ableToBear(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "provideAppropriateHelp(B,A)"
+     }
+    ],
+    "note": "离婚时，如果一方生活困难，有负担能力的另一方应当给予适当帮助",
+    "auth": "npc"
+   },
+   {
+    "key": "c1090-court",
+    "srcs": [
+     "art1090"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "atDivorce(A,B)",
+     "livingDifficultyAtDivorce(A)",
+     "ableToBear(B)",
+     "helpAgreementFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideDivorceHelp(B,A)"
+     }
+    ],
+    "note": "帮助的具体办法由双方协议；协议不成的，由人民法院判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1090-hardship",
+    "srcs": [
+     "art1090"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "atDivorce(A,B)",
+     {
+      "or": [
+       "cannotMaintainLocalBasicLiving(A)",
+       "noHousingAfterDivorce(A)"
+      ]
+     }
+    ],
+    "heads": [
+     "livingDifficultyAtDivorce(A)"
+    ],
+    "note": "学理（专家笔记“离婚时的经济帮助”，源自已废止的原《婚姻法解释（一）》第27条，民法典时代无对应现行司法解释条文，存疑）：依靠个人财产和离婚时分得的财产无法维持当地基本生活水平，或离婚后没有住处的，属于生活困难；离婚后才发生的困难不予帮助",
+    "auth": "doctrine"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "atDivorce": "A、B处于离婚之时（协议离婚或诉讼离婚过程中）",
+   "boreMoreFamilyDuties": "A因抚育子女、照料老年人、协助B工作等负担较多义务",
+   "claimDivorceCompensation": "A离婚时向B请求补偿",
+   "payDivorceCompensation": "B向A给予离婚补偿",
+   "compensationAgreementFailed": "A、B就离婚补偿的具体办法协议不成",
+   "decideDivorceCompensation": "人民法院判决A、B之间的离婚补偿",
+   "livingDifficultyAtDivorce": "A在离婚时生活困难",
+   "provideAppropriateHelp": "B给予A适当帮助",
+   "helpAgreementFailed": "A、B就经济帮助的具体办法协议不成",
+   "decideDivorceHelp": "人民法院判决B对A的经济帮助办法",
+   "cannotMaintainLocalBasicLiving": "A依靠个人财产和离婚时分得的财产无法维持当地基本生活水平",
+   "noHousingAfterDivorce": "A离婚后没有住处"
+  }
+ },
+ "card:g6734": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "登记离婚的要件与程序（离婚冷静期）",
+     "rules": [
+      "c1076-1",
+      "c1076-2",
+      "c1077-1",
+      "c1077-wd",
+      "c1077-2",
+      "c1077-deemed",
+      "c1078"
+     ]
+    },
+    {
+     "text": "诉讼离婚的途径与判决离婚的法定理由",
+     "rules": [
+      "c1079-1",
+      "c1079-mediate",
+      "c1079-2",
+      "c1079-ground-fault",
+      "c1079-ground-rel",
+      "c1079-3",
+      "c1079-4",
+      "c1079-5",
+      "c1079-deny"
+     ]
+    },
+    {
+     "text": "婚姻关系解除的时点",
+     "rules": [
+      "c1080"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "夫妻双方自愿离婚：签订书面离婚协议并亲自到婚姻登记机关申请离婚登记；协议应载明自愿离婚的意思表示及子女抚养、财产、债务处理的一致意见",
+     "rules": [
+      "c1076-1",
+      "c1076-2"
+     ]
+    },
+    {
+     "text": "收到申请之日起三十日内任何一方不愿离婚的，可以撤回申请；期满后三十日内双方应亲自申请发给离婚证",
+     "rules": [
+      "c1077-1",
+      "c1077-wd",
+      "c1077-2"
+     ]
+    },
+    {
+     "text": "登记机关查明双方确系自愿并对子女抚养、财产及债务处理协商一致的，予以登记、发给离婚证",
+     "rules": [
+      "c1078"
+     ]
+    },
+    {
+     "text": "一方要求离婚的，可以由有关组织调解或者直接起诉；法院审理离婚案件应当调解",
+     "rules": [
+      "c1079-1",
+      "c1079-mediate"
+     ]
+    },
+    {
+     "text": "法定离婚情形：重婚或与他人同居；家庭暴力或虐待、遗弃家庭成员；赌博、吸毒等恶习屡教不改；因感情不和分居满二年；其他导致感情破裂的情形",
+     "rules": [
+      "c1079-ground-fault",
+      "c1079-ground-rel"
+     ]
+    },
+    {
+     "text": "司法解释：持续性、经常性的家庭暴力可认定为虐待；“与他人同居”指有配偶者与婚外异性不以夫妻名义持续、稳定地共同居住",
+     "rules": [
+      "c1079-spc1",
+      "c1079-spc2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "期满后三十日内未申请发给离婚证的，视为撤回离婚登记申请",
+     "rules": [
+      "c1077-deemed"
+     ]
+    },
+    {
+     "text": "感情未破裂的，即使调解无效也不准予离婚（学理，笔记）",
+     "rules": [
+      "c1079-deny"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "感情确已破裂、调解无效的，应当准予离婚",
+     "rules": [
+      "c1079-2"
+     ]
+    },
+    {
+     "text": "有法定情形之一、调解无效的，应当准予离婚；且不应因当事人有过错而判决不准离婚（司法解释）",
+     "rules": [
+      "c1079-3",
+      "c1079-spc63"
+     ]
+    },
+    {
+     "text": "一方被宣告失踪，另一方起诉离婚的，应当准予离婚",
+     "rules": [
+      "c1079-4"
+     ]
+    },
+    {
+     "text": "判决不准离婚后双方又分居满一年，一方再次起诉的，应当准予离婚",
+     "rules": [
+      "c1079-5"
+     ]
+    },
+    {
+     "text": "完成离婚登记，或者离婚判决书、调解书生效，即解除婚姻关系",
+     "rules": [
+      "c1080"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1079条第3–5款的法定情形优先于“感情未破裂不准离婚”的学理规则",
+     "rules": [
+      "c1079-3",
+      "c1079-4",
+      "c1079-5",
+      "c1079-deny"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1077条在本行形式化；card:g6745 只作引用。现役军人配偶、女方特殊期间的限制见 card:g6745（c1081、c1082）",
+     "rules": []
+    },
+    {
+     "text": "诉讼外调解（有关组织）非必经程序；诉讼中调解为必经程序",
+     "rules": [
+      "c1079-1",
+      "c1079-mediate"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1076-1",
+    "srcs": [
+     "art1076-1"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "mutuallyWishDivorce(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "signWrittenDivorceAgreement(A,B)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "applyInPersonForDivorceRegistration(A,B)"
+     }
+    ],
+    "note": "夫妻双方自愿离婚的，应当签订书面离婚协议，并亲自到婚姻登记机关申请离婚登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c1076-2",
+    "srcs": [
+     "art1076-2"
+    ],
+    "body": [
+     "divorceAgreement(K,A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "statesDivorceWillAndConsensusOnChildPropertyDebt(K)"
+     }
+    ],
+    "note": "离婚协议应当载明双方自愿离婚的意思表示和对子女抚养、财产以及债务处理等事项协商一致的意见",
+    "auth": "npc"
+   },
+   {
+    "key": "c1077-1",
+    "srcs": [
+     "art1077-1"
+    ],
+    "body": [
+     "divorceRegistrationApplied(A,B)",
+     "withinCoolingOffPeriod(A,B)",
+     "unwillingToDivorce(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "withdrawDivorceRegistrationApplication(A,B)"
+     }
+    ],
+    "note": "自婚姻登记机关收到离婚登记申请之日起三十日内，任何一方不愿意离婚的，可以向婚姻登记机关撤回离婚登记申请",
+    "auth": "npc"
+   },
+   {
+    "key": "c1077-wd",
+    "srcs": [
+     "art1077-1"
+    ],
+    "body": [
+     "divorceRegistrationApplied(A,B)",
+     "withinCoolingOffPeriod(A,B)",
+     "withdrewDivorceApplication(A,B)"
+    ],
+    "heads": [
+     "divorceApplicationWithdrawn(A,B)"
+    ],
+    "note": "三十日内一方向婚姻登记机关撤回的，离婚登记申请即被撤回",
+    "auth": "npc"
+   },
+   {
+    "key": "c1077-2",
+    "srcs": [
+     "art1077-2"
+    ],
+    "body": [
+     "divorceRegistrationApplied(A,B)",
+     "coolingOffPeriodExpired(A,B)",
+     "~divorceApplicationWithdrawn(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "applyInPersonForDivorceCertificate(A,B)"
+     }
+    ],
+    "note": "冷静期届满后三十日内，双方应当亲自到婚姻登记机关申请发给离婚证",
+    "auth": "npc"
+   },
+   {
+    "key": "c1077-deemed",
+    "srcs": [
+     "art1077-2"
+    ],
+    "body": [
+     "divorceRegistrationApplied(A,B)",
+     "certificateApplicationPeriodExpired(A,B)",
+     "~appliedForDivorceCertificate(A,B)"
+    ],
+    "heads": [
+     "divorceApplicationWithdrawn(A,B)"
+    ],
+    "note": "冷静期届满后三十日内未申请发给离婚证的，视为撤回离婚登记申请",
+    "auth": "npc"
+   },
+   {
+    "key": "c1078",
+    "srcs": [
+     "art1078",
+     "art1077-2"
+    ],
+    "body": [
+     "appliedForDivorceCertificate(A,B)",
+     "registryFindsVoluntaryDivorce(A,B)",
+     "consensusOnChildPropertyDebt(A,B)",
+     "~divorceApplicationWithdrawn(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "marriageRegistry",
+      "counterparty": null,
+      "content": "registerDivorceAndIssueCertificate(A,B)"
+     }
+    ],
+    "note": "婚姻登记机关查明双方确实是自愿离婚，并已经对子女抚养、财产以及债务处理等事项协商一致的，予以登记，发给离婚证",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-1",
+    "srcs": [
+     "art1079-1"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "requestsDivorce(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "requestMediationByOrganization(A,B)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "fileDivorceSuit(A,B)"
+     }
+    ],
+    "note": "夫妻一方要求离婚的，可以由有关组织进行调解或者直接向人民法院提起离婚诉讼",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-mediate",
+    "srcs": [
+     "art1079-2"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "mediateDivorceCase(A,B)"
+     }
+    ],
+    "note": "人民法院审理离婚案件，应当进行调解",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-2",
+    "srcs": [
+     "art1079-2"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "affectionBroken(A,B)",
+     "mediationFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(A,B)"
+     }
+    ],
+    "note": "感情确已破裂，调解无效的，应当准予离婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-ground-fault",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "spouseOf(X,Y)",
+     {
+      "or": [
+       "bigamy(X)",
+       "cohabitingWithOther(X)",
+       "committedDomesticViolence(X)",
+       "abuseOrDesertFamilyMember(X)",
+       "incorrigibleGamblingOrDrugVice(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryDivorceGround(X,Y)",
+     "statutoryDivorceGround(Y,X)"
+    ],
+    "note": "第1079条第3款第1–3项：一方重婚或者与他人同居；实施家庭暴力或者虐待、遗弃家庭成员；有赌博、吸毒等恶习屡教不改",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-ground-rel",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "spouseOf(X,Y)",
+     {
+      "or": [
+       "separatedTwoYearsForDiscord(X,Y)",
+       "otherAffectionBreakdownCircumstance(X,Y)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryDivorceGround(X,Y)",
+     "statutoryDivorceGround(Y,X)",
+     "affectionBroken(X,Y)",
+     "affectionBroken(Y,X)"
+    ],
+    "note": "第1079条第3款第4、5项：因感情不和分居满二年；其他导致夫妻感情破裂的情形（第5项表明所列情形均属感情破裂）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-3",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "statutoryDivorceGround(A,B)",
+     "mediationFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(A,B)"
+     }
+    ],
+    "note": "有第1079条第3款所列情形之一，调解无效的，应当准予离婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-4",
+    "srcs": [
+     "art1079-4"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "declaredMissing(B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(A,B)"
+     }
+    ],
+    "note": "一方被宣告失踪，另一方提起离婚诉讼的，应当准予离婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-5",
+    "srcs": [
+     "art1079-5"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "divorceDeniedByJudgment(A,B)",
+     "separatedOneYearAfterDenial(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(A,B)"
+     }
+    ],
+    "note": "经人民法院判决不准离婚后，双方又分居满一年，一方再次提起离婚诉讼的，应当准予离婚",
+    "auth": "npc"
+   },
+   {
+    "key": "c1079-deny",
+    "srcs": [
+     "art1079-2"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "-affectionBroken(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(A,B)"
+     }
+    ],
+    "note": "学理（笔记“判决离婚的法定理由”）：感情确已破裂是判决离婚的法定理由，感情没有破裂的，即使调解无效也不准予离婚",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1079-spc1",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "persistentFrequentDomesticViolence(X)"
+    ],
+    "heads": [
+     "abuseOrDesertFamilyMember(X)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第1条：持续性、经常性的家庭暴力，可以认定为民法典第1042、1079、1091条所称的“虐待”",
+    "auth": "spc"
+   },
+   {
+    "key": "c1079-spc2",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "spouseOf(X,Y)",
+     "livesWithExtramaritalPartnerStablyNotAsSpouses(X)"
+    ],
+    "heads": [
+     "cohabitingWithOther(X)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第2条：“与他人同居”是指有配偶者与婚外异性，不以夫妻名义，持续、稳定地共同居住",
+    "auth": "spc"
+   },
+   {
+    "key": "c1079-spc63",
+    "srcs": [
+     "art1079-3"
+    ],
+    "body": [
+     "divorceSuitFiled(A,B)",
+     "statutoryDivorceGround(A,B)",
+     "mediationFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "denyDivorceDueToPartyFault(A,B)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第63条：符合第1079条第3款“应当准予离婚”情形的，不应当因当事人有过错而判决不准离婚",
+    "auth": "spc"
+   },
+   {
+    "key": "c1080",
+    "srcs": [
+     "art1080"
+    ],
+    "body": [
+     {
+      "or": [
+       "divorceRegistrationCompleted(A,B)",
+       "divorceJudgmentOrMediationEffective(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     "marriageDissolved(A,B)"
+    ],
+    "note": "完成离婚登记，或者离婚判决书、调解书生效，即解除婚姻关系",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1079-3",
+    "c1079-deny",
+    "第1079条第3款法定情形下调解无效应当准予离婚"
+   ],
+   [
+    "c1079-4",
+    "c1079-deny",
+    "一方被宣告失踪的应当准予离婚"
+   ],
+   [
+    "c1079-5",
+    "c1079-deny",
+    "判决不准离婚后又分居满一年的应当准予离婚"
+   ]
+  ],
+  "predicates": {
+   "mutuallyWishDivorce": "夫妻A、B双方自愿离婚",
+   "signWrittenDivorceAgreement": "A与B签订书面离婚协议",
+   "applyInPersonForDivorceRegistration": "A与B亲自到婚姻登记机关申请离婚登记",
+   "divorceAgreement": "K是夫妻A、B之间的离婚协议（协议，一方，另一方）",
+   "statesDivorceWillAndConsensusOnChildPropertyDebt": "离婚协议K载明双方自愿离婚的意思表示和对子女抚养、财产以及债务处理等事项协商一致的意见",
+   "divorceRegistrationApplied": "A、B已向婚姻登记机关申请离婚登记且登记机关已收到",
+   "withinCoolingOffPeriod": "处于婚姻登记机关收到A、B离婚登记申请之日起三十日内",
+   "unwillingToDivorce": "A不愿意离婚",
+   "withdrawDivorceRegistrationApplication": "A向婚姻登记机关撤回与B的离婚登记申请",
+   "withdrewDivorceApplication": "A、B中的一方已向婚姻登记机关撤回离婚登记申请",
+   "divorceApplicationWithdrawn": "A、B的离婚登记申请已被撤回（含视为撤回）",
+   "coolingOffPeriodExpired": "A、B离婚登记申请的三十日冷静期已届满（处于其后三十日内）",
+   "applyInPersonForDivorceCertificate": "A、B亲自到婚姻登记机关申请发给离婚证",
+   "certificateApplicationPeriodExpired": "冷静期届满后的三十日申请发证期限已届满",
+   "appliedForDivorceCertificate": "A、B已在期限内亲自申请发给离婚证",
+   "registryFindsVoluntaryDivorce": "婚姻登记机关查明A、B确实是自愿离婚",
+   "consensusOnChildPropertyDebt": "A、B已经对子女抚养、财产以及债务处理等事项协商一致",
+   "registerDivorceAndIssueCertificate": "婚姻登记机关为A、B办理离婚登记并发给离婚证",
+   "requestsDivorce": "夫妻一方A要求与B离婚（要求方，另一方）",
+   "requestMediationByOrganization": "A就与B的离婚纠纷请求有关组织进行调解",
+   "fileDivorceSuit": "A向人民法院提起与B离婚的诉讼",
+   "divorceSuitFiled": "A已向人民法院提起与B离婚的诉讼（原告，被告）",
+   "mediateDivorceCase": "人民法院对A、B离婚案件进行调解",
+   "affectionBroken": "A、B夫妻感情确已破裂",
+   "mediationFailed": "A、B离婚案件调解无效",
+   "grantDivorce": "人民法院判决准予A、B离婚",
+   "bigamy": "X重婚",
+   "cohabitingWithOther": "有配偶者X与他人同居",
+   "committedDomesticViolence": "X实施家庭暴力",
+   "abuseOrDesertFamilyMember": "X虐待、遗弃家庭成员",
+   "incorrigibleGamblingOrDrugVice": "X有赌博、吸毒等恶习屡教不改",
+   "separatedTwoYearsForDiscord": "X、Y因感情不和分居满二年",
+   "otherAffectionBreakdownCircumstance": "存在其他导致X、Y夫妻感情破裂的情形",
+   "statutoryDivorceGround": "A、B之间存在第1079条第3款所列法定离婚情形之一",
+   "divorceDeniedByJudgment": "人民法院曾判决A、B不准离婚",
+   "separatedOneYearAfterDenial": "判决不准离婚后A、B又分居满一年",
+   "persistentFrequentDomesticViolence": "X实施持续性、经常性的家庭暴力",
+   "livesWithExtramaritalPartnerStablyNotAsSpouses": "有配偶者X与婚外异性不以夫妻名义持续、稳定地共同居住",
+   "denyDivorceDueToPartyFault": "人民法院因当事人有过错而判决A、B不准离婚",
+   "divorceRegistrationCompleted": "A、B已完成离婚登记",
+   "divorceJudgmentOrMediationEffective": "A、B的离婚判决书或者调解书已生效"
+  }
+ },
+ "art:1083": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "离婚后复婚的程序",
+     "rules": [
+      "c1083"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "离婚后男女双方自愿恢复婚姻关系",
+     "rules": [
+      "c1083"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "应当到婚姻登记机关重新进行结婚登记",
+     "rules": [
+      "c1083"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "区别于第51条：被宣告死亡者的婚姻关系在撤销死亡宣告后可自行恢复，无须重新登记；离婚后复婚则必须重新登记",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1083",
+    "srcs": [
+     "art1083"
+    ],
+    "body": [
+     "marriageDissolved(A,B)",
+     "mutuallyWishToRemarry(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "reregisterMarriage(A,B)"
+     }
+    ],
+    "note": "离婚后，男女双方自愿恢复婚姻关系的，应当到婚姻登记机关重新进行结婚登记",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "mutuallyWishToRemarry": "离婚后A、B双方自愿恢复婚姻关系",
+   "reregisterMarriage": "A、B到婚姻登记机关重新进行结婚登记"
+  }
+ },
+ "card:g6786": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "离婚后父母子女关系的延续与直接抚养方的确定",
+     "rules": [
+      "c1084-1",
+      "c1084-2r",
+      "c1084-2o",
+      "c1084-under2",
+      "c1084-spc44",
+      "c1084-spc45",
+      "c1084-court",
+      "c1084-wish"
+     ]
+    },
+    {
+     "text": "离婚后不直接抚养方的探望权",
+     "rules": [
+      "c1086-1",
+      "c1086-2",
+      "c1086-3",
+      "c1086-restore"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "父母离婚；子女不满两周岁或已满两周岁、已满八周岁",
+     "rules": [
+      "c1084-under2",
+      "c1084-court",
+      "c1084-wish"
+     ]
+    },
+    {
+     "text": "不直接抚养子女的父或母",
+     "rules": [
+      "c1086-1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "司法解释：不满两周岁子女，母亲患久治不愈的传染性疾病或其他严重疾病、有抚养条件不尽抚养义务、或因其他原因子女确不宜随母亲生活，父亲请求直接抚养的，应予支持",
+     "rules": [
+      "c1084-spc44"
+     ]
+    },
+    {
+     "text": "司法解释：父母双方协议不满两周岁子女由父亲直接抚养且对子女健康成长无不利影响的，应予支持",
+     "rules": [
+      "c1084-spc45"
+     ]
+    },
+    {
+     "text": "探望不利于子女身心健康的，由人民法院依法中止探望",
+     "rules": [
+      "c1086-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "父母与子女间的关系不因父母离婚而消除，子女仍是父母双方的子女",
+     "rules": [
+      "c1084-1"
+     ]
+    },
+    {
+     "text": "离婚后父母对子女仍有抚养、教育、保护的权利和义务",
+     "rules": [
+      "c1084-2r",
+      "c1084-2o"
+     ]
+    },
+    {
+     "text": "不满两周岁的子女以由母亲直接抚养为原则",
+     "rules": [
+      "c1084-under2"
+     ]
+    },
+    {
+     "text": "已满两周岁的子女，协议不成的，由法院按最有利于未成年子女的原则判决",
+     "rules": [
+      "c1084-court"
+     ]
+    },
+    {
+     "text": "子女已满八周岁的，应当尊重其真实意愿",
+     "rules": [
+      "c1084-wish"
+     ]
+    },
+    {
+     "text": "不直接抚养的父或母有探望子女的权利，另一方有协助的义务；方式、时间协议不成的由法院判决",
+     "rules": [
+      "c1086-1",
+      "c1086-2"
+     ]
+    },
+    {
+     "text": "中止的事由消失后，应当恢复探望",
+     "rules": [
+      "c1086-restore"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "司法解释第44、45条的情形优先于“不满两周岁随母”的原则",
+     "rules": [
+      "c1084-spc44",
+      "c1084-spc45"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1085条（抚养费）在 card:g6793 中形式化，本行不重复",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1084-1",
+    "srcs": [
+     "art1084-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "marriageDissolved(P,Q)"
+    ],
+    "heads": [
+     "parentChildRelationUnaffectedByDivorce(P,C)"
+    ],
+    "note": "父母与子女间的关系，不因父母离婚而消除；子女无论由父或者母直接抚养，仍是父母双方的子女",
+    "auth": "npc"
+   },
+   {
+    "key": "c1084-2r",
+    "srcs": [
+     "art1084-2"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "marriageDissolved(P,Q)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "raiseEducateProtect(P,C)"
+     }
+    ],
+    "note": "离婚后，父母对于子女仍有抚养、教育、保护的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c1084-2o",
+    "srcs": [
+     "art1084-2"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "marriageDissolved(P,Q)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "raiseEducateProtect(P,C)"
+     }
+    ],
+    "note": "离婚后，父母对于子女仍有抚养、教育、保护的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1084-under2",
+    "srcs": [
+     "art1084-3"
+    ],
+    "body": [
+     "motherOf(M,C)",
+     "fatherOf(F,C)",
+     "marriageDissolved(F,M)",
+     "under2(C)"
+    ],
+    "heads": [
+     "directCustodian(M,C)"
+    ],
+    "note": "离婚后，不满两周岁的子女，以由母亲直接抚养为原则",
+    "auth": "npc"
+   },
+   {
+    "key": "c1084-spc44",
+    "srcs": [
+     "art1084-3"
+    ],
+    "body": [
+     "motherOf(M,C)",
+     "fatherOf(F,C)",
+     "marriageDissolved(F,M)",
+     "under2(C)",
+     "fatherRequestsCustody(F,C)",
+     {
+      "or": [
+       "motherSeriousIllnessUnsuitable(M,C)",
+       "motherCapableButNeglectsRaising(M,C)",
+       "otherReasonUnsuitableWithMother(M,C)"
+      ]
+     }
+    ],
+    "heads": [
+     "directCustodian(F,C)",
+     "-directCustodian(M,C)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第44条：母亲患有久治不愈的传染性疾病或者其他严重疾病子女不宜与其共同生活、有抚养条件不尽抚养义务而父亲要求子女随其生活、或者因其他原因子女确不宜随母亲生活，父亲请求直接抚养的，人民法院应予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c1084-spc45",
+    "srcs": [
+     "art1084-3"
+    ],
+    "body": [
+     "motherOf(M,C)",
+     "fatherOf(F,C)",
+     "marriageDissolved(F,M)",
+     "under2(C)",
+     "agreedFatherDirectCustody(F,M,C)",
+     "~harmfulToChildsGrowth(F,C)"
+    ],
+    "heads": [
+     "directCustodian(F,C)",
+     "-directCustodian(M,C)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第45条：父母双方协议不满两周岁子女由父亲直接抚养，并对子女健康成长无不利影响的，人民法院应予支持",
+    "auth": "spc"
+   },
+   {
+    "key": "c1084-court",
+    "srcs": [
+     "art1084-3"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "minor(C)",
+     "-under2(C)",
+     "custodyAgreementFailed(P,Q,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideCustodyInChildsBestInterest(C)"
+     }
+    ],
+    "note": "已满两周岁的子女，父母双方对抚养问题协议不成的，由人民法院根据双方的具体情况，按照最有利于未成年子女的原则判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1084-wish",
+    "srcs": [
+     "art1084-3"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "marriageDissolved(P,Q)",
+     "minor(C)",
+     "age8plus(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "respectChildsTrueWishes(C)"
+     }
+    ],
+    "note": "子女已满八周岁的，（确定直接抚养方时）应当尊重其真实意愿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1086-1",
+    "srcs": [
+     "art1086-1"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "childOf(C,Q)",
+     "marriageDissolved(P,Q)",
+     "notDirectlyRaising(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "visitChild(P,C)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "Q",
+      "counterparty": "P",
+      "content": "assistVisitation(Q,P)"
+     }
+    ],
+    "note": "离婚后，不直接抚养子女的父或者母，有探望子女的权利，另一方有协助的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c1086-2",
+    "srcs": [
+     "art1086-2"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "marriageDissolved(P,Q)",
+     "notDirectlyRaising(P,C)",
+     "visitationAgreementFailed(P,Q,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideVisitationArrangement(P,C)"
+     }
+    ],
+    "note": "行使探望权利的方式、时间由当事人协议；协议不成的，由人民法院判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1086-3",
+    "srcs": [
+     "art1086-3"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "notDirectlyRaising(P,C)",
+     "visitationHarmfulToChild(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "suspendVisitation(P,C)"
+     }
+    ],
+    "note": "父或者母探望子女，不利于子女身心健康的，由人民法院依法中止探望",
+    "auth": "npc"
+   },
+   {
+    "key": "c1086-restore",
+    "srcs": [
+     "art1086-3"
+    ],
+    "body": [
+     "childOf(C,P)",
+     "visitationSuspended(P,C)",
+     "suspensionGroundCeased(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "restoreVisitation(P,C)"
+     }
+    ],
+    "note": "中止的事由消失后，应当恢复探望",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1084-spc44",
+    "c1084-under2",
+    "母亲不宜直接抚养的情形排除随母原则"
+   ],
+   [
+    "c1084-spc45",
+    "c1084-under2",
+    "父母协议由父亲直接抚养且无不利影响的排除随母原则"
+   ]
+  ],
+  "predicates": {
+   "parentChildRelationUnaffectedByDivorce": "P与子女C之间的父母子女关系不因父母离婚而消除（父或母，子女）",
+   "motherOf": "M是C的母亲",
+   "fatherOf": "F是C的父亲",
+   "under2": "C不满两周岁",
+   "directCustodian": "P直接抚养子女C（直接抚养方，子女）",
+   "fatherRequestsCustody": "父亲F请求直接抚养子女C",
+   "motherSeriousIllnessUnsuitable": "母亲M患有久治不愈的传染性疾病或者其他严重疾病，子女C不宜与其共同生活",
+   "motherCapableButNeglectsRaising": "母亲M有抚养条件不尽抚养义务，而父亲要求子女C随其生活",
+   "otherReasonUnsuitableWithMother": "因其他原因，子女C确不宜随母亲M生活",
+   "agreedFatherDirectCustody": "父母F、M协议不满两周岁子女C由父亲F直接抚养",
+   "harmfulToChildsGrowth": "由P直接抚养对子女C健康成长有不利影响",
+   "custodyAgreementFailed": "父母P、Q对子女C的抚养问题协议不成",
+   "decideCustodyInChildsBestInterest": "人民法院根据双方具体情况，按照最有利于未成年子女C的原则判决抚养问题",
+   "respectChildsTrueWishes": "确定抚养问题时尊重子女C的真实意愿",
+   "visitChild": "P探望子女C",
+   "assistVisitation": "直接抚养方Q协助P行使探望权",
+   "visitationAgreementFailed": "P、Q就探望子女C的方式、时间协议不成",
+   "decideVisitationArrangement": "人民法院判决P探望子女C的方式、时间",
+   "visitationHarmfulToChild": "P探望子女C不利于子女身心健康",
+   "suspendVisitation": "人民法院依法中止P对子女C的探望",
+   "visitationSuspended": "P对子女C的探望已被中止",
+   "suspensionGroundCeased": "中止P探望子女C的事由已消失",
+   "restoreVisitation": "恢复P对子女C的探望"
+  }
+ },
+ "card:g6745": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "诉讼离婚中对现役军人婚姻和女方的特殊保护",
+     "rules": [
+      "c1081",
+      "c1081-court",
+      "c1081-spc64",
+      "c1082"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "现役军人的配偶要求离婚",
+     "rules": [
+      "c1081",
+      "c1081-court"
+     ]
+    },
+    {
+     "text": "女方在怀孕期间、分娩后一年内或者终止妊娠后六个月内",
+     "rules": [
+      "c1082"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "军人一方有重大过错的，不须征得军人同意",
+     "rules": [
+      "c1081",
+      "c1081-court"
+     ]
+    },
+    {
+     "text": "司法解释：军人“重大过错”可依第1079条第3款前三项及其他重大过错导致感情破裂的情形判断",
+     "rules": [
+      "c1081-spc64"
+     ]
+    },
+    {
+     "text": "女方提出离婚，或者人民法院认为确有必要受理男方离婚请求的除外",
+     "rules": [
+      "c1082"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当征得军人同意",
+     "rules": [
+      "c1081"
+     ]
+    },
+    {
+     "text": "未征得军人同意且军人无重大过错的，人民法院不准离婚（学理）",
+     "rules": [
+      "c1081-court"
+     ]
+    },
+    {
+     "text": "男方不得提出离婚",
+     "rules": [
+      "c1082"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "军婚保护作为特别规定，优先于第1079条一般判决离婚规则（见 card:g6734 的 c1079-2、c1079-3、c1079-5）",
+     "rules": [
+      "c1081-court"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1077条（离婚冷静期）已在 card:g6734 中形式化（c1077-1、c1077-wd、c1077-2、c1077-deemed），本行不重复",
+     "rules": []
+    },
+    {
+     "text": "第1082条只限制男方提出离婚的时间，不是否定离婚请求权；限制期满后可再行提出",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1081",
+    "srcs": [
+     "art1081"
+    ],
+    "body": [
+     "activeServicemember(M)",
+     "spouseOf(S,M)",
+     "requestsDivorce(S,M)",
+     "~servicememberGrossFault(M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "M",
+      "content": "obtainServicememberConsent(S,M)"
+     }
+    ],
+    "note": "现役军人的配偶要求离婚，应当征得军人同意，但是军人一方有重大过错的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1081-court",
+    "srcs": [
+     "art1081"
+    ],
+    "body": [
+     "activeServicemember(M)",
+     "divorceSuitFiled(S,M)",
+     "~servicememberConsented(M,S)",
+     "~servicememberGrossFault(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "grantDivorce(S,M)"
+     }
+    ],
+    "note": "学理：第1081条的法律效果为，未征得军人同意且军人无重大过错的，人民法院不得判决准予离婚",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c1081-spc64",
+    "srcs": [
+     "art1081"
+    ],
+    "body": [
+     "activeServicemember(M)",
+     {
+      "or": [
+       "bigamy(M)",
+       "cohabitingWithOther(M)",
+       "committedDomesticViolence(M)",
+       "abuseOrDesertFamilyMember(M)",
+       "incorrigibleGamblingOrDrugVice(M)",
+       "otherGrossFaultCausingBreakdown(M)"
+      ]
+     }
+    ],
+    "heads": [
+     "servicememberGrossFault(M)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第64条：“军人一方有重大过错”，可以依据第1079条第3款前三项规定及军人有其他重大过错导致夫妻感情破裂的情形予以判断",
+    "auth": "spc"
+   },
+   {
+    "key": "c1082",
+    "srcs": [
+     "art1082"
+    ],
+    "body": [
+     "husbandOf(H,W)",
+     "inPregnancyOrPostnatalProtectedPeriod(W)",
+     "~wifeProposedDivorce(W,H)",
+     "~courtDeemsNecessaryToAcceptHusbandsClaim(H,W)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "H",
+      "counterparty": "W",
+      "content": "proposeDivorce(H,W)"
+     }
+    ],
+    "note": "女方在怀孕期间、分娩后一年内或者终止妊娠后六个月内，男方不得提出离婚；但是，女方提出离婚或者人民法院认为确有必要受理男方离婚请求的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1081-court",
+    "c1079-2",
+    "军婚特别保护优先于一般判决离婚规则"
+   ],
+   [
+    "c1081-court",
+    "c1079-3",
+    "军婚特别保护优先于一般判决离婚规则"
+   ],
+   [
+    "c1081-court",
+    "c1079-5",
+    "军婚特别保护优先于一般判决离婚规则"
+   ]
+  ],
+  "predicates": {
+   "activeServicemember": "M是现役军人",
+   "servicememberGrossFault": "军人一方M有重大过错",
+   "obtainServicememberConsent": "现役军人的配偶S就离婚征得军人M同意",
+   "servicememberConsented": "现役军人M同意与S离婚",
+   "otherGrossFaultCausingBreakdown": "M有其他重大过错导致夫妻感情破裂",
+   "husbandOf": "H是W的丈夫（男方，女方）",
+   "inPregnancyOrPostnatalProtectedPeriod": "女方W处于怀孕期间、分娩后一年内或者终止妊娠后六个月内",
+   "wifeProposedDivorce": "女方W提出与H离婚",
+   "courtDeemsNecessaryToAcceptHusbandsClaim": "人民法院认为确有必要受理男方H对W的离婚请求",
+   "proposeDivorce": "H提出与W离婚"
+  }
+ },
+ "card:g6820": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第四章　离婚"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "离婚时夫妻共同财产的分割",
+     "rules": [
+      "c1087-agree",
+      "c1087-court",
+      "c1087-2",
+      "c1092-1",
+      "c1092-2",
+      "c1092-spc84"
+     ]
+    },
+    {
+     "text": "离婚时夫妻共同债务的清偿",
+     "rules": [
+      "c1089-1",
+      "c1089-agree",
+      "c1089-court"
+     ]
+    },
+    {
+     "text": "离婚损害赔偿",
+     "rules": [
+      "c1091-fault",
+      "c1091",
+      "c1091-spc87"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "离婚损害赔偿：一方有重婚、与他人同居、实施家庭暴力、虐待遗弃家庭成员或其他重大过错，并因此导致离婚；请求方为无过错方",
+     "rules": [
+      "c1091-fault",
+      "c1091"
+     ]
+    },
+    {
+     "text": "一方隐藏、转移、变卖、毁损、挥霍夫妻共同财产，或者伪造夫妻共同债务企图侵占另一方财产",
+     "rules": [
+      "c1092-1",
+      "c1092-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "司法解释：人民法院判决不准离婚的，对离婚损害赔偿请求不予支持；婚姻关系存续期间不起诉离婚而单独请求损害赔偿的，不予受理；双方均有过错的，不予支持（第90条，体现为“无过错方”要件）",
+     "rules": [
+      "c1091-spc87",
+      "c1091"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "共同财产由双方协议处理；协议不成的，由人民法院按照照顾子女、女方和无过错方权益的原则判决",
+     "rules": [
+      "c1087-agree",
+      "c1087-court"
+     ]
+    },
+    {
+     "text": "夫或妻在家庭土地承包经营中享有的权益等，应当依法予以保护",
+     "rules": [
+      "c1087-2"
+     ]
+    },
+    {
+     "text": "夫妻共同债务应当共同偿还；共同财产不足清偿或者财产归各自所有的，由双方协议清偿，协议不成的由人民法院判决",
+     "rules": [
+      "c1089-1",
+      "c1089-agree",
+      "c1089-court"
+     ]
+    },
+    {
+     "text": "无过错方有权请求损害赔偿",
+     "rules": [
+      "c1091"
+     ]
+    },
+    {
+     "text": "分割时对实施侵害行为的一方可以少分或者不分；离婚后发现的，另一方可以起诉请求再次分割，诉讼时效三年自发现之日起计算（司法解释）",
+     "rules": [
+      "c1092-1",
+      "c1092-2",
+      "c1092-spc84"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "第1088条（家务劳动补偿）已在 card:g6809 中形式化（c1088-1、c1088-court），本行不重复",
+     "rules": []
+    },
+    {
+     "text": "第1089条只调整夫妻内部清偿，不影响债权人依第1064条向夫妻主张共同债务",
+     "rules": []
+    },
+    {
+     "text": "第1092条是离婚时的分割调整；婚内分割见第1066条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1087-agree",
+    "srcs": [
+     "art1087-1"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "communityProperty(T)",
+     "propertyOfMarriage(T,A,B)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "agreeOnPropertyDivision(A,B,T)"
+     }
+    ],
+    "note": "离婚时，夫妻的共同财产由双方协议处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1087-court",
+    "srcs": [
+     "art1087-1"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "communityProperty(T)",
+     "propertyOfMarriage(T,A,B)",
+     "propertyDivisionAgreementFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "divideFavoringChildrenWomanAndInnocentParty(T)"
+     }
+    ],
+    "note": "协议不成的，由人民法院根据财产的具体情况，按照照顾子女、女方和无过错方权益的原则判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1087-2",
+    "srcs": [
+     "art1087-2"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "familyLandContractInterest(A,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "protectLandContractInterest(A,T)"
+     }
+    ],
+    "note": "对夫或者妻在家庭土地承包经营中享有的权益等，应当依法予以保护",
+    "auth": "npc"
+   },
+   {
+    "key": "c1089-1",
+    "srcs": [
+     "art1089"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "jointMaritalDebt(Z)",
+     "propertyOfMarriage(Z,A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "repayJointly(A,B,Z)"
+     }
+    ],
+    "note": "离婚时，夫妻共同债务应当共同偿还",
+    "auth": "npc"
+   },
+   {
+    "key": "c1089-agree",
+    "srcs": [
+     "art1089"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "jointMaritalDebt(Z)",
+     "propertyOfMarriage(Z,A,B)",
+     {
+      "or": [
+       "communityPropertyInsufficient(A,B)",
+       "separatePropertyRegime(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "agreeOnDebtRepayment(A,B,Z)"
+     }
+    ],
+    "note": "共同财产不足清偿或者财产归各自所有的，由双方协议清偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1089-court",
+    "srcs": [
+     "art1089"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     "jointMaritalDebt(Z)",
+     "propertyOfMarriage(Z,A,B)",
+     {
+      "or": [
+       "communityPropertyInsufficient(A,B)",
+       "separatePropertyRegime(A,B)"
+      ]
+     },
+     "debtRepaymentAgreementFailed(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "decideDebtRepayment(A,B,Z)"
+     }
+    ],
+    "note": "协议不成的，由人民法院判决",
+    "auth": "npc"
+   },
+   {
+    "key": "c1091-fault",
+    "srcs": [
+     "art1091"
+    ],
+    "body": [
+     "spouseOf(X,Y)",
+     {
+      "or": [
+       "bigamy(X)",
+       "cohabitingWithOther(X)",
+       "committedDomesticViolence(X)",
+       "abuseOrDesertFamilyMember(X)",
+       "otherGrossMaritalFault(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "statutoryDivorceFault(X)"
+    ],
+    "note": "第1091条所列法定过错：重婚；与他人同居；实施家庭暴力；虐待、遗弃家庭成员；有其他重大过错",
+    "auth": "npc"
+   },
+   {
+    "key": "c1091",
+    "srcs": [
+     "art1091"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "marriageDissolved(A,B)",
+     "statutoryDivorceFault(B)",
+     "faultCausedDivorce(B,A)",
+     "~statutoryDivorceFault(A)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "claimDivorceDamages(A,B)"
+     }
+    ],
+    "note": "有法定过错情形之一导致离婚的，无过错方有权请求损害赔偿（双方均有过错的不得请求，见解释（一）第90条）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1091-spc87",
+    "srcs": [
+     "art1091"
+    ],
+    "body": [
+     "spouseOf(A,B)",
+     "divorceDeniedByJudgment(A,B)",
+     "requestedDivorceDamages(A,B)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "supportDivorceDamagesClaim(A,B)"
+     }
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第87条第2款：人民法院判决不准离婚的案件，对于当事人基于民法典第1091条提出的损害赔偿请求，不予支持（第3款：婚姻关系存续期间不起诉离婚而单独提起的，不予受理）",
+    "auth": "spc"
+   },
+   {
+    "key": "c1092-1",
+    "srcs": [
+     "art1092"
+    ],
+    "body": [
+     "atDivorce(A,B)",
+     {
+      "or": [
+       "concealsOrDissipatesCommunityProperty(A)",
+       "forgesJointDebtToSeize(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "awardLessOrNoShare(A)"
+     }
+    ],
+    "note": "一方隐藏、转移、变卖、毁损、挥霍夫妻共同财产，或者伪造夫妻共同债务企图侵占另一方财产的，在离婚分割夫妻共同财产时，对该方可以少分或者不分",
+    "auth": "npc"
+   },
+   {
+    "key": "c1092-2",
+    "srcs": [
+     "art1092"
+    ],
+    "body": [
+     "marriageDissolved(A,B)",
+     "discoveredAfterDivorce(B,A)",
+     {
+      "or": [
+       "concealsOrDissipatesCommunityProperty(A)",
+       "forgesJointDebtToSeize(A,B)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "sueForRepartitionOfCommunityProperty(B,A)"
+     }
+    ],
+    "note": "离婚后，另一方发现有上述行为的，可以向人民法院提起诉讼，请求再次分割夫妻共同财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c1092-spc84",
+    "srcs": [
+     "art1092"
+    ],
+    "body": [
+     "repartitionClaim(R,B,A)",
+     "discoveredOn(R,T)"
+    ],
+    "heads": [
+     "limitationPeriodThreeYears(R)",
+     "limitationStartsFrom(R,T)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉婚姻家庭编的解释（一）》第84条：依第1092条请求再次分割夫妻共同财产的诉讼时效期间为三年，从当事人发现之日起计算",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1091-spc87",
+    "c1091",
+    "判决不准离婚的，离婚损害赔偿请求不予支持"
+   ]
+  ],
+  "predicates": {
+   "propertyOfMarriage": "财产或债务T属于A、B婚姻关系中的夫妻共同财产或共同债务（财产/债务，一方，另一方）",
+   "agreeOnPropertyDivision": "A、B协议处理夫妻共同财产T",
+   "propertyDivisionAgreementFailed": "A、B就夫妻共同财产的处理协议不成",
+   "divideFavoringChildrenWomanAndInnocentParty": "人民法院根据财产T的具体情况，按照照顾子女、女方和无过错方权益的原则判决分割",
+   "familyLandContractInterest": "T是夫或妻A在家庭土地承包经营中享有的权益",
+   "protectLandContractInterest": "依法保护A在家庭土地承包经营中享有的权益T",
+   "repayJointly": "A、B共同偿还夫妻共同债务Z",
+   "communityPropertyInsufficient": "A、B的共同财产不足清偿共同债务",
+   "separatePropertyRegime": "A、B约定财产归各自所有",
+   "agreeOnDebtRepayment": "A、B协议清偿共同债务Z",
+   "debtRepaymentAgreementFailed": "A、B就共同债务清偿协议不成",
+   "decideDebtRepayment": "人民法院判决A、B对共同债务Z的清偿",
+   "otherGrossMaritalFault": "X有其他重大过错（第1091条第5项）",
+   "statutoryDivorceFault": "X有第1091条规定的法定过错",
+   "faultCausedDivorce": "B的法定过错导致其与A离婚",
+   "claimDivorceDamages": "无过错方A请求B承担离婚损害赔偿",
+   "requestedDivorceDamages": "A已基于第1091条向B提出损害赔偿请求",
+   "supportDivorceDamagesClaim": "人民法院支持A对B的离婚损害赔偿请求",
+   "concealsOrDissipatesCommunityProperty": "A隐藏、转移、变卖、毁损、挥霍夫妻共同财产",
+   "forgesJointDebtToSeize": "A伪造夫妻共同债务企图侵占B的财产",
+   "awardLessOrNoShare": "分割夫妻共同财产时对A少分或者不分",
+   "discoveredAfterDivorce": "B在离婚后发现A的上述侵害共同财产行为",
+   "sueForRepartitionOfCommunityProperty": "B向人民法院起诉请求再次分割与A的夫妻共同财产",
+   "repartitionClaim": "R是B依第1092条请求对与A的夫妻共同财产再次分割的请求权（请求权，请求人，相对人）",
+   "discoveredOn": "请求权R的权利人于日期T发现对方的侵害行为"
+  }
+ }
+}

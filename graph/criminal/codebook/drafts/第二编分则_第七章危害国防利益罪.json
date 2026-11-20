@@ -1,0 +1,3207 @@
+{
+ "art:368": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "以暴力、威胁方法阻碍军人依法执行职务，是否构成阻碍军人执行职务罪",
+     "rules": [
+      "k368-1"
+     ]
+    },
+    {
+     "text": "故意阻碍武装部队军事行动并造成严重后果的，如何定罪处罚",
+     "rules": [
+      "k368-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款要件：对象是军人且正在依法执行职务，行为人实施阻碍行为，并且以暴力、威胁方法实施（罪名 obstructingMilitaryDuty＝阻碍军人执行职务罪）",
+     "rules": [
+      "k368-1"
+     ]
+    },
+    {
+     "text": "第2款要件：对象是武装部队的军事行动，行为人出于故意加以阻碍，并造成严重后果；不以暴力、威胁方法为必要（罪名 obstructingMilitaryOperation＝阻碍军事行动罪）",
+     "rules": [
+      "k368-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "仅有吵闹、纠缠、消极阻挡等阻碍举动，未使用暴力、威胁方法的，不符合第1款的方法要件，不构成阻碍军人执行职务罪（学理）",
+     "rules": [
+      "k368-1x"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成阻碍军人执行职务罪的，处三年以下有期徒刑、拘役、管制或者罚金",
+     "rules": [
+      "k368-1s"
+     ]
+    },
+    {
+     "text": "构成阻碍军事行动罪的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k368-2s"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "方法要件欠缺的例外判断优先于第1款的入罪判断",
+     "rules": [
+      "k368-1x",
+      "k368-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "两款区别：第1款保护军人个人依法执行职务，须以暴力、威胁方法实施，不要求严重后果；第2款保护武装部队的军事行动，方法不限但须故意且造成严重后果，法定刑更重",
+     "rules": [
+      "k368-1",
+      "k368-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k368-1",
+    "srcs": [
+     "art368#1"
+    ],
+    "body": [
+     "militaryPersonnel(V)",
+     "lawfullyPerformingDuty(V,X)",
+     "obstructsDutyOf(P,X,V)",
+     "usesViolenceOrThreatMeans(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingMilitaryDuty)"
+    ],
+    "auth": "npc",
+    "note": "以暴力、威胁方法阻碍军人依法执行职务，符合阻碍军人执行职务罪（obstructingMilitaryDuty）的构成要件"
+   },
+   {
+    "key": "k368-1s",
+    "srcs": [
+     "art368#1"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryDuty)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionControlOrFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "阻碍军人执行职务罪处三年以下有期徒刑、拘役、管制或者罚金"
+   },
+   {
+    "key": "k368-2",
+    "srcs": [
+     "art368#2"
+    ],
+    "body": [
+     "armedForces(U)",
+     "militaryOperationOf(A,U)",
+     "obstructsMilitaryOperation(P,X,A)",
+     "intentionalObstruction(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,obstructingMilitaryOperation)"
+    ],
+    "auth": "npc",
+    "note": "故意阻碍武装部队军事行动并造成严重后果，符合阻碍军事行动罪（obstructingMilitaryOperation）的构成要件，不要求暴力、威胁方法"
+   },
+   {
+    "key": "k368-2s",
+    "srcs": [
+     "art368#2"
+    ],
+    "body": [
+     "constitutes(P,X,obstructingMilitaryOperation)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "阻碍军事行动罪处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k368-1x",
+    "srcs": [
+     "art368#1"
+    ],
+    "body": [
+     "militaryPersonnel(V)",
+     "lawfullyPerformingDuty(V,X)",
+     "obstructsDutyOf(P,X,V)",
+     "obstructsWithoutViolenceOrThreat(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,obstructingMilitaryDuty)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：第1款以暴力、威胁方法为必备要件，未使用该方法的不成立阻碍军人执行职务罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k368-1x",
+    "k368-2",
+    "推断：结论冲突（('constitutes', '+')），k368-1x 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "militaryPersonnel": "军人（人P）",
+   "lawfullyPerformingDuty": "lawfullyPerformingDuty(V,X)：V 在事件 X 中正在依法执行职务（含代表职务、红十字会职责）",
+   "obstructsDutyOf": "obstructsDutyOf(P,X,V)：P 通过行为 X 阻碍 V 执行职务、履行职责",
+   "usesViolenceOrThreatMeans": "usesViolenceOrThreatMeans(P,X)：P 在行为 X 中以暴力、威胁手段实施",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetentionControlOrFine": "sentenceUnder3OrDetentionControlOrFine(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役、管制或者罚金",
+   "armedForces": "armedForces(A)：A 是武装部队",
+   "militaryOperationOf": "militaryOperationOf(A,U)：A 是武装部队 U 的军事行动",
+   "obstructsMilitaryOperation": "obstructsMilitaryOperation(P,X,A)：P 通过行为 X 阻碍军事行动 A",
+   "intentionalObstruction": "intentionalObstruction(P,X)：P 对行为 X 的阻碍出于故意",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "obstructsWithoutViolenceOrThreat": "obstructsWithoutViolenceOrThreat(P,X)：P 的阻碍行为 X 未使用暴力、威胁方法（如吵闹、纠缠、消极阻挡）"
+  }
+ },
+ "art:369": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "破坏武器装备、军事设施、军事通信的定罪与量刑：故意与过失、对象是否重要、情节是否特别严重、是否战时",
+     "rules": [
+      "k369-1",
+      "k369-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "实施破坏（毁损、拆卸、使功能丧失等）行为，对象为武器装备、军事设施或者军事通信；第1款之罪为故意犯罪，过失除外",
+     "rules": [
+      "k369-1"
+     ]
+    },
+    {
+     "text": "过失损坏武器装备、军事设施、军事通信，须造成严重后果才构成犯罪（过失犯前款罪）",
+     "rules": [
+      "k369-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "过失损坏的不成立第1款故意破坏罪，依第2款以过失犯罪论处，且以造成严重后果为入罪门槛",
+     "rules": [
+      "k369-2",
+      "k369-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "故意破坏武器装备、军事设施、军事通信的，处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k369-1a"
+     ]
+    },
+    {
+     "text": "破坏重要武器装备、军事设施、军事通信的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k369-1b"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k369-1c"
+     ]
+    },
+    {
+     "text": "过失犯前款罪，造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k369-2a"
+     ]
+    },
+    {
+     "text": "过失造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k369-2b"
+     ]
+    },
+    {
+     "text": "战时犯前两款罪（故意破坏罪与过失损坏罪）的，从重处罚",
+     "rules": [
+      "k369-3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "对象重要者适用第二档刑，情节特别严重者适用第三档刑，均优先于基本档",
+     "rules": [
+      "k369-1b",
+      "k369-1c"
+     ]
+    },
+    {
+     "text": "过失造成特别严重后果的，优先适用三年以上七年以下有期徒刑档",
+     "rules": [
+      "k369-2b"
+     ]
+    },
+    {
+     "text": "战时从重处罚对故意犯与过失犯均适用，不改变法定刑档次",
+     "rules": [
+      "k369-3"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "故意破坏与过失损坏是两个不同罪名：过失以造成严重后果为构成要件，法定刑明显轻于故意犯",
+     "rules": [
+      "k369-1",
+      "k369-2"
+     ]
+    },
+    {
+     "text": "本条对象限于武器装备、军事设施、军事通信；破坏一般交通设施、电力设备等不构成本罪，可能构成其他危害公共安全犯罪",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k369-1",
+    "srcs": [
+     "art369#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "sabotageAct(X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "weaponsAndEquipment(M)",
+       "militaryFacility(M)",
+       "militaryCommunication(M)"
+      ]
+     },
+     "~negligentDamage(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,sabotageOfMilitaryEquipment)"
+    ],
+    "auth": "npc",
+    "note": "故意破坏武器装备、军事设施、军事通信的，符合破坏武器装备、军事设施、军事通信罪（sabotageOfMilitaryEquipment）的构成要件；过失情形除外"
+   },
+   {
+    "key": "k369-1a",
+    "srcs": [
+     "art369#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfMilitaryEquipment)",
+     "objectOf(X,M)",
+     "~importantMilitaryObject(M)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3YearsDetentionOrControl(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "破坏普通武器装备、军事设施、军事通信的，处三年以下有期徒刑、拘役或者管制"
+   },
+   {
+    "key": "k369-1b",
+    "srcs": [
+     "art369#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfMilitaryEquipment)",
+     "objectOf(X,M)",
+     "importantMilitaryObject(M)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "破坏重要武器装备、军事设施、军事通信的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k369-1c",
+    "srcs": [
+     "art369#1"
+    ],
+    "body": [
+     "constitutes(P,X,sabotageOfMilitaryEquipment)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10YearsOrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "故意破坏情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k369-2",
+    "srcs": [
+     "art369#2"
+    ],
+    "body": [
+     "act(P,X)",
+     "negligentDamage(P,X)",
+     "objectOf(X,M)",
+     {
+      "or": [
+       "weaponsAndEquipment(M)",
+       "militaryFacility(M)",
+       "militaryCommunication(M)"
+      ]
+     },
+     "causesSeriousConsequences(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,negligentDamageOfMilitaryEquipment)"
+    ],
+    "auth": "npc",
+    "note": "过失损坏武器装备、军事设施、军事通信并造成严重后果的，符合过失损坏武器装备、军事设施、军事通信罪（negligentDamageOfMilitaryEquipment）的构成要件"
+   },
+   {
+    "key": "k369-2a",
+    "srcs": [
+     "art369#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentDamageOfMilitaryEquipment)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯前款罪造成严重后果的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k369-2b",
+    "srcs": [
+     "art369#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentDamageOfMilitaryEquipment)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失造成特别严重后果的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k369-3",
+    "srcs": [
+     "art369#3"
+    ],
+    "body": [
+     "crime(P,X)",
+     "wartime(X)",
+     {
+      "or": [
+       "constitutes(P,X,sabotageOfMilitaryEquipment)",
+       "constitutes(P,X,negligentDamageOfMilitaryEquipment)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,heavier)"
+     }
+    ],
+    "auth": "npc",
+    "note": "战时犯故意破坏罪或过失损坏罪的，从重处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "sabotageAct": "sabotageAct(X)：X 是破坏（毁损、拆卸、使功能丧失等）行为",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "weaponsAndEquipment": "weaponsAndEquipment(M)：M 是武器装备",
+   "militaryFacility": "militaryFacility(M)：M 是军事设施",
+   "militaryCommunication": "militaryCommunication(M)：M 是军事通信（军事通信线路、设备、系统等）",
+   "negligentDamage": "negligentDamage(P,X)：P 系因过失实施损毁行为 X",
+   "constitutes": "符合构成要件",
+   "importantMilitaryObject": "importantMilitaryObject(M)：M 是重要的武器装备、军事设施或者军事通信",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder3YearsDetentionOrControl": "sentenceUnder3YearsDetentionOrControl(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役或者管制",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "sentenceFrom10YearsOrLifeOrDeath": "sentenceFrom10YearsOrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑",
+   "causesSeriousConsequences": "causesSeriousConsequences(X)：事件 X 造成严重后果",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "crime": "crime(P,X)：P 实施了犯罪事件 X",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "sentence": "量刑"
+  }
+ },
+ "art:370": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "明知是不合格的武器装备、军事设施而提供给武装部队的，构成故意提供不合格武器装备、军事设施罪",
+     "rules": [
+      "k370-cond"
+     ]
+    },
+    {
+     "text": "过失提供不合格武器装备、军事设施给武装部队并造成严重后果的，构成过失提供不合格武器装备、军事设施罪",
+     "rules": [
+      "k370-neg-cond"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "故意罪要件：对象为不合格的武器装备、军事设施；行为是提供给武装部队；行为人明知其不合格",
+     "rules": [
+      "k370-cond"
+     ]
+    },
+    {
+     "text": "过失罪要件：出于疏忽大意或过于自信的过失提供不合格武器装备、军事设施给武装部队，且造成严重后果（未造成严重后果不构成犯罪）",
+     "rules": [
+      "k370-neg-cond"
+     ]
+    },
+    {
+     "text": "单位犯罪要件：单位明知是不合格的武器装备、军事设施而提供给武装部队，成立第1款之罪的单位犯罪",
+     "rules": [
+      "k370-unit-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "故意提供不合格武器装备、军事设施，情节一般的，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k370-1"
+     ]
+    },
+    {
+     "text": "情节严重的，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k370-2"
+     ]
+    },
+    {
+     "text": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑",
+     "rules": [
+      "k370-3"
+     ]
+    },
+    {
+     "text": "过失犯本罪造成严重后果的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k370-neg-1"
+     ]
+    },
+    {
+     "text": "过失犯本罪造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k370-neg-2"
+     ]
+    },
+    {
+     "text": "单位犯第1款罪的，对单位判处罚金",
+     "rules": [
+      "k370-unit-fine"
+     ]
+    },
+    {
+     "text": "并对单位直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚（双罚制）",
+     "rules": [
+      "k370-unit-person"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、情节特别严重依次排除较轻量刑档次的适用",
+     "rules": [
+      "k370-2",
+      "k370-3"
+     ]
+    },
+    {
+     "text": "过失造成特别严重后果的，排除三年以下基本档",
+     "rules": [
+      "k370-neg-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "单位犯罪只针对第1款的故意犯罪，第2款过失犯罪未规定单位犯罪",
+     "rules": [
+      "k370-unit-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k370-cond",
+    "srcs": [
+     "art370#1"
+    ],
+    "body": [
+     "providesToArmedForces(P,X,M,A)",
+     "armedForces(A)",
+     "substandardWeaponEquipmentOrMilitaryFacility(M)",
+     "knowsSubstandardWeaponOrFacility(P,M)"
+    ],
+    "heads": [
+     "constitutes(P,X,providingSubstandardWeaponsOrMilitaryFacilities)"
+    ],
+    "auth": "npc",
+    "note": "明知是不合格的武器装备、军事设施而提供给武装部队，符合故意提供不合格武器装备、军事设施罪的构成要件"
+   },
+   {
+    "key": "k370-1",
+    "srcs": [
+     "art370#1"
+    ],
+    "body": [
+     "constitutes(P,X,providingSubstandardWeaponsOrMilitaryFacilities)",
+     "~seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档：处五年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k370-2",
+    "srcs": [
+     "art370#1"
+    ],
+    "body": [
+     "constitutes(P,X,providingSubstandardWeaponsOrMilitaryFacilities)",
+     "seriousCircumstances(X)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k370-3",
+    "srcs": [
+     "art370#1"
+    ],
+    "body": [
+     "constitutes(P,X,providingSubstandardWeaponsOrMilitaryFacilities)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom10OrLifeOrDeath(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节特别严重的，处十年以上有期徒刑、无期徒刑或者死刑"
+   },
+   {
+    "key": "k370-neg-cond",
+    "srcs": [
+     "art370#2"
+    ],
+    "body": [
+     "providesToArmedForces(P,X,M,A)",
+     "armedForces(A)",
+     "substandardWeaponEquipmentOrMilitaryFacility(M)",
+     {
+      "or": [
+       "failedToForeseeDueToCarelessness(P,X)",
+       "lightlyBelievedCouldAvoid(P,X)"
+      ]
+     },
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,negligentProvidingSubstandardWeaponsOrMilitaryFacilities)"
+    ],
+    "auth": "npc",
+    "note": "过失提供不合格武器装备、军事设施给武装部队并造成严重后果，符合过失提供不合格武器装备、军事设施罪的构成要件"
+   },
+   {
+    "key": "k370-neg-1",
+    "srcs": [
+     "art370#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentProvidingSubstandardWeaponsOrMilitaryFacilities)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯本罪造成严重后果的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k370-neg-2",
+    "srcs": [
+     "art370#2"
+    ],
+    "body": [
+     "constitutes(P,X,negligentProvidingSubstandardWeaponsOrMilitaryFacilities)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "过失犯本罪造成特别严重后果的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k370-unit-cond",
+    "srcs": [
+     "art370#3"
+    ],
+    "body": [
+     "unit(U)",
+     "providesToArmedForces(U,X,M,A)",
+     "armedForces(A)",
+     "substandardWeaponEquipmentOrMilitaryFacility(M)",
+     "knowsSubstandardWeaponOrFacility(U,M)"
+    ],
+    "heads": [
+     "unitProvidingSubstandardWeaponsCrime(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位犯第1款之罪的，成立故意提供不合格武器装备、军事设施罪的单位犯罪（第2款过失罪无单位犯罪规定）"
+   },
+   {
+    "key": "k370-unit-fine",
+    "srcs": [
+     "art370#3"
+    ],
+    "body": [
+     "unitProvidingSubstandardWeaponsCrime(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯第1款罪的，对单位判处罚金"
+   },
+   {
+    "key": "k370-unit-person",
+    "srcs": [
+     "art370#3"
+    ],
+    "body": [
+     "unitProvidingSubstandardWeaponsCrime(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishUnderPara1(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员，依照第1款的规定处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "providesToArmedForces": "providesToArmedForces(P,X,M,A)：主体 P（自然人或单位）通过行为 X 将 M 提供给武装部队 A",
+   "armedForces": "armedForces(A)：A 是武装部队",
+   "substandardWeaponEquipmentOrMilitaryFacility": "substandardWeaponEquipmentOrMilitaryFacility(M)：M 是不合格的武器装备、军事设施",
+   "knowsSubstandardWeaponOrFacility": "knowsSubstandardWeaponOrFacility(P,M)：P 明知 M 是不合格的武器装备、军事设施",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5To10Years": "sentenceFrom5To10Years(P,X)：对 P 就犯罪 X 处五年以上十年以下有期徒刑",
+   "sentenceFrom10OrLifeOrDeath": "sentenceFrom10OrLifeOrDeath(P,X)：对 P 就犯罪 X 处十年以上有期徒刑、无期徒刑或者死刑",
+   "failedToForeseeDueToCarelessness": "failedToForeseeDueToCarelessness(P,X)：P 因疏忽大意而没有预见行为 X 的危害结果",
+   "lightlyBelievedCouldAvoid": "lightlyBelievedCouldAvoid(P,X)：P 轻信能够避免行为 X 的危害结果",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitProvidingSubstandardWeaponsCrime": "unitProvidingSubstandardWeaponsCrime(U,X)：单位 U 就行为 X 成立刑法第370条第1款故意提供不合格武器装备、军事设施罪的单位犯罪",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "punishUnderPara1": "punishUnderPara1(P,X)：对 P 就行为 X 依照本条第一款的规定处罚"
+  }
+ },
+ "art:371": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "聚众冲击军事禁区、聚众扰乱军事管理区秩序的定罪，以及对首要分子与其他积极参加者的分别量刑",
+     "rules": [
+      "k371-1cond",
+      "k371-1a",
+      "k371-1b",
+      "k371-2cond",
+      "k371-2a",
+      "k371-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：聚众冲击军事禁区，且严重扰乱军事禁区秩序的，构成聚众冲击军事禁区罪（不要求造成严重损失）",
+     "rules": [
+      "k371-1cond"
+     ]
+    },
+    {
+     "text": "第2款：聚众扰乱军事管理区秩序，须同时具备情节严重、致使军事管理区工作无法进行、造成严重损失三项要件，才构成聚众扰乱军事管理区秩序罪",
+     "rules": [
+      "k371-2cond"
+     ]
+    },
+    {
+     "text": "处罚主体限于首要分子和其他积极参加者，并按其地位分别适用不同法定刑",
+     "rules": [
+      "k371-1a",
+      "k371-1b",
+      "k371-2a",
+      "k371-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "一般参加者（既非首要分子，也非积极参加者）不构成聚众冲击军事禁区罪",
+     "rules": [
+      "k371-1c"
+     ]
+    },
+    {
+     "text": "一般参加者（既非首要分子，也非积极参加者）不构成聚众扰乱军事管理区秩序罪",
+     "rules": [
+      "k371-2c"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "聚众冲击军事禁区的首要分子，处五年以上十年以下有期徒刑",
+     "rules": [
+      "k371-1a"
+     ]
+    },
+    {
+     "text": "聚众冲击军事禁区的其他积极参加者，处五年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k371-1b"
+     ]
+    },
+    {
+     "text": "聚众扰乱军事管理区秩序的首要分子，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k371-2a"
+     ]
+    },
+    {
+     "text": "聚众扰乱军事管理区秩序的其他积极参加者，处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k371-2b"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "一般参加者不处罚的规则优先于本条构成要件规则，排除对其定罪",
+     "rules": [
+      "k371-1c",
+      "k371-2c"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "军事禁区（第1款）只需严重扰乱秩序，法定刑较重；军事管理区（第2款）须情节严重＋工作无法进行＋造成严重损失，法定刑较轻",
+     "rules": [
+      "k371-1cond",
+      "k371-2cond"
+     ]
+    },
+    {
+     "text": "本条对象是军事禁区、军事管理区，与聚众冲击国家机关罪的对象不同，属特别规定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k371-1cond",
+    "srcs": [
+     "art371#1"
+    ],
+    "body": [
+     "mobAssaultsMilitaryRestrictedZone(P,X)",
+     "seriouslyDisruptsMilitaryRestrictedZoneOrder(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,mobAssaultOnMilitaryRestrictedZone)"
+    ],
+    "auth": "npc",
+    "note": "聚众冲击军事禁区并严重扰乱其秩序的，符合聚众冲击军事禁区罪构成要件（新罪名常量 mobAssaultOnMilitaryRestrictedZone）"
+   },
+   {
+    "key": "k371-1a",
+    "srcs": [
+     "art371#1"
+    ],
+    "body": [
+     "constitutes(P,X,mobAssaultOnMilitaryRestrictedZone)",
+     "ringleader(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from5to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "聚众冲击军事禁区的首要分子，处五年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k371-1b",
+    "srcs": [
+     "art371#1"
+    ],
+    "body": [
+     "constitutes(P,X,mobAssaultOnMilitaryRestrictedZone)",
+     "activelyParticipatesIn(P,X)",
+     "~ringleader(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under5OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "其他积极参加的，处五年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑方式常量 under5OrDetentionControlOrDeprivation 表示该四种刑罚择一）"
+   },
+   {
+    "key": "k371-1c",
+    "srcs": [
+     "art371#1"
+    ],
+    "body": [
+     "mobAssaultsMilitaryRestrictedZone(P,X)",
+     "otherParticipationIn(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,mobAssaultOnMilitaryRestrictedZone)"
+    ],
+    "auth": "doctrine",
+    "note": "法条只处罚首要分子与其他积极参加者，故一般参加者不构成本罪，此为学理推论"
+   },
+   {
+    "key": "k371-2cond",
+    "srcs": [
+     "art371#2"
+    ],
+    "body": [
+     "mobDisturbsMilitaryAdministrationZoneOrder(P,X)",
+     "seriousCircumstances(X)",
+     "militaryAdministrationZoneWorkUnableToProceed(X)",
+     "causesSeriousLoss(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,mobDisturbanceOfMilitaryAdministrationZoneOrder)"
+    ],
+    "auth": "npc",
+    "note": "聚众扰乱军事管理区秩序，情节严重、致使工作无法进行并造成严重损失的，符合聚众扰乱军事管理区秩序罪构成要件（新罪名常量 mobDisturbanceOfMilitaryAdministrationZoneOrder）"
+   },
+   {
+    "key": "k371-2a",
+    "srcs": [
+     "art371#2"
+    ],
+    "body": [
+     "constitutes(P,X,mobDisturbanceOfMilitaryAdministrationZoneOrder)",
+     "ringleader(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to7)"
+     }
+    ],
+    "auth": "npc",
+    "note": "聚众扰乱军事管理区秩序的首要分子，处三年以上七年以下有期徒刑（量刑方式常量 from3to7 表示三年以上七年以下有期徒刑）"
+   },
+   {
+    "key": "k371-2b",
+    "srcs": [
+     "art371#2"
+    ],
+    "body": [
+     "constitutes(P,X,mobDisturbanceOfMilitaryAdministrationZoneOrder)",
+     "activelyParticipatesIn(P,X)",
+     "~ringleader(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetentionControlOrDeprivation)"
+     }
+    ],
+    "auth": "npc",
+    "note": "其他积极参加的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利（量刑方式常量 under3OrDetentionControlOrDeprivation 表示该四种刑罚择一）"
+   },
+   {
+    "key": "k371-2c",
+    "srcs": [
+     "art371#2"
+    ],
+    "body": [
+     "mobDisturbsMilitaryAdministrationZoneOrder(P,X)",
+     "otherParticipationIn(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,mobDisturbanceOfMilitaryAdministrationZoneOrder)"
+    ],
+    "auth": "doctrine",
+    "note": "法条只处罚首要分子与其他积极参加者，故一般参加者不构成本罪，此为学理推论"
+   }
+  ],
+  "overrides": [
+   [
+    "k371-1c",
+    "k371-1cond",
+    "推断：结论冲突（('constitutes', '+')），k371-1c 为例外或更具体"
+   ],
+   [
+    "k371-2c",
+    "k371-1cond",
+    "推断：结论冲突（('constitutes', '+')），k371-2c 为例外或更具体"
+   ],
+   [
+    "k371-1c",
+    "k371-2cond",
+    "推断：结论冲突（('constitutes', '-')），k371-1c 为例外或更具体"
+   ],
+   [
+    "k371-2c",
+    "k371-2cond",
+    "推断：结论冲突（('constitutes', '+')），k371-2c 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "mobAssaultsMilitaryRestrictedZone": "mobAssaultsMilitaryRestrictedZone(P,X)：P 通过行为 X 聚众冲击军事禁区",
+   "seriouslyDisruptsMilitaryRestrictedZoneOrder": "seriouslyDisruptsMilitaryRestrictedZoneOrder(X)：行为 X 严重扰乱军事禁区秩序",
+   "constitutes": "符合构成要件",
+   "ringleader": "ringleader(P,X)：P 是犯罪事件 X 中的首要分子（刑法第97条）",
+   "sentence": "量刑",
+   "activelyParticipatesIn": "activelyParticipatesIn(P,X)：P 积极参加犯罪事件 X",
+   "otherParticipationIn": "otherParticipationIn(P,X)：P 属于犯罪 X 的其他参加者（非首要分子、非罪行重大、非积极参加）",
+   "mobDisturbsMilitaryAdministrationZoneOrder": "mobDisturbsMilitaryAdministrationZoneOrder(P,X)：P 通过行为 X 聚众扰乱军事管理区秩序",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "militaryAdministrationZoneWorkUnableToProceed": "militaryAdministrationZoneWorkUnableToProceed(X)：行为 X 致使军事管理区工作无法进行",
+   "causesSeriousLoss": "causesSeriousLoss(X)：行为 X 造成严重损失"
+  }
+ },
+ "art:372": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "冒充军人招摇撞骗的定罪与法定刑档次选择",
+     "rules": [
+      "k372-cond",
+      "k372-basic",
+      "k372-aggravated"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为人冒充军人（假冒军人身份、职务、军衔等），并以此招摇撞骗，骗取财物、职位、荣誉、待遇等非法利益",
+     "rules": [
+      "k372-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "符合冒充军人招摇撞骗罪的构成要件",
+     "rules": [
+      "k372-cond"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k372-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k372-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的加重档优先于基本档适用，不再适用三年以下有期徒刑、拘役、管制或剥夺政治权利",
+     "rules": [
+      "k372-aggravated",
+      "k372-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪限于冒充军人；冒充国家机关工作人员招摇撞骗的，适用第279条招摇撞骗罪，不适用本条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k372-cond",
+    "srcs": [
+     "art372"
+    ],
+    "body": [
+     "impersonatesMilitaryPersonnel(P,X)",
+     "swindlesByImpersonation(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,impersonatingMilitaryPersonnel)"
+    ],
+    "auth": "npc",
+    "note": "冒充军人并招摇撞骗的，符合冒充军人招摇撞骗罪（impersonatingMilitaryPersonnel）的构成要件"
+   },
+   {
+    "key": "k372-basic",
+    "srcs": [
+     "art372"
+    ],
+    "body": [
+     "constitutes(P,X,impersonatingMilitaryPersonnel)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionControlOrDeprivation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "冒充军人招摇撞骗的，处三年以下有期徒刑、拘役、管制或者剥夺政治权利"
+   },
+   {
+    "key": "k372-aggravated",
+    "srcs": [
+     "art372"
+    ],
+    "body": [
+     "constitutes(P,X,impersonatingMilitaryPersonnel)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "冒充军人招摇撞骗情节严重的，处三年以上十年以下有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "impersonatesMilitaryPersonnel": "impersonatesMilitaryPersonnel(P,X)：P 通过行为 X 冒充军人（假冒军人身份、职务、军衔等）",
+   "swindlesByImpersonation": "swindlesByImpersonation(P,X)：P 通过行为 X 招摇撞骗（利用假冒身份炫耀、行骗，骗取财物、职位、荣誉、待遇等非法利益）",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetentionControlOrDeprivation": "sentenceUnder3OrDetentionControlOrDeprivation(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+   "sentenceFrom3To10Years": "sentenceFrom3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑"
+  }
+ },
+ "art:373": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "煽动军人逃离部队，或者明知是逃离部队的军人而雇用，情节严重的，是否构成犯罪及如何处罚",
+     "rules": [
+      "k373-cond",
+      "k373-incite",
+      "k373-employ",
+      "k373-penalty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为方式为二者之一：煽动现役军人逃离部队；或者明知是逃离部队的军人而雇用",
+     "rules": [
+      "k373-cond",
+      "k373-incite",
+      "k373-employ"
+     ]
+    },
+    {
+     "text": "须情节严重，情节严重是本罪的入罪要件",
+     "rules": [
+      "k373-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "情节不严重的，不具备本罪构成条件，不构成本罪（学理：情节严重为入罪要件）",
+     "rules": [
+      "k373-minor"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "煽动现役军人逃离部队且情节严重的，符合煽动军人逃离部队罪的构成要件",
+     "rules": [
+      "k373-incite"
+     ]
+    },
+    {
+     "text": "明知是逃离部队的军人而雇用且情节严重的，符合雇用逃离部队军人罪的构成要件",
+     "rules": [
+      "k373-employ"
+     ]
+    },
+    {
+     "text": "构成本罪的，处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k373-penalty"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节不严重的排除规则优先于本罪构成条件规则",
+     "rules": [
+      "k373-minor",
+      "k373-cond"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪处罚的是煽动者、雇用者；军人本人逃离部队的，另按军人违反职责罪中的逃离部队罪处理",
+     "rules": []
+    },
+    {
+     "text": "雇用型以“明知是逃离部队的军人”为要件，不明知则不构成本罪；煽动型的对象须为现役军人",
+     "rules": [
+      "k373-incite",
+      "k373-employ"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k373-cond",
+    "srcs": [
+     "art373#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "incitesMilitaryPersonToDesert(P,X,V) activeDutyMilitaryPerson(V)",
+       "knowinglyEmploysDesertedMilitaryPerson(P,X,V) desertedMilitaryPerson(V)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "art373Conditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "煽动现役军人逃离部队或明知是逃离部队的军人而雇用，且情节严重，具备第373条的构成条件"
+   },
+   {
+    "key": "k373-incite",
+    "srcs": [
+     "art373#1"
+    ],
+    "body": [
+     "art373Conditions(P,X)",
+     "incitesMilitaryPersonToDesert(P,X,V)",
+     "activeDutyMilitaryPerson(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,incitingMilitaryDesertion)"
+    ],
+    "auth": "npc",
+    "note": "煽动军人逃离部队型，符合煽动军人逃离部队罪的构成要件"
+   },
+   {
+    "key": "k373-employ",
+    "srcs": [
+     "art373#1"
+    ],
+    "body": [
+     "art373Conditions(P,X)",
+     "knowinglyEmploysDesertedMilitaryPerson(P,X,V)",
+     "desertedMilitaryPerson(V)"
+    ],
+    "heads": [
+     "constitutes(P,X,employingDesertedMilitaryPerson)"
+    ],
+    "auth": "npc",
+    "note": "明知是逃离部队的军人而雇用型，符合雇用逃离部队军人罪的构成要件"
+   },
+   {
+    "key": "k373-penalty",
+    "srcs": [
+     "art373#1"
+    ],
+    "body": [
+     "art373Conditions(P,X)",
+     "constitutes(P,X,C)",
+     "responsible(P,X,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionOrControl(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪并负刑事责任的，处三年以下有期徒刑、拘役或者管制"
+   },
+   {
+    "key": "k373-minor",
+    "srcs": [
+     "art373#1"
+    ],
+    "body": [
+     {
+      "or": [
+       "incitesMilitaryPersonToDesert(P,X,V)",
+       "knowinglyEmploysDesertedMilitaryPerson(P,X,V)"
+      ]
+     },
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-art373Conditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "情节不严重的不具备本罪构成条件，不构成本罪；情节严重属入罪要件，系学理说明"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "incitesMilitaryPersonToDesert": "incitesMilitaryPersonToDesert(P,X,V)：P 通过行为 X 煽动军人 V 逃离部队",
+   "activeDutyMilitaryPerson": "activeDutyMilitaryPerson(M)：M 是现役军人",
+   "knowinglyEmploysDesertedMilitaryPerson": "knowinglyEmploysDesertedMilitaryPerson(P,X,V)：P 通过行为 X 明知 V 是逃离部队的军人而予以雇用",
+   "desertedMilitaryPerson": "desertedMilitaryPerson(V)：V 是逃离部队的军人",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "art373Conditions": "art373Conditions(P,X)：P 的行为 X 具备刑法第373条的行为方式（煽动军人逃离部队或明知是逃离部队的军人而雇用）与情节严重要件",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "sentenceUnder3OrDetentionOrControl": "sentenceUnder3OrDetentionOrControl(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役或者管制"
+  }
+ },
+ "art:374": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "在征兵工作中徇私舞弊、接送不合格兵员，情节严重的，是否构成接送不合格兵员罪及如何量刑",
+     "rules": [
+      "k374-basic",
+      "k374-basic-sent",
+      "k374-agg-sent"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "客观条件：行为发生在征兵工作中，行为人徇私舞弊，接送（接收、输送）不合格兵员",
+     "rules": [
+      "k374-cond"
+     ]
+    },
+    {
+     "text": "主体条件：本罪为特殊主体，即征兵工作人员（兵役机关、接兵部队等负责征兵工作的人员）——法条未明文，属学理",
+     "rules": [
+      "k374-subject"
+     ]
+    },
+    {
+     "text": "情节严重是入罪门槛，具备上述条件且情节严重的，构成接送不合格兵员罪，负刑事责任",
+     "rules": [
+      "k374-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "未达到情节严重的，不构成本罪（可依法给予纪律、行政处理）——学理",
+     "rules": [
+      "k374-notSerious"
+     ]
+    },
+    {
+     "text": "无徇私舞弊（如因过失、工作失误接送不合格兵员）的，不构成本罪——学理",
+     "rules": [
+      "k374-noFavoritism"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "情节严重的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k374-basic-sent"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，处三年以上七年以下有期徒刑",
+     "rules": [
+      "k374-agg-sent"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别严重后果时适用加重档（三年以上七年以下有期徒刑），排除基本档的适用",
+     "rules": [
+      "k374-agg-sent",
+      "k374-basic-sent"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪以徇私舞弊的故意接送不合格兵员为要件，与因过失、严重不负责任导致不合格兵员入伍的渎职犯罪相区别",
+     "rules": [
+      "k374-noFavoritism"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k374-cond",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "conscriptionWork(X)",
+     "favoritism(P,X)",
+     "receivesOrTransportsUnqualifiedConscripts(P,X)"
+    ],
+    "heads": [
+     "recruitingUnqualifiedConscriptConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "在征兵工作中徇私舞弊、接送不合格兵员，具备本罪客观条件"
+   },
+   {
+    "key": "k374-subject",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "conscriptionStaff(P)",
+     "recruitingUnqualifiedConscriptConditions(P,X)"
+    ],
+    "heads": [
+     "art374Conditions(P,X)"
+    ],
+    "auth": "doctrine",
+    "note": "本罪主体限于征兵工作人员，法条未明文规定，系学理归纳的特殊主体要件"
+   },
+   {
+    "key": "k374-basic",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "art374Conditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,recruitingUnqualifiedConscripts)",
+     "responsible(P,X,recruitingUnqualifiedConscripts)"
+    ],
+    "auth": "npc",
+    "note": "征兵工作中徇私舞弊接送不合格兵员、情节严重的，构成接送不合格兵员罪并负刑事责任"
+   },
+   {
+    "key": "k374-basic-sent",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "constitutes(P,X,recruitingUnqualifiedConscripts)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k374-agg-sent",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "constitutes(P,X,recruitingUnqualifiedConscripts)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom3To7Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的，处三年以上七年以下有期徒刑"
+   },
+   {
+    "key": "k374-notSerious",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "recruitingUnqualifiedConscriptConditions(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,recruitingUnqualifiedConscripts)"
+    ],
+    "auth": "doctrine",
+    "note": "情节严重是本罪入罪门槛，未达情节严重的不构成本罪，系学理对法条罪状的反面解释"
+   },
+   {
+    "key": "k374-noFavoritism",
+    "srcs": [
+     "art374"
+    ],
+    "body": [
+     "conscriptionWork(X)",
+     "receivesOrTransportsUnqualifiedConscripts(P,X)",
+     "-favoritism(P,X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,recruitingUnqualifiedConscripts)"
+    ],
+    "auth": "doctrine",
+    "note": "徇私舞弊是本罪必备要素，无徇私舞弊（如过失）不构成本罪，系学理对法条罪状的反面解释"
+   }
+  ],
+  "overrides": [
+   [
+    "k374-notSerious",
+    "k374-basic",
+    "推断：结论冲突（('constitutes', '+')），k374-notSerious 为例外或更具体"
+   ],
+   [
+    "k374-noFavoritism",
+    "k374-basic",
+    "推断：结论冲突（('constitutes', '+')），k374-noFavoritism 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "conscriptionWork": "conscriptionWork(X)：行为 X 发生在征兵工作中",
+   "favoritism": "favoritism(P,X)：P 在行为 X 中徇私舞弊",
+   "receivesOrTransportsUnqualifiedConscripts": "receivesOrTransportsUnqualifiedConscripts(P,X)：P 通过行为 X 接送（接收、输送）不符合征集条件的不合格兵员",
+   "recruitingUnqualifiedConscriptConditions": "recruitingUnqualifiedConscriptConditions(P,X)：P 的行为 X 具备刑法第374条接送不合格兵员罪的客观条件（征兵工作中徇私舞弊、接送不合格兵员）",
+   "conscriptionStaff": "conscriptionStaff(P)：P 是征兵工作人员（兵役机关、接兵部队等负责征兵工作的人员，本罪特殊主体）",
+   "art374Conditions": "art374Conditions(P,X)：P 的行为 X 具备刑法第374条接送不合格兵员罪的主体与客观构成条件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "sentenceFrom3To7Years": "sentenceFrom3To7Years(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑"
+  }
+ },
+ "art:375": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "伪造、变造、买卖或者盗窃、抢夺武装部队公文、证件、印章；非法生产、买卖武装部队制式服装；伪造、盗窃、买卖或者非法提供、使用武装部队车辆号牌等专用标志的定罪与量刑",
+     "rules": [
+      "k375-1",
+      "k375-2",
+      "k375-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：对象为武装部队公文、证件、印章，行为为伪造、变造、买卖或者盗窃、抢夺，不以情节严重为入罪要件",
+     "rules": [
+      "k375-1cond"
+     ]
+    },
+    {
+     "text": "第2款：对象为武装部队制式服装，行为为非法生产、买卖，且须情节严重",
+     "rules": [
+      "k375-2cond"
+     ]
+    },
+    {
+     "text": "第3款：对象为武装部队车辆号牌等专用标志，行为为伪造、盗窃、买卖或者非法提供、使用，且须情节严重",
+     "rules": [
+      "k375-3cond"
+     ]
+    },
+    {
+     "text": "单位实施第2款、第3款行为的，成立单位犯罪，罪名分别为非法生产、买卖武装部队制式服装罪与武装部队专用标志犯罪",
+     "rules": [
+      "k375-4a",
+      "k375-4b"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "第1款基本档：处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+     "rules": [
+      "k375-1s"
+     ]
+    },
+    {
+     "text": "第1款情节严重的：处三年以上十年以下有期徒刑",
+     "rules": [
+      "k375-1agg"
+     ]
+    },
+    {
+     "text": "第2款情节严重的：处三年以下有期徒刑、拘役或者管制，并处或者单处罚金",
+     "rules": [
+      "k375-2s"
+     ]
+    },
+    {
+     "text": "第3款情节严重的：处三年以下有期徒刑、拘役或者管制，并处或者单处罚金",
+     "rules": [
+      "k375-3s"
+     ]
+    },
+    {
+     "text": "第3款情节特别严重的：处三年以上七年以下有期徒刑，并处罚金",
+     "rules": [
+      "k375-3agg"
+     ]
+    },
+    {
+     "text": "单位犯第2款、第3款罪的，对单位判处罚金",
+     "rules": [
+      "k375-4fine"
+     ]
+    },
+    {
+     "text": "并对单位直接负责的主管人员和其他直接责任人员，依照第2款、第3款各自的规定处罚",
+     "rules": [
+      "k375-4p2",
+      "k375-4p3"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1款情节严重时，适用后段加重法定刑，排除基本档",
+     "rules": [
+      "k375-1agg",
+      "k375-1s"
+     ]
+    },
+    {
+     "text": "第3款情节特别严重时，适用后段加重法定刑，排除基本档",
+     "rules": [
+      "k375-3agg",
+      "k375-3s"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "单位犯罪只限于第2款、第3款之罪，第1款未规定单位犯罪",
+     "rules": [
+      "k375-4a",
+      "k375-4b"
+     ]
+    },
+    {
+     "text": "第1款为行为犯，不要求情节严重；第2款、第3款以情节严重为入罪门槛",
+     "rules": [
+      "k375-1cond",
+      "k375-2cond",
+      "k375-3cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k375-1cond",
+    "srcs": [
+     "art375#1"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,M)",
+     "armedForcesDocumentCertificateOrSeal(M)",
+     {
+      "or": [
+       "forges(P,X)",
+       "alters(P,X)",
+       "buysOrSells(P,X)",
+       "snatchesOrSteals(P,X,M)"
+      ]
+     }
+    ],
+    "heads": [
+     "armedForcesDocumentCrimeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第1款对象为武装部队公文、证件、印章，行为为伪造、变造、买卖或者盗窃、抢夺，不要求情节严重"
+   },
+   {
+    "key": "k375-1",
+    "srcs": [
+     "art375#1"
+    ],
+    "body": [
+     "armedForcesDocumentCrimeConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,armedForcesDocumentCrime)"
+    ],
+    "auth": "npc",
+    "note": "符合第1款条件的，构成伪造、变造、买卖、盗窃、抢夺武装部队公文、证件、印章罪（罪名常量 armedForcesDocumentCrime）"
+   },
+   {
+    "key": "k375-1s",
+    "srcs": [
+     "art375#1"
+    ],
+    "body": [
+     "constitutes(P,X,armedForcesDocumentCrime)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetentionControlOrDeprivation(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款基本档：处三年以下有期徒刑、拘役、管制或者剥夺政治权利"
+   },
+   {
+    "key": "k375-1agg",
+    "srcs": [
+     "art375#1"
+    ],
+    "body": [
+     "constitutes(P,X,armedForcesDocumentCrime)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To10Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第1款情节严重的，处三年以上十年以下有期徒刑"
+   },
+   {
+    "key": "k375-2cond",
+    "srcs": [
+     "art375#2"
+    ],
+    "body": [
+     "objectOf(X,M)",
+     "armedForcesUniform(M)",
+     "illegalProductionOrTrade(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "armedForcesUniformCrimeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第2款：非法生产、买卖武装部队制式服装，情节严重"
+   },
+   {
+    "key": "k375-2",
+    "srcs": [
+     "art375#2"
+    ],
+    "body": [
+     "armedForcesUniformCrimeConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,armedForcesUniformCrime)"
+    ],
+    "auth": "npc",
+    "note": "符合第2款条件的，构成非法生产、买卖武装部队制式服装罪（罪名常量 armedForcesUniformCrime）"
+   },
+   {
+    "key": "k375-2s",
+    "srcs": [
+     "art375#2"
+    ],
+    "body": [
+     "constitutes(P,X,armedForcesUniformCrime)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3DetentionControlFineJointOrSole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第2款：处三年以下有期徒刑、拘役或者管制，并处或者单处罚金"
+   },
+   {
+    "key": "k375-3cond",
+    "srcs": [
+     "art375#3"
+    ],
+    "body": [
+     "act(P,X)",
+     "objectOf(X,M)",
+     "armedForcesSpecialSymbol(M)",
+     {
+      "or": [
+       "forges(P,X)",
+       "takesSecretly(P,X)",
+       "buysOrSells(P,X)",
+       "illegallyProvidesOrUses(P,X,M)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "armedForcesSpecialSymbolCrimeConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "第3款：伪造、盗窃、买卖或者非法提供、使用武装部队车辆号牌等专用标志，情节严重"
+   },
+   {
+    "key": "k375-3",
+    "srcs": [
+     "art375#3"
+    ],
+    "body": [
+     "armedForcesSpecialSymbolCrimeConditions(P,X)"
+    ],
+    "heads": [
+     "constitutes(P,X,armedForcesSpecialSymbolCrime)"
+    ],
+    "auth": "npc",
+    "note": "符合第3款条件的，构成伪造、盗窃、买卖、非法提供、使用武装部队专用标志罪（罪名常量 armedForcesSpecialSymbolCrime）"
+   },
+   {
+    "key": "k375-3s",
+    "srcs": [
+     "art375#3"
+    ],
+    "body": [
+     "constitutes(P,X,armedForcesSpecialSymbolCrime)",
+     "~especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3DetentionControlFineJointOrSole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第3款情节严重的，处三年以下有期徒刑、拘役或者管制，并处或者单处罚金"
+   },
+   {
+    "key": "k375-3agg",
+    "srcs": [
+     "art375#3"
+    ],
+    "body": [
+     "constitutes(P,X,armedForcesSpecialSymbolCrime)",
+     "especiallySeriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence3To7WithFine(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "第3款情节特别严重的，处三年以上七年以下有期徒刑，并处罚金"
+   },
+   {
+    "key": "k375-4a",
+    "srcs": [
+     "art375#4"
+    ],
+    "body": [
+     "unit(U)",
+     "objectOf(X,M)",
+     "armedForcesUniform(M)",
+     "illegalProductionOrTrade(U,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,armedForcesUniformCrime)"
+    ],
+    "auth": "npc",
+    "note": "单位犯第2款罪的，成立非法生产、买卖武装部队制式服装罪的单位犯罪"
+   },
+   {
+    "key": "k375-4b",
+    "srcs": [
+     "art375#4"
+    ],
+    "body": [
+     "unit(U)",
+     "act(U,X)",
+     "objectOf(X,M)",
+     "armedForcesSpecialSymbol(M)",
+     {
+      "or": [
+       "forges(U,X)",
+       "takesSecretly(U,X)",
+       "buysOrSells(U,X)",
+       "illegallyProvidesOrUses(U,X,M)"
+      ]
+     },
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,armedForcesSpecialSymbolCrime)"
+    ],
+    "auth": "npc",
+    "note": "单位犯第3款罪的，成立武装部队专用标志犯罪的单位犯罪"
+   },
+   {
+    "key": "k375-4fine",
+    "srcs": [
+     "art375#4"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     {
+      "or": [
+       "unitCrimeName(X,armedForcesUniformCrime)",
+       "unitCrimeName(X,armedForcesSpecialSymbolCrime)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯第2款、第3款罪的，对单位判处罚金"
+   },
+   {
+    "key": "k375-4p2",
+    "srcs": [
+     "art375#4"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,armedForcesUniformCrime)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3DetentionControlFineJointOrSole(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯第2款罪的，对直接负责的主管人员和其他直接责任人员依照第2款处罚"
+   },
+   {
+    "key": "k375-4p3",
+    "srcs": [
+     "art375#4"
+    ],
+    "body": [
+     "unitCrime(U,X)",
+     "unitCrimeName(X,armedForcesSpecialSymbolCrime)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "punishPerArt375Para3(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "单位犯第3款罪的，对直接负责的主管人员和其他直接责任人员依照第3款（含情节特别严重档）处罚"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "act": "act(P,X)：P 实施了客观行为 X",
+   "objectOf": "objectOf(X,M)：M 是行为 X 所指向的对象",
+   "armedForcesDocumentCertificateOrSeal": "armedForcesDocumentCertificateOrSeal(M)：M 是武装部队的公文、证件或者印章",
+   "forges": "forges(P,X)：P 通过行为 X 实施伪造（无权制作而制成外观真实的证券等）",
+   "alters": "alters(P,X)：P 通过行为 X 实施变造（对真实证券等加以改制、变更内容）",
+   "buysOrSells": "buysOrSells(P,X)：P 通过行为 X 买卖（有偿买入或者卖出）行为对象",
+   "snatchesOrSteals": "snatchesOrSteals(P,X,M)：P 通过行为 X 抢夺或者窃取财物 M",
+   "armedForcesDocumentCrimeConditions": "armedForcesDocumentCrimeConditions(P,X)：P 的行为 X 具备刑法第375条第1款伪造、变造、买卖、盗窃、抢夺武装部队公文、证件、印章的对象与行为条件",
+   "constitutes": "符合构成要件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentenceUnder3OrDetentionControlOrDeprivation": "sentenceUnder3OrDetentionControlOrDeprivation(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役、管制或者剥夺政治权利",
+   "sentence3To10Years": "sentence3To10Years(P,X)：对 P 就犯罪 X 处三年以上十年以下有期徒刑",
+   "armedForcesUniform": "armedForcesUniform(M)：M 是武装部队制式服装",
+   "illegalProductionOrTrade": "illegalProductionOrTrade(P,X)：主体 P（自然人或单位）通过行为 X 非法生产、买卖物品",
+   "armedForcesUniformCrimeConditions": "armedForcesUniformCrimeConditions(P,X)：主体 P（自然人或单位）的行为 X 具备第375条第2款非法生产、买卖武装部队制式服装且情节严重的条件",
+   "sentenceUnder3DetentionControlFineJointOrSole": "sentenceUnder3DetentionControlFineJointOrSole(P,X)：对 P 就犯罪 X 处三年以下有期徒刑、拘役或者管制，并处或者单处罚金",
+   "armedForcesSpecialSymbol": "armedForcesSpecialSymbol(M)：M 是武装部队车辆号牌等专用标志",
+   "takesSecretly": "秘密窃取",
+   "illegallyProvidesOrUses": "illegallyProvidesOrUses(P,X,M)：P 通过行为 X 非法提供或者使用物品 M",
+   "armedForcesSpecialSymbolCrimeConditions": "armedForcesSpecialSymbolCrimeConditions(P,X)：主体 P（自然人或单位）的行为 X 具备第375条第3款伪造、盗窃、买卖或者非法提供、使用武装部队专用标志且情节严重的条件",
+   "especiallySeriousCircumstances": "especiallySeriousCircumstances(X)：犯罪事件 X 情节特别严重",
+   "sentence3To7WithFine": "sentence3To7WithFine(P,X)：对 P 就犯罪 X 处三年以上七年以下有期徒刑，并处罚金",
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "unitCrimeName": "unitCrimeName(X,C)：单位犯罪事件 X 所成立的罪名为 C",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "punishPerArt375Para3": "情节特别严重处三年以上七年以下有期徒刑，并处罚金）"
+  }
+ },
+ "art:376": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时拒绝、逃避征召、军事训练或者服役，情节严重的，是否构成犯罪以及如何处刑",
+     "rules": [
+      "k376-1",
+      "k376-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "第1款：主体是预备役人员，战时拒绝、逃避征召或者军事训练，且情节严重，符合战时拒绝、逃避征召、军事训练罪的构成要件",
+     "rules": [
+      "k376-1"
+     ]
+    },
+    {
+     "text": "第2款：主体是公民，战时拒绝、逃避服役，且情节严重，符合战时拒绝、逃避服役罪的构成要件",
+     "rules": [
+      "k376-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "并非战时（平时拒绝、逃避征召或军事训练），或者不具备情节严重要件的，不构成第1款之罪（学理：战时与情节严重均为必备要件）",
+     "rules": [
+      "k376-nw1"
+     ]
+    },
+    {
+     "text": "并非战时，或者不具备情节严重要件的，不构成第2款之罪（学理：战时与情节严重均为必备要件）",
+     "rules": [
+      "k376-nw2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成战时拒绝、逃避征召、军事训练罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k376-1s"
+     ]
+    },
+    {
+     "text": "构成战时拒绝、逃避服役罪的，处二年以下有期徒刑或者拘役",
+     "rules": [
+      "k376-2s"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "两款的区分：主体不同（预备役人员／一般公民）、行为对象不同（征召或军事训练／服役）、法定刑不同（三年以下有期徒刑或拘役／二年以下有期徒刑或拘役）",
+     "rules": [
+      "k376-1",
+      "k376-2"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k376-1",
+    "srcs": [
+     "art376#1"
+    ],
+    "body": [
+     "reservist(P)",
+     "wartime(X)",
+     "refusesOrEvadesConscriptionOrTraining(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeRefusalOfConscriptionOrTraining)"
+    ],
+    "auth": "npc",
+    "note": "预备役人员战时拒绝、逃避征召或者军事训练，情节严重的，符合战时拒绝、逃避征召、军事训练罪（wartimeRefusalOfConscriptionOrTraining）的构成要件"
+   },
+   {
+    "key": "k376-1s",
+    "srcs": [
+     "art376#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRefusalOfConscriptionOrTraining)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成第1款之罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k376-2",
+    "srcs": [
+     "art376#2"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "wartime(X)",
+     "refusesOrEvadesMilitaryService(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeRefusalOfMilitaryService)"
+    ],
+    "auth": "npc",
+    "note": "公民战时拒绝、逃避服役，情节严重的，符合战时拒绝、逃避服役罪（wartimeRefusalOfMilitaryService）的构成要件"
+   },
+   {
+    "key": "k376-2s",
+    "srcs": [
+     "art376#2"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRefusalOfMilitaryService)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder2YearsOrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成第2款之罪的，处二年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k376-nw1",
+    "srcs": [
+     "art376#1"
+    ],
+    "body": [
+     "reservist(P)",
+     "refusesOrEvadesConscriptionOrTraining(P,X)",
+     {
+      "or": [
+       "-wartime(X)",
+       "-seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeRefusalOfConscriptionOrTraining)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：战时与情节严重系第1款之罪的必备要件，欠缺其一即不构成该罪（平时行为可依法作其他处理）"
+   },
+   {
+    "key": "k376-nw2",
+    "srcs": [
+     "art376#2"
+    ],
+    "body": [
+     "citizenOfPrc(P)",
+     "refusesOrEvadesMilitaryService(P,X)",
+     {
+      "or": [
+       "-wartime(X)",
+       "-seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeRefusalOfMilitaryService)"
+    ],
+    "auth": "doctrine",
+    "note": "学理：战时与情节严重系第2款之罪的必备要件，欠缺其一即不构成该罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k376-nw1",
+    "k376-1",
+    "推断：结论冲突（('constitutes', '+')），k376-nw1 为例外或更具体"
+   ],
+   [
+    "k376-nw2",
+    "k376-1",
+    "推断：结论冲突（('constitutes', '+')），k376-nw2 为例外或更具体"
+   ],
+   [
+    "k376-nw1",
+    "k376-2",
+    "推断：结论冲突（('constitutes', '+')），k376-nw1 为例外或更具体"
+   ],
+   [
+    "k376-nw2",
+    "k376-2",
+    "推断：结论冲突（('constitutes', '+')），k376-nw2 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "reservist": "reservist(P)：P 是预备役人员（第376条第1款的特殊主体）",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "refusesOrEvadesConscriptionOrTraining": "refusesOrEvadesConscriptionOrTraining(P,X)：P 通过行为 X 拒绝、逃避征召或者军事训练",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役",
+   "citizenOfPrc": "中华人民共和国公民（人P）",
+   "refusesOrEvadesMilitaryService": "refusesOrEvadesMilitaryService(P,X)：P 通过行为 X 拒绝、逃避服役（履行兵役义务）",
+   "sentenceUnder2YearsOrDetention": "sentenceUnder2YearsOrDetention(P,X)：对 P 就犯罪 X 处二年以下有期徒刑或者拘役"
+  }
+ },
+ "art:377": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时故意向武装部队提供虚假敌情，造成严重后果的，构成战时故意提供虚假敌情罪，并按后果严重程度分档量刑",
+     "rules": [
+      "k377-cond",
+      "k377-basic",
+      "k377-aggr"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间条件为战时；主观为故意（明知敌情虚假仍提供）；行为为向武装部队提供虚假敌情；结果为造成严重后果",
+     "rules": [
+      "k377-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非战时提供虚假敌情，或者因过失提供不实敌情的，不符合本罪构成（学理：本罪限于战时且须故意）",
+     "rules": [
+      "k377-neg"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "造成严重后果的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k377-basic"
+     ]
+    },
+    {
+     "text": "造成特别严重后果的，处十年以上有期徒刑或者无期徒刑",
+     "rules": [
+      "k377-aggr"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成特别严重后果时，适用加重档（十年以上有期徒刑或无期徒刑），排除三年以上十年以下的基本档",
+     "rules": [
+      "k377-aggr",
+      "k377-basic"
+     ]
+    }
+   ],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k377-cond",
+    "srcs": [
+     "art377#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "providesFalseEnemyInfoToArmedForces(P,X)",
+     "intentionalFalseEnemyInfo(P,X)",
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,providingFalseEnemyInfo)"
+    ],
+    "auth": "npc",
+    "note": "战时故意向武装部队提供虚假敌情并造成严重后果的，符合战时故意提供虚假敌情罪（providingFalseEnemyInfo）的构成要件"
+   },
+   {
+    "key": "k377-basic",
+    "srcs": [
+     "art377#1"
+    ],
+    "body": [
+     "constitutes(P,X,providingFalseEnemyInfo)",
+     "causesSeriousConsequence(X)",
+     "~causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，处三年以上十年以下有期徒刑（from3to10＝三年以上十年以下有期徒刑）"
+   },
+   {
+    "key": "k377-aggr",
+    "srcs": [
+     "art377#1"
+    ],
+    "body": [
+     "constitutes(P,X,providingFalseEnemyInfo)",
+     "causesEspeciallySeriousConsequences(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from10OrLife)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成特别严重后果的，处十年以上有期徒刑或者无期徒刑（from10OrLife＝十年以上有期徒刑或者无期徒刑）"
+   },
+   {
+    "key": "k377-neg",
+    "srcs": [
+     "art377#1"
+    ],
+    "body": [
+     "providesFalseEnemyInfoToArmedForces(P,X)",
+     {
+      "or": [
+       "-wartime(X)",
+       "negligentFalseEnemyInfo(P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,providingFalseEnemyInfo)"
+    ],
+    "auth": "doctrine",
+    "note": "非战时或过失提供不实敌情的不构成本罪，系从战时与故意要件反推的学理说明"
+   }
+  ],
+  "overrides": [
+   [
+    "k377-neg",
+    "k377-cond",
+    "推断：结论冲突（('constitutes', '+')），k377-neg 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "providesFalseEnemyInfoToArmedForces": "providesFalseEnemyInfoToArmedForces(P,X)：P 通过行为 X 向武装部队提供虚假敌情",
+   "intentionalFalseEnemyInfo": "intentionalFalseEnemyInfo(P,X)：P 对行为 X 中提供虚假敌情出于故意（明知虚假而提供）",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "constitutes": "符合构成要件",
+   "causesEspeciallySeriousConsequences": "causesEspeciallySeriousConsequences(X)：事件 X 造成特别严重后果",
+   "sentence": "量刑",
+   "negligentFalseEnemyInfo": "negligentFalseEnemyInfo(P,X)：P 因过失提供不实敌情，欠缺提供虚假敌情的故意"
+  }
+ },
+ "art:378": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时造谣惑众、扰乱军心的行为构成何罪、如何量刑",
+     "rules": [
+      "k378-cond",
+      "k378-basic",
+      "k378-aggravated"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间要件为战时；行为为造谣惑众（捏造、散布谣言迷惑军人、群众）；结果为扰乱军心",
+     "rules": [
+      "k378-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非战时实施造谣惑众行为，不具备本罪的时间要件，不构成本罪（学理）",
+     "rules": [
+      "k378-peace"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合上述条件的，构成战时造谣扰乱军心罪，负刑事责任",
+     "rules": [
+      "k378-cond"
+     ]
+    },
+    {
+     "text": "基本档：处三年以下有期徒刑、拘役或者管制",
+     "rules": [
+      "k378-basic"
+     ]
+    },
+    {
+     "text": "情节严重的，处三年以上十年以下有期徒刑",
+     "rules": [
+      "k378-aggravated"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重的加重档排除基本档的适用",
+     "rules": [
+      "k378-aggravated",
+      "k378-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪须造谣惑众行为与扰乱军心的结果兼备，仅有散布谣言而未扰乱军心的，不成立本罪",
+     "rules": [
+      "k378-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k378-cond",
+    "srcs": [
+     "art378"
+    ],
+    "body": [
+     "wartime(X)",
+     "spreadsRumorsToMisleadTroops(P,X)",
+     "disturbsMilitaryMorale(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeRumorDisturbingMorale)",
+     "responsible(P,X,wartimeRumorDisturbingMorale)"
+    ],
+    "auth": "npc",
+    "note": "战时造谣惑众、扰乱军心的，符合战时造谣扰乱军心罪（常量 wartimeRumorDisturbingMorale）的构成要件并负刑事责任"
+   },
+   {
+    "key": "k378-basic",
+    "srcs": [
+     "art378"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRumorDisturbingMorale)",
+     "~seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3YearsDetentionOrControl)"
+     }
+    ],
+    "auth": "npc",
+    "note": "基本档量刑：三年以下有期徒刑、拘役或者管制（方式常量 under3YearsDetentionOrControl）"
+   },
+   {
+    "key": "k378-aggravated",
+    "srcs": [
+     "art378"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeRumorDisturbingMorale)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,from3to10)"
+     }
+    ],
+    "auth": "npc",
+    "note": "情节严重的加重档：三年以上十年以下有期徒刑（方式常量 from3to10）"
+   },
+   {
+    "key": "k378-peace",
+    "srcs": [
+     "art378"
+    ],
+    "body": [
+     "spreadsRumorsToMisleadTroops(P,X)",
+     "~wartime(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeRumorDisturbingMorale)"
+    ],
+    "auth": "doctrine",
+    "note": "法条以“战时”为时间要件，学理上非战时造谣惑众不构成本罪"
+   }
+  ],
+  "overrides": [
+   [
+    "k378-peace",
+    "k378-cond",
+    "推断：结论冲突（('constitutes', '+')），k378-peace 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "spreadsRumorsToMisleadTroops": "spreadsRumorsToMisleadTroops(P,X)：P 通过行为 X 造谣惑众（捏造、散布谣言以迷惑军人、群众）",
+   "disturbsMilitaryMorale": "disturbsMilitaryMorale(X)：行为 X 扰乱军心（动摇部队士气、影响军心稳定）",
+   "constitutes": "符合构成要件",
+   "responsible": "负刑事责任",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "sentence": "量刑"
+  }
+ },
+ "art:379": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时明知是逃离部队的军人而为其提供隐蔽处所、财物，情节严重的，是否构成战时窝藏逃离部队军人罪",
+     "rules": [
+      "k379-cond",
+      "k379-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "时间要件：行为发生于战时",
+     "rules": [
+      "k379-cond"
+     ]
+    },
+    {
+     "text": "对象要件：被窝藏者是逃离部队的军人（不以其构成犯罪为前提）",
+     "rules": [
+      "k379-cond"
+     ]
+    },
+    {
+     "text": "主观要件：行为人明知对方是逃离部队的军人",
+     "rules": [
+      "k379-cond"
+     ]
+    },
+    {
+     "text": "行为要件：为其提供隐蔽处所、财物",
+     "rules": [
+      "k379-cond"
+     ]
+    },
+    {
+     "text": "情节要件：情节严重",
+     "rules": [
+      "k379-basic"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非战时（平时）为逃离部队的军人提供隐蔽处所、财物的，不构成本罪（反面解释，学理）",
+     "rules": [
+      "k379-peacetime"
+     ]
+    },
+    {
+     "text": "情节不严重的，不构成本罪，属一般违法或违纪（反面解释，学理）",
+     "rules": [
+      "k379-notSerious"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "构成战时窝藏逃离部队军人罪的，处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k379-basic",
+      "k379-pen"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "情节严重、战时两项要件缺失时，排除本罪成立及量刑结论",
+     "rules": [
+      "k379-peacetime",
+      "k379-notSerious"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪对象是逃离部队的军人，与窝藏罪（对象为犯罪的人）不同；本罪限于战时且以情节严重为入罪门槛",
+     "rules": [
+      "k379-cond"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k379-cond",
+    "srcs": [
+     "art379#1"
+    ],
+    "body": [
+     "wartime(X)",
+     "deserter(V)",
+     "knowsDeserter(P,V)",
+     "providesHidingPlaceOrPropertyToDeserter(P,X,V)"
+    ],
+    "heads": [
+     "wartimeHarboringDeserterConditions(P,X)"
+    ],
+    "auth": "npc",
+    "note": "战时明知是逃离部队的军人而为其提供隐蔽处所、财物，具备本罪的时间、对象、主观与行为要件"
+   },
+   {
+    "key": "k379-basic",
+    "srcs": [
+     "art379#1"
+    ],
+    "body": [
+     "wartimeHarboringDeserterConditions(P,X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,wartimeHarboringDeserter)"
+    ],
+    "auth": "npc",
+    "note": "情节严重的，符合战时窝藏逃离部队军人罪（wartimeHarboringDeserter）的构成要件"
+   },
+   {
+    "key": "k379-pen",
+    "srcs": [
+     "art379#1"
+    ],
+    "body": [
+     "constitutes(P,X,wartimeHarboringDeserter)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder3OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，处三年以下有期徒刑或者拘役"
+   },
+   {
+    "key": "k379-peacetime",
+    "srcs": [
+     "art379#1"
+    ],
+    "body": [
+     "providesHidingPlaceOrPropertyToDeserter(P,X,V)",
+     "deserter(V)",
+     "-wartime(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeHarboringDeserter)"
+    ],
+    "auth": "doctrine",
+    "note": "非战时实施该窝藏行为不构成本罪，系对法条“战时”要件的反面解释，学理"
+   },
+   {
+    "key": "k379-notSerious",
+    "srcs": [
+     "art379#1"
+    ],
+    "body": [
+     "wartimeHarboringDeserterConditions(P,X)",
+     "-seriousCircumstances(X)"
+    ],
+    "heads": [
+     "-constitutes(P,X,wartimeHarboringDeserter)"
+    ],
+    "auth": "doctrine",
+    "note": "情节不严重的不出罪入刑，系对法条“情节严重”要件的反面解释，学理"
+   }
+  ],
+  "overrides": [
+   [
+    "k379-peacetime",
+    "k379-basic",
+    "推断：结论冲突（('constitutes', '+')），k379-peacetime 为例外或更具体"
+   ],
+   [
+    "k379-notSerious",
+    "k379-basic",
+    "推断：结论冲突（('constitutes', '+')），k379-notSerious 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "deserter": "deserter(V)：V 是逃离部队的军人",
+   "knowsDeserter": "knowsDeserter(P,V)：P 明知 V 是逃离部队的军人",
+   "providesHidingPlaceOrPropertyToDeserter": "providesHidingPlaceOrPropertyToDeserter(P,X,V)：P 通过行为 X 为逃离部队的军人 V 提供隐蔽处所、财物",
+   "wartimeHarboringDeserterConditions": "wartimeHarboringDeserterConditions(P,X)：P 的行为 X 具备刑法第379条战时窝藏逃离部队军人罪的时间、对象、明知与提供隐蔽处所财物等条件",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "sentenceUnder3OrDetention": "sentenceUnder3OrDetention(P,X)：对 P 就犯罪 X 处三年以下有期徒刑或者拘役"
+  }
+ },
+ "art:380": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时拒绝或者故意延误军事订货，情节严重的，单位及其直接责任人员如何处罚",
+     "rules": [
+      "k380-cond",
+      "k380-fine",
+      "k380-basic"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "主体为（承担军事订货任务的）单位；时间为战时；行为为拒绝或者故意延误军事订货；且情节严重",
+     "rules": [
+      "k380-cond"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对单位判处罚金",
+     "rules": [
+      "k380-fine"
+     ]
+    },
+    {
+     "text": "对单位直接负责的主管人员和其他直接责任人员，处五年以下有期徒刑或者拘役",
+     "rules": [
+      "k380-basic"
+     ]
+    },
+    {
+     "text": "造成严重后果的，对直接负责的主管人员和其他直接责任人员处五年以上有期徒刑",
+     "rules": [
+      "k380-agg"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "造成严重后果的，适用五年以上有期徒刑的加重档，排除五年以下有期徒刑或者拘役的基本档",
+     "rules": [
+      "k380-agg",
+      "k380-basic"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "本罪是纯正单位犯罪：犯罪主体只能是单位，实行双罚制（对单位判处罚金，对直接负责的主管人员和其他直接责任人员判处自由刑）",
+     "rules": [
+      "k380-cond",
+      "k380-fine",
+      "k380-basic"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "k380-cond",
+    "srcs": [
+     "art380"
+    ],
+    "body": [
+     "unit(U)",
+     "refusesOrIntentionallyDelaysMilitaryOrder(U,X)",
+     "wartime(X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "militaryOrderCrimeConditions(U,X)",
+     "unitCrime(U,X)"
+    ],
+    "auth": "npc",
+    "note": "单位在战时拒绝或者故意延误军事订货，情节严重的，具备战时拒绝、故意延误军事订货罪的构成条件，属单位犯罪"
+   },
+   {
+    "key": "k380-fine",
+    "srcs": [
+     "art380"
+    ],
+    "body": [
+     "militaryOrderCrimeConditions(U,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "imposeFineOnUnit(U,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成该罪的，对单位判处罚金"
+   },
+   {
+    "key": "k380-basic",
+    "srcs": [
+     "art380"
+    ],
+    "body": [
+     "militaryOrderCrimeConditions(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "~causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceUnder5OrDetention(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "对单位直接负责的主管人员和其他直接责任人员，处五年以下有期徒刑或者拘役（基本档）"
+   },
+   {
+    "key": "k380-agg",
+    "srcs": [
+     "art380"
+    ],
+    "body": [
+     "militaryOrderCrimeConditions(U,X)",
+     {
+      "or": [
+       "directlyResponsibleManager(P,U)",
+       "otherDirectlyResponsiblePerson(P,U)"
+      ]
+     },
+     "causesSeriousConsequence(X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentenceFrom5Years(P,X)"
+     }
+    ],
+    "auth": "npc",
+    "note": "造成严重后果的，对直接负责的主管人员和其他直接责任人员处五年以上有期徒刑"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "unit": "unit(U)：U 属于刑法上的单位（公司、企业、事业单位、机关、团体）",
+   "refusesOrIntentionallyDelaysMilitaryOrder": "refusesOrIntentionallyDelaysMilitaryOrder(U,X)：单位 U 通过行为 X 拒绝军事订货或者故意延误军事订货",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "militaryOrderCrimeConditions": "militaryOrderCrimeConditions(U,X)：单位 U 的行为 X 具备刑法第380条战时拒绝、故意延误军事订货罪的构成条件（战时、拒绝或故意延误军事订货、情节严重）",
+   "unitCrime": "unitCrime(U,X,C)：单位 U 就行为 X 成立罪名 C 的单位犯罪",
+   "imposeFineOnUnit": "imposeFineOnUnit(U,X)：对单位 U 就其犯罪 X 判处罚金",
+   "directlyResponsibleManager": "directlyResponsibleManager(P,U)：P是单位U中对该犯罪直接负责的主管人员",
+   "otherDirectlyResponsiblePerson": "otherDirectlyResponsiblePerson(P,U)：P是单位U中该犯罪的其他直接责任人员",
+   "causesSeriousConsequence": "causesSeriousConsequence(X)：事件 X 造成严重后果",
+   "sentenceUnder5OrDetention": "sentenceUnder5OrDetention(P,X)：对 P 就犯罪 X 处五年以下有期徒刑或者拘役",
+   "sentenceFrom5Years": "sentenceFrom5Years(P,X)：对 P 就犯罪 X 处五年以上有期徒刑"
+  }
+ },
+ "art:381": {
+  "status": "ok",
+  "model": "qwen4-max",
+  "attempts": 1,
+  "errors": [],
+  "recovered": true,
+  "nl": {
+   "issue": [
+    {
+     "text": "战时拒绝军事征收、征用，情节严重的，是否构成犯罪及如何处罚",
+     "rules": [
+      "k381-cond",
+      "k381-pen"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行为发生于战时；行为人拒绝军事征收、征用；且情节严重",
+     "rules": [
+      "k381-cond"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "非战时拒绝军事征收、征用，或者虽在战时但情节不严重的，不构成本罪（构成要件的反面解释，学理）",
+     "rules": [
+      "k381-excl"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "符合战时拒绝军事征收、征用罪的构成要件",
+     "rules": [
+      "k381-cond"
+     ]
+    },
+    {
+     "text": "处三年以下有期徒刑或者拘役",
+     "rules": [
+      "k381-pen"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": []
+  },
+  "rules": [
+   {
+    "key": "k381-cond",
+    "srcs": [
+     "art381#1"
+    ],
+    "body": [
+     "refusesMilitaryRequisition(P,X)",
+     "wartime(X)",
+     "seriousCircumstances(X)"
+    ],
+    "heads": [
+     "constitutes(P,X,refusalOfMilitaryRequisition)"
+    ],
+    "auth": "npc",
+    "note": "战时拒绝军事征收、征用，情节严重的，符合战时拒绝军事征收、征用罪（refusalOfMilitaryRequisition）的构成要件"
+   },
+   {
+    "key": "k381-pen",
+    "srcs": [
+     "art381#1"
+    ],
+    "body": [
+     "constitutes(P,X,refusalOfMilitaryRequisition)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "sentence(P,X,under3OrDetention)"
+     }
+    ],
+    "auth": "npc",
+    "note": "构成本罪的，处三年以下有期徒刑或者拘役（under3OrDetention 表示三年以下有期徒刑或者拘役）"
+   },
+   {
+    "key": "k381-excl",
+    "srcs": [
+     "art381#1"
+    ],
+    "body": [
+     "refusesMilitaryRequisition(P,X)",
+     {
+      "or": [
+       "-wartime(X)",
+       "-seriousCircumstances(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "-constitutes(P,X,refusalOfMilitaryRequisition)"
+    ],
+    "auth": "doctrine",
+    "note": "反面解释：欠缺战时或情节严重要件的拒绝军事征收、征用行为不构成本罪，法条未明文规定，属学理推论"
+   }
+  ],
+  "overrides": [
+   [
+    "k381-excl",
+    "k381-cond",
+    "推断：结论冲突（('constitutes', '+')），k381-excl 为例外或更具体"
+   ]
+  ],
+  "predicates": {
+   "refusesMilitaryRequisition": "refusesMilitaryRequisition(P,X)：P 通过行为 X 拒绝军事征收、征用（拒不接受军事机关对财产的征收、征用）",
+   "wartime": "wartime(X)：犯罪事件 X 发生于战时",
+   "seriousCircumstances": "seriousCircumstances(X)：行为 X 情节严重",
+   "constitutes": "符合构成要件",
+   "sentence": "量刑"
+  }
+ }
+}

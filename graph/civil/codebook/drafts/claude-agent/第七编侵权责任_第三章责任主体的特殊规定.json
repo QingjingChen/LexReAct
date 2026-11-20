@@ -1,0 +1,1133 @@
+{
+ "art:1195": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第三章　责任主体的特殊规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "通知规则：权利人通知、网络服务提供者转送与采取必要措施、错误通知责任",
+     "rules": [
+      "c1195-1",
+      "c1195-2a",
+      "c1195-2b",
+      "c1195-3"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "网络用户利用网络服务实施侵权行为",
+     "rules": [
+      "c1195-1"
+     ]
+    },
+    {
+     "text": "通知应当包括构成侵权的初步证据及权利人的真实身份信息",
+     "rules": [
+      "c1195-notice"
+     ]
+    },
+    {
+     "text": "网络服务提供者接到通知后未及时采取必要措施",
+     "rules": [
+      "c1195-2b"
+     ]
+    },
+    {
+     "text": "权利人因错误通知造成网络用户或网络服务提供者损害",
+     "rules": [
+      "c1195-3"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "错误通知责任：法律另有规定的，依照其规定",
+     "rules": [
+      "c1195-3"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "权利人有权通知网络服务提供者采取删除、屏蔽、断开链接等必要措施",
+     "rules": [
+      "c1195-1"
+     ]
+    },
+    {
+     "text": "网络服务提供者应当及时转送通知给相关网络用户，并根据初步证据和服务类型采取必要措施",
+     "rules": [
+      "c1195-2a"
+     ]
+    },
+    {
+     "text": "未及时采取必要措施的，对损害的扩大部分与该网络用户承担连带责任",
+     "rules": [
+      "c1195-2b"
+     ]
+    },
+    {
+     "text": "错误通知的权利人应当承担侵权责任",
+     "rules": [
+      "c1195-3"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "区别于第1197条知道规则（card:g7647 c1197）：知道或应当知道而未采取措施的，对全部损害连带；通知规则仅对扩大部分连带。网络用户反通知见 art:1196",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1195-1",
+    "srcs": [
+     "art1195-1"
+    ],
+    "body": [
+     "networkServiceTort(U,N,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "V",
+      "counterparty": "N",
+      "content": "notifyToTakeNecessaryMeasures(V,N,X)"
+     }
+    ],
+    "note": "网络用户利用网络服务实施侵权行为的，权利人有权通知网络服务提供者采取删除、屏蔽、断开链接等必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1195-notice",
+    "srcs": [
+     "art1195-1"
+    ],
+    "body": [
+     "noticeSent(V,N,X)",
+     "noticeContainsEvidenceAndIdentity(V,X)"
+    ],
+    "heads": [
+     "validTakedownNotice(V,N,X)"
+    ],
+    "note": "通知应当包括构成侵权的初步证据及权利人的真实身份信息",
+    "auth": "npc"
+   },
+   {
+    "key": "c1195-2a",
+    "srcs": [
+     "art1195-2"
+    ],
+    "body": [
+     "networkServiceTort(U,N,V,X)",
+     "validTakedownNotice(V,N,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "N",
+      "counterparty": "U",
+      "content": "forwardNoticeTimely(N,U,X)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "N",
+      "counterparty": "V",
+      "content": "takeNecessaryMeasures(N,X)"
+     }
+    ],
+    "note": "网络服务提供者接到通知后，应当及时将该通知转送相关网络用户，并根据构成侵权的初步证据和服务类型采取必要措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c1195-2b",
+    "srcs": [
+     "art1195-2"
+    ],
+    "body": [
+     "networkServiceTort(U,N,V,X)",
+     "validTakedownNotice(V,N,X)",
+     "liable(U,V,X)",
+     "-necessaryMeasuresTaken(N,X)"
+    ],
+    "heads": [
+     "jointLiabilityForExpandedDamage(N,U,X)"
+    ],
+    "note": "未及时采取必要措施的，对损害的扩大部分与该网络用户承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1195-3",
+    "srcs": [
+     "art1195-3"
+    ],
+    "body": [
+     "wrongfulNoticeCausesDamage(V,W,Y)",
+     "~lawProvidesOtherwiseOnWrongfulNotice(Y)"
+    ],
+    "heads": [
+     "liable(V,W,Y)"
+    ],
+    "note": "权利人因错误通知造成网络用户或者网络服务提供者损害的，应当承担侵权责任；法律另有规定的，依照其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "notifyToTakeNecessaryMeasures": "权利人V通知网络服务提供者N就侵权X采取删除、屏蔽、断开链接等必要措施（权利人，服务提供者，事件）",
+   "noticeSent": "权利人V已就侵权X向网络服务提供者N发出通知（权利人，服务提供者，事件）",
+   "noticeContainsEvidenceAndIdentity": "V就X发出的通知包括构成侵权的初步证据及权利人的真实身份信息（权利人，事件）",
+   "validTakedownNotice": "V就X向N发出了符合法定内容要求的侵权通知（权利人，服务提供者，事件）",
+   "forwardNoticeTimely": "网络服务提供者N及时将关于X的通知转送网络用户U（服务提供者，网络用户，事件）",
+   "takeNecessaryMeasures": "网络服务提供者N根据初步证据和服务类型就X采取必要措施（服务提供者，事件）",
+   "jointLiabilityForExpandedDamage": "网络服务提供者N对侵权X所致损害的扩大部分与网络用户U承担连带责任（服务提供者，网络用户，事件）",
+   "wrongfulNoticeCausesDamage": "权利人V因错误通知造成网络用户或网络服务提供者W的损害Y（通知人，受损人，损害）",
+   "lawProvidesOtherwiseOnWrongfulNotice": "法律对错误通知所致损害Y的责任另有规定（损害）"
+  }
+ },
+ "art:1194": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第三章　责任主体的特殊规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "网络用户、网络服务提供者利用网络实施的自己侵权责任",
+     "rules": [
+      "c1194"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "网络用户或网络服务提供者利用网络侵害他人民事权益",
+     "rules": [
+      "c1194"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定的，依照其规定（如著作权法、电子商务法等特别规定）",
+     "rules": [
+      "c1194"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "应当承担侵权责任",
+     "rules": [
+      "c1194"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为网络侵权的一般条款，构成仍须具备第1165条等归责要件；网络服务提供者为他人侵权承担的连带责任见第1195条（通知规则）、第1197条（知道规则，card:g7647 c1197）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1194",
+    "srcs": [
+     "art1194"
+    ],
+    "body": [
+     {
+      "or": [
+       "networkUser(A)",
+       "networkServiceProvider(A)"
+      ]
+     },
+     "infringesViaNetwork(A,V,X)",
+     "~lawProvidesOtherwiseOnNetworkTort(X)"
+    ],
+    "heads": [
+     "liable(A,V,X)"
+    ],
+    "note": "网络用户、网络服务提供者利用网络侵害他人民事权益的，应当承担侵权责任；法律另有规定的，依照其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "networkUser": "A是网络用户（主体）",
+   "networkServiceProvider": "A是网络服务提供者（主体）",
+   "infringesViaNetwork": "A利用网络侵害V的民事权益（侵权事件X）（行为人，被侵权人，事件）",
+   "lawProvidesOtherwiseOnNetworkTort": "法律对网络侵权X另有规定（事件）"
+  }
+ },
+ "card:g7611": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第三章　责任主体的特殊规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "暂时丧失意识或控制、用人单位、个人劳务、承揽关系中的责任主体",
+     "rules": [
+      "c1190-1",
+      "c1192-1",
+      "c1193-1"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "完全民事行为能力人对自己的行为暂时没有意识或者失去控制造成他人损害：有过错或无过错；因醉酒、滥用麻醉药品或者精神药品所致",
+     "rules": [
+      "c1190-1",
+      "c1190-1b",
+      "c1190-2"
+     ]
+    },
+    {
+     "text": "个人之间形成劳务关系，提供劳务一方因劳务造成他人损害，或自身因劳务受损，或因第三人行为受损",
+     "rules": [
+      "c1192-1",
+      "c1192-self",
+      "c1192-2a",
+      "c1192-2b"
+     ]
+    },
+    {
+     "text": "承揽人在完成工作过程中造成第三人损害或者自己损害",
+     "rules": [
+      "c1193-1",
+      "c1193-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "因醉酒、滥用麻醉药品或精神药品失去控制的，不得以无过错为由仅作适当补偿",
+     "rules": [
+      "c1190-1b",
+      "c1190-2"
+     ]
+    },
+    {
+     "text": "定作人对定作、指示或者选任有过错的，应当承担相应的责任",
+     "rules": [
+      "c1193-1",
+      "c1193-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "有过错的承担侵权责任；没有过错的根据其经济状况对受害人适当补偿；醉酒、滥用药品的承担侵权责任",
+     "rules": [
+      "c1190-1",
+      "c1190-1b",
+      "c1190-2"
+     ]
+    },
+    {
+     "text": "接受劳务一方承担侵权责任，之后可以向有故意或重大过失的提供劳务一方追偿",
+     "rules": [
+      "c1192-1",
+      "c1192-recourse"
+     ]
+    },
+    {
+     "text": "提供劳务一方因劳务受到损害的，根据双方各自的过错承担相应的责任",
+     "rules": [
+      "c1192-self"
+     ]
+    },
+    {
+     "text": "第三人致提供劳务一方损害的，其有权请求第三人承担侵权责任，也有权请求接受劳务一方给予补偿；接受劳务一方补偿后可以向第三人追偿",
+     "rules": [
+      "c1192-2a",
+      "c1192-2b",
+      "c1192-2c"
+     ]
+    },
+    {
+     "text": "定作人原则上不承担侵权责任；有定作、指示或选任过错的承担相应责任",
+     "rules": [
+      "c1193-1",
+      "c1193-2"
+     ]
+    },
+    {
+     "text": "侵权编解释一第15条：个体工商户的从业人员因执行工作任务致害的，适用第1191条第1款",
+     "rules": [
+      "c1191-spc15"
+     ]
+    },
+    {
+     "text": "侵权编解释一第16条：劳务派遣单位在不当选派、未依法培训等过错范围内与用工单位共同承担，先行支付后可向用工单位追偿，另有约定的除外",
+     "rules": [
+      "c1191-spc16",
+      "c1191-spc16r"
+     ]
+    },
+    {
+     "text": "侵权编解释一第18条：定作人在定作、指示或选任过错范围内与承揽人共同承担；先行支付后就超过相应责任部分可向承揽人追偿，另有约定的除外",
+     "rules": [
+      "c1193-spc18",
+      "c1193-spc18r"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "接受劳务一方替代承担责任，排除提供劳务一方依第1165条对受害人的直接责任",
+     "rules": [
+      "c1192-1"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1191条（用人单位责任、劳务派遣）已在基础规则 c1191-1、c1191-recourse、c1191-2、c1191-2b 形式化，本行仅补充司法解释规则",
+     "rules": []
+    },
+    {
+     "text": "笔记把第1192条第2款写作“请求接受劳务一方承担侵权责任（连带责任）”，与法条“给予补偿”不符，以法条为准",
+     "rules": []
+    },
+    {
+     "text": "第1190条第1款无过错时的适当补偿属第1186条所称“法律规定”的分担情形（card:g7399）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1190-1",
+    "srcs": [
+     "art1190-1"
+    ],
+    "body": [
+     "fullCapacity(A)",
+     "temporaryLossOfConsciousnessOrControl(A,X)",
+     "causesDamage(A,V,X)",
+     "fault(A,X)"
+    ],
+    "heads": [
+     "liable(A,V,X)"
+    ],
+    "note": "完全民事行为能力人对自己的行为暂时没有意识或者失去控制造成他人损害有过错的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1190-1b",
+    "srcs": [
+     "art1190-1"
+    ],
+    "body": [
+     "fullCapacity(A)",
+     "temporaryLossOfConsciousnessOrControl(A,X)",
+     "causesDamage(A,V,X)",
+     "-fault(A,X)",
+     "~intoxicationOrDrugAbuseCaused(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "giveAppropriateCompensation(A,V)"
+     }
+    ],
+    "note": "没有过错的，根据行为人的经济状况对受害人适当补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1190-2",
+    "srcs": [
+     "art1190-2"
+    ],
+    "body": [
+     "fullCapacity(A)",
+     "temporaryLossOfConsciousnessOrControl(A,X)",
+     "intoxicationOrDrugAbuseCaused(A,X)",
+     "causesDamage(A,V,X)"
+    ],
+    "heads": [
+     "liable(A,V,X)"
+    ],
+    "note": "因醉酒、滥用麻醉药品或者精神药品对自己的行为暂时没有意识或者失去控制造成他人损害的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1191-spc15",
+    "srcs": [
+     "art1191-1"
+    ],
+    "body": [
+     "individualBusinessEmployee(E,U)"
+    ],
+    "heads": [
+     "employeeOf(E,U)"
+    ],
+    "note": "《最高人民法院关于适用〈中华人民共和国民法典〉侵权责任编的解释（一）》（法释〔2024〕12号）第15条第2款：个体工商户的从业人员因执行工作任务造成他人损害的，适用民法典第1191条第1款",
+    "auth": "spc"
+   },
+   {
+    "key": "c1191-spc16",
+    "srcs": [
+     "art1191-2"
+    ],
+    "body": [
+     "dispatchedWorker(E)",
+     "hostEmployer(H,E)",
+     "dispatchAgency(Dp,E)",
+     "performingDuties(E,X)",
+     "causesDamage(E,V,X)",
+     "fault(Dp,X)"
+    ],
+    "heads": [
+     "liableTogetherWithinFaultScope(Dp,H,X)"
+    ],
+    "note": "侵权编解释（一）第16条：用工单位承担侵权责任，劳务派遣单位在不当选派工作人员、未依法履行培训义务等过错范围内与用工单位共同承担责任，实际支付总额不超出应受偿损失",
+    "auth": "spc"
+   },
+   {
+    "key": "c1191-spc16r",
+    "srcs": [
+     "art1191-2"
+    ],
+    "body": [
+     "hostEmployer(H,E)",
+     "dispatchAgency(Dp,E)",
+     "liableTogetherWithinFaultScope(Dp,H,X)",
+     "paidVictim(Dp,X)",
+     "~partiesAgreedOtherwiseOnRecourse(Dp,H)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "Dp",
+      "counterparty": "H",
+      "content": "recourse(Dp,H,X)"
+     }
+    ],
+    "note": "侵权编解释（一）第16条：劳务派遣单位先行支付赔偿费用后，就超过自己相应责任的部分向用工单位追偿的，予以支持，但双方另有约定的除外",
+    "auth": "spc"
+   },
+   {
+    "key": "c1192-1",
+    "srcs": [
+     "art1192-1"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "laborDamage(X)",
+     "causesDamage(L,V,X)"
+    ],
+    "heads": [
+     "liable(R,V,X)",
+     "-liable(L,V,X)"
+    ],
+    "note": "个人之间形成劳务关系，提供劳务一方因劳务造成他人损害的，由接受劳务一方承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1192-recourse",
+    "srcs": [
+     "art1192-1"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "laborDamage(X)",
+     "liable(R,V,X)",
+     {
+      "or": [
+       "intentional(L,X)",
+       "grossNegligence(L,X)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "L",
+      "content": "recourse(R,L,X)"
+     }
+    ],
+    "note": "接受劳务一方承担侵权责任后，可以向有故意或者重大过失的提供劳务一方追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1192-self",
+    "srcs": [
+     "art1192-1"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "laborDamage(X)",
+     "damage(L,X)"
+    ],
+    "heads": [
+     "liabilityPerRespectiveFault(R,L,X)"
+    ],
+    "note": "提供劳务一方因劳务受到损害的，根据双方各自的过错承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1192-2a",
+    "srcs": [
+     "art1192-2"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "duringLaborService(L,X)",
+     "damage(L,X)",
+     "damageCausedByThirdParty(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "T",
+      "content": "claimTortLiability(L,T,X)"
+     }
+    ],
+    "note": "提供劳务期间，因第三人的行为造成提供劳务一方损害的，提供劳务一方有权请求第三人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1192-2b",
+    "srcs": [
+     "art1192-2"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "duringLaborService(L,X)",
+     "damage(L,X)",
+     "damageCausedByThirdParty(X,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "L",
+      "counterparty": "R",
+      "content": "requestIndemnityFrom(L,R,X)"
+     }
+    ],
+    "note": "也有权请求接受劳务一方给予补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1192-2c",
+    "srcs": [
+     "art1192-2"
+    ],
+    "body": [
+     "laborProviderFor(L,R)",
+     "damageCausedByThirdParty(X,T)",
+     "indemnifiedLaborProvider(R,L,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "T",
+      "content": "recourse(R,T,X)"
+     }
+    ],
+    "note": "接受劳务一方补偿后，可以向第三人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1193-1",
+    "srcs": [
+     "art1193"
+    ],
+    "body": [
+     "contractorFor(C,O)",
+     "damageDuringContractedWork(C,X)",
+     "damage(V,X)",
+     "~faultInOrderInstructionOrSelection(O,X)"
+    ],
+    "heads": [
+     "-liable(O,V,X)"
+    ],
+    "note": "承揽人在完成工作过程中造成第三人损害或者自己损害的，定作人不承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1193-2",
+    "srcs": [
+     "art1193"
+    ],
+    "body": [
+     "contractorFor(C,O)",
+     "damageDuringContractedWork(C,X)",
+     "damage(V,X)",
+     "faultInOrderInstructionOrSelection(O,X)"
+    ],
+    "heads": [
+     "correspondingLiability(O,V,X)"
+    ],
+    "note": "但是，定作人对定作、指示或者选任有过错的，应当承担相应的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1193-spc18",
+    "srcs": [
+     "art1193"
+    ],
+    "body": [
+     "contractorFor(C,O)",
+     "damageDuringContractedWork(C,X)",
+     "damage(V,X)",
+     "otherThan(V,C)",
+     "liable(C,V,X)",
+     "faultInOrderInstructionOrSelection(O,X)"
+    ],
+    "heads": [
+     "liableTogetherWithinFaultScope(O,C,X)"
+    ],
+    "note": "侵权编解释（一）第18条：承揽人造成第三人损害，依第1165条认定承揽人责任；被侵权人合并请求时，定作人在定作、指示或者选任过错范围内与承揽人共同承担责任，实际支付总额不超出应受偿损失",
+    "auth": "spc"
+   },
+   {
+    "key": "c1193-spc18r",
+    "srcs": [
+     "art1193"
+    ],
+    "body": [
+     "contractorFor(C,O)",
+     "liableTogetherWithinFaultScope(O,C,X)",
+     "paidBeyondOwnShare(O,X)",
+     "~partiesAgreedOtherwiseOnRecourse(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "recourse(O,C,X)"
+     }
+    ],
+    "note": "侵权编解释（一）第18条：定作人先行支付赔偿费用后，就超过自己相应责任的部分向承揽人追偿的，予以支持，但双方另有约定的除外",
+    "auth": "spc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1192-1",
+    "c1165-1",
+    "个人劳务中由接受劳务一方替代承担对外侵权责任"
+   ],
+   [
+    "c1190-2",
+    "c1190-1b",
+    "醉酒、滥用药品致失控的应承担侵权责任，不适用无过错时的适当补偿"
+   ]
+  ],
+  "predicates": {
+   "temporaryLossOfConsciousnessOrControl": "A在造成损害X时对自己的行为暂时没有意识或者失去控制（行为人，损害）",
+   "intoxicationOrDrugAbuseCaused": "A暂时没有意识或失去控制是因醉酒、滥用麻醉药品或者精神药品所致（行为人，损害）",
+   "individualBusinessEmployee": "E是个体工商户U的从业人员（从业人员，个体工商户）",
+   "partiesAgreedOtherwiseOnRecourse": "P与Q就先行支付后的追偿另有约定（先行支付人，被追偿人）",
+   "laborProviderFor": "个人之间形成劳务关系，L为提供劳务一方，R为接受劳务一方（提供劳务一方，接受劳务一方）",
+   "laborDamage": "损害X因提供劳务（执行劳务活动）而发生（损害）",
+   "liabilityPerRespectiveFault": "接受劳务一方R与提供劳务一方L就L的损害X根据各自过错承担相应责任（接受劳务一方，提供劳务一方，损害）",
+   "duringLaborService": "损害X发生在L提供劳务期间（提供劳务一方，损害）",
+   "requestIndemnityFrom": "L请求R就损害X给予补偿（请求人，补偿义务人，损害）",
+   "indemnifiedLaborProvider": "接受劳务一方R已就损害X向提供劳务一方L给予补偿（接受劳务一方，提供劳务一方，损害）",
+   "contractorFor": "C是为定作人O完成工作的承揽人（承揽人，定作人）",
+   "damageDuringContractedWork": "损害X是承揽人C在完成工作过程中造成的第三人损害或其自身损害（承揽人，损害）",
+   "faultInOrderInstructionOrSelection": "定作人O对定作、指示或者选任有过错（定作人，损害）"
+  }
+ },
+ "card:g7647": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第三章　责任主体的特殊规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "网络服务提供者的“知道”规则；经营场所、公共场所经营者管理者及群众性活动组织者的安全保障义务责任",
+     "rules": [
+      "c1197",
+      "c1198-1",
+      "c1198-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "网络服务提供者知道或者应当知道网络用户利用其网络服务侵害他人民事权益，未采取必要措施",
+     "rules": [
+      "c1197"
+     ]
+    },
+    {
+     "text": "宾馆、商场、银行、车站、机场、体育场馆、娱乐场所等经营场所、公共场所的经营者、管理者或群众性活动的组织者未尽到安全保障义务，造成他人损害",
+     "rules": [
+      "c1198-1"
+     ]
+    },
+    {
+     "text": "损害因第三人的行为造成",
+     "rules": [
+      "c1198-2a",
+      "c1198-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "第三人行为致损的，安全保障义务人不承担直接侵权责任，只在未尽义务时承担相应的补充责任",
+     "rules": [
+      "c1198-2b",
+      "c1198-1"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "网络服务提供者与该网络用户承担连带责任",
+     "rules": [
+      "c1197"
+     ]
+    },
+    {
+     "text": "安全保障义务人承担侵权责任",
+     "rules": [
+      "c1198-1"
+     ]
+    },
+    {
+     "text": "由第三人承担侵权责任；安全保障义务人未尽义务的承担相应的补充责任，承担后可以向第三人追偿",
+     "rules": [
+      "c1198-2a",
+      "c1198-2b",
+      "c1198-2c"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "第1198条第2款（第三人介入）优先于第1款，排除义务人的直接责任",
+     "rules": [
+      "c1198-2b"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "第1197条“知道”规则区别于第1195条“通知”规则（art:1195）：后者仅对损害扩大部分连带",
+     "rules": []
+    },
+    {
+     "text": "第三人造成损害的一般规则见第1175条（card:g0609 c1175-1、c1175-2）；教育机构的补充责任见第1201条（基础规则 c1201-supp）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1197",
+    "srcs": [
+     "art1197"
+    ],
+    "body": [
+     "networkServiceTort(U,N,V,X)",
+     "liable(U,V,X)",
+     "knewOrShouldKnowInfringement(N,X)",
+     "-necessaryMeasuresTaken(N,X)"
+    ],
+    "heads": [
+     "liable(N,V,X)",
+     "tortJointLiability(N,V,X)",
+     "tortJointLiability(U,V,X)"
+    ],
+    "note": "网络服务提供者知道或者应当知道网络用户利用其网络服务侵害他人民事权益，未采取必要措施的，与该网络用户承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1198-1",
+    "srcs": [
+     "art1198-1"
+    ],
+    "body": [
+     "securityObligorFor(O,X)",
+     "failedSecurityDuty(O,X)",
+     "damage(V,X)"
+    ],
+    "heads": [
+     "liable(O,V,X)"
+    ],
+    "note": "经营场所、公共场所的经营者、管理者或者群众性活动的组织者，未尽到安全保障义务，造成他人损害的，应当承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1198-2a",
+    "srcs": [
+     "art1198-2"
+    ],
+    "body": [
+     "securityObligorFor(O,X)",
+     "damage(V,X)",
+     "damageCausedByThirdParty(X,T)"
+    ],
+    "heads": [
+     "liable(T,V,X)"
+    ],
+    "note": "因第三人的行为造成他人损害的，由第三人承担侵权责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1198-2b",
+    "srcs": [
+     "art1198-2"
+    ],
+    "body": [
+     "securityObligorFor(O,X)",
+     "failedSecurityDuty(O,X)",
+     "damage(V,X)",
+     "damageCausedByThirdParty(X,T)"
+    ],
+    "heads": [
+     "supplementaryLiability(O,V,X)",
+     "-liable(O,V,X)"
+    ],
+    "note": "经营者、管理者或者组织者未尽到安全保障义务的，承担相应的补充责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c1198-2c",
+    "srcs": [
+     "art1198-2"
+    ],
+    "body": [
+     "supplementaryLiability(O,V,X)",
+     "damageCausedByThirdParty(X,T)",
+     "paidVictim(O,X)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "T",
+      "content": "recourse(O,T,X)"
+     }
+    ],
+    "note": "经营者、管理者或者组织者承担补充责任后，可以向第三人追偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1198-2b",
+    "c1198-1",
+    "第三人行为致损时，安全保障义务人只承担相应的补充责任"
+   ]
+  ],
+  "predicates": {
+   "networkServiceTort": "网络用户U利用网络服务提供者N的网络服务侵害V的民事权益（损害事件X）（网络用户，网络服务提供者，权利人，事件）",
+   "knewOrShouldKnowInfringement": "网络服务提供者N知道或者应当知道网络用户利用其网络服务实施侵权X（服务提供者，事件）",
+   "necessaryMeasuresTaken": "网络服务提供者N已就侵权X及时采取删除、屏蔽、断开链接等必要措施（服务提供者，事件）",
+   "securityObligorFor": "O是损害X发生所在的经营场所、公共场所的经营者、管理者或者群众性活动的组织者，负有安全保障义务（义务人，损害）",
+   "failedSecurityDuty": "O未尽到合理限度内的安全保障义务（义务人，损害）"
+  }
+ },
+ "art:1196": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第七编　侵权责任",
+   "第三章　责任主体的特殊规定"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "反通知规则：网络用户的不侵权声明及网络服务提供者的转送、终止措施义务",
+     "rules": [
+      "c1196-1",
+      "c1196-2a",
+      "c1196-2b"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "网络用户接到转送的通知",
+     "rules": [
+      "c1196-1"
+     ]
+    },
+    {
+     "text": "声明应当包括不存在侵权行为的初步证据及网络用户的真实身份信息",
+     "rules": [
+      "c1196-decl"
+     ]
+    },
+    {
+     "text": "转送声明到达权利人后的合理期限内，未收到权利人已经投诉或者提起诉讼的通知",
+     "rules": [
+      "c1196-2b"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "合理期限内收到权利人已投诉或起诉的通知的，不负终止措施的义务",
+     "rules": [
+      "c1196-2b"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "网络用户可以向网络服务提供者提交不存在侵权行为的声明",
+     "rules": [
+      "c1196-1"
+     ]
+    },
+    {
+     "text": "网络服务提供者应当将声明转送发出通知的权利人，并告知其可以向有关部门投诉或者向人民法院起诉",
+     "rules": [
+      "c1196-2a"
+     ]
+    },
+    {
+     "text": "应当及时终止所采取的措施",
+     "rules": [
+      "c1196-2b"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "通知与必要措施见 art:1195（c1195-notice、c1195-2a）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1196-1",
+    "srcs": [
+     "art1196-1"
+    ],
+    "body": [
+     "validTakedownNotice(V,N,X)",
+     "forwardNoticeReceived(U,N,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "U",
+      "counterparty": "N",
+      "content": "submitNonInfringementDeclaration(U,N,X)"
+     }
+    ],
+    "note": "网络用户接到转送的通知后，可以向网络服务提供者提交不存在侵权行为的声明",
+    "auth": "npc"
+   },
+   {
+    "key": "c1196-decl",
+    "srcs": [
+     "art1196-1"
+    ],
+    "body": [
+     "declarationSubmitted(U,N,X)",
+     "declarationContainsEvidenceAndIdentity(U,X)"
+    ],
+    "heads": [
+     "validNonInfringementDeclaration(U,N,X)"
+    ],
+    "note": "声明应当包括不存在侵权行为的初步证据及网络用户的真实身份信息",
+    "auth": "npc"
+   },
+   {
+    "key": "c1196-2a",
+    "srcs": [
+     "art1196-2"
+    ],
+    "body": [
+     "validTakedownNotice(V,N,X)",
+     "validNonInfringementDeclaration(U,N,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "N",
+      "counterparty": "V",
+      "content": "forwardDeclarationAndInformRemedies(N,V,X)"
+     }
+    ],
+    "note": "网络服务提供者接到声明后，应当将该声明转送发出通知的权利人，并告知其可以向有关部门投诉或者向人民法院提起诉讼",
+    "auth": "npc"
+   },
+   {
+    "key": "c1196-2b",
+    "srcs": [
+     "art1196-2"
+    ],
+    "body": [
+     "validTakedownNotice(V,N,X)",
+     "validNonInfringementDeclaration(U,N,X)",
+     "declarationReachedRightHolder(N,V,X)",
+     "reasonablePeriodElapsed(N,V,X)",
+     "~complaintOrSuitNoticeReceived(N,V,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "N",
+      "counterparty": "U",
+      "content": "terminateMeasuresTimely(N,X)"
+     }
+    ],
+    "note": "在转送声明到达权利人后的合理期限内，未收到权利人已经投诉或者提起诉讼通知的，应当及时终止所采取的措施",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "forwardNoticeReceived": "网络用户U已收到网络服务提供者N转送的关于X的通知（网络用户，服务提供者，事件）",
+   "submitNonInfringementDeclaration": "网络用户U就X向网络服务提供者N提交不存在侵权行为的声明（网络用户，服务提供者，事件）",
+   "declarationSubmitted": "网络用户U已就X向N提交不存在侵权行为的声明（网络用户，服务提供者，事件）",
+   "declarationContainsEvidenceAndIdentity": "U就X的声明包括不存在侵权行为的初步证据及网络用户的真实身份信息（网络用户，事件）",
+   "validNonInfringementDeclaration": "U就X向N提交了符合法定内容要求的不侵权声明（网络用户，服务提供者，事件）",
+   "forwardDeclarationAndInformRemedies": "N将关于X的声明转送发出通知的权利人V，并告知其可以向有关部门投诉或者向人民法院起诉（服务提供者，权利人，事件）",
+   "declarationReachedRightHolder": "N转送的关于X的声明已到达权利人V（服务提供者，权利人，事件）",
+   "reasonablePeriodElapsed": "自N转送的声明到达权利人V后，关于X的合理期限已经届满（服务提供者，权利人，事件）",
+   "complaintOrSuitNoticeReceived": "N在合理期限内收到V已就X投诉或者提起诉讼的通知（服务提供者，权利人，事件）",
+   "terminateMeasuresTimely": "N及时终止就X所采取的措施（服务提供者，事件）"
+  }
+ }
+}
