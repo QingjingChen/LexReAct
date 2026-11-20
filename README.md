@@ -34,6 +34,7 @@ data/                       inputs
   civil/
     civil_code_20200528.txt   official text of the Civil Code
     civil_graph.markdown      expert knowledge graph (Civil Law notes, 8355 nodes)
+    lego_concept_cards/       LEGO concept cards and their article edges (Apache-2.0), used as references for rule cards
   criminal/
     criminal_law_2023.txt     Criminal Law text (as amended to Amendment XII), three-way reconciled, same format as the Civil Code text
     criminal_law_pdf.txt      cleaned text of the PDF edition, one of the three sources
@@ -51,6 +52,9 @@ graph/                      generated knowledge bases (rebuild with the commands
     civil_rules.lp            the same rules compiled to ASP
     cases.json                53 unit cases (138 expected conclusions)
     examples/                 9 option-level cases taken from benchmark questions
+    codebook/                 rule cards organised by the Code (book › chapter › section › card); pilot: chapter 2, arts 13–56
+      civil_graph_mounted.markdown   the expert graph with matching notes replaced by the mounted article text
+      ch02_natural_person/    codebook.md, cards.json, rules.lrml (XSD-valid), rules.lp, cases.json, alignment.json, relations.json
   criminal/                 same files for Criminal Law: graph_nodes.json, criminal_graph.lrml,
                             criminal_graph_index.json, criminal_rules.lrml, criminal_rules.lp,
                             cases.json (30 unit cases, 69 expected conclusions)
@@ -70,6 +74,11 @@ src/                        code (flat modules; run them as scripts)
   agents_pipeline.py        the full pipeline (main configuration: --variant v1)
   eval_large.py             large evaluation runner and report
   llm_client.py             DashScope (OpenAI-compatible) client with a disk cache
+  expert_review.py          expert review workbooks for the civil and criminal rule layers
+  codebook/                 rule cards: civil_ch02_natural_person.py (cards + rules), build_codebook.py, run_card_cases.py,
+                            build_review_all.py (review workbook for the whole Code, one sheet per chapter),
+                            draft_llm.py (LLM drafts of natural-language + formal versions, checked: sources, syntax, arity,
+                            XSD, ASP compilation; failing drafts are sent back with the error list)
   criminal/                 Criminal Law, same two-layer method (see src/criminal/README.md)
     pdf2txt.py                Criminal Law PDF -> data/criminal/criminal_law_pdf.txt
     criminal_code.py          three-way reconciliation -> data/criminal/criminal_law_2023.txt; article loader
@@ -78,6 +87,8 @@ src/                        code (flat modules; run them as scripts)
     crim_rules.py             hand-formalised criminal rule layer: 6 modules, 93 rules, 52 overrides
     crim2lrml.py              graph + rules -> graph/criminal/criminal_graph.lrml, XSD-checked
     run_cases.py              criminal unit cases, reuses src/run_cases.py
+    build_criminal_rows.py    one row per article (no LEGO cards for criminal law) with the mind-map nodes that cite it
+    build_review_criminal.py  criminal rule-card review workbook, same layout as the Civil Code one
 engine/fetch_ddl.sh         fetches the DDL engine at a pinned revision and applies a one-line patch
 results/                    raw results of the experiments in EXPERIMENTS.md
 figures/                    figure scripts (style after figures4papers) and rendered figures in figures/out/
@@ -94,7 +105,22 @@ python src/criminal/itmz_parse.py && python src/criminal/crim2lrml.py
 python src/extract_rule_layer.py --src graph/criminal/criminal_graph.lrml --out graph/criminal/criminal_rules.lrml
 python src/lrml2ddl.py --lrml graph/criminal/criminal_graph.lrml -o graph/criminal/criminal_rules.lp
 python src/criminal/run_cases.py
+# Rule cards (pilot: Civil Code chapter 2, natural persons)
+python src/codebook/build_codebook.py ch02_natural_person --xlsx review/ch02_review.xlsx
+python src/codebook/run_card_cases.py ch02_natural_person
+python src/codebook/build_review_all.py -o review/civil_code_rule_cards.xlsx   # whole Code, one sheet per chapter
+# LLM drafting of rule cards (OpenAI-compatible gateway configured in .env; every draft is checked before it is kept)
+python src/codebook/draft_llm.py --law civil --all --model qwen4-max
+python src/criminal/build_criminal_rows.py && python src/codebook/draft_llm.py --law criminal --all --model qwen4-max
+python src/criminal/build_review_criminal.py -o review/criminal_rule_cards.xlsx
 ```
+
+A **rule card** is one knowledge point of the expert graph. It has a natural-language version (the fields of a LEGO
+concept card, each item naming the rules that formalise it) and a formal version (defeasible rules compiled to
+LegalRuleML and ASP), and it mounts one or more articles; an article may be mounted on several cards. Relations between
+articles are derived from the rules (predicate dependencies, exceptions, overrides) and from cross-references in the text.
+Notes whose text equals an article (or a paragraph, item or sentence of it) are replaced by the mounted article in
+`civil_graph_mounted.markdown`; near matches keep the note and show the official text for the expert.
 
 ## Setup
 

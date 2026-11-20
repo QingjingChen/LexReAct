@@ -1,0 +1,383 @@
+[
+ {
+  "id": "np-cap-1",
+  "title": "17岁的甲以自己的劳动收入为主要生活来源",
+  "facts": [
+   "naturalPerson(jia)",
+   "under18(jia)",
+   "age16plus(jia)",
+   "ownLabourIncomeMainSource(jia)"
+  ],
+  "expect": [
+   "minor(jia)",
+   "fullCapacity(jia)",
+   "-limitedCapacity(jia)",
+   "P actIndependently(jia)"
+  ]
+ },
+ {
+  "id": "np-cap-2",
+  "title": "10岁的乙不能辨认自己的行为，父母为监护人",
+  "facts": [
+   "naturalPerson(yi)",
+   "under18(yi)",
+   "cannotDiscern(yi)",
+   "parentOf(fu,yi)",
+   "naturalPerson(fu)",
+   "age18plus(fu)"
+  ],
+  "expect": [
+   "minor(yi)",
+   "noCapacity(yi)",
+   "-limitedCapacity(yi)",
+   "guardianOf(fu,yi)",
+   "legalRepresentative(fu,yi)",
+   "actsOnlyThroughRepresentative(yi)"
+  ]
+ },
+ {
+  "id": "np-cap-3",
+  "title": "出生证明与其他证据记载的出生时间不一致",
+  "facts": [
+   "recordedInCertificate(bing,birth,t1)",
+   "recordedInRegistration(bing,birth,t2)",
+   "provenByOtherEvidence(bing,birth,t3)"
+  ],
+  "expect": [
+   "eventTime(bing,birth,t3)",
+   "!eventTime(bing,birth,t1)",
+   "!eventTime(bing,birth,t2)"
+  ]
+ },
+ {
+  "id": "np-cap-4",
+  "title": "没有出生证明，以户籍登记为准",
+  "facts": [
+   "recordedInRegistration(ding,birth,t2)"
+  ],
+  "expect": [
+   "eventTime(ding,birth,t2)"
+  ]
+ },
+ {
+  "id": "np-fetus-1",
+  "title": "胎儿继承遗产，但娩出时为死体",
+  "facts": [
+   "fetus(f)",
+   "fetalInheritanceInterest(f)",
+   "stillborn(f)"
+  ],
+  "expect": [
+   "-deemedLegalCapacity(f)",
+   "!deemedLegalCapacity(f)"
+  ]
+ },
+ {
+  "id": "np-fetus-2",
+  "title": "胎儿接受赠与，活体娩出",
+  "facts": [
+   "fetus(f)",
+   "fetalGiftInterest(f)"
+  ],
+  "expect": [
+   "deemedLegalCapacity(f)"
+  ]
+ },
+ {
+  "id": "np-g-1",
+  "title": "父母双亡，祖父母和姐姐都有监护能力",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ba,xiao)",
+   "deceased(ba)",
+   "grandparentOf(ye,xiao)",
+   "naturalPerson(ye)",
+   "age18plus(ye)",
+   "olderSiblingOf(jie,xiao)",
+   "naturalPerson(jie)",
+   "age18plus(jie)"
+  ],
+  "expect": [
+   "guardianOf(ye,xiao)",
+   "!guardianOf(jie,xiao)",
+   "!guardianOf(ba,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-2",
+  "title": "父母双亡，无祖父母，由有监护能力的姐姐担任",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ba,xiao)",
+   "deceased(ba)",
+   "olderSiblingOf(jie,xiao)",
+   "naturalPerson(jie)",
+   "age18plus(jie)"
+  ],
+  "expect": [
+   "guardianOf(jie,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-3",
+  "title": "父母遗嘱指定的人同意担任，排除法定顺序",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ba,xiao)",
+   "deceased(ba)",
+   "grandparentOf(ye,xiao)",
+   "naturalPerson(ye)",
+   "age18plus(ye)",
+   "designatedByParentsWill(shu,xiao)",
+   "agreesToServe(shu,xiao)"
+  ],
+  "expect": [
+   "guardianOf(shu,xiao)",
+   "!guardianOf(ye,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-4",
+  "title": "成年人无民事行为能力，配偶为第一顺序监护人",
+  "facts": [
+   "naturalPerson(lao)",
+   "age18plus(lao)",
+   "cannotDiscern(lao)",
+   "spouseOf(qi,lao)",
+   "naturalPerson(qi)",
+   "age18plus(qi)",
+   "childOf(zi,lao)",
+   "naturalPerson(zi)",
+   "age18plus(zi)"
+  ],
+  "expect": [
+   "noCapacity(lao)",
+   "guardianOf(qi,lao)",
+   "!guardianOf(zi,lao)",
+   "O supportAssistProtect(zi,lao)"
+  ]
+ },
+ {
+  "id": "np-g-5",
+  "title": "成年人生前书面意定监护，丧失能力后由意定监护人担任",
+  "facts": [
+   "naturalPerson(lao)",
+   "age18plus(lao)",
+   "cannotFullyDiscern(lao)",
+   "spouseOf(qi,lao)",
+   "naturalPerson(qi)",
+   "age18plus(qi)",
+   "writtenVoluntaryGuardianAgreement(peng,lao)",
+   "madeWhileFullyCapable(lao)"
+  ],
+  "expect": [
+   "limitedCapacity(lao)",
+   "guardianOf(peng,lao)",
+   "!guardianOf(qi,lao)"
+  ]
+ },
+ {
+  "id": "np-g-6",
+  "title": "没有具有监护资格的人，民政部门担任",
+  "facts": [
+   "naturalPerson(gu)",
+   "under18(gu)"
+  ],
+  "expect": [
+   "needsGuardian(gu)",
+   "guardianOf(civilAffairs,gu)"
+  ]
+ },
+ {
+  "id": "np-g-7a",
+  "title": "撤销前：父亲严重损害子女身心健康，有关组织申请撤销",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ba,xiao)",
+   "naturalPerson(ba)",
+   "age18plus(ba)",
+   "seriouslyHarmsWard(ba,xiao)",
+   "revocationApplied(ba,xiao)"
+  ],
+  "expect": [
+   "guardianOf(ba,xiao)",
+   "guardianshipRevocationGround(ba,xiao)",
+   "O revokeGuardianship(ba,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-7b",
+  "title": "撤销后：父亲不再是监护人，但仍须负担抚养费",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ba,xiao)",
+   "naturalPerson(ba)",
+   "age18plus(ba)",
+   "seriouslyHarmsWard(ba,xiao)",
+   "revocationApplied(ba,xiao)",
+   "guardianshipRevoked(ba,xiao)",
+   "owesMaintenance(ba,xiao)"
+  ],
+  "expect": [
+   "-guardianOf(ba,xiao)",
+   "O continuePayingMaintenance(ba,xiao)",
+   "O arrangeTemporaryMeasuresAndDesignate(xiao)"
+  ]
+ },
+ {
+  "id": "np-g-8",
+  "title": "被撤销资格的父亲对子女实施故意犯罪，不得恢复",
+  "facts": [
+   "guardianshipRevoked(ba,xiao)",
+   "parentOf(ba,xiao)",
+   "guardianRepented(ba,xiao)",
+   "appliedForRestoration(ba,xiao)",
+   "intentionalCrimeAgainstWard(ba,xiao)"
+  ],
+  "expect": [
+   "!P restoreGuardianship(ba,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-9",
+  "title": "被撤销资格的母亲确有悔改，申请恢复",
+  "facts": [
+   "guardianshipRevoked(ma,xiao)",
+   "parentOf(ma,xiao)",
+   "guardianRepented(ma,xiao)",
+   "appliedForRestoration(ma,xiao)"
+  ],
+  "expect": [
+   "P restoreGuardianship(ma,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-10",
+  "title": "监护人为维护被监护人利益处分其财产",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ma,xiao)",
+   "naturalPerson(ma)",
+   "age18plus(ma)",
+   "forWardsInterest(ma,xiao)"
+  ],
+  "expect": [
+   "guardianOf(ma,xiao)",
+   "!O -disposeWardProperty(ma,xiao)"
+  ]
+ },
+ {
+  "id": "np-g-11",
+  "title": "监护人非为被监护人利益处分其财产",
+  "facts": [
+   "naturalPerson(xiao)",
+   "under18(xiao)",
+   "parentOf(ma,xiao)",
+   "naturalPerson(ma)",
+   "age18plus(ma)"
+  ],
+  "expect": [
+   "O -disposeWardProperty(ma,xiao)"
+  ]
+ },
+ {
+  "id": "np-d-1",
+  "title": "因意外事件下落不明，经有关机关证明不可能生存",
+  "facts": [
+   "accidentMissing(wang)",
+   "certifiedCannotSurvive(wang)",
+   "interestedParty(qi,wang)"
+  ],
+  "expect": [
+   "deathDeclarationConditionsMet(wang)",
+   "P applyDeathDeclaration(qi,wang)"
+  ]
+ },
+ {
+  "id": "np-d-2",
+  "title": "有人申请宣告失踪、有人申请宣告死亡，符合宣告死亡条件",
+  "facts": [
+   "missingFor4Years(wang)",
+   "deathDeclarationApplied(wang)",
+   "missingDeclarationApplied(wang)"
+  ],
+  "expect": [
+   "O declareDeath(wang)"
+  ]
+ },
+ {
+  "id": "np-d-3",
+  "title": "因意外事件被宣告死亡，死亡日期为意外事件发生之日",
+  "facts": [
+   "declaredDead(wang)",
+   "accidentMissing(wang)",
+   "accidentDate(wang,d1)",
+   "judgmentDate(wang,d2)"
+  ],
+  "expect": [
+   "deemedDeathDate(wang,d1)",
+   "!deemedDeathDate(wang,d2)"
+  ]
+ },
+ {
+  "id": "np-d-4",
+  "title": "死亡宣告撤销，配偶已再婚",
+  "facts": [
+   "declaredDead(wang)",
+   "spouseOf(qi,wang)",
+   "deathDeclarationRevoked(wang)",
+   "spouseRemarried(qi)"
+  ],
+  "expect": [
+   "!marriageRestored(qi,wang)",
+   "!marriageDissolved(qi,wang)"
+  ]
+ },
+ {
+  "id": "np-d-5",
+  "title": "死亡宣告撤销，配偶未再婚也未声明",
+  "facts": [
+   "declaredDead(wang)",
+   "spouseOf(qi,wang)",
+   "deathDeclarationRevoked(wang)"
+  ],
+  "expect": [
+   "marriageRestored(qi,wang)"
+  ]
+ },
+ {
+  "id": "np-d-6",
+  "title": "战争期间下落不明，自战争结束之日起算",
+  "facts": [
+   "missingDuringWar(li)",
+   "lostContactOn(li,d0)",
+   "warEndedFor(li,d9)"
+  ],
+  "expect": [
+   "missingSince(li,d9)",
+   "!missingSince(li,d0)"
+  ]
+ },
+ {
+  "id": "np-b-1",
+  "title": "个体工商户家庭经营与个人经营无法区分",
+  "facts": [
+   "naturalPerson(zhang)",
+   "industrialCommercialOperation(zhang)",
+   "registeredAsBusiness(zhang)",
+   "debtOfOperator(z1,zhang)",
+   "operationIndistinguishable(zhang)"
+  ],
+  "expect": [
+   "individualBusiness(zhang)",
+   "payableFromFamilyAssets(z1)",
+   "!payableFromPersonalAssets(z1)"
+  ]
+ }
+]

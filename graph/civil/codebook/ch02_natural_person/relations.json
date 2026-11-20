@@ -1,0 +1,4923 @@
+[
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c18-full",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   18
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c18-emancipated",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   18
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c19",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   19
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c20",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   20
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c21-1",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   21
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c21-2",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   21
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c22",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   22
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c19-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   19,
+   22
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c19",
+  "dst_rule": "c19-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   19
+  ],
+  "dst_arts": [
+   19,
+   22
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-2",
+  "dst_rule": "c19-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   19,
+   22
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c22",
+  "dst_rule": "c19-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   22
+  ],
+  "dst_arts": [
+   19,
+   22
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c20",
+  "dst_rule": "c20-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "noCapacity",
+  "src_arts": [
+   20
+  ],
+  "dst_arts": [
+   20,
+   21
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-1",
+  "dst_rule": "c20-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   20,
+   21
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-2",
+  "dst_rule": "c20-rep",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   20,
+   21
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c23",
+  "src_card": "np-08",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c23",
+  "src_card": "np-08",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c23",
+  "src_card": "np-08",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c23",
+  "src_card": "np-08",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c23",
+  "src_card": "np-09",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c23",
+  "src_card": "np-09",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c23",
+  "src_card": "np-09",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c23",
+  "src_card": "np-09",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c23",
+  "src_card": "np-10",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c23",
+  "src_card": "np-11",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c23",
+  "src_card": "np-12",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c23",
+  "src_card": "np-13",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c23",
+  "src_card": "np-14",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c23",
+  "src_card": "np-16",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c23",
+  "src_card": "np-17",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c23",
+  "src_card": "np-18",
+  "dst_card": "np-04",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c20",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "noCapacity",
+  "src_arts": [
+   20
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-1",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-2",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c19",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   19
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c22",
+  "dst_rule": "c23",
+  "src_card": "np-03",
+  "dst_card": "np-04",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   22
+  ],
+  "dst_arts": [
+   23
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c24-1",
+  "src_card": "np-03",
+  "dst_card": "np-05",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   24
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c26-1",
+  "src_card": "np-03",
+  "dst_card": "np-07",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   26
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c26-2",
+  "src_card": "np-03",
+  "dst_card": "np-07",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   26
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c-ward-minor",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   27,
+   39
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c18-full",
+  "dst_rule": "c-ward-minor",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   27,
+   39
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c-ward-minor",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   27,
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c20",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "noCapacity",
+  "src_arts": [
+   20
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-1",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-2",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c19",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   19
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c22",
+  "dst_rule": "c-ward-adult",
+  "src_card": "np-03",
+  "dst_card": "np-09",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   22
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-full",
+  "dst_rule": "c-able",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   27,
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c-able",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   27,
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-eligible",
+  "dst_rule": "c-has-eligible",
+  "src_card": "np-08",
+  "dst_card": "np-13",
+  "pred": "eligibleGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c27-1",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-09",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-09",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-09",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-09",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-10",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-11",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-12",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-13",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-14",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-16",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-17",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c27-parent-flag",
+  "src_card": "np-18",
+  "dst_card": "np-08",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-08",
+  "dst_card": "np-08",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-10",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-11",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-12",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-14",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-08",
+  "dst_card": "np-08",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-10",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-11",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-12",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-14",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-03",
+  "dst_card": "np-08",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-08",
+  "dst_card": "np-08",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-10",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-11",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-12",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-14",
+  "dst_card": "np-08",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c28-1",
+  "src_card": "np-08",
+  "dst_card": "np-09",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c28-1",
+  "src_card": "np-10",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c28-1",
+  "src_card": "np-11",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c28-1",
+  "src_card": "np-12",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c28-1",
+  "src_card": "np-14",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c28-2",
+  "src_card": "np-08",
+  "dst_card": "np-09",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c28-2",
+  "src_card": "np-10",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c28-2",
+  "src_card": "np-11",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c28-2",
+  "src_card": "np-12",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c28-2",
+  "src_card": "np-14",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c28-3",
+  "src_card": "np-08",
+  "dst_card": "np-09",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c28-3",
+  "src_card": "np-10",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c28-3",
+  "src_card": "np-11",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c28-3",
+  "src_card": "np-12",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c28-3",
+  "src_card": "np-14",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-able",
+  "dst_rule": "c28-4",
+  "src_card": "np-08",
+  "dst_card": "np-09",
+  "pred": "ableGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c28-4",
+  "src_card": "np-10",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c30",
+  "dst_rule": "c28-4",
+  "src_card": "np-11",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c28-4",
+  "src_card": "np-12",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c33",
+  "dst_rule": "c28-4",
+  "src_card": "np-14",
+  "dst_card": "np-09",
+  "pred": "specialGuardianSet",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c29",
+  "src_card": "np-08",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c29",
+  "src_card": "np-08",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c29",
+  "src_card": "np-08",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c29",
+  "src_card": "np-08",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c29",
+  "src_card": "np-09",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c29",
+  "src_card": "np-09",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c29",
+  "src_card": "np-09",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c29",
+  "src_card": "np-09",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c29",
+  "src_card": "np-11",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c29",
+  "src_card": "np-12",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c29",
+  "src_card": "np-13",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c29",
+  "src_card": "np-14",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c29",
+  "src_card": "np-16",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c29",
+  "src_card": "np-17",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c29",
+  "src_card": "np-18",
+  "dst_card": "np-10",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "例外（除非）",
+  "src_rule": "c27-parent-flag",
+  "dst_rule": "c29-effect",
+  "src_card": "np-08",
+  "dst_card": "np-10",
+  "pred": "hasParentGuardian",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-eligible",
+  "dst_rule": "c30",
+  "src_card": "np-08",
+  "dst_card": "np-11",
+  "pred": "eligibleGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   30
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-minor",
+  "dst_rule": "c32",
+  "src_card": "np-08",
+  "dst_card": "np-13",
+  "pred": "needsGuardian",
+  "src_arts": [
+   27,
+   39
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-adult",
+  "dst_rule": "c32",
+  "src_card": "np-09",
+  "dst_card": "np-13",
+  "pred": "needsGuardian",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-minor",
+  "dst_rule": "c32-committee",
+  "src_card": "np-08",
+  "dst_card": "np-13",
+  "pred": "needsGuardian",
+  "src_arts": [
+   27,
+   39
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-adult",
+  "dst_rule": "c32-committee",
+  "src_card": "np-09",
+  "dst_card": "np-13",
+  "pred": "needsGuardian",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c20",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "noCapacity",
+  "src_arts": [
+   20
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-1",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c21-2",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "noCapacity",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c19",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   19
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c22",
+  "dst_rule": "c33",
+  "src_card": "np-03",
+  "dst_card": "np-14",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   22
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c34-1",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c34-1",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c34-1",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c34-1",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c34-1",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c34-1",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c34-1",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c34-1",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c34-1",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c34-1",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c34-1",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c34-1",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c34-1",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c34-1",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c34-1",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c34-1",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c34-3",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c34-3",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c34-3",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c34-3",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c34-3",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c34-3",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c34-3",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c34-3",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c34-3",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c34-3",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c34-3",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c34-3",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c34-3",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c34-3",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c34-3",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c34-3",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c34-4",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c34-4",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c34-4",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c34-4",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c34-4",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c34-4",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c34-4",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c34-4",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c34-4",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c34-4",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c34-4",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c34-4",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c34-4",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c34-4",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c34-4",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c34-4",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   34
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c35-best",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c35-best",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c35-best",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c35-best",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c35-best",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c35-best",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c35-best",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c35-best",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c35-best",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c35-best",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c35-best",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c35-best",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c35-best",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c35-best",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c35-best",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c35-best",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c35-dispose",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c35-minor",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c35-minor",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c35-minor",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c35-minor",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c35-minor",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c35-minor",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c35-minor",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c35-minor",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c35-minor",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c35-minor",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c35-minor",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c35-minor",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c35-minor",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c35-minor",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c35-minor",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c35-minor",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-minor",
+  "dst_rule": "c35-minor",
+  "src_card": "np-03",
+  "dst_card": "np-15",
+  "pred": "minor",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c35-adult",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c35-adult",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c35-adult",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c35-adult",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c35-adult",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c35-adult",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c35-adult",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c35-adult",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c35-adult",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c35-adult",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c35-adult",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c35-adult",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c35-adult",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c35-adult",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c35-adult",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c35-adult",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c35-adult",
+  "src_card": "np-03",
+  "dst_card": "np-15",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-08",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-09",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-10",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-11",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-12",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-13",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-14",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c36-effect",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-16",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-17",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-18",
+  "dst_card": "np-15",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c17-adult",
+  "dst_rule": "c35-noninterf",
+  "src_card": "np-03",
+  "dst_card": "np-15",
+  "pred": "adult",
+  "src_arts": [
+   17
+  ],
+  "dst_arts": [
+   35
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-1",
+  "dst_rule": "c36-ground",
+  "src_card": "np-08",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-1",
+  "dst_rule": "c36-ground",
+  "src_card": "np-08",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-2",
+  "dst_rule": "c36-ground",
+  "src_card": "np-08",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c27-2-3",
+  "dst_rule": "c36-ground",
+  "src_card": "np-08",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   27
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-1",
+  "dst_rule": "c36-ground",
+  "src_card": "np-09",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-2",
+  "dst_rule": "c36-ground",
+  "src_card": "np-09",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-3",
+  "dst_rule": "c36-ground",
+  "src_card": "np-09",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c28-4",
+  "dst_rule": "c36-ground",
+  "src_card": "np-09",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c29-effect",
+  "dst_rule": "c36-ground",
+  "src_card": "np-10",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   29
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c30",
+  "dst_rule": "c36-ground",
+  "src_card": "np-11",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   30
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c31-designated",
+  "dst_rule": "c36-ground",
+  "src_card": "np-12",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c32",
+  "dst_rule": "c36-ground",
+  "src_card": "np-13",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   32
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c33",
+  "dst_rule": "c36-ground",
+  "src_card": "np-14",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   33
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-restored",
+  "dst_rule": "c36-ground",
+  "src_card": "np-17",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c39-end",
+  "dst_rule": "c36-ground",
+  "src_card": "np-18",
+  "dst_card": "np-16",
+  "pred": "guardianOf",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-eligible",
+  "dst_rule": "c36-2",
+  "src_card": "np-08",
+  "dst_card": "np-16",
+  "pred": "eligibleGuardian",
+  "src_arts": [
+   27,
+   28
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c24-3",
+  "dst_rule": "c36-2",
+  "src_card": "np-05",
+  "dst_card": "np-16",
+  "pred": "relevantOrg",
+  "src_arts": [
+   24
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-full",
+  "dst_rule": "c39-1",
+  "src_card": "np-03",
+  "dst_card": "np-18",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c39-1",
+  "src_card": "np-03",
+  "dst_card": "np-18",
+  "pred": "fullCapacity",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-end",
+  "dst_rule": "c39-end",
+  "src_card": "np-17",
+  "dst_card": "np-18",
+  "pred": "guardianshipTerminated",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c38-end",
+  "dst_rule": "c39-2",
+  "src_card": "np-17",
+  "dst_card": "np-18",
+  "pred": "guardianshipTerminated",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-minor",
+  "dst_rule": "c39-2",
+  "src_card": "np-08",
+  "dst_card": "np-18",
+  "pred": "needsGuardian",
+  "src_arts": [
+   27,
+   39
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c-ward-adult",
+  "dst_rule": "c39-2",
+  "src_card": "np-09",
+  "dst_card": "np-18",
+  "pred": "needsGuardian",
+  "src_arts": [
+   28
+  ],
+  "dst_arts": [
+   39
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c46-cond",
+  "dst_rule": "c47",
+  "src_card": "np-22",
+  "dst_card": "np-23",
+  "pred": "deathDeclarationConditionsMet",
+  "src_arts": [
+   46
+  ],
+  "dst_arts": [
+   47
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c54",
+  "dst_rule": "c56-1a",
+  "src_card": "np-26",
+  "dst_card": "np-26",
+  "pred": "individualBusiness",
+  "src_arts": [
+   54
+  ],
+  "dst_arts": [
+   56
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c54",
+  "dst_rule": "c56-1b",
+  "src_card": "np-26",
+  "dst_card": "np-26",
+  "pred": "individualBusiness",
+  "src_arts": [
+   54
+  ],
+  "dst_arts": [
+   56
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c55",
+  "dst_rule": "c56-2a",
+  "src_card": "np-27",
+  "dst_card": "np-27",
+  "pred": "ruralContractHousehold",
+  "src_arts": [
+   55
+  ],
+  "dst_arts": [
+   56
+  ]
+ },
+ {
+  "type": "依赖（前提）",
+  "src_rule": "c55",
+  "dst_rule": "c56-2b",
+  "src_card": "np-27",
+  "dst_card": "np-27",
+  "pred": "ruralContractHousehold",
+  "src_arts": [
+   55
+  ],
+  "dst_arts": [
+   56
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c21-2",
+  "dst_rule": "c19",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "不能辨认自己行为的八周岁以上未成年人为无民事行为能力人（第21条第2款），排除第19条",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": [
+   19
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c18-emancipated",
+  "dst_rule": "c19",
+  "src_card": "np-03",
+  "dst_card": "np-03",
+  "pred": "视为完全民事行为能力人（第18条第2款），排除第19条",
+  "src_arts": [
+   18
+  ],
+  "dst_arts": [
+   19
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c27-1",
+  "src_card": "np-16",
+  "dst_card": "np-08",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-16",
+  "dst_card": "np-08",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-16",
+  "dst_card": "np-08",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-16",
+  "dst_card": "np-08",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c28-1",
+  "src_card": "np-16",
+  "dst_card": "np-09",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c28-2",
+  "src_card": "np-16",
+  "dst_card": "np-09",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c28-3",
+  "src_card": "np-16",
+  "dst_card": "np-09",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c28-4",
+  "src_card": "np-16",
+  "dst_card": "np-09",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c29-effect",
+  "src_card": "np-16",
+  "dst_card": "np-10",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c30",
+  "src_card": "np-16",
+  "dst_card": "np-11",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   30
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c31-designated",
+  "src_card": "np-16",
+  "dst_card": "np-12",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   31
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c32",
+  "src_card": "np-16",
+  "dst_card": "np-13",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c36-effect",
+  "dst_rule": "c33",
+  "src_card": "np-16",
+  "dst_card": "np-14",
+  "pred": "被撤销监护人资格（第36条）的，不再依第27–33条担任监护人",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c27-1",
+  "src_card": "np-18",
+  "dst_card": "np-08",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c27-2-1",
+  "src_card": "np-18",
+  "dst_card": "np-08",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c27-2-2",
+  "src_card": "np-18",
+  "dst_card": "np-08",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c27-2-3",
+  "src_card": "np-18",
+  "dst_card": "np-08",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   27
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c28-1",
+  "src_card": "np-18",
+  "dst_card": "np-09",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c28-2",
+  "src_card": "np-18",
+  "dst_card": "np-09",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c28-3",
+  "src_card": "np-18",
+  "dst_card": "np-09",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c28-4",
+  "src_card": "np-18",
+  "dst_card": "np-09",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   28
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c29-effect",
+  "src_card": "np-18",
+  "dst_card": "np-10",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   29
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c30",
+  "src_card": "np-18",
+  "dst_card": "np-11",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   30
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c31-designated",
+  "src_card": "np-18",
+  "dst_card": "np-12",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   31
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c32",
+  "src_card": "np-18",
+  "dst_card": "np-13",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   32
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c33",
+  "src_card": "np-18",
+  "dst_card": "np-14",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   33
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c39-end",
+  "dst_rule": "c38-restored",
+  "src_card": "np-18",
+  "dst_card": "np-17",
+  "pred": "监护关系终止（第39条）的，不再担任监护人",
+  "src_arts": [
+   39
+  ],
+  "dst_arts": [
+   38
+  ]
+ },
+ {
+  "type": "优先",
+  "src_rule": "c38-restored",
+  "dst_rule": "c36-effect",
+  "src_card": "np-17",
+  "dst_card": "np-16",
+  "pred": "恢复监护人资格（第38条）优先于撤销的效果",
+  "src_arts": [
+   38
+  ],
+  "dst_arts": [
+   36
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c144",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   144
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c145-pure",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   145
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c145-consent",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   145
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c145-pending",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   145
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c145-refused",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   145
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1143-1",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1143
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1143-1",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1143
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c27-1、c27-2-1、c27-2-2、c27-2-3",
+  "dst_rule": "c1188",
+  "src_card": "np-08、np-09、np-10、np-11、np-12、np-13、np-14、np-16、np-17、np-18",
+  "dst_card": "（章外）",
+  "pred": "guardianOf",
+  "src_arts": [
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   36,
+   38,
+   39
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1188",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1188",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c27-1、c27-2-1、c27-2-2、c27-2-3",
+  "dst_rule": "c1188-reduce",
+  "src_card": "np-08、np-09、np-10、np-11、np-12、np-13、np-14、np-16、np-17、np-18",
+  "dst_card": "（章外）",
+  "pred": "guardianOf",
+  "src_arts": [
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   36,
+   38,
+   39
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c27-1、c27-2-1、c27-2-2、c27-2-3",
+  "dst_rule": "c1188-2",
+  "src_card": "np-08、np-09、np-10、np-11、np-12、np-13、np-14、np-16、np-17、np-18",
+  "dst_card": "（章外）",
+  "pred": "guardianOf",
+  "src_arts": [
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   36,
+   38,
+   39
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1188-2",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1188-2",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1188
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1199",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1199
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1200",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1200
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1201",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1201
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1201",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1201
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c18-emancipated、c19、c21-2、c22",
+  "dst_rule": "c1201-supp",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "limitedCapacity",
+  "src_arts": [
+   18,
+   19,
+   21,
+   22
+  ],
+  "dst_arts": [
+   1201
+  ]
+ },
+ {
+  "type": "章外引用",
+  "src_rule": "c20、c21-1、c21-2",
+  "dst_rule": "c1201-supp",
+  "src_card": "np-03",
+  "dst_card": "（章外）",
+  "pred": "noCapacity",
+  "src_arts": [
+   20,
+   21
+  ],
+  "dst_arts": [
+   1201
+  ]
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "适用前款规定",
+  "src_arts": [
+   21
+  ],
+  "dst_arts": []
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "依据本条第一款",
+  "src_arts": [
+   31
+  ],
+  "dst_arts": []
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "前款规定",
+  "src_arts": [
+   36
+  ],
+  "dst_arts": []
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "前款规定",
+  "src_arts": [
+   42
+  ],
+  "dst_arts": []
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "前款规定",
+  "src_arts": [
+   42
+  ],
+  "dst_arts": []
+ },
+ {
+  "type": "引致（条文用语）",
+  "src_rule": "",
+  "dst_rule": "",
+  "src_card": "",
+  "dst_card": "",
+  "pred": "本法第六编",
+  "src_arts": [
+   53
+  ],
+  "dst_arts": []
+ }
+]
