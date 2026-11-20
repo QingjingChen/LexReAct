@@ -1,0 +1,186 @@
+{
+ "card:g4732": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第八章　违约责任"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "违约责任的构成要件：有效合同、违约行为（不履行含预期违约、不适当履行）、无免责事由",
+     "rules": [
+      "c577-elements",
+      "c577-liab"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人之间存在有效合同",
+     "rules": [
+      "c577-elements"
+     ]
+    },
+    {
+     "text": "客观上有违约行为：实际不履行、预期违约（履行期届满前明确表示或以行为表明不履行）或不适当履行",
+     "rules": [
+      "c577-elements",
+      "c578-anticip"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "存在法定或约定的免责事由（如不可抗力、有效的免责条款）的，不承担违约责任（构成要件之三，学理归纳）",
+     "rules": [
+      "c577-exempt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "违约方应当承担继续履行、采取补救措施或者赔偿损失等违约责任",
+     "rules": [
+      "c577-liab"
+     ]
+    },
+    {
+     "text": "预期违约的，对方可以在履行期限届满前请求其承担违约责任",
+     "rules": [
+      "c578-early"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "免责事由成立时排除违约责任的承担",
+     "rules": [
+      "c577-exempt"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "继续履行的限制（第580条）、损失赔偿的范围与可预见性限制（第583、584条）由其他行规则处理，本行只形式化构成要件",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c578-anticip",
+    "srcs": [
+     "art578"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "contractParty(A,K)",
+     "anticipatoryRepudiation(A,K)"
+    ],
+    "heads": [
+     "nonPerformance(A,K)"
+    ],
+    "note": "履行期届满前明确表示或者以自己的行为表明不履行合同义务（预期违约），属于不履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c577-elements",
+    "srcs": [
+     "art577"
+    ],
+    "body": [
+     "contractAgreement(K)",
+     "valid(K)",
+     "contractParty(A,K)",
+     {
+      "or": [
+       "nonPerformance(A,K)",
+       "nonConformingPerformance(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "breachingParty(A,K)"
+    ],
+    "note": "有效合同的当事人一方不履行合同义务或者履行合同义务不符合约定，构成违约",
+    "auth": "npc"
+   },
+   {
+    "key": "c577-liab",
+    "srcs": [
+     "art577"
+    ],
+    "body": [
+     "breachingParty(A,K)",
+     "contractParty(B,K)",
+     "nonBreachingParty(B,K)",
+     "~breachExemptionGround(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "liableForBreach(A,K)"
+     }
+    ],
+    "note": "违约方应当承担继续履行、采取补救措施或者赔偿损失等违约责任；存在免责事由的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c577-exempt",
+    "srcs": [
+     "art577"
+    ],
+    "body": [
+     "breachingParty(A,K)",
+     {
+      "or": [
+       "forceMajeureExemption(A,K)",
+       "agreedExemptionGround(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "breachExemptionGround(A,K)"
+    ],
+    "note": "笔记：不存在免责事由是违约责任构成要件之一；免责事由包括不可抗力（第590条）及有效的约定免责条款，本行未挂载第590条，按学理写入",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c578-early",
+    "srcs": [
+     "art578"
+    ],
+    "body": [
+     "anticipatoryRepudiation(A,K)",
+     "contractParty(B,K)",
+     "nonBreachingParty(B,K)",
+     "performancePeriodNotExpired(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimBreachLiabilityBeforeDue(B,A,K)"
+     }
+    ],
+    "note": "当事人一方预期违约的，对方可以在履行期限届满前请求其承担违约责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "anticipatoryRepudiation": "在履行期限届满前明确表示或者以自己的行为表明不履行合同义务（当事人，合同）",
+   "breachExemptionGround": "违约方存在法定或约定的免责事由（违约方，合同）",
+   "forceMajeureExemption": "违约方因不可抗力不能履行合同而依法可免责（违约方，合同）",
+   "performancePeriodNotExpired": "合同履行期限尚未届满（合同）",
+   "claimBreachLiabilityBeforeDue": "在履行期限届满前请求对方承担违约责任（守约方，违约方，合同）"
+  }
+ }
+}

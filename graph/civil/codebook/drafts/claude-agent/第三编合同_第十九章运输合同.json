@@ -1,0 +1,1036 @@
+{
+ "card:g5543": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十九章　运输合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "运输合同的概念；客运、货运与多式联运中承运人、旅客、托运人的主要权利义务与责任",
+     "rules": [
+      "c809",
+      "c810",
+      "c838"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "运输合同：承运人将旅客或货物从起运地点运输到约定地点，旅客、托运人或收货人支付票款或运输费用",
+     "rules": [
+      "c809"
+     ]
+    },
+    {
+     "text": "无票、超程、越级乘坐或持不符合减价条件的优惠客票乘坐，构成违规乘坐",
+     "rules": [
+      "c815-irreg"
+     ]
+    },
+    {
+     "text": "承运人迟延运输或有其他不能正常运输情形",
+     "rules": [
+      "c820-dis"
+     ]
+    },
+    {
+     "text": "货物毁损、灭失由不可抗力、货物自然性质或合理损耗、托运人或收货人过错造成，且由承运人证明",
+     "rules": [
+      "c832-exc"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "迟延等造成旅客损失不可归责于承运人的，承运人不赔偿",
+     "rules": [
+      "c820-comp"
+     ]
+    },
+    {
+     "text": "承运人证明法定免责事由的，对货物毁损、灭失不承担赔偿责任",
+     "rules": [
+      "c832-1",
+      "c832-exc"
+     ]
+    },
+    {
+     "text": "运费风险规则：法律另有规定的依其规定；留置权：当事人另有约定的除外",
+     "rules": [
+      "c835-1",
+      "c835-2",
+      "c836"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "从事公共运输的承运人不得拒绝通常、合理的运输要求（强制缔约）",
+     "rules": [
+      "c810"
+     ]
+    },
+    {
+     "text": "旅客按有效客票乘坐；违规乘坐应补交票款，承运人可按规定加收，旅客不支付的可拒绝运输",
+     "rules": [
+      "c815-ride",
+      "c815-pay",
+      "c815-refuse"
+     ]
+    },
+    {
+     "text": "实名制客运旅客丢失客票可请求挂失补办，承运人不得再次收取票款和其他不合理费用",
+     "rules": [
+      "c815-2"
+     ]
+    },
+    {
+     "text": "承运人严格履行安全运输义务并告知注意事项；旅客应协助配合合理的安全安排",
+     "rules": [
+      "c819-1",
+      "c819-2"
+     ]
+    },
+    {
+     "text": "承运人按客票运输；迟延或不能正常运输时及时告知提醒、采取安置措施，依旅客要求改乘或退票，并赔偿由此造成的损失",
+     "rules": [
+      "c820-1",
+      "c820-dis",
+      "c820-2",
+      "c820-3",
+      "c820-comp"
+     ]
+    },
+    {
+     "text": "随身携带物品毁损灭失，承运人有过错才赔偿；托运行李适用货物运输规定",
+     "rules": [
+      "c824-1",
+      "c824-2"
+     ]
+    },
+    {
+     "text": "托运人提交审批、检验手续文件；按约定方式包装，无约定或不明确适用第619条；违反包装义务承运人可拒绝运输",
+     "rules": [
+      "c826",
+      "c827-1",
+      "c827-619",
+      "c827-2"
+     ]
+    },
+    {
+     "text": "交付收货人前托运人可要求中止运输、返还货物、变更到达地或交给其他收货人，但应赔偿承运人损失",
+     "rules": [
+      "c829",
+      "c829-comp"
+     ]
+    },
+    {
+     "text": "承运人对运输过程中货物毁损、灭失承担赔偿责任（无过错责任）",
+     "rules": [
+      "c832-1"
+     ]
+    },
+    {
+     "text": "货物因不可抗力灭失：未收运费的不得请求，已收的托运人可请求返还",
+     "rules": [
+      "c835-1",
+      "c835-2"
+     ]
+    },
+    {
+     "text": "托运人或收货人不付运费、保管费等，承运人对相应货物享有留置权",
+     "rules": [
+      "c836"
+     ]
+    },
+    {
+     "text": "收货人不明或无正当理由拒绝受领，承运人可依法提存货物",
+     "rules": [
+      "c837"
+     ]
+    },
+    {
+     "text": "多式联运经营人负责履行或组织履行，享有承运人权利、承担承运人义务，对全程运输负责；可与区段承运人约定内部责任但不影响全程义务",
+     "rules": [
+      "c838",
+      "c839-1",
+      "c839-whole"
+     ]
+    },
+    {
+     "text": "多式联运经营人收货时签发多式联运单据，按托运人要求为可转让或不可转让单据",
+     "rules": [
+      "c840-1",
+      "c840-2"
+     ]
+    },
+    {
+     "text": "托运人托运时过错造成经营人损失的，即使已转让单据仍应赔偿",
+     "rules": [
+      "c841"
+     ]
+    },
+    {
+     "text": "毁损灭失区段确定的，赔偿责任和限额适用该区段运输方式的法律；不能确定的依本章规定",
+     "rules": [
+      "c842-1",
+      "c842-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "承运人的法定免责事由排除第832条的赔偿责任",
+     "rules": [
+      "c832-exc"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：旅客人身伤亡承运人负无过错责任（第823条，不在本行）；随身物品为过错责任，托运行李为无过错责任；搭便车属好意施惠，只能主张侵权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c809",
+    "srcs": [
+     "art809"
+    ],
+    "body": [
+     "undertakesCarriageToAgreedPlace(C,K)",
+     "fareOrFreightPayableUnder(K)"
+    ],
+    "heads": [
+     "carriageContract(K,C)",
+     "carrierOf(C,K)"
+    ],
+    "note": "运输合同的定义",
+    "auth": "npc"
+   },
+   {
+    "key": "c810",
+    "srcs": [
+     "art810"
+    ],
+    "body": [
+     "publicCarrier(C)",
+     "usualReasonableTransportRequest(X,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "X",
+      "content": "refuseTransportRequest(C,X)"
+     }
+    ],
+    "note": "公共运输承运人不得拒绝旅客、托运人通常、合理的运输要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c815-ride",
+    "srcs": [
+     "art815-1"
+    ],
+    "body": [
+     "passengerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "rideAsTicketed(P,K)"
+     }
+    ],
+    "note": "旅客应当按照有效客票记载的时间、班次和座位号乘坐",
+    "auth": "npc"
+   },
+   {
+    "key": "c815-irreg",
+    "srcs": [
+     "art815-1"
+    ],
+    "body": [
+     "passengerOf(P,K)",
+     {
+      "or": [
+       "ridesWithoutTicket(P,K)",
+       "ridesBeyondTicketedDistance(P,K)",
+       "ridesAboveTicketedClass(P,K)",
+       "ridesWithIneligibleDiscountTicket(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "irregularRide(P,K)"
+    ],
+    "note": "无票、超程、越级乘坐或持不符合减价条件的优惠客票乘坐",
+    "auth": "npc"
+   },
+   {
+    "key": "c815-pay",
+    "srcs": [
+     "art815-1"
+    ],
+    "body": [
+     "irregularRide(P,K)",
+     "carrierOf(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "payFareSupplement(P,C,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "surchargeFarePerRegulations(C,P,K)"
+     }
+    ],
+    "note": "应当补交票款，承运人可以按照规定加收票款",
+    "auth": "npc"
+   },
+   {
+    "key": "c815-refuse",
+    "srcs": [
+     "art815-1"
+    ],
+    "body": [
+     "irregularRide(P,K)",
+     "carrierOf(C,K)",
+     "refusesToPayFare(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "refuseTransport(C,K)"
+     }
+    ],
+    "note": "旅客不支付票款的，承运人可以拒绝运输",
+    "auth": "npc"
+   },
+   {
+    "key": "c815-2",
+    "srcs": [
+     "art815-2"
+    ],
+    "body": [
+     "realNamePassengerContract(K)",
+     "passengerOf(P,K)",
+     "carrierOf(C,K)",
+     "ticketLost(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "requestTicketLossReportAndReissue(P,C,K)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "chargeFareAgainOrUnreasonableFee(C,P,K)"
+     }
+    ],
+    "note": "实名制客运旅客丢失客票可请求挂失补办，承运人不得再次收取票款和其他不合理费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c819-1",
+    "srcs": [
+     "art819"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "passengerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "performSafeCarriageDuty(C,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "informSafetyMatters(C,P,K)"
+     }
+    ],
+    "note": "承运人应当严格履行安全运输义务，及时告知安全注意事项",
+    "auth": "npc"
+   },
+   {
+    "key": "c819-2",
+    "srcs": [
+     "art819"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "passengerOf(P,K)",
+     "reasonableSafetyArrangement(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "C",
+      "content": "cooperateWithSafetyArrangement(P,C,K)"
+     }
+    ],
+    "note": "旅客对承运人为安全运输所作的合理安排应当积极协助和配合",
+    "auth": "npc"
+   },
+   {
+    "key": "c820-1",
+    "srcs": [
+     "art820"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "passengerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "carryAsTicketed(C,P,K)"
+     }
+    ],
+    "note": "承运人应当按照有效客票记载的时间、班次和座位号运输旅客",
+    "auth": "npc"
+   },
+   {
+    "key": "c820-dis",
+    "srcs": [
+     "art820"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     {
+      "or": [
+       "delayedCarriage(C,K)",
+       "otherAbnormalCarriage(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "carriageDisrupted(C,K)"
+    ],
+    "note": "迟延运输或有其他不能正常运输情形",
+    "auth": "npc"
+   },
+   {
+    "key": "c820-2",
+    "srcs": [
+     "art820"
+    ],
+    "body": [
+     "carriageDisrupted(C,K)",
+     "passengerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "notifyAndRemindPassenger(C,P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "takeNecessaryAccommodationMeasures(C,P,K)"
+     }
+    ],
+    "note": "应当及时告知和提醒旅客，采取必要的安置措施",
+    "auth": "npc"
+   },
+   {
+    "key": "c820-3",
+    "srcs": [
+     "art820"
+    ],
+    "body": [
+     "carriageDisrupted(C,K)",
+     "passengerOf(P,K)",
+     "passengerRequestsRebookingOrRefund(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "arrangeRebookingOrRefund(C,P,K)"
+     }
+    ],
+    "note": "根据旅客的要求安排改乘其他班次或者退票",
+    "auth": "npc"
+   },
+   {
+    "key": "c820-comp",
+    "srcs": [
+     "art820"
+    ],
+    "body": [
+     "carriageDisrupted(C,K)",
+     "passengerOf(P,K)",
+     "passengerLossFromDisruption(P,K)",
+     "~notAttributableToCarrier(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "payCompensation(C,P)"
+     }
+    ],
+    "note": "由此造成旅客损失的承运人应当赔偿，但不可归责于承运人的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c824-1",
+    "srcs": [
+     "art824-1"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "passengerOf(P,K)",
+     "carryOnItemsDamagedOrLostInTransit(P,K)",
+     "fault(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "payCompensation(C,P)"
+     }
+    ],
+    "note": "运输过程中旅客随身携带物品毁损、灭失，承运人有过错的应当赔偿（过错责任）",
+    "auth": "npc"
+   },
+   {
+    "key": "c824-2",
+    "srcs": [
+     "art824-2"
+    ],
+    "body": [
+     "passengerOf(P,K)",
+     "checkedLuggageDamagedOrLost(P,K)"
+    ],
+    "heads": [
+     "governedByCargoTransportRules(K)"
+    ],
+    "note": "旅客托运的行李毁损、灭失的，适用货物运输的有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c826",
+    "srcs": [
+     "art826"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "carrierOf(C,K)",
+     "cargoRequiresApprovalOrInspection(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "C",
+      "content": "submitClearanceDocuments(S,C,K)"
+     }
+    ],
+    "note": "需要办理审批、检验等手续的，托运人应当将办理完手续的文件提交承运人",
+    "auth": "npc"
+   },
+   {
+    "key": "c827-1",
+    "srcs": [
+     "art827-1"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "agreedPackagingMethod(K,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "packageGoodsAsAgreed(S,K,M)"
+     }
+    ],
+    "note": "托运人应当按照约定的方式包装货物",
+    "auth": "npc"
+   },
+   {
+    "key": "c827-619",
+    "srcs": [
+     "art827-1"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "noAgreedOrUnclearPackaging(K)"
+    ],
+    "heads": [
+     "packagingGovernedByArt619(K)"
+    ],
+    "note": "对包装方式没有约定或者约定不明确的，适用第619条",
+    "auth": "npc"
+   },
+   {
+    "key": "c827-2",
+    "srcs": [
+     "art827-2"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "carrierOf(C,K)",
+     "violatesPackagingDuty(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "S",
+      "content": "refuseTransport(C,K)"
+     }
+    ],
+    "note": "托运人违反包装义务的，承运人可以拒绝运输",
+    "auth": "npc"
+   },
+   {
+    "key": "c829",
+    "srcs": [
+     "art829"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "carrierOf(C,K)",
+     "-goodsDeliveredToConsignee(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "C",
+      "content": "requestStopReturnRedirectOrChangeConsignee(S,C,K)"
+     }
+    ],
+    "note": "交付收货人之前，托运人可以要求中止运输、返还货物、变更到达地或者将货物交给其他收货人",
+    "auth": "npc"
+   },
+   {
+    "key": "c829-comp",
+    "srcs": [
+     "art829"
+    ],
+    "body": [
+     "shipperOf(S,K)",
+     "carrierOf(C,K)",
+     "shipperRequestedChangeUnderArt829(S,K)",
+     "carrierLossFromChange(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "C",
+      "content": "payCompensation(S,C)"
+     }
+    ],
+    "note": "托运人行使上述权利的，应当赔偿承运人因此受到的损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c832-1",
+    "srcs": [
+     "art832"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "goodsDamagedOrLostInTransit(K)",
+     "~carrierExemptForGoodsLoss(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "compensateGoodsLoss(C,K)"
+     }
+    ],
+    "note": "承运人对运输过程中货物的毁损、灭失承担赔偿责任（无过错责任）",
+    "auth": "npc"
+   },
+   {
+    "key": "c832-exc",
+    "srcs": [
+     "art832"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "carrierProvesCauseOfGoodsLoss(C,K)",
+     {
+      "or": [
+       "goodsLossByForceMajeure(K)",
+       "goodsLossByNatureOrReasonableWear(K)",
+       "goodsLossByShipperOrConsigneeFault(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "carrierExemptForGoodsLoss(C,K)"
+    ],
+    "note": "承运人证明毁损、灭失因不可抗力、货物本身自然性质或合理损耗、托运人或收货人过错造成的，不承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c835-1",
+    "srcs": [
+     "art835"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "goodsLossByForceMajeure(K)",
+     "-freightCollected(C,K)",
+     "~lawProvidesOtherwiseOnFreightRisk(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "claimFreight(C,K)"
+     }
+    ],
+    "note": "货物在运输过程中因不可抗力灭失，未收取运费的，承运人不得请求支付运费；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c835-2",
+    "srcs": [
+     "art835"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     "shipperOf(S,K)",
+     "goodsLossByForceMajeure(K)",
+     "freightCollected(C,K)",
+     "~lawProvidesOtherwiseOnFreightRisk(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "C",
+      "content": "requestFreightRefund(S,C,K)"
+     }
+    ],
+    "note": "已经收取运费的，托运人可以请求返还；法律另有规定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c836",
+    "srcs": [
+     "art836"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     {
+      "or": [
+       "shipperOf(X,K)",
+       "consigneeOf(X,K)"
+      ]
+     },
+     "unpaidFreightOrFees(X,K)",
+     "goodsCarriedUnder(T,K)",
+     "~lienExcludedByAgreement(T)"
+    ],
+    "heads": [
+     "lienRight(C,T,K)"
+    ],
+    "note": "托运人或收货人不支付运费、保管费或其他费用的，承运人对相应运输货物享有留置权，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c837",
+    "srcs": [
+     "art837"
+    ],
+    "body": [
+     "carrierOf(C,K)",
+     {
+      "or": [
+       "consigneeUnknown(K)",
+       "consigneeRefusesGoodsWithoutJustification(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "lodgeGoodsInEscrow(C,K)"
+     }
+    ],
+    "note": "收货人不明或者无正当理由拒绝受领货物的，承运人依法可以提存货物",
+    "auth": "npc"
+   },
+   {
+    "key": "c838",
+    "srcs": [
+     "art838"
+    ],
+    "body": [
+     "multimodalOperator(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "performOrOrganizeMultimodalContract(O,K)"
+     },
+     "carrierOf(O,K)"
+    ],
+    "note": "多式联运经营人负责履行或组织履行合同，对全程运输享有承运人的权利、承担承运人的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c839-1",
+    "srcs": [
+     "art839"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "segmentCarrierOf(X,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "X",
+      "content": "agreeSegmentLiability(O,X,K)"
+     }
+    ],
+    "note": "经营人可以与各区段承运人约定相互之间的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c839-whole",
+    "srcs": [
+     "art838",
+     "art839"
+    ],
+    "body": [
+     "multimodalOperator(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "bearLiabilityForWholeTransport(O,K)"
+     }
+    ],
+    "note": "经营人对全程运输承担义务，区段责任约定不影响该义务（规则体不以有无约定为条件）",
+    "auth": "npc"
+   },
+   {
+    "key": "c840-1",
+    "srcs": [
+     "art840"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "shipperOf(S,K)",
+     "operatorReceivedGoods(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "S",
+      "content": "issueMultimodalDocument(O,S,K)"
+     }
+    ],
+    "note": "收到托运人交付的货物时，应当签发多式联运单据",
+    "auth": "npc"
+   },
+   {
+    "key": "c840-2",
+    "srcs": [
+     "art840"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "shipperOf(S,K)",
+     "shipperRequestsDocumentType(S,K,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "S",
+      "content": "issueDocumentOfType(O,K,T)"
+     }
+    ],
+    "note": "按照托运人的要求，单据可以是可转让单据或不可转让单据",
+    "auth": "npc"
+   },
+   {
+    "key": "c841",
+    "srcs": [
+     "art841"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "shipperOf(S,K)",
+     "shipperConsignmentFaultCausesLoss(S,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "O",
+      "content": "payCompensation(S,O)"
+     }
+    ],
+    "note": "托运人托运时的过错造成经营人损失的应当赔偿；是否已转让单据不影响（故不作为条件）",
+    "auth": "npc"
+   },
+   {
+    "key": "c842-1",
+    "srcs": [
+     "art842"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "goodsDamagedOrLost(K)",
+     "lossOccurredInSegment(K,G)"
+    ],
+    "heads": [
+     "liabilityGovernedBySegmentLaw(O,K,G)"
+    ],
+    "note": "毁损、灭失发生于某一区段的，赔偿责任和责任限额适用调整该区段运输方式的法律",
+    "auth": "npc"
+   },
+   {
+    "key": "c842-2",
+    "srcs": [
+     "art842"
+    ],
+    "body": [
+     "multimodalOperator(O,K)",
+     "goodsDamagedOrLost(K)",
+     "lossSegmentUndeterminable(K)"
+    ],
+    "heads": [
+     "liabilityPerTransportChapter(O,K)"
+    ],
+    "note": "发生区段不能确定的，依照本章规定承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "undertakesCarriageToAgreedPlace": "约定将旅客或者货物从起运地点运输到约定地点（承运人，合同）",
+   "fareOrFreightPayableUnder": "旅客、托运人或者收货人依约支付票款或者运输费用（合同）",
+   "publicCarrier": "从事公共运输的承运人（承运人）",
+   "usualReasonableTransportRequest": "提出通常、合理的运输要求（旅客或托运人，承运人）",
+   "refuseTransportRequest": "拒绝运输要求（承运人，旅客或托运人）",
+   "rideAsTicketed": "按照有效客票记载的时间、班次和座位号乘坐（旅客，合同）",
+   "ridesWithoutTicket": "无票乘坐（旅客，合同）",
+   "ridesBeyondTicketedDistance": "超程乘坐（旅客，合同）",
+   "ridesAboveTicketedClass": "越级乘坐（旅客，合同）",
+   "ridesWithIneligibleDiscountTicket": "持不符合减价条件的优惠客票乘坐（旅客，合同）",
+   "irregularRide": "无票、超程、越级或持不符合条件的优惠客票乘坐（旅客，合同）",
+   "payFareSupplement": "补交票款（旅客，承运人，合同）",
+   "surchargeFarePerRegulations": "按照规定加收票款（承运人，旅客，合同）",
+   "refusesToPayFare": "旅客不支付应补交的票款（旅客，合同）",
+   "realNamePassengerContract": "实名制客运合同（合同）",
+   "ticketLost": "旅客丢失客票（旅客，合同）",
+   "requestTicketLossReportAndReissue": "请求承运人挂失补办客票（旅客，承运人，合同）",
+   "chargeFareAgainOrUnreasonableFee": "再次收取票款或者其他不合理费用（承运人，旅客，合同）",
+   "performSafeCarriageDuty": "严格履行安全运输义务（承运人，合同）",
+   "informSafetyMatters": "及时告知旅客安全运输应当注意的事项（承运人，旅客，合同）",
+   "reasonableSafetyArrangement": "承运人为安全运输作出合理安排（承运人，合同）",
+   "cooperateWithSafetyArrangement": "对承运人为安全运输所作的合理安排积极协助和配合（旅客，承运人，合同）",
+   "carryAsTicketed": "按照有效客票记载的时间、班次和座位号运输旅客（承运人，旅客，合同）",
+   "delayedCarriage": "承运人迟延运输（承运人，合同）",
+   "otherAbnormalCarriage": "有其他不能正常运输的情形（承运人，合同）",
+   "carriageDisrupted": "迟延运输或者有其他不能正常运输的情形（承运人，合同）",
+   "notifyAndRemindPassenger": "及时告知和提醒旅客（承运人，旅客，合同）",
+   "takeNecessaryAccommodationMeasures": "采取必要的安置措施（承运人，旅客，合同）",
+   "passengerRequestsRebookingOrRefund": "旅客要求改乘其他班次或者退票（旅客，合同）",
+   "arrangeRebookingOrRefund": "安排改乘其他班次或者退票（承运人，旅客，合同）",
+   "passengerLossFromDisruption": "因迟延或不能正常运输造成旅客损失（旅客，合同）",
+   "notAttributableToCarrier": "损失不可归责于承运人（承运人，合同）",
+   "carryOnItemsDamagedOrLostInTransit": "运输过程中旅客随身携带物品毁损、灭失（旅客，合同）",
+   "checkedLuggageDamagedOrLost": "旅客托运的行李毁损、灭失（旅客，合同）",
+   "governedByCargoTransportRules": "适用货物运输的有关规定（合同）",
+   "cargoRequiresApprovalOrInspection": "货物运输需要办理审批、检验等手续（合同）",
+   "submitClearanceDocuments": "将办理完审批、检验等手续的文件提交承运人（托运人，承运人，合同）",
+   "packageGoodsAsAgreed": "按照约定的方式包装货物（托运人，合同，包装方式）",
+   "packagingGovernedByArt619": "包装方式适用第619条确定（合同）",
+   "violatesPackagingDuty": "托运人违反第827条第1款的包装义务（托运人，合同）",
+   "goodsDeliveredToConsignee": "承运人已将货物交付收货人（承运人，合同）",
+   "requestStopReturnRedirectOrChangeConsignee": "要求中止运输、返还货物、变更到达地或者将货物交给其他收货人（托运人，承运人，合同）",
+   "shipperRequestedChangeUnderArt829": "托运人已依第829条要求中止运输、返还货物、变更到达地或交给其他收货人（托运人，合同）",
+   "carrierLossFromChange": "承运人因托运人的上述要求受到损失（承运人，合同）",
+   "goodsDamagedOrLostInTransit": "运输过程中货物毁损、灭失（合同）",
+   "carrierExemptForGoodsLoss": "承运人就货物毁损、灭失免于承担赔偿责任（承运人，合同）",
+   "compensateGoodsLoss": "对货物的毁损、灭失承担赔偿责任（承运人，合同）",
+   "carrierProvesCauseOfGoodsLoss": "承运人证明了货物毁损、灭失的原因（承运人，合同）",
+   "goodsLossByForceMajeure": "货物因不可抗力毁损、灭失（合同）",
+   "goodsLossByNatureOrReasonableWear": "货物毁损、灭失因货物本身的自然性质或者合理损耗造成（合同）",
+   "goodsLossByShipperOrConsigneeFault": "货物毁损、灭失因托运人、收货人的过错造成（合同）",
+   "freightCollected": "承运人已经收取运费（承运人，合同）",
+   "lawProvidesOtherwiseOnFreightRisk": "法律对不可抗力灭失时的运费另有规定（合同）",
+   "claimFreight": "请求支付运费（承运人，合同）",
+   "requestFreightRefund": "请求返还运费（托运人，承运人，合同）",
+   "unpaidFreightOrFees": "不支付运费、保管费或者其他费用（托运人或收货人，合同）",
+   "goodsCarriedUnder": "是该运输合同相应的运输货物（货物，合同）",
+   "consigneeUnknown": "收货人不明（合同）",
+   "consigneeRefusesGoodsWithoutJustification": "收货人无正当理由拒绝受领货物（合同）",
+   "lodgeGoodsInEscrow": "依法提存货物（承运人，合同）",
+   "multimodalOperator": "是多式联运合同的经营人（经营人，多式联运合同）",
+   "performOrOrganizeMultimodalContract": "负责履行或者组织履行多式联运合同（经营人，合同）",
+   "segmentCarrierOf": "是参加多式联运的区段承运人（区段承运人，合同）",
+   "agreeSegmentLiability": "就各区段运输约定相互之间的责任（经营人，区段承运人，合同）",
+   "operatorReceivedGoods": "经营人收到托运人交付的货物（经营人，合同）",
+   "issueMultimodalDocument": "签发多式联运单据（经营人，托运人，合同）",
+   "shipperRequestsDocumentType": "托运人要求单据为可转让或不可转让单据（托运人，合同，单据类型）",
+   "issueDocumentOfType": "签发托运人要求类型的多式联运单据（经营人，合同，单据类型）",
+   "shipperConsignmentFaultCausesLoss": "托运人托运货物时的过错造成经营人损失（托运人，经营人，合同）",
+   "liabilityGovernedBySegmentLaw": "赔偿责任和责任限额适用调整该区段运输方式的有关法律规定（经营人，合同，区段）",
+   "lossSegmentUndeterminable": "货物毁损、灭失发生的运输区段不能确定（合同）",
+   "liabilityPerTransportChapter": "依照运输合同章的规定承担赔偿责任（经营人，合同）",
+   "shipperOf": "是运输合同的托运人（托运人，合同）"
+  }
+ }
+}

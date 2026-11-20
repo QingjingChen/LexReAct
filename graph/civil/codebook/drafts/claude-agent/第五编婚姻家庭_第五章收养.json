@@ -1,0 +1,1284 @@
+{
+ "card:g6847": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第五章　收养"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "收养关系成立的实质条件（被收养人、送养人、收养人、合意）与形式条件（登记），以及收养关系的解除及其效力",
+     "rules": [
+      "c1093-k47",
+      "c1094-k47",
+      "c1098-k47",
+      "c1105-est47"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "被收养人：丧失父母的孤儿、查找不到生父母的未成年人、生父母有特殊困难无力抚养的子女",
+     "rules": [
+      "c1093-k47"
+     ]
+    },
+    {
+     "text": "送养人：孤儿的监护人、儿童福利机构、有特殊困难无力抚养子女的生父母；父母均无完全行为能力且可能严重危害未成年人的，监护人可以送养",
+     "rules": [
+      "c1094-k47",
+      "c1095-k47"
+     ]
+    },
+    {
+     "text": "收养人须同时具备：无子女或只有一名子女、有抚养教育保护能力、无不宜收养的疾病、无不利于被收养人成长的违法犯罪记录、年满三十周岁",
+     "rules": [
+      "c1098-k47"
+     ]
+    },
+    {
+     "text": "收养人与送养人双方自愿；收养八周岁以上未成年人应征得其同意",
+     "rules": [
+      "c1104-k47",
+      "c1104-age47"
+     ]
+    },
+    {
+     "text": "收养应向县级以上民政部门登记，收养关系自登记之日起成立",
+     "rules": [
+      "c1105-reg47",
+      "c1105-est47"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "收养孤儿、残疾未成年人或儿童福利机构抚养的查找不到生父母的未成年人，不受子女人数及第1098条第1项限制",
+     "rules": [
+      "c1100-ex47",
+      "c1098-ex47"
+     ]
+    },
+    {
+     "text": "生父母一方不明或查找不到的，可以单方送养",
+     "rules": [
+      "c1097-uni47"
+     ]
+    },
+    {
+     "text": "成年养子女与生父母及其他近亲属间的权利义务是否恢复，可以协商确定",
+     "rules": [
+      "c1117-adult47"
+     ]
+    },
+    {
+     "text": "因养父母虐待、遗弃养子女而解除的，生父母不负补偿抚养费义务",
+     "rules": [
+      "c1118-bio47"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "监护人送养孤儿应征得有抚养义务的人同意；其不同意且监护人不愿继续监护的，依第一编另行确定监护人",
+     "rules": [
+      "c1096-1k47",
+      "c1096-2k47"
+     ]
+    },
+    {
+     "text": "生父母送养子女，应当双方共同送养",
+     "rules": [
+      "c1097-k47"
+     ]
+    },
+    {
+     "text": "无子女的可收养两名，有子女的只能收养一名",
+     "rules": [
+      "c1100-a47",
+      "c1100-b47"
+     ]
+    },
+    {
+     "text": "有配偶者应当夫妻共同收养；无配偶者收养异性子女的，年龄应相差四十周岁以上",
+     "rules": [
+      "c1101-k47",
+      "c1102-k47"
+     ]
+    },
+    {
+     "text": "查找不到生父母的，民政部门登记前应公告；可签订收养协议；一方或各方要求公证的应办理公证；民政部门依法进行收养评估；收养成立后公安机关办理户口登记",
+     "rules": [
+      "c1105-2k47",
+      "c1105-3k47",
+      "c1105-4k47",
+      "c1105-5k47",
+      "c1106-k47"
+     ]
+    },
+    {
+     "text": "被收养人成年前收养人不得解除收养关系，但收养人、送养人协议解除的除外；养子女八周岁以上的应征得其同意",
+     "rules": [
+      "c1114-1k47",
+      "c1114-8k47"
+     ]
+    },
+    {
+     "text": "收养人不履行抚养义务、虐待遗弃等侵害未成年养子女的，送养人有权要求解除；不能达成协议的可以起诉",
+     "rules": [
+      "c1114-2k47",
+      "c1114-suek47"
+     ]
+    },
+    {
+     "text": "解除后养子女与养父母及其近亲属间的权利义务消除，与生父母及其近亲属的权利义务自行恢复",
+     "rules": [
+      "c1117-k47",
+      "c1117-bio47"
+     ]
+    },
+    {
+     "text": "解除后经养父母抚养的成年养子女对缺乏劳动能力又缺乏生活来源的养父母应给付生活费；因成年养子女虐待遗弃而解除的，养父母可要求补偿收养期间的抚养费；生父母要求解除的，养父母可要求生父母适当补偿",
+     "rules": [
+      "c1118-1k47",
+      "c1118-2k47",
+      "c1118-bio47"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "无配偶者收养异性子女年龄差不足四十周岁的，即使满足第1098条也不具备收养条件；八周岁以上被收养人未同意的，收养不成立",
+     "rules": [
+      "c1102-k47",
+      "c1104-age47"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：收养登记是收养关系成立的形式要件；收养协议与公证为任意性程序",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1093-k47",
+    "srcs": [
+     "art1093"
+    ],
+    "body": [
+     "minor(X)",
+     {
+      "or": [
+       "orphan(X)",
+       "biologicalParentsUnfindable(X)",
+       "biologicalParentsUnableToSupportDueToHardship(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "mayBeAdopted(X)"
+    ],
+    "note": "可以被收养的未成年人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1094-k47",
+    "srcs": [
+     "art1094"
+    ],
+    "body": [
+     "minor(X)",
+     {
+      "or": [
+       "guardianOf(G,X) orphan(X)",
+       "childWelfareOrg(G) raisedByChildWelfareOrg(X)",
+       "biologicalParent(G,X) biologicalParentsUnableToSupportDueToHardship(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "qualifiedPlacer(G,X)"
+    ],
+    "note": "可以作送养人的个人、组织",
+    "auth": "npc"
+   },
+   {
+    "key": "c1095-k47",
+    "srcs": [
+     "art1095"
+    ],
+    "body": [
+     "minor(X)",
+     "guardianOf(G,X)",
+     "bothParentsLackFullCapacity(X)",
+     "parentsMaySeriouslyHarm(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": null,
+      "content": "placeChildForAdoption(G,X)"
+     }
+    ],
+    "note": "父母均不具备完全民事行为能力且可能严重危害该未成年人的，监护人可以将其送养",
+    "auth": "npc"
+   },
+   {
+    "key": "c1096-1k47",
+    "srcs": [
+     "art1096"
+    ],
+    "body": [
+     "guardianOf(G,X)",
+     "orphan(X)",
+     "guardianPlacesOrphan(G,X)",
+     "supportObligorOf(S,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "G",
+      "counterparty": "S",
+      "content": "obtainSupportObligorConsent(G,S,X)"
+     }
+    ],
+    "note": "监护人送养孤儿的，应当征得有抚养义务的人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c1096-2k47",
+    "srcs": [
+     "art1096"
+    ],
+    "body": [
+     "guardianOf(G,X)",
+     "orphan(X)",
+     "supportObligorRefusesPlacement(S,X)",
+     "guardianUnwillingToContinue(G,X)"
+    ],
+    "heads": [
+     "newGuardianToBeDeterminedPerBook1(X)"
+    ],
+    "note": "有抚养义务的人不同意送养、监护人不愿继续履行监护职责的，应当依第一编另行确定监护人",
+    "auth": "npc"
+   },
+   {
+    "key": "c1097-k47",
+    "srcs": [
+     "art1097"
+    ],
+    "body": [
+     "biologicalParent(P,X)",
+     "biologicalParentPlacesChild(P,X)",
+     "~otherParentUnknownOrUnfindable(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "placeJointlyWithOtherParent(P,X)"
+     }
+    ],
+    "note": "生父母送养子女，应当双方共同送养",
+    "auth": "npc"
+   },
+   {
+    "key": "c1097-uni47",
+    "srcs": [
+     "art1097"
+    ],
+    "body": [
+     "biologicalParent(P,X)",
+     "biologicalParentPlacesChild(P,X)",
+     "otherParentUnknownOrUnfindable(P,X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "placeChildUnilaterally(P,X)"
+     }
+    ],
+    "note": "生父母一方不明或者查找不到的，可以单方送养",
+    "auth": "npc"
+   },
+   {
+    "key": "c1098-k47",
+    "srcs": [
+     "art1098"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     {
+      "or": [
+       "noChildren(A)",
+       "onlyOneChild(A)"
+      ]
+     },
+     "hasRaisingAbility(A,C)",
+     "noProhibitedDisease(A)",
+     "noAdverseCriminalRecord(A)",
+     "age30plus(A)"
+    ],
+    "heads": [
+     "adoptionQualified(A,C)"
+    ],
+    "note": "收养人应当同时具备第1098条五项条件",
+    "auth": "npc"
+   },
+   {
+    "key": "c1098-ex47",
+    "srcs": [
+     "art1098",
+     "art1100-2"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "exemptFromChildCountLimit(A,C)",
+     "hasRaisingAbility(A,C)",
+     "noProhibitedDisease(A)",
+     "noAdverseCriminalRecord(A)",
+     "age30plus(A)"
+    ],
+    "heads": [
+     "adoptionQualified(A,C)"
+    ],
+    "note": "依第1100条第2款不受第1098条第1项限制时，满足其余四项即可",
+    "auth": "npc"
+   },
+   {
+    "key": "c1100-a47",
+    "srcs": [
+     "art1100-1"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "noChildren(A)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "adoptTwoChildren(A)"
+     }
+    ],
+    "note": "无子女的收养人可以收养两名子女",
+    "auth": "npc"
+   },
+   {
+    "key": "c1100-b47",
+    "srcs": [
+     "art1100-1"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "hasChildren(A)",
+     "~exemptFromChildCountLimit(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "adoptMoreThanOneChild(A)"
+     }
+    ],
+    "note": "有子女的收养人只能收养一名子女",
+    "auth": "npc"
+   },
+   {
+    "key": "c1100-ex47",
+    "srcs": [
+     "art1100-2"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     {
+      "or": [
+       "orphan(C)",
+       "disabledMinor(C)",
+       "welfareInstitutionChild(C)"
+      ]
+     }
+    ],
+    "heads": [
+     "exemptFromChildCountLimit(A,C)"
+    ],
+    "note": "收养孤儿、残疾未成年人或儿童福利机构抚养的查找不到生父母的未成年人，不受第1100条第1款和第1098条第1项限制",
+    "auth": "npc"
+   },
+   {
+    "key": "c1101-k47",
+    "srcs": [
+     "art1101"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "spouseOf(A,S)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "S",
+      "content": "adoptJointlyWithSpouse(A,S)"
+     }
+    ],
+    "note": "有配偶者收养子女，应当夫妻共同收养",
+    "auth": "npc"
+   },
+   {
+    "key": "c1102-k47",
+    "srcs": [
+     "art1102"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "unmarried(A)",
+     "oppositeSex(A,C)",
+     "-ageGap40plus(A,C)"
+    ],
+    "heads": [
+     "-adoptionQualified(A,C)"
+    ],
+    "note": "无配偶者收养异性子女的，年龄应当相差四十周岁以上",
+    "auth": "npc"
+   },
+   {
+    "key": "c1104-k47",
+    "srcs": [
+     "art1104"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "senderOf(G,C)",
+     "adopterWillingToAdopt(A,C)",
+     "placerWillingToPlace(G,C)"
+    ],
+    "heads": [
+     "adoptionConsensusReached(A,C)"
+    ],
+    "note": "收养人收养与送养人送养，应当双方自愿",
+    "auth": "npc"
+   },
+   {
+    "key": "c1104-age47",
+    "srcs": [
+     "art1104"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "age8plus(C)",
+     "-adopteeConsented(C,A)"
+    ],
+    "heads": [
+     "-adoptionEstablished(A,C)"
+    ],
+    "note": "收养八周岁以上未成年人的，应当征得被收养人的同意；未同意的收养不成立",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-reg47",
+    "srcs": [
+     "art1105-1"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "registerAdoptionWithCivilAffairs(A,C)"
+     }
+    ],
+    "note": "收养应当向县级以上人民政府民政部门登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-est47",
+    "srcs": [
+     "art1105-1"
+    ],
+    "body": [
+     "adoptionQualified(A,C)",
+     "mayBeAdopted(C)",
+     "adoptionConsensusReached(A,C)",
+     "adoptionRegistered(A,C)"
+    ],
+    "heads": [
+     "adoptionEstablished(A,C)"
+    ],
+    "note": "收养关系自登记之日起成立（以实质条件具备为前提）",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-2k47",
+    "srcs": [
+     "art1105-2"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "biologicalParentsUnfindable(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "civilAffairs",
+      "counterparty": null,
+      "content": "announceBeforeAdoptionRegistration(A,C)"
+     }
+    ],
+    "note": "收养查找不到生父母的未成年人的，民政部门应当在登记前予以公告",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-3k47",
+    "srcs": [
+     "art1105-3"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "senderOf(G,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "G",
+      "content": "signAdoptionAgreement(A,G,C)"
+     }
+    ],
+    "note": "收养关系当事人愿意签订收养协议的，可以签订",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-4k47",
+    "srcs": [
+     "art1105-4"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)",
+     "adoptionNotarizationRequested(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "notarizeAdoption(A,C)"
+     }
+    ],
+    "note": "收养关系当事人各方或者一方要求办理收养公证的，应当办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c1105-5k47",
+    "srcs": [
+     "art1105-5"
+    ],
+    "body": [
+     "prospectiveAdopter(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "civilAffairs",
+      "counterparty": null,
+      "content": "conductAdoptionAssessment(A,C)"
+     }
+    ],
+    "note": "县级以上人民政府民政部门应当依法进行收养评估",
+    "auth": "npc"
+   },
+   {
+    "key": "c1106-k47",
+    "srcs": [
+     "art1106"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "publicSecurity",
+      "counterparty": null,
+      "content": "registerAdopteeHousehold(C)"
+     }
+    ],
+    "note": "收养关系成立后，公安机关应当为被收养人办理户口登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-1k47",
+    "srcs": [
+     "art1114-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "minor(C)",
+     "~adopterAndPlacerAgreeToDissolve(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "dissolveAdoption(A,C)"
+     }
+    ],
+    "note": "收养人在被收养人成年以前不得解除收养关系，但收养人、送养人双方协议解除的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-8k47",
+    "srcs": [
+     "art1114-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "adopterAndPlacerAgreeToDissolve(A,C)",
+     "age8plus(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "obtainAdoptedChildConsent(A,C)"
+     }
+    ],
+    "note": "协议解除时养子女八周岁以上的，应当征得本人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-2k47",
+    "srcs": [
+     "art1114-2"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "minor(C)",
+     "senderOf(G,C)",
+     "adopterInfringesMinorAdoptee(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "A",
+      "content": "requestDissolutionOfAdoption(G,A,C)"
+     }
+    ],
+    "note": "收养人不履行抚养义务，有虐待、遗弃等侵害未成年养子女合法权益行为的，送养人有权要求解除收养关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-suek47",
+    "srcs": [
+     "art1114-2"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "senderOf(G,C)",
+     "placerAndAdopterCannotAgreeOnDissolution(G,A,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "A",
+      "content": "sueToDissolveAdoption(G,A,C)"
+     }
+    ],
+    "note": "送养人、收养人不能达成解除收养关系协议的，可以向人民法院提起诉讼",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-k47",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)"
+    ],
+    "heads": [
+     "rightsDutiesWithAdoptiveFamilyEliminated(C,A)"
+    ],
+    "note": "解除后养子女与养父母以及其他近亲属间的权利义务关系即行消除",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-bio47",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalFamilyMember(P,C)",
+     "~adult(C)"
+    ],
+    "heads": [
+     "rightsDutiesRestoredWith(C,P)"
+    ],
+    "note": "与生父母以及其他近亲属间的权利义务关系自行恢复",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-adult47",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalFamilyMember(P,C)",
+     "adult(C)"
+    ],
+    "heads": [
+     "restorationDeterminedByNegotiation(C,P)"
+    ],
+    "note": "成年养子女与生父母及其他近亲属间的权利义务关系是否恢复，可以协商确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-1k47",
+    "srcs": [
+     "art1118-1"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "raisedByAdoptiveParent(C,A)",
+     "adult(C)",
+     "lacksLaborCapacityAndLivelihood(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "payLivingExpensesToFormerAdoptiveParent(C,A)"
+     }
+    ],
+    "note": "经养父母抚养的成年养子女，对缺乏劳动能力又缺乏生活来源的养父母，应当给付生活费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-2k47",
+    "srcs": [
+     "art1118-1"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "dissolvedForAdultAdopteeAbuse(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "claimRaisingCostCompensation(A,C)"
+     }
+    ],
+    "note": "因养子女成年后虐待、遗弃养父母而解除的，养父母可以要求补偿收养期间支出的抚养费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-bio47",
+    "srcs": [
+     "art1118-2"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalParent(P,C)",
+     "dissolutionRequestedByBiologicalParents(C)",
+     "~dissolvedForAdopterAbuse(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "claimRaisingCostCompensation(A,P)"
+     }
+    ],
+    "note": "生父母要求解除的，养父母可以要求生父母适当补偿抚养费；因养父母虐待、遗弃养子女而解除的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c1102-k47",
+    "c1098-k47",
+    "无配偶者收养异性子女须年龄相差四十周岁以上"
+   ],
+   [
+    "c1102-k47",
+    "c1098-ex47",
+    "无配偶者收养异性子女须年龄相差四十周岁以上"
+   ],
+   [
+    "c1104-age47",
+    "c1105-est47",
+    "八周岁以上被收养人未同意的，收养不成立"
+   ]
+  ],
+  "predicates": {
+   "guardianPlacesOrphan": "监护人送养孤儿（监护人，孤儿）",
+   "supportObligorOf": "是对该孤儿有抚养义务的人（抚养义务人，孤儿）",
+   "obtainSupportObligorConsent": "征得有抚养义务的人同意送养（监护人，抚养义务人，孤儿）",
+   "supportObligorRefusesPlacement": "有抚养义务的人不同意送养（抚养义务人，孤儿）",
+   "guardianUnwillingToContinue": "监护人不愿意继续履行监护职责（监护人，被监护人）",
+   "newGuardianToBeDeterminedPerBook1": "应当依照总则编的规定另行确定监护人（被监护人）",
+   "biologicalParentPlacesChild": "生父母送养子女（生父母，子女）",
+   "otherParentUnknownOrUnfindable": "生父母另一方不明或者查找不到（生父母一方，子女）",
+   "placeJointlyWithOtherParent": "与另一方共同送养（生父母，子女）",
+   "placeChildUnilaterally": "单方送养子女（生父母，子女）",
+   "prospectiveAdopter": "拟收养该未成年人的收养人（收养人，被收养人）",
+   "adopterWillingToAdopt": "收养人自愿收养（收养人，被收养人）",
+   "placerWillingToPlace": "送养人自愿送养（送养人，被收养人）",
+   "adoptionConsensusReached": "收养人与送养人就收养达成自愿合意（收养人，被收养人）",
+   "adopteeConsented": "八周岁以上的被收养人同意被收养（被收养人，收养人）",
+   "registerAdoptionWithCivilAffairs": "向县级以上人民政府民政部门办理收养登记（收养人，被收养人）",
+   "adoptionRegistered": "收养已在民政部门登记（收养人，被收养人）",
+   "announceBeforeAdoptionRegistration": "在收养登记前予以公告（收养人，被收养人）",
+   "signAdoptionAgreement": "签订收养协议（收养人，送养人，被收养人）",
+   "adoptionNotarizationRequested": "收养关系当事人各方或一方要求办理收养公证（收养人，被收养人）",
+   "notarizeAdoption": "办理收养公证（收养人，被收养人）",
+   "conductAdoptionAssessment": "依法进行收养评估（收养人，被收养人）",
+   "registerAdopteeHousehold": "为被收养人办理户口登记（被收养人）",
+   "adopterAndPlacerAgreeToDissolve": "收养人、送养人双方协议解除收养关系（收养人，被收养人）",
+   "dissolveAdoption": "解除收养关系（收养人，养子女）",
+   "obtainAdoptedChildConsent": "征得八周岁以上养子女本人同意（收养人，养子女）",
+   "adopterInfringesMinorAdoptee": "收养人不履行抚养义务，有虐待、遗弃等侵害未成年养子女合法权益的行为（收养人，养子女）",
+   "requestDissolutionOfAdoption": "要求解除养父母与养子女间的收养关系（送养人，收养人，养子女）",
+   "placerAndAdopterCannotAgreeOnDissolution": "送养人、收养人不能达成解除收养关系协议（送养人，收养人，养子女）",
+   "sueToDissolveAdoption": "向人民法院提起诉讼请求解除收养关系（送养人，收养人，养子女）",
+   "adoptionDissolved": "收养关系已解除（养父母，养子女）",
+   "rightsDutiesWithAdoptiveFamilyEliminated": "养子女与养父母及其他近亲属间的权利义务关系消除（养子女，养父母）",
+   "biologicalFamilyMember": "是该养子女的生父母或生方其他近亲属（亲属，养子女）",
+   "rightsDutiesRestoredWith": "与该人之间的权利义务关系自行恢复（养子女，生父母或其他近亲属）",
+   "restorationDeterminedByNegotiation": "与该人之间的权利义务关系是否恢复由协商确定（成年养子女，生父母或其他近亲属）",
+   "raisedByAdoptiveParent": "曾经养父母抚养（养子女，养父母）",
+   "payLivingExpensesToFormerAdoptiveParent": "向养父母给付生活费（成年养子女，养父母）",
+   "dissolvedForAdultAdopteeAbuse": "因养子女成年后虐待、遗弃养父母而解除收养关系（养父母，养子女）",
+   "claimRaisingCostCompensation": "要求补偿收养期间支出的抚养费（养父母，补偿义务人）",
+   "dissolutionRequestedByBiologicalParents": "生父母要求解除收养关系（养子女）",
+   "dissolvedForAdopterAbuse": "因养父母虐待、遗弃养子女而解除收养关系（养父母，养子女）"
+  }
+ },
+ "card:g6933": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第五编　婚姻家庭",
+   "第五章　收养"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "收养的效力（拟制血亲的形成与自然血亲的消除、姓氏），以及收养关系的解除及解除后的身份和财产效力",
+     "rules": [
+      "c1111-pc33",
+      "c1114-1k33"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "收养关系成立（自登记之日起）；收养关系解除",
+     "rules": [
+      "c1111-pc33",
+      "c1117-k33"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "被收养人成年前收养人不得解除，但收养人、送养人协议解除的除外",
+     "rules": [
+      "c1114-1k33"
+     ]
+    },
+    {
+     "text": "成年养子女与生父母及其近亲属的权利义务是否恢复可以协商确定",
+     "rules": [
+      "c1117-adultk33"
+     ]
+    },
+    {
+     "text": "因养父母虐待、遗弃养子女而解除的，养父母不得要求生父母补偿",
+     "rules": [
+      "c1118-biok33"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "收养成立后，养父母与养子女间适用父母子女关系规定，养子女与养父母近亲属间适用子女与父母近亲属关系规定；与生父母及其他近亲属间的权利义务消除",
+     "rules": [
+      "c1111-pc33",
+      "c1111-rel33",
+      "c1111-bio33"
+     ]
+    },
+    {
+     "text": "养子女可随养父或养母姓氏，经协商一致也可保留原姓氏",
+     "rules": [
+      "c1112-sur33",
+      "c1112-keep33"
+     ]
+    },
+    {
+     "text": "协议解除时养子女八周岁以上的应征得本人同意；收养人侵害未成年养子女的，送养人有权要求解除，协议不成可起诉",
+     "rules": [
+      "c1114-8k33",
+      "c1114-2k33",
+      "c1114-suek33"
+     ]
+    },
+    {
+     "text": "解除后与养父母及其近亲属的权利义务消除，未成年养子女与生父母及其近亲属的权利义务自行恢复",
+     "rules": [
+      "c1117-k33",
+      "c1117-biok33"
+     ]
+    },
+    {
+     "text": "经养父母抚养的成年养子女对缺乏劳动能力又缺乏生活来源的养父母给付生活费；因成年养子女虐待遗弃而解除的可要求补偿抚养费；生父母要求解除的养父母可要求生父母适当补偿",
+     "rules": [
+      "c1118-1k33",
+      "c1118-2k33",
+      "c1118-biok33"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记：解除后的身份效力（拟制血亲消除、自然血亲恢复）与财产效力（生活费给付、抚养费补偿）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c1111-pc33",
+    "srcs": [
+     "art1111-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)"
+    ],
+    "heads": [
+     "fictiveParentChildRelation(A,C)"
+    ],
+    "note": "自收养关系成立之日起，养父母与养子女间的权利义务适用父母子女关系的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1111-rel33",
+    "srcs": [
+     "art1111-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "closeRelativeOf(R,A)"
+    ],
+    "heads": [
+     "fictiveCloseRelativeRelation(C,R)"
+    ],
+    "note": "养子女与养父母的近亲属间的权利义务适用子女与父母的近亲属关系的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1111-bio33",
+    "srcs": [
+     "art1111-2"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "biologicalFamilyMember(P,C)"
+    ],
+    "heads": [
+     "rightsDutiesExtinguishedBetween(C,P)"
+    ],
+    "note": "养子女与生父母以及其他近亲属间的权利义务关系，因收养关系的成立而消除",
+    "auth": "npc"
+   },
+   {
+    "key": "c1112-sur33",
+    "srcs": [
+     "art1112"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "adoptiveParent(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "takeAdoptiveParentSurname(C,A)"
+     }
+    ],
+    "note": "养子女可以随养父或者养母的姓氏",
+    "auth": "npc"
+   },
+   {
+    "key": "c1112-keep33",
+    "srcs": [
+     "art1112"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "partiesAgreeToKeepOriginalSurname(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "keepOriginalSurname(C)"
+     }
+    ],
+    "note": "经当事人协商一致，也可以保留原姓氏",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-1k33",
+    "srcs": [
+     "art1114-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "minor(C)",
+     "~adopterAndPlacerAgreeToDissolve(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "dissolveAdoption(A,C)"
+     }
+    ],
+    "note": "收养人在被收养人成年以前不得解除收养关系，但收养人、送养人双方协议解除的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-8k33",
+    "srcs": [
+     "art1114-1"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "adopterAndPlacerAgreeToDissolve(A,C)",
+     "age8plus(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "obtainAdoptedChildConsent(A,C)"
+     }
+    ],
+    "note": "协议解除时养子女八周岁以上的，应当征得本人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-2k33",
+    "srcs": [
+     "art1114-2"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "minor(C)",
+     "senderOf(G,C)",
+     "adopterInfringesMinorAdoptee(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "G",
+      "counterparty": "A",
+      "content": "requestDissolutionOfAdoption(G,A,C)"
+     }
+    ],
+    "note": "收养人不履行抚养义务，有虐待、遗弃等侵害未成年养子女合法权益行为的，送养人有权要求解除收养关系",
+    "auth": "npc"
+   },
+   {
+    "key": "c1114-suek33",
+    "srcs": [
+     "art1114-2"
+    ],
+    "body": [
+     "adoptionEstablished(A,C)",
+     "senderOf(G,C)",
+     "placerAndAdopterCannotAgreeOnDissolution(G,A,C)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "G",
+      "counterparty": "A",
+      "content": "sueToDissolveAdoption(G,A,C)"
+     }
+    ],
+    "note": "送养人、收养人不能达成解除收养关系协议的，可以向人民法院提起诉讼",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-k33",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)"
+    ],
+    "heads": [
+     "rightsDutiesWithAdoptiveFamilyEliminated(C,A)"
+    ],
+    "note": "解除后养子女与养父母以及其他近亲属间的权利义务关系即行消除",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-biok33",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalFamilyMember(P,C)",
+     "~adult(C)"
+    ],
+    "heads": [
+     "rightsDutiesRestoredWith(C,P)"
+    ],
+    "note": "与生父母以及其他近亲属间的权利义务关系自行恢复",
+    "auth": "npc"
+   },
+   {
+    "key": "c1117-adultk33",
+    "srcs": [
+     "art1117"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalFamilyMember(P,C)",
+     "adult(C)"
+    ],
+    "heads": [
+     "restorationDeterminedByNegotiation(C,P)"
+    ],
+    "note": "成年养子女与生父母及其他近亲属间的权利义务关系是否恢复，可以协商确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-1k33",
+    "srcs": [
+     "art1118-1"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "raisedByAdoptiveParent(C,A)",
+     "adult(C)",
+     "lacksLaborCapacityAndLivelihood(A)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "A",
+      "content": "payLivingExpensesToFormerAdoptiveParent(C,A)"
+     }
+    ],
+    "note": "经养父母抚养的成年养子女，对缺乏劳动能力又缺乏生活来源的养父母，应当给付生活费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-2k33",
+    "srcs": [
+     "art1118-1"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "dissolvedForAdultAdopteeAbuse(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "C",
+      "content": "claimRaisingCostCompensation(A,C)"
+     }
+    ],
+    "note": "因养子女成年后虐待、遗弃养父母而解除的，养父母可以要求补偿收养期间支出的抚养费",
+    "auth": "npc"
+   },
+   {
+    "key": "c1118-biok33",
+    "srcs": [
+     "art1118-2"
+    ],
+    "body": [
+     "adoptionDissolved(A,C)",
+     "biologicalParent(P,C)",
+     "dissolutionRequestedByBiologicalParents(C)",
+     "~dissolvedForAdopterAbuse(A,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "claimRaisingCostCompensation(A,P)"
+     }
+    ],
+    "note": "生父母要求解除的，养父母可以要求生父母适当补偿抚养费；因养父母虐待、遗弃养子女而解除的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "adopterAndPlacerAgreeToDissolve": "收养人、送养人双方协议解除收养关系（收养人，被收养人）",
+   "dissolveAdoption": "解除收养关系（收养人，养子女）",
+   "obtainAdoptedChildConsent": "征得八周岁以上养子女本人同意（收养人，养子女）",
+   "adopterInfringesMinorAdoptee": "收养人不履行抚养义务，有虐待、遗弃等侵害未成年养子女合法权益的行为（收养人，养子女）",
+   "requestDissolutionOfAdoption": "要求解除养父母与养子女间的收养关系（送养人，收养人，养子女）",
+   "placerAndAdopterCannotAgreeOnDissolution": "送养人、收养人不能达成解除收养关系协议（送养人，收养人，养子女）",
+   "sueToDissolveAdoption": "向人民法院提起诉讼请求解除收养关系（送养人，收养人，养子女）",
+   "adoptionDissolved": "收养关系已解除（养父母，养子女）",
+   "rightsDutiesWithAdoptiveFamilyEliminated": "养子女与养父母及其他近亲属间的权利义务关系消除（养子女，养父母）",
+   "biologicalFamilyMember": "是该养子女的生父母或生方其他近亲属（亲属，养子女）",
+   "rightsDutiesRestoredWith": "与该人之间的权利义务关系自行恢复（养子女，生父母或其他近亲属）",
+   "restorationDeterminedByNegotiation": "与该人之间的权利义务关系是否恢复由协商确定（成年养子女，生父母或其他近亲属）",
+   "raisedByAdoptiveParent": "曾经养父母抚养（养子女，养父母）",
+   "payLivingExpensesToFormerAdoptiveParent": "向养父母给付生活费（成年养子女，养父母）",
+   "dissolvedForAdultAdopteeAbuse": "因养子女成年后虐待、遗弃养父母而解除收养关系（养父母，养子女）",
+   "claimRaisingCostCompensation": "要求补偿收养期间支出的抚养费（养父母，补偿义务人）",
+   "dissolutionRequestedByBiologicalParents": "生父母要求解除收养关系（养子女）",
+   "dissolvedForAdopterAbuse": "因养父母虐待、遗弃养子女而解除收养关系（养父母，养子女）",
+   "takeAdoptiveParentSurname": "随养父或者养母的姓氏（养子女，养父母）",
+   "partiesAgreeToKeepOriginalSurname": "当事人协商一致保留养子女原姓氏（养父母，养子女）",
+   "keepOriginalSurname": "保留原姓氏（养子女）"
+  }
+ }
+}

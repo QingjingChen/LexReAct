@@ -1,0 +1,429 @@
+{
+ "card:g5041": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十章　供用电、水、气、热力合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "供用电（水、气、热力）合同的概念、强制缔约、履行地点，供电人与用电人的主要义务及违反后果",
+     "rules": [
+      "c648-defg5041",
+      "c648-mustg5041",
+      "c650-agreedg5041",
+      "c650-defaultg5041",
+      "c651-safeg5041",
+      "c651-liabg5041",
+      "c652-noticeg5041",
+      "c652-liabg5041",
+      "c653-repairg5041",
+      "c653-liabg5041",
+      "c654-payg5041",
+      "c654-penaltyg5041",
+      "c654-suspendg5041",
+      "c654-noticeg5041",
+      "c656-refg5041"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "供用电合同是供电人向用电人供电，用电人支付电费的合同",
+     "rules": [
+      "c648-defg5041"
+     ]
+    },
+    {
+     "text": "履行地点按约定；没有约定或约定不明确的，以供电设施的产权分界处为履行地点",
+     "rules": [
+      "c650-agreedg5041",
+      "c650-defaultg5041"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "向社会公众供电的供电人不得拒绝用电人合理的订立合同要求（强制缔约）",
+     "rules": [
+      "c648-mustg5041"
+     ]
+    },
+    {
+     "text": "供电人应当按国家规定的供电质量标准和约定安全供电，未安全供电造成用电人损失的应当赔偿",
+     "rules": [
+      "c651-safeg5041",
+      "c651-liabg5041"
+     ]
+    },
+    {
+     "text": "因计划检修、临时检修、依法限电或用电人违法用电等需要中断供电的，应按国家规定事先通知；未事先通知中断供电造成损失的应当赔偿",
+     "rules": [
+      "c652-noticeg5041",
+      "c652-liabg5041"
+     ]
+    },
+    {
+     "text": "因自然灾害等原因断电的，供电人应及时抢修；未及时抢修造成损失的应当赔偿",
+     "rules": [
+      "c653-repairg5041",
+      "c653-liabg5041"
+     ]
+    },
+    {
+     "text": "用电人应按规定和约定及时支付电费；逾期的按约定支付违约金；经催告在合理期限内仍不支付电费和违约金的，供电人可以按国家规定的程序中止供电，并应事先通知用电人",
+     "rules": [
+      "c654-payg5041",
+      "c654-penaltyg5041",
+      "c654-suspendg5041",
+      "c654-noticeg5041"
+     ]
+    },
+    {
+     "text": "供用水、气、热力合同参照适用供用电合同的规定",
+     "rules": [
+      "c656-refg5041"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记：此类合同主体特定、标的垄断经营、履行持续、目的公益，传统上被视为特殊买卖；用电人还负有安全、节约、计划用电的义务（第655条，非本行挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c648-defg5041",
+    "srcs": [
+     "art648-1"
+    ],
+    "body": [
+     "supplierProvidesElectricityUserPays(K)"
+    ],
+    "heads": [
+     "powerSupplyContract(K)"
+    ],
+    "note": "供用电合同是供电人向用电人供电，用电人支付电费的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c648-mustg5041",
+    "srcs": [
+     "art648-2"
+    ],
+    "body": [
+     "suppliesPowerToPublic(S)",
+     "reasonableContractRequest(U,S)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "refuseContractConclusion(S,U)"
+     }
+    ],
+    "note": "向社会公众供电的供电人，不得拒绝用电人合理的订立合同要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c650-agreedg5041",
+    "srcs": [
+     "art650"
+    ],
+    "body": [
+     "powerSupplyContract(K)",
+     "~noAgreedOrUnclearSupplyPerformancePlace(K)"
+    ],
+    "heads": [
+     "supplyPerformancePlacePerAgreement(K)"
+    ],
+    "note": "供用电合同的履行地点，按照当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c650-defaultg5041",
+    "srcs": [
+     "art650"
+    ],
+    "body": [
+     "powerSupplyContract(K)",
+     "noAgreedOrUnclearSupplyPerformancePlace(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,supplyFacilityPropertyBoundary)"
+    ],
+    "note": "当事人没有约定或者约定不明确的，供电设施的产权分界处为履行地点",
+    "auth": "npc"
+   },
+   {
+    "key": "c651-safeg5041",
+    "srcs": [
+     "art651"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "supplySafelyPerStateStandardAndAgreement(S,K)"
+     }
+    ],
+    "note": "供电人应当按照国家规定的供电质量标准和约定安全供电",
+    "auth": "npc"
+   },
+   {
+    "key": "c651-liabg5041",
+    "srcs": [
+     "art651"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "failedSafeSupply(S,K)",
+     "userSufferedSupplyLoss(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "compensateUserSupplyLoss(S,U,K)"
+     }
+    ],
+    "note": "未按照国家规定的供电质量标准和约定安全供电，造成用电人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c652-noticeg5041",
+    "srcs": [
+     "art652"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "supplyInterruptionNeeded(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "notifyBeforeSupplyInterruption(S,U,K)"
+     }
+    ],
+    "note": "因供电设施计划检修、临时检修、依法限电或者用电人违法用电等原因需要中断供电时，应当按照国家有关规定事先通知用电人",
+    "auth": "npc"
+   },
+   {
+    "key": "c652-liabg5041",
+    "srcs": [
+     "art652"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "interruptedWithoutPriorNotice(S,K)",
+     "userSufferedSupplyLoss(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "compensateUserSupplyLoss(S,U,K)"
+     }
+    ],
+    "note": "未事先通知用电人中断供电，造成用电人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c653-repairg5041",
+    "srcs": [
+     "art653"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "outageByNaturalDisasterEtc(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "repairPromptlyPerStateRules(S,K)"
+     }
+    ],
+    "note": "因自然灾害等原因断电，供电人应当按照国家有关规定及时抢修",
+    "auth": "npc"
+   },
+   {
+    "key": "c653-liabg5041",
+    "srcs": [
+     "art653"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "outageByNaturalDisasterEtc(K)",
+     "notRepairedPromptly(S,K)",
+     "userSufferedSupplyLoss(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "compensateUserSupplyLoss(S,U,K)"
+     }
+    ],
+    "note": "未及时抢修，造成用电人损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c654-payg5041",
+    "srcs": [
+     "art654-1"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "S",
+      "content": "payElectricityChargesTimely(U,K)"
+     }
+    ],
+    "note": "用电人应当按照国家有关规定和当事人的约定及时支付电费",
+    "auth": "npc"
+   },
+   {
+    "key": "c654-penaltyg5041",
+    "srcs": [
+     "art654-1"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "electricityChargesOverdue(U,K)",
+     "liquidatedDamages(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "U",
+      "counterparty": "S",
+      "content": "payAgreedLiquidatedDamagesForCharges(U,S,K)"
+     }
+    ],
+    "note": "用电人逾期不支付电费的，应当按照约定支付违约金",
+    "auth": "npc"
+   },
+   {
+    "key": "c654-suspendg5041",
+    "srcs": [
+     "art654-1"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "electricityChargesOverdue(U,K)",
+     "unpaidAfterDemandWithinReasonablePeriod(U,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "suspendSupplyPerStateProcedure(S,U,K)"
+     }
+    ],
+    "note": "经催告用电人在合理期限内仍不支付电费和违约金的，供电人可以按照国家规定的程序中止供电",
+    "auth": "npc"
+   },
+   {
+    "key": "c654-noticeg5041",
+    "srcs": [
+     "art654-2"
+    ],
+    "body": [
+     "powerSupplierOf(S,K)",
+     "electricityUserOf(U,K)",
+     "suspendsSupplyForNonPayment(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "U",
+      "content": "notifyBeforeSupplyInterruption(S,U,K)"
+     }
+    ],
+    "note": "供电人依据前款规定中止供电的，应当事先通知用电人",
+    "auth": "npc"
+   },
+   {
+    "key": "c656-refg5041",
+    "srcs": [
+     "art656"
+    ],
+    "body": [
+     {
+      "or": [
+       "waterSupplyContract(K)",
+       "gasSupplyContract(K)",
+       "heatSupplyContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "applyPowerSupplyRulesByReference(K)"
+    ],
+    "note": "供用水、供用气、供用热力合同，参照适用供用电合同的有关规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "supplierProvidesElectricityUserPays": "合同内容为供电人向用电人供电、用电人支付电费（合同）",
+   "suppliesPowerToPublic": "是向社会公众供电的供电人（供电人）",
+   "noAgreedOrUnclearSupplyPerformancePlace": "当事人对供用电合同的履行地点没有约定或者约定不明确（合同）",
+   "supplyPerformancePlacePerAgreement": "供用电合同的履行地点按照当事人约定（合同）",
+   "supplySafelyPerStateStandardAndAgreement": "按照国家规定的供电质量标准和约定安全供电（供电人，合同）",
+   "failedSafeSupply": "未按照国家规定的供电质量标准和约定安全供电（供电人，合同）",
+   "userSufferedSupplyLoss": "用电人因此遭受损失（用电人，合同）",
+   "compensateUserSupplyLoss": "赔偿用电人的损失（供电人，用电人，合同）",
+   "supplyInterruptionNeeded": "因供电设施计划检修、临时检修、依法限电或者用电人违法用电等原因需要中断供电（供电人，合同）",
+   "notifyBeforeSupplyInterruption": "按照国家有关规定事先通知用电人中断或中止供电（供电人，用电人，合同）",
+   "interruptedWithoutPriorNotice": "未事先通知用电人即中断供电（供电人，合同）",
+   "outageByNaturalDisasterEtc": "因自然灾害等原因断电（合同）",
+   "repairPromptlyPerStateRules": "按照国家有关规定及时抢修（供电人，合同）",
+   "notRepairedPromptly": "供电人未及时抢修（供电人，合同）",
+   "payElectricityChargesTimely": "按照国家有关规定和当事人约定及时支付电费（用电人，合同）",
+   "electricityChargesOverdue": "用电人逾期不支付电费（用电人，合同）",
+   "payAgreedLiquidatedDamagesForCharges": "就逾期支付电费按照约定支付违约金（用电人，供电人，合同）",
+   "unpaidAfterDemandWithinReasonablePeriod": "经催告，用电人在合理期限内仍不支付电费和违约金（用电人，合同）",
+   "suspendSupplyPerStateProcedure": "按照国家规定的程序中止供电（供电人，用电人，合同）",
+   "suspendsSupplyForNonPayment": "供电人因用电人欠费依第654条第1款中止供电（供电人，合同）",
+   "waterSupplyContract": "是供用水合同（合同）",
+   "gasSupplyContract": "是供用气合同（合同）",
+   "heatSupplyContract": "是供用热力合同（合同）",
+   "applyPowerSupplyRulesByReference": "参照适用供用电合同的有关规定（合同）"
+  }
+ }
+}

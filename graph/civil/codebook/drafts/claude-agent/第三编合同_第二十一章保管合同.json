@@ -1,0 +1,737 @@
+{
+ "card:g5674": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十一章　保管合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "保管合同的概念、成立，以及保管人与寄存人的权利义务和损害赔偿",
+     "rules": [
+      "c888-1",
+      "c888-2",
+      "c890"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "保管人保管寄存人交付的保管物并返还该物；顾客在购物、就餐、住宿等场所将物品存放在指定场所的，视为保管（另有约定或交易习惯的除外）",
+     "rules": [
+      "c888-1",
+      "c888-2"
+     ]
+    },
+    {
+     "text": "保管合同自保管物交付时成立（实践合同），另有约定的除外",
+     "rules": [
+      "c890"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "寄存人未告知保管物瑕疵或特殊保管需要致保管物受损的，保管人不赔偿",
+     "rules": [
+      "c893-2"
+     ]
+    },
+    {
+     "text": "无偿保管人证明自己没有故意或重大过失的，不承担赔偿责任",
+     "rules": [
+      "c897-gratis"
+     ]
+    },
+    {
+     "text": "紧急情况或为维护寄存人利益的，可以改变保管场所或方法；转交第三人保管、使用保管物另有约定的除外",
+     "rules": [
+      "c892-2",
+      "c894-1",
+      "c895"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "保管人出具保管凭证（另有交易习惯的除外），妥善保管，不得擅自改变约定的保管场所或方法",
+     "rules": [
+      "c891",
+      "c892-1",
+      "c892-2"
+     ]
+    },
+    {
+     "text": "寄存人对保管物瑕疵或特殊保管需要负告知义务；未告知致保管人受损的应赔偿，但保管人知道或应当知道且未采取补救措施的除外",
+     "rules": [
+      "c893-1",
+      "c893-3"
+     ]
+    },
+    {
+     "text": "保管人不得转交第三人保管，违反并造成损失的应赔偿；不得使用或许可第三人使用保管物",
+     "rules": [
+      "c894-1",
+      "c894-2",
+      "c895"
+     ]
+    },
+    {
+     "text": "第三人主张权利的，除依法保全或执行外仍应向寄存人返还；第三人起诉或申请扣押的应及时通知寄存人",
+     "rules": [
+      "c896-1",
+      "c896-2"
+     ]
+    },
+    {
+     "text": "保管期内因保管不善致保管物毁损灭失的，保管人应赔偿",
+     "rules": [
+      "c897-1",
+      "c897-comp"
+     ]
+    },
+    {
+     "text": "寄存货币、有价证券或其他贵重物品应声明并由保管人验收或封存；未声明的，毁损灭失后可按一般物品赔偿",
+     "rules": [
+      "c898-1",
+      "c898-2"
+     ]
+    },
+    {
+     "text": "寄存人可随时领取；无期限或期限不明的保管人可随时请求领取；约定期限的无特别事由不得请求提前领取",
+     "rules": [
+      "c899-1",
+      "c899-2",
+      "c899-3"
+     ]
+    },
+    {
+     "text": "期限届满或提前领取时返还原物及孳息；货币可返还同种类数量的货币，其他可替代物按约定可返还同种类、品质、数量的物品",
+     "rules": [
+      "c900",
+      "c901-1",
+      "c901-2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "寄存人未告知致损的免责、无偿保管人无故意或重大过失的免责，优先于保管不善的一般赔偿规则",
+     "rules": [
+      "c893-2",
+      "c897-gratis"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "仓储合同为有偿、诺成合同；保管合同原则上为实践合同，可有偿可无偿",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c888-1",
+    "srcs": [
+     "art888-1"
+    ],
+    "body": [
+     "agreementToKeepAndReturnDeliveredItem(K)"
+    ],
+    "heads": [
+     "storageContract(K)"
+    ],
+    "note": "保管合同是保管人保管寄存人交付的保管物，并返还该物的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c888-2",
+    "srcs": [
+     "art888-2"
+    ],
+    "body": [
+     "customerActivityAtPremises(D,B)",
+     "itemPlacedInDesignatedArea(D,P,B)",
+     "~agreedOrCustomOtherwiseOnDeemedStorage(D,B)"
+    ],
+    "heads": [
+     "deemedStorage(D,B,P)"
+    ],
+    "note": "到保管人处购物、就餐、住宿等，将物品存放在指定场所的，视为保管；另有约定或交易习惯的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c890",
+    "srcs": [
+     "art890"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositedProperty(P,K)",
+     "storedItemDelivered(P,K)",
+     "~agreedOtherwiseOnFormation(K)"
+    ],
+    "heads": [
+     "contractFormed(K)"
+    ],
+    "note": "保管合同自保管物交付时成立，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c891",
+    "srcs": [
+     "art891"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "depositedProperty(P,K)",
+     "storedItemDelivered(P,K)",
+     "~tradeUsageOtherwiseOnStorageReceipt(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "issueStorageReceipt(B,D,K)"
+     }
+    ],
+    "note": "寄存人交付保管物的，保管人应当出具保管凭证，另有交易习惯的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c892-1",
+    "srcs": [
+     "art892-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositaryOf(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "keepItemProperly(B,K)"
+     }
+    ],
+    "note": "保管人应当妥善保管保管物",
+    "auth": "npc"
+   },
+   {
+    "key": "c892-2",
+    "srcs": [
+     "art892-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositaryOf(B,K)",
+     "agreedStoragePlaceOrMethod(K)",
+     "~emergencyOrForDepositorInterest(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "changeStoragePlaceOrMethodUnilaterally(B,K)"
+     }
+    ],
+    "note": "当事人可以约定保管场所或方法；除紧急情况或为维护寄存人利益外，不得擅自改变",
+    "auth": "npc"
+   },
+   {
+    "key": "c893-1",
+    "srcs": [
+     "art893"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     {
+      "or": [
+       "storedItemDefective(K)",
+       "storedItemNeedsSpecialMeasures(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "B",
+      "content": "informDepositaryOfItemCondition(D,B,K)"
+     }
+    ],
+    "note": "保管物有瑕疵或依其性质需要采取特殊保管措施的，寄存人应当告知保管人",
+    "auth": "npc"
+   },
+   {
+    "key": "c893-2",
+    "srcs": [
+     "art893"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "-informedDepositaryOfItemCondition(D,K)",
+     "itemLossFromNondisclosure(K)"
+    ],
+    "heads": [
+     "-depositaryLiableForItemLoss(B,K)"
+    ],
+    "note": "寄存人未告知，致使保管物受损失的，保管人不承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c893-3",
+    "srcs": [
+     "art893"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "-informedDepositaryOfItemCondition(D,K)",
+     "depositaryLossFromNondisclosure(B,K)",
+     "~depositaryKnewAndFailedToRemedy(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "B",
+      "content": "payCompensation(D,B)"
+     }
+    ],
+    "note": "保管人因此受损失的，寄存人应当赔偿；保管人知道或应当知道且未采取补救措施的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c894-1",
+    "srcs": [
+     "art894-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositaryOf(B,K)",
+     "~agreedOtherwiseOnSubcustody(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "transferItemToThirdPartyCustody(B,K)"
+     }
+    ],
+    "note": "保管人不得将保管物转交第三人保管，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c894-2",
+    "srcs": [
+     "art894-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "transferredItemToThirdPartyCustody(B,K)",
+     "~agreedOtherwiseOnSubcustody(K)",
+     "storedItemLoss(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "payCompensation(B,D)"
+     }
+    ],
+    "note": "违反约定转交第三人保管，造成保管物损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c895",
+    "srcs": [
+     "art895"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositaryOf(B,K)",
+     "~agreedOtherwiseOnUseOfItem(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": null,
+      "content": "useOrLetThirdPartyUseItem(B,K)"
+     }
+    ],
+    "note": "保管人不得使用或者许可第三人使用保管物，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c896-1",
+    "srcs": [
+     "art896-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "thirdPartyClaimsStoredItem(K)",
+     "~preservationOrEnforcementOnItem(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "returnItemToDepositor(B,D,K)"
+     }
+    ],
+    "note": "第三人对保管物主张权利的，除依法采取保全或执行措施外，保管人仍应向寄存人返还",
+    "auth": "npc"
+   },
+   {
+    "key": "c896-2",
+    "srcs": [
+     "art896-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     {
+      "or": [
+       "thirdPartySuesDepositary(B,K)",
+       "thirdPartyAppliesToSeizeItem(K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "notifyDepositorPromptly(B,D,K)"
+     }
+    ],
+    "note": "第三人对保管人起诉或对保管物申请扣押的，保管人应当及时通知寄存人",
+    "auth": "npc"
+   },
+   {
+    "key": "c897-1",
+    "srcs": [
+     "art897"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositaryOf(B,K)",
+     "itemDamagedOrLostByPoorKeeping(B,K)"
+    ],
+    "heads": [
+     "depositaryLiableForItemLoss(B,K)"
+    ],
+    "note": "保管期内因保管不善造成保管物毁损、灭失的，保管人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c897-gratis",
+    "srcs": [
+     "art897"
+    ],
+    "body": [
+     "gratuitousStorage(K)",
+     "depositaryOf(B,K)",
+     "provesNoIntentOrGrossNegligence(B,K)"
+    ],
+    "heads": [
+     "-depositaryLiableForItemLoss(B,K)"
+    ],
+    "note": "无偿保管人证明自己没有故意或者重大过失的，不承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c897-comp",
+    "srcs": [
+     "art897"
+    ],
+    "body": [
+     "depositaryLiableForItemLoss(B,K)",
+     "depositorOf(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "payCompensation(B,D)"
+     }
+    ],
+    "note": "保管人承担赔偿责任的，向寄存人赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c898-1",
+    "srcs": [
+     "art898"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "depositsMoneySecuritiesOrValuables(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "B",
+      "content": "declareValuablesForInspectionOrSealing(D,B,K)"
+     }
+    ],
+    "note": "寄存货币、有价证券或其他贵重物品的，应当声明，由保管人验收或封存",
+    "auth": "npc"
+   },
+   {
+    "key": "c898-2",
+    "srcs": [
+     "art898"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "depositsMoneySecuritiesOrValuables(D,K)",
+     "-declaredValuables(D,K)",
+     "storedItemLoss(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "compensateAsOrdinaryItem(B,D,K)"
+     }
+    ],
+    "note": "寄存人未声明的，该物品毁损、灭失后，保管人可以按照一般物品赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c899-1",
+    "srcs": [
+     "art899-1"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "D",
+      "counterparty": null,
+      "content": "collectStoredItemAnyTime(D,K)"
+     }
+    ],
+    "note": "寄存人可以随时领取保管物",
+    "auth": "npc"
+   },
+   {
+    "key": "c899-2",
+    "srcs": [
+     "art899-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "noAgreedOrUnclearStoragePeriod(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "requestCollectionAnyTime(B,D,K)"
+     }
+    ],
+    "note": "对保管期限没有约定或者约定不明确的，保管人可以随时请求寄存人领取",
+    "auth": "npc"
+   },
+   {
+    "key": "c899-3",
+    "srcs": [
+     "art899-2"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "agreedStoragePeriod(K)",
+     "~specialReasonForEarlyCollection(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "requestCollectionAnyTime(B,D,K)"
+     }
+    ],
+    "note": "约定保管期限的，保管人无特别事由，不得请求寄存人提前领取",
+    "auth": "npc"
+   },
+   {
+    "key": "c900",
+    "srcs": [
+     "art900"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     {
+      "or": [
+       "storagePeriodExpired(K)",
+       "depositorCollectsEarly(D,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "returnItemAndFruits(B,D,K)"
+     }
+    ],
+    "note": "保管期限届满或寄存人提前领取的，保管人应当将原物及其孳息归还寄存人",
+    "auth": "npc"
+   },
+   {
+    "key": "c901-1",
+    "srcs": [
+     "art901"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "storedItemIsMoney(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "returnEquivalentKindAndQuantity(B,D,K)"
+     }
+    ],
+    "note": "保管货币的，可以返还相同种类、数量的货币",
+    "auth": "npc"
+   },
+   {
+    "key": "c901-2",
+    "srcs": [
+     "art901"
+    ],
+    "body": [
+     "storageContract(K)",
+     "depositorOf(D,K)",
+     "depositaryOf(B,K)",
+     "storedItemOtherFungible(K)",
+     "agreedReturnOfEquivalent(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "D",
+      "content": "returnEquivalentKindAndQuantity(B,D,K)"
+     }
+    ],
+    "note": "保管其他可替代物的，可以按照约定返还相同种类、品质、数量的物品",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c893-2",
+    "c897-1",
+    "寄存人未告知致保管物受损的，保管人不承担赔偿责任"
+   ],
+   [
+    "c897-gratis",
+    "c897-1",
+    "无偿保管人证明无故意或重大过失的免责"
+   ]
+  ],
+  "predicates": {
+   "agreementToKeepAndReturnDeliveredItem": "约定由保管人保管寄存人交付的保管物并返还该物（合同）",
+   "customerActivityAtPremises": "顾客到经营者处从事购物、就餐、住宿等活动（顾客，经营者）",
+   "itemPlacedInDesignatedArea": "将物品存放在经营者指定的场所（顾客，物品，经营者）",
+   "agreedOrCustomOtherwiseOnDeemedStorage": "当事人另有约定或者另有交易习惯（顾客，经营者）",
+   "deemedStorage": "视为保管（寄存人，保管人，物品）",
+   "storedItemDelivered": "保管物已交付保管人（保管物，合同）",
+   "tradeUsageOtherwiseOnStorageReceipt": "就出具保管凭证另有交易习惯（合同）",
+   "issueStorageReceipt": "出具保管凭证（保管人，寄存人，合同）",
+   "keepItemProperly": "妥善保管保管物（保管人，合同）",
+   "agreedStoragePlaceOrMethod": "当事人约定了保管场所或者方法（合同）",
+   "emergencyOrForDepositorInterest": "存在紧急情况或者为维护寄存人利益（合同）",
+   "changeStoragePlaceOrMethodUnilaterally": "擅自改变保管场所或者方法（保管人，合同）",
+   "storedItemDefective": "寄存人交付的保管物有瑕疵（合同）",
+   "storedItemNeedsSpecialMeasures": "根据保管物的性质需要采取特殊保管措施（合同）",
+   "informDepositaryOfItemCondition": "将保管物瑕疵或特殊保管需要告知保管人（寄存人，保管人，合同）",
+   "informedDepositaryOfItemCondition": "寄存人已将保管物瑕疵或特殊保管需要告知保管人（寄存人，合同）",
+   "itemLossFromNondisclosure": "因寄存人未告知致使保管物受损失（合同）",
+   "depositaryLiableForItemLoss": "保管人对保管物毁损、灭失承担赔偿责任（保管人，合同）",
+   "depositaryLossFromNondisclosure": "保管人因寄存人未告知而受损失（保管人，合同）",
+   "depositaryKnewAndFailedToRemedy": "保管人知道或者应当知道且未采取补救措施（保管人，合同）",
+   "agreedOtherwiseOnSubcustody": "当事人约定可以转交第三人保管（合同）",
+   "transferItemToThirdPartyCustody": "将保管物转交第三人保管（保管人，合同）",
+   "transferredItemToThirdPartyCustody": "保管人已将保管物转交第三人保管（保管人，合同）",
+   "storedItemLoss": "保管物发生毁损、灭失等损失（合同）",
+   "agreedOtherwiseOnUseOfItem": "当事人约定保管人可以使用或许可第三人使用保管物（合同）",
+   "useOrLetThirdPartyUseItem": "使用或者许可第三人使用保管物（保管人，合同）",
+   "thirdPartyClaimsStoredItem": "第三人对保管物主张权利（合同）",
+   "preservationOrEnforcementOnItem": "依法对保管物采取保全或者执行措施（合同）",
+   "returnItemToDepositor": "向寄存人返还保管物（保管人，寄存人，合同）",
+   "thirdPartySuesDepositary": "第三人对保管人提起诉讼（保管人，合同）",
+   "thirdPartyAppliesToSeizeItem": "第三人对保管物申请扣押（合同）",
+   "notifyDepositorPromptly": "及时通知寄存人（保管人，寄存人，合同）",
+   "itemDamagedOrLostByPoorKeeping": "保管期内因保管人保管不善造成保管物毁损、灭失（保管人，合同）",
+   "provesNoIntentOrGrossNegligence": "保管人证明自己没有故意或者重大过失（保管人，合同）",
+   "depositsMoneySecuritiesOrValuables": "寄存货币、有价证券或者其他贵重物品（寄存人，合同）",
+   "declareValuablesForInspectionOrSealing": "向保管人声明贵重物品，由保管人验收或者封存（寄存人，保管人，合同）",
+   "declaredValuables": "寄存人已就贵重物品作出声明（寄存人，合同）",
+   "compensateAsOrdinaryItem": "按照一般物品予以赔偿（保管人，寄存人，合同）",
+   "collectStoredItemAnyTime": "随时领取保管物（寄存人，合同）",
+   "noAgreedOrUnclearStoragePeriod": "当事人对保管期限没有约定或者约定不明确（合同）",
+   "requestCollectionAnyTime": "请求寄存人（提前或随时）领取保管物（保管人，寄存人，合同）",
+   "agreedStoragePeriod": "当事人约定了保管期限（合同）",
+   "specialReasonForEarlyCollection": "保管人有请求提前领取的特别事由（保管人，合同）",
+   "storagePeriodExpired": "保管期限届满（合同）",
+   "depositorCollectsEarly": "寄存人提前领取保管物（寄存人，合同）",
+   "returnItemAndFruits": "将原物及其孳息归还寄存人（保管人，寄存人，合同）",
+   "storedItemIsMoney": "保管物为货币（合同）",
+   "storedItemOtherFungible": "保管物为货币以外的其他可替代物（合同）",
+   "agreedReturnOfEquivalent": "当事人约定可以返还相同种类、品质、数量的物品（合同）",
+   "returnEquivalentKindAndQuantity": "返还相同种类、品质、数量的货币或物品（保管人，寄存人，合同）"
+  }
+ }
+}

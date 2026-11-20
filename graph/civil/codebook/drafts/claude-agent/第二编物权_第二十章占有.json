@@ -1,0 +1,377 @@
+{
+ "card:g3605": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第二编　物权",
+   "第二十章　占有"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "有权占有与无权占有、善意占有与恶意占有的区分及其效力；占有保护请求权",
+     "rules": [
+      "c458-contractg3605",
+      "c458-lawg3605",
+      "c459-malicedefg3605",
+      "c459-gooddefg3605",
+      "c459-useg3605",
+      "c460-returng3605",
+      "c460-costg3605",
+      "c461-substituteg3605",
+      "c461-shortfallg3605",
+      "c462-returng3605",
+      "c462-disturbg3605",
+      "c462-damageg3605",
+      "c462-expireg3605"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "基于合同关系等产生的占有，使用、收益、违约责任等按合同约定；没有约定或约定不明确的，依照有关法律规定",
+     "rules": [
+      "c458-contractg3605",
+      "c458-lawg3605"
+     ]
+    },
+    {
+     "text": "无权占有人知道或者应当知道自己没有合法根据而占有的为恶意占有，否则为善意占有",
+     "rules": [
+      "c459-malicedefg3605",
+      "c459-gooddefg3605"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "占有人返还原物的请求权自侵占发生之日起一年内未行使的，该请求权消灭",
+     "rules": [
+      "c462-expireg3605"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "因使用致占有物受损的，恶意占有人应当赔偿",
+     "rules": [
+      "c459-useg3605"
+     ]
+    },
+    {
+     "text": "权利人可以请求无权占有人返还原物及其孳息，但应当支付善意占有人因维护该物支出的必要费用（恶意占有人无此请求权）",
+     "rules": [
+      "c460-returng3605",
+      "c460-costg3605"
+     ]
+    },
+    {
+     "text": "占有物毁损、灭失，权利人请求赔偿的，占有人（不论善恶）应返还所得保险金、赔偿金、补偿金；损害未得到足够弥补的，恶意占有人还应赔偿损失",
+     "rules": [
+      "c461-substituteg3605",
+      "c461-shortfallg3605"
+     ]
+    },
+    {
+     "text": "占有被侵占的，占有人有权请求返还原物；对妨害占有的行为可请求排除妨害或消除危险；因侵占或妨害造成损害的可请求赔偿",
+     "rules": [
+      "c462-returng3605",
+      "c462-disturbg3605",
+      "c462-damageg3605"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "有权占有（基于所有权、他物权、租赁权等本权）可以拒绝返还请求，无权占有人不享有留置权；只有善意占有人可受善意取得保护",
+     "rules": []
+    },
+    {
+     "text": "直接占有与间接占有（如承租人与出租人）、自主占有与他主占有为其他分类，本条文不直接规定其效力",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c458-contractg3605",
+    "srcs": [
+     "art458"
+    ],
+    "body": [
+     "contractualPossession(P,T,K)",
+     "~noAgreedOrUnclearPossessionTerms(K)"
+    ],
+    "heads": [
+     "possessionGovernedByContract(P,T,K)"
+    ],
+    "note": "基于合同关系等产生的占有，有关使用、收益、违约责任等按照合同约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c458-lawg3605",
+    "srcs": [
+     "art458"
+    ],
+    "body": [
+     "contractualPossession(P,T,K)",
+     "noAgreedOrUnclearPossessionTerms(K)"
+    ],
+    "heads": [
+     "possessionGovernedByLaw(P,T,K)"
+    ],
+    "note": "合同没有约定或者约定不明确的，依照有关法律规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c459-malicedefg3605",
+    "srcs": [
+     "art459"
+    ],
+    "body": [
+     "unauthorizedPossessor(P,T)",
+     "possessorKnowsNoLegalBasis(P,T)"
+    ],
+    "heads": [
+     "maliciousPossessor(P,T)"
+    ],
+    "note": "学理：无权占有人知道或者应当知道自己没有合法根据而占有的，为恶意占有（条文未定义，据笔记）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c459-gooddefg3605",
+    "srcs": [
+     "art460"
+    ],
+    "body": [
+     "unauthorizedPossessor(P,T)",
+     "~possessorKnowsNoLegalBasis(P,T)"
+    ],
+    "heads": [
+     "goodFaithPossessor(P,T)"
+    ],
+    "note": "学理：无权占有人不知道且不应当知道自己没有合法根据而占有的，为善意占有（条文未定义，据笔记）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c459-useg3605",
+    "srcs": [
+     "art459"
+    ],
+    "body": [
+     "maliciousPossessor(P,T)",
+     "damagedByPossessorUse(P,T)",
+     "rightHolderOfThing(H,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "H",
+      "content": "compensatePossessionLoss(P,H,T)"
+     }
+    ],
+    "note": "占有人因使用占有物致其受损的，恶意占有人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c460-returng3605",
+    "srcs": [
+     "art460"
+    ],
+    "body": [
+     "unauthorizedPossessor(P,T)",
+     "rightHolderOfThing(H,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "claimReturnWithFruits(H,P,T)"
+     }
+    ],
+    "note": "不动产或者动产被占有人占有的，权利人可以请求返还原物及其孳息",
+    "auth": "npc"
+   },
+   {
+    "key": "c460-costg3605",
+    "srcs": [
+     "art460"
+    ],
+    "body": [
+     "goodFaithPossessor(P,T)",
+     "rightHolderOfThing(H,T)",
+     "returnWithFruitsClaimed(H,P,T)",
+     "necessaryMaintenanceExpenses(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "payNecessaryMaintenanceExpenses(H,P,T)"
+     }
+    ],
+    "note": "但是，应当支付善意占有人因维护该不动产或者动产支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c461-substituteg3605",
+    "srcs": [
+     "art461"
+    ],
+    "body": [
+     "unauthorizedPossessor(P,T)",
+     "possessedThingDamagedOrLost(T)",
+     "rightHolderOfThing(H,T)",
+     "possessionDamagesClaimed(H,P,T)",
+     "obtainedSubstituteProceeds(P,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "H",
+      "content": "returnSubstituteProceeds(P,H,T)"
+     }
+    ],
+    "note": "占有物毁损、灭失，权利人请求赔偿的，占有人应当将取得的保险金、赔偿金或者补偿金等返还给权利人",
+    "auth": "npc"
+   },
+   {
+    "key": "c461-shortfallg3605",
+    "srcs": [
+     "art461"
+    ],
+    "body": [
+     "maliciousPossessor(P,T)",
+     "possessedThingDamagedOrLost(T)",
+     "rightHolderOfThing(H,T)",
+     "possessionDamagesClaimed(H,P,T)",
+     "lossNotFullyCompensated(H,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "H",
+      "content": "compensatePossessionLoss(P,H,T)"
+     }
+    ],
+    "note": "权利人的损害未得到足够弥补的，恶意占有人还应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c462-returng3605",
+    "srcs": [
+     "art462-1"
+    ],
+    "body": [
+     "possessorOf(P,T)",
+     "possessionSeizedBy(Q,P,T)",
+     "~possessionReturnClaimExtinguished(P,Q,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimReturnOfPossession(P,Q,T)"
+     }
+    ],
+    "note": "占有的不动产或者动产被侵占的，占有人有权请求返还原物",
+    "auth": "npc"
+   },
+   {
+    "key": "c462-disturbg3605",
+    "srcs": [
+     "art462-1"
+    ],
+    "body": [
+     "possessorOf(P,T)",
+     "disturbsPossession(Q,P,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimRemovalOfObstructionOrEliminationOfDanger(P,Q,T)"
+     }
+    ],
+    "note": "对妨害占有的行为，占有人有权请求排除妨害或者消除危险",
+    "auth": "npc"
+   },
+   {
+    "key": "c462-damageg3605",
+    "srcs": [
+     "art462-1"
+    ],
+    "body": [
+     "possessorOf(P,T)",
+     "possessionInterferenceCausedLoss(Q,P,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimPossessionDamages(P,Q,T)"
+     }
+    ],
+    "note": "因侵占或者妨害造成损害的，占有人有权依法请求损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c462-expireg3605",
+    "srcs": [
+     "art462-2"
+    ],
+    "body": [
+     "possessionSeizedBy(Q,P,T)",
+     "notExercisedWithinOneYearOfSeizure(P,Q,T)"
+    ],
+    "heads": [
+     "possessionReturnClaimExtinguished(P,Q,T)"
+    ],
+    "note": "占有人返还原物的请求权，自侵占发生之日起一年内未行使的，该请求权消灭（笔记、LEGO 认为该期间不适用中止、中断、延长）",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "contractualPossession": "基于合同关系等产生的占有（占有人，占有物，合同）",
+   "noAgreedOrUnclearPossessionTerms": "合同对占有物的使用、收益、违约责任等没有约定或者约定不明确（合同）",
+   "possessionGovernedByContract": "该占有有关使用、收益、违约责任等按照合同约定处理（占有人，占有物，合同）",
+   "possessionGovernedByLaw": "该占有有关使用、收益、违约责任等依照有关法律规定处理（占有人，占有物，合同）",
+   "unauthorizedPossessor": "是欠缺本权的无权占有人（占有人，占有物）",
+   "possessorKnowsNoLegalBasis": "占有人知道或者应当知道自己的占有没有合法根据（占有人，占有物）",
+   "maliciousPossessor": "是恶意占有人（占有人，占有物）",
+   "goodFaithPossessor": "是善意占有人（占有人，占有物）",
+   "damagedByPossessorUse": "占有人因使用占有物致使该物受到损害（占有人，占有物）",
+   "rightHolderOfThing": "是该不动产或动产的权利人（权利人，物）",
+   "compensatePossessionLoss": "向权利人赔偿占有物的损失（占有人，权利人，物）",
+   "claimReturnWithFruits": "请求返还原物及其孳息（权利人，占有人，物）",
+   "returnWithFruitsClaimed": "权利人已请求占有人返还原物及其孳息（权利人，占有人，物）",
+   "necessaryMaintenanceExpenses": "占有人因维护该物支出了必要费用（占有人，物）",
+   "payNecessaryMaintenanceExpenses": "向善意占有人支付其维护该物支出的必要费用（权利人，占有人，物）",
+   "possessedThingDamagedOrLost": "占有的不动产或动产毁损、灭失（物）",
+   "possessionDamagesClaimed": "权利人已就占有物毁损、灭失请求赔偿（权利人，占有人，物）",
+   "obtainedSubstituteProceeds": "占有人因毁损、灭失取得保险金、赔偿金或者补偿金等（占有人，物）",
+   "returnSubstituteProceeds": "将因毁损、灭失取得的保险金、赔偿金或者补偿金等返还权利人（占有人，权利人，物）",
+   "lossNotFullyCompensated": "权利人的损害未得到足够弥补（权利人，物）",
+   "possessorOf": "是该物的占有人（占有人，物）",
+   "possessionSeizedBy": "占有物被他人侵占（侵占人，占有人，物）",
+   "possessionReturnClaimExtinguished": "占有人返还原物的请求权已消灭（占有人，侵占人，物）",
+   "claimReturnOfPossession": "占有人请求返还原物（占有人，侵占人，物）",
+   "disturbsPossession": "实施妨害占有的行为或造成危险（行为人，占有人，物）",
+   "possessionInterferenceCausedLoss": "因侵占或者妨害占有造成占有人损害（行为人，占有人，物）",
+   "claimPossessionDamages": "占有人请求赔偿因侵占或者妨害造成的损害（占有人，行为人，物）",
+   "notExercisedWithinOneYearOfSeizure": "自侵占发生之日起一年内未行使返还原物请求权（占有人，侵占人，物）"
+  }
+ }
+}

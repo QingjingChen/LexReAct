@@ -1,0 +1,573 @@
+{
+ "card:g5870": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十七章　合伙合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "合伙合同的效力：出资、合伙财产、事务决定与执行、报酬、损益分配、连带责任与追偿、份额转让、债权人代位限制、合伙期限",
+     "rules": [
+      "c968-g5870",
+      "c969-1g5870"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合伙人的出资、因合伙事务依法取得的收益和其他财产属于合伙财产",
+     "rules": [
+      "c969-1g5870"
+     ]
+    },
+    {
+     "text": "合伙期限无约定或不明确且依第510条仍不能确定的，视为不定期合伙；期限届满后继续执行事务而其他合伙人无异议的，原合同继续有效但为不定期",
+     "rules": [
+      "c976-1g5870",
+      "c976-2g5870"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "事务决定的一致同意规则、执行事务不得请求报酬、份额对外转让须一致同意：合伙合同另有约定的除外",
+     "rules": [
+      "c970-1g5870",
+      "c971-g5870",
+      "c974-g5870"
+     ]
+    },
+    {
+     "text": "合伙人的债权人不得代位行使合伙人权利，但利益分配请求权除外",
+     "rules": [
+      "c975-g5870",
+      "c975-excg5870"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "合伙人按约定的出资方式、数额和缴付期限履行出资义务",
+     "rules": [
+      "c968-g5870"
+     ]
+    },
+    {
+     "text": "合伙合同终止前，合伙人不得请求分割合伙财产",
+     "rules": [
+      "c969-2g5870"
+     ]
+    },
+    {
+     "text": "合伙事务决定经全体一致同意；事务由全体共同执行，可按约定或全体决定委托一个或数个合伙人执行，其他合伙人不再执行但有权监督",
+     "rules": [
+      "c970-1g5870",
+      "c970-2ag5870",
+      "c970-entg5870",
+      "c970-2cg5870"
+     ]
+    },
+    {
+     "text": "分别执行时，执行事务合伙人可对他人执行的事务提出异议，提出异议后应暂停该项事务",
+     "rules": [
+      "c970-3ag5870",
+      "c970-3bg5870"
+     ]
+    },
+    {
+     "text": "利润分配和亏损分担：先约定，后协商，再按实缴出资比例，无法确定比例的平均",
+     "rules": [
+      "c972-1g5870",
+      "c972-2g5870",
+      "c972-3g5870",
+      "c972-4g5870"
+     ]
+    },
+    {
+     "text": "合伙人对合伙债务承担连带责任；清偿超过自己份额的，有权向其他合伙人追偿",
+     "rules": [
+      "c973-1g5870",
+      "c973-2g5870"
+     ]
+    },
+    {
+     "text": "不定期合伙合同可以随时解除，但应在合理期限之前通知其他合伙人",
+     "rules": [
+      "c976-3g5870",
+      "c976-ntcg5870"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记：一个或数个合伙人不履行出资义务的，其他合伙人不能因此拒绝出资（学理，未单独形式化）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c968-g5870",
+    "srcs": [
+     "art968"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "agreedContributionTerms(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performContribution(P,K)"
+     }
+    ],
+    "note": "合伙人应当按照约定的出资方式、数额和缴付期限履行出资义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c969-1g5870",
+    "srcs": [
+     "art969-1"
+    ],
+    "body": [
+     "partnershipContract(K)",
+     {
+      "or": [
+       "partnerContribution(X,K)",
+       "partnershipIncome(X,K)",
+       "otherPartnershipAsset(X,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "partnershipProperty(X,K)"
+    ],
+    "note": "合伙人的出资、因合伙事务依法取得的收益和其他财产，属于合伙财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c969-2g5870",
+    "srcs": [
+     "art969-2"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "-partnershipTerminated(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestPartitionOfPartnershipProperty(P,K)"
+     }
+    ],
+    "note": "合伙合同终止前，合伙人不得请求分割合伙财产",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-1g5870",
+    "srcs": [
+     "art970-1"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "decidesPartnershipAffair(P,K)",
+     "~agreedOtherwiseOnDecision(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainUnanimousConsentOfAllPartners(P,K)"
+     }
+    ],
+    "note": "就合伙事务作出决定的，除合伙合同另有约定外，应当经全体合伙人一致同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-2ag5870",
+    "srcs": [
+     "art970-2"
+    ],
+    "body": [
+     "partnerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "jointlyExecutePartnershipAffairs(P,K)"
+     }
+    ],
+    "note": "合伙事务由全体合伙人共同执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-entg5870",
+    "srcs": [
+     "art970-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "agreedEntrustExecution(K)",
+       "allPartnersDecideEntrustExecution(K)"
+      ]
+     },
+     "entrustedPartner(E,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "executesPartnershipAffairs(E,K)"
+     }
+    ],
+    "note": "按照约定或全体合伙人的决定，可以委托一个或数个合伙人执行合伙事务",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-2cg5870",
+    "srcs": [
+     "art970-2"
+    ],
+    "body": [
+     "entrustedPartner(E,K)",
+     "otherPartner(P,E,K)"
+    ],
+    "heads": [
+     "-executesPartnershipAffairs(P,K)",
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "E",
+      "content": "superviseExecution(P,E,K)"
+     }
+    ],
+    "note": "其他合伙人不再执行合伙事务，但是有权监督执行情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-3ag5870",
+    "srcs": [
+     "art970-3"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "separatelyExecutePartnershipAffairs(K)",
+     "executesPartnershipAffairs(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "raiseObjectionToOtherPartnersExecution(P,K)"
+     }
+    ],
+    "note": "合伙人分别执行合伙事务的，执行事务合伙人可以对其他合伙人执行的事务提出异议",
+    "auth": "npc"
+   },
+   {
+    "key": "c970-3bg5870",
+    "srcs": [
+     "art970-3"
+    ],
+    "body": [
+     "objectionRaisedBy(O,K)",
+     "objectedPartner(P,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "suspendExecutionOfObjectedAffair(P,K)"
+     }
+    ],
+    "note": "提出异议后，其他合伙人应当暂停该项事务的执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c971-g5870",
+    "srcs": [
+     "art971"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "executesPartnershipAffairs(P,K)",
+     "~agreedRemunerationForExecution(K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestRemunerationForExecution(P,K)"
+     }
+    ],
+    "note": "合伙人不得因执行合伙事务而请求支付报酬，合伙合同另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c972-1g5870",
+    "srcs": [
+     "art972"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "agreedProfitLossAllocation(K)"
+    ],
+    "heads": [
+     "allocatedPerAgreement(P,K)"
+    ],
+    "note": "利润分配和亏损分担按照合伙合同的约定办理",
+    "auth": "npc"
+   },
+   {
+    "key": "c972-2g5870",
+    "srcs": [
+     "art972"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "noAgreedOrUnclearProfitLossAllocation(K)",
+     "negotiatedAllocation(P,K)"
+    ],
+    "heads": [
+     "allocatedPerNegotiation(P,K)"
+    ],
+    "note": "没有约定或约定不明确的，由合伙人协商决定",
+    "auth": "npc"
+   },
+   {
+    "key": "c972-3g5870",
+    "srcs": [
+     "art972"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "noAgreedOrUnclearProfitLossAllocation(K)",
+     "profitLossNegotiationFailed(K)",
+     "paidInContributionRatioDeterminable(K)"
+    ],
+    "heads": [
+     "allocatedPerPaidInRatio(P,K)"
+    ],
+    "note": "协商不成的，按照实缴出资比例分配、分担",
+    "auth": "npc"
+   },
+   {
+    "key": "c972-4g5870",
+    "srcs": [
+     "art972"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "noAgreedOrUnclearProfitLossAllocation(K)",
+     "profitLossNegotiationFailed(K)",
+     "-paidInContributionRatioDeterminable(K)"
+    ],
+    "heads": [
+     "allocatedEqually(P,K)"
+    ],
+    "note": "无法确定出资比例的，由合伙人平均分配、分担",
+    "auth": "npc"
+   },
+   {
+    "key": "c973-1g5870",
+    "srcs": [
+     "art973"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "partnershipDebt(D,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "bearJointLiabilityForPartnershipDebt(P,D)"
+     }
+    ],
+    "note": "合伙人对合伙债务承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c973-2g5870",
+    "srcs": [
+     "art973"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "paidPartnershipDebtExceedingShare(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "claimRecourseAgainstOtherPartners(P,K)"
+     }
+    ],
+    "note": "清偿合伙债务超过自己应当承担份额的合伙人，有权向其他合伙人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c974-g5870",
+    "srcs": [
+     "art974"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "transfersShareToOutsider(P,K)",
+     "~agreedOtherwiseOnTransfer(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "obtainConsentOfOtherPartners(P,K)"
+     }
+    ],
+    "note": "除另有约定外，向合伙人以外的人转让全部或部分财产份额的，须经其他合伙人一致同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c975-g5870",
+    "srcs": [
+     "art975"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "creditorOfPartner(C,P)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "exercisePartnerRightsBySubrogation(C,P,K)"
+     }
+    ],
+    "note": "合伙人的债权人不得代位行使合伙人依本章和合伙合同享有的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c975-excg5870",
+    "srcs": [
+     "art975"
+    ],
+    "body": [
+     "partnerOf(P,K)",
+     "creditorOfPartner(C,P)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "P",
+      "content": "subrogateProfitDistributionClaim(C,P,K)"
+     }
+    ],
+    "note": "但合伙人享有的利益分配请求权除外，债权人可以代位行使",
+    "auth": "npc"
+   },
+   {
+    "key": "c976-1g5870",
+    "srcs": [
+     "art976-1"
+    ],
+    "body": [
+     "partnershipContract(K)",
+     "noAgreedOrUnclearPartnershipTerm(K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "indefinitePartnership(K)"
+    ],
+    "note": "对合伙期限没有约定或约定不明确，依第510条仍不能确定的，视为不定期合伙",
+    "auth": "npc"
+   },
+   {
+    "key": "c976-2g5870",
+    "srcs": [
+     "art976-2"
+    ],
+    "body": [
+     "partnershipContract(K)",
+     "partnershipTermExpired(K)",
+     "partnersContinueExecuting(K)",
+     "noObjectionByOtherPartners(K)"
+    ],
+    "heads": [
+     "valid(K)",
+     "indefinitePartnership(K)"
+    ],
+    "note": "合伙期限届满，合伙人继续执行事务且其他合伙人无异议的，原合同继续有效，但为不定期",
+    "auth": "npc"
+   },
+   {
+    "key": "c976-3g5870",
+    "srcs": [
+     "art976-3"
+    ],
+    "body": [
+     "indefinitePartnership(K)",
+     "partnerOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "terminatePartnershipContract(P,K)"
+     }
+    ],
+    "note": "合伙人可以随时解除不定期合伙合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c976-ntcg5870",
+    "srcs": [
+     "art976-3"
+    ],
+    "body": [
+     "indefinitePartnership(K)",
+     "partnerOf(P,K)",
+     "exercisesTermination(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyOtherPartnersInAdvance(P,K)"
+     }
+    ],
+    "note": "解除不定期合伙合同应当在合理期限之前通知其他合伙人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "creditorOfPartner": "是该合伙人的债权人（债权人，合伙人）",
+   "exercisePartnerRightsBySubrogation": "代位行使合伙人依照本章规定和合伙合同享有的权利（债权人，合伙人，合伙合同）",
+   "subrogateProfitDistributionClaim": "代位行使合伙人享有的利益分配请求权（债权人，合伙人，合伙合同）"
+  }
+ }
+}

@@ -1,0 +1,1386 @@
+{
+ "card:g5605": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十章　技术合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "技术合同的概念与类型；技术成果的归属；技术开发、转让许可、咨询服务合同中当事人的主要义务",
+     "rules": [
+      "c843",
+      "c847-2",
+      "c851-def",
+      "c862-1",
+      "c862-2",
+      "c878-1",
+      "c878-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "技术合同：就技术开发、转让、许可、咨询或服务订立的合同；技术开发合同包括委托开发与合作开发，科技成果转化合同参照适用",
+     "rules": [
+      "c843",
+      "c851-def",
+      "c851-types",
+      "c851-4"
+     ]
+    },
+    {
+     "text": "职务技术成果：执行单位工作任务或主要利用单位物质技术条件完成",
+     "rules": [
+      "c847-2"
+     ]
+    },
+    {
+     "text": "技术转让合同（专利权、专利申请权、技术秘密转让）与技术许可合同（专利实施许可、技术秘密使用许可）",
+     "rules": [
+      "c862-1",
+      "c862-2",
+      "c863-1",
+      "c863-2"
+     ]
+    },
+    {
+     "text": "技术咨询合同提供可行性论证等；技术服务合同解决特定技术问题，不包括承揽合同和建设工程合同",
+     "rules": [
+      "c878-1",
+      "c878-2"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "专利申请权归属、优先受让权、放弃后的申请：法律另有规定或当事人另有约定的除外",
+     "rules": [
+      "c859-pat",
+      "c860-own",
+      "c860-pre",
+      "c860-waive"
+     ]
+    },
+    {
+     "text": "委托开发的研究开发人不得在向委托人交付成果前将成果转让给第三人",
+     "rules": [
+      "c861-proviso"
+     ]
+    },
+    {
+     "text": "按符合约定的咨询报告决策造成的损失由委托人承担，但另有约定的除外；咨询服务中新技术成果归属另有约定的从约定",
+     "rules": [
+      "c881-3",
+      "c885-agreed"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "技术合同一般条款；有关技术文档经约定可作为合同组成部分；涉及专利应注明专利信息",
+     "rules": [
+      "c845-2",
+      "c845-3"
+     ]
+    },
+    {
+     "text": "职务成果由单位订立技术合同，转让时完成人有同等条件优先受让权；非职务成果由完成人订立技术合同；完成人享有署名权与荣誉、奖励权",
+     "rules": [
+      "c847-1",
+      "c847-pre",
+      "c848",
+      "c849"
+     ]
+    },
+    {
+     "text": "非法垄断技术或侵害他人技术成果的技术合同无效",
+     "rules": [
+      "c850"
+     ]
+    },
+    {
+     "text": "技术开发合同、技术转让和许可合同应当采用书面形式",
+     "rules": [
+      "c851-3",
+      "c863-3"
+     ]
+    },
+    {
+     "text": "委托开发：委托人付费、提供资料、提出要求、协作、接受成果；研究开发人制定实施计划、合理使用经费、按期完成交付并指导；违约致开发停滞、延误或失败的承担违约责任",
+     "rules": [
+      "c852",
+      "c853",
+      "c854"
+     ]
+    },
+    {
+     "text": "合作开发当事人按约定投资、分工参与、协作配合",
+     "rules": [
+      "c855"
+     ]
+    },
+    {
+     "text": "标的技术已由他人公开致履行无意义的，当事人可以解除合同",
+     "rules": [
+      "c857"
+     ]
+    },
+    {
+     "text": "委托开发的发明创造申请专利的权利属研究开发人，委托人可依法实施，研究开发人转让时委托人有优先受让权",
+     "rules": [
+      "c859-pat",
+      "c859-use",
+      "c859-pre"
+     ]
+    },
+    {
+     "text": "合作开发的申请专利的权利共有；一方转让时其他方优先受让；一方放弃的他方可申请，放弃方可免费实施；一方不同意申请的，他方不得申请",
+     "rules": [
+      "c860-own",
+      "c860-pre",
+      "c860-waive",
+      "c860-free",
+      "c860-3"
+     ]
+    },
+    {
+     "text": "技术秘密成果的使用、转让和收益分配从约定；无约定且依第510条仍不能确定的，在相同方案获专利前各方均可使用和转让",
+     "rules": [
+      "c861-agreed",
+      "c861-default"
+     ]
+    },
+    {
+     "text": "专用设备、原材料、技术咨询服务的约定属于转让、许可合同的组成部分",
+     "rules": [
+      "c862-3"
+     ]
+    },
+    {
+     "text": "专利实施许可：许可人许可实施、交付资料并指导；被许可人按约实施、不得许可约定外第三人实施、支付使用费",
+     "rules": [
+      "c866",
+      "c867"
+     ]
+    },
+    {
+     "text": "让与人、许可人保证是技术的合法拥有者，且技术完整、无误、有效，能达到约定目标",
+     "rules": [
+      "c870"
+     ]
+    },
+    {
+     "text": "技术咨询：委托人阐明问题、提供资料、接受成果、付酬；受托人按期按要求完成报告；委托人未协作或不接受成果的报酬不得追回、未付应付；受托人违约的减收或免收报酬",
+     "rules": [
+      "c879",
+      "c880",
+      "c881-1",
+      "c881-2"
+     ]
+    },
+    {
+     "text": "技术服务：委托人提供工作条件、配合、接受成果并付酬；受托人完成服务、解决问题、保证质量并传授知识",
+     "rules": [
+      "c882",
+      "c883"
+     ]
+    },
+    {
+     "text": "咨询、服务中利用委托人资料和条件完成的新成果归受托人；利用受托人工作成果完成的新成果归委托人；工作费用负担无约定的由受托人负担",
+     "rules": [
+      "c885-party",
+      "c885-client",
+      "c885-1",
+      "c885-2",
+      "c886"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "研究开发人交付前不得转让的但书优先于第861条各方均可转让的规则；咨询服务新成果的约定归属优先于法定归属",
+     "rules": [
+      "c861-proviso",
+      "c885-agreed"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "技术开发合同的客体是尚不存在、有待开发的技术成果；技术服务合同解决已有技术问题；技术转让移转权利，技术许可仅许可实施、使用",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c843",
+    "srcs": [
+     "art843"
+    ],
+    "body": [
+     {
+      "or": [
+       "techDevelopmentContract(K)",
+       "technologyTransferContract(K)",
+       "technologyLicenseContract(K)",
+       "technicalConsultingContract(K)",
+       "technicalServiceContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "technologyContract(K)"
+    ],
+    "note": "技术合同是就技术开发、转让、许可、咨询或者服务订立的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c845-2",
+    "srcs": [
+     "art845-2"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "performanceRelatedTechDocument(D,K)",
+     "agreedAsPartOfContract(D,K)"
+    ],
+    "heads": [
+     "formsPartOfContract(D,K)"
+    ],
+    "note": "与履行有关的技术背景资料、可行性论证、技术标准等文档，按约定可以作为合同组成部分",
+    "auth": "npc"
+   },
+   {
+    "key": "c845-3",
+    "srcs": [
+     "art845-3"
+    ],
+    "body": [
+     "technologyContract(K)",
+     "involvesPatent(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "parties",
+      "counterparty": null,
+      "content": "specifyPatentParticulars(K)"
+     }
+    ],
+    "note": "涉及专利的，应当注明发明创造名称、专利申请人和专利权人、申请日、申请号、专利号及有效期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c847-2",
+    "srcs": [
+     "art847-2"
+    ],
+    "body": [
+     "achievementOfUnitPersonnel(R,E)",
+     {
+      "or": [
+       "completedInPerformingUnitTask(R,E)",
+       "completedMainlyWithUnitResources(R,E)"
+      ]
+     }
+    ],
+    "heads": [
+     "serviceTechAchievement(R,E)"
+    ],
+    "note": "职务技术成果的定义",
+    "auth": "npc"
+   },
+   {
+    "key": "c847-1",
+    "srcs": [
+     "art847-1"
+    ],
+    "body": [
+     "serviceTechAchievement(R,E)",
+     "holdsUseAndTransferRights(E,R)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "E",
+      "counterparty": null,
+      "content": "concludeTechnologyContractOn(E,R)"
+     }
+    ],
+    "note": "职务技术成果的使用权、转让权属于单位的，单位可以就该成果订立技术合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c847-pre",
+    "srcs": [
+     "art847-1"
+    ],
+    "body": [
+     "serviceTechAchievement(R,E)",
+     "completerOf(X,R)",
+     "transfersAchievementByContract(E,R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": "E",
+      "content": "preemptOnEqualTerms(X,R)"
+     }
+    ],
+    "note": "单位订立技术合同转让职务技术成果时，完成人享有以同等条件优先受让的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c848",
+    "srcs": [
+     "art848"
+    ],
+    "body": [
+     "nonServiceTechAchievement(R)",
+     "completerOf(X,R)"
+    ],
+    "heads": [
+     "holdsUseAndTransferRights(X,R)",
+     {
+      "type": "PERM",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "concludeTechnologyContractOn(X,R)"
+     }
+    ],
+    "note": "非职务技术成果的使用权、转让权属于完成人，完成人可以就其订立技术合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c849",
+    "srcs": [
+     "art849"
+    ],
+    "body": [
+     "completerOf(X,R)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "beNamedAsCompleter(X,R)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "receiveHonorsAndAwards(X,R)"
+     }
+    ],
+    "note": "完成技术成果的个人有署名权以及取得荣誉证书、奖励的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c850",
+    "srcs": [
+     "art850"
+    ],
+    "body": [
+     "technologyContract(K)",
+     {
+      "or": [
+       "illegallyMonopolizesTechnology(K)",
+       "infringesOthersTechAchievement(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "void(K)"
+    ],
+    "note": "非法垄断技术或者侵害他人技术成果的技术合同无效",
+    "auth": "npc"
+   },
+   {
+    "key": "c851-def",
+    "srcs": [
+     "art851-1"
+    ],
+    "body": [
+     "contractOnResearchAndDevelopmentOfNewTech(K)"
+    ],
+    "heads": [
+     "techDevelopmentContract(K)"
+    ],
+    "note": "就新技术、新产品、新工艺、新品种或新材料及其系统的研究开发订立的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c851-types",
+    "srcs": [
+     "art851-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "commissionedDevelopment(K)",
+       "cooperativeDevelopmentContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "techDevelopmentContract(K)"
+    ],
+    "note": "技术开发合同包括委托开发合同和合作开发合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c851-3",
+    "srcs": [
+     "art851-3"
+    ],
+    "body": [
+     "techDevelopmentContract(K)"
+    ],
+    "heads": [
+     "writtenFormRequired(K)"
+    ],
+    "note": "技术开发合同应当采用书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c851-4",
+    "srcs": [
+     "art851-4"
+    ],
+    "body": [
+     "achievementConversionContract(K)"
+    ],
+    "heads": [
+     "applyTechDevelopmentRulesByReference(K)"
+    ],
+    "note": "就具有实用价值的科技成果实施转化订立的合同，参照适用技术开发合同的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c852",
+    "srcs": [
+     "art852"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "client(C,K)",
+     "researcherDeveloper(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "R",
+      "content": "performDevelopmentClientDuties(C,K)"
+     }
+    ],
+    "note": "委托人应当按约支付经费和报酬，提供技术资料，提出要求，完成协作事项，接受成果",
+    "auth": "npc"
+   },
+   {
+    "key": "c853",
+    "srcs": [
+     "art853"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "client(C,K)",
+     "researcherDeveloper(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "C",
+      "content": "performResearcherDeveloperDuties(R,K)"
+     }
+    ],
+    "note": "研究开发人应当按约制定实施计划，合理使用经费，按期完成并交付成果，提供资料和技术指导，帮助委托人掌握成果",
+    "auth": "npc"
+   },
+   {
+    "key": "c854",
+    "srcs": [
+     "art854"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "contractParty(P,K)",
+     "nonPerformanceOrNonconforming(P,K)",
+     {
+      "or": [
+       "rdWorkStagnated(P,K)",
+       "rdWorkDelayed(P,K)",
+       "rdWorkFailed(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "liableForBreach(P,K)"
+     }
+    ],
+    "note": "委托开发合同当事人违反约定造成研究开发工作停滞、延误或者失败的，应当承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c855",
+    "srcs": [
+     "art855"
+    ],
+    "body": [
+     "cooperativeDevelopmentContract(K)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "investAndParticipateInDevelopment(P,K)"
+     }
+    ],
+    "note": "合作开发当事人应当按约投资（含以技术投资），分工参与并协作配合研究开发工作",
+    "auth": "npc"
+   },
+   {
+    "key": "c857",
+    "srcs": [
+     "art857"
+    ],
+    "body": [
+     "techDevelopmentContract(K)",
+     "contractParty(P,K)",
+     "subjectTechDisclosedByOthers(K)",
+     "performanceMeaningless(K)"
+    ],
+    "heads": [
+     "terminationRight(P,K)"
+    ],
+    "note": "标的技术已由他人公开致使履行没有意义的，当事人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c859-pat",
+    "srcs": [
+     "art859-1"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "~lawProvidesOtherwiseOnPatentApplicationRight(I)",
+     "~agreedOtherwiseOnPatentApplicationRight(K)"
+    ],
+    "heads": [
+     "rightToApplyPatent(R,I)"
+    ],
+    "note": "委托开发完成的发明创造，除法律另有规定或另有约定外，申请专利的权利属于研究开发人",
+    "auth": "npc"
+   },
+   {
+    "key": "c859-use",
+    "srcs": [
+     "art859-1"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "client(C,K)",
+     "obtainedPatent(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "exploitPatent(C,I)"
+     }
+    ],
+    "note": "研究开发人取得专利权的，委托人可以依法实施该专利",
+    "auth": "npc"
+   },
+   {
+    "key": "c859-pre",
+    "srcs": [
+     "art859-2"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "inventionCreated(K,I)",
+     "researcherDeveloper(R,K)",
+     "client(C,K)",
+     "transfersPatentApplicationRight(R,I)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "R",
+      "content": "preemptiveTransferOnSameConditions(C,I)"
+     }
+    ],
+    "note": "研究开发人转让专利申请权的，委托人享有以同等条件优先受让的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c860-own",
+    "srcs": [
+     "art860-1"
+    ],
+    "body": [
+     "cooperativeDevelopmentContract(K)",
+     "jointlyDevelopedInvention(K,I)",
+     "contractParty(P,K)",
+     "~agreedOtherwiseOnPatentApplicationRight(K)"
+    ],
+    "heads": [
+     "coOwnsPatentApplicationRight(P,I)"
+    ],
+    "note": "合作开发完成的发明创造，申请专利的权利属于合作各方共有，另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c860-pre",
+    "srcs": [
+     "art860-1"
+    ],
+    "body": [
+     "jointlyDevelopedInvention(K,I)",
+     "coOwnsPatentApplicationRight(P,I)",
+     "transfersSharedPatentApplicationRight(Q,I)",
+     "~agreedOtherwiseOnPatentApplicationRight(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "preemptiveTransferOnSameConditions(P,I)"
+     }
+    ],
+    "note": "一方转让其共有的专利申请权的，其他各方享有以同等条件优先受让的权利，另有约定的除外（P 指转让方以外的共有人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c860-waive",
+    "srcs": [
+     "art860-2"
+    ],
+    "body": [
+     "jointlyDevelopedInvention(K,I)",
+     "coOwnsPatentApplicationRight(P,I)",
+     "waivesSharedPatentApplicationRight(Q,I)",
+     "~agreedOtherwiseOnPatentApplicationRight(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "applyForPatentOn(P,I)"
+     }
+    ],
+    "note": "一方声明放弃共有的专利申请权的，除另有约定外，可以由另一方单独申请或其他各方共同申请",
+    "auth": "npc"
+   },
+   {
+    "key": "c860-free",
+    "srcs": [
+     "art860-2"
+    ],
+    "body": [
+     "jointlyDevelopedInvention(K,I)",
+     "waivesSharedPatentApplicationRight(Q,I)",
+     "applicantObtainedPatent(I)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "Q",
+      "counterparty": null,
+      "content": "exploitPatentFreeOfCharge(Q,I)"
+     }
+    ],
+    "note": "申请人取得专利权的，放弃专利申请权的一方可以免费实施该专利",
+    "auth": "npc"
+   },
+   {
+    "key": "c860-3",
+    "srcs": [
+     "art860-3"
+    ],
+    "body": [
+     "jointlyDevelopedInvention(K,I)",
+     "coOwnsPatentApplicationRight(P,I)",
+     "refusesPatentApplication(Q,I)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "applyForPatentOn(P,I)"
+     }
+    ],
+    "note": "合作开发的一方不同意申请专利的，另一方或其他各方不得申请专利",
+    "auth": "npc"
+   },
+   {
+    "key": "c861-agreed",
+    "srcs": [
+     "art861"
+    ],
+    "body": [
+     "developedTechSecret(S,K)",
+     "agreedTechSecretRightsAndProfit(K)"
+    ],
+    "heads": [
+     "techSecretRightsPerAgreement(S,K)"
+    ],
+    "note": "委托或合作开发完成的技术秘密成果的使用权、转让权及收益分配，由当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c861-default",
+    "srcs": [
+     "art861"
+    ],
+    "body": [
+     "developedTechSecret(S,K)",
+     "contractParty(P,K)",
+     "noAgreedOrUnclearTechSecretRights(K)",
+     "-determinablePerArt510(K)",
+     "-sameSolutionPatented(S)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "useAndTransferTechSecret(P,S)"
+     }
+    ],
+    "note": "没有约定或约定不明确且依第510条仍不能确定的，在没有相同技术方案被授予专利权前，当事人均有使用和转让的权利",
+    "auth": "npc"
+   },
+   {
+    "key": "c861-proviso",
+    "srcs": [
+     "art861"
+    ],
+    "body": [
+     "commissionedDevelopment(K)",
+     "researcherDeveloper(R,K)",
+     "developedTechSecret(S,K)",
+     "-resultDeliveredToClient(R,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "transferResultToThirdParty(R,S)"
+     }
+    ],
+    "note": "委托开发的研究开发人不得在向委托人交付成果之前将成果转让给第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c862-1",
+    "srcs": [
+     "art862-1"
+    ],
+    "body": [
+     "lawfulTechRightHolder(A,K)",
+     "transfersExistingSpecificTechRights(A,K)"
+    ],
+    "heads": [
+     "technologyTransferContract(K)"
+    ],
+    "note": "合法拥有技术的权利人将现有特定专利、专利申请、技术秘密的相关权利让与他人的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c862-2",
+    "srcs": [
+     "art862-2"
+    ],
+    "body": [
+     "lawfulTechRightHolder(A,K)",
+     "licensesExistingSpecificTechRights(A,K)"
+    ],
+    "heads": [
+     "technologyLicenseContract(K)"
+    ],
+    "note": "合法拥有技术的权利人将现有特定专利、技术秘密的相关权利许可他人实施、使用的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c862-3",
+    "srcs": [
+     "art862-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologyTransferContract(K)",
+       "technologyLicenseContract(K)"
+      ]
+     },
+     "ancillarySupplyOrServiceTerm(D,K)"
+    ],
+    "heads": [
+     "formsPartOfContract(D,K)"
+    ],
+    "note": "关于提供专用设备、原材料或技术咨询、技术服务的约定属于合同的组成部分",
+    "auth": "npc"
+   },
+   {
+    "key": "c863-1",
+    "srcs": [
+     "art863-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "patentTransferContract(K)",
+       "patentApplicationRightTransferContract(K)",
+       "technologySecretTransferContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "technologyTransferContract(K)"
+    ],
+    "note": "技术转让合同包括专利权转让、专利申请权转让、技术秘密转让等合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c863-2",
+    "srcs": [
+     "art863-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "patentLicenseContract(K)",
+       "technologySecretLicenseContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "technologyLicenseContract(K)"
+    ],
+    "note": "技术许可合同包括专利实施许可、技术秘密使用许可等合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c863-3",
+    "srcs": [
+     "art863-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologyTransferContract(K)",
+       "technologyLicenseContract(K)"
+      ]
+     }
+    ],
+    "heads": [
+     "writtenFormRequired(K)"
+    ],
+    "note": "技术转让合同和技术许可合同应当采用书面形式",
+    "auth": "npc"
+   },
+   {
+    "key": "c866",
+    "srcs": [
+     "art866"
+    ],
+    "body": [
+     "patentLicenseContract(K)",
+     "licensorOf(L,K)",
+     "licenseeOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "L",
+      "counterparty": "P",
+      "content": "licensePatentDeliverMaterialsAndGuide(L,P,K)"
+     }
+    ],
+    "note": "许可人应当按约许可被许可人实施专利，交付有关技术资料，提供必要的技术指导",
+    "auth": "npc"
+   },
+   {
+    "key": "c867",
+    "srcs": [
+     "art867"
+    ],
+    "body": [
+     "patentLicenseContract(K)",
+     "licensorOf(L,K)",
+     "licenseeOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "L",
+      "content": "exploitPatentAsAgreed(P,K)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "L",
+      "content": "licenseUnagreedThirdParty(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "L",
+      "content": "payLicenseFeeAsAgreed(P,K)"
+     }
+    ],
+    "note": "被许可人应当按约实施专利，不得许可约定以外的第三人实施，并按约支付使用费",
+    "auth": "npc"
+   },
+   {
+    "key": "c870",
+    "srcs": [
+     "art870"
+    ],
+    "body": [
+     {
+      "or": [
+       "technologyTransferContract(K) transferorOf(A,K)",
+       "technologyLicenseContract(K) licensorOf(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "warrantLawfulOwnershipOfTech(A,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "warrantTechCompleteAccurateEffective(A,K)"
+     }
+    ],
+    "note": "让与人、许可人保证是技术的合法拥有者，并保证技术完整、无误、有效，能达到约定目标",
+    "auth": "npc"
+   },
+   {
+    "key": "c878-1",
+    "srcs": [
+     "art878-1"
+    ],
+    "body": [
+     "providesFeasibilityStudyOrAnalysisWithTechKnowledge(K)"
+    ],
+    "heads": [
+     "technicalConsultingContract(K)"
+    ],
+    "note": "一方以技术知识为对方就特定技术项目提供可行性论证、技术预测、专题调查、分析评价报告等的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c878-2",
+    "srcs": [
+     "art878-2"
+    ],
+    "body": [
+     "solvesSpecificTechProblemWithTechKnowledge(K)",
+     "~workOrConstructionContract(K)"
+    ],
+    "heads": [
+     "technicalServiceContract(K)"
+    ],
+    "note": "一方以技术知识为对方解决特定技术问题的合同，不包括承揽合同和建设工程合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c879",
+    "srcs": [
+     "art879"
+    ],
+    "body": [
+     "technicalConsultingContract(K)",
+     "consultingClient(C,K)",
+     "consultant(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "performConsultingClientDuties(C,K)"
+     }
+    ],
+    "note": "委托人应当按约阐明咨询问题，提供技术背景材料和资料，接受工作成果，支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c880",
+    "srcs": [
+     "art880"
+    ],
+    "body": [
+     "technicalConsultingContract(K)",
+     "consultingClient(C,K)",
+     "consultant(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "deliverConformingReportOnTime(T,K)"
+     }
+    ],
+    "note": "受托人应当按约定期限完成咨询报告或解答问题，报告应当达到约定要求",
+    "auth": "npc"
+   },
+   {
+    "key": "c881-1",
+    "srcs": [
+     "art881-1"
+    ],
+    "body": [
+     "technicalConsultingContract(K)",
+     "consultingClient(C,K)",
+     "consultant(T,K)",
+     {
+      "or": [
+       "failsToProvideNecessaryMaterials(C,K) affectsProgressAndQuality(C,K)",
+       "refusesOrDelaysAcceptance(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "recoverPaidRemuneration(C,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "payUnpaidRemuneration(C,K)"
+     }
+    ],
+    "note": "委托人未按约提供必要资料影响进度和质量，或不接受、逾期接受成果的，已付报酬不得追回，未付报酬应当支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c881-2",
+    "srcs": [
+     "art881-2"
+    ],
+    "body": [
+     "technicalConsultingContract(K)",
+     "consultant(T,K)",
+     {
+      "or": [
+       "reportNotSubmittedOnTime(T,K)",
+       "reportNonconforming(T,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "bearBreachLiabilityByReducingOrWaivingRemuneration(T,K)"
+     }
+    ],
+    "note": "受托人未按期提出咨询报告或报告不符合约定的，应当承担减收或者免收报酬等违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c881-3",
+    "srcs": [
+     "art881-3"
+    ],
+    "body": [
+     "technicalConsultingContract(K)",
+     "consultingClient(C,K)",
+     "decisionPerConformingReport(C,K)",
+     "lossFromDecision(C,K)",
+     "~contractProvidesOtherwise(K)"
+    ],
+    "heads": [
+     "decisionLossBorneBy(C,K)"
+    ],
+    "note": "委托人按符合约定要求的咨询报告和意见决策造成的损失由委托人承担，另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c882",
+    "srcs": [
+     "art882"
+    ],
+    "body": [
+     "technicalServiceContract(K)",
+     "technicalServiceClient(C,K)",
+     "technicalServiceProvider(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "T",
+      "content": "performServiceClientDuties(C,K)"
+     }
+    ],
+    "note": "委托人应当按约提供工作条件，完成配合事项，接受工作成果并支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c883",
+    "srcs": [
+     "art883"
+    ],
+    "body": [
+     "technicalServiceContract(K)",
+     "technicalServiceClient(C,K)",
+     "technicalServiceProvider(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "C",
+      "content": "performServiceProviderDuties(T,K)"
+     }
+    ],
+    "note": "受托人应当按约完成服务项目，解决技术问题，保证工作质量，并传授解决技术问题的知识",
+    "auth": "npc"
+   },
+   {
+    "key": "c885-party",
+    "srcs": [
+     "art885"
+    ],
+    "body": [
+     {
+      "or": [
+       "consultant(T,K)",
+       "technicalServiceProvider(T,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "consultingOrServiceTrustee(T,K)"
+    ],
+    "note": "技术咨询合同、技术服务合同的受托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c885-client",
+    "srcs": [
+     "art885"
+    ],
+    "body": [
+     {
+      "or": [
+       "consultingClient(C,K)",
+       "technicalServiceClient(C,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "consultingOrServiceClient(C,K)"
+    ],
+    "note": "技术咨询合同、技术服务合同的委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c885-1",
+    "srcs": [
+     "art885"
+    ],
+    "body": [
+     "consultingOrServiceTrustee(T,K)",
+     "newAchievementUsingClientMaterials(N,T,K)"
+    ],
+    "heads": [
+     "newTechAchievementBelongsTo(N,T)"
+    ],
+    "note": "受托人利用委托人提供的技术资料和工作条件完成的新技术成果属于受托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c885-2",
+    "srcs": [
+     "art885"
+    ],
+    "body": [
+     "consultingOrServiceClient(C,K)",
+     "newAchievementUsingTrusteeWork(N,C,K)"
+    ],
+    "heads": [
+     "newTechAchievementBelongsTo(N,C)"
+    ],
+    "note": "委托人利用受托人的工作成果完成的新技术成果属于委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c885-agreed",
+    "srcs": [
+     "art885"
+    ],
+    "body": [
+     "agreedOwnerOfNewAchievement(N,X,K)"
+    ],
+    "heads": [
+     "newTechAchievementBelongsTo(N,X)"
+    ],
+    "note": "当事人另有约定的，按照其约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c886",
+    "srcs": [
+     "art886"
+    ],
+    "body": [
+     "consultingOrServiceTrustee(T,K)",
+     "noAgreedOrUnclearWorkExpenses(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": null,
+      "content": "bearNormalWorkExpenses(T,K)"
+     }
+    ],
+    "note": "受托人正常开展工作所需费用的负担没有约定或约定不明确的，由受托人负担",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c861-proviso",
+    "c861-default",
+    "第861条但书：研究开发人交付成果前不得向第三人转让"
+   ],
+   [
+    "c885-agreed",
+    "c885-1",
+    "第885条：当事人另有约定的按照约定"
+   ],
+   [
+    "c885-agreed",
+    "c885-2",
+    "第885条：当事人另有约定的按照约定"
+   ]
+  ],
+  "predicates": {
+   "technicalConsultingContract": "是技术咨询合同（合同）",
+   "performanceRelatedTechDocument": "是与履行合同有关的技术背景资料、可行性论证、技术评价报告、任务书、技术标准、规范、设计和工艺文件等技术文档（文档，合同）",
+   "agreedAsPartOfContract": "当事人约定该文档作为合同的组成部分（文档，合同）",
+   "formsPartOfContract": "属于合同的组成部分（文档或约定，合同）",
+   "involvesPatent": "技术合同涉及专利（合同）",
+   "specifyPatentParticulars": "注明发明创造名称、专利申请人和专利权人、申请日期、申请号、专利号及专利权有效期限（合同）",
+   "achievementOfUnitPersonnel": "是法人或非法人组织的人员完成的技术成果（成果，单位）",
+   "completedInPerformingUnitTask": "执行该单位的工作任务完成（成果，单位）",
+   "completedMainlyWithUnitResources": "主要利用该单位的物质技术条件完成（成果，单位）",
+   "serviceTechAchievement": "是该单位的职务技术成果（成果，单位）",
+   "holdsUseAndTransferRights": "享有该技术成果的使用权、转让权（主体，成果）",
+   "concludeTechnologyContractOn": "就该技术成果订立技术合同（主体，成果）",
+   "completerOf": "是完成该技术成果的个人（个人，成果）",
+   "transfersAchievementByContract": "订立技术合同转让该职务技术成果（单位，成果）",
+   "preemptOnEqualTerms": "以同等条件优先受让该技术成果（权利人，成果）",
+   "nonServiceTechAchievement": "是非职务技术成果（成果）",
+   "beNamedAsCompleter": "在有关技术成果文件上写明自己是技术成果完成者（个人，成果）",
+   "receiveHonorsAndAwards": "取得荣誉证书、奖励（个人，成果）",
+   "illegallyMonopolizesTechnology": "技术合同非法垄断技术（合同）",
+   "infringesOthersTechAchievement": "技术合同侵害他人技术成果（合同）",
+   "contractOnResearchAndDevelopmentOfNewTech": "当事人就新技术、新产品、新工艺、新品种或者新材料及其系统的研究开发订立合同（合同）",
+   "achievementConversionContract": "当事人就具有实用价值的科技成果实施转化订立的合同（合同）",
+   "applyTechDevelopmentRulesByReference": "参照适用技术开发合同的有关规定（合同）",
+   "performDevelopmentClientDuties": "按约支付研究开发经费和报酬、提供技术资料、提出研究开发要求、完成协作事项、接受研究开发成果（委托人，合同）",
+   "performResearcherDeveloperDuties": "按约制定和实施研究开发计划、合理使用经费、按期完成并交付成果、提供技术资料和必要技术指导、帮助委托人掌握成果（研究开发人，合同）",
+   "investAndParticipateInDevelopment": "按约投资（包括以技术投资）、分工参与并协作配合研究开发工作（当事人，合同）",
+   "subjectTechDisclosedByOthers": "作为技术开发合同标的的技术已经由他人公开（合同）",
+   "performanceMeaningless": "致使合同的履行没有意义（合同）",
+   "jointlyDevelopedInvention": "是合作开发完成的发明创造（合同，发明创造）",
+   "coOwnsPatentApplicationRight": "共有该发明创造的专利申请权（当事人，发明创造）",
+   "transfersSharedPatentApplicationRight": "转让其共有的专利申请权（转让方，发明创造）",
+   "waivesSharedPatentApplicationRight": "声明放弃其共有的专利申请权（放弃方，发明创造）",
+   "applyForPatentOn": "就该发明创造申请专利（申请人，发明创造）",
+   "applicantObtainedPatent": "申请人就该发明创造取得专利权（发明创造）",
+   "exploitPatentFreeOfCharge": "免费实施该专利（放弃方，发明创造）",
+   "refusesPatentApplication": "不同意申请专利（当事人，发明创造）",
+   "developedTechSecret": "是委托开发或合作开发完成的技术秘密成果（成果，合同）",
+   "agreedTechSecretRightsAndProfit": "当事人对技术秘密成果的使用权、转让权和收益分配有约定（合同）",
+   "techSecretRightsPerAgreement": "技术秘密成果的使用权、转让权和收益分配依约定确定（成果，合同）",
+   "noAgreedOrUnclearTechSecretRights": "对技术秘密成果的使用权、转让权和收益分配没有约定或约定不明确（合同）",
+   "sameSolutionPatented": "相同技术方案已被授予专利权（成果）",
+   "useAndTransferTechSecret": "使用和转让该技术秘密成果（当事人，成果）",
+   "resultDeliveredToClient": "研究开发人已向委托人交付研究开发成果（研究开发人，合同）",
+   "transferResultToThirdParty": "将研究开发成果转让给第三人（研究开发人，成果）",
+   "lawfulTechRightHolder": "是合法拥有技术的权利人（主体，合同）",
+   "transfersExistingSpecificTechRights": "将现有特定的专利、专利申请、技术秘密的相关权利让与他人（权利人，合同）",
+   "licensesExistingSpecificTechRights": "将现有特定的专利、技术秘密的相关权利许可他人实施、使用（权利人，合同）",
+   "ancillarySupplyOrServiceTerm": "是关于提供实施技术的专用设备、原材料或者有关技术咨询、技术服务的约定（约定，合同）",
+   "patentTransferContract": "是专利权转让合同（合同）",
+   "patentApplicationRightTransferContract": "是专利申请权转让合同（合同）",
+   "licensePatentDeliverMaterialsAndGuide": "按约许可被许可人实施专利，交付实施专利有关的技术资料，提供必要的技术指导（许可人，被许可人，合同）",
+   "exploitPatentAsAgreed": "按照约定实施专利（被许可人，合同）",
+   "licenseUnagreedThirdParty": "许可约定以外的第三人实施该专利（被许可人，合同）",
+   "payLicenseFeeAsAgreed": "按照约定支付使用费（被许可人，合同）",
+   "warrantLawfulOwnershipOfTech": "保证自己是所提供技术的合法拥有者（让与人或许可人，合同）",
+   "warrantTechCompleteAccurateEffective": "保证所提供的技术完整、无误、有效，能够达到约定的目标（让与人或许可人，合同）",
+   "providesFeasibilityStudyOrAnalysisWithTechKnowledge": "一方以技术知识为对方就特定技术项目提供可行性论证、技术预测、专题技术调查、分析评价报告等（合同）",
+   "solvesSpecificTechProblemWithTechKnowledge": "一方以技术知识为对方解决特定技术问题（合同）",
+   "workOrConstructionContract": "属于承揽合同或建设工程合同（合同）",
+   "consultingClient": "是技术咨询合同的委托人（委托人，合同）",
+   "consultant": "是技术咨询合同的受托人（受托人，合同）",
+   "performConsultingClientDuties": "按约阐明咨询的问题、提供技术背景材料及有关技术资料、接受工作成果、支付报酬（委托人，合同）",
+   "deliverConformingReportOnTime": "按约定期限完成咨询报告或解答问题，且报告达到约定要求（受托人，合同）",
+   "failsToProvideNecessaryMaterials": "委托人未按照约定提供必要的资料（委托人，合同）",
+   "reportNotSubmittedOnTime": "受托人未按期提出咨询报告（受托人，合同）",
+   "reportNonconforming": "提出的咨询报告不符合约定（受托人，合同）",
+   "bearBreachLiabilityByReducingOrWaivingRemuneration": "承担减收或者免收报酬等违约责任（受托人，合同）",
+   "decisionPerConformingReport": "委托人按照受托人符合约定要求的咨询报告和意见作出决策（委托人，合同）",
+   "lossFromDecision": "该决策造成损失（委托人，合同）",
+   "decisionLossBorneBy": "该决策损失由其承担（承担人，合同）",
+   "performServiceClientDuties": "按约提供工作条件、完成配合事项、接受工作成果并支付报酬（委托人，合同）",
+   "performServiceProviderDuties": "按约完成服务项目、解决技术问题、保证工作质量并传授解决技术问题的知识（受托人，合同）",
+   "consultingOrServiceTrustee": "是技术咨询合同或技术服务合同的受托人（受托人，合同）",
+   "consultingOrServiceClient": "是技术咨询合同或技术服务合同的委托人（委托人，合同）",
+   "newAchievementUsingClientMaterials": "受托人在履行中利用委托人提供的技术资料和工作条件完成新的技术成果（成果，受托人，合同）",
+   "newAchievementUsingTrusteeWork": "委托人利用受托人的工作成果完成新的技术成果（成果，委托人，合同）",
+   "agreedOwnerOfNewAchievement": "当事人约定该新技术成果归属于某方（成果，归属方，合同）",
+   "newTechAchievementBelongsTo": "该新技术成果属于该方（成果，归属方）",
+   "noAgreedOrUnclearWorkExpenses": "对受托人正常开展工作所需费用的负担没有约定或者约定不明确（合同）",
+   "bearNormalWorkExpenses": "负担正常开展工作所需的费用（受托人，合同）"
+  }
+ }
+}

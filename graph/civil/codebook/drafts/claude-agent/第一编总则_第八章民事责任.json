@@ -1,0 +1,278 @@
+{
+ "card:g0589": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第一编　总则",
+   "第八章　民事责任"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "连带责任的外部效力与内部分担、追偿；民事责任的承担方式；民事责任与行政、刑事责任竞合时的关系",
+     "rules": [
+      "c178-extg0589",
+      "c179-3g0589",
+      "c187-1g0589"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "连带责任由法律规定或者当事人约定",
+     "rules": [
+      "c178-srcg0589"
+     ]
+    },
+    {
+     "text": "同一行为应同时承担民事责任与行政责任或刑事责任",
+     "rules": [
+      "c187-1g0589",
+      "c187-2g0589"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "难以确定责任大小的，连带责任人平均承担",
+     "rules": [
+      "c178-eqg0589"
+     ]
+    },
+    {
+     "text": "法律规定惩罚性赔偿的，依照其规定",
+     "rules": [
+      "c179-2g0589"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "权利人有权请求部分或者全部连带责任人承担责任",
+     "rules": [
+      "c178-extg0589"
+     ]
+    },
+    {
+     "text": "连带责任人的份额根据各自责任大小确定；实际承担超过自己份额的，有权向其他连带责任人追偿",
+     "rules": [
+      "c178-shg0589",
+      "c178-recg0589"
+     ]
+    },
+    {
+     "text": "承担民事责任的方式主要有停止侵害、排除妨碍、消除危险、返还财产、恢复原状、修理重作更换、继续履行、赔偿损失、支付违约金、消除影响恢复名誉、赔礼道歉，可单独或合并适用",
+     "rules": [
+      "c179-3g0589"
+     ]
+    },
+    {
+     "text": "承担行政责任或刑事责任不影响承担民事责任；财产不足以支付的，优先用于承担民事责任",
+     "rules": [
+      "c187-1g0589",
+      "c187-2g0589"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "民事责任优先：财产不足时优先承担民事责任（罚款、罚金、没收财产之前）",
+     "rules": [
+      "c187-2g0589"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：继续履行、支付违约金只适用于违约责任；赔礼道歉、消除影响、恢复名誉主要适用于侵权，尤其是人身权侵害",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c178-srcg0589",
+    "srcs": [
+     "art178-3"
+    ],
+    "body": [
+     {
+      "or": [
+       "lawProvidesJointLiability(G)",
+       "partiesAgreedJointLiability(G)"
+      ]
+     }
+    ],
+    "heads": [
+     "jointLiability(G)"
+    ],
+    "note": "连带责任由法律规定或者当事人约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-extg0589",
+    "srcs": [
+     "art178-1"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "rightHolderAgainst(R,G)",
+     "memberOf(P,G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "claimPerformanceFrom(R,P)"
+     }
+    ],
+    "note": "权利人有权请求部分或者全部连带责任人承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-shg0589",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareDeterminable(G)"
+    ],
+    "heads": [
+     "shareDeterminedByFault(P,G)"
+    ],
+    "note": "连带责任人的责任份额根据各自责任大小确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-eqg0589",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "liabilityShareIndeterminable(G)"
+    ],
+    "heads": [
+     "equalShare(P,G)"
+    ],
+    "note": "难以确定责任大小的，平均承担责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c178-recg0589",
+    "srcs": [
+     "art178-2"
+    ],
+    "body": [
+     "jointLiability(G)",
+     "memberOf(P,G)",
+     "actualPerformanceExceedsShare(P,G)",
+     "otherMember(Q,P,G)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "Q",
+      "content": "claimRecourseAgainst(P,Q)"
+     }
+    ],
+    "note": "实际承担责任超过自己份额的连带责任人，有权向其他连带责任人追偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c179-2g0589",
+    "srcs": [
+     "art179-2"
+    ],
+    "body": [
+     "bearsLiabilityFor(A,V)",
+     "lawProvidesPunitiveDamages(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "V",
+      "content": "payPunitiveDamagesPerLaw(A,V)"
+     }
+    ],
+    "note": "法律规定惩罚性赔偿的，依照其规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c179-3g0589",
+    "srcs": [
+     "art179-1",
+     "art179-3"
+    ],
+    "body": [
+     "bearsLiabilityFor(A,V)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "applyLiabilityModesSeparatelyOrCombined(A,V)"
+     }
+    ],
+    "note": "第179条第1款所列十一种承担民事责任的方式，可以单独适用，也可以合并适用",
+    "auth": "npc"
+   },
+   {
+    "key": "c187-1g0589",
+    "srcs": [
+     "art187"
+    ],
+    "body": [
+     "civilLiabilityForAct(A,X)",
+     "adminOrCriminalLiabilityForAct(A,X)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "bearCivilLiabilityForAct(A,X)"
+     }
+    ],
+    "note": "因同一行为承担行政责任或者刑事责任，不影响承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c187-2g0589",
+    "srcs": [
+     "art187"
+    ],
+    "body": [
+     "civilLiabilityForAct(A,X)",
+     "adminOrCriminalLiabilityForAct(A,X)",
+     "propertyInsufficientForAllLiabilities(A)"
+    ],
+    "heads": [
+     "civilLiabilityPaidFirst(A,X)"
+    ],
+    "note": "民事主体的财产不足以支付的，优先用于承担民事责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "lawProvidesPunitiveDamages": "法律对该民事责任规定了惩罚性赔偿（责任人，权利人）",
+   "payPunitiveDamagesPerLaw": "依照法律规定承担惩罚性赔偿（责任人，权利人）",
+   "applyLiabilityModesSeparatelyOrCombined": "单独或者合并适用停止侵害、排除妨碍、赔偿损失等承担民事责任的方式（责任人，权利人）",
+   "civilLiabilityForAct": "民事主体因该行为应当承担民事责任（主体，行为）",
+   "adminOrCriminalLiabilityForAct": "民事主体因同一行为应当承担行政责任或者刑事责任（主体，行为）",
+   "bearCivilLiabilityForAct": "承担因该行为产生的民事责任（主体，行为）",
+   "propertyInsufficientForAllLiabilities": "民事主体的财产不足以同时支付民事、行政、刑事财产性责任（主体）",
+   "civilLiabilityPaidFirst": "其财产优先用于承担民事责任（主体，行为）"
+  }
+ }
+}

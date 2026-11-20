@@ -1,0 +1,223 @@
+{
+ "card:g3988": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二章　合同的订立"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同的一般条款；预约合同的认定及违约责任；格式条款的界定、提供方义务及未尽提示说明义务的后果",
+     "rules": [
+      "c470-modelg3988",
+      "c495-defg3988",
+      "c495-breachg3988",
+      "c496-defg3988",
+      "c496-fairg3988",
+      "c496-noticeg3988",
+      "c496-excludeg3988"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同内容由当事人约定，一般包括当事人姓名或名称和住所、标的、数量、质量、价款或报酬、履行期限地点和方式、违约责任、解决争议的方法；当事人可以参照示范文本订立合同",
+     "rules": [
+      "c470-modelg3988"
+     ]
+    },
+    {
+     "text": "约定在将来一定期限内订立合同的认购书、订购书、预订书等，构成预约合同",
+     "rules": [
+      "c495-defg3988"
+     ]
+    },
+    {
+     "text": "格式条款：为了重复使用而预先拟定、订立合同时未与对方协商的条款",
+     "rules": [
+      "c496-defg3988"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任",
+     "rules": [
+      "c495-breachg3988"
+     ]
+    },
+    {
+     "text": "提供格式条款的一方应当遵循公平原则确定权利义务，并以合理方式提示对方注意免除或减轻其责任等与对方有重大利害关系的条款，按对方要求予以说明",
+     "rules": [
+      "c496-fairg3988",
+      "c496-noticeg3988"
+     ]
+    },
+    {
+     "text": "提供方未履行提示或说明义务，致使对方没有注意或者理解该重大利害关系条款的，对方可以主张该条款不成为合同的内容",
+     "rules": [
+      "c496-excludeg3988"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "预约合同与本约合同：本约是履行预约而订立的合同；本约未订立即预约未履行",
+     "rules": []
+    },
+    {
+     "text": "第470条第1款所列条款为提示性的一般条款，并非合同成立的必备条款，未单独形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c470-modelg3988",
+    "srcs": [
+     "art470-2"
+    ],
+    "body": [
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeWithModelText(P,K)"
+     }
+    ],
+    "note": "当事人可以参照各类合同的示范文本订立合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c495-defg3988",
+    "srcs": [
+     "art495-1"
+    ],
+    "body": [
+     "agreesToConcludeContractWithinFuturePeriod(K)"
+    ],
+    "heads": [
+     "preliminaryContract(K)"
+    ],
+    "note": "当事人约定在将来一定期限内订立合同的认购书、订购书、预订书等，构成预约合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c495-breachg3988",
+    "srcs": [
+     "art495-2"
+    ],
+    "body": [
+     "preliminaryContract(K)",
+     "contractParty(A,K)",
+     "contractParty(B,K)",
+     "failsToConcludeContract(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "A",
+      "content": "claimBreachLiability(B,A,K)"
+     }
+    ],
+    "note": "当事人一方不履行预约合同约定的订立合同义务的，对方可以请求其承担预约合同的违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-defg3988",
+    "srcs": [
+     "art496-1"
+    ],
+    "body": [
+     "preparedInAdvanceForRepeatedUse(C)",
+     "notNegotiatedAtConclusion(C)"
+    ],
+    "heads": [
+     "formatClause(C)"
+    ],
+    "note": "格式条款是当事人为了重复使用而预先拟定，并在订立合同时未与对方协商的条款",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-fairg3988",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "formatClause(C)",
+     "providerOf(P,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "determineRightsAndObligationsPerFairnessPrinciple(P,C)"
+     }
+    ],
+    "note": "提供格式条款的一方应当遵循公平原则确定当事人之间的权利和义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-noticeg3988",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "formatClause(C)",
+     "providerOf(P,C)",
+     "termExemptsOrReducesLiabilityOrMajorInterest(C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "promptNoticeAndExplain(P,C)"
+     }
+    ],
+    "note": "提供方应以合理方式提示对方注意免除或者减轻其责任等与对方有重大利害关系的条款，并按对方要求予以说明",
+    "auth": "npc"
+   },
+   {
+    "key": "c496-excludeg3988",
+    "srcs": [
+     "art496-2"
+    ],
+    "body": [
+     "formatClause(C)",
+     "providerOf(P,C)",
+     "termExemptsOrReducesLiabilityOrMajorInterest(C)",
+     "failedToPromptOrExplain(P,C)",
+     "counterpartyDidNotNoticeOrUnderstand(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "assertTermNotPartOfContract(O,C)"
+     }
+    ],
+    "note": "提供方未履行提示或者说明义务，致使对方没有注意或者理解与其有重大利害关系的条款的，对方可以主张该条款不成为合同的内容",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "concludeWithModelText": "参照各类合同的示范文本订立合同（当事人，合同）",
+   "agreesToConcludeContractWithinFuturePeriod": "该认购书、订购书、预订书等约定当事人在将来一定期限内订立合同（协议）",
+   "preparedInAdvanceForRepeatedUse": "该条款是当事人为了重复使用而预先拟定的（条款）"
+  }
+ }
+}

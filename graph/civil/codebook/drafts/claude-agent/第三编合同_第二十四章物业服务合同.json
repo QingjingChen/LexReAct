@@ -1,0 +1,666 @@
+{
+ "card:g5795": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十四章　物业服务合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "物业服务合同的概念，物业服务人与业主的主要义务，合同的解除、续期与终止后的交接",
+     "rules": [
+      "c937-1",
+      "c937-2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "物业服务人在服务区域内为业主提供维修养护、环境卫生和秩序管理维护等服务，业主支付物业费；物业服务人包括物业服务企业和其他管理人",
+     "rules": [
+      "c937-1",
+      "c937-2"
+     ]
+    },
+    {
+     "text": "前期物业服务合同期限届满前，业主委员会或业主与新物业服务人订立的合同生效的，前期合同终止",
+     "rules": [
+      "c940"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "物业服务人已按约定和规定提供服务的，业主不得以未接受或无需接受服务为由拒付物业费",
+     "rules": [
+      "c944-refuse"
+     ]
+    },
+    {
+     "text": "解聘提前六十日书面通知，但合同对通知期限另有约定的除外；解聘致物业服务人损失的业主应赔偿，但不可归责于业主的除外",
+     "rules": [
+      "c946-notice",
+      "c946-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "部分专项服务委托第三人的，物业服务人就该部分向业主负责；不得将全部服务转委托或支解后分别转委托",
+     "rules": [
+      "c941-1",
+      "c941-2"
+     ]
+    },
+    {
+     "text": "物业服务人妥善维修养护管理共有部分、维护基本秩序、合理保护业主人身财产安全；对违反治安、环保、消防等法律法规的行为及时制止、报告并协助处理",
+     "rules": [
+      "c942-1",
+      "c942-2"
+     ]
+    },
+    {
+     "text": "物业服务人定期公开服务事项、收费、维修资金使用、共有部分经营收益等并向业主大会、业主委员会报告",
+     "rules": [
+      "c943"
+     ]
+    },
+    {
+     "text": "业主按约支付物业费；逾期不付的可催告，合理期限届满仍不付的可诉讼或仲裁；物业服务人不得以停水停电停热停气方式催费",
+     "rules": [
+      "c944-1",
+      "c944-2",
+      "c944-sue",
+      "c944-3"
+     ]
+    },
+    {
+     "text": "业主装修应事先告知、遵守合理注意事项并配合检查；转让、出租专有部分、设立居住权或依法改变共有部分用途的应及时告知",
+     "rules": [
+      "c945-1",
+      "c945-2"
+     ]
+    },
+    {
+     "text": "业主依法定程序共同决定解聘的，可以解除物业服务合同",
+     "rules": [
+      "c946-1"
+     ]
+    },
+    {
+     "text": "期限届满未续聘或另聘、物业服务人继续服务的，原合同继续有效但为不定期；不定期合同可随时解除，但应提前六十日书面通知",
+     "rules": [
+      "c948-1",
+      "c948-2"
+     ]
+    },
+    {
+     "text": "合同终止后原物业服务人应退出、交还用房设施资料、配合交接、如实告知；违反的不得请求终止后的物业费，造成损失应赔偿",
+     "rules": [
+      "c949-1",
+      "c949-2",
+      "c949-3"
+     ]
+    },
+    {
+     "text": "新物业服务人或自行管理的业主接管前，原物业服务人应继续处理物业服务事项，并可请求该期间的物业费",
+     "rules": [
+      "c950"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "业主的解聘权须经法定程序共同决定并有六十日通知期，不同于一般合同解除权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c937-1",
+    "srcs": [
+     "art937-1"
+    ],
+    "body": [
+     "providerServesOwnersForPropertyFee(K)"
+    ],
+    "heads": [
+     "propertyServiceContract(K)"
+    ],
+    "note": "物业服务人为业主提供维修养护、环境卫生和秩序管理维护等服务，业主支付物业费的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c937-2",
+    "srcs": [
+     "art937-2"
+    ],
+    "body": [
+     {
+      "or": [
+       "propertyServiceEnterprise(P)",
+       "otherPropertyManager(P)"
+      ]
+     }
+    ],
+    "heads": [
+     "propertyServiceProvider(P)"
+    ],
+    "note": "物业服务人包括物业服务企业和其他管理人",
+    "auth": "npc"
+   },
+   {
+    "key": "c940",
+    "srcs": [
+     "art940"
+    ],
+    "body": [
+     "preliminaryPropertyServiceContract(K)",
+     "beforeServiceTermExpiry(K)",
+     "newOwnersPropertyContractEffective(N,K)"
+    ],
+    "heads": [
+     "contractTerminated(K)"
+    ],
+    "note": "前期物业服务合同期限届满前，业主委员会或业主与新物业服务人订立的合同生效的，前期合同终止",
+    "auth": "npc"
+   },
+   {
+    "key": "c941-1",
+    "srcs": [
+     "art941-1"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "delegatesSpecialServiceToThirdParty(P,S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "answerableToOwnersForDelegatedService(P,S)"
+     }
+    ],
+    "note": "将部分专项服务事项委托给专业性服务组织或其他第三人的，应当就该部分向业主负责",
+    "auth": "npc"
+   },
+   {
+    "key": "c941-2",
+    "srcs": [
+     "art941-2"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "subdelegateAllPropertyServices(P,K)"
+     }
+    ],
+    "note": "不得将全部物业服务转委托给第三人，或支解后分别转委托给第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c942-1",
+    "srcs": [
+     "art942-1"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "maintainCommonPartsAndBasicOrder(P,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "protectOwnersSafetyReasonably(P,K)"
+     }
+    ],
+    "note": "按约定和物业使用性质妥善维修、养护、清洁、绿化和经营管理共有部分，维护基本秩序，采取合理措施保护业主人身、财产安全",
+    "auth": "npc"
+   },
+   {
+    "key": "c942-2",
+    "srcs": [
+     "art942-2"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "illegalActInServiceArea(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "stopReportAndAssistHandling(P,K)"
+     }
+    ],
+    "note": "对违反治安、环保、消防等法律法规的行为，应当及时采取合理措施制止、向主管部门报告并协助处理",
+    "auth": "npc"
+   },
+   {
+    "key": "c943",
+    "srcs": [
+     "art943"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "discloseAndReportServiceInfoPeriodically(P,K)"
+     }
+    ],
+    "note": "定期公开服务事项、负责人员、收费、维修资金使用、共有部分经营收益等，并向业主大会、业主委员会报告",
+    "auth": "npc"
+   },
+   {
+    "key": "c944-1",
+    "srcs": [
+     "art944-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "payPropertyFee(O,P,K)"
+     }
+    ],
+    "note": "业主应当按照约定向物业服务人支付物业费",
+    "auth": "npc"
+   },
+   {
+    "key": "c944-refuse",
+    "srcs": [
+     "art944-1"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)",
+     "servicesProvidedAsAgreed(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "refuseFeeForNonuseOfService(O,K)"
+     }
+    ],
+    "note": "物业服务人已按约定和规定提供服务的，业主不得以未接受或无需接受服务为由拒付物业费",
+    "auth": "npc"
+   },
+   {
+    "key": "c944-2",
+    "srcs": [
+     "art944-2"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)",
+     "propertyFeeOverdue(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "urgeFeePaymentWithinReasonablePeriod(P,O,K)"
+     }
+    ],
+    "note": "业主违反约定逾期不支付物业费的，物业服务人可以催告其在合理期限内支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c944-sue",
+    "srcs": [
+     "art944-2"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)",
+     "urgedFeePayment(P,O,K)",
+     "-paidFeeWithinReasonablePeriod(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "sueOrApplyForArbitration(P,O,K)"
+     }
+    ],
+    "note": "合理期限届满仍不支付的，物业服务人可以提起诉讼或者申请仲裁",
+    "auth": "npc"
+   },
+   {
+    "key": "c944-3",
+    "srcs": [
+     "art944-3"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "cutUtilitiesToCollectFee(P,O,K)"
+     }
+    ],
+    "note": "物业服务人不得采取停止供电、供水、供热、供燃气等方式催交物业费",
+    "auth": "npc"
+   },
+   {
+    "key": "c945-1",
+    "srcs": [
+     "art945-1"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)",
+     "ownerRenovatesHouse(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "notifyInAdvanceAndCooperateOnRenovation(O,P,K)"
+     }
+    ],
+    "note": "业主装饰装修房屋的，应当事先告知物业服务人，遵守合理注意事项，并配合必要的现场检查",
+    "auth": "npc"
+   },
+   {
+    "key": "c945-2",
+    "srcs": [
+     "art945-2"
+    ],
+    "body": [
+     "propertyOwnerUnder(O,K)",
+     "propertyServiceProviderOf(P,K)",
+     {
+      "or": [
+       "transfersOrLeasesExclusivePart(O,K)",
+       "createsResidenceRightOnUnit(O,K)",
+       "changesCommonPartUseLawfully(O,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "informProviderPromptly(O,P,K)"
+     }
+    ],
+    "note": "业主转让、出租专有部分、设立居住权或依法改变共有部分用途的，应当及时告知物业服务人",
+    "auth": "npc"
+   },
+   {
+    "key": "c946-1",
+    "srcs": [
+     "art946-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "ownersJointlyDecideDismissal(K)"
+    ],
+    "heads": [
+     "terminationRight(owners,K)"
+    ],
+    "note": "业主依照法定程序共同决定解聘物业服务人的，可以解除物业服务合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c946-notice",
+    "srcs": [
+     "art946-1"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "ownersJointlyDecideDismissal(K)",
+     "~noticePeriodOtherwiseAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "owners",
+      "counterparty": "P",
+      "content": "notifyDismissalInWriting60DaysAhead(P,K)"
+     }
+    ],
+    "note": "决定解聘的，应当提前六十日书面通知物业服务人，但是合同对通知期限另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c946-2",
+    "srcs": [
+     "art946-2"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "terminatedByOwnersDismissal(K)",
+     "providerLossFromDismissal(P,K)",
+     "~notAttributableToOwners(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "owners",
+      "counterparty": "P",
+      "content": "payCompensation(owners,P)"
+     }
+    ],
+    "note": "依解聘解除合同造成物业服务人损失的，除不可归责于业主的事由外，业主应当赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c948-1",
+    "srcs": [
+     "art948-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "serviceTermExpired(K)",
+     "-ownersDecidedRenewalOrNewProvider(K)",
+     "providerContinuesService(P,K)"
+    ],
+    "heads": [
+     "propertyContractContinuesIndefinitely(K)"
+    ],
+    "note": "期限届满后业主未依法决定续聘或另聘、物业服务人继续服务的，原合同继续有效，但服务期限为不定期",
+    "auth": "npc"
+   },
+   {
+    "key": "c948-2",
+    "srcs": [
+     "art948-2"
+    ],
+    "body": [
+     "propertyContractContinuesIndefinitely(K)",
+     "contractParty(X,K)"
+    ],
+    "heads": [
+     "terminationRight(X,K)",
+     {
+      "type": "OBL",
+      "bearer": "X",
+      "counterparty": null,
+      "content": "notifyOtherInWriting60DaysAhead(X,K)"
+     }
+    ],
+    "note": "当事人可以随时解除不定期物业服务合同，但应当提前六十日书面通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c949-1",
+    "srcs": [
+     "art949-1"
+    ],
+    "body": [
+     "propertyServiceContract(K)",
+     "contractTerminated(K)",
+     "propertyServiceProviderOf(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "withdrawHandOverAndCooperate(P,K)"
+     }
+    ],
+    "note": "合同终止的，原物业服务人应在约定或合理期限内退出，交还用房、设施、资料，配合交接，如实告知物业使用和管理状况",
+    "auth": "npc"
+   },
+   {
+    "key": "c949-2",
+    "srcs": [
+     "art949-2"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "contractTerminated(K)",
+     "violatesHandoverDuty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "claimPostTerminationPropertyFee(P,K)"
+     }
+    ],
+    "note": "违反退出交接义务的，不得请求业主支付合同终止后的物业费",
+    "auth": "npc"
+   },
+   {
+    "key": "c949-3",
+    "srcs": [
+     "art949-2"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "violatesHandoverDuty(P,K)",
+     "ownersLossFromHandoverBreach(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "payCompensation(P,owners)"
+     }
+    ],
+    "note": "造成业主损失的，应当赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c950",
+    "srcs": [
+     "art950"
+    ],
+    "body": [
+     "propertyServiceProviderOf(P,K)",
+     "contractTerminated(K)",
+     "-takenOverByNewManager(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "continueHandlingServiceMatters(P,K)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "owners",
+      "content": "claimInterimPropertyFee(P,K)"
+     }
+    ],
+    "note": "终止后新物业服务人或自行管理的业主接管前，原物业服务人应继续处理物业服务事项，并可请求支付该期间的物业费",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "providerServesOwnersForPropertyFee": "物业服务人在物业服务区域内为业主提供建筑物及附属设施维修养护、环境卫生和秩序管理维护等服务，业主支付物业费（合同）",
+   "otherPropertyManager": "是物业服务企业以外的其他管理人（主体）",
+   "newOwnersPropertyContractEffective": "业主委员会或业主与新物业服务人订立的物业服务合同已生效（新合同，前期合同）",
+   "propertyServiceProviderOf": "是该物业服务合同的物业服务人（物业服务人，合同）",
+   "propertyOwnerUnder": "是该物业服务合同服务区域内的业主（业主，合同）",
+   "delegatesSpecialServiceToThirdParty": "将部分专项服务事项委托给专业性服务组织或其他第三人（物业服务人，专项事项，合同）",
+   "answerableToOwnersForDelegatedService": "就该部分专项服务事项向业主负责（物业服务人，专项事项）",
+   "subdelegateAllPropertyServices": "将全部物业服务转委托给第三人或支解后分别转委托给第三人（物业服务人，合同）",
+   "maintainCommonPartsAndBasicOrder": "按约定和物业使用性质妥善维修、养护、清洁、绿化和经营管理业主共有部分并维护基本秩序（物业服务人，合同）",
+   "protectOwnersSafetyReasonably": "采取合理措施保护业主的人身、财产安全（物业服务人，合同）",
+   "illegalActInServiceArea": "物业服务区域内发生违反治安、环保、消防等法律法规的行为（合同）",
+   "stopReportAndAssistHandling": "及时采取合理措施制止、向有关行政主管部门报告并协助处理（物业服务人，合同）",
+   "discloseAndReportServiceInfoPeriodically": "定期以合理方式向业主公开服务事项、收费、维修资金使用、共有部分经营收益等情况并向业主大会、业主委员会报告（物业服务人，合同）",
+   "payPropertyFee": "按照约定支付物业费（业主，物业服务人，合同）",
+   "servicesProvidedAsAgreed": "物业服务人已按照约定和有关规定提供服务（物业服务人，合同）",
+   "refuseFeeForNonuseOfService": "以未接受或无需接受相关物业服务为由拒绝支付物业费（业主，合同）",
+   "propertyFeeOverdue": "业主违反约定逾期不支付物业费（业主，合同）",
+   "urgeFeePaymentWithinReasonablePeriod": "催告业主在合理期限内支付物业费（物业服务人，业主，合同）",
+   "urgedFeePayment": "已催告业主在合理期限内支付（物业服务人，业主，合同）",
+   "paidFeeWithinReasonablePeriod": "业主已在合理期限内支付物业费（业主，合同）",
+   "sueOrApplyForArbitration": "提起诉讼或者申请仲裁（物业服务人，业主，合同）",
+   "cutUtilitiesToCollectFee": "以停止供电、供水、供热、供燃气等方式催交物业费（物业服务人，业主，合同）",
+   "ownerRenovatesHouse": "业主装饰装修房屋（业主，合同）",
+   "notifyInAdvanceAndCooperateOnRenovation": "事先告知物业服务人、遵守其提示的合理注意事项并配合必要的现场检查（业主，物业服务人，合同）",
+   "transfersOrLeasesExclusivePart": "转让、出租物业专有部分（业主，合同）",
+   "createsResidenceRightOnUnit": "在物业专有部分上设立居住权（业主，合同）",
+   "changesCommonPartUseLawfully": "依法改变共有部分用途（业主，合同）",
+   "informProviderPromptly": "及时将相关情况告知物业服务人（业主，物业服务人，合同）",
+   "ownersJointlyDecideDismissal": "业主依照法定程序共同决定解聘物业服务人（合同）",
+   "notifyDismissalInWriting60DaysAhead": "提前六十日书面通知物业服务人解聘（物业服务人，合同）",
+   "terminatedByOwnersDismissal": "物业服务合同因业主依法解聘而解除（合同）",
+   "providerLossFromDismissal": "解除合同造成物业服务人损失（物业服务人，合同）",
+   "notAttributableToOwners": "损失系不可归责于业主的事由所致（合同）",
+   "serviceTermExpired": "物业服务期限届满（合同）",
+   "ownersDecidedRenewalOrNewProvider": "业主已依法作出续聘或者另聘物业服务人的决定（合同）",
+   "providerContinuesService": "物业服务人继续提供物业服务（物业服务人，合同）",
+   "propertyContractContinuesIndefinitely": "原物业服务合同继续有效，服务期限为不定期（合同）",
+   "notifyOtherInWriting60DaysAhead": "提前六十日书面通知对方（当事人，合同）",
+   "withdrawHandOverAndCooperate": "在约定或合理期限内退出服务区域，交还物业服务用房、设施和资料，配合交接并如实告知物业使用和管理状况（原物业服务人，合同）",
+   "violatesHandoverDuty": "原物业服务人违反第949条第1款的退出、交还、交接义务（物业服务人，合同）",
+   "claimPostTerminationPropertyFee": "请求业主支付物业服务合同终止后的物业费（物业服务人，合同）",
+   "ownersLossFromHandoverBreach": "原物业服务人违反交接义务造成业主损失（合同）",
+   "takenOverByNewManager": "新物业服务人或决定自行管理的业主已接管（合同）",
+   "continueHandlingServiceMatters": "继续处理物业服务事项（原物业服务人，合同）",
+   "claimInterimPropertyFee": "请求业主支付终止后至接管前期间的物业费（原物业服务人，合同）"
+  }
+ }
+}

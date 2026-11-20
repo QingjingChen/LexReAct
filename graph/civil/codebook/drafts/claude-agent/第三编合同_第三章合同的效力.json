@@ -1,0 +1,388 @@
+{
+ "card:g4138": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第三章　合同的效力"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同何时生效；须经批准的合同中报批条款的独立效力；无权代理合同的默示追认；法定代表人、负责人越权订立合同的效力",
+     "rules": [
+      "c502-effg4138",
+      "c502-noapprovalg4138",
+      "c502-clauseg4138",
+      "c502-liabg4138",
+      "c502-changeg4138",
+      "c503-ratifyg4138",
+      "c504-validg4138"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "依法成立的合同，自成立时生效",
+     "rules": [
+      "c502-effg4138"
+     ]
+    },
+    {
+     "text": "无权代理人以被代理人名义订立合同，被代理人已开始履行合同义务或者接受相对人履行",
+     "rules": [
+      "c503-ratifyg4138"
+     ]
+    },
+    {
+     "text": "法定代表人或非法人组织负责人超越权限订立合同，相对人不知道且不应当知道其超越权限",
+     "rules": [
+      "c504-validg4138"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律另有规定或者当事人另有约定的除外；法律、行政法规规定应办理批准等手续而未办理、影响合同生效的，合同不生效",
+     "rules": [
+      "c502-effg4138",
+      "c502-noapprovalg4138"
+     ]
+    },
+    {
+     "text": "相对人知道或者应当知道越权的，代表行为不因第504条有效",
+     "rules": [
+      "c504-validg4138"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "未办理批准等手续影响合同生效的，不影响合同中履行报批等义务条款以及相关条款的效力；应当办理申请批准手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+     "rules": [
+      "c502-clauseg4138",
+      "c502-liabg4138"
+     ]
+    },
+    {
+     "text": "合同的变更、转让、解除等依法应当办理批准等手续的，适用上述报批规则",
+     "rules": [
+      "c502-changeg4138"
+     ]
+    },
+    {
+     "text": "被代理人开始履行或者接受履行的，视为对合同的追认",
+     "rules": [
+      "c503-ratifyg4138"
+     ]
+    },
+    {
+     "text": "越权代表行为有效，订立的合同对法人或者非法人组织发生效力",
+     "rules": [
+      "c504-validg4138"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "未办理批准手续影响生效的特别规定优先于成立即生效的一般规则",
+     "rules": [
+      "c502-noapprovalg4138"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：合同不生效、无效、被撤销或者终止，不影响合同中有关解决争议方法的条款的效力（第507条，非本行挂载）",
+     "rules": []
+    },
+    {
+     "text": "合同成立与合同生效的区分；总则编民事法律行为效力规则同样适用于合同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c502-effg4138",
+    "srcs": [
+     "art502-1"
+    ],
+    "body": [
+     "lawfullyFormed(K)",
+     "~lawProvidesOtherwiseOnTakingEffect(K)",
+     "~partiesAgreedOtherwiseOnEffect(K)"
+    ],
+    "heads": [
+     "contractEffective(K)"
+    ],
+    "note": "依法成立的合同，自成立时生效，但是法律另有规定或者当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-noapprovalg4138",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "lawfullyFormed(K)",
+     "approvalRequiredByLawsAndRegulations(K)",
+     "approvalFailureAffectsEffect(K)"
+    ],
+    "heads": [
+     "-contractEffective(K)"
+    ],
+    "note": "依照法律、行政法规应当办理批准等手续的，依照其规定；未办理且影响合同生效的，合同不生效",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-clauseg4138",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "approvalFailureAffectsEffect(K)",
+     "approvalClauseOf(C,K)"
+    ],
+    "heads": [
+     "valid(C)"
+    ],
+    "note": "未办理批准等手续影响合同生效的，不影响合同中履行报批等义务条款以及相关条款的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-liabg4138",
+    "srcs": [
+     "art502-2"
+    ],
+    "body": [
+     "approvalObligor(P,K)",
+     "failsToPerformApprovalObligation(P,K)",
+     "contractParty(O,K)",
+     "~approvalObligor(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "P",
+      "content": "claimLiabilityForApprovalBreach(O,P)"
+     }
+    ],
+    "note": "应当办理申请批准等手续的当事人未履行义务的，对方可以请求其承担违反该义务的责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c502-changeg4138",
+    "srcs": [
+     "art502-3"
+    ],
+    "body": [
+     "contractChange(S)",
+     "approvalRequiredByLawsAndRegulations(S)"
+    ],
+    "heads": [
+     "approvalRulesApply(S)"
+    ],
+    "note": "合同的变更、转让、解除等情形依法应当办理批准等手续的，适用前款规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c503-ratifyg4138",
+    "srcs": [
+     "art503"
+    ],
+    "body": [
+     "noAuthority(A,P)",
+     "inPrincipalName(A,P,K)",
+     "contractParty(T,K)",
+     {
+      "or": [
+       "principalBeganPerformance(P,K)",
+       "principalAcceptedCounterpartyPerformance(P,T,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "deemedRatifiedContract(P,K)"
+    ],
+    "note": "无权代理人以被代理人的名义订立合同，被代理人已经开始履行合同义务或者接受相对人履行的，视为对合同的追认",
+    "auth": "npc"
+   },
+   {
+    "key": "c504-validg4138",
+    "srcs": [
+     "art504"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalRepresentativeOf(R,O)",
+       "headOfUnincorporatedOrg(R,O)"
+      ]
+     },
+     "actInOrgName(R,O,K)",
+     "exceedsRepresentationAuthority(R,K)",
+     "contractParty(T,K)",
+     "~counterpartyKnowsOrShouldKnowExcess(T,R,K)"
+    ],
+    "heads": [
+     "valid(K)",
+     "bindsOrg(K,O)"
+    ],
+    "note": "法定代表人或者非法人组织负责人超越权限订立的合同，除相对人知道或者应当知道其超越权限外，代表行为有效，合同对法人或者非法人组织发生效力",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c502-noapprovalg4138",
+    "c502-effg4138",
+    "法律、行政法规规定须经批准而未批准影响生效的，依照其规定，排除成立即生效的一般规则"
+   ]
+  ],
+  "predicates": {
+   "principalBeganPerformance": "被代理人已经开始履行该合同义务（被代理人，合同）",
+   "principalAcceptedCounterpartyPerformance": "被代理人已接受相对人的履行（被代理人，相对人，合同）",
+   "deemedRatifiedContract": "视为被代理人对无权代理订立的合同的追认（被代理人，合同）",
+   "headOfUnincorporatedOrg": "是非法人组织的负责人（负责人，非法人组织）",
+   "exceedsRepresentationAuthority": "法定代表人或负责人超越权限订立该合同（代表人，合同）",
+   "counterpartyKnowsOrShouldKnowExcess": "相对人知道或者应当知道代表人超越权限（相对人，代表人，合同）"
+  }
+ },
+ "card:g4149": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第三章　合同的效力"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "法定代表人、负责人越权订立合同的效力；超越经营范围订立合同的效力",
+     "rules": [
+      "c504-validg4149",
+      "c505-lawg4149",
+      "c505-nottg4149"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "法人的法定代表人或者非法人组织的负责人超越权限订立合同，相对人不知道且不应当知道其超越权限",
+     "rules": [
+      "c504-validg4149"
+     ]
+    },
+    {
+     "text": "当事人超越经营范围订立合同",
+     "rules": [
+      "c505-lawg4149",
+      "c505-nottg4149"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "相对人知道或者应当知道代表人超越权限的，不适用越权代表有效的规则",
+     "rules": [
+      "c504-validg4149"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "越权代表行为有效，合同对法人或者非法人组织发生效力",
+     "rules": [
+      "c504-validg4149"
+     ]
+    },
+    {
+     "text": "超越经营范围订立的合同，其效力依照总则编第六章第三节（民事法律行为的效力）和合同编有关规定确定，不得仅以超越经营范围确认合同无效",
+     "rules": [
+      "c505-lawg4149",
+      "c505-nottg4149"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "越权代表（第504条，以相对人善意为要件）与无权代理（第503条，被代理人开始履行或接受履行视为追认）不同；超越经营范围（第505条）是行为能力范围问题而非代表权限问题",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c504-validg4149",
+    "srcs": [
+     "art504"
+    ],
+    "body": [
+     {
+      "or": [
+       "legalRepresentativeOf(R,O)",
+       "headOfUnincorporatedOrg(R,O)"
+      ]
+     },
+     "actInOrgName(R,O,K)",
+     "exceedsRepresentationAuthority(R,K)",
+     "contractParty(T,K)",
+     "~counterpartyKnowsOrShouldKnowExcess(T,R,K)"
+    ],
+    "heads": [
+     "valid(K)",
+     "bindsOrg(K,O)"
+    ],
+    "note": "法定代表人或者非法人组织负责人超越权限订立的合同，除相对人知道或者应当知道其超越权限外，代表行为有效，合同对法人或者非法人组织发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c505-lawg4149",
+    "srcs": [
+     "art505"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "exceedsBusinessScope(P,K)"
+    ],
+    "heads": [
+     "validityByApplicableLaw(K)"
+    ],
+    "note": "当事人超越经营范围订立的合同的效力，依照第一编第六章第三节和合同编的有关规定确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c505-nottg4149",
+    "srcs": [
+     "art505"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "exceedsBusinessScope(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "declareVoidSolelyForExceedingScope(K)"
+     }
+    ],
+    "note": "不得仅以超越经营范围确认合同无效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "exceedsBusinessScope": "当事人超越其经营范围订立该合同（当事人，合同）",
+   "declareVoidSolelyForExceedingScope": "仅以超越经营范围为由确认合同无效（合同）"
+  }
+ }
+}

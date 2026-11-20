@@ -1,0 +1,546 @@
+{
+ "card:g5444": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十七章　承揽合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "承揽合同的概念；承揽人亲自完成主要工作、交付成果、保管等义务；定作人的协助、验收、付酬义务；留置权、任意解除权和违约解除权",
+     "rules": [
+      "c770-defg5444",
+      "c772-personalg5444",
+      "c772-respg5444",
+      "c772-termg5444",
+      "c778-assistg5444",
+      "c778-demandg5444",
+      "c778-termg5444",
+      "c780-deliverg5444",
+      "c780-acceptg5444",
+      "c781-remedyg5444",
+      "c782-agreedg5444",
+      "c782-defaultg5444",
+      "c782-partialg5444",
+      "c783-lieng5444",
+      "c784-keepg5444",
+      "c784-liabg5444",
+      "c787-termg5444",
+      "c787-compg5444"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "承揽合同是承揽人按照定作人的要求完成工作、交付工作成果，定作人支付报酬的合同；包括加工、定作、修理、复制、测试、检验等工作",
+     "rules": [
+      "c770-defg5444"
+     ]
+    },
+    {
+     "text": "承揽合同一般包括标的、数量、质量、报酬、承揽方式、材料提供、履行期限、验收标准和方法等条款（提示性条款，未单独形式化）",
+     "rules": []
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "当事人另有约定的，承揽人可不以自己的设备、技术和劳力完成主要工作",
+     "rules": [
+      "c772-personalg5444"
+     ]
+    },
+    {
+     "text": "当事人另有约定的，承揽人不享有留置权或拒绝交付的权利",
+     "rules": [
+      "c783-lieng5444"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "承揽人应当以自己的设备、技术和劳力完成主要工作；将主要工作交由第三人完成的，应就第三人完成的工作成果向定作人负责，未经定作人同意的，定作人可以解除合同",
+     "rules": [
+      "c772-personalg5444",
+      "c772-respg5444",
+      "c772-termg5444"
+     ]
+    },
+    {
+     "text": "承揽工作需要定作人协助的，定作人有协助义务；不协助致使工作不能完成的，承揽人可以催告并顺延履行期限，逾期仍不履行的可以解除合同",
+     "rules": [
+      "c778-assistg5444",
+      "c778-demandg5444",
+      "c778-termg5444"
+     ]
+    },
+    {
+     "text": "承揽人完成工作的，应交付工作成果并提交必要的技术资料和质量证明；定作人应当验收",
+     "rules": [
+      "c780-deliverg5444",
+      "c780-acceptg5444"
+     ]
+    },
+    {
+     "text": "工作成果不符合质量要求的，定作人可以合理选择请求修理、重作、减少报酬、赔偿损失等违约责任",
+     "rules": [
+      "c781-remedyg5444"
+     ]
+    },
+    {
+     "text": "定作人应按约定期限支付报酬；没有约定或不明确且依第510条仍不能确定的，在交付工作成果时支付，部分交付的相应支付",
+     "rules": [
+      "c782-agreedg5444",
+      "c782-defaultg5444",
+      "c782-partialg5444"
+     ]
+    },
+    {
+     "text": "定作人未支付报酬或材料费等价款的，承揽人对完成的工作成果享有留置权或者有权拒绝交付",
+     "rules": [
+      "c783-lieng5444"
+     ]
+    },
+    {
+     "text": "承揽人应妥善保管定作人提供的材料和完成的工作成果，保管不善造成毁损、灭失的应当赔偿",
+     "rules": [
+      "c784-keepg5444",
+      "c784-liabg5444"
+     ]
+    },
+    {
+     "text": "定作人在承揽人完成工作前可以随时解除合同，造成承揽人损失的应当赔偿",
+     "rules": [
+      "c787-termg5444",
+      "c787-compg5444"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "承揽重在交付工作成果，区别于以劳务过程为目的的雇佣、侧重处理事务的委托和以现存物为标的的买卖；笔记另列承揽人保密、接受监督检验、共同承揽人连带责任等义务（第785、779、786条，非本行挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c770-defg5444",
+    "srcs": [
+     "art770"
+    ],
+    "body": [
+     "completesWorkPerRequirement(C,O,K)",
+     "resultDeliveredForRemuneration(C,O,K)"
+    ],
+    "heads": [
+     "workContract(K)"
+    ],
+    "note": "承揽合同是承揽人按照定作人的要求完成工作，交付工作成果，定作人支付报酬的合同；包括加工、定作、修理、复制、测试、检验等工作",
+    "auth": "npc"
+   },
+   {
+    "key": "c772-personalg5444",
+    "srcs": [
+     "art772-1"
+    ],
+    "body": [
+     "workContract(K)",
+     "contractorOfWork(C,K)",
+     "~agreedOtherwiseOnMainWork(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": null,
+      "content": "completeMainWorkPersonally(C,K)"
+     }
+    ],
+    "note": "承揽人应当以自己的设备、技术和劳力，完成主要工作，但是当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c772-respg5444",
+    "srcs": [
+     "art772-2"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "entrustsMainWorkToThirdParty(C,T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "beResponsibleForThirdPartyWorkResult(C,O,K)"
+     }
+    ],
+    "note": "承揽人将其承揽的主要工作交由第三人完成的，应当就该第三人完成的工作成果向定作人负责",
+    "auth": "npc"
+   },
+   {
+    "key": "c772-termg5444",
+    "srcs": [
+     "art772-2"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "entrustsMainWorkToThirdParty(C,T,K)",
+     "~consentedByClient(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "terminate(O,K)"
+     }
+    ],
+    "note": "未经定作人同意将主要工作交由第三人完成的，定作人也可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c778-assistg5444",
+    "srcs": [
+     "art778"
+    ],
+    "body": [
+     "clientOfWork(O,K)",
+     "workNeedsClientAssistance(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": null,
+      "content": "assist(O,K)"
+     }
+    ],
+    "note": "承揽工作需要定作人协助的，定作人有协助的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c778-demandg5444",
+    "srcs": [
+     "art778"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "workNeedsClientAssistance(K)",
+     "clientFailedAssistanceWorkIncomplete(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "demandAssistanceWithinReasonablePeriod(C,O,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "extendPerformancePeriod(C,K)"
+     }
+    ],
+    "note": "定作人不履行协助义务致使承揽工作不能完成的，承揽人可以催告定作人在合理期限内履行义务，并可以顺延履行期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c778-termg5444",
+    "srcs": [
+     "art778"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "clientFailedAssistanceWorkIncomplete(O,K)",
+     "assistanceDemanded(C,O,K)",
+     "assistanceNotPerformedByDeadline(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "terminate(C,K)"
+     }
+    ],
+    "note": "经催告，定作人逾期不履行协助义务的，承揽人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c780-deliverg5444",
+    "srcs": [
+     "art780"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "workCompleted(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "deliverResultWithTechDocsAndQualityProof(C,O,K)"
+     }
+    ],
+    "note": "承揽人完成工作的，应当向定作人交付工作成果，并提交必要的技术资料和有关质量证明",
+    "auth": "npc"
+   },
+   {
+    "key": "c780-acceptg5444",
+    "srcs": [
+     "art780"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "deliversWorkResult(C,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "inspectAndAcceptWorkResult(O,K)"
+     }
+    ],
+    "note": "定作人应当验收该工作成果",
+    "auth": "npc"
+   },
+   {
+    "key": "c781-remedyg5444",
+    "srcs": [
+     "art781"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "deliversWorkResult(C,O,K)",
+     "workResultBelowQuality(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "chooseRepairRemakeReduceOrDamages(O,C,K)"
+     }
+    ],
+    "note": "承揽人交付的工作成果不符合质量要求的，定作人可以合理选择请求承揽人承担修理、重作、减少报酬、赔偿损失等违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c782-agreedg5444",
+    "srcs": [
+     "art782"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "~remunerationTimeIndeterminable(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "payRemunerationWithinAgreedPeriod(O,C,K)"
+     }
+    ],
+    "note": "定作人应当按照约定的期限支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c782-defaultg5444",
+    "srcs": [
+     "art782"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "remunerationTimeIndeterminable(K)",
+     "deliversWorkResult(C,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "payRemunerationOnDelivery(O,C,K)"
+     }
+    ],
+    "note": "对支付报酬的期限没有约定或者约定不明确，依据第510条仍不能确定的，定作人应当在承揽人交付工作成果时支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c782-partialg5444",
+    "srcs": [
+     "art782"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "remunerationTimeIndeterminable(K)",
+     "workResultPartlyDelivered(C,O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "payCorrespondingRemunerationForPart(O,C,K)"
+     }
+    ],
+    "note": "工作成果部分交付的，定作人应当相应支付",
+    "auth": "npc"
+   },
+   {
+    "key": "c783-lieng5444",
+    "srcs": [
+     "art783"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "clientUnpaidRemunerationOrMaterialCost(O,K)",
+     "~otherwiseAgreedOnWorkResultLien(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "retainLienOrRefuseDeliveryOfWorkResult(C,O,K)"
+     }
+    ],
+    "note": "定作人未向承揽人支付报酬或者材料费等价款的，承揽人对完成的工作成果享有留置权或者有权拒绝交付，但是当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c784-keepg5444",
+    "srcs": [
+     "art784"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "safekeepClientMaterialsAndWorkResult(C,O,K)"
+     }
+    ],
+    "note": "承揽人应当妥善保管定作人提供的材料以及完成的工作成果",
+    "auth": "npc"
+   },
+   {
+    "key": "c784-liabg5444",
+    "srcs": [
+     "art784"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "workItemsDamagedByPoorCustody(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "compensateWorkCustodyLoss(C,O,K)"
+     }
+    ],
+    "note": "因保管不善造成材料或工作成果毁损、灭失的，承揽人应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c787-termg5444",
+    "srcs": [
+     "art787"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "duringWorkPeriod(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "terminate(O,K)"
+     }
+    ],
+    "note": "定作人在承揽人完成工作前可以随时解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c787-compg5444",
+    "srcs": [
+     "art787"
+    ],
+    "body": [
+     "contractorOfWork(C,K)",
+     "clientOfWork(O,K)",
+     "clientTerminatedBeforeCompletion(O,K)",
+     "causesLossToContractor(O,C)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "compensateContractorTerminationLoss(O,C,K)"
+     }
+    ],
+    "note": "定作人在完成工作前解除合同，造成承揽人损失的，应当赔偿损失",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "resultDeliveredForRemuneration": "承揽人交付工作成果、定作人支付报酬（承揽人，定作人，合同）",
+   "workNeedsClientAssistance": "承揽工作需要定作人协助（合同）",
+   "clientFailedAssistanceWorkIncomplete": "定作人不履行协助义务致使承揽工作不能完成（定作人，合同）",
+   "demandAssistanceWithinReasonablePeriod": "催告定作人在合理期限内履行协助义务（承揽人，定作人，合同）",
+   "extendPerformancePeriod": "顺延履行期限（承揽人，合同）",
+   "assistanceDemanded": "承揽人已催告定作人在合理期限内履行协助义务（承揽人，定作人，合同）",
+   "assistanceNotPerformedByDeadline": "定作人逾期仍不履行协助义务（定作人，合同）",
+   "workCompleted": "承揽人已完成工作（承揽人，合同）",
+   "deliverResultWithTechDocsAndQualityProof": "交付工作成果并提交必要的技术资料和有关质量证明（承揽人，定作人，合同）",
+   "inspectAndAcceptWorkResult": "验收工作成果（定作人，合同）",
+   "workResultBelowQuality": "承揽人交付的工作成果不符合质量要求（合同）",
+   "chooseRepairRemakeReduceOrDamages": "合理选择请求承揽人承担修理、重作、减少报酬、赔偿损失等违约责任（定作人，承揽人，合同）",
+   "remunerationTimeIndeterminable": "对支付报酬的期限没有约定或者约定不明确，依据第510条仍不能确定（合同）",
+   "payRemunerationWithinAgreedPeriod": "按照约定的期限支付报酬（定作人，承揽人，合同）",
+   "payRemunerationOnDelivery": "在承揽人交付工作成果时支付报酬（定作人，承揽人，合同）",
+   "workResultPartlyDelivered": "工作成果部分交付（承揽人，定作人，合同）",
+   "payCorrespondingRemunerationForPart": "就部分交付的工作成果相应支付报酬（定作人，承揽人，合同）",
+   "clientUnpaidRemunerationOrMaterialCost": "定作人未向承揽人支付报酬或者材料费等价款（定作人，合同）",
+   "otherwiseAgreedOnWorkResultLien": "当事人对承揽人的留置或拒绝交付另有约定（合同）",
+   "retainLienOrRefuseDeliveryOfWorkResult": "对完成的工作成果行使留置权或者拒绝交付（承揽人，定作人，合同）",
+   "safekeepClientMaterialsAndWorkResult": "妥善保管定作人提供的材料以及完成的工作成果（承揽人，定作人，合同）",
+   "workItemsDamagedByPoorCustody": "因承揽人保管不善造成材料或工作成果毁损、灭失（承揽人，合同）",
+   "compensateWorkCustodyLoss": "赔偿因保管不善造成的毁损、灭失损失（承揽人，定作人，合同）",
+   "clientTerminatedBeforeCompletion": "定作人在承揽人完成工作前解除了合同（定作人，合同）",
+   "compensateContractorTerminationLoss": "赔偿因解除合同给承揽人造成的损失（定作人，承揽人，合同）"
+  }
+ }
+}

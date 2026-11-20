@@ -1,0 +1,103 @@
+{
+ "art:346": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第二编　物权",
+   "第十二章　建设用地使用权"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "设立建设用地使用权应遵守的要求与限制",
+     "rules": [
+      "c346-eco",
+      "c346-noharm"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "设立建设用地使用权，应当符合节约资源、保护生态环境的要求，遵守法律、行政法规关于土地用途的规定",
+     "rules": [
+      "c346-eco"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "设立建设用地使用权不得损害已经设立的用益物权",
+     "rules": [
+      "c346-noharm"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条第一句含绿色原则的宣示内容；“不得损害已设立的用益物权”体现在先设立的用益物权优先",
+     "rules": [
+      "c346-noharm"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c346-eco",
+    "srcs": [
+     "art346"
+    ],
+    "body": [
+     "establishingConstructionLandUseRight(P,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "conformToResourceSavingAndEcoRequirements(P,L)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "complyWithStatutoryLandUsePurpose(P,L)"
+     }
+    ],
+    "note": "设立建设用地使用权，应当符合节约资源、保护生态环境的要求，遵守法律、行政法规关于土地用途的规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c346-noharm",
+    "srcs": [
+     "art346"
+    ],
+    "body": [
+     "establishingConstructionLandUseRight(P,L)",
+     "previouslyEstablishedUsufructOn(U,L)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "impairExistingUsufruct(P,U)"
+     }
+    ],
+    "note": "设立建设用地使用权，不得损害已经设立的用益物权",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "conformToResourceSavingAndEcoRequirements": "符合节约资源、保护生态环境的要求（设立人/受让人，土地）",
+   "complyWithStatutoryLandUsePurpose": "遵守法律、行政法规关于土地用途的规定（设立人/受让人，土地）",
+   "previouslyEstablishedUsufructOn": "该土地上已经设立的用益物权（用益物权，土地）",
+   "impairExistingUsufruct": "损害已经设立的用益物权（行为人，用益物权）"
+  }
+ }
+}

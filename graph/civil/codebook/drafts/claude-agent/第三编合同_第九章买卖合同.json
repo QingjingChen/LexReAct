@@ -1,0 +1,1172 @@
+{
+ "card:g4882": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第九章　买卖合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同中出卖人的主给付义务：交付标的物（或提取单证）并转移所有权；未取得处分权致所有权不能转移的后果",
+     "rules": [
+      "c598-main",
+      "c597-nopower"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "出卖人应当交付标的物或者交付提取标的物的单证，并转移标的物所有权",
+     "rules": [
+      "c598-main"
+     ]
+    },
+    {
+     "text": "出卖人应当按照约定或者交易习惯交付提取标的物单证以外的有关单证和资料",
+     "rules": [
+      "c599-docs"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律、行政法规禁止或者限制转让的标的物，依照其规定",
+     "rules": [
+      "c597-restricted"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "因出卖人未取得处分权致使所有权不能转移的，买受人可以解除合同并请求出卖人承担违约责任",
+     "rules": [
+      "c597-nopower"
+     ]
+    },
+    {
+     "text": "出卖人未按约定交付有关单证和资料的，不影响标的物毁损、灭失风险的转移",
+     "rules": [
+      "c609-risk"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "所有权转移依物权编处理：不动产以登记、动产以交付为准（笔记归纳，相关条文未挂载于本行，不另形式化）",
+     "rules": []
+    },
+    {
+     "text": "无处分权订立的买卖合同并不因此无效，买受人的救济是解除合同和违约责任",
+     "rules": [
+      "c597-nopower"
+     ]
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c598-main",
+    "srcs": [
+     "art598"
+    ],
+    "body": [
+     "sale(K,S,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverThingOrTakeDeliveryDocuments(S,B,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "transferOwnership(S,B,K)"
+     }
+    ],
+    "note": "出卖人应当履行向买受人交付标的物或者交付提取标的物的单证，并转移标的物所有权的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c599-docs",
+    "srcs": [
+     "art599"
+    ],
+    "body": [
+     "sale(K,S,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverOtherDocumentsAndMaterials(S,B,K)"
+     }
+    ],
+    "note": "出卖人应当按照约定或者交易习惯向买受人交付提取标的物单证以外的有关单证和资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c609-risk",
+    "srcs": [
+     "art609"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "delivered(K)",
+     "otherDocumentsNotDeliveredAsAgreed(S,K)"
+    ],
+    "heads": [
+     "riskOnBuyer(K)"
+    ],
+    "note": "出卖人按照约定未交付有关标的物的单证和资料的，不影响标的物毁损、灭失风险的转移（标的物已交付的，风险仍转移给买受人）",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-nopower",
+    "srcs": [
+     "art597-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "ownershipCannotTransfer(S,B,T)"
+    ],
+    "heads": [
+     "terminationRight(B,K)",
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "claimBreachLiabilityFromSeller(B,S,K)"
+     }
+    ],
+    "note": "因出卖人未取得处分权致使标的物所有权不能转移的，买受人可以解除合同并请求出卖人承担违约责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c597-restricted",
+    "srcs": [
+     "art597-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "prohibitedOrRestrictedTransfer(T)"
+    ],
+    "heads": [
+     "governedBySpecialProvisions(K)"
+    ],
+    "note": "法律、行政法规禁止或者限制转让的标的物，依照其规定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "deliverThingOrTakeDeliveryDocuments": "向买受人交付标的物或者交付提取标的物的单证（出卖人，买受人，合同）",
+   "deliverOtherDocumentsAndMaterials": "按照约定或者交易习惯交付提取标的物单证以外的有关单证和资料（出卖人，买受人，合同）",
+   "otherDocumentsNotDeliveredAsAgreed": "出卖人未按照约定交付有关标的物的单证和资料（出卖人，合同）"
+  }
+ },
+ "card:g4971": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第九章　买卖合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "特殊买卖（分期付款、凭样品、试用、所有权保留）中当事人的特别权利义务，及买受人检验通知期间",
+     "rules": [
+      "c634-accel",
+      "c635-sample",
+      "c638-choose",
+      "c641-retained",
+      "c621-notifyduty"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "分期付款：买受人将总价款在一定期限内至少分三次支付（买卖合同解释第27条）",
+     "rules": [
+      "c634-spcdef"
+     ]
+    },
+    {
+     "text": "分期付款买受人未付到期价款达全部价款五分之一，经催告后合理期限内仍未支付",
+     "rules": [
+      "c634-accel"
+     ]
+    },
+    {
+     "text": "所有权保留：当事人可约定买受人未履行支付价款或其他义务时标的物所有权属于出卖人；仅适用于动产（买卖合同解释第25条）",
+     "rules": [
+      "c641-retained",
+      "c641-spcimmov"
+     ]
+    },
+    {
+     "text": "取回事由：所有权转移前，买受人经催告仍未付款、未完成特定条件或不当处分标的物，造成出卖人损害，且无另外约定",
+     "rules": [
+      "c642-repossess"
+     ]
+    },
+    {
+     "text": "检验通知：有约定检验期限的，买受人应在期限内通知数量或质量不符；无约定的，应在发现或应当发现后合理期限内通知",
+     "rules": [
+      "c621-notifyduty"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "买受人已付总价款75%以上，或第三人已善意取得标的物所有权或其他物权的，出卖人不得取回（买卖合同解释第26条）",
+     "rules": [
+      "c642-spc75",
+      "c642-spcbonafide"
+     ]
+    },
+    {
+     "text": "有质量保证期的，适用质量保证期而不适用二年期间；出卖人知道或应当知道标的物不符合约定的，买受人不受通知时间限制",
+     "rules": [
+      "c621-twoyears",
+      "c621-guarantee",
+      "c621-sellerknew"
+     ]
+    },
+    {
+     "text": "凭样品买卖中买受人不知样品有隐蔽瑕疵的，即使交付物与样品相同，仍须符合同种物的通常标准",
+     "rules": [
+      "c636-hidden"
+     ]
+    },
+    {
+     "text": "保留的所有权未经登记，不得对抗善意第三人",
+     "rules": [
+      "c641-unregistered"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "分期付款违约：出卖人可请求支付全部价款或者解除合同；解除的，可请求支付标的物使用费",
+     "rules": [
+      "c634-accel",
+      "c634-usefee"
+     ]
+    },
+    {
+     "text": "约定解除时扣留已受领价金的，超过使用费及受损赔偿额的部分买受人可请求返还；使用费无约定的，可参照当地同类标的物租金标准确定（买卖合同解释第28条）",
+     "rules": [
+      "c634-spcretain",
+      "c634-spcfee"
+     ]
+    },
+    {
+     "text": "逾期未通知的，视为数量或质量符合约定（有约定检验期限的为该期限；无约定的为合理期限或收到标的物之日起二年）",
+     "rules": [
+      "c621-agreedperiod",
+      "c621-reasonable",
+      "c621-twoyears",
+      "c621-guarantee"
+     ]
+    },
+    {
+     "text": "凭样品买卖：当事人应当封存样品，出卖人交付的标的物应当与样品及其说明的质量相同",
+     "rules": [
+      "c635-sample"
+     ]
+    },
+    {
+     "text": "试用买卖：试用期内可购买或拒绝；期满未表示的视为购买；试用期内支付部分价款或对标的物出卖、出租、设立担保物权的，视为同意购买",
+     "rules": [
+      "c638-choose",
+      "c638-silence",
+      "c638-conduct"
+     ]
+    },
+    {
+     "text": "取回方式：可协商取回，协商不成的可参照担保物权实现程序",
+     "rules": [
+      "c642-repossess",
+      "c642-procedure"
+     ]
+    },
+    {
+     "text": "回赎：取回后买受人在回赎期限内消除取回事由的可请求回赎；未回赎的，出卖人可以合理价格转卖，所得价款扣除未付价款及必要费用后剩余的返还买受人，不足部分由买受人清偿",
+     "rules": [
+      "c643-redeem",
+      "c643-resell",
+      "c643-surplus",
+      "c643-shortfall"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "出卖人明知不符合约定的例外优先于各项“视为符合约定”规则；不动产所有权保留约定不发生保留效果",
+     "rules": [
+      "c621-sellerknew",
+      "c641-spcimmov"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "分期付款可适用于动产和不动产，所有权保留只能适用于动产；风险负担在分期付款中可约定，无约定的自交付时转移（笔记）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c621-notifyduty",
+    "srcs": [
+     "art621-1",
+     "art621-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "qualityOrQuantityNonconforming(T,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "notifyNonconformityInTime(B,S,K)"
+     }
+    ],
+    "note": "买受人应当在约定的检验期限内，或无约定时在发现或应当发现的合理期限内，将数量或质量不符合约定的情形通知出卖人",
+    "auth": "npc"
+   },
+   {
+    "key": "c621-agreedperiod",
+    "srcs": [
+     "art621-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "agreedInspectionPeriod(K,P)",
+     "notNotifiedWithinInspectionPeriod(B,K)"
+    ],
+    "heads": [
+     "deemedQuantityQualityConforming(K)"
+    ],
+    "note": "约定检验期限的，买受人怠于通知的，视为标的物的数量或者质量符合约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c621-reasonable",
+    "srcs": [
+     "art621-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedInspectionPeriod(K)",
+     "notNotifiedWithinReasonablePeriodOfDiscovery(B,K)"
+    ],
+    "heads": [
+     "deemedQuantityQualityConforming(K)"
+    ],
+    "note": "没有约定检验期限的，买受人在合理期限内未通知的，视为符合约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c621-twoyears",
+    "srcs": [
+     "art621-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedInspectionPeriod(K)",
+     "notNotifiedWithinTwoYearsOfReceipt(B,K)",
+     "~hasQualityGuaranteePeriod(K)"
+    ],
+    "heads": [
+     "deemedQuantityQualityConforming(K)"
+    ],
+    "note": "自收到标的物之日起二年内未通知的，视为符合约定；有质量保证期的不适用二年规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c621-guarantee",
+    "srcs": [
+     "art621-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedInspectionPeriod(K)",
+     "hasQualityGuaranteePeriod(K)",
+     "notNotifiedWithinQualityGuaranteePeriod(B,K)"
+    ],
+    "heads": [
+     "deemedQuantityQualityConforming(K)"
+    ],
+    "note": "对标的物有质量保证期的，适用质量保证期：在质量保证期内未通知的，视为符合约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c621-sellerknew",
+    "srcs": [
+     "art621-3"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "sellerKnewOrShouldKnowNonconformity(S,K)"
+    ],
+    "heads": [
+     "-deemedQuantityQualityConforming(K)"
+    ],
+    "note": "出卖人知道或者应当知道提供的标的物不符合约定的，买受人不受前两款规定的通知时间的限制",
+    "auth": "npc"
+   },
+   {
+    "key": "c634-spcdef",
+    "srcs": [
+     "art634-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "pricePayableInAtLeastThreeInstallments(K)"
+    ],
+    "heads": [
+     "installmentSale(K)"
+    ],
+    "note": "买卖合同解释（2020修正）第27条第1款：分期付款系指买受人将应付总价款在一定期限内至少分三次向出卖人支付（据网络转载文本核对，未与官方公报逐字比对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c634-accel",
+    "srcs": [
+     "art634-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "installmentSale(K)",
+     "unpaidDueAmountReachesOneFifth(B,K)",
+     "stillNotPerformedAfterDemand(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "claimFullPurchasePrice(S,B,K)"
+     },
+     "terminationRight(S,K)"
+    ],
+    "note": "分期付款买受人未付到期价款达全部价款五分之一，经催告后在合理期限内仍未支付的，出卖人可以请求支付全部价款或者解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c634-usefee",
+    "srcs": [
+     "art634-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "installmentSale(K)",
+     "terminationRight(S,K)",
+     "terminationEffective(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "requestUseFee(S,B,K)"
+     }
+    ],
+    "note": "出卖人解除合同的，可以向买受人请求支付该标的物的使用费",
+    "auth": "npc"
+   },
+   {
+    "key": "c634-spcretain",
+    "srcs": [
+     "art634-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "installmentSale(K)",
+     "agreedRetainPaidPriceOnTermination(K)",
+     "retainedAmountExceedsUseFeeAndDamage(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "claimReturnOfExcessRetained(B,S,K)"
+     }
+    ],
+    "note": "买卖合同解释（2020修正）第28条第1款：约定解除时可扣留已受领价金，扣留金额超过使用费及受损赔偿额的，买受人可请求返还超过部分（据网络转载文本核对，未与官方公报逐字比对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c634-spcfee",
+    "srcs": [
+     "art634-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "installmentSale(K)",
+     "noAgreedOrUnclearUseFee(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "court",
+      "counterparty": null,
+      "content": "determineUseFeeByLocalRent(K)"
+     }
+    ],
+    "note": "买卖合同解释（2020修正）第28条第2款：对使用费没有约定的，人民法院可以参照当地同类标的物的租金标准确定（据网络转载文本核对；原文为“没有约定”，此处借用“没有约定或者约定不明确”谓词）",
+    "auth": "spc"
+   },
+   {
+    "key": "c635-sample",
+    "srcs": [
+     "art635"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "saleBySample(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "sealSample(S,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "sealSample(B,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverQualityEqualToSample(S,T,K)"
+     }
+    ],
+    "note": "凭样品买卖的当事人应当封存样品；出卖人交付的标的物应当与样品及其说明的质量相同",
+    "auth": "npc"
+   },
+   {
+    "key": "c636-hidden",
+    "srcs": [
+     "art636"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "saleBySample(K)",
+     "sampleHasHiddenDefectUnknownToBuyer(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverOrdinaryStandardQuality(S,T)"
+     }
+    ],
+    "note": "买受人不知道样品有隐蔽瑕疵的，即使交付的标的物与样品相同，其质量仍应符合同种物的通常标准",
+    "auth": "npc"
+   },
+   {
+    "key": "c638-choose",
+    "srcs": [
+     "art638-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "trialSale(K)",
+     "withinTrialPeriod(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "purchaseTrialThing(B,K)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "refuseTrialPurchase(B,K)"
+     }
+    ],
+    "note": "试用买卖的买受人在试用期内可以购买标的物，也可以拒绝购买",
+    "auth": "npc"
+   },
+   {
+    "key": "c638-silence",
+    "srcs": [
+     "art638-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "trialSale(K)",
+     "trialPeriodExpired(K)",
+     "noPurchaseDecisionExpressed(B,K)"
+    ],
+    "heads": [
+     "deemedPurchase(B,K)"
+    ],
+    "note": "试用期限届满，买受人对是否购买未作表示的，视为购买",
+    "auth": "npc"
+   },
+   {
+    "key": "c638-conduct",
+    "srcs": [
+     "art638-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "trialSale(K)",
+     {
+      "or": [
+       "paidPartOfPriceDuringTrial(B,K)",
+       "disposedTrialThingDuringTrial(B,T)"
+      ]
+     }
+    ],
+    "heads": [
+     "deemedPurchase(B,K)"
+    ],
+    "note": "试用期内已支付部分价款或者对标的物实施出卖、出租、设立担保物权等行为的，视为同意购买",
+    "auth": "npc"
+   },
+   {
+    "key": "c641-retained",
+    "srcs": [
+     "art641-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "titleRetentionAgreed(K)",
+     "~buyerPerformedPaymentAndOtherDuties(B,K)"
+    ],
+    "heads": [
+     "ownershipRetainedBySeller(S,T)"
+    ],
+    "note": "当事人可以约定买受人未履行支付价款或者其他义务的，标的物的所有权属于出卖人",
+    "auth": "npc"
+   },
+   {
+    "key": "c641-spcimmov",
+    "srcs": [
+     "art641-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "titleRetentionAgreed(K)",
+     "immovable(T)"
+    ],
+    "heads": [
+     "-ownershipRetainedBySeller(S,T)"
+    ],
+    "note": "买卖合同解释（2020修正）第25条：主张第641条所有权保留规定适用于不动产的，不予支持（据网络转载文本核对，未与官方公报逐字比对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c641-unregistered",
+    "srcs": [
+     "art641-2"
+    ],
+    "body": [
+     "ownershipRetainedBySeller(S,T)",
+     "~titleRetentionRegistered(S,T)",
+     "bonaFideThirdPartyAsToThing(X,T)"
+    ],
+    "heads": [
+     "-retainedOwnershipOpposableTo(S,X)"
+    ],
+    "note": "出卖人对标的物保留的所有权，未经登记，不得对抗善意第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c642-repossess",
+    "srcs": [
+     "art642-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "ownershipRetainedBySeller(S,T)",
+     {
+      "or": [
+       "stillNotPerformedAfterDemand(B,K)",
+       "failedAgreedSpecificCondition(B,K)",
+       "improperlyDisposedThing(B,T)"
+      ]
+     },
+     "causedDamageToSeller(B,S,K)",
+     "~agreedOtherwiseOnRepossession(K)",
+     "~repossessionExcluded(S,T)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "repossessRetainedThing(S,T)"
+     }
+    ],
+    "note": "所有权保留的，所有权转移前买受人经催告仍未付款、未完成特定条件或不当处分标的物，造成出卖人损害的，除另有约定外，出卖人有权取回",
+    "auth": "npc"
+   },
+   {
+    "key": "c642-spc75",
+    "srcs": [
+     "art642-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "ownershipRetainedBySeller(S,T)",
+     "paidAtLeast75PercentOfPrice(B,K)"
+    ],
+    "heads": [
+     "repossessionExcluded(S,T)"
+    ],
+    "note": "买卖合同解释（2020修正）第26条第1款：买受人已支付总价款百分之七十五以上的，出卖人主张取回不予支持（据网络转载文本核对，未与官方公报逐字比对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c642-spcbonafide",
+    "srcs": [
+     "art642-1"
+    ],
+    "body": [
+     "ownershipRetainedBySeller(S,T)",
+     "improperlyDisposedThing(B,T)",
+     "acquiredByGoodFaith(X,T)"
+    ],
+    "heads": [
+     "repossessionExcluded(S,T)"
+    ],
+    "note": "买卖合同解释（2020修正）第26条第2款：买受人不当处分、第三人依第311条已善意取得所有权或其他物权的，出卖人主张取回不予支持（据网络转载文本核对，未与官方公报逐字比对）",
+    "auth": "spc"
+   },
+   {
+    "key": "c642-procedure",
+    "srcs": [
+     "art642-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "ownershipRetainedBySeller(S,T)",
+     "repossessionNegotiationFailed(S,B,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "applySecurityRealizationProcedure(S,T)"
+     }
+    ],
+    "note": "出卖人可以与买受人协商取回标的物；协商不成的，可以参照适用担保物权的实现程序",
+    "auth": "npc"
+   },
+   {
+    "key": "c643-redeem",
+    "srcs": [
+     "art643-1"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "retainedThingRepossessed(S,T)",
+     "repossessionGroundRemovedWithinRedemptionPeriod(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "redeemThing(B,T)"
+     }
+    ],
+    "note": "出卖人取回后，买受人在约定或出卖人指定的合理回赎期限内消除取回事由的，可以请求回赎标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c643-resell",
+    "srcs": [
+     "art643-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "retainedThingRepossessed(S,T)",
+     "notRedeemedWithinRedemptionPeriod(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "resellAtReasonablePrice(S,T)"
+     }
+    ],
+    "note": "买受人在回赎期限内没有回赎的，出卖人可以以合理价格将标的物出卖给第三人",
+    "auth": "npc"
+   },
+   {
+    "key": "c643-surplus",
+    "srcs": [
+     "art643-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "resoldAfterRepossession(S,T)",
+     "resaleProceedsExceedUnpaidAndCosts(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "returnResaleSurplus(S,B,K)"
+     }
+    ],
+    "note": "出卖所得价款扣除未支付价款及必要费用后仍有剩余的，应当返还买受人",
+    "auth": "npc"
+   },
+   {
+    "key": "c643-shortfall",
+    "srcs": [
+     "art643-2"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "resoldAfterRepossession(S,T)",
+     "resaleProceedsInsufficient(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "payResaleShortfall(B,S,K)"
+     }
+    ],
+    "note": "出卖所得价款不足以抵偿未支付价款及必要费用的，不足部分由买受人清偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c621-sellerknew",
+    "c621-agreedperiod",
+    "出卖人明知或应知不符合约定的，买受人不受通知期间限制"
+   ],
+   [
+    "c621-sellerknew",
+    "c621-reasonable",
+    "同上"
+   ],
+   [
+    "c621-sellerknew",
+    "c621-twoyears",
+    "同上"
+   ],
+   [
+    "c621-sellerknew",
+    "c621-guarantee",
+    "同上"
+   ],
+   [
+    "c641-spcimmov",
+    "c641-retained",
+    "所有权保留不适用于不动产"
+   ]
+  ],
+  "predicates": {
+   "qualityOrQuantityNonconforming": "标的物的数量或者质量不符合约定（标的物，合同）",
+   "notifyNonconformityInTime": "在检验期限或合理期限内将数量或质量不符合约定的情形通知出卖人（买受人，出卖人，合同）",
+   "notNotifiedWithinInspectionPeriod": "买受人未在约定的检验期限内通知数量或质量不符合约定（买受人，合同）",
+   "notNotifiedWithinReasonablePeriodOfDiscovery": "买受人未在发现或应当发现数量或质量不符合约定的合理期限内通知（买受人，合同）",
+   "notNotifiedWithinTwoYearsOfReceipt": "买受人自收到标的物之日起二年内未通知出卖人（买受人，合同）",
+   "hasQualityGuaranteePeriod": "对标的物有质量保证期（合同）",
+   "notNotifiedWithinQualityGuaranteePeriod": "买受人在质量保证期内未通知出卖人（买受人，合同）",
+   "deemedQuantityQualityConforming": "视为标的物的数量或者质量符合约定（合同）",
+   "sellerKnewOrShouldKnowNonconformity": "出卖人知道或者应当知道提供的标的物不符合约定（出卖人，合同）",
+   "pricePayableInAtLeastThreeInstallments": "买受人应付总价款在一定期限内至少分三次支付（合同）",
+   "installmentSale": "是分期付款买卖合同（合同）",
+   "unpaidDueAmountReachesOneFifth": "分期付款买受人未支付到期价款的数额达到全部价款的五分之一（买受人，合同）",
+   "claimFullPurchasePrice": "请求买受人支付全部价款（出卖人，买受人，合同）",
+   "agreedRetainPaidPriceOnTermination": "分期付款买卖合同约定出卖人解除合同时可以扣留已受领价金（合同）",
+   "retainedAmountExceedsUseFeeAndDamage": "出卖人扣留的金额超过标的物使用费以及标的物受损赔偿额（出卖人，合同）",
+   "claimReturnOfExcessRetained": "请求返还扣留价金中超过使用费及受损赔偿额的部分（买受人，出卖人，合同）",
+   "determineUseFeeByLocalRent": "参照当地同类标的物的租金标准确定使用费（合同）",
+   "saleBySample": "是凭样品买卖（合同）",
+   "sealSample": "封存样品（当事人，合同）",
+   "deliverQualityEqualToSample": "交付与样品及其说明的质量相同的标的物（出卖人，标的物，合同）",
+   "sampleHasHiddenDefectUnknownToBuyer": "样品有隐蔽瑕疵且买受人不知道（买受人，合同）",
+   "deliverOrdinaryStandardQuality": "交付质量符合同种物通常标准的标的物（出卖人，标的物）",
+   "purchaseTrialThing": "购买试用的标的物（买受人，合同）",
+   "refuseTrialPurchase": "拒绝购买试用的标的物（买受人，合同）",
+   "trialPeriodExpired": "试用期限届满（合同）",
+   "noPurchaseDecisionExpressed": "买受人对是否购买标的物未作表示（买受人，合同）",
+   "deemedPurchase": "视为（同意）购买（买受人，合同）",
+   "paidPartOfPriceDuringTrial": "试用期内已经支付部分价款（买受人，合同）",
+   "disposedTrialThingDuringTrial": "试用期内对标的物实施出卖、出租、设立担保物权等行为（买受人，标的物）",
+   "titleRetentionAgreed": "买卖合同约定买受人未履行支付价款或者其他义务的，标的物所有权属于出卖人（合同）",
+   "buyerPerformedPaymentAndOtherDuties": "买受人已履行支付价款及约定的其他义务（买受人，合同）",
+   "ownershipRetainedBySeller": "出卖人保留标的物的所有权（出卖人，标的物）",
+   "titleRetentionRegistered": "出卖人保留的所有权已经登记（出卖人，标的物）",
+   "bonaFideThirdPartyAsToThing": "就该标的物与买受人交易的善意第三人（第三人，标的物）",
+   "retainedOwnershipOpposableTo": "保留的所有权可以对抗该第三人（出卖人，第三人）",
+   "failedAgreedSpecificCondition": "买受人未按照约定完成特定条件（买受人，合同）",
+   "improperlyDisposedThing": "买受人将标的物出卖、出质或者作出其他不当处分（买受人，标的物）",
+   "causedDamageToSeller": "买受人的行为造成出卖人损害（买受人，出卖人，合同）",
+   "agreedOtherwiseOnRepossession": "当事人对取回另有约定（合同）",
+   "repossessionExcluded": "出卖人不得主张取回标的物（出卖人，标的物）",
+   "repossessRetainedThing": "取回所有权保留的标的物（出卖人，标的物）",
+   "paidAtLeast75PercentOfPrice": "买受人已经支付标的物总价款的百分之七十五以上（买受人，合同）",
+   "repossessionNegotiationFailed": "出卖人与买受人就取回标的物协商不成（出卖人，买受人，标的物）",
+   "applySecurityRealizationProcedure": "参照适用担保物权的实现程序取回标的物（出卖人，标的物）",
+   "retainedThingRepossessed": "出卖人已依第642条第1款取回标的物（出卖人，标的物）",
+   "repossessionGroundRemovedWithinRedemptionPeriod": "买受人在约定或出卖人指定的合理回赎期限内消除了取回事由（买受人，合同）",
+   "redeemThing": "回赎被取回的标的物（买受人，标的物）",
+   "notRedeemedWithinRedemptionPeriod": "买受人在回赎期限内没有回赎标的物（买受人，合同）",
+   "resellAtReasonablePrice": "以合理价格将标的物出卖给第三人（出卖人，标的物）",
+   "resoldAfterRepossession": "出卖人取回后已将标的物另行出卖（出卖人，标的物）",
+   "resaleProceedsExceedUnpaidAndCosts": "出卖所得价款扣除买受人未支付的价款及必要费用后仍有剩余（合同）",
+   "resaleProceedsInsufficient": "出卖所得价款不足以清偿买受人未支付的价款及必要费用（合同）",
+   "returnResaleSurplus": "将出卖所得价款的剩余部分返还买受人（出卖人，买受人，合同）",
+   "payResaleShortfall": "清偿出卖所得价款的不足部分（买受人，出卖人，合同）"
+  }
+ },
+ "art:602": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第九章　买卖合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "买卖合同未约定或约定不明交付期限时如何确定",
+     "rules": [
+      "c602-refer",
+      "c602-anytime"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人没有约定标的物的交付期限或者约定不明确",
+     "rules": [
+      "c602-refer"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "适用第510条：可协议补充；不能达成补充协议的，按照合同相关条款或者交易习惯确定",
+     "rules": [
+      "c602-refer"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，适用第511条第4项：出卖人可以随时交付，买受人也可以随时请求交付，但应当给对方必要的准备时间",
+     "rules": [
+      "c602-anytime"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "本条为转致条款，交付期限的补充规则本身规定在第510条、第511条第4项",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c602-refer",
+    "srcs": [
+     "art602"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedOrUnclearDeliveryTerm(K)"
+    ],
+    "heads": [
+     "termNotAgreedOrUnclear(K,term)"
+    ],
+    "note": "交付期限没有约定或者约定不明确的，作为履行期限不明确的事项适用第510条（协议补充、按相关条款或交易习惯确定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c602-anytime",
+    "srcs": [
+     "art602"
+    ],
+    "body": [
+     "sale(K,S,B,T)",
+     "noAgreedOrUnclearDeliveryTerm(K)",
+     "stillIndeterminableAfterArt510(K,term)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "deliverAtAnyTime(S,K)"
+     },
+     {
+      "type": "RIGHT",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "demandDeliveryAtAnyTime(B,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "giveNecessaryPreparationTime(S,B,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "S",
+      "content": "giveNecessaryPreparationTime(B,S,K)"
+     }
+    ],
+    "note": "依第510条仍不能确定的，适用第511条第4项：出卖人可以随时交付，买受人可以随时请求交付，但应当给对方必要的准备时间",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "noAgreedOrUnclearDeliveryTerm": "当事人没有约定标的物的交付期限或者约定不明确（合同）",
+   "deliverAtAnyTime": "随时交付标的物（出卖人，合同）",
+   "demandDeliveryAtAnyTime": "随时请求交付标的物（买受人，合同）"
+  }
+ },
+ "art:637": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第九章　买卖合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "试用买卖的试用期限如何确定",
+     "rules": [
+      "c637-agreed",
+      "c637-seller"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "试用买卖的当事人可以约定标的物的试用期限",
+     "rules": [
+      "c637-agreed"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "对试用期限没有约定或者约定不明确，依据第510条（协议补充、按相关条款或交易习惯）仍不能确定的，由出卖人确定",
+     "rules": [
+      "c637-seller"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定优先；第510条补充其次；仍不能确定的才由出卖人确定",
+     "rules": [
+      "c637-seller"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "与第511条第4项（履行期限不明确时随时履行）不同，试用期限不能确定时由出卖人单方确定",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c637-agreed",
+    "srcs": [
+     "art637"
+    ],
+    "body": [
+     "trialSale(K)",
+     "sellerOf(S,K)",
+     "buyerOf(B,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "S",
+      "counterparty": "B",
+      "content": "agreeTrialPeriod(S,B,K)"
+     }
+    ],
+    "note": "试用买卖的当事人可以约定标的物的试用期限",
+    "auth": "npc"
+   },
+   {
+    "key": "c637-seller",
+    "srcs": [
+     "art637"
+    ],
+    "body": [
+     "trialSale(K)",
+     "sellerOf(S,K)",
+     "noAgreedOrUnclearTrialPeriod(K)",
+     "trialPeriodIndeterminableAfterArt510(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "determineTrialPeriod(S,K)"
+     }
+    ],
+    "note": "对试用期限没有约定或者约定不明确，依据第510条仍不能确定的，由出卖人确定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "agreeTrialPeriod": "约定标的物的试用期限（出卖人，买受人，合同）",
+   "noAgreedOrUnclearTrialPeriod": "对试用期限没有约定或者约定不明确（合同）",
+   "trialPeriodIndeterminableAfterArt510": "试用期限依据第510条的规定仍不能确定（合同）",
+   "determineTrialPeriod": "确定试用期限（出卖人，合同）"
+  }
+ }
+}

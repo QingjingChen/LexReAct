@@ -1,0 +1,1710 @@
+{
+ "card:g4158": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第四章　合同的履行"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同内容没有约定或约定不明确时如何补充和确定；电子合同交付时间、提供服务时间如何认定",
+     "rules": [
+      "c510-suppg4158",
+      "c510-fillg4158",
+      "c511-q1g4158",
+      "c511-q2g4158",
+      "c511-q3g4158",
+      "c511-q4g4158",
+      "c511-priceg4158",
+      "c511-govpriceg4158",
+      "c511-placemoneyg4158",
+      "c511-placeimmg4158",
+      "c511-placeotherg4158",
+      "c511-termdebtorg4158",
+      "c511-termcreditorg4158",
+      "c511-termprepg4158",
+      "c511-methodg4158",
+      "c511-costg4158",
+      "c511-extracostg4158",
+      "c512-courierg4158",
+      "c512-serviceg4158",
+      "c512-actualg4158",
+      "c512-onlineg4158",
+      "c512-agreedg4158"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同生效后，就质量、价款或报酬、履行地点等没有约定或约定不明确的，可以协议补充；不能达成补充协议的，按照合同相关条款或者交易习惯确定",
+     "rules": [
+      "c510-suppg4158",
+      "c510-fillg4158"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，适用第511条各项任意性补充规则",
+     "rules": [
+      "c511-q1g4158",
+      "c511-priceg4158",
+      "c511-placemoneyg4158",
+      "c511-termdebtorg4158",
+      "c511-methodg4158",
+      "c511-costg4158"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依法应当执行政府定价或者政府指导价的，依照规定履行，不按市场价格",
+     "rules": [
+      "c511-govpriceg4158"
+     ]
+    },
+    {
+     "text": "电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定",
+     "rules": [
+      "c512-agreedg4158"
+     ]
+    },
+    {
+     "text": "电子凭证或实物凭证没有载明时间或者载明时间与实际不一致的，以实际提供服务的时间为准",
+     "rules": [
+      "c512-actualg4158"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "质量：依次按强制性国家标准、推荐性国家标准、行业标准，均无的按通常标准或者符合合同目的的特定标准",
+     "rules": [
+      "c511-q1g4158",
+      "c511-q2g4158",
+      "c511-q3g4158",
+      "c511-q4g4158"
+     ]
+    },
+    {
+     "text": "价款或者报酬：按订立合同时履行地的市场价格",
+     "rules": [
+      "c511-priceg4158"
+     ]
+    },
+    {
+     "text": "履行地点：给付货币的在接受货币一方所在地；交付不动产的在不动产所在地；其他标的在履行义务一方所在地",
+     "rules": [
+      "c511-placemoneyg4158",
+      "c511-placeimmg4158",
+      "c511-placeotherg4158"
+     ]
+    },
+    {
+     "text": "履行期限：债务人可以随时履行，债权人也可以随时请求履行，但应当给对方必要的准备时间",
+     "rules": [
+      "c511-termdebtorg4158",
+      "c511-termcreditorg4158",
+      "c511-termprepg4158"
+     ]
+    },
+    {
+     "text": "履行方式：按照有利于实现合同目的的方式",
+     "rules": [
+      "c511-methodg4158"
+     ]
+    },
+    {
+     "text": "履行费用：由履行义务一方负担；因债权人原因增加的履行费用由债权人负担",
+     "rules": [
+      "c511-costg4158",
+      "c511-extracostg4158"
+     ]
+    },
+    {
+     "text": "电子合同：快递交付商品的以收货人签收时间为交付时间；提供服务的以凭证载明时间为提供服务时间；在线传输交付的，以标的物进入对方指定特定系统且能够检索识别的时间为交付时间",
+     "rules": [
+      "c512-courierg4158",
+      "c512-serviceg4158",
+      "c512-onlineg4158"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "当事人约定优先于补充协议，补充协议优先于合同相关条款或交易习惯，后者又优先于第511条的补充规则",
+     "rules": [
+      "c510-fillg4158",
+      "c511-q1g4158"
+     ]
+    },
+    {
+     "text": "电子合同的另行约定优先于第512条第1、2款的法定时点",
+     "rules": [
+      "c512-agreedg4158"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：合同履行应遵循全面履行、诚实信用和保护生态环境规则（第509条，非本行挂载）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c510-suppg4158",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeSupplementaryAgreement(K,I)"
+     }
+    ],
+    "note": "合同生效后，就质量、价款或者报酬、履行地点等没有约定或约定不明确的，可以协议补充",
+    "auth": "npc"
+   },
+   {
+    "key": "c510-fillg4158",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "noSupplementaryAgreementOn(K,I)"
+    ],
+    "heads": [
+     "determinedByRelatedClausesOrUsage(K,I)"
+    ],
+    "note": "不能达成补充协议的，按照合同相关条款或者交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q1g4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "standardExists(K,mandatoryNational)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,mandatoryNational)"
+    ],
+    "note": "质量要求不明确的，按照强制性国家标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q2g4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "standardExists(K,recommendedNational)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,recommendedNational)"
+    ],
+    "note": "没有强制性国家标准的，按照推荐性国家标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q3g4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "~standardExists(K,recommendedNational)",
+     "standardExists(K,industry)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,industry)"
+    ],
+    "note": "没有推荐性国家标准的，按照行业标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q4g4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "~standardExists(K,recommendedNational)",
+     "~standardExists(K,industry)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,usualOrPurposeSpecific)"
+    ],
+    "note": "没有国家标准、行业标准的，按照通常标准或者符合合同目的的特定标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-priceg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,price)",
+     "~governmentPricingRequired(K)"
+    ],
+    "heads": [
+     "priceDeterminedAs(K,marketPriceAtPerformancePlaceOnConclusion)"
+    ],
+    "note": "价款或者报酬不明确的，按照订立合同时履行地的市场价格履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-govpriceg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,price)",
+     "governmentPricingRequired(K)"
+    ],
+    "heads": [
+     "priceDeterminedAs(K,governmentPricing)"
+    ],
+    "note": "依法应当执行政府定价或者政府指导价的，依照规定履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placemoneyg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "monetaryPayment(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,moneyRecipientLocation)"
+    ],
+    "note": "履行地点不明确，给付货币的，在接受货币一方所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placeimmg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "immovableDelivery(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,immovableLocation)"
+    ],
+    "note": "交付不动产的，在不动产所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placeotherg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "~monetaryPayment(K)",
+     "~immovableDelivery(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,obligorLocation)"
+    ],
+    "note": "其他标的，在履行义务一方所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termdebtorg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "performAtAnyTime(O,K)"
+     }
+    ],
+    "note": "履行期限不明确的，债务人可以随时履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termcreditorg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "demandPerformanceAtAnyTime(C,K)"
+     }
+    ],
+    "note": "债权人也可以随时请求履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termprepg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "giveNecessaryPreparationTime(O,C,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "giveNecessaryPreparationTime(C,O,K)"
+     }
+    ],
+    "note": "但是应当给对方必要的准备时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-methodg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,method)"
+    ],
+    "heads": [
+     "performanceMethodIs(K,favorableToContractPurpose)"
+    ],
+    "note": "履行方式不明确的，按照有利于实现合同目的的方式履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-costg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,cost)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "bearPerformanceCost(O,K)"
+     }
+    ],
+    "note": "履行费用的负担不明确的，由履行义务一方负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-extracostg4158",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,cost)",
+     "contractObligorTo(O,C,K)",
+     "costIncreasedByCreditor(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "bearIncreasedPerformanceCost(C,K)"
+     }
+    ],
+    "note": "因债权人原因增加的履行费用，由债权人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-courierg4158",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "goodsDeliveredByCourier(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryTimeIs(K,consigneeSigningTime)"
+    ],
+    "note": "电子合同标的为交付商品并采用快递物流方式交付的，收货人的签收时间为交付时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-serviceg4158",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "serviceProvision(K)",
+     "~voucherTimeMissingOrInconsistent(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "serviceTimeIs(K,voucherStatedTime)"
+    ],
+    "note": "电子合同标的为提供服务的，生成的电子凭证或者实物凭证中载明的时间为提供服务时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-actualg4158",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "serviceProvision(K)",
+     "voucherTimeMissingOrInconsistent(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "serviceTimeIs(K,actualServiceTime)"
+    ],
+    "note": "凭证没有载明时间或者载明时间与实际提供服务时间不一致的，以实际提供服务的时间为准",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-onlineg4158",
+    "srcs": [
+     "art512-2"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "deliveredByOnlineTransmission(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryTimeIs(K,enteredDesignatedSystemAndRetrievable)"
+    ],
+    "note": "标的物采用在线传输方式交付的，进入对方当事人指定的特定系统且能够检索识别的时间为交付时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-agreedg4158",
+    "srcs": [
+     "art512-3"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryOrServiceTimePerAgreement(K)"
+    ],
+    "note": "电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "termNotAgreedOrUnclear": "合同生效后，当事人就质量、价款或报酬、履行地点等内容I没有约定或者约定不明确（合同，内容事项）",
+   "concludeSupplementaryAgreement": "就该内容协议补充（合同，内容事项）",
+   "noSupplementaryAgreementOn": "当事人就该内容不能达成补充协议（合同，内容事项）",
+   "determinedByRelatedClausesOrUsage": "该内容按照合同相关条款或者交易习惯确定（合同，内容事项）",
+   "stillIndeterminableAfterArt510": "该内容约定不明确，依据第510条仍不能确定（合同，内容事项：常量 quality 质量、price 价款或报酬、place 履行地点、term 履行期限、method 履行方式、cost 履行费用）",
+   "standardExists": "就标的存在该类标准（合同，标准类别：常量 mandatoryNational 强制性国家标准、recommendedNational 推荐性国家标准、industry 行业标准）",
+   "qualityStandardApplied": "质量按该标准履行（合同，标准：mandatoryNational、recommendedNational、industry、usualOrPurposeSpecific 通常标准或符合合同目的的特定标准）",
+   "governmentPricingRequired": "依法应当执行政府定价或者政府指导价（合同）",
+   "priceDeterminedAs": "价款或报酬按该方式确定（合同，常量 marketPriceAtPerformancePlaceOnConclusion 订立合同时履行地市场价格、governmentPricing 依规定执行政府定价或指导价）",
+   "monetaryPayment": "履行义务为给付货币（合同）",
+   "immovableDelivery": "履行义务为交付不动产（合同）",
+   "performancePlaceIs": "履行地点为（合同，常量 moneyRecipientLocation 接受货币一方所在地、immovableLocation 不动产所在地、obligorLocation 履行义务一方所在地）",
+   "contractObligorTo": "O为合同K项下履行义务的一方（债务人），C为接受履行的一方（债权人）（债务人，债权人，合同）",
+   "performAtAnyTime": "可以随时履行（债务人，合同）",
+   "demandPerformanceAtAnyTime": "可以随时请求履行（债权人，合同）",
+   "giveNecessaryPreparationTime": "给对方必要的准备时间（义务人，对方，合同）",
+   "performanceMethodIs": "履行方式为（合同，常量 favorableToContractPurpose 有利于实现合同目的的方式）",
+   "bearPerformanceCost": "负担履行费用（负担人，合同）",
+   "costIncreasedByCreditor": "因债权人原因增加了履行费用（债权人，合同）",
+   "bearIncreasedPerformanceCost": "负担因其原因增加的履行费用（债权人，合同）",
+   "electronicContract": "是通过互联网等信息网络订立的电子合同（合同）",
+   "goodsDeliveredByCourier": "电子合同标的为交付商品并采用快递物流方式交付（合同）",
+   "agreedOtherwiseOnDeliveryOrServiceTime": "电子合同当事人对交付商品或者提供服务的方式、时间另有约定（合同）",
+   "deliveryTimeIs": "交付时间为（合同，常量 consigneeSigningTime 收货人签收时间、enteredDesignatedSystemAndRetrievable 进入对方指定特定系统且能够检索识别的时间）",
+   "serviceProvision": "电子合同的标的为提供服务（合同）",
+   "voucherTimeMissingOrInconsistent": "电子凭证或实物凭证没有载明时间或者载明时间与实际提供服务时间不一致（合同）",
+   "serviceTimeIs": "提供服务时间为（合同，常量 voucherStatedTime 凭证载明的时间、actualServiceTime 实际提供服务的时间）",
+   "deliveredByOnlineTransmission": "电子合同标的物采用在线传输方式交付（合同）",
+   "deliveryOrServiceTimePerAgreement": "交付商品或者提供服务的方式、时间按照当事人约定（合同）"
+  }
+ },
+ "card:g4164": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第四章　合同的履行"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "缔约中的保密义务；合同全面履行、诚信附随义务与绿色原则；合同漏洞的补充规则（协议补充、交易习惯、分则补充、通则补充）；政府定价调整、金钱债的货币、部分履行；买卖合同交付地点",
+     "rules": [
+      "c510-suppg4164",
+      "c510-fillg4164",
+      "c511-q1g4164",
+      "c511-q2g4164",
+      "c511-q3g4164",
+      "c511-q4g4164",
+      "c511-priceg4164",
+      "c511-govpriceg4164",
+      "c511-placemoneyg4164",
+      "c511-placeimmg4164",
+      "c511-placeotherg4164",
+      "c511-termdebtorg4164",
+      "c511-termcreditorg4164",
+      "c511-termprepg4164",
+      "c511-methodg4164",
+      "c511-costg4164",
+      "c511-extracostg4164",
+      "c512-courierg4164",
+      "c512-serviceg4164",
+      "c512-actualg4164",
+      "c512-onlineg4164",
+      "c512-agreedg4164",
+      "c501-noleakg4164",
+      "c501-liabg4164",
+      "c509-fullg4164",
+      "c509-goodfaithg4164",
+      "c509-ecog4164",
+      "c513-inperiodg4164",
+      "c513-latedeliveryupg4164",
+      "c513-latedeliverydowng4164",
+      "c513-latepickupupg4164",
+      "c513-latepickupdowng4164",
+      "c514-currencyg4164",
+      "c531-refuseg4164",
+      "c531-costg4164",
+      "c603-agreedg4164",
+      "c603-carrierg4164",
+      "c603-knowng4164",
+      "c603-businessg4164",
+      "c603-knowndefg4164"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "当事人在订立合同过程中知悉商业秘密或其他应当保密的信息",
+     "rules": [
+      "c501-noleakg4164",
+      "c501-liabg4164"
+     ]
+    },
+    {
+     "text": "合同生效后，就质量、价款或报酬、履行地点等没有约定或约定不明确的，先协议补充，不能达成的按合同相关条款或交易习惯确定",
+     "rules": [
+      "c510-suppg4164",
+      "c510-fillg4164"
+     ]
+    },
+    {
+     "text": "依第510条仍不能确定的，先适用合同编分则的补充规定（如买卖合同交付地点第603条），再适用第511条通则规定",
+     "rules": [
+      "c603-carrierg4164",
+      "c511-q1g4164"
+     ]
+    },
+    {
+     "text": "执行政府定价或者政府指导价的合同发生价格调整",
+     "rules": [
+      "c513-inperiodg4164"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "依法应当执行政府定价或者政府指导价的，依照规定履行",
+     "rules": [
+      "c511-govpriceg4164"
+     ]
+    },
+    {
+     "text": "电子合同对交付或服务方式、时间另有约定的按约定；凭证未载明或与实际不一致的以实际提供服务时间为准",
+     "rules": [
+      "c512-agreedg4164",
+      "c512-actualg4164"
+     ]
+    },
+    {
+     "text": "部分履行不损害债权人利益的，债权人不得拒绝",
+     "rules": [
+      "c531-refuseg4164"
+     ]
+    },
+    {
+     "text": "金钱之债法律另有规定或当事人另有约定的，不适用以实际履行地法定货币履行",
+     "rules": [
+      "c514-currencyg4164"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "无论合同是否成立，不得泄露或不正当使用；造成对方损失的，应当赔偿",
+     "rules": [
+      "c501-noleakg4164",
+      "c501-liabg4164"
+     ]
+    },
+    {
+     "text": "当事人应按约定全面履行义务；遵循诚信原则，依合同性质、目的和交易习惯履行通知、协助、保密等义务；避免浪费资源、污染环境和破坏生态",
+     "rules": [
+      "c509-fullg4164",
+      "c509-goodfaithg4164",
+      "c509-ecog4164"
+     ]
+    },
+    {
+     "text": "第511条：质量依次按强制性国家标准、推荐性国家标准、行业标准、通常或符合合同目的的特定标准；价款按订立时履行地市场价格；履行地点按给付货币、交付不动产、其他标的分别确定；期限不明的可随时履行或请求履行但给必要准备时间；方式按有利于合同目的；费用由履行义务一方负担，因债权人原因增加的由债权人负担",
+     "rules": [
+      "c511-q1g4164",
+      "c511-q2g4164",
+      "c511-q3g4164",
+      "c511-q4g4164",
+      "c511-priceg4164",
+      "c511-placemoneyg4164",
+      "c511-placeimmg4164",
+      "c511-placeotherg4164",
+      "c511-termdebtorg4164",
+      "c511-termcreditorg4164",
+      "c511-termprepg4164",
+      "c511-methodg4164",
+      "c511-costg4164",
+      "c511-extracostg4164"
+     ]
+    },
+    {
+     "text": "电子合同：快递交付以签收时间、服务以凭证载明时间、在线传输以进入指定系统且可检索识别的时间为交付或服务时间",
+     "rules": [
+      "c512-courierg4164",
+      "c512-serviceg4164",
+      "c512-onlineg4164"
+     ]
+    },
+    {
+     "text": "政府定价调整：交付期限内调价按交付时价格；逾期交付的涨价按原价、降价按新价；逾期提货或逾期付款的涨价按新价、降价按原价",
+     "rules": [
+      "c513-latedeliveryupg4164",
+      "c513-latedeliverydowng4164",
+      "c513-latepickupupg4164",
+      "c513-latepickupdowng4164"
+     ]
+    },
+    {
+     "text": "金钱之债，债权人可以请求以实际履行地的法定货币履行",
+     "rules": [
+      "c514-currencyg4164"
+     ]
+    },
+    {
+     "text": "债权人可以拒绝部分履行；部分履行给债权人增加的费用由债务人负担",
+     "rules": [
+      "c531-refuseg4164",
+      "c531-costg4164"
+     ]
+    },
+    {
+     "text": "买卖合同交付地点：按约定；无约定或不明且依第510条不能确定的，需运输的交给第一承运人，不需运输的在双方订约时知道的标的物所在地交付，不知道的在出卖人订约时营业地交付",
+     "rules": [
+      "c603-agreedg4164",
+      "c603-carrierg4164",
+      "c603-knowng4164",
+      "c603-knowndefg4164",
+      "c603-businessg4164"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "约定优先，其次协议补充，再次合同相关条款或交易习惯，然后分则特别规定，最后第511条通则规定",
+     "rules": [
+      "c510-fillg4164",
+      "c603-carrierg4164"
+     ]
+    },
+    {
+     "text": "买卖合同交付地点的分则规定（第603条）优先于第511条第3项的通则规定",
+     "rules": [
+      "c603-carrierg4164",
+      "c603-knowng4164",
+      "c603-businessg4164"
+     ]
+    },
+    {
+     "text": "电子合同的另行约定优先于第512条第1、2款的法定时点",
+     "rules": [
+      "c512-agreedg4164"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记：全面履行规则又称正确履行或适当履行规则，要求按约定的标的、数量、质量、期限、地点、方式全面完成义务；笔记将补充顺序概括为协议补充→合同有关条款/性质/目的/交易习惯→分则→通则",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c510-suppg4164",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeSupplementaryAgreement(K,I)"
+     }
+    ],
+    "note": "合同生效后，就质量、价款或者报酬、履行地点等没有约定或约定不明确的，可以协议补充",
+    "auth": "npc"
+   },
+   {
+    "key": "c510-fillg4164",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "noSupplementaryAgreementOn(K,I)"
+    ],
+    "heads": [
+     "determinedByRelatedClausesOrUsage(K,I)"
+    ],
+    "note": "不能达成补充协议的，按照合同相关条款或者交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q1g4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "standardExists(K,mandatoryNational)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,mandatoryNational)"
+    ],
+    "note": "质量要求不明确的，按照强制性国家标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q2g4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "standardExists(K,recommendedNational)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,recommendedNational)"
+    ],
+    "note": "没有强制性国家标准的，按照推荐性国家标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q3g4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "~standardExists(K,recommendedNational)",
+     "standardExists(K,industry)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,industry)"
+    ],
+    "note": "没有推荐性国家标准的，按照行业标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-q4g4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,quality)",
+     "~standardExists(K,mandatoryNational)",
+     "~standardExists(K,recommendedNational)",
+     "~standardExists(K,industry)"
+    ],
+    "heads": [
+     "qualityStandardApplied(K,usualOrPurposeSpecific)"
+    ],
+    "note": "没有国家标准、行业标准的，按照通常标准或者符合合同目的的特定标准履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-priceg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,price)",
+     "~governmentPricingRequired(K)"
+    ],
+    "heads": [
+     "priceDeterminedAs(K,marketPriceAtPerformancePlaceOnConclusion)"
+    ],
+    "note": "价款或者报酬不明确的，按照订立合同时履行地的市场价格履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-govpriceg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,price)",
+     "governmentPricingRequired(K)"
+    ],
+    "heads": [
+     "priceDeterminedAs(K,governmentPricing)"
+    ],
+    "note": "依法应当执行政府定价或者政府指导价的，依照规定履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placemoneyg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "monetaryPayment(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,moneyRecipientLocation)"
+    ],
+    "note": "履行地点不明确，给付货币的，在接受货币一方所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placeimmg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "immovableDelivery(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,immovableLocation)"
+    ],
+    "note": "交付不动产的，在不动产所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-placeotherg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,place)",
+     "~monetaryPayment(K)",
+     "~immovableDelivery(K)"
+    ],
+    "heads": [
+     "performancePlaceIs(K,obligorLocation)"
+    ],
+    "note": "其他标的，在履行义务一方所在地履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termdebtorg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "performAtAnyTime(O,K)"
+     }
+    ],
+    "note": "履行期限不明确的，债务人可以随时履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termcreditorg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "demandPerformanceAtAnyTime(C,K)"
+     }
+    ],
+    "note": "债权人也可以随时请求履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-termprepg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,term)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "giveNecessaryPreparationTime(O,C,K)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "giveNecessaryPreparationTime(C,O,K)"
+     }
+    ],
+    "note": "但是应当给对方必要的准备时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-methodg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,method)"
+    ],
+    "heads": [
+     "performanceMethodIs(K,favorableToContractPurpose)"
+    ],
+    "note": "履行方式不明确的，按照有利于实现合同目的的方式履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-costg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,cost)",
+     "contractObligorTo(O,C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "bearPerformanceCost(O,K)"
+     }
+    ],
+    "note": "履行费用的负担不明确的，由履行义务一方负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c511-extracostg4164",
+    "srcs": [
+     "art511"
+    ],
+    "body": [
+     "stillIndeterminableAfterArt510(K,cost)",
+     "contractObligorTo(O,C,K)",
+     "costIncreasedByCreditor(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "bearIncreasedPerformanceCost(C,K)"
+     }
+    ],
+    "note": "因债权人原因增加的履行费用，由债权人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-courierg4164",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "goodsDeliveredByCourier(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryTimeIs(K,consigneeSigningTime)"
+    ],
+    "note": "电子合同标的为交付商品并采用快递物流方式交付的，收货人的签收时间为交付时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-serviceg4164",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "serviceProvision(K)",
+     "~voucherTimeMissingOrInconsistent(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "serviceTimeIs(K,voucherStatedTime)"
+    ],
+    "note": "电子合同标的为提供服务的，生成的电子凭证或者实物凭证中载明的时间为提供服务时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-actualg4164",
+    "srcs": [
+     "art512-1"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "serviceProvision(K)",
+     "voucherTimeMissingOrInconsistent(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "serviceTimeIs(K,actualServiceTime)"
+    ],
+    "note": "凭证没有载明时间或者载明时间与实际提供服务时间不一致的，以实际提供服务的时间为准",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-onlineg4164",
+    "srcs": [
+     "art512-2"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "deliveredByOnlineTransmission(K)",
+     "~agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryTimeIs(K,enteredDesignatedSystemAndRetrievable)"
+    ],
+    "note": "标的物采用在线传输方式交付的，进入对方当事人指定的特定系统且能够检索识别的时间为交付时间",
+    "auth": "npc"
+   },
+   {
+    "key": "c512-agreedg4164",
+    "srcs": [
+     "art512-3"
+    ],
+    "body": [
+     "electronicContract(K)",
+     "agreedOtherwiseOnDeliveryOrServiceTime(K)"
+    ],
+    "heads": [
+     "deliveryOrServiceTimePerAgreement(K)"
+    ],
+    "note": "电子合同当事人对交付商品或者提供服务的方式、时间另有约定的，按照其约定",
+    "auth": "npc"
+   },
+   {
+    "key": "c501-noleakg4164",
+    "srcs": [
+     "art501"
+    ],
+    "body": [
+     "knowsConfidentialInfo(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "discloseOrUseConfidentialInfo(P,O)"
+     }
+    ],
+    "note": "当事人在订立合同过程中知悉的商业秘密或者其他应当保密的信息，无论合同是否成立，不得泄露或者不正当地使用",
+    "auth": "npc"
+   },
+   {
+    "key": "c501-liabg4164",
+    "srcs": [
+     "art501"
+    ],
+    "body": [
+     "knowsConfidentialInfo(P,O)",
+     "disclosesOrImproperlyUses(P,O)",
+     "confidentialityBreachCausedLoss(P,O)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "O",
+      "content": "compensateConfidentialityLoss(P,O)"
+     }
+    ],
+    "note": "泄露、不正当地使用该商业秘密或者信息，造成对方损失的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c509-fullg4164",
+    "srcs": [
+     "art509-1"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performFullyAsAgreed(P,K)"
+     }
+    ],
+    "note": "当事人应当按照约定全面履行自己的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c509-goodfaithg4164",
+    "srcs": [
+     "art509-2"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "performAncillaryDutiesInGoodFaith(P,K)"
+     }
+    ],
+    "note": "当事人应当遵循诚信原则，根据合同的性质、目的和交易习惯履行通知、协助、保密等义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c509-ecog4164",
+    "srcs": [
+     "art509-3"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "avoidWastePollutionAndEcoDamage(P,K)"
+     }
+    ],
+    "note": "当事人在履行合同过程中，应当避免浪费资源、污染环境和破坏生态",
+    "auth": "npc"
+   },
+   {
+    "key": "c513-inperiodg4164",
+    "srcs": [
+     "art513"
+    ],
+    "body": [
+     "governmentPricingRequired(K)",
+     "governmentPriceAdjustedWithinDeliveryPeriod(K)"
+    ],
+    "heads": [
+     "pricedAt(K,priceAtDelivery)"
+    ],
+    "note": "执行政府定价或者政府指导价的，在合同约定的交付期限内政府价格调整时，按照交付时的价格计价",
+    "auth": "npc"
+   },
+   {
+    "key": "c513-latedeliveryupg4164",
+    "srcs": [
+     "art513"
+    ],
+    "body": [
+     "governmentPricingRequired(K)",
+     "lateDelivery(K)",
+     "governmentPriceChange(K,up)"
+    ],
+    "heads": [
+     "pricedAt(K,originalPrice)"
+    ],
+    "note": "逾期交付标的物的，遇价格上涨时，按照原价格执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c513-latedeliverydowng4164",
+    "srcs": [
+     "art513"
+    ],
+    "body": [
+     "governmentPricingRequired(K)",
+     "lateDelivery(K)",
+     "governmentPriceChange(K,down)"
+    ],
+    "heads": [
+     "pricedAt(K,newPrice)"
+    ],
+    "note": "逾期交付标的物的，价格下降时，按照新价格执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c513-latepickupupg4164",
+    "srcs": [
+     "art513"
+    ],
+    "body": [
+     "governmentPricingRequired(K)",
+     {
+      "or": [
+       "lateTakingOfDelivery(K)",
+       "latePayment(K)"
+      ]
+     },
+     "governmentPriceChange(K,up)"
+    ],
+    "heads": [
+     "pricedAt(K,newPrice)"
+    ],
+    "note": "逾期提取标的物或者逾期付款的，遇价格上涨时，按照新价格执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c513-latepickupdowng4164",
+    "srcs": [
+     "art513"
+    ],
+    "body": [
+     "governmentPricingRequired(K)",
+     {
+      "or": [
+       "lateTakingOfDelivery(K)",
+       "latePayment(K)"
+      ]
+     },
+     "governmentPriceChange(K,down)"
+    ],
+    "heads": [
+     "pricedAt(K,originalPrice)"
+    ],
+    "note": "逾期提取标的物或者逾期付款的，价格下降时，按照原价格执行",
+    "auth": "npc"
+   },
+   {
+    "key": "c514-currencyg4164",
+    "srcs": [
+     "art514"
+    ],
+    "body": [
+     "monetaryDebt(K)",
+     "contractObligorTo(O,C,K)",
+     "~currencyOtherwiseProvidedOrAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "demandPaymentInLocalLegalTender(C,O,K)"
+     }
+    ],
+    "note": "以支付金钱为内容的债，除法律另有规定或者当事人另有约定外，债权人可以请求债务人以实际履行地的法定货币履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c531-refuseg4164",
+    "srcs": [
+     "art531-1"
+    ],
+    "body": [
+     "contractObligorTo(O,C,K)",
+     "partialPerformanceTendered(O,K)",
+     "~partialPerformanceHarmless(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "C",
+      "counterparty": "O",
+      "content": "refusePartialPerformance(C,O,K)"
+     }
+    ],
+    "note": "债权人可以拒绝债务人部分履行债务，但是部分履行不损害债权人利益的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c531-costg4164",
+    "srcs": [
+     "art531-2"
+    ],
+    "body": [
+     "contractObligorTo(O,C,K)",
+     "partialPerformanceTendered(O,K)",
+     "partialPerformanceIncreasedCost(C,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "O",
+      "counterparty": "C",
+      "content": "bearPartialPerformanceCost(O,C,K)"
+     }
+    ],
+    "note": "债务人部分履行债务给债权人增加的费用，由债务人负担",
+    "auth": "npc"
+   },
+   {
+    "key": "c603-agreedg4164",
+    "srcs": [
+     "art603-1"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "~noAgreedDeliveryPlace(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "deliverAtAgreedPlace(S,K)"
+     }
+    ],
+    "note": "出卖人应当按照约定的地点交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c603-carrierg4164",
+    "srcs": [
+     "art603-2"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "noAgreedDeliveryPlace(K)",
+     "stillIndeterminableAfterArt510(K,place)",
+     "contractGoodsNeedCarriage(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "handOverToFirstCarrier(S,K)"
+     }
+    ],
+    "note": "没有约定交付地点或者约定不明确，依第510条仍不能确定，标的物需要运输的，出卖人应当将标的物交付给第一承运人以运交给买受人",
+    "auth": "npc"
+   },
+   {
+    "key": "c603-knowng4164",
+    "srcs": [
+     "art603-2"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "noAgreedDeliveryPlace(K)",
+     "stillIndeterminableAfterArt510(K,place)",
+     "~contractGoodsNeedCarriage(K)",
+     "goodsLocationKnownAtConclusion(K,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "deliverAtPlace(S,K,L)"
+     }
+    ],
+    "note": "标的物不需要运输，出卖人和买受人订立合同时知道标的物在某一地点的，出卖人应当在该地点交付",
+    "auth": "npc"
+   },
+   {
+    "key": "c603-businessg4164",
+    "srcs": [
+     "art603-2"
+    ],
+    "body": [
+     "sellerOf(S,K)",
+     "noAgreedDeliveryPlace(K)",
+     "stillIndeterminableAfterArt510(K,place)",
+     "~contractGoodsNeedCarriage(K)",
+     "~goodsLocationKnown(K)",
+     "sellerBusinessPlaceAtConclusion(S,K,L)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "deliverAtPlace(S,K,L)"
+     }
+    ],
+    "note": "不知道标的物在某一地点的，应当在出卖人订立合同时的营业地交付标的物",
+    "auth": "npc"
+   },
+   {
+    "key": "c603-knowndefg4164",
+    "srcs": [
+     "art603-2"
+    ],
+    "body": [
+     "goodsLocationKnownAtConclusion(K,L)"
+    ],
+    "heads": [
+     "goodsLocationKnown(K)"
+    ],
+    "note": "辅助规则：订立合同时双方知道标的物所在地点",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c603-carrierg4164",
+    "c511-placemoneyg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-carrierg4164",
+    "c511-placeimmg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-carrierg4164",
+    "c511-placeotherg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-knowng4164",
+    "c511-placemoneyg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-knowng4164",
+    "c511-placeimmg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-knowng4164",
+    "c511-placeotherg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-businessg4164",
+    "c511-placemoneyg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-businessg4164",
+    "c511-placeimmg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ],
+   [
+    "c603-businessg4164",
+    "c511-placeotherg4164",
+    "买卖合同交付地点的分则特别规定优先于第511条第3项"
+   ]
+  ],
+  "predicates": {
+   "termNotAgreedOrUnclear": "合同生效后，当事人就质量、价款或报酬、履行地点等内容I没有约定或者约定不明确（合同，内容事项）",
+   "concludeSupplementaryAgreement": "就该内容协议补充（合同，内容事项）",
+   "noSupplementaryAgreementOn": "当事人就该内容不能达成补充协议（合同，内容事项）",
+   "determinedByRelatedClausesOrUsage": "该内容按照合同相关条款或者交易习惯确定（合同，内容事项）",
+   "stillIndeterminableAfterArt510": "该内容约定不明确，依据第510条仍不能确定（合同，内容事项：常量 quality 质量、price 价款或报酬、place 履行地点、term 履行期限、method 履行方式、cost 履行费用）",
+   "standardExists": "就标的存在该类标准（合同，标准类别：常量 mandatoryNational 强制性国家标准、recommendedNational 推荐性国家标准、industry 行业标准）",
+   "qualityStandardApplied": "质量按该标准履行（合同，标准：mandatoryNational、recommendedNational、industry、usualOrPurposeSpecific 通常标准或符合合同目的的特定标准）",
+   "governmentPricingRequired": "依法应当执行政府定价或者政府指导价（合同）",
+   "priceDeterminedAs": "价款或报酬按该方式确定（合同，常量 marketPriceAtPerformancePlaceOnConclusion 订立合同时履行地市场价格、governmentPricing 依规定执行政府定价或指导价）",
+   "monetaryPayment": "履行义务为给付货币（合同）",
+   "immovableDelivery": "履行义务为交付不动产（合同）",
+   "performancePlaceIs": "履行地点为（合同，常量 moneyRecipientLocation 接受货币一方所在地、immovableLocation 不动产所在地、obligorLocation 履行义务一方所在地）",
+   "contractObligorTo": "O为合同K项下履行义务的一方（债务人），C为接受履行的一方（债权人）（债务人，债权人，合同）",
+   "performAtAnyTime": "可以随时履行（债务人，合同）",
+   "demandPerformanceAtAnyTime": "可以随时请求履行（债权人，合同）",
+   "giveNecessaryPreparationTime": "给对方必要的准备时间（义务人，对方，合同）",
+   "performanceMethodIs": "履行方式为（合同，常量 favorableToContractPurpose 有利于实现合同目的的方式）",
+   "bearPerformanceCost": "负担履行费用（负担人，合同）",
+   "costIncreasedByCreditor": "因债权人原因增加了履行费用（债权人，合同）",
+   "bearIncreasedPerformanceCost": "负担因其原因增加的履行费用（债权人，合同）",
+   "electronicContract": "是通过互联网等信息网络订立的电子合同（合同）",
+   "goodsDeliveredByCourier": "电子合同标的为交付商品并采用快递物流方式交付（合同）",
+   "agreedOtherwiseOnDeliveryOrServiceTime": "电子合同当事人对交付商品或者提供服务的方式、时间另有约定（合同）",
+   "deliveryTimeIs": "交付时间为（合同，常量 consigneeSigningTime 收货人签收时间、enteredDesignatedSystemAndRetrievable 进入对方指定特定系统且能够检索识别的时间）",
+   "serviceProvision": "电子合同的标的为提供服务（合同）",
+   "voucherTimeMissingOrInconsistent": "电子凭证或实物凭证没有载明时间或者载明时间与实际提供服务时间不一致（合同）",
+   "serviceTimeIs": "提供服务时间为（合同，常量 voucherStatedTime 凭证载明的时间、actualServiceTime 实际提供服务的时间）",
+   "deliveredByOnlineTransmission": "电子合同标的物采用在线传输方式交付（合同）",
+   "deliveryOrServiceTimePerAgreement": "交付商品或者提供服务的方式、时间按照当事人约定（合同）",
+   "confidentialityBreachCausedLoss": "泄露、不正当地使用该商业秘密或信息造成对方损失（行为人，对方）",
+   "compensateConfidentialityLoss": "就泄露或不正当使用保密信息造成的损失承担赔偿责任（行为人，对方）",
+   "performFullyAsAgreed": "按照约定全面履行自己的义务（当事人，合同）",
+   "performAncillaryDutiesInGoodFaith": "遵循诚信原则，根据合同性质、目的和交易习惯履行通知、协助、保密等义务（当事人，合同）",
+   "avoidWastePollutionAndEcoDamage": "在履行合同过程中避免浪费资源、污染环境和破坏生态（当事人，合同）",
+   "governmentPriceAdjustedWithinDeliveryPeriod": "在合同约定的交付期限内政府价格调整（合同）",
+   "pricedAt": "按该价格计价或执行（合同，常量 priceAtDelivery 交付时的价格、originalPrice 原价格、newPrice 新价格）",
+   "lateDelivery": "逾期交付标的物（合同）",
+   "governmentPriceChange": "政府定价或指导价发生变动（合同，常量 up 上涨、down 下降）",
+   "lateTakingOfDelivery": "逾期提取标的物（合同）",
+   "latePayment": "逾期付款（合同）",
+   "monetaryDebt": "是以支付金钱为内容的债（合同）",
+   "currencyOtherwiseProvidedOrAgreed": "法律对履行货币另有规定或者当事人另有约定（合同）",
+   "demandPaymentInLocalLegalTender": "请求债务人以实际履行地的法定货币履行（债权人，债务人，合同）",
+   "partialPerformanceTendered": "债务人部分履行债务（债务人，合同）",
+   "partialPerformanceHarmless": "部分履行不损害债权人利益（债权人，合同）",
+   "refusePartialPerformance": "拒绝债务人部分履行（债权人，债务人，合同）",
+   "partialPerformanceIncreasedCost": "债务人部分履行给债权人增加了费用（债权人，合同）",
+   "bearPartialPerformanceCost": "负担因部分履行给债权人增加的费用（债务人，债权人，合同）",
+   "deliverAtAgreedPlace": "按照约定的地点交付标的物（出卖人，合同）",
+   "contractGoodsNeedCarriage": "买卖合同的标的物需要运输（合同）",
+   "handOverToFirstCarrier": "将标的物交付给第一承运人以运交给买受人（出卖人，合同）",
+   "goodsLocationKnownAtConclusion": "出卖人和买受人订立合同时知道标的物在地点L（合同，地点）",
+   "goodsLocationKnown": "出卖人和买受人订立合同时知道标的物所在地点（合同）",
+   "deliverAtPlace": "在该地点交付标的物（出卖人，合同，地点）",
+   "sellerBusinessPlaceAtConclusion": "L是出卖人订立合同时的营业地（出卖人，合同，地点）"
+  }
+ },
+ "art:532": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第四章　合同的履行"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人名称、法定代表人等变动是否影响合同义务的履行",
+     "rules": [
+      "c532-nochangeexcuse"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同已生效，当事人的姓名、名称变更，或者其法定代表人、负责人、承办人变动",
+     "rules": [
+      "c532-nochangeexcuse"
+     ]
+    }
+   ],
+   "exceptions": [],
+   "effects": [
+    {
+     "text": "当事人不得以上述变更或变动为由不履行合同义务",
+     "rules": [
+      "c532-nochangeexcuse"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "姓名、名称或代表人、承办人的变动不改变合同主体，与合同主体变更（债权转让、债务转移、概括承受）不同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c532-nochangeexcuse",
+    "srcs": [
+     "art532"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "contractParty(P,K)",
+     {
+      "or": [
+       "changedName(P)",
+       "representativeOrHandlerChanged(P)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "nonPerformanceDueToIdentityChange(P,K)"
+     }
+    ],
+    "note": "合同生效后，当事人不得因姓名、名称的变更或者法定代表人、负责人、承办人的变动而不履行合同义务",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "representativeOrHandlerChanged": "当事人的法定代表人、负责人或者承办人发生变动（当事人）",
+   "nonPerformanceDueToIdentityChange": "以姓名、名称变更或者法定代表人、负责人、承办人变动为由不履行合同义务（当事人，合同）"
+  }
+ }
+}

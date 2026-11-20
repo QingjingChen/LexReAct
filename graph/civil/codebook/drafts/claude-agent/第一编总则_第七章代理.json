@@ -1,0 +1,306 @@
+{
+ "card:g1696": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第一编　总则",
+   "第七章　代理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "哪些民事法律行为可以或不得代理；委托代理与法定代理如何行使代理权；代理人的责任；被代理人死亡或终止后委托代理行为的效力",
+     "rules": [
+      "c161-1",
+      "c161-2",
+      "c163-2a",
+      "c163-2b",
+      "c164-g1",
+      "c164-g2",
+      "c174-g1",
+      "c174-g2"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "民事主体原则上可以通过代理人实施民事法律行为",
+     "rules": [
+      "c161-1"
+     ]
+    },
+    {
+     "text": "依照法律规定、当事人约定或者行为性质应当由本人亲自实施的行为（如立遗嘱、婚姻登记、收养子女、约定由特定人亲自完成的演出讲课等）",
+     "rules": [
+      "c161-ground"
+     ]
+    },
+    {
+     "text": "代理分为委托代理和法定代理：委托代理人按被代理人的委托行使代理权，法定代理人依照法律规定行使代理权",
+     "rules": [
+      "c163-2a",
+      "c163-2b"
+     ]
+    },
+    {
+     "text": "被代理人死亡后委托代理行为仍有效的四种情形：代理人不知道且不应当知道被代理人死亡；继承人承认；授权中明确代理权在代理事务完成时终止；死亡前已实施、为继承人利益继续代理",
+     "rules": [
+      "c174-g1"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "应当由本人亲自实施的民事法律行为不得代理",
+     "rules": [
+      "c161-2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "代理人不履行或者不完全履行职责，造成被代理人损害的，应当承担民事责任",
+     "rules": [
+      "c164-g1"
+     ]
+    },
+    {
+     "text": "代理人和相对人恶意串通，损害被代理人合法权益的，代理人和相对人承担连带责任",
+     "rules": [
+      "c164-g2"
+     ]
+    },
+    {
+     "text": "符合上述情形的，被代理人死亡后委托代理人实施的代理行为有效；作为被代理人的法人、非法人组织终止的，参照适用",
+     "rules": [
+      "c174-g1",
+      "c174-g2"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "亲自实施的限制优先于可以代理的一般规则",
+     "rules": [
+      "c161-2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "代理是被代理人、代理人、相对人三方的外部关系，委托合同是内部关系；中介人只报告订约机会或充当媒介，不代委托人订立合同；代人算账、抄写等事实行为不是代理",
+     "rules": []
+    },
+    {
+     "text": "笔记认为民法典的代理包括以被代理人名义的直接代理和以代理人自己名义的间接代理（第925、926条）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c161-1",
+    "srcs": [
+     "art161-1"
+    ],
+    "body": [
+     "actOf(X,P)",
+     "~mustBePerformedInPerson(X)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "actThroughAgent(P,X)"
+     }
+    ],
+    "note": "民事主体可以通过代理人实施民事法律行为",
+    "auth": "npc"
+   },
+   {
+    "key": "c161-ground",
+    "srcs": [
+     "art161-2"
+    ],
+    "body": [
+     "actOf(X,P)",
+     {
+      "or": [
+       "personalByLaw(X)",
+       "personalByAgreement(X)",
+       "personalByNature(X)"
+      ]
+     }
+    ],
+    "heads": [
+     "mustBePerformedInPerson(X)"
+    ],
+    "note": "依照法律规定、当事人约定或者民事法律行为的性质，应当由本人亲自实施",
+    "auth": "npc"
+   },
+   {
+    "key": "c161-2",
+    "srcs": [
+     "art161-2"
+    ],
+    "body": [
+     "actOf(X,P)",
+     "mustBePerformedInPerson(X)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "actThroughAgent(P,X)"
+     }
+    ],
+    "note": "应当由本人亲自实施的民事法律行为，不得代理",
+    "auth": "npc"
+   },
+   {
+    "key": "c163-2a",
+    "srcs": [
+     "art163-2"
+    ],
+    "body": [
+     "entrustedAgentOf(A,P)"
+    ],
+    "heads": [
+     "exercisesAgencyPerEntrustment(A,P)"
+    ],
+    "note": "委托代理人按照被代理人的委托行使代理权",
+    "auth": "npc"
+   },
+   {
+    "key": "c163-2b",
+    "srcs": [
+     "art163-2"
+    ],
+    "body": [
+     "statutoryAgentOf(A,P)"
+    ],
+    "heads": [
+     "exercisesAgencyPerLaw(A,P)"
+    ],
+    "note": "法定代理人依照法律的规定行使代理权",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-g1",
+    "srcs": [
+     "art164-1"
+    ],
+    "body": [
+     "failsAgentDuty(A,P)",
+     "causesPrincipalLoss(A,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "bearCivilLiabilityTo(A,P)"
+     }
+    ],
+    "note": "代理人不履行或者不完全履行职责，造成被代理人损害的，应当承担民事责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c164-g2",
+    "srcs": [
+     "art164-2"
+    ],
+    "body": [
+     "colludesWithCounterparty(A,T)",
+     "harmsPrincipalRights(A,T,P)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "jointlyLiableToPrincipal(A,T,P)"
+     },
+     {
+      "type": "OBL",
+      "bearer": "T",
+      "counterparty": "P",
+      "content": "jointlyLiableToPrincipal(A,T,P)"
+     }
+    ],
+    "note": "代理人和相对人恶意串通，损害被代理人合法权益的，二者承担连带责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-g1",
+    "srcs": [
+     "art174-1"
+    ],
+    "body": [
+     "entrustedAgentOf(A,P)",
+     "died(P)",
+     "inPrincipalName(A,P,X)",
+     {
+      "or": [
+       "agentUnawareOfDeath(A,P)",
+       "heirsRecognize(P,X)",
+       "authorityTerminatesOnCompletion(P,A)",
+       "performedBeforeDeathForHeirs(A,P,X)"
+      ]
+     }
+    ],
+    "heads": [
+     "valid(X)"
+    ],
+    "note": "被代理人死亡后，具备四种情形之一的，委托代理人实施的代理行为有效",
+    "auth": "npc"
+   },
+   {
+    "key": "c174-g2",
+    "srcs": [
+     "art174-2"
+    ],
+    "body": [
+     "entrustedAgentOf(A,P)",
+     "principalEntityTerminated(P)",
+     "inPrincipalName(A,P,X)",
+     {
+      "or": [
+       "agentUnawareOfPrincipalEnd(A,P)",
+       "successorRatifies(P,X)",
+       "authorityTerminatesOnCompletion(P,A)",
+       "performedBeforeEndForSuccessorInterest(X,P)"
+      ]
+     }
+    ],
+    "heads": [
+     "valid(X)"
+    ],
+    "note": "作为被代理人的法人、非法人组织终止的，参照适用前款，委托代理人实施的代理行为有效",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c161-2",
+    "c161-1",
+    "依法、依约或依性质须亲自实施的行为不得代理，排除可以代理的一般规则"
+   ]
+  ],
+  "predicates": {
+   "mustBePerformedInPerson": "该民事法律行为依照法律规定、当事人约定或者其性质应当由本人亲自实施（行为）",
+   "personalByLaw": "法律规定该民事法律行为应当由本人亲自实施（行为）",
+   "personalByAgreement": "当事人约定该民事法律行为应当由本人亲自实施（行为）",
+   "personalByNature": "依该民事法律行为的性质应当由本人亲自实施（行为）",
+   "actThroughAgent": "通过代理人实施该民事法律行为（被代理人，行为）",
+   "entrustedAgentOf": "是委托代理人（代理人，被代理人）",
+   "statutoryAgentOf": "是法定代理人（代理人，被代理人）",
+   "causesPrincipalLoss": "代理人的行为造成被代理人损害（代理人，被代理人）",
+   "jointlyLiableToPrincipal": "代理人与相对人就损害被代理人合法权益向被代理人承担连带责任（代理人，相对人，被代理人）"
+  }
+ }
+}

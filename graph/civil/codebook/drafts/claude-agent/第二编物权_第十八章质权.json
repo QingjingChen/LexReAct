@@ -1,0 +1,241 @@
+{
+ "card:g3436": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第二编　物权",
+   "第十八章　质权"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "动产质权的实现方式、变价款的分配，以及质权的放弃与转质责任",
+     "rules": [
+      "c436-g3436realize",
+      "c438-g3436surplus",
+      "c435-g3436release"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "债务人不履行到期债务或者发生当事人约定的实现质权的情形",
+     "rules": [
+      "c436-g3436realize"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "质权人放弃债务人自己财产上的质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任，但其他担保人承诺仍然提供担保的除外",
+     "rules": [
+      "c435-g3436release"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "质权人可以与出质人协议以质押财产折价，也可以就拍卖、变卖质押财产所得的价款优先受偿",
+     "rules": [
+      "c436-g3436realize"
+     ]
+    },
+    {
+     "text": "折价或者变卖的，应当参照市场价格",
+     "rules": [
+      "c436-g3436market"
+     ]
+    },
+    {
+     "text": "价款超过债权数额的部分归出质人所有，不足部分由债务人清偿",
+     "rules": [
+      "c438-g3436surplus",
+      "c438-g3436short"
+     ]
+    },
+    {
+     "text": "质权人可以放弃质权",
+     "rules": [
+      "c435-g3436waive"
+     ]
+    },
+    {
+     "text": "质权存续期间未经出质人同意转质，造成质押财产毁损、灭失的，质权人应当承担赔偿责任",
+     "rules": [
+      "c434-g3436repledge"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "质权人的妥善保管义务、提存或提前清偿（第432条）及不可归责事由下的担保请求（第433条）、清偿后返还质押财产（第436条第1款）已由其他行（card:g3440）形式化，本行不重复",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c436-g3436realize",
+    "srcs": [
+     "art436-2"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     {
+      "or": [
+       "failsToPerformDueDebt(D)",
+       "pledgeRealizationEventOccurred(R,T)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "valuePledgedPropertyByAgreement(R,P,T)"
+     },
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "priorityPaymentFrom(R,T)"
+     }
+    ],
+    "note": "债务人不履行到期债务或者发生约定的实现质权情形，质权人可以与出质人协议折价，也可以就拍卖、变卖所得价款优先受偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c436-g3436market",
+    "srcs": [
+     "art436-3"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "pledgeRealizedByValuationOrSale(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "referToMarketPriceForPledge(R,T)"
+     }
+    ],
+    "note": "质押财产折价或者变卖的，应当参照市场价格",
+    "auth": "npc"
+   },
+   {
+    "key": "c438-g3436surplus",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "pledgeProceedsExceedClaim(T)"
+    ],
+    "heads": [
+     "pledgeSurplusBelongsTo(P,T)"
+    ],
+    "note": "质押财产折价或者拍卖、变卖后，其价款超过债权数额的部分归出质人所有",
+    "auth": "npc"
+   },
+   {
+    "key": "c438-g3436short",
+    "srcs": [
+     "art438"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "pledgeProceedsShortOfClaim(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "D",
+      "counterparty": "R",
+      "content": "payRemainingSecuredDebt(D,R,T)"
+     }
+    ],
+    "note": "价款不足清偿债权的部分由债务人清偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c435-g3436waive",
+    "srcs": [
+     "art435"
+    ],
+    "body": [
+     "pledgeRightHolder(R,T)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "R",
+      "counterparty": null,
+      "content": "waivePledge(R,T)"
+     }
+    ],
+    "note": "质权人可以放弃质权",
+    "auth": "npc"
+   },
+   {
+    "key": "c435-g3436release",
+    "srcs": [
+     "art435"
+    ],
+    "body": [
+     "pledgeOf(D,R,T,D)",
+     "debtorProvidedPledge(D,T)",
+     "waivedPledge(R,T)",
+     "otherSecurityProviderForDebt(O,D)",
+     "~promisedToStillProvideSecurity(O,D)"
+    ],
+    "heads": [
+     "releasedWithinLostPledgePriority(O,D)"
+    ],
+    "note": "债务人以自己的财产出质，质权人放弃该质权的，其他担保人在质权人丧失优先受偿权益的范围内免除担保责任，但其他担保人承诺仍然提供担保的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c434-g3436repledge",
+    "srcs": [
+     "art434"
+    ],
+    "body": [
+     "pledgeOf(P,R,T,D)",
+     "pledgeRightSubsisting(T)",
+     "repledgedWithoutPledgorConsent(R,T)",
+     "pledgedPropertyDamagedOrLost(T)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "R",
+      "counterparty": "P",
+      "content": "compensatePledgorForLoss(R,P,T)"
+     }
+    ],
+    "note": "质权人在质权存续期间，未经出质人同意转质，造成质押财产毁损、灭失的，应当承担赔偿责任",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "valuePledgedPropertyByAgreement": "与出质人协议以质押财产折价（质权人，出质人，质押财产）",
+   "referToMarketPriceForPledge": "质押财产折价或者变卖时参照市场价格（质权人，质押财产）",
+   "pledgeProceedsExceedClaim": "质押财产折价或者拍卖、变卖所得价款超过债权数额（质押财产）",
+   "pledgeProceedsShortOfClaim": "质押财产折价或者拍卖、变卖所得价款不足清偿债权（质押财产）",
+   "pledgeSurplusBelongsTo": "价款超过债权数额的部分归出质人所有（出质人，质押财产）",
+   "payRemainingSecuredDebt": "清偿变价款不足部分的债务（债务人，债权人，担保财产）",
+   "otherSecurityProviderForDebt": "为同一债务提供担保的其他担保人（担保人，债务人）",
+   "releasedWithinLostPledgePriority": "在质权人丧失优先受偿权益的范围内免除担保责任（其他担保人，债务人）",
+   "repledgedWithoutPledgorConsent": "质权人未经出质人同意转质（质权人，质押财产）",
+   "pledgedPropertyDamagedOrLost": "质押财产毁损、灭失（质押财产）",
+   "compensatePledgorForLoss": "向出质人承担质押财产毁损、灭失的赔偿责任（质权人，出质人，质押财产）"
+  }
+ }
+}

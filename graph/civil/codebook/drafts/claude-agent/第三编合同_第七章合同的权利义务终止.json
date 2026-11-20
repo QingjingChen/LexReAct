@@ -1,0 +1,645 @@
+{
+ "card:g4593": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第七章　合同的权利义务终止"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "当事人能否通过合意解除合同或约定一方的解除权，约定解除权何时产生、何时消灭",
+     "rules": [
+      "c562-mutual",
+      "c562-agreedright"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "协商解除：当事人协商一致，可以解除合同",
+     "rules": [
+      "c562-mutual"
+     ]
+    },
+    {
+     "text": "约定解除：当事人约定一方解除合同的事由（可在订立时约定，也可在订立后另行约定），该事由发生时，解除权人可以解除合同",
+     "rules": [
+      "c562-agreedright"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "解除权条款违反法律强制性规定或公序良俗的，不产生约定解除权（学理）",
+     "rules": [
+      "c562-invalidclause"
+     ]
+    },
+    {
+     "text": "法律规定或约定的解除权行使期限届满未行使的，解除权消灭",
+     "rules": [
+      "c564-agreedperiod"
+     ]
+    },
+    {
+     "text": "无规定或约定期限的，自知道或应当知道解除事由之日起一年内不行使，或经对方催告后在合理期限内不行使的，解除权消灭",
+     "rules": [
+      "c564-noperiod"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "解除权人行使解除权应当通知对方，合同自通知到达对方时解除（第565条，已另有规则）；合同解除的，合同的权利义务关系终止",
+     "rules": [
+      "c557-rescinded"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "解除权消灭及条款无效的规则优先于约定解除权的产生规则",
+     "rules": [
+      "c564-agreedperiod",
+      "c564-noperiod",
+      "c562-invalidclause"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "协商解除是双方以新的合意解除合同，不以解除权为前提；约定解除是事先约定一方保留解除权，事由发生后由一方单方行使；二者均区别于第563条的法定解除",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c562-mutual",
+    "srcs": [
+     "art562-1"
+    ],
+    "body": [
+     "contract(K)",
+     "contractParty(A,K)",
+     "contractParty(B,K)",
+     "mutualTerminationAgreed(K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "B",
+      "content": "terminateContract(K)"
+     }
+    ],
+    "note": "当事人协商一致，可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c562-agreedright",
+    "srcs": [
+     "art562-2"
+    ],
+    "body": [
+     "contract(K)",
+     "contractParty(P,K)",
+     "agreedUnilateralTerminationGround(P,K)",
+     "agreedTerminationGroundOccurred(P,K)"
+    ],
+    "heads": [
+     "terminationRight(P,K)"
+    ],
+    "note": "当事人约定一方解除合同的事由，事由发生时，解除权人可以解除合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c562-invalidclause",
+    "srcs": [
+     "art562-2"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "agreedUnilateralTerminationGround(P,K)",
+     "terminationClauseViolatesMandatoryOrPublicOrder(K)"
+    ],
+    "heads": [
+     "-terminationRight(P,K)"
+    ],
+    "note": "笔记：约定解除条款须不违反法律强制性规范和公序良俗，否则不产生约定解除权（学理归纳）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c564-agreedperiod",
+    "srcs": [
+     "art564-1"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "terminationPeriodSet(P,K)",
+     "terminationPeriodExpiredUnexercised(P,K)"
+    ],
+    "heads": [
+     "-terminationRight(P,K)"
+    ],
+    "note": "法律规定或者当事人约定解除权行使期限，期限届满不行使的，该权利消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c564-noperiod",
+    "srcs": [
+     "art564-2"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "~terminationPeriodSet(P,K)",
+     {
+      "or": [
+       "terminationUnexercisedOneYearAfterKnowing(P,K)",
+       "terminationUnexercisedAfterDemand(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "-terminationRight(P,K)"
+    ],
+    "note": "无规定或约定期限的，自知道或应当知道解除事由之日起一年内不行使，或经对方催告后在合理期限内不行使的，解除权消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c557-rescinded",
+    "srcs": [
+     "art557-2"
+    ],
+    "body": [
+     "contract(K)",
+     "terminationEffective(K)"
+    ],
+    "heads": [
+     "contractTerminated(K)"
+    ],
+    "note": "合同解除的，该合同的权利义务关系终止",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c562-invalidclause",
+    "c562-agreedright",
+    "解除权条款违反强制性规定或公序良俗的，约定解除权不成立"
+   ],
+   [
+    "c564-agreedperiod",
+    "c562-agreedright",
+    "行使期限届满，解除权消灭"
+   ],
+   [
+    "c564-noperiod",
+    "c562-agreedright",
+    "一年或催告后合理期限内不行使，解除权消灭"
+   ]
+  ],
+  "predicates": {
+   "mutualTerminationAgreed": "当事人就解除合同协商一致（合同）",
+   "agreedUnilateralTerminationGround": "当事人约定了一方P解除合同的事由（解除权人，合同）",
+   "agreedTerminationGroundOccurred": "约定的解除事由已经发生（解除权人，合同）",
+   "terminationClauseViolatesMandatoryOrPublicOrder": "约定解除权条款违反法律强制性规定或公序良俗（合同）",
+   "terminationPeriodSet": "法律规定或者当事人约定了解除权行使期限（解除权人，合同）",
+   "terminationPeriodExpiredUnexercised": "解除权行使期限届满而解除权人未行使（解除权人，合同）",
+   "terminationUnexercisedOneYearAfterKnowing": "自解除权人知道或者应当知道解除事由之日起一年内未行使解除权（解除权人，合同）",
+   "terminationUnexercisedAfterDemand": "经对方催告后在合理期限内未行使解除权（解除权人，合同）"
+  }
+ },
+ "card:g4624": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第七章　合同的权利义务终止"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "解除权如何行使、合同何时解除、解除权何时消灭、对方有异议如何处理",
+     "rules": [
+      "c565-notifyduty",
+      "c565-arrival",
+      "c564-lapse",
+      "c565-dispute"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行使方式：依法享有解除权的一方主张解除合同的，应当通知对方（口头、书面均可）；法定解除不必经对方同意",
+     "rules": [
+      "c565-notifyduty"
+     ]
+    },
+    {
+     "text": "通知到达对方时合同解除（解除权为形成权）",
+     "rules": [
+      "c565-arrival"
+     ]
+    },
+    {
+     "text": "通知载明债务人在一定期限内不履行则合同自动解除，债务人在该期限内未履行的，期限届满时解除",
+     "rules": [
+      "c565-autoterm"
+     ]
+    },
+    {
+     "text": "未通知而直接起诉或申请仲裁主张解除，法院或仲裁机构确认的，自起诉状副本或仲裁申请书副本送达对方时解除",
+     "rules": [
+      "c565-bysuit"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "法律规定或约定的行使期限届满不行使的，解除权消灭",
+     "rules": [
+      "c564-lapse"
+     ]
+    },
+    {
+     "text": "没有规定或约定期限的，自知道或应当知道解除事由之日起一年内不行使，或经对方催告后合理期限内不行使的，解除权消灭",
+     "rules": [
+      "c564-lapse2"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "对方对解除有异议的，任何一方均可请求人民法院或仲裁机构确认解除行为的效力",
+     "rules": [
+      "c565-dispute"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "解除权消灭的规则排除解除权的存续，此后主张解除不发生解除效力",
+     "rules": [
+      "c564-lapse",
+      "c564-lapse2"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记所称“未约定异议期的须在通知到达之日起三个月内起诉”源自原《合同法解释（二）》第24条，该解释已随民法典施行废止，现行法未保留三个月异议期，不作形式化",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c565-notifyduty",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "terminationRight(P,K)",
+     "claimsTermination(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "notifyCounterparty(P,K)"
+     }
+    ],
+    "note": "当事人一方依法主张解除合同的，应当通知对方",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-arrival",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "terminationRight(P,K)",
+     "claimsTermination(P,K)",
+     "contractParty(Q,K)",
+     "noticeArrives(P,Q)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "合同自解除通知到达对方时解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-autoterm",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "terminationRight(P,K)",
+     "noticeStatesAutoTermination(P,D,K)",
+     "debtorNotPerformedWithinStatedPeriod(D,K)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "通知载明债务人在一定期限内不履行债务则合同自动解除，债务人在该期限内未履行的，合同自通知载明的期限届满时解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-dispute",
+    "srcs": [
+     "art565-1"
+    ],
+    "body": [
+     "claimsTermination(A,K)",
+     "objectsToTermination(Q,K)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestConfirmTerminationEffect(P,K)"
+     }
+    ],
+    "note": "对方对解除合同有异议的，任何一方当事人均可以请求人民法院或者仲裁机构确认解除行为的效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c565-bysuit",
+    "srcs": [
+     "art565-2"
+    ],
+    "body": [
+     "terminationRight(P,K)",
+     "claimsTermination(P,K)",
+     "suitOrArbitrationFiled(P)",
+     "courtConfirmsTerminationClaim(P,K)",
+     "complaintCopyServed(P,Q)"
+    ],
+    "heads": [
+     "terminationEffective(K)"
+    ],
+    "note": "未通知对方，直接起诉或申请仲裁主张解除，经确认的，合同自起诉状副本或仲裁申请书副本送达对方时解除",
+    "auth": "npc"
+   },
+   {
+    "key": "c564-lapse",
+    "srcs": [
+     "art564-1"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "terminationPeriodSet(P,K)",
+     "terminationPeriodExpiredUnexercised(P,K)"
+    ],
+    "heads": [
+     "-terminationRight(P,K)"
+    ],
+    "note": "法律规定或者当事人约定解除权行使期限，期限届满当事人不行使的，该权利消灭",
+    "auth": "npc"
+   },
+   {
+    "key": "c564-lapse2",
+    "srcs": [
+     "art564-2"
+    ],
+    "body": [
+     "contractParty(P,K)",
+     "~terminationPeriodSet(P,K)",
+     {
+      "or": [
+       "terminationUnexercisedOneYearAfterKnowing(P,K)",
+       "terminationUnexercisedAfterDemand(P,K)"
+      ]
+     }
+    ],
+    "heads": [
+     "-terminationRight(P,K)"
+    ],
+    "note": "无规定或约定期限的，自知道或应当知道解除事由之日起一年内不行使，或经对方催告后合理期限内不行使的，解除权消灭",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {}
+ },
+ "card:g4640": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第七章　合同的权利义务终止"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "合同解除的效力：未履行部分终止履行，已履行部分的恢复原状、补救与赔偿，违约解除时的违约责任，主合同解除后担保责任的存续",
+     "rules": [
+      "c566-stop",
+      "c566-restore"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "合同已解除（协议解除或解除权行使生效）",
+     "rules": [
+      "c566-stop",
+      "c566-restore",
+      "c566-damages"
+     ]
+    },
+    {
+     "text": "合同因违约而解除",
+     "rules": [
+      "c566-breach"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "违约解除时请求违约责任，当事人另有约定的除外",
+     "rules": [
+      "c566-breach"
+     ]
+    },
+    {
+     "text": "主合同解除后的担保责任，担保合同另有约定的除外",
+     "rules": [
+      "c566-security"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "尚未履行的，终止履行",
+     "rules": [
+      "c566-stop"
+     ]
+    },
+    {
+     "text": "已经履行的，根据履行情况和合同性质，当事人可以请求恢复原状或者采取其他补救措施",
+     "rules": [
+      "c566-restore"
+     ]
+    },
+    {
+     "text": "当事人有权请求赔偿损失（解除与损害赔偿可以并存）",
+     "rules": [
+      "c566-damages"
+     ]
+    },
+    {
+     "text": "合同因违约解除的，解除权人可以请求违约方承担违约责任",
+     "rules": [
+      "c566-breach"
+     ]
+    },
+    {
+     "text": "主合同解除后，担保人对债务人应当承担的民事责任仍应承担担保责任",
+     "rules": [
+      "c566-security"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记：合同权利义务终止不影响结算和清理条款、解决争议条款的效力（第567条，不在本行）",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c566-stop",
+    "srcs": [
+     "art566-1"
+    ],
+    "body": [
+     "terminationEffective(K)",
+     "contractParty(P,K)",
+     "obligationUnperformedAtTermination(P,K)"
+    ],
+    "heads": [
+     "performanceCeases(P,K)"
+    ],
+    "note": "合同解除后，尚未履行的，终止履行",
+    "auth": "npc"
+   },
+   {
+    "key": "c566-restore",
+    "srcs": [
+     "art566-1"
+    ],
+    "body": [
+     "terminationEffective(K)",
+     "contractParty(P,K)",
+     "performedBeforeTermination(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "requestRestitutionOrOtherRemedy(P,K)"
+     }
+    ],
+    "note": "已经履行的，根据履行情况和合同性质，当事人可以请求恢复原状或者采取其他补救措施（具体方式由履行情况和合同性质决定）",
+    "auth": "npc"
+   },
+   {
+    "key": "c566-damages",
+    "srcs": [
+     "art566-1"
+    ],
+    "body": [
+     "terminationEffective(K)",
+     "contractParty(P,K)",
+     "lossRelatedToTermination(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "claimDamagesAfterTermination(P,K)"
+     }
+    ],
+    "note": "合同解除后，当事人有权请求赔偿损失",
+    "auth": "npc"
+   },
+   {
+    "key": "c566-breach",
+    "srcs": [
+     "art566-2"
+    ],
+    "body": [
+     "terminationEffective(K)",
+     "terminatedForBreach(K)",
+     "terminationRight(P,K)",
+     "breachingParty(B,K)",
+     "~agreedOtherwiseOnPostTerminationLiability(K)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "P",
+      "counterparty": "B",
+      "content": "claimBreachLiabilityAfterTermination(P,B,K)"
+     }
+    ],
+    "note": "合同因违约解除的，解除权人可以请求违约方承担违约责任，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c566-security",
+    "srcs": [
+     "art566-3"
+    ],
+    "body": [
+     "terminationEffective(K)",
+     "securityProviderForMainContract(S,K)",
+     "~securityContractProvidesOtherwise(S,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "S",
+      "counterparty": null,
+      "content": "continueSecurityLiabilityAfterTermination(S,K)"
+     }
+    ],
+    "note": "主合同解除后，担保人对债务人应当承担的民事责任仍应当承担担保责任，担保合同另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "obligationUnperformedAtTermination": "合同解除时该当事人的义务尚未履行（当事人，合同）",
+   "performanceCeases": "该当事人尚未履行的义务终止履行（当事人，合同）",
+   "performedBeforeTermination": "合同解除前已经全部或部分履行（合同）",
+   "requestRestitutionOrOtherRemedy": "根据履行情况和合同性质请求恢复原状或者采取其他补救措施（当事人，合同）",
+   "lossRelatedToTermination": "当事人因合同解除或解除前的履行受有损失（当事人，合同）",
+   "claimDamagesAfterTermination": "合同解除后请求赔偿损失（当事人，合同）",
+   "terminatedForBreach": "合同因违约而解除（合同）",
+   "agreedOtherwiseOnPostTerminationLiability": "当事人就违约解除后的违约责任另有约定（合同）",
+   "claimBreachLiabilityAfterTermination": "请求违约方承担违约责任（解除权人，违约方，合同）",
+   "securityProviderForMainContract": "是为该主合同债务提供担保的担保人（担保人，主合同）",
+   "securityContractProvidesOtherwise": "担保合同对主合同解除后的担保责任另有约定（担保人，主合同）",
+   "continueSecurityLiabilityAfterTermination": "对债务人应当承担的民事责任仍承担担保责任（担保人，主合同）"
+  }
+ }
+}

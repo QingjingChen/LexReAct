@@ -1,0 +1,256 @@
+{
+ "card:g5149": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第十二章　借款合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "借款人按期支付利息的义务及利息的确定（禁止高利放贷、无约定或约定不明时的处理、利息不得预扣）",
+     "rules": [
+      "c674-g5149pay",
+      "c680-g5149none",
+      "c670-g5149deduct"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "借款合同是借款人向贷款人借款，到期返还借款并支付利息的合同；一般为有偿合同",
+     "rules": [
+      "c667-g5149return",
+      "c674-g5149pay"
+     ]
+    },
+    {
+     "text": "借款人应当按照约定的期限支付利息",
+     "rules": [
+      "c674-g5149pay"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "借款合同对支付利息没有约定的，视为没有利息",
+     "rules": [
+      "c680-g5149none"
+     ]
+    },
+    {
+     "text": "对利息约定不明确且不能达成补充协议的，按照当地或当事人的交易方式、交易习惯、市场利率等因素确定；自然人之间借款的，视为没有利息",
+     "rules": [
+      "c680-g5149unclear",
+      "c680-g5149natural"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "禁止高利放贷，借款的利率不得违反国家有关规定",
+     "rules": [
+      "c680-g5149usury"
+     ]
+    },
+    {
+     "text": "借款的利息不得预先在本金中扣除；预先扣除的，按照实际借款数额返还借款并计算利息",
+     "rules": [
+      "c670-g5149deduct",
+      "c670-g5149actual"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "视为没有利息的规则优先于借款人支付利息的一般义务；自然人之间借款的无息推定优先于按交易习惯、市场利率确定利息",
+     "rules": [
+      "c680-g5149none",
+      "c680-g5149natural"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "利息支付期限无约定或约定不明时的补充规则（第674条后段）与借款合同的书面形式（第668条）已由其他行形式化，本行不重复",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c667-g5149return",
+    "srcs": [
+     "art667"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "loanProvided(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "returnLoanAtMaturity(B,L,K)"
+     }
+    ],
+    "note": "借款合同是借款人向贷款人借款，到期返还借款并支付利息的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c674-g5149pay",
+    "srcs": [
+     "art674",
+     "art667"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "lenderOf(L,K)",
+     "agreedInterestPaymentPeriod(K)",
+     "~interestFree(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "L",
+      "content": "payInterest(B,K)"
+     }
+    ],
+    "note": "借款人应当按照约定的期限支付利息（视为没有利息的除外）",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-g5149usury",
+    "srcs": [
+     "art680-1"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "engageInUsuriousLending(L,K)"
+     },
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "setInterestRateViolatingStateRules(L,K)"
+     }
+    ],
+    "note": "禁止高利放贷，借款的利率不得违反国家有关规定",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-g5149none",
+    "srcs": [
+     "art680-2"
+    ],
+    "body": [
+     "loanContract(K)",
+     "noAgreementOnInterest(K)"
+    ],
+    "heads": [
+     "interestFree(K)"
+    ],
+    "note": "借款合同对支付利息没有约定的，视为没有利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-g5149unclear",
+    "srcs": [
+     "art680-3"
+    ],
+    "body": [
+     "loanContract(K)",
+     "interestAgreementUnclear(K)",
+     "noSupplementaryAgreementReached(K)"
+    ],
+    "heads": [
+     "interestDeterminedByUsageOrMarketRate(K)"
+    ],
+    "note": "对支付利息约定不明确，不能达成补充协议的，按照当地或者当事人的交易方式、交易习惯、市场利率等因素确定利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c680-g5149natural",
+    "srcs": [
+     "art680-3"
+    ],
+    "body": [
+     "loanContract(K)",
+     "naturalPersonLoan(K)",
+     "interestAgreementUnclear(K)",
+     "noSupplementaryAgreementReached(K)"
+    ],
+    "heads": [
+     "interestFree(K)",
+     "-interestDeterminedByUsageOrMarketRate(K)"
+    ],
+    "note": "自然人之间借款对利息约定不明确的，视为没有利息",
+    "auth": "npc"
+   },
+   {
+    "key": "c670-g5149deduct",
+    "srcs": [
+     "art670"
+    ],
+    "body": [
+     "loanContract(K)",
+     "lenderOf(L,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "L",
+      "counterparty": null,
+      "content": "deductInterestFromPrincipalInAdvance(L,K)"
+     }
+    ],
+    "note": "借款的利息不得预先在本金中扣除",
+    "auth": "npc"
+   },
+   {
+    "key": "c670-g5149actual",
+    "srcs": [
+     "art670"
+    ],
+    "body": [
+     "loanContract(K)",
+     "borrowerOf(B,K)",
+     "interestDeductedFromPrincipalInAdvance(K)"
+    ],
+    "heads": [
+     "principalIsActualAmountLent(K)"
+    ],
+    "note": "利息预先在本金中扣除的，应当按照实际借款数额返还借款并计算利息",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [
+   [
+    "c680-g5149natural",
+    "c680-g5149unclear",
+    "自然人之间借款约定不明时视为无息，排除按交易习惯、市场利率确定利息"
+   ]
+  ],
+  "predicates": {
+   "returnLoanAtMaturity": "到期返还借款（借款人，贷款人，合同）",
+   "deductInterestFromPrincipalInAdvance": "将利息预先在本金中扣除（贷款人，合同）",
+   "interestDeductedFromPrincipalInAdvance": "借款利息已被预先在本金中扣除（合同）",
+   "principalIsActualAmountLent": "借款本金按实际借款数额确定，据此返还借款并计算利息（合同）"
+  }
+ }
+}

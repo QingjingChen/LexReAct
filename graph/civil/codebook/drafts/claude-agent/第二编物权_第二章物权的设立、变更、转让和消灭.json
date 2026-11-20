@@ -1,0 +1,496 @@
+{
+ "card:g2305": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第二编　物权",
+   "第二章　物权的设立、变更、转让和消灭"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "不动产登记机构的职责；登记资料的查询与保密；更正登记、异议登记、预告登记的条件与效力；登记错误的赔偿责任",
+     "rules": [
+      "c212-dutyg2305",
+      "c212-suppg2305",
+      "c218-queryg2305",
+      "c218-provideg2305",
+      "c219-secretg2305",
+      "c220-applyg2305",
+      "c220-correctg2305",
+      "c220-objectiong2305",
+      "c220-lapseg2305",
+      "c220-damageg2305",
+      "c221-applyg2305",
+      "c221-effectg2305",
+      "c221-lapseg2305",
+      "c222-falseg2305",
+      "c222-registryg2305",
+      "c222-recourseg2305"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "登记机构应当查验权属证明等材料、询问申请人、如实及时登记；情况需进一步证明的，可以要求补充材料，必要时实地查看",
+     "rules": [
+      "c212-dutyg2305",
+      "c212-suppg2305"
+     ]
+    },
+    {
+     "text": "权利人、利害关系人可以申请查询、复制登记资料，登记机构应当提供；利害关系人不得公开、非法使用权利人的登记资料",
+     "rules": [
+      "c218-queryg2305",
+      "c218-provideg2305",
+      "c219-secretg2305"
+     ]
+    },
+    {
+     "text": "更正登记：权利人、利害关系人认为登记簿记载错误的可以申请；登记簿记载的权利人书面同意更正或者有证据证明登记确有错误的，登记机构应当更正",
+     "rules": [
+      "c220-applyg2305",
+      "c220-correctg2305"
+     ]
+    },
+    {
+     "text": "异议登记：登记簿记载的权利人不同意更正的，利害关系人可以申请异议登记",
+     "rules": [
+      "c220-objectiong2305"
+     ]
+    },
+    {
+     "text": "预告登记：签订买卖房屋或其他不动产物权协议，为保障将来实现物权，按照约定可以申请预告登记",
+     "rules": [
+      "c221-applyg2305"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "异议登记申请人自异议登记之日起十五日内不起诉的，异议登记失效",
+     "rules": [
+      "c220-lapseg2305"
+     ]
+    },
+    {
+     "text": "预告登记后债权消灭，或者自能够进行不动产登记之日起九十日内未申请登记的，预告登记失效",
+     "rules": [
+      "c221-lapseg2305"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "预告登记后，未经预告登记权利人同意处分该不动产的，不发生物权效力",
+     "rules": [
+      "c221-effectg2305"
+     ]
+    },
+    {
+     "text": "异议登记不当造成权利人损害的，权利人可以向申请人请求损害赔偿",
+     "rules": [
+      "c220-damageg2305"
+     ]
+    },
+    {
+     "text": "提供虚假材料申请登记造成他人损害的，申请人应当赔偿；因登记错误造成他人损害的，登记机构应当赔偿，赔偿后可以向造成登记错误的人追偿",
+     "rules": [
+      "c222-falseg2305",
+      "c222-registryg2305",
+      "c222-recourseg2305"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "笔记：不动产登记簿是物权归属和内容的根据，权属证书与登记簿不一致的，除有证据证明登记簿确有错误外以登记簿为准（第216、217条，非本行挂载）",
+     "rules": []
+    },
+    {
+     "text": "笔记：变动登记包括首次、变更、转移、注销登记；预告登记保护的是将来取得物权的债权请求权；债权消灭包括买卖协议无效、被撤销、被解除或权利人放弃债权",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c212-dutyg2305",
+    "srcs": [
+     "art212-1"
+    ],
+    "body": [
+     "registrationApplied(R,U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registry",
+      "counterparty": "R",
+      "content": "verifyInquireAndRegister(R,U)"
+     }
+    ],
+    "note": "登记机构应当查验申请人提供的权属证明和其他必要材料、询问申请人、如实及时登记，并履行法律行政法规规定的其他职责",
+    "auth": "npc"
+   },
+   {
+    "key": "c212-suppg2305",
+    "srcs": [
+     "art212-2"
+    ],
+    "body": [
+     "registrationApplied(R,U)",
+     "needsFurtherProof(U)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "registry",
+      "counterparty": "R",
+      "content": "requireSupplementOrInspect(R,U)"
+     }
+    ],
+    "note": "不动产有关情况需要进一步证明的，登记机构可以要求补充材料，必要时可以实地查看",
+    "auth": "npc"
+   },
+   {
+    "key": "c218-queryg2305",
+    "srcs": [
+     "art218"
+    ],
+    "body": [
+     {
+      "or": [
+       "registeredRightHolder(P,U)",
+       "registryInterestedParty(P,U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "registry",
+      "content": "queryAndCopyRecords(P,U)"
+     }
+    ],
+    "note": "权利人、利害关系人可以申请查询、复制不动产登记资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c218-provideg2305",
+    "srcs": [
+     "art218"
+    ],
+    "body": [
+     {
+      "or": [
+       "registeredRightHolder(P,U)",
+       "registryInterestedParty(P,U)"
+      ]
+     },
+     "recordAccessRequested(P,U)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registry",
+      "counterparty": "P",
+      "content": "provideRecords(P,U)"
+     }
+    ],
+    "note": "权利人、利害关系人申请查询、复制的，登记机构应当提供",
+    "auth": "npc"
+   },
+   {
+    "key": "c219-secretg2305",
+    "srcs": [
+     "art219"
+    ],
+    "body": [
+     "registryInterestedParty(P,U)",
+     "registeredRightHolder(H,U)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "P",
+      "counterparty": "H",
+      "content": "discloseOrMisuseRecords(P,U)"
+     }
+    ],
+    "note": "利害关系人不得公开、非法使用权利人的不动产登记资料",
+    "auth": "npc"
+   },
+   {
+    "key": "c220-applyg2305",
+    "srcs": [
+     "art220-1"
+    ],
+    "body": [
+     {
+      "or": [
+       "registeredRightHolder(P,U)",
+       "registryInterestedParty(P,U)"
+      ]
+     },
+     "believesRegisterWrong(P,U)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "registry",
+      "content": "applyCorrection(P,U)"
+     }
+    ],
+    "note": "权利人、利害关系人认为登记簿记载事项错误的，可以申请更正登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c220-correctg2305",
+    "srcs": [
+     "art220-1"
+    ],
+    "body": [
+     "correctionApplied(P,U)",
+     {
+      "or": [
+       "holderConsentsCorrectionInWriting(U)",
+       "registerErrorProven(U)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registry",
+      "counterparty": "P",
+      "content": "correctRegister(U)"
+     }
+    ],
+    "note": "登记簿记载的权利人书面同意更正或者有证据证明登记确有错误的，登记机构应当予以更正",
+    "auth": "npc"
+   },
+   {
+    "key": "c220-objectiong2305",
+    "srcs": [
+     "art220-2"
+    ],
+    "body": [
+     "registryInterestedParty(P,U)",
+     "correctionApplied(P,U)",
+     "holderRefusesCorrection(U)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": "registry",
+      "content": "applyObjectionRegistration(P,U)"
+     }
+    ],
+    "note": "登记簿记载的权利人不同意更正的，利害关系人可以申请异议登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c220-lapseg2305",
+    "srcs": [
+     "art220-2"
+    ],
+    "body": [
+     "objectionRegistered(P,U)",
+     "noSuitWithin15Days(P,U)"
+    ],
+    "heads": [
+     "objectionRegistrationLapsed(P,U)"
+    ],
+    "note": "申请人自异议登记之日起十五日内不提起诉讼的，异议登记失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c220-damageg2305",
+    "srcs": [
+     "art220-2"
+    ],
+    "body": [
+     "objectionRegistered(P,U)",
+     "objectionImproper(P,U)",
+     "registeredRightHolder(H,U)",
+     "objectionCausedLoss(P,H)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "H",
+      "counterparty": "P",
+      "content": "claimObjectionDamages(H,P,U)"
+     }
+    ],
+    "note": "异议登记不当，造成权利人损害的，权利人可以向申请人请求损害赔偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c221-applyg2305",
+    "srcs": [
+     "art221-1"
+    ],
+    "body": [
+     "immovableRightAgreement(A,B,U)",
+     "agreedPreRegistration(A,B,U)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "registry",
+      "content": "applyPreRegistration(A,B,U)"
+     }
+    ],
+    "note": "签订买卖房屋或其他不动产物权协议，为保障将来实现物权，按照约定可以申请预告登记",
+    "auth": "npc"
+   },
+   {
+    "key": "c221-effectg2305",
+    "srcs": [
+     "art221-1"
+    ],
+    "body": [
+     "preRegistered(A,U)",
+     "disposalOf(D,U)",
+     "~preRegistrantConsents(A,D)",
+     "~preRegistrationLapsed(A,U)"
+    ],
+    "heads": [
+     "-realRightEffect(D)"
+    ],
+    "note": "预告登记后，未经预告登记的权利人同意处分该不动产的，不发生物权效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c221-lapseg2305",
+    "srcs": [
+     "art221-2"
+    ],
+    "body": [
+     "preRegistered(A,U)",
+     {
+      "or": [
+       "securedClaimExtinguished(A,U)",
+       "noApplicationWithin90Days(A,U)"
+      ]
+     }
+    ],
+    "heads": [
+     "preRegistrationLapsed(A,U)"
+    ],
+    "note": "预告登记后，债权消灭或者自能够进行不动产登记之日起九十日内未申请登记的，预告登记失效",
+    "auth": "npc"
+   },
+   {
+    "key": "c222-falseg2305",
+    "srcs": [
+     "art222-1"
+    ],
+    "body": [
+     "falseMaterialsCausedLoss(P,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "V",
+      "content": "compensateRegistrationLoss(P,V)"
+     }
+    ],
+    "note": "当事人提供虚假材料申请登记，造成他人损害的，应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c222-registryg2305",
+    "srcs": [
+     "art222-2"
+    ],
+    "body": [
+     "registrationErrorCausedLoss(U,V)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "registry",
+      "counterparty": "V",
+      "content": "compensateRegistrationLoss(registry,V)"
+     }
+    ],
+    "note": "因登记错误，造成他人损害的，登记机构应当承担赔偿责任",
+    "auth": "npc"
+   },
+   {
+    "key": "c222-recourseg2305",
+    "srcs": [
+     "art222-2"
+    ],
+    "body": [
+     "registryCompensated(U,V)",
+     "causedRegistrationError(C,U)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "registry",
+      "counterparty": "C",
+      "content": "seekRecoveryFrom(registry,C,U)"
+     }
+    ],
+    "note": "登记机构赔偿后，可以向造成登记错误的人追偿",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "registry": "不动产登记机构（常量）",
+   "registrationApplied": "已向登记机构申请不动产登记（申请人，不动产）",
+   "verifyInquireAndRegister": "查验权属证明等必要材料、询问申请人并如实及时登记（申请人，不动产）",
+   "requireSupplementOrInspect": "要求申请人补充材料，必要时实地查看（申请人，不动产）",
+   "registeredRightHolder": "是不动产登记簿记载的权利人（权利人，不动产）",
+   "registryInterestedParty": "是与该不动产登记有利害关系的人（利害关系人，不动产）",
+   "queryAndCopyRecords": "申请查询、复制不动产登记资料（申请人，不动产）",
+   "recordAccessRequested": "已申请查询、复制不动产登记资料（申请人，不动产）",
+   "provideRecords": "向申请人提供不动产登记资料（申请人，不动产）",
+   "discloseOrMisuseRecords": "公开、非法使用权利人的不动产登记资料（利害关系人，不动产）",
+   "believesRegisterWrong": "认为不动产登记簿记载的事项错误（申请人，不动产）",
+   "applyCorrection": "申请更正登记（申请人，不动产）",
+   "correctionApplied": "已申请更正登记（申请人，不动产）",
+   "holderConsentsCorrectionInWriting": "不动产登记簿记载的权利人书面同意更正（不动产）",
+   "registerErrorProven": "有证据证明登记确有错误（不动产）",
+   "correctRegister": "予以更正登记（不动产）",
+   "holderRefusesCorrection": "不动产登记簿记载的权利人不同意更正（不动产）",
+   "applyObjectionRegistration": "申请异议登记（申请人，不动产）",
+   "objectionRegistered": "登记机构已为申请人予以异议登记（申请人，不动产）",
+   "noSuitWithin15Days": "申请人自异议登记之日起十五日内未提起诉讼（申请人，不动产）",
+   "objectionRegistrationLapsed": "异议登记失效（申请人，不动产）",
+   "objectionImproper": "异议登记不当（申请人，不动产）",
+   "objectionCausedLoss": "不当异议登记造成权利人损害（申请人，权利人）",
+   "claimObjectionDamages": "就不当异议登记向申请人请求损害赔偿（权利人，申请人，不动产）",
+   "immovableRightAgreement": "签订了买卖房屋或者其他不动产物权的协议（取得人，相对方，不动产）",
+   "agreedPreRegistration": "当事人约定可以申请预告登记（取得人，相对方，不动产）",
+   "applyPreRegistration": "向登记机构申请预告登记（取得人，相对方，不动产）",
+   "preRegistered": "已为该人办理预告登记（预告登记权利人，不动产）",
+   "disposalOf": "D是对该不动产的处分（转让所有权或设定建设用地使用权、地役权、抵押权等）（处分行为，不动产）",
+   "preRegistrantConsents": "预告登记的权利人同意该处分（预告登记权利人，处分行为）",
+   "preRegistrationLapsed": "预告登记失效（预告登记权利人，不动产）",
+   "realRightEffect": "该处分发生物权效力（处分行为）",
+   "securedClaimExtinguished": "预告登记所保障的债权消灭（预告登记权利人，不动产）",
+   "noApplicationWithin90Days": "自能够进行不动产登记之日起九十日内未申请登记（预告登记权利人，不动产）",
+   "falseMaterialsCausedLoss": "当事人提供虚假材料申请登记，造成他人损害（申请人，受害人）",
+   "compensateRegistrationLoss": "就登记造成的损害承担赔偿责任（赔偿人，受害人）",
+   "registrationErrorCausedLoss": "因登记错误造成他人损害（不动产，受害人）",
+   "registryCompensated": "登记机构已就登记错误向受害人赔偿（不动产，受害人）",
+   "causedRegistrationError": "是造成登记错误的人（行为人，不动产）",
+   "seekRecoveryFrom": "向造成登记错误的人追偿（登记机构，追偿对象，不动产）"
+  }
+ }
+}

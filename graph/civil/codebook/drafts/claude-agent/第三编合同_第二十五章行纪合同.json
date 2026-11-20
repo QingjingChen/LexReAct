@@ -1,0 +1,484 @@
+{
+ "card:g5812": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十五章　行纪合同"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "行纪合同的概念，行纪人的费用负担、价格义务、介入权、提存权、报酬请求权与留置权",
+     "rules": [
+      "c951-g5812"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "行纪人以自己的名义为委托人从事贸易活动，委托人支付报酬",
+     "rules": [
+      "c951-g5812"
+     ]
+    },
+    {
+     "text": "合同生效后就质量、价款或报酬等没有约定或约定不明确的，可协议补充；不能达成的，按合同相关条款或交易习惯确定（第955条第2款援引）",
+     "rules": [
+      "c510-suppg5812",
+      "c510-fillg5812"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "处理委托事务的费用由行纪人负担，另有约定的除外",
+     "rules": [
+      "c952-g5812"
+     ]
+    },
+    {
+     "text": "委托人有相反意思表示的，行纪人不得自己作为买受人或出卖人",
+     "rules": [
+      "c956-1g5812"
+     ]
+    },
+    {
+     "text": "委托人逾期不付报酬的留置权，当事人另有约定的除外",
+     "rules": [
+      "c959-lieng5812"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "低于指定价卖出或高于指定价买入应经委托人同意；未经同意但行纪人补偿差额的，买卖对委托人发生效力",
+     "rules": [
+      "c955-1ag5812",
+      "c955-1bg5812"
+     ]
+    },
+    {
+     "text": "高于指定价卖出或低于指定价买入的，可按约定增加报酬；无约定或不明确且依第510条仍不能确定的，利益属于委托人",
+     "rules": [
+      "c955-2ag5812",
+      "c955-2bg5812"
+     ]
+    },
+    {
+     "text": "委托人对价格有特别指示的，行纪人不得违背",
+     "rules": [
+      "c955-3g5812"
+     ]
+    },
+    {
+     "text": "具有市场定价的商品，行纪人可自己作为买受人或出卖人（介入权），并仍可请求报酬",
+     "rules": [
+      "c956-1g5812",
+      "c956-2g5812"
+     ]
+    },
+    {
+     "text": "买入委托物后委托人应及时受领，催告后无正当理由拒绝受领的可提存；委托物不能卖出或委托人撤回出卖，催告后不取回不处分的可提存",
+     "rules": [
+      "c957-1ag5812",
+      "c957-1bg5812",
+      "c957-2g5812"
+     ]
+    },
+    {
+     "text": "完成或部分完成委托事务的，委托人应支付相应报酬；逾期不付的行纪人对委托物享有留置权",
+     "rules": [
+      "c959-payg5812",
+      "c959-lieng5812"
+     ]
+    }
+   ],
+   "priority": [],
+   "distinguish": [
+    {
+     "text": "行纪人以自己名义行事，不同于以被代理人名义的代理和不介入交易的中介；本章未规定的参照适用委托合同",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c510-suppg5812",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "contractParty(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "P",
+      "counterparty": null,
+      "content": "concludeSupplementaryAgreement(K,I)"
+     }
+    ],
+    "note": "合同生效后，就质量、价款或者报酬、履行地点等没有约定或约定不明确的，可以协议补充",
+    "auth": "npc"
+   },
+   {
+    "key": "c510-fillg5812",
+    "srcs": [
+     "art510"
+    ],
+    "body": [
+     "contractEffective(K)",
+     "termNotAgreedOrUnclear(K,I)",
+     "noSupplementaryAgreementOn(K,I)"
+    ],
+    "heads": [
+     "determinedByRelatedClausesOrUsage(K,I)"
+    ],
+    "note": "不能达成补充协议的，按照合同相关条款或者交易习惯确定",
+    "auth": "npc"
+   },
+   {
+    "key": "c951-g5812",
+    "srcs": [
+     "art951"
+    ],
+    "body": [
+     "contract(K)",
+     "actsInOwnNameForPrincipal(A,P,K)",
+     "principalPaysRemuneration(P,A,K)"
+    ],
+    "heads": [
+     "commissionContract(K)"
+    ],
+    "note": "行纪人以自己的名义为委托人从事贸易活动，委托人支付报酬的合同",
+    "auth": "npc"
+   },
+   {
+    "key": "c952-g5812",
+    "srcs": [
+     "art952"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "expensesForCommissionedAffairs(A,K)",
+     "~agreedOtherwiseOnCommissionExpenses(K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": null,
+      "content": "bearCommissionExpenses(A,K)"
+     }
+    ],
+    "note": "行纪人处理委托事务支出的费用由行纪人负担，当事人另有约定的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-1ag5812",
+    "srcs": [
+     "art955-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     {
+      "or": [
+       "sellsBelowDesignatedPrice(A,K)",
+       "buysAboveDesignatedPrice(A,K)"
+      ]
+     }
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "obtainPrincipalConsent(A,P,K)"
+     }
+    ],
+    "note": "低于指定价格卖出或高于指定价格买入的，应当经委托人同意",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-1bg5812",
+    "srcs": [
+     "art955-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     {
+      "or": [
+       "sellsBelowDesignatedPrice(A,K)",
+       "buysAboveDesignatedPrice(A,K)"
+      ]
+     },
+     "-consentedByPrincipal(A,P,K)",
+     "compensatesDifference(A,K)"
+    ],
+    "heads": [
+     "saleBindsPrincipal(A,K)"
+    ],
+    "note": "未经委托人同意，行纪人补偿其差额的，该买卖对委托人发生效力",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-2ag5812",
+    "srcs": [
+     "art955-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     {
+      "or": [
+       "sellsAboveDesignatedPrice(A,K)",
+       "buysBelowDesignatedPrice(A,K)"
+      ]
+     },
+     "agreedIncreaseRemuneration(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "increaseRemuneration(A,P,K)"
+     }
+    ],
+    "note": "高于指定价格卖出或低于指定价格买入的，可以按照约定增加报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-2bg5812",
+    "srcs": [
+     "art955-2",
+     "art510"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     {
+      "or": [
+       "sellsAboveDesignatedPrice(A,K)",
+       "buysBelowDesignatedPrice(A,K)"
+      ]
+     },
+     "-agreedIncreaseRemuneration(A,K)",
+     "-determinablePerArt510(K)"
+    ],
+    "heads": [
+     "benefitBelongsToPrincipal(A,K)"
+    ],
+    "note": "没有约定或约定不明确，依据第510条仍不能确定的，该利益属于委托人",
+    "auth": "npc"
+   },
+   {
+    "key": "c955-3g5812",
+    "srcs": [
+     "art955-3"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "specialPriceInstruction(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "deviateFromPriceInstruction(A,K)"
+     }
+    ],
+    "note": "委托人对价格有特别指示的，行纪人不得违背该指示卖出或者买入",
+    "auth": "npc"
+   },
+   {
+    "key": "c956-1g5812",
+    "srcs": [
+     "art956-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "commissionGoodsOf(G,K)",
+     "marketPricedGoods(G)",
+     "~contraryIntentionOfPrincipal(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "actsAsBuyerOrSeller(A,K)"
+     }
+    ],
+    "note": "卖出或买入具有市场定价的商品，除委托人有相反意思表示外，行纪人自己可以作为买受人或出卖人",
+    "auth": "npc"
+   },
+   {
+    "key": "c956-2g5812",
+    "srcs": [
+     "art956-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "actsAsBuyerOrSeller(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "requestRemuneration(A,P,K)"
+     }
+    ],
+    "note": "行纪人自己作为买受人或出卖人的，仍然可以请求委托人支付报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-1ag5812",
+    "srcs": [
+     "art957-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "purchasedEntrustedGoodsPerAgreement(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "acceptEntrustedGoodsInTime(P,K)"
+     }
+    ],
+    "note": "行纪人按照约定买入委托物，委托人应当及时受领",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-1bg5812",
+    "srcs": [
+     "art957-1"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "purchasedEntrustedGoodsPerAgreement(A,K)",
+     "demandedAcceptance(A,P,K)",
+     "refusesAcceptanceWithoutJustification(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "depositEntrustedGoods(A,K)"
+     }
+    ],
+    "note": "经催告，委托人无正当理由拒绝受领的，行纪人依法可以提存委托物",
+    "auth": "npc"
+   },
+   {
+    "key": "c957-2g5812",
+    "srcs": [
+     "art957-2"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     {
+      "or": [
+       "goodsCannotBeSold(K)",
+       "principalWithdrawsSale(P,K)"
+      ]
+     },
+     "demandedRetrievalOrDisposal(A,P,K)",
+     "principalFailsToRetrieveOrDispose(P,K)"
+    ],
+    "heads": [
+     {
+      "type": "PERM",
+      "bearer": "A",
+      "counterparty": "P",
+      "content": "depositEntrustedGoods(A,K)"
+     }
+    ],
+    "note": "委托物不能卖出或委托人撤回出卖，经催告委托人不取回或不处分的，行纪人依法可以提存",
+    "auth": "npc"
+   },
+   {
+    "key": "c959-payg5812",
+    "srcs": [
+     "art959"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "completedCommissionWhollyOrPartly(A,K)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "P",
+      "counterparty": "A",
+      "content": "payCorrespondingRemuneration(P,A,K)"
+     }
+    ],
+    "note": "行纪人完成或者部分完成委托事务的，委托人应当支付相应的报酬",
+    "auth": "npc"
+   },
+   {
+    "key": "c959-lieng5812",
+    "srcs": [
+     "art959"
+    ],
+    "body": [
+     "commissionContract(K)",
+     "commissionAgentOf(A,K)",
+     "commissionPrincipalOf(P,K)",
+     "remunerationOverdue(P,K)",
+     "commissionGoodsOf(G,K)",
+     "~lienExcludedByAgreement(G)"
+    ],
+    "heads": [
+     "lienRight(A,G,K)"
+    ],
+    "note": "委托人逾期不支付报酬的，行纪人对委托物享有留置权，当事人另有约定的除外",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "expensesForCommissionedAffairs": "行纪人处理委托事务支出费用（行纪人，合同）",
+   "agreedOtherwiseOnCommissionExpenses": "当事人对处理委托事务的费用负担另有约定（合同）",
+   "bearCommissionExpenses": "负担处理委托事务支出的费用（行纪人，合同）",
+   "commissionGoodsOf": "是该行纪合同项下的委托物或所涉商品（物，合同）",
+   "completedCommissionWhollyOrPartly": "行纪人完成或者部分完成委托事务（行纪人，合同）",
+   "remunerationOverdue": "委托人逾期不支付报酬（委托人，合同）",
+   "commissionAgentOf": "是行纪合同的行纪人（行纪人，合同）",
+   "commissionPrincipalOf": "是行纪合同的委托人（委托人，合同）"
+  }
+ }
+}

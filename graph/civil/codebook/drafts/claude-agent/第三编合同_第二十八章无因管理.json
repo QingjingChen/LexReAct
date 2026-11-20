@@ -1,0 +1,369 @@
+{
+ "card:g5961": {
+  "status": "ok",
+  "model": "claude-agent",
+  "attempts": 1,
+  "errors": [],
+  "chapter": [
+   "第三编　合同",
+   "第二十八章　无因管理"
+  ],
+  "nl": {
+   "issue": [
+    {
+     "text": "无因管理成立后的法律效果：管理人的权利（费用偿还、损失补偿）与义务（适当管理、通知、报告及转交）",
+     "rules": [
+      "c979-g5961est",
+      "c979-g5961exp",
+      "c981-g5961method",
+      "c983-g5961report"
+     ]
+    }
+   ],
+   "conditions": [
+    {
+     "text": "管理人没有法定或约定义务，为避免他人利益受损失而管理他人事务，构成无因管理",
+     "rules": [
+      "c979-g5961est"
+     ]
+    }
+   ],
+   "exceptions": [
+    {
+     "text": "管理事务不符合受益人真实意思的，管理人不享有费用偿还和损失补偿请求权；但受益人的真实意思违反法律或违背公序良俗的除外",
+     "rules": [
+      "c979-g5961contrary"
+     ]
+    },
+    {
+     "text": "中断管理对受益人不利的，无正当理由不得中断",
+     "rules": [
+      "c981-g5961nointerrupt"
+     ]
+    }
+   ],
+   "effects": [
+    {
+     "text": "管理人可以请求受益人偿还因管理事务支出的必要费用；因管理事务受到损失的，可以请求适当补偿",
+     "rules": [
+      "c979-g5961exp",
+      "c979-g5961comp"
+     ]
+    },
+    {
+     "text": "管理人无报酬请求权（学理）",
+     "rules": [
+      "c979-g5961nofee"
+     ]
+    },
+    {
+     "text": "管理人为受益人利益以自己名义负担的债务，可以请求受益人直接向债权人清偿（学理）",
+     "rules": [
+      "c979-g5961debt"
+     ]
+    },
+    {
+     "text": "不属于第979条情形但受益人享有管理利益的，受益人应在获益范围内偿还必要费用、补偿损失",
+     "rules": [
+      "c980-g5961benefit"
+     ]
+    },
+    {
+     "text": "适当管理义务：应当采取有利于受益人的方法",
+     "rules": [
+      "c981-g5961method"
+     ]
+    },
+    {
+     "text": "通知义务：能够通知的应当及时通知受益人；事务不需要紧急处理的，应当等待受益人指示",
+     "rules": [
+      "c982-g5961notify",
+      "c982-g5961wait"
+     ]
+    },
+    {
+     "text": "报告及计算义务：管理结束后应当报告管理情况；管理取得的财产（含孳息）应当及时转交受益人",
+     "rules": [
+      "c983-g5961report",
+      "c983-g5961transfer"
+     ]
+    }
+   ],
+   "priority": [
+    {
+     "text": "违背受益人（合法）真实意思时，排除第979条第1款的请求权，转而适用第980条的获益范围内返还",
+     "rules": [
+      "c979-g5961contrary",
+      "c980-g5961benefit"
+     ]
+    }
+   ],
+   "distinguish": [
+    {
+     "text": "笔记一处称必要费用“一般以本人所受利益范围为限”，另一处称“即使受益人没有获益也要承担”；按第979条原文，真正无因管理的费用偿还不以受益人获益为要件，以获益范围为限的是第980条",
+     "rules": []
+    }
+   ]
+  },
+  "rules": [
+   {
+    "key": "c979-g5961est",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "noLegalOrAgreedDuty(M,B)",
+     "toAvoidLossOf(M,B)"
+    ],
+    "heads": [
+     "negotiorumManagement(M,B)"
+    ],
+    "note": "管理人没有法定的或者约定的义务，为避免他人利益受损失而管理他人事务，构成无因管理",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-g5961exp",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "expensesIncurredFor(M,B)",
+     "~gestorClaimsExcluded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimReimbursementOfNecessaryExpenses(M,B)"
+     }
+    ],
+    "note": "管理人可以请求受益人偿还因管理事务而支出的必要费用",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-g5961comp",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "suffersLossInManaging(M,B)",
+     "~gestorClaimsExcluded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "claimAppropriateCompensation(M,B)"
+     }
+    ],
+    "note": "管理人因管理事务受到损失的，可以请求受益人给予适当补偿",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-g5961contrary",
+    "srcs": [
+     "art979-2"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "contraryToBeneficiaryTrueIntention(M,B)",
+     "~beneficiaryIntentionViolatesLaw(B)",
+     "~beneficiaryTrueIntentionViolatesPublicOrder(B)"
+    ],
+    "heads": [
+     "gestorClaimsExcluded(M,B)"
+    ],
+    "note": "管理事务不符合受益人真实意思的，管理人不享有第1款的权利；受益人真实意思违反法律或者违背公序良俗的除外",
+    "auth": "npc"
+   },
+   {
+    "key": "c979-g5961nofee",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)"
+    ],
+    "heads": [
+     "-gestorRemunerationEntitled(M,B)"
+    ],
+    "note": "笔记：无因管理人无报酬请求权（第979条只规定必要费用和适当补偿，学理）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c979-g5961debt",
+    "srcs": [
+     "art979-1"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "debtIncurredInOwnNameForBeneficiary(M,B,C)",
+     "~gestorClaimsExcluded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "RIGHT",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "requestDirectPaymentToCreditor(M,B,C)"
+     }
+    ],
+    "note": "笔记：管理人为本人利益以自己名义负担的债务，有权要求本人直接向债权人清偿（学理，视为必要费用的延伸）",
+    "auth": "doctrine"
+   },
+   {
+    "key": "c980-g5961benefit",
+    "srcs": [
+     "art980"
+    ],
+    "body": [
+     "managesAffairsFor(M,B)",
+     "gestorClaimsExcluded(M,B)",
+     "benefitsFromManagement(B,M)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "B",
+      "counterparty": "M",
+      "content": "reimburseAndCompensateWithinBenefitScope(B,M)"
+     }
+    ],
+    "note": "管理事务不属于第979条规定的情形，但受益人享有管理利益的，受益人应当在其获得的利益范围内承担偿还费用、补偿损失的义务",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-g5961method",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "adoptMethodFavorableToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理他人事务，应当采取有利于受益人的方法",
+    "auth": "npc"
+   },
+   {
+    "key": "c981-g5961nointerrupt",
+    "srcs": [
+     "art981"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "interruptionUnfavorableToBeneficiary(M,B)",
+     "~justifiedReason(M)"
+    ],
+    "heads": [
+     {
+      "type": "FOR",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "interruptManagement(M,B)"
+     }
+    ],
+    "note": "中断管理对受益人不利的，无正当理由不得中断",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-g5961notify",
+    "srcs": [
+     "art982"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "ableToNotifyBeneficiary(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "notifyBeneficiaryInTime(M,B)"
+     }
+    ],
+    "note": "能够通知受益人的，应当及时通知受益人",
+    "auth": "npc"
+   },
+   {
+    "key": "c982-g5961wait",
+    "srcs": [
+     "art982"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "affairNotUrgent(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "awaitBeneficiaryInstruction(M,B)"
+     }
+    ],
+    "note": "管理的事务不需要紧急处理的，应当等待受益人的指示",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-g5961report",
+    "srcs": [
+     "art983"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "managementEnded(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "reportManagementToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理结束后，管理人应当向受益人报告管理事务的情况",
+    "auth": "npc"
+   },
+   {
+    "key": "c983-g5961transfer",
+    "srcs": [
+     "art983"
+    ],
+    "body": [
+     "negotiorumManagement(M,B)",
+     "obtainedPropertyInManagement(M,B)"
+    ],
+    "heads": [
+     {
+      "type": "OBL",
+      "bearer": "M",
+      "counterparty": "B",
+      "content": "transferObtainedPropertyToBeneficiary(M,B)"
+     }
+    ],
+    "note": "管理人管理事务取得的财产（包括孳息），应当及时转交给受益人",
+    "auth": "npc"
+   }
+  ],
+  "overrides": [],
+  "predicates": {
+   "gestorClaimsExcluded": "管理人因管理事务不符合受益人（合法的）真实意思而不享有第979条第1款的请求权（管理人，受益人）",
+   "gestorRemunerationEntitled": "管理人享有管理报酬请求权（管理人，受益人）",
+   "debtIncurredInOwnNameForBeneficiary": "管理人为受益人利益以自己名义对债权人负担债务（管理人，受益人，债权人）",
+   "requestDirectPaymentToCreditor": "请求受益人直接向债权人清偿（管理人，受益人，债权人）"
+  }
+ }
+}
